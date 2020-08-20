@@ -7,9 +7,9 @@ As this is supposed to be community-driven, we'll rely on contributions by, well
 
 ## Community Showcase: [Train JUMP-tions](https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions/?utm_source=share&utm_medium=web2x)
 
-Alright alright, already breaking my own, self-imposed rules, I know. These jumping trains are of course part of a mod called [Renai Transportation](https://mods.factorio.com/mod/RenaiTransportation). But I think this actually belongs here as a community showcase, because it's not some serious mod that's supposed to improve your life, but a silly exercise in what is possible, and it turned out really fun. I'll let the gif do the talking:
+Alright alright, already breaking my own, self-imposed rules, I know. These jumping trains are of course part of a mod called [Renai Transportation](https://mods.factorio.com/mod/RenaiTransportation). But I think this actually belongs here as a community showcase, because it's not some serious mod that's supposed to improve your life, but a silly exercise in what is possible, and it turned out really fun. I'll let the gif do the talking (you can also go to [reddit](https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions/?utm_source=share&utm_medium=web2x) for a version with sound):
 
-![]()
+![](https://i.imgur.com/MdlxMzD.gif)
 
 As you can see, Kiplacon decided to take the matter of making train bridges/tunnels work into his own hands, to great effect. He saw all the technical effort going into trying to make bridges and tunnels work, and thought to himself: No, I know a better way. The result is a really wonky looking situation where trains jump through the air, but the impressive thing to me is that he actually made it work in-game. This isn't some idea that everyone thinks will never be possible, oh no, it's actually already there, and you can download it. This is the kind of stuff I love to see from mods. As one of the developers, wheybags, put it: 'Amazing. This is what modding was meant to be. <3'. I can only agree with that.
 
