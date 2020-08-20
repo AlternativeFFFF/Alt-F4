@@ -11,7 +11,7 @@ Alright alright, already breaking my own, self-imposed rules, I know. These jump
 
 -- GIF EMBED
 
-As you can see, Kiplacon decided to take the matter of making train bridges/tunnels work into his own hands, to great effect. He saw all the technical effort going into trying to make bridges and tunnels work, and thought to himself: No, I know a better way. The result is a really wonky looking situation where trains jump through the air, but the impressive thing to me is that he actually made it work in-game. This isn't some idea that everyone thinks will never be possible, oh no, it's actually already there, and you can download it. This is the kind of stuff I love to see from mods. As one of the developers, wheybags, but it: 'Amazing. This is what modding was meant to be. <3'. I can only agree with that.
+As you can see, Kiplacon decided to take the matter of making train bridges/tunnels work into his own hands, to great effect. He saw all the technical effort going into trying to make bridges and tunnels work, and thought to himself: No, I know a better way. The result is a really wonky looking situation where trains jump through the air, but the impressive thing to me is that he actually made it work in-game. This isn't some idea that everyone thinks will never be possible, oh no, it's actually already there, and you can download it. This is the kind of stuff I love to see from mods. As one of the developers, wheybags, put it: 'Amazing. This is what modding was meant to be. <3'. I can only agree with that.
 
 
 ## Mod Spotlight: [Assembly Analyst](https://mods.factorio.com/mod/assemblyanalyst)
@@ -25,6 +25,13 @@ What AA does is pretty simple: It shows you what your machines have been spendin
 Speaking of performance, it has a not-insignificant impact on your [UPS](https://www.reddit.com/r/factorio/comments/5dmura/can_someone_explain_ups/da5q364/?utm_source=reddit&utm_medium=web2x&context=3), which is why you should only select certain parts at a time. In a recent update though, I addressed a devious little bug that has hidden from me for quite a while, which made performance much better. If you used this before, and thought it was too slow, give it another try, because it is much improved.
 
 All of this works on all types of assemblers (including refineries, rocket silots, and so on), mining drills, labs, and inserters. Having the historical overview and the details on exactly *why* a machine is not working can be very valuable in figuring out bottlenecks and other issues with your factory. Give it a try, it's a nice tool to have on your engineer's toolbelt, right next to the [shark repellent](https://www.youtube.com/watch?v=QnFOs7QlJSI).
+
+
+## Coming full circle: [Factorio 1.0](https://factorio.com/blog/post/fff-360)
+
+Finally, the reason why we're all here: Factorio has just been released for real. It's been a tremendous success story, of the kind that only comes around every so often. I want to commend everyone involved, Wube first and foremost of course, for this incredible achievement. This game is a tour-de-force in optimization and design that will stand the test of time for many decades to come. Bravo!
+
+-- FACTORIO 2020 LAUNCH IMAGE?
 
 
 ## Contributing
