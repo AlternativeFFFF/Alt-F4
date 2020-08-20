@@ -9,7 +9,7 @@ As this is supposed to be community-driven, we'll rely on contributions by, well
 
 Alright alright, already breaking my own, self-imposed rules, I know. These jumping trains are of course part of a mod called [Renai Transportation](https://mods.factorio.com/mod/RenaiTransportation). But I think this actually belongs here as a community showcase, because it's not some serious mod that's supposed to improve your life, but a silly exercise in what is possible, and it turned out really fun. I'll let the gif do the talking (you can also go to [reddit](https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions/?utm_source=share&utm_medium=web2x) for a version with sound):
 
-![](https://i.imgur.com/MdlxMzD.gif)
+-- Embed gif somehow
 
 As you can see, Kiplacon decided to take the matter of making train bridges/tunnels work into his own hands, to great effect. He saw all the technical effort going into trying to make bridges and tunnels work, and thought to himself: No, I know a better way. The result is a really wonky looking situation where trains jump through the air, but the impressive thing to me is that he actually made it work in-game. This isn't some idea that everyone thinks will never be possible, oh no, it's actually already there, and you can download it. This is the kind of stuff I love to see from mods. As one of the developers, wheybags, put it: 'Amazing. This is what modding was meant to be. <3'. I can only agree with that.
 
@@ -18,7 +18,7 @@ As you can see, Kiplacon decided to take the matter of making train bridges/tunn
 
 Now this, too, is a bit awkward. Assembly Analyst is actually one of my (me, Therenas, hi!) mods. So this may seem like a roundabout way to promote my own mods. But, the truth is that I haven't actually played Factorio in over a year, so I don't really know much about the mods that are currently all hot and steamy. Developing mods seems to [get in the way](https://cdn.discordapp.com/attachments/603392474458882065/745728165116248144/mod_brain.png) it seems (which is why we need volunteers *hint hint see below*). Either way, let me tell you about Assembly Analyst (AA). First a screenshot:
 
-![](https://mods-data.factorio.com/assets/61ebb8c3211d5cca26b32c98ef667557c993e763.png)
+![](https://github.com/ClaudeMetz/Alt-F4/blob/master/issue_01/assembly_analyst.jpg?raw=true)
 
 What AA does is pretty simple: It shows you what your machines have been spending their time on. Are they working, waiting on inputs, low on power, disabled? The mod will show you this using a nice bar with different colors. If this idea seems vaguely familiar to you, it should, because that is similar to what [Bottleneck](https://mods.factorio.com/mod/Bottleneck) does. What AA provides in addition to it is the historical view, letting you know what a machine does over time. You simply select a certain area of your factory, and see how it performs.
 
@@ -31,7 +31,7 @@ All of this works on all types of assemblers (including refineries, rocket silot
 
 Finally, the reason why we're all here: Factorio has just been released for real. It's been a tremendous success story, of the kind that only comes around every so often. I want to commend everyone involved, Wube first and foremost of course, for this incredible achievement. This game is a tour-de-force in optimization and design that will stand the test of time for many decades to come. Bravo!
 
-![](https://cdn.factorio.com/assets/img/blog/fff-327-2020-cover.jpg)
+![](https://github.com/ClaudeMetz/Alt-F4/blob/master/issue_01/factorio_1dot0.jpeg?raw=true)
 
 
 ## Contributing
