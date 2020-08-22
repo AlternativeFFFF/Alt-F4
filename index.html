@@ -11,7 +11,7 @@ layout: default
   {% include pagination.html %}
 
   {% for post in paginator.posts %}
-  <div class="panel-inset-lighter blog-card ">
+  <div class="panel-inset-lighter flex">
     {% if post.thumbnail %}
     <div class="blog-card-thumbnail">
       <a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
@@ -28,11 +28,11 @@ layout: default
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </h3>
       <div class="posted-by">
-        Posted by
-        <em>
-          {% for author in post.authors %}{{ author }}, {% endfor %}
-        </em>
-        on <time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">{{ post.date | date_to_string }}</time>
+        Post
+        {% if page.author %} by <em>{{ page.author }}</em>{% endif %}
+        {% if page.editor %} revised by <em>{{ page.editor }}</em>{% endif %}
+        {% if page.date %} on <time datetime="{{ post.date | date_to_xmlschema }}"
+          class="by-line">{{ page.date | date: "%Y-%M-%d" }}</time>{% endif %}
       </div>
       <hr>
       <div class="snippet snippet-2">
