@@ -2,9 +2,10 @@
 ---
 
 @import "{{ site.theme }}";
-:root{
+body{
 	font-family: titillium web,sans-serif;
-	font-size:16px;
+	font-size:18px;
+	padding:0;
 }
 .sites {
 	padding:16px 32px;
