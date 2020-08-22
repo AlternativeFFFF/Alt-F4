@@ -17,17 +17,13 @@
 </head>
 
 <body>
-  <div class="sites links flex flex-items-baseline">
+  <nav class="sites">
     <a href="/" class="sites-current">Alt-F4</a>
-    <span class="separator separator-blue">|</span>
     <a href="https://factorio.com/" class="">Factorio.com</a>
-    <span class="separator separator-blue">|</span>
     <a href="https://forums.factorio.com/" class="">Forums</a>
-    <span class="separator separator-blue">|</span>
     <a href="https://wiki.factorio.com/" class="">Wiki</a>
-    <span class="separator separator-blue">|</span>
     <a href="https://mods.factorio.com" class="">Mod Portal</a>
-  </div>
+  </nav>
   <div class="wrapper">
     <header {% unless site.description or site.github.project_tagline %} class="without-description" {% endunless %}>
       <h1>{{ site.title | default: site.github.repository_name }}</h1>
