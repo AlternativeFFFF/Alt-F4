@@ -379,6 +379,81 @@ article iframe {
 	box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 8px 4px -8px #000, inset 0 -6px 4px -8px #376d3b, inset 0 -8px 4px -8px #000, 0 0 4px 0 #000;
 	filter: none
 }
+
+.button {
+	background-color: #8e8e8e;
+	padding: 10px 12px;
+	font-size: 100%;
+	text-align: left;
+	color: #000;
+	font-weight: 600;
+	display: inline-block;
+	vertical-align: baseline;
+	min-width: 128px;
+	border: none;
+	line-height: inherit;
+	white-space: nowrap;
+	box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 10px 2px -8px #e3e3e3, inset 0 10px 2px -8px #282828, inset 0 -9px 2px -8px #000, 0 0 4px 0 #000;
+	position: relative;
+	margin-right: 14px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	height: 36px;
+	text-align: left
+}
+.button i {
+	margin-right: 0
+}
+.button:hover, .button:focus, .button.hover {
+	color: #000;
+	text-decoration: none;
+	outline: 0;
+	box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 9px 2px -8px #fff, inset 0 8px 4px -8px #000, inset 0 -8px 4px -8px #000, inset 0 -9px 2px -8px #432400, 0 0 4px 0 #000, inset 0 0 4px 2px #f9b44b;
+	background-color: #e39827;
+	filter: drop-shadow(0 0 2px #f9b44b)
+}
+.button:active, .button.active {
+	position: relative;
+	padding-top: 12px;
+	padding-bottom: 8px;
+	vertical-align: -2px;
+	box-shadow: inset 0 10px 2px -8px #000, inset 0 9px 2px -8px #000, inset 8px 0 4px -8px #563a10, inset 8px 0 4px -8px #563a10, inset -8px 0 4px -8px #563a10, inset -8px 0 4px -8px #563a10, inset 0 9px 2px -8px #563a10, inset 0 -9px 2px -8px #563a10, inset 0 -8.5px 0 -8px #563a10, 0 0 4px 0 #000;
+	background-color: #f1be64;
+	filter: none;
+	outline: 0
+}
+.button.disabled, .button.disabled:hover, .button.disabled:active {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor: default;
+	vertical-align: 0;
+	background-color: #3d3d3d;
+	color: #818181;
+	box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 8px 4px -8px #000, inset 0 -6px 4px -8px #818181, inset 0 -8px 4px -8px #000, 0 0 4px 0 #000;
+	filter: none
+}
+.square-sm {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	vertical-align: baseline;
+	padding: 2px;
+	min-width: 36px;
+	width: 36px;
+	height: 36px;
+	text-align: center;
+	margin-bottom: 0;
+	margin-right: 0;
+	margin-left: 8px
+}
+.pagination-dots {
+	width: 30px;
+	min-width: 30px
+}
+
 .flex {
 	display:flex;
 }
