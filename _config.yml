@@ -1,11 +1,31 @@
+# Site settings
 title: Alternative Friday Factorio Fan Facts
-# email: your-email@example.com
 description: >-
   This is an awesome fan facts site.
-baseurl: "/"
-url: ""
-# twitter_username: jekyllrb
-# github_username:  jekyll
+url: "https://ypetremann.github.io"
+author:
+  name: "TODO"
+  email: "TODO"
+  url: "TODO"
+
+
+# Build settings
+markdown: kramdown
+source: .
+destination: ./_site
+permalink: /:title
+paginate: 10
+paginate_path: /page:num/
+
+# baseurl: "/"
+
+# Plugins
+gems:
+  - jekyll-paginate
+plugins:
+  - jekyll-paginate
+
+
 theme: minima
 excerpt_separator: "<!--more-->"
 defaults:
