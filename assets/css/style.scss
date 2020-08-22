@@ -18,6 +18,7 @@ body{
 	font-family: titillium web,sans-serif;
 	font-size:18px;
 	padding:0;
+	color:#fff;
 }
 a{
 	text-decoration: none;
@@ -54,7 +55,6 @@ header p {
 .sites {
 	padding:16px 32px;
 	background-color: rgba(0,0,0,.5);
-	color:white;
 	& a{
 		color:#7dcaed;
 		&.sites-current{
