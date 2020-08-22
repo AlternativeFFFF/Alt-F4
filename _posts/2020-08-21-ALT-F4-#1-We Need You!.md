@@ -9,14 +9,14 @@ Welcome to the very first edition of the 'Alternative Factorio Friday Fan Facts'
 As this is supposed to be community-driven, we'll rely on contributions by, well, the community to keep this going. I wrote this first one on my own due to time constraints (I decided to actually give this a shot less than 48 hours ago), but this can only be truly great if some of you decide to contribute. More on that at the end of this post, let's get to some actual content first.
 
 
-### Community Showcase: [Train JUMP-tions](https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions/?utm_source=share&utm_medium=web2x)
+### Community Showcase: [Train JUMP-tions](https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions/?utm_source=share&utm_medium=web2x) <author>ClaudeMetz, nicgarner</author>
 
 Alright alright, already breaking my own, self-imposed rules, I know. These jumping trains are of course part of a mod called [Renai Transportation](https://mods.factorio.com/mod/RenaiTransportation). But I think this actually belongs here as a community showcase, because it's not some serious mod that's supposed to improve your life, but a silly exercise in what is possible, and it turned out really fun. I'll let the gif do the talking. (I would embed it right here, but the technology just isn't there yet this week. Go to the [reddit post](https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions/?utm_source=share&utm_medium=web2x) for a version with sound, you have to see if for yourself.)
 
 As you can see, Kiplacon decided to take the matter of making train bridges/tunnels work into his own hands, to great effect. He saw all the technical effort going into trying to make bridges and tunnels work, and thought to himself: No, I know a better way. The result is a really wonky looking situation where trains jump through the air, but the impressive thing to me is that he actually made it work in-game. This isn't some idea that everyone thinks will never be possible, oh no, it's actually already there, and you can download it. This is the kind of stuff I love to see from mods. As wheybags, one of the developers, put it: 'Amazing. This is what modding was meant to be. <3'. I can only agree with that.
 
 
-### Mod Spotlight: [Assembly Analyst](https://mods.factorio.com/mod/assemblyanalyst)
+### Mod Spotlight: [Assembly Analyst](https://mods.factorio.com/mod/assemblyanalyst) <author>ClaudeMetz, nicgarner</author>
 
 Now this, too, is a bit awkward. Assembly Analyst is actually one of my (me, Therenas, hi!) mods. So this may seem like a roundabout way to promote my own mods. But, the truth is that I haven't actually played Factorio in over a year, so I don't really know much about the mods that are currently all hot and steamy. Developing mods seems to [get in the way](https://cdn.discordapp.com/attachments/603392474458882065/745728165116248144/mod_brain.png) it seems (which is why we need volunteers *hint hint see below*). Either way, let me tell you about Assembly Analyst (AA). First a screenshot:
 
@@ -29,14 +29,14 @@ Speaking of performance, it has a not-insignificant impact on your [UPS](https:/
 All of this works on all types of assemblers (including refineries, rocket silots, and so on), mining drills, labs, and inserters. Having the historical overview and the details on exactly *why* a machine is not working can be very valuable in figuring out bottlenecks and other issues with your factory. Give it a try, it's a nice tool to have on your engineer's toolbelt, right next to the [shark repellent](https://www.youtube.com/watch?v=QnFOs7QlJSI).
 
 
-### Coming full circle: [Factorio 1.0](https://factorio.com/blog/post/fff-360)
+### Coming full circle: [Factorio 1.0](https://factorio.com/blog/post/fff-360) <author>ClaudeMetz, nicgarner</author>
 
 Finally, the reason why we're all here: Factorio has just been released for real. It's been a tremendous success story, of the kind that only comes around every so often. I want to commend everyone involved, Wube first and foremost of course, for this incredible achievement. This game is a tour-de-force in optimization and design that will stand the test of time for many decades to come. Bravo!
 
 ![](https://github.com/ClaudeMetz/Alt-F4/blob/master/issue_01/factorio_1dot0.jpeg?raw=true)
 
 
-### Contributing
+### Contributing <author>ClaudeMetz, nicgarner</author>
 
 Alright, seems you made it to the end. Did you enjoy what you read? Learned something new and interesting, maybe? No? Then it's time to fix that, by contributing to next week's edition yourself! Like I said before, this project will depend on the input of the community. If you fancy yourself a bit of a writer, or are passionate about a certain subject and want to share it with all of [Nauvis](https://www.reddit.com/r/factorio/comments/7fjh5l/what_is_nauvis_im_glad_you_asked/), we need your help. To that end, I set up a [Discord](https://discord.gg/AsXAwyV) through which this effort will be coordinated; anyone is free to join!
 
