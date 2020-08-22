@@ -233,6 +233,18 @@ h1:not(.forced):first-child{display:none;}
 	
 	}
 }
+.separator {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	cursor: default;
+	margin-left: 8px;
+	margin-right: 8px;
+	color: #ccc
+}
+.separator-blue {
+	color: #7dcaed
+}
 
 .panel, .panel-lighter, .panel-darker, .panel-inset, .panel-inset-lighter, .panel-hole, .mod-page-info article table, 
 .panel-hole-inner, dl.panel-hole>dt, dl.panel-hole>dd, table.panel-hole th, table.panel-hole td, 

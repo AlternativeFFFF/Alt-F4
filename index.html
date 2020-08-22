@@ -18,3 +18,50 @@ title: "Introduction"
   </li>
   {% endfor %}
 </ul>
+
+
+
+
+
+---
+layout: default
+---
+<div class="panel">
+  <h2>Fan Blog</h2>
+  <!-- Pagination links -->
+  {% include pagination.html %}
+
+  {% for post in paginator.posts %}
+  <div class="panel-inset-lighter blog-card ">
+    {% if post.thumbnail %}
+    <div class="blog-card-thumbnail">
+      <a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
+
+        <img src="{{ site.baseurl }}{{ post.thumbnail }}">
+
+        <div class="shadow-overlay"></div>
+      </a>
+    </div>
+    {% endif %}
+
+    <div class="blog-card-text">
+      <h3>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </h3>
+      <div class="posted-by">
+        Posted by
+        <em>
+          {% for author in post.authors %}{{ author }}, {% endfor %}
+        </em>
+        on <time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">{{ post.date | date_to_string }}</time>
+      </div>
+      <hr>
+      <div class="snippet snippet-2">
+        <p>{{ post.content | strip_html | truncatewords:50 }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!-- Pagination links -->
+  {% include pagination.html %}
+</div>
