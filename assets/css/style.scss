@@ -372,3 +372,51 @@ article iframe {
 	box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 8px 4px -8px #000, inset 0 -6px 4px -8px #376d3b, inset 0 -8px 4px -8px #000, 0 0 4px 0 #000;
 	filter: none
 }
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
+}
+.flex-wrap {
+	flex-wrap: wrap
+}
+
+.flex-end {
+	justify-content: flex-end
+}
+
+.flex-space-between {
+	display: flex;
+	justify-content: space-between
+}
+
+.flex-start {
+	display: flex;
+	justify-content: flex-start
+}
+
+.flex-space-evenly {
+	display: flex;
+	justify-content: space-evenly
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center
+}
+
+.flex-align-items-center, .flex-items-center {
+	align-items: center
+}
+
+.flex-items-end {
+	align-items: end
+}
+
+.flex-items-baseline {
+	align-items: baseline
+}
+.flex-grow {
+	flex-grow: 1
+}
