@@ -16,4 +16,8 @@
 	&-current{
 		color:#ffe6c0;
 	}
+	& *:not(:first-child):before{
+		content:"|";
+		padding:0 8px;
+	}
 }
