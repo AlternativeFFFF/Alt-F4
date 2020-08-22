@@ -1,6 +1,9 @@
 ---
 author: ClaudeMetz, nicgarner
 editor: ClaudeMetz, nicgarner
+discuss:
+	forum: https://forums.factorio.com/87659
+	reddit: https://www.reddit.com/r/factorio/comments/i5arma/friday_facts_359_crash_site_the_beginning/
 ---
 
 # Alt-F4 #1 - We Need You!
@@ -46,8 +49,3 @@ This is all very much cobbled together, and will be refined in the coming weeks 
 If you are passionate about a mod, or are the developer of one and want to talk about it, you're the perfect candidate to write up a mod spotlight. If you noticed something great the community did, be it art, gameplay or anything else, you should be the person to write about it. If you don't fit those criteria, but still have something to share, that's great too. Don't be afraid of your topic or writing style not being good enough; it almost certainly is worth writing about. If you need any advice, or have any questions, the Discord is open to you.
 
 So hop on in and let's get this going!
-
-<div class="mt8 flex flex-column flex-items-center">
-	<a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/87659">Discuss on our forums</a>
-	<a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/i5arma/friday_facts_359_crash_site_the_beginning/">Discuss on Reddit</a>
-</div>
