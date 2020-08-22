@@ -14,7 +14,7 @@ markdown: kramdown
 source: .
 destination: ./_site
 permalink: /:title
-paginate: 1
+paginate: 10
 paginate_path: /page:num/
 
 # baseurl: "/"
