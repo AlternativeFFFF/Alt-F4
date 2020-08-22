@@ -10,10 +10,10 @@
 	padding:16px 32px;
 	background-color: rgba(0,0,0,.5);
 	color:white;
-	&-current{
-		color:#ffe6c0;
-	}
 	& a{
 		color:#7dcaed;
+	}
+	&-current{
+		color:#ffe6c0;
 	}
 }
