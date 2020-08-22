@@ -2,8 +2,12 @@
 ---
 
 /** Reset **/
-:root{box-sizing:border-box;}
-*,*:before,*:after{box-sizing:inherit;}
+:root {
+	box-sizing:border-box;
+}
+*, *:before, *:after {
+	box-sizing:inherit;
+}
 
 /** Global **/
 html {
