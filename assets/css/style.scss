@@ -95,6 +95,7 @@ header h1 {
 header p {
 	color: #222;
 }
+h1:not(.forced):fist-child{display:none;}
 
 /** Components **/
 .container {
