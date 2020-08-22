@@ -76,10 +76,11 @@ h4 {
 header {
 	box-shadow: inset 0px 6px 22px -5px rgba(134,36,2,1), 0px 4px 8px 0px rgba(17,17,17,1);
    background-color: #FF9F1C;
-   border:none;
-	color: #222;
-	border-radius:0;
-	margin:12px;
+   border: none;
+   color: #222;
+   border-radius: 6px;
+   margin: 12px 0;
+   padding: 6px 12px;
 }
 header h1 {
 	text-shadow: -1px 0 1px #000, 1px 0 1px #ffc16d;
