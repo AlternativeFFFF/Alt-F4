@@ -9,6 +9,10 @@
 *, *:before, *:after {
 	box-sizing:inherit;
 }
+img {
+	max-width: 100%;
+	vertical-align: middle;
+}
 
 /** Global **/
 html {
@@ -21,12 +25,48 @@ body{
 	padding:0;
 	color:#fff;
 }
-a{
-	text-decoration: none;
+a {
 	color: #7dcaed;
+	text-decoration: none;
+	cursor: pointer
 }
-h1, h2, h3, h4, h5, h6 {
-	color:#ffe6c0;
+a:hover {
+	color: #9ad1ea;
+	text-decoration: underline
+}
+a i {
+	margin-right: 4px
+}
+i {
+	font-style: italic
+}
+em {
+	color: #ffe6c0
+}
+b, strong {
+	font-weight: 700
+}
+
+h1, h2, h3, h4, h5 {
+	color: #ffe6c0;
+	font-weight: 700;
+	line-height: 1.25
+}
+h1, h2 {
+	font-size: 120%;
+	font-weight: 900;
+	margin-bottom: 12px;
+	cursor: default
+}
+h3 {
+	font-size: 116%;
+	font-weight: 900;
+	margin-bottom: 16px
+}
+h4 {
+	font-size: 107%;
+	font-weight: 400;
+	margin-bottom: 8px
 }
 
 /** Structure **/
