@@ -30,6 +30,9 @@ a {
 	text-decoration: none;
 	cursor: pointer
 }
+a:visited {
+	color: #4bb5e7;
+}
 a:hover {
 	color: #9ad1ea;
 	text-decoration: underline
