@@ -5,7 +5,7 @@ layout: default
 	<h2>{{ page.title }}</h2>
 	{% if page.author or page.date %}
 	<div class="panel-inset mb0">Posted{% if page.author %} by {{ page.author }}{% endif %}{% if page.date %} on
-		{{ page.date }}{% endif %}</div>
+		{{ page.date | date: "%Y-%M-%d" }}{% endif %}</div>
 	{% endif %}
 	<div class="panel-inset-lighter mt0">
 		{{ content }}
