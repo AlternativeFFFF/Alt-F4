@@ -30,14 +30,8 @@
       {% if site.description or site.github.project_tagline %}
       <p>{{ site.description | default: site.github.project_tagline }}</p>
       {% endif %}
-      <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub
-          <small>{{ github_name }}</small></a></p>
     </header>
-    <section>
-
-      {{ content }}
-
-    </section>
+    {{ content }}
   </div>
   <footer>
     {% if site.github.is_project_page %}
