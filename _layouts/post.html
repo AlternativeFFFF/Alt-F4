@@ -5,7 +5,11 @@ layout: default
 	<h2>{{ page.title }}</h2>
 
 	<div class="panel-inset mb0">
-		<time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
+		Posted by
+		<em>
+			{% for author in post.authors %}{{ author }}, {% endfor %}
+		</em>
+		on <time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">{{ post.date | date_to_string }}</time>
 	</div>
 	<div class="panel-inset-lighter mt0">
 
