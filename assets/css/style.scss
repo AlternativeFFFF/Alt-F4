@@ -282,3 +282,8 @@ h1:not(.forced):first-child{display:none;}
 .mb0{margin-bottom:0;}
 .ms0{margin-left:0; margin-right:0;}
 .mt0{margin-top:0;}
+.content{
+	margin:20px auto;
+	display:flex;
+	justify-content: center;
+}

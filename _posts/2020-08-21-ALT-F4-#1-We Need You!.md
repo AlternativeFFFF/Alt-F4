@@ -1,3 +1,7 @@
+---
+author: ClaudeMetz, nicgarner
+---
+
 # Alt-F4 #1 - We Need You!
 
 Welcome to the very first edition of the 'Alternative Factorio Friday Fan Facts' (also known as Alt-F4), the community-driven follow-on to the venerable [Factorio Friday Facts](https://factorio.com/blog/). It aims to fill the void that the discontinuation of the FFF left in all our hearts. To fill the gaping hole in our calendars every Friday, we aim to provide a variety of content, created by the community. Topics like community showcases, mod spotlights, and write-ups about Factorio updates will be frequent subjects, but pretty much anything that's awesome and Factorio-related is welcome.
