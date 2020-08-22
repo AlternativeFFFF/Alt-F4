@@ -237,6 +237,7 @@ h1:not(.forced):first-child{display:none;}
 	& *:not(:last-child):after{
 		content:"|";
 		padding:0 8px;
+		text-decoration: none;
 	}
 }
 
@@ -280,9 +281,6 @@ h1:not(.forced):first-child{display:none;}
 .mb0{margin-bottom:0;}
 .ms0{margin-left:0; margin-right:0;}
 .mt0{margin-top:0;}
-.youtube{
-	
-}
 article img,
 article iframe {
 	display: block;
