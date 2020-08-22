@@ -1,4 +1,9 @@
-# Alt-F4 #1 - We Need You!
+---
+layout: post
+title:  "Alt-F4 #X - TITLE"
+---
+
+# Alt-F4 #X - TITLE
 
 Blablablah
 
