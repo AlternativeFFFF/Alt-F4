@@ -3,6 +3,7 @@ author: ClaudeMetz, nicgarner
 editor: ClaudeMetz, nicgarner
 thumbnail: /assets/img/2020-08-21-ALT-F4-1-We Need You/thumbnail.jpg
 title: Alt-F4 #1 - We Need You!
+url: ALTF4-1
 discuss:
   forum: https://forums.factorio.com/87659
   reddit: https://www.reddit.com/r/factorio/comments/iduyjn/altf4_1_we_need_you/
