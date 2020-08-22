@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article class="panel">
+<article class="panel blog-post">
 	<h2>{{ page.title }}</h2>
 	{% if page.author or page.date %}
 	<div class="panel-inset mb0">
@@ -24,5 +24,38 @@ layout: default
 			{% endif %}
 		</div>
 		{% endif %}
+	</div>
+</article>
+
+<article class="panel blog-post">
+
+	<div class="panel-inset mb0">
+		Posted by
+		<em>
+			{% for author in page.authors %}{{ author }}, {% endfor %}
+		</em>
+		on <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
+	</div>
+	<div class="panel-inset-lighter mt0">
+
+		{{ content }}
+
+
+		<div class="mt8 flex flex-column flex-items-center">
+			{% if page.forum %}
+			<a class="button-green-right m4" style="width: 16em;" href="{{ page.forum }}">Discuss on our forums</a>
+			{% endif %}
+			{% if page.reddit %}
+			<a class="button-green-right m4" style="width: 16em;" href="{{ page.reddit }}">Discuss on
+				Reddit</a>
+			{% endif %}
+		</div>
+	</div>
+	<div class="panel-inset mb0 p4 flex flex-space-between">
+		<div>
+			<a class="button square-sm" href="{{ site.baseurl }}">
+				<i class=" fas fa-angle-double-left"></i>
+			</a>
+		</div>
 	</div>
 </article>

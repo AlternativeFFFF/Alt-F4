@@ -232,11 +232,6 @@ h1:not(.forced):first-child{display:none;}
 		}
 	
 	}
-	& *:not(:last-child):after{
-		content:"|";
-		padding:0 8px;
-		text-decoration: none;
-	}
 }
 
 .panel, .panel-lighter, .panel-darker, .panel-inset, .panel-inset-lighter, .panel-hole, .mod-page-info article table, 
