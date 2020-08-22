@@ -1,7 +1,3 @@
----
-layout: post
----
-
 # Alt-F4 #2 - Another Post!
 
 Blablablah

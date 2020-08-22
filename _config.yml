@@ -9,3 +9,10 @@ url: ""
 theme: minima
 strip_title: true
 excerpt_separator: "<!--more-->"
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"

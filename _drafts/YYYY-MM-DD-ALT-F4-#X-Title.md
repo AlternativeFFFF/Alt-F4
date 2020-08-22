@@ -1,7 +1,3 @@
----
-layout: post
----
-
 # Alt-F4 #X - TITLE
 
 Blablablah
