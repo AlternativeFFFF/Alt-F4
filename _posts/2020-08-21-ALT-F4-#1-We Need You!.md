@@ -2,8 +2,8 @@
 author: ClaudeMetz, nicgarner
 editor: ClaudeMetz, nicgarner
 discuss:
-	forum: https://forums.factorio.com/87659
-	reddit: https://www.reddit.com/r/factorio/comments/i5arma/friday_facts_359_crash_site_the_beginning/
+  forum: https://forums.factorio.com/87659
+  reddit: https://www.reddit.com/r/factorio/comments/i5arma/friday_facts_359_crash_site_the_beginning/
 ---
 
 # Alt-F4 #1 - We Need You!
