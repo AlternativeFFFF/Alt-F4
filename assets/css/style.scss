@@ -45,9 +45,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
-html {
-	min-height: 100vh;
-}
 
 /*******************************************************************************
 ***********************************  Global  ***********************************
@@ -55,9 +52,11 @@ html {
 
 html {
 	background: #262626 url("/assets/img/background.jpg");
+	height:100vh;
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center center;
+	overflow: scroll;
 }
 body{
 	background: none;
