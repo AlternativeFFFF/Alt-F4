@@ -16,6 +16,10 @@ body{
 a{
 	color: #7dcaed;
 }
+h1, h2, h3, h4, h5, h6 {
+	color:#ffe6c0;
+}
+
 .sites {
 	padding:16px 32px;
 	background-color: rgba(0,0,0,.5);
@@ -60,8 +64,4 @@ section {
 	border-radius: 0;
 	padding:12px;
 	color:#fff;
-	& h2 {
-		font-size:120%;
-		color:#ffe6c0;
-	}
 }
