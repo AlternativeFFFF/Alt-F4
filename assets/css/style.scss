@@ -223,6 +223,7 @@ h1:not(.forced):first-child{display:none;}
 
 .sites {
 	display:flex;
+	align-items: baseline;
 	padding:16px 32px;
 	font-size:110%;
 	background-color: rgba(0,0,0,.5);
