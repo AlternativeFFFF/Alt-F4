@@ -56,7 +56,8 @@ html {
 html {
 	background: #262626 url("/assets/img/background.jpg");
 	background-size: cover;
-	background-position: fixed center center;
+	background-attachment: fixed;
+	background-position: center center;
 }
 body{
 	background: none;
