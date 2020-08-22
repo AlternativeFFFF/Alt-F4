@@ -7,9 +7,9 @@ layout: default
 	<div class="panel-inset mb0">
 		Posted by
 		<em>
-			{% for author in post.authors %}{{ author }}, {% endfor %}
+			{% for author in page.authors %}{{ author }}, {% endfor %}
 		</em>
-		on <time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">{{ post.date | date_to_string }}</time>
+		on <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
 	</div>
 	<div class="panel-inset-lighter mt0">
 
