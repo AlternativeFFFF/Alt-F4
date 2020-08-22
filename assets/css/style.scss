@@ -19,7 +19,7 @@ body{
 		}
 	
 	}
-	& *:not(:first-child):before{
+	& *:not(:last-child):after{
 		content:"|";
 		padding:0 8px;
 	}
