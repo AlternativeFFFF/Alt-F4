@@ -15,12 +15,12 @@ layout: default
 	<div class="panel-inset-lighter mt0">
 		{{ content }}
 		{% if page.discuss.forum or page.discuss.reddit %}
-		<div class="flex flex-column flex-items-center">
+		<div class="flex flex-column flex-items-center mt8">
 			{% if page.discuss.forum %}
-			<a class="button-green-right" style="width: 16em;" href="{{ page.discuss.forum }}">Discuss on our forums</a>
+			<a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.forum }}">Discuss on our forums</a>
 			{% endif %}
 			{% if page.discuss.reddit %}
-			<a class="button-green-right" style="width: 16em;" href="{{ page.discuss.reddit }}">Discuss on Reddit</a>
+			<a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.reddit }}">Discuss on Reddit</a>
 			{% endif %}
 		</div>
 		{% endif %}
