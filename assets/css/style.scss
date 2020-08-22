@@ -222,12 +222,16 @@ h1:not(.forced):first-child{display:none;}
 }
 
 .sites {
+	display:flex;
 	padding:16px 32px;
+	font-size:110%;
 	background-color: rgba(0,0,0,.5);
 	& a{
 		color:#7dcaed;
 		&.sites-current{
 			color:#ffe6c0;
+			font-weight: 700;
+			font-size: larger;
 		}
 	
 	}
