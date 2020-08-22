@@ -1,0 +1,39 @@
+# Site settings
+title: "Fan Friday Facts #1 - We Need You!"
+description: "Fan made alternative to FFF"
+url: "TODO"
+author:
+  name: "TODO"
+  email: "TODO"
+  url: "TODO"
+
+# Build settings
+# baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
+markdown: kramdown
+source: .
+destination: ./_site
+permalink: /:title
+paginate: 10
+paginate_path: /page:num/
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Plugins
+gems:
+  - jekyll-paginate
+plugins:
+  - jekyll-paginate
+
+# Custom variables
+version: "1.1.0"
+
+# Options
+custom_header: false
+custom_nav_footer: false
+reverse: false

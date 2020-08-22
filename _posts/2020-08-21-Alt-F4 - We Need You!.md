@@ -1,3 +1,12 @@
+---
+title: 'Fan Friday Facts #1 - We Need You!'
+thumbnail: /assets/images/assembly_analyst.jpg
+forum: https://forums.factorio.com # link to a forum discussion OPTIONAL
+reddit: https://www.reddit.com/r/factorio/comments/iduyjn/altf4_1_we_need_you/ # link to a reddit discussion OPTIONAL
+authors:
+  - ClaudeMetz
+---
+
 # Alt-F4 #1 - We Need You!
 
 Welcome to the very first edition of the 'Alternative Factorio Friday Fan Facts' (also known as Alt-F4), the community-driven follow-on to the venerable [Factorio Friday Facts](https://factorio.com/blog/). It aims to fill the void that the discontinuation of the FFF left in all our hearts. To fill the gaping hole in our calendars every Friday, we aim to provide a variety of content, created by the community. Topics like community showcases, mod spotlights, and write-ups about Factorio updates will be frequent subjects, but pretty much anything that's awesome and Factorio-related is welcome.
@@ -16,7 +25,7 @@ As you can see, Kiplacon decided to take the matter of making train bridges/tunn
 
 Now this, too, is a bit awkward. Assembly Analyst is actually one of my (me, Therenas, hi!) mods. So this may seem like a roundabout way to promote my own mods. But, the truth is that I haven't actually played Factorio in over a year, so I don't really know much about the mods that are currently all hot and steamy. Developing mods seems to [get in the way](https://cdn.discordapp.com/attachments/603392474458882065/745728165116248144/mod_brain.png) it seems (which is why we need volunteers *hint hint see below*). Either way, let me tell you about Assembly Analyst (AA). First a screenshot:
 
-![](https://github.com/ClaudeMetz/Alt-F4/blob/master/issue_01/assembly_analyst.jpg?raw=true)
+![](/assets/images/assembly_analyst.jpg?raw=true)
 
 What AA does is pretty simple: It shows you what your machines have been spending their time on. Are they working, waiting on inputs, low on power, disabled? The mod will show you this using a nice bar with different colors. If this idea seems vaguely familiar to you, it should, because that is similar to what [Bottleneck](https://mods.factorio.com/mod/Bottleneck) does. What AA provides in addition to it is the historical view, letting you know what a machine does over time. You simply select a certain area of your factory, and see how it performs.
 
@@ -29,7 +38,7 @@ All of this works on all types of assemblers (including refineries, rocket silot
 
 Finally, the reason why we're all here: Factorio has just been released for real. It's been a tremendous success story, of the kind that only comes around every so often. I want to commend everyone involved, Wube first and foremost of course, for this incredible achievement. This game is a tour-de-force in optimization and design that will stand the test of time for many decades to come. Bravo!
 
-![](https://github.com/ClaudeMetz/Alt-F4/blob/master/issue_01/factorio_1dot0.jpeg?raw=true)
+![](assets/images/factorio_1dot0.jpeg?raw=true)
 
 
 ## Contributing
