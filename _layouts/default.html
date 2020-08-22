@@ -18,13 +18,15 @@
 
 <body>
   <nav class="sites">
-    <a href="https://factorio.com/" class="">Factorio.com</a>
-    <a href="https://forums.factorio.com/" class="">Forums</a>
-    <a href="https://wiki.factorio.com/" class="">Wiki</a>
-    <a href="https://mods.factorio.com" class="">Mod Portal</a>
-    <a href="/" class="sites-current">Alt-F4</a>
+    <div class="container">
+      <a href="https://factorio.com/" class="">Factorio.com</a>
+      <a href="https://forums.factorio.com/" class="">Forums</a>
+      <a href="https://wiki.factorio.com/" class="">Wiki</a>
+      <a href="https://mods.factorio.com" class="">Mod Portal</a>
+      <a href="/" class="sites-current">Alt-F4</a>
+    </div>
   </nav>
-  <div class="wrapper">
+  <div class="container">
     <header {% unless site.description or site.github.project_tagline %} class="without-description" {% endunless %}>
       <h1>{{ site.title | default: site.github.repository_name }}</h1>
       {% if site.description or site.github.project_tagline %}
