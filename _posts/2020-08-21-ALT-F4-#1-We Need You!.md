@@ -1,6 +1,7 @@
 ---
 author: ClaudeMetz, nicgarner
 editor: ClaudeMetz, nicgarner
+thumbnail: /assets/img/assembly_analyst.jpg
 discuss:
   forum: https://forums.factorio.com/87659
   reddit: https://www.reddit.com/r/factorio/comments/i5arma/friday_facts_359_crash_site_the_beginning/
