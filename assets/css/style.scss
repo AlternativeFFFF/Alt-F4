@@ -78,9 +78,11 @@ header {
    background-color: #FF9F1C;
    border: none;
    color: #222;
-   border-radius: 6px;
    margin: 12px 0;
    padding: 6px 12px;
+   border-radius: 6px;
+   border-bottom: 2px solid #862402;
+   border-top: 1px solid #FF9F1C;
 }
 header h1 {
 	text-shadow: -1px 0 1px #000, 1px 0 1px #ffc16d;
