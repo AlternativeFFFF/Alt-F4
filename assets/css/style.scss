@@ -282,9 +282,11 @@ h1:not(.forced):first-child{display:none;}
 .mt8 {
 	margin-top: 8px
 }
+.mt8 {
+	margin-top: 8px
+}
 .m4 {
-	margin-top: 4px;
-	margin-bottom: 4px;
+	margin: 4px;
 }
 article img,
 article iframe {
@@ -425,3 +427,7 @@ article iframe {
 .flex-grow {
 	flex-grow: 1
 }
+.fg1{flex-grow:1}
+.fg2{flex-grow:2}
+.fg3{flex-grow:3}
+.fg4{flex-grow:4}
