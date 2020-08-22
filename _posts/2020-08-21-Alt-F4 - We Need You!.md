@@ -25,7 +25,7 @@ As you can see, Kiplacon decided to take the matter of making train bridges/tunn
 
 Now this, too, is a bit awkward. Assembly Analyst is actually one of my (me, Therenas, hi!) mods. So this may seem like a roundabout way to promote my own mods. But, the truth is that I haven't actually played Factorio in over a year, so I don't really know much about the mods that are currently all hot and steamy. Developing mods seems to [get in the way](https://cdn.discordapp.com/attachments/603392474458882065/745728165116248144/mod_brain.png) it seems (which is why we need volunteers *hint hint see below*). Either way, let me tell you about Assembly Analyst (AA). First a screenshot:
 
-![](/assets/images/assembly_analyst.jpg?raw=true)
+![](assets/images/assembly_analyst.jpg?raw=true)
 
 What AA does is pretty simple: It shows you what your machines have been spending their time on. Are they working, waiting on inputs, low on power, disabled? The mod will show you this using a nice bar with different colors. If this idea seems vaguely familiar to you, it should, because that is similar to what [Bottleneck](https://mods.factorio.com/mod/Bottleneck) does. What AA provides in addition to it is the historical view, letting you know what a machine does over time. You simply select a certain area of your factory, and see how it performs.
 
