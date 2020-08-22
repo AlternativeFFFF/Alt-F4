@@ -3,17 +3,18 @@ layout: default
 ---
 <article class="panel blog-post">
 	<h2>{{ page.title }}</h2>
-	{% if page.author or page.date %}
+	{% if page.author or page.editor or page.date %}
 	<div class="panel-inset mb0">
 		Post
 		{% if page.author %} by <em>{{ page.author }}</em>{% endif %}
 		{% if page.editor %} revised by <em>{{ page.editor }}</em>{% endif %}
 		{% if page.date %} on {{ page.date | date: "%Y-%M-%d" }}{% endif %}
-
 	</div>
 	{% endif %}
 	<div class="panel-inset-lighter mt0">
+
 		{{ content }}
+
 		{% if page.discuss.forum or page.discuss.reddit %}
 		<div class="flex flex-column flex-items-center mt8">
 			{% if page.discuss.forum %}
@@ -24,32 +25,6 @@ layout: default
 			{% endif %}
 		</div>
 		{% endif %}
-	</div>
-</article>
-
-<article class="panel blog-post">
-
-	<div class="panel-inset mb0">
-		Posted by
-		<em>
-			{% for author in page.authors %}{{ author }}, {% endfor %}
-		</em>
-		on <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
-	</div>
-	<div class="panel-inset-lighter mt0">
-
-		{{ content }}
-
-
-		<div class="mt8 flex flex-column flex-items-center">
-			{% if page.forum %}
-			<a class="button-green-right m4" style="width: 16em;" href="{{ page.forum }}">Discuss on our forums</a>
-			{% endif %}
-			{% if page.reddit %}
-			<a class="button-green-right m4" style="width: 16em;" href="{{ page.reddit }}">Discuss on
-				Reddit</a>
-			{% endif %}
-		</div>
 	</div>
 	<div class="panel-inset mb0 p4 flex flex-space-between">
 		<div>
