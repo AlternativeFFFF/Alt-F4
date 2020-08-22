@@ -2,7 +2,11 @@
 ---
 
 //@import "{{ site.theme }}";
-/** Reset **/
+
+/*******************************************************************************
+***********************************  Reset  ************************************
+*******************************************************************************/
+
 :root {
 	box-sizing:border-box;
 }
@@ -21,18 +25,38 @@ audio, video {
 	font: inherit;
 	vertical-align: baseline
 }
-
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block
 }
-img {
-	max-width: 100%;
-	vertical-align: middle;
+body {
+	line-height: 1
+}
+ul {
+	list-style: none
+}
+blockquote, q {
+	quotes: none;
+	&:before, &:after {
+		content: '';
+		content: none
+	}
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+html {
+	min-height: 100vh;
 }
 
-/** Global **/
+/*******************************************************************************
+***********************************  Global  ***********************************
+*******************************************************************************/
+
 html {
-	background-color: #262626;
+	background: #262626 url(https://cdn.factorio.com/assets/img/web/bg_v4-85.jpg);
+	background-size: cover;
+	background-position: center top;
 }
 body{
 	background: none;
@@ -40,21 +64,26 @@ body{
 	font-size:16px;
 	padding:0;
 	color:#fff;
+	line-height: 1
+}
+img {
+	max-width: 100%;
+	vertical-align: middle;
 }
 a {
 	color: #7dcaed;
 	text-decoration: none;
-	cursor: pointer
-}
-a:visited {
-	color: #4bb5e7;
-}
-a:hover {
-	color: #9ad1ea;
-	text-decoration: underline
-}
-a i {
-	margin-right: 4px
+	cursor: pointer;
+	&:visited {
+		color: #4bb5e7;
+	}
+	&:hover {
+		color: #9ad1ea;
+		text-decoration: underline
+	}
+	& i {
+		margin-right: 4px
+	}
 }
 i {
 	font-style: italic
@@ -87,8 +116,77 @@ h4 {
 	font-weight: 400;
 	margin-bottom: 8px
 }
+h1>a, h2>a, h3>a, h4>a, h5>a, h6>a {
+	color: inherit;
+	&:hover{
+		color: inherit;
+	}
+}
+p+h1, p+h2, p+h3, p+h4 {
+	margin-top: 16px
+}
+p+p {
+	margin-top: 16px
+}
+p {
+	line-height: 1.25
+}
+ul {
+	margin-top: 16px;
+	margin-left: 32px;
+	list-style-image: url(/assets/img/wheel-white-11px.png)
+}
+ul+p, ul+li {
+	margin-bottom: 16px
+}
+li {
+	line-height: 1.25;
+	margin-top: 8px;
+	margin-bottom: 8px
+}
+dl {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center
+}
+dt {
+	width: 65%;
+	font-weight: 600
+}
+dd {
+	width: 35%
+}
+form ul, .dltabular form ul {
+	margin-top: 0
+}
+form dt, .dltabular form dt {
+	font-weight: 400;
+	width: 40%;
+	margin: auto 0
+}
+form dd, .dltabular form dd {
+	width: 60%;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 0
+}
+label {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	display: contents
+}
+iframe.iframe-inset {
+	max-width: 100%;
+	box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f, 2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
+	border-bottom: 1px solid #222;
+	background-size: cover;
+	background-position: center center
+}
+/*******************************************************************************
+*********************************  Structure  **********************************
+*******************************************************************************/
 
-/** Structure **/
 header {
 	box-shadow: inset 0px 6px 22px -5px rgba(134,36,2,1), 0px 4px 8px 0px rgba(17,17,17,1);
    background-color: #FF9F1C;
@@ -113,7 +211,10 @@ header p {
 }
 h1:not(.forced):first-child{display:none;}
 
-/** Components **/
+/*******************************************************************************
+*********************************  Components  *********************************
+*******************************************************************************/
+
 .container {
 	margin:0 auto;
 	max-width:1100px;
