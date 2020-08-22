@@ -1,9 +1,10 @@
 ---
 layout: default
 ---
-
-<h2>{{ page.title }}</h2>
-<p>{{ page.date }}</p>
-<div class="content">
-	{{ content }}
-</div>
+<article class="panel">
+	<h2>{{ page.title }}</h2>
+	<div class="panel-inset mb0">Posted by {{ page.author }} on {{ page.date }}</div>
+	<div class="panel-inset-lighter mt0">
+		{{ content }}
+	</div>
+</article>
