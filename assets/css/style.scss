@@ -54,9 +54,9 @@ html {
 *******************************************************************************/
 
 html {
-	background: #262626 url(https://cdn.factorio.com/assets/img/web/bg_v4-85.jpg);
+	background: #262626 url("/assets/img/background.jpg");
 	background-size: cover;
-	background-position: center top;
+	background-position: fixed center center;
 }
 body{
 	background: none;
