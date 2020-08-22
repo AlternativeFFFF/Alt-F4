@@ -74,9 +74,6 @@ a {
 	color: #7dcaed;
 	text-decoration: none;
 	cursor: pointer;
-	&:visited {
-		color: #4bb5e7;
-	}
 	&:hover {
 		color: #9ad1ea;
 		text-decoration: underline
@@ -201,7 +198,7 @@ header h1 {
 	text-shadow: -1px 0 1px #000, 1px 0 1px #ffc16d;
 	font-size: 1.6em;
 	color: #222;
-	& a, & a:hover, & a:visited{
+	& a, & a:hover {
 		color: #222;
 	}
 }
