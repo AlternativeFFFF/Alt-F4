@@ -3,8 +3,6 @@ layout: post
 title:  "Alt-F4 #X - TITLE"
 ---
 
-# Alt-F4 #X - TITLE
-
 Blablablah
 
 
