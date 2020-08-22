@@ -1,7 +1,7 @@
 ---
 author: ClaudeMetz, nicgarner
 editor: ClaudeMetz, nicgarner
-thumbnail: /assets/img/assembly_analyst.jpg
+thumbnail: /assets/img/2020-08-21-ALT-F4-1-We Need You/thumbnail.jpg
 discuss:
   forum: https://forums.factorio.com/87659
   reddit: https://www.reddit.com/r/factorio/comments/i5arma/friday_facts_359_crash_site_the_beginning/
