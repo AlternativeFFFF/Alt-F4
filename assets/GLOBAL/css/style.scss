@@ -51,7 +51,7 @@ table {
 *******************************************************************************/
 
 html {
-	background: #262626 url("/assets/img/background.jpg");
+	background: #262626 url("/assets/GLOBAL/img/background.jpg");
 	height:100vh;
 	background-size: cover;
 	background-attachment: fixed;
@@ -139,7 +139,7 @@ p {
 ul {
 	margin-top: 16px;
 	margin-left: 32px;
-	list-style-image: url(/assets/img/wheel-white-11px.png)
+	list-style-image: url(/assets/GLOBAL/img/wheel-white-11px.png)
 }
 ul+p, ul+li {
 	margin-bottom: 16px
