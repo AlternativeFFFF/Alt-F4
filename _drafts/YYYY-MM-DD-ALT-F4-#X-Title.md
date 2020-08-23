@@ -1,5 +1,13 @@
-# Alt-F4 #X - TITLE
-
+---
+author: Names of who wrote this post [optional, recommended]
+editor: Names of who edited this post [optional]
+image: Path to thumbnail for this ALT-F4 post
+title: Title of this ALT-F4 post
+discuss:
+  forum: Link to forum thread [optional]
+  reddit: Link to reddit thread [optional]
+  discord: Link to discord chat [optional]
+---
 Blablablah
 
 
