@@ -1,4 +1,4 @@
-name: Discord submission notify
+name: Discord Submission Notify
 
 on: 
   pull_request:
@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@master
     - name: Discord notification (1/2)
       env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
         DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
       uses: Ilshidur/action-discord@0.2.0
