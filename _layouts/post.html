@@ -5,9 +5,9 @@ layout: default
 	<h2>{{ page.title }}</h2>
 	{% if page.author or page.editor or page.date %}
 	<div class="panel-inset mb0">
-		Post
+		Written
 		{% if page.author %} by <em>{{ page.author }}</em>{% endif %}
-		{% if page.editor %} revised by <em>{{ page.editor }}</em>{% endif %}
+		{% if page.editor %} edited by <em>{{ page.editor }}</em>{% endif %}
 		{% if page.date %} on {{ page.date | date: "%Y-%M-%d" }}{% endif %}
 	</div>
 	{% endif %}
