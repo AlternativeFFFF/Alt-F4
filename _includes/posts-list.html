@@ -1,7 +1,7 @@
 {% include pagination.html %}
 {% for post in paginator.posts %}
 <div class="panel-inset-lighter panel-evenodd flex">
-	{% if post.thumbnail %}
+	{% if post.image %}
 	<div class="blog-card-thumbnail">
 		<a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
 
