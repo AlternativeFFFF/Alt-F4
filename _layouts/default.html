@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html>
 
-{% include head.html %}
+  {% include head.html %}
 
-<body>
-  <!-- Navigation -->
+  <body>
 
-
-  <div id="wrap">
-
-    {% include navigation.html %}
+    <div id="wrap">
+      <!-- Navigation -->
+      {% include navigation.html %}
 
 
-    <!-- Main content -->
-    <div class="container">
+      <!-- Main content -->
+      <div class="container">
 
-      <!-- Header -->
-      {% include header.html %}
+        <!-- Header -->
+        {% include header.html %}
 
-      <div class="container-inner">
-        <div class="small-center"></div>
+        <div class="container-inner">
+          <div class="small-center"></div>
 
-        <!-- Posts -->
-        {{ content }}
+          <!-- Posts -->
+          {{ content }}
 
+        </div>
+
+        <!-- Footer -->
+        {% include footer.html %}
       </div>
 
-      <!-- Footer -->
-      {% include footer.html %}
+
     </div>
 
-
-  </div>
-
-  <!-- Snalytics -->
-  {% include analytics.html %}
-</body>
+    <!-- Snalytics -->
+    <!-- {% include analytics.html %} -->
+  </body>
 
 </html>
