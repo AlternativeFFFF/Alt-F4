@@ -18,7 +18,7 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
         DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
-      uses: Ilshidur/action-discord@master
+      uses: Ilshidur/action-discord@0.2.0
       with:
         args: "New pull request {{ EVENT_PAYLOAD.pull_request.number }}, created by {{ EVENT_PAYLOAD.pull_request.user.login }}."
     - name: Discord notification (2/2)
@@ -26,6 +26,6 @@ jobs:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
         DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
-      uses: Ilshidur/action-discord@master
+      uses: Ilshidur/action-discord@0.2.0
       with:
         args: "{{ EVENT_PAYLOAD.pull_request.html_url }}"
