@@ -8,7 +8,6 @@ author:
   email: "TODO"
   url: "TODO"
 
-
 # Build settings
 markdown: kramdown
 source: .
@@ -27,12 +26,10 @@ plugins:
   - jekyll-paginate
   - jekyll-seo-tag
 
-
-theme: minima
+# theme: minima
 excerpt_separator: "<!--more-->"
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
