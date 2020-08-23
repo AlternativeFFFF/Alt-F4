@@ -22,8 +22,10 @@ paginate_path: /page:num/
 # Plugins
 gems:
   - jekyll-paginate
+  - jekyll-seo-tag
 plugins:
   - jekyll-paginate
+  - jekyll-seo-tag
 
 
 theme: minima
