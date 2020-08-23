@@ -751,6 +751,7 @@ article iframe {
 	text-align: center;
 	width: 50%;
 	margin-right: 16px;
+	margin-bottom: 0 !important;
 	font-size: 85%;
 }
 
@@ -795,4 +796,103 @@ article iframe {
 	.footer-links {
 		margin-right: 0;
 	}
+	.slots {
+		// max-height: 100px !important;
+		height: 104px !important;
+	}
+}
+
+div.p1 {
+	padding: 1px;
+}
+div.mt0 {
+	margin-top: 0;
+}
+
+.slots {
+	background-color: #1c1c1c;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	overflow: hidden;
+	height: 52px;
+	// max-height: 52px;
+}
+
+.slot-button {
+	color: #5a5a5a;
+	background-color: #313131;
+	box-shadow: inset 0 -4px 0.5px -2px #121212, inset 5px 0 2px -2.5px #1f1f1f, inset -3px 0 1px -1.5px #292929,
+		inset 0 4px 1px -2px #515050;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 1;
+	font-weight: 600;
+	width: 100%;
+	height: 100%;
+}
+
+.slot-button:hover,
+.slot-button-inline:hover,
+.slot-button-inline.selected {
+	color: #604814;
+	background-color: #ffa900;
+	box-shadow: inset 0 -4px 0.5px -2px #3e2200, inset 5px 0 2px -2.5px #ff9d02, inset -3px 0 1px -1.5px #a46200,
+		inset 0 4px 1px -2px #c08d44, 0 0 4px 2px #805c10;
+	text-decoration: none;
+	z-index: 5;
+}
+
+.slot-button i {
+	margin: 0;
+	margin-left: 1px;
+	font-size: 18px;
+}
+
+.slot {
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 48px;
+	position: relative;
+	z-index: 0;
+	width: 48px;
+	height: 48px;
+	margin: 1px;
+	display: flex;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	text-decoration: none !important;
+}
+
+.slot-empty {
+	position: relative;
+	width: 100%;
+	margin: 8px;
+	background-color: #242324;
+	box-shadow: 0 0 2px #131112;
+}
+
+.slot-empty::before {
+	position: relative;
+	content: "";
+	z-index: -1;
+	display: block;
+	width: 100%;
+	height: 0;
+	box-shadow: 0 -0.5px 1.5px 1px #555250;
+}
+
+.slot-empty::after {
+	position: relative;
+	content: "";
+	z-index: -1;
+	display: block;
+	width: 100%;
+	height: 0;
+	margin-top: 100%;
+	box-shadow: 0 0.5px 1.5px 1px #161414;
 }
