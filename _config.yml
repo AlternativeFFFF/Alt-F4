@@ -2,7 +2,7 @@
 title: Alternative Friday Factorio Fan Facts
 description: >-
   The community-driven follow-on to the beloved Factorio Friday Facts
-url: "https://ypetremann.github.io"
+url: "https://alt-f4.blog"
 author:
   name: "TODO"
   email: "TODO"
@@ -16,7 +16,7 @@ permalink: /:title
 paginate: 10
 paginate_path: /page:num/
 
-# baseurl: "/"
+baseurl: ""
 
 # Plugins
 gems:
@@ -34,3 +34,16 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - Readme.md
+  - submissions/
