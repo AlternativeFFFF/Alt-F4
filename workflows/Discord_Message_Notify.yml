@@ -1,4 +1,4 @@
-name: Discord Message Notify
+name: Discord submission notify
 
 on: 
   pull_request:
