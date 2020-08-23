@@ -6,7 +6,7 @@
   <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="button square-sm"><i
       class="fas fa-angle-double-left"></i></a>
   {% elsif paginator.previous_page%}
-  <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page-item"><i
+  <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="button square-sm"><i
       class="fas fa-angle-double-left"></i></a>
   {% else %}
   <a class="button square-sm disabled ">
