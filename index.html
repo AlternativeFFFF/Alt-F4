@@ -8,39 +8,5 @@ layout: default
     written and edited entirely by the community, and aims to highlight various creations by the community, be it art,
     mods, gameplay, or anything else.</p>
   <!-- Pagination links -->
-  {% include pagination.html %}
-
-  {% for post in paginator.posts %}
-  <div class="panel-inset-lighter flex">
-    {% if post.thumbnail %}
-    <div class="blog-card-thumbnail">
-      <a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
-
-        <img src="{{ site.baseurl }}{{ post.thumbnail }}">
-
-        <div class="shadow-overlay"></div>
-      </a>
-    </div>
-    {% endif %}
-
-    <div class="blog-card-text">
-      <h3>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </h3>
-      <div class="posted-by">
-        Post
-        {% if page.author %} by <em>{{ page.author }}</em>{% endif %}
-        {% if page.editor %} revised by <em>{{ page.editor }}</em>{% endif %}
-        {% if page.date %} on <time datetime="{{ post.date | date_to_xmlschema }}"
-          class="by-line">{{ page.date | date: "%Y-%M-%d" }}</time>{% endif %}
-      </div>
-      <hr>
-      <div class="snippet snippet-2">
-        <p>{{ post.content | strip_html | truncatewords:50 }}</p>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-  <!-- Pagination links -->
-  {% include pagination.html %}
+  {% include posts-list.html %}
 </div>
