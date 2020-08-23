@@ -18,10 +18,10 @@
 		</h3>
 		<div class="posted-by">
 			Post
-			{% if page.author %} by <em>{{ page.author }}</em>{% endif %}
-			{% if page.editor %} revised by <em>{{ page.editor }}</em>{% endif %}
-			{% if page.date %} on <time datetime="{{ post.date | date_to_xmlschema }}"
-				class="by-line">{{ page.date | date: "%Y-%M-%d" }}</time>{% endif %}
+			{% if post.author %} by <em>{{ post.author }}</em>{% endif %}
+			{% if post.editor %} revised by <em>{{ post.editor }}</em>{% endif %}
+			{% if post.date %} on <time datetime="{{ post.date | date_to_xmlschema }}"
+				class="by-line">{{ post.date | date: "%Y-%M-%d" }}</time>{% endif %}
 		</div>
 		<hr>
 		<div class="snippet <snippet-2>">
