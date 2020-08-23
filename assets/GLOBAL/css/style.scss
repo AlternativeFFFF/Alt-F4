@@ -140,13 +140,14 @@ table {
 *******************************************************************************/
 
 html {
-	background: #262626 url("/assets/GLOBAL/img/background.jpg");
+	background: #262626 url("/assets/GLOBAL/img/backgroundbyjd.png");
 	height: 100vh;
 	background-size: cover;
-	background-attachment: fixed;
+	background-attachment: local;
 	background-position: center center;
 	overflow-y: scroll;
 }
+
 body {
 	background: none;
 	font-family: titillium web, sans-serif;
