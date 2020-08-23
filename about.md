@@ -1,4 +1,3 @@
 # About
 
-Peoples that made that site possible
-Ypetremann, 
+This website was created using Jekyll by: Ypetremann, Dr.MagPie
