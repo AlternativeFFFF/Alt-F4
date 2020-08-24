@@ -1,19 +1,28 @@
 name: Discord Submission Notify
 
-on: 
+on:
   pull_request:
     branches:
       - master
-
+    types:
+      - labeled
+      
 jobs:
   notify:
-    if: github.repository == 'AlternativeFFFF/Alt-F4' && github.event.pull_request.head.label == 'impact:submission'
     name: Notify
     runs-on: ubuntu-latest
     steps:
+
+    - uses: Dreamcodeio/pr-has-label-action@master
+      id: checkLabel
+      with:
+        label: impact:submission
+
     - name: Checkout PR
       uses: actions/checkout@master
+
     - name: Discord notification (1/2)
+      if: steps.checkLabel.outputs.hasLabel
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
@@ -22,6 +31,7 @@ jobs:
       with:
         args: "New pull request {{ EVENT_PAYLOAD.pull_request.number }}, created by {{ EVENT_PAYLOAD.pull_request.user.login }}."
     - name: Discord notification (2/2)
+      if: steps.checkLabel.outputs.hasLabel
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
         DISCORD_USERNAME: 'ALT-F4 Bot'

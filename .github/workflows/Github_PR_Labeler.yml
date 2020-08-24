@@ -1,0 +1,21 @@
+name: Github PR labeler
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - edited
+
+jobs:
+  labeling:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout PR
+      uses: actions/checkout@master
+    - name: Labeler
+      uses: docker://decathlon/pull-request-labeler-action:2.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+        CONFIG_PATH: ${{ secrets.GITHUB_WORKSPACE }}/.github/workflows_config/Github_PR_Labeler.yml

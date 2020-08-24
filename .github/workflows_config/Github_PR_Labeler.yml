@@ -1,0 +1,2 @@
+- regExp: "submissions\/([^\/]+\/)+.*.md$"
+  labels: ["impact:submission"]
