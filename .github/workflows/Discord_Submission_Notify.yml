@@ -7,28 +7,23 @@ on:
     types:
       - labeled
 
-jobs:
-  verify:
-    name: Verify
+  notify:
+    name: Notify
     runs-on: ubuntu-latest
     steps:
+
     - uses: Dreamcodeio/pr-has-label-action@master
       id: checkLabel
       with:
         label: impact:submission
     - name: Does 'pull_request' has ${{ steps.checkLabel.outputs.checkedLabel }} label? 
       run: echo "${{ steps.checkLabel.outputs.hasLabel }}" 
-    - name: Debug Action
-      uses: hmarr/debug-action@v1.0.0
 
-  notify:
-    if: steps.checkLabel.outputs.hasLabel
-    name: Notify
-    runs-on: ubuntu-latest
-    steps:
     - name: Checkout PR
       uses: actions/checkout@master
+
     - name: Discord notification (1/2)
+      if: steps.checkLabel.outputs.hasLabel
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
@@ -37,6 +32,7 @@ jobs:
       with:
         args: "New pull request {{ EVENT_PAYLOAD.pull_request.number }}, created by {{ EVENT_PAYLOAD.pull_request.user.login }}."
     - name: Discord notification (2/2)
+      if: steps.checkLabel.outputs.hasLabel
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
@@ -44,6 +40,7 @@ jobs:
       uses: Ilshidur/action-discord@0.2.0
       with:
         args: "{{ EVENT_PAYLOAD.pull_request.html_url }}"
+        
     - name: Debug Action
       uses: hmarr/debug-action@v1.0.0
 
