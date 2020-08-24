@@ -1,45 +1,46 @@
 name: Discord Submission Notify
+
 on:
   pull_request:
     branches:
       - master
     types:
       - labeled
+
   notify:
     name: Notify
     runs-on: ubuntu-latest
     steps:
-      - uses: Dreamcodeio/pr-has-label-action@master
-        id: checkLabel
-        with:
-          label: 'impact:submission'
-      - name: >-
-          Does 'pull_request' has ${{ steps.checkLabel.outputs.checkedLabel }}
-          label?
-        run: 'echo "${{ steps.checkLabel.outputs.hasLabel }}"'
-      - name: Checkout PR
-        uses: actions/checkout@master
-      - name: Discord notification (1/2)
-        if: steps.checkLabel.outputs.hasLabel
-        env:
-          DISCORD_WEBHOOK: '${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}'
-          DISCORD_USERNAME: ALT-F4 Bot
-          DISCORD_AVATAR: >-
-            https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png
-        uses: Ilshidur/action-discord@0.2.0
-        with:
-          args: >-
-            New pull request {{ EVENT_PAYLOAD.pull_request.number }}, created by
-            {{ EVENT_PAYLOAD.pull_request.user.login }}.
-      - name: Discord notification (2/2)
-        if: steps.checkLabel.outputs.hasLabel
-        env:
-          DISCORD_WEBHOOK: '${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}'
-          DISCORD_USERNAME: ALT-F4 Bot
-          DISCORD_AVATAR: >-
-            https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png
-        uses: Ilshidur/action-discord@0.2.0
-        with:
-          args: '{{ EVENT_PAYLOAD.pull_request.html_url }}'
-      - name: Debug Action
-        uses: hmarr/debug-action@v1.0.0
+
+    - uses: Dreamcodeio/pr-has-label-action@master
+      id: checkLabel
+      with:
+        label: impact:submission
+    - name: Does 'pull_request' has ${{ steps.checkLabel.outputs.checkedLabel }} label? 
+      run: echo "${{ steps.checkLabel.outputs.hasLabel }}" 
+
+    - name: Checkout PR
+      uses: actions/checkout@master
+
+    - name: Discord notification (1/2)
+      if: steps.checkLabel.outputs.hasLabel
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
+        DISCORD_USERNAME: 'ALT-F4 Bot'
+        DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
+      uses: Ilshidur/action-discord@0.2.0
+      with:
+        args: "New pull request {{ EVENT_PAYLOAD.pull_request.number }}, created by {{ EVENT_PAYLOAD.pull_request.user.login }}."
+    - name: Discord notification (2/2)
+      if: steps.checkLabel.outputs.hasLabel
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
+        DISCORD_USERNAME: 'ALT-F4 Bot'
+        DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
+      uses: Ilshidur/action-discord@0.2.0
+      with:
+        args: "{{ EVENT_PAYLOAD.pull_request.html_url }}"
+        
+    - name: Debug Action
+      uses: hmarr/debug-action@v1.0.0
+
