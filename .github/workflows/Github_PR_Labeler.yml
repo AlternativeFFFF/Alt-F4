@@ -6,6 +6,7 @@ on:
       - master
     types:
       - opened
+      - edited
 
 jobs:
   labeling:
