@@ -7,7 +7,6 @@ on:
 
 jobs:
   notify:
-    #if: github.repository == 'AlternativeFFFF/Alt-F4'
     name: Notify
     runs-on: ubuntu-latest
     steps:
