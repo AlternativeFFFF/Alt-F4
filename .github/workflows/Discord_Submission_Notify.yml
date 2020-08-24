@@ -7,7 +7,7 @@ on:
 
 jobs:
   notify:
-    if: github.repository == 'AlternativeFFFF/Alt-F4'
+    if: github.repository == 'AlternativeFFFF/Alt-F4' && github.event.pull_request.head.label == 'impact:submission'
     name: Notify
     runs-on: ubuntu-latest
     steps:
