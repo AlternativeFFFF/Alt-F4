@@ -26,16 +26,15 @@ jobs:
     steps:
     - name: Checkout PR
       uses: actions/checkout@master
-    - uses: 8BitJonny/gh-get-current-pr@v1
-      id: PR
+    - uses: jwalton/gh-find-current-pr@v1
+      id: findPr
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        filterOutClosed: true
     - run: echo "Your PR is ${prNumber} and its JSON is ${prJSON}"
-      if: success() && steps.PR.outputs.number
+      if: success() && steps.findPr.outputs.number
       env:
-        prNumber: ${{ steps.PR.outputs.number }}
-        prJSON: ${{ steps.PR.outputs.pr }}
+        prNumber: ${{ steps.findPr.outputs.number }}
+        prJSON: ${{ steps.findPr.outputs.pr }}
     - name: Discord notification (1/2)
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
