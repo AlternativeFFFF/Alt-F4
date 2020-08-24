@@ -16,19 +16,19 @@ jobs:
       uses: actions/checkout@master
 
     - name: Discord notification (1/2)
-      uses: Ilshidur/action-discord@0.2.0
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_RELEASE }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
         DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
+      uses: Ilshidur/action-discord@0.2.0
       with:
         args: "{{ EVENT_PAYLOAD.release.name }}"
 
     - name: Discord notification (2/2)
-      uses: Ilshidur/action-discord@0.2.0
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_RELEASE }}
         DISCORD_USERNAME: 'ALT-F4 Bot'
         DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
+      uses: Ilshidur/action-discord@0.2.0
       with:
         args: "https://alt-f4.blog/{{ EVENT_PAYLOAD.release.tag_name }}"
