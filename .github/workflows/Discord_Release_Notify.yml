@@ -3,11 +3,10 @@ name: Discord Release Notify
 on: 
   release:
     types:
-      - published
+      - released
 
 jobs:
   notify:
-    if: github.repository == 'AlternativeFFFF/Alt-F4'
     name: Notify
     runs-on: ubuntu-latest
     steps:
