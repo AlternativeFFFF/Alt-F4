@@ -5,34 +5,16 @@ on:
     branches:
       - master
     types:
-      - opened
+      - labeled
 
 jobs:
-  labeling:
-    name: PR Labeler
-    runs-on: ubuntu-18.04
-    steps:
-    - name: Checkout PR
-      uses: actions/checkout@master
-    - name: Labeler
-      uses: docker://decathlon/pull-request-labeler-action:2.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        CONFIG_PATH: ${{ secrets.GITHUB_WORKSPACE }}/.github/workflows_config/Discord_Submission_Notify.yml
   notify:
-    needs:
-    - labeling
+    if: github.event.pull_request.head.label == 'impact:submission'
     name: Notify
     runs-on: ubuntu-latest
     steps:
     - name: Checkout PR
       uses: actions/checkout@master
-    - uses: Dreamcodeio/pr-has-label-action@master
-      id: checkLabel
-      with:
-        label: impact:submission
-    - name: Does 'pull_request' has ${{ steps.checkLabel.outputs.checkedLabel }} label?
-      run: echo "${{ steps.checkLabel.outputs.hasLabel }}"
     - name: Discord notification (1/2)
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
