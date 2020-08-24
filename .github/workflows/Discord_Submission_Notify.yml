@@ -9,6 +9,7 @@ on:
 
 jobs:
   labeling:
+    name: PR Labeler
     runs-on: ubuntu-18.04
     steps:
     - name: Checkout PR
