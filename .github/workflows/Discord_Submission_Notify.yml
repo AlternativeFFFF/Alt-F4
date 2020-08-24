@@ -26,15 +26,12 @@ jobs:
     steps:
     - name: Checkout PR
       uses: actions/checkout@master
-    - uses: jwalton/gh-find-current-pr@v1
-      id: findPr
+    - uses: Dreamcodeio/pr-has-label-action@master
+      id: checkLabel
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: echo "Your PR is ${prNumber} and its JSON is ${prJSON}"
-      if: success() && steps.findPr.outputs.number
-      env:
-        prNumber: ${{ steps.findPr.outputs.number }}
-        prJSON: ${{ steps.findPr.outputs.pr }}
+        label: impact:submission
+    - name: Does 'pull_request' has ${{ steps.checkLabel.outputs.checkedLabel }} label?
+      run: echo "${{ steps.checkLabel.outputs.hasLabel }}"
     - name: Discord notification (1/2)
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
