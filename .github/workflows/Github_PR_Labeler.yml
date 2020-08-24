@@ -19,5 +19,3 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
         CONFIG_PATH: ${{ secrets.GITHUB_WORKSPACE }}/.github/workflows_config/Github_PR_Labeler.yml
-    - name: Debug Action
-      uses: hmarr/debug-action@v1.0.0

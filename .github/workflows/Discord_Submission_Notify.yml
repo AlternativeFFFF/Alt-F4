@@ -17,8 +17,6 @@ jobs:
       id: checkLabel
       with:
         label: impact:submission
-    - name: Does 'pull_request' has ${{ steps.checkLabel.outputs.checkedLabel }} label? 
-      run: echo "${{ steps.checkLabel.outputs.hasLabel }}" 
 
     - name: Checkout PR
       uses: actions/checkout@master
@@ -41,7 +39,3 @@ jobs:
       uses: Ilshidur/action-discord@0.2.0
       with:
         args: "{{ EVENT_PAYLOAD.pull_request.html_url }}"
-        
-    - name: Debug Action
-      uses: hmarr/debug-action@v1.0.0
-
