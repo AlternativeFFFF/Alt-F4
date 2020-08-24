@@ -23,7 +23,7 @@ If you want to contribute anything that's not a submission to the weekly issue o
 - Don't worry too much about getting everything perfect right away. We're here to council you on things you might not be sure about, be it writing style, content, length, anything really.
 
 ### Where to submit it
-
+ test
 There are two ways to submit your work. Both are equaly valid options, just choose the one that works best for you.
 
 - If you're not familiar with git and Github, you can join the [Discord](https://discord.gg/AsXAwyV) where you'll find several channels dedicated to submissions. Take a look at the #instructions channel to find out how to proceed.
