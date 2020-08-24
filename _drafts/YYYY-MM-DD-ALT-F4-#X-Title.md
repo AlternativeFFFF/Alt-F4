@@ -1,7 +1,7 @@
 ---
 author: Names of who wrote this post [optional, recommended]
 editor: Names of who edited this post [optional]
-image: Path to thumbnail for this ALT-F4 post
+image: Path to thumbnail for this ALT-F4 post (URI)
 title: Title of this ALT-F4 post
 discuss:
   forum: Link to forum thread [optional]
@@ -29,3 +29,9 @@ Blablablah
 ## Contributing <author></author>
 
 Blablablah
+
+## Embeding youtube video
+
+`{% include youtube.html id="dQw4w9WgXcQ" %}` <br/>
+where id is `?v=id` parameter from youtube URL <br/>
+https://www.youtube.com/watch?v=`dQw4w9WgXcQ`
