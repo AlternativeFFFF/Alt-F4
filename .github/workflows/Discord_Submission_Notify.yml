@@ -1,9 +1,11 @@
 name: Discord Submission Notify
 
-on: 
+on:
   pull_request:
     branches:
       - master
+    types:
+      - labeled
 
 jobs:
   notify:
