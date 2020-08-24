@@ -8,9 +8,8 @@ on:
       - labeled
 
 jobs:
-  notify:
-    #if: github.event.pull_request.head.label == 'impact:submission'
-    name: Notify
+  verify:
+    name: Verify
     runs-on: ubuntu-latest
     steps:
     - uses: Dreamcodeio/pr-has-label-action@master
@@ -19,6 +18,14 @@ jobs:
         label: impact:submission
     - name: Does 'pull_request' has ${{ steps.checkLabel.outputs.checkedLabel }} label? 
       run: echo "${{ steps.checkLabel.outputs.hasLabel }}" 
+    - name: Debug Action
+      uses: hmarr/debug-action@v1.0.0
+
+  notify:
+    if: steps.checkLabel.outputs.hasLabel
+    name: Notify
+    runs-on: ubuntu-latest
+    steps:
     - name: Checkout PR
       uses: actions/checkout@master
     - name: Discord notification (1/2)
