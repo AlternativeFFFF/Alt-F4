@@ -9,7 +9,7 @@ on:
 
 jobs:
   notify:
-    if: github.event.pull_request.head.label == 'impact:submission'
+    #if: github.event.pull_request.head.label == 'impact:submission'
     name: Notify
     runs-on: ubuntu-latest
     steps:
