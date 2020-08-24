@@ -4,9 +4,9 @@ description: >-
   The community-driven follow-on to the beloved Factorio Friday Facts
 url: "https://alt-f4.blog"
 author:
-  name: "TODO"
-  email: "TODO"
-  url: "TODO"
+  name: "Therenas"
+  email: "AlternativeFridayFacts@gmail.com"
+  url: "https://alt-f4.blog/about"
 
 # Build settings
 markdown: kramdown
