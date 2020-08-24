@@ -47,3 +47,5 @@ exclude:
   - vendor/ruby/
   - Readme.md
   - submissions/
+  - run.sh
+  - run.bat
