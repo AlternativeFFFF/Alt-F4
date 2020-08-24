@@ -35,7 +35,6 @@ jobs:
       if: success() && steps.PR.outputs.number
       env:
         prNumber: ${{ steps.PR.outputs.number }}
-        // JSON object with the full PR object
         prJSON: ${{ steps.PR.outputs.pr }
     - name: Discord notification (1/2)
       env:
