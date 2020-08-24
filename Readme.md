@@ -26,7 +26,7 @@ If you want to contribute anything that's not a submission to the weekly issue o
 
 There are two ways to submit your work. Both are equaly valid options, just choose the one that works best for you.
 
-- If you're not familiar with git and Github, you can join the [Discord](https://discord.gg/AsXAwyV) where you'll find several channels dedicated to submissions. Take a look at the #instructions-channel to find out how to proceed.
+- If you're not familiar with git and Github, you can join the [Discord](https://discord.gg/AsXAwyV) where you'll find several channels dedicated to submissions. Take a look at the #instructions channel to find out how to proceed.
 - If you are familiar with them though, the submission process can be handled through [pull requests](https://github.com/AlternativeFFFF/Alt-F4/pulls).
     - To submit your work, create a pull request that adds a folder to [the submissions-folder](https://github.com/AlternativeFFFF/Alt-F4/tree/master/submissions). The folder you create should contain your submission-file in Markdown (.md) and any assets (images, gifs) you have used in your post.
     - This pull request can then be reviewed by our editors, who'll make suggestions, fix spelling and formatting until the submission is ready for publication. If it reaches that stage, it'll be merged, putting it into the submissions-folder.
