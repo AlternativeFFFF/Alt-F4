@@ -5,6 +5,7 @@ home-header: 게시물
 author:
   writtenby: 가 작성함
   editedby: 편집자
+  translator: 번역자
   date: "에"
 discuss:
   reddit: Reddit에 대해 토론

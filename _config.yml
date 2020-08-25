@@ -63,5 +63,5 @@ languages:
 default_lang: en
 lang_from_path: true
 parallel_localization: true
-# exclude_from_localization:
-#   - README.md
+exclude_from_localization:
+  ["./assets/*", "javascript", "images", "css", "README.md"]
