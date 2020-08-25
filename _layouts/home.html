@@ -1,12 +1,30 @@
 ---
 layout: default
 ---
-
-<article class="panel">
-	{%- if page.title -%}
-	<h2>{{ page.title }}</h2>
-	{%- endif -%}
-	<div class="panel-inset-lighter mt0">
-		{{ content }}
+<div class="panel">
+	<h2>{{ site.data.locale.home-header }}</h2>
+	{% include pagination.html %}
+	{% for post in paginator.posts %}
+	<div class="panel-inset-lighter blog-card">
+		{% if post.image %}
+		<div class="blog-card-thumbnail">
+			<a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
+				<img src="{{ post.image }}">
+				<div class="shadow-overlay"></div>
+			</a>
+		</div>
+		{% endif %}
+		<div class="blog-card-text">
+			<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+			<div class="posted-by">
+				{% include author.html %}
+			</div>
+			<hr>
+			<div class="snippet snippet-2">
+				<p>{{ post.content | strip_html | truncatewords:50 }}</p>
+			</div>
+		</div>
 	</div>
-</article>
+	{% endfor %}
+	{% include pagination.html %}
+</div>
