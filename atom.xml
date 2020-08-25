@@ -17,7 +17,7 @@ layout: null
   {% for post in site.posts limit: 10 %}
   <entry>
     <title>{{ post.title }}</title>
-    <link href="{{ site.url }}{{ post.url }}" />
+    <link href="{% if site.active_lang == site.default_lang %}{{site.url}}{{post.url}}{% else %}{{site.url}}/{{site.active_lang}}{{post.url}}{% endif %}" />
     <id>{{ site.url }}{{ post.id }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">{{ post.content | xml_escape | truncatewords:50 }}</content>
