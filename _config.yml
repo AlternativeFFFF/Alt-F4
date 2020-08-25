@@ -12,7 +12,7 @@ author:
 # Build settings
 source: .
 markdown: kramdown
-permalink: /:title
+permalink: /:title/ #pretty
 destination: ./_site
 excerpt_separator: "<!--more-->"
 sass:
