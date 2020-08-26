@@ -9,6 +9,7 @@ jobs:
   jekyll:
     name: Jekyll
     runs-on: ubuntu-latest
+    if: github.repository == 'AlternativeFFFF/Alt-F4'
     steps:
       - name: 📂 setup
         uses: actions/checkout@v2
