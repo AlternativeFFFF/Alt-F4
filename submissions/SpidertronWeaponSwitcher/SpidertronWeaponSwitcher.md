@@ -1,9 +1,13 @@
-# Spidertron Weapon Switcher - Under the hood
-### Xorimuth
+---
+author: Xorimuth
+---
 
-https://mods.factorio.com/SpidertronWeaponSwitcher
+### Under the hood: [Spidertron Weapon Switcher](https://mods.factorio.com/SpidertronWeaponSwitcher)
 
-[[TODO: insert gif here of spidertron fighting biter bases whilst switching between different weapons]]
+GIF:
+![Demonstration of all types of weapons](https://github.com/Xorimuth/Alt-F4/blob/master/submissions/SpidertronWeaponSwitcher/SWS-demo-gif.gif)
+MP4:
+![Demonstration of all types of weapons](https://github.com/Xorimuth/Alt-F4/blob/master/submissions/SpidertronWeaponSwitcher/SWS-demo-mp4.mp4)
 
 If you’ve never written a mod before, you may not know that many things in Factorio cannot be changed _during the game_, for example, the range of a gun, the graphics of a building and, importantly for me, the weapon slots that a vehicle has. Of course, the weapons that a spidertron has _can_ be changed by mods, but only by creating a new ‘type’ of spidertron during the game’s loading phase.
 
