@@ -20,10 +20,9 @@ jobs:
 
       - name: 🔨 install dependencies & build site
         uses: limjh16/jekyll-action-ts@v2
-
-        # with:
-        # enable_cache: true
-        # format_output: true
+        with:
+          enable_cache: true
+          format_output: true
       - name: 🚀 deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
