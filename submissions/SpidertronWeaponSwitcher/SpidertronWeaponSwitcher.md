@@ -10,11 +10,11 @@ Spidertron Weapon Switcher is a mod that allows Spidertron to fire any kind of w
 
 If you’ve never written a mod before, you may not know that many things in Factorio cannot be changed _during the game_, like for example the range of a gun, the graphics of a machine and, importantly for me, the weapon slots that a vehicle has. Of course, the weapons that Spidertron has _can_ be changed by mods, but only by creating a new ‘type’ of Spidertron during the loading phase of the game.
 
-The way that I got around this limitation is by creating 5 versions of Spidertron, one for each type of gun. So, when you switch weapons in-game, what the mod actually does is:
+The way that I got around this limitation is by creating 5 ‘types’ of Spidertron, one for each type of gun. So, when you switch weapons in-game, what the mod actually does is:
 
 1) Save all relevant data about the spidertron, such as its inventory contents and position
 2) Delete the current spidertron
-3) Create a new spidertron of the next ‘type’, which has different weapons mounted, in its place
+3) Create a new spidertron with the next weapon in its place
 4) Insert all the saved data into the new spidertron
 
 All of these steps happen within a single tick, which makes it appear (almost*) seamless to the player. (*Some side effects, such as all remotes becoming disconnected from the spidertron, have to be mitigated with further work that is outside the scope of this blog.)
