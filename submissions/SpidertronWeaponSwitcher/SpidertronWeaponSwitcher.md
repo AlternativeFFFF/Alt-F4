@@ -17,4 +17,6 @@ The way that I got around this limitation is by creating 5 ‘types’ of spider
 
 Because all these steps happen within the space of one tick, it appears almost* seamless to the player.
 
-*Some side effects such as all remotes becoming disconnected from the spidertron can be mitigated with further work that is outside the scope of this blog.
+That all works great for transferring the data about the spidertron but there is one thing that makes no sense to transfer: ammo. If you have the shotgun enabled with 300 shotgun shells loaded and you switch to the flamethrower, the shotgun shells should not (and cannot) be transferred into the flamethrower ammo slots. I get around this by having a table for each spidertron so in step 1 the current ammo inventory is stored in the table under the key "shotgun", and in step 4 the ammo under the key "flamethrower" is retrieved and placed into the new spidertron's ammo slots. When the player picks up the spidertron, all the ammo for that spidertron is retrieved and placed in the player's inventory or spilled on the ground if there is no space left in the inventory.
+
+*Some side effects (such as all remotes becoming disconnected from the spidertron) have to be mitigated with further work that is outside the scope of this blog.
