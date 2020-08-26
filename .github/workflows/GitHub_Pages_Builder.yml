@@ -20,15 +20,13 @@ jobs:
 
       - name: 🔨 install dependencies & build site
         uses: limjh16/jekyll-action-ts@v2
-        with:
-          enable_cache: true
-          format_output: true
 
+        # with:
+        # enable_cache: true
+        # format_output: true
       - name: 🚀 deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
-          # if the repo you are deploying to is <username>.github.io, uncomment the line below.
-          # if you are including the line below, make sure your source files are NOT in the master branch:
           publish_branch: gh-pages
