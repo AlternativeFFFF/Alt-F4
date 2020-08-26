@@ -1,4 +1,4 @@
-name: Github PR labeler
+name: Github PR labeler 2
 
 on:
   pull_request:
