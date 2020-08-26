@@ -5,6 +5,7 @@ layout: default
 	<h2>{{ site.data.locale.home-header }}</h2>
 	{% include pagination.html %}
 	{% for post in paginator.posts %}
+	{% unless post.draft %}
 	<div class="panel-inset-lighter blog-card">
 		{% if post.image %}
 		<div class="blog-card-thumbnail">
@@ -25,6 +26,7 @@ layout: default
 			</div>
 		</div>
 	</div>
+	{% endunless %}
 	{% endfor %}
 	{% include pagination.html %}
 </div>
