@@ -20,6 +20,7 @@ If you want to contribute anything that's not a submission to the weekly issue o
 - Your submission should be formatted in [Markdown](https://daringfireball.net/projects/markdown/basics). It's easy to learn; if you have any issues with it, the [Discord](https://discord.gg/nxnCFkb) is there to help.
 - It should have a reasonable length, approximately 100-500 words, but that's not a hard limit at all. Try to orient yourself on the [previous Alt-F4s](http://alt-f4.blog) and of course, on the [FFFs](https://factorio.com/blog/) themselves.
 - It can and should include some images, gifs, and external links. Use these to illustrate what you're writing about, or to explain a concept that not everyone might be familiar with.
+- Media should be hosted on third-party sites to reduce the repository size. Images and gifs can be hosted on [imgur](https://imgur.com/), with a recommended resolution of 896x504 px. Videos can be uploaded to Youtube and embedded into the submission, but ensure the videos are public or unlisted. All media used must be in the public domain and may be stored by Alt-F4 for archival purposes.
 - Don't worry too much about getting everything perfect right away. We're here to council you on things you might not be sure about, be it writing style, content, length, anything really.
 
 ### Where to submit it
