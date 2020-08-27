@@ -10,7 +10,7 @@ on:
 jobs:
   notify:
     name: Notify
-    if: github.repository == 'AlternativeFFFF/Alt-F4'
+    #if: github.repository == 'AlternativeFFFF/Alt-F4'
     runs-on: ubuntu-latest
     steps:
 
