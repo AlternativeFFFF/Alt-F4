@@ -1,17 +1,17 @@
-name: Github PR labeler
+name: Github PR labeler 2
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - master
-    types:
-      - opened
-      - edited
+    #types:
+    #  - opened
+    #  - edited
 
 jobs:
   labeling:
     name: PR labeling
-    if: github.repository == 'AlternativeFFFF/Alt-F4'
+    #if: github.repository == 'AlternativeFFFF/Alt-F4'
     runs-on: ubuntu-18.04
     steps:
 
