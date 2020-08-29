@@ -15,6 +15,7 @@ layout: null
     <email>{{ site.author.email }}</email>
   </author>
   {% for post in site.posts limit: 10 %}
+  {% unless post.draft %}
   <entry>
     <title>{{ post.title }}</title>
     <link href="{% if site.active_lang == site.default_lang %}{{site.url}}{{post.url}}{% else %}{{site.url}}/{{site.active_lang}}{{post.url}}{% endif %}" />
@@ -22,5 +23,6 @@ layout: null
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <content type="html">{{ post.content | xml_escape | truncatewords:50 }}</content>
   </entry>
+  {% endunless %}
   {% endfor %}
 </feed>
