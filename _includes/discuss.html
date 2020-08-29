@@ -1,0 +1,19 @@
+{% if age.discuss.discord or page.discuss.reddit or page.discuss.forum  %}
+<div class="flex flex-column flex-items-center mt8">
+  {% if page.discuss.forum %}
+  <a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.forum }}">
+    {{ site.data.locale.discuss.forum }}
+  </a>
+  {% endif %}
+  {% if page.discuss.reddit %}
+  <a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.reddit }}">
+    {{ site.data.locale.discuss.reddit }}
+  </a>
+  {% endif %}
+  {% if page.discuss.discord %}
+  <a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.discord }}">
+    {{ site.data.locale.discuss.discord }}
+  </a>
+  {% endif %}
+</div>
+{% endif %}

@@ -1,3 +1,10 @@
+---
+layout: post
+title: About
+permalink: about/
+lang: en
+---
+
 # About
 
 Alt-F4 is a [weekly blog](http://alt-f4.blog) that's written and edited entirely by the [Factorio](https://factorio.com) community, and features various topics that are relevant to it, such as mod spotlights, community showcases or gameplay columns.
@@ -8,4 +15,4 @@ After coming [full circle](https://factorio.com/blog/post/fff-360) in August 202
 
 ### Credit
 
-This website was created using Jekyll by: Ypetremann and Dr.MagPie, with the help of lovely_santa and Therenas
+This website was created using Jekyll by: <em>Ypetremann</em> and <em>Dr.MagPie</em>, with the help of <em>lovely_santa</em> and <em>Therenas</em>

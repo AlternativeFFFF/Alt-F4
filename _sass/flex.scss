@@ -1,0 +1,44 @@
+.flex,
+.button.flex {
+  display: flex;
+}
+
+.flex-items-baseline {
+  align-items: baseline;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-column .button {
+  margin-right: 0;
+}
+.flex-column .button-green {
+  margin-right: 0;
+}
+.flex-column .button-red {
+  margin-right: 0;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex-align-items-center,
+.flex-items-center {
+  align-items: center;
+}
+.fs0 {
+  flex-shrink: 0;
+}

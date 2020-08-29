@@ -1,42 +1,24 @@
 # Site settings
 title: Alternative Friday Factorio Fan Facts
-description: >-
-  The community-driven follow-on to the beloved Factorio Friday Facts
 url: "https://alt-f4.blog"
+description: The community-driven follow-on to the beloved Factorio Friday Facts
+
+# author
 author:
   name: "Therenas"
   email: "AlternativeFridayFacts@gmail.com"
   url: "https://alt-f4.blog/about"
 
 # Build settings
-markdown: kramdown
 source: .
+markdown: kramdown
+permalink: /:title/ #pretty
 destination: ./_site
-permalink: /:title
-paginate: 10
-paginate_path: /page:num/
-
-baseurl: ""
-
-# Plugins
-gems:
-  - jekyll-paginate
-  - jekyll-seo-tag
-plugins:
-  - jekyll-paginate
-  - jekyll-seo-tag
-
-# theme: minima
 excerpt_separator: "<!--more-->"
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
+sass:
+  style: compressed
+  sourcemap: never
 # Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -45,7 +27,41 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - Readme.md
+  - README.md
   - submissions/
   - run.sh
   - run.bat
+  - TMP
+
+# Plugins
+gems:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-polyglot
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-polyglot
+
+# Plugin Settings
+paginate: 10
+paginate_path: /page:num/
+
+# Default Settings
+# theme: minima
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+#Polyglot
+languages:
+  - en
+  - kr
+default_lang: en
+lang_from_path: true
+parallel_localization: true
+exclude_from_localization:
+  ["./assets/*", "javascript", "images", "css", "README.md"]

@@ -1,0 +1,231 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  // font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1.5;
+}
+
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+body {
+  background-color: #201810;
+  background: #201810;
+  background-image: url("/assets/GLOBAL/img/backgroundbyjd.jpg");
+  // background-size: 2048px 3072px;
+  background-size: 1671px  1672px;
+  background-position: center top;
+  color: #f5f5f5;
+  font-family: titillium web, sans-serif;
+  font-size: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+th {
+  font-weight: 700;
+}
+
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+
+pre {
+  white-space: pre-wrap;
+  line-height: 1.2;
+}
+.m0,
+div.m0,
+table.m0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.mt0 {
+  margin-top: 0;
+}
+
+.mt8,
+div.mt8 {
+  margin-top: 8px;
+}
+.m4,
+div.m4 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+div.mb0,
+h2.mb0,
+h3.mb0 {
+  margin-bottom: 0;
+}
+
+div.p4,
+td.p4 {
+  padding: 4px !important;
+}
+
+a.no-outline,
+a.no-outline:hover,
+a.no-outline:active,
+a.no-outline:focus {
+  outline: none;
+}
+div.inline-block {
+  display: inline-block;
+}
+
+div.overflow-hidden {
+  overflow: hidden;
+}
+
+label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  display: contents;
+}
+
+iframe.iframe-inset {
+  max-width: 100%;
+  box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f, 2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
+  border-bottom: 1px solid #222;
+  background-size: cover;
+  background-position: center center;
+}
+
+article img,
+article iframe {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f, 2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
+  border-bottom: 1px solid #222;
+}

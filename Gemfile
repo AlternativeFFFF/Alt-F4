@@ -1,12 +1,13 @@
 source "https://rubygems.org"
-gem "jekyll", "~> 4.1.1"
-# gem "minima", "~> 2.5"
 
+gem "jekyll"
 group :jekyll_plugins do
-  gem "jekyll-paginate", "~> 1.1.0"
-  gem "jekyll-seo-tag", "~> 2.6.1"
+  gem "jekyll-paginate"
+  gem "jekyll-seo-tag"
+  gem "jekyll-polyglot"
 end
 
+# gem "minima", "~> 2.5"
 # platforms :mingw, :x64_mingw, :mswin, :jruby do
 #   gem "tzinfo", "~> 1.2"
 #   gem "tzinfo-data"
