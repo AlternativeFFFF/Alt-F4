@@ -1,0 +1,8 @@
+{% if page.author or post.author %}
+{{ site.data.locale.author.writtenby }} <em>{{ page.author | default: post.author }}</em>{% endif %}
+{% if page.editor or post.editor %}
+{{ site.data.locale.author.editedby }} <em>{{ page.editor | default: post.editor }}</em>{% endif %}
+{% if page.translator or post.translator %}
+{{ site.data.locale.author.translator }} <em>{{ page.translator | default: post.translator }}</em>{% endif %}
+{% if page.date or post.date %}
+{{ site.data.locale.author.date }} {{ page.date | default: post.date | date: "%Y-%m-%d" }}{% endif %}

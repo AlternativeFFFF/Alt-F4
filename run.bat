@@ -1,1 +1,1 @@
-docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/minimal:latest jekyll serve --livereload
+docker run --rm -v=%cd%:/srv/jekyll -p 4000:4000 -it jekyll/minimal:latest jekyll serve --livereload --drafts

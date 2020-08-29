@@ -5,35 +5,17 @@ layout: default
 	<h2>{{ page.title }}</h2>
 	{% if page.author or page.editor or page.date %}
 	<div class="panel-inset mb0">
-		Written
-		{% if page.author %} by <em>{{ page.author }}</em>{% endif %}
-		{% if page.editor %} edited by <em>{{ page.editor }}</em>{% endif %}
-		{% if page.date %} on {{ page.date | date: "%Y-%m-%d" }}{% endif %}
+		{% include author.html %}
 	</div>
 	{% endif %}
 	<div class="panel-inset-lighter mt0">
-
 		{{ content }}
-
-		{% if page.discuss.forum or page.discuss.reddit %}
-		<div class="flex flex-column flex-items-center mt8">
-			{% if page.discuss.forum %}
-			<a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.forum }}">Discuss on Factorio
-				Forums</a>
-			{% endif %}
-			{% if page.discuss.reddit %}
-			<a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.reddit }}">Discuss on Reddit</a>
-			{% endif %}
-			{% if page.discuss.discord %}
-			<a class="button-green-right m4" style="width: 16em;" href="{{ page.discuss.discord }}">Discuss on Discord</a>
-			{% endif %}
-		</div>
-		{% endif %}
+		{% include discuss.html %}
 	</div>
 	<div class="panel-inset mb0 p4 flex flex-space-between">
 		<div>
 			<a class="button square-sm" href="/">
-				<i class=" fas fa-angle-double-left"></i>
+				<i class="fas fa-angle-double-left"></i>
 			</a>
 		</div>
 	</div>

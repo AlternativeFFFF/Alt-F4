@@ -1,0 +1,65 @@
+.footer {
+  width: 1200px;
+  max-width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: auto auto 0;
+}
+
+.footer-inner {
+  margin-top: 0;
+  display: flex;
+  margin-bottom: 16px;
+  overflow: visible !important;
+}
+
+.footer-links {
+  text-align: center;
+  width: 50%;
+  margin-right: 16px;
+  margin-bottom: 0 !important;
+  font-size: 85%;
+}
+
+.footer-rocket {
+  text-align: center;
+  background: url(/assets/GLOBAL/img/footer-bg.jpg);
+  background-position: center center;
+  background-size: 192px;
+  width: 240px;
+  position: relative;
+  overflow: visible !important;
+}
+
+.footer-rocket .rocket {
+  background: url(/assets/GLOBAL/img/spider-idle.gif);
+  background-size: 130px;
+  width: 130px;
+  margin-left: -65px;
+  height: 110px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 50;
+  transition: height 1s linear;
+}
+
+.footer-copyright {
+  text-align: center;
+  width: 50%;
+  margin-left: 16px;
+  font-size: 92.5%;
+}
+
+@media (max-width: 750px) {
+  .footer-rocket {
+    display: none;
+  }
+  .footer-links {
+    margin-right: 0;
+  }
+}
+
+div.p1 {
+  padding: 1px;
+}

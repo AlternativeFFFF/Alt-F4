@@ -1,0 +1,230 @@
+.text-right {
+  text-align: right;
+}
+
+.snippet {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+.snippet-2 {
+  -webkit-line-clamp: 2;
+}
+
+.posted-by {
+  margin-top: -12px;
+}
+
+.blog-post img {
+  border: none;
+  box-shadow: inset 0 0 3px 0 #000, 0 -2px 2px -1px #000, -2px 0 2px -2px #28221f, -2px 0 2px -2px #28221f,
+    2px 0 2px -2px #28221f, 2px 0 2px -2px #28221f, 0 3px 3px -3px #8f8c8b, 0 2px 2px -2px #8f8c8b,
+    0 1px 1px -1px #8f8c8b;
+}
+
+a {
+  color: #7dcaed;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #9ad1ea;
+  text-decoration: underline;
+}
+
+a i {
+  margin-right: 4px;
+}
+
+i {
+  font-style: italic;
+}
+
+em {
+  color: #ffe6c0;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #ffe6c0;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1,
+h2 {
+  font-size: 120%;
+  font-weight: 900;
+  margin-bottom: 12px;
+  cursor: default;
+}
+
+h3 {
+  font-size: 116%;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+h4 {
+  font-size: 107%;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+p + h1,
+p + h2,
+p + h3,
+p + h4 {
+  margin-top: 16px;
+}
+
+p + p {
+  margin-top: 16px;
+}
+
+h2 > a,
+h3 > a {
+  color: inherit;
+}
+
+h2 > a:hover,
+h3 > a:hover {
+  color: inherit;
+}
+
+h2 > author,
+h3 > author,
+h4 > author {
+  margin-left: 16px;
+  font-size: 80%;
+  font-weight: 400;
+}
+
+code,
+pre {
+  font-family: monospace;
+}
+
+pre {
+  margin: 8px;
+  color: #eee;
+}
+
+.small-center {
+  max-width: 400px;
+  margin: auto;
+}
+
+.medium-center {
+  max-width: 700px;
+  margin: auto;
+}
+
+.large-center {
+  max-width: 80%;
+  margin: auto;
+}
+
+.pre-line {
+  white-space: pre-line;
+}
+
+.red {
+  color: #eb5c5f;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3), 1px -1px 0 rgba(0, 0, 0, 0.3), -1px 1px 0 rgba(0, 0, 0, 0.3),
+    1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.grey {
+  color: #a6a6a6;
+}
+
+.yellow {
+  color: #ffe6c0;
+}
+
+.orange,
+.orange:hover {
+  color: #ffa200;
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+}
+.text-center,
+a.text-center {
+  text-align: center;
+}
+
+ul {
+  margin-top: 16px;
+  margin-left: 32px;
+  list-style-image: url(/assets/GLOBAL/img/wheel-white-11px.png);
+}
+
+ul + p,
+ul + li {
+  margin-bottom: 16px;
+}
+
+ul.unstyled {
+  margin-left: 0;
+  list-style-image: none;
+}
+
+li {
+  line-height: 1.25;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+dl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+dt {
+  width: 65%;
+  font-weight: 600;
+}
+
+dd {
+  width: 35%;
+}
+
+dl.panel-hole {
+  align-items: stretch;
+}
+hr {
+  border: none;
+  height: 2px;
+  margin: 12px auto;
+  box-shadow: inset 0 1px 1px 0 #131313, inset 0 -1px 1px 0 #838383, 0 0 4px 0 #392f2e;
+}
+
+hr.mn {
+  margin-left: -64px;
+  margin-right: -64px;
+}

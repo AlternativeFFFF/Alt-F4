@@ -1,0 +1,22 @@
+<nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-items-baseline flex-space-between">
+		<div class="sites links flex flex-items-baseline">
+			<a href="/" class="sites-current">Alt-F4</a>
+			<span class="separator separator-blue">|</span>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator separator-blue">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="dropdown flex-end">
+			<div class="button flex flex-space-between">
+				<i class="fas fa-language"></i>
+			</div>
+			<div class="submenu">
+				{% for language in site.languages %}
+				<a {% if language == site.active_lang %} class="button button-green" {% else %} class="button" {% endif %}
+					href="{% if language == site.default_lang %} {{site.baseurl}}{{page.url}} {% else %} {{site.baseurl}}/{{ language }}{{page.url}} {% endif %}">{{ language }}</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</nav>

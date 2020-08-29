@@ -1,0 +1,17 @@
+.dropdown > .submenu {
+  position: absolute;
+  display: flex;
+  visibility: hidden;
+  flex-direction: column;
+  transition: all 0.1s ease;
+  opacity: 0;
+  z-index: 5;
+}
+
+.dropdown:hover > .submenu,
+.dropdown.focus-within > .submenu,
+.dropdown .submenu:hover,
+.dropdown .submenu:focus {
+  visibility: visible;
+  opacity: 1;
+}

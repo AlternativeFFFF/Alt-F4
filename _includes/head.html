@@ -1,22 +1,24 @@
 <head>
+	<title>{{ page.title | default: site.data.locale.title }}</title>
 	<!-- Meta -->
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="viewport" content="width=device-width">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="generator" content="Jekyll">
 
 	{% seo %}
 
-	<title>{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-
 	<!-- CSS & fonts -->
-	<link rel="stylesheet"
-		href="{{ '/assets/GLOBAL/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+	<!-- <link href="/assets/GLOBAL/css/titillium-web.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="{{ site.baseurl }}/assets/GLOBAL/css/style.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet"
 		crossorigin="anonymous">
 	<link
 		href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600'
 		rel='stylesheet' type='text/css'>
+
+	<link href="/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 	<!-- RSS -->
 	<link href="{{ site.baseurl }}/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
