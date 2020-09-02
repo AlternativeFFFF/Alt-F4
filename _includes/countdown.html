@@ -1,0 +1,46 @@
+<!-- Use include.data in the ID as it makes it unique -->
+<span class="countdown" id="countdown-{{ include.date | replace: ":", "-" }}"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span>
+
+<style>
+  .countdown {
+    padding: 8px;
+    background-color: #333;
+
+    border-radius: 3px;
+  }
+
+  .countdown > span {
+    padding: 4px;
+    font-size: 16px;
+    color: #f9b44b;
+    background-color: #222;
+
+    border-radius: 3px;
+  }
+
+  .countdown > :not(:last-child) {
+    margin-right: 5px;
+  }
+</style>
+
+<script>
+  let daysEl = document.querySelector('#countdown-{{ include.date | replace: ":", "-" }} #days'); //document.getElementById('days');
+  let hoursEl = document.querySelector('#countdown-{{ include.date | replace: ":", "-" }} #hours'); //document.getElementById('hours');
+  let minutesEl = document.querySelector('#countdown-{{ include.date | replace: ":", "-" }} #minutes'); //document.getElementById('minutes');
+  let secondsEl = document.querySelector('#countdown-{{ include.date | replace: ":", "-" }} #seconds'); //document.getElementById('seconds');
+
+  let countdownDate = new Date(Date.UTC(...('{{ include.date }}'.split(':').map((x, i) => parseInt(x) + (i === 1 ? 1 : 0)))));
+  console.log(countdownDate);
+
+  function updateCountdown() {
+    let distance = countdownDate - Date.now();
+
+    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
