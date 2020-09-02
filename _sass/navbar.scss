@@ -87,7 +87,9 @@
   background-repeat: no-repeat; /* Size the image correctly */
   background-size: cover;
 
-  vertical-align: bottom; /* Centering the div */
+  vertical-align: middle; /* Centering the div */
+  transform: translateY(-5%);
+
   display: inline-block;
 
   margin-right: 30px; /* Gap between links to the right */
@@ -96,6 +98,20 @@
 #navbar-logo:hover {
   background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png"); /* Switch to orange coloured logo on hover */
 }
+
+@media (max-width: 450px) {
+  #navbar-logo {
+    height: 20px;
+    width: 80px;
+
+    margin-right: 15px;
+  }
+
+  .top-bar {
+    padding: 12px;
+  }
+}
+
 
 body:after { /* For preloading the hover image so it does not flicker on first hover */
   display: none;
