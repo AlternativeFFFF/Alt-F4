@@ -17,3 +17,11 @@
 .countdown > :not(:last-child) {
   margin-right: 5px;
 }
+
+.countdown.past > * {
+  display: none;
+}
+
+.countdown.past::before {
+  content: "Countdown expired";
+}
