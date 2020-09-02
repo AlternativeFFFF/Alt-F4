@@ -36,11 +36,11 @@
     <meta property="og:locale" content="en" />
     <meta
       name="description"
-      content="Blablablah Community Showcase: Train JUMP-tions Blablablah Mod Spotlight: Assembly Analyst Blablablah Coming full circle: Factorio 1.0 Blablablah Contributing Blablablah Embeding youtube video where id is ?v=id parameter from youtube URL https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      content="Blablablah Community Showcase: Train JUMP-tions Blablablah Mod Spotlight: Assembly Analyst Blablablah Coming full circle: Factorio 1.0 Blablablah Contributing Blablablah Embeding youtube video where id is ?v=id parameter from youtube URL https://www.youtube.com/watch?v=dQw4w9WgXcQ Embeding a countdown Where date is the date in year:month:day:hour:minutes:seconds, UTC"
     />
     <meta
       property="og:description"
-      content="Blablablah Community Showcase: Train JUMP-tions Blablablah Mod Spotlight: Assembly Analyst Blablablah Coming full circle: Factorio 1.0 Blablablah Contributing Blablablah Embeding youtube video where id is ?v=id parameter from youtube URL https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      content="Blablablah Community Showcase: Train JUMP-tions Blablablah Mod Spotlight: Assembly Analyst Blablablah Coming full circle: Factorio 1.0 Blablablah Contributing Blablablah Embeding youtube video where id is ?v=id parameter from youtube URL https://www.youtube.com/watch?v=dQw4w9WgXcQ Embeding a countdown Where date is the date in year:month:day:hour:minutes:seconds, UTC"
     />
     <link rel="canonical" href="https://alt-f4.blog/YYYY-MM-DD-ALT-F4-X/" />
     <meta
@@ -58,12 +58,12 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2020-09-02T18:21:26+00:00"
+      content="2020-09-02T18:47:02+00:00"
     />
     <script type="application/ld+json">
       {
         "image": "https://alt-f4.blog/Path%20to%20thumbnail%20for%20this%20ALT-F4%20post%20(URI)",
-        "description": "Blablablah Community Showcase: Train JUMP-tions Blablablah Mod Spotlight: Assembly Analyst Blablablah Coming full circle: Factorio 1.0 Blablablah Contributing Blablablah Embeding youtube video where id is ?v=id parameter from youtube URL https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "description": "Blablablah Community Showcase: Train JUMP-tions Blablablah Mod Spotlight: Assembly Analyst Blablablah Coming full circle: Factorio 1.0 Blablablah Contributing Blablablah Embeding youtube video where id is ?v=id parameter from youtube URL https://www.youtube.com/watch?v=dQw4w9WgXcQ Embeding a countdown Where date is the date in year:month:day:hour:minutes:seconds, UTC",
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": "https://alt-f4.blog/YYYY-MM-DD-ALT-F4-X/"
@@ -75,8 +75,8 @@
         },
         "url": "https://alt-f4.blog/YYYY-MM-DD-ALT-F4-X/",
         "headline": "Title of this ALT-F4 post",
-        "dateModified": "2020-09-02T18:21:26+00:00",
-        "datePublished": "2020-09-02T18:21:26+00:00",
+        "dateModified": "2020-09-02T18:47:02+00:00",
+        "datePublished": "2020-09-02T18:47:02+00:00",
         "@context": "https://schema.org"
       }
     </script>
@@ -222,6 +222,90 @@
                 class="language-plaintext highlighter-rouge"
                 >dQw4w9WgXcQ</code
               >
+            </p>
+
+            <h2 id="embeding-a-countdown">Embeding a countdown</h2>
+
+            <!-- Use include.data in the ID as it makes it unique -->
+            <p>
+              <span class="countdown" id="countdown-2021-01-01"
+                ><span id="days"></span> <span id="hours"></span>
+                <span id="minutes"></span> <span id="seconds"></span
+              ></span>
+            </p>
+
+            <script>
+              let countdownEl = document.getElementById("countdown-2021-01-01");
+
+              let daysEl = document.querySelector(
+                "#countdown-2021-01-01 #days"
+              ); //document.getElementById('days');
+              let hoursEl = document.querySelector(
+                "#countdown-2021-01-01 #hours"
+              ); //document.getElementById('hours');
+              let minutesEl = document.querySelector(
+                "#countdown-2021-01-01 #minutes"
+              ); //document.getElementById('minutes');
+              let secondsEl = document.querySelector(
+                "#countdown-2021-01-01 #seconds"
+              ); //document.getElementById('seconds');
+
+              let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+
+              let countdownDate = new Date(
+                Date.UTC(
+                  ..."2021:01:01"
+                    .split(":")
+                    .map((x, i) => parseInt(x) + (i === 1 ? -1 : 0))
+                )
+              );
+              console.log(countdownDate);
+
+              let interval = setInterval(updateCountdown, 1000);
+
+              function updateCountdown() {
+                let distance = countdownDate - Date.now();
+
+                if (distance < 0) {
+                  allEl.forEach((x) => {
+                    x.textContent = "";
+                  });
+                  countdownEl.classList.add("past");
+
+                  clearInterval(interval);
+
+                  return;
+                }
+
+                daysEl.textContent = Math.floor(
+                  distance / (1000 * 60 * 60 * 24)
+                )
+                  .toString()
+                  .padStart(2, "0");
+                hoursEl.textContent = Math.floor(
+                  (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                )
+                  .toString()
+                  .padStart(2, "0");
+                minutesEl.textContent = Math.floor(
+                  (distance % (1000 * 60 * 60)) / (1000 * 60)
+                )
+                  .toString()
+                  .padStart(2, "0");
+                secondsEl.textContent = Math.floor(
+                  (distance % (1000 * 60)) / 1000
+                )
+                  .toString()
+                  .padStart(2, "0");
+              }
+
+              updateCountdown();
+            </script>
+            <p>
+              <br />
+              Where
+              <code class="language-plaintext highlighter-rouge">date</code> is
+              the date in year:month:day:hour:minutes:seconds, UTC
             </p>
 
             <div class="flex flex-column flex-items-center mt8">
