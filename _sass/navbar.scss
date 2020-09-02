@@ -77,3 +77,63 @@
   font-size: 30px;
   margin-top: -5px;
 }
+
+#navbar-logo {
+  height: 30px; /* Size of logo image(s) */
+  width: 120px;
+
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
+  
+  background-repeat: no-repeat; /* Size the image correctly */
+  background-size: cover;
+
+  vertical-align: middle; /* Centering the div */
+  transform: translateY(-5%);
+
+  display: inline-block;
+
+  margin-right: 30px; /* Gap between links to the right */
+}
+
+#navbar-logo:hover {
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png"); /* Switch to orange coloured logo on hover */
+}
+
+@media (max-width: 500px) {
+  /* Shrink logo, gap between logo and links and the nav bar itself slightly */
+
+  #navbar-logo {
+    height: 20px; /* Shrink logo on smaller screens */
+    width: 80px;
+
+    margin-right: 15px; /* Shrink gap between logo and links as well */
+  }
+
+  .top-bar {
+    padding: 12px; /* Reduce padding slightly (by 4px) as well */
+  }
+
+
+  /* Shrink the translation button */
+
+  .fa-language {
+    height: 20px; /* Shrink the language icon */
+  }
+
+  .top-bar .dropdown .button { /* Shrink the button itself */
+    min-height: 20px;
+    min-width: 45px;
+
+    padding: 7px 9px;
+  }
+
+  .top-bar .dropdown .button:active,
+  .top-bar .dropdown .button.active {
+    margin: 0; /* Disable desktop button navbar bump fix, it causes the bump on mobile */
+  }
+}
+
+body:after { /* For preloading the hover image so it does not flicker on first hover */
+  display: none;
+  content: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
+}
