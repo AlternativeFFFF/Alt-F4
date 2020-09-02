@@ -64,6 +64,13 @@
   min-width: 65px;
   min-height: 40px;
 }
+
+.top-bar .dropdown .button:active,
+.top-bar .dropdown .button.active {
+  margin-top: -2px; /* Stop translation button increasing in height when active */
+  margin-bottom: 2px; /* Then stop the header links / text on the left hand side from moving position as well */
+}
+
 .top-bar .dropdown i {
   margin: 0;
   margin-left: 1px;
