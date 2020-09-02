@@ -77,3 +77,27 @@
   font-size: 30px;
   margin-top: -5px;
 }
+
+#navbar-logo {
+  height: 30px; /* Size of logo image(s) */
+  width: 120px;
+
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
+  
+  background-repeat: no-repeat; /* Size the image correctly */
+  background-size: cover;
+
+  vertical-align: bottom; /* Centering the div */
+  display: inline-block;
+
+  margin-right: 30px; /* Gap between links to the right */
+}
+
+#navbar-logo:hover {
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png"); /* Switch to orange coloured logo on hover */
+}
+
+body:after { /* For preloading the hover image so it does not flicker on first hover */
+  display: none;
+  content: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
+}
