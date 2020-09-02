@@ -41,6 +41,11 @@
 
 .links a {
   white-space: nowrap;
+  color: white;
+}
+
+.links a:hover {
+  color: white;
 }
 
 .separator {
@@ -82,7 +87,7 @@
   height: 30px; /* Size of logo image(s) */
   width: 120px;
 
-  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
   
   background-repeat: no-repeat; /* Size the image correctly */
   background-size: cover;
@@ -96,7 +101,7 @@
 }
 
 #navbar-logo:hover {
-  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png"); /* Switch to orange coloured logo on hover */
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png"); /* Switch to white logo on hover */
 }
 
 @media (max-width: 500px) {
@@ -130,6 +135,10 @@
   .top-bar .dropdown .button:active,
   .top-bar .dropdown .button.active {
     margin: 0; /* Disable desktop button navbar bump fix, it causes the bump on mobile */
+  }
+
+  .hide-tag-line {
+    visibility: collapse;
   }
 }
 
