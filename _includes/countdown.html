@@ -1,28 +1,6 @@
 <!-- Use include.data in the ID as it makes it unique -->
 <span class="countdown" id="countdown-{{ include.date | replace: ":", "-" }}"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span>
 
-<style>
-  .countdown {
-    padding: 8px;
-    background-color: #333;
-
-    border-radius: 3px;
-  }
-
-  .countdown > span {
-    padding: 4px;
-    font-size: 16px;
-    color: #f9b44b;
-    background-color: #222;
-
-    border-radius: 3px;
-  }
-
-  .countdown > :not(:last-child) {
-    margin-right: 5px;
-  }
-</style>
-
 <script>
   let daysEl = document.querySelector('#countdown-{{ include.date | replace: ":", "-" }} #days'); //document.getElementById('days');
   let hoursEl = document.querySelector('#countdown-{{ include.date | replace: ":", "-" }} #hours'); //document.getElementById('hours');
