@@ -13,55 +13,6 @@ discuss:
 
 Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration.
 
-
-## Using Math: [MathJax](http://mathjax.org/) <author>Dr.MagPie</author>
-
-You can use MathJax to describe mathematical equasions and formulas. You can find full specification in [MathJax Documentation](http://docs.mathjax.org/en/latest/) but here are come samples 
-
-This code sample `$ a * b = c ^ b $` will transform into thes formula
-
-$ a * b = c ^ b $
-
-You can go full in and make some like this
-```MathJax
-$$
-\begin{aligned}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{aligned}
-$$
-```
-Which will look like this
-
-$$
-\begin{aligned}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{aligned}
-$$
-
-You can preview your formulas [here](https://www.mathjax.org/#demo)
-
 ## Using Diagrams: [Mermaid](https://mermaid-js.github.io/mermaid/#/) <author></author>
 
 You can create diagrams using Mermaid js. Please take look at full [documentation](https://mermaid-js.github.io/mermaid/#/) for more details
@@ -133,7 +84,6 @@ You can use media by just importing it in a regular markdown fascion
 
 1. SoundCloud
   - `![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny)`
-  - ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny)
 
 1. General Audio
   - `![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3)`
@@ -142,3 +92,53 @@ You can use media by just importing it in a regular markdown fascion
 1. Embeding a countdown
   - {% include countdown.html date="2021:01:01" %}
   - Where `date` is the date in year:month:day:hour:minutes:seconds, UTC
+
+
+
+## Using Math: [MathJax](http://mathjax.org/) <author>Dr.MagPie</author>
+
+You can use MathJax to describe mathematical equasions and formulas. You can find full specification in [MathJax Documentation](http://docs.mathjax.org/en/latest/) but here are come samples 
+
+This code sample `$ a * b = c ^ b $` will transform into thes formula
+
+$ a * b = c ^ b $
+
+You can go full in and make some like this
+```MathJax
+$$
+\begin{aligned}
+  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
+  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
+  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
+      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
+      \vdots & \ddots & \vdots \\
+      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
+    \end{array} \right)
+  \left( \begin{array}{c}
+      y_1 \\
+      \vdots \\
+      y_n
+    \end{array} \right)
+\end{aligned}
+$$
+```
+Which will look like this
+
+$$
+\begin{aligned}
+  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
+  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
+  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
+      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
+      \vdots & \ddots & \vdots \\
+      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
+    \end{array} \right)
+  \left( \begin{array}{c}
+      y_1 \\
+      \vdots \\
+      y_n
+    \end{array} \right)
+\end{aligned}
+$$
+
+You can preview your formulas [here](https://www.mathjax.org/#demo)
