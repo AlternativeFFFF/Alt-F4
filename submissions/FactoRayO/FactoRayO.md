@@ -21,4 +21,4 @@ After that, all other components got an upgrade too.
 In the end this resulted in a design that is significantly more compact, has improved fidelity.
 But most importantly is also easier to expand upon.
 
-[![Facto-RayO v2.0 video](https://img.youtube.com/vi/28UzqVz1r24/0.jpg)](https://www.youtube.com/watch?v=28UzqVz1r24) <- click image to play the video
+{% include youtube.html id="28UzqVz1r24" %}
