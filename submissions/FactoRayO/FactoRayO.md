@@ -4,7 +4,7 @@ Almost a year and a half ago, I released a raycasting engine to the factorio com
 But it didn't live up to my expectations from when I started the project.
 So it didn't take long before I started working on an improved version.
 
-It didn't take long before I had to pause the development for multiple months however as personal things got in the way.
+It didn't take long before I had to pause the development for multiple months, as personal things got in the way.
 I finished up my master’s degree for example.
 
 But after a few months of hiatus I started uploading my progress to [my second channel](https://www.youtube.com/channel/UCNQRKtG2pU8LGS08TFiyyAA).
