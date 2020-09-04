@@ -34,14 +34,11 @@ exclude:
   - TMP
 
 # Plugins
-gems:
-  - jekyll-paginate
-  - jekyll-seo-tag
-  - jekyll-polyglot
 plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-polyglot
+  - jekyll-spaceship
 
 # Plugin Settings
 paginate: 10
@@ -64,3 +61,38 @@ lang_from_path: true
 parallel_localization: true
 exclude_from_localization:
   ["./assets/*", "javascript", "images", "css", "README.md"]
+
+jekyll-spaceship:
+  processors:
+    - mathjax-processor
+    - mermaid-processor
+    - media-processor
+  mathjax-processor:
+    src:
+      - https://polyfill.io/v3/polyfill.min.js?features=es6
+      - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    config:
+      tex:
+        inlineMath:
+          - ["$", "$"]
+          - ['\(', '\)']
+      svg:
+        fontCache: "global"
+  mermaid-processor:
+    mode: default # mode value 'pre-fetch' for fetching image at building stage
+    css:
+      class: mermaid
+    syntax:
+      code: "mermaid!"
+    config:
+      theme: dark
+    src: https://mermaid.ink/svg/
+  media-processor:
+    default:
+      id: "media-{id}"
+      class: "media"
+      width: "80%"
+      height: 504
+      frameborder: 0
+      style: "max-width: 896px;"
+      allow: "encrypted-media; picture-in-picture"
