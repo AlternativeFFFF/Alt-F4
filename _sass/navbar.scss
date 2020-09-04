@@ -100,6 +100,11 @@
   background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png"); /* Switch to white logo on hover */
 }
 
+body:after { /* For preloading the hover image so it does not flicker on first hover */
+  display: none;
+  content: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
+}
+
 @media (max-width: 500px) {
   /* Shrink logo, gap between logo and links and the nav bar itself slightly */
 
@@ -136,9 +141,4 @@
   .hide-tag-line {
     visibility: collapse;
   }
-}
-
-body:after { /* For preloading the hover image so it does not flicker on first hover */
-  display: none;
-  content: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
 }
