@@ -94,6 +94,9 @@ p + p {
   margin-top: 16px;
 }
 
+p {
+  line-height: 1.25;
+}
 h2 > a,
 h3 > a {
   color: inherit;
@@ -189,7 +192,7 @@ a.text-center {
 ul {
   margin-top: 16px;
   margin-left: 32px;
-  list-style-image: url(/assets/GLOBAL/img/wheel-white-11px.png);
+  list-style-image: url("/assets/GLOBAL/img/wheel-white-11px.png");
 }
 
 ul + p,
