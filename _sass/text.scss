@@ -98,6 +98,15 @@ h2 > a,
 h3 > a {
   color: inherit;
 }
+.blog-post {
+  h2,
+  h3 {
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+}
 
 h2 > a:hover,
 h3 > a:hover {
