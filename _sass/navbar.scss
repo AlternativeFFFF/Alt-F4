@@ -26,6 +26,7 @@
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  user-select: none;
 }
 @media (max-width: 750px) {
   .top-bar-inner > div {
@@ -41,7 +42,7 @@
 
 .links a {
   white-space: nowrap;
-  color: white;
+  color: #aaa;
 }
 
 .links a:hover {
