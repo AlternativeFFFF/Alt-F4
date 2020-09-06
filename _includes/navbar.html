@@ -16,7 +16,7 @@
 			<div class="submenu">
 				{% for language in site.languages %}
 				<a {% if language == site.active_lang %} class="button button-green" {% else %} class="button" {% endif %}
-					href="{% if language == site.default_lang %} {{site.baseurl}}{{page.url}} {% else %} {{site.baseurl}}/{{ language }}{{page.url}} {% endif %}">{{ language }}</a>
+					href="{% if language == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ language }}{{page.url}}{% endif %}">{{ language }}</a>
 				{% endfor %}
 			</div>
 		</div>
