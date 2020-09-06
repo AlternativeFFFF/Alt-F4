@@ -2,7 +2,9 @@
 author: Names of who wrote this post [optional, recommended]
 editor: Names of who edited this post [optional]
 translator: Names of who translated this post [optional]
-image: Path to thumbnail for this ALT-F4 post (URI)
+image:
+  url: Path to thumbnail for this ALT-F4 post (URI)
+  transcription: Small transcription of the image thumbnail
 title: Title of this ALT-F4 post
 lang: en
 discuss:

@@ -22,7 +22,7 @@ jobs:
       with:
         label: impact:submission
 
-    - name: Discord notification (1/2)
+    - name: Discord notification
       if: steps.checkLabel.outputs.hasLabel
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
@@ -30,14 +30,4 @@ jobs:
         DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
       uses: Ilshidur/action-discord@0.2.0
       with:
-        args: "New pull request {{ EVENT_PAYLOAD.pull_request.number }}, created by {{ EVENT_PAYLOAD.pull_request.user.login }}."
-
-    - name: Discord notification (2/2)
-      if: steps.checkLabel.outputs.hasLabel
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SUBMISSION }}
-        DISCORD_USERNAME: 'ALT-F4 Bot'
-        DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
-      uses: Ilshidur/action-discord@0.2.0
-      with:
-        args: "{{ EVENT_PAYLOAD.pull_request.html_url }}"
+        args: "New pull request {{ EVENT_PAYLOAD.pull_request.number }}, created by {{ EVENT_PAYLOAD.pull_request.user.login }}. \n{{ EVENT_PAYLOAD.pull_request.html_url }}"
