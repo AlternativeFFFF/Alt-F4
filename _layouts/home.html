@@ -10,7 +10,7 @@ layout: default
 		{% if post.image %}
 		<div class="blog-card-thumbnail">
 			<a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
-				<img src="{{ post.image }}">
+				<img src="{{ post.image.url }}" alt="{{ post.image.transcription }}">
 				<div class="shadow-overlay"></div>
 			</a>
 		</div>
