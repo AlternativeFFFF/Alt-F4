@@ -101,7 +101,7 @@ section {
 }
 
 body {
-  line-height: 1.5;
+  line-height: 1;
 }
 
 ul {
@@ -228,4 +228,8 @@ article iframe {
   max-width: 100%;
   box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f, 2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
   border-bottom: 1px solid #222;
+}
+
+.mermaid {
+  box-shadow: none !important;
 }

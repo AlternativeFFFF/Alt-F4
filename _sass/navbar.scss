@@ -26,6 +26,7 @@
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  user-select: none;
 }
 @media (max-width: 750px) {
   .top-bar-inner > div {
@@ -41,6 +42,11 @@
 
 .links a {
   white-space: nowrap;
+  color: #aaa;
+}
+
+.links a:hover {
+  color: white;
 }
 
 .separator {
@@ -51,10 +57,6 @@
   margin-left: 8px;
   margin-right: 8px;
   color: #ccc;
-}
-
-.separator-blue {
-  color: #7dcaed;
 }
 
 .top-bar .dropdown .button {
@@ -82,7 +84,7 @@
   height: 30px; /* Size of logo image(s) */
   width: 120px;
 
-  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
   
   background-repeat: no-repeat; /* Size the image correctly */
   background-size: cover;
@@ -96,7 +98,12 @@
 }
 
 #navbar-logo:hover {
-  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png"); /* Switch to orange coloured logo on hover */
+  background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png"); /* Switch to white logo on hover */
+}
+
+body:after { /* For preloading the hover image so it does not flicker on first hover */
+  display: none;
+  content: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
 }
 
 @media (max-width: 500px) {
@@ -131,9 +138,8 @@
   .top-bar .dropdown .button.active {
     margin: 0; /* Disable desktop button navbar bump fix, it causes the bump on mobile */
   }
-}
 
-body:after { /* For preloading the hover image so it does not flicker on first hover */
-  display: none;
-  content: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
+  .hide-tag-line {
+    visibility: collapse;
+  }
 }
