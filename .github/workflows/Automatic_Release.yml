@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - release
-    paths:  
-      - '*/en/????-??-??-ALTF4-?.md'
 
 jobs:
   changes:
