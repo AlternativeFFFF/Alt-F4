@@ -30,4 +30,3 @@ jobs:
         if: contains( steps.file_changes.outputs.files_added[0] , '_posts/en/' )
         run: |
           echo 'Ladies and gentlemen, we got em.'
-but 
