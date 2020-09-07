@@ -12,6 +12,8 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Push
+        uses: actions/checkout@master
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - name: test
@@ -24,3 +26,7 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_modified}}'
           echo '${{ steps.file_changes.outputs.files_added}}'
           echo '${{ steps.file_changes.outputs.files_removed}}'
+      - name: printer
+        if: {{ steps.file_changes.outputs.files_added }}
+        run: |
+        echo 'Ladies and gentlemen, we got em. {{ EVENT_PAYLOAD.push.commits }}'
