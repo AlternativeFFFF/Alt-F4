@@ -15,4 +15,4 @@ Alt-F4 - [еженедельный блог](http://alt-f4.blog), целиком
 
 ### Авторство
 
-Этот сайт сделали при помощи Jekyll: <em>Ypetremann</em> с помощью о <em>Dr.MagPie</em>, с помощью о <em>lovely_santa</em> с помощью о <em>Therenas</em>
+Этот сайт сделали при помощи Jekyll: *Ypetremann* с помощью о *Dr.MagPie*, с помощью о *lovely_santa* с помощью о *Therenas*

@@ -15,4 +15,4 @@ After coming [full circle](https://factorio.com/blog/post/fff-360) in August 202
 
 ### Credit
 
-This website was created using Jekyll by: <em>Ypetremann</em> and <em>Dr.MagPie</em>, with the help of <em>lovely_santa</em> and <em>Therenas</em>
+This website was created using Jekyll by: *Ypetremann* and *Dr.MagPie*, with the help of *lovely_santa* and *Therenas*
