@@ -3,30 +3,58 @@ name: Automatic Release
 on:
   push:
     branches:
-      - release
+      - autorel
     paths:
-      - '_posts/en/*'
-      - '**.md'
+      - "_posts/en/*.md"
 
 jobs:
   changes:
+    name: Check for new posts
+    outputs:
+      files_added: ${{ steps.file_changes.outputs.files_added }}
+      files: ${{ steps.file_changes.outputs.files }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Push
-        uses: actions/checkout@master
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - name: test
         run: |
-          cat $HOME/files.json
-          cat $HOME/files_modified.json
-          cat $HOME/files_added.json
-          cat $HOME/files_removed.json
-          echo '${{ steps.file_changes.outputs.files }}'
-          echo '${{ steps.file_changes.outputs.files_modified }}'
-          echo '${{ steps.file_changes.outputs.files_added[0] }}'
-          echo '${{ steps.file_changes.outputs.files_removed }}'
-      - name: printer
-        if: contains( steps.file_changes.outputs.files_added[0] , '_posts/en/' )
+          echo '-------------------------------------------------------------------'
+          echo 'files         : ${{ steps.file_changes.outputs.files}}'
+          echo 'files_modified: ${{ steps.file_changes.outputs.files_modified}}'
+          echo 'files_added   : ${{ steps.file_changes.outputs.files_added}}'
+          echo 'files_removed : ${{ steps.file_changes.outputs.files_removed}}'
+      - name: release
+        if: steps.file_changes.outputs.files_added != '[]'
         run: |
-          echo 'Ladies and gentlemen, we got em.'
+          echo '-------------------------------------------------------------------'
+          echo ${{steps.file_changes.outputs.files_added[0]}}
+  release:
+    name: Release
+    if: needs.changes.outputs.files_added != '[]'
+    needs: changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          echo '-------------------------------------------------------------------'
+          echo 'files         : ${{needs.changes.outputs.files}}
+          echo 'files_added   : ${{needs.changes.outputs.files_added}}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false
+      - name: Debug Action
+        uses: hmarr/debug-action@v1.0.0
