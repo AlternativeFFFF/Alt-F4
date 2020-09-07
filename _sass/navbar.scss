@@ -115,7 +115,7 @@ body:after { /* For preloading the hover image so it does not flicker on first h
   content: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   /* Shrink logo, gap between logo and links and the nav bar itself slightly */
 
   #navbar-logo {
@@ -139,7 +139,7 @@ body:after { /* For preloading the hover image so it does not flicker on first h
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   body .container {
     padding-left: 0;
     padding-right: 0;
