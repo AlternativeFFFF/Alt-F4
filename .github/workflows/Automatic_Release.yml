@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - release
+    paths:
+      - '_posts/en/*'
+      - '**.md'
 
 jobs:
   changes:
