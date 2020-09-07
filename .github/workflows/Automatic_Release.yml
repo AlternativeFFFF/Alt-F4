@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - release
-    paths:  '_posts/en/????-??-??-ALTF4-?.md'
+    paths:  
+      - '_posts/en/????-??-??-ALTF4-?.md'
 
 jobs:
   changes:
