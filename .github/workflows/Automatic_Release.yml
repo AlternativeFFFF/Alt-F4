@@ -27,6 +27,7 @@ jobs:
           echo '${{ steps.file_changes.outputs.files_added[0] }}'
           echo '${{ steps.file_changes.outputs.files_removed }}'
       - name: printer
-        if: contains( '_posts/en/', steps.file_changes.outputs.files_added[0] )
+        if: contains( steps.file_changes.outputs.files_added[0] , '_posts/en/' )
         run: |
           echo 'Ladies and gentlemen, we got em.'
+but 
