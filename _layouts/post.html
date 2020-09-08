@@ -9,7 +9,7 @@ layout: default
 	</div>
 	{% endif %}
 	<div class="panel-inset-lighter mt0">
-		{{ content }}
+		{% include anchor_headings.html html=content beforeHeading=true anchorBody='<i class="fas fa-link fa-xs"></i>' %}
 		{% include discuss.html %}
 	</div>
 	<div class="panel-inset mb0 p4 flex flex-space-between">
