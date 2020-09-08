@@ -32,14 +32,14 @@
     <meta name="generator" content="Jekyll v4.1.1" />
     <meta property="og:title" content="Alt-F4 #2 - SPIDERTRON!!!" />
     <meta name="author" content="Lovely_Santa, Robynthedevil, Xorimuth" />
-    <meta property="og:locale" content="en" />
+    <meta property="og:locale" content="fr" />
     <meta
       name="description"
-      content="Welcome to the second issue of Alt-F4, the community-driven follow-on to the Factorio Friday Facts. And man, am I always pleasently surprised by the community. Within hours of publishing the first issue, the Discord was filled with enthusiastic people that were willing to help at all stages of the process. One thing you might have noticed is that the page you’re reading this on got a small upgrade here and there. Thanks to everyone who has been so enthusiastic about the project! But this blog is not about the blog, it’s about the game. As we all know, the devs surprised us on release day by adding Spidertron, a giant mechanical spider with freakishly stretchy legs. It’s been teased since FFF #120 (4.5 years ago), so to commemorate the occasion we want to focus on this very versatile vehicle and all the ways the community has already experimented with it. Spidertron Missed Leg Day Lovely_Santa I think I speak for the majority of the early-access community when I say that I was pleasantly surprised when I saw the release notes for version 1.0! As your friendly neighborhood mod creator, I had to take a closer look under the hood to see how spidertron is built, opening my mind so new mod ideas could start to grow. Like most fans of Arch666Angel already know, I am one of the contributors to the Angel’s mods. Since Angel’s Exploration is in a very early stage of development, I could not imagine a better place to put spidertron to good use. I will not spoil what I have brewing, instead I would rather take this moment to share some of the struggles of the development process. Let us meet Crawlertron, the Angel-branded spidertron that will join the Crawler family in Angel’s vehicles. One requirement I have for my new Crawlertron is his size. I want him to be smaller, quite a bit smaller actually. This meant I had to introduce a scaling factor to the spidertron definitions in order to be able to scale him down. As some of you fellow mod creators have surely already noticed, he has one of the largest prototypes in the game. A few hours and a few cups of deliciousness later, after defining everything with a scaling factor, I could start loading up the game to see my result. Scaling Crawlertron down (scaling factor &lt; 1) would not show me obvious mistakes in my coding, so I decided to scale him up instead (scaling factor &gt; 1), with this being the result: As you probably noticed, his legs look like tiny sticks! It’s a wonder that he hasn’t broken a leg yet! Returning to my Crawlertron leg definitions, I could not find anything wrong with them, so I chose to ask for help in the Factorio Discord modding channel. Klonan (a Wube team member, seen on this page enjoying two beers at the same time) even said that it would require some Factorio engine rewrite to allow his legs to scale correctly. In the meantime, Klonan asked me to scale him down, to see if that would work at least. Well, have a look: I guess you can spot what the issue is in this case, because it’s the same as before! We can see that not everything works directly out of the box, which can have some fun side effects. I am sure this will be fixed in a future update; in the meantime I already registered a bug report about it with the developers. I may come back in a future update to showcase what Crawlertron has become, and how his legs have healed. Mod Spotlight: Spidertron Engineer Robynthedevil A synthetic race of arthropod replicators plagues this galaxy. A single member of the silicon-based life form can convert an entire planet’s resources into grinding metal and searing heat, dedicated to one singular purpose: creating more. The robots will slaughter the local flora and fauna wherever they dare to wander, and methodically build increasingly complex machinery and more powerful weapons. The process will continue without end until they are finally capable of launching uncountable numbers of their bastard clones to the stars; seeking out rich, unsuspecting planets. The spidertron is unfeeling, unneeding, and unyielding. They do not sleep, they do not show mercy. Their factory must grow. The storyline of Factorio as we know it is similar to many familiar base-building/survival games today: The Engineer crashes onto an unknown world and must survive until they can progress their technology enough to escape (read: shoot lots of rockets). This is an engaging enough idea, but stays mostly on the edges of the mind as we engage in the core Factorio gameplay. Spidertron Engineer simply replaces The Engineer we all know and love with a cold spidertron robot from the very start of the game. There are technologies along the way that upgrade your character (i.e. spider) and replace the armour upgrades from vanilla. Even this relatively small change really gives the game a different feel. With this mod, I find I am able to engage in the greater universe of the game way more readily. I know it won’t be for everyone (especially arachnophobes) but for me, it takes a minimal part of the game and gives it a twist that ultimately makes the premise and endgame very engaging. Under the hood: Spidertron Weapon Switcher Xorimuth Spidertron Weapon Switcher is a mod that allows spidertron to fire any kind of weapon. In this post, I will be talking about how it works behind the scenes. But first, a peek at how awesome this looks in action: If you’ve never written a mod before, you may not know that many things in Factorio cannot be changed during the game, for example the range of a gun, the graphics of a machine and, importantly for me, the weapon slots that a vehicle has. Of course, the weapons that spidertron has can be changed by mods, but only by creating a new ‘type’ of spidertron during the loading phase of the game. The way that I got around this limitation is by creating five ‘types’ of spidertron, one for each type of weapon. So, when you switch weapons in-game, what the mod actually does is: Save all relevant data about the spidertron, such as its inventory contents and position Delete the current spidertron Create a new spidertron with the next weapon in its place Insert all the saved data into the new spidertron All of these steps happen within a single tick, which makes it appear (almost) seamless to the player. (Some side effects, such as all remotes becoming disconnected from the spidertron, have to be mitigated with further work that is outside the scope of this blog.) That all works great for transferring data about the spidertron but there is one thing that makes no sense to transfer: ammo. If you have the shotgun enabled with 300 shotgun shells loaded and you switch to the flamethrower, the shotgun shells should not (and cannot) be transferred into the flamethrower ammo slots. I get around this by having a table for each spidertron so in step 1 the current ammo inventory is stored in the table under the key “shotgun”, and in step 4 the ammo under the key “flamethrower” is retrieved and placed into the new spidertron’s ammo slots. When the player picks up the spidertron, all the ammo for that spidertron is retrieved and placed in the player’s inventory, or spilled on the ground if there is no space left in the inventory. Contributing Since last week, the contribution process has been massively refined (as in, there actually is a proper proceedure for it now). If you’re familiar with GitHub, take a look at the project repo which explains how you can contribute. If you’re not, don’t despair, because the Discord and its members are always there to help. Just join up and ask around! If you’re wondering about what to write about, check out the first issue, it has advice for you at the bottom. I want to give a special thank you to Thaui, Dr.MagPie, xthexder, Lovely_Santa and Conor for being the brains behind this whole operation, getting a fantastic website up and running within a day or two. Also, thanks to Landmine, we now have a logo and stuff!"
+      content="Bienvenue dans ce second numéro de Alt-F4, la succession (proposée par la communauté) aux Factorio Friday Facts. Encore une fois j’ai été très agréablement surpris par la communauté : à peine quelques heures après la parution du premier numéro, le Discord était rempli de personnes désireuses de participer aux diverses étapes de la publication. Vous avez peut-être remarqué, par exemple, que la page web sur laquelle vous vous trouvez actuellement a reçu une petite amélioration. Je tiens à remercier tout ceux qui ont réservé un accueil si positif à ce projet. Mais ce blog n’a pas vocation à traiter de lui-même, mais plutôt du jeu. Comme nous le savons tous, les développeurs nous ont réservé une surprise pour la sortie du jeu : le Spidertron, une araignée mécanique géante dotée de jambes incroyablement extensibles, dont nous avions déjà eu un avant-goût, il y a quatre ans et demi à l’occasion du FFF #120. Pour célébrer cet ajout, nous avons décidé de faire la part belle, dans ce numéro, à ce véhicule versatile et à toutes les expériences d’ores et déjà imaginées par la communauté pour le tester. Spidertron a oublié de se muscler les jambes Lovely_Santa Je pense parler au nom de la majorité des personnes qui ont suivi le jeu pendant toute sa phase d’accès anticipé, en disant que j’ai été agréablement surpris en voyant ce que nous réservait la version 1.0 ! Étant moi-même créateur de mods, j’ai eu envie de jeter un oeil sous le capot pour voir comment le spidertron fonctionnait, espérant ainsi élargir mes horizons vers de nouvelles idées de mod. La plupart des fans de Arch666Angel le savent déjà, je suis un des contributeurs du mod Angel. Depuis le tout début du développement d’Angel’s Exploration je suis persuadé que le spidertron y trouvera sa place. Je ne vais vous gâcher ici la surprise de ce que je prépare, mais plutôt partager avec vous certaines difficultés rencontrées pendant le processus de développement. Voici Crawlertron, la version Angel du spidertron qui rejoindra le groupe des Crawler parmis les véhicules fournis par Angel. J’aimerais que le nouveau Crawlertron soit plus petit, notablement plus petit. Je devais donc ajouter à la définition du spidertron un facteur d’agrandissement, qui me permettrait alors de le réduire. Ceux d’entre vous ayant déjà codé des mods l’ont déjà sûrement remarqué : c’est le plus grand des prototype du jeu. Après avoir tout défini avec ce facteur d’agrandissement (quelques heures et tasses de cafés plus tard), j’ai réussi à faire charger le jeu pour admirer le fruit de mon travail : une diminution du Crawlertron (facteur d’agrandissement &lt; 1) ne mit pas en avant d’aberration évidente dans mon code, et j’ai donc décidé de l’agrandir (facteur d’agrandissement &gt; 1), ci-dessous le résultat : Vous l’aurez remarqué, ses jambes ont l’air d’être de petits bâtonnets ! C’est un miracle qu’il ne se soit pas cassé une jambe. Après inspection de la définition des jambes du Crawlertron, je n’ai rien trouvé de louche, et ai donc décidé d’appeler à l’aide sur le groupe discord des modders de factorio. Klonan (qui fait parti de Wube, et que vous pouvez admirer sur this page une bière dans chaque main) m’a affirmé qu’il faudrait modifier le noyau de Factorio pour pouvoir modifier correctement l’apparence des jambes du spidertron. Klonan m’a d’ailleurs demandé de le diminuer pour voir si cela fonctionnait correctement, je vous laisse admirer le résultat : Je pense que vous aurez remarqué ici aussi le problème, puisque c’est le même que précédemment. On peut voir que tout ne fonctionne pas directement, ce qui a de bons côtés puisque certains effets de bord sont amusants. Je suis certain que ce problème sera résolu dans une prochaine mise à jour, en attendant j’ai soumis aux développeurs un rapport de bug. Il est possible que je reprenne la parole ici dans le futur pour vous montrer ce que devient le Crawlertron, et surtout si j’ai pu soigner ses jambes. Mod Spotlight: Spidertron Engineer Robynthedevil Cette galaxie est affligée par une race de réplicateurs arthropodes composés de silicium. Un seul de leurs membres suffit à transformer la totalité des ressources d’une planète en vue de se répliquer, créant au passage un bruit de métal grinçant et une chaleur torride. Ces robots massacrent la faune et la flore locales, partout où ceux-ci osent s’aventurer et construisent, sans jamais fléchir, des machines d’une complexité et des armes d’une létalité sans cesse démultipliées. Ce processus ne prendra fin que lorsqu’ils seront en mesure de déployer, parmi les étoiles, d’innombrables clones d’eux-mêmes partant à la recherche de nouvelles planètes jusqu’alors riches et sans méfiance. Les spidertrons ne ressentent rien, n’ont besoin de rien, ne dorment pas, ne cèdent rien et ne s’arrêteront pas. Leur usine doit, pour toujours et à jamais, grandir. Le scénario de Factorio tel que nous le connaissons est semblable à celui de nombreux autres jeux de construction ou de survie : l’Ingénieur‧e échoue sur un monde inconnu et doit survivre jusqu’à avoir assez progressé dans l’arbre de technologie pour pouvoir s’échapper (dans notre cas : déployer de nombreuses fusées). Cette idée bien qu’assez engageante au début ne subsiste plus qu’au second plan une fois que nous sommes réellement au coeur du jeu. Le mod Spidertron Engineer se contente de remplacer l’Ingénieur‧e, que nous connaissons et aimons tous, par un Spidertron froid et sans coeur dès le début du jeu. Vous trouverez, tout au long de la partie, des technologies permettant d’améliorer votre personnage (i.e. une araignée) et remplaçant les améliorations d’armure du jeu de base. Ce changement, bien que mineur, transforme complètement l’expérience d’une partie de Factorio. Ce mod a permis d’augmenter mon implication dans l’univers étendu du jeu. Je me doute que ce mod ne plaira pas à tout le monde (notamment aux arachnophobes) toutefois cette transformation d’une partie minime du jeu, par l’ajout de ce petit rebondissement, rend les prémisses et la conclusion d’une partie beaucoup plus intéressantes. Un oeil sous le capot: Spidertron Weapon Switcher Xorimuth Le mod Spidertron Weapon Switcher permet de faire utiliser n’importe quel type d’arme au spidertron. Je vais profiter de cette publication pour vous montrer comment un tel objectif a été atteint, mais commençons toutefois par admirer le résultat : Si vous n’avez jamais écrit de mod, vous ne savez certainement pas que la plupart des choses ne peut pas être modifiée dynamiquement pendant que le jeu s’exécute, pour ne citer que quelques exemples : la portée d’une arme, les graphiques d’une machine et ce qui me concerne plus : les différents emplacements pour les armes d’un véhicule. Bien sûr, les armes du spidertron peuvent être modifiées par des mods, mais seulement en créant un nouveau ‘type’ de spidertron durant le chargement du jeu. Afin de contourner cette limitation j’ai créé cinq ‘types’ de spidertron, un pour chaque type d’arme, ainsi lorsque vous changez d’arme en jeu le mod exécute les étapes suivantes: Sauvegarde de toutes les informations importantes du spidertron, par exemple son inventaire et sa position Suppression du spidertron Création d’un nouveau spidertron avec l’arme suivante en lieu et place de l’ancien Insertion de toutes les informations précédemment sauvegardées. Toutes ces étapes ont lieu en un simple tick, de manière (presque) transparente pour le joueur. (Il a fallu résoudre plusieurs effets de bords, par exemple la déconnexion entre les télécommandes et les spidertrons, mais ceci nous écarte du cadre de ce blog.) Tout ceci fonctionne parfaitement pour transférer les données d’un spidertron au suivant, toutefois cela ne fait aucun sens de transférer les munitions, en effet si le fusil à pompe est sélectionné et chargé avec 300 cartouches et que le joueur change pour le lance-flammes, les cartouches ne devraient pas (et ne peuvent d’ailleurs pas) être transférées dans l’emplacement de munitions du lance-flammes. Je contourne ce problème en sauvegardant un tableau pour chaque spidertron, ainsi dans l’étape 1. l’inventaire de munitions est sauvegardé dans le tableau sous l’entrée “fusil à pompe”, et dans l’étape 4., la valeur sous l’entrée “lance-flammes” est récupérée et placée dans l’emplacement des munitions. Quand le joueur reprend le spidertron, toutes les munitions de ce spidertron sont replacées dans l’inventaire du joueur, ou sur le sol en cas de manque de place. Contribuer Depuis la semaine dernière, le processus de contribution s’est grandement précisé (en fait, il y a maintenant un processus ce qui n’était pas le cas la semaine dernière). Si vous connaissez GitHub, vous pouvez jeter un oeil sur le dépôt du projet, vous y trouverez des explications sur les manières de contribuer; dans le cas contraire, ne perdez pas espoir, en effet le Discord et ses membres sont là pour vous aider. Vous avez juste à vous connecter et à demander. Si vous vous demandez ce dont vous pouvez parler, vous trouverez des conseils en bas de la première publication. Je tenais à remercier tout particulièrement Thaui, Dr.MagPie, xthexder, Lovely_Santa et Conor pour avoir été les cerveaux derrière cette opération, et pour avoir déployé un superbe site web en un jour ou deux. Je remercie aussi Landmine grâce à qui nous avons maintenant un logo et plus !"
     />
     <meta
       property="og:description"
-      content="Welcome to the second issue of Alt-F4, the community-driven follow-on to the Factorio Friday Facts. And man, am I always pleasently surprised by the community. Within hours of publishing the first issue, the Discord was filled with enthusiastic people that were willing to help at all stages of the process. One thing you might have noticed is that the page you’re reading this on got a small upgrade here and there. Thanks to everyone who has been so enthusiastic about the project! But this blog is not about the blog, it’s about the game. As we all know, the devs surprised us on release day by adding Spidertron, a giant mechanical spider with freakishly stretchy legs. It’s been teased since FFF #120 (4.5 years ago), so to commemorate the occasion we want to focus on this very versatile vehicle and all the ways the community has already experimented with it. Spidertron Missed Leg Day Lovely_Santa I think I speak for the majority of the early-access community when I say that I was pleasantly surprised when I saw the release notes for version 1.0! As your friendly neighborhood mod creator, I had to take a closer look under the hood to see how spidertron is built, opening my mind so new mod ideas could start to grow. Like most fans of Arch666Angel already know, I am one of the contributors to the Angel’s mods. Since Angel’s Exploration is in a very early stage of development, I could not imagine a better place to put spidertron to good use. I will not spoil what I have brewing, instead I would rather take this moment to share some of the struggles of the development process. Let us meet Crawlertron, the Angel-branded spidertron that will join the Crawler family in Angel’s vehicles. One requirement I have for my new Crawlertron is his size. I want him to be smaller, quite a bit smaller actually. This meant I had to introduce a scaling factor to the spidertron definitions in order to be able to scale him down. As some of you fellow mod creators have surely already noticed, he has one of the largest prototypes in the game. A few hours and a few cups of deliciousness later, after defining everything with a scaling factor, I could start loading up the game to see my result. Scaling Crawlertron down (scaling factor &lt; 1) would not show me obvious mistakes in my coding, so I decided to scale him up instead (scaling factor &gt; 1), with this being the result: As you probably noticed, his legs look like tiny sticks! It’s a wonder that he hasn’t broken a leg yet! Returning to my Crawlertron leg definitions, I could not find anything wrong with them, so I chose to ask for help in the Factorio Discord modding channel. Klonan (a Wube team member, seen on this page enjoying two beers at the same time) even said that it would require some Factorio engine rewrite to allow his legs to scale correctly. In the meantime, Klonan asked me to scale him down, to see if that would work at least. Well, have a look: I guess you can spot what the issue is in this case, because it’s the same as before! We can see that not everything works directly out of the box, which can have some fun side effects. I am sure this will be fixed in a future update; in the meantime I already registered a bug report about it with the developers. I may come back in a future update to showcase what Crawlertron has become, and how his legs have healed. Mod Spotlight: Spidertron Engineer Robynthedevil A synthetic race of arthropod replicators plagues this galaxy. A single member of the silicon-based life form can convert an entire planet’s resources into grinding metal and searing heat, dedicated to one singular purpose: creating more. The robots will slaughter the local flora and fauna wherever they dare to wander, and methodically build increasingly complex machinery and more powerful weapons. The process will continue without end until they are finally capable of launching uncountable numbers of their bastard clones to the stars; seeking out rich, unsuspecting planets. The spidertron is unfeeling, unneeding, and unyielding. They do not sleep, they do not show mercy. Their factory must grow. The storyline of Factorio as we know it is similar to many familiar base-building/survival games today: The Engineer crashes onto an unknown world and must survive until they can progress their technology enough to escape (read: shoot lots of rockets). This is an engaging enough idea, but stays mostly on the edges of the mind as we engage in the core Factorio gameplay. Spidertron Engineer simply replaces The Engineer we all know and love with a cold spidertron robot from the very start of the game. There are technologies along the way that upgrade your character (i.e. spider) and replace the armour upgrades from vanilla. Even this relatively small change really gives the game a different feel. With this mod, I find I am able to engage in the greater universe of the game way more readily. I know it won’t be for everyone (especially arachnophobes) but for me, it takes a minimal part of the game and gives it a twist that ultimately makes the premise and endgame very engaging. Under the hood: Spidertron Weapon Switcher Xorimuth Spidertron Weapon Switcher is a mod that allows spidertron to fire any kind of weapon. In this post, I will be talking about how it works behind the scenes. But first, a peek at how awesome this looks in action: If you’ve never written a mod before, you may not know that many things in Factorio cannot be changed during the game, for example the range of a gun, the graphics of a machine and, importantly for me, the weapon slots that a vehicle has. Of course, the weapons that spidertron has can be changed by mods, but only by creating a new ‘type’ of spidertron during the loading phase of the game. The way that I got around this limitation is by creating five ‘types’ of spidertron, one for each type of weapon. So, when you switch weapons in-game, what the mod actually does is: Save all relevant data about the spidertron, such as its inventory contents and position Delete the current spidertron Create a new spidertron with the next weapon in its place Insert all the saved data into the new spidertron All of these steps happen within a single tick, which makes it appear (almost) seamless to the player. (Some side effects, such as all remotes becoming disconnected from the spidertron, have to be mitigated with further work that is outside the scope of this blog.) That all works great for transferring data about the spidertron but there is one thing that makes no sense to transfer: ammo. If you have the shotgun enabled with 300 shotgun shells loaded and you switch to the flamethrower, the shotgun shells should not (and cannot) be transferred into the flamethrower ammo slots. I get around this by having a table for each spidertron so in step 1 the current ammo inventory is stored in the table under the key “shotgun”, and in step 4 the ammo under the key “flamethrower” is retrieved and placed into the new spidertron’s ammo slots. When the player picks up the spidertron, all the ammo for that spidertron is retrieved and placed in the player’s inventory, or spilled on the ground if there is no space left in the inventory. Contributing Since last week, the contribution process has been massively refined (as in, there actually is a proper proceedure for it now). If you’re familiar with GitHub, take a look at the project repo which explains how you can contribute. If you’re not, don’t despair, because the Discord and its members are always there to help. Just join up and ask around! If you’re wondering about what to write about, check out the first issue, it has advice for you at the bottom. I want to give a special thank you to Thaui, Dr.MagPie, xthexder, Lovely_Santa and Conor for being the brains behind this whole operation, getting a fantastic website up and running within a day or two. Also, thanks to Landmine, we now have a logo and stuff!"
+      content="Bienvenue dans ce second numéro de Alt-F4, la succession (proposée par la communauté) aux Factorio Friday Facts. Encore une fois j’ai été très agréablement surpris par la communauté : à peine quelques heures après la parution du premier numéro, le Discord était rempli de personnes désireuses de participer aux diverses étapes de la publication. Vous avez peut-être remarqué, par exemple, que la page web sur laquelle vous vous trouvez actuellement a reçu une petite amélioration. Je tiens à remercier tout ceux qui ont réservé un accueil si positif à ce projet. Mais ce blog n’a pas vocation à traiter de lui-même, mais plutôt du jeu. Comme nous le savons tous, les développeurs nous ont réservé une surprise pour la sortie du jeu : le Spidertron, une araignée mécanique géante dotée de jambes incroyablement extensibles, dont nous avions déjà eu un avant-goût, il y a quatre ans et demi à l’occasion du FFF #120. Pour célébrer cet ajout, nous avons décidé de faire la part belle, dans ce numéro, à ce véhicule versatile et à toutes les expériences d’ores et déjà imaginées par la communauté pour le tester. Spidertron a oublié de se muscler les jambes Lovely_Santa Je pense parler au nom de la majorité des personnes qui ont suivi le jeu pendant toute sa phase d’accès anticipé, en disant que j’ai été agréablement surpris en voyant ce que nous réservait la version 1.0 ! Étant moi-même créateur de mods, j’ai eu envie de jeter un oeil sous le capot pour voir comment le spidertron fonctionnait, espérant ainsi élargir mes horizons vers de nouvelles idées de mod. La plupart des fans de Arch666Angel le savent déjà, je suis un des contributeurs du mod Angel. Depuis le tout début du développement d’Angel’s Exploration je suis persuadé que le spidertron y trouvera sa place. Je ne vais vous gâcher ici la surprise de ce que je prépare, mais plutôt partager avec vous certaines difficultés rencontrées pendant le processus de développement. Voici Crawlertron, la version Angel du spidertron qui rejoindra le groupe des Crawler parmis les véhicules fournis par Angel. J’aimerais que le nouveau Crawlertron soit plus petit, notablement plus petit. Je devais donc ajouter à la définition du spidertron un facteur d’agrandissement, qui me permettrait alors de le réduire. Ceux d’entre vous ayant déjà codé des mods l’ont déjà sûrement remarqué : c’est le plus grand des prototype du jeu. Après avoir tout défini avec ce facteur d’agrandissement (quelques heures et tasses de cafés plus tard), j’ai réussi à faire charger le jeu pour admirer le fruit de mon travail : une diminution du Crawlertron (facteur d’agrandissement &lt; 1) ne mit pas en avant d’aberration évidente dans mon code, et j’ai donc décidé de l’agrandir (facteur d’agrandissement &gt; 1), ci-dessous le résultat : Vous l’aurez remarqué, ses jambes ont l’air d’être de petits bâtonnets ! C’est un miracle qu’il ne se soit pas cassé une jambe. Après inspection de la définition des jambes du Crawlertron, je n’ai rien trouvé de louche, et ai donc décidé d’appeler à l’aide sur le groupe discord des modders de factorio. Klonan (qui fait parti de Wube, et que vous pouvez admirer sur this page une bière dans chaque main) m’a affirmé qu’il faudrait modifier le noyau de Factorio pour pouvoir modifier correctement l’apparence des jambes du spidertron. Klonan m’a d’ailleurs demandé de le diminuer pour voir si cela fonctionnait correctement, je vous laisse admirer le résultat : Je pense que vous aurez remarqué ici aussi le problème, puisque c’est le même que précédemment. On peut voir que tout ne fonctionne pas directement, ce qui a de bons côtés puisque certains effets de bord sont amusants. Je suis certain que ce problème sera résolu dans une prochaine mise à jour, en attendant j’ai soumis aux développeurs un rapport de bug. Il est possible que je reprenne la parole ici dans le futur pour vous montrer ce que devient le Crawlertron, et surtout si j’ai pu soigner ses jambes. Mod Spotlight: Spidertron Engineer Robynthedevil Cette galaxie est affligée par une race de réplicateurs arthropodes composés de silicium. Un seul de leurs membres suffit à transformer la totalité des ressources d’une planète en vue de se répliquer, créant au passage un bruit de métal grinçant et une chaleur torride. Ces robots massacrent la faune et la flore locales, partout où ceux-ci osent s’aventurer et construisent, sans jamais fléchir, des machines d’une complexité et des armes d’une létalité sans cesse démultipliées. Ce processus ne prendra fin que lorsqu’ils seront en mesure de déployer, parmi les étoiles, d’innombrables clones d’eux-mêmes partant à la recherche de nouvelles planètes jusqu’alors riches et sans méfiance. Les spidertrons ne ressentent rien, n’ont besoin de rien, ne dorment pas, ne cèdent rien et ne s’arrêteront pas. Leur usine doit, pour toujours et à jamais, grandir. Le scénario de Factorio tel que nous le connaissons est semblable à celui de nombreux autres jeux de construction ou de survie : l’Ingénieur‧e échoue sur un monde inconnu et doit survivre jusqu’à avoir assez progressé dans l’arbre de technologie pour pouvoir s’échapper (dans notre cas : déployer de nombreuses fusées). Cette idée bien qu’assez engageante au début ne subsiste plus qu’au second plan une fois que nous sommes réellement au coeur du jeu. Le mod Spidertron Engineer se contente de remplacer l’Ingénieur‧e, que nous connaissons et aimons tous, par un Spidertron froid et sans coeur dès le début du jeu. Vous trouverez, tout au long de la partie, des technologies permettant d’améliorer votre personnage (i.e. une araignée) et remplaçant les améliorations d’armure du jeu de base. Ce changement, bien que mineur, transforme complètement l’expérience d’une partie de Factorio. Ce mod a permis d’augmenter mon implication dans l’univers étendu du jeu. Je me doute que ce mod ne plaira pas à tout le monde (notamment aux arachnophobes) toutefois cette transformation d’une partie minime du jeu, par l’ajout de ce petit rebondissement, rend les prémisses et la conclusion d’une partie beaucoup plus intéressantes. Un oeil sous le capot: Spidertron Weapon Switcher Xorimuth Le mod Spidertron Weapon Switcher permet de faire utiliser n’importe quel type d’arme au spidertron. Je vais profiter de cette publication pour vous montrer comment un tel objectif a été atteint, mais commençons toutefois par admirer le résultat : Si vous n’avez jamais écrit de mod, vous ne savez certainement pas que la plupart des choses ne peut pas être modifiée dynamiquement pendant que le jeu s’exécute, pour ne citer que quelques exemples : la portée d’une arme, les graphiques d’une machine et ce qui me concerne plus : les différents emplacements pour les armes d’un véhicule. Bien sûr, les armes du spidertron peuvent être modifiées par des mods, mais seulement en créant un nouveau ‘type’ de spidertron durant le chargement du jeu. Afin de contourner cette limitation j’ai créé cinq ‘types’ de spidertron, un pour chaque type d’arme, ainsi lorsque vous changez d’arme en jeu le mod exécute les étapes suivantes: Sauvegarde de toutes les informations importantes du spidertron, par exemple son inventaire et sa position Suppression du spidertron Création d’un nouveau spidertron avec l’arme suivante en lieu et place de l’ancien Insertion de toutes les informations précédemment sauvegardées. Toutes ces étapes ont lieu en un simple tick, de manière (presque) transparente pour le joueur. (Il a fallu résoudre plusieurs effets de bords, par exemple la déconnexion entre les télécommandes et les spidertrons, mais ceci nous écarte du cadre de ce blog.) Tout ceci fonctionne parfaitement pour transférer les données d’un spidertron au suivant, toutefois cela ne fait aucun sens de transférer les munitions, en effet si le fusil à pompe est sélectionné et chargé avec 300 cartouches et que le joueur change pour le lance-flammes, les cartouches ne devraient pas (et ne peuvent d’ailleurs pas) être transférées dans l’emplacement de munitions du lance-flammes. Je contourne ce problème en sauvegardant un tableau pour chaque spidertron, ainsi dans l’étape 1. l’inventaire de munitions est sauvegardé dans le tableau sous l’entrée “fusil à pompe”, et dans l’étape 4., la valeur sous l’entrée “lance-flammes” est récupérée et placée dans l’emplacement des munitions. Quand le joueur reprend le spidertron, toutes les munitions de ce spidertron sont replacées dans l’inventaire du joueur, ou sur le sol en cas de manque de place. Contribuer Depuis la semaine dernière, le processus de contribution s’est grandement précisé (en fait, il y a maintenant un processus ce qui n’était pas le cas la semaine dernière). Si vous connaissez GitHub, vous pouvez jeter un oeil sur le dépôt du projet, vous y trouverez des explications sur les manières de contribuer; dans le cas contraire, ne perdez pas espoir, en effet le Discord et ses membres sont là pour vous aider. Vous avez juste à vous connecter et à demander. Si vous vous demandez ce dont vous pouvez parler, vous trouverez des conseils en bas de la première publication. Je tenais à remercier tout particulièrement Thaui, Dr.MagPie, xthexder, Lovely_Santa et Conor pour avoir été les cerveaux derrière cette opération, et pour avoir déployé un superbe site web en un jour ou deux. Je remercie aussi Landmine grâce à qui nous avons maintenant un logo et plus !"
     />
     <link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-2/" />
     <meta property="og:url" content="https://alt-f4.blog/ALTF4-2/" />
@@ -57,7 +57,7 @@
         "headline": "Alt-F4 #2 - SPIDERTRON!!!",
         "dateModified": "2020-08-28T00:00:00+00:00",
         "datePublished": "2020-08-28T00:00:00+00:00",
-        "description": "Welcome to the second issue of Alt-F4, the community-driven follow-on to the Factorio Friday Facts. And man, am I always pleasently surprised by the community. Within hours of publishing the first issue, the Discord was filled with enthusiastic people that were willing to help at all stages of the process. One thing you might have noticed is that the page you’re reading this on got a small upgrade here and there. Thanks to everyone who has been so enthusiastic about the project! But this blog is not about the blog, it’s about the game. As we all know, the devs surprised us on release day by adding Spidertron, a giant mechanical spider with freakishly stretchy legs. It’s been teased since FFF #120 (4.5 years ago), so to commemorate the occasion we want to focus on this very versatile vehicle and all the ways the community has already experimented with it. Spidertron Missed Leg Day Lovely_Santa I think I speak for the majority of the early-access community when I say that I was pleasantly surprised when I saw the release notes for version 1.0! As your friendly neighborhood mod creator, I had to take a closer look under the hood to see how spidertron is built, opening my mind so new mod ideas could start to grow. Like most fans of Arch666Angel already know, I am one of the contributors to the Angel’s mods. Since Angel’s Exploration is in a very early stage of development, I could not imagine a better place to put spidertron to good use. I will not spoil what I have brewing, instead I would rather take this moment to share some of the struggles of the development process. Let us meet Crawlertron, the Angel-branded spidertron that will join the Crawler family in Angel’s vehicles. One requirement I have for my new Crawlertron is his size. I want him to be smaller, quite a bit smaller actually. This meant I had to introduce a scaling factor to the spidertron definitions in order to be able to scale him down. As some of you fellow mod creators have surely already noticed, he has one of the largest prototypes in the game. A few hours and a few cups of deliciousness later, after defining everything with a scaling factor, I could start loading up the game to see my result. Scaling Crawlertron down (scaling factor &lt; 1) would not show me obvious mistakes in my coding, so I decided to scale him up instead (scaling factor &gt; 1), with this being the result: As you probably noticed, his legs look like tiny sticks! It’s a wonder that he hasn’t broken a leg yet! Returning to my Crawlertron leg definitions, I could not find anything wrong with them, so I chose to ask for help in the Factorio Discord modding channel. Klonan (a Wube team member, seen on this page enjoying two beers at the same time) even said that it would require some Factorio engine rewrite to allow his legs to scale correctly. In the meantime, Klonan asked me to scale him down, to see if that would work at least. Well, have a look: I guess you can spot what the issue is in this case, because it’s the same as before! We can see that not everything works directly out of the box, which can have some fun side effects. I am sure this will be fixed in a future update; in the meantime I already registered a bug report about it with the developers. I may come back in a future update to showcase what Crawlertron has become, and how his legs have healed. Mod Spotlight: Spidertron Engineer Robynthedevil A synthetic race of arthropod replicators plagues this galaxy. A single member of the silicon-based life form can convert an entire planet’s resources into grinding metal and searing heat, dedicated to one singular purpose: creating more. The robots will slaughter the local flora and fauna wherever they dare to wander, and methodically build increasingly complex machinery and more powerful weapons. The process will continue without end until they are finally capable of launching uncountable numbers of their bastard clones to the stars; seeking out rich, unsuspecting planets. The spidertron is unfeeling, unneeding, and unyielding. They do not sleep, they do not show mercy. Their factory must grow. The storyline of Factorio as we know it is similar to many familiar base-building/survival games today: The Engineer crashes onto an unknown world and must survive until they can progress their technology enough to escape (read: shoot lots of rockets). This is an engaging enough idea, but stays mostly on the edges of the mind as we engage in the core Factorio gameplay. Spidertron Engineer simply replaces The Engineer we all know and love with a cold spidertron robot from the very start of the game. There are technologies along the way that upgrade your character (i.e. spider) and replace the armour upgrades from vanilla. Even this relatively small change really gives the game a different feel. With this mod, I find I am able to engage in the greater universe of the game way more readily. I know it won’t be for everyone (especially arachnophobes) but for me, it takes a minimal part of the game and gives it a twist that ultimately makes the premise and endgame very engaging. Under the hood: Spidertron Weapon Switcher Xorimuth Spidertron Weapon Switcher is a mod that allows spidertron to fire any kind of weapon. In this post, I will be talking about how it works behind the scenes. But first, a peek at how awesome this looks in action: If you’ve never written a mod before, you may not know that many things in Factorio cannot be changed during the game, for example the range of a gun, the graphics of a machine and, importantly for me, the weapon slots that a vehicle has. Of course, the weapons that spidertron has can be changed by mods, but only by creating a new ‘type’ of spidertron during the loading phase of the game. The way that I got around this limitation is by creating five ‘types’ of spidertron, one for each type of weapon. So, when you switch weapons in-game, what the mod actually does is: Save all relevant data about the spidertron, such as its inventory contents and position Delete the current spidertron Create a new spidertron with the next weapon in its place Insert all the saved data into the new spidertron All of these steps happen within a single tick, which makes it appear (almost) seamless to the player. (Some side effects, such as all remotes becoming disconnected from the spidertron, have to be mitigated with further work that is outside the scope of this blog.) That all works great for transferring data about the spidertron but there is one thing that makes no sense to transfer: ammo. If you have the shotgun enabled with 300 shotgun shells loaded and you switch to the flamethrower, the shotgun shells should not (and cannot) be transferred into the flamethrower ammo slots. I get around this by having a table for each spidertron so in step 1 the current ammo inventory is stored in the table under the key “shotgun”, and in step 4 the ammo under the key “flamethrower” is retrieved and placed into the new spidertron’s ammo slots. When the player picks up the spidertron, all the ammo for that spidertron is retrieved and placed in the player’s inventory, or spilled on the ground if there is no space left in the inventory. Contributing Since last week, the contribution process has been massively refined (as in, there actually is a proper proceedure for it now). If you’re familiar with GitHub, take a look at the project repo which explains how you can contribute. If you’re not, don’t despair, because the Discord and its members are always there to help. Just join up and ask around! If you’re wondering about what to write about, check out the first issue, it has advice for you at the bottom. I want to give a special thank you to Thaui, Dr.MagPie, xthexder, Lovely_Santa and Conor for being the brains behind this whole operation, getting a fantastic website up and running within a day or two. Also, thanks to Landmine, we now have a logo and stuff!",
+        "description": "Bienvenue dans ce second numéro de Alt-F4, la succession (proposée par la communauté) aux Factorio Friday Facts. Encore une fois j’ai été très agréablement surpris par la communauté : à peine quelques heures après la parution du premier numéro, le Discord était rempli de personnes désireuses de participer aux diverses étapes de la publication. Vous avez peut-être remarqué, par exemple, que la page web sur laquelle vous vous trouvez actuellement a reçu une petite amélioration. Je tiens à remercier tout ceux qui ont réservé un accueil si positif à ce projet. Mais ce blog n’a pas vocation à traiter de lui-même, mais plutôt du jeu. Comme nous le savons tous, les développeurs nous ont réservé une surprise pour la sortie du jeu : le Spidertron, une araignée mécanique géante dotée de jambes incroyablement extensibles, dont nous avions déjà eu un avant-goût, il y a quatre ans et demi à l’occasion du FFF #120. Pour célébrer cet ajout, nous avons décidé de faire la part belle, dans ce numéro, à ce véhicule versatile et à toutes les expériences d’ores et déjà imaginées par la communauté pour le tester. Spidertron a oublié de se muscler les jambes Lovely_Santa Je pense parler au nom de la majorité des personnes qui ont suivi le jeu pendant toute sa phase d’accès anticipé, en disant que j’ai été agréablement surpris en voyant ce que nous réservait la version 1.0 ! Étant moi-même créateur de mods, j’ai eu envie de jeter un oeil sous le capot pour voir comment le spidertron fonctionnait, espérant ainsi élargir mes horizons vers de nouvelles idées de mod. La plupart des fans de Arch666Angel le savent déjà, je suis un des contributeurs du mod Angel. Depuis le tout début du développement d’Angel’s Exploration je suis persuadé que le spidertron y trouvera sa place. Je ne vais vous gâcher ici la surprise de ce que je prépare, mais plutôt partager avec vous certaines difficultés rencontrées pendant le processus de développement. Voici Crawlertron, la version Angel du spidertron qui rejoindra le groupe des Crawler parmis les véhicules fournis par Angel. J’aimerais que le nouveau Crawlertron soit plus petit, notablement plus petit. Je devais donc ajouter à la définition du spidertron un facteur d’agrandissement, qui me permettrait alors de le réduire. Ceux d’entre vous ayant déjà codé des mods l’ont déjà sûrement remarqué : c’est le plus grand des prototype du jeu. Après avoir tout défini avec ce facteur d’agrandissement (quelques heures et tasses de cafés plus tard), j’ai réussi à faire charger le jeu pour admirer le fruit de mon travail : une diminution du Crawlertron (facteur d’agrandissement &lt; 1) ne mit pas en avant d’aberration évidente dans mon code, et j’ai donc décidé de l’agrandir (facteur d’agrandissement &gt; 1), ci-dessous le résultat : Vous l’aurez remarqué, ses jambes ont l’air d’être de petits bâtonnets ! C’est un miracle qu’il ne se soit pas cassé une jambe. Après inspection de la définition des jambes du Crawlertron, je n’ai rien trouvé de louche, et ai donc décidé d’appeler à l’aide sur le groupe discord des modders de factorio. Klonan (qui fait parti de Wube, et que vous pouvez admirer sur this page une bière dans chaque main) m’a affirmé qu’il faudrait modifier le noyau de Factorio pour pouvoir modifier correctement l’apparence des jambes du spidertron. Klonan m’a d’ailleurs demandé de le diminuer pour voir si cela fonctionnait correctement, je vous laisse admirer le résultat : Je pense que vous aurez remarqué ici aussi le problème, puisque c’est le même que précédemment. On peut voir que tout ne fonctionne pas directement, ce qui a de bons côtés puisque certains effets de bord sont amusants. Je suis certain que ce problème sera résolu dans une prochaine mise à jour, en attendant j’ai soumis aux développeurs un rapport de bug. Il est possible que je reprenne la parole ici dans le futur pour vous montrer ce que devient le Crawlertron, et surtout si j’ai pu soigner ses jambes. Mod Spotlight: Spidertron Engineer Robynthedevil Cette galaxie est affligée par une race de réplicateurs arthropodes composés de silicium. Un seul de leurs membres suffit à transformer la totalité des ressources d’une planète en vue de se répliquer, créant au passage un bruit de métal grinçant et une chaleur torride. Ces robots massacrent la faune et la flore locales, partout où ceux-ci osent s’aventurer et construisent, sans jamais fléchir, des machines d’une complexité et des armes d’une létalité sans cesse démultipliées. Ce processus ne prendra fin que lorsqu’ils seront en mesure de déployer, parmi les étoiles, d’innombrables clones d’eux-mêmes partant à la recherche de nouvelles planètes jusqu’alors riches et sans méfiance. Les spidertrons ne ressentent rien, n’ont besoin de rien, ne dorment pas, ne cèdent rien et ne s’arrêteront pas. Leur usine doit, pour toujours et à jamais, grandir. Le scénario de Factorio tel que nous le connaissons est semblable à celui de nombreux autres jeux de construction ou de survie : l’Ingénieur‧e échoue sur un monde inconnu et doit survivre jusqu’à avoir assez progressé dans l’arbre de technologie pour pouvoir s’échapper (dans notre cas : déployer de nombreuses fusées). Cette idée bien qu’assez engageante au début ne subsiste plus qu’au second plan une fois que nous sommes réellement au coeur du jeu. Le mod Spidertron Engineer se contente de remplacer l’Ingénieur‧e, que nous connaissons et aimons tous, par un Spidertron froid et sans coeur dès le début du jeu. Vous trouverez, tout au long de la partie, des technologies permettant d’améliorer votre personnage (i.e. une araignée) et remplaçant les améliorations d’armure du jeu de base. Ce changement, bien que mineur, transforme complètement l’expérience d’une partie de Factorio. Ce mod a permis d’augmenter mon implication dans l’univers étendu du jeu. Je me doute que ce mod ne plaira pas à tout le monde (notamment aux arachnophobes) toutefois cette transformation d’une partie minime du jeu, par l’ajout de ce petit rebondissement, rend les prémisses et la conclusion d’une partie beaucoup plus intéressantes. Un oeil sous le capot: Spidertron Weapon Switcher Xorimuth Le mod Spidertron Weapon Switcher permet de faire utiliser n’importe quel type d’arme au spidertron. Je vais profiter de cette publication pour vous montrer comment un tel objectif a été atteint, mais commençons toutefois par admirer le résultat : Si vous n’avez jamais écrit de mod, vous ne savez certainement pas que la plupart des choses ne peut pas être modifiée dynamiquement pendant que le jeu s’exécute, pour ne citer que quelques exemples : la portée d’une arme, les graphiques d’une machine et ce qui me concerne plus : les différents emplacements pour les armes d’un véhicule. Bien sûr, les armes du spidertron peuvent être modifiées par des mods, mais seulement en créant un nouveau ‘type’ de spidertron durant le chargement du jeu. Afin de contourner cette limitation j’ai créé cinq ‘types’ de spidertron, un pour chaque type d’arme, ainsi lorsque vous changez d’arme en jeu le mod exécute les étapes suivantes: Sauvegarde de toutes les informations importantes du spidertron, par exemple son inventaire et sa position Suppression du spidertron Création d’un nouveau spidertron avec l’arme suivante en lieu et place de l’ancien Insertion de toutes les informations précédemment sauvegardées. Toutes ces étapes ont lieu en un simple tick, de manière (presque) transparente pour le joueur. (Il a fallu résoudre plusieurs effets de bords, par exemple la déconnexion entre les télécommandes et les spidertrons, mais ceci nous écarte du cadre de ce blog.) Tout ceci fonctionne parfaitement pour transférer les données d’un spidertron au suivant, toutefois cela ne fait aucun sens de transférer les munitions, en effet si le fusil à pompe est sélectionné et chargé avec 300 cartouches et que le joueur change pour le lance-flammes, les cartouches ne devraient pas (et ne peuvent d’ailleurs pas) être transférées dans l’emplacement de munitions du lance-flammes. Je contourne ce problème en sauvegardant un tableau pour chaque spidertron, ainsi dans l’étape 1. l’inventaire de munitions est sauvegardé dans le tableau sous l’entrée “fusil à pompe”, et dans l’étape 4., la valeur sous l’entrée “lance-flammes” est récupérée et placée dans l’emplacement des munitions. Quand le joueur reprend le spidertron, toutes les munitions de ce spidertron sont replacées dans l’inventaire du joueur, ou sur le sol en cas de manque de place. Contribuer Depuis la semaine dernière, le processus de contribution s’est grandement précisé (en fait, il y a maintenant un processus ce qui n’était pas le cas la semaine dernière). Si vous connaissez GitHub, vous pouvez jeter un oeil sur le dépôt du projet, vous y trouverez des explications sur les manières de contribuer; dans le cas contraire, ne perdez pas espoir, en effet le Discord et ses membres sont là pour vous aider. Vous avez juste à vous connecter et à demander. Si vous vous demandez ce dont vous pouvez parler, vous trouverez des conseils en bas de la première publication. Je tenais à remercier tout particulièrement Thaui, Dr.MagPie, xthexder, Lovely_Santa et Conor pour avoir été les cerveaux derrière cette opération, et pour avoir déployé un superbe site web en un jour ou deux. Je remercie aussi Landmine grâce à qui nous avons maintenant un logo et plus !",
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
@@ -158,122 +158,135 @@
 
           <div class="panel-inset mb0">
             Écrit par <em>Lovely_Santa, Robynthedevil, Xorimuth</em>, édité par
-            <em>Therenas, EDLEXUS, nicgarner</em>
+            <em>Therenas, EDLEXUS, nicgarner</em>, traduit par <em>Thacib</em>
 
             le 2020-08-28
           </div>
 
           <div class="panel-inset-lighter mt0">
             <p>
-              Welcome to the second issue of Alt-F4, the community-driven
-              follow-on to the
+              Bienvenue dans ce second numéro de Alt-F4, la succession (proposée
+              par la communauté) aux
               <a href="https://factorio.com/blog/">Factorio Friday Facts</a>.
-              And man, am I always pleasently surprised by the community. Within
-              hours of publishing the first issue, the
-              <a href="https://discord.gg/AsXAwyV">Discord</a> was filled with
-              enthusiastic people that were willing to help at all stages of the
-              process. One thing you might have noticed is that the page you’re
-              reading this on got a small upgrade here and there. Thanks to
-              everyone who has been so enthusiastic about the project!
+              Encore une fois j’ai été très agréablement surpris par la
+              communauté : à peine quelques heures après la parution du premier
+              numéro, le <a href="https://discord.gg/AsXAwyV">Discord</a> était
+              rempli de personnes désireuses de participer aux diverses étapes
+              de la publication. Vous avez peut-être remarqué, par exemple, que
+              la page web sur laquelle vous vous trouvez actuellement a reçu une
+              petite amélioration. Je tiens à remercier tout ceux qui ont
+              réservé un accueil si positif à ce projet.
             </p>
 
             <p>
-              But this blog is not about the blog, it’s about the game. As we
-              all know, the devs surprised us on release day by adding
-              <a href="https://wiki.factorio.com/Spidertron">Spidertron</a>, a
-              giant mechanical spider with freakishly stretchy legs. It’s been
-              teased since
-              <a href="https://www.factorio.com/blog/post/fff-120">FFF #120</a>
-              (4.5 years ago), so to commemorate the occasion we want to focus
-              on this very versatile vehicle and all the ways the community has
-              already experimented with it.
+              Mais ce blog n’a pas vocation à traiter de lui-même, mais plutôt
+              du jeu. Comme nous le savons tous, les développeurs nous ont
+              réservé une surprise pour la sortie du jeu : le
+              <a href="https://wiki.factorio.com/Spidertron">Spidertron</a>, une
+              araignée mécanique géante dotée de jambes incroyablement
+              extensibles, dont nous avions déjà eu un avant-goût, il y a quatre
+              ans et demi à l’occasion du
+              <a href="https://www.factorio.com/blog/post/fff-120">FFF #120</a>.
+              Pour célébrer cet ajout, nous avons décidé de faire la part belle,
+              dans ce numéro, à ce véhicule versatile et à toutes les
+              expériences d’ores et déjà imaginées par la communauté pour le
+              tester.
             </p>
-            <h2 id="spidertron-missed-leg-day-lovely_santa">
-              <a href="#spidertron-missed-leg-day-lovely_santa"
+            <h2 id="spidertron-a-oublié-de-se-muscler-les-jambes-lovely_santa">
+              <a
+                href="#spidertron-a-oubli%C3%A9-de-se-muscler-les-jambes-lovely_santa"
                 ><i class="fas fa-link fa-xs"></i
               ></a>
-              Spidertron Missed Leg Day <author>Lovely_Santa</author>
+              Spidertron a oublié de se muscler les jambes
+              <author>Lovely_Santa</author>
             </h2>
 
             <p>
-              I think I speak for the majority of the early-access community
-              when I say that I was pleasantly surprised when I saw the release
-              notes for version 1.0! As your friendly neighborhood mod creator,
-              I had to take a closer look under the hood to see how spidertron
-              is built, opening my mind so new mod ideas could start to grow.
+              Je pense parler au nom de la majorité des personnes qui ont suivi
+              le jeu pendant toute sa phase d’accès anticipé, en disant que j’ai
+              été agréablement surpris en voyant ce que nous réservait la
+              version 1.0 ! Étant moi-même créateur de mods, j’ai eu envie de
+              jeter un oeil sous le capot pour voir comment le spidertron
+              fonctionnait, espérant ainsi élargir mes horizons vers de
+              nouvelles idées de mod.
             </p>
 
             <p>
-              Like most fans of Arch666Angel already know, I am
+              La plupart des fans de Arch666Angel le savent déjà, je suis
               <a
                 href="https://forums.factorio.com/viewtopic.php?p=475786#p475786"
-                >one of the contributors</a
+                >un des contributeurs</a
               >
-              to the Angel’s mods. Since
-              <a href="https://mods.factorio.com/mod/angelsexploration"
+              du mod <em>Angel</em>. Depuis le tout début du développement d’<a
+                href="https://mods.factorio.com/mod/angelsexploration"
                 >Angel’s Exploration</a
               >
-              is in a very early stage of development, I could not imagine a
-              better place to put spidertron to good use. I will not spoil what
-              I have brewing, instead I would rather take this moment to share
-              some of the struggles of the development process.
+              je suis persuadé que le spidertron y trouvera sa place. Je ne vais
+              vous gâcher ici la surprise de ce que je prépare, mais plutôt
+              partager avec vous certaines difficultés rencontrées pendant le
+              processus de développement.
             </p>
 
             <p>
-              Let us meet Crawlertron, the Angel-branded spidertron that will
-              join the Crawler family in Angel’s vehicles. One requirement I
-              have for my new Crawlertron is his size. I want him to be smaller,
-              quite a bit smaller actually. This meant I had to introduce a
-              scaling factor to the spidertron definitions in order to be able
-              to scale him down. As some of you fellow mod creators have surely
-              already noticed, he has one of the largest prototypes in the game.
-              A few hours and a few cups of deliciousness later, after defining
-              everything with a scaling factor, I could start loading up the
-              game to see my result. Scaling Crawlertron down (scaling factor
-              &lt; 1) would not show me obvious mistakes in my coding, so I
-              decided to scale him up instead (scaling factor &gt; 1), with this
-              being the result:
+              Voici <em>Crawlertron</em>, la version <em>Angel</em> du
+              spidertron qui rejoindra le groupe des <em>Crawler</em> parmis les
+              véhicules fournis par <em>Angel</em>. J’aimerais que le nouveau
+              <em>Crawlertron</em> soit plus petit, notablement plus petit. Je
+              devais donc ajouter à la définition du spidertron un facteur
+              d’agrandissement, qui me permettrait alors de le réduire. Ceux
+              d’entre vous ayant déjà codé des mods l’ont déjà sûrement remarqué
+              : c’est le plus grand des prototype du jeu. Après avoir tout
+              défini avec ce facteur d’agrandissement (quelques heures et tasses
+              de cafés plus tard), j’ai réussi à faire charger le jeu pour
+              admirer le fruit de mon travail : une diminution du
+              <em>Crawlertron</em> (facteur d’agrandissement &lt; 1) ne mit pas
+              en avant d’aberration évidente dans mon code, et j’ai donc décidé
+              de l’agrandir (facteur d’agrandissement &gt; 1), ci-dessous le
+              résultat :
             </p>
 
             <p>
               <img
                 src="/assets/ALTF4/2/crawlertron_large.png?raw=true"
-                alt="A large crawlertron with tiny legs."
+                alt="Un grand crawlertron aux jambes minuscules."
               />
             </p>
 
             <p>
-              As you probably noticed, his legs look like tiny sticks! It’s a
-              wonder that he hasn’t broken a leg yet! Returning to my
-              Crawlertron leg definitions, I could not find anything wrong with
-              them, so I chose to ask for help in the Factorio Discord modding
-              channel. Klonan (a Wube team member, seen on
-              <a href="https://factorio.com/game/about">this page</a> enjoying
-              two beers at the same time) even said that it would require some
-              Factorio engine rewrite to allow his legs to scale correctly. In
-              the meantime, Klonan asked me to scale him down, to see if that
-              would work at least. Well, have a look:
+              Vous l’aurez remarqué, ses jambes ont l’air d’être de petits
+              bâtonnets ! C’est un miracle qu’il ne se soit pas cassé une jambe.
+              Après inspection de la définition des jambes du
+              <em>Crawlertron</em>, je n’ai rien trouvé de louche, et ai donc
+              décidé d’appeler à l’aide sur le groupe discord des modders de
+              factorio. Klonan (qui fait parti de Wube, et que vous pouvez
+              admirer sur
+              <a href="https://factorio.com/game/about">this page</a> une bière
+              dans chaque main) m’a affirmé qu’il faudrait modifier le noyau de
+              Factorio pour pouvoir modifier correctement l’apparence des jambes
+              du spidertron. Klonan m’a d’ailleurs demandé de le diminuer pour
+              voir si cela fonctionnait correctement, je vous laisse admirer le
+              résultat :
             </p>
 
             <p>
               <img
                 src="/assets/ALTF4/2/crawlertron_tiny.png?raw=true"
-                alt="A small crawlertron with thick legs."
+                alt="Un petit crawlertron aux jambes épaisses."
               />
             </p>
 
             <p>
-              I guess you can spot what the issue is in this case, because it’s
-              the same as before! We can see that not everything works directly
-              out of the box, which can have some fun side effects. I am sure
-              this will be fixed in a future update; in the meantime I already
-              registered
+              Je pense que vous aurez remarqué ici aussi le problème, puisque
+              c’est le même que précédemment. On peut voir que tout ne
+              fonctionne pas directement, ce qui a de bons côtés puisque
+              certains effets de bord sont amusants. Je suis certain que ce
+              problème sera résolu dans une prochaine mise à jour, en attendant
+              j’ai soumis aux développeurs un
               <a href="https://forums.factorio.com/viewtopic.php?f=7&t=88180"
-                >a bug report</a
-              >
-              about it with the developers. I may come back in a future update
-              to showcase what Crawlertron has become, and how his legs have
-              healed.
+                >rapport de bug</a
+              >. Il est possible que je reprenne la parole ici dans le futur
+              pour vous montrer ce que devient le <em>Crawlertron</em>, et
+              surtout si j’ai pu soigner ses jambes.
             </p>
             <h2 id="mod-spotlight-spidertron-engineer-robynthedevil">
               <a href="#mod-spotlight-spidertron-engineer-robynthedevil"
@@ -287,53 +300,60 @@
             </h2>
 
             <p>
-              A synthetic race of arthropod replicators plagues this galaxy. A
-              single member of the silicon-based life form can convert an entire
-              planet’s resources into grinding metal and searing heat, dedicated
-              to one singular purpose: creating more. The robots will slaughter
-              the local flora and fauna wherever they dare to wander, and
-              methodically build increasingly complex machinery and more
-              powerful weapons. The process will continue without end until they
-              are finally capable of launching uncountable numbers of their
-              bastard clones to the stars; seeking out rich, unsuspecting
-              planets. The spidertron is unfeeling, unneeding, and unyielding.
-              They do not sleep, they do not show mercy. Their factory must
-              grow.
+              Cette galaxie est affligée par une race de réplicateurs
+              arthropodes composés de silicium. Un seul de leurs membres suffit
+              à transformer la totalité des ressources d’une planète en vue de
+              se répliquer, créant au passage un bruit de métal grinçant et une
+              chaleur torride. Ces robots massacrent la faune et la flore
+              locales, partout où ceux-ci osent s’aventurer et construisent,
+              sans jamais fléchir, des machines d’une complexité et des armes
+              d’une létalité sans cesse démultipliées. Ce processus ne prendra
+              fin que lorsqu’ils seront en mesure de déployer, parmi les
+              étoiles, d’innombrables clones d’eux-mêmes partant à la recherche
+              de nouvelles planètes jusqu’alors riches et sans méfiance. Les
+              spidertrons ne ressentent rien, n’ont besoin de rien, ne dorment
+              pas, ne cèdent rien et ne s’arrêteront pas. Leur usine doit, pour
+              toujours et à jamais, grandir.
             </p>
 
             <p>
               <img
                 src="/assets/ALTF4/2/SpidertronEngineer.png?raw=true"
-                alt="Spidertron Engineer with the crashed spaceship"
+                alt="L'Ingénieur‧e Spidertron avec le vaisseau échoué"
               />
             </p>
 
             <p>
-              The storyline of Factorio as we know it is similar to many
-              familiar base-building/survival games today: The Engineer crashes
-              onto an unknown world and must survive until they can progress
-              their technology enough to escape (read: shoot lots of rockets).
-              This is an engaging enough idea, but stays mostly on the edges of
-              the mind as we engage in the core Factorio gameplay.
+              Le scénario de Factorio tel que nous le connaissons est semblable
+              à celui de nombreux autres jeux de construction ou de survie :
+              l’Ingénieur‧e échoue sur un monde inconnu et doit survivre jusqu’à
+              avoir assez progressé dans l’arbre de technologie pour pouvoir
+              s’échapper (dans notre cas : déployer de nombreuses fusées). Cette
+              idée bien qu’assez engageante au début ne subsiste plus qu’au
+              second plan une fois que nous sommes réellement au coeur du jeu.
             </p>
 
             <p>
-              Spidertron Engineer simply replaces The Engineer we all know and
-              love with a cold spidertron robot from the very start of the game.
-              There are technologies along the way that upgrade your character
-              (i.e. spider) and replace the armour upgrades from vanilla. Even
-              this relatively small change really gives the game a different
-              feel. With this mod, I find I am able to engage in the greater
-              universe of the game way more readily. I know it won’t be for
-              everyone (especially arachnophobes) but for me, it takes a minimal
-              part of the game and gives it a twist that ultimately makes the
-              premise and endgame very engaging.
+              Le mod <em>Spidertron Engineer</em> se contente de remplacer
+              l’Ingénieur‧e, que nous connaissons et aimons tous, par un
+              Spidertron froid et sans coeur dès le début du jeu. Vous
+              trouverez, tout au long de la partie, des technologies permettant
+              d’améliorer votre personnage (i.e. une araignée) et remplaçant les
+              améliorations d’armure du jeu de base. Ce changement, bien que
+              mineur, transforme complètement l’expérience d’une partie de
+              Factorio. Ce mod a permis d’augmenter mon implication dans
+              l’univers étendu du jeu. Je me doute que ce mod ne plaira pas à
+              tout le monde (notamment aux arachnophobes) toutefois cette
+              transformation d’une partie minime du jeu, par l’ajout de ce petit
+              rebondissement, rend les prémisses et la conclusion d’une partie
+              beaucoup plus intéressantes.
             </p>
-            <h2 id="under-the-hood-spidertron-weapon-switcher-xorimuth">
-              <a href="#under-the-hood-spidertron-weapon-switcher-xorimuth"
+            <h2 id="un-oeil-sous-le-capot-spidertron-weapon-switcher-xorimuth">
+              <a
+                href="#un-oeil-sous-le-capot-spidertron-weapon-switcher-xorimuth"
                 ><i class="fas fa-link fa-xs"></i
               ></a>
-              Under the hood:
+              Un oeil sous le capot:
               <a href="https://mods.factorio.com/mod/SpidertronWeaponSwitcher"
                 >Spidertron Weapon Switcher</a
               >
@@ -341,96 +361,106 @@
             </h2>
 
             <p>
-              Spidertron Weapon Switcher is a mod that allows spidertron to fire
-              any kind of weapon. In this post, I will be talking about how it
-              works behind the scenes. But first, a peek at how awesome this
-              looks in action:
+              Le mod <em>Spidertron Weapon Switcher</em> permet de faire
+              utiliser n’importe quel type d’arme au spidertron. Je vais
+              profiter de cette publication pour vous montrer comment un tel
+              objectif a été atteint, mais commençons toutefois par admirer le
+              résultat :
             </p>
 
             <p>
               <img
                 src="/assets/ALTF4/2/SWS-demo-gif.gif?raw=true"
-                alt="Demonstration of switching between weapons"
+                alt="Présentation de changement d'arme"
               />
             </p>
 
             <p>
-              If you’ve never written a mod before, you may not know that many
-              things in Factorio cannot be changed <em>during the game</em>, for
-              example the range of a gun, the graphics of a machine and,
-              importantly for me, the weapon slots that a vehicle has. Of
-              course, the weapons that spidertron has <em>can</em> be changed by
-              mods, but only by creating a new ‘type’ of spidertron during the
-              loading phase of the game.
+              Si vous n’avez jamais écrit de mod, vous ne savez certainement pas
+              que la plupart des choses ne peut pas être modifiée dynamiquement
+              pendant que le jeu s’exécute, pour ne citer que quelques exemples
+              : la portée d’une arme, les graphiques d’une machine et ce qui me
+              concerne plus : les différents emplacements pour les armes d’un
+              véhicule. Bien sûr, les armes du spidertron peuvent être modifiées
+              par des mods, mais seulement en créant un nouveau ‘type’ de
+              spidertron durant le chargement du jeu.
             </p>
 
             <p>
-              The way that I got around this limitation is by creating five
-              ‘types’ of spidertron, one for each type of weapon. So, when you
-              switch weapons in-game, what the mod actually does is:
+              Afin de contourner cette limitation j’ai créé cinq ‘types’ de
+              spidertron, un pour chaque type d’arme, ainsi lorsque vous changez
+              d’arme en jeu le mod exécute les étapes suivantes:
             </p>
 
             <ol>
               <li>
-                Save all relevant data about the spidertron, such as its
-                inventory contents and position
+                Sauvegarde de toutes les informations importantes du spidertron,
+                par exemple son inventaire et sa position
               </li>
-              <li>Delete the current spidertron</li>
-              <li>Create a new spidertron with the next weapon in its place</li>
-              <li>Insert all the saved data into the new spidertron</li>
+              <li>Suppression du spidertron</li>
+              <li>
+                Création d’un nouveau spidertron avec l’arme suivante en lieu et
+                place de l’ancien
+              </li>
+              <li>
+                Insertion de toutes les informations précédemment sauvegardées.
+              </li>
             </ol>
 
             <p>
-              All of these steps happen within a single tick, which makes it
-              appear (almost) seamless to the player. (Some side effects, such
-              as all remotes becoming disconnected from the spidertron, have to
-              be mitigated with further work that is outside the scope of this
-              blog.)
+              Toutes ces étapes ont lieu en un simple tick, de manière (presque)
+              transparente pour le joueur. (Il a fallu résoudre plusieurs effets
+              de bords, par exemple la déconnexion entre les télécommandes et
+              les spidertrons, mais ceci nous écarte du cadre de ce blog.)
             </p>
 
             <p>
-              That all works great for transferring data about the spidertron
-              but there is one thing that makes no sense to transfer: ammo. If
-              you have the shotgun enabled with 300 shotgun shells loaded and
-              you switch to the flamethrower, the shotgun shells should not (and
-              cannot) be transferred into the flamethrower ammo slots.
+              Tout ceci fonctionne parfaitement pour transférer les données d’un
+              spidertron au suivant, toutefois cela ne fait aucun sens de
+              transférer les munitions, en effet si le fusil à pompe est
+              sélectionné et chargé avec 300 cartouches et que le joueur change
+              pour le lance-flammes, les cartouches ne devraient pas (et ne
+              peuvent d’ailleurs pas) être transférées dans l’emplacement de
+              munitions du lance-flammes.
             </p>
 
             <p>
-              I get around this by having a table for each spidertron so in step
-              1 the current ammo inventory is stored in the table under the key
-              “shotgun”, and in step 4 the ammo under the key “flamethrower” is
-              retrieved and placed into the new spidertron’s ammo slots. When
-              the player picks up the spidertron, all the ammo for that
-              spidertron is retrieved and placed in the player’s inventory, or
-              spilled on the ground if there is no space left in the inventory.
+              Je contourne ce problème en sauvegardant un tableau pour chaque
+              spidertron, ainsi dans l’étape 1. l’inventaire de munitions est
+              sauvegardé dans le tableau sous l’entrée “fusil à pompe”, et dans
+              l’étape 4., la valeur sous l’entrée “lance-flammes” est récupérée
+              et placée dans l’emplacement des munitions. Quand le joueur
+              reprend le spidertron, toutes les munitions de ce spidertron sont
+              replacées dans l’inventaire du joueur, ou sur le sol en cas de
+              manque de place.
             </p>
-            <h2 id="contributing">
-              <a href="#contributing"><i class="fas fa-link fa-xs"></i></a>
-              Contributing
+            <h2 id="contribuer">
+              <a href="#contribuer"><i class="fas fa-link fa-xs"></i></a>
+              Contribuer
             </h2>
 
             <p>
-              Since last week, the contribution process has been massively
-              refined (as in, there actually is a proper proceedure for it now).
-              If you’re familiar with GitHub, take a look at the
+              Depuis la semaine dernière, le processus de contribution s’est
+              grandement précisé (en fait, il y a maintenant un processus ce qui
+              n’était pas le cas la semaine dernière). Si vous connaissez
+              GitHub, vous pouvez jeter un oeil sur le
               <a href="https://github.com/AlternativeFFFF/Alt-F4"
-                >project repo</a
-              >
-              which explains how you can contribute. If you’re not, don’t
-              despair, because the
-              <a href="https://discord.gg/AsXAwyV">Discord</a> and its members
-              are always there to help. Just join up and ask around! If you’re
-              wondering about what to write about, check out the
-              <a href="https://alt-f4.blog/fr/ALTF4-1">first issue</a>, it has
-              advice for you at the bottom.
+                >dépôt du projet</a
+              >, vous y trouverez des explications sur les manières de
+              contribuer; dans le cas contraire, ne perdez pas espoir, en effet
+              le <a href="https://discord.gg/AsXAwyV">Discord</a> et ses membres
+              sont là pour vous aider. Vous avez juste à vous connecter et à
+              demander. Si vous vous demandez ce dont vous pouvez parler, vous
+              trouverez des conseils en bas de la
+              <a href="https://alt-f4.blog/fr/ALTF4-1">première publication</a>.
             </p>
 
             <p>
-              I want to give a special thank you to Thaui, Dr.MagPie, xthexder,
-              Lovely_Santa and Conor for being the brains behind this whole
-              operation, getting a fantastic website up and running within a day
-              or two. Also, thanks to Landmine, we now have a logo and stuff!
+              Je tenais à remercier tout particulièrement Thaui, Dr.MagPie,
+              xthexder, Lovely_Santa et Conor pour avoir été les cerveaux
+              derrière cette opération, et pour avoir déployé un superbe site
+              web en un jour ou deux. Je remercie aussi Landmine grâce à qui
+              nous avons maintenant un logo et plus !
             </p>
 
             <div class="flex flex-column flex-items-center mt8">
