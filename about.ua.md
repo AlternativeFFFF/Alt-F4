@@ -1,11 +1,11 @@
 ---
-layout: post
+layout: page
 title: About
 permalink: about/
 lang: ua
 ---
 
-# Про
+## Про
 
 Alt-F4 - це [щотижневий блог](http://alt-f4.blog), який пишуте та редагуюте сама спільнота [Factorio](https://factorio.com), та має різні підходящі теми, такі як огляди модів, розповіді від спільноти та пояснення/огляд ігрових механік.
 
