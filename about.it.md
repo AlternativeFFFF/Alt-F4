@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Di cosa si tratta
 permalink: about/
 lang: it
