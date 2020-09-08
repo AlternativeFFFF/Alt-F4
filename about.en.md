@@ -5,7 +5,7 @@ permalink: about/
 lang: en
 ---
 
-# About
+## About
 
 Alt-F4 is a [weekly blog](http://alt-f4.blog) that's written and edited entirely by the [Factorio](https://factorio.com) community, and features various topics that are relevant to it, such as mod spotlights, community showcases or gameplay columns.
 
