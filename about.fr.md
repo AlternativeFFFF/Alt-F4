@@ -1,11 +1,11 @@
 ---
-layout: post
+layout: page
 title: A propos
 permalink: about/
 lang: fr
 ---
 
-# A propos
+## A propos
 
 Alt-F4 est un [blog hebdomadaire](http://alt-f4.blog) écrit et édité entièrement par la communauté de [Factorio](https://factorio.com), mettant en lumière divers sujets d'intérêt comme des annonces, des projets communautaires ou des explications d'éléments de jeux.
 

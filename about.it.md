@@ -1,11 +1,11 @@
 ---
-layout: post
+layout: page
 title: Di cosa si tratta
 permalink: about/
 lang: it
 ---
 
-# Di cosa si tratta
+## Di cosa si tratta
 
 Alt-F4 è un [blog a cadenza settimanale](http://alt-f4.blog) scritto e gestito interamente dalla comunity di [Factorio](https://factorio.com), parla di vari temi inereti al gioco, come ad esempio mod spotlights, rubriche della community o di gameplay.
 
