@@ -31,14 +31,13 @@
 }
 
 .webp .footer-rocket {
-  background: url("/assets/GLOBAL/img/footer-bg.webp");
+  background-image: url("/assets/GLOBAL/img/footer-bg.webp");
 }
 
 .no-webp .footer-rocket { 
-  background: url("/assets/GLOBAL/img/footer-bg.jpg");
+  background-image: url("/assets/GLOBAL/img/footer-bg.jpg");
 }
 .footer-rocket .rocket {
-  background: url("/assets/GLOBAL/img/spider-idle.webp");
   background-size: 130px;
   width: 130px;
   margin-left: -65px;
@@ -51,11 +50,11 @@
 }
 
 .webp .footer-rocket .rocket {
-  background: url("/assets/GLOBAL/img/spider-idle.webp");
+  background-image: url("/assets/GLOBAL/img/spider-idle.webp");
 }
 
 .no-webp .footer-rocket .rocket { 
-  background: url("/assets/GLOBAL/img/spider-idle.gif");
+  background-image: url("/assets/GLOBAL/img/spider-idle.gif");
 }
 
 .footer-copyright {
