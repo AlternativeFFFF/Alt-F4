@@ -1,22 +1,4 @@
 ---
-layout: default
+layout: page
 ---
-<article class="panel blog-post">
-	<h2>{{ page.title }}</h2>
-	{% if page.author or page.editor or page.date %}
-	<div class="panel-inset mb0">
-		{% include author.html %}
-	</div>
-	{% endif %}
-	<div class="panel-inset-lighter mt0">
-		{{ content }}
-		{% include discuss.html %}
-	</div>
-	<div class="panel-inset mb0 p4 flex flex-space-between">
-		<div>
-			<a class="button square-sm" href="/">
-				<i class="fas fa-angle-double-left"></i>
-			</a>
-		</div>
-	</div>
-</article>
+{% include anchor_headings.html html=content beforeHeading=true anchorBody='<i class="fas fa-link fa-xs"></i>' %}
