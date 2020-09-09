@@ -136,8 +136,6 @@ html {
 body {
   background-color: #201810;
   background: #201810;
-  // background-size: 2048px 3072px;
-  background-size: 1671px  1672px;
   background-position: center top;
   color: #f5f5f5;
   font-family: titillium web, sans-serif;
@@ -148,11 +146,21 @@ body {
 }
 
 .webp body {
-  background-image: url("/assets/GLOBAL/img/bg.webp");
+  background-image: url("/assets/GLOBAL/img/mobile-bg.webp");
 }
 
 .no-webp body {
-  background-image: url("/assets/GLOBAL/img/bg.jpg");
+  background-image: url("/assets/GLOBAL/img/mobile-bg.jpg");
+}
+
+@media (min-width: 500px) {
+  .webp body {
+    background-image: url("/assets/GLOBAL/img/bg.webp");
+  }
+  
+  .no-webp body {
+    background-image: url("/assets/GLOBAL/img/bg.jpg");
+  }
 }
 
 th {
