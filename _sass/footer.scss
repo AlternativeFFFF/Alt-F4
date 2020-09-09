@@ -23,7 +23,6 @@
 
 .footer-rocket {
   text-align: center;
-  background: url("/assets/GLOBAL/img/footer-bg.webp");
   background-position: center center;
   background-size: 192px;
   width: 240px;
@@ -31,6 +30,13 @@
   overflow: visible !important;
 }
 
+.webp .footer-rocket {
+  background: url("/assets/GLOBAL/img/footer-bg.webp");
+}
+
+.no-webp .footer-rocket { 
+  background: url("/assets/GLOBAL/img/footer-bg.jpg");
+}
 .footer-rocket .rocket {
   background: url("/assets/GLOBAL/img/spider-idle.webp");
   background-size: 130px;
@@ -42,6 +48,14 @@
   left: 50%;
   z-index: 50;
   transition: height 1s linear;
+}
+
+.webp .footer-rocket .rocket {
+  background: url("/assets/GLOBAL/img/spider-idle.webp");
+}
+
+.webp .footer-rocket .rocket { 
+  background: url("/assets/GLOBAL/img/spider-idle.gif");
 }
 
 .footer-copyright {
