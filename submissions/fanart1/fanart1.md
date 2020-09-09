@@ -1,6 +1,6 @@
-## A Selection of Fan Art <author>Landmine752</author>
+## A selection of fan art <author>Landmine752</author>
 
-I selected some really great fanart this week for us all to enjoy. The authors are, in order, @HrusaArt, limelier, and Boaris.
+I selected some great fan art this week for us all to enjoy. The authors are, in order, @HrusaArt, limelier, and Boaris.
 
 {% include imgur.html id="CqcQNl0" %}
 
