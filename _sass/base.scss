@@ -253,9 +253,9 @@ article iframe {
 .yt {
   position: relative;
   display: block;
-  width: 95%; /* width of iframe wrapper */
+  width: 100%; /* width of iframe wrapper */
   height: 0;
-  margin: auto;
+  margin: 20px auto;
   padding: 0% 0% 56.25%; /* 16:9 ratio */
   overflow: hidden;
 }
