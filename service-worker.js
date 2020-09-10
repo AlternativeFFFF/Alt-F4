@@ -19,6 +19,11 @@ workbox.routing.registerRoute(
     workbox.strategies.networkFirst()
 );
 
+workbox.routing.registerRoute(
+    /assets\/GLOBAL\/js/,
+    workbox.strategies.cacheFirst()
+);
+
 //use `staleWhileRevalidate` for CSS
 workbox.routing.registerRoute(
     /\.(css|scss)$/,
