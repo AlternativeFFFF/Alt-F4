@@ -29,7 +29,7 @@ const matchCallback = ({url, request, event}) => {
     const imageRegex = /assets\/GLOBAL\/img/
     const altf4Regex = /assets\/ALTF4\/\d\/thumbnail\.jpg/
     
-    return imageRegex.test(url) && altf4Regex.test(url);
+    return imageRegex.test(url) || altf4Regex.test(url);
 }
 
 // use `cacheFirst` strategy for images
