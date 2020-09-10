@@ -26,15 +26,21 @@ workbox.routing.registerRoute(
 );
 
 const matchCallback = ({url, request, event}) => {
-    const imageRegex = /assets\/GLOBAL\/img/
-    const altf4Regex = /assets\/ALTF4\/\d\/thumbnail\.jpg/
+    const imageRegex = 
+    const altf4Regex = 
     
     return imageRegex.test(url) || altf4Regex.test(url);
 }
 
 // use `cacheFirst` strategy for images
 workbox.routing.registerRoute(
-    matchCallback,
+    /assets\/GLOBAL\/img/,
+    workbox.strategies.cacheFirst()
+);
+
+//thumbnails
+workbox.routing.registerRoute(
+    /assets\/ALTF4\/\d+\/thumbnail\.jpg/,
     workbox.strategies.cacheFirst()
 );
 
