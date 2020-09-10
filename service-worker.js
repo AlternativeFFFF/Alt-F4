@@ -28,7 +28,7 @@ const matchCallback = ({url, request, event}) => {
 
 // use `cacheFirst` strategy for images
 workbox.routing.registerRoute(
-    MatchCallback,
+    matchCallback,
     workbox.strategies.cacheFirst()
 );
 
