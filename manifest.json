@@ -6,9 +6,16 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "https://silly-noyce-84abf1.netlify.app",
-  "icons": [{
-          "src": "/assets/GLOBAL/img/manifest-test.png",
-          "sizes": "144x144",
+  "icons": [
+      {
+          "src": "/assets/GLOBAL/img/Alt-F4-icon_512x512",
+          "sizes": "512x512",
           "type": "image/png"
-      }]
+      },
+      {
+          "src": "/assets/GLOBAL/img/Alt-F4-icon_256x356",
+          "sizes": "512x512",
+          "type": "image/png"
+      }
+   ]
 }
