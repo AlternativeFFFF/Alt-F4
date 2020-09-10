@@ -1,0 +1,9 @@
+{
+  "name": "Alternative Friday Factorio Facts",
+  "short_name": "Alt-F4",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "https://silly-noyce-84abf1.netlify.app"
+}
