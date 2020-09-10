@@ -1,0 +1,23 @@
+---
+---
+{
+  "name": "Alternative Friday Factorio Facts",
+  "short_name": "Alt-F4",
+  "theme_color": "#414040",
+  "background_color": "#414040",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "{% if site.active_lang == site.default_lang %}{{site.url}}{% else %}{{site.url}}/{{site.active_lang}}{% endif %}",
+  "icons": [
+      {
+          "src": "/assets/GLOBAL/img/Alt-F4-icon_512x512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+      },
+      {
+          "src": "/assets/GLOBAL/img/Alt-F4-icon_256x256.png",
+          "sizes": "512x512",
+          "type": "image/png"
+      }
+   ]
+}

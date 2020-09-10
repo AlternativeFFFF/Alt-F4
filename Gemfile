@@ -7,6 +7,7 @@ group :jekyll_plugins do
   gem "jekyll-polyglot"
   gem "jekyll-spaceship"
   gem "jekyll-sitemap"
+  gem 'jekyll-pwa-plugin'
 end
 
 # gem "minima", "~> 2.5"
