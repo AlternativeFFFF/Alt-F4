@@ -19,6 +19,12 @@ workbox.routing.registerRoute(
     workbox.strategies.networkFirst()
 );
 
+//use `staleWhileRevalidate` for CSS
+workbox.routing.registerRoute(
+    /\.(css|scss)$/,
+    workbox.strategies.staleWhileRevalidate()
+);
+
 const matchCallback = ({url, request, event}) => {
     const imageRegex = /assets\/GLOBAL\/img/
     const altf4Regex = /assets\/ALTF4\/\d/
