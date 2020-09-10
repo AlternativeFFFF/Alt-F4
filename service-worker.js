@@ -19,7 +19,7 @@ workbox.routing.registerRoute(
     workbox.strategies.networkFirst()
 );
 
-const matchCallback = ({url, request, event}) ==> {
+const matchCallback = ({url, request, event}) => {
     const imageRegex = /assets\/GLOBAL\/img/
     const altf4Regex = /assets\/ALTF4/\d/
     
