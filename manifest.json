@@ -6,4 +6,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "https://silly-noyce-84abf1.netlify.app"
+  "icons": [{
+          "src": "/assets/GLOBAL/img/favicon.ico",
+          "sizes": "48x48",
+          "type": "image/x-icon"
+      }]
 }
