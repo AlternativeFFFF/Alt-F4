@@ -8,12 +8,12 @@
   "start_url": "https://silly-noyce-84abf1.netlify.app",
   "icons": [
       {
-          "src": "/assets/GLOBAL/img/Alt-F4-icon_512x512",
+          "src": "/assets/GLOBAL/img/Alt-F4-icon_512x512.png",
           "sizes": "512x512",
           "type": "image/png"
       },
       {
-          "src": "/assets/GLOBAL/img/Alt-F4-icon_256x356",
+          "src": "/assets/GLOBAL/img/Alt-F4-icon_256x256.png",
           "sizes": "512x512",
           "type": "image/png"
       }
