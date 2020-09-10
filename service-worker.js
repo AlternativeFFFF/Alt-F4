@@ -21,7 +21,7 @@ workbox.routing.registerRoute(
 
 const matchCallback = ({url, request, event}) => {
     const imageRegex = /assets\/GLOBAL\/img/
-    const altf4Regex = /assets\/ALTF4/\d/
+    const altf4Regex = /assets\/ALTF4\/\d/
     
     return imageRegex.test(url) && altf4Regex.test(url);
 }
