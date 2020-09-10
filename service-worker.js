@@ -20,8 +20,8 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    /assets\/GLOBAL\/js/,
-    workbox.strategies.cacheFirst()
+    /assets\/GLOBAL\/js\/modernizr-webp\.js/,
+    workbox.strategies.staleWhileRevalidate()
 );
 
 //use `staleWhileRevalidate` for CSS
