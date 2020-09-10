@@ -30,13 +30,6 @@ workbox.routing.registerRoute(
     workbox.strategies.staleWhileRevalidate()
 );
 
-const matchCallback = ({url, request, event}) => {
-    const imageRegex = 
-    const altf4Regex = 
-    
-    return imageRegex.test(url) || altf4Regex.test(url);
-}
-
 // use `cacheFirst` strategy for images
 workbox.routing.registerRoute(
     /assets\/GLOBAL\/img/,
