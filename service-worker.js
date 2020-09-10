@@ -38,7 +38,7 @@ workbox.routing.registerRoute(
 
 //thumbnails
 workbox.routing.registerRoute(
-    /assets\/ALTF4\/\d+\/thumbnail\.jpg/,
+    /assets\/ALTF4\/\d+\//,
     workbox.strategies.cacheFirst()
 );
 
