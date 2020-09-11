@@ -1,4 +1,7 @@
 ---
 layout: page
 ---
-{% include anchor_headings.html html=content beforeHeading=true anchorBody='<i class="fas fa-link fa-xs"></i>' %}
+
+{% include toc.html html=content class='toc' %}
+
+{% include anchor_headings.html html=content beforeHeading=true anchorClass='anchor' anchorBody='<i class="fas fa-link fa-xs"></i>' %}
