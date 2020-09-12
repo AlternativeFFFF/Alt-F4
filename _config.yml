@@ -56,10 +56,11 @@ defaults:
 #Polyglot
 languages:
   - en
+  - es
   - ru
-  - ua
   - fr
   - it
+  # - ua
 default_lang: en
 lang_from_path: true
 parallel_localization: true
