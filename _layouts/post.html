@@ -2,6 +2,12 @@
 layout: page
 ---
 
-{% include toc.html html=content class='toc' %}
+<div class="panel toc">
+  <h2>Table of content</h2>
+  <div class="panel-inset mb0">
+    {% include toc.html html=content %}
+  </div>
+</div>
+
 
 {% include anchor_headings.html html=content beforeHeading=true anchorClass='anchor' anchorBody='<i class="fas fa-link fa-xs"></i>' %}

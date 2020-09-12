@@ -2,9 +2,21 @@
 ---
 
 //Import
-@import "base", "navbar", "buttons", "dropdown", "flex", "header", "footer", "panel", "slots", "shadow-overlay", "text", "countdown";
-// .big-icon i {
-// 	margin: 0;
-// 	margin-left: 1px;
-// 	font-size: 21px;
-// }
+@import "base", "navbar", "buttons", "dropdown", "flex", "header", "footer", "panel", "slots", "shadow-overlay", "text",
+  "countdown";
+
+.toc {
+  font-family: sans-serif;
+  width: auto;
+  max-width: 376px;
+  position: fixed;
+  left: 0px;
+  z-index: 100;
+}
+.toc a,
+.toc h3 {
+  font-size: 0.9em;
+  // display: block;
+  // margin: 0 0.5em;
+  color: #ffe6c0;
+}
