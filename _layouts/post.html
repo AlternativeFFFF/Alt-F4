@@ -3,10 +3,12 @@ layout: page
 ---
 
 <div class="panel toc">
-  <h2>Table of content</h2>
-  <div class="panel-inset mb0">
-    {% include toc.html html=content %}
-  </div>
+  <details>
+    <summary><h2>{{ site.data.locale.table-of-contents }}</h2></summary>
+    <div class="panel-inset mb0">
+      {% include toc.html html=content sanitize=true %}
+    </div>
+  </details>
 </div>
 
 

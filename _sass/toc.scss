@@ -1,16 +1,42 @@
 .toc {
-  font-family: sans-serif;
   width: auto;
-  max-width: 376px;
-  position: fixed;
-  left: 0px;
-  z-index: 100;
+
+  margin-top: 0;
+
+  margin-bottom: 10px !important;
 }
 
-.toc a,
-.toc h3 {
+.toc .panel-inset {
+  padding: 0;
+}
+
+.toc .panel-inset > ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.toc a {
   font-size: 0.9em;
   // display: block;
   // margin: 0 0.5em;
   color: #ffe6c0;
+}
+
+.toc summary > h2 {
+  display: inline;
+}
+
+.toc .panel-inset > ul ul {
+  margin-top: 8px;
+}
+
+@media (min-width: 2000px) {
+  .toc {
+    position: fixed;
+    left: 0px;
+
+    z-index: 100;
+
+    max-width: 376px;
+  }
 }

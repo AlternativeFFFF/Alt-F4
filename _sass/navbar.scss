@@ -176,7 +176,7 @@ body:after { /* For preloading the hover image so it does not flicker on first h
     }
   }
 
-  body .panel {
+  body .panel, body .panel-inset {
     padding: 8px;
   }
 
