@@ -2,21 +2,4 @@
 ---
 
 //Import
-@import "base", "navbar", "buttons", "dropdown", "flex", "header", "footer", "panel", "slots", "shadow-overlay", "text",
-  "countdown";
-
-.toc {
-  font-family: sans-serif;
-  width: auto;
-  max-width: 376px;
-  position: fixed;
-  left: 0px;
-  z-index: 100;
-}
-.toc a,
-.toc h3 {
-  font-size: 0.9em;
-  // display: block;
-  // margin: 0 0.5em;
-  color: #ffe6c0;
-}
+@import "base", "navbar", "buttons", "dropdown", "flex", "header", "footer", "panel", "slots", "shadow-overlay", "text", "countdown", "toc";
