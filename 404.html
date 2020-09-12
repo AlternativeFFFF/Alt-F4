@@ -5,4 +5,17 @@ permalink: "404"
 ---
 
 {{ site.data.locale.not-found.msg | markdownify }}
-<h2><a href="{% if site.active_lang == site.default_lang %}{{site.url}}{% else %}{{site.url}}/{{site.active_lang}}{% endif %}">{{ site.data.locale.not-found.btn }}</a></h2>
+<h2><a
+    href="{% if site.active_lang == site.default_lang %}{{site.url}}{% else %}{{site.url}}/{{site.active_lang}}{% endif %}">{{ site.data.locale.not-found.btn }}</a>
+</h2>
+
+
+<script>
+  (() => {
+    const language = getLanguage()
+    console.log(language)
+    if ((language !== '{{ site.default_lang }}') && (language !== '{{ site.active_lang }}')) {
+      window.location.href = `{{ site.url }}/${language}/404`
+    }
+  })()
+</script>

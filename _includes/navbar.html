@@ -17,10 +17,22 @@
 			</a>
 			<div class="submenu">
 				{% for language in site.languages %}
-				<a {% if language == site.active_lang %} class="button button-green" {% else %} class="button" {% endif %}
-					href="{% if language == site.default_lang %}{{ '/..' | append: page.url }}{% else %}{{ site.baseurl }}/{{ language }}{{ page.url }}{% endif %}">{{ language }}</a>
+				<a {% if language == site.active_lang %} class="button button-green lang-button" {% else %}
+					class="button lang-button" {% endif %}
+					href="{% if language == site.default_lang %}{{ '/..' | append: page.url }}{% else %}{{ site.baseurl }}/{{ language }}{{ page.url }}{% endif %}"
+					onclick="setLanguage('{{ language }}')">{{ language }}</a>
 				{% endfor %}
 			</div>
+			<script>
+				(() => {
+					const links = document.getElementsByClassName('lang-button');
+					for (link in links) {
+						link.onclick = () => {
+							setLanguage(link.textContent);
+						}
+					}
+				})()
+			</script>
 		</div>
 	</div>
 </nav>
