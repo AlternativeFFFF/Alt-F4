@@ -30,14 +30,14 @@
     <meta name="generator" content="Jekyll v4.1.1" />
     <meta property="og:title" content="Alt-F4 #3 - Tronparty" />
     <meta name="author" content="JD-Plays, T-A-R, Raiguard" />
-    <meta property="og:locale" content="en" />
+    <meta property="og:locale" content="fr" />
     <meta
       name="description"
-      content="Welcome to the third issue of Alt-F4. This weekend, there’ll be an attempt to try and break the record for the highest number of players on a single Factorio server; read on for details of how to join the fun. There’s also an action report about the Big Community Games launch party, which should totally haven been covered last week. Completely my (Therena’s) bad. Finally, Raiguard shares an exciting mod of his with all of us. Let’s get to it! PS: We’re looking for motivated people that want to help translate each issue of Alt-F4. If you’re interested, you can find more info at the end of this issue. Thanks! Event: Molten Silicon JD-Plays The weekend is here, got any plans? Going to play Factorio for about 25 minutes again, then realise the sun is rising already? Or do you just want to play Factorio with a few friends? Well, we’ve got some good news. This weekend, we have a few friends getting together to do something simple: completely melt our server’s silicon! Join us for the Molten Silicon event where our only objective is to get as many players onto the same server as possible and launch a rocket. Oh, and melt the server’s CPU at the same time of course! There will be something for every player to do, from building the base to clearing biters with other Red Coats. Our true enemy will probably be ever present as well, so we’ll need some of you to join our Lumberjack team! So if you’ve got a few hours to spare this weekend, and want to try and help break the previous record of 521 concurrent players, please join our server at 11am UTC this Saturday 5th September. You can easily identify it, because it’ll be the largest server running! The server information will be provided shortly before the start time in the #information channel of our Red Circuit Discord. For more general information, please visit our website. Don’t break the new toys please T-A-R The first Alt-F4 was an exciting surprise when my stubborn mind went to factorio.com on Friday 14th August, knowing there wouldn’t be a fresh FFF post #361 waiting for me. I decided I wanted to support this initiative, and the best way to do so was to act fast. So, here’s a field report about one of the fresh 1.0 “not-a-bug”-bug reports. The second-best thing after an official release party in Prague would be a good old multiplayer server. Multiple release parties sprouted in the Factorio lobby that Friday, all hosting fresh maps with many engineers from all over the world joining in to lay down some ambitious main busses. The Big Community Games Discord was able to catch the most momentum and peaked at 201 players, which was good as you need quite a decent base to chew away at all the science packs that are required to get to the best feature of 1.0. (Hint: It’s spidertron!) Blessed with dense ore patches and a clever map note (describing team colours and their duties), the server started as a hyperactive ant collective with an instinct for making smelter columns. The map message around the spawn point did a wonderful job at organizing the ever-growing group of engineers. Early on, an isolated factory was raised next to the science factory to keep all the Redshirts fed with gear and ammo. This gave both the troopers and the builders a steady supply to defend and grow the factory. And grow it did. It took 11 hours to produce a rocket, alongside around 20 spidertrons, a shipload of equipment and armour and a ton of ammo and explosives. By that time, Bilka Bay, Italy, and Lake Twinsen had been christened, according to the map markers left by seasoned engineers. As soon as the spidertrons came into production it became clear that these legs feel very unusual, but powerful at the same time. The intriguing sight of simply stepping over lakes and machines slowly turned the exploration tour into a test of capabilities for our new toy/tool. Belts soon turned out to be a point of interest for many of the spiders that were running around the map. The shared excitement led the admins to add their own contribution to the party and made spidertron face the ultimate test by turning the release party into a spidertron rave. A colourful dance floor was quickly terraformed so the spiders could stretch their legs: The combination of belts travelling in opposite directions and gaps in the map drove the brand new spidertron legs to split awkwardly, stretching their legs infinitely. High time to update the devs about these findings with a fresh 1.0 bug report. It ended up as one of the most viewed bug reports, but was quickly marked as duplicate: not-a-bug. Developer V453000 had already responded on one of the first 1.0 bug reports (30 minutes after release) to point out that restricting their movement wouldn’t be desirable, and that our spiders were actually performing just fine. But, the fact that we “could” does not eliminate the question of whether we “should”… In the end the playthrough was an absolute blast, and we truly fell in love with the spidertron. He’s one of us now. Mod spotlight: Editor Extensions Raiguard Everyone knows about Creative Mod. It provides you with many different ‘cheat’ items that you can use to test your factory layouts. It has been around for quite a long time, and has served people well over the years. However, if you use Creative Mod for any length of time you’ll start to notice lag spikes here and there. Continue using it more and more and the lag spikes will get more and more frequent. Eventually, your game will begin to slow down as you use more and more of Creative Mod’s tools. A year and a half ago I started experiencing lag on my creative world. I had just released my first mod at the time, so I had a little bit of experience with the API. Curious, I delved into Creative Mod’s code and tried to see if I could figure out what was going on. The result was: Creative Mod was very well made… for its time. The mod was created in 0.13, when the modding API was much more limited. Thus, it managed to do all of these awesome things with an extremely limited set of tools. But now the mod API is much more mature and a lot more capable. I set out to create an update to Creative Mod that would take advantage of these new features, thereby decreasing its performance impact. But eventually I realized that updating Creative Mod was infeasible. It would require too many breaking changes to bring it up to date, so instead I decided to create a new mod altogether. That mod was initially released as Infinity Mode, but was soon deprecated and replaced with Editor Extensions for various reasons. Editor Extensions does not replace the game’s map editor like Creative Mod and Infinity Mode do — it augments it. Thus, EE does not have a “cheats” window akin to Creative Mod and Infinity Mode. The editor has all of that functionality — and more — buried within its many menus. Editor Extensions’ main appeal is its performance — it is several orders of magnitude faster than Creative Mod. I’m going to go over some of the methods I used to achieve this. Electricity The first thing I set out to do was create energy sources and energy voids. Creative Mod does this by creating boilers, then filling them with electricity on every tick using a script. However, now the game has a built-in entity that can do this automatically: the Electric Energy Interface (EEI). This entity can magically produce and consume electricity out of nothing, and its parameters are adjustable at runtime. There are two things about the EEI that I wanted to improve on — the GUI and the usage priority. The EEI’s GUI is functional, but confusing, and an entity can only have one usage priority assigned to it. Of course, I can fix the first problem by creating a custom GUI, but the second problem is solved in a slightly trickier manner. What you see as an infinity accumulator is actually one of five possible entities, each with a different usage priority. Depending on how you configure it in the GUI, a small script will hot-swap the entity with another one that looks identical, but has a different usage priority. This allows a single “entity” to do everything from producing, consuming, and storing a customizable amount of power (up to 999 yottawatts!). Chests The next problem I wanted to solve was chests. Creative Mod has a variety of chests, which can spawn, duplicate, or delete items. However, it uses scripts to accomplish all of that functionality, creating a rather large overhead after placing just a few chests. In 0.16, the base game was graced with the infinity chest, which can do all of this and more. It works by setting infinity filters, which themselves have “at least”, “at most” and “exactly” modes. This offloads all of the item manipulation to the game itself, reducing the scripting overhead to absolutely zero! EE extends upon the basic infinity chest by adding logistic variants, and adding a special kind of infinity chest called an aggregate chest. The aggregate chest is most similar to the creative chest — it holds a stack of every item in the game. A small script sets its infinity filters when placed, and then the base game handles the rest. There are regular and passive provider variants of this chest as well. Using infinity and aggregate chests, you can get the exact behaviour you want for testing your builds. Belts Often you will want to quickly and easily place items on a belt, or get rid of items on a belt, to test your setups. In vanilla, you can do this with an infinity chest and a loader (a hidden entity that you can get in the map editor). However, these loaders are fairly basic, and if you want to have different items on each side of a belt you have to place two loaders and two infinity chests. That’s four entities, and then you have to configure the chests as well, taking up even more time. To solve this problem, I actually built upon another mod — Miniloader. A lot of the concepts are shared between Miniloader and the infinity loader, so this explanation will give you a sneak peek into how that mod works as well. The infinity loader is actually a minimum of five entities at once: From left to right, we have the loader entity itself, an infinity chest, two stack filter inserters, and a constant combinator. All of these entities play a role in making the infinity loader work. When you place an infinity loader, what you are actually placing is a “dummy combinator”. This is a constant combinator that is disguised to look like a loader. When placed, a script immediately destroys that combinator and replaces it with an invisible one. This combinator is what you actually interact with, and is saved in blueprints so the filters can be preserved. Then the loader entity is added, along with an invisible infinity chest and a minimum of two invisible stack filter inserters with their speed cranked up to max. When you configure the loader’s filters through its custom GUI, you are actually setting the filters on the invisible stack filter inserters, as well as the infinity chest. These inserters will pull from the chest and put the items on the belt extremely quickly, making it seem as if the items are spawning out of nowhere. The reverse is also true — if you rotate an infinity loader to consume items, the inserters will pull everything off of the belt and throw it in the infinity chest, making it seem as if the items are magically disappearing. All of this is done behind the scenes and takes advantage of vanilla behaviours. A script is used to “set up” the loader, but from then on, the script does nothing, reducing the scripting overhead for using these loaders — once again — to zero. Of course, to make things as simple as possible, there is only one infinity loader item that you place. The loader will switch its belt type depending on what it’s connected to automatically and will add or remove inserters to be able to keep up with the belt’s speed. And because there are multiple different inserters, we can set different filters for each side of the belt. The result is a convenient, easy-to-use entity that can produce and consume items on a belt, while being extremely performance friendly. Character cheats While Editor Extensions is primarily meant to be used from the map editor, it is also quite possible and quite easy to use a character as well. By using cheat mode (accessed by typing /cheat or /cheat all into the console), you can get access to all the tools mentioned above. Some of the tools I haven’t mentioned include supercharged equipment: By using this equipment you can become immortal, run super fast, and see clearly in the darkness. The super roboport, combined with super construction bots, allows you to very quickly construct and deconstruct. The result is you can access many of the editor’s god-like powers while retaining your comfortable body. And in the future, if you ever remove Editor Extensions from your save, the equipment will simply disappear, leaving infinite reach as the only evidence of the mod being there. Conclusion Editor Extensions is the result of over a year of testing both in-game builds and mods. There are many, many things that I haven’t covered here — including a toggle editor shortcut, inventory sync, infinity pipes, and a special testing scenario — but that would make this post even longer than it already is. I hope you enjoyed the read, and I hope you gained some insight into how Factorio’s amazing modding API works. The Factorio developers spoil us with what we are able to do to their game, and the API only gets more and more capable with every update. Thank you for reading, and thank you to the developers for making this possible! Contributing We’re always looking for people that have something interesting they want to share with the Factorio community. If that’s you, please join the Discord (or the GitHub project) to get started. Pretty much any topic is welcome, so don’t be afraid to contribute! We’re also looking at getting community translations started this week, which would make Alt-F4 available to many more people than just the English version could. We have already set the website up to accommodate this, so all we need are people to work on the translations. If you’re up for it, join the Discord and look for the #translation channel."
+      content="Bienvenue dans le troisième numéro des Alt-F4. Ce week-end, nous allons tenter de battre le record du plus grand nombre de joueurs sur un seul serveur Factorio ; lisez ce qui suit pour savoir comment vous joindre à la fête. Il y a également un rapport sur la fête de lancement des “Big Community Games”, qui aurait dû être totalement traitée la semaine dernière. Complètement de ma (Therena) faute. Enfin, Raiguard partage avec nous tous un de ses mods passionnants. Allons-y ! PS : Nous recherchons des personnes motivées qui veulent aider à traduire chaque numéro des Alt-F4. Si vous êtes intéressé, vous trouverez plus d’informations à la fin de ce numéro. Merci ! Événement: Molten Silicon JD-Plays C’est le week-end, vous avez des projets ? Vous allez encore jouer à Factorio pendant environ 25 minutes, pour ensuite vous rendre compte que le soleil se lève déjà ? Ou vous voulez juste jouer à Factorio avec quelques amis ? Nous avons de bonnes nouvelles. Ce week-end, nous avons quelques amis qui se réunissent pour faire quelque chose de simple : faire fondre complètement le silicium de notre serveur ! Rejoignez-nous pour l’événement “Molten Silicon” où notre seul objectif est d’amener le plus grand nombre possible de joueurs sur le même serveur et de lancer une fusée. Oh, et de faire fondre le processeur du serveur en même temps bien sûr ! Chaque joueur aura quelque chose à faire, de la construction de la base à l’élimination des biters avec d’autres Tuniques Rouges. Notre véritable ennemi sera probablement toujours présent aussi, alors nous aurons besoin de certains d’entre vous pour rejoindre notre équipe de bûcherons ! Donc si vous avez quelques heures à disposition ce week-end, et que vous voulez essayer de nous aider à battre le previous record de 521 joueurs simultanés, veuillez rejoindre notre serveur à 11h UTC ce samedi 5 septembre. Vous pourrez facilement l’identifier, car ce sera le plus grand serveur en fonctionnement ! Les informations sur le serveur seront fournies peu avant l’heure de début dans le salon #information de notre Red Circuit Discord. Pour des informations plus générales, veuillez consulter notre website. Ne cassez pas les nouveaux jouets, s’il vous plaît T-A-R Le first Alt-F4 a été une surprise excitante lorsque mon esprit têtu est allé sur factorio.com le vendredi 14 août, sachant qu’il n’y aurait pas de nouvel article FFF #361 qui m’attendait. J’ai décidé que je voulais soutenir cette initiative, et la meilleure façon de le faire était d’agir rapidement. Voici donc un rapport de terrain sur l’un des nouveaux rapports de bugs “pas-un-bug” 1.0. La deuxième meilleure chose à faire après une fête de lancement officiel à Prague serait un bon vieux serveur multijoueur. De nombreuses fêtes de lancement ont fleuri sur le serveur de Factorio ce vendredi-là, toutes avec de nouvelles cartes et de nombreux ingénieurs du monde entier qui se sont joints à eux pour établir des bus ambitieux. Le Big Community Games Discord a pu atteindre son apogée avec 201 joueurs, ce qui est une bonne chose, car il faut une base solide pour pouvoir se défouler sur tous les packs de science nécessaires pour obtenir la meilleure fonctionnalité de la version 1.0. (Indice : c’est le spidertron !) Doté d’épaisses plaques de minerais et d’une astucieuse note sur la carte (décrivant les couleurs des équipes et leurs tâches), le serveur a débuté comme une colonie de fourmis hyperactives dotées d’un instinct pour fabriquer des colonnes de fours. Le message sur la carte autour du point d’arrivée a fait un travail formidable pour organiser le groupe d’ingénieurs toujours plus nombreux. Au début, une usine isolée a été créée à côté de l’usine de sciences pour que toutes les Tuniques Rouges soient approvisionnées en matériel et en munitions. Cela a permis aux soldats et aux constructeurs de disposer d’un ravitaillement régulier pour défendre et développer l’usine. Et ça s’est développé. Il a fallu 11 heures pour fabriquer une fusée, ainsi qu’une vingtaine de spidertrons, une cargaison d’équipements et d’armures et une tonne de munitions et d’explosifs. À ce moment-là, la baie de Bilka, l’Italie, et le lac Twinsen avaient été baptisés, selon les repères cartographiques laissés par des ingénieurs chevronnés. Dès que les spidertrons sont entrés en production, il est clairement apparu que ces pattes sont très inhabituelles, mais en même temps puissantes. La perspective intrigante de simplement enjamber des lacs et des machines a lentement transformé le voyage d’exploration en un test de capacités pour notre nouveau jouet/outil. Les convoyeurs se sont vite révélées être un point d’intérêt pour beaucoup d’araignées qui couraient un peu partout sur la carte. L’excitation partagée a conduit les administrateurs à apporter leur propre contribution à la fête et a fait subir au spidertrons le test ultime en transformant la fête de la publication en une méga-fête du spidertron. Une piste de danse colorée a été rapidement façonnée pour que les araignées puissent se dégourdir les jambes : La combinaison de convoyeurs à courroie se déplaçant dans des directions opposées et de vides dans la carte a conduit les toutes nouvelles pattes du spidertron à se diviser maladroitement, étirant leurs jambes à l’infini. Il est grand temps de communiquer ces découvertes aux développeurs avec un nouveau fresh 1.0 bug report. Il a été l’un des rapports de bugs les plus consultés, mais il a rapidement été marqué comme un double “pas-un-bug”. Le développeur V453000 avait déjà répondu à l’un des one of the first 1.0 bug reports (30 minutes après la publication) pour signaler qu’il ne serait pas souhaitable de restreindre leurs mouvements et que nos araignées fonctionnaient en fait très bien. Mais, le fait que nous “pouvions” n’élimine pas la question de savoir si nous “devrions”… Au final, le jeu a été un vrai succès, et nous sommes vraiment tombés amoureux du spidertron. Il est l’un des nôtres maintenant. Pleins feux sur le mod: Editor Extensions Raiguard Tout le monde connaît Creative Mod. Il vous propose de nombreux objets “de triche” que vous pouvez utiliser pour tester vos plans d’usine. Il existe depuis longtemps et a bien servi les gens au fil des ans. Cependant, si vous utilisez Creative Mod pendant un certain temps, vous commencerez à remarquer des pics de latence ici et là. Continuez à l’utiliser de plus en plus et les délais deviendront de plus en plus fréquents. Finalement, votre jeu commencera à ralentir à mesure que vous utiliserez de plus en plus les outils de Creative Mod. Il y a un an et demi, j’ai commencé à avoir du délai sur mon monde créatif. Je venais de sortir mon first mod à l’époque, donc j’avais un peu d’expérience avec l’API. Curieux, je me suis plongé dans le code du Creative Mod et j’ai essayé de voir si je pouvais comprendre ce qui se passait. Le résultat : Creative Mod a été très bien fait… pour son époque. Le mod a été créé en 0.13, à une époque où l’API de modding était beaucoup plus limitée. Ainsi, il a réussi à faire toutes ces choses géniales avec un ensemble d’outils extrêmement limité. Mais maintenant, l’API de modding est beaucoup plus évoluée et beaucoup plus performante. J’ai décidé de créer une mise à jour de Creative Mod qui tirerait parti de ces nouvelles fonctionnalités, réduisant ainsi son impact sur les performances. Mais j’ai fini par réaliser qu’il était impossible de mettre à jour Creative Mod. Il faudrait trop de modifications de rupture pour le mettre à jour, alors j’ai décidé de créer un nouveau mod. Ce mod a d’abord été publié sous le nom de “Infinity Mode”, mais il a rapidement été déclassé et remplacé par “Editor Extensions” pour diverses raisons. Editor Extensions ne remplace pas l’éditeur de cartes du jeu comme le font le Creative Mod et le Infinity Mode - il l’améliore. Ainsi, EE ne dispose pas d’une fenêtre de “triche” semblable à celle de Creative Mod et de Infinity Mode. L’éditeur possède toutes ces fonctionnalités - et bien d’autres - cachées dans ses nombreux menus. L’attrait principal de Editor Extensions est sa performance - elle est plusieurs ordres de grandeur plus rapide que Creative Mod. Je vais passer en revue certaines des méthodes que j’ai utilisées pour y parvenir. L’électricité La première chose que j’ai voulu faire, c’est de créer des sources et des puits d’énergie. Creative Mod le fait en créant des chaudières, puis en les remplissant d’électricité à chaque tick à l’aide d’un script. Cependant, le jeu dispose maintenant d’une entité intégrée qui peut le faire automatiquement : l’Interface de l’énergie électrique (IEE). Cette entité peut, comme par magie, produire et consommer de l’électricité à partir de rien, et ses paramètres sont réglables en cours de partie. Il y a deux choses que je voulais améliorer à propos de l’IEE : l’interface graphique et la priorité d’utilisation. L’interface graphique de l’IEE est fonctionnelle, mais elle prête à confusion, et une entité ne peut se voir attribuer qu’une seule priorité d’utilisation. Bien sûr, je peux résoudre le premier problème en créant une interface graphique personnalisée, mais le second problème est résolu d’une manière un peu plus délicate. Ce que vous voyez comme un accumulateur infini est en fait l’une des cinq entités possibles, chacune ayant une priorité d’utilisation différente. Selon la configuration choisie dans l’interface graphique, un petit script remplacera à chaud l’entité par une autre qui semble identique, mais qui a une priorité d’utilisation différente. Cela permet à une seule “entité” de tout faire, de la production à la consommation, en passant par le stockage d’une quantité de puissance personnalisable (jusqu’à 999 yottawatts!). Les coffres Le problème suivant que je voulais résoudre était celui des coffres. Creative Mod dispose d’une variété de coffres, qui permettent de créer, de dupliquer ou de supprimer des objets. Cependant, il utilise des scripts pour réaliser toutes ces fonctionnalités, créant un surplus assez important après avoir placé seulement quelques coffres. En 0.16, le jeu de base a été agrémenté du coffre infini, qui peut faire tout cela et plus encore. Il fonctionne par le réglage de filtres infinis, qui ont eux-mêmes des modes “au moins”, “au plus” et “exactement”. Cela permet de décharger toute la manipulation des objets sur le jeu lui-même, réduisant la charge de travail du script à zéro ! EE prolonge le coffre infini de base en y ajoutant des variantes logistiques, et en y ajoutant un type spécial de coffre infini appelé coffre composite. Le coffre composite est très similaire au coffre créatif : il contient une pile de tous les objets du jeu. Un petit script règle ses filtres infinis lorsqu’il est placé, puis le jeu de base s’occupe du reste. Il existe également des variantes de ce coffre pour les fournisseurs actifs et passifs. En utilisant les coffres infinis et composites, vous pouvez obtenir le comportement exact que vous souhaitez pour tester vos constructions. Les convoyeurs Souvent, vous voudrez placer rapidement et facilement des objets sur un convoyeur, ou vous débarrasser d’objets sur un convoyeur, pour tester vos réglages. Dans le jeu de base, vous pouvez le faire avec un coffre infini et un chargeur (une entité cachée que vous pouvez obtenir dans l’éditeur de cartes). Cependant, ces chargeurs sont assez basiques, et si vous voulez avoir des objets différents de chaque côté d’un convoyeur, vous devez placer deux chargeurs et deux coffres infinis. Cela fait quatre entités, et vous devez ensuite configurer les coffres également, ce qui prend encore plus de temps. Pour résoudre ce problème, j’ai en fait construit un autre mod - Miniloader. Beaucoup de concepts sont partagés entre le Miniloader et le chargeur infini, donc cette explication vous donnera un aperçu du fonctionnement de ce mod. Le chargeur infini est en fait un minimum de cinq entités en une : De gauche à droite, nous avons l’entité de chargement elle-même, un coffre infini, deux bras filtrables haute capacité et un émetteur de constantes. Toutes ces entités jouent un rôle dans le fonctionnement du chargeur infini. Lorsque vous placez un chargeur infini, ce que vous placez en réalité est un “combinateur factice”. Il s’agit d’un émetteur des constantes qui est déguisé pour ressembler à un chargeur. Lorsqu’il est placé, un script détruit immédiatement ce combinateur et le remplace par un autre invisible. Ce combinateur est ce avec quoi vous interagissez réellement, et il est enregistré dans des plans afin que les filtres puissent être sauvegardés. Ensuite, l’entité chargeur est ajoutée, ainsi qu’un coffre infini invisible et un minimum de deux bras filtrables haute capacité invisibles, dont la vitesse est augmentée au maximum. Lorsque vous configurez les filtres du chargeur via son interface graphique personnalisée, vous réglez en fait les filtres sur les bras filtrables haute capacité invisibles, ainsi que sur le coffre infini. Ces bras extraient les objets du coffre et les mettent sur le convoyeur extrêmement rapidement, donnant l’impression que les objets sortent de nulle part. L’inverse est également vrai : si vous faites pivoter un chargeur infini pour consommer des objets, les bras retireront tout ce qui est sur le convoyeur et le jetteront dans le coffre infini, donnant l’impression que les objets disparaissent comme par magie. Tout cela se fait en coulisses et profite des comportements du jeu de base. Un script est utilisé pour “régler” le chargeur, mais à partir de ce moment, le script ne fait plus rien, réduisant la charge de calcul pour l’utilisation de ces chargeurs - une fois de plus - à zéro. Bien sûr, pour simplifier au maximum les choses, il n’y a qu’un seul objet chargeur infini que vous placez. Le chargeur changera automatiquement de type de convoyeur en fonction de ce à quoi il est connecté et ajoutera ou supprimera des bras pour pouvoir suivre la vitesse du convoyeur. Et comme il y a plusieurs bras différents, nous pouvons régler des filtres différents pour chaque côté du convoyeur. Le résultat est une entité pratique et facile à utiliser qui peut produire et consommer des objets du convoyeur, tout en étant extrêmement performante. Triches pour le personnage Si Editor Extensions est principalement destiné à être utilisé à partir de l’éditeur de cartes, il est également tout à fait possible et assez facile d’utiliser un personnage. En utilisant le mode “Triche” (accessible en tapant /cheat ou /cheat all dans la console), vous pouvez accéder à tous les outils mentionnés ci-dessus. Certains des outils que je n’ai pas mentionnés comprennent des équipements “survitaminés” : En utilisant cet équipement, vous pouvez devenir immortel, courir très vite et voir clairement dans l’obscurité. Le super roboport, combiné à des super robots de construction, vous permet de construire et de déconstruire très rapidement. Vous pouvez ainsi accéder aux nombreux pouvoirs divins de l’éditeur tout en conservant votre corps confortable. Et à l’avenir, si jamais vous retirez Editor Extensions de votre sauvegarde, l’équipement disparaîtra tout simplement, laissant la portée infinie comme seule preuve de la présence du mod. Conclusion Editor Extensions est le résultat de plus d’un an de tests et de développements de mods dans le jeu. Il y a beaucoup, beaucoup de choses que je n’ai pas mentionnées ici - y compris un raccourci pour activer l’éditeur, la synchronisation de l’inventaire, les tuyaux infinis, et un scénario de test spécial - mais cela rendrait cet article encore plus long qu’il ne l’est déjà. J’espère que vous avez apprécié la lecture, et que vous avez pu vous faire une idée du fonctionnement de l’incroyable API de modding de Factorio. Les développeurs de Factorio nous gâtent avec ce que nous sommes capables de faire à leur jeu, et l’API n’en devient que plus performante à chaque mise à jour. Merci de votre lecture et merci aux développeurs d’avoir rendu cela possible ! Contributing Nous sommes toujours à la recherche de personnes qui ont quelque chose d’intéressant à partager avec la communauté de Factorio. Si c’est votre cas, rejoignez le Discord (ou le GitHub project) pour commencer. Presque tous les sujets sont les bienvenus, alors n’ayez pas peur de contribuer ! Nous envisageons également de lancer des traductions par la communauté cette semaine, ce qui rendrait les Alt-F4 accessibles à beaucoup plus de personnes que la seule version anglaise. Nous avons déjà procédé au réglage du site web en conséquence, il ne nous manque plus que des personnes pour travailler sur les traductions. Si vous êtes partant, rejoignez le Discord et cherchez le salon #translation."
     />
     <meta
       property="og:description"
-      content="Welcome to the third issue of Alt-F4. This weekend, there’ll be an attempt to try and break the record for the highest number of players on a single Factorio server; read on for details of how to join the fun. There’s also an action report about the Big Community Games launch party, which should totally haven been covered last week. Completely my (Therena’s) bad. Finally, Raiguard shares an exciting mod of his with all of us. Let’s get to it! PS: We’re looking for motivated people that want to help translate each issue of Alt-F4. If you’re interested, you can find more info at the end of this issue. Thanks! Event: Molten Silicon JD-Plays The weekend is here, got any plans? Going to play Factorio for about 25 minutes again, then realise the sun is rising already? Or do you just want to play Factorio with a few friends? Well, we’ve got some good news. This weekend, we have a few friends getting together to do something simple: completely melt our server’s silicon! Join us for the Molten Silicon event where our only objective is to get as many players onto the same server as possible and launch a rocket. Oh, and melt the server’s CPU at the same time of course! There will be something for every player to do, from building the base to clearing biters with other Red Coats. Our true enemy will probably be ever present as well, so we’ll need some of you to join our Lumberjack team! So if you’ve got a few hours to spare this weekend, and want to try and help break the previous record of 521 concurrent players, please join our server at 11am UTC this Saturday 5th September. You can easily identify it, because it’ll be the largest server running! The server information will be provided shortly before the start time in the #information channel of our Red Circuit Discord. For more general information, please visit our website. Don’t break the new toys please T-A-R The first Alt-F4 was an exciting surprise when my stubborn mind went to factorio.com on Friday 14th August, knowing there wouldn’t be a fresh FFF post #361 waiting for me. I decided I wanted to support this initiative, and the best way to do so was to act fast. So, here’s a field report about one of the fresh 1.0 “not-a-bug”-bug reports. The second-best thing after an official release party in Prague would be a good old multiplayer server. Multiple release parties sprouted in the Factorio lobby that Friday, all hosting fresh maps with many engineers from all over the world joining in to lay down some ambitious main busses. The Big Community Games Discord was able to catch the most momentum and peaked at 201 players, which was good as you need quite a decent base to chew away at all the science packs that are required to get to the best feature of 1.0. (Hint: It’s spidertron!) Blessed with dense ore patches and a clever map note (describing team colours and their duties), the server started as a hyperactive ant collective with an instinct for making smelter columns. The map message around the spawn point did a wonderful job at organizing the ever-growing group of engineers. Early on, an isolated factory was raised next to the science factory to keep all the Redshirts fed with gear and ammo. This gave both the troopers and the builders a steady supply to defend and grow the factory. And grow it did. It took 11 hours to produce a rocket, alongside around 20 spidertrons, a shipload of equipment and armour and a ton of ammo and explosives. By that time, Bilka Bay, Italy, and Lake Twinsen had been christened, according to the map markers left by seasoned engineers. As soon as the spidertrons came into production it became clear that these legs feel very unusual, but powerful at the same time. The intriguing sight of simply stepping over lakes and machines slowly turned the exploration tour into a test of capabilities for our new toy/tool. Belts soon turned out to be a point of interest for many of the spiders that were running around the map. The shared excitement led the admins to add their own contribution to the party and made spidertron face the ultimate test by turning the release party into a spidertron rave. A colourful dance floor was quickly terraformed so the spiders could stretch their legs: The combination of belts travelling in opposite directions and gaps in the map drove the brand new spidertron legs to split awkwardly, stretching their legs infinitely. High time to update the devs about these findings with a fresh 1.0 bug report. It ended up as one of the most viewed bug reports, but was quickly marked as duplicate: not-a-bug. Developer V453000 had already responded on one of the first 1.0 bug reports (30 minutes after release) to point out that restricting their movement wouldn’t be desirable, and that our spiders were actually performing just fine. But, the fact that we “could” does not eliminate the question of whether we “should”… In the end the playthrough was an absolute blast, and we truly fell in love with the spidertron. He’s one of us now. Mod spotlight: Editor Extensions Raiguard Everyone knows about Creative Mod. It provides you with many different ‘cheat’ items that you can use to test your factory layouts. It has been around for quite a long time, and has served people well over the years. However, if you use Creative Mod for any length of time you’ll start to notice lag spikes here and there. Continue using it more and more and the lag spikes will get more and more frequent. Eventually, your game will begin to slow down as you use more and more of Creative Mod’s tools. A year and a half ago I started experiencing lag on my creative world. I had just released my first mod at the time, so I had a little bit of experience with the API. Curious, I delved into Creative Mod’s code and tried to see if I could figure out what was going on. The result was: Creative Mod was very well made… for its time. The mod was created in 0.13, when the modding API was much more limited. Thus, it managed to do all of these awesome things with an extremely limited set of tools. But now the mod API is much more mature and a lot more capable. I set out to create an update to Creative Mod that would take advantage of these new features, thereby decreasing its performance impact. But eventually I realized that updating Creative Mod was infeasible. It would require too many breaking changes to bring it up to date, so instead I decided to create a new mod altogether. That mod was initially released as Infinity Mode, but was soon deprecated and replaced with Editor Extensions for various reasons. Editor Extensions does not replace the game’s map editor like Creative Mod and Infinity Mode do — it augments it. Thus, EE does not have a “cheats” window akin to Creative Mod and Infinity Mode. The editor has all of that functionality — and more — buried within its many menus. Editor Extensions’ main appeal is its performance — it is several orders of magnitude faster than Creative Mod. I’m going to go over some of the methods I used to achieve this. Electricity The first thing I set out to do was create energy sources and energy voids. Creative Mod does this by creating boilers, then filling them with electricity on every tick using a script. However, now the game has a built-in entity that can do this automatically: the Electric Energy Interface (EEI). This entity can magically produce and consume electricity out of nothing, and its parameters are adjustable at runtime. There are two things about the EEI that I wanted to improve on — the GUI and the usage priority. The EEI’s GUI is functional, but confusing, and an entity can only have one usage priority assigned to it. Of course, I can fix the first problem by creating a custom GUI, but the second problem is solved in a slightly trickier manner. What you see as an infinity accumulator is actually one of five possible entities, each with a different usage priority. Depending on how you configure it in the GUI, a small script will hot-swap the entity with another one that looks identical, but has a different usage priority. This allows a single “entity” to do everything from producing, consuming, and storing a customizable amount of power (up to 999 yottawatts!). Chests The next problem I wanted to solve was chests. Creative Mod has a variety of chests, which can spawn, duplicate, or delete items. However, it uses scripts to accomplish all of that functionality, creating a rather large overhead after placing just a few chests. In 0.16, the base game was graced with the infinity chest, which can do all of this and more. It works by setting infinity filters, which themselves have “at least”, “at most” and “exactly” modes. This offloads all of the item manipulation to the game itself, reducing the scripting overhead to absolutely zero! EE extends upon the basic infinity chest by adding logistic variants, and adding a special kind of infinity chest called an aggregate chest. The aggregate chest is most similar to the creative chest — it holds a stack of every item in the game. A small script sets its infinity filters when placed, and then the base game handles the rest. There are regular and passive provider variants of this chest as well. Using infinity and aggregate chests, you can get the exact behaviour you want for testing your builds. Belts Often you will want to quickly and easily place items on a belt, or get rid of items on a belt, to test your setups. In vanilla, you can do this with an infinity chest and a loader (a hidden entity that you can get in the map editor). However, these loaders are fairly basic, and if you want to have different items on each side of a belt you have to place two loaders and two infinity chests. That’s four entities, and then you have to configure the chests as well, taking up even more time. To solve this problem, I actually built upon another mod — Miniloader. A lot of the concepts are shared between Miniloader and the infinity loader, so this explanation will give you a sneak peek into how that mod works as well. The infinity loader is actually a minimum of five entities at once: From left to right, we have the loader entity itself, an infinity chest, two stack filter inserters, and a constant combinator. All of these entities play a role in making the infinity loader work. When you place an infinity loader, what you are actually placing is a “dummy combinator”. This is a constant combinator that is disguised to look like a loader. When placed, a script immediately destroys that combinator and replaces it with an invisible one. This combinator is what you actually interact with, and is saved in blueprints so the filters can be preserved. Then the loader entity is added, along with an invisible infinity chest and a minimum of two invisible stack filter inserters with their speed cranked up to max. When you configure the loader’s filters through its custom GUI, you are actually setting the filters on the invisible stack filter inserters, as well as the infinity chest. These inserters will pull from the chest and put the items on the belt extremely quickly, making it seem as if the items are spawning out of nowhere. The reverse is also true — if you rotate an infinity loader to consume items, the inserters will pull everything off of the belt and throw it in the infinity chest, making it seem as if the items are magically disappearing. All of this is done behind the scenes and takes advantage of vanilla behaviours. A script is used to “set up” the loader, but from then on, the script does nothing, reducing the scripting overhead for using these loaders — once again — to zero. Of course, to make things as simple as possible, there is only one infinity loader item that you place. The loader will switch its belt type depending on what it’s connected to automatically and will add or remove inserters to be able to keep up with the belt’s speed. And because there are multiple different inserters, we can set different filters for each side of the belt. The result is a convenient, easy-to-use entity that can produce and consume items on a belt, while being extremely performance friendly. Character cheats While Editor Extensions is primarily meant to be used from the map editor, it is also quite possible and quite easy to use a character as well. By using cheat mode (accessed by typing /cheat or /cheat all into the console), you can get access to all the tools mentioned above. Some of the tools I haven’t mentioned include supercharged equipment: By using this equipment you can become immortal, run super fast, and see clearly in the darkness. The super roboport, combined with super construction bots, allows you to very quickly construct and deconstruct. The result is you can access many of the editor’s god-like powers while retaining your comfortable body. And in the future, if you ever remove Editor Extensions from your save, the equipment will simply disappear, leaving infinite reach as the only evidence of the mod being there. Conclusion Editor Extensions is the result of over a year of testing both in-game builds and mods. There are many, many things that I haven’t covered here — including a toggle editor shortcut, inventory sync, infinity pipes, and a special testing scenario — but that would make this post even longer than it already is. I hope you enjoyed the read, and I hope you gained some insight into how Factorio’s amazing modding API works. The Factorio developers spoil us with what we are able to do to their game, and the API only gets more and more capable with every update. Thank you for reading, and thank you to the developers for making this possible! Contributing We’re always looking for people that have something interesting they want to share with the Factorio community. If that’s you, please join the Discord (or the GitHub project) to get started. Pretty much any topic is welcome, so don’t be afraid to contribute! We’re also looking at getting community translations started this week, which would make Alt-F4 available to many more people than just the English version could. We have already set the website up to accommodate this, so all we need are people to work on the translations. If you’re up for it, join the Discord and look for the #translation channel."
+      content="Bienvenue dans le troisième numéro des Alt-F4. Ce week-end, nous allons tenter de battre le record du plus grand nombre de joueurs sur un seul serveur Factorio ; lisez ce qui suit pour savoir comment vous joindre à la fête. Il y a également un rapport sur la fête de lancement des “Big Community Games”, qui aurait dû être totalement traitée la semaine dernière. Complètement de ma (Therena) faute. Enfin, Raiguard partage avec nous tous un de ses mods passionnants. Allons-y ! PS : Nous recherchons des personnes motivées qui veulent aider à traduire chaque numéro des Alt-F4. Si vous êtes intéressé, vous trouverez plus d’informations à la fin de ce numéro. Merci ! Événement: Molten Silicon JD-Plays C’est le week-end, vous avez des projets ? Vous allez encore jouer à Factorio pendant environ 25 minutes, pour ensuite vous rendre compte que le soleil se lève déjà ? Ou vous voulez juste jouer à Factorio avec quelques amis ? Nous avons de bonnes nouvelles. Ce week-end, nous avons quelques amis qui se réunissent pour faire quelque chose de simple : faire fondre complètement le silicium de notre serveur ! Rejoignez-nous pour l’événement “Molten Silicon” où notre seul objectif est d’amener le plus grand nombre possible de joueurs sur le même serveur et de lancer une fusée. Oh, et de faire fondre le processeur du serveur en même temps bien sûr ! Chaque joueur aura quelque chose à faire, de la construction de la base à l’élimination des biters avec d’autres Tuniques Rouges. Notre véritable ennemi sera probablement toujours présent aussi, alors nous aurons besoin de certains d’entre vous pour rejoindre notre équipe de bûcherons ! Donc si vous avez quelques heures à disposition ce week-end, et que vous voulez essayer de nous aider à battre le previous record de 521 joueurs simultanés, veuillez rejoindre notre serveur à 11h UTC ce samedi 5 septembre. Vous pourrez facilement l’identifier, car ce sera le plus grand serveur en fonctionnement ! Les informations sur le serveur seront fournies peu avant l’heure de début dans le salon #information de notre Red Circuit Discord. Pour des informations plus générales, veuillez consulter notre website. Ne cassez pas les nouveaux jouets, s’il vous plaît T-A-R Le first Alt-F4 a été une surprise excitante lorsque mon esprit têtu est allé sur factorio.com le vendredi 14 août, sachant qu’il n’y aurait pas de nouvel article FFF #361 qui m’attendait. J’ai décidé que je voulais soutenir cette initiative, et la meilleure façon de le faire était d’agir rapidement. Voici donc un rapport de terrain sur l’un des nouveaux rapports de bugs “pas-un-bug” 1.0. La deuxième meilleure chose à faire après une fête de lancement officiel à Prague serait un bon vieux serveur multijoueur. De nombreuses fêtes de lancement ont fleuri sur le serveur de Factorio ce vendredi-là, toutes avec de nouvelles cartes et de nombreux ingénieurs du monde entier qui se sont joints à eux pour établir des bus ambitieux. Le Big Community Games Discord a pu atteindre son apogée avec 201 joueurs, ce qui est une bonne chose, car il faut une base solide pour pouvoir se défouler sur tous les packs de science nécessaires pour obtenir la meilleure fonctionnalité de la version 1.0. (Indice : c’est le spidertron !) Doté d’épaisses plaques de minerais et d’une astucieuse note sur la carte (décrivant les couleurs des équipes et leurs tâches), le serveur a débuté comme une colonie de fourmis hyperactives dotées d’un instinct pour fabriquer des colonnes de fours. Le message sur la carte autour du point d’arrivée a fait un travail formidable pour organiser le groupe d’ingénieurs toujours plus nombreux. Au début, une usine isolée a été créée à côté de l’usine de sciences pour que toutes les Tuniques Rouges soient approvisionnées en matériel et en munitions. Cela a permis aux soldats et aux constructeurs de disposer d’un ravitaillement régulier pour défendre et développer l’usine. Et ça s’est développé. Il a fallu 11 heures pour fabriquer une fusée, ainsi qu’une vingtaine de spidertrons, une cargaison d’équipements et d’armures et une tonne de munitions et d’explosifs. À ce moment-là, la baie de Bilka, l’Italie, et le lac Twinsen avaient été baptisés, selon les repères cartographiques laissés par des ingénieurs chevronnés. Dès que les spidertrons sont entrés en production, il est clairement apparu que ces pattes sont très inhabituelles, mais en même temps puissantes. La perspective intrigante de simplement enjamber des lacs et des machines a lentement transformé le voyage d’exploration en un test de capacités pour notre nouveau jouet/outil. Les convoyeurs se sont vite révélées être un point d’intérêt pour beaucoup d’araignées qui couraient un peu partout sur la carte. L’excitation partagée a conduit les administrateurs à apporter leur propre contribution à la fête et a fait subir au spidertrons le test ultime en transformant la fête de la publication en une méga-fête du spidertron. Une piste de danse colorée a été rapidement façonnée pour que les araignées puissent se dégourdir les jambes : La combinaison de convoyeurs à courroie se déplaçant dans des directions opposées et de vides dans la carte a conduit les toutes nouvelles pattes du spidertron à se diviser maladroitement, étirant leurs jambes à l’infini. Il est grand temps de communiquer ces découvertes aux développeurs avec un nouveau fresh 1.0 bug report. Il a été l’un des rapports de bugs les plus consultés, mais il a rapidement été marqué comme un double “pas-un-bug”. Le développeur V453000 avait déjà répondu à l’un des one of the first 1.0 bug reports (30 minutes après la publication) pour signaler qu’il ne serait pas souhaitable de restreindre leurs mouvements et que nos araignées fonctionnaient en fait très bien. Mais, le fait que nous “pouvions” n’élimine pas la question de savoir si nous “devrions”… Au final, le jeu a été un vrai succès, et nous sommes vraiment tombés amoureux du spidertron. Il est l’un des nôtres maintenant. Pleins feux sur le mod: Editor Extensions Raiguard Tout le monde connaît Creative Mod. Il vous propose de nombreux objets “de triche” que vous pouvez utiliser pour tester vos plans d’usine. Il existe depuis longtemps et a bien servi les gens au fil des ans. Cependant, si vous utilisez Creative Mod pendant un certain temps, vous commencerez à remarquer des pics de latence ici et là. Continuez à l’utiliser de plus en plus et les délais deviendront de plus en plus fréquents. Finalement, votre jeu commencera à ralentir à mesure que vous utiliserez de plus en plus les outils de Creative Mod. Il y a un an et demi, j’ai commencé à avoir du délai sur mon monde créatif. Je venais de sortir mon first mod à l’époque, donc j’avais un peu d’expérience avec l’API. Curieux, je me suis plongé dans le code du Creative Mod et j’ai essayé de voir si je pouvais comprendre ce qui se passait. Le résultat : Creative Mod a été très bien fait… pour son époque. Le mod a été créé en 0.13, à une époque où l’API de modding était beaucoup plus limitée. Ainsi, il a réussi à faire toutes ces choses géniales avec un ensemble d’outils extrêmement limité. Mais maintenant, l’API de modding est beaucoup plus évoluée et beaucoup plus performante. J’ai décidé de créer une mise à jour de Creative Mod qui tirerait parti de ces nouvelles fonctionnalités, réduisant ainsi son impact sur les performances. Mais j’ai fini par réaliser qu’il était impossible de mettre à jour Creative Mod. Il faudrait trop de modifications de rupture pour le mettre à jour, alors j’ai décidé de créer un nouveau mod. Ce mod a d’abord été publié sous le nom de “Infinity Mode”, mais il a rapidement été déclassé et remplacé par “Editor Extensions” pour diverses raisons. Editor Extensions ne remplace pas l’éditeur de cartes du jeu comme le font le Creative Mod et le Infinity Mode - il l’améliore. Ainsi, EE ne dispose pas d’une fenêtre de “triche” semblable à celle de Creative Mod et de Infinity Mode. L’éditeur possède toutes ces fonctionnalités - et bien d’autres - cachées dans ses nombreux menus. L’attrait principal de Editor Extensions est sa performance - elle est plusieurs ordres de grandeur plus rapide que Creative Mod. Je vais passer en revue certaines des méthodes que j’ai utilisées pour y parvenir. L’électricité La première chose que j’ai voulu faire, c’est de créer des sources et des puits d’énergie. Creative Mod le fait en créant des chaudières, puis en les remplissant d’électricité à chaque tick à l’aide d’un script. Cependant, le jeu dispose maintenant d’une entité intégrée qui peut le faire automatiquement : l’Interface de l’énergie électrique (IEE). Cette entité peut, comme par magie, produire et consommer de l’électricité à partir de rien, et ses paramètres sont réglables en cours de partie. Il y a deux choses que je voulais améliorer à propos de l’IEE : l’interface graphique et la priorité d’utilisation. L’interface graphique de l’IEE est fonctionnelle, mais elle prête à confusion, et une entité ne peut se voir attribuer qu’une seule priorité d’utilisation. Bien sûr, je peux résoudre le premier problème en créant une interface graphique personnalisée, mais le second problème est résolu d’une manière un peu plus délicate. Ce que vous voyez comme un accumulateur infini est en fait l’une des cinq entités possibles, chacune ayant une priorité d’utilisation différente. Selon la configuration choisie dans l’interface graphique, un petit script remplacera à chaud l’entité par une autre qui semble identique, mais qui a une priorité d’utilisation différente. Cela permet à une seule “entité” de tout faire, de la production à la consommation, en passant par le stockage d’une quantité de puissance personnalisable (jusqu’à 999 yottawatts!). Les coffres Le problème suivant que je voulais résoudre était celui des coffres. Creative Mod dispose d’une variété de coffres, qui permettent de créer, de dupliquer ou de supprimer des objets. Cependant, il utilise des scripts pour réaliser toutes ces fonctionnalités, créant un surplus assez important après avoir placé seulement quelques coffres. En 0.16, le jeu de base a été agrémenté du coffre infini, qui peut faire tout cela et plus encore. Il fonctionne par le réglage de filtres infinis, qui ont eux-mêmes des modes “au moins”, “au plus” et “exactement”. Cela permet de décharger toute la manipulation des objets sur le jeu lui-même, réduisant la charge de travail du script à zéro ! EE prolonge le coffre infini de base en y ajoutant des variantes logistiques, et en y ajoutant un type spécial de coffre infini appelé coffre composite. Le coffre composite est très similaire au coffre créatif : il contient une pile de tous les objets du jeu. Un petit script règle ses filtres infinis lorsqu’il est placé, puis le jeu de base s’occupe du reste. Il existe également des variantes de ce coffre pour les fournisseurs actifs et passifs. En utilisant les coffres infinis et composites, vous pouvez obtenir le comportement exact que vous souhaitez pour tester vos constructions. Les convoyeurs Souvent, vous voudrez placer rapidement et facilement des objets sur un convoyeur, ou vous débarrasser d’objets sur un convoyeur, pour tester vos réglages. Dans le jeu de base, vous pouvez le faire avec un coffre infini et un chargeur (une entité cachée que vous pouvez obtenir dans l’éditeur de cartes). Cependant, ces chargeurs sont assez basiques, et si vous voulez avoir des objets différents de chaque côté d’un convoyeur, vous devez placer deux chargeurs et deux coffres infinis. Cela fait quatre entités, et vous devez ensuite configurer les coffres également, ce qui prend encore plus de temps. Pour résoudre ce problème, j’ai en fait construit un autre mod - Miniloader. Beaucoup de concepts sont partagés entre le Miniloader et le chargeur infini, donc cette explication vous donnera un aperçu du fonctionnement de ce mod. Le chargeur infini est en fait un minimum de cinq entités en une : De gauche à droite, nous avons l’entité de chargement elle-même, un coffre infini, deux bras filtrables haute capacité et un émetteur de constantes. Toutes ces entités jouent un rôle dans le fonctionnement du chargeur infini. Lorsque vous placez un chargeur infini, ce que vous placez en réalité est un “combinateur factice”. Il s’agit d’un émetteur des constantes qui est déguisé pour ressembler à un chargeur. Lorsqu’il est placé, un script détruit immédiatement ce combinateur et le remplace par un autre invisible. Ce combinateur est ce avec quoi vous interagissez réellement, et il est enregistré dans des plans afin que les filtres puissent être sauvegardés. Ensuite, l’entité chargeur est ajoutée, ainsi qu’un coffre infini invisible et un minimum de deux bras filtrables haute capacité invisibles, dont la vitesse est augmentée au maximum. Lorsque vous configurez les filtres du chargeur via son interface graphique personnalisée, vous réglez en fait les filtres sur les bras filtrables haute capacité invisibles, ainsi que sur le coffre infini. Ces bras extraient les objets du coffre et les mettent sur le convoyeur extrêmement rapidement, donnant l’impression que les objets sortent de nulle part. L’inverse est également vrai : si vous faites pivoter un chargeur infini pour consommer des objets, les bras retireront tout ce qui est sur le convoyeur et le jetteront dans le coffre infini, donnant l’impression que les objets disparaissent comme par magie. Tout cela se fait en coulisses et profite des comportements du jeu de base. Un script est utilisé pour “régler” le chargeur, mais à partir de ce moment, le script ne fait plus rien, réduisant la charge de calcul pour l’utilisation de ces chargeurs - une fois de plus - à zéro. Bien sûr, pour simplifier au maximum les choses, il n’y a qu’un seul objet chargeur infini que vous placez. Le chargeur changera automatiquement de type de convoyeur en fonction de ce à quoi il est connecté et ajoutera ou supprimera des bras pour pouvoir suivre la vitesse du convoyeur. Et comme il y a plusieurs bras différents, nous pouvons régler des filtres différents pour chaque côté du convoyeur. Le résultat est une entité pratique et facile à utiliser qui peut produire et consommer des objets du convoyeur, tout en étant extrêmement performante. Triches pour le personnage Si Editor Extensions est principalement destiné à être utilisé à partir de l’éditeur de cartes, il est également tout à fait possible et assez facile d’utiliser un personnage. En utilisant le mode “Triche” (accessible en tapant /cheat ou /cheat all dans la console), vous pouvez accéder à tous les outils mentionnés ci-dessus. Certains des outils que je n’ai pas mentionnés comprennent des équipements “survitaminés” : En utilisant cet équipement, vous pouvez devenir immortel, courir très vite et voir clairement dans l’obscurité. Le super roboport, combiné à des super robots de construction, vous permet de construire et de déconstruire très rapidement. Vous pouvez ainsi accéder aux nombreux pouvoirs divins de l’éditeur tout en conservant votre corps confortable. Et à l’avenir, si jamais vous retirez Editor Extensions de votre sauvegarde, l’équipement disparaîtra tout simplement, laissant la portée infinie comme seule preuve de la présence du mod. Conclusion Editor Extensions est le résultat de plus d’un an de tests et de développements de mods dans le jeu. Il y a beaucoup, beaucoup de choses que je n’ai pas mentionnées ici - y compris un raccourci pour activer l’éditeur, la synchronisation de l’inventaire, les tuyaux infinis, et un scénario de test spécial - mais cela rendrait cet article encore plus long qu’il ne l’est déjà. J’espère que vous avez apprécié la lecture, et que vous avez pu vous faire une idée du fonctionnement de l’incroyable API de modding de Factorio. Les développeurs de Factorio nous gâtent avec ce que nous sommes capables de faire à leur jeu, et l’API n’en devient que plus performante à chaque mise à jour. Merci de votre lecture et merci aux développeurs d’avoir rendu cela possible ! Contributing Nous sommes toujours à la recherche de personnes qui ont quelque chose d’intéressant à partager avec la communauté de Factorio. Si c’est votre cas, rejoignez le Discord (ou le GitHub project) pour commencer. Presque tous les sujets sont les bienvenus, alors n’ayez pas peur de contribuer ! Nous envisageons également de lancer des traductions par la communauté cette semaine, ce qui rendrait les Alt-F4 accessibles à beaucoup plus de personnes que la seule version anglaise. Nous avons déjà procédé au réglage du site web en conséquence, il ne nous manque plus que des personnes pour travailler sur les traductions. Si vous êtes partant, rejoignez le Discord et cherchez le salon #translation."
     />
     <link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-3/" />
     <meta property="og:url" content="https://alt-f4.blog/ALTF4-3/" />
@@ -55,7 +55,7 @@
         "headline": "Alt-F4 #3 - Tronparty",
         "dateModified": "2020-09-04T00:00:00+00:00",
         "datePublished": "2020-09-04T00:00:00+00:00",
-        "description": "Welcome to the third issue of Alt-F4. This weekend, there’ll be an attempt to try and break the record for the highest number of players on a single Factorio server; read on for details of how to join the fun. There’s also an action report about the Big Community Games launch party, which should totally haven been covered last week. Completely my (Therena’s) bad. Finally, Raiguard shares an exciting mod of his with all of us. Let’s get to it! PS: We’re looking for motivated people that want to help translate each issue of Alt-F4. If you’re interested, you can find more info at the end of this issue. Thanks! Event: Molten Silicon JD-Plays The weekend is here, got any plans? Going to play Factorio for about 25 minutes again, then realise the sun is rising already? Or do you just want to play Factorio with a few friends? Well, we’ve got some good news. This weekend, we have a few friends getting together to do something simple: completely melt our server’s silicon! Join us for the Molten Silicon event where our only objective is to get as many players onto the same server as possible and launch a rocket. Oh, and melt the server’s CPU at the same time of course! There will be something for every player to do, from building the base to clearing biters with other Red Coats. Our true enemy will probably be ever present as well, so we’ll need some of you to join our Lumberjack team! So if you’ve got a few hours to spare this weekend, and want to try and help break the previous record of 521 concurrent players, please join our server at 11am UTC this Saturday 5th September. You can easily identify it, because it’ll be the largest server running! The server information will be provided shortly before the start time in the #information channel of our Red Circuit Discord. For more general information, please visit our website. Don’t break the new toys please T-A-R The first Alt-F4 was an exciting surprise when my stubborn mind went to factorio.com on Friday 14th August, knowing there wouldn’t be a fresh FFF post #361 waiting for me. I decided I wanted to support this initiative, and the best way to do so was to act fast. So, here’s a field report about one of the fresh 1.0 “not-a-bug”-bug reports. The second-best thing after an official release party in Prague would be a good old multiplayer server. Multiple release parties sprouted in the Factorio lobby that Friday, all hosting fresh maps with many engineers from all over the world joining in to lay down some ambitious main busses. The Big Community Games Discord was able to catch the most momentum and peaked at 201 players, which was good as you need quite a decent base to chew away at all the science packs that are required to get to the best feature of 1.0. (Hint: It’s spidertron!) Blessed with dense ore patches and a clever map note (describing team colours and their duties), the server started as a hyperactive ant collective with an instinct for making smelter columns. The map message around the spawn point did a wonderful job at organizing the ever-growing group of engineers. Early on, an isolated factory was raised next to the science factory to keep all the Redshirts fed with gear and ammo. This gave both the troopers and the builders a steady supply to defend and grow the factory. And grow it did. It took 11 hours to produce a rocket, alongside around 20 spidertrons, a shipload of equipment and armour and a ton of ammo and explosives. By that time, Bilka Bay, Italy, and Lake Twinsen had been christened, according to the map markers left by seasoned engineers. As soon as the spidertrons came into production it became clear that these legs feel very unusual, but powerful at the same time. The intriguing sight of simply stepping over lakes and machines slowly turned the exploration tour into a test of capabilities for our new toy/tool. Belts soon turned out to be a point of interest for many of the spiders that were running around the map. The shared excitement led the admins to add their own contribution to the party and made spidertron face the ultimate test by turning the release party into a spidertron rave. A colourful dance floor was quickly terraformed so the spiders could stretch their legs: The combination of belts travelling in opposite directions and gaps in the map drove the brand new spidertron legs to split awkwardly, stretching their legs infinitely. High time to update the devs about these findings with a fresh 1.0 bug report. It ended up as one of the most viewed bug reports, but was quickly marked as duplicate: not-a-bug. Developer V453000 had already responded on one of the first 1.0 bug reports (30 minutes after release) to point out that restricting their movement wouldn’t be desirable, and that our spiders were actually performing just fine. But, the fact that we “could” does not eliminate the question of whether we “should”… In the end the playthrough was an absolute blast, and we truly fell in love with the spidertron. He’s one of us now. Mod spotlight: Editor Extensions Raiguard Everyone knows about Creative Mod. It provides you with many different ‘cheat’ items that you can use to test your factory layouts. It has been around for quite a long time, and has served people well over the years. However, if you use Creative Mod for any length of time you’ll start to notice lag spikes here and there. Continue using it more and more and the lag spikes will get more and more frequent. Eventually, your game will begin to slow down as you use more and more of Creative Mod’s tools. A year and a half ago I started experiencing lag on my creative world. I had just released my first mod at the time, so I had a little bit of experience with the API. Curious, I delved into Creative Mod’s code and tried to see if I could figure out what was going on. The result was: Creative Mod was very well made… for its time. The mod was created in 0.13, when the modding API was much more limited. Thus, it managed to do all of these awesome things with an extremely limited set of tools. But now the mod API is much more mature and a lot more capable. I set out to create an update to Creative Mod that would take advantage of these new features, thereby decreasing its performance impact. But eventually I realized that updating Creative Mod was infeasible. It would require too many breaking changes to bring it up to date, so instead I decided to create a new mod altogether. That mod was initially released as Infinity Mode, but was soon deprecated and replaced with Editor Extensions for various reasons. Editor Extensions does not replace the game’s map editor like Creative Mod and Infinity Mode do — it augments it. Thus, EE does not have a “cheats” window akin to Creative Mod and Infinity Mode. The editor has all of that functionality — and more — buried within its many menus. Editor Extensions’ main appeal is its performance — it is several orders of magnitude faster than Creative Mod. I’m going to go over some of the methods I used to achieve this. Electricity The first thing I set out to do was create energy sources and energy voids. Creative Mod does this by creating boilers, then filling them with electricity on every tick using a script. However, now the game has a built-in entity that can do this automatically: the Electric Energy Interface (EEI). This entity can magically produce and consume electricity out of nothing, and its parameters are adjustable at runtime. There are two things about the EEI that I wanted to improve on — the GUI and the usage priority. The EEI’s GUI is functional, but confusing, and an entity can only have one usage priority assigned to it. Of course, I can fix the first problem by creating a custom GUI, but the second problem is solved in a slightly trickier manner. What you see as an infinity accumulator is actually one of five possible entities, each with a different usage priority. Depending on how you configure it in the GUI, a small script will hot-swap the entity with another one that looks identical, but has a different usage priority. This allows a single “entity” to do everything from producing, consuming, and storing a customizable amount of power (up to 999 yottawatts!). Chests The next problem I wanted to solve was chests. Creative Mod has a variety of chests, which can spawn, duplicate, or delete items. However, it uses scripts to accomplish all of that functionality, creating a rather large overhead after placing just a few chests. In 0.16, the base game was graced with the infinity chest, which can do all of this and more. It works by setting infinity filters, which themselves have “at least”, “at most” and “exactly” modes. This offloads all of the item manipulation to the game itself, reducing the scripting overhead to absolutely zero! EE extends upon the basic infinity chest by adding logistic variants, and adding a special kind of infinity chest called an aggregate chest. The aggregate chest is most similar to the creative chest — it holds a stack of every item in the game. A small script sets its infinity filters when placed, and then the base game handles the rest. There are regular and passive provider variants of this chest as well. Using infinity and aggregate chests, you can get the exact behaviour you want for testing your builds. Belts Often you will want to quickly and easily place items on a belt, or get rid of items on a belt, to test your setups. In vanilla, you can do this with an infinity chest and a loader (a hidden entity that you can get in the map editor). However, these loaders are fairly basic, and if you want to have different items on each side of a belt you have to place two loaders and two infinity chests. That’s four entities, and then you have to configure the chests as well, taking up even more time. To solve this problem, I actually built upon another mod — Miniloader. A lot of the concepts are shared between Miniloader and the infinity loader, so this explanation will give you a sneak peek into how that mod works as well. The infinity loader is actually a minimum of five entities at once: From left to right, we have the loader entity itself, an infinity chest, two stack filter inserters, and a constant combinator. All of these entities play a role in making the infinity loader work. When you place an infinity loader, what you are actually placing is a “dummy combinator”. This is a constant combinator that is disguised to look like a loader. When placed, a script immediately destroys that combinator and replaces it with an invisible one. This combinator is what you actually interact with, and is saved in blueprints so the filters can be preserved. Then the loader entity is added, along with an invisible infinity chest and a minimum of two invisible stack filter inserters with their speed cranked up to max. When you configure the loader’s filters through its custom GUI, you are actually setting the filters on the invisible stack filter inserters, as well as the infinity chest. These inserters will pull from the chest and put the items on the belt extremely quickly, making it seem as if the items are spawning out of nowhere. The reverse is also true — if you rotate an infinity loader to consume items, the inserters will pull everything off of the belt and throw it in the infinity chest, making it seem as if the items are magically disappearing. All of this is done behind the scenes and takes advantage of vanilla behaviours. A script is used to “set up” the loader, but from then on, the script does nothing, reducing the scripting overhead for using these loaders — once again — to zero. Of course, to make things as simple as possible, there is only one infinity loader item that you place. The loader will switch its belt type depending on what it’s connected to automatically and will add or remove inserters to be able to keep up with the belt’s speed. And because there are multiple different inserters, we can set different filters for each side of the belt. The result is a convenient, easy-to-use entity that can produce and consume items on a belt, while being extremely performance friendly. Character cheats While Editor Extensions is primarily meant to be used from the map editor, it is also quite possible and quite easy to use a character as well. By using cheat mode (accessed by typing /cheat or /cheat all into the console), you can get access to all the tools mentioned above. Some of the tools I haven’t mentioned include supercharged equipment: By using this equipment you can become immortal, run super fast, and see clearly in the darkness. The super roboport, combined with super construction bots, allows you to very quickly construct and deconstruct. The result is you can access many of the editor’s god-like powers while retaining your comfortable body. And in the future, if you ever remove Editor Extensions from your save, the equipment will simply disappear, leaving infinite reach as the only evidence of the mod being there. Conclusion Editor Extensions is the result of over a year of testing both in-game builds and mods. There are many, many things that I haven’t covered here — including a toggle editor shortcut, inventory sync, infinity pipes, and a special testing scenario — but that would make this post even longer than it already is. I hope you enjoyed the read, and I hope you gained some insight into how Factorio’s amazing modding API works. The Factorio developers spoil us with what we are able to do to their game, and the API only gets more and more capable with every update. Thank you for reading, and thank you to the developers for making this possible! Contributing We’re always looking for people that have something interesting they want to share with the Factorio community. If that’s you, please join the Discord (or the GitHub project) to get started. Pretty much any topic is welcome, so don’t be afraid to contribute! We’re also looking at getting community translations started this week, which would make Alt-F4 available to many more people than just the English version could. We have already set the website up to accommodate this, so all we need are people to work on the translations. If you’re up for it, join the Discord and look for the #translation channel.",
+        "description": "Bienvenue dans le troisième numéro des Alt-F4. Ce week-end, nous allons tenter de battre le record du plus grand nombre de joueurs sur un seul serveur Factorio ; lisez ce qui suit pour savoir comment vous joindre à la fête. Il y a également un rapport sur la fête de lancement des “Big Community Games”, qui aurait dû être totalement traitée la semaine dernière. Complètement de ma (Therena) faute. Enfin, Raiguard partage avec nous tous un de ses mods passionnants. Allons-y ! PS : Nous recherchons des personnes motivées qui veulent aider à traduire chaque numéro des Alt-F4. Si vous êtes intéressé, vous trouverez plus d’informations à la fin de ce numéro. Merci ! Événement: Molten Silicon JD-Plays C’est le week-end, vous avez des projets ? Vous allez encore jouer à Factorio pendant environ 25 minutes, pour ensuite vous rendre compte que le soleil se lève déjà ? Ou vous voulez juste jouer à Factorio avec quelques amis ? Nous avons de bonnes nouvelles. Ce week-end, nous avons quelques amis qui se réunissent pour faire quelque chose de simple : faire fondre complètement le silicium de notre serveur ! Rejoignez-nous pour l’événement “Molten Silicon” où notre seul objectif est d’amener le plus grand nombre possible de joueurs sur le même serveur et de lancer une fusée. Oh, et de faire fondre le processeur du serveur en même temps bien sûr ! Chaque joueur aura quelque chose à faire, de la construction de la base à l’élimination des biters avec d’autres Tuniques Rouges. Notre véritable ennemi sera probablement toujours présent aussi, alors nous aurons besoin de certains d’entre vous pour rejoindre notre équipe de bûcherons ! Donc si vous avez quelques heures à disposition ce week-end, et que vous voulez essayer de nous aider à battre le previous record de 521 joueurs simultanés, veuillez rejoindre notre serveur à 11h UTC ce samedi 5 septembre. Vous pourrez facilement l’identifier, car ce sera le plus grand serveur en fonctionnement ! Les informations sur le serveur seront fournies peu avant l’heure de début dans le salon #information de notre Red Circuit Discord. Pour des informations plus générales, veuillez consulter notre website. Ne cassez pas les nouveaux jouets, s’il vous plaît T-A-R Le first Alt-F4 a été une surprise excitante lorsque mon esprit têtu est allé sur factorio.com le vendredi 14 août, sachant qu’il n’y aurait pas de nouvel article FFF #361 qui m’attendait. J’ai décidé que je voulais soutenir cette initiative, et la meilleure façon de le faire était d’agir rapidement. Voici donc un rapport de terrain sur l’un des nouveaux rapports de bugs “pas-un-bug” 1.0. La deuxième meilleure chose à faire après une fête de lancement officiel à Prague serait un bon vieux serveur multijoueur. De nombreuses fêtes de lancement ont fleuri sur le serveur de Factorio ce vendredi-là, toutes avec de nouvelles cartes et de nombreux ingénieurs du monde entier qui se sont joints à eux pour établir des bus ambitieux. Le Big Community Games Discord a pu atteindre son apogée avec 201 joueurs, ce qui est une bonne chose, car il faut une base solide pour pouvoir se défouler sur tous les packs de science nécessaires pour obtenir la meilleure fonctionnalité de la version 1.0. (Indice : c’est le spidertron !) Doté d’épaisses plaques de minerais et d’une astucieuse note sur la carte (décrivant les couleurs des équipes et leurs tâches), le serveur a débuté comme une colonie de fourmis hyperactives dotées d’un instinct pour fabriquer des colonnes de fours. Le message sur la carte autour du point d’arrivée a fait un travail formidable pour organiser le groupe d’ingénieurs toujours plus nombreux. Au début, une usine isolée a été créée à côté de l’usine de sciences pour que toutes les Tuniques Rouges soient approvisionnées en matériel et en munitions. Cela a permis aux soldats et aux constructeurs de disposer d’un ravitaillement régulier pour défendre et développer l’usine. Et ça s’est développé. Il a fallu 11 heures pour fabriquer une fusée, ainsi qu’une vingtaine de spidertrons, une cargaison d’équipements et d’armures et une tonne de munitions et d’explosifs. À ce moment-là, la baie de Bilka, l’Italie, et le lac Twinsen avaient été baptisés, selon les repères cartographiques laissés par des ingénieurs chevronnés. Dès que les spidertrons sont entrés en production, il est clairement apparu que ces pattes sont très inhabituelles, mais en même temps puissantes. La perspective intrigante de simplement enjamber des lacs et des machines a lentement transformé le voyage d’exploration en un test de capacités pour notre nouveau jouet/outil. Les convoyeurs se sont vite révélées être un point d’intérêt pour beaucoup d’araignées qui couraient un peu partout sur la carte. L’excitation partagée a conduit les administrateurs à apporter leur propre contribution à la fête et a fait subir au spidertrons le test ultime en transformant la fête de la publication en une méga-fête du spidertron. Une piste de danse colorée a été rapidement façonnée pour que les araignées puissent se dégourdir les jambes : La combinaison de convoyeurs à courroie se déplaçant dans des directions opposées et de vides dans la carte a conduit les toutes nouvelles pattes du spidertron à se diviser maladroitement, étirant leurs jambes à l’infini. Il est grand temps de communiquer ces découvertes aux développeurs avec un nouveau fresh 1.0 bug report. Il a été l’un des rapports de bugs les plus consultés, mais il a rapidement été marqué comme un double “pas-un-bug”. Le développeur V453000 avait déjà répondu à l’un des one of the first 1.0 bug reports (30 minutes après la publication) pour signaler qu’il ne serait pas souhaitable de restreindre leurs mouvements et que nos araignées fonctionnaient en fait très bien. Mais, le fait que nous “pouvions” n’élimine pas la question de savoir si nous “devrions”… Au final, le jeu a été un vrai succès, et nous sommes vraiment tombés amoureux du spidertron. Il est l’un des nôtres maintenant. Pleins feux sur le mod: Editor Extensions Raiguard Tout le monde connaît Creative Mod. Il vous propose de nombreux objets “de triche” que vous pouvez utiliser pour tester vos plans d’usine. Il existe depuis longtemps et a bien servi les gens au fil des ans. Cependant, si vous utilisez Creative Mod pendant un certain temps, vous commencerez à remarquer des pics de latence ici et là. Continuez à l’utiliser de plus en plus et les délais deviendront de plus en plus fréquents. Finalement, votre jeu commencera à ralentir à mesure que vous utiliserez de plus en plus les outils de Creative Mod. Il y a un an et demi, j’ai commencé à avoir du délai sur mon monde créatif. Je venais de sortir mon first mod à l’époque, donc j’avais un peu d’expérience avec l’API. Curieux, je me suis plongé dans le code du Creative Mod et j’ai essayé de voir si je pouvais comprendre ce qui se passait. Le résultat : Creative Mod a été très bien fait… pour son époque. Le mod a été créé en 0.13, à une époque où l’API de modding était beaucoup plus limitée. Ainsi, il a réussi à faire toutes ces choses géniales avec un ensemble d’outils extrêmement limité. Mais maintenant, l’API de modding est beaucoup plus évoluée et beaucoup plus performante. J’ai décidé de créer une mise à jour de Creative Mod qui tirerait parti de ces nouvelles fonctionnalités, réduisant ainsi son impact sur les performances. Mais j’ai fini par réaliser qu’il était impossible de mettre à jour Creative Mod. Il faudrait trop de modifications de rupture pour le mettre à jour, alors j’ai décidé de créer un nouveau mod. Ce mod a d’abord été publié sous le nom de “Infinity Mode”, mais il a rapidement été déclassé et remplacé par “Editor Extensions” pour diverses raisons. Editor Extensions ne remplace pas l’éditeur de cartes du jeu comme le font le Creative Mod et le Infinity Mode - il l’améliore. Ainsi, EE ne dispose pas d’une fenêtre de “triche” semblable à celle de Creative Mod et de Infinity Mode. L’éditeur possède toutes ces fonctionnalités - et bien d’autres - cachées dans ses nombreux menus. L’attrait principal de Editor Extensions est sa performance - elle est plusieurs ordres de grandeur plus rapide que Creative Mod. Je vais passer en revue certaines des méthodes que j’ai utilisées pour y parvenir. L’électricité La première chose que j’ai voulu faire, c’est de créer des sources et des puits d’énergie. Creative Mod le fait en créant des chaudières, puis en les remplissant d’électricité à chaque tick à l’aide d’un script. Cependant, le jeu dispose maintenant d’une entité intégrée qui peut le faire automatiquement : l’Interface de l’énergie électrique (IEE). Cette entité peut, comme par magie, produire et consommer de l’électricité à partir de rien, et ses paramètres sont réglables en cours de partie. Il y a deux choses que je voulais améliorer à propos de l’IEE : l’interface graphique et la priorité d’utilisation. L’interface graphique de l’IEE est fonctionnelle, mais elle prête à confusion, et une entité ne peut se voir attribuer qu’une seule priorité d’utilisation. Bien sûr, je peux résoudre le premier problème en créant une interface graphique personnalisée, mais le second problème est résolu d’une manière un peu plus délicate. Ce que vous voyez comme un accumulateur infini est en fait l’une des cinq entités possibles, chacune ayant une priorité d’utilisation différente. Selon la configuration choisie dans l’interface graphique, un petit script remplacera à chaud l’entité par une autre qui semble identique, mais qui a une priorité d’utilisation différente. Cela permet à une seule “entité” de tout faire, de la production à la consommation, en passant par le stockage d’une quantité de puissance personnalisable (jusqu’à 999 yottawatts!). Les coffres Le problème suivant que je voulais résoudre était celui des coffres. Creative Mod dispose d’une variété de coffres, qui permettent de créer, de dupliquer ou de supprimer des objets. Cependant, il utilise des scripts pour réaliser toutes ces fonctionnalités, créant un surplus assez important après avoir placé seulement quelques coffres. En 0.16, le jeu de base a été agrémenté du coffre infini, qui peut faire tout cela et plus encore. Il fonctionne par le réglage de filtres infinis, qui ont eux-mêmes des modes “au moins”, “au plus” et “exactement”. Cela permet de décharger toute la manipulation des objets sur le jeu lui-même, réduisant la charge de travail du script à zéro ! EE prolonge le coffre infini de base en y ajoutant des variantes logistiques, et en y ajoutant un type spécial de coffre infini appelé coffre composite. Le coffre composite est très similaire au coffre créatif : il contient une pile de tous les objets du jeu. Un petit script règle ses filtres infinis lorsqu’il est placé, puis le jeu de base s’occupe du reste. Il existe également des variantes de ce coffre pour les fournisseurs actifs et passifs. En utilisant les coffres infinis et composites, vous pouvez obtenir le comportement exact que vous souhaitez pour tester vos constructions. Les convoyeurs Souvent, vous voudrez placer rapidement et facilement des objets sur un convoyeur, ou vous débarrasser d’objets sur un convoyeur, pour tester vos réglages. Dans le jeu de base, vous pouvez le faire avec un coffre infini et un chargeur (une entité cachée que vous pouvez obtenir dans l’éditeur de cartes). Cependant, ces chargeurs sont assez basiques, et si vous voulez avoir des objets différents de chaque côté d’un convoyeur, vous devez placer deux chargeurs et deux coffres infinis. Cela fait quatre entités, et vous devez ensuite configurer les coffres également, ce qui prend encore plus de temps. Pour résoudre ce problème, j’ai en fait construit un autre mod - Miniloader. Beaucoup de concepts sont partagés entre le Miniloader et le chargeur infini, donc cette explication vous donnera un aperçu du fonctionnement de ce mod. Le chargeur infini est en fait un minimum de cinq entités en une : De gauche à droite, nous avons l’entité de chargement elle-même, un coffre infini, deux bras filtrables haute capacité et un émetteur de constantes. Toutes ces entités jouent un rôle dans le fonctionnement du chargeur infini. Lorsque vous placez un chargeur infini, ce que vous placez en réalité est un “combinateur factice”. Il s’agit d’un émetteur des constantes qui est déguisé pour ressembler à un chargeur. Lorsqu’il est placé, un script détruit immédiatement ce combinateur et le remplace par un autre invisible. Ce combinateur est ce avec quoi vous interagissez réellement, et il est enregistré dans des plans afin que les filtres puissent être sauvegardés. Ensuite, l’entité chargeur est ajoutée, ainsi qu’un coffre infini invisible et un minimum de deux bras filtrables haute capacité invisibles, dont la vitesse est augmentée au maximum. Lorsque vous configurez les filtres du chargeur via son interface graphique personnalisée, vous réglez en fait les filtres sur les bras filtrables haute capacité invisibles, ainsi que sur le coffre infini. Ces bras extraient les objets du coffre et les mettent sur le convoyeur extrêmement rapidement, donnant l’impression que les objets sortent de nulle part. L’inverse est également vrai : si vous faites pivoter un chargeur infini pour consommer des objets, les bras retireront tout ce qui est sur le convoyeur et le jetteront dans le coffre infini, donnant l’impression que les objets disparaissent comme par magie. Tout cela se fait en coulisses et profite des comportements du jeu de base. Un script est utilisé pour “régler” le chargeur, mais à partir de ce moment, le script ne fait plus rien, réduisant la charge de calcul pour l’utilisation de ces chargeurs - une fois de plus - à zéro. Bien sûr, pour simplifier au maximum les choses, il n’y a qu’un seul objet chargeur infini que vous placez. Le chargeur changera automatiquement de type de convoyeur en fonction de ce à quoi il est connecté et ajoutera ou supprimera des bras pour pouvoir suivre la vitesse du convoyeur. Et comme il y a plusieurs bras différents, nous pouvons régler des filtres différents pour chaque côté du convoyeur. Le résultat est une entité pratique et facile à utiliser qui peut produire et consommer des objets du convoyeur, tout en étant extrêmement performante. Triches pour le personnage Si Editor Extensions est principalement destiné à être utilisé à partir de l’éditeur de cartes, il est également tout à fait possible et assez facile d’utiliser un personnage. En utilisant le mode “Triche” (accessible en tapant /cheat ou /cheat all dans la console), vous pouvez accéder à tous les outils mentionnés ci-dessus. Certains des outils que je n’ai pas mentionnés comprennent des équipements “survitaminés” : En utilisant cet équipement, vous pouvez devenir immortel, courir très vite et voir clairement dans l’obscurité. Le super roboport, combiné à des super robots de construction, vous permet de construire et de déconstruire très rapidement. Vous pouvez ainsi accéder aux nombreux pouvoirs divins de l’éditeur tout en conservant votre corps confortable. Et à l’avenir, si jamais vous retirez Editor Extensions de votre sauvegarde, l’équipement disparaîtra tout simplement, laissant la portée infinie comme seule preuve de la présence du mod. Conclusion Editor Extensions est le résultat de plus d’un an de tests et de développements de mods dans le jeu. Il y a beaucoup, beaucoup de choses que je n’ai pas mentionnées ici - y compris un raccourci pour activer l’éditeur, la synchronisation de l’inventaire, les tuyaux infinis, et un scénario de test spécial - mais cela rendrait cet article encore plus long qu’il ne l’est déjà. J’espère que vous avez apprécié la lecture, et que vous avez pu vous faire une idée du fonctionnement de l’incroyable API de modding de Factorio. Les développeurs de Factorio nous gâtent avec ce que nous sommes capables de faire à leur jeu, et l’API n’en devient que plus performante à chaque mise à jour. Merci de votre lecture et merci aux développeurs d’avoir rendu cela possible ! Contributing Nous sommes toujours à la recherche de personnes qui ont quelque chose d’intéressant à partager avec la communauté de Factorio. Si c’est votre cas, rejoignez le Discord (ou le GitHub project) pour commencer. Presque tous les sujets sont les bienvenus, alors n’ayez pas peur de contribuer ! Nous envisageons également de lancer des traductions par la communauté cette semaine, ce qui rendrait les Alt-F4 accessibles à beaucoup plus de personnes que la seule version anglaise. Nous avons déjà procédé au réglage du site web en conséquence, il ne nous manque plus que des personnes pour travailler sur les traductions. Si vous êtes partant, rejoignez le Discord et cherchez le salon #translation.",
         "@type": "BlogPosting",
         "mainEntityOfPage": {
           "@type": "WebPage",
@@ -154,33 +154,33 @@
 
           <div class="panel-inset mb0">
             Écrit par <em>JD-Plays, T-A-R, Raiguard</em>, édité par
-            <em>Therenas, nicgarner</em>
+            <em>Therenas, nicgarner</em>, traduit par <em>bev, Firerazer</em>
 
             le 2020-09-04
           </div>
 
           <div class="panel-inset-lighter mt0">
             <p>
-              Welcome to the third issue of Alt-F4. This weekend, there’ll be an
-              attempt to try and break the record for the highest number of
-              players on a single Factorio server; read on for details of how to
-              join the fun. There’s also an action report about the Big
-              Community Games launch party, which should totally haven been
-              covered last week. Completely my (Therena’s) bad. Finally,
-              Raiguard shares an exciting mod of his with all of us. Let’s get
-              to it!
+              Bienvenue dans le troisième numéro des Alt-F4. Ce week-end, nous
+              allons tenter de battre le record du plus grand nombre de joueurs
+              sur un seul serveur Factorio ; lisez ce qui suit pour savoir
+              comment vous joindre à la fête. Il y a également un rapport sur la
+              fête de lancement des “Big Community Games”, qui aurait dû être
+              totalement traitée la semaine dernière. Complètement de ma
+              (Therena) faute. Enfin, Raiguard partage avec nous tous un de ses
+              mods passionnants. Allons-y !
             </p>
 
             <p>
-              PS: We’re looking for motivated people that want to help translate
-              each issue of Alt-F4. If you’re interested, you can find more info
-              at the end of this issue. Thanks!
+              PS : Nous recherchons des personnes motivées qui veulent aider à
+              traduire chaque numéro des Alt-F4. Si vous êtes intéressé, vous
+              trouverez plus d’informations à la fin de ce numéro. Merci !
             </p>
-            <h2 id="event-molten-silicon-jd-plays">
-              <a href="#event-molten-silicon-jd-plays"
+            <h2 id="événement-molten-silicon-jd-plays">
+              <a href="#%C3%A9v%C3%A9nement-molten-silicon-jd-plays"
                 ><i class="fas fa-link fa-xs"></i
               ></a>
-              Event: Molten Silicon <author>JD-Plays</author>
+              Événement: Molten Silicon <author>JD-Plays</author>
             </h2>
 
             <p>
@@ -192,32 +192,36 @@
             </p>
 
             <p>
-              The weekend is here, got any plans? Going to play Factorio for
-              about 25 minutes again, then realise the sun is rising already? Or
-              do you just want to play Factorio with a few friends?
+              C’est le week-end, vous avez des projets ? Vous allez encore jouer
+              à Factorio pendant environ 25 minutes, pour ensuite vous rendre
+              compte que le soleil se lève déjà ? Ou vous voulez juste jouer à
+              Factorio avec quelques amis ?
             </p>
 
             <p>
-              Well, we’ve got some good news. This weekend, we have a few
-              friends getting together to do something simple: completely melt
-              our server’s silicon! Join us for the Molten Silicon event where
-              our only objective is to get as many players onto the same server
-              as possible and launch a rocket. Oh, and melt the server’s CPU at
-              the same time of course! There will be something for every player
-              to do, from building the base to clearing biters with other Red
-              Coats. Our true enemy will probably be ever present as well, so
-              we’ll need some of you to join our Lumberjack team!
+              Nous avons de bonnes nouvelles. Ce week-end, nous avons quelques
+              amis qui se réunissent pour faire quelque chose de simple : faire
+              fondre complètement le silicium de notre serveur ! Rejoignez-nous
+              pour l’événement “Molten Silicon” où notre seul objectif est
+              d’amener le plus grand nombre possible de joueurs sur le même
+              serveur et de lancer une fusée. Oh, et de faire fondre le
+              processeur du serveur en même temps bien sûr ! Chaque joueur aura
+              quelque chose à faire, de la construction de la base à
+              l’élimination des biters avec d’autres Tuniques Rouges. Notre
+              véritable ennemi sera probablement toujours présent aussi, alors
+              nous aurons besoin de certains d’entre vous pour rejoindre notre
+              équipe de bûcherons !
             </p>
 
             <p>
-              So if you’ve got a few hours to spare this weekend, and want to
-              try and help break the
+              Donc si vous avez quelques heures à disposition ce week-end, et
+              que vous voulez essayer de nous aider à battre le
               <a href="https://www.youtube.com/watch?v=UEhPra7M-Wg"
                 >previous record</a
               >
-              of 521 concurrent players, please join our server at 11am UTC this
-              Saturday 5th September. You can easily identify it, because it’ll
-              be the largest server running!
+              de 521 joueurs simultanés, veuillez rejoindre notre serveur à 11h
+              UTC ce samedi 5 septembre. Vous pourrez facilement l’identifier,
+              car ce sera le plus grand serveur en fonctionnement !
             </p>
 
             <!-- Use include.data in the ID as it makes it unique -->
@@ -300,80 +304,87 @@
             <p><br /></p>
 
             <p>
-              The server information will be provided shortly before the start
-              time in the #information channel of our
+              Les informations sur le serveur seront fournies peu avant l’heure
+              de début dans le salon #information de notre
               <a href="https://discord.red-circuit.org/">Red Circuit Discord</a
-              >. For more general information, please visit our
+              >. Pour des informations plus générales, veuillez consulter notre
               <a
                 href="https://red-circuit.org/events/?Operation:%20Molten%20Silicon"
                 >website</a
               >.
             </p>
-            <h2 id="dont-break-the-new-toys-please-t-a-r">
-              <a href="#dont-break-the-new-toys-please-t-a-r"
+            <h2 id="ne-cassez-pas-les-nouveaux-jouets-sil-vous-plaît-t-a-r">
+              <a
+                href="#ne-cassez-pas-les-nouveaux-jouets-sil-vous-pla%C3%AEt-t-a-r"
                 ><i class="fas fa-link fa-xs"></i
               ></a>
-              Don’t break the new toys please <author>T-A-R</author>
+              Ne cassez pas les nouveaux jouets, s’il vous plaît
+              <author>T-A-R</author>
             </h2>
 
             <p>
-              The <a href="https://alt-f4.blog/fr/ALTF4-1/">first Alt-F4</a> was
-              an exciting surprise when my stubborn mind went to factorio.com on
-              Friday 14th August, knowing there wouldn’t be a fresh FFF post
-              #361 waiting for me. I decided I wanted to support this
-              initiative, and the best way to do so was to act fast. So, here’s
-              a field report about one of the fresh 1.0 “not-a-bug”-bug reports.
+              Le <a href="https://alt-f4.blog/fr/ALTF4-1/">first Alt-F4</a> a
+              été une surprise excitante lorsque mon esprit têtu est allé sur
+              factorio.com le vendredi 14 août, sachant qu’il n’y aurait pas de
+              nouvel article FFF #361 qui m’attendait. J’ai décidé que je
+              voulais soutenir cette initiative, et la meilleure façon de le
+              faire était d’agir rapidement. Voici donc un rapport de terrain
+              sur l’un des nouveaux rapports de bugs “pas-un-bug” 1.0.
             </p>
 
             <p>
-              The second-best thing after an official release party in Prague
-              would be a good old multiplayer server. Multiple release parties
-              sprouted in the Factorio lobby that Friday, all hosting fresh maps
-              with many engineers from all over the world joining in to lay down
-              some ambitious main busses. The
+              La deuxième meilleure chose à faire après une fête de lancement
+              officiel à Prague serait un bon vieux serveur multijoueur. De
+              nombreuses fêtes de lancement ont fleuri sur le serveur de
+              Factorio ce vendredi-là, toutes avec de nouvelles cartes et de
+              nombreux ingénieurs du monde entier qui se sont joints à eux pour
+              établir des bus ambitieux. Le
               <a href="https://discord.gg/FWQWKKA"
                 >Big Community Games Discord</a
               >
-              was able to catch the most momentum and peaked at 201 players,
-              which was good as you need quite a decent base to chew away at all
-              the science packs that are required to get to the best feature of
-              1.0. (Hint: It’s spidertron!)
+              a pu atteindre son apogée avec 201 joueurs, ce qui est une bonne
+              chose, car il faut une base solide pour pouvoir se défouler sur
+              tous les packs de science nécessaires pour obtenir la meilleure
+              fonctionnalité de la version 1.0. (Indice : c’est le spidertron !)
             </p>
 
             <p>
-              Blessed with dense ore patches and a clever map note (describing
-              team colours and their duties), the server started as a
-              hyperactive ant collective with an instinct for making smelter
-              columns. The map message around the spawn point did a wonderful
-              job at organizing the ever-growing group of engineers. Early on,
-              an isolated factory was raised next to the science factory to keep
-              all the Redshirts fed with gear and ammo. This gave both the
-              troopers and the builders a steady supply to defend and grow the
-              factory.
+              Doté d’épaisses plaques de minerais et d’une astucieuse note sur
+              la carte (décrivant les couleurs des équipes et leurs tâches), le
+              serveur a débuté comme une colonie de fourmis hyperactives dotées
+              d’un instinct pour fabriquer des colonnes de fours. Le message sur
+              la carte autour du point d’arrivée a fait un travail formidable
+              pour organiser le groupe d’ingénieurs toujours plus nombreux. Au
+              début, une usine isolée a été créée à côté de l’usine de sciences
+              pour que toutes les Tuniques Rouges soient approvisionnées en
+              matériel et en munitions. Cela a permis aux soldats et aux
+              constructeurs de disposer d’un ravitaillement régulier pour
+              défendre et développer l’usine.
             </p>
 
             <p>
-              And grow it did. It took 11 hours to produce a rocket, alongside
-              around 20 spidertrons, a shipload of equipment and armour and a
-              ton of ammo and explosives. By that time, Bilka Bay, Italy, and
-              Lake Twinsen had been christened, according to the map markers
-              left by seasoned engineers.
+              Et ça s’est développé. Il a fallu 11 heures pour fabriquer une
+              fusée, ainsi qu’une vingtaine de spidertrons, une cargaison
+              d’équipements et d’armures et une tonne de munitions et
+              d’explosifs. À ce moment-là, la baie de Bilka, l’Italie, et le lac
+              Twinsen avaient été baptisés, selon les repères cartographiques
+              laissés par des ingénieurs chevronnés.
             </p>
 
             <p>
-              As soon as the spidertrons came into production it became clear
-              that these legs feel very unusual, but powerful at the same time.
-              The intriguing sight of simply stepping over lakes and machines
-              slowly turned the exploration tour into a test of capabilities for
-              our new toy/tool. Belts soon turned out to be a point of interest
-              for many of the spiders that were running around the map. The
-              shared excitement led the admins to add their own contribution to
-              the party and made spidertron face the ultimate test by turning
-              the release party into a spidertron rave. A colourful dance floor
-              was quickly terraformed so the spiders could stretch their legs:
-            </p>
-
-            <p>
+              Dès que les spidertrons sont entrés en production, il est
+              clairement apparu que ces pattes sont très inhabituelles, mais en
+              même temps puissantes. La perspective intrigante de simplement
+              enjamber des lacs et des machines a lentement transformé le voyage
+              d’exploration en un test de capacités pour notre nouveau
+              jouet/outil. Les convoyeurs se sont vite révélées être un point
+              d’intérêt pour beaucoup d’araignées qui couraient un peu partout
+              sur la carte. L’excitation partagée a conduit les administrateurs
+              à apporter leur propre contribution à la fête et a fait subir au
+              spidertrons le test ultime en transformant la fête de la
+              publication en une méga-fête du spidertron. Une piste de danse
+              colorée a été rapidement façonnée pour que les araignées puissent
+              se dégourdir les jambes :
               <img
                 id="image-element"
                 class="post"
@@ -382,33 +393,34 @@
             </p>
 
             <p>
-              The combination of belts travelling in opposite directions and
-              gaps in the map drove the brand new spidertron legs to split
-              awkwardly, stretching their legs infinitely. High time to update
-              the devs about these findings with a
+              La combinaison de convoyeurs à courroie se déplaçant dans des
+              directions opposées et de vides dans la carte a conduit les toutes
+              nouvelles pattes du spidertron à se diviser maladroitement,
+              étirant leurs jambes à l’infini. Il est grand temps de communiquer
+              ces découvertes aux développeurs avec un nouveau
               <a href="https://forums.factorio.com/viewtopic.php?f=182&t=87982"
                 >fresh 1.0 bug report</a
-              >. It ended up as one of the most viewed bug reports, but was
-              quickly marked as duplicate: not-a-bug. Developer V453000 had
-              already responded on
+              >. Il a été l’un des rapports de bugs les plus consultés, mais il
+              a rapidement été marqué comme un double “pas-un-bug”. Le
+              développeur V453000 avait déjà répondu à l’un des
               <a href="https://forums.factorio.com/viewtopic.php?f=23&t=87915"
                 >one of the first 1.0 bug reports</a
               >
-              (30 minutes after release) to point out that restricting their
-              movement wouldn’t be desirable, and that our spiders were actually
-              performing just fine. But, the fact that we “could” does not
-              eliminate the question of whether we “should”…
+              (30 minutes après la publication) pour signaler qu’il ne serait
+              pas souhaitable de restreindre leurs mouvements et que nos
+              araignées fonctionnaient en fait très bien. Mais, le fait que nous
+              “pouvions” n’élimine pas la question de savoir si nous “devrions”…
             </p>
 
             <p>
-              In the end the playthrough was an absolute blast, and we truly
-              fell in love with the spidertron. He’s one of us now.
+              Au final, le jeu a été un vrai succès, et nous sommes vraiment
+              tombés amoureux du spidertron. Il est l’un des nôtres maintenant.
             </p>
-            <h2 id="mod-spotlight-editor-extensions-raiguard">
-              <a href="#mod-spotlight-editor-extensions-raiguard"
+            <h2 id="pleins-feux-sur-le-mod-editor-extensions-raiguard">
+              <a href="#pleins-feux-sur-le-mod-editor-extensions-raiguard"
                 ><i class="fas fa-link fa-xs"></i
               ></a>
-              Mod spotlight:
+              Pleins feux sur le mod:
               <a href="https://mods.factorio.com/mod/EditorExtensions"
                 >Editor Extensions</a
               >
@@ -416,95 +428,104 @@
             </h2>
 
             <p>
-              Everyone knows about
+              Tout le monde connaît
               <a href="https://mods.factorio.com/mod/creative-mod"
                 >Creative Mod</a
-              >. It provides you with many different ‘cheat’ items that you can
-              use to test your factory layouts. It has been around for quite a
-              long time, and has served people well over the years.
+              >. Il vous propose de nombreux objets “de triche” que vous pouvez
+              utiliser pour tester vos plans d’usine. Il existe depuis longtemps
+              et a bien servi les gens au fil des ans.
             </p>
 
             <p>
-              However, if you use Creative Mod for any length of time you’ll
-              start to notice lag spikes here and there. Continue using it more
-              and more and the lag spikes will get more and more frequent.
-              Eventually, your game will begin to slow down as you use more and
-              more of Creative Mod’s tools.
+              Cependant, si vous utilisez Creative Mod pendant un certain temps,
+              vous commencerez à remarquer des pics de latence ici et là.
+              Continuez à l’utiliser de plus en plus et les délais deviendront
+              de plus en plus fréquents. Finalement, votre jeu commencera à
+              ralentir à mesure que vous utiliserez de plus en plus les outils
+              de Creative Mod.
             </p>
 
             <p>
-              A year and a half ago I started experiencing lag on my creative
-              world. I had just released my
-              <a href="https://mods.factorio.com/mod/Tapeline">first mod</a> at
-              the time, so I had a little bit of experience with the API.
-              Curious, I delved into Creative Mod’s code and tried to see if I
-              could figure out what was going on.
+              Il y a un an et demi, j’ai commencé à avoir du délai sur mon monde
+              créatif. Je venais de sortir mon
+              <a href="https://mods.factorio.com/mod/Tapeline">first mod</a> à
+              l’époque, donc j’avais un peu d’expérience avec l’API. Curieux, je
+              me suis plongé dans le code du Creative Mod et j’ai essayé de voir
+              si je pouvais comprendre ce qui se passait.
             </p>
 
             <p>
-              The result was: Creative Mod was very well made… for its time. The
-              mod was created in 0.13, when the modding API was much more
-              limited. Thus, it managed to do all of these awesome things with
-              an extremely limited set of tools. But now the mod API is much
-              more mature and a lot more capable. I set out to create an update
-              to Creative Mod that would take advantage of these new features,
-              thereby decreasing its performance impact.
+              Le résultat : Creative Mod a été très bien fait… pour son époque.
+              Le mod a été créé en 0.13, à une époque où l’API de modding était
+              beaucoup plus limitée. Ainsi, il a réussi à faire toutes ces
+              choses géniales avec un ensemble d’outils extrêmement limité. Mais
+              maintenant, l’API de modding est beaucoup plus évoluée et beaucoup
+              plus performante. J’ai décidé de créer une mise à jour de Creative
+              Mod qui tirerait parti de ces nouvelles fonctionnalités, réduisant
+              ainsi son impact sur les performances.
             </p>
 
             <p>
-              But eventually I realized that updating Creative Mod was
-              infeasible. It would require too many breaking changes to bring it
-              up to date, so instead I decided to create a new mod altogether.
-              That mod was initially released as Infinity Mode, but was soon
-              deprecated and replaced with Editor Extensions for various
-              reasons.
+              Mais j’ai fini par réaliser qu’il était impossible de mettre à
+              jour Creative Mod. Il faudrait trop de modifications de rupture
+              pour le mettre à jour, alors j’ai décidé de créer un nouveau mod.
+              Ce mod a d’abord été publié sous le nom de “Infinity Mode”, mais
+              il a rapidement été déclassé et remplacé par “Editor Extensions”
+              pour diverses raisons.
             </p>
 
             <p>
-              Editor Extensions does not <em>replace</em> the game’s map editor
-              like Creative Mod and Infinity Mode do — it <em>augments</em> it.
-              Thus, EE does not have a “cheats” window akin to Creative Mod and
-              Infinity Mode. The editor has all of that functionality — and more
-              — buried within its many menus.
+              Editor Extensions ne remplace pas l’éditeur de cartes du jeu comme
+              le font le Creative Mod et le Infinity Mode - il l’améliore.
+              Ainsi, EE ne dispose pas d’une fenêtre de “triche” semblable à
+              celle de Creative Mod et de Infinity Mode. L’éditeur possède
+              toutes ces fonctionnalités - et bien d’autres - cachées dans ses
+              nombreux menus.
             </p>
 
             <p>
-              Editor Extensions’ main appeal is its performance — it is several
-              orders of magnitude faster than Creative Mod. I’m going to go over
-              some of the methods I used to achieve this.
+              L’attrait principal de Editor Extensions est sa performance - elle
+              est plusieurs ordres de grandeur plus rapide que Creative Mod. Je
+              vais passer en revue certaines des méthodes que j’ai utilisées
+              pour y parvenir.
             </p>
-            <h3 id="electricity">
-              <a href="#electricity"><i class="fas fa-link fa-xs"></i></a>
-              Electricity
+            <h3 id="lélectricité">
+              <a href="#l%C3%A9lectricit%C3%A9"
+                ><i class="fas fa-link fa-xs"></i
+              ></a>
+              L’électricité
             </h3>
 
             <p>
-              The first thing I set out to do was create energy sources and
-              energy voids. Creative Mod does this by creating boilers, then
-              filling them with electricity on every tick using a script.
-              However, now the game has a built-in entity that can do this
-              automatically: the <em>Electric Energy Interface</em> (EEI). This
-              entity can magically produce and consume electricity out of
-              nothing, and its parameters are adjustable at runtime.
+              La première chose que j’ai voulu faire, c’est de créer des sources
+              et des puits d’énergie. Creative Mod le fait en créant des
+              chaudières, puis en les remplissant d’électricité à chaque tick à
+              l’aide d’un script. Cependant, le jeu dispose maintenant d’une
+              entité intégrée qui peut le faire automatiquement : l’Interface de
+              l’énergie électrique (IEE). Cette entité peut, comme par magie,
+              produire et consommer de l’électricité à partir de rien, et ses
+              paramètres sont réglables en cours de partie.
             </p>
 
             <p>
-              There are two things about the EEI that I wanted to improve on —
-              the GUI and the usage priority. The EEI’s GUI is functional, but
-              confusing, and an entity can only have one usage priority assigned
-              to it. Of course, I can fix the first problem by creating a custom
-              GUI, but the second problem is solved in a slightly trickier
-              manner.
+              Il y a deux choses que je voulais améliorer à propos de l’IEE :
+              l’interface graphique et la priorité d’utilisation. L’interface
+              graphique de l’IEE est fonctionnelle, mais elle prête à confusion,
+              et une entité ne peut se voir attribuer qu’une seule priorité
+              d’utilisation. Bien sûr, je peux résoudre le premier problème en
+              créant une interface graphique personnalisée, mais le second
+              problème est résolu d’une manière un peu plus délicate.
             </p>
 
             <p>
-              What you see as an <em>infinity accumulator</em> is actually one
-              of five possible entities, each with a different usage priority.
-              Depending on how you configure it in the GUI, a small script will
-              hot-swap the entity with another one that looks identical, but has
-              a different usage priority. This allows a single “entity” to do
-              everything from producing, consuming, and storing a customizable
-              amount of power (up to 999
+              Ce que vous voyez comme un accumulateur infini est en fait l’une
+              des cinq entités possibles, chacune ayant une priorité
+              d’utilisation différente. Selon la configuration choisie dans
+              l’interface graphique, un petit script remplacera à chaud l’entité
+              par une autre qui semble identique, mais qui a une priorité
+              d’utilisation différente. Cela permet à une seule “entité” de tout
+              faire, de la production à la consommation, en passant par le
+              stockage d’une quantité de puissance personnalisable (jusqu’à 999
               <a href="https://en.wikipedia.org/wiki/Yotta-">yotta</a>watts!).
             </p>
 
@@ -515,40 +536,43 @@
                 src="//i.imgur.com/3QyxRdz.gif"
               />
             </p>
-            <h3 id="chests">
-              <a href="#chests"><i class="fas fa-link fa-xs"></i></a> Chests
+            <h3 id="les-coffres">
+              <a href="#les-coffres"><i class="fas fa-link fa-xs"></i></a> Les
+              coffres
             </h3>
 
             <p>
-              The next problem I wanted to solve was chests. Creative Mod has a
-              variety of chests, which can spawn, duplicate, or delete items.
-              However, it uses scripts to accomplish <em>all</em> of that
-              functionality, creating a rather large overhead after placing just
-              a few chests.
+              Le problème suivant que je voulais résoudre était celui des
+              coffres. Creative Mod dispose d’une variété de coffres, qui
+              permettent de créer, de dupliquer ou de supprimer des objets.
+              Cependant, il utilise des scripts pour réaliser toutes ces
+              fonctionnalités, créant un surplus assez important après avoir
+              placé seulement quelques coffres.
             </p>
 
             <p>
-              In 0.16, the base game was graced with the
-              <em>infinity chest</em>, which can do all of this and more. It
-              works by setting <em>infinity filters</em>, which themselves have
-              “at least”, “at most” and “exactly” modes. This offloads all of
-              the item manipulation to the game itself, reducing the scripting
-              overhead to absolutely zero!
+              En 0.16, le jeu de base a été agrémenté du coffre infini, qui peut
+              faire tout cela et plus encore. Il fonctionne par le réglage de
+              filtres infinis, qui ont eux-mêmes des modes “au moins”, “au plus”
+              et “exactement”. Cela permet de décharger toute la manipulation
+              des objets sur le jeu lui-même, réduisant la charge de travail du
+              script à zéro !
             </p>
 
             <p>
-              EE extends upon the basic infinity chest by adding logistic
-              variants, and adding a special kind of infinity chest called an
-              <em>aggregate chest</em>. The aggregate chest is most similar to
-              the creative chest — it holds a stack of every item in the game. A
-              small script sets its infinity filters when placed, and then the
-              base game handles the rest. There are regular and passive provider
-              variants of this chest as well.
+              EE prolonge le coffre infini de base en y ajoutant des variantes
+              logistiques, et en y ajoutant un type spécial de coffre infini
+              appelé coffre composite. Le coffre composite est très similaire au
+              coffre créatif : il contient une pile de tous les objets du jeu.
+              Un petit script règle ses filtres infinis lorsqu’il est placé,
+              puis le jeu de base s’occupe du reste. Il existe également des
+              variantes de ce coffre pour les fournisseurs actifs et passifs.
             </p>
 
             <p>
-              Using infinity and aggregate chests, you can get the exact
-              behaviour you want for testing your builds.
+              En utilisant les coffres infinis et composites, vous pouvez
+              obtenir le comportement exact que vous souhaitez pour tester vos
+              constructions.
             </p>
 
             <p>
@@ -558,32 +582,34 @@
                 src="//i.imgur.com/TtYA87y.gif"
               />
             </p>
-            <h3 id="belts">
-              <a href="#belts"><i class="fas fa-link fa-xs"></i></a> Belts
+            <h3 id="les-convoyeurs">
+              <a href="#les-convoyeurs"><i class="fas fa-link fa-xs"></i></a>
+              Les convoyeurs
             </h3>
 
             <p>
-              Often you will want to quickly and easily place items on a belt,
-              or get rid of items on a belt, to test your setups. In vanilla,
-              you can do this with an infinity chest and a <em>loader</em> (a
-              hidden entity that you can get in the map editor). However, these
-              loaders are fairly basic, and if you want to have different items
-              on each side of a belt you have to place two loaders and two
-              infinity chests. That’s four entities, and then you have to
-              configure the chests as well, taking up even more time.
+              Souvent, vous voudrez placer rapidement et facilement des objets
+              sur un convoyeur, ou vous débarrasser d’objets sur un convoyeur,
+              pour tester vos réglages. Dans le jeu de base, vous pouvez le
+              faire avec un coffre infini et un chargeur (une entité cachée que
+              vous pouvez obtenir dans l’éditeur de cartes). Cependant, ces
+              chargeurs sont assez basiques, et si vous voulez avoir des objets
+              différents de chaque côté d’un convoyeur, vous devez placer deux
+              chargeurs et deux coffres infinis. Cela fait quatre entités, et
+              vous devez ensuite configurer les coffres également, ce qui prend
+              encore plus de temps.
             </p>
 
             <p>
-              To solve this problem, I actually built upon another mod —
+              Pour résoudre ce problème, j’ai en fait construit un autre mod -
               <a href="https://mods.factorio.com/mod/miniloader">Miniloader</a>.
-              A lot of the concepts are shared between Miniloader and the
-              <em>infinity loader</em>, so this explanation will give you a
-              sneak peek into how that mod works as well.
+              Beaucoup de concepts sont partagés entre le Miniloader et le
+              chargeur infini, donc cette explication vous donnera un aperçu du
+              fonctionnement de ce mod.
             </p>
 
             <p>
-              The <em>infinity loader</em> is actually a minimum of five
-              entities at once:
+              Le chargeur infini est en fait un minimum de cinq entités en une :
             </p>
 
             <p>
@@ -595,56 +621,61 @@
             </p>
 
             <p>
-              From left to right, we have the loader entity itself, an infinity
-              chest, two stack filter inserters, and a constant combinator. All
-              of these entities play a role in making the infinity loader work.
+              De gauche à droite, nous avons l’entité de chargement elle-même,
+              un coffre infini, deux bras filtrables haute capacité et un
+              émetteur de constantes. Toutes ces entités jouent un rôle dans le
+              fonctionnement du chargeur infini.
             </p>
 
             <p>
-              When you place an infinity loader, what you are actually placing
-              is a “dummy combinator”. This is a constant combinator that is
-              disguised to look like a loader. When placed, a script immediately
-              destroys that combinator and replaces it with an invisible one.
-              This combinator is what you actually interact with, and is saved
-              in blueprints so the filters can be preserved. Then the loader
-              entity is added, along with an invisible infinity chest and a
-              minimum of two invisible stack filter inserters with their speed
-              cranked up to max.
+              Lorsque vous placez un chargeur infini, ce que vous placez en
+              réalité est un “combinateur factice”. Il s’agit d’un émetteur des
+              constantes qui est déguisé pour ressembler à un chargeur.
+              Lorsqu’il est placé, un script détruit immédiatement ce
+              combinateur et le remplace par un autre invisible. Ce combinateur
+              est ce avec quoi vous interagissez réellement, et il est
+              enregistré dans des plans afin que les filtres puissent être
+              sauvegardés. Ensuite, l’entité chargeur est ajoutée, ainsi qu’un
+              coffre infini invisible et un minimum de deux bras filtrables
+              haute capacité invisibles, dont la vitesse est augmentée au
+              maximum.
             </p>
 
             <p>
-              When you configure the loader’s filters through its custom GUI,
-              you are actually setting the filters on the invisible stack filter
-              inserters, as well as the infinity chest. These inserters will
-              pull from the chest and put the items on the belt extremely
-              quickly, making it seem as if the items are spawning out of
-              nowhere.
+              Lorsque vous configurez les filtres du chargeur via son interface
+              graphique personnalisée, vous réglez en fait les filtres sur les
+              bras filtrables haute capacité invisibles, ainsi que sur le coffre
+              infini. Ces bras extraient les objets du coffre et les mettent sur
+              le convoyeur extrêmement rapidement, donnant l’impression que les
+              objets sortent de nulle part.
             </p>
 
             <p>
-              The reverse is also true — if you rotate an infinity loader to
-              consume items, the inserters will pull everything off of the belt
-              and throw it in the infinity chest, making it seem as if the items
-              are magically disappearing. All of this is done behind the scenes
-              and takes advantage of vanilla behaviours. A script is used to
-              “set up” the loader, but from then on, the script does nothing,
-              reducing the scripting overhead for using these loaders — once
-              again — to zero.
+              L’inverse est également vrai : si vous faites pivoter un chargeur
+              infini pour consommer des objets, les bras retireront tout ce qui
+              est sur le convoyeur et le jetteront dans le coffre infini,
+              donnant l’impression que les objets disparaissent comme par magie.
+              Tout cela se fait en coulisses et profite des comportements du jeu
+              de base. Un script est utilisé pour “régler” le chargeur, mais à
+              partir de ce moment, le script ne fait plus rien, réduisant la
+              charge de calcul pour l’utilisation de ces chargeurs - une fois de
+              plus - à zéro.
             </p>
 
             <p>
-              Of course, to make things as simple as possible, there is only one
-              infinity loader <em>item</em> that you place. The loader will
-              switch its belt type depending on what it’s connected to
-              automatically and will add or remove inserters to be able to keep
-              up with the belt’s speed. And because there are multiple different
-              inserters, we can set different filters for each side of the belt.
+              Bien sûr, pour simplifier au maximum les choses, il n’y a qu’un
+              seul objet chargeur infini que vous placez. Le chargeur changera
+              automatiquement de type de convoyeur en fonction de ce à quoi il
+              est connecté et ajoutera ou supprimera des bras pour pouvoir
+              suivre la vitesse du convoyeur. Et comme il y a plusieurs bras
+              différents, nous pouvons régler des filtres différents pour chaque
+              côté du convoyeur.
             </p>
 
             <p>
-              The result is a convenient, easy-to-use entity that can produce
-              and consume items on a belt, while being extremely performance
-              friendly.
+              Le résultat est une entité pratique et facile à utiliser qui peut
+              produire et consommer des objets du convoyeur, tout en étant
+              extrêmement performante.
             </p>
 
             <p>
@@ -654,28 +685,30 @@
                 src="//i.imgur.com/4wgCivT.gif"
               />
             </p>
-            <h3 id="character-cheats">
-              <a href="#character-cheats"><i class="fas fa-link fa-xs"></i></a>
-              Character cheats
+            <h3 id="triches-pour-le-personnage">
+              <a href="#triches-pour-le-personnage"
+                ><i class="fas fa-link fa-xs"></i
+              ></a>
+              Triches pour le personnage
             </h3>
 
             <p>
-              While Editor Extensions is primarily meant to be used from the map
-              editor, it is also quite possible and quite easy to use a
-              character as well. By using <em>cheat mode</em> (accessed by
-              typing
+              Si Editor Extensions est principalement destiné à être utilisé à
+              partir de l’éditeur de cartes, il est également tout à fait
+              possible et assez facile d’utiliser un personnage. En utilisant le
+              mode “Triche” (accessible en tapant
               <code class="language-plaintext highlighter-rouge">/cheat</code>
-              or
+              ou
               <code class="language-plaintext highlighter-rouge"
                 >/cheat all</code
               >
-              into the console), you can get access to all the tools mentioned
-              above.
+              dans la console), vous pouvez accéder à tous les outils mentionnés
+              ci-dessus.
             </p>
 
             <p>
-              Some of the tools I haven’t mentioned include supercharged
-              equipment:
+              Certains des outils que je n’ai pas mentionnés comprennent des
+              équipements “survitaminés” :
             </p>
 
             <p>
@@ -687,14 +720,15 @@
             </p>
 
             <p>
-              By using this equipment you can become immortal, run super fast,
-              and see clearly in the darkness. The super roboport, combined with
-              super construction bots, allows you to very quickly construct and
-              deconstruct. The result is you can access many of the editor’s
-              god-like powers while retaining your comfortable body. And in the
-              future, if you ever remove Editor Extensions from your save, the
-              equipment will simply disappear, leaving infinite reach as the
-              only evidence of the mod being there.
+              En utilisant cet équipement, vous pouvez devenir immortel, courir
+              très vite et voir clairement dans l’obscurité. Le super roboport,
+              combiné à des super robots de construction, vous permet de
+              construire et de déconstruire très rapidement. Vous pouvez ainsi
+              accéder aux nombreux pouvoirs divins de l’éditeur tout en
+              conservant votre corps confortable. Et à l’avenir, si jamais vous
+              retirez Editor Extensions de votre sauvegarde, l’équipement
+              disparaîtra tout simplement, laissant la portée infinie comme
+              seule preuve de la présence du mod.
             </p>
             <h3 id="conclusion">
               <a href="#conclusion"><i class="fas fa-link fa-xs"></i></a>
@@ -710,23 +744,22 @@
             </p>
 
             <p>
-              Editor Extensions is the result of over a year of testing both
-              in-game builds and mods. There are many, <em>many</em> things that
-              I haven’t covered here — including a
-              <code class="language-plaintext highlighter-rouge"
-                >toggle editor</code
-              >
-              shortcut, inventory sync, infinity pipes, and a special testing
-              scenario — but that would make this post even longer than it
-              already is. I hope you enjoyed the read, and I hope you gained
-              some insight into how Factorio’s amazing modding API works.
+              Editor Extensions est le résultat de plus d’un an de tests et de
+              développements de mods dans le jeu. Il y a beaucoup, beaucoup de
+              choses que je n’ai pas mentionnées ici - y compris un raccourci
+              pour activer l’éditeur, la synchronisation de l’inventaire, les
+              tuyaux infinis, et un scénario de test spécial - mais cela
+              rendrait cet article encore plus long qu’il ne l’est déjà.
+              J’espère que vous avez apprécié la lecture, et que vous avez pu
+              vous faire une idée du fonctionnement de l’incroyable API de
+              modding de Factorio.
             </p>
 
             <p>
-              The Factorio developers spoil us with what we are able to do to
-              their game, and the API only gets more and more capable with every
-              update. Thank you for reading, and thank you to the developers for
-              making this possible!
+              Les développeurs de Factorio nous gâtent avec ce que nous sommes
+              capables de faire à leur jeu, et l’API n’en devient que plus
+              performante à chaque mise à jour. Merci de votre lecture et merci
+              aux développeurs d’avoir rendu cela possible !
             </p>
             <h2 id="contributing">
               <a href="#contributing"><i class="fas fa-link fa-xs"></i></a>
@@ -734,24 +767,25 @@
             </h2>
 
             <p>
-              We’re always looking for people that have something interesting
-              they want to share with the Factorio community. If that’s you,
-              please join the
-              <a href="https://discord.gg/AsXAwyV">Discord</a> (or the
+              Nous sommes toujours à la recherche de personnes qui ont quelque
+              chose d’intéressant à partager avec la communauté de Factorio. Si
+              c’est votre cas, rejoignez le
+              <a href="https://discord.gg/AsXAwyV">Discord</a> (ou le
               <a href="https://github.com/AlternativeFFFF/Alt-F4"
                 >GitHub project</a
-              >) to get started. Pretty much any topic is welcome, so don’t be
-              afraid to contribute!
+              >) pour commencer. Presque tous les sujets sont les bienvenus,
+              alors n’ayez pas peur de contribuer !
             </p>
 
             <p>
-              We’re also looking at getting community translations started this
-              week, which would make Alt-F4 available to many more people than
-              just the English version could. We have already set the website up
-              to accommodate this, so all we need are people to work on the
-              translations. If you’re up for it, join the
-              <a href="https://discord.gg/ZpNzmN6">Discord</a> and look for the
-              #translation channel.
+              Nous envisageons également de lancer des traductions par la
+              communauté cette semaine, ce qui rendrait les Alt-F4 accessibles à
+              beaucoup plus de personnes que la seule version anglaise. Nous
+              avons déjà procédé au réglage du site web en conséquence, il ne
+              nous manque plus que des personnes pour travailler sur les
+              traductions. Si vous êtes partant, rejoignez le
+              <a href="https://discord.gg/ZpNzmN6">Discord</a> et cherchez le
+              salon #translation.
             </p>
 
             <div class="flex flex-column flex-items-center mt8">
