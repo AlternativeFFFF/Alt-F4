@@ -157,7 +157,7 @@ body {
   .webp body {
     background-image: url("/assets/GLOBAL/img/bg.webp");
   }
-  
+
   .no-webp body {
     background-image: url("/assets/GLOBAL/img/bg.jpg");
   }
@@ -269,4 +269,8 @@ article iframe {
 
   border: 0;
   margin: 0;
+}
+
+.hide {
+  display: none;
 }
