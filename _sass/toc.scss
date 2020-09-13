@@ -4,6 +4,10 @@
   margin-bottom: 10px !important;
 }
 
+.toc summary:focus {
+  outline: none;
+}
+
 .toc .panel-inset {
   padding: 0;
 }
