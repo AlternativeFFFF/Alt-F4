@@ -30,7 +30,7 @@
     <meta name="generator" content="Jekyll v4.1.1" />
     <meta property="og:title" content="404 - Page not found" />
     <meta name="author" content="Therenas" />
-    <meta property="og:locale" content="en" />
+    <meta property="og:locale" content="en_US" />
     <meta
       name="description"
       content="The community-driven follow-on to the beloved Factorio Friday Facts"
@@ -90,6 +90,7 @@
       title="ATOM Feed"
     />
 
+    <script src="/assets/GLOBAL/js/localization.js"></script>
     <script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -119,16 +120,51 @@
             <i class="fas fa-language"></i>
           </a>
           <div class="submenu">
-            <a class="button button-green" href="/../404">en</a>
+            <a
+              class="button button-green lang-button"
+              href="/../404"
+              onclick="setLanguage('en')"
+              >en</a
+            >
 
-            <a class="button" href="/es/404">es</a>
+            <a
+              class="button lang-button"
+              href="/es/404"
+              onclick="setLanguage('es')"
+              >es</a
+            >
 
-            <a class="button" href="/ru/404">ru</a>
+            <a
+              class="button lang-button"
+              href="/fr/404"
+              onclick="setLanguage('fr')"
+              >fr</a
+            >
 
-            <a class="button" href="/fr/404">fr</a>
+            <a
+              class="button lang-button"
+              href="/it/404"
+              onclick="setLanguage('it')"
+              >it</a
+            >
 
-            <a class="button" href="/it/404">it</a>
+            <a
+              class="button lang-button"
+              href="/ru/404"
+              onclick="setLanguage('ru')"
+              >ru</a
+            >
           </div>
+          <script>
+            (() => {
+              const links = document.getElementsByClassName("lang-button");
+              for (link in links) {
+                link.onclick = () => {
+                  setLanguage(link.textContent);
+                };
+              }
+            })();
+          </script>
         </div>
       </div>
     </nav>
@@ -142,13 +178,82 @@
           <h2>404 - Page not found</h2>
 
           <div class="panel-inset-lighter mt0">
-            <h2 id="sorry-we-couldnt-find-requested-page">
-              Sorry, we couldn’t find requested page.
-            </h2>
-            <h3 id="you-can-try-again-by-going-back-to-the-homepage">
-              You can try again by going
-              <a href="https://alt-f4.blog">back to the homepage</a>.
-            </h3>
+            <div id="en">
+              <h2 id="sorry-we-couldnt-find-requested-page">
+                Sorry, we couldn’t find requested page.
+              </h2>
+              <h3 id="you-can-try-again-by-going">
+                You can try again by going
+              </h3>
+
+              <h3>
+                <a href="https://alt-f4.blog">or go back to the homepage</a>
+              </h3>
+            </div>
+
+            <div id="es" class="hide">
+              <h2
+                id="lo-sentimos-pero-la-página-a-la-que-intenta-acceder-no-existe"
+              >
+                Lo sentimos, pero la página a la que intenta acceder no existe.
+              </h2>
+              <h3 id="puede-probar-de-nuevo-dirigiéndose-a-nuestra">
+                Puede probar de nuevo dirigiéndose a nuestra
+              </h3>
+
+              <h3><a href="https://alt-f4.blog/es">página principal</a></h3>
+            </div>
+
+            <div id="fr" class="hide">
+              <h2 id="désolé-nous-ne-pouvons-pas-trouver-cette-page">
+                Désolé, nous ne pouvons pas trouver cette page.
+              </h2>
+              <h3 id="vous-pouvez-retenter-en-retournant">
+                Vous pouvez retenter en retournant
+              </h3>
+
+              <h3>
+                <a href="https://alt-f4.blog/fr">sur la page d'accueil</a>
+              </h3>
+            </div>
+
+            <div id="it" class="hide">
+              <h2
+                id="spiacenti-non-siamo-riusciti-a-trovare-la-pagina-da-te-cercata"
+              >
+                Spiacenti, non siamo riusciti a trovare la pagina da te cercata.
+              </h2>
+              <h3 id="prova-di-nuovo-tornando-indietro-alla">
+                Prova di nuovo tornando indietro alla
+              </h3>
+
+              <h3><a href="https://alt-f4.blog/it">homepage</a></h3>
+            </div>
+
+            <div id="ru" class="hide">
+              <h2 id="извините-мы-не-смогли-найти-ваш-запрос">
+                Извините, мы не смогли найти ваш запрос.
+              </h2>
+              <h3 id="можете-попробовать-ещё-раз-вернувшись">
+                Можете попробовать ещё раз, вернувшись
+              </h3>
+
+              <h3>
+                <a href="https://alt-f4.blog/ru"
+                  >обратно на начальную страницу</a
+                >
+              </h3>
+            </div>
+
+            <script>
+              (() => {
+                const language = getLanguage();
+                if (language !== "en") {
+                  document.getElementById(language).setAttribute("class", "");
+                  document.getElementById("en").setAttribute("class", "hide");
+                }
+              })();
+            </script>
           </div>
           <div class="panel-inset mb0 p4 flex flex-space-between">
             <div>

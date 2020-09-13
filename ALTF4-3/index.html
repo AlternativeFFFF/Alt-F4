@@ -101,6 +101,7 @@
       title="ATOM Feed"
     />
 
+    <script src="/assets/GLOBAL/js/localization.js"></script>
     <script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -130,16 +131,51 @@
             <i class="fas fa-language"></i>
           </a>
           <div class="submenu">
-            <a class="button button-green" href="/../ALTF4-3/">en</a>
+            <a
+              class="button button-green lang-button"
+              href="/../ALTF4-3/"
+              onclick="setLanguage('en')"
+              >en</a
+            >
 
-            <a class="button" href="/es/ALTF4-3/">es</a>
+            <a
+              class="button lang-button"
+              href="/es/ALTF4-3/"
+              onclick="setLanguage('es')"
+              >es</a
+            >
 
-            <a class="button" href="/ru/ALTF4-3/">ru</a>
+            <a
+              class="button lang-button"
+              href="/fr/ALTF4-3/"
+              onclick="setLanguage('fr')"
+              >fr</a
+            >
 
-            <a class="button" href="/fr/ALTF4-3/">fr</a>
+            <a
+              class="button lang-button"
+              href="/it/ALTF4-3/"
+              onclick="setLanguage('it')"
+              >it</a
+            >
 
-            <a class="button" href="/it/ALTF4-3/">it</a>
+            <a
+              class="button lang-button"
+              href="/ru/ALTF4-3/"
+              onclick="setLanguage('ru')"
+              >ru</a
+            >
           </div>
+          <script>
+            (() => {
+              const links = document.getElementsByClassName("lang-button");
+              for (link in links) {
+                link.onclick = () => {
+                  setLanguage(link.textContent);
+                };
+              }
+            })();
+          </script>
         </div>
       </div>
     </nav>

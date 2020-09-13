@@ -50,12 +50,12 @@
     />
     <script type="application/ld+json">
       {
-        "author": { "@type": "Person", "name": "Therenas" },
+        "headline": "Alternative Friday Factorio Fan Facts",
         "description": "The community-driven follow-on to the beloved Factorio Friday Facts",
         "@type": "WebSite",
         "url": "https://alt-f4.blog/",
         "name": "Alternative Friday Factorio Fan Facts",
-        "headline": "Alternative Friday Factorio Fan Facts",
+        "author": { "@type": "Person", "name": "Therenas" },
         "@context": "https://schema.org"
       }
     </script>
@@ -94,6 +94,7 @@
       title="ATOM Feed"
     />
 
+    <script src="/assets/GLOBAL/js/localization.js"></script>
     <script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -120,16 +121,51 @@
             <i class="fas fa-language"></i>
           </a>
           <div class="submenu">
-            <a class="button" href="/../">en</a>
+            <a
+              class="button lang-button"
+              href="/../"
+              onclick="setLanguage('en')"
+              >en</a
+            >
 
-            <a class="button" href="/es/">es</a>
+            <a
+              class="button lang-button"
+              href="/es/"
+              onclick="setLanguage('es')"
+              >es</a
+            >
 
-            <a class="button button-green" href="/ru/">ru</a>
+            <a
+              class="button lang-button"
+              href="/fr/"
+              onclick="setLanguage('fr')"
+              >fr</a
+            >
 
-            <a class="button" href="/fr/">fr</a>
+            <a
+              class="button lang-button"
+              href="/it/"
+              onclick="setLanguage('it')"
+              >it</a
+            >
 
-            <a class="button" href="/it/">it</a>
+            <a
+              class="button button-green lang-button"
+              href="/ru/"
+              onclick="setLanguage('ru')"
+              >ru</a
+            >
           </div>
+          <script>
+            (() => {
+              const links = document.getElementsByClassName("lang-button");
+              for (link in links) {
+                link.onclick = () => {
+                  setLanguage(link.textContent);
+                };
+              }
+            })();
+          </script>
         </div>
       </div>
     </nav>
@@ -162,7 +198,7 @@
                 отредактировали <em>Therenas, nicgarner</em>, переводчик
                 <em>pocarski, ILLOMIURGE</em>
 
-                2020-09-11
+                11-09-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -196,7 +232,7 @@
                 Написали <em>JD-Plays, T-A-R, Raiguard</em>, отредактировали
                 <em>Therenas, nicgarner</em>, переводчик <em>pocarski</em>
 
-                2020-09-04
+                04-09-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -229,7 +265,7 @@
                 Написали <em>Lovely_Santa, Robynthedevil, Xorimuth</em>,
                 отредактировали <em>Therenas, EDLEXUS, nicgarner</em>
 
-                2020-08-28
+                28-08-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -250,27 +286,29 @@
               <a href="/ru/ALTF4-1/" class="no-outline">
                 <img
                   src="/assets/ALTF4/1/thumbnail.jpg"
-                  alt="A zoomed out view of a small factory from Factorio"
+                  alt="Маленький завод"
                 />
                 <div class="shadow-overlay"></div>
               </a>
             </div>
 
             <div class="blog-card-text">
-              <h3><a href="/ru/ALTF4-1/">Alt-F4 #1 - We Need You!</a></h3>
+              <h3><a href="/ru/ALTF4-1/">Alt-F4 #1 - Нам Нужен Ты!</a></h3>
               <div class="posted-by">
-                Написали <em>Therenas</em>
+                Написали <em>Therenas</em>, переводчик <em>pocarski</em>
 
-                2020-08-21
+                21-08-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
                 <p>
-                  Welcome to the very first edition of the ‘Alternative Factorio
-                  Friday Fan Facts’ (also known as Alt-F4), the community-driven
-                  follow-on to the venerable Factorio Friday Facts. It aims to
-                  fill the void that the discontinuation of the FFF left in all
-                  our hearts. To fill the gaping hole in our...
+                  Добро пожаловать в самое первое издание ‘Альтернативных
+                  Пятничных Фактов Factorio от Фанатов’ (так же известных как
+                  Alt-F4), общественное продолжение заслуженным Factorio Friday
+                  Facts. Наша цель - заполнить дыру, которую прекращение FFF
+                  оставило в наших сердцах. Чтобы заполнять дырищу в календарях
+                  каждую пятницу, мы собираемся предоставлять разнообразие
+                  контента, созданного сообществом. Общественные...
                 </p>
               </div>
             </div>

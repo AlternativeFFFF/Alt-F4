@@ -19,7 +19,7 @@
     </script>
 
     <title>
-      Faits alternatifs du vendredi sur factorio (fait par les fans)
+      Faits alternatifs du vendredi sur Factorio (faits par les fans)
     </title>
     <!-- Meta -->
     <meta charset="UTF-8" />
@@ -96,6 +96,7 @@
       title="ATOM Feed"
     />
 
+    <script src="/assets/GLOBAL/js/localization.js"></script>
     <script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -116,8 +117,8 @@
         </div>
         <div class="sites links flex hide-tag-line">
           <i
-            >La suite communautaire aux tant apréciés Faits sur Factorio le
-            Vendredi</i
+            >La suite communautaire aux tant appréciés Faits du vendredi sur
+            Factorio</i
           >
         </div>
         <div class="dropdown flex-end">
@@ -125,16 +126,51 @@
             <i class="fas fa-language"></i>
           </a>
           <div class="submenu">
-            <a class="button" href="/../">en</a>
+            <a
+              class="button lang-button"
+              href="/../"
+              onclick="setLanguage('en')"
+              >en</a
+            >
 
-            <a class="button" href="/es/">es</a>
+            <a
+              class="button lang-button"
+              href="/es/"
+              onclick="setLanguage('es')"
+              >es</a
+            >
 
-            <a class="button" href="/ru/">ru</a>
+            <a
+              class="button button-green lang-button"
+              href="/fr/"
+              onclick="setLanguage('fr')"
+              >fr</a
+            >
 
-            <a class="button button-green" href="/fr/">fr</a>
+            <a
+              class="button lang-button"
+              href="/it/"
+              onclick="setLanguage('it')"
+              >it</a
+            >
 
-            <a class="button" href="/it/">it</a>
+            <a
+              class="button lang-button"
+              href="/ru/"
+              onclick="setLanguage('ru')"
+              >ru</a
+            >
           </div>
+          <script>
+            (() => {
+              const links = document.getElementsByClassName("lang-button");
+              for (link in links) {
+                link.onclick = () => {
+                  setLanguage(link.textContent);
+                };
+              }
+            })();
+          </script>
         </div>
       </div>
     </nav>
@@ -145,7 +181,7 @@
         <div class="small-center"></div>
         <!-- Posts -->
         <div class="panel">
-          <h2>Faits alternatifs du vendredi sur factorio</h2>
+          <h2>Faits alternatifs du vendredi sur Factorio</h2>
 
           <div class="panel-inset-lighter blog-card">
             <div class="blog-card-thumbnail">
@@ -167,7 +203,7 @@
                 <em>Therenas, nicgarner</em>, traduit par
                 <em>dovahtroll, Firerazer</em>
 
-                le 2020-09-11
+                le 11-09-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -201,7 +237,7 @@
                 <em>Therenas, nicgarner</em>, traduit par
                 <em>bev, Firerazer</em>
 
-                le 2020-09-04
+                le 04-09-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -234,7 +270,7 @@
                 par <em>Therenas, EDLEXUS, nicgarner</em>, traduit par
                 <em>Thacib</em>
 
-                le 2020-08-28
+                le 28-08-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -269,7 +305,7 @@
                 Écrit par <em>Therenas</em>, traduit par
                 <em>dovahtrol, Firerazer</em>
 
-                le 2020-08-21
+                le 21-08-2020
               </div>
               <hr />
               <div class="snippet snippet-2">

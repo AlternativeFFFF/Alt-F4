@@ -94,6 +94,7 @@
       title="ATOM Feed"
     />
 
+    <script src="/assets/GLOBAL/js/localization.js"></script>
     <script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -123,16 +124,51 @@
             <i class="fas fa-language"></i>
           </a>
           <div class="submenu">
-            <a class="button" href="/../">en</a>
+            <a
+              class="button lang-button"
+              href="/../"
+              onclick="setLanguage('en')"
+              >en</a
+            >
 
-            <a class="button button-green" href="/es/">es</a>
+            <a
+              class="button button-green lang-button"
+              href="/es/"
+              onclick="setLanguage('es')"
+              >es</a
+            >
 
-            <a class="button" href="/ru/">ru</a>
+            <a
+              class="button lang-button"
+              href="/fr/"
+              onclick="setLanguage('fr')"
+              >fr</a
+            >
 
-            <a class="button" href="/fr/">fr</a>
+            <a
+              class="button lang-button"
+              href="/it/"
+              onclick="setLanguage('it')"
+              >it</a
+            >
 
-            <a class="button" href="/it/">it</a>
+            <a
+              class="button lang-button"
+              href="/ru/"
+              onclick="setLanguage('ru')"
+              >ru</a
+            >
           </div>
+          <script>
+            (() => {
+              const links = document.getElementsByClassName("lang-button");
+              for (link in links) {
+                link.onclick = () => {
+                  setLanguage(link.textContent);
+                };
+              }
+            })();
+          </script>
         </div>
       </div>
     </nav>
@@ -164,7 +200,7 @@
                 Escrito por <em>gamebuster800, Landmine752, Romner</em>, editado
                 por <em>Therenas, nicgarner</em>
 
-                on 2020-09-11
+                on 11-09-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -196,7 +232,7 @@
                 Escrito por <em>JD-Plays, T-A-R, Raiguard</em>, editado por
                 <em>Therenas, nicgarner</em>
 
-                on 2020-09-04
+                on 04-09-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -228,7 +264,7 @@
                 Escrito por <em>Lovely_Santa, Robynthedevil, Xorimuth</em>,
                 editado por <em>Therenas, EDLEXUS, nicgarner</em>
 
-                on 2020-08-28
+                on 28-08-2020
               </div>
               <hr />
               <div class="snippet snippet-2">
@@ -261,7 +297,7 @@
                 Escrito por <em>Therenas</em>, traducido por
                 <em>G00S3MEISTER</em>
 
-                on 2020-08-21
+                on 21-08-2020
               </div>
               <hr />
               <div class="snippet snippet-2">

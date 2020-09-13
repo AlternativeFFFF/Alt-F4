@@ -106,6 +106,7 @@
       title="ATOM Feed"
     />
 
+    <script src="/assets/GLOBAL/js/localization.js"></script>
     <script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -126,8 +127,8 @@
         </div>
         <div class="sites links flex hide-tag-line">
           <i
-            >La suite communautaire aux tant apréciés Faits sur Factorio le
-            Vendredi</i
+            >La suite communautaire aux tant appréciés Faits du vendredi sur
+            Factorio</i
           >
         </div>
         <div class="dropdown flex-end">
@@ -135,16 +136,51 @@
             <i class="fas fa-language"></i>
           </a>
           <div class="submenu">
-            <a class="button" href="/../ALTF4-2/">en</a>
+            <a
+              class="button lang-button"
+              href="/../ALTF4-2/"
+              onclick="setLanguage('en')"
+              >en</a
+            >
 
-            <a class="button" href="/es/ALTF4-2/">es</a>
+            <a
+              class="button lang-button"
+              href="/es/ALTF4-2/"
+              onclick="setLanguage('es')"
+              >es</a
+            >
 
-            <a class="button" href="/ru/ALTF4-2/">ru</a>
+            <a
+              class="button button-green lang-button"
+              href="/fr/ALTF4-2/"
+              onclick="setLanguage('fr')"
+              >fr</a
+            >
 
-            <a class="button button-green" href="/fr/ALTF4-2/">fr</a>
+            <a
+              class="button lang-button"
+              href="/it/ALTF4-2/"
+              onclick="setLanguage('it')"
+              >it</a
+            >
 
-            <a class="button" href="/it/ALTF4-2/">it</a>
+            <a
+              class="button lang-button"
+              href="/ru/ALTF4-2/"
+              onclick="setLanguage('ru')"
+              >ru</a
+            >
           </div>
+          <script>
+            (() => {
+              const links = document.getElementsByClassName("lang-button");
+              for (link in links) {
+                link.onclick = () => {
+                  setLanguage(link.textContent);
+                };
+              }
+            })();
+          </script>
         </div>
       </div>
     </nav>
@@ -161,7 +197,7 @@
             Écrit par <em>Lovely_Santa, Robynthedevil, Xorimuth</em>, édité par
             <em>Therenas, EDLEXUS, nicgarner</em>, traduit par <em>Thacib</em>
 
-            le 2020-08-28
+            le 28-08-2020
           </div>
 
           <div class="panel-inset-lighter mt0">
