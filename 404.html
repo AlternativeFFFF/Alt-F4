@@ -13,9 +13,8 @@ permalink: "404"
 <script>
   (() => {
     const language = getLanguage()
-    console.log(language)
     if ((language !== '{{ site.default_lang }}') && (language !== '{{ site.active_lang }}')) {
-      window.location.href = `{{ site.url }}/${language}/404`
+      window.location.href = `/${language}/404`
     }
   })()
 </script>

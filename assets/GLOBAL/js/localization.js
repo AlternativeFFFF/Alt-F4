@@ -1,5 +1,5 @@
 function getLanguage() {
-  return localStorage.getItem("language");
+  return localStorage.getItem("language") || 'en';
 }
 
 function setLanguage(lang) {
