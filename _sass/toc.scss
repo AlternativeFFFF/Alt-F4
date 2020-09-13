@@ -1,8 +1,6 @@
 .toc {
   width: auto;
-
   margin-top: 0;
-
   margin-bottom: 10px !important;
 }
 
@@ -17,8 +15,6 @@
 
 .toc a {
   font-size: 0.9em;
-  // display: block;
-  // margin: 0 0.5em;
   color: #ffe6c0;
 }
 
@@ -33,10 +29,12 @@
 @media (min-width: 1920px) {
   .toc {
     position: fixed;
-    left: 0px;
-
-    z-index: 100;
-
+    left: calc(50vw - 960px);
     max-width: 376px;
+  }
+}
+@media (min-width: 1936px) {
+  .toc {
+    left: calc(50vw - 976px);
   }
 }

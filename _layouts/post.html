@@ -2,14 +2,22 @@
 layout: page
 ---
 
-<div class="panel toc">
-  <details>
-    <summary><h2>{{ site.data.locale.table-of-contents }}</h2></summary>
-    <div class="panel-inset mb0">
-      {% include toc.html html=content sanitize=true %}
-    </div>
-  </details>
-</div>
+<details class="panel toc">
+  <summary>
+    <h2>{{ site.data.locale.table-of-contents }}</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    {% include toc.html html=content sanitize=true %}
+  </div>
+</details>
+
+{% include anchor_headings.html html=content beforeHeading=true anchorClass='anchor' anchorBody='' %}
 
 
-{% include anchor_headings.html html=content beforeHeading=true anchorClass='anchor' anchorBody='<i class="fas fa-link fa-xs"></i>' %}
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
