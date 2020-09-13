@@ -2,6 +2,7 @@ title: Альтернативные Пятничные Факты Factorio
 description: Общественное продолжение возлюбленным Пятничным Фактам Factorio
 footer-copyright: Этот сайт - фан-проект и не связан напрямую с
 home-header: Альтернативные Пятничные Факты
+date-format: "%d-%m-%Y"
 author:
   writtenby: Написали
   editedby: Отредактировали
