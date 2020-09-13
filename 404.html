@@ -4,17 +4,14 @@ title: 404 - Page not found
 permalink: "404"
 ---
 
-{{ site.data.locale.not-found.msg | markdownify }}
-<h2><a
-    href="{% if site.active_lang == site.default_lang %}{{site.url}}{% else %}{{site.url}}/{{site.active_lang}}{% endif %}">{{ site.data.locale.not-found.btn }}</a>
-</h2>
-
-
 <script>
   (() => {
-    const language = getLanguage()
-    if ((language !== '{{ site.default_lang }}') && (language !== '{{ site.active_lang }}')) {
-      window.location.href = `/${language}/404`
+    const language = getLanguage();
+    if (language === '{{ site.default_lang }}') {
+      window.location.href = `/error`
+    } else {
+      window.location.href = `/${language}/error`
+
     }
   })()
 </script>
