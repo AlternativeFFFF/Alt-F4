@@ -23,16 +23,6 @@
 					onclick="setLanguage('{{ language }}')">{{ language }}</a>
 				{% endfor %}
 			</div>
-			<script>
-				(() => {
-					const links = document.getElementsByClassName('lang-button');
-					for (link in links) {
-						link.onclick = () => {
-							setLanguage(link.textContent);
-						}
-					}
-				})()
-			</script>
 		</div>
 	</div>
 </nav>
