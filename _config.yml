@@ -39,6 +39,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-polyglot
   - jekyll-spaceship
+  - jekyll-sitemap
 
 # Plugin Settings
 paginate: 10
