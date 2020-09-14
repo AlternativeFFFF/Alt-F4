@@ -57,9 +57,10 @@ defaults:
 languages:
   - en
   - es
-  - ru
   - fr
   - it
+  - ru
+  # - pl
   # - ua
 default_lang: en
 lang_from_path: true
