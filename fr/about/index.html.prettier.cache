@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -18,7 +18,9 @@
       gtag("config", "UA-177230094-1");
     </script>
 
-    <title>Alternative Friday Factorio Fan Facts</title>
+    <title>
+      Faits alternatifs du vendredi sur Factorio (faits par les fans)
+    </title>
     <!-- Meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -42,18 +44,18 @@
       property="og:description"
       content="The community-driven follow-on to the beloved Factorio Friday Facts"
     />
-    <link rel="canonical" href="https://alt-f4.blog/es/" />
-    <meta property="og:url" content="https://alt-f4.blog/" />
+    <link rel="canonical" href="https://alt-f4.blog/fr/about/" />
+    <meta property="og:url" content="https://alt-f4.blog/about/" />
     <meta
       property="og:site_name"
       content="Alternative Friday Factorio Fan Facts"
     />
     <script type="application/ld+json">
       {
+        "headline": "Alternative Friday Factorio Fan Facts",
         "description": "The community-driven follow-on to the beloved Factorio Friday Facts",
         "@type": "WebSite",
-        "headline": "Alternative Friday Factorio Fan Facts",
-        "url": "https://alt-f4.blog/",
+        "url": "https://alt-f4.blog/about/",
         "name": "Alternative Friday Factorio Fan Facts",
         "author": { "@type": "Person", "name": "Therenas" },
         "@context": "https://schema.org"
@@ -62,8 +64,8 @@
     <!-- End Jekyll SEO tag -->
 
     <!-- CSS & fonts -->
-    <link href="/es/assets/GLOBAL/css/titillium-web.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/es/assets/GLOBAL/css/style.css" />
+    <link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"
       rel="stylesheet"
@@ -76,19 +78,19 @@
     />
 
     <link
-      href="/es/assets/GLOBAL/img/favicon.ico"
+      href="/fr/assets/GLOBAL/img/favicon.ico"
       rel="icon"
       type="image/x-icon"
     />
     <link
-      href="/es/assets/GLOBAL/img/favicon.ico"
+      href="/fr/assets/GLOBAL/img/favicon.ico"
       rel="shortcut icon"
       type="image/x-icon"
     />
 
     <!-- RSS -->
     <link
-      href="/es/atom.xml"
+      href="/fr/atom.xml"
       type="application/atom+xml"
       rel="alternate"
       title="ATOM Feed"
@@ -106,7 +108,7 @@
     <nav id="top" class="top-bar">
       <div class="top-bar-inner flex flex-space-between">
         <div class="sites links flex">
-          <a href="/es/" class="sites-current">
+          <a href="/fr/" class="sites-current">
             <div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
           </a>
           <a href="https://discord.gg/AsXAwyV" class="">Discord</a>
@@ -115,8 +117,8 @@
         </div>
         <div class="sites links flex hide-tag-line">
           <i
-            >La continuación de la comunidad de los amados Factorio Friday
-            Facts</i
+            >La suite communautaire aux tant appréciés Faits du vendredi sur
+            Factorio</i
           >
         </div>
         <div class="dropdown flex-end">
@@ -126,39 +128,49 @@
           <div class="submenu">
             <a
               class="button lang-button"
-              href="/../"
+              href="/../about/"
               onclick="setLanguage('en')"
               >en</a
             >
 
             <a
-              class="button button-green lang-button"
-              href="/es/"
+              class="button lang-button"
+              href="/es/about/"
               onclick="setLanguage('es')"
               >es</a
             >
 
             <a
-              class="button lang-button"
-              href="/fr/"
+              class="button button-green lang-button"
+              href="/fr/about/"
               onclick="setLanguage('fr')"
               >fr</a
             >
 
             <a
               class="button lang-button"
-              href="/it/"
+              href="/it/about/"
               onclick="setLanguage('it')"
               >it</a
             >
 
             <a
               class="button lang-button"
-              href="/ru/"
+              href="/ru/about/"
               onclick="setLanguage('ru')"
               >ru</a
             >
           </div>
+          <script>
+            (() => {
+              const links = document.getElementsByClassName("lang-button");
+              for (link in links) {
+                link.onclick = () => {
+                  setLanguage(link.textContent);
+                };
+              }
+            })();
+          </script>
         </div>
       </div>
     </nav>
@@ -168,141 +180,71 @@
       <div class="container-inner">
         <div class="small-center"></div>
         <!-- Posts -->
-        <div class="panel">
-          <h2>Alternative Friday Factorio Fan Facts</h2>
+        <article class="panel blog-post">
+          <h2></h2>
 
-          <div class="panel-inset-lighter blog-card">
-            <div class="blog-card-thumbnail">
-              <a href="/es/ALTF4-4/" class="no-outline">
-                <img
-                  src="/assets/ALTF4/4/thumbnail.jpg"
-                  alt="Fanart of a cute engineer riding the new spidertron"
-                />
-                <div class="shadow-overlay"></div>
+          <div class="panel-inset-lighter mt0">
+            <h2 id="a-propos">A propos</h2>
+
+            <p>
+              Alt-F4 est un
+              <a href="http://alt-f4.blog">blog hebdomadaire</a> écrit et édité
+              entièrement par la communauté de
+              <a href="https://factorio.com">Factorio</a>, mettant en lumière
+              divers sujets d’intérêt comme des annonces, des projets
+              communautaires ou des explications d’éléments de jeux.
+            </p>
+
+            <p>
+              Cela fait suite au réputé
+              <a href="https://factorio.com/blog/">Factorio Friday Facts</a>
+              (‘FFF’), qui a documenté le développement de Factorio pendant plus
+              de 360 semaines. Il a servi à exprimer les vues des développeurs
+              au sujet
+              <a href="https://www.factorio.com/blog/post/fff-247"
+                >de leur stratégie de prix de vente</a
+              >, nous a guidé à travers leurs
+              <a href="https://www.factorio.com/blog/post/fff-176"
+                >processus d’optimisations endiablés</a
+              >, ainsi que détaillé comment ils ont réalisés leurs vues au sujet
+              <a href="https://factorio.com/blog/post/fff-351"
+                >des développements graphiques</a
+              >.
+            </p>
+
+            <p>
+              Après avoir complété leur
+              <a href="https://factorio.com/blog/post/fff-360">création</a> en
+              Août 2020 avec la sortie définitive du jeu, les développeurs ont
+              décidé d’arrêter leur communication hebdomadaire et de prendre une
+              période de repos bien méritée. Cependant, la communauté n’a pas
+              souhaité que cette tradition se termine, et ont
+              <a
+                href="https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/"
+                >pris le relais</a
+              >
+              et <a href="http://alt-f4.blog/ALTF4-1">continué l’aventure</a>.
+              Les thèmes ont nécessairement été déplacés depuis les nouvelles du
+              développement vers un contenu plus diversifié d’intérêt global
+              pour la communauté.
+            </p>
+
+            <h3 id="crédits">Crédits</h3>
+
+            <p>
+              Ce site web a été créé en utilisant Jekyll par :
+              <em>Ypetremann</em> et <em>Dr.MagPie</em>, avec l’aide de
+              <em>lovely_santa</em> et <em>Therenas</em>
+            </p>
+          </div>
+          <div class="panel-inset mb0 p4 flex flex-space-between">
+            <div>
+              <a class="button square-sm" href="/fr/">
+                <i class="fas fa-angle-double-left"></i>
               </a>
             </div>
-
-            <div class="blog-card-text">
-              <h3>
-                <a href="/es/ALTF4-4/">Alt-F4 #4 - Designing Blueprints</a>
-              </h3>
-              <div class="posted-by">
-                Escrito por <em>gamebuster800, Landmine752, Romner</em>, editado
-                por <em>Therenas, nicgarner</em>
-
-                on 11-09-2020
-              </div>
-              <hr />
-              <div class="snippet snippet-2">
-                <p>
-                  Welcome to the fourth issue of Alt-F4, rounding out the very
-                  first month of posts! This week, gamebuster800 describes their
-                  process for designing blueprints, Landmine752 shares some of
-                  their favourite fan art, and Romner gives us some insight into
-                  their Realistic Fusion Power mod (in the first part of a...
-                </p>
-              </div>
-            </div>
           </div>
-
-          <div class="panel-inset-lighter blog-card">
-            <div class="blog-card-thumbnail">
-              <a href="/es/ALTF4-3/" class="no-outline">
-                <img
-                  src="/assets/ALTF4/3/thumbnail.jpg"
-                  alt="A conveyor belt with two infinity loaders at both ends, with a popup showing information for the left one"
-                />
-                <div class="shadow-overlay"></div>
-              </a>
-            </div>
-
-            <div class="blog-card-text">
-              <h3><a href="/es/ALTF4-3/">Alt-F4 #3 - Tronparty</a></h3>
-              <div class="posted-by">
-                Escrito por <em>JD-Plays, T-A-R, Raiguard</em>, editado por
-                <em>Therenas, nicgarner</em>
-
-                on 04-09-2020
-              </div>
-              <hr />
-              <div class="snippet snippet-2">
-                <p>
-                  Welcome to the third issue of Alt-F4. This weekend, there’ll
-                  be an attempt to try and break the record for the highest
-                  number of players on a single Factorio server; read on for
-                  details of how to join the fun. There’s also an action report
-                  about the Big Community Games...
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel-inset-lighter blog-card">
-            <div class="blog-card-thumbnail">
-              <a href="/es/ALTF4-2/" class="no-outline">
-                <img
-                  src="/assets/ALTF4/2/thumbnail.jpg"
-                  alt="A Spidertron stands next to the crash site"
-                />
-                <div class="shadow-overlay"></div>
-              </a>
-            </div>
-
-            <div class="blog-card-text">
-              <h3><a href="/es/ALTF4-2/">Alt-F4 #2 - SPIDERTRON!!!</a></h3>
-              <div class="posted-by">
-                Escrito por <em>Lovely_Santa, Robynthedevil, Xorimuth</em>,
-                editado por <em>Therenas, EDLEXUS, nicgarner</em>
-
-                on 28-08-2020
-              </div>
-              <hr />
-              <div class="snippet snippet-2">
-                <p>
-                  Welcome to the second issue of Alt-F4, the community-driven
-                  follow-on to the Factorio Friday Facts. And man, am I always
-                  pleasently surprised by the community. Within hours of
-                  publishing the first issue, the Discord was filled with
-                  enthusiastic people that were willing to help at all stages of
-                  the process....
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel-inset-lighter blog-card">
-            <div class="blog-card-thumbnail">
-              <a href="/es/ALTF4-1/" class="no-outline">
-                <img
-                  src="/assets/ALTF4/1/thumbnail.jpg"
-                  alt="Una vista alejada de una fábrica pequeña en Factorio"
-                />
-                <div class="shadow-overlay"></div>
-              </a>
-            </div>
-
-            <div class="blog-card-text">
-              <h3><a href="/es/ALTF4-1/">Alt-F4 #1 - ¡Te necesitamos!</a></h3>
-              <div class="posted-by">
-                Escrito por <em>Therenas</em>, traducido por
-                <em>G00S3MEISTER</em>
-
-                on 21-08-2020
-              </div>
-              <hr />
-              <div class="snippet snippet-2">
-                <p>
-                  Bienvenidos a la primera edición de ‘Alternative Factorio
-                  Friday Facts Fan’ (también conocido como Alt-F4), la
-                  continuación impulsada por la comunidad del venerable Factorio
-                  Friday Facts. Su objetivo es llenar el vacío que dejo en
-                  nuestros corazones la interrupción de los FFF. Para llenar el
-                  vacío que hay en nuestros...
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        </article>
       </div>
     </div>
 
@@ -310,7 +252,7 @@
     <footer class="footer">
       <div class="footer-inner panel">
         <div class="footer-links panel-inset slots p1 mt0 mb0">
-          <a href="/es/about" class="slot" title="About">
+          <a href="/fr/about" class="slot" title="About">
             <div class="slot-button">
               <i class="fas fa-info"></i>
             </div>
@@ -330,7 +272,7 @@
             </div>
           </a>
           <a
-            href="/es/atom.xml"
+            href="/fr/atom.xml"
             type="application/atom+xml"
             rel="alternate"
             class="slot"
@@ -435,8 +377,8 @@
           <div class="shadow-overlay-bottom"></div>
         </div>
         <div class="footer-copyright panel-inset m0">
-          Este sitio web es un proyecto hecho por los fans y no tiene relacion
-          con Wube Software
+          Ce site internet est un projet proposé par les fans et n'est pas
+          directement affilié à Wube Software
         </div>
       </div>
     </footer>
