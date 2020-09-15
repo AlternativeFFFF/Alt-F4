@@ -61,6 +61,7 @@ languages:
   - fr
   - it
   - ru
+  - zh
   # - pl
   # - ua
 default_lang: en
