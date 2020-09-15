@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="panel">
-	<h2>{{ site.data.locale.home-header }}</h2>
+	<h1>{{ site.data.locale.home-header }}</h1>
 	{% include pagination.html %}
 	{% for post in paginator.posts %}
 	{% unless post.draft %}
