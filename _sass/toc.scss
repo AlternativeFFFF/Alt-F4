@@ -33,8 +33,8 @@
 @media (min-width: 1920px) {
   .toc {
     position: fixed;
-    left: calc(50vw - 960px);
-    max-width: 376px;
+    left: calc(calc(calc(100vw - 1200px) / 2) - 355px);
+    width: 350px;
   }
 }
 @media (min-width: 1936px) {
