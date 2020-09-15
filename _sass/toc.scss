@@ -33,12 +33,7 @@
 @media (min-width: 1920px) {
   .toc {
     position: fixed;
-    left: calc(calc(calc(100vw - 1200px) / 2) - 355px);
+    left: calc(50vw - 955px);
     width: 350px;
-  }
-}
-@media (min-width: 1936px) {
-  .toc {
-    left: calc(50vw - 976px);
   }
 }
