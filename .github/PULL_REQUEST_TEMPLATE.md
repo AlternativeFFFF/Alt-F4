@@ -17,7 +17,7 @@ Name: <!--(to be dispayed in blog)-->
   - [ ] Use provided Imgur embed ` ![](https://i.imgur.com/WsUV4DK.gif)`
   - To get correct `i.imgur` link, upload to imgur, right click image and select "Copy image location" or "Open in new tab"
 - [ ] Videos are hosted on Youtube
-  - [ ] Make sure video is unlisted or public
+  - [ ] Make sure video is public or unlisted
   - [ ] Use provided Youtube embed `![](https://www.youtube.com/watch?v=dQw4w9WgXcQ)`
 - [ ] Audio is hosted on souldcloud
   - [ ] Embed soundcloud post of audio file
