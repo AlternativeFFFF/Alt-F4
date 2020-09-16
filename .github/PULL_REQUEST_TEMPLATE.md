@@ -4,6 +4,7 @@ Thank you for your submission!
 
 ### Author info
 Name: <!--(to be dispayed in blog)-->
+Suggested release date: <!--(If the submissions is to be released at a certain time (i.e. an event is happening soon). Leave blank if not timely.)-->
 
 
 #### Requirements for media in submissions:
