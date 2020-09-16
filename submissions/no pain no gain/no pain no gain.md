@@ -35,7 +35,7 @@ Second machine was used to make yt thumbnail and it's just four locomotives conn
 ![](https://i.imgur.com/yUH99s2.mp4) ![](https://i.imgur.com/EQQdUtq.mp4)
 
 ### No pain, No gain
-Factorio has come a long way (8.5 years) to be right where it is
+Factorio has come a long way (8.5 years) to be right where it is :)
 
 
 pink orbs and the pickaxe
