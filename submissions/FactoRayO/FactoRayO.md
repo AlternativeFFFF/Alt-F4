@@ -32,4 +32,4 @@ This recording technique has a few advantages:
 * I can do other things on my computer while recording, this includes fixing small bugs of the raycasting engine while it's running. If you had noticed that while demonstrating all the colors that the screen can display, that not all colors are on screen for the same amount of time; that was me changing the timings while it was running. 
 * I can seamlessly stop and start recording.
 
-[For those who wish to download the map, you can do that here] (https://forums.factorio.com/download/file.php?id=62475)
+[For those who wish to download the map, you can do that here](https://forums.factorio.com/download/file.php?id=62475)
