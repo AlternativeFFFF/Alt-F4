@@ -9,6 +9,8 @@
 .sites {
   // width: 65%;
   font-size: 110%;
+
+  align-items: center;
 }
 
 .sites-current,
@@ -26,7 +28,11 @@
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  user-select: none;
+
+  align-items: center;
 }
+
 @media (max-width: 750px) {
   .top-bar-inner > div {
     // width: 100%;
@@ -41,7 +47,7 @@
 
 .links a {
   white-space: nowrap;
-  color: white;
+  color: #aaa;
 }
 
 .links a:hover {
@@ -62,8 +68,12 @@
   margin: 0;
   margin-left: 1px;
   font-size: 20px;
-  min-width: 65px;
-  min-height: 40px;
+
+  height: 34px;
+  width: 58px;
+  min-width: 0;
+
+  padding: 7px 9px;
 }
 
 .top-bar .dropdown .button:active,
@@ -100,32 +110,23 @@
   background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png"); /* Switch to white logo on hover */
 }
 
-@media (max-width: 500px) {
+body:after { /* For preloading the hover image so it does not flicker on first hover */
+  display: none;
+  content: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
+}
+
+@media (max-width: 600px) {
   /* Shrink logo, gap between logo and links and the nav bar itself slightly */
 
   #navbar-logo {
-    height: 20px; /* Shrink logo on smaller screens */
-    width: 80px;
+    height: 22px; /* Shrink logo on smaller screens */
+    width: 90px;
 
     margin-right: 15px; /* Shrink gap between logo and links as well */
   }
 
   .top-bar {
-    padding: 12px; /* Reduce padding slightly (by 4px) as well */
-  }
-
-
-  /* Shrink the translation button */
-
-  .fa-language {
-    height: 20px; /* Shrink the language icon */
-  }
-
-  .top-bar .dropdown .button { /* Shrink the button itself */
-    min-height: 20px;
-    min-width: 45px;
-
-    padding: 7px 9px;
+    padding: 8px 0px; /* Reduce padding as well */
   }
 
   .top-bar .dropdown .button:active,
@@ -133,12 +134,67 @@
     margin: 0; /* Disable desktop button navbar bump fix, it causes the bump on mobile */
   }
 
-  .hide-tag-line {
-    visibility: collapse;
+  .hide-tag-line.flex {
+    display: none;
   }
 }
 
-body:after { /* For preloading the hover image so it does not flicker on first hover */
-  display: none;
-  content: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
+@media (max-width: 500px) {
+  body .container {
+    padding-left: 0;
+    padding-right: 0;
+
+    margin-bottom: 100px;
+  }
+
+  body .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footer .footer-inner {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .container-inner .panel {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .blog-card-text {
+    .posted-by {
+      display: none;
+    }
+
+    hr {
+      display: none;
+    }
+
+    .snippet-2 {
+      -webkit-line-clamp: 3;
+    }
+  }
+
+  body .panel, body .panel-inset {
+    padding: 8px;
+  }
+
+  body .panel-inset-lighter {
+    padding: 8px;
+  }
+
+  .footer .footer-inner {
+    display: block;
+  }
+
+  .footer-inner .footer-copyright {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .footer-inner .footer-links {
+    width: 100%;
+  }
 }

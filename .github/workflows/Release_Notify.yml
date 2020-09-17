@@ -1,0 +1,31 @@
+name: Release Notify
+on:
+  release:
+    types:
+      - released
+jobs:
+  notify:
+    name: Notify
+    if: github.repository == 'AlternativeFFFF/Alt-F4'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release
+        uses: actions/checkout@master
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: '${{ secrets.DISCORD_WEBHOOK_RELEASE }}'
+          DISCORD_USERNAME: ALT-F4 Bot
+          DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
+        uses: Ilshidur/action-discord@0.2.0
+        with:
+          args: "{{ EVENT_PAYLOAD.release.name }} \n https://alt-f4.blog/{{ EVENT_PAYLOAD.release.tag_name }}"
+      - name: Reddit post
+        uses: bluwy/release-for-reddit-action@v1
+        with:
+          username: '${{ secrets.REDDIT_USERNAME }}'
+          password: '${{ secrets.REDDIT_PASSWORD }}'
+          app-id: '${{ secrets.REDDIT_APP_ID }}'
+          app-secret: '${{ secrets.REDDIT_APP_SECRET }}'
+          subreddit: factorio
+          title: "${{ github.event.release.name }}"
+          url: "https://alt-f4.blog/${{ github.event.release.tag_name }}"

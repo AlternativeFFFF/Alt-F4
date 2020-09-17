@@ -1,22 +1,23 @@
 ---
-layout: default
+layout: page
 ---
-<article class="panel blog-post">
-	<h2>{{ page.title }}</h2>
-	{% if page.author or page.editor or page.date %}
-	<div class="panel-inset mb0">
-		{% include author.html %}
-	</div>
-	{% endif %}
-	<div class="panel-inset-lighter mt0">
-		{{ content }}
-		{% include discuss.html %}
-	</div>
-	<div class="panel-inset mb0 p4 flex flex-space-between">
-		<div>
-			<a class="button square-sm" href="/">
-				<i class="fas fa-angle-double-left"></i>
-			</a>
-		</div>
-	</div>
-</article>
+
+<details class="panel toc">
+  <summary>
+    <h2>{{ site.data.locale.table-of-contents }}</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    {% include toc.html html=content sanitize=true %}
+  </div>
+</details>
+
+{% include anchor_headings.html html=content anchorClass='anchor' anchorAttrs='style="text-decoration: none;"' location="inplace" anchorBody='#' %}
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>

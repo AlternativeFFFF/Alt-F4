@@ -13,4 +13,5 @@
 {% endif %}
 
 {% if page.date or post.date %}
-{{ site.data.locale.author.date }} {{ page.date | default: post.date | date: "%Y-%m-%d" }}{% endif %}
+{{ site.data.locale.author.date }} {{ page.date | default: post.date | date: site.data.locale.date-format }}
+{% endif %}

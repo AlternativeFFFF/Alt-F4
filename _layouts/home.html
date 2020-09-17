@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="panel">
-	<h2>{{ site.data.locale.home-header }}</h2>
+	<h1>{{ site.data.locale.home-header }}</h1>
 	{% include pagination.html %}
 	{% for post in paginator.posts %}
 	{% unless post.draft %}
@@ -10,7 +10,7 @@ layout: default
 		{% if post.image %}
 		<div class="blog-card-thumbnail">
 			<a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
-				<img src="{{ post.image }}">
+				<img src="{{ post.image.url }}" alt="{{ post.image.transcription }}">
 				<div class="shadow-overlay"></div>
 			</a>
 		</div>

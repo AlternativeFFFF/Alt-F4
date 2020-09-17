@@ -1,0 +1,32 @@
+title: Alternative Friday Factorio Fan Facts
+description: 社区驱动的 Factorio Friday Facts 后续站点
+footer-copyright: 这是一个饭制站点，与下列网站没有直接关联
+home-header: Alternative Friday Factorio Fan Facts
+date-format: "%Y-%m-%d"
+table-of-contents: 目录
+author:
+  writtenby: 作者
+  editedby: 编辑
+  translator: 翻译
+  date: "于"
+discuss:
+  reddit: 去 Reddit 上讨论
+  discord: 去 Discord 上讨论
+  forum: 去 Factorio 论坛
+about: |
+  ## 关于
+
+  Alt-F4是一个[每周博客](http://alt-f4.blog)，完全由[异星工厂](https://factorio.com)社区撰写和编辑，有着异星工厂相关的各种主题，例如 mod 聚焦，社区展示，游戏专栏等。
+
+  这是著名的 [Factorio Friday Facts](https://factorio.com/blog/)('FFF') 的后续版本，FFF 记录了异星工厂长达360周的开发过程。 它解释了开发者对[定价策略](https://www.factorio.com/blog/post/fff-247)的思考，带着我们领略他们疯狂的[优化](https://www.factorio.com/blog/post/fff-176)过程，并详细介绍了各种机器设计的[过程](https://factorio.com/blog/post/fff-351)。
+
+  在2020年8月随着游戏[正式版发行](https://factorio.com/blog/post/fff-360)之后，开发者决定暂缓停止这种记录。 不过社区不希望这种传统消失，因此我们[接过了火炬](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/)并[继续前行](http://alt-f4.blog/ALTF4-1)。 当然内容重点肯定从对开发的见解转变为社区感兴趣的各种主题。
+
+  ### 鸣谢
+
+  本站使用了 Jekyll ，作者: *Ypetremann* 和 *Dr.MagPie*，也离不开 *lovely_santa* 和 *Therenas* 的倾力帮助。中文页面由 FormatToday 翻译。
+not-found:
+  msg: |
+    ## 抱歉，我们无法找到请求的页面
+    ### 您可以重试
+  btn: 或者回到首页

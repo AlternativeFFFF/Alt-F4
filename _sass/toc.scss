@@ -1,0 +1,40 @@
+.toc {
+  width: auto;
+  margin-top: 0;
+  margin-bottom: 10px !important;
+}
+
+.toc summary:focus {
+  outline: none;
+}
+
+.toc .panel-inset {
+  padding: 0;
+}
+
+.toc .panel-inset > ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.toc a {
+  font-size: 0.9em;
+  color: #ffe6c0;
+}
+
+.toc summary > h2 {
+  display: inline;
+}
+
+.toc .panel-inset > ul ul {
+  margin-top: 8px;
+}
+
+@media (min-width: 1920px) {
+  .toc {
+    position: fixed;
+    left: calc(50vw - 955px);
+    width: 350px;
+  }
+}

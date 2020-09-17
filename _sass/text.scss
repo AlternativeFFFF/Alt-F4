@@ -65,7 +65,7 @@ h5 {
 
 h1,
 h2 {
-  font-size: 120%;
+  font-size: 130%;
   font-weight: 900;
   margin-bottom: 12px;
   cursor: default;
@@ -73,7 +73,7 @@ h2 {
 
 h3 {
   font-size: 116%;
-  font-weight: 900;
+  font-weight: 550;
   margin-bottom: 16px;
 }
 
@@ -94,9 +94,21 @@ p + p {
   margin-top: 16px;
 }
 
+p {
+  line-height: 1.25;
+}
 h2 > a,
 h3 > a {
   color: inherit;
+}
+.blog-post {
+  h2,
+  h3 {
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
 }
 
 h2 > a:hover,
@@ -180,7 +192,7 @@ a.text-center {
 ul {
   margin-top: 16px;
   margin-left: 32px;
-  list-style-image: url(/assets/GLOBAL/img/wheel-white-11px.png);
+  list-style-image: url("/assets/GLOBAL/img/wheel-white-11px.png");
 }
 
 ul + p,

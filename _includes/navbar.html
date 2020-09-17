@@ -1,22 +1,26 @@
 <nav id="top" class="top-bar">
-	<div class="top-bar-inner flex flex-items-baseline flex-space-between">
-		<div class="sites links flex flex-items-baseline">
-			<a href="/" class="sites-current"><div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div></a>
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
 			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
 			<span class="separator">|</span>
 			<a href="https://factorio.com/blog" class="">FFF</a>
 		</div>
-		<div class="sites links flex flex-items-baseline hide-tag-line">
+		<div class="sites links flex hide-tag-line">
 			<i>{{ site.data.locale.description }}</i>
 		</div>
 		<div class="dropdown flex-end">
-			<div class="button flex flex-space-between">
+			<a class="button flex flex-space-between" href="#">
 				<i class="fas fa-language"></i>
-			</div>
+			</a>
 			<div class="submenu">
 				{% for language in site.languages %}
-				<a {% if language == site.active_lang %} class="button button-green" {% else %} class="button" {% endif %}
-					href="{% if language == site.default_lang %} {{site.baseurl}}{{page.url}} {% else %} {{site.baseurl}}/{{ language }}{{page.url}} {% endif %}">{{ language }}</a>
+				<a {% if language == site.active_lang %} class="button button-green lang-button" {% else %}
+					class="button lang-button" {% endif %}
+					href="{% if language == site.default_lang %}{{ '/..' | append: page.url }}{% else %}{{ site.baseurl }}/{{ language }}{{ page.url }}{% endif %}"
+					onclick="setLanguage('{{ language }}')">{{ language }}</a>
 				{% endfor %}
 			</div>
 		</div>
