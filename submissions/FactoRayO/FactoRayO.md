@@ -23,7 +23,7 @@ But most importantly is also easier to expand upon.
 
 {% include youtube.html id="28UzqVz1r24" %}
 
-Fun fact: this video, and many of my previous videos), were recorded entirely via in game screenshots...
+Fun fact: this video, and many of my previous videos, were recorded entirely via in game screenshots...
 That's more than 12 000 screenshots of about 20 MiB each. (The largest screenshot was 77 MiB).
 
 This recording technique has a few advantages:
