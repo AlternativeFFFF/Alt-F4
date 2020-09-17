@@ -1,0 +1,6 @@
+<video class="media" width="80%" height="100%" autoplay loop>
+  <source src="{{ include.mp4 }}" type="video/mp4">
+  <!-- <source src="movie.ogg" type="video/webm"> -->
+  <!-- <source src="movie.ogg" type="video/ogg"> -->
+  {{ include.alt | default: 'Your browser does not support the video tag.' }}
+</video>
