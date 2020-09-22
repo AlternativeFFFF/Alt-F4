@@ -221,22 +221,24 @@
 		
 		<div class="blog-card-thumbnail">
 			<a href="/zh/ALTF4-2/" class="no-outline">
-				<img src="/assets/ALTF4/2/thumbnail.jpg" alt="A Spidertron stands next to the crash site">
+				<img src="/assets/ALTF4/2/thumbnail.jpg" alt="蜘蛛机甲站立在坠落点旁边">
 				<div class="shadow-overlay"></div>
 			</a>
 		</div>
 		
 		<div class="blog-card-text">
-			<h3><a href="/zh/ALTF4-2/">Alt-F4 #2 - SPIDERTRON!!!</a></h3>
+			<h3><a href="/zh/ALTF4-2/">Alt-F4 #2 - 蜘蛛机甲!!!</a></h3>
 			<div class="posted-by">
 				
 作者 <em>Lovely_Santa, Robynthedevil, Xorimuth</em>,
 
 
 
-编辑 <em>Therenas, EDLEXUS, nicgarner</em>
+编辑 <em>Therenas, EDLEXUS, nicgarner</em>,
 
 
+
+翻译 <em>Ph.X</em>
 
 
 
@@ -246,7 +248,7 @@
 			</div>
 			<hr>
 			<div class="snippet snippet-2">
-				<p>Welcome to the second issue of Alt-F4, the community-driven follow-on to the Factorio Friday Facts. And man, am I always pleasently surprised by the community. Within hours of publishing the first issue, the Discord was filled with enthusiastic people that were willing to help at all stages of the process....</p>
+				<p>欢迎来到第二期 Alt-F4，由社区驱动的 Factorio Friday Facts 继承者。说真的，我总是能从社区中感到无限惊喜。在第一期发布后的的数小时内，Discord 里就挤满了热情的玩家，都是愿意贡献帮助的热心肠。您可能会发现的一件事就是，现在这个页面的许多地方都获得了一些小小的升级。感谢每一位踊跃参与本项目的人！ 不过本篇博文重点并不在于博客本身，而在于游戏。众所周知，开发者们在1.0发布日添加了 蜘蛛机甲（Spidertron），一种长着怪异长腿的蜘蛛机甲作为惊喜。它早在 FFF＃120（4.5年前）就被提出过。在发售之际，我们想将本文的重点放在这款多功能载具以及社区对其尝试过的改造方式上。 蜘蛛机甲腿伤日 Lovely_Santa 我在看到1.0的发布说明时感到特别惊喜！相信其他抢先体验的玩家也会跟我有同感。作为您友善的邻家模组创作者，我不得不仔细研究下蜘蛛机甲的构造，这给了我很多思路，各种全新的模组想法开始萌生。 大多数 Arch666Angel 的粉丝肯定知道我是 Angel’s mods 的作者之一。 由于 Angel’s Exploration 尚处于开发初期，这将是蜘蛛机甲能大放光彩的机会。我并不打算剧透自己正在酝酿的东西，相反，我更想花时间分享一下开发过程中遭遇的一些困难。 来见见爬行机甲（Crawlertron），这是 Angel 机甲，他即将加入 Angel’s vehicles 的 Crawler 家族之中。我对新的爬行机甲提出的的要求之一是他的体型。我希望他变得更小，非常小。这意味着我必须在蜘蛛机甲的定义中引入比例因子，以便能够按比例缩小他。正如读者中的某些 mod 作者已经知道的那样，他拥有游戏中最大的原型之一。在花费了几个小时和数杯甜点之后，我用比例因子定义所有内容，可以开始加载游戏查看结果了。将爬行机甲缩小（缩放系数&lt;1）的代码中不会出现什么明显的错误，因此我决定将其放大（缩放系数&gt; 1），结果是： 估计你能看出来，他的腿长得跟麻秆一样细！腿没折断真是个奇迹！回到我的爬行机甲腿部定义中，我没能找到任何错误，因此我选择在异星工厂 Discord 的模组开发频道寻求帮助。Klonan（Wube开发团队成员，请参见本页，顺便品尝两瓶啤酒）甚至表示，将需要重写异星工厂游戏引擎的部分代码才能让腿部正确地缩放。同时，克洛南（Klonan）建议我按缩小他的比例，至少看看是否能奏效。好吧，来看看： 我想你已经能意识到发生这种情况的问题所在，这和之前一摸一样！可以看出并不是所有的东西都可以拿出来直接使用，这可能会带来一些有趣的副作用。我相信这一问题将在未来的更新中解决。同时，我也在开发者那里注册了错误报告。我可能在未来的更新中回来，以展示爬行机甲的进展以及他的腿部康复疗程。 模组聚焦: 蜘蛛机甲工程师（Spidertron Engineer) Robynthedevil 一种仿制自节肢动物的合成种族正在这个星系肆虐。只需一个该硅基生命形式的成员就可以将整个星球的资源转化为切割的金属和极端的酷热，旨在服务于一个单一目的：生产更多。这一机器人将屠杀在任何敢于游荡在外的当地动植物，并有条不紊地制造愈加复杂的机械和更加强大的武器。这个过程将一直持续下去，直到他们最终有能力将无数的混蛋克隆体发射到群星之间，来寻找丰富而毫无戒备的行星。蜘蛛机甲冷酷无情而且不屈不挠。他们既不会睡觉，也不会怜悯。他们的工厂必须扩张。 我们所了解的异星工厂故事情节与当今许多其他的基地建设/生存游戏相似：工程师坠毁在未知的世界中，需要求生并发展到足以逃脱的技术（读作：发射大量火箭）。这是一个引人入胜的主意，但是在我们游玩异星工厂游戏的核心内容时，它始终处于思维的边缘。 从游戏一开始，蜘蛛机甲工程师就用一台冷酷的蜘蛛机甲机器人取代了我们所熟知的工程师。沿途有一些技术可以升级您的角色（即蜘蛛），以替换原版的护甲升级。即便是这样相对较小的变化，也确实给游戏带来了完全不同的感受。有了这个模组，我发现自己可以更轻松地进行更大范围的游戏。我知道这并不适合所有人（特别是蜘蛛恐惧症患者），但对我来说，它只改变了游戏里很小的一部分，而使得前提和结局变得非常引人入胜。 内部机制：蜘蛛机甲武器切换（Spidertron Weapon Switcher) Xorimuth 蜘蛛机甲武器切换器是一个模组，让蜘蛛机甲得以发射任何类型的武器。在这篇文章中，我将讨论其背后的工作方式。但首先，来看一下它在实际操作中效果如何：...</p>
 			</div>
 		</div>
 	</div>
