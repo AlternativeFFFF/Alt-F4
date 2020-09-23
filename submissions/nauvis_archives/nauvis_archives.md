@@ -1,6 +1,6 @@
 ## Nauvis Archives: How Far We’ve Come <author>stringweasel</author>
 
- Players know and love Factorio for its simple, but deep, gameplay mechanics, and relentless overtones of lifelong addiction. However, Factrorio was not always this well-oiled machine. It took years of hard work, dedication, and communication by the developers to deliver this gem to the world.
+ Players know and love Factorio for its simple, but deep, gameplay mechanics, and relentless overtones of lifelong addiction. However, Factorio was not always this well-oiled machine. It took years of hard work, dedication, and communication by the developers to deliver this gem to the world.
 
 My hope is to document some of the journey that this game has taken over the years in order to show newer players the dedication that is required to create a game like this, and to tickle the nostalgia-bone of some of the veterans among us.
 
