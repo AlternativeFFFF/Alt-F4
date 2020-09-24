@@ -56,13 +56,13 @@ defaults:
 
 #Polyglot
 languages:
-  - de
   - en
   - es
   - fr
   - it
   - ru
   - zh
+  - de
   # - pl
   # - ua
 default_lang: en
