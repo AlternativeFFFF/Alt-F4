@@ -100,8 +100,10 @@ jekyll-spaceship:
     default:
       id: "media-{id}"
       class: "media"
-      width: "80%"
-      height: 504
+      width: "100%"
+      height: "56.25vw"
       frameborder: 0
-      style: "max-width: 896px;"
-      allow: "encrypted-media; picture-in-picture"
+      style: "max-width: 1120px; max-height: 630px;"
+      allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+
+show_drafts: true

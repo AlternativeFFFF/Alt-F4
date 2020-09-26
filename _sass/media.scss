@@ -13,6 +13,10 @@ video {
   overflow: hidden;
 }
 
+.media {
+  height: calc((100vw - 32px) / (16 / 9));
+}
+
 .yt iframe {
   position: absolute;
   top: 0;
