@@ -1,4 +1,5 @@
-<video class="media" width="80%" height="100%" playsinline autoplay muted loop controls>
+<video class="media" width="80%" height="100%" style="max-width: {{ include.width }}; max-height: {{ include.height }}"
+  playsinline autoplay muted loop controls>
   <source src="{{ include.mp4 }}" type="video/mp4">
   </source>
   <!-- <source src="movie.ogg" type="video/webm"> -->
