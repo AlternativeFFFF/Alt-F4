@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-09-27T15:03:49+00:00</updated>
+  <updated>2020-09-28T18:46:36+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -19,7 +19,7 @@
     <link href="https://alt-f4.blog/zh/ALTF4-6/" />
     <id>https://alt-f4.blog/ALTF4-6</id>
     <updated>2020-09-25T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;大家好，欢迎来到名为 Alt-F4 的社区驱动的每周博客第六期！本周，你可以看到 &lt;em&gt;arrow in my gluteus maxiums&lt;/em&gt; 用原版异星工厂制作光线投射图像引擎的疯狂之举，而 stringweasel 则给我们上了一堂关于虫群如何参与进科研生产的历史课，psixhius 则推荐了一篇异星工厂的评测，对于新手和老鸟来说都值得一看。&lt;/p&gt; &lt;h2 id=&quot;facto-rayo-v20-arrow-in-my-gluteus-maximus&quot;&gt;Facto-RayO v2.0 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;差不多一年半以前，我在异星工厂社区发布了一个&lt;a href=&quot;https://www.reddit.com/r/factorio/comments/bgj05z/raycasting_engine_in_factorio_vanilla_017/&quot;&gt;光线投射（Raycasting）引擎&lt;/a&gt;。不过它并没有达到我开始这个项目时所期望的高度，因此没过多久我就着手开发一个改进版。&lt;/p&gt; &lt;p&gt;在开始工作后不久，我不得不暂停开发了数个月，一些私人事务阻碍了我的工作，比如说完成我的硕士学位。不过经过几个月的休整，我开始将工作进展上传到我的第二个 &lt;a href=&quot;https://www.youtube.com/channel/UCNQRKtG2pU8LGS08TFiyyAA&quot;&gt;YouTube 频道&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;我首先开发的是一个全新的改进型屏幕。使用内置的照明灯局限太大，这次改用基于传送带的显示方式。接下来，我通过一个并行查找表实现了一个缩放纹理的方法。纹理的比例取决于你迭代表格中所有像素的速度。每三个时间片执行256个并行查找，以找到要显示的下一行的像素。所有其他组件稍后也得到了更新。&lt;/p&gt; &lt;p&gt;通过这一切努力，我获得了一个更紧凑和保真度更高的设计，更重要的是这个设计易于扩展。我的 YouTube 视频里有更详细的介绍：&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/28UzqVz1r24&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;有趣的是：这段视频，以及我之前的许多视频，都是完全通过游戏内截图来录制的。 总计超过 12000 张截图，每张约 20MB。（最大的一张有 77MB）。&lt;/p&gt; &lt;p&gt;这种录像技术有几个优点：&lt;/p&gt;...</content>
+    <content type="html">&lt;p&gt;大家好，欢迎来到名为 Alt-F4 的社区驱动的每周博客第六期！本周，你可以看到 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 用原版异星工厂制作光线投射图像引擎的疯狂之举，而 stringweasel 则给我们上了一堂关于虫群如何参与进科研生产的历史课，psixhius 则推荐了一篇异星工厂的评测，对于新手和老鸟来说都值得一看。&lt;/p&gt; &lt;h2 id=&quot;facto-rayo-v20-arrow-in-my-gluteus-maximus&quot;&gt;Facto-RayO v2.0 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;差不多一年半以前，我在异星工厂社区发布了一个&lt;a href=&quot;https://www.reddit.com/r/factorio/comments/bgj05z/raycasting_engine_in_factorio_vanilla_017/&quot;&gt;光线投射（Raycasting）引擎&lt;/a&gt;。不过它并没有达到我开始这个项目时所期望的高度，因此没过多久我就着手开发一个改进版。&lt;/p&gt; &lt;p&gt;在开始工作后不久，我不得不暂停开发了数个月，一些私人事务阻碍了我的工作，比如说完成我的硕士学位。不过经过几个月的休整，我开始将工作进展上传到我的第二个 &lt;a href=&quot;https://www.youtube.com/channel/UCNQRKtG2pU8LGS08TFiyyAA&quot;&gt;YouTube 频道&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;我首先开发的是一个全新的改进型屏幕。使用内置的照明灯局限太大，这次改用基于传送带的显示方式。接下来，我通过一个并行查找表实现了一个缩放纹理的方法。纹理的比例取决于你迭代表格中所有像素的速度。每三个时间片执行256个并行查找，以找到要显示的下一行的像素。所有其他组件稍后也得到了更新。&lt;/p&gt; &lt;p&gt;通过这一切努力，我获得了一个更紧凑和保真度更高的设计，更重要的是这个设计易于扩展。我的 YouTube 视频里有更详细的介绍：&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/28UzqVz1r24&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;有趣的是：这段视频，以及我之前的许多视频，都是完全通过游戏内截图来录制的。 总计超过 12000 张截图，每张约 20MB。（最大的一张有 77MB）。&lt;/p&gt; &lt;p&gt;这种录像技术有几个优点：&lt;/p&gt;...</content>
   </entry>
   
   

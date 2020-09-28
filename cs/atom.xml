@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Alternative Friday Factorio Fan Facts</title>
+  <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
+  <id>https://alt-f4.blog</id>
+  <updated>2020-09-28T18:46:36+00:00</updated>
+  <author>
+    <name>Therenas</name>
+    <uri>https://alt-f4.blog/about</uri>
+    <email>AlternativeFridayFacts@gmail.com</email>
+  </author>
+  
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #6 — Purple Goop</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-6/" />
+    <id>https://alt-f4.blog/ALTF4-6</id>
+    <updated>2020-09-25T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Hello and welcome to the sixth issue of the community-driven weekly blog by the name Alt-F4! This week, you can read about the insanity that is &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt;’s raycasting engine constructed with vanilla Factorio, while stringweasel gives us a history lesson on how biters used to take...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #5 — Improving on Perfection</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-5/" />
+    <id>https://alt-f4.blog/ALTF4-5</id>
+    <updated>2020-09-18T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the fifth issue of Alt-F4, and we’re still picking up steam! Many contributors, translators and techies are being busy bees helping to further the project, which is just great. If you want to join in the fun check out the Contributing section at the end of this issue....</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #4 - Designing Blueprints</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-4/" />
+    <id>https://alt-f4.blog/ALTF4-4</id>
+    <updated>2020-09-11T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the fourth issue of Alt-F4, rounding out the very first month of posts! This week, gamebuster800 describes their process for designing blueprints, Landmine752 shares some of their favourite fan art, and Romner gives us some insight into their Realistic Fusion Power mod (in the first part of a...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #3 - Tronparty</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-3/" />
+    <id>https://alt-f4.blog/ALTF4-3</id>
+    <updated>2020-09-04T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the third issue of Alt-F4. This weekend, there’ll be an attempt to try and break the record for the highest number of players on a single Factorio server; read on for details of how to join the fun. There’s also an action report about the Big Community Games...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #2 - SPIDERTRON!!!</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-2/" />
+    <id>https://alt-f4.blog/ALTF4-2</id>
+    <updated>2020-08-28T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Vítejte u druhého dílu Alt-F4, komunitou řízeném pokračování &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. A ty bláho, komunita mě vždy příjemně překvapí. Do několika hodin od vydání prvního dílu byl &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; plný zapálených lidí, kteří byli ochotni pomoci se všemi fázemi procesu. První změna, které jste si možná všimnuli, je naše...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #1 - Potřebujeme vás!</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-1/" />
+    <id>https://alt-f4.blog/ALTF4-1</id>
+    <updated>2020-08-21T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Vítejte v úplně prvním díle Alternativních Fanouškovských ‘Factorio Friday Facts’ (aka Alt-F4), komunitou řízeném pokračování úctyhodných &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Cílem Alt-F4 je zaplnit prázdnotu v našich srdcích, která v nich zbyla po ukončení ‘Factorio Friday Facts’. K zaplnění zející díry, jíž je pro nás nyní každý pátek, se snažíme...</content>
+  </entry>
+  
+  
+</feed>
