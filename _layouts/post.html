@@ -12,10 +12,8 @@ layout: page
 </details>
 
 {% if site.active_lang != page.lang %}
-<div class="">
-  <div class="center banner">
-    <h1>{{ site.data.locale.not-translated }}</h1>
-  </div>
+<div class="center banner">
+  {{ site.data.locale.not-translated | markdownify }}
 </div>
 {% endif %}
 
