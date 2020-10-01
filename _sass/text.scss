@@ -207,6 +207,12 @@ pre {
   }
 }
 
+@media (max-width: 750px) {
+  .banner {
+    width: 100%;
+  }
+}
+
 .text-center,
 a.text-center {
   text-align: center;
