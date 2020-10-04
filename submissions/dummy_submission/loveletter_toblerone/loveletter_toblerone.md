@@ -1,0 +1,4 @@
+## I love Factorio because of the Community <author>ironic toblerone</author>
+
+What i love most about Factorio?
+That's easy. The Community! I have been apart of the Factorio community for well over 3 years already, i first played way back in 0.16 where nuclear didnt exist, bots were still OP, and because i was terrible at signalling i kept crashing my trains into each other. (sorry trains). i love how the community has grown and come up with many great ideas such as, the raycasting engine, the blood belt, and many other concepts that i could not have thought possible in Factorio. the community has done so many amazing things that are incredible to watch and explore, and thats before you even consider the massive mod community.
