@@ -1,0 +1,3 @@
+## I love Factorio because it makes me feel smart <author>trupen</author>
+
+I love Factorio because it makes me feel smart after hours of designing my spaghetti called factory. It's awesome that every single part of my base, was made by myself and all of it have impact to whole production. Every time when I fix a bottelneck, I feel few IQ smarter without paying attention that somebody had to made that bottelneck before... Game that doesn't force you to do anything and gives you ability to do everything, is the best type of sandbox and there is no other game on the market, that gives you this feeling better, then Factorio itself <3
