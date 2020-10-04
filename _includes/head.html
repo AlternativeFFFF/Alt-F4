@@ -9,6 +9,14 @@
 
 	{% seo %}
 
+	{% if page.image %}
+    	<meta property="og:image" content="{{page.image}}" />
+    	<meta name="twitter:image" content="{{page.image}}" />
+  	{% else %}
+    	<meta property="og:image" content="https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg" />
+    	<meta name="twitter:image" content="https://41.media.tumblr.com/709bb3c371b9924add351bfe3386e946/tumblr_nxdq8uFdx81qzocgko1_1280.jpg" />
+  	{% endif %}
+
 	<!-- CSS & fonts -->
 	<link href="/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ site.baseurl }}/assets/GLOBAL/css/style.css">
