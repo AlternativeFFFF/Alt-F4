@@ -10,8 +10,8 @@
 	{% seo %}	
 
 	{% if page.image %}
-	  <meta property="og:image" content="{{page.image.url}}" />
-	  <meta name="twitter:image" content="{{page.image.url}}" />
+	  <meta property="og:image" content="{{site.baseurl}}{{page.image.url}}" />
+	  <meta name="twitter:image" content="{{site.baseurl}}{{page.image.url}}" />
 	{% else %}
 	  <meta property="og:image" content="https://alt-f4.blog/assets/GLOBAL/img/Alt-F4-logo_colour.png" />
 	  <meta name="twitter:image" content="https://alt-f4.blog/assets/GLOBAL/img/Alt-F4-logo_colour.png" />
