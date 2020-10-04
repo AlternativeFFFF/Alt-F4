@@ -1,4 +1,4 @@
-## I love Factorio because of the community <author>Zirr</author>
+## I love Factorio because of the Community <author>Zirr</author>
 
 When I made the subreddit on a whim almost 8 years ago, after finding a cool-looking game on Indiegogo, I didn’t expect much – certainly not over 200k subscribers. After putting many hundreds of hours into managing it, I can say that it’s been an absolute joy.
 
