@@ -1,0 +1,3 @@
+## I love Factorio because of Multiplayer <author>TheKool</author>
+
+Most games are better with friends, and Factorio is a perfect example of this. Because of the complexity of a given map and how many different things there are to do, it becomes easier than any other game I've ever played for multiple people to contribute fully and meaningfully to the same goal, instead of simply playing in the same world. This level of engagement is what finally inspired me to start streaming, and I hope it inspires others to connect with friends as well, old or new.
