@@ -7,7 +7,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="generator" content="Jekyll">
 
-	{% seo %}
+	{% seo %}	
+
+	{% if page.image %}
+	  <meta property="og:image" content="{{site.url}}{{page.image.url}}" />
+	  <meta name="twitter:image" content="{{site.url}}{{page.image.url}}" />
+	{% else %}
+	  <meta property="og:image" content="https://alt-f4.blog/assets/GLOBAL/img/Alt-F4-icon_colour.png" />
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/GLOBAL/img/Alt-F4-icon_colour.png" />
+	{% endif %}
 
 	<!-- CSS & fonts -->
 	<link href="/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
