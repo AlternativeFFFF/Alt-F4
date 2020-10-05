@@ -11,13 +11,19 @@ layout: page
   </div>
 </details>
 
+{% if site.active_lang != page.lang %}
+<div class="center banner">
+  {{ site.data.locale.not-translated | markdownify }}
+</div>
+{% endif %}
+
+
 {% include anchor_headings.html html=content anchorClass='anchor' anchorAttrs='style="text-decoration: none;"' location="inplace" anchorBody='#' %}
 
 {% assign juxtapose = content | match_regex: 'class="juxtapose juxtapose-.*?"' %}
 {% if juxtapose %}
 <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
-
 {% endif %}
 
 <script>

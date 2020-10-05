@@ -190,6 +190,35 @@ pre {
   text-align: center;
   margin: auto;
 }
+
+.banner {
+  width: 60%;
+  // color: #222;
+  border: none;
+  margin: 12px auto;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ff9f1c;
+  // background-color: #ff9f1c;
+  // border-top: 1px solid #ff9f1c;
+  // border-bottom: 2px solid #862402;
+  // box-shadow: inset 0px 6px 22px -5px rgba(134, 36, 2, 1), 0px 4px 8px 0px rgba(17, 17, 17, 1);
+  h1 {
+    font-size: 1.6em;
+    // color: #222;
+    // text-shadow: -1px 0 1px #000, 1px 0 1px #ffc16d;
+  }
+  p {
+    // color: #222;
+  }
+}
+
+@media (max-width: 750px) {
+  .banner {
+    width: 100%;
+  }
+}
+
 .text-center,
 a.text-center {
   text-align: center;
