@@ -1,0 +1,25 @@
+name: Deploy webhook
+on:
+  push:
+    branches:
+      - gh-pages
+jobs:
+  notify:
+    name: Notify
+    if: github.repository == 'AlternativeFFFF/Alt-F4'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Webhook
+        uses: distributhor/workflow-webhook@v1
+        env:
+          webhook_url: ${{ secrets.DEV_DEPLOY_WEBHOOK }}
+          webhook_secret: ${{ secrets.DEV_DEPLOY_SECRET }}
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: '${{ secrets.DEV_DISCORD_WEBHOOK }}'
+          DISCORD_USERNAME: ALT-F4 Dev Bot
+          DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
+        uses: Ilshidur/action-discord@0.2.0
+        with:
+          args: "Webhook triggered for push to server"
+      
