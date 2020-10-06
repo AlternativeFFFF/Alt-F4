@@ -1,4 +1,4 @@
-## I love Factorio because of Modding <author>Therenas</author>
+## I love Factorio because of modding <author>Therenas</author>
 
 I have played this game for many hundreds of hours. At some point I got into modding it, spending many more hours on it, replacing most of my play time since then. It’s intoxicating to be able to actively modify one’s favourite game, especially when the interface provided is so solid.
 
