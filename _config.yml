@@ -106,3 +106,4 @@ jekyll-spaceship:
       frameborder: 0
       style: "max-width: 896px;"
       allow: "encrypted-media; picture-in-picture"
+show_drafts: true
