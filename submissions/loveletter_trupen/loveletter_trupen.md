@@ -1,3 +1,0 @@
-## I love Factorio because of the freedom to create <author>trupen</author>
-
-I love Factorio because it makes me feel smart after hours of designing the spaghetti I call a factory. It’s awesome that every single part of my base is made by myself and that all of it has an impact on the whole production. Every time I fix a bottleneck, I feel a few IQ points smarter, ignoring the fact that it was me that created the bottleneck in the first place. The game doesn’t force you to do anything while giving you the ability to do everything, which is the best type of sandbox. There is no other game on the market that’s this good at giving you that feeling of freedom to create.
