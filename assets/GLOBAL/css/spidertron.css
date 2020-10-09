@@ -1,0 +1,403 @@
+:root {
+    --leg-upper-angle: 0deg;
+    --leg-upper-length: 50px;
+    --leg-lower-angle: 0deg;
+    --leg-lower-length: 100px;
+    --knee-angle: 0deg;
+    --spidertron-body-height: 130px;
+    --spidertron-location-x: 0px;
+    --spidertron-location-y: 0px;
+    --spidertron-scale: 30%;
+    --page-cursor: unset;
+}
+
+.spidertron-active-mask {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    cursor: url(https://spidertron.alt-f4.blog/assets/spidertron-remote.png), auto;
+}
+
+.spidertron {
+    position: relative;
+    top: var(--spidertron-location-y);
+    left: var(--spidertron-location-x);
+
+    /* width: 132px;
+    height: 160px; */
+
+    transform: scale(var(--spidertron-scale));
+    transform-origin: top left;
+    z-index: 200;
+
+    cursor: pointer;
+}
+
+.spidertron > div {
+    position: absolute;
+    margin-left: -66px;
+    margin-top: -80px;
+}
+
+.spidertron-body-wrapper {
+    position: absolute;
+    top: var(--spidertron-body-height);
+    left: 0px;
+}
+
+.spidertron-body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    width: 132px;
+    height: 138px;
+    background-image: url(https://spidertron.alt-f4.blog/assets/torso/hr-spidertron-body.png);
+    background-position: -264px -414px;
+
+    z-index: 451;
+}
+
+.spidertron-body-bottom {
+    position: absolute;
+    top: 54px;
+    left: 4px;
+
+    width: 126px;
+    height: 106px;
+    background-image: url(https://spidertron.alt-f4.blog/assets/torso/hr-spidertron-body-bottom.png);
+
+    z-index: 450;
+}
+
+.spidertron-leg-upper {
+    position: absolute;
+    top: var(--spidertron-body-height);
+
+    width: 42px;
+    height: var(--leg-upper-length);
+
+    transform: rotate(var(--leg-upper-angle));
+    transform-origin: top left;
+}
+
+.spidertron-leg-upper-end-a {
+    position: relative;
+    top: -8px;
+    left: -21px;
+
+    width: 42px;
+    height: 86px;
+    transform-origin: top center;
+
+    background-image: url(https://spidertron.alt-f4.blog/assets/legs/hr-spidertron-legs-upper-end-A.png);
+    background-size: 800% 300%;
+
+    z-index: 1;
+}
+
+.spidertron-leg1 .spidertron-leg-upper-end-a {
+    background-position: 0px 0px;
+}
+.spidertron-leg2 .spidertron-leg-upper-end-a {
+    background-position: -42px 0px;
+    transform: scaleY(0.95);
+}
+.spidertron-leg3 .spidertron-leg-upper-end-a {
+    background-position: -84px 0px;
+    transform: scaleY(0.85);
+}
+.spidertron-leg4 .spidertron-leg-upper-end-a {
+    background-position: -126px 0px;
+    transform: scaleY(0.65);
+}
+.spidertron-leg5 .spidertron-leg-upper-end-a {
+    background-position: -168px 0px;
+}
+.spidertron-leg6 .spidertron-leg-upper-end-a {
+    background-position: -210px 0px;
+    transform: scaleY(0.95);
+}
+.spidertron-leg7 .spidertron-leg-upper-end-a {
+    background-position: -252px 0px;
+    transform: scaleY(0.85);
+}
+.spidertron-leg8 .spidertron-leg-upper-end-a {
+    background-position: -294px 0px;
+    transform: scaleY(0.65);
+}
+
+.spidertron-leg-upper-stretchable {
+    position: absolute;
+    top: 16px;
+    left: -17px;
+
+    width: 30px;
+    height: 100%;
+
+    background-image: url(https://spidertron.alt-f4.blog/assets/legs/hr-spidertron-legs-upper-stretchable.png);
+    background-size: 800% 200%;
+
+    z-index: inherit;
+}
+
+.spidertron-leg-upper-end-b {
+    position: absolute;
+    bottom: -45px;
+    left: -18px;
+
+    width: 38px;
+    height: 58px;
+    transform-origin: center 50px;
+
+    background-image: url(https://spidertron.alt-f4.blog/assets/legs/hr-spidertron-legs-upper-end-B.png);
+    background-size: 800% 300%;
+
+    z-index: 1;
+}
+
+.spidertron-leg1 .spidertron-leg-upper-end-b {
+    background-position: 0px 0px;
+}
+.spidertron-leg2 .spidertron-leg-upper-end-b {
+    background-position: -38px 0px;
+    transform: scaleY(0.95);
+}
+.spidertron-leg3 .spidertron-leg-upper-end-b {
+    background-position: -76px 0px;
+    transform: scaleY(0.85);
+}
+.spidertron-leg4 .spidertron-leg-upper-end-b {
+    background-position: -114px 0px;
+    transform: scaleY(0.65);
+}
+.spidertron-leg5 .spidertron-leg-upper-end-b {
+    background-position: -152px 0px;
+}
+.spidertron-leg6 .spidertron-leg-upper-end-b {
+    background-position: -190px 0px;
+    transform: scaleY(0.95);
+}
+.spidertron-leg7 .spidertron-leg-upper-end-b {
+    background-position: -228px 0px;
+    transform: scaleY(0.85);
+}
+.spidertron-leg8 .spidertron-leg-upper-end-b {
+    background-position: -266px 0px;
+    transform: scaleY(0.65);
+}
+
+.spidertron-leg-knee {
+    position: absolute;
+    bottom: -51px;
+    left: -11px;
+
+    width: 22px;
+    height: 28px;
+
+    transform: rotate(var(--knee-angle));
+
+    background-image: url(https://spidertron.alt-f4.blog/assets/legs/hr-spidertron-legs-knee.png);
+    background-size: 800% 300%;
+
+    z-index: 1;
+}
+
+.spidertron-leg1 .spidertron-leg-knee {
+    background-position: 0px 0px;
+}
+.spidertron-leg2 .spidertron-leg-knee {
+    background-position: -22px 0px;
+}
+.spidertron-leg3 .spidertron-leg-knee {
+    background-position: -44px 0px;
+}
+.spidertron-leg4 .spidertron-leg-knee {
+    background-position: -66px 0px;
+}
+.spidertron-leg5 .spidertron-leg-knee {
+    background-position: -88px 0px;
+}
+.spidertron-leg6 .spidertron-leg-knee {
+    background-position: -110px 0px;
+}
+.spidertron-leg7 .spidertron-leg-knee {
+    background-position: -132px 0px;
+}
+.spidertron-leg8 .spidertron-leg-knee {
+    background-position: -154px 0px;
+}
+
+.spidertron-leg-lower-wrapper {
+    position: absolute;
+    bottom: -37px;
+    left: 0px;
+
+    width: 0px;
+    height: 0px;
+}
+
+.spidertron-leg-lower {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    width: 40px;
+    height: var(--leg-lower-length);
+
+    transform: rotate(var(--leg-lower-angle));
+    transform-origin: top left;
+
+    z-index: -1;
+}
+
+.spidertron-leg-lower-end-a {
+    position: absolute;
+    top: -9px;
+    left: -20px;
+
+    width: 40px;
+    height: 98px;
+
+    background-image: url(https://spidertron.alt-f4.blog/assets/legs/hr-spidertron-legs-lower-end-A.png);
+    background-size: 800% 300%;
+
+    z-index: 1;
+}
+
+.spidertron-leg1 .spidertron-leg-lower-end-a {
+    background-position: 0px 0px;
+}
+.spidertron-leg2 .spidertron-leg-lower-end-a {
+    background-position: -40px 0px;
+}
+.spidertron-leg3 .spidertron-leg-lower-end-a {
+    background-position: -80px 0px;
+}
+.spidertron-leg4 .spidertron-leg-lower-end-a {
+    background-position: -120px 0px;
+}
+.spidertron-leg5 .spidertron-leg-lower-end-a {
+    background-position: -160px 0px;
+}
+.spidertron-leg6 .spidertron-leg-lower-end-a {
+    background-position: -200px 0px;
+}
+.spidertron-leg7 .spidertron-leg-lower-end-a {
+    background-position: -240px 0px;
+}
+.spidertron-leg8 .spidertron-leg-lower-end-a {
+    background-position: -280px 0px;
+}
+
+.spidertron-leg-lower-stretchable {
+    position: absolute;
+    top: 25px;
+    left: -13px;
+
+    width: 25px;
+    height: 100%;
+
+    background-image: url(https://spidertron.alt-f4.blog/assets/legs/hr-spidertron-legs-lower-stretchable.png);
+    background-size: 800% 200%;
+
+    z-index: inherit;
+}
+
+.spidertron-leg-lower-end-b {
+    position: absolute;
+    bottom: -75px;
+    left: -18px;
+
+    width: 34px;
+    height: 92px;
+
+    background-image: url(https://spidertron.alt-f4.blog/assets/legs/hr-spidertron-legs-lower-end-B.png);
+    background-size: 800% 300%;
+
+    z-index: 1;
+}
+
+.spidertron-leg1 .spidertron-leg-lower-end-b {
+    background-position: 0px 0px;
+}
+.spidertron-leg2 .spidertron-leg-lower-end-b {
+    background-position: -34px 0px;
+}
+.spidertron-leg3 .spidertron-leg-lower-end-b {
+    background-position: -68px 0px;
+}
+.spidertron-leg4 .spidertron-leg-lower-end-b {
+    background-position: -102px 0px;
+}
+.spidertron-leg5 .spidertron-leg-lower-end-b {
+    background-position: -136px 0px;
+}
+.spidertron-leg6 .spidertron-leg-lower-end-b {
+    background-position: -170px 0px;
+}
+.spidertron-leg7 .spidertron-leg-lower-end-b {
+    background-position: -204px 0px;
+}
+.spidertron-leg8 .spidertron-leg-lower-end-b {
+    background-position: -238px 0px;
+}
+
+.spidertron-leg1 {
+    top: 62px;
+    left: 98px;
+
+    z-index: 440;
+}
+
+.spidertron-leg2 {
+    top: 84px;
+    left: 114px;
+
+    z-index: 445;
+}
+
+.spidertron-leg3 {
+    top: 115px;
+    left: 120px;
+
+    z-index: 455;
+}
+
+.spidertron-leg4 {
+    top: 142px;
+    left: 98px;
+
+    z-index: 460;
+}
+
+.spidertron-leg5 {
+    top: 62px;
+    left: 34px;
+
+    z-index: 440;
+}
+
+.spidertron-leg6 {
+    top: 84px;
+    left: 18px;
+
+    z-index: 445;
+}
+
+.spidertron-leg7 {
+    top: 115px;
+    left: 13px;
+
+    z-index: 455;
+}
+
+.spidertron-leg8 {
+    top: 142px;
+    left: 34px;
+
+    z-index: 460;
+}
