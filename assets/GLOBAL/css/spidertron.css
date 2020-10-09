@@ -8,6 +8,17 @@
     --spidertron-location-x: 0px;
     --spidertron-location-y: 0px;
     --spidertron-scale: 30%;
+    --page-cursor: unset;
+}
+
+.spidertron-active-mask {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    cursor: url(https://wiki.factorio.com/images/thumb/Spidertron_remote.png/48px-Spidertron_remote.png), auto;
 }
 
 .spidertron {
@@ -20,7 +31,9 @@
 
     transform: scale(var(--spidertron-scale));
     transform-origin: top left;
-    z-index: 1000;
+    z-index: 200;
+
+    cursor: pointer;
 }
 
 .spidertron > div {

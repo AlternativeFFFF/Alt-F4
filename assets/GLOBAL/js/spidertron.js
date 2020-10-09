@@ -243,10 +243,9 @@ function updateSpidertron(spidertron, time) {
     }
 
     // Update sprites
-    if (spidertron.active) {
-        spidertron.baseElement.style.setProperty('--spidertron-location-x', spidertron.currentX + 'px');
-        spidertron.baseElement.style.setProperty('--spidertron-location-y', spidertron.currentY + 'px');
-    }
+    spidertron.baseElement.style.setProperty('--spidertron-location-x', spidertron.currentX + 'px');
+    spidertron.baseElement.style.setProperty('--spidertron-location-y', spidertron.currentY + 'px');
+
     var bodyHeight = zOffsets.bodyHeight + Math.sin(time / 130) * 4;
     spidertron.baseElement.style.setProperty('--spidertron-body-height', (-bodyHeight) + 'px');
     spidertron.baseElement.style.setProperty('--spidertron-scale', spidertronScale);
@@ -290,6 +289,9 @@ function spidertronAnimationCallback(time) {
 var selectedSpidertron = null;
 
 window.onload = function() {
+    var maskElement = document.createElement('div');
+    maskElement.className = 'spidertron-active-mask';
+
     var spidertronElements = document.getElementsByClassName('spidertron');
     for (var i = 0; i < spidertronElements.length; i++) {
         var spidertron = buildSpidertron(spidertronElements[i]);
@@ -298,14 +300,25 @@ window.onload = function() {
 
         spidertronElements[i].addEventListener('click', function(e) {
             spidertron.active = !spidertron.active;
-            selectedSpidertron = spidertron;
+            if (!spidertron.active) {
+                spidertron.targetX = 0;
+                spidertron.targetY = 0;
+                selectedSpidertron = null;
+                document.body.removeChild(maskElement);
+            } else {
+                spidertron.targetX = spidertron.currentX;
+                spidertron.targetY = spidertron.currentY;
+                selectedSpidertron = spidertron;
+                document.body.appendChild(maskElement);
+            }
+            e.preventDefault();
         });
     }
 
     window.requestAnimationFrame(spidertronAnimationCallback);
 
-    document.addEventListener('click', function(e) {
-        if (selectedSpidertron != null && selectedSpidertron.active) {
+    maskElement.addEventListener('click', function(e) {
+        if (selectedSpidertron != null) {
             var spidertronRect = selectedSpidertron.baseElement.getBoundingClientRect();
             selectedSpidertron.targetX = e.clientX - spidertronRect.left + selectedSpidertron.currentX;
             selectedSpidertron.targetY = e.clientY - spidertronRect.top + selectedSpidertron.currentY;
