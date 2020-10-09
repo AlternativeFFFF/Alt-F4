@@ -37,6 +37,15 @@
 .no-webp .footer-rocket { 
   background-image: url("/assets/GLOBAL/img/footer-bg.jpg");
 }
+
+.footer-rocket .spidertron-center {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  z-index: 50;
+  transition: height 1s linear;
+}
+
 .footer-rocket .rocket {
   background-size: 130px;
   width: 130px;
