@@ -50,7 +50,8 @@ i {
   font-style: italic;
 }
 
-em {
+.posted-by em,
+.blog-post > .panel-inset:nth-child(2) em {
   color: #ffe6c0;
 }
 
