@@ -10,6 +10,11 @@
 
 {% if page.translator or post.translator %}
 {{ site.data.locale.author.translator | downcase }} <em>{{ page.translator | default: post.translator }}</em>
+{%- if (page.proofreader or post.proofreader) -%},{% endif %}
+{% endif %}
+
+{% if page.proofreader or post.proofreader %}
+{{ site.data.locale.author.proofreader | downcase }} <em>{{ page.proofreader | default: post.proofreader }}</em>
 {% endif %}
 
 {% if page.date or post.date %}

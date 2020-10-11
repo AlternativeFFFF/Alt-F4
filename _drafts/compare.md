@@ -1,6 +1,8 @@
 ---
-author: pocarski, Romner, Dr.MagPie
+author: arrow in my gluteus maximus, stringweasel, psihius
 editor: Therenas, nicgarner
+translator: Nanogamer7, marceljoint
+proofreader: EDLEXUS
 image:
   url: /assets/ALTF4/5/thumbnail.jpg
   transcription: Fusion rocket exploding
