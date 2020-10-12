@@ -18,13 +18,13 @@ It's fascinating how naturally this particular word was incorporated into our co
 
 Expansive grass planes, dangerous red deserts, and infinitely deep lakes. A land rich in resources but inhabited by a local biter menace. This is the place we came to know and love after brutally crashlanding on it. It's our home, and we call it Nauvis.
 
-![Nauvis Day Picture](media/nauvis_day.jpg)
+![Nauvis Day Picture](https://media.alt-f4.blog/ALTF4/9/nauvis_day.jpg)
 
 <sub><sup>Image credit to the mod [Nauvis Day](https://mods.factorio.com/mod/NauvisDay), with some extra editing by author.</sub></sup>
 
 Now, nowhere does the game actually call our planet "Nauvis" - the campaign simply calls it a “strange place”. Even in the ancient days of 0.13, the mission [First Steps](https://forums.factorio.com/viewtopic.php?t=51100) simply called it “an unknown planet”. And yet, most of us know that the planet we’re all viciously polluting is called Nauvis. Why?
 
-![First Steps Mission in 0.13](media/first_steps.png)
+![First Steps Mission in 0.13](https://media.alt-f4.blog/ALTF4/9/first_steps.jpg)
 
 Well, the game itself has various dimensions of existence - or as the code calls them - different *surfaces*. And the *surface* we all live on is called ["nauvis"](https://lua-api.factorio.com/latest/LuaSurface.html). However, this does not necessarily mean that it's our planet's name. A surface can be used to create a variety of constructs, including [space platforms](https://mods.factorio.com/mod/space-exploration) and [factory floors](https://mods.factorio.com/mod/Factorissimo2). At some point, modders realized what our main surface is called, and this knowledge was transferred to the general public.
 
