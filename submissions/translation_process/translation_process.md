@@ -6,7 +6,7 @@ It did not take long to see that the translation was far from finished. Half the
 
 After a while, I got curious and started looking into how the Factorio team handled their translation. The official forum has a translation board with a reference to [Crowdin](https://crowdin.com/project/factorio), which is an online translation tool. All translations are done by volunteers and all I had to do was to request access. Crowdin is a nifty tool and the way it works is that everyone can suggest a translation for a given text and users vote for the preferred one. The ones with the most votes get extracted by Wube and make it into the next version. We can then see the new translations in-game. Lastly, a proofreader role exists that has the ability to approve a given translation, thus overriding the voting process, though usually the highest voted one is chosen.
 
-![Visual represenation of the Crowdin tool](https://i.imgur.com/j0AlBCQ.png)
+![Visual represenation of the Crowdin tool](https://media.alt-f4.blog/ALTF4/9/translation-1.jpg)
 
 *This is the Crowdin workspace. On the left is a list of texts to be translated. At the top is the currently selected original text to translate, and below that is a textbox to enter your translated text into. At the bottom are the currently suggested translations with their count of votes and a checkmark for the currently approved one. On the right are some tabs for comments and some common translated terms to help build consistency.*
 
@@ -16,9 +16,9 @@ Of course, I switched my game to Danish and it was actually really rewarding to 
 
 Another interesting challenge with the translations is that Danish (like German or similar languages) concatenate nouns into longer words (e.g. "transport belt" would be "transportbelt"). This can lead to rather long single words pushing the layout of the game in unfavourable ways. I am sure translators for other languages faced similar challenges because of grammar, language structure and the like.
 
-![In-game example 1 of layout gone wrong](https://i.imgur.com/GTSKDFQ.jpg)
+![In-game example 1 of layout gone wrong](https://media.alt-f4.blog/ALTF4/9/translation-2.jpg)
 
-![In-game example 2 of layout gone wrong](https://i.imgur.com/DzAZOv5.jpg)
+![In-game example 2 of layout gone wrong](https://media.alt-f4.blog/ALTF4/9/translation-3.jpg)
 
 *Two examples of the in-game layout being either pushed to a new line or not being able to show the entire text.*
 
