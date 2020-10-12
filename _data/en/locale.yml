@@ -1,10 +1,10 @@
 title: Alternative Friday Factorio Fan Facts
 description: The community-driven follow-on to the beloved Factorio Friday Facts
-footer-copyright: This website is a fan-project and not directly affiliated with
+footer-copyright: This website is a fan project and not directly affiliated with
 home-header: Alternative Friday Factorio Fan Facts
 date-format: "%Y-%m-%d"
 table-of-contents: Table of Contents
-not-translated: Unfortunately, this article has not been translated into English yet, so you're seeing it in English. If you want to help fix that, please join the Alt-F4 [Discord](https://discord.gg/h4uv2fM) to get started. Thanks!
+not-translated: Unfortunately, this article has not been translated into English yet, so you’re seeing it in English. If you want to help fix that, please join the Alt-F4 [Discord](https://discord.gg/h4uv2fM) to get started. Thanks!
 author:
   writtenby: Written by
   editedby: Edited by
@@ -18,7 +18,7 @@ discuss:
 about: |
   ## About
 
-  Alt-F4 is a [weekly blog](http://alt-f4.blog) that's written and edited entirely by the [Factorio](https://factorio.com) community, and features various topics that are relevant to it, such as mod spotlights, community showcases or gameplay columns.
+  Alt-F4 is a [weekly blog](http://alt-f4.blog) written and edited entirely by the [Factorio](https://factorio.com) community, and features various topics that are relevant to it such as mod spotlights, community showcases, and gameplay columns.
 
   It is a follow-on to the venerable [Factorio Friday Facts](https://factorio.com/blog/) ('FFF'), which documented the development process of Factorio for 360 weeks. It expressed the developers beliefs about [pricing strategy](https://www.factorio.com/blog/post/fff-247), guided us through their crazy [optimization process](https://www.factorio.com/blog/post/fff-176), and detailed how a machine design [comes to be](https://factorio.com/blog/post/fff-351).
 
@@ -26,9 +26,9 @@ about: |
 
   ### Contribute
 
-  If you want to contribute to this project in any way, be it by submitting your writing, translating the weekly issues, or just hanging out, please join the [Discord](https://discord.gg/AsXAwyV) (or check out [Github](https://github.com/AlternativeFFFF/Alt-F4)) for more information. We'd love to have you.
+  If you want to contribute to this project in any way, be it by submitting your writing, translating the weekly issues, or just hanging out, please join [the Discord](https://discord.gg/AsXAwyV) (or check out [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) for more information. We’d love to have you.
 
-  ### Credit
+  ### Credits
 
   Website created by *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* and *psihius*.
   Hosting graciously provided by the [FMMO community](https://fmmo.eu/discord). Special thanks to *psihius* for setting us up! Domain sponsored by *xthexder*, thanks!
@@ -37,6 +37,6 @@ about: |
 
 not-found:
   msg: |
-    ## Sorry, we couldn’t find requested page.
-    ### You can try to reload the page
-  btn: or go back to the homepage
+    ## Sorry, we couldn’t find the requested page.
+    ### You can try reloading the page or
+  btn: go back to the homepage
