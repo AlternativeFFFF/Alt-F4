@@ -20,7 +20,7 @@ Expansive grass planes, dangerous red deserts, and infinitely deep lakes. A land
 
 ![Nauvis Day Picture](https://media.alt-f4.blog/ALTF4/9/nauvis_day.jpg)
 
-<sup><sub>Image credit to the mod [Nauvis Day](https://mods.factorio.com/mod/NauvisDay), with some editing by the author.</sub></sup>
+<image-caption>Image credit to the mod [Nauvis Day](https://mods.factorio.com/mod/NauvisDay), with some editing by the author.</image-caption>
 
 Now, nowhere does the game actually call our planet Nauvis—the campaign simply calls it a “strange place”. Even in the ancient days of 0.13, the mission [First Steps](https://forums.factorio.com/viewtopic.php?t=51100) simply called it “an unknown planet”. And yet, most of us know that the planet we’re all viciously polluting is called Nauvis. Why?
 
