@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://alt-f4.blog/ALTF4-X/</loc>
+<lastmod>2020-08-20T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>https://alt-f4.blog/ALTF4-1/</loc>
 <lastmod>2020-08-21T00:00:00+00:00</lastmod>
 </url>
@@ -37,14 +41,6 @@
 <lastmod>2020-10-16T00:00:00+00:00</lastmod>
 </url>
 <url>
-<loc>https://alt-f4.blog/YYYY-MM-DD-ALTF4-X/</loc>
-<lastmod>2020-10-16T14:04:18+00:00</lastmod>
-</url>
-<url>
-<loc>https://alt-f4.blog/compare/</loc>
-<lastmod>2020-10-16T14:04:18+00:00</lastmod>
-</url>
-<url>
 <loc>https://alt-f4.blog/404</loc>
 </url>
 <url>
@@ -52,8 +48,5 @@
 </url>
 <url>
 <loc>https://alt-f4.blog/</loc>
-</url>
-<url>
-<loc>https://alt-f4.blog/page2/</loc>
 </url>
 </urlset>
