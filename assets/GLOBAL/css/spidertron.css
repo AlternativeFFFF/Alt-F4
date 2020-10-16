@@ -54,6 +54,7 @@ SOFTWARE.
     position: relative;
     top: var(--spidertron-location-y);
     left: var(--spidertron-location-x);
+    will-change: top, left;
 
     /* width: 132px;
     height: 160px;
@@ -78,6 +79,7 @@ SOFTWARE.
     position: absolute;
     top: var(--spidertron-body-height);
     left: 0px;
+    will-change: top;
 
     width: 66px;
     height: 80px;
@@ -93,6 +95,7 @@ SOFTWARE.
 
     width: 22px;
     height: var(--leg-upper-length);
+    will-change: height, transform;
 
     transform: rotate(var(--leg-upper-angle));
     transform-origin: top left;
@@ -213,6 +216,7 @@ SOFTWARE.
     height: 14px;
 
     transform: rotate(var(--knee-angle));
+    will-change: transform;
 
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-knee.png);
     background-size: 800% 100%;
@@ -261,6 +265,7 @@ SOFTWARE.
 
     width: 20px;
     height: var(--leg-lower-length);
+    will-change: height, transform;
 
     transform: rotate(var(--leg-lower-angle));
     transform-origin: top left;

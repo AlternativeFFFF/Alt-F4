@@ -58,7 +58,7 @@ const restingLegPositions = [
 ];
 
 const framePeriod = 1000 / 60; // 60 fps
-const maxSpidertronSpeed = 100; // Pixels per second
+const maxSpidertronSpeed = 150; // Pixels per second
 const legStepInterval = 80; // ms
 const activeLegCount = 2;
 const stepRandomness = 20;
@@ -105,12 +105,11 @@ function buildSpidertron(baseElement) {
         targetY: 0,
         scale: baseElement.dataset.spidertronScale || 1.0,
         speed: 0,
-        maxSpeed: maxSpidertronSpeed,
+        maxSpeed: baseElement.dataset.spidertronSpeed || maxSpidertronSpeed,
         activeLeg: 0,
         nextActiveLeg: 0,
         legs: []
     };
-    spidertron.maxSpeed *= spidertron.scale;
 
     let spidertronBody = document.createElement('div');
     spidertronBody.className = 'spidertron-body';
@@ -267,10 +266,10 @@ function updateSpidertron(spidertron, time) {
     }
 
     // Update sprites
-    spidertron.baseElement.style.setProperty('--spidertron-location-x', spidertron.currentX + 'px');
-    spidertron.baseElement.style.setProperty('--spidertron-location-y', spidertron.currentY + 'px');
+    spidertron.baseElement.style.setProperty('--spidertron-location-x', Math.round(spidertron.currentX) + 'px');
+    spidertron.baseElement.style.setProperty('--spidertron-location-y', Math.round(spidertron.currentY) + 'px');
 
-    let bodyHeight = zOffsets.bodyHeight + Math.sin(time / 130) * 2;
+    let bodyHeight = Math.round(zOffsets.bodyHeight + Math.sin(time / 130) * 2);
     spidertron.baseElement.style.setProperty('--spidertron-body-height', (-bodyHeight) + 'px');
     spidertron.baseElement.style.setProperty('--spidertron-scale', spidertron.scale);
 
