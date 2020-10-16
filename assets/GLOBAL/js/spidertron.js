@@ -58,9 +58,9 @@ const restingLegPositions = [
 ];
 
 const framePeriod = 1000 / 60; // 60 fps
-const maxSpidertronSpeed = 150; // Pixels per second
-const legStepInterval = 80; // ms
-const activeLegCount = 2;
+const maxSpidertronSpeed = 100; // Pixels per second
+const legStepInterval = 100; // ms
+const activeLegCount = 3;
 const stepRandomness = 20;
 
 var spidertrons = [];
@@ -267,15 +267,10 @@ function updateSpidertron(spidertron, time) {
 
     // Update sprites
     let bodyHeight = Math.round(zOffsets.bodyHeight + Math.sin(time / 130) * 2);
-    spidertron.baseElement.style.cssText = '--spidertron-location-x:' + spidertron.currentX + 'px;' +
-                                           '--spidertron-location-y:' + spidertron.currentY + 'px;' +
+    spidertron.baseElement.style.cssText = '--spidertron-location-x:' + Math.round(spidertron.currentX) + 'px;' +
+                                           '--spidertron-location-y:' + Math.round(spidertron.currentY) + 'px;' +
                                            '--spidertron-body-height:' + (-bodyHeight) + 'px;' +
                                            '--spidertron-scale:' + spidertron.scale;
-    // spidertron.baseElement.style.setProperty('--spidertron-location-x', spidertron.currentX + 'px');
-    // spidertron.baseElement.style.setProperty('--spidertron-location-y', spidertron.currentY + 'px');
-
-    // spidertron.baseElement.style.setProperty('--spidertron-body-height', (-bodyHeight) + 'px');
-    // spidertron.baseElement.style.setProperty('--spidertron-scale', spidertron.scale);
 
     for (let i = 0; i < spidertron.legs.length; i++) {
         let N = spidertron.legs[i].index;
@@ -300,14 +295,6 @@ function updateSpidertron(spidertron, time) {
                                                         '--leg-lower-angle:' + (lowerAngle - upperAngle) + 'rad;' +
                                                         '--leg-lower-length:' + lowerLength + 'px;' +
                                                         '--knee-angle:' + -((lowerAngle + upperAngle) / 2) + 'rad;';
-
-        // spidertron.legs[i].upperElement.style.setProperty('--leg-upper-angle', upperAngle + 'rad');
-        // spidertron.legs[i].upperElement.style.setProperty('--leg-upper-length', upperLength + 'px');
-
-        // spidertron.legs[i].lowerElement.style.setProperty('--leg-lower-angle', (lowerAngle - upperAngle) + 'rad');
-        // spidertron.legs[i].lowerElement.style.setProperty('--leg-lower-length', lowerLength + 'px');
-
-        // spidertron.legs[i].kneeElement.style.setProperty('--knee-angle', -((lowerAngle + upperAngle) / 2) + 'rad');
     }
 }
 
