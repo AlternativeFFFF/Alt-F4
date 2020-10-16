@@ -144,7 +144,7 @@ body:after { /* For preloading the hover image so it does not flicker on first h
     padding-left: 0;
     padding-right: 0;
 
-    margin-bottom: 100px;
+    margin-bottom: 30px;
   }
 
   body .footer {
@@ -182,19 +182,5 @@ body:after { /* For preloading the hover image so it does not flicker on first h
 
   body .panel-inset-lighter {
     padding: 8px;
-  }
-
-  .footer .footer-inner {
-    display: block;
-  }
-
-  .footer-inner .footer-copyright {
-    margin-left: 0;
-    margin-top: 10px;
-    width: 100%;
-  }
-
-  .footer-inner .footer-links {
-    width: 100%;
   }
 }
