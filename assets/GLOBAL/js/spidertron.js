@@ -266,12 +266,16 @@ function updateSpidertron(spidertron, time) {
     }
 
     // Update sprites
-    spidertron.baseElement.style.setProperty('--spidertron-location-x', Math.round(spidertron.currentX) + 'px');
-    spidertron.baseElement.style.setProperty('--spidertron-location-y', Math.round(spidertron.currentY) + 'px');
-
     let bodyHeight = Math.round(zOffsets.bodyHeight + Math.sin(time / 130) * 2);
-    spidertron.baseElement.style.setProperty('--spidertron-body-height', (-bodyHeight) + 'px');
-    spidertron.baseElement.style.setProperty('--spidertron-scale', spidertron.scale);
+    spidertron.baseElement.style.cssText = '--spidertron-location-x:' + spidertron.currentX + 'px;' +
+                                           '--spidertron-location-y:' + spidertron.currentY + 'px;' +
+                                           '--spidertron-body-height:' + (-bodyHeight) + 'px;' +
+                                           '--spidertron-scale:' + spidertron.scale;
+    // spidertron.baseElement.style.setProperty('--spidertron-location-x', spidertron.currentX + 'px');
+    // spidertron.baseElement.style.setProperty('--spidertron-location-y', spidertron.currentY + 'px');
+
+    // spidertron.baseElement.style.setProperty('--spidertron-body-height', (-bodyHeight) + 'px');
+    // spidertron.baseElement.style.setProperty('--spidertron-scale', spidertron.scale);
 
     for (let i = 0; i < spidertron.legs.length; i++) {
         let N = spidertron.legs[i].index;
@@ -291,13 +295,19 @@ function updateSpidertron(spidertron, time) {
         let lowerLength = Math.sqrt(lowerDeltaX * lowerDeltaX + lowerDeltaY * lowerDeltaY);
         let lowerAngle = Math.atan2(-lowerDeltaX, lowerDeltaY);
 
-        spidertron.legs[i].upperElement.style.setProperty('--leg-upper-angle', upperAngle + 'rad');
-        spidertron.legs[i].upperElement.style.setProperty('--leg-upper-length', upperLength + 'px');
+        spidertron.legs[i].upperElement.style.cssText = '--leg-upper-angle:' + upperAngle + 'rad;' +
+                                                        '--leg-upper-length:' + upperLength + 'px;' +
+                                                        '--leg-lower-angle:' + (lowerAngle - upperAngle) + 'rad;' +
+                                                        '--leg-lower-length:' + lowerLength + 'px;' +
+                                                        '--knee-angle:' + -((lowerAngle + upperAngle) / 2) + 'rad;';
 
-        spidertron.legs[i].lowerElement.style.setProperty('--leg-lower-angle', (lowerAngle - upperAngle) + 'rad');
-        spidertron.legs[i].lowerElement.style.setProperty('--leg-lower-length', lowerLength + 'px');
+        // spidertron.legs[i].upperElement.style.setProperty('--leg-upper-angle', upperAngle + 'rad');
+        // spidertron.legs[i].upperElement.style.setProperty('--leg-upper-length', upperLength + 'px');
 
-        spidertron.legs[i].kneeElement.style.setProperty('--knee-angle', -((lowerAngle + upperAngle) / 2) + 'rad');
+        // spidertron.legs[i].lowerElement.style.setProperty('--leg-lower-angle', (lowerAngle - upperAngle) + 'rad');
+        // spidertron.legs[i].lowerElement.style.setProperty('--leg-lower-length', lowerLength + 'px');
+
+        // spidertron.legs[i].kneeElement.style.setProperty('--knee-angle', -((lowerAngle + upperAngle) / 2) + 'rad');
     }
 }
 
