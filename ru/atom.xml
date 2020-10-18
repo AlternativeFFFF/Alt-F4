@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Alternative Friday Factorio Fan Facts</title>
+  <link href="https://alt-f4.blog/ru/atom.xml" rel="self" />
+  <id>https://alt-f4.blog</id>
+  <updated>2020-10-18T14:17:16+00:00</updated>
+  <author>
+    <name>Therenas</name>
+    <uri>https://alt-f4.blog/about</uri>
+    <email>AlternativeFridayFacts@gmail.com</email>
+  </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #9 - Translation Process</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-9/" />
+    <id>https://alt-f4.blog/ALTF4-9</id>
+    <updated>2020-10-16T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;After our special &lt;a href=&quot;https://alt-f4.blog/ALTF4-8/&quot;&gt;love letter issue&lt;/a&gt; last week, we’re back to our regularly scheduled programming this week with issue nine! TheEnemy42 gives us some insight on how the crowdsourced process of translating Factorio into many different languages works, and stringweasel continues their &lt;a href=&quot;https://alt-f4.blog/ALTF4-6/#nauvis-archives-how-far-weve-come-stringweasel&quot;&gt;Nauvis Archives&lt;/a&gt; series by digging into...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #8 - A Love Letter to Factorio</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-8/" />
+    <id>https://alt-f4.blog/ALTF4-8</id>
+    <updated>2020-10-09T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For this issue of Alt-F4 we decided to do something special: ask the community why exactly they love this game so much. Everyone was invited to submit a short piece detailing their absolute favourite thing about Factorio, which many promptly did. Here’s to one of the greatest games of all...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #7 - Megabase Mentality</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-7/" />
+    <id>https://alt-f4.blog/ALTF4-7</id>
+    <updated>2020-10-02T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;We’re back, providing you with your weekly dose of Factorio content! In today’s issue 7, ChurchOrganist brings us up to speed on what has been happening with Yuoki’s mods lately, LoneWolf gives us the rundown of why decentralised smelting is clearly the way to go, and T-A-R informs us about...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #6 - Purple Goop</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-6/" />
+    <id>https://alt-f4.blog/ALTF4-6</id>
+    <updated>2020-09-25T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Hello and welcome to the sixth issue of the community-driven weekly blog by the name Alt-F4! This week, you can read about the insanity that is &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt;’s raycasting engine constructed with vanilla Factorio, while stringweasel gives us a history lesson on how biters used to take...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #5 - Improving on Perfection</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-5/" />
+    <id>https://alt-f4.blog/ALTF4-5</id>
+    <updated>2020-09-18T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the fifth issue of Alt-F4, and we’re still picking up steam! Many contributors, translators and techies are being busy bees helping to further the project, which is just great. If you want to join in the fun check out the Contributing section at the end of this issue....</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #4 - Designing Blueprints</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-4/" />
+    <id>https://alt-f4.blog/ALTF4-4</id>
+    <updated>2020-09-11T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Добро пожаловать в четвёртое издание Alt-F4, заканчивающее наш первый месяц! На этой неделе, gamebuster800 описывает свой процесс создания чертежей, Landmine752 делится любимым фан-артом, и Romner показывает свой мод Realistic Fusion Power (в первой из двух частей).&lt;/p&gt; &lt;p&gt;Ещё Alt-F4 теперь доступен на пяти языках (английский, русский, украинский, итальянский и французский) благодаря...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #3 - Tronparty</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-3/" />
+    <id>https://alt-f4.blog/ALTF4-3</id>
+    <updated>2020-09-04T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Добро пожаловать в третье издание Alt-F4. На этих выходных будет попытка побить рекорд амого большого числа игроков на одном сервере Factorio; читайте дальше о том, как присоединиться. Ещё здесь есть прямой репортаж о вечеринке Big Community Games, о которой стоило бы рассказать на прошлой неделе. Полностью виноват Therenas. И наконец,...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #2 - SPIDERTRON!!!</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-2/" />
+    <id>https://alt-f4.blog/ALTF4-2</id>
+    <updated>2020-08-28T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the second issue of Alt-F4, the community-driven follow-on to the &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. And man, am I always pleasantly surprised by the community. Within hours of publishing the first issue, the &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; was filled with enthusiastic people that were willing to help at all stages of...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #1 - Нам Нужен Ты!</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-1/" />
+    <id>https://alt-f4.blog/ALTF4-1</id>
+    <updated>2020-08-21T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Добро пожаловать в самое первое издание ‘Альтернативных Пятничных Фактов Factorio от Фанатов’ (так же известных как Alt-F4), общественное продолжение заслуженным &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Наша цель - заполнить дыру, которую прекращение FFF оставило в наших сердцах. Чтобы заполнять дырищу в календарях каждую пятницу, мы собираемся предоставлять разнообразие контента, созданного сообществом....</content>
+  </entry>
+  
+  
+  
+  
+</feed>
