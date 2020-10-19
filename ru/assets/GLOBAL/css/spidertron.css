@@ -28,18 +28,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-:root {
-    --leg-upper-angle: 0deg;
-    --leg-upper-length: 25px;
-    --leg-lower-angle: 0deg;
-    --leg-lower-length: 50px;
-    --knee-angle: 0deg;
-    --spidertron-body-height: -55px;
-    --spidertron-location-x: 0px;
-    --spidertron-location-y: 0px;
-    --spidertron-scale: 100%;
-}
-
 .spidertron-active-mask {
     position: fixed;
     top: 0px;
@@ -50,16 +38,20 @@ SOFTWARE.
     cursor: url(https://media.alt-f4.blog/spidertron/spidertron-remote.png), auto;
 }
 
-.spidertron {
-    position: relative;
-    top: var(--spidertron-location-y);
-    left: var(--spidertron-location-x);
-
-    /* width: 132px;
-    height: 160px;
-    border: 2px solid #FF0000; */
+.spidertron-home {
     width: 1px;
     height: 1px;
+}
+
+.spidertron {
+    position: absolute;
+    top: var(--spidertron-location-y);
+    left: var(--spidertron-location-x);
+    contain: strict;
+
+    width: var(--spidertron-width);
+    height: var(--spidertron-height);
+    /* border: 2px solid red; */
 
     transform: scale(var(--spidertron-scale));
     transform-origin: top left;
@@ -68,33 +60,24 @@ SOFTWARE.
     cursor: pointer;
 }
 
-.spidertron > div {
-    position: absolute;
-    margin-left: -33px;
-    margin-top: -40px;
-}
-
 .spidertron-body {
     position: absolute;
-    top: var(--spidertron-body-height);
-    left: 0px;
+    left: var(--spidertron-body-x);
+    top: var(--spidertron-body-y);
 
     width: 66px;
     height: 80px;
+    margin-left: -33px;
+    margin-top: -80px;
+
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-body.png);
     background-size: 100% 100%;
-
-    z-index: 450;
 }
 
 .spidertron-leg-upper {
     position: absolute;
-    top: var(--spidertron-body-height);
 
     width: 22px;
-    height: var(--leg-upper-length);
-
-    transform: rotate(var(--leg-upper-angle));
     transform-origin: top left;
 }
 
@@ -109,37 +92,35 @@ SOFTWARE.
 
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-upper-end-A.png);
     background-size: 800% 100%;
-
-    z-index: 1;
 }
 
-.spidertron-leg1 .spidertron-leg-upper-end-a {
+.spidertron-leg1-upper .spidertron-leg-upper-end-a {
     background-position: 0px 0px;
 }
-.spidertron-leg2 .spidertron-leg-upper-end-a {
+.spidertron-leg2-upper .spidertron-leg-upper-end-a {
     background-position: -22px 0px;
     transform: scaleY(0.95);
 }
-.spidertron-leg3 .spidertron-leg-upper-end-a {
+.spidertron-leg3-upper .spidertron-leg-upper-end-a {
     background-position: -44px 0px;
     transform: scaleY(0.85);
 }
-.spidertron-leg4 .spidertron-leg-upper-end-a {
+.spidertron-leg4-upper .spidertron-leg-upper-end-a {
     background-position: -66px 0px;
     transform: scaleY(0.65);
 }
-.spidertron-leg5 .spidertron-leg-upper-end-a {
+.spidertron-leg5-upper .spidertron-leg-upper-end-a {
     background-position: -88px 0px;
 }
-.spidertron-leg6 .spidertron-leg-upper-end-a {
+.spidertron-leg6-upper .spidertron-leg-upper-end-a {
     background-position: -110px 0px;
     transform: scaleY(0.95);
 }
-.spidertron-leg7 .spidertron-leg-upper-end-a {
+.spidertron-leg7-upper .spidertron-leg-upper-end-a {
     background-position: -132px 0px;
     transform: scaleY(0.85);
 }
-.spidertron-leg8 .spidertron-leg-upper-end-a {
+.spidertron-leg8-upper .spidertron-leg-upper-end-a {
     background-position: -154px 0px;
     transform: scaleY(0.65);
 }
@@ -154,8 +135,6 @@ SOFTWARE.
 
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-upper-stretchable.png);
     background-size: 800% 100%;
-
-    z-index: inherit;
 }
 
 .spidertron-leg-upper-end-b {
@@ -169,249 +148,230 @@ SOFTWARE.
 
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-upper-end-B.png);
     background-size: 800% 100%;
-
-    z-index: 1;
 }
 
-.spidertron-leg1 .spidertron-leg-upper-end-b {
+.spidertron-leg1-upper .spidertron-leg-upper-end-b {
     background-position: 0px 0px;
 }
-.spidertron-leg2 .spidertron-leg-upper-end-b {
+.spidertron-leg2-upper .spidertron-leg-upper-end-b {
     background-position: -20px 0px;
     transform: scaleY(0.95);
 }
-.spidertron-leg3 .spidertron-leg-upper-end-b {
+.spidertron-leg3-upper .spidertron-leg-upper-end-b {
     background-position: -40px 0px;
     transform: scaleY(0.85);
 }
-.spidertron-leg4 .spidertron-leg-upper-end-b {
+.spidertron-leg4-upper .spidertron-leg-upper-end-b {
     background-position: -60px 0px;
     transform: scaleY(0.65);
 }
-.spidertron-leg5 .spidertron-leg-upper-end-b {
+.spidertron-leg5-upper .spidertron-leg-upper-end-b {
     background-position: -80px 0px;
 }
-.spidertron-leg6 .spidertron-leg-upper-end-b {
+.spidertron-leg6-upper .spidertron-leg-upper-end-b {
     background-position: -100px 0px;
     transform: scaleY(0.95);
 }
-.spidertron-leg7 .spidertron-leg-upper-end-b {
+.spidertron-leg7-upper .spidertron-leg-upper-end-b {
     background-position: -120px 0px;
     transform: scaleY(0.85);
 }
-.spidertron-leg8 .spidertron-leg-upper-end-b {
+.spidertron-leg8-upper .spidertron-leg-upper-end-b {
     background-position: -140px 0px;
     transform: scaleY(0.65);
 }
 
 .spidertron-leg-knee {
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: -6px;
 
     width: 12px;
     height: 14px;
 
-    transform: rotate(var(--knee-angle));
-
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-knee.png);
     background-size: 800% 100%;
-
-    z-index: 1;
 }
 
-.spidertron-leg1 .spidertron-leg-knee {
-    background-position: 0px 0px;
-}
-.spidertron-leg2 .spidertron-leg-knee {
-    background-position: -12px 0px;
-}
-.spidertron-leg3 .spidertron-leg-knee {
-    background-position: -24px 0px;
-}
-.spidertron-leg4 .spidertron-leg-knee {
-    background-position: -36px 0px;
-}
-.spidertron-leg5 .spidertron-leg-knee {
-    background-position: -48px 0px;
-}
-.spidertron-leg6 .spidertron-leg-knee {
-    background-position: -60px 0px;
-}
-.spidertron-leg7 .spidertron-leg-knee {
-    background-position: -72px 0px;
-}
-.spidertron-leg8 .spidertron-leg-knee {
-    background-position: -84px 0px;
-}
-
-.spidertron-leg-lower-wrapper {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-
-    width: 0px;
-    height: 0px;
-}
+.spidertron-leg1-knee { background-position: 0px 0px; }
+.spidertron-leg2-knee { background-position: -12px 0px; }
+.spidertron-leg3-knee { background-position: -24px 0px; }
+.spidertron-leg4-knee { background-position: -36px 0px; }
+.spidertron-leg5-knee { background-position: -48px 0px; }
+.spidertron-leg6-knee { background-position: -60px 0px; }
+.spidertron-leg7-knee { background-position: -72px 0px; }
+.spidertron-leg8-knee { background-position: -84px 0px; }
 
 .spidertron-leg-lower {
     position: absolute;
-    top: 0px;
-    left: 0px;
 
     width: 20px;
-    height: var(--leg-lower-length);
-
-    transform: rotate(var(--leg-lower-angle));
     transform-origin: top left;
-
-    z-index: -1;
 }
 
 .spidertron-leg-lower-end-a {
     position: absolute;
-    top: -5px;
+    bottom: -5px;
     left: -10px;
 
     width: 20px;
     height: 50px;
 
+    transform: rotate(180deg);
+
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-lower-end-A.png);
     background-size: 800% 100%;
-
-    z-index: 1;
 }
 
-.spidertron-leg1 .spidertron-leg-lower-end-a {
-    background-position: 0px 0px;
-}
-.spidertron-leg2 .spidertron-leg-lower-end-a {
-    background-position: -20px 0px;
-}
-.spidertron-leg3 .spidertron-leg-lower-end-a {
-    background-position: -40px 0px;
-}
-.spidertron-leg4 .spidertron-leg-lower-end-a {
-    background-position: -60px 0px;
-}
-.spidertron-leg5 .spidertron-leg-lower-end-a {
-    background-position: -80px 0px;
-}
-.spidertron-leg6 .spidertron-leg-lower-end-a {
-    background-position: -100px 0px;
-}
-.spidertron-leg7 .spidertron-leg-lower-end-a {
-    background-position: -120px 0px;
-}
-.spidertron-leg8 .spidertron-leg-lower-end-a {
-    background-position: -140px 0px;
-}
+.spidertron-leg1-lower .spidertron-leg-lower-end-a { background-position: 0px 0px; }
+.spidertron-leg2-lower .spidertron-leg-lower-end-a { background-position: -20px 0px; }
+.spidertron-leg3-lower .spidertron-leg-lower-end-a { background-position: -40px 0px; }
+.spidertron-leg4-lower .spidertron-leg-lower-end-a { background-position: -60px 0px; }
+.spidertron-leg5-lower .spidertron-leg-lower-end-a { background-position: -80px 0px; }
+.spidertron-leg6-lower .spidertron-leg-lower-end-a { background-position: -100px 0px; }
+.spidertron-leg7-lower .spidertron-leg-lower-end-a { background-position: -120px 0px; }
+.spidertron-leg8-lower .spidertron-leg-lower-end-a { background-position: -140px 0px; }
 
 .spidertron-leg-lower-stretchable {
     position: absolute;
-    top: 12px;
+    top: 25px;
+    bottom: 12px;
     left: -6px;
-    bottom: 25px;
 
     width: 12px;
 
+    transform: rotate(180deg);
+
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-lower-stretchable.png);
     background-size: 800% 100%;
-
-    z-index: inherit;
 }
 
 .spidertron-leg-lower-end-b {
     position: absolute;
-    bottom: -1px;
+    top: -1px;
     left: -9px;
 
     width: 18px;
     height: 46px;
 
+    transform: rotate(180deg);
+
     background-image: url(https://media.alt-f4.blog/spidertron/spidertron-legs-lower-end-B.png);
     background-size: 800% 100%;
-
-    z-index: 1;
 }
 
-.spidertron-leg1 .spidertron-leg-lower-end-b {
-    background-position: 0px 0px;
-}
-.spidertron-leg2 .spidertron-leg-lower-end-b {
-    background-position: -18px 0px;
-}
-.spidertron-leg3 .spidertron-leg-lower-end-b {
-    background-position: -36px 0px;
-}
-.spidertron-leg4 .spidertron-leg-lower-end-b {
-    background-position: -54px 0px;
-}
-.spidertron-leg5 .spidertron-leg-lower-end-b {
-    background-position: -72px 0px;
-}
-.spidertron-leg6 .spidertron-leg-lower-end-b {
-    background-position: -90px 0px;
-}
-.spidertron-leg7 .spidertron-leg-lower-end-b {
-    background-position: -108px 0px;
-}
-.spidertron-leg8 .spidertron-leg-lower-end-b {
-    background-position: -126px 0px;
-}
+.spidertron-leg1-lower .spidertron-leg-lower-end-b { background-position: 0px 0px; }
+.spidertron-leg2-lower .spidertron-leg-lower-end-b { background-position: -18px 0px; }
+.spidertron-leg3-lower .spidertron-leg-lower-end-b { background-position: -36px 0px; }
+.spidertron-leg4-lower .spidertron-leg-lower-end-b { background-position: -54px 0px; }
+.spidertron-leg5-lower .spidertron-leg-lower-end-b { background-position: -72px 0px; }
+.spidertron-leg6-lower .spidertron-leg-lower-end-b { background-position: -90px 0px; }
+.spidertron-leg7-lower .spidertron-leg-lower-end-b { background-position: -108px 0px; }
+.spidertron-leg8-lower .spidertron-leg-lower-end-b { background-position: -126px 0px; }
 
-.spidertron-leg1 {
-    top: 31px;
-    left: 49px;
-
-    z-index: 440;
+.spidertron-leg1-upper {
+    left: var(--leg1-upper-location-x);
+    top: var(--leg1-upper-location-y);
+    height: var(--leg1-upper-length);
+    transform: rotate(var(--leg1-upper-angle));
 }
-
-.spidertron-leg2 {
-    top: 42px;
-    left: 57px;
-
-    z-index: 445;
+.spidertron-leg2-upper {
+    left: var(--leg2-upper-location-x);
+    top: var(--leg2-upper-location-y);
+    height: var(--leg2-upper-length);
+    transform: rotate(var(--leg2-upper-angle));
 }
-
-.spidertron-leg3 {
-    top: 57px;
-    left: 60px;
-
-    z-index: 455;
+.spidertron-leg3-upper {
+    left: var(--leg3-upper-location-x);
+    top: var(--leg3-upper-location-y);
+    height: var(--leg3-upper-length);
+    transform: rotate(var(--leg3-upper-angle));
 }
-
-.spidertron-leg4 {
-    top: 71px;
-    left: 49px;
-
-    z-index: 460;
+.spidertron-leg4-upper {
+    left: var(--leg4-upper-location-x);
+    top: var(--leg4-upper-location-y);
+    height: var(--leg4-upper-length);
+    transform: rotate(var(--leg4-upper-angle));
 }
-
-.spidertron-leg5 {
-    top: 31px;
-    left: 17px;
-
-    z-index: 440;
+.spidertron-leg5-upper {
+    left: var(--leg5-upper-location-x);
+    top: var(--leg5-upper-location-y);
+    height: var(--leg5-upper-length);
+    transform: rotate(var(--leg5-upper-angle));
+}
+.spidertron-leg6-upper {
+    left: var(--leg6-upper-location-x);
+    top: var(--leg6-upper-location-y);
+    height: var(--leg6-upper-length);
+    transform: rotate(var(--leg6-upper-angle));
+}
+.spidertron-leg7-upper {
+    left: var(--leg7-upper-location-x);
+    top: var(--leg7-upper-location-y);
+    height: var(--leg7-upper-length);
+    transform: rotate(var(--leg7-upper-angle));
+}
+.spidertron-leg8-upper {
+    left: var(--leg8-upper-location-x);
+    top: var(--leg8-upper-location-y);
+    height: var(--leg8-upper-length);
+    transform: rotate(var(--leg8-upper-angle));
 }
 
-.spidertron-leg6 {
-    top: 42px;
-    left: 9px;
+.spidertron-leg1-knee { transform: rotate(var(--leg1-knee-angle)); }
+.spidertron-leg2-knee { transform: rotate(var(--leg2-knee-angle)); }
+.spidertron-leg3-knee { transform: rotate(var(--leg3-knee-angle)); }
+.spidertron-leg4-knee { transform: rotate(var(--leg4-knee-angle)); }
+.spidertron-leg5-knee { transform: rotate(var(--leg5-knee-angle)); }
+.spidertron-leg6-knee { transform: rotate(var(--leg6-knee-angle)); }
+.spidertron-leg7-knee { transform: rotate(var(--leg7-knee-angle)); }
+.spidertron-leg8-knee { transform: rotate(var(--leg8-knee-angle)); }
 
-    z-index: 445;
+.spidertron-leg1-lower {
+    left: var(--leg1-lower-location-x);
+    top: var(--leg1-lower-location-y);
+    height: var(--leg1-lower-length);
+    transform: rotate(var(--leg1-lower-angle));
 }
-
-.spidertron-leg7 {
-    top: 57px;
-    left: 6px;
-
-    z-index: 455;
+.spidertron-leg2-lower {
+    left: var(--leg2-lower-location-x);
+    top: var(--leg2-lower-location-y);
+    height: var(--leg2-lower-length);
+    transform: rotate(var(--leg2-lower-angle));
 }
-
-.spidertron-leg8 {
-    top: 71px;
-    left: 17px;
-
-    z-index: 460;
+.spidertron-leg3-lower {
+    left: var(--leg3-lower-location-x);
+    top: var(--leg3-lower-location-y);
+    height: var(--leg3-lower-length);
+    transform: rotate(var(--leg3-lower-angle));
+}
+.spidertron-leg4-lower {
+    left: var(--leg4-lower-location-x);
+    top: var(--leg4-lower-location-y);
+    height: var(--leg4-lower-length);
+    transform: rotate(var(--leg4-lower-angle));
+}
+.spidertron-leg5-lower {
+    left: var(--leg5-lower-location-x);
+    top: var(--leg5-lower-location-y);
+    height: var(--leg5-lower-length);
+    transform: rotate(var(--leg5-lower-angle));
+}
+.spidertron-leg6-lower {
+    left: var(--leg6-lower-location-x);
+    top: var(--leg6-lower-location-y);
+    height: var(--leg6-lower-length);
+    transform: rotate(var(--leg6-lower-angle));
+}
+.spidertron-leg7-lower {
+    left: var(--leg7-lower-location-x);
+    top: var(--leg7-lower-location-y);
+    height: var(--leg7-lower-length);
+    transform: rotate(var(--leg7-lower-angle));
+}
+.spidertron-leg8-lower {
+    left: var(--leg8-lower-location-x);
+    top: var(--leg8-lower-location-y);
+    height: var(--leg8-lower-length);
+    transform: rotate(var(--leg8-lower-angle));
 }
