@@ -1,4 +1,4 @@
-# Border Walls
+## Border Walls
 
 One of the biggest challenges in Factorio - and in my opinion one of the most fun - is dealing with the constant stream of biters that come to attack your base. From the earliest gun turrets you build to the late game artillery outposts you set up, dealing with the biters is one of your main two consumers of resources - the other being science. The iron, copper, steel, and eventually energy and other materials you waste in dealing with the biters are part of what helps to balance out your base: without them, I've found, you tend to back up on certain materials more than others, especially when playing mods like AngelBob's. Unfortunately, for many players, dealing with the biters can become a constant headache, or even a drain on their enjoyment, and I've known many a player who turns them off. A few saves ago, and moving forward ever since, I've found a method of dealing with them that minimizes annoyance while still allowing the enjoyment of watching countless waves break over your defenses: a turret-based border wall.
 
