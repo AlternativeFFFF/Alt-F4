@@ -24,9 +24,18 @@ about: |
 
   Po uzavření [kruhu](https://factorio.com/blog/post/fff-360) v srpnu 2020 vydáním plné verze hry se vývojáři rozhodli nepokračovat v páteční tradici, a dát si zaslouženou pauzu. Komunita hry ovšem nechtěla aby tato tradice zanikla, a tak [převzala otěže](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) a [pokračovala](http://alt-f4.blog/ALTF4-1). Zaměření se změnilo z pohledů do zákulisí vývoje Factoria na širokou škálu témat, která jsou pro komunitu zajímavá.
 
-  ### Poděkování
+  ### Contribute
 
-  Tuto webovou stránku pomocí Jekyllu vytvořili: *Ypetremann* a *Dr.MagPie*, s pomocí *lovely_santa* a *Therenas*
+  If you want to contribute to this project in any way, be it by submitting your writing, translating the weekly issues, or just hanging out, please join [the Discord](https://discord.gg/AsXAwyV) (or check out [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) for more information. We’d love to have you.
+
+  ### Credits
+
+  Website created by *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* and *psihius*.
+
+  Hosting graciously provided by the [FMMO community](https://fmmo.eu/discord). Special thanks to *psihius* for setting us up!
+
+  Some of the assets and styling are the exclusive property of [Wube Software](https://factorio.com/game/about), used with their explicit permission.
+
 not-found:
   msg: |
     ## Omlouváme se, ale nenašli jsme požadovanou stránku.
