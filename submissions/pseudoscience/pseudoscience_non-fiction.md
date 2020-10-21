@@ -1,7 +1,6 @@
 ## A scientific examination of the Factorio world
 
-Suspension of disbelief is a well-known concept, however that does not stop me from ignoring it completely. Some days ago I saw a [Reddit post] https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/) about calculating the density of Nauvis, and that gave me an idea of making a just-for-fun compilation of all the ridiculous science that goes on in the Factorio universe. I will not go into the formulas because that would make this article sound like a research paper.
-Instead, I leave the exact calculations as an exercise for the especially dedicated reader.
+Suspension of disbelief is a well-known concept, however that does not stop me from ignoring it completely. Some days ago I saw a [Reddit post](https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/) about calculating the density of Nauvis, and that gave me an idea of making a just-for-fun compilation of all the ridiculous science that goes on in the Factorio universe. I will not go into the formulas because that would make this article sound like a research paper. Instead, I leave the exact calculations as an exercise for the especially dedicated reader.
 
 ### Nauvis is a white dwarf
 
@@ -25,6 +24,6 @@ One piece of uranium-235 can produce 10 fuel cells, each of which contains 8 GJ 
 
 ### Items have extremely low densities
 
-This part is based on [u/Maouitippitytappin](https://www.reddit.com/user/Maouitippitytappin/)'s [Reddit post] https://www.reddit.com/r/factorio/comments/j8cxvv/my_journey_to_find_scale_in_factorio/) about their journey to find scale in Factorio. To recap their post: by knowing the energy consumption of iron smelting, we can find the mass of 1 iron plate, which ends up being only around 40 grams.
+This part is based on [u/Maouitippitytappin](https://www.reddit.com/user/Maouitippitytappin/)'s [Reddit post](https://www.reddit.com/r/factorio/comments/j8cxvv/my_journey_to_find_scale_in_factorio/) about their journey to find scale in Factorio. To recap their post: by knowing the energy consumption of iron smelting, we can find the mass of 1 iron plate, which ends up being only around 40 grams.
 
 Knowing that, the iron needed for a single locomotive weighs a measly 6.7 kilograms, while the locomotive itself takes up a volume of about 24 m\^3 (assuming it's 2 high based on how it looks), meaning it is about 3 times less dense than air.
