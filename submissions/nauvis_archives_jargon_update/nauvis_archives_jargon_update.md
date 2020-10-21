@@ -4,7 +4,7 @@ In [Alt-F4 #9](https://alt-f4.blog/ALTF4-9/#nauvis-our-home) we investigated the
 
 IconCartographer however did bring up a legit place where the name appears: The alert system that makes you aware of your buildings being damaged, for example. Factorio supports multiple surfaces, so it needs to specify where the alert happens if there is more than surface. This does not come up in the default sandbox game mode, so we missed it.
 
-![A screenshot of the alert message mentioning Nauvis](https://media.alt-f4.blog/ALTF4/6/nauvis_mention.jpg)
+![A screenshot of the alert message mentioning Nauvis](https://media.alt-f4.blog/ALTF4/10/nauvis_mention.jpg)
 
 After this first was made in the Discord, Wube Community Manager Klonan dug up some never seen before [backstory](https://discordapp.com/channels/139677590393716737/603392474458882065/766687476198539264) for us to enjoy:
 
