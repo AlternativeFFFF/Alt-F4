@@ -24,10 +24,18 @@ about: |
 
   Після проходження [повного кола](https://factorio.com/blog/post/fff-360) в серпні 2020 та повноцінного релізу гри, розробники вирішили покинути цю звичку та зробити собі заслужений відмочинок. Але спільнота не хоче закінчення цієї чудової традиції (та, якщо чесно, "лічильника п'ятниць" для деяких людей), [вирішила не покидати її](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) та [продовжує писати блог](http://alt-f4.blog/ALTF4-1). Фокус змінився з процесу розробки до різноманіття тем, цікавих спільноті та гравцям.
 
-  ### Подяки
+  ### Contribute
 
-  Цей вебсайт створений за допомогою Jekyll *Ypetremann* та *Dr.MagPie*, допомагали *lovely_santa* та *Therenas*.
-  Перекладено на українську *RMuskovets* (*null*).
+  If you want to contribute to this project in any way, be it by submitting your writing, translating the weekly issues, or just hanging out, please join [the Discord](https://discord.gg/AsXAwyV) (or check out [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) for more information. We’d love to have you.
+
+  ### Credits
+
+  Website created by *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* and *psihius*.
+
+  Hosting graciously provided by the [FMMO community](https://fmmo.eu/discord). Special thanks to *psihius* for setting us up!
+
+  Some of the assets and styling are the exclusive property of [Wube Software](https://factorio.com/game/about), used with their explicit permission.
+
 not-found:
   msg: |
     ## Вибачте, ми не змогли знайти цю сторінку.
