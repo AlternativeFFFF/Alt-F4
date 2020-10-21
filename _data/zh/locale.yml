@@ -18,17 +18,25 @@ discuss:
 about: |
   ## 关于
 
-  Alt-F4是一个[每周博客](http://alt-f4.blog)，完全由[异星工厂](https://factorio.com)社区撰写和编辑，有着异星工厂相关的各种主题，例如 mod 聚焦，社区展示，游戏专栏等。
+  Alt-F4是一个[每周博客](https://alt-f4.blog/zh/)，完全由[异星工厂](https://factorio.com)社区撰写和编辑。这里有与异星工厂相关的各种主题，例如 Mod 聚焦，社区展示，游戏专栏等。
 
-  这是著名的 [Factorio Friday Facts](https://factorio.com/blog/)('FFF') 的后续版本，FFF 记录了异星工厂长达360周的开发过程。 它解释了开发者对[定价策略](https://www.factorio.com/blog/post/fff-247)的思考，带着我们领略他们疯狂的[优化](https://www.factorio.com/blog/post/fff-176)过程，并详细介绍了各种机器设计的[过程](https://factorio.com/blog/post/fff-351)。
+  这是著名的 [Factorio Friday Facts](https://factorio.com/blog/)（“FFF”）的后续作品，FFF 记录了异星工厂长达 360 周的开发过程。它解释了开发者对[定价策略](https://www.factorio.com/blog/post/fff-247)的思考，带着我们领略他们疯狂的[优化](https://www.factorio.com/blog/post/fff-176)过程，并详细介绍了各种机器设计的[过程](https://factorio.com/blog/post/fff-351)。
 
   在2020年8月随着游戏[正式版发行](https://factorio.com/blog/post/fff-360)之后，开发者决定暂缓停止这种记录。 不过社区不希望这种传统消失，因此我们[接过了火炬](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/)并[继续前行](http://alt-f4.blog/ALTF4-1)。 当然内容重点肯定从对开发的见解转变为社区感兴趣的各种主题。
 
+  ### 征稿
+
+  如果您想以任何方式为这个项目做出贡献，无论是投稿或翻译，甚至只是想来编辑部逛逛，都可以加入 [Discord](https://discord.gg/AsXAwyV)（或查看 [GitHub](https://github.com/AlternativeFFFF/Alt-F4)）来了解详情。我们非常欢迎您的加入。
+
   ### 鸣谢
 
-  本站使用了 Jekyll ，作者: *Ypetremann* 和 *Dr.MagPie*，也离不开 *lovely_santa* 和 *Therenas* 的倾力帮助。中文页面由 FormatToday 翻译。
+  本站由 *Dr.MagPie*，*Ypetremann*，*lovely_santa*，*Conor_*，*xthexder*，*Duck(o)*，*yay* 和 *psihius*创建。
+  由 [FMMO 社区](https://fmmo.eu/discord)慷慨提供服务器。特别感谢 *psihius* 为我们部署！中文页面由 FormatToday 和 Ph.X 翻译。
+
+  部分素材和样式为 [Wube Software](https://factorio.com/game/about) 独家所有，经其明确许可后使用。
+
 not-found:
   msg: |
     ## 抱歉，我们无法找到请求的页面
-    ### 您可以重试
-  btn: 或者回到首页
+    ### 您可以刷新页面或者
+  btn: 返回首页
