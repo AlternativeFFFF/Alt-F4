@@ -1,4 +1,4 @@
-### Nauvis Archives Update: Nauvis' Backstory <author>stringweasel</author>
+## Nauvis Archives Update: Nauvis' Backstory <author>stringweasel</author>
 
 In [Alt-F4 #9](https://alt-f4.blog/ALTF4-9/#nauvis-our-home) we investigated the origins of the name of our planet Nauvis. A correction about the claim that the name is never actually shown in-game came soon after publication from IconCartographer. He pointed out that the name does indeed show up. For one, it is used internally in the code to designate the main surface of the game. We were well aware of this fact, but decided not to include it as a normal player will not run into it in that way.
 
