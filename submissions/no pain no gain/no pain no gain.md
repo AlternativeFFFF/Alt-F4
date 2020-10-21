@@ -1,5 +1,6 @@
-## Is factorio a annoying game?
-It depends on player subjective opinion, what annoys them the most in video game. For example I feel like Factorio cliffs are devilish idea, xterminator will scream at trains and somebody else will say that misplaced landfill is the worse. So I've ask our community on reddit "What is the most annoying thing in factorio" and answers was divided.
+## The Small Annoyances of Factorio <author>trupen</author>
+
+What the most annoying thing about a particular video game is heavily depends on the person playing it. For example, I personally feel like cliffs are a devilish idea, while xterminator screams at trains and someone else complains about misplaced landfill being the absolute worst. So, to answer this question in some kind of scientific way, I've polled the [reddit community](https://www.reddit.com/r/factorio/comments/ishfwd/altf4_needs_your_help_to_find_the_most/), asking them "What is the most annoying thing in Factorio". The responses were divided.
 
 ```mermaid !
 pie title NETFLIX
@@ -11,68 +12,36 @@ pie title NETFLIX
          "Power poles spaghetti connecting" : 397
 ```
 
-Thanks to every 1.6k people who took part in the survey and expressed their opinion. Results shows that the most annoying things for players is "Power poles spaghetti connecting". I don't think anyone was surprised that power poles will be one of the most annoying thing, because everyone try to keep their factory in perfect shape by using good ratios, proper trains names or by building a "main bus" design.
+Thanks to everyone that took part in the survey and expressed their opinion. The results show that the most annoying things for players is "Power poles spaghetti connecting". This isn't too surprising to me because many Factorio players focus on keeping their factory in pristine shape by using correct ratios, proper trains names or a [main bus design](https://wiki.factorio.com/Tutorial:Main_bus).
 
-![Nice power poles](https://i.imgur.com/Ey0mvSp.png)
+The main issue with power poles is that the cable connections don't get saved in blueprints. So no matter how pretty they look when you create it, this one little detail will not be retained. This gets more noticeable when you're at the megabase stadium and most of your layouts are stampted down using blueprints. It seems we're in luck though as kovarex [hinted](https://www.reddit.com/r/factorio/comments/ijf3qw/why_arent_copper_wires_treated_the_same_a_signal/g3gbobb/) that this pain point will only be a distant memory once 1.1 hits.
 
-Blueprints however don't save connected cables and no matter how pretty they look when you creating a blueprint, this one little detail will not be saved. It's getting more noticeable, when you're entering megabase stadium and most of your buildings are made out of blueprints. But we shouldn't get used to this pain, because it can become only a memory with [1.1](https://www.reddit.com/r/factorio/comments/ijf3qw/why_arent_copper_wires_treated_the_same_a_signal/g3gbobb/)
+I also took a look at the most upvoted comments, because while they might have less votes then the answers from the poll, they unreath some truth nonetheless. [Conor](https://www.reddit.com/user/Conor_______/) in particular hits upon something that most of us will be familiar with:
 
-![Mixed power poles](https://i.imgur.com/I0HQ0RS.png)
+![Conor saying: "Most painful thing by far: the lack of sleep after staying up all night playing Factorio"](https://media.alt-f4.blog/ALTF4/10/conor_comment.jpg)
 
-We have to look also at most upvoted comments, because they might have less votes then answers from pool, but less people look into comments section. Some of the comments was wrote in satiric way and other was a proper submission with big amount of upvotes.
+Another comment that jumped out to me was [u/Mr_Shteeveey](https://www.reddit.com/user/Mr_Shteeveey/) bringing up the pain of switching your power armor incorrectly. For those that don't know, if you take off your power armor (that gives you 10-30 inventory slots) while having a full inventory, the surplus just [spills on the ground](https://www.reddit.com/r/factorio/comments/6x2syi/what_happens_when_you_take_off_your_power_armor/) all around you, making you clean it up manually, while enduring the shame of what you just did.
 
-![Pain cause by lack of sleep](https://i.imgur.com/HHWMOlb.png)
-
-Power armors give player additional 10-30 inventory size bonus depending on tier. This space is very useful to keep more machines and build bigger buildings, but keeping whole inventory full sometimes leads to unpleased situations. There is not much to say because [u/Mr_Shteeveey](https://www.reddit.com/user/Mr_Shteeveey/) described it very well in his comment.
-
-![Switching power armor](https://i.imgur.com/x8jG8go.png)
+![Mr_Shteeveey saying: "Switching power armor incorrectly... then bam! All of your inventory/equipment gets spewed out everywhere!"](https://media.alt-f4.blog/ALTF4/10/mr_shteeveey_comment.jpg)
 
 ### Painful things that got removed
 
-Every game developer tries to make their game the best on the market. Factorio devs put a lot of effort to make their game very intuitive and fun to play without taking advanced mechanics from the game. I think many people would agree that factorio is "easy to play, hard to master" type of game, because you can start playing it without any knowledge and know what you are doing and what you need to do next, but it wasn't always like that.
+Every developer tries to make their game the best on the market. Wube puts in a lot of effort to make Factorio very intuitive and fun to play without having the advanced mechanics suffer. I think many people would agree that it is an "easy to play, hard to master" type of game, because you can start playing without any knowledge and know what you are doing and what you need to do next.
 
-Factorio had a lot of annoying mechanics, that every player hated. I don't know if many of you remember killing biter bases to get some [Alien artifact](https://wiki.factorio.com/Alien_artifact), because that feature was deleted in 0.15 (24.04.2017). For those who don't remember, alien artifacts was used to craft advance materials like modules tier 3 or power armors and also you could craft [purple science](https://wiki.factorio.com/Alien_science_pack), that was the highest tier of science packs in Factorio version 0.15. Constant expansion for more purple orbs wasn't in "Factorio style" where idea is to automate everything, so they got removed and very well.
+It wasn't always like that though. After we took a look at what people find bothersome in today's Factorio, I thought it would be fun to look back at some older mechanics that didn't really work out. For one, there was the alien artifacts mechanic that we explored in [Alt-F4 #8](https://alt-f4.blog/ALTF4-6/#alien-artifacts-a-primitive-technology) and which distracted you from factory building quite a bit.
 
-![Getting alien artifacts](https://i.imgur.com/3JcC4lx.gif)
+Another annoying thing were pickaxes. In Minecraft, you need an iron pickaxe to mine diamonds, but you need wooden and stone versions to get to iron in the first place. Factorio was inspired by this idea and also had four different types of pickaxes used to mine better "tiers" of resources. The wood stone variants were removed very early on as this type of resource gathering in the early game was just a distraction from the core gameplay.
 
-In Minecraft you need iron pickaxe to dig diamonds, but you need stone and wood first. Factorio was inspired by this idea and also had 4 difference types of pickaxes (wooden and stone was deleted in ancient times) used to mine better "tiers" of resources, but this type of gathering resources in early game was just a distraction from core gameplay.
+![Gif of how mining looked in ancient times](https://media.alt-f4.blog/ALTF4/10/old_mining.gif)
 
-![Old mining](https://i.imgur.com/UieIsz3.gif)
+Iron and steel axes however were left in the game for a long time. The [iron axe](https://wiki.factorio.com/Iron_axe) was a short-lived part of your progression path, crafted only once or twice to provide you with your first iron. What's more is that new players had problems to find, craft or use this tool, creating some frustration in first few minutes you spend in the game. The [steel axe](https://wiki.factorio.com/Steel_axe) on the other hand was with us throughout the whole game, crafted in bulk from time to time. Both of them got removed in the end because they didn't add much to the game, and mostly confused or annoyed players.
 
-However iron and steel axes was left in the game for a long time and both tools provided difference problems.
-[Iron axe](https://wiki.factorio.com/Iron_axe) was an unnecessary step towards your factory, crafted only once or twice to provide you first iron. What's more new players had problems to find, craft or use this tool what created difficulties and frustration in first few minutes with game.
-[Steel axe](https://wiki.factorio.com/Steel_axe) on the other hand was with us throughout the whole game, crafted from time to time in a bulk amount.
+![Gif of how mining looked in a more recent version](https://media.alt-f4.blog/ALTF4/10/new_mining.gif)
 
-![New mining](https://i.imgur.com/jtQxq0U.gif)
+There are many more things like this that got removed over time. Many early access games get a lot of new buildings, mechanics or enemies over time, but Factorio chose different path: Instead of adding more, they improved what was already there.
 
-There is more things like: old toolbar, old blueprints management, not upgrade planner, old oil processing, fluids system, no auto replacing belts or homing biters shots. All of this and many more was removed/upgraded during factorio early access. Many games in alpha/beta stage gets a lot of new buildings, mechanics or enemies, but factorio chose difference path and instead of adding more, they improved what is already there. People who feel lack of content in factorio can always finds something in huge [library of mods](https://mods.factorio.com/), because stable core makes modding easier.
-
-If you want to read more about removed mechanics there is old fff [Cleanup of mechanics](https://factorio.com/blog/post/fff-266), that will explain in detail decisions behind: pickaxes, furnace heating, burner efficiency and ore hardness.
-
-
-### All your factorio pain in one video...
-You might already saw this videos, because they were quite popular on reddit and went viral on YouTube, but if not then this videos collected (almost) all painful things from factorio like <s>xterminator</s> being killed by a train or looking at your stuck spidertrone, into fast paced compilation.
-
-![All your factorio pain in SECOND video...](https://www.youtube.com/watch?v=9C7jUxo0dLc)
-
-To make this kind of "cinematic" videos it's good to know [factorio console](https://wiki.factorio.com/Console) and [map editor](https://wiki.factorio.com/Map_editor). Because it gives you ability to build big factory in no time, modify researches and for example speed up time. There are many great commands what you can use and whole list is on [factorio wiki](https://wiki.factorio.com/Console). It is also interesting, that Factorio [trailers](https://www.youtube.com/watch?v=J8SBp4SyvLc) used special prepared [Lua scripts](https://www.lua.org/about.html) to get even more cinematic effect, like we can read in description: "All the actions, movement and logic in general in the trailer are controlled by the game native modding system (Lua scripting)".
-
-![Using simple commands](https://i.imgur.com/BDoJjko.gif)
-
-Whole necessary [factorio API](https://lua-api.factorio.com/latest/) needed to work with Lua is well described on official website.
-
-![Factorio API](https://i.imgur.com/q9qlUXa.gif)
-
-With the help of the above-mentioned technics, I've build very interesting machines that are useless in every aspect and their only purpose was to deal maximum amount of pain. There is a small list with explanation.
-I wanted to show cumulative "Train out of fuel" alert and to do this, I simply stopped time in editor and make 10 pointless rails circles. In every circle, I've placed one locomotive and setup schedule for infinite repetitions. As time was stopped, there was no problem to put one more wood to each subsequent locomotive. When everything was ready, I exited editor mode to start time and recorded appearing pop-ups.
-
-![Spinning trains](https://i.imgur.com/i40EZ8C.gif)
-
-Second machine was used to make yt thumbnail and it's just four locomotives connected to one circuit condition and set up to travel straight no matter what. You can also see simple self-timer made out of belts to have time for taking best position.
-
-![How thumbnail was made](https://i.imgur.com/E2Gatvk.gif)
+If you want to read Wube's thoughts on this kind of cleanup, take a look at [FFF 266](https://factorio.com/blog/post/fff-266) which goes into detail about the decisions regarding pickaxes, furnace efficiency and more. Also be on the lookout for next weeks issue of Alt-F4, in which stringweasel will dive into some more of these for the Nauvis Archives.
 
 ### No pain, No gain
-Factorio has come a long way (8.5 years) to be right where it is. Mistakes were made, but devs didn't pretend that everything is fine and they worked very hard to make factorio a wonderful games for casual players and veterans. From this submission you can think than I'm tormenting this game and looking for everything I can attach to, but truth is I respect the work that Wube Software [team](https://factorio.com/game/about) put into this masterpiece.
 
-It's hard to list every single change that made factorio such a perfect game. This submission is only the beginning of the iceberg, because 8.5 years of polishing and developing can't be shrink to one little post.
+Factorio has come a long way during the more than eight years of development to be right where it is today. Mistakes were made, but the developers didn't pretend that everything is perfect right away and worked very hard to make Factorio a wonderful games for casual players and veterans alike.
