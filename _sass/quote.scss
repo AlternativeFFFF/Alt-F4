@@ -8,18 +8,18 @@
     text-align: left;
     min-height: 64px;
     line-height: 1.3;
-  }
-  blockquote p {
-    display: inline;
+    p {
+      display: inline;
+    }
+    author {
+      display: flex;
+      justify-content: flex-end !important;
+      margin-top: -6px;
+    }
   }
   .highlight,
   .highlighter-rouge {
     line-height: 1.5em;
     background-color: #28221f;
-  }
-  author {
-    display: block;
-    text-align: center;
-    margin-top: -6px;
   }
 }
