@@ -1,4 +1,4 @@
-## Nauvis Archives Update: Nauvis' Backstory <author>stringweasel</author>
+## Nauvis Archives: Update on Nauvis' Backstory <author>stringweasel</author>
 
 In [Alt-F4 #9](https://alt-f4.blog/ALTF4-9/#nauvis-our-home) we investigated the origins of the name of our planet Nauvis. A correction about the claim that the name is never actually shown in-game came soon after publication from IconCartographer. He pointed out that the name does indeed show up. For one, it is used internally in the code to designate the main surface of the game. We were well aware of this fact, but decided not to include it as a normal player will not run into it in that way.
 
@@ -17,4 +17,4 @@ And maybe this... <br/>
 
 It seems like there were plans for an official Factorio story long ago, and in typical Wube fashion, it seemed to be very detailed. However, this idea was scrapped and never implemented, which Klonan was [glad about](https://discordapp.com/channels/139677590393716737/603392474458882065/766688031687573565) in hindsight.
 
-In the meantime though, several players have created their own [background story](https://www.reddit.com/r/factorio/comments/4pr8z6/im_writing_a_free_live_factorio_fanfic/?utm_source=share&utm_medium=web2x&context=3) about how exactly the engineer got into this situation.
+In the meantime though, if you're thirsty for some of that juicy Factorio lore, there are several players that have created their own [background story](https://www.reddit.com/r/factorio/comments/4pr8z6/im_writing_a_free_live_factorio_fanfic/?utm_source=share&utm_medium=web2x&context=3) about how exactly the engineer got into this mess.
