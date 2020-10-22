@@ -3,7 +3,7 @@
 What the most annoying thing about a particular video game is heavily depends on the person playing it. For example, I personally feel like cliffs are a devilish idea, while xterminator screams at trains and someone else complains about misplaced landfill being the absolute worst. So, to answer this question in some kind of scientific way, I've polled the [reddit community](https://www.reddit.com/r/factorio/comments/ishfwd/altf4_needs_your_help_to_find_the_most/), asking them "What is the most annoying thing in Factorio". The responses were divided.
 
 ```mermaid !
-pie title NETFLIX
+pie title Results
          "Cliffs" : 382
          "Mixed belts (by mistake)" : 284
          "Bots (recharging speed, speed, buildings limits, overall)" : 134
