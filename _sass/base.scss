@@ -257,3 +257,15 @@ div.h100 {
 div.p16 {
   padding: 16px;
 }
+
+.img-pair {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 800px) {
+  .img-pair {
+    display: flex;
+    flex-direction: column;
+  }
+}
