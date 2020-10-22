@@ -7,13 +7,16 @@ In [Alt-F4 #9](https://alt-f4.blog/ALTF4-9/#nauvis-our-home) we investigated the
 But more excitingly, after this discussion in the Factorio Discord, Wube Community Manager Klonan dug up some never seen before [backstory](https://discordapp.com/channels/139677590393716737/603392474458882065/766687476198539264) for us:
 
 {% capture quote_text %}
-This is all you get:
+this is all you get:
 ```
-The Cova System is named for the orange dwarf star at its centre. Four known planets orbit the star, as well as numerous moons, unlisted dwarf planets and asteroids. Closest to the star is Nauvis—this is the planet upon which the game takes place. A temperate world capable of sustaining life.
+The Cova System is named for the orange dwarf star at its centre. Four known planets orbit the star, as well as numerous moons, unlisted dwarf planets and asteroids.
+Closest to the star is Nauvis - this is the planet upon which the game takes place. A temperate world capable of sustaining life.
 ```
-And maybe this... <br/>
+And maybe this...<br/>
 ```The player, named Alden Winters...```
 {% endcapture %}
+
+{% include quote.html text=quote_text author='Klonan'%}
 
 It seems like there were plans for an official Factorio story long ago, and in typical Wube fashion it seems to be very detailed. However, this idea was scrapped and never implemented, which Klonan was [glad about](https://discordapp.com/channels/139677590393716737/603392474458882065/766688031687573565) in hindsight.
 
