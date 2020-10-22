@@ -1,6 +1,6 @@
 ## The Small Annoyances of Factorio <author>trupen</author>
 
-The most annoying thing about a particular video game heavily depends on the person playing it. For example, I personally feel like cliffs are a devilish idea, while xterminator screams at trains and someone else complains about misplaced landfill being the absolute worst. So, to answer this question in some kind of scientific way, I’ve [polled the Reddit community](https://www.reddit.com/r/factorio/comments/ishfwd/altf4_needs_your_help_to_find_the_most/), asking “What is the most annoying thing in Factorio?” The responses were divided:
+The most annoying thing about a particular video game heavily depends on the person playing it. For example, I personally feel like cliffs are a devilish idea, while xterminator screams at trains, and someone else complains about misplaced landfill being the absolute worst. So, to answer this question in some kind of scientific way, I’ve [polled the Reddit community](https://www.reddit.com/r/factorio/comments/ishfwd/altf4_needs_your_help_to_find_the_most/), asking “What is the most annoying thing in Factorio?” The responses were divided:
 
 ```mermaid !
 pie title Results
@@ -12,15 +12,15 @@ pie title Results
          "Power poles spaghetti connecting" : 397
 ```
 
-Thanks to everyone who took part in the survey and expressed their opinion. The results show that the most annoying things for players is “Power poles spaghetti connecting.” This isn’t too surprising to me because many Factorio players focus on keeping their factory in pristine shape by using correct ratios, proper train names or a [main bus design](https://wiki.factorio.com/Tutorial:Main_bus).
+Thanks to everyone who took part in the survey and expressed their opinion. The results show that the most annoying thing for players is “Power poles spaghetti connecting.” This isn’t too surprising to me because many Factorio players focus on keeping their factory in pristine shape by using correct ratios, proper train names, or a [main bus design](https://wiki.factorio.com/Tutorial:Main_bus).
 
 The main issue with power poles is that the cable connections don’t get saved in blueprints. So, no matter how pretty they look when you create it, this one little detail will not be retained. This gets more noticeable when you’re at the megabase stage and most of your layouts are stamped down using blueprints. It seems we’re in luck though as kovarex [hinted](https://www.reddit.com/r/factorio/comments/ijf3qw/why_arent_copper_wires_treated_the_same_a_signal/g3gbobb/) that this pain point will be a distant memory once 1.1 hits.
 
-I also took a look at the most upvoted comments because, while they might have less votes than the poll results, they unearth some truth nonetheless. [Conor](https://www.reddit.com/user/Conor_______/), in particular, hits upon something that most of us will be familiar with:
+I also took a look at the most upvoted comments because, while they might have fewer votes than the poll results, they unearth some truth nonetheless. [u/Conor_______](https://www.reddit.com/user/Conor_______/), in particular, hits upon something that most of us will be familiar with:
 
 ![Conor saying: “Most painful thing by far: the lack of sleep after staying up all night playing Factorio.”](https://media.alt-f4.blog/ALTF4/10/conor_comment.jpg)
 
-Another comment that jumped out to me was [u/Mr_Shteeveey](https://www.reddit.com/user/Mr_Shteeveey/) bringing up the pain of switching your power armour incorrectly. For those that don’t know, power armour gives you an additional 10-30 inventory slots, and removing it when you have a full inventory causes the surplus to [spill on the ground](https://www.reddit.com/r/factorio/comments/6x2syi/what_happens_when_you_take_off_your_power_armor/) all around you, requiring you to clean it up manually, while enduring the shame of what you just did.
+Another comment that jumped out to me was [u/Mr_Shteeveey](https://www.reddit.com/user/Mr_Shteeveey/) bringing up the pain of switching your power armour incorrectly. For those that don’t know, power armour gives you an additional 10-30 inventory slots, and removing it when you have a full inventory causes the surplus to [spill on the ground](https://www.reddit.com/r/factorio/comments/6x2syi/what_happens_when_you_take_off_your_power_armor/) all around you, requiring you to clean it up manually while enduring the shame of what you just did.
 
 ![Mr_Shteeveey saying: “Switching power armour incorrectly... then bam! All of your inventory/equipment gets spewed out everywhere!”](https://media.alt-f4.blog/ALTF4/10/mr_shteeveey_comment.jpg)
 
@@ -38,7 +38,7 @@ Iron and steel axes, however, remained in the game for a long time. The [iron ax
 
 ![Gif of how mining looked in a more recent version](https://media.alt-f4.blog/ALTF4/10/new_mining.gif)
 
-There are many more things like this that got removed over time. Many early access games get a lot of new buildings, mechanics, or enemies over time, but Factorio chose different path: Instead of adding more, they improved what was already there.
+There are many more things like this that got removed over time. Many early access games get a lot of new buildings, mechanics, or enemies over time, but Factorio chose a different path; instead of adding more, they improved what was already there.
 
 If you want to read Wube’s thoughts on this kind of clean up, take a look at [FFF 266](https://factorio.com/blog/post/fff-266) which goes into detail about the decisions regarding pickaxes, furnace efficiency, and more. Also be on the lookout for next week’s issue of Alt-F4, in which stringweasel will dive into some more of these for the Nauvis Archives.
 
