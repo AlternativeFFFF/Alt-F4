@@ -260,12 +260,16 @@ div.p16 {
 
 .img-pair {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  img {
+    box-shadow: none !important;
+    margin: auto 0;
+  }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 750px) {
   .img-pair {
-    display: flex;
     flex-direction: column;
   }
 }
