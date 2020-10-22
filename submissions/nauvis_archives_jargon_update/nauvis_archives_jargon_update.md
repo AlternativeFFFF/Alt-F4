@@ -8,7 +8,9 @@ But more excitingly, after this discussion in the Factorio Discord, Wube Communi
 
 {% capture quote_text %}
 This is all you get:
-```The Cova System is named or the orange dwarf star at its centre. Four known planets orbit the star, as well ass numerous moons, unslisted dwarf planets and asteroids. Closest to the star is Nauvis - this is the planet upon which the game takes place. A temperate world capable of sustaining life.```
+```
+The Cova System is named or the orange dwarf star at its centre. Four known planets orbit the star, as well ass numerous moons, unslisted dwarf planets and asteroids. Closest to the star is Nauvis - this is the planet upon which the game takes place. A temperate world capable of sustaining life.
+```
 And maybe this... <br/>
 ```The player, named Alden Winters...```
 {% endcapture %}
