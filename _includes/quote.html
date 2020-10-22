@@ -1,0 +1,10 @@
+<div class="m0 h100 flex flex-column flex-center quote">
+  <blockquote cite="{{ include.cite }}">
+    <div class="panel-inset-lighter">
+      {{ include.text | default: 'Place Holder' | markdownify }}
+      <author>
+      — {{ include.author | default: 'Place Holder'}}
+      </author>
+    </div>
+  </blockquote>
+</div>

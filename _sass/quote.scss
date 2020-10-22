@@ -1,0 +1,31 @@
+.quote {
+  padding: 16px 0;
+  blockquote {
+    background: url("/assets/GLOBAL/img/quot-left-sm.png") 0% 0%, url("/assets/GLOBAL/img/quot-right-sm.png") 100% 100%;
+    background-repeat: no-repeat;
+    font-style: italic;
+    font-size: 110%;
+    padding: 6px 80px 16px;
+    text-align: left;
+    min-height: 64px;
+    line-height: 1.3;
+    p {
+      display: inline;
+    }
+    author {
+      display: flex;
+      justify-content: flex-end !important;
+      margin-top: -6px;
+    }
+  }
+  @media (max-width: 750px) {
+    blockquote {
+      padding: 60px 0 60px;
+    }
+  }
+  .highlight,
+  .highlighter-rouge {
+    line-height: 1.5em;
+    background-color: #28221f;
+  }
+}
