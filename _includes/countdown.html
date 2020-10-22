@@ -1,39 +1,40 @@
 <!-- Use include.data in the ID as it makes it unique -->
 {%- assign id = include.date | replace: ":", "-" | prepend: "countdown-" -%}
-<span class="countdown" id="{{ id }}"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span>
+<p>
+  <span class="countdown" id="{{ id }}"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <script>
+    let countdownEl = document.getElementById('{{ id }}');
 
-<script>
-  let countdownEl = document.getElementById('{{ id }}');
+    let daysEl = document.querySelector('#{{ id }} #days'); //document.getElementById('days');
+    let hoursEl = document.querySelector('#{{ id }} #hours'); //document.getElementById('hours');
+    let minutesEl = document.querySelector('#{{ id }} #minutes'); //document.getElementById('minutes');
+    let secondsEl = document.querySelector('#{{ id }} #seconds'); //document.getElementById('seconds');
 
-  let daysEl = document.querySelector('#{{ id }} #days'); //document.getElementById('days');
-  let hoursEl = document.querySelector('#{{ id }} #hours'); //document.getElementById('hours');
-  let minutesEl = document.querySelector('#{{ id }} #minutes'); //document.getElementById('minutes');
-  let secondsEl = document.querySelector('#{{ id }} #seconds'); //document.getElementById('seconds');
+    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
 
-  let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    let countdownDate = new Date(Date.UTC(...('{{ include.date }}'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+    console.log(countdownDate);
 
-  let countdownDate = new Date(Date.UTC(...('{{ include.date }}'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-  console.log(countdownDate);
+    let interval = setInterval(updateCountdown, 1000);
 
-  let interval = setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      let distance = countdownDate - Date.now();
 
-  function updateCountdown() {
-    let distance = countdownDate - Date.now();
+      if (distance < 0) {
+        allEl.forEach((x) => { x.textContent = ''; });
+        countdownEl.classList.add('past');
 
-    if (distance < 0) {
-      allEl.forEach((x) => { x.textContent = ''; });
-      countdownEl.classList.add('past');
+        clearInterval(interval);
 
-      clearInterval(interval);
+        return;
+      }
 
-      return;
+      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
 
-    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  }
-
-  updateCountdown();
-</script>
+    updateCountdown();
+  </script>
+</p>
