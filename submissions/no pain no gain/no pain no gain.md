@@ -2,7 +2,7 @@
 
 The most annoying thing about a particular video game heavily depends on the person playing it. For example, I personally feel like cliffs are a devilish idea, while xterminator screams at trains, and someone else complains about misplaced landfill being the absolute worst. So, to answer this question in some kind of scientific way, I’ve [polled the Reddit community](https://www.reddit.com/r/factorio/comments/ishfwd/altf4_needs_your_help_to_find_the_most/), asking “What is the most annoying thing in Factorio?” The responses were divided:
 
-```mermaid !
+```mermaid!
 pie title Results
          "Cliffs" : 382
          "Mixed belts (by mistake)" : 284
@@ -16,7 +16,7 @@ Thanks to everyone who took part in the survey and expressed their opinion. The 
 
 The main issue with power poles is that the cable connections don’t get saved in blueprints. So, no matter how pretty they look when you create it, this one little detail will not be retained. This gets more noticeable when you’re at the megabase stage and most of your layouts are stamped down using blueprints. It seems we’re in luck though as kovarex [hinted](https://www.reddit.com/r/factorio/comments/ijf3qw/why_arent_copper_wires_treated_the_same_a_signal/g3gbobb/) that this pain point will be a distant memory once 1.1 hits.
 
-I also took a look at the most upvoted comments because, while they might have fewer votes than the poll results, they unearth some truth nonetheless. [u/Conor_______](https://www.reddit.com/user/Conor_______/), in particular, hits upon something that most of us will be familiar with:
+I also took a look at the most upvoted comments because, while they might have fewer votes than the poll results, they unearth some truth nonetheless. [u/Conor\_\_\_\_\_\_\_](https://www.reddit.com/user/Conor_______/), in particular, hits upon something that most of us will be familiar with:
 
 ![Conor saying: “Most painful thing by far: the lack of sleep after staying up all night playing Factorio.”](https://media.alt-f4.blog/ALTF4/10/conor_comment.jpg)
 
