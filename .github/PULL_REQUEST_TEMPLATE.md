@@ -20,5 +20,5 @@ Suggested release date: <!--(If the submissions is to be released at a certain t
 - [ ] Audio is hosted on souldcloud
   - [ ] Embed soundcloud post of audio file
 
-#### For more detailed guidance and a full list of possible embed formats see: https://alt-f4.blog/YYYY-MM-DD-ALTF4-X/
+#### For more detailed guidance and a full list of possible embed formats see: https://alt-f4.blog/ALTF4-X/
 <!--_NOTE: these things are not required to open a PR and can be done afterwards / while the PR is open._-->
