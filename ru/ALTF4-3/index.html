@@ -187,44 +187,44 @@
 <p>Так что если у вас есть пара свободных часов на этих выходных, и вы хотите помочь побить <a href="https://www.youtube.com/watch?v=UEhPra7M-Wg">предыдущийрекорд</a> (521 игроководновременно), присоединяйтесь к нам в 2 часа дня по Москве в субботу 5сентября. Найти сервер будет легко, потому что он будет самым большим!</p>
 
 <!-- Use include.data in the ID as it makes it unique -->
-<p><span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span></p>
+<p>
+  <span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <script>
+    let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
 
-<script>
-  let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
+    let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
+    let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
+    let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
+    let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
 
-  let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
-  let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
-  let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
-  let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
+    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
 
-  let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+    console.log(countdownDate);
 
-  let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-  console.log(countdownDate);
+    let interval = setInterval(updateCountdown, 1000);
 
-  let interval = setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      let distance = countdownDate - Date.now();
 
-  function updateCountdown() {
-    let distance = countdownDate - Date.now();
+      if (distance < 0) {
+        allEl.forEach((x) => { x.textContent = ''; });
+        countdownEl.classList.add('past');
 
-    if (distance < 0) {
-      allEl.forEach((x) => { x.textContent = ''; });
-      countdownEl.classList.add('past');
+        clearInterval(interval);
 
-      clearInterval(interval);
+        return;
+      }
 
-      return;
+      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
 
-    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  }
-
-  updateCountdown();
-</script>
-<p><br></p>
+    updateCountdown();
+  </script>
+</p>
 
 <p>Информация о сервере появится незадолго до начала в канале #information <a href="https://discord.red-circuit.org/">Дискорда Red Circuit</a>. Для более общей информации, посетите наш <a href="https://red-circuit.org/events/?e=Operation:%20Molten%20Silicon">сайт</a>.</p>
       <h2 id="не-ломайте-новые-игрушки-t-a-r">

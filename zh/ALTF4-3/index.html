@@ -187,44 +187,44 @@
 <p>因此，如果您在本周末有几个小时的空闲时间，并乐意帮助我们打破521位同时登录玩家的<a href="https://www.youtube.com/watch?v=UEhPra7M-Wg">先前记录</a>，请在北京时间9月5日（星期六）下午7点加入我们的服务器。您可以很轻松的找到它，届时它将是最大的服务器！</p>
 
 <!-- Use include.data in the ID as it makes it unique -->
-<p><span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span></p>
+<p>
+  <span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <script>
+    let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
 
-<script>
-  let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
+    let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
+    let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
+    let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
+    let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
 
-  let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
-  let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
-  let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
-  let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
+    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
 
-  let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+    console.log(countdownDate);
 
-  let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-  console.log(countdownDate);
+    let interval = setInterval(updateCountdown, 1000);
 
-  let interval = setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      let distance = countdownDate - Date.now();
 
-  function updateCountdown() {
-    let distance = countdownDate - Date.now();
+      if (distance < 0) {
+        allEl.forEach((x) => { x.textContent = ''; });
+        countdownEl.classList.add('past');
 
-    if (distance < 0) {
-      allEl.forEach((x) => { x.textContent = ''; });
-      countdownEl.classList.add('past');
+        clearInterval(interval);
 
-      clearInterval(interval);
+        return;
+      }
 
-      return;
+      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
 
-    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  }
-
-  updateCountdown();
-</script>
-<p><br></p>
+    updateCountdown();
+  </script>
+</p>
 
 <p>服务器信息将与活动开始时间之前不久在我们的 <a href="https://discord.red-circuit.org/">Red Circuit Discord</a> 的 #information 频道中提供。更多信息，请访问我们的<a href="https://red-circuit.org/events/?e=Operation:%20Molten%20Silicon">网站</a>。</p>
       <h2 id="请勿玩坏新玩具-t-a-r">

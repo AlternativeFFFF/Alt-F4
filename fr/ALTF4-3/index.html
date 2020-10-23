@@ -187,44 +187,44 @@ le 04-09-2020
 <p>Donc si vous avez quelques heures à disposition ce week-end, et que vous voulez essayer de nous aider à battre le <a href="https://www.youtube.com/watch?v=UEhPra7M-Wg">record précedent</a> de 521 joueurs simultanés, veuillez rejoindre notre serveur à 11h UTC ce samedi 5 septembre. Vous pourrez facilement l’identifier, car ce sera le plus grand serveur en fonctionnement !</p>
 
 <!-- Use include.data in the ID as it makes it unique -->
-<p><span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span></p>
+<p>
+  <span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <script>
+    let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
 
-<script>
-  let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
+    let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
+    let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
+    let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
+    let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
 
-  let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
-  let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
-  let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
-  let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
+    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
 
-  let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+    console.log(countdownDate);
 
-  let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-  console.log(countdownDate);
+    let interval = setInterval(updateCountdown, 1000);
 
-  let interval = setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      let distance = countdownDate - Date.now();
 
-  function updateCountdown() {
-    let distance = countdownDate - Date.now();
+      if (distance < 0) {
+        allEl.forEach((x) => { x.textContent = ''; });
+        countdownEl.classList.add('past');
 
-    if (distance < 0) {
-      allEl.forEach((x) => { x.textContent = ''; });
-      countdownEl.classList.add('past');
+        clearInterval(interval);
 
-      clearInterval(interval);
+        return;
+      }
 
-      return;
+      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
 
-    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  }
-
-  updateCountdown();
-</script>
-<p><br></p>
+    updateCountdown();
+  </script>
+</p>
 
 <p>Les informations sur le serveur seront fournies peu avant l’heure de début dans le salon #information de notre <a href="https://discord.red-circuit.org/">Red Circuit Discord</a>. Pour des informations plus générales, veuillez consulter notre <a href="https://red-circuit.org/events/?e=Operation:%20Molten%20Silicon">site web</a>.</p>
       <h2 id="ne-cassez-pas-les-nouveaux-jouets-sil-vous-plaît-t-a-r">

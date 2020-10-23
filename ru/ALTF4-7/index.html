@@ -246,44 +246,44 @@
 <p>With the release of Factorio 1.0, the goal of large multiplayer servers shifted from testing the game to enjoying it, which introduced room for mods to spice up the gameplay. And that is exactly what is going to happen tomorrow.</p>
 
 <!-- Use include.data in the ID as it makes it unique -->
-<p><span class="countdown" id="countdown-2020-10-3-17"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span></p>
+<p>
+  <span class="countdown" id="countdown-2020-10-3-17"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <script>
+    let countdownEl = document.getElementById('countdown-2020-10-3-17');
 
-<script>
-  let countdownEl = document.getElementById('countdown-2020-10-3-17');
+    let daysEl = document.querySelector('#countdown-2020-10-3-17 #days'); //document.getElementById('days');
+    let hoursEl = document.querySelector('#countdown-2020-10-3-17 #hours'); //document.getElementById('hours');
+    let minutesEl = document.querySelector('#countdown-2020-10-3-17 #minutes'); //document.getElementById('minutes');
+    let secondsEl = document.querySelector('#countdown-2020-10-3-17 #seconds'); //document.getElementById('seconds');
 
-  let daysEl = document.querySelector('#countdown-2020-10-3-17 #days'); //document.getElementById('days');
-  let hoursEl = document.querySelector('#countdown-2020-10-3-17 #hours'); //document.getElementById('hours');
-  let minutesEl = document.querySelector('#countdown-2020-10-3-17 #minutes'); //document.getElementById('minutes');
-  let secondsEl = document.querySelector('#countdown-2020-10-3-17 #seconds'); //document.getElementById('seconds');
+    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
 
-  let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    let countdownDate = new Date(Date.UTC(...('2020:10:3:17'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+    console.log(countdownDate);
 
-  let countdownDate = new Date(Date.UTC(...('2020:10:3:17'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-  console.log(countdownDate);
+    let interval = setInterval(updateCountdown, 1000);
 
-  let interval = setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      let distance = countdownDate - Date.now();
 
-  function updateCountdown() {
-    let distance = countdownDate - Date.now();
+      if (distance < 0) {
+        allEl.forEach((x) => { x.textContent = ''; });
+        countdownEl.classList.add('past');
 
-    if (distance < 0) {
-      allEl.forEach((x) => { x.textContent = ''; });
-      countdownEl.classList.add('past');
+        clearInterval(interval);
 
-      clearInterval(interval);
+        return;
+      }
 
-      return;
+      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
 
-    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  }
-
-  updateCountdown();
-</script>
-<p><br></p>
+    updateCountdown();
+  </script>
+</p>
 
 <p>Krastorio 2 has been selected as the main mod for this (returning) event. As mentioned in <a href="https://www.factorio.com/blog/post/fff-338">FFF-338</a>, Krastorio 2 is a complete overhaul mod focussed on maintaining the vanilla feel of Factorio. This way, the event will be interesting to anyone who knows the basics of Factorio even if you don’t have any experience playing modded or multiplayer Factorio.</p>
 

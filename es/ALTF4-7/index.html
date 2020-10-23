@@ -243,44 +243,44 @@ on 02-10-2020
 <p>Con el lanzamiento de Factorio 1.0, el objetivo de los grandes servidores multijugador pasó de probar el juego a disfrutarlo, lo que introdujo espacio para modificaciones para darle vida al juego. Y eso es exactamente lo que va a pasar mañana.</p>
 
 <!-- Use include.data in the ID as it makes it unique -->
-<p><span class="countdown" id="countdown-2020-10-3-17"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span></p>
+<p>
+  <span class="countdown" id="countdown-2020-10-3-17"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <script>
+    let countdownEl = document.getElementById('countdown-2020-10-3-17');
 
-<script>
-  let countdownEl = document.getElementById('countdown-2020-10-3-17');
+    let daysEl = document.querySelector('#countdown-2020-10-3-17 #days'); //document.getElementById('days');
+    let hoursEl = document.querySelector('#countdown-2020-10-3-17 #hours'); //document.getElementById('hours');
+    let minutesEl = document.querySelector('#countdown-2020-10-3-17 #minutes'); //document.getElementById('minutes');
+    let secondsEl = document.querySelector('#countdown-2020-10-3-17 #seconds'); //document.getElementById('seconds');
 
-  let daysEl = document.querySelector('#countdown-2020-10-3-17 #days'); //document.getElementById('days');
-  let hoursEl = document.querySelector('#countdown-2020-10-3-17 #hours'); //document.getElementById('hours');
-  let minutesEl = document.querySelector('#countdown-2020-10-3-17 #minutes'); //document.getElementById('minutes');
-  let secondsEl = document.querySelector('#countdown-2020-10-3-17 #seconds'); //document.getElementById('seconds');
+    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
 
-  let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    let countdownDate = new Date(Date.UTC(...('2020:10:3:17'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+    console.log(countdownDate);
 
-  let countdownDate = new Date(Date.UTC(...('2020:10:3:17'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-  console.log(countdownDate);
+    let interval = setInterval(updateCountdown, 1000);
 
-  let interval = setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      let distance = countdownDate - Date.now();
 
-  function updateCountdown() {
-    let distance = countdownDate - Date.now();
+      if (distance < 0) {
+        allEl.forEach((x) => { x.textContent = ''; });
+        countdownEl.classList.add('past');
 
-    if (distance < 0) {
-      allEl.forEach((x) => { x.textContent = ''; });
-      countdownEl.classList.add('past');
+        clearInterval(interval);
 
-      clearInterval(interval);
+        return;
+      }
 
-      return;
+      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
 
-    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  }
-
-  updateCountdown();
-</script>
-<p><br></p>
+    updateCountdown();
+  </script>
+</p>
 
 <p>Krastorio 2 ha sido seleccionado como el mod principal para este evento (que regresa). Como se menciona en <a href="https://www.factorio.com/blog/post/fff-338">FFF-338</a>, Krastorio 2 es una modificación completa centrada en mantener la sensación del Factorio vainilla. De esta manera, el evento será interesante para cualquiera que conozca los conceptos básicos de Factorio, incluso si no tiene experiencia jugando Factorio con modificaciones o multijugador.</p>
 
@@ -463,7 +463,7 @@ on 02-10-2020
       <div class="shadow-overlay-bottom"></div>
     </div>
     <div class="footer-copyright panel-inset m0">
-      Este sitio web es un proyecto hecho por los fans y no tiene relacion con Wube Software
+      Este sitio web es un proyecto hecho por los fans y no tiene relación con Wube Software
     </div>
   </div>
 </footer>

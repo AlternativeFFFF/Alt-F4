@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-10-21T09:01:38+00:00</updated>
+  <updated>2020-10-23T13:04:43+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #10 – Dein Reich schützen</title>
+    <link href="https://alt-f4.blog/de/ALTF4-10/" />
+    <id>https://alt-f4.blog/ALTF4-10</id>
+    <updated>2020-10-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Willkommen zur zehnten Ausgabe von Alt-F4, das erste Mal im zweistelligen Bereich. Diese Woche kehrt Recon419A zurück, um ein überzeugendes Argument vorzubringen, dieses Mal darüber, wie du die Grenzen deines Reichs aufsetzen solltest. Als nächstes macht trupen ein bisschen Wissenschaft und taucht in die seltenen nervigen Aspekte von Factorio ein....</content>
+  </entry>
+  
   
   
   <entry>
@@ -99,8 +109,6 @@
     <updated>2020-08-21T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Welcome to the very first edition of the ‘Alternative Factorio Friday Fan Facts’ (also known as Alt-F4), the community-driven follow-on to the venerable &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. It aims to fill the void that the discontinuation of the FFF left in all our hearts. To fill the gaping hole in...</content>
   </entry>
-  
-  
   
   
 </feed>

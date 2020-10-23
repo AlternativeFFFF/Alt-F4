@@ -187,44 +187,44 @@ on 04-09-2020
 <p>De modo que, si tienes algunas horas libres este fin de semana, y quieres probar y ayudarnos a romper el <a href="https://www.youtube.com/watch?v=UEhPra7M-Wg">anterior récord</a> de 521 jugadores simultáneos, por favor únete a nuestro servidor a las 11am UTC este sábado 5 de septiembre. Lo podrás identificar fácilmente, porque ¡será el servidor más grande en funcionamiento!</p>
 
 <!-- Use include.data in the ID as it makes it unique -->
-<p><span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span></p>
+<p>
+  <span class="countdown" id="countdown-2020-09-05-11-00-00"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <script>
+    let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
 
-<script>
-  let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');
+    let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
+    let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
+    let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
+    let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
 
-  let daysEl = document.querySelector('#countdown-2020-09-05-11-00-00 #days'); //document.getElementById('days');
-  let hoursEl = document.querySelector('#countdown-2020-09-05-11-00-00 #hours'); //document.getElementById('hours');
-  let minutesEl = document.querySelector('#countdown-2020-09-05-11-00-00 #minutes'); //document.getElementById('minutes');
-  let secondsEl = document.querySelector('#countdown-2020-09-05-11-00-00 #seconds'); //document.getElementById('seconds');
+    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
 
-  let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+    console.log(countdownDate);
 
-  let countdownDate = new Date(Date.UTC(...('2020:09:05:11:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-  console.log(countdownDate);
+    let interval = setInterval(updateCountdown, 1000);
 
-  let interval = setInterval(updateCountdown, 1000);
+    function updateCountdown() {
+      let distance = countdownDate - Date.now();
 
-  function updateCountdown() {
-    let distance = countdownDate - Date.now();
+      if (distance < 0) {
+        allEl.forEach((x) => { x.textContent = ''; });
+        countdownEl.classList.add('past');
 
-    if (distance < 0) {
-      allEl.forEach((x) => { x.textContent = ''; });
-      countdownEl.classList.add('past');
+        clearInterval(interval);
 
-      clearInterval(interval);
+        return;
+      }
 
-      return;
+      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
     }
 
-    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-  }
-
-  updateCountdown();
-</script>
-<p><br></p>
+    updateCountdown();
+  </script>
+</p>
 
 <p>La información del servidor se proporcionará en breves en el canal #information de nuestro <a href="https://discord.red-circuit.org/">Red Circuit Discord</a>. Para más información, por favor visita nuestra <a href="https://red-circuit.org/events/?e=Operation:%20Molten%20Silicon">página web</a>.</p>
       <h2 id="no-rompas-los-nuevos-jugetes-por-favor-t-a-r">
@@ -545,7 +545,7 @@ on 04-09-2020
       <div class="shadow-overlay-bottom"></div>
     </div>
     <div class="footer-copyright panel-inset m0">
-      Este sitio web es un proyecto hecho por los fans y no tiene relacion con Wube Software
+      Este sitio web es un proyecto hecho por los fans y no tiene relación con Wube Software
     </div>
   </div>
 </footer>

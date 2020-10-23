@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-10-21T09:01:38+00:00</updated>
+  <updated>2020-10-23T13:04:43+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #10 - 保卫你的帝国</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-10/" />
+    <id>https://alt-f4.blog/ALTF4-10</id>
+    <updated>2020-10-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;欢迎来到第十期的Alt-F4，首次突破两位数！本周，Recon419A 再次提出了一个令人信服的论点，这次是关于你应该如何去设置帝国的边界。接下来，trupen 做了一些科学，并深入到异星工厂中一些罕见的恼人之处。最后，stringweasel 对&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-9/&quot;&gt;上周&lt;/a&gt; Alt-F4 中关于 Nauvis 的起源做了一些修正。&lt;/p&gt; &lt;h2 id=&quot;边境墙-recon419a&quot;&gt;边境墙 &lt;author&gt;Recon419A&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在异星工厂中最大的挑战之一——在我看来也是最有趣的挑战之一——就是应对源源不断前来攻击你基地的虫群。从你最初建造的炮塔到游戏后期设置的火炮前哨，对付虫群是你主要的两个资源消耗点之一——另一个是科研。你花在对付虫群上的铁、铜、钢，以及最终的能源和其他材料，是帮助你平衡基地生产的一部分。我发现如果没有它们，你往往会在某些材料上比其他材料储备更多，尤其是在玩 AngelBob 这样的 Mod 时。不幸的是，对于许多玩家来说，与虫群打交道可能会成为一个持续的头疼问题，甚至会消耗他们的乐趣，我认识很多玩家都把他们拒之门外。几个存档前，我已经找到了一种处理它们的方法，它能最大限度地减少烦扰，同时还能享受到看着无数波虫群冲击你的防线的乐趣：基于炮塔的边境墙。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/10/border-walls-1.jpg&quot; alt=&quot;一个使用边界墙的基地的地图概览&quot; /&gt;&lt;/p&gt; &lt;p&gt;现在，每个人都很熟悉在你的工厂周围建造墙壁，并用炮塔加固它们的概念。人们会争论激光、机枪炮塔还是火焰喷射炮塔是最好的，如果你玩的是像 Bob 这样的 Mod，你可能还有更多其他选择，比如等离子炮塔。不过人们往往没有意识到的是，墙的形状会带来巨大的差异。在我年轻的时候，当我第一次玩异星工厂的时候，我倾向于在被攻击的地区周围建造墙壁，通常也是在我的整个工厂周围。我会把墙壁建在基地附近——毕竟，防守到比必要的地方更远的地方会浪费资源，而且会迫使我清理无数的虫巢。但后来我发现了改变这一切的东西：关隘的魔力。通过利用天然的悬崖、水体，以及污染只能扩散到这么远的事实，可以在比我原来意识到的更远的地方建立一堵边境墙–这不仅是可能的，实际上也是有利的。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/10/border-walls-2.jpg&quot; alt=&quot;一堵利用天然关隘的墙&quot; /&gt;&lt;/p&gt; &lt;p&gt;在比你的工厂边缘更远的地方建立一堵边境墙有很多好处。首先，它允许你选择在哪里处理那些讨厌的虫子。如果你清理出一个关隘，然后守住这个关隘，你就不用担心来自这个方向的攻击——而如果你在所有方向都这样做，你就根本不用担心攻击。推开你的污染边界，意味着虫子甚至不会主动攻击这些防御系统：炮塔在那里的唯一作用就是阻止虫子向已经清理好的领土扩张。通过使用自然屏障，如悬崖和水来帮助你的防御，你可以用很少的资源切断地图的大片区域。我估计我的边界墙有百分之四十到八十的地方都是天然形成的不可通行障碍。由于树木和地块吸收了我的污染，而不是虫巢，我甚至不会经常受到攻击——这一点至关重要，因为它允许我在一个关隘扔下几百发穿甲弹药，然后让它独自呆上几个小时。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/10/border-walls-3.jpg&quot; alt=&quot;一个用少量炮塔防卫的边境墙例子&quot; /&gt;&lt;/p&gt; &lt;p&gt;在这么远的地方修建边境墙的第二大好处是，它不会抑制你的工厂。当你需要扩张出一片铁矿的时候，很可能你的边界内已经有了一片。当你需要地方来建造一个大规模的炼油厂时，你已经有了空地，因为你在各个方向都有三四倍于你工厂半径的空地。即使你开始为遥远的前哨站设置铁轨，很可能那些都是——也应该是——在你的边界内，所以你不必保卫它们。不需要在每次扩建工厂时都要搬迁一堵墙，你搬迁你的墙来扩张领土，然后在你认为合适的时候扩建你的工厂，而不用担心攻击。&lt;/p&gt; &lt;p&gt;科学的边境墙改变了我的生活。我曾经用一排又一排的激光炮塔来保卫前哨，随着虫子们的增加，我需要努力保持它们的维修和补给。现在，我只需推进到天然关口，并手动保持它们的弹药供应：每小时只用几十发子弹，这样我的天然关口在污染边界外的存活时间远远超过在污染边界内的存活时间。在游戏后期，当我终于可以使用火炮的时候，我甚至会沿着我的边界墙放上重炮炮塔–这让我可以在不需要手动清理虫子的情况下进行扩张。缓慢爬行的墙体将我所要处理的伤害量降低到几乎为零——同时，我还可以保持虫群的开启，让我可以看着它们时不时地冲击我精心准备的防御。&lt;/p&gt; &lt;h2 id=&quot;异星工厂的小烦恼-trupen&quot;&gt;异星工厂的小烦恼 &lt;author&gt;trupen&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;一款游戏中令人烦恼的地方通常是因人而异的。比方说我个人觉得悬崖就是魔鬼出的馊主意，而 xterminator 会对着火车尖叫，还有人抱怨不慎摆错的填海料绝对是最遭的体验。所以，为了以相对科学的方式回答这个问题，我发起了 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/ishfwd/altf4_needs_your_help_to_find_the_most/&quot;&gt;Reddit 社区里的投票&lt;/a&gt;，询问大家“异星工厂中最让人烦恼的东西是什么？”回答的内容众说纷纭：&lt;/p&gt; &lt;p&gt; &lt;div class=&quot;img-pair&quot;&gt; &lt;img id=&quot;image-element&quot;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -77,7 +87,7 @@
     <link href="https://alt-f4.blog/zh/ALTF4-3/" />
     <id>https://alt-f4.blog/ALTF4-3</id>
     <updated>2020-09-04T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;欢迎来到第三期 Alt-F4 。本周末将有一场尝试在单个异星工厂服务器上打破最高在线人数记录的挑战，阅读下文来了解如何加入这场狂欢。此外我们还有关于大规模社区游戏发布派对的报道，本该写在上周来着，赖我（Therena）。最后，Raiguard 与我们所有人共享了一个激动人心的 Mod。让我们开始吧！&lt;/p&gt; &lt;p&gt;PS：我们正在寻找有意协助我们翻译每期 Alt-F4 的人。 如果你对此有兴趣，可以在本期末尾找到更多信息。谢谢！&lt;/p&gt; &lt;h2 id=&quot;活动融化硅片-jd-plays&quot;&gt;活动：融化硅片 &lt;author&gt;JD-Plays&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;img id=&quot;image-element&quot; class=&quot;post&quot; src=&quot;//i.imgur.com/EVLaZru.gif&quot; /&gt;&lt;/p&gt; &lt;p&gt;有什么周末计划吗？小玩25分钟异星工厂然后发现太阳已经晒屁股了吗？ 或者跟三五好友一起联机异星工厂？&lt;/p&gt; &lt;p&gt;我们有一则好消息。这个周末，我们几个朋友打算聚在一起做一件简单的小事：彻底融化我们服务器的芯片！快来加入我们的“融化硅片”活动，我们的唯一目标是让尽可能多的玩家登录进同一台服务器并发射一枚火箭，顺便融化服务器的 CPU！从建立基地到与其他龙虾兵一同肃清虫巢，人人有事做。真正敌人或将长期存在，需要你们中的一些人加入到我们的伐伐伐伐伐木工队伍！&lt;/p&gt; &lt;p&gt;因此，如果您在本周末有几个小时的空闲时间，并乐意帮助我们打破521位同时登录玩家的&lt;a href=&quot;https://www.youtube.com/watch?v=UEhPra7M-Wg&quot;&gt;先前记录&lt;/a&gt;，请在北京时间9月5日（星期六）下午7点加入我们的服务器。您可以很轻松的找到它，届时它将是最大的服务器！&lt;/p&gt; &lt;!-- Use include.data in the ID as it makes it unique --&gt; &lt;p&gt;&lt;span class=&quot;countdown&quot; id=&quot;countdown-2020-09-05-11-00-00&quot;&gt;&lt;span id=&quot;days&quot;&gt;&lt;/span&gt; &lt;span id=&quot;hours&quot;&gt;&lt;/span&gt; &lt;span id=&quot;minutes&quot;&gt;&lt;/span&gt; &lt;span id=&quot;seconds&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt; &lt;script&gt; let countdownEl = document.getElementById('countdown-2020-09-05-11-00-00');...</content>
+    <content type="html">&lt;p&gt;欢迎来到第三期 Alt-F4 。本周末将有一场尝试在单个异星工厂服务器上打破最高在线人数记录的挑战，阅读下文来了解如何加入这场狂欢。此外我们还有关于大规模社区游戏发布派对的报道，本该写在上周来着，赖我（Therena）。最后，Raiguard 与我们所有人共享了一个激动人心的 Mod。让我们开始吧！&lt;/p&gt; &lt;p&gt;PS：我们正在寻找有意协助我们翻译每期 Alt-F4 的人。 如果你对此有兴趣，可以在本期末尾找到更多信息。谢谢！&lt;/p&gt; &lt;h2 id=&quot;活动融化硅片-jd-plays&quot;&gt;活动：融化硅片 &lt;author&gt;JD-Plays&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;img id=&quot;image-element&quot; class=&quot;post&quot; src=&quot;//i.imgur.com/EVLaZru.gif&quot; /&gt;&lt;/p&gt; &lt;p&gt;有什么周末计划吗？小玩25分钟异星工厂然后发现太阳已经晒屁股了吗？ 或者跟三五好友一起联机异星工厂？&lt;/p&gt; &lt;p&gt;我们有一则好消息。这个周末，我们几个朋友打算聚在一起做一件简单的小事：彻底融化我们服务器的芯片！快来加入我们的“融化硅片”活动，我们的唯一目标是让尽可能多的玩家登录进同一台服务器并发射一枚火箭，顺便融化服务器的 CPU！从建立基地到与其他龙虾兵一同肃清虫巢，人人有事做。真正敌人或将长期存在，需要你们中的一些人加入到我们的伐伐伐伐伐木工队伍！&lt;/p&gt; &lt;p&gt;因此，如果您在本周末有几个小时的空闲时间，并乐意帮助我们打破521位同时登录玩家的&lt;a href=&quot;https://www.youtube.com/watch?v=UEhPra7M-Wg&quot;&gt;先前记录&lt;/a&gt;，请在北京时间9月5日（星期六）下午7点加入我们的服务器。您可以很轻松的找到它，届时它将是最大的服务器！&lt;/p&gt; &lt;!-- Use include.data in the ID as it makes it unique --&gt; &lt;p&gt; &lt;span class=&quot;countdown&quot; id=&quot;countdown-2020-09-05-11-00-00&quot;&gt;&lt;span id=&quot;days&quot;&gt;&lt;/span&gt; &lt;span id=&quot;hours&quot;&gt;&lt;/span&gt; &lt;span id=&quot;minutes&quot;&gt;&lt;/span&gt; &lt;span id=&quot;seconds&quot;&gt;&lt;/span&gt;&lt;/span&gt; &lt;script&gt; let countdownEl =...</content>
   </entry>
   
   
@@ -99,8 +109,6 @@
     <updated>2020-08-21T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;欢迎阅读第一版的“Alternative Factorio Friday Fan Facts”（简称：Alt-F4），这是由社区推动的 &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts（简称：FFF）&lt;/a&gt;。它出现的目的是填补 FFF 暂时中断留给我们的寂寞。我们将会提供由社区创作的各种内容来填补每周五的空虚。社区展示、Mod 聚焦和有关异星工厂更新的文章等等都会是我们常见的话题，但是事实上与异星工厂相关的事物都可能会包含进来，前提是它确实值得一提。&lt;/p&gt; &lt;p&gt;因为本网站是社区驱动的，所以我们得依靠社区的贡献来保持活跃。由于时间限制，我自己写了第一篇（我实际上仅仅是在两天前想搞一下试试的），但是只有当大家都做出贡献，我们才能更好。这点文末会有详细的介绍，我们先进入正题吧，下面是第一篇文章。&lt;/p&gt; &lt;h2 id=&quot;社区展示-train-jump-tions&quot;&gt;社区展示: &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions&quot;&gt;Train JUMP-tions&lt;/a&gt;&lt;/h2&gt; &lt;p&gt;我知道，我已经打破了自己设定的规则（这是mod不是社区展示）。这些凌霄飞车是 &lt;a href=&quot;https://mods.factorio.com/mod/RenaiTransportation&quot;&gt;Renai Transportation&lt;/a&gt; Mod 的一部分。但这实际上这个 Mod 是纯粹为了社区展示而开发的，因为这不是什么正经的 Mod，并不能改善你的游戏体验，而是在可行的情况下进行的逗逼探索，当然了，结果确实很逗。下面请看视频（译者注：油管视频，需要梯子）：&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/QAahBoEqgHQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;看到了吧，Kiplacon 决定自己解决火车遇到的桥或者隧道的问题，并取得了巨大的成就。他研究了使桥梁和隧道正常工作的技巧，并心想：不，我有更好的方法。结果是看起来真是个骚包的场景——火车在空中乱飞，但是令我印象深刻的是，它确确实实在游戏里发挥了作用。这并不是大家认为的不切实际的想法，它实际上已经开发完了，您可以下载使用它。我喜欢从 Mod 中看到这种东西。正如开发人员之一的 wheybags 所说：“太牛了。这才是 Mod 制作的本意。&amp;lt;3”。我非常同意这一点。&lt;/p&gt; &lt;h2 id=&quot;mod-聚焦assembly-analyst&quot;&gt;Mod...</content>
   </entry>
-  
-  
   
   
 </feed>
