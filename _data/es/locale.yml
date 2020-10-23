@@ -1,6 +1,6 @@
 title: Alternative Friday Factorio Fan Facts
 description: La continuación de la comunidad de los amados Factorio Friday Facts
-footer-copyright: Este sitio web es un proyecto hecho por los fans y no tiene relacion con
+footer-copyright: Este sitio web es un proyecto hecho por los fans y no tiene relación con
 home-header: Alternative Friday Factorio Fan Facts
 date-format: "%d-%m-%Y"
 table-of-contents: Tabla de contenidos
@@ -14,30 +14,30 @@ author:
 discuss:
   reddit: Debatir en Reddit
   discord: Debatir en Discord
-  forum: Debatir en los foros de Factorio
+  forum:  Debatir en los foros de Factorio
 about: |
   ## Acerca de
 
-  Alt-F4 es un [blog semanal](http://alt-f4.blog) escrito y editado enteramente por la comunidad de [Factorio](https://factorio.com), y cubre temas varios acerca del mismo, como exposiciones sobre mods, creaciones de la comunidad, o explicaciones acerca del juego.
+  Alt-F4 es un [blog semanal](http://alt-f4.blog/es) escrito y editado en su totalidad por la comunidad de [Factorio](https://factorio.com), y presenta temas variados sobre el como muestras de mods, creaciones de la comunidad y explicaciones sobre el juego.
 
-  Es una continuación de los venerables [Factorio Friday Facts](https://factorio.com/blog/) ('FFF'), los cuales documentaron el proceso de desarrollo de Factorio a lo largo de 360 semanas. Expresaron las creencias de los desarrolladores acerca de las [estrategias de precios](https://www.factorio.com/blog/post/fff-247), nos guiaron a través de su loco [proceso de optimización](https://www.factorio.com/blog/post/fff-176), y detallaron como es el [diseño de una maquina](https://factorio.com/blog/post/fff-351).
+  Es la continuación de los venerables [Factorio Friday Facts](https://factorio.com/blog/) (‘FFF’), que documentaron el desarrollo del juego durante 360 semanas. Expresaron las opiniones de los desarrolladores acera la [estrategia de precio](https://www.factorio.com/blog/post/fff-247), nos guiaron a través de su loco [proceso de optimización](https://www.factorio.com/blog/post/fff-176), y detallaron como es el [diseño de una máquina](https://factorio.com/blog/post/fff-351).
 
-  Luego de [cerrar el círculo](https://factorio.com/blog/post/fff-360) en agosto del 2020, con el lanzamiento final y oficial del juego, los desarrolladores decidieron descontinuar este hábito y tomar un merecido descanso. Pero la comunidad no quería que esta tradición se perdiera, por lo que [se organizaron](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) y [la mantuvieron](http://alt-f4.blog/ALTF4-1). El enfoque se desplazó necesariamente de las vistas internas del desarrollo hacia una mezcla de temas que sean interesantes para la comunidad.
+  Después de [cerrar el círculo](https://factorio.com/blog/post/fff-360) en agosto de 2020 con el lanzamiento oficial del juego, los desarrolladores decidieron frenar este hábito y tomarse un merecido descanso. La comunidad no quería que esta tradición se parara, así que [recogieron el testigo](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) y [lo continuaron](http://alt-f4.blog/es/ALTF4-1). El foco necesariamente cambio de información sobre el desarrollo a temas variados del interés de la comunidad.
 
-  ### Contribute
+  ### Contribuir
 
-  If you want to contribute to this project in any way, be it by submitting your writing, translating the weekly issues, or just hanging out, please join [the Discord](https://discord.gg/AsXAwyV) (or check out [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) for more information. We’d love to have you.
+  Si deseas contribuir en este proyecto de alguna manera, ya sea enviando un artículo, traduciendo las entregas semanales o simplemente pasando el rato, por favor únete [al Discord](https://discord.gg/AsXAwyV) (o mira [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) para más información. Nos encantaría tenerte.
 
-  ### Credits
+  ### Créditos
 
-  Website created by *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* and *psihius*.
+  Página web creada por *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* y *psihius*.
 
-  Hosting graciously provided by the [FMMO community](https://fmmo.eu/discord). Special thanks to *psihius* for setting us up!
+  Alojamiento proporcionado gentilmente por la [comunidad FMMO](https://fmmo.eu/discord). ¡Un agradecimiento especial a *psihius* por poner en funcionamiento esto!
 
-  Some of the assets and styling are the exclusive property of [Wube Software](https://factorio.com/game/about), used with their explicit permission.
+  Algunos recursos y diseños son propiedad exclusiva de [Wube Software](https://factorio.com/game/about), son usados con su permiso explícito.
 
 not-found:
   msg: |
-    ## Lo sentimos, pero la página a la que intenta acceder no existe.
-    ### Puede probar de nuevo dirigiéndose a nuestra
-  btn: página principal
+    ## Lo sentimos, no hemos encontrado la página solicitada.
+    ### Puedes probar a recargar la página o
+  btn: volver a la página principal
