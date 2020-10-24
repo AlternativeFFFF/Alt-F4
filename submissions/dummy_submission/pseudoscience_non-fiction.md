@@ -1,6 +1,6 @@
 ## A scientific examination of the Factorio world
 
-Suspension of disbelief is a well-known concept, however that does not stop some of us from ignoring it completely. Some days ago I saw a [Reddit post](https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/) about calculating the density of Nauvis, and that gave me an idea of making a just-for-fun compilation of all the ridiculous science that goes on in the Factorio universe. After all, we've always been just a bunch of nerds at heart , so why not indulge in some recreational nerdiness?
+Suspension of disbelief is a well-known concept, however that does not stop some of us from ignoring it completely. Some days ago I saw a [Reddit post](https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/) about calculating the density of Nauvis, and that gave me an idea of making a just-for-fun compilation of all the ridiculous science that goes on in the Factorio universe. After all, this community has always been just a bunch of nerds with way too much free time, so why not indulge in some recreational nerdiness?
 
 Obvious warning: This article contains excessive amounts of math; if you have a crippling math allergy, feel free to skip it.
 
