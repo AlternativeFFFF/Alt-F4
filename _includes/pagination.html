@@ -1,4 +1,17 @@
-{% if paginator.total_pages > 1 %}
+<!-- Calculate how many pages we have -->
+{% assign count = 0 %}
+{% for post in site.posts %}
+  {% unless post.draft %}
+    {% assign count = count | plus: 1 %}
+  {% endunless %}
+{% endfor %}
+{% assign mod = count | modulo: 10 %}
+{% assign count = count | divided_by: 10 %}
+{% if mod > 0 %}
+  {% assign count = count | plus: 1 %}
+{% endif %}
+
+{% if count > 1 %}
 <div class="panel-inset text-right mb0 p4 flex flex-end flex-wrap">
   <!-- Previous Button -->
 
@@ -15,7 +28,7 @@
   {% endif %}
 
   <!-- Page Numbers -->
-  {% for page in (1..paginator.total_pages) %}
+  {% for page in (1..count) %}
   {% if page == paginator.page %}
   <a class="button square-sm  active">
     {{ page }}
