@@ -16,11 +16,8 @@ permalink: "404"
   (() => {
     const langs = {
     {% for language in site.languages %}
-    {% unless language == 'en' %}
       '{{language}}':'{{ site.data[language].locale.not-found.title }}',
-    {% endunless %}
     {% endfor %}
-      'en': '{{ site.data["en"].locale.not-found.title }}',
     }
     const language = getLanguage();
     if (language !== 'en') {
