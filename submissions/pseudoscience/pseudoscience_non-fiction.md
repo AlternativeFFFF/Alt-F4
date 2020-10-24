@@ -2,47 +2,27 @@
 
 Suspension of disbelief is a well-known concept, however that does not stop me from ignoring it completely. Some days ago I saw a [Reddit post](https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/) about calculating the density of Nauvis, and that gave me an idea of making a just-for-fun compilation of all the ridiculous science that goes on in the Factorio universe.
 
-Obvious warning: This article contains excessive amounts of math, which is formatted as code. If you have a crippling math allergy, feel free to skip everything that looks like code.
+Obvious warning: This article contains excessive amounts of math, if you have a crippling math allergy, feel free to skip it.
 
 ### Nauvis is a white dwarf
 
 This is a retelling of the Reddit post by [u/DaveMcW](https://www.reddit.com/user/DaveMcW/) that I just mentioned. Note that this assumes Nauvis's day/night cycle is actually caused by rotation, which is something I'll be arguing against later on.
 
-We can express the angular velocity through rotation period:
+For a planet to not rip itself apart, gravitational acceleration must be greater than centripetal acceleration:
 
-<code>w = 2π/T</code>
+$ g > a $
 
-We can express the centripetal acceleration at the equator through radius:
+Using the eqautions for centripetal acceleration and gravitational acceleration, we can show: 
 
-<code>a = rw<sup>2</sup></code>
+$ GM/r^2 > rw^2 $
 
-We can also express acceleration due to gravity at the equator through radius:
+Next, we can substitute and rearrange to get an equation for the density of the planet:
 
-<code>g = GM/r<sup>2</sup></code>
+$ density > 3π / (T^2G) $
 
-For the planet to not rip itself apart, gravitational acceleration must be greater than centripetal acceleration:
+Inputting the values for the constants and time period of Factorio's day/night cycle (T = 25000 ticks = 416.(6) s for anyone curious) we can find:
 
-<code>g > a
-
-GM/r<sup>2</sup> > rw<sup>2</sup>
-
-GM/r<sup>3</sup> > w<sup>2</sup></code>
-
-Now we replace r<sup>3</sup> with the planet's volume:
-
-<code>V = 4πr<sup>3</sup>/3
-
-4πGM/3V > w<sup>2</sup></code>
-
-Let **D** be Nauvis's density:
-
-<code>4πGD/3 > (2π/T)<sup>2</sup>
-
-GD/3 > π/T<sup>2</sup>
-
-T = 25000 ticks = 416.(6) s
-
-D > 3π/GT<sup>2</sup> = 813425.57 kg/m<sup>3</sup></code>
+$ density > 813400 kg/m^2 $
 
 Nauvis's density has to be greater than 813.4 g/cm<sup>3</sup>. That makes Nauvis at least as dense as a white dwarf star. For those of you not in the know, a white dwarf is what's left after a star around the mass of the Sun dies and undergoes collapse, leaving a superheated remnant about the size of the Earth. White dwarves have surface temperatures from 8 000 K to 40 000 K. For comparison, the surface of the Sun is a bit under 6 000 K. Nauvis soil must be an exceptional heat insulator!
 
@@ -56,17 +36,17 @@ An alternative explanation for the day/night cycle, as proposed by some, would b
 
 A single solar panel has a 9 m<sup>2</sup> area and produces 60 kW during daytime. From that number we find that the surface receives at least 6.(6) kW/m<sup>2</sup> (compare to 1 kW/m<sup>2</sup> for Earth). Considering Nauvis's ambient temperature is 15 degrees Celsius, and that it is tidally locked, we can use a rearrangement of the [effective temperature formula](https://en.wikipedia.org/wiki/Effective_temperature#Surface_temperature_of_a_planet):
 
-<code>T<sup>4</sup> = 0.5 * P/σ * (1-a)</code>,
+$ T^4 = 0.5 * P/σ * (1-a) $
 
 where **P** is power received per unit area, **T** is absolute surface temperature, **a** is albedo (what we're trying to find), and **σ** is the Stefan-Boltzmann constant.
 
-<code>a = 1 - 2σT<sup>4</sup>/P
+$ a = 1 - 2σT^4/P $
 
-T = 15 °C = 288.15 K
+$ T = 15 °C = 288.15 K $
 
-P = 6666.(6) W/m<sup>2</sup>
+$ P = 6666.(6) W/m^2 $
 
-a = 0.8827</code>
+$ a = 0.8827 $
 
 Nauvis has to have an albedo of at least 0.883 to maintain 15 °C. This means it reflects at least 88.3% of the light that hits it. Since the efficiency of our solar panels is probably less than 100%, and Nauvis is probably not an ideal blackbody, the albedo is likely even higher.
 
@@ -80,7 +60,7 @@ Now it's time to come back from space and take a look at the artificial things. 
 
 To be fully honest, if we consider that the U-238 also contributes to a fuel cell's power, we get a somewhat smaller nuke. It's still ridiculous, but a bit less so.
 
-Speaking of nuclear power,
+*Speaking of nuclear power,*
 
 ### Nuclear fuel is 3 times hotter than the surface of the Sun
 
@@ -88,29 +68,29 @@ Locomotives have a constant energy consumption of 600 kW, but better fuel makes 
 
 We can express power output through acceleration and speed:
 
-<code>P = A/t = Fd/t = Fv = mav</code>
+$ P = A/t = Fd/t = Fv = mav $
 
 Let **N** be efficiency:
 
-<code>N = mav/600 kW</code>
+$ N = mav/600 kW $
 
 So fuel efficiency divided by coal efficiency is exactly equal to new top speed times new acceleration, meaning nuclear fuel is 1.15 * 2.5 = 2.875 times more efficient than coal. Since locomotives can run on any fuel, it's safe to assume they run on a [heat engine](https://en.wikipedia.org/wiki/Heat_engine). If this engine runs as efficiently as possible (based on a [Carnot cycle](https://en.wikipedia.org/wiki/Carnot_cycle)), its efficiency is:
 
-<code>N = 1 - T<sub>c</sub>/T<sub>h</sub></code>,
+$ N = 1 - T_{c}/T_{h} $
 
 where **T<sub>c</sub>** is absolute temperature of the cold part of the engine (ambient temperature), and **T<sub>h</sub>** is absolute temperature of the hot part of the engine (heated by fuel). It is reasonable to assume that coal burns at 165 °C, based on boiler steam temperature. This means efficiency of a train running on coal is:
 
-<code>N = 1 - 288.15 K/438.15 K = 0.3423</code>
+$ N = 1 - 288.15 K/438.15 K = 0.3423 $
 
 Efficiency of nuclear fuel is 2.875 times greater (look above), meaning it is equal to 0.98425. This means that:
 
-<code>1 - 288.15 K/T = 0.98425
+$ 1 - 288.15 K/T = 0.98425 $
 
-T = 288.15 K/(1-0.98425) = 18297.525 K = 18024.375 °C</code>
+$ T = 288.15 K/(1-0.98425) = 18297.525 K = 18024.375 °C $
 
 Nuclear fuel has a temperature of over *18000 degrees*. Funnily enough, if boiler steam was just 3.68 degrees hotter, nuclear fuel's efficiency would become exactly 1, and if it went even a bit over 168.68 °C, physics would start breaking.
 
-That's not that big of an issue though, because everything is already broken without it. For example,
+*That's not that big of an issue though, because everything is already broken without it. For example,*
 
 ### Items have unbelievably low densities
 
@@ -122,6 +102,6 @@ Knowing that, the total raw materials needed for a single locomotive weigh a mea
 
 Perhaps Nauvis really is spinning, and doing it fast enough for buoyancy to be acting downwards due to centrifugal force. This is a very good explanation as to why you can fit 240 locomotives in a 1 m<sup>3</sup> chest, it's because they're probably collapsible. What it doesn't explain, however, is how trains can take a 12 meter radius turn while moving at almost 300 km/h and not derail. They should be experiencing almost 60 Gs of acceleration when turning at full speed:
 
-<code>a = v<sup>2</sup>/r = (82.8 m/s)<sup>2</sup>/12 m = 571.32 m/s<sup>2</sup> = 58.26g</code>
+$ a = v^2/r = (82.8 m/s)^2/12 m = 571.32 m/s^2 = 58.26g $
 
 Either the curved rails are insanely sloped, or the trains have rollercoaster wheels. I personally really enjoy the thought of balloon rollercoaster trains zipping around at 300 km/h with an 18 thousand degree engine, but perhaps that's just me.
