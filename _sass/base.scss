@@ -249,3 +249,27 @@ figcaption {
   text-align: center;
   font-style: italic;
 }
+
+div.h100 {
+  height: 100%;
+}
+
+div.p16 {
+  padding: 16px;
+}
+
+.img-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    box-shadow: none !important;
+    margin: auto 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .img-pair {
+    flex-direction: column;
+  }
+}
