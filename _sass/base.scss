@@ -273,3 +273,12 @@ div.p16 {
     flex-direction: column;
   }
 }
+sup {
+  vertical-align: super;
+  font-size: 0.7rem;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: 0.7rem;
+}
