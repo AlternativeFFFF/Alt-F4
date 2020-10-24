@@ -14,7 +14,7 @@ author:
 discuss:
   reddit: Debatir en Reddit
   discord: Debatir en Discord
-  forum:  Debatir en los foros de Factorio
+  forum: Debatir en los foros de Factorio
 about: |
   ## Acerca de
 
@@ -37,6 +37,7 @@ about: |
   Algunos recursos y diseños son propiedad exclusiva de [Wube Software](https://factorio.com/game/about), son usados con su permiso explícito.
 
 not-found:
+  title: Error 404 - Pagina no encontrada
   msg: |
     ## Lo sentimos, no hemos encontrado la página solicitada.
     ### Puedes probar a recargar la página o
