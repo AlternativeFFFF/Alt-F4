@@ -12,17 +12,13 @@ Large celestial bodies are held together by gravity, so for a planet to not get 
 
 $ \frac{GM}{r^2} > rw^2 $
 
-$ \frac{GM}{r^3} > w^2 $
+$ GM > r^3w^2 $
 
-$ V = \frac{4}{3}\pi r^3 $
+$ \frac{4}{3}\pi r^3 = V \Rightarrow r^3 = \frac{3V}{4\pi} $
 
-$ \frac{4\pi GM}{3V} > w^2 $
+$ GM > \frac{3Vw^2}{4\pi} \Rightarrow G\frac{M}{V} > \frac{3w^2}{4\pi} $
 
-$ w = \frac{2\pi}{T} $
-
-$ \frac{4\pi GM}{3V} > \frac{4\pi^2}{T^2} $
-
-$ \rho = \frac{M}{V} $
+$ \frac{M}{V} = \rho ; w = \frac{2\pi}{T} \Rightarrow \frac{3w^2}{4\pi} = \frac{3\pi}{T^2} $
 
 $ \frac{G\rho}{3} > \frac{\pi}{T^2} $
 
