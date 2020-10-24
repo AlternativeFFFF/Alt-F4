@@ -36,6 +36,7 @@ about: |
   部分素材和样式为 [Wube Software](https://factorio.com/game/about) 独家所有，经其明确许可后使用。
 
 not-found:
+  title: 404 - 未找到页面
   msg: |
     ## 抱歉，我们无法找到请求的页面
     ### 您可以刷新页面或者
