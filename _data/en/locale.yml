@@ -36,6 +36,7 @@ about: |
   Some of the assets and styling are the exclusive property of [Wube Software](https://factorio.com/game/about), used with their explicit permission.
 
 not-found:
+  title: 404 - Page not found
   msg: |
     ## Sorry, we couldn’t find the requested page.
     ### You can try reloading the page or
