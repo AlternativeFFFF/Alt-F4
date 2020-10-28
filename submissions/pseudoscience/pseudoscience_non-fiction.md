@@ -60,7 +60,7 @@ As a comparison, the Moon has an albedo of 0.14 and the Earth has an albedo of 0
 
 Now it’s time to return from space and take a look at the artificial things. One piece of Factorio Uranium-235 can produce 10 fuel cells, each of which contains 8 GJ (let’s ignore the neighbour bonus). This means a single piece of U-235 has 80 GJ of fission energy in it, and since one nuke uses 30 pieces of U-235, with a 20% fission rate (which is what you get with [boosted fission](https://en.wikipedia.org/wiki/Boosted_fission_weapon); something that is required for such a small nuke), it should have an explosive yield of 115 tons of TNT. That doesn’t sound like a lot, but *just the explosion sprite itself* would be 60 tiles across. Such a nuke would destroy everything *completely* in a 100 tile radius, would kill everything in a 250 tile radius, and would do damage in a 500 tile radius (based on [Nukemap](https://nuclearsecrecy.com/nukemap/)).
 
-![A diagram of the effects of a 115 ton nuke overlaid on a map of the tip of Manhattan](https://cdn.discordapp.com/attachments/699618487097884723/769281708263735325/unknown.png)
+![A diagram of the effects of a 115 ton nuke overlaid on a map of the tip of Manhattan](https://media.alt-f4.blog/ALTF4/11/science-1.jpg)
 
 The rings on this diagram denote, from smallest to largest:
 
@@ -110,7 +110,7 @@ This part is based on [u/Maouitippitytappin](https://www.reddit.com/user/Maouiti
 
 Knowing this we can calculate that the raw materials needed for a single locomotive weigh a measly 14.6 kg. Since the locomotive takes up a volume of about 24 m<sup>3</sup> (assuming it’s 2 m high based on how it looks) it has a density of 0.6 kg/m<sup>3</sup>, which is about half as dense as air. This means that locomotives can be used as balloons!
 
-![An image of a brave pioneer using locomotives for aerial transportation](https://media.discordapp.net/attachments/622913335783850040/769291985411899392/yes.png?width=895&height=671)
+![An image of a brave pioneer using locomotives for aerial transportation](https://media.alt-f4.blog/ALTF4/11/science-2.jpg)
 
 Perhaps Nauvis really is spinning, and doing it fast enough for buoyancy to be acting downwards due to centrifugal force. This is a very good explanation as to why you can fit 240 locomotives in a 1 m<sup>3</sup> chest; it’s because they’re probably collapsible. What it doesn’t explain, however, is how trains can take a turn with only a 12 meter radius while moving at just under 300 km/h without derailing. They should be experiencing almost 60 g of acceleration when turning at full speed:
 
