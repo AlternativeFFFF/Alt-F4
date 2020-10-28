@@ -8,9 +8,9 @@ Obvious warning: This article contains excessive amounts of maths; if you have a
 
 This is a retelling of the Reddit post by [u/DaveMcW](https://www.reddit.com/user/DaveMcW/) that I just mentioned. Note that this theory assumes Nauvis’s day/night cycle is actually caused by rotation, which is something I’ll be arguing against later on.
 
-Large celestial bodies are held together by gravity and, for a planet to not get ripped apart by centrifugal force, gravity at the equator must be greater than centripetal force. Assuming a spherical planet, and using the equations for centripetal force and gravity, we can show that:
+Large celestial bodies are held together by gravity and, for a planet to not get ripped apart by [centrifugal force](https://en.wikipedia.org/wiki/Centrifugal_force), gravity at the equator must be greater than [centripetal force](https://en.wikipedia.org/wiki/Centripetal_force). Assuming a spherical planet, and using the equations for centripetal force and gravity, we can show that:
 
-$ \frac{GMm}{r^2} > mr\omega^2 $, where $G$ is the [gravitational constant](https://en.wikipedia.org/wiki/Gravitational_constant), $r$ is planetary radius, $M$ is planetary mass, $\omega$ is planet's angular speed, and $m$ is the mass of the object those forces are acting upon;
+$ \frac{GMm}{r^2} > mr\omega^2 $, where $G$ is the [gravitational constant](https://en.wikipedia.org/wiki/Gravitational_constant), $r$ is planetary radius, $M$ is planetary mass, $\omega$ is planet’s angular speed, and $m$ is the mass of the object those forces are acting upon;
 
 $ \frac{GM}{r^2} > r\omega^2 \quad\Rightarrow\quad GM > r^3\omega^2 $
 
@@ -26,11 +26,11 @@ We end up with an expression of density only through rotational period. Inputtin
 
 $ \rho > 813,400 \mathrm{kg/m^3} $
 
-Nauvis’s density has to be greater than 813,400 kg/m<sup>3</sup>. For comparison, steel’s density is 8,050 kg/m<sup>3</sup>, lead’s density is 11,350 kg/m<sup>3</sup>, and osmium metal, the densest substance on Earth, has a density of 22,570 kg/m<sup>3</sup>. 813,400 kg/m<sup>3</sup> is such an extreme number that Nauvis has to be a white dwarf star to be that dense. For those of you not in the know, a white dwarf is what’s left after a small star dies and undergoes collapse, leaving a superheated remnant about the size of the Earth. White dwarves have surface temperatures from 8,000 K to 40,000 K. For comparison, the surface of the Sun is a bit under 6,000 K. Nauvis soil must be an exceptional heat insulator!
+Nauvis’s density has to be greater than 813,400 kg/m<sup>3</sup>. For comparison, steel’s density is 8,050 kg/m<sup>3</sup>, lead’s density is 11,350 kg/m<sup>3</sup>, and osmium metal, the densest substance on Earth, has a density of 22,570 kg/m<sup>3</sup>. 813,400 kg/m<sup>3</sup> is such an extreme number that Nauvis must be a white dwarf star to be that dense. A white dwarf is what’s left after a small star dies and undergoes collapse, leaving a superheated remnant about the size of the Earth. White dwarves have surface temperatures from 8,000 K to 40,000 K. For comparison, the surface of the Sun is a bit under 6,000 K. Nauvis soil must be an exceptional heat insulator!
 
 ### A bit about Nauvis’s orbital mechanics
 
-Since all shadows are at a constant length and direction throughout the day we must conclude that the light source’s position in the sky doesn’t change, meaning Nauvis is [tidally locked](https://en.wikipedia.org/wiki/Tidal_locking) to its star. It follows that the day/night cycle we observe is caused by some object occluding the light. Based on the frequency of the nights, that object is probably in orbit around Nauvis, and it can’t be a moon since a moon large enough for such long nights would tidally lock Nauvis to itself. So, night must be caused by a cloud of debris in orbit of Nauvis — which also provides a reason for the Engineer crashing there in the first place: the ship hit some rock in orbit.
+Since all shadows remain a constant length and direction throughout the day we must conclude that the light source’s position in the sky doesn’t change, meaning Nauvis is [tidally locked](https://en.wikipedia.org/wiki/Tidal_locking) to its star. It follows that the day/night cycle we observe is caused by some object occluding the light. Based on the frequency of the nights, that object is probably in orbit around Nauvis, and it can’t be a moon since a moon large enough for such long nights would tidally lock Nauvis to itself. So, night must be caused by a cloud of debris in orbit of Nauvis — which also provides a reason for the Engineer crashing there in the first place: the ship hit some rock in orbit.
 
 An alternative explanation for the day/night cycle, proposed by some, is that Nauvis’s parent star is a [Cepheid variable](https://en.wikipedia.org/wiki/Cepheid_variable), which is a type of star that varies in size, temperature, and brightness in a regular pattern. I personally think this is impossible since the luminosity variance is way too high, especially for such a short period.
 
@@ -54,9 +54,9 @@ As a comparison, the Moon has an albedo of 0.14 and the Earth has an albedo of 0
 
 ### Nukes are severely underpowered
 
-Now it’s time to return from space and take a look at the artificial things. One piece of Factorio Uranium-235 can produce 10 fuel cells, each of which contains 8 GJ (let’s ignore the neighbour bonus). This means a single piece of U-235 has 80 GJ of fission energy in it, and since one nuke uses 30 pieces of U-235, with a 20% fission rate (which is what you get with [boosted fission](https://en.wikipedia.org/wiki/Boosted_fission_weapon); something that is required for such a small nuke), it should have an explosive yield of 115 tons of TNT. That doesn’t sound like a lot, but *just the explosion sprite itself* would be 60 tiles across. Such a nuke would destroy everything *completely* in a 100 tile radius, would kill everything in a 250 tile radius, and would do damage in a 500 tile radius (based on [Nukemap](https://nuclearsecrecy.com/nukemap/)).
+Now it’s time to return from space and take a look at the artificial things. One piece of Factorio Uranium-235 can produce 10 fuel cells, each of which contains 8 GJ (let’s ignore the [neighbour bonus](https://wiki.factorio.com/Nuclear_reactor#Neighbour_bonus)). This means a single piece of U-235 has 80 GJ of fission energy in it, and since one nuke uses 30 pieces of U-235, with a 20% fission rate (which is what you get with [boosted fission](https://en.wikipedia.org/wiki/Boosted_fission_weapon); something that is required for such a small nuke), it should have an explosive yield of 115 tons of TNT. That doesn’t sound like a lot, but *just the explosion sprite itself* would be 60 tiles across. Such a nuke would destroy everything *completely* in a 100 tile radius, would kill everything in a 250 tile radius, and would do damage in a 500 tile radius (based on [Nukemap](https://nuclearsecrecy.com/nukemap/)).
 
-For comparison, the in-game nuke only does damage within less than a 40 tile radius, so that's a *12.5x* difference in area of effect.
+For comparison, the in-game nuke only does damage within less than a 40 tile radius, so that’s a *12.5x* difference in area of effect.
 
 ![A diagram of the effects of a 115 ton nuke overlaid on a map of the tip of Manhattan](https://media.alt-f4.blog/ALTF4/11/science-1.jpg)
 
@@ -78,7 +78,7 @@ Locomotives have a constant energy consumption of 600 kW, but better fuel makes 
 
 We can express power output through acceleration and speed:
 
-$ P_u = \frac{dA}{dt} = \frac{Fds}{dt} = Fv = mav $, where $P_u$ is useful power output, $m$ is train's mass, $a$ is train's acceleration, and $v$ is train's top speed.
+$ P_u = \frac{dA}{dt} = \frac{Fds}{dt} = Fv = mav $, where $P_u$ is useful power output, $m$ is train’s mass, $a$ is train’s acceleration, and $v$ is train’s top speed.
 
 Let $N$ be efficiency:
 
@@ -110,7 +110,7 @@ Knowing this we can calculate that the raw materials needed for a single locomot
 
 ![An image of a brave pioneer using locomotives for aerial transportation](https://media.alt-f4.blog/ALTF4/11/science-2.jpg)
 
-Perhaps Nauvis really is spinning, and doing it fast enough for buoyancy to be acting downwards due to centrifugal force. This is a very good explanation as to why you can fit 240 locomotives in a 1 m<sup>3</sup> chest; it’s because they’re probably collapsible. What it doesn’t explain, however, is how trains can take a turn with only a 12 meter radius while moving at just under 300 km/h without derailing. They should be experiencing almost *60 g* of acceleration when turning at full speed:
+Perhaps Nauvis really is spinning, and doing it fast enough for buoyancy to be acting downwards due to centrifugal force. This is a very good explanation as to how you can fit 240 locomotives in a 1 m<sup>3</sup> chest; it’s because they’re probably collapsible. What it doesn’t explain, however, is how trains can take a turn with only a 12 meter radius while moving at just under 300 km/h without derailing. They should be experiencing almost *60 g* of acceleration when turning at full speed:
 
 $ a = \frac{v^2}{r} = \frac{(82.8\mathrm{m/s})^2}{12\mathrm{m}} = 571.32\mathrm{m/s^2} = 58.26g $
 
