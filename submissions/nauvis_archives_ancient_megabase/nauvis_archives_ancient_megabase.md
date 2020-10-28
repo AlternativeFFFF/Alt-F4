@@ -1,8 +1,10 @@
 ## Nauvis Archives: Ancient Megabase <author>stringweasel</author>
 
-Since the beginning players have been pusing the limits of Factorio. To see how absolutely massive they can build their factories before the game starts grind to a halt and succumb to a slow UPS death. And over the years these limits has been broken time and time again, each time reaching a new record. Currently the record seems to be Swolar's [20kspm base](https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/). Three years ago the largest base was likely Accidental chef which ran at 3kspm. To break these limits strategies had to change. But what did it look like 5 years ago, before we even had Space Science?
+Since the beginning players have been pushing the limits of Factorio. Seeing how absolutely massive they can build their factories before the game starts grind to a halt and succumb to a slow UPS death. And over the years these limits has been broken time and time again, each time reaching a new record. Currently the record seems to be [u/swolar](https://www.reddit.com/user/swolar/)'s [60UPS 20kspm base](https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/). Three years ago the largest base was approximately half of swolar's size, which was likely [u/AccidentalChef](https://www.reddit.com/user/AccidentalChef/)'s which ran at [10 rpm](https://www.reddit.com/r/factorio/comments/5osdaa/my_first_gigafactory_10_rockets_per_minute/?utm_source=share&utm_medium=web2x&context=3). You will notice the metric being `rpm`, or `rocket-per-minute`, since it was before the [Research Revolution](https://www.factorio.com/blog/post/fff-159)™. But how did the biggest megabase look 5 years ago - before rocket launches? How does it compare to modern megabases? And what did it take to build?
+
+### The 1 Rocket Defence Per Minute Factory
 
 ### The Designer: DaveMcW
 
-It's important to know who built it... ? The player who designed this is not any old Factorio player. Chances are that you have taken part in his trends, marvelled at his interesting hacks, or use the blueprint string system he designed.
+Before the base is explored,  The player who designed this is not any old Factorio player. Chances are that you have taken part in his trends, marvelled at his interesting hacks, or use the blueprint string system he designed.
 
