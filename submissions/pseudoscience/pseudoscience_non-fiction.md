@@ -10,7 +10,7 @@ This is a retelling of the Reddit post by [u/DaveMcW](https://www.reddit.com/use
 
 Large celestial bodies are held together by gravity and, for a planet to not get ripped apart by centrifugal force, gravity at the equator must be greater than centripetal force. Assuming a spherical planet, and using the equations for centripetal force and gravity, we can show that:
 
-$ \frac{GMm}{r^2} > mr\omega^2 $, where $G$ is the [gravitational constant](https://en.wikipedia.org/wiki/Gravitational_constant), $r$ is planetary radius, $M$ is planetary mass, $\omega$ is planet's angular speed, and $m$ is the mass of the object those forces act upon;
+$ \frac{GMm}{r^2} > mr\omega^2 $, where $G$ is the [gravitational constant](https://en.wikipedia.org/wiki/Gravitational_constant), $r$ is planetary radius, $M$ is planetary mass, $\omega$ is planet's angular speed, and $m$ is the mass of the object those forces are acting upon;
 
 $ \frac{GM}{r^2} > r\omega^2 \quad\Rightarrow\quad GM > r^3\omega^2 $
 
