@@ -1,6 +1,6 @@
 ## Nauvis Archives: Outdated Techniques <author>stringweasel</author>
 
-Over the years, Factorio has changed significantly. New players, new mechanics, new developers, new metas, etc. And as things change, some techniques for playing get left behind to make way for new and improved ways. Like humans no longer being required to walk everywhere or check their ~~Myspace~~ ~~Facebook~~ TikTok regularly; the same has happened in Factorio. There are old rituals and techniques that we no longer use in the modern age. I always find it interesting to look back and see what was done in the past, so that’s what we’ll do here.
+Over the years, Factorio has changed significantly. New players, new mechanics, new developers, new strategies, etc. And as things change, some techniques for playing get left behind to make way for new and improved ways. Like long ago when [Kerbals](https://www.kerbalspaceprogram.com/) landed on Mun using only [wings as landing gear](https://youtu.be/bGd_BFu9e10?t=581), or Minecraft players that built [minecart boosters](https://minecraft.gamepedia.com/Tutorials/Minecart_booster) to propel their carts. There are old rituals and techniques that we no longer use in the modern age. I always find it interesting to look back and see what was done in the past, so that’s what we’ll investigate here.
 
 ### Victory Poles
 
