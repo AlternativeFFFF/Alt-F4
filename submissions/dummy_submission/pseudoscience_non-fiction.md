@@ -24,7 +24,7 @@ $ \frac{G\rho}{3} > \frac{\pi}{T^2} $
 
 $ \rho > \frac{3\pi}{GT^2} $
 
-Inputting the values for the constants and the period of Factorio’s day/night cycle (T = 25,000 ticks = 416.(6) seconds, for anyone unaware) we find:
+Inputting the values for the constants and the period of Factorio’s day/night cycle (T = 25,000 ticks = 416.(6) seconds) we find:
 
 $ \rho > 813,400 \mathrm{kg/m^3} $
 
@@ -34,11 +34,11 @@ Nauvis’s density has to be greater than 813.4 g/cm<sup>3</sup>. For comparison
 
 Since all shadows are at a constant length and direction throughout the day we must conclude that the light source’s position in the sky doesn’t change, meaning Nauvis is [tidally locked](https://en.wikipedia.org/wiki/Tidal_locking). It follows that the day/night cycle we observe is caused by some object occluding the light. Based on the frequency of the nights, that object is probably in orbit around Nauvis, and it can’t be a moon since a moon large enough for such long nights would tidally lock Nauvis to itself. So, night must be caused by a cloud of debris in orbit of Nauvis—which also provides a reason for the Engineer crashing there in the first place: the ship hit some rock in orbit.
 
-An alternative explanation for the day/night cycle, proposed by some, is that Nauvis’s parent star is a [Cepheid variable](https://en.wikipedia.org/wiki/Cepheid_variable), which is a type of star that varies in terms of size, temperature, and brightness in a regular pettern. I personally think this is impossible since the luminosity variance is way too high, especially for such a short period.
+An alternative explanation for the day/night cycle, proposed by some, is that Nauvis’s parent star is a [Cepheid variable](https://en.wikipedia.org/wiki/Cepheid_variable), which is a type of star that varies in size, temperature, and brightness in a regular pattern. I personally think this is impossible since the luminosity variance is way too high, especially for such a short period.
 
 ### Nauvis reflects at least 88.3% of all light that hits it
 
-A single Factorio solar panel has an area of 9 m<sup>2</sup> and produces 60 kW during daytime. From that number we find that the surface receives at least 6.(6) kW/m<sup>2</sup> (compared to 1 kW/m<sup>2</sup> for Earth). Considering Nauvis’s ambient temperature is 15 degrees Celsius, and that it is tidally locked, we can use a slightly modified [effective temperature formula](https://en.wikipedia.org/wiki/Effective_temperature#Surface_temperature_of_a_planet):
+A single Factorio solar panel has an area of 9 m<sup>2</sup> and produces 60 kW during daytime. From those numbers we find that the surface receives at least 6.(6) kW/m<sup>2</sup> (compared to 1 kW/m<sup>2</sup> for Earth). Considering Nauvis’s ambient temperature is 15 degrees Celsius, and that it is tidally locked, we can use a slightly modified [effective temperature formula](https://en.wikipedia.org/wiki/Effective_temperature#Surface_temperature_of_a_planet):
 
 $ T = \root{4}\of{\frac{1}{2}\frac{P(1-a)}{\sigma}} $
 
@@ -58,11 +58,11 @@ As a comparison, the Moon has an albedo of 0.14 and the Earth has an albedo of 0
 
 ### Nukes are severely underpowered
 
-Now it’s time to return from space and take a look at the artificial things. One piece of Factorio Uranium-235 can produce 10 fuel cells, each of which contains 8 GJ (let’s ignore the neighbour bonus). This means a single unit of U-235 has 80 GJ of fission energy in it, and since one nuke uses 30 pieces of U-235, with a 20% fission rate (which is what you get with boosted fission; something that is required for such a small nuke), it should have an explosive yield of 115 tons of TNT. That doesn’t sound like a lot, but *just the explosion sprite itself* would be 60 tiles across. Such a nuke would destroy everything *completely* in a 100 tile radius, would kill everything in a 250 tile radius, and would do damage in a 500 tile radius (based on [Nukemap](https://nuclearsecrecy.com/nukemap/)).
+Now it’s time to return from space and take a look at the artificial things. One piece of Factorio Uranium-235 can produce 10 fuel cells, each of which contains 8 GJ (let’s ignore the neighbour bonus). This means a single piece of U-235 has 80 GJ of fission energy in it, and since one nuke uses 30 pieces of U-235, with a 20% fission rate (which is what you get with [boosted fission](https://en.wikipedia.org/wiki/Boosted_fission_weapon); something that is required for such a small nuke), it should have an explosive yield of 115 tons of TNT. That doesn’t sound like a lot, but *just the explosion sprite itself* would be 60 tiles across. Such a nuke would destroy everything *completely* in a 100 tile radius, would kill everything in a 250 tile radius, and would do damage in a 500 tile radius (based on [Nukemap](https://nuclearsecrecy.com/nukemap/)).
 
 ![A diagram of the effects of a 115 ton nuke overlaid on a map of the tip of Manhattan](https://cdn.discordapp.com/attachments/699618487097884723/769281708263735325/unknown.png)
 
-What the rings on this diagram mean, from smallest to largest:
+The rings on this diagram denote, from smallest to largest:
 
 * Crater and crater lip (scorch mark sprite)
 * Fireball (explosion sprite)
@@ -86,7 +86,7 @@ Let **N** be efficiency:
 
 $ N = \frac{mav}{600\mathrm{kW}} $
 
-So, fuel efficiency divided by coal efficiency is exactly equal to new top speed times new acceleration, meaning nuclear fuel is 1.15 * 2.5 = 2.875 times more efficient than coal. Since locomotives can run on any fuel, it’s safe to assume they run on a [heat engine](https://en.wikipedia.org/wiki/Heat_engine). If this engine runs as efficiently as possible (based on a [Carnot cycle](https://en.wikipedia.org/wiki/Carnot_cycle)), its efficiency is:
+So, fuel efficiency divided by coal efficiency is exactly equal to new top speed times new acceleration, meaning nuclear fuel is 1.15 * 2.5 = 2.875 times more efficient than coal. Since locomotives can run on any fuel, it’s safe to assume they use a [heat engine](https://en.wikipedia.org/wiki/Heat_engine). If this engine runs as efficiently as possible (based on a [Carnot cycle](https://en.wikipedia.org/wiki/Carnot_cycle)), its efficiency is:
 
 $ N = 1 - \frac{T_{c}}{T_{h}} $
 
@@ -106,13 +106,13 @@ Nuclear fuel thus has a temperature of over *18,000 degrees Celcius*. Funnily en
 
 ### Items have unbelievably low densities
 
-This part is based on [u/Maouitippitytappin](https://www.reddit.com/user/Maouitippitytappin/)’s [Reddit post](https://www.reddit.com/r/factorio/comments/j8cxvv/my_journey_to_find_scale_in_factorio/) about their journey to find scale in Factorio. To recap their post: by knowing the energy consumption of basic furnace-based iron smelting we can find the mass of a single iron plate, which ends up being only around 40 grams. Similarly, one copper plate is about 65 grams. (Sources may vary, you might get different search results.)
+This part is based on [u/Maouitippitytappin](https://www.reddit.com/user/Maouitippitytappin/)’s [Reddit post](https://www.reddit.com/r/factorio/comments/j8cxvv/my_journey_to_find_scale_in_factorio/) about their journey to find scale in Factorio. To recap their post: by knowing the energy consumption of basic furnace-based iron smelting we can find the mass of a single iron plate, which turns out to be only around 40 grams. Similarly, one copper plate is about 65 grams. (Sources may vary; you might get different search results.)
 
-Knowing that we can calculate that the raw materials needed for a single locomotive weigh a measly 14.6 kg, while the locomotive itself takes up a volume of about 24 m<sup>3</sup> (assuming it’s 2 m high based on how it looks), meaning it has a density of 0.6 kg/m<sup>3</sup>, which is about half as dense as air. This means that locomotives can be used as balloons!
+Knowing this we can calculate that the raw materials needed for a single locomotive weigh a measly 14.6 kg. Since the locomotive takes up a volume of about 24 m<sup>3</sup> (assuming it’s 2 m high based on how it looks) it has a density of 0.6 kg/m<sup>3</sup>, which is about half as dense as air. This means that locomotives can be used as balloons!
 
 ![An image of a brave pioneer using locomotives for aerial transportation](https://media.discordapp.net/attachments/622913335783850040/769291985411899392/yes.png?width=895&height=671)
 
-Perhaps Nauvis really is spinning, and doing it fast enough for buoyancy to be acting downwards due to centrifugal force. This is a very good explanation as to why you can fit 240 locomotives in a 1 m<sup>3</sup> chest; it’s because they’re probably collapsible. What it doesn’t explain, however, is how trains can take a turn with only a 12 meter radius while moving at just under 300 km/h without derailing. They should be experiencing almost 60 G’s of acceleration when turning at full speed:
+Perhaps Nauvis really is spinning, and doing it fast enough for buoyancy to be acting downwards due to centrifugal force. This is a very good explanation as to why you can fit 240 locomotives in a 1 m<sup>3</sup> chest; it’s because they’re probably collapsible. What it doesn’t explain, however, is how trains can take a turn with only a 12 meter radius while moving at just under 300 km/h without derailing. They should be experiencing almost 60 g of acceleration when turning at full speed:
 
 $ a = \frac{v^2}{r} = \frac{(82.8\mathrm{m/s})^2}{12\mathrm{m}} = 571.32\mathrm{m/s^2} = 58.26g $
 
