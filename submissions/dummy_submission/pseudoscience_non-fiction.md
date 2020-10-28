@@ -1,6 +1,6 @@
-## A scientific examination of the Factorio world
+## A scientific examination of the Factorio world <author>pocarski</author>
 
-Suspension of disbelief is a well-known concept, however that does not stop some of us from ignoring it completely. Some days ago I saw a [Reddit post](https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/) about calculating the density of Nauvis, and that gave me an idea of making a just-for-fun compilation of all the ridiculous science that goes on in the Factorio universe. After all, this community has always been just a bunch of nerds with way too much free time, so why not indulge in some recreational nerdiness?
+Suspension of disbelief is a well-known concept, which does not stop some of us from ignoring it completely. I recently saw a [Reddit post](https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/) about calculating the density of Nauvis, and that gave me an idea of making a just-for-fun compilation of all the ridiculous science that goes on in the Factorio universe. After all, this community has always been just a bunch of nerds with way too much free time, so why not indulge in some recreational nerdiness?
 
 Obvious warning: This article contains excessive amounts of math; if you have a crippling math allergy, feel free to skip it.
 
@@ -32,13 +32,13 @@ Nauvis's density has to be greater than 813.4 g/cm<sup>3</sup>. For comparison, 
 
 ### A bit about Nauvis's orbital mechanics
 
-Since the shadows are at a constant length and direction throughout the day, the only possible explanation is that the light source's position in the sky doesn't change, meaning Nauvis is tidally locked. This means the day/night cycle is caused by a different object occluding the light. Based on the frequency of the nights, that object is probably in orbit around Nauvis, and it can't be a moon, since a moon large enough for such long nights would tidally lock Nauvis to itself. So night must be caused by a cloud of debris in orbit of Nauvis, which also gives a reason for the Engineer crashing there in the first place - the ship hit some rock in orbit.
+Since the shadows are at a constant length and direction throughout the day, the only possible explanation is that the light source's position in the sky doesn't change, meaning Nauvis is [tidally locked](https://en.wikipedia.org/wiki/Tidal_locking). It follows that the day/night cycle is caused by a different object occluding the light. Based on the frequency of the nights, that object is probably in orbit around Nauvis, and it can't be a moon, since a moon large enough for such long nights would tidally lock Nauvis to itself. So night must be caused by a cloud of debris in orbit of Nauvis, which also gives a reason for the Engineer crashing there in the first place - the ship hit some rock in orbit.
 
-An alternative explanation for the day/night cycle, as proposed by some, would be that Nauvis's parent star is a Cepheid variable, which I personally think is impossible, since the luminosity variance is way too high, especially for such a short period.
+An alternative explanation for the day/night cycle, as proposed by some, would be that Nauvis's parent star is a [Cepheid variable](https://en.wikipedia.org/wiki/Cepheid_variable), which is a type of star that varies in terms of size, temperature and brightness in a regular interval. I personally think this is impossible, since the luminosity variance is way too high, especially for such a short period.
 
 ### Nauvis reflects at least 88.3% of all light that hits it
 
-A single solar panel has a 9 m<sup>2</sup> area and produces 60 kW during daytime. From that number we find that the surface receives at least 6.(6) kW/m<sup>2</sup> (compare to 1 kW/m<sup>2</sup> for Earth). Considering Nauvis's ambient temperature is 15 degrees Celsius, and that it is tidally locked, we can use a slightly modified [effective temperature formula](https://en.wikipedia.org/wiki/Effective_temperature#Surface_temperature_of_a_planet):
+A single Factorio solar panel has an area of 9 m<sup>2</sup> and produces 60 kW during daytime. From that number we find that the surface receives at least 6.(6) kW/m<sup>2</sup> (compared to 1 kW/m<sup>2</sup> for Earth). Considering Nauvis's ambient temperature is 15 degrees Celsius, and that it is tidally locked, we can use a slightly modified [effective temperature formula](https://en.wikipedia.org/wiki/Effective_temperature#Surface_temperature_of_a_planet):
 
 $ T = \root{4}\of{\frac{1}{2}\frac{P(1-a)}{\sigma}} $
 
@@ -54,11 +54,11 @@ $ a = 0.8827 $
 
 Nauvis has to have an albedo of at least 0.883 to maintain 15 °C. This means it reflects at least 88.3% of the light that hits it. Since the efficiency of our solar panels is probably less than 100%, and Nauvis is probably not an ideal blackbody, the albedo is likely even higher.
 
-As some comparison, the Moon has an albedo of 0.14, and the Earth has an albedo of 0.306. If the Moon had an albedo of 0.883, it would be 6.3 times brighter. If the Earth had an albedo of 0.883, it would have an average surface temperature of -88.5 °C.
+As a comparison, the Moon has an albedo of 0.14, and the Earth has an albedo of 0.306. If the Moon had an albedo of 0.883, it would be 6.3 times brighter. If the Earth had an albedo of 0.883, it would have an average surface temperature of -88.5 °C.
 
 ### Nukes are severely underpowered
 
-Now it's time to come back from space and take a look at the artificial things. One piece of uranium-235 can produce 10 fuel cells, each of which contains 8 GJ (let's not think about neighbor bonus). This means a single item of U-235 has 80 GJ of fission energy in it, and since one nuke uses 30 pieces of U-235, with a 20% fission rate (which is what you get with boosted fission; something that is required for such a small nuke), it should have an explosive yield of 115 tons of TNT. That doesn't sound like a lot, but *just the explosion sprite itself* would be 60 tiles across. Such a nuke would destroy everything *completely* in a 100 tile radius, would kill everything in a 250 tile radius, and would do damage in a 500 tile radius (based on [Nukemap](https://nuclearsecrecy.com/nukemap/)).
+Now it's time to return from space and take a look at the artificial things. One piece of Factorio Uranium-235 can produce 10 fuel cells, each of which contains 8 GJ (let's ignore the neighbor bonus). This means a single item of U-235 has 80 GJ of fission energy in it, and since one nuke uses 30 pieces of U-235, with a 20% fission rate (which is what you get with boosted fission; something that is required for such a small nuke), it should have an explosive yield of 115 tons of TNT. That doesn't sound like a lot, but *just the explosion sprite itself* would be 60 tiles across. Such a nuke would destroy everything *completely* in a 100 tile radius, would kill everything in a 250 tile radius, and would do damage in a 500 tile radius (based on [Nukemap](https://nuclearsecrecy.com/nukemap/)).
 
 ![A depiction of the effects of a 115 ton nuke overlaid over the very tip of Manhattan](https://cdn.discordapp.com/attachments/699618487097884723/769281708263735325/unknown.png)
 
@@ -72,7 +72,7 @@ What the rings on this diagram mean, from smallest to largest:
 
 To be fully honest, if we consider that the U-238 also contributes to a fuel cell's power, we get a somewhat smaller nuke. It's still ridiculous, but a bit less so.
 
-*Speaking of nuclear power,*
+*Speaking of nuclear power ...*
 
 ### Nuclear fuel is 3 times hotter than the surface of the Sun
 
@@ -100,15 +100,15 @@ $ 1 - \frac{288.15\mathrm{K}}{T} = 0.98425 $
 
 $ T = \frac{288.15\mathrm{K}}{1-0.98425} = 18297.525\mathrm{K} = 18024.375\mathrm{°C} $
 
-Nuclear fuel has a temperature of over *18000 degrees*. Funnily enough, if boiler steam was just 3.68 degrees hotter, nuclear fuel's efficiency would become exactly 1, and if it went even a bit over 168.68 °C, physics would start breaking.
+Nuclear fuel thus has a temperature of over *18000 degrees*. Funnily enough, if boiler steam was just 3.68 degrees hotter, nuclear fuel's efficiency would become exactly 1, and if it went even a bit over 168.68 °C, physics would start breaking.
 
-*That's not that big of an issue though, because everything is already broken without it. For example,*
+*That's not that big of an issue though, because everything is already broken without it. For example ...*
 
 ### Items have unbelievably low densities
 
 This part is based on [u/Maouitippitytappin](https://www.reddit.com/user/Maouitippitytappin/)'s [Reddit post](https://www.reddit.com/r/factorio/comments/j8cxvv/my_journey_to_find_scale_in_factorio/) about their journey to find scale in Factorio. To recap their post: by knowing the energy consumption of basic furnace-based iron smelting, we can find the mass of 1 iron plate, which ends up being only around 40 grams. Similarly, 1 copper plate is about 65 grams. (Sources may vary, you might get different search results)
 
-Knowing that, the total raw materials needed for a single locomotive weigh a measly 14.6 kilograms, while the locomotive itself takes up a volume of about 24 m<sup>3</sup> (assuming it's 2 high based on how it looks), meaning it has a density of 0.6 kg/m<sup>3</sup>, which is about half as dense as air.
+Knowing that, the total raw materials needed for a single locomotive weigh a measly 14.6 kilograms, while the locomotive itself takes up a volume of about 24 m<sup>3</sup> (assuming it's 2 high based on how it looks), meaning it has a density of 0.6 kg/m<sup>3</sup>, which is about half as dense as air. This means that locomotives can be used as baloons!
 
 ![An image of a brave pioneer using locomotives for aerial transportation](https://media.discordapp.net/attachments/622913335783850040/769291985411899392/yes.png?width=895&height=671)
 
