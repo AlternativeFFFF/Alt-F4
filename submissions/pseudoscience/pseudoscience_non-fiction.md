@@ -8,7 +8,7 @@ Obvious warning: This article contains excessive amounts of maths; if you have a
 
 This is a retelling of the Reddit post by [u/DaveMcW](https://www.reddit.com/user/DaveMcW/) that I just mentioned. Note that this theory assumes Nauvis’s day/night cycle is actually caused by rotation, which is something I’ll be arguing against later on.
 
-Large celestial bodies are held together by gravity and, for a planet to not get ripped apart by centrifugal force, gravitational acceleration at the equator must be greater than centripetal acceleration. Assuming a spherical planet, and using the equations for centripetal force and gravitational force, we can show that:
+Large celestial bodies are held together by gravity and, for a planet to not get ripped apart by centrifugal force, gravity at the equator must be greater than centripetal force. Assuming a spherical planet, and using the equations for centripetal force and gravity, we can show that:
 
 $ \frac{GMm}{r^2} > mr\omega^2 $, where $G$ is the [gravitational constant](https://en.wikipedia.org/wiki/Gravitational_constant), $r$ is planetary radius, $M$ is planetary mass, $\omega$ is planet's angular speed, and $m$ is the mass of the object those forces act upon;
 
