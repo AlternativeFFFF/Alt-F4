@@ -36,7 +36,7 @@ An alternative explanation for the day/night cycle, proposed by some, is that Na
 
 ### Nauvis reflects at least 88.3% of all light that hits it
 
-A single Factorio solar panel has an area of 9 m<sup>2</sup> and produces 60 kW during daytime. From those numbers we find that the surface receives at least 6.(6) kW/m<sup>2</sup> (compared to 1 kW/m<sup>2</sup> for Earth). Considering Nauvis’s ambient temperature is 15 degrees Celsius, and that it is tidally locked, we can use a slightly modified [effective temperature formula](https://en.wikipedia.org/wiki/Effective_temperature#Surface_temperature_of_a_planet):
+A single Factorio solar panel has an area of 9 m<sup>2</sup> and produces 60 kW during daytime. From those numbers we find that the surface receives at least 6.(6) kW/m<sup>2</sup> (compared to 1 kW/m<sup>2</sup> for Earth). Considering Nauvis’s ambient temperature is 15 °C, and that it is tidally locked, we can use a slightly modified [effective temperature formula](https://en.wikipedia.org/wiki/Effective_temperature#Surface_temperature_of_a_planet):
 
 $ T = \root{4}\of{\frac{1}{2}\frac{P(1-a)}{\sigma}} $, where $P$ is power received per unit area, $T$ is absolute surface temperature, $a$ is albedo (what we’re trying to find), and $\sigma$ is the [Stefan-Boltzmann constant](https://en.wikipedia.org/wiki/Stefan%E2%80%93Boltzmann_constant);
 
