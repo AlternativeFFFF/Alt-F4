@@ -17,20 +17,12 @@ body {
   height: 100%;
 }
 
-.webp body {
-  background-image: url("/assets/GLOBAL/img/mobile-bg.webp");
-}
-
-.no-webp body {
+.body {
   background-image: url("/assets/GLOBAL/img/mobile-bg.jpg");
 }
 
 @media (min-width: 500px) {
-  .webp body {
-    background-image: url("/assets/GLOBAL/img/bg.webp");
-  }
-
-  .no-webp body {
+  body {
     background-image: url("/assets/GLOBAL/img/bg.jpg");
   }
 }
