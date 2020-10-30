@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/es/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-10-28T13:48:07+00:00</updated>
+  <updated>2020-10-30T13:33:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #11 - Curiosidades científicas</title>
+    <link href="https://alt-f4.blog/es/ALTF4-11/" />
+    <id>https://alt-f4.blog/ALTF4-11</id>
+    <updated>2020-10-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Bienvenidos a la undécima edición de Alt-F4, os traemos un análisis matemático y una lección de historia. ¡Así que escucha, estudiante! Pocarski se encargó de ver si las matemáticas del mundo real funcionan en Nauvis. Alerta de spoiler: no es así. Luego, Stringweasel regresa una vez más para echar un...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-2</id>
     <updated>2020-08-28T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Bienvenidos a la segunda edición de Alt-F4, la continuación impulsada por la comunidad de &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Y siempre me sorprende gratamente la comunidad. A las pocas horas de publicar la primera edición, el &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; se llenó de entusiastas que estaban deseando ayudar en todas las etapas del...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #1 - ¡Te necesitamos!</title>
-    <link href="https://alt-f4.blog/es/ALTF4-1/" />
-    <id>https://alt-f4.blog/ALTF4-1</id>
-    <updated>2020-08-21T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Bienvenidos a la primera edición de ‘Alternative Factorio Friday Facts Fan’ (también conocido como Alt-F4), la continuación impulsada por la comunidad del venerable &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Su objetivo es llenar el vacío que dejo en nuestros corazones la interrupción de los FFF. Para llenar el vacío que hay en...</content>
   </entry>
   
   

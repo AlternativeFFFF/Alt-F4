@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-10-28T13:48:07+00:00</updated>
+  <updated>2020-10-30T13:33:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #11 - Scientific Curiosities</title>
+    <link href="https://alt-f4.blog/de/ALTF4-11/" />
+    <id>https://alt-f4.blog/ALTF4-11</id>
+    <updated>2020-10-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the eleventh edition of Alt-F4, bringing you both mathematical analysis and a history lesson. So, listen up, student! Pocarski took it upon themself to see whether real-world mathematics works out on Nauvis. Spoiler alert: it doesn’t. Then, stringweasel returns once again to take a look at a bit...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-2</id>
     <updated>2020-08-28T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Willkommen zur zweiten Ausgabe von Alt-F4, dem von der Community erstellte Nachfolger der beliebten &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Und man, ich bin immer positiv überrascht von der Community. Innerhalb weniger Stunden nachdem die erste Ausgabe veröffentlicht wurde, hat sich der &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt;-Server mit enthusiastischen Menschen gefüllt, die bereit waren, in...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #1 – Wir brauchen dich!</title>
-    <link href="https://alt-f4.blog/de/ALTF4-1/" />
-    <id>https://alt-f4.blog/ALTF4-1</id>
-    <updated>2020-08-21T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Willkommen zur ersten Ausgabe der „Alternativen-Factorio-Freitags-Fan-Fakten“ (auch bekannt als Alt-F4), dem von der Community erstellten Nachfolger zu den beliebten &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Alt-F4 soll die Leere füllen, die die Einstellung der FFF in unseren Herzen hinterlassen hat. Um das klaffende Loch in unseren Kalendern jeden Freitag zu füllen, wollen...</content>
   </entry>
   
   

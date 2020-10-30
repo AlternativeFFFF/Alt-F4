@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-10-28T13:48:07+00:00</updated>
+  <updated>2020-10-30T13:33:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #11 - Scientific Curiosities</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-11/" />
+    <id>https://alt-f4.blog/ALTF4-11</id>
+    <updated>2020-10-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the eleventh edition of Alt-F4, bringing you both mathematical analysis and a history lesson. So, listen up, student! Pocarski took it upon themself to see whether real-world mathematics works out on Nauvis. Spoiler alert: it doesn’t. Then, stringweasel returns once again to take a look at a bit...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-2</id>
     <updated>2020-08-28T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Vítejte u druhého dílu Alt-F4, komunitou řízeném pokračování &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. A ty bláho, komunita mě vždy příjemně překvapí. Do několika hodin od vydání prvního dílu byl &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; plný zapálených lidí, kteří byli ochotni pomoci se všemi fázemi procesu. První změna, které jste si možná všimnuli, je naše...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #1 - Potřebujeme vás!</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-1/" />
-    <id>https://alt-f4.blog/ALTF4-1</id>
-    <updated>2020-08-21T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Vítejte v úplně prvním díle Alternativních Fanouškovských ‘Factorio Friday Facts’ (aka Alt-F4), komunitou řízeném pokračování úctyhodných &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Cílem Alt-F4 je zaplnit prázdnotu v našich srdcích, která v nich zbyla po ukončení ‘Factorio Friday Facts’. K zaplnění zející díry, jíž je pro nás nyní každý pátek, se snažíme...</content>
   </entry>
   
   

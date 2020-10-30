@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-10-28T13:48:07+00:00</updated>
+  <updated>2020-10-30T13:33:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #11 - Scientific Curiosities</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-11/" />
+    <id>https://alt-f4.blog/ALTF4-11</id>
+    <updated>2020-10-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the eleventh edition of Alt-F4, bringing you both mathematical analysis and a history lesson. So, listen up, student! Pocarski took it upon themself to see whether real-world mathematics works out on Nauvis. Spoiler alert: it doesn’t. Then, stringweasel returns once again to take a look at a bit...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-2</id>
     <updated>2020-08-28T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;欢迎来到第二期 Alt-F4，由社区驱动的 &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt; 继承者。说真的，我总是能从社区中感到无限惊喜。在第一期发布后的的数小时内，&lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; 里就挤满了热情的玩家，都是愿意贡献帮助的热心肠。您可能会发现的一件事就是，现在这个页面的许多地方都获得了一些小小的升级。感谢每一位踊跃参与本项目的人！&lt;/p&gt; &lt;p&gt;不过本篇博文重点并不在于博客本身，而在于游戏。众所周知，开发者们在 1.0 发布日添加了 &lt;a href=&quot;https://wiki.factorio.com/Spidertron&quot;&gt;蜘蛛机甲（Spidertron）&lt;/a&gt;，一种长着怪异长腿的蜘蛛机甲作为惊喜。它早在 &lt;a href=&quot;https://www.factorio.com/blog/post/fff-120&quot;&gt;FFF＃120&lt;/a&gt;（4.5年前）就被提出过。在发售之际，我们想将本文的重点放在这款多功能载具以及社区对其尝试过的改造方式上。&lt;/p&gt; &lt;h2 id=&quot;蜘蛛机甲错过了练腿日-lovely_santa&quot;&gt;蜘蛛机甲错过了练腿日 &lt;author&gt;Lovely_Santa&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我在看到 1.0 的发布说明时感到特别惊喜！相信其他抢先体验的玩家也会跟我有同感。作为您友善的邻家 Mod 创作者，我不得不仔细研究下蜘蛛机甲的构造，这给了我很多思路，各种全新的 Mod 想法开始萌生。&lt;/p&gt; &lt;p&gt;大多数 Arch666Angel 的粉丝肯定知道我是 Angel’s mods 的&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?p=475786#p475786&quot;&gt;作者之一&lt;/a&gt;。 由于 &lt;a href=&quot;https://mods.factorio.com/mod/angelsexploration&quot;&gt;Angel’s Exploration&lt;/a&gt; 尚处于开发初期，蜘蛛机甲有机会在此大放光彩。我并不打算剧透自己正在酝酿的东西，相反，我更想花时间分享一下开发过程中遭遇的一些困难。&lt;/p&gt; &lt;p&gt;来见见爬行机甲（Crawlertron）吧，这是 Angel 牌机甲，他将加入 Angel’s vehicles 的 Crawler 家族之中。我对新的爬行机甲提出的的要求之一是他的体型。我希望他变得更小，非常小。这意味着我必须在蜘蛛机甲的定义中引入比例因子，以便能够按比例缩小他。正如读者中的某些 Mod 作者已经知道的那样，他拥有游戏中最大的原型之一。在花费了几个小时和数杯甜点之后，我用比例因子定义了所有内容，可以开始加载游戏查看结果了。将爬行机甲缩小（缩放系数&amp;lt;1）的代码中不会出现什么明显的错误，因此我决定将其放大（缩放系数&amp;gt;1），结果是：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/ALTF4/2/crawlertron_large.png?raw=true&quot;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #1 - 我们需要你</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-1/" />
-    <id>https://alt-f4.blog/ALTF4-1</id>
-    <updated>2020-08-21T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;欢迎阅读第一版的“Alternative Factorio Friday Fan Facts”（简称：Alt-F4），这是由社区推动的 &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts（简称：FFF）&lt;/a&gt;。它出现的目的是填补 FFF 暂时中断留给我们的寂寞。我们将会提供由社区创作的各种内容来填补每周五的空虚。社区展示、Mod 聚焦和有关异星工厂更新的文章等等都会是我们常见的话题，但是事实上与异星工厂相关的事物都可能会包含进来，前提是它确实值得一提。&lt;/p&gt; &lt;p&gt;因为本网站是社区驱动的，所以我们得依靠社区的贡献来保持活跃。由于时间限制，我自己写了第一篇（我实际上仅仅是在两天前想搞一下试试的），但是只有当大家都做出贡献，我们才能更好。这点文末会有详细的介绍，我们先进入正题吧，下面是第一篇文章。&lt;/p&gt; &lt;h2 id=&quot;社区展示-train-jump-tions&quot;&gt;社区展示: &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/i5yoaj/train_junctions_pfft_try_train_jumptions&quot;&gt;Train JUMP-tions&lt;/a&gt;&lt;/h2&gt; &lt;p&gt;我知道，我已经打破了自己设定的规则（这是mod不是社区展示）。这些凌霄飞车是 &lt;a href=&quot;https://mods.factorio.com/mod/RenaiTransportation&quot;&gt;Renai Transportation&lt;/a&gt; Mod 的一部分。但这实际上这个 Mod 是纯粹为了社区展示而开发的，因为这不是什么正经的 Mod，并不能改善你的游戏体验，而是在可行的情况下进行的逗逼探索，当然了，结果确实很逗。下面请看视频（译者注：油管视频，需要梯子）：&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/QAahBoEqgHQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;看到了吧，Kiplacon 决定自己解决火车遇到的桥或者隧道的问题，并取得了巨大的成就。他研究了使桥梁和隧道正常工作的技巧，并心想：不，我有更好的方法。结果是看起来真是个骚包的场景——火车在空中乱飞，但是令我印象深刻的是，它确确实实在游戏里发挥了作用。这并不是大家认为的不切实际的想法，它实际上已经开发完了，您可以下载使用它。我喜欢从 Mod 中看到这种东西。正如开发人员之一的 wheybags 所说：“太牛了。这才是 Mod 制作的本意。&amp;lt;3”。我非常同意这一点。&lt;/p&gt; &lt;h2 id=&quot;mod-聚焦assembly-analyst&quot;&gt;Mod...</content>
   </entry>
   
   
