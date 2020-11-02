@@ -31,6 +31,13 @@
     0 1px 1px -1px #8f8c8b;
 }
 
+.blog-post video {
+  border: none;
+  box-shadow: inset 0 0 3px 0 #000, 0 -2px 2px -1px #000, -2px 0 2px -2px #28221f, -2px 0 2px -2px #28221f,
+    2px 0 2px -2px #28221f, 2px 0 2px -2px #28221f, 0 3px 3px -3px #8f8c8b, 0 2px 2px -2px #8f8c8b,
+    0 1px 1px -1px #8f8c8b;
+}
+
 a {
   color: #7dcaed;
   text-decoration: none;
