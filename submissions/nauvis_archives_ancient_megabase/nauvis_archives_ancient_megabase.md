@@ -4,9 +4,10 @@ Since the beginning players have been pushing the limits of Factorio. Seeing how
 
 ### The 1 Rocket Defence Per Minute Factory
 
-Back pre-0.12, in 2015, bases was not measured in `science-per-minute`, or even `rocket-per-minute`. Rather, it was measured in `rocket-defense-per-minute`. At the time [rocket defense](https://wiki.factorio.com/Rocket_defense) was the final end-game item for which the idea was to `"protect the landing of the rescue fleet"` - even though there was no rescueing fleet. But, bases actually never really even approached `1 rocket-defence-per-minute`. It wasn’t easy building a base even near scale at the time, the reasons of which I will discuss soon, and it was widely assumed that nobody is crazy enough to even try. But on the day of 29 June 2015 the legendary [DaveMcW](https://www.reddit.com/user/DaveMcW/) showed the world that it is indeed possible with this [enormous base](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/).
+Back pre-0.12, in 2015, bases was not measured in `science-per-minute`, or even `rocket-per-minute`. Rather, it was measured in `rocket-defense-per-hour`. At the time [rocket defense](https://wiki.factorio.com/Rocket_defense) was the final end-game item for which the idea was to `"protect the landing of the rescue fleet"` - even though there was no rescueing fleet. But, [bases](https://forums.factorio.com/viewtopic.php?t=7140) rarely even reached `1 rocket-defence-per-hour`, not to mention `per minute`! It simply wasn’t easy building a base at such a scale at the time, the reasons of which I will discuss soon, and it was debated if the game could even handle such large factories. But on the day of 29 June 2015 the legendary [DaveMcW](https://www.reddit.com/user/DaveMcW/) showed the world that it is indeed possible with this [enormous 6km-by-6km base](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/).
 
 ![](media/base_entire_map.jpg "1 Rocket Defense Per Minute by DaveMcW")
+*1 Rocket Defense Per Minute Base by DaveMcW*
 
 This base shook the community, as clearly expressed by the top [comment](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmijcz?utm_source=share&utm_medium=web2x&context=3) by u/TheWrongCat. It suprised some of Factorio's biggest builders, including [u/Zistau](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmk0he?utm_source=share&utm_medium=web2x&context=3), [u/rootnegative](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmw6iv?utm_source=share&utm_medium=web2x&context=3) and [u/Xterminator5](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csn0pk8?utm_source=share&utm_medium=web2x&context=3). Even Wube's lead developer, [u/kovarex](https://www.reddit.com/user/kovarex/), [commented](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csnfvg8?utm_source=share&utm_medium=web2x&context=3) on how hard it would be to optimise Factorio run this base at 60 FPS/UPS (spoiler: *it does now!*). DaveMcW truly shattered the limits of what was thought possible in Factorio.
 
@@ -27,22 +28,48 @@ Took 11 months - no calculators or tools to aid design. UPS died. Probably took 
 
 ### A Few Interesting Techniques
 
+There are a lot of interesting methods and facts about this base which could keep me talking for hours. However, I will only outline a few aspects of this legendary base.
 
+Firstly, the sprawling rail network, which is DaveMcW's favourite aspect of his base. As mentioned, it's enormous, with 216 trains ~~speeding~~ moving (they were coal powered) between 217 outposts. But, in 0.11, there was no [chain signals](https://wiki.factorio.com/Rail_chain_signal). This meant large intersections were tricky to design for high throughput while preventing train jams (**better word?**). His solution for this was to simply eliminate the need for intersections. Instead, each of his four mirrored rail networks consisted of a large single loop, meaning there was never traffic crossing from oposing sides! Additionally, in 0.11 [train schedules](https://wiki.factorio.com/Railway#Train_schedule) could *only* handle a `"time passed at station"` condition. Therefore, to also ensure all outposts are drawn from evenly, *each* of the 216 trains has a custom wait time.
 
+![](media/base_rail_network.png "Four Seperate Rail Networks without intersections")
+**TAKE A 0.11 SCREEN SHOT**
 
-#
+cars as chests
+
+Didn't use large powerpoles, got annoyed by collision box
+
+No safety factor. The module production (producing 50 /m of each)
+
+### Running The Factory in 1.0
+I was curious how this ancient and massive base would run in Factorio 1.0 with the all the optimizations the developers have applied over the past 5 years. So I migrated it, which took longer than I expected, but it works! For reference, on my [5 year old CPU](https://ark.intel.com/content/www/us/en/ark/products/75123/intel-core-i7-4770k-processor-8m-cache-up-to-3-90-ghz.html) using `0.11.22` the base runs at `2/7 FPS/UPS`, but in `1.0` it reaches `60/60 FPS/UPS`! Although just barely. It's not a perfect representation, but it's amazing to think that it's the same number of belts, items, machines, inserters, etc, but it's calculated so much faster!
+
+*(Disclaimer: the migration to `1.0` is not perfect. For example fluids is slightly hacked. And I'm sure there's something else I missed. The goal was to get the base running mostly in the same configuration.)*
+
+PICTURE OF BASE RUNNING IN HD
+
+There were quite a few changes apply to run this old base in `1.0`. It started with adding items and changing recipes to reflect `0.11`. Then there were more straight-forward changes like fixing cases where inserters now needing a [belt directly in front of it](https://www.reddit.com/r/factorio/comments/48v5qo/inserters_not_picking_up_from_end_of_conveyor/). Or replacing small-pump setups (of which DaveMcW was also the [expert](https://forums.factorio.com/viewtopic.php?f=134&t=6066)) with normal [pumps](https://wiki.factorio.com/Pump).  But, there were few a other changes that was not initially apparent interesting. For example, in `0.11` a splitter's throughput was limited by it's output, whereas today it's limited by it's input. This means a red belt could be split 50-50 using a **yellow** splitter and still maintain full throughput. Luckily, since the base is so beautifully mirrored, if I found a problem in a specific area, I knew I had to fix it in 3 or 7 other areas as well.
+
+PICTURE OF WEIRD SPLITTING BEHAVIOUR
+
+Then, I had to deal with biters and insufficient defenses. This is because DaveMcW used an [old belt trick](https://forums.factorio.com/viewtopic.php?f=8&t=10151) that interrupts a spitter's attack animation indefinitely, which means the laser turrets only needs to focus on biters. To circumvent this problem completely for `1.0`, without losing the CPU load of biters, I simply [increased the laser turret damage 10-fold](https://youtu.be/xxtxn3H1g60). 
+
+![](media/base_perimeter.jpg "Belt Trick with Laser Perimeter")
+*Perimeter wall showing belt that interrupts spitter attack animation. (Image from [here](https://imgur.com/a/xcYxk))*
+
+Finally I had to modify *all* vertical train stations manually, which was the most time consuming. This is because before [`0.13`](https://wiki.factorio.com/Roadmap/History#Factorio_0.13_.28June_27th_2016.29) vertical and horizontal train stations had [different lengths](https://www.factorio.com/blog/post/fff-133)!
+
+You too can observe this breathtaking base by downloading the `1.0` [here]() and the required modpack [here](). Or if you want a quick look around 
 
 ### My Notes
+
+NEED TO MENTION MIRROR SIMMETRY EARLY
 
 [the base](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/)
 
 [forum post](https://forums.factorio.com/viewtopic.php?t=13269)
 
 The transport belts interrupt the spitter attack animation, making them do zero damage. The laser turrets focus fire the biters, making them do zero damage. It never needs repairs.
-
-He has:
-216 trains - all dropping ore
-289 stations in total - 18*4 unloads = 217
 
 [1rpm googlemap](https://www.reddit.com/r/factorio/comments/3bp4hx/one_minute_rocket_defense_google_map/)
 
@@ -66,8 +93,9 @@ I fixed:
 - Gave laser-turrets insane damage.
 - Fixed all vertical train stations
 - Fixed processing units, advanced circuits, chemical plant
-- Replaced splitters on coal lines. Didn't allow enough coal to pass. Change in splitter behaviour?
+- Replaced splitters on coal lines. Didn't allow enough coal to pass. Interesting change in spliter beaviour.
 - Made long handed inserters 50% faster since they have to rotate further
+- Fixed module 3 recipe
 
 Other notes
 - BELTS ARE FASTER! What effect will this have?
