@@ -1,45 +1,41 @@
 ## Nauvis Archives: Ancient Megabase <author>stringweasel</author>
 
-Since the beginning players have been pushing the limits of Factorio. Seeing how absolutely massive they can build their factories before the game starts grind to a halt and succumb to a slow UPS death. And over the years these limits has been broken time and time again, each time reaching a new record. Currently the record seems to be [u/swolar](https://www.reddit.com/user/swolar/)'s [60UPS 20kspm base](https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/). Three years ago the largest base was roughly half of swolar's size, which was likely [u/AccidentalChef](https://www.reddit.com/user/AccidentalChef/)'s which ran at [10 rpm](https://www.reddit.com/r/factorio/comments/5osdaa/my_first_gigafactory_10_rockets_per_minute/?utm_source=share&utm_medium=web2x&context=3). And a *month* before that the record was likely AccidentalChef's [3rpm base](https://www.reddit.com/r/factorio/comments/5jntq4/train_based_3_rocket_per_minute_factory/), where he even predicted a 10rpm base would [not be playable](https://www.reddit.com/r/factorio/comments/5jntq4/train_based_3_rocket_per_minute_factory/dbihbkr?utm_source=share&utm_medium=web2x&context=3). (You will notice the metric being `rpm`, or `rocket-per-minute`, since it was before the [Research Revolution](https://www.factorio.com/blog/post/fff-159)™). But how did the biggest megabase look **5 years ago** - before we had rocket launches? How does it compare to modern megabases? And what did it take to build such monstrosities?
+Since the beginning players have been pushing the limits of Factorio. Seeing how absolutely massive they can build their factories before the game starts grind to a halt and succumb to a slow UPS death. And over the years these limits has been broken time and time again, each time reaching a new record. Currently the record seems to be [u/swolar](https://www.reddit.com/user/swolar/)'s [60UPS 20kspm base](https://www.reddit.com/r/technicalfactorio/comments/gels6c/20k_spm_hybrid_megabase/). Three years ago the largest base was roughly half of swolar's size, which was likely [u/AccidentalChef](https://www.reddit.com/user/AccidentalChef/)'s which ran at [10 rpm](https://www.reddit.com/r/factorio/comments/5osdaa/my_first_gigafactory_10_rockets_per_minute/?utm_source=share&utm_medium=web2x&context=3). And a *month* before that the record was likely AccidentalChef's [3rpm base](https://www.reddit.com/r/factorio/comments/5jntq4/train_based_3_rocket_per_minute_factory/), where he even predicted a 10rpm base would [not be playable](https://www.reddit.com/r/factorio/comments/5jntq4/train_based_3_rocket_per_minute_factory/dbihbkr?utm_source=share&utm_medium=web2x&context=3). (You will notice the metric being `rpm`, or `rocket-per-minute`, since it was before the [Research Revolution](https://www.factorio.com/blog/post/fff-159)™). But how did the biggest megabase look **5 years ago** - before we even had rocket launches? There is one base that truly stands out from the rest, and I had a chat with the designer, [DaveMcW](https://www.reddit.com/user/DaveMcW/posts/), about his design.
 
 ### The 1 Rocket Defence Per Minute Factory
 
-Back pre-0.12, in 2015, bases was not measured in `science-per-minute`, or even `rocket-per-minute`. Rather, it was measured in `rocket-defense-per-hour`. At the time [rocket defense](https://wiki.factorio.com/Rocket_defense) was the final end-game item for which the idea was to `"protect the landing of the rescue fleet"` - even though there was no rescueing fleet. But, [bases](https://forums.factorio.com/viewtopic.php?t=7140) rarely even reached `1 rocket-defence-per-hour`, not to mention `per minute`! It simply wasn’t easy building a base at such a scale at the time, the reasons of which I will discuss soon, and it was debated if the game could even handle such large factories. But on the day of 29 June 2015 the legendary [DaveMcW](https://www.reddit.com/user/DaveMcW/) showed the world that it is indeed possible with this [enormous 6km-by-6km base](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/).
+Back pre-[0.12](https://wiki.factorio.com/Roadmap/History#Factorio_0.12_.28July_17th_2015.29) bases were measured in `rocket-defense-per-hour`, or `rdph`. [Rocket Defense](https://wiki.factorio.com/Rocket_defense) was the final end-game item that triggered the victory condition, and it was *very* expensive, hence the `per-hour`. The idea was to `"protect the landing of the rescue fleet"` - even though there was no rescueing fleet. But, bases rarely even reached `1 rdph`, not to even mention `60 rdph`. It simply wasn’t easy building a base at such a scale at the time, and it was [debated](https://forums.factorio.com/viewtopic.php?f=8&t=7140&start=400) if the game could even handle such large factories. For example, the [largest factory](https://www.reddit.com/r/factorio/comments/2wdqvi/colonel_wills_megabase/) at the time was likely by [ColonelWill](https://www.twitch.tv/colonelwill), which could do `15 rdph` but not consistently since it ran out of raw resources. But only 4 months later, on the day of 29 June 2015, the legendary [DaveMcW](https://www.reddit.com/user/DaveMcW/) showed the world that it is indeed possible with this enormous `60 rdph` (or `1 rdpm`) [monstrosity](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/).
 
 ![](media/base_entire_map.jpg "1 Rocket Defense Per Minute by DaveMcW")
-*1 Rocket Defense Per Minute Base by DaveMcW*
+*1 Rocket Defense Per Minute Base by DaveMcW (Posted on [Reddit](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/) and [Factorio Forums](https://forums.factorio.com/viewtopic.php?t=13269))*
 
-This base shook the community, as clearly expressed by the top [comment](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmijcz?utm_source=share&utm_medium=web2x&context=3) by u/TheWrongCat. It suprised some of Factorio's biggest builders, including [u/Zistau](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmk0he?utm_source=share&utm_medium=web2x&context=3), [u/rootnegative](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmw6iv?utm_source=share&utm_medium=web2x&context=3) and [u/Xterminator5](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csn0pk8?utm_source=share&utm_medium=web2x&context=3). Even Wube's lead developer, [u/kovarex](https://www.reddit.com/user/kovarex/), [commented](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csnfvg8?utm_source=share&utm_medium=web2x&context=3) on how hard it would be to optimise Factorio run this base at 60 FPS/UPS (spoiler: *it does now!*). DaveMcW truly shattered the limits of what was thought possible in Factorio.
+This 6km-by-6km base shook the community, as clearly expressed by the top [comment](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmijcz?utm_source=share&utm_medium=web2x&context=3) by u/TheWrongCat. It suprised some of Factorio's biggest builders, including [u/Zistau](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmk0he?utm_source=share&utm_medium=web2x&context=3), [u/rootnegative](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmw6iv?utm_source=share&utm_medium=web2x&context=3) and [u/Xterminator5](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csn0pk8?utm_source=share&utm_medium=web2x&context=3). Even Wube's lead developer, [u/kovarex](https://www.reddit.com/user/kovarex/), [commented](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csnfvg8?utm_source=share&utm_medium=web2x&context=3) on how hard it would be to optimise Factorio run this base at 60 FPS/UPS (spoiler: *it does now!*). This base was even referenced in [FFF-93](https://www.factorio.com/blog/post/fff-93) as `"the biggest factory ever built"`, and was used by the developers as an optimization benchmark for quite some time. [DaveMcW](https://www.youtube.com/user/DaveMcW2/featured) truly shattered the beliefs of what was thought possible in Factorio.
 
-To a few it came as no suprise that DaveMcW designed this record breaking base, since he has always been on the cutting edge of Factorio. He was the original creator of the [Blueprint String](https://forums.factorio.com/viewtopic.php?f=190&t=6742) which was later added into vanilla. He built the first [large scale colour display](https://www.reddit.com/r/factorio/comments/5dxi3a/factorio_sandstorm/), famously showcasing [Darude Sandstrom](https://youtu.be/mgfwwqwxdxY). He created a mod called [Recursive Blueprints](https://mods.factorio.com/mod/recursive-blueprints) to automate blueprint placing, and then built a fully functioning factory using the mod that's *only* [9x14 tiles big](https://www.reddit.com/r/factorio/comments/6j48q7/9x14_micro_factory_recursive_blueprints/). He was even the one who found the [origin](https://www.reddit.com/r/factorio/comments/526zwk/i_found_the_source_of_the_alien_artifact/) of the original [Alient Artefact](https://alt-f4.blog/ALTF4-6/#alien-artifacts-a-primitive-technology) sprite. Needless to say, if any player was able to pull this of, it was DaveMcW. 
+It should be noted that to a few it came as no suprise that [DaveMcW](https://forums.factorio.com/memberlist.php?mode=viewprofile&u=1868) designed this record breaking base. He has always been on the cutting edge of technical Factorio. For example, he was the original creator of the [Blueprint String](https://forums.factorio.com/viewtopic.php?f=190&t=6742) which was later added into vanilla. He built the first [large scale colour display](https://forums.factorio.com/viewtopic.php?t=37490), famously showcasing [Darude Sandstrom](https://youtu.be/mgfwwqwxdxY). He created the mod called [Recursive Blueprints](https://mods.factorio.com/mod/recursive-blueprints) to automate blueprint placing, and then built a fully functioning factory using the mod that's *only* [9x14 tiles big](https://www.reddit.com/r/factorio/comments/6j48q7/9x14_micro_factory_recursive_blueprints/). He was even the one who found the [origin](https://www.reddit.com/r/factorio/comments/526zwk/i_found_the_source_of_the_alien_artifact/) of the original [Alient Artefact](https://alt-f4.blog/ALTF4-6/#alien-artifacts-a-primitive-technology) sprite. Needless to say, if any player was able to pull this of, it was DaveMcW. 
 
 ### Why The Big Deal?
-Firstly, the size and throughput of this size is enormous, even in today's standards. To compare it to what we know today we can look at the insane amount of circuit's his based consumed, which is the main ingredient for rocket defense. And it consumed roughly what a modern [full-productivity-bonus 2kspm factory](https://kirkmcdonald.github.io/calc.html#zip=fZLLbgMhDEX/ZlZBmiS7SHyMY9ypVTDImL6+vozSTVMnG0v4XK4fkMAgHsMa1gVbPC+FZcYrZYv02ZR6D6YgvVW1sKeXVGI7L+ka+x4xHk8LG5UeYVgtYFwldGQSpNAA3y56Oa3resh1426MLiyc2UC/XIivVBghu7BpTQMfVh22O/u+fR7II0uZnpnmSIijjAxW9SIj57twoExoOmd6GSrTzBW9sBJoCQU2+GbxRZuSQPIZSyc18ltoTIosW9A6JPXnVRq3B+B3i+/7rm7TuzqFBH4fCnyfu4EORnm+gW/Yawaduxd6cLsRpWcddatC4QP+kRv++3k9yQ8=) would consume today. But this was built *fully* vanilla, with biters, before [personal roboports](https://wiki.factorio.com/Personal_roboport), without a [live map view](https://www.reddit.com/r/factorio/comments/76r746/the_ability_to_zoom_in_on_map_view_and_blueprint/), without [copy-paste-undo](https://www.factorio.com/blog/post/fff-255), without any existing [calculators](https://kirkmcdonald.github.io/), no [blueprint books](https://wiki.factorio.com/Blueprint_book), to name a few.
+Firstly, the size and throughput of this base is staggering, even in today's standards. To compare it to what we know today we can look at the insane amount of circuits it consumed, which is the main ingredients for Rocket Defense. It consumed roughly what a modern [full-productivity-bonus 2kspm factory](https://kirkmcdonald.github.io/calc.html#zip=fZLLbgMhDEX/ZlZBmiS7SHyMY9ypVTDImL6+vozSTVMnG0v4XK4fkMAgHsMa1gVbPC+FZcYrZYv02ZR6D6YgvVW1sKeXVGI7L+ka+x4xHk8LG5UeYVgtYFwldGQSpNAA3y56Oa3resh1426MLiyc2UC/XIivVBghu7BpTQMfVh22O/u+fR7II0uZnpnmSIijjAxW9SIj57twoExoOmd6GSrTzBW9sBJoCQU2+GbxRZuSQPIZSyc18ltoTIosW9A6JPXnVRq3B+B3i+/7rm7TuzqFBH4fCnyfu4EORnm+gW/Yawaduxd6cLsRpWcddatC4QP+kRv++3k9yQ8=) would consume today, and building a `2kspm` base today is still quite a feat. But what he built was record *shattering*, and it was done *fully* vanilla, with biters, without [copy-paste-undo](https://www.factorio.com/blog/post/fff-255), no [blueprint books](https://wiki.factorio.com/Blueprint_book), no [personal roboports](https://wiki.factorio.com/Personal_roboport), without a [live map view](https://www.reddit.com/r/factorio/comments/76r746/the_ability_to_zoom_in_on_map_view_and_blueprint/), or any existing [calculators](https://kirkmcdonald.github.io/), to name only a few limitations.
 
-Firstly, simply achieving the throughput is also non-trivial in 0.11, even if we only look at beacons. They're used to speed up machines, which means you need less machines, which increases your UPS and lowers the footprint. Today it's trivial to place [12 beacons](https://www.reddit.com/r/factorio/comments/bgf7er/green_circuits_blueprint_uses_12beacon_and_level/) around an assembler. But, in 0.11, there were no [stack inserters](https://wiki.factorio.com/Stack_inserter) or even [stack size bonus](https://wiki.factorio.com/Roadmap/History#Factorio_0.13_.28June_27th_2016.29). This means, for example, to keep a electronic circuit assembler running with 40% productivity and only 4 full speed beacons affecting it (+140%), you'll need **15** [fast inserters](https://wiki.factorio.com/Inserters) to load/unload that single machine, which is arguably impossible (without bots). This meant there was a severe limitation of the amount of beacons can can be used, although it did result in some beautiful designs.
+Then, simply achieving the throughput is non-trivial in 0.11, even if we only look at beacons. They're used to speed up machines, which means you need less machines, which increases your UPS and lowers the footprint. Today it's trivial to place [12 beacons](https://www.reddit.com/r/factorio/comments/bgf7er/green_circuits_blueprint_uses_12beacon_and_level/) around an assembler. But, in 0.11, there were no [stack inserters](https://wiki.factorio.com/Stack_inserter). And the only stack size bonus was with container-to-container transfers where it could stack 5 items. This meant simply placing enough inserters to a assembler was an issue. For example, notice how the plastic chemical plants has *4* output inserters in the picture below, even though it's only affected by 4 beacons.
 
-![](media/base_spaghetti.gif "Beautiful chaos")
+***THIS PICTURE SHOULD SHOW THE PLASTIC BUILD BETTER*
+*One section of circuit manufacturing that's mirrored in the main base around.* 
 
-*One section of 32 creating most of the circuits.* 
+Secondly, mining enough raw resources to feed a factory of this size requires amounts that's still mind boggling today. For example, in 0.11 there was no [mining productivity](https://wiki.factorio.com/Mining_productivity_(research)). This means that resource patches depleted rapidly, and maintaining a megabase would unfortunately consist of constantly rebuilding outposts (hence the addition of mining productivity in [0.15](https://wiki.factorio.com/Version_history/0.15.0)). DaveMcW ~~solved~~ delayed this problem by building an absolutely gigantic outpost network with trains. Using 72 unloading stations in total, accross 4 seperate rail networks, he had 216 trains importing ore from **216** resource outposts. (No, that's not a typo). That's what he needed to feed his factory without running out of ore, or at least for roughly 20 hours. Additionally, he used **1091** speed-beaconed pumpjacks on depleted oil patches that was all *piped* to the main base.
 
-Then, importing enough raw resources for a factory of this size requires amounts that's still mind boggling today. For example, in 0.11 there was no [mining productivity](https://wiki.factorio.com/Mining_productivity_(research)). This means that resource patches be depleted *very* quickly, and maintaining a megabase would unfortunately consist largly of rebuilding outposts (hence the addition of mining productivity in [0.15](https://wiki.factorio.com/Version_history/0.15.0)). DaveMcW delayed this problem by building an absolutely gigantic outpost rail network. Using 72 unloading stations in total, accross 4 seperate rail networks, he had 216 trains importing ore from **217** resource outposts. (No, that's not a typo). That's what he needed to feed his factory without running out of ore, or at least for roughly 20 hours.
-
-Took 11 months - no calculators or tools to aid design. UPS died. Probably took how long
-
-### A Few Interesting Techniques
-
-There are a lot of interesting methods and facts about this base which could keep me talking for hours. However, I will only outline a few aspects of this legendary base.
-
-Firstly, the sprawling rail network, which is DaveMcW's favourite aspect of his base. As mentioned, it's enormous, with 216 trains ~~speeding~~ moving (they were coal powered) between 217 outposts. But, in 0.11, there was no [chain signals](https://wiki.factorio.com/Rail_chain_signal). This meant large intersections were tricky to design for high throughput while preventing train jams (**better word?**). His solution for this was to simply eliminate the need for intersections. Instead, each of his four mirrored rail networks consisted of a large single loop, meaning there was never traffic crossing from oposing sides! Additionally, in 0.11 [train schedules](https://wiki.factorio.com/Railway#Train_schedule) could *only* handle a `"time passed at station"` condition. Therefore, to also ensure all outposts are drawn from evenly, *each* of the 216 trains has a custom wait time. SINGLE TRAIN PER OUTPOST
+This sprawling rail network itself, which is DaveMcW's favourite aspect of his base, is also fascinating. As mentioned, it's enormous, with 216 trains ~~speeding~~ moving (they were coal powered) between 217 outposts. But, in 0.11, there were no [chain signals](https://wiki.factorio.com/Rail_chain_signal). This meant large intersections were tricky to design for high throughput while preventing train jams (**better word?**). His solution for this was to simply eliminate the need for intersections. Instead each of his four mirrored rail networks consisted of a large single loop, meaning there was never traffic crossing from oposing sides! Additionally, in 0.11 [train schedules](https://wiki.factorio.com/Railway#Train_schedule) could *only* handle a `"time passed at station"` condition. Therefore, to also ensure all outposts are drawn from evenly, *each* of the 216 trains has a custom wait time. 
 
 ![](media/base_rail_network.png "Four Seperate Rail Networks without intersections")
 **TAKE A 0.11 SCREEN SHOT**
 
+Finally, as DaveMcW mentioned `"I didn't copy any other factories, so I designed everything from scratch."`
 cars as chests
 
 Didn't use large powerpoles, got annoyed by collision box
 
 No safety factor. The module production (producing 50 /m of each)
+
+As DaveMcW said: `"I didn't copy any other factories, so I designed everything from scratch."`.
 
 ### Running The Factory in 1.0
 I was curious how this ancient and massive base would run in Factorio 1.0 with the all the optimizations the developers have applied over the past 5 years. So I migrated it. It took longer than I expected, but it works! For reference, on my PC using `0.11.22` the base runs at `2/6 FPS/UPS`, but in `1.0` it reaches `60/60 FPS/UPS` with high quality sprites! 
@@ -62,61 +58,9 @@ I also had to ensure the biters don't penetrate the perimeter using insufficient
 ![](media/base_perimeter.jpg "Belt Trick with Laser Perimeter")
 *Perimeter wall showing belt that interrupts spitter attack animation. Notice the old 1x1 laser turret graphics. (Image from [here](https://imgur.com/a/xcYxk))*
 
-Finally I had to modify *all* vertical train stations manually, which was the most time consuming. This is because before [`0.13`](https://wiki.factorio.com/Roadmap/History#Factorio_0.13_.28June_27th_2016.29) vertical and horizontal train stations had [different lengths](https://www.factorio.com/blog/post/fff-133)! It was an interesting challenge finding and fixing bottlenecks by changing and fixing the "game" rather than the base itself.
+Finally I had to modify *all* vertical train stations manually, which was the most time consuming, since there are over 100(!) of them. This is because before [`0.13`](https://wiki.factorio.com/Roadmap/History#Factorio_0.13_.28June_27th_2016.29) vertical and horizontal train stations had [different lengths](https://www.factorio.com/blog/post/fff-133)! It was an interesting challenge finding and fixing bottlenecks by changing and fixing the "game" rather than the base itself.
+
+![](media/base_spaghetti.gif "Beautiful chaos")
+**GET BUSIER GIF**
 
 You can observe this breathtaking base yourself by downloading the [version `1.0` save]() and the required modpack [here](). Or you can simply download [Factorio 0.11](https://factorio.com/download/archive) and download the `0.11` saves from DaveMcW's [Reddit comment](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmjtof?utm_source=share&utm_medium=web2x&context=3). Or if you're lazy today, and only want a quick look around, you can view in Google Map format [here](http://twinsen.info/Web/Map(197,205)1024/) (create by Twinsen). However, there will be internet points awarded to the player who finds the RobotPort first that DaveMcW dropped 5 years ago.
-
-### My Notes
-
-NEED TO MENTION MIRROR SIMMETRY EARLY
-
-[the base](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/)
-
-[forum post](https://forums.factorio.com/viewtopic.php?t=13269)
-
-The transport belts interrupt the spitter attack animation, making them do zero damage. The laser turrets focus fire the biters, making them do zero damage. It never needs repairs.
-
-[1rpm googlemap](https://www.reddit.com/r/factorio/comments/3bp4hx/one_minute_rocket_defense_google_map/)
-
-[this base by ColWill reached 5k iron / min](https://www.youtube.com/watch?v=IuRdFCvwzJE&ab_channel=ColonelWill)
-
-
-[Proper timing is required for all station designs, it is a function of mining outpost distance.](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/cso0nwl?utm_source=share&utm_medium=web2x&context=3)
-
-What is the splitter/belt trick?
-Theres no large poles! Why?
- - large power poles used to have a hitbox the size of accumulators. I got so annoyed walking into them that I refused to use them
-Theres no balancers!
-Belts not backed up. It's designed to not run full belts. Makes it beautiful
-
-I fixed:
-- added a radar in the factory itself.
-- Add recipes for goop and rocket defense
-- Hacked oil to require only 1 oil and 1 water
-- Added daggling belts for inserters to pick up    
-- ~~Remove stack size bonus (Except for long-handed)~~
-- Gave laser-turrets insane damage.
-- Fixed all vertical train stations
-- Fixed processing units, advanced circuits, chemical plant
-- Replaced splitters on coal lines. Didn't allow enough coal to pass. Interesting change in spliter beaviour.
-- Fixed module 3 recipe
-
-Other notes
-- BELTS ARE FASTER! What effect will this have?
-
-
-Bonus points if you find the roboport that DaveMcW dropped 5 years ago.
-
-From Dave:
-- How long did it take to design/build? Started designing just after his [destroyer capsule](https://forums.factorio.com/viewtopic.php?f=202&t=4936) factory. So 11 months.
-  - that includes calculating everything, since calculators had not been invented yet  
-- no cheats was simply because useful ones hadn't been invented either
-
-
-
-~~More questions~~ (Asked):
-- Do you know what was the previous biggest factory? I've tried to find something, but it's not easy to find such things.
-- How much of a safety factor did you design in?
-- what would you do differently if you did it again? (Assuming we're still in 0.11) 
-- Was all your modules designed in perfect ratios? For example your red-circuit module, as shown in the imgur album (link: https://imgur.com/a/xcYxk#RgdrW3s). I've tried to check myself, but as you mentioned, there isn't really tools.
-- Could we provide a direct download link for your map in the article?
