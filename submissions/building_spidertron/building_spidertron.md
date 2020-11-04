@@ -6,34 +6,29 @@ When we first set up the site, it was pretty obvious we should have Spidertron d
 
 The original plan was to have Spidertron crawl up the page, and be the same "back to top" button as the official Factorio page. This required recording a animation of walking upwards, and then looping it as we moved it up the page. Then, *Dr.Magpie* had the idea to have Spidertron follow a targeting remote around the webpage, just like in Factorio. This is way beyond what can be done using recordings, since there would be way too many combinations required.
 
-> *psihius* (October 3, 2020): Though knowing our community, there are probably some madlads that would help do this just for the sake of it being a challenge....
+{% include quote.html text='Though knowing our community, there are probably some madlads that would help do this just for the sake of it being a challenge....' author='*psihius* (October 3, 2020)'%}
 
 *CHALLENGE ACCEPTED*
 
 Creating Spidertron for the website has certainly been a challenge, but also quite fun to work on. *psihius*' comment prompted me to get to work, in what I'd consider a textbook case of [Nerd Sniping](https://xkcd.com/356/). The first order of business was simply to get a Spidertron drawn, using the original Factorio sprites so they could be moved independently. I made the choice to use raw HTML and CSS elements, hoping that the browser would be able to accelerate rendering with the GPU. This turned out to have several downsides, since certain changes could trigger a recalculation of the entire page's layout and negate any performance benefits. With a basic Spidertron being drawn though, I was free to start working on the animation side in Javascript.
 
-<spidertron-leg.webm>
-Caption: This is the upper leg segment. It is made of 3 sprites, and is animated entirely using HTML and CSS (No Javascript).
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/12/spidertron-leg.mp4' width='232px' height='434px' alt='Spidertron upper leg animation' caption='This is the upper leg segment. It is made of 3 sprites, and is animated entirely using HTML and CSS (No Javascript).' %}
 
-![Spidertron in static T-Pose](https://puu.sh/GzgLv/ed4c4e641a.png)
-Caption: An early screenshot of a rough "T-Pose" Spidertron. No animation yet, and this one is missing knees.
+{% include figure.html src='https://media.alt-f4.blog/ALTF4/12/spidertron-tpose.jpg' alt='Spidertron in static T-Pose' caption='An early screenshot of a rough "T-Pose" Spidertron. No animation yet, and this one is missing knees.' %}
 
 After all the legs are connected, Spidertron is made up of 58 unique sprites (Each leg has 7 sprites + 2 for the body). All these elements are controlled using CSS variables that can be modified from Javascript. I started off with 4 variables per leg: The upper and lower leg lengths, and the upper and lower angles. Using some trigonometric functions, I could then calculate the values needed to land the foot at a specific point. Using the mouse as a target, the first major hurdle became apparent... Where do you place the knee?
 
-<spidertron-test1.webm>
-Caption: In this first test, the knee was fixed at a 90° angle.
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/12/spidertron-test1.mp4' width='942px' height='618px' alt='Spidertron leg moving' caption='In this first test, the knee was fixed at a 90° angle.' %}
 
 I began studying videos of Spidertron moving around in Factorio to try and determine how to make the leg movement look right. This [Factorio Crab Rave](https://www.youtube.com/watch?v=AsjE0ehkDtE) video proved to be immensely useful, since I could jump around frame by frame and examine the leg movements. I went through many iterations, trying different ratios and formulas, but none quite matched the movement in-game. Then it occured to me I wasn't thinking in 3-dimensions. Spidertron's body is hovering above the ground, and with Factorio's isometric projection, this is done simply by subtracting part of the Z axis (height) from the Y axis (south). With this in mind, I went back to the video and noticed that Spidertron's knees are a fixed height (Z axis) above the body, and the knees are about half way between the body and foot on the X and Y axis. This 3D position is then projected into 2D, resulting in a near-perfect replica of the in-game proportions.
 
-<spidertron-test3.webm>
-Caption: By this time, it was 3 days, and not much sleep, later.
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/12/spidertron-test3.mp4' width='946px' height='668px' alt='Spidertron body moving' caption='By this time, it was 3 days, and not much sleep, later.' %}
 
 To get Spidertron walking on its own, I spent some time cleaning up the initial code-spaghetti, and started with the idle animation. This was an easy one, and is just a sine wave applied to the body's height off the ground. The body originally had an independent speed and position, but was this was later changed to use the average of each leg's position, due to the legs and body getting out of sync. This leaves just 8 points to animate and make "steps" toward the target.
 The real Spidertron can have up to 3 legs in the air at once, and uses a currently unknown method for determining the step order. For my initial tests I used a fixed step order, which worked, but didn't look very good moving in all directions. I later turned to sorting the legs by distance from target, and alternating between the closest and farthest leg. This is what was used in the first release, but I've made several small tweaks to the pattern and timing since to try and replicate the in-game version.
 When a leg starts a step, it predicts where Spidertron will be on the next step. It then sets the target for the leg, plus a little bit of randomness to make it a little less repetative. Every frame, each active leg is then moved towards its target. By Wednesday night, I was getting closer to a walking Spidertron, and was determined to have something ready to go out with that Friday's Love Letter issue.
 
-<spidertron-test5.webm>
-Caption: The first walking Spidertron, bugs and all.
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/12/spidertron-test5.mp4' width='550px' height='480px' alt='Spidertron walking' caption='The first walking Spidertron, bugs and all.' %}
 
 On Thursday afternoon [spidertron.alt-f4.blog](https://spidertron.alt-f4.blog/) was created so the whole Alt-F4 Techie team could test out Spidertron and help with finding and fixing bugs. The way motion prediction was calculated relative to frame rate, caused any lag (of which there was plenty) to teleport the legs around, and have very glitchy movements. Due some CSS bugs, the leg segments also had a minimum length, so in certain positions this would cause further glitchy movements. After another late night of coding, some of the major bugs were fixed, and the first public release went out on the blog.
 
