@@ -42,26 +42,29 @@ Didn't use large powerpoles, got annoyed by collision box
 No safety factor. The module production (producing 50 /m of each)
 
 ### Running The Factory in 1.0
-I was curious how this ancient and massive base would run in Factorio 1.0 with the all the optimizations the developers have applied over the past 5 years. So I migrated it, which took longer than I expected, but it works! For reference, on my [5 year old CPU](https://ark.intel.com/content/www/us/en/ark/products/75123/intel-core-i7-4770k-processor-8m-cache-up-to-3-90-ghz.html) using `0.11.22` the base runs at `2/7 FPS/UPS`, but in `1.0` it reaches around `60/70 FPS/UPS`! Or, well, sort off, I'm using Intel Integrated Graphics.
+I was curious how this ancient and massive base would run in Factorio 1.0 with the all the optimizations the developers have applied over the past 5 years. So I migrated it. It took longer than I expected, but it works! For reference, on my PC using `0.11.22` the base runs at `2/6 FPS/UPS`, but in `1.0` it reaches `60/60 FPS/UPS` with high quality sprites! 
 
-**THIS PICTURE IS LAME**
+NICE VIDEO OF SOMETHING RUNNING
 
-![](media/fps_ups.png "Four Seperate Rail Networks without intersections")
+*(Disclaimer: the migration to `1.0` is not by any means perfect. The goal was simply to get the all machines running similar to 0.11. There's likely something I missed or simply ignored, for example power generation.)*
 
-*(Disclaimer: the migration to `1.0` is not by any means perfect. For example fluids is slightly hacked, and power generation is out of balance. There's likely something else I missed as well. But he goal was to get the base running mostly in the same configuration.)*
+There were quite a few changes apply to run this old base in `1.0`. It started with adding items and changing recipes to reflect `0.11`, which includes incorporating the fluid amounts being [multplied by 10](https://wiki.factorio.com/Version_history/0.15.0#0.15.0). Then there were more straight-forward changes like replacing small-pump setups (of which DaveMcW was also the [expert](https://forums.factorio.com/viewtopic.php?f=134&t=6066)) with normal [pumps](https://wiki.factorio.com/Pump). Or manually adding belts
+ where inserters now need a [belt directly in front of it](https://www.reddit.com/r/factorio/comments/48v5qo/inserters_not_picking_up_from_end_of_conveyor/), which had to be fixed for most of the outposts! And, as earlier mentioned, the inserter stack size was always `1`, except when moving from container-to-container, then the bonus is `5`, which was changed using a script.
 
-There were quite a few changes apply to run this old base in `1.0`. It started with adding items and changing recipes to reflect `0.11`. Then there were more straight-forward changes like fixing cases where inserters now needing a [belt directly in front of it](https://www.reddit.com/r/factorio/comments/48v5qo/inserters_not_picking_up_from_end_of_conveyor/). Or replacing small-pump setups (of which DaveMcW was also the [expert](https://forums.factorio.com/viewtopic.php?f=134&t=6066)) with normal [pumps](https://wiki.factorio.com/Pump).  But, there were few a other changes that was not initially apparent and quite interesting. For example, in `0.11` a splitter's throughput was limited by it's output, whereas today it's limited by it's input. This means, for example, a red belt could be split 50-50 using a **yellow** splitter and still maintain two saturated yellow belts. Luckily, since the base is so beautifully mirrored, if I found such a problem in a specific area, I knew I had to fix it in the mirrored modules as well.
+ PICTURE OF OLD/NEW PUMP SETUP WITH SLIDER
+
+But, there were few a other changes that was not initially apparent and quite interesting. For example, in `0.11` a splitter's throughput was limited by it's output, whereas today it's limited by it's *input*. This means, for example, that a red belt could be split 50-50 using a **yellow** splitter and still maintain two saturated yellow belts. Luckily, since the base is so beautifully mirrored, when I found such a problem in a specific area, I knew I had to fix it in the mirrored modules as well.
 
 PICTURE OF WEIRD SPLITTING BEHAVIOUR
 
-I had to ensure the biters don't penetrate the perimeter with insufficient defenses. This is partly because in 0.11 there was no [behemoth biters](https://wiki.factorio.com/Enemies), but the main was that DaveMcW used an [old belt trick](https://forums.factorio.com/viewtopic.php?f=8&t=10151) that interrupts  a spitter's attack animation indefinitely, which means the laser turrets only had to focus on biters. To circumvent this problem completely for `1.0`, without losing the CPU load of biters, I simply [increased the laser turret damage 50-fold](https://youtu.be/xxtxn3H1g60). 
+I also had to ensure the biters don't penetrate the perimeter using insufficient defenses. This is partly because in 0.11 there was no [behemoth biters](https://wiki.factorio.com/Enemies), but the main issue was that DaveMcW used an [old belt trick](https://forums.factorio.com/viewtopic.php?f=8&t=10151) that interrupts  a spitter's attack animation indefinitely, which means the laser turrets only had to focus on biters. To completely circumvent this problem for `1.0`, without losing the CPU load of biters I simply [increased the laser turret damage 50-fold](https://youtu.be/xxtxn3H1g60). 
 
 ![](media/base_perimeter.jpg "Belt Trick with Laser Perimeter")
 *Perimeter wall showing belt that interrupts spitter attack animation. Notice the old 1x1 laser turret graphics. (Image from [here](https://imgur.com/a/xcYxk))*
 
-Inser. Finally I had to modify *all* vertical train stations manually, which was the most time consuming. This is because before [`0.13`](https://wiki.factorio.com/Roadmap/History#Factorio_0.13_.28June_27th_2016.29) vertical and horizontal train stations had [different lengths](https://www.factorio.com/blog/post/fff-133)!
+Finally I had to modify *all* vertical train stations manually, which was the most time consuming. This is because before [`0.13`](https://wiki.factorio.com/Roadmap/History#Factorio_0.13_.28June_27th_2016.29) vertical and horizontal train stations had [different lengths](https://www.factorio.com/blog/post/fff-133)! It was an interesting challenge finding and fixing bottlenecks by changing and fixing the "game" rather than the base itself.
 
-You too can observe this breathtaking base by downloading the `1.0` [here]() and the required modpack [here](). Or if you only want a quick look around you can view in Google Map format as Twinsen created it [here](http://twinsen.info/Web/Map(197,205)1024/).
+You can observe this breathtaking base yourself by downloading the [version `1.0` save]() and the required modpack [here](). Or you can simply download [Factorio 0.11](https://factorio.com/download/archive) and download the `0.11` saves from DaveMcW's [Reddit comment](https://www.reddit.com/r/factorio/comments/3biwcf/one_minute_rocket_defense/csmjtof?utm_source=share&utm_medium=web2x&context=3). Or if you're lazy today, and only want a quick look around, you can view in Google Map format [here](http://twinsen.info/Web/Map(197,205)1024/) (create by Twinsen). However, there will be internet points awarded to the player who finds the RobotPort first that DaveMcW dropped 5 years ago.
 
 ### My Notes
 
@@ -96,7 +99,6 @@ I fixed:
 - Fixed all vertical train stations
 - Fixed processing units, advanced circuits, chemical plant
 - Replaced splitters on coal lines. Didn't allow enough coal to pass. Interesting change in spliter beaviour.
-- Made long handed inserters 50% faster since they have to rotate further
 - Fixed module 3 recipe
 
 Other notes
