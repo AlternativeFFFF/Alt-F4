@@ -4,7 +4,7 @@ As a dedication to [Comfy Factorio](https://getcomfy.eu) I would like to share a
 
 {% include countdown.html date="2020:11:7:18" %}
 
-*Comfy Factorio* is a community with an emphasis on original maps and a “chill” experience. Popular Comfy scenarios are Biter Battles, Mount Fortress, and recently the teleporting Chronotrain. To celebrate their 3,000th Discord member, Comfy has teamed up with [Big Community Games](https://www.bigcommunitygames.com/), who hosted the community event mentioned in [Alt-F4 #7](https://alt-f4.blog/ALTF4-7/#join-the-bcg-mmo-event-tomorrow-t-a-r), to host a [Massive Multiplayer Fish Defence Game](https://www.bigcommunitygames.com/Fish-Defence).
+Comfy Factorio is a community with an emphasis on original maps and a “chill” experience. Popular Comfy scenarios are Biter Battles, Mount Fortress, and recently the teleporting Chronotrain. To celebrate their 3,000th Discord member, Comfy has teamed up with [Big Community Games](https://www.bigcommunitygames.com/), who hosted the community event mentioned in [Alt-F4 #7](https://alt-f4.blog/ALTF4-7/#join-the-bcg-mmo-event-tomorrow-t-a-r), to host a [Massive Multiplayer Fish Defence Game](https://www.bigcommunitygames.com/Fish-Defence).
 
 Let’s take a look at the map we’ll be playing; unsurprisingly, it’s in the shape of a fish:
 
