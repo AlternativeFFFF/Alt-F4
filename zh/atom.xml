@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-06T11:23:52+00:00</updated>
+  <updated>2020-11-06T12:31:36+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #12 - 逆向工程蜘蛛</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-12/" />
+    <id>https://alt-f4.blog/ALTF4-12</id>
+    <updated>2020-11-06T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在这期非常容易整除的第 12 期 Alt-F4 中，&lt;em&gt;xthexder&lt;/em&gt; 介绍了一些关于页面底部的弹跳蜘蛛的技术幕后。然后，&lt;em&gt;TheKool&lt;/em&gt; 给大家介绍了一些新手对产能插件及其用途的看法。最后，&lt;em&gt;T-A-R&lt;/em&gt; 分享了一些关于即将到来的社区活动的信息，看起来很有趣。&lt;/p&gt; &lt;h2 id=&quot;在网页上创建蜘蛛机甲-xthexder&quot;&gt;在网页上创建蜘蛛机甲 &lt;author&gt;xthexder&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;正如你所知道的，Alt-F4 网站的每个页面底部都有一个蜘蛛机甲，类似于异星工厂网站上的火箭。很多人可能都曾点击过它，希望有什么激动人心的事情发生，但失望的发现蜘蛛机甲只会原地跳动。现在，眼尖的读者可能已经注意到，随着&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-8/&quot;&gt;Alt-F4 #8 致异星工厂的一封情书&lt;/a&gt;的发布蜘蛛机甲学会了新戏法。如果你还没看到，不妨&lt;a href=&quot;#spidertron&quot;&gt;滚动到底部&lt;/a&gt;，点击你的小伙伴，让他跟你一起走吧！&lt;/p&gt; &lt;p&gt;当我们最初建立网站的时候，显然我们想让蜘蛛机甲做些事情，但我们在并没有时间去录制它的闲置动画以外的东西。录制蜘蛛机甲是很棘手的，因为我们需要在没有任何背景的情况下进行录制。最初我们使用 Klonan 的一个秘密 Mod 实现，它使用未记录在异星工厂 API 中函数来录制 GIF。由于蜘蛛机甲的运动是半随机的，所以录制一个循环就更加棘手了，因此除了空闲动画之外，任何其他的东西都需要一些额外的努力才能获得正确的效果。&lt;/p&gt; &lt;p&gt;最初的计划是让蜘蛛机甲爬上页面，和异星工厂官方网站上的火箭一样，成为回到顶部的按钮。这需要录制一个向上行走的动画，然后在我们将其向上移动时循环播放。然后，Dr.MagPie 想到了让蜘蛛机甲跟着遥控器在页面上走，就像游戏中一样。这远远超出了使用录像能够做到的范围，因为这需要太多的组合。&lt;/p&gt; &lt;div class=&quot;m0 h100 flex flex-column flex-center quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter&quot;&gt; &lt;p&gt;考虑到这是我们所知的社区，可能真会有一些疯狂的伙计会来挑战不可能…&lt;/p&gt; &lt;author&gt; — psihius（10月3日，2020） &lt;/author&gt; &lt;/div&gt; &lt;/blockquote&gt; &lt;/div&gt; &lt;p&gt;&lt;em&gt;接受挑战&lt;/em&gt;&lt;/p&gt; &lt;p&gt;为网站创建一个能动的蜘蛛机甲无疑是一个挑战，但也是相当有趣的工作。psihius 的评论促使我开始动手，我认为这是一个教科书般的&lt;a href=&quot;https://xkcd.com/356/&quot;&gt;书呆子狙击&lt;/a&gt;案例。第一件事就是简单地画出一个蜘蛛机甲，使用原始的异星工厂精灵，使它们可以独立移动。我选择使用原始的...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-3</id>
     <updated>2020-09-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;欢迎来到第三期 Alt-F4 。本周末将有一场尝试在单个异星工厂服务器上打破最高在线人数记录的挑战，阅读下文来了解如何加入这场狂欢。此外我们还有关于大规模社区游戏发布派对的报道，本该写在上周来着，赖我（Therena）。最后，Raiguard 与我们所有人共享了一个激动人心的 Mod。让我们开始吧！&lt;/p&gt; &lt;p&gt;PS：我们正在寻找有意协助我们翻译每期 Alt-F4 的人。 如果你对此有兴趣，可以在本期末尾找到更多信息。谢谢！&lt;/p&gt; &lt;h2 id=&quot;活动融化硅片-jd-plays&quot;&gt;活动：融化硅片 &lt;author&gt;JD-Plays&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;img id=&quot;image-element&quot; class=&quot;post&quot; src=&quot;//i.imgur.com/EVLaZru.gif&quot; /&gt;&lt;/p&gt; &lt;p&gt;有什么周末计划吗？小玩25分钟异星工厂然后发现太阳已经晒屁股了吗？ 或者跟三五好友一起联机异星工厂？&lt;/p&gt; &lt;p&gt;我们有一则好消息。这个周末，我们几个朋友打算聚在一起做一件简单的小事：彻底融化我们服务器的芯片！快来加入我们的“融化硅片”活动，我们的唯一目标是让尽可能多的玩家登录进同一台服务器并发射一枚火箭，顺便融化服务器的 CPU！从建立基地到与其他龙虾兵一同肃清虫巢，人人有事做。真正敌人或将长期存在，需要你们中的一些人加入到我们的伐伐伐伐伐木工队伍！&lt;/p&gt; &lt;p&gt;因此，如果您在本周末有几个小时的空闲时间，并乐意帮助我们打破521位同时登录玩家的&lt;a href=&quot;https://www.youtube.com/watch?v=UEhPra7M-Wg&quot;&gt;先前记录&lt;/a&gt;，请在北京时间9月5日（星期六）下午7点加入我们的服务器。您可以很轻松的找到它，届时它将是最大的服务器！&lt;/p&gt; &lt;!-- Use include.data in the ID as it makes it unique --&gt; &lt;p&gt; &lt;span class=&quot;countdown&quot; id=&quot;countdown-2020-09-05-11-00-00&quot;&gt;&lt;span id=&quot;days&quot;&gt;&lt;/span&gt; &lt;span id=&quot;hours&quot;&gt;&lt;/span&gt; &lt;span id=&quot;minutes&quot;&gt;&lt;/span&gt; &lt;span id=&quot;seconds&quot;&gt;&lt;/span&gt;&lt;/span&gt; &lt;script&gt; let countdownEl =...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #2 - 蜘蛛机甲!!!</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-2/" />
-    <id>https://alt-f4.blog/ALTF4-2</id>
-    <updated>2020-08-28T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;欢迎来到第二期 Alt-F4，由社区驱动的 &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt; 继承者。说真的，我总是能从社区中感到无限惊喜。在第一期发布后的的数小时内，&lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; 里就挤满了热情的玩家，都是愿意贡献帮助的热心肠。您可能会发现的一件事就是，现在这个页面的许多地方都获得了一些小小的升级。感谢每一位踊跃参与本项目的人！&lt;/p&gt; &lt;p&gt;不过本篇博文重点并不在于博客本身，而在于游戏。众所周知，开发者们在 1.0 发布日添加了 &lt;a href=&quot;https://wiki.factorio.com/Spidertron&quot;&gt;蜘蛛机甲（Spidertron）&lt;/a&gt;，一种长着怪异长腿的蜘蛛机甲作为惊喜。它早在 &lt;a href=&quot;https://www.factorio.com/blog/post/fff-120&quot;&gt;FFF＃120&lt;/a&gt;（4.5年前）就被提出过。在发售之际，我们想将本文的重点放在这款多功能载具以及社区对其尝试过的改造方式上。&lt;/p&gt; &lt;h2 id=&quot;蜘蛛机甲错过了练腿日-lovely_santa&quot;&gt;蜘蛛机甲错过了练腿日 &lt;author&gt;Lovely_Santa&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我在看到 1.0 的发布说明时感到特别惊喜！相信其他抢先体验的玩家也会跟我有同感。作为您友善的邻家 Mod 创作者，我不得不仔细研究下蜘蛛机甲的构造，这给了我很多思路，各种全新的 Mod 想法开始萌生。&lt;/p&gt; &lt;p&gt;大多数 Arch666Angel 的粉丝肯定知道我是 Angel’s mods 的&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?p=475786#p475786&quot;&gt;作者之一&lt;/a&gt;。 由于 &lt;a href=&quot;https://mods.factorio.com/mod/angelsexploration&quot;&gt;Angel’s Exploration&lt;/a&gt; 尚处于开发初期，蜘蛛机甲有机会在此大放光彩。我并不打算剧透自己正在酝酿的东西，相反，我更想花时间分享一下开发过程中遭遇的一些困难。&lt;/p&gt; &lt;p&gt;来见见爬行机甲（Crawlertron）吧，这是 Angel 牌机甲，他将加入 Angel’s vehicles 的 Crawler 家族之中。我对新的爬行机甲提出的的要求之一是他的体型。我希望他变得更小，非常小。这意味着我必须在蜘蛛机甲的定义中引入比例因子，以便能够按比例缩小他。正如读者中的某些 Mod 作者已经知道的那样，他拥有游戏中最大的原型之一。在花费了几个小时和数杯甜点之后，我用比例因子定义了所有内容，可以开始加载游戏查看结果了。将爬行机甲缩小（缩放系数&amp;lt;1）的代码中不会出现什么明显的错误，因此我决定将其放大（缩放系数&amp;gt;1），结果是：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/ALTF4/2/crawlertron_large.png?raw=true&quot;...</content>
   </entry>
   
   

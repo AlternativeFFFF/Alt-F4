@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-06T11:23:52+00:00</updated>
+  <updated>2020-11-06T12:31:36+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #12 – Nachkonstruktion der Spinne</title>
+    <link href="https://alt-f4.blog/de/ALTF4-12/" />
+    <id>https://alt-f4.blog/ALTF4-12</id>
+    <updated>2020-10-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In dieser einfach zu teilenden Ausgabe Nummer 12 von Alt-F4 geht &lt;em&gt;xthexder&lt;/em&gt; auf einige technische Details zur springenden Spinne am Ende der Seite ein. Dann gibt &lt;em&gt;TheKool&lt;/em&gt; ein bisschen Neuling-freundliche Erklärungen zu Produktivitätsmodulen und deren Verwendungen. Schlussendlich teilt &lt;em&gt;T-A-R&lt;/em&gt; einige Infos über ein anstehendes Communityevent, welches nach viel Spaß aussieht.&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-3</id>
     <updated>2020-09-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Willkommen zur dritten Ausgabe von Alt-F4. Dieses Wochenende wird es einen Versuch geben, den Rekord für die größte Anzahl an Spielern auf einem einzelnen Factorio Server zu brechen; lies weiter, um zu erfahren, wie du an diesem Spaß teilnehmen kannst. Es gibt auch einen Aktionsbericht über die Eröffnungsparty der Big...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #2 – SPIDERTRON!!!</title>
-    <link href="https://alt-f4.blog/de/ALTF4-2/" />
-    <id>https://alt-f4.blog/ALTF4-2</id>
-    <updated>2020-08-28T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Willkommen zur zweiten Ausgabe von Alt-F4, dem von der Community erstellte Nachfolger der beliebten &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. Und man, ich bin immer positiv überrascht von der Community. Innerhalb weniger Stunden nachdem die erste Ausgabe veröffentlicht wurde, hat sich der &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt;-Server mit enthusiastischen Menschen gefüllt, die bereit waren, in...</content>
   </entry>
   
   

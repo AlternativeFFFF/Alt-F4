@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/nl/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-06T11:23:52+00:00</updated>
+  <updated>2020-11-06T12:31:36+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #12 - Reverse Engineering the Spider</title>
+    <link href="https://alt-f4.blog/nl/ALTF4-12/" />
+    <id>https://alt-f4.blog/ALTF4-12</id>
+    <updated>2020-11-06T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this very easily divisible issue number 12 of Alt-F4, &lt;em&gt;xthexder&lt;/em&gt; goes into some of the technical behind-the-scenes regarding the bouncy spider at the bottom of the page. Then, &lt;em&gt;TheKool&lt;/em&gt; gives some newcomer-friendly insight into production modules and their uses. Finally, &lt;em&gt;T-A-R&lt;/em&gt; shares some info on an upcoming community event...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-3</id>
     <updated>2020-09-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Welcome to the third issue of Alt-F4. This weekend, there’ll be an attempt to try and break the record for the highest number of players on a single Factorio server; read on for details of how to join the fun. There’s also an action report about the Big Community Games...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #2 - SPIDERTRON!!!</title>
-    <link href="https://alt-f4.blog/nl/ALTF4-2/" />
-    <id>https://alt-f4.blog/ALTF4-2</id>
-    <updated>2020-08-28T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Welcome to the second issue of Alt-F4, the community-driven follow-on to the &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;Factorio Friday Facts&lt;/a&gt;. And man, am I always pleasantly surprised by the community. Within hours of publishing the first issue, the &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; was filled with enthusiastic people that were willing to help at all stages of...</content>
   </entry>
   
   
