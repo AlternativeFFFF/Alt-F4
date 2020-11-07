@@ -76,8 +76,11 @@ table.panel-hole td,
 //   padding: 2px;
 // }
 
-.blog-card {
+.blog-card,
+.blog-card:hover {
   display: flex;
+  color: inherit;
+  text-decoration: none;
 }
 
 .blog-card-thumbnail {

@@ -6,17 +6,15 @@ layout: default
 	{% include pagination.html %}
 	{% for post in paginator.posts %}
 	{% unless post.draft %}
-	<div class="panel-inset-lighter blog-card">
+	<a href="{{ site.baseurl }}{{ post.url }}" class="panel-inset-lighter blog-card">
 		{% if post.image %}
 		<div class="blog-card-thumbnail">
-			<a href="{{ site.baseurl }}{{ post.url }}" class="no-outline">
 				<img src="{{ post.image.url }}" alt="{{ post.image.transcription }}">
 				<div class="shadow-overlay"></div>
-			</a>
 		</div>
 		{% endif %}
 		<div class="blog-card-text">
-			<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+			<h3>{{ post.title }}</h3>
 			<div class="posted-by">
 				{% include author.html %}
 			</div>
@@ -25,7 +23,7 @@ layout: default
 				<p>{{ post.content | strip_html | truncatewords:50 }}</p>
 			</div>
 		</div>
-	</div>
+	</a>
 	{% endunless %}
 	{% endfor %}
 	{% include pagination.html %}
