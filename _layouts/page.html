@@ -14,11 +14,31 @@ layout: default
 		{{ content }}
 		{% include discuss.html %}
 	</div>
-	<div class="panel-inset mb0 p4 flex flex-space-between">
+	<div class="panel-inset mb0 p4 flex">
 		<div>
-			<a class="button square-sm" href="/">
-				<i class="fas fa-angle-double-left"></i>
-			</a>
+		<!-- Previous Button -->
+		{% if page.previous.url %}
+		<a href="{{page.previous.url}}" class="button square-sm"><i
+				class="fas fa-angle-double-left"></i></a>
+		{% else %}
+		<a class="button square-sm disabled ">
+			<i class="fas fa-angle-double-left"></i>
+		</a>
+		{% endif %}
+		<a class="button square-sm" href="/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		{% if page.next.url %}
+		<a href="{{page.next.url}}" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		{% else %}
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		{% endif %}
 		</div>
 	</div>
 </article>

@@ -146,3 +146,8 @@ sub {
   vertical-align: sub;
   font-size: 0.7rem;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
