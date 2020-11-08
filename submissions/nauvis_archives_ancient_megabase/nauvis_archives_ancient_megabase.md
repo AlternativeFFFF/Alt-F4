@@ -36,6 +36,10 @@ Finally, and in my opinion the most impressive, is the elegant and simple layout
 ### Running The Factory in 1.0
 I was curious how this megabase would run in Factorio `1.0` with all the optimizations the developers applied over the past 5 years. So I migrated it. It took longer than I expected, but it works! For reference, on my PC using `0.11.22` the base runs at `2 FPS / 6 UPS`, but in `1.0` it reaches about `65 FPS / 65 UPS` with high quality graphics! *(Disclaimer: the migration to `1.0` is not by any means perfect. The goal was simply for all the machines to run similar to `0.11`. There's likely something I missed or simply ignored, for example the negligible power generation.)*
 
+![](media/base_new_production_graph.png "TEMPORARY VISUALIZATION")
+
+*The new Production Graph lining up almost exactly with items produced more than 5 years ago. The middle area shows the fail/fix process (not an accurate representation of spent time).*
+
 MEDIA (base_new_busy.gif)
 
 *One of the four mirrored circuit builds. Notice the layout: it's mirrored left to right with four similar sections, and it shows three repeating row sections.*
