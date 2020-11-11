@@ -9,15 +9,14 @@ layout: default
 	<a href="{{ site.baseurl }}{{ post.url }}" class="panel-inset-lighter blog-card">
 		{% if post.image %}
 		<div class="blog-card-thumbnail">
-				<img src="{{ post.image.url }}" alt="{{ post.image.transcription }}">
-				<div class="shadow-overlay"></div>
+			<img src="{{ post.image.url }}" alt="{{ post.image.transcription }}">
+			<div class="shadow-overlay"></div>
 		</div>
 		{% endif %}
 		<div class="blog-card-text">
 			<h3>{{ post.title }}</h3>
 			<div class="posted-by">
-				{{ site.data.locale.author.writtenby }} <em>{{ page.author | default: post.author }}</em> 
-				{{ site.data.locale.author.date }} <i>{{ page.date | default: post.date | date: site.data.locale.date-format }}</i>
+				{% include author.html %}
 			</div>
 			<hr>
 			<div class="snippet snippet-2">
