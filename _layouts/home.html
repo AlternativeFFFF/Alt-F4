@@ -16,7 +16,8 @@ layout: default
 		<div class="blog-card-text">
 			<h3>{{ post.title }}</h3>
 			<div class="posted-by">
-				{% include author.html %}
+				{{ site.data.locale.author.writtenby }} <em>{{ page.author | default: post.author }}</em> 
+				{{ site.data.locale.author.date }} <i>{{ page.date | default: post.date | date: site.data.locale.date-format }}</i>
 			</div>
 			<hr>
 			<div class="snippet snippet-2">
