@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="panel blog-post">
 	{% if page.title %}
-	<h1 class="page-title-headder">{{ page.title }}</h1>
+	<h1 class="page-title-headder">{{ page.title }}&nbsp;&nbsp;<author>{{ page.date | default: post.date | date: site.data.locale.date-format }}</author></h1>
 	{% endif %}
 	{% if page.author or page.editor or page.date %}
 	<div class="panel-inset mb0">
