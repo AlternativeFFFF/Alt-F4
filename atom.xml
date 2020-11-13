@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-08T18:45:14+00:00</updated>
+  <updated>2020-11-13T14:36:32+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #13 - Megabase Archaeology</title>
+    <link href="https://alt-f4.blog/ALTF4-13/" />
+    <id>https://alt-f4.blog/ALTF4-13</id>
+    <updated>2020-11-13T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this spookily coincidental issue 13 of Alt-F4 published on Friday 13th (it’s almost like we planned this), we focus on a single topic: building as many rocket defences as possible. What are rocket defences, you ask? Well, stringweasel is here to tell you, taking you back to a simpler...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-4</id>
     <updated>2020-09-11T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Welcome to the fourth issue of Alt-F4, rounding out the very first month of posts! This week, gamebuster800 describes their process for designing blueprints, Landmine752 shares some of their favourite fan art, and Romner gives us some insight into their Realistic Fusion Power mod (in the first part of a...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #3 - Tronparty</title>
-    <link href="https://alt-f4.blog/ALTF4-3/" />
-    <id>https://alt-f4.blog/ALTF4-3</id>
-    <updated>2020-09-04T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Welcome to the third issue of Alt-F4. This weekend, there’ll be an attempt to try and break the record for the highest number of players on a single Factorio server; read on for details of how to join the fun. There’s also an action report about the Big Community Games...</content>
   </entry>
   
   
