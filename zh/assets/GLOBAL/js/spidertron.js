@@ -408,10 +408,16 @@ function updateSpidertron(spidertron, time) {
                    '--leg' + (N + 1) + '-knee-angle:' + -((lowerAngle + upperAngle) / 2) + 'rad;';
     }
 
-    cssText += '--spidertron-location-x:' + (spidertron.currentX + spidertron.boundingBox.x) + 'px;' +
-               '--spidertron-location-y:' + (spidertron.currentY + spidertron.boundingBox.y) + 'px;' +
-               '--spidertron-width:' + (spidertron.boundingBox.width / spidertron.scale) + 'px;' +
-               '--spidertron-height:' + (spidertron.boundingBox.height / spidertron.scale) + 'px;' +
+    // Crop spidertron if it goes outside the document body so that it doesn't cause page resizes.
+    let locationX = Math.min(bodyRect.width, spidertron.currentX + spidertron.boundingBox.x);
+    let locationY = Math.min(bodyRect.height, spidertron.currentY + spidertron.boundingBox.y);
+    let scaledWidth = Math.max(0, Math.min(bodyRect.width - locationX, spidertron.boundingBox.width)) / spidertron.scale;
+    let scaledHeight = Math.max(0, Math.min(bodyRect.height - locationY, spidertron.boundingBox.height)) / spidertron.scale;
+
+    cssText += '--spidertron-location-x:' + locationX + 'px;' +
+               '--spidertron-location-y:' + locationY + 'px;' +
+               '--spidertron-width:' + scaledWidth + 'px;' +
+               '--spidertron-height:' + scaledHeight + 'px;' +
                '--spidertron-body-x:' + (bodyOffsetX - spidertron.boundingBox.x) / spidertron.scale + 'px;' +
                '--spidertron-body-y:' + ((bodyOffsetY - spidertron.boundingBox.y) / spidertron.scale - bodyHeight) + 'px;';
 
