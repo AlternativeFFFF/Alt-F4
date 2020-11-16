@@ -1,0 +1,11 @@
+<p></p> <!-- Spacing -->
+<div class="image">
+  {% if include.href %}<a href="{{ include.href }}">{% endif %}
+    {% if include.caption %}<figure>{% endif %}
+      <img src="{{ include.src }}" alt="{{ include.alt }}">
+      {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+    {% if include.caption %}</figure>{% endif %}
+    {% if include.href %}<i>Click to view full resolution</i>{% endif %}
+    {% if include.href %}</a>{% endif %}
+</div>
+<p></p> <!-- Spacing -->
