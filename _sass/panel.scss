@@ -83,6 +83,11 @@ table.panel-hole td,
   text-decoration: none;
 }
 
+/* underline title when card is hovered */
+.blog-card:hover .blog-card-text > h3 {
+  text-decoration: underline;
+}
+
 .blog-card-thumbnail {
   background-color: transparent;
   margin: 0 16px 0 0;
