@@ -40,7 +40,7 @@ I latch onto spaceships as my main goal, but let’s be practical: To get spaces
 
 The plan is set: Holmium moon > Energy science > Beryllium asteroid belt > Astronomic science > SPACESHIPS!
 
-![Space Exploration resources: Vulcanite, Cyonite, Water Ice, Methane Ice, Beryllium, Holmium, Iridium, Vitamelange, Naquium, Arcospheres.](space-exploration-resources.png "Resources")
+![Space Exploration resources: Vulcanite, Cryonite, Water Ice, Methane Ice, Beryllium, Holmium, Iridium, Vitamelange, Naquium, Arcospheres.](space-exploration-resources.png "Resources")
 
 So I use my fuel guzzling rockets to travel to another planet. This planet has a long day/night cycle and severe wind (RIP robots), but at least it has water and… some sort of ruin to explore?
 
