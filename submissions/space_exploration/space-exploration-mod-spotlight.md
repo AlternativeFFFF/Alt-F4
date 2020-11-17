@@ -4,7 +4,7 @@ Space Exploration is an overhaul mod that takes you on an epic journey through t
 
 I launch a rocket to deploy a satellite, allowing me to see the world in satellite view, detached from my body. My quest to find the edge of the planet just got a lot easier and… yup, there’s the edge. Nauvis has a limit.
 
-But what’s this? My satellite also discovered something abandoned in my planet’s orbit. I can look at it with the satellite; it's some sort of space platform with some treasures I might want. You know what that means: time to go to space in person.
+But what’s this? My satellite also discovered something abandoned in my planet’s orbit. I can look at it with the satellite; it’s some sort of space platform with some treasures I might want. You know what that means: time to go to space in person.
 
 ![Planet map: My home base. This is my homeworld, the planet I crash landed on. The planet is huge. Solar system map: My home world. Interstellar map: My star system.](https://media.alt-f4.blog/ALTF4/14/space-exploration-you-are-here.png)
 
@@ -31,7 +31,7 @@ Energy science looks like a solid first choice. I would need to find a new metal
     </video>
 </p>
   
-Or maybe material science would be the better choice. For that, I'd need to find some iridium, and the science experiments would generate a lot of scrap that I’d need to process. This would get me an improved space station floor, military upgrades, and a spacesuit with a bigger equipment grid.
+Or maybe material science would be the better choice. For that, I’d need to find some iridium, and the science experiments would generate a lot of scrap that I’d need to process. This would get me an improved space station floor, military upgrades, and a spacesuit with a bigger equipment grid.
 
 Perhaps bio science would be the most efficient first choice. I would need to find some weird material from another planet called vitamelange and figure out how to do genetic experiments. It would get me the bio gun, spidertron, bio upgrades, and greater productivity to save me resources overall.
 
@@ -44,7 +44,7 @@ Perhaps bio science would be the most efficient first choice. I would need to fi
     </video>
 </p>
 
-No, I know what I want. There it is, deep into the astronomic science tree: the spaceship tech, fulfilling my dream of being a spaceship captain. Astronomic science needs me to make a lot of telescopes and requires beryllium, which I've only seen in an asteroid belt so far. Unfortunately, the spaceships themselves require a lot of other science to be carried out first, which will take days. These preparations would get me rocket safety upgrades along the way, which is nice I guess. Not crashing is good, but with the moons I’ve already found, going for the other sciences would be far easier.
+No, I know what I want. There it is, deep into the astronomic science tree: the spaceship tech, fulfilling my dream of being a spaceship captain. Astronomic science needs me to make a lot of telescopes and requires beryllium, which I’ve only seen in an asteroid belt so far. Unfortunately, the spaceships themselves require a lot of other science to be carried out first, which will take days. These preparations would get me rocket safety upgrades along the way, which is nice, I guess. Not crashing is good, but with the moons I’ve already found, going for the other sciences would be far easier.
 
 I take a look at the other techs tempting me, which is when I notice that energy science provides me with space trains! So many decisions.
 
@@ -52,23 +52,23 @@ I take a look at the other techs tempting me, which is when I notice that energy
 
 I latch onto spaceships as my main goal, but let’s be practical: to get spaceships I need astronomic science. To get astronomic science I need beryllium. To get beryllium I need to find an asteroid belt. To mine an asteroid belt effectively I need a lot of energy, which is hard to come by because those asteroids are not the ideal environment for my solar panels. It would be easier with better energy tech, and better energy tech needs holmium. I can get Holmium from a nice little biterless planet right next door. Hurray!
 
-The plan is set: Holmium moon > Energy science > Beryllium asteroid belt > Astronomic science > *spaceships*!
+The plan is set: Holmium moon > Energy science > Beryllium asteroid belt > Astronomic science > SPACESHIPS!
 
-![Special resources from space and other worlds: Vulcanite (smelting additive and fuel), Cryonite (cooling and supercomputing), Water Ice (mine water in space), Methane Ice (alternative hydrocarbons), Beryllium (space logistics), Holmium (high-energy devices), Iridium (heavy industry and military), Vitamelange (bio science and self-repair), Naquium (deep space and high tech), Arcospheres (it's complicated).](https://media.alt-f4.blog/ALTF4/14/space-exploration-resources.jpg)
+![Special resources from space and other worlds: vulcanite (smelting additive and fuel), cryonite (cooling and supercomputing), water ice (mine water in space), methane ice (alternative hydrocarbons), beryllium (space logistics), holmium (high-energy devices), iridium (heavy industry and military), vitamelange (bio science and self-repair), naquium (deep space and high tech), arcospheres (it’s complicated).](https://media.alt-f4.blog/ALTF4/14/space-exploration-resources.jpg)
 
-So I use my fuel guzzling rockets to travel to another planet. This planet has a long day/night cycle and severe wind (RIP robots), but at least it has water and… some sort of ruin to explore?
+So, I use my fuel guzzling rockets to travel to another planet. This planet has a long day/night cycle and severe wind (RIP robots), but at least it has water and… some sort of ruin to explore?
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/14/space-exploration-early-base-text.png' alt='Starting space station containing energy science, astronomic science, biological science, fluid processing, solar fins and material science' href='https://media.alt-f4.blog/ALTF4/14/space-exploration-early-base-large.png' %}
 
 Many hours later, a single outpost has become several as I rocket around the solar system, grinning gleefully at the random names my ship generated for these new discoveries.
 
-My second planet was lacking a few important resources such as iron and… water. Yes water; one of those things you just take for granted until you can’t get it anymore. Fortunately its moon has iron and water in abundance. Water is not the nicest thing to transport from planet to planet, or moon to planet, because of all the barrels. Sure they’re recyclable, but sending ice is much easier, so next stop: an ice world. How quickly the logistics network grows…
+My second planet was lacking a few important resources such as iron and… water. Yes water; one of those things you just take for granted until you can’t get it anymore. Fortunately, its moon has iron and water in abundance. Water is not the nicest thing to transport from planet to planet, or moon to planet, because of all the barrels. Sure they’re recyclable, but sending ice is much easier, so next stop: an ice world. How quickly the logistics network grows…
 
-Suddenly, an alert: a rocket from Navuis has crashed, scattering all the valuable resources it contained everywhere. I tell my construction bots to clean it up; can’t leave those circuits lying around.
+Suddenly, an alert: a rocket from Nauvis has crashed, scattering all the valuable resources it contained everywhere. I tell my construction bots to clean it up; can’t leave those circuits lying around.
 
 I also decided to use delivery cannons to send materials from colony to colony. Interplanetary railguns delivering resources, what could go wrong? It just needs a bit of circuitry to not blow a crater here and there.
 
-![Delivery cannon: Fire basic resources to anywhere in your solar system. Catch the reousrces in special chests. (Safe landing optional)](https://media.alt-f4.blog/ALTF4/14/space-exploration-delivery-cannon.jpg)
+![Delivery cannon: Fire basic resources to anywhere in your solar system. Catch the resources in special chests. (Safe landing optional)](https://media.alt-f4.blog/ALTF4/14/space-exploration-delivery-cannon.jpg)
 
 I glance longingly at the spaceship technology, imagining all of the planets I could visit with it.
 
@@ -80,22 +80,22 @@ Enough of these distractions! I plough forth towards that spaceship tech, settin
 
 Then the moment eventually arrives. At long last, I have finally researched the glorious spaceship technology.
 
-I look at the building cost and that excitment turns into despair. So many valuable resources for such a small shuttle. But it is *my* spaceship. I designed it myself, block by block, like a little rocket-propelled factory, and although it turned out a little bit wonky, it works. I shall name this creation “The Penguin”. The feeling is exhilarating as I am no longer shackled to Navuis. I make a countdown machine, and launch with much fanfare. The Penguin has taken flight!
+I look at the building cost and that excitement turns into despair. So many valuable resources for such a small shuttle. But it is MY spaceship. I designed it myself, block by block, like a little rocket-propelled factory, and although it turned out a little bit wonky, it works. I shall name this creation *The Penguin*. The feeling is exhilarating as I am no longer shackled to Nauvis. I make a countdown machine and launch with much fanfare. _The Penguin_ has taken flight!
 
-Flying towards the space station, suddenly I see asteroids coming towards the ship: Panicking, I shoot the asteroids with my gun in desperation, but to no avail and they keep coming, overwhelming my meager weaponry. Stop the engines! Too late, a number of asteroids hit the ship and one hits me, killing me. Lesson learned, I will equip my spaceship with guns next time. Maybe fate ordained that a ship named after a flightless bird is destroyed.
+Flying towards the space station, suddenly I see asteroids coming towards the ship. Panicking, I shoot the asteroids with my gun in desperation, but to no avail and they keep coming, overwhelming my meagre weaponry. Stop the engines! Too late; a number of asteroids hit the ship and one hits me, killing me. Lesson learned; I will equip my spaceship with guns next time. Maybe fate ordained that a ship named after a flightless bird is destroyed.
 
-![Spaceships: Early game rocket powered ship and late game antimatter powered ship.](https://media.alt-f4.blog/ALTF4/14/space-exploration-spaceships.jpg "Spaceships")
+![Spaceships: Early-game rocket-powered ship and late-game antimatter-powered ship. Build your own spaceship block by block. Spaceships are built like compact factories with additional constraints: hull integrity stresses, hull containment, size and shape, engine placement, fuel storage and routing, power generation and storage, cargo storage, anti-asteroid systems, control systems, docking and automation. Technology unlocks better ship systems and allows the construction of much larger ships.](https://media.alt-f4.blog/ALTF4/14/space-exploration-spaceships.jpg)
 
 The natives are bugging my home base once again. Perhaps I have neglected my defences in recent days. So many planets, so little time.
 
-A new technology has caught my eye. Energy beaming, or more specifically 'the Glaive'. My new spaceship is the perfect tool to set up a space station close to the sun and beam those lovely sun rays down to my enemies. They will be no match for me!
+A new technology has caught my eye. Energy beaming, or more specifically the glaive. My new spaceship is the perfect tool to set up a space station close to the sun and beam those lovely sun rays down to my enemies. They will be no match for me!
 
-![Energy Beaming: I built the beam emitter where there is solar, I could use it for energy, but send it to my homeworld to burn bugs.](https://media.alt-f4.blog/ALTF4/14/space-exploration-energy-beaming.png "Energy beaming")
+![I built the energy emitter in close solar orbit where solar energy is at 1,600%. I could send the energy to the asteroid belt where the base struggles for power... but first I send the beam back to my home world. Bugs are no match for me now!](https://media.alt-f4.blog/ALTF4/14/space-exploration-energy-beaming.png)
 
-Many hours later, I’ve discovered that I don’t need to colonise new planets in person. If I put a roboport-equipped Spidertron in a rocket to a new planet it will pop out of the crash site and can start building. I also have a small fleet of penguin tankers (my Penguin spaceship refittered to be a fluid tanker) on some fully autonomous routes. This really is a game about automation.
+Many hours later, I’ve discovered that I don’t need to colonise new planets in person. If I put a roboport-equipped spidertron in a rocket to a new planet it will pop out of the crash site and can start building. I also have a small fleet of penguin tankers (my _Penguin_ spaceship refitted to be a fluid tanker) on some fully autonomous routes. This really is a game about automation.
 
-My main spaceship is now a massive beast with shield projectors at the front, space trains in the middle, and engineering facilities at the back. It’s time to leave the light of solar systems and make a base in the darkness of interstellar space. To boldly go where no m… wait what what is THAT?
+My main spaceship is now a massive beast with shield projectors at the front, space trains in the middle, and engineering facilities at the back. It’s time to leave the light of solar systems and make a base in the darkness of interstellar space. To boldly go where no m… wait, what… what is THAT?
 
-![Many secrets to uncover.](https://media.alt-f4.blog/ALTF4/14/space-exploration-secrets.jpg "Secrets")
+![Many secrets to uncover](https://media.alt-f4.blog/ALTF4/14/space-exploration-secrets.jpg)
 
-[Space Exploration](https://mods.factorio.com/mod/space-exploration) has incredible scope, taking you from a burner-phase pleb to the master of an interstellar empire. You are constantly challenged with massive buildings, logistic problems, and new concepts to work around. The journey is long, brutal, and all kinds of challenging, but it is also rewarding, inspiring, and truly epic. It's Space Exploration, the calm between the storms.
+[Space Exploration](https://mods.factorio.com/mod/space-exploration) has incredible scope, taking you from a burner-phase pleb to the master of an interstellar empire. You are constantly challenged with massive buildings, logistic problems, and new concepts to work around. The journey is long, brutal, and all kinds of challenging, but it is also rewarding, inspiring, and truly epic. It’s _Space Exploration_; the calm between the storms.
