@@ -23,7 +23,10 @@
   text-align: left;
 }
 
-.button i {
+.button i,
+.button-green i,
+.button-green-right i,
+.button-red i {
   margin-right: 0;
 }
 
@@ -40,8 +43,7 @@
   filter: drop-shadow(0 0 2px #f9b44b);
 }
 
-.button:active,
-.button.active {
+.button:active {
   position: relative;
   padding-top: 12px;
   padding-bottom: 8px;
@@ -69,32 +71,10 @@
 }
 
 .button-green {
+  @extend .button;
   background-color: #5eb663;
-  padding: 10px 12px;
-  font-size: 100%;
-  text-align: left;
-  color: #000;
-  font-weight: 600;
-  display: inline-block;
-  vertical-align: baseline;
-  min-width: 128px;
-  border: none;
-  line-height: inherit;
-  white-space: nowrap;
   box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 10px 2px -8px #95df99,
     inset 0 10px 2px -8px #163218, inset 0 -9px 2px -8px #000, 0 0 4px 0 #000;
-  position: relative;
-  margin-right: 14px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  height: 36px;
-  text-align: left;
-}
-
-.button-green i {
-  margin-right: 0;
 }
 
 .button-green:hover,
@@ -110,8 +90,7 @@
   filter: drop-shadow(0 0 2px #34be3c);
 }
 
-.button-green:active,
-.button-green.active {
+.button-green:active {
   position: relative;
   padding-top: 12px;
   padding-bottom: 8px;
@@ -176,10 +155,6 @@
   background-size: contain;
 }
 
-.button-green-right i {
-  margin-right: 0;
-}
-
 .button-green-right:hover,
 .button-green-right:focus,
 .button-green-right.hover {
@@ -189,8 +164,7 @@
   filter: brightness(1.3) drop-shadow(0 0 2px #34be3c);
 }
 
-.button-green-right:active,
-.button-green-right.active {
+.button-green-right:active {
   position: relative;
   padding-top: 12px;
   padding-bottom: 8px;
@@ -203,8 +177,7 @@
   outline: 0;
 }
 
-.button-green-right:active::after,
-.button-green-right.active::after {
+.button-green-right:active::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -232,32 +205,10 @@
 }
 
 .button-red {
+  @extend .button;
   background-color: #fe5a5a;
-  padding: 10px 12px;
-  font-size: 100%;
-  text-align: left;
-  color: #000;
-  font-weight: 600;
-  display: inline-block;
-  vertical-align: baseline;
-  min-width: 128px;
-  border: none;
-  line-height: inherit;
-  white-space: nowrap;
   box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 10px 2px -8px #fda1a1,
     inset 0 10px 2px -8px #8b0101, inset 0 -9px 2px -8px #000, 0 0 4px 0 #000;
-  position: relative;
-  margin-right: 14px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  height: 36px;
-  text-align: left;
-}
-
-.button-red i {
-  margin-right: 0;
 }
 
 .button-red:hover,
