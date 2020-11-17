@@ -1,6 +1,6 @@
 <p></p> <!-- Spacing -->
 <div class="image">
-  {% if include.href %}<a href="{{ include.href }}">{% endif %}
+  {% if include.href %}<a href="{{ include.href }}" target="_blank">{% endif %}
     {% if include.caption %}<figure>{% endif %}
       <img src="{{ include.src }}" alt="{{ include.alt }}">
       {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
