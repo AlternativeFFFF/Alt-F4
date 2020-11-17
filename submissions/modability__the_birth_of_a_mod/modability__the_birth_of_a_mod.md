@@ -1,4 +1,4 @@
-## Modability - The Birth of a Mod
+## Moddability - The Birth of a Mod
 
 Something Kovarex said in [FFF-363](https://www.factorio.com/blog/post/fff-363) stuck with me:
 
@@ -6,9 +6,9 @@ Something Kovarex said in [FFF-363](https://www.factorio.com/blog/post/fff-363) 
 
 I've dipped in and out of playing Factorio for around 6 years, but after I started modding I've always loved tinkering with the game. Sometimes when I play I end up seeing something new that bothers me just a bit with the game and there doesn't exist a mod that fixes it. I'll get to a point where I just end up modding it myself. Normally, this causes me to discard my current playthrough of Factorio, mostly because, for me, modding scratches the same itch that Factorio does.
 
-Soon after the 1.0 launch this happened again to me. I picked up the latest [Krastorio 2](https://mods.factorio.com/mod/Krastorio2) (new to me), got to the power armor point of the game, and I was wondering why can't I rotate equipment? Sure, I could shuffle everything around my armor, but sometimes I just want to hit `R` and slap something into place. A quick search on the mod portal showed me that there was [Rotatable Batteries](https://mods.factorio.com/mod/RotatableBatteries) by GotLag, so it was possible, but it hasn't been done for everything.
+Soon after the 1.0 launch this happened again to me. I picked up the latest [Krastorio 2](https://mods.factorio.com/mod/Krastorio2) (new to me), got to the power armor point of the game, and I was wondering why can't I rotate equipment? Sure, I could shuffle everything around my armor, but sometimes I just want to hit `R` and slap something into place with minimal effort. A quick search on the mod portal showed me that there was [Rotatable Batteries](https://mods.factorio.com/mod/RotatableBatteries) by GotLag, so it was possible, but it hasn't been done for everything.
 
-Everything is a big ask sometimes when making a mod. The safe way to do everything is to hardcode things and it will 100% work, but only on what I put in the work to do. I'm a big fan of trying to make my mods as dynamic as possible, after having a large list of dependencies in the past that was troublesome to manage. Also in theory it should save tons of time.
+Making a mod work with everything is a ton of work sometimes. The safe way to handle every case is to hardcode what things the changes and it will definitely work, but requires constant monitoring. Having [done something like this in the past](https://github.com/DedlySpyder/Powered_Entities/blob/0.3.28/mod-compadibility/add-mods.lua) it can get quite unwieldly and hard to look at. Plus, if one of those other mods change something, then my implementation of it either outright breaks or is inconsistent with the "supported" mod. I've recently become a big fan of trying to make my mods as dynamic as possible to avoid this. Also in theory it should save tons of time.
 
 ![xkcd Automation](https://imgs.xkcd.com/comics/automation.png)
 Credit: [xkcd](https://xkcd.com/1319/)
