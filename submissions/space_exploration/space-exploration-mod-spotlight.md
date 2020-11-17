@@ -58,8 +58,7 @@ The plan is set: Holmium moon > Energy science > Beryllium asteroid belt > Astro
 
 So I use my fuel guzzling rockets to travel to another planet. This planet has a long day/night cycle and severe wind (RIP robots), but at least it has water and… some sort of ruin to explore?
 
-![Starting space station containing energy science, astronomic science, biological science, fluid processing, solar fins and material science](https://media.alt-f4.blog/ALTF4/14/space-exploration-early-base-text.png)
-[Large version](space-exploration-early-base-text.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/14/space-exploration-early-base-text.png' alt='Starting space station containing energy science, astronomic science, biological science, fluid processing, solar fins and material science' href='https://media.alt-f4.blog/ALTF4/14/space-exploration-early-base-large.png' %}
 
 Many hours later, a single outpost has become several as I rocket around the solar system, grinning gleefully at the random names my ship generated for these new discoveries.
 
