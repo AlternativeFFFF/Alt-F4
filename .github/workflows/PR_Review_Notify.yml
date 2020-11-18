@@ -20,4 +20,4 @@ jobs:
           DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
         uses: Ilshidur/action-discord@0.2.0
         with:
-          args: "New review on: *{{ EVENT_PAYLOAD.review.pull_request.title }}* by: *{{ EVENT_PAYLOAD.review.user.login }}*\n`{{ EVENT_PAYLOAD.review.body }}`\n{{ EVENT_PAYLOAD.review.html_url }}"
+          args: "New review on: *{{ EVENT_PAYLOAD.pull_request.title }}* by: *{{ EVENT_PAYLOAD.review.user.login }}*\n`{{ EVENT_PAYLOAD.review.body }}`\n{{ EVENT_PAYLOAD.review.html_url }}"
