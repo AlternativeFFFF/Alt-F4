@@ -15,7 +15,7 @@ jobs:
       - name: Discord notification	
         if: steps.checkLabel.outputs.hasLabel
         env:
-          DISCORD_WEBHOOK: '${{ secrets.DISCORD_WEBHOOK_PR_NOTIFY }}'
+          DISCORD_WEBHOOK: 'https://discordapp.com/api/webhooks/778653443765436428/hob5YdEq0JUQS82D0Ssnk0JIrcefgqbxeiEX0bgtB8zTaUj6cSokMsPT1S0JVcv24bxm'
           DISCORD_USERNAME: ALT-F4 Bot
           DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
         uses: Ilshidur/action-discord@0.2.0
