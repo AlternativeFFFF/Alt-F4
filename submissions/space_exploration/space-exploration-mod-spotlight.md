@@ -6,7 +6,7 @@ I launch a rocket to deploy a satellite, allowing me to see the world in satelli
 
 But what’s this? My satellite also discovered something abandoned in my planet’s orbit. I can look at it with the satellite; it’s some sort of space platform with some treasures I might want. You know what that means: time to go to space in person.
 
-![Planet map: My home base. This is my homeworld, the planet I crash landed on. The planet is huge. Solar system map: My home world. Interstellar map: My star system.](https://media.alt-f4.blog/ALTF4/14/space-exploration-you-are-here.png)
+![Planet map: My home base. This is my homeworld, the planet I crash-landed on. The planet is huge. Solar system map: My home world. Interstellar map: My star system.](https://media.alt-f4.blog/ALTF4/14/space-exploration-you-are-here.png)
 
 I build up my base and construct a cargo rocket full of materials, jump in and hit launch. Riding the rocket is a rush, and the feeling of floating around in zero-g is magical. The magic is short-lived though; in orbit, you need to bring life support, and without precious O<sub>2</sub>, I die. I hit respawn. Death is not so bad after all it seems.
 
