@@ -43,7 +43,8 @@
   filter: drop-shadow(0 0 2px #f9b44b);
 }
 
-.button:active {
+.button:active,
+.button.active {
   position: relative;
   padding-top: 12px;
   padding-bottom: 8px;
@@ -58,7 +59,8 @@
 
 .button.disabled,
 .button.disabled:hover,
-.button.disabled:active {
+.button.disabled:active,
+.button.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;
@@ -90,7 +92,8 @@
   filter: drop-shadow(0 0 2px #34be3c);
 }
 
-.button-green:active {
+.button-green:active,
+.button-green.active {
   position: relative;
   padding-top: 12px;
   padding-bottom: 8px;
@@ -105,7 +108,8 @@
 
 .button-green.disabled,
 .button-green.disabled:hover,
-.button-green.disabled:active {
+.button-green.disabled:active,
+.button-green.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;
@@ -164,7 +168,8 @@
   filter: brightness(1.3) drop-shadow(0 0 2px #34be3c);
 }
 
-.button-green-right:active {
+.button-green-right:active,
+.button-green-right.active {
   position: relative;
   padding-top: 12px;
   padding-bottom: 8px;
@@ -177,7 +182,8 @@
   outline: 0;
 }
 
-.button-green-right:active::after {
+.button-green-right:active::after,
+.button-green-right.active::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -192,7 +198,8 @@
 
 .button-green-right.disabled,
 .button-green-right.disabled:hover,
-.button-green-right.disabled:active {
+.button-green-right.disabled:active,
+.button-green-right.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;
@@ -240,7 +247,8 @@
 
 .button-red.disabled,
 .button-red.disabled:hover,
-.button-red.disabled:active {
+.button-red.disabled:active,
+.button-red.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;
