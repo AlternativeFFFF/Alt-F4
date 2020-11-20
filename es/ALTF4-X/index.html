@@ -27,15 +27,15 @@
 <meta property="og:title" content="Alt-F4 #X Title of this post">
 <meta name="author" content="Names of who wrote this post [optional, recommended]">
 <meta property="og:locale" content="en">
-<meta name="description" content='Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Diagrams: Mermaid You can create diagrams using Mermaid js. Please take look at full documentation for more details But here are some examples You can use following code to create pichart ```mermaid ! pie title NETFLIX "Time spent looking for movie" : 90 "Time spent watching it" : 10 ``` pie title NETFLIX "Time spent looking for movie" : 90 "Time spent watching it" : 10 Or this code to create flow diagram ```mermaid ! graph TD A[Christmas] --&gt;|Get money| B(Go shopping) B --&gt; C{Let me think} C --&gt;|One| D[Laptop] C --&gt;|Two| E[iPhone] C --&gt;|Three| F[fa:fa-car Car] ``` graph TD A[Christmas] --&gt;|Get money| B(Go shopping) B --&gt; C{Let me think} C --&gt;|One| D[Laptop] C --&gt;|Two| E[iPhone] C --&gt;|Three| F[fa:fa-car Car] You can preview your diagrams here Using Media You can use media by just importing it in a regular markdown fascion Imgur Use ![](https://i.imgur.com/WsUV4DK.gif) or &lt;img id="image-element" class="post" src="//i.imgur.com/WsUV4DK.gif"&gt; where id is last part of Imgur URL https://imgur.com/gallery/WsUV4DK YouTube ![](https://www.youtube.com/watch?v=dQw4w9WgXcQ) Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](http://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown let daysEl = document.querySelector(‘#countdown-2021-01-01 #days’); //document.getElementById(‘days’); let hoursEl = document.querySelector(‘#countdown-2021-01-01 #hours’); //document.getElementById(‘hours’); let minutesEl = document.querySelector(‘#countdown-2021-01-01 #minutes’); //document.getElementById(‘minutes’); let secondsEl = document.querySelector(‘#countdown-2021-01-01 #seconds’); //document.getElementById(‘seconds’); let allEl = [daysEl, hoursEl, minutesEl, secondsEl]; let countdownDate = new Date(Date.UTC(…(‘2021:01:01’.split(‘:’).map((x, i) =&gt; parseInt(x) + (i === 1 ? -1 : 0))))); console.log(countdownDate); let interval = setInterval(updateCountdown, 1000); function updateCountdown() { let distance = countdownDate - Date.now(); if (distance &lt; 0) { allEl.forEach((x) =&gt; { x.textContent = ‘’; }); countdownEl.classList.add(‘past’); clearInterval(interval); return; } daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, ‘0’); hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, ‘0’); minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, ‘0’); secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, ‘0’); } updateCountdown(); &lt;/script&gt; &lt;/p&gt; Where date is the date in year:month:day:hour:minutes:seconds, UTC Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here Compare Images JuxtaposeJS'>
-<meta property="og:description" content='Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Diagrams: Mermaid You can create diagrams using Mermaid js. Please take look at full documentation for more details But here are some examples You can use following code to create pichart ```mermaid ! pie title NETFLIX "Time spent looking for movie" : 90 "Time spent watching it" : 10 ``` pie title NETFLIX "Time spent looking for movie" : 90 "Time spent watching it" : 10 Or this code to create flow diagram ```mermaid ! graph TD A[Christmas] --&gt;|Get money| B(Go shopping) B --&gt; C{Let me think} C --&gt;|One| D[Laptop] C --&gt;|Two| E[iPhone] C --&gt;|Three| F[fa:fa-car Car] ``` graph TD A[Christmas] --&gt;|Get money| B(Go shopping) B --&gt; C{Let me think} C --&gt;|One| D[Laptop] C --&gt;|Two| E[iPhone] C --&gt;|Three| F[fa:fa-car Car] You can preview your diagrams here Using Media You can use media by just importing it in a regular markdown fascion Imgur Use ![](https://i.imgur.com/WsUV4DK.gif) or &lt;img id="image-element" class="post" src="//i.imgur.com/WsUV4DK.gif"&gt; where id is last part of Imgur URL https://imgur.com/gallery/WsUV4DK YouTube ![](https://www.youtube.com/watch?v=dQw4w9WgXcQ) Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](http://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown let daysEl = document.querySelector(‘#countdown-2021-01-01 #days’); //document.getElementById(‘days’); let hoursEl = document.querySelector(‘#countdown-2021-01-01 #hours’); //document.getElementById(‘hours’); let minutesEl = document.querySelector(‘#countdown-2021-01-01 #minutes’); //document.getElementById(‘minutes’); let secondsEl = document.querySelector(‘#countdown-2021-01-01 #seconds’); //document.getElementById(‘seconds’); let allEl = [daysEl, hoursEl, minutesEl, secondsEl]; let countdownDate = new Date(Date.UTC(…(‘2021:01:01’.split(‘:’).map((x, i) =&gt; parseInt(x) + (i === 1 ? -1 : 0))))); console.log(countdownDate); let interval = setInterval(updateCountdown, 1000); function updateCountdown() { let distance = countdownDate - Date.now(); if (distance &lt; 0) { allEl.forEach((x) =&gt; { x.textContent = ‘’; }); countdownEl.classList.add(‘past’); clearInterval(interval); return; } daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, ‘0’); hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, ‘0’); minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, ‘0’); secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, ‘0’); } updateCountdown(); &lt;/script&gt; &lt;/p&gt; Where date is the date in year:month:day:hour:minutes:seconds, UTC Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here Compare Images JuxtaposeJS'>
+<meta name="description" content="Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](http://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} let daysEl = document.querySelector(‘#countdown-2021-01-01 #days’); //document.getElementById(‘days’); let hoursEl = document.querySelector(‘#countdown-2021-01-01 #hours’); //document.getElementById(‘hours’); let minutesEl = document.querySelector(‘#countdown-2021-01-01 #minutes’); //document.getElementById(‘minutes’); let secondsEl = document.querySelector(‘#countdown-2021-01-01 #seconds’); //document.getElementById(‘seconds’); let allEl = [daysEl, hoursEl, minutesEl, secondsEl]; let countdownDate = new Date(Date.UTC(…(‘2021:01:01’.split(‘:’).map((x, i) =&gt; parseInt(x) + (i === 1 ? -1 : 0))))); console.log(countdownDate); let interval = setInterval(updateCountdown, 1000); function updateCountdown() { let distance = countdownDate - Date.now(); if (distance &lt; 0) { allEl.forEach((x) =&gt; { x.textContent = ‘’; }); countdownEl.classList.add(‘past’); clearInterval(interval); return; } daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, ‘0’); hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, ‘0’); minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, ‘0’); secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, ‘0’); } updateCountdown(); &lt;/script&gt; &lt;/p&gt; Where date is the date in year:month:day:hour:minutes:seconds, UTC Using image.html Image only % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' %} Caption % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' %} Map view of rail network, showing just 27 of the 216 outposts. Caption + High res % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Click to view full resolution Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here">
+<meta property="og:description" content="Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](http://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} let daysEl = document.querySelector(‘#countdown-2021-01-01 #days’); //document.getElementById(‘days’); let hoursEl = document.querySelector(‘#countdown-2021-01-01 #hours’); //document.getElementById(‘hours’); let minutesEl = document.querySelector(‘#countdown-2021-01-01 #minutes’); //document.getElementById(‘minutes’); let secondsEl = document.querySelector(‘#countdown-2021-01-01 #seconds’); //document.getElementById(‘seconds’); let allEl = [daysEl, hoursEl, minutesEl, secondsEl]; let countdownDate = new Date(Date.UTC(…(‘2021:01:01’.split(‘:’).map((x, i) =&gt; parseInt(x) + (i === 1 ? -1 : 0))))); console.log(countdownDate); let interval = setInterval(updateCountdown, 1000); function updateCountdown() { let distance = countdownDate - Date.now(); if (distance &lt; 0) { allEl.forEach((x) =&gt; { x.textContent = ‘’; }); countdownEl.classList.add(‘past’); clearInterval(interval); return; } daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, ‘0’); hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, ‘0’); minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, ‘0’); secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, ‘0’); } updateCountdown(); &lt;/script&gt; &lt;/p&gt; Where date is the date in year:month:day:hour:minutes:seconds, UTC Using image.html Image only % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' %} Caption % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' %} Map view of rail network, showing just 27 of the 216 outposts. Caption + High res % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Click to view full resolution Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here">
 <link rel="canonical" href="https://alt-f4.blog/es/ALTF4-X/">
 <meta property="og:url" content="https://alt-f4.blog/ALTF4-X/">
 <meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-08-20T00:00:00+00:00">
 <script type="application/ld+json">
-{"description":"Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Diagrams: Mermaid You can create diagrams using Mermaid js. Please take look at full documentation for more details But here are some examples You can use following code to create pichart ```mermaid ! pie title NETFLIX &quot;Time spent looking for movie&quot; : 90 &quot;Time spent watching it&quot; : 10 ``` pie title NETFLIX &quot;Time spent looking for movie&quot; : 90 &quot;Time spent watching it&quot; : 10 Or this code to create flow diagram ```mermaid ! graph TD A[Christmas] --&gt;|Get money| B(Go shopping) B --&gt; C{Let me think} C --&gt;|One| D[Laptop] C --&gt;|Two| E[iPhone] C --&gt;|Three| F[fa:fa-car Car] ``` graph TD A[Christmas] --&gt;|Get money| B(Go shopping) B --&gt; C{Let me think} C --&gt;|One| D[Laptop] C --&gt;|Two| E[iPhone] C --&gt;|Three| F[fa:fa-car Car] You can preview your diagrams here Using Media You can use media by just importing it in a regular markdown fascion Imgur Use ![](https://i.imgur.com/WsUV4DK.gif) or &lt;img id=&quot;image-element&quot; class=&quot;post&quot; src=&quot;//i.imgur.com/WsUV4DK.gif&quot;&gt; where id is last part of Imgur URL https://imgur.com/gallery/WsUV4DK YouTube ![](https://www.youtube.com/watch?v=dQw4w9WgXcQ) Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](http://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown let daysEl = document.querySelector(‘#countdown-2021-01-01 #days’); //document.getElementById(‘days’); let hoursEl = document.querySelector(‘#countdown-2021-01-01 #hours’); //document.getElementById(‘hours’); let minutesEl = document.querySelector(‘#countdown-2021-01-01 #minutes’); //document.getElementById(‘minutes’); let secondsEl = document.querySelector(‘#countdown-2021-01-01 #seconds’); //document.getElementById(‘seconds’); let allEl = [daysEl, hoursEl, minutesEl, secondsEl]; let countdownDate = new Date(Date.UTC(…(‘2021:01:01’.split(‘:’).map((x, i) =&gt; parseInt(x) + (i === 1 ? -1 : 0))))); console.log(countdownDate); let interval = setInterval(updateCountdown, 1000); function updateCountdown() { let distance = countdownDate - Date.now(); if (distance &lt; 0) { allEl.forEach((x) =&gt; { x.textContent = ‘’; }); countdownEl.classList.add(‘past’); clearInterval(interval); return; } daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, ‘0’); hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, ‘0’); minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, ‘0’); secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, ‘0’); } updateCountdown(); &lt;/script&gt; &lt;/p&gt; Where date is the date in year:month:day:hour:minutes:seconds, UTC Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = \\\\ &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\\\ \\vdots &amp; \\ddots &amp; \\vdots \\\\ \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\\\ \\vdots \\\\ y_n \\end{array} \\right) \\end{aligned} $$ Which will look like this [\\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\vdots &amp; \\ddots &amp; \\vdots \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\vdots y_n \\end{array} \\right) \\end{aligned}] You can preview your formulas here Compare Images JuxtaposeJS","@type":"BlogPosting","url":"https://alt-f4.blog/ALTF4-X/","headline":"Alt-F4 #X Title of this post","dateModified":"2020-08-20T00:00:00+00:00","datePublished":"2020-08-20T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-X/"},"author":{"@type":"Person","name":"Names of who wrote this post [optional, recommended]"},"@context":"https://schema.org"}</script>
+{"description":"Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](http://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} let daysEl = document.querySelector(‘#countdown-2021-01-01 #days’); //document.getElementById(‘days’); let hoursEl = document.querySelector(‘#countdown-2021-01-01 #hours’); //document.getElementById(‘hours’); let minutesEl = document.querySelector(‘#countdown-2021-01-01 #minutes’); //document.getElementById(‘minutes’); let secondsEl = document.querySelector(‘#countdown-2021-01-01 #seconds’); //document.getElementById(‘seconds’); let allEl = [daysEl, hoursEl, minutesEl, secondsEl]; let countdownDate = new Date(Date.UTC(…(‘2021:01:01’.split(‘:’).map((x, i) =&gt; parseInt(x) + (i === 1 ? -1 : 0))))); console.log(countdownDate); let interval = setInterval(updateCountdown, 1000); function updateCountdown() { let distance = countdownDate - Date.now(); if (distance &lt; 0) { allEl.forEach((x) =&gt; { x.textContent = ‘’; }); countdownEl.classList.add(‘past’); clearInterval(interval); return; } daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, ‘0’); hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, ‘0’); minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, ‘0’); secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, ‘0’); } updateCountdown(); &lt;/script&gt; &lt;/p&gt; Where date is the date in year:month:day:hour:minutes:seconds, UTC Using image.html Image only % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; %} Caption % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Caption + High res % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; href=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Click to view full resolution Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = \\\\ &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\\\ \\vdots &amp; \\ddots &amp; \\vdots \\\\ \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\\\ \\vdots \\\\ y_n \\end{array} \\right) \\end{aligned} $$ Which will look like this [\\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\vdots &amp; \\ddots &amp; \\vdots \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\vdots y_n \\end{array} \\right) \\end{aligned}] You can preview your formulas here","@type":"BlogPosting","url":"https://alt-f4.blog/ALTF4-X/","headline":"Alt-F4 #X Title of this post","dateModified":"2020-08-20T00:00:00+00:00","datePublished":"2020-08-20T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-X/"},"author":{"@type":"Person","name":"Names of who wrote this post [optional, recommended]"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 	
 
@@ -149,10 +149,17 @@ editado por <em>Names of who edited this post [optional]</em>,
   </summary>
   <div class="panel-inset mb0">
     <ul>
-  <li><a href="#using-diagrams-mermaid-">Using Diagrams: Mermaid <author></author></a></li>
   <li><a href="#using-media-">Using Media <author></author></a></li>
-  <li><a href="#using-math-mathjax-drmagpie">Using Math: MathJax <author>Dr.MagPie</author></a></li>
+  <li>
+<a href="#using-imagehtml-">Using image.html <author></author></a>
+    <ul>
+      <li><a href="#image-only">Image only</a></li>
+      <li><a href="#caption">Caption</a></li>
+      <li><a href="#caption--high-res">Caption + High res</a></li>
+    </ul>
+  </li>
   <li><a href="#compare-images">Compare Images</a></li>
+  <li><a href="#using-math-mathjax-drmagpie">Using Math: MathJax <author>Dr.MagPie</author></a></li>
 </ul>
 
   </div>
@@ -167,42 +174,6 @@ editado por <em>Names of who edited this post [optional]</em>,
 
 
 <p>Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration.</p>
-      <h2 id="using-diagrams-mermaid-">
-        
-        
-            <a href="#using-diagrams-mermaid-" class="anchor" style="text-decoration: none;">Using Diagrams: </a><a href="https://mermaid-js.github.io/mermaid/#/">Mermaid</a> <author></author>
-          
-        
-      </h2>
-    
-
-<p>You can create diagrams using Mermaid js. Please take look at full <a href="https://mermaid-js.github.io/mermaid/#/">documentation</a> for more details</p>
-
-<p>But here are some examples</p>
-
-<p>You can use following code to create pichart</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```mermaid !
-pie title NETFLIX
-         "Time spent looking for movie" : 90
-         "Time spent watching it" : 10
-```
-</code></pre></div></div>
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoicGllIHRpdGxlIE5FVEZMSVhcblwiVGltZSBzcGVudCBsb29raW5nIGZvciBtb3ZpZVwiIDogOTBcblwiVGltZSBzcGVudCB3YXRjaGluZyBpdFwiIDogMTAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGFyayJ9fQ"></p>
-
-<p>Or this code to create flow diagram</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```mermaid !
-graph TD
-A[Christmas] --&gt;|Get money| B(Go shopping)
-B --&gt; C{Let me think}
-C --&gt;|One| D[Laptop]
-C --&gt;|Two| E[iPhone]
-C --&gt;|Three| F[fa:fa-car Car]
-
-```
-</code></pre></div></div>
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggVERcbkFbQ2hyaXN0bWFzXSAtLT58R2V0IG1vbmV5fCBCKEdvIHNob3BwaW5nKVxuQiAtLT4gQ3tMZXQgbWUgdGhpbmt9XG5DIC0tPnxPbmV8IERbTGFwdG9wXVxuQyAtLT58VHdvfCBFW2lQaG9uZV1cbkMgLS0-fFRocmVlfCBGW2ZhOmZhLWNhciBDYXJdIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRhcmsifX0"></p>
-
-<p>You can preview your diagrams <a href="https://mermaid-js.github.io/mermaid-live-editor/#">here</a></p>
       <h2 id="using-media-">
         
         
@@ -215,24 +186,24 @@ C --&gt;|Three| F[fa:fa-car Car]
 <p>You can use media by just importing it in a regular markdown fascion</p>
 
 <ol>
-  <li>Imgur
+  <li>Images
     <ul>
-      <li>Use <code class="language-plaintext highlighter-rouge">![](https://i.imgur.com/WsUV4DK.gif)</code> or <code class="language-plaintext highlighter-rouge">&lt;img id="image-element" class="post" src="//i.imgur.com/WsUV4DK.gif"&gt;
-</code>
-</li>
-      <li>where <code class="language-plaintext highlighter-rouge">id</code> is last part of Imgur URL https://imgur.com/gallery/<code class="language-plaintext highlighter-rouge">WsUV4DK</code>
-</li>
-      <li><img src="https://i.imgur.com/WsUV4DK.gif" alt=""></li>
+      <li>See using <code class="language-plaintext highlighter-rouge">image.html</code> below</li>
     </ul>
   </li>
   <li>YouTube
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">![](https://www.youtube.com/watch?v=dQw4w9WgXcQ)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">% include youtube.html id="28UzqVz1r24" %}</code></li>
       <li>
-        <iframe id="media-dQw4w9WgXcQ" class="media" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="" width="80%" height="504" style="max-width: 896px;" allow="encrypted-media; picture-in-picture" frameborder="0" allowfullscreen=""></iframe>
-      </li>
-    </ul>
+    </li>
+</ul>
   </li>
+</ol>
+<div class="yt">
+	<iframe src="https://www.youtube.com/embed/28UzqVz1r24" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="youtube"></iframe>
+</div>
+
+<ol>
   <li>Dailymotion
     <ul>
       <li>
@@ -274,6 +245,7 @@ C --&gt;|Three| F[fa:fa-car Car]
   </li>
   <li>Embeding a countdown
     <ul>
+      <li><code class="language-plaintext highlighter-rouge">% include countdown.html date="2021:01:01" %}</code></li>
       <li>
         <!-- Use include.data in the ID as it makes it unique -->
         <p>
@@ -323,6 +295,122 @@ C --&gt;|Three| F[fa:fa-car Car]
 <ul>
   <li>Where <code class="language-plaintext highlighter-rouge">date</code> is the date in year:month:day:hour:minutes:seconds, UTC</li>
 </ul>
+      <h2 id="using-imagehtml-">
+        
+        
+            <a href="#using-imagehtml-" class="anchor" style="text-decoration: none;">Using image.html <author></author></a>
+          
+        
+      </h2>
+    
+      <h3 id="image-only">
+        
+        
+            <a href="#image-only" class="anchor" style="text-decoration: none;">Image only</a>
+          
+        
+      </h3>
+    
+
+<p><code class="language-plaintext highlighter-rouge">% include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' %}</code></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg" alt="Map view of rail network, showing only an eighth of the outposts.">
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="caption">
+        
+        
+            <a href="#caption" class="anchor" style="text-decoration: none;">Caption</a>
+          
+        
+      </h3>
+    
+
+<p><code class="language-plaintext highlighter-rouge">% include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' %}</code></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg" alt="Map view of rail network, showing only an eighth of the outposts.">
+      <figcaption>Map view of rail network, showing just 27 of the 216 outposts.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="caption--high-res">
+        
+        
+            <a href="#caption--high-res" class="anchor" style="text-decoration: none;">Caption + High res</a>
+          
+        
+      </h3>
+    
+<p><code class="language-plaintext highlighter-rouge">% include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' %}</code></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  <a href="https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg" target="_blank">
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg" alt="Map view of rail network, showing only an eighth of the outposts.">
+      <figcaption>Map view of rail network, showing just 27 of the 216 outposts.</figcaption>
+    </figure>
+    <i>Click to view full resolution</i>
+    </a>
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h2 id="compare-images">
+        
+        
+            <a href="#compare-images" class="anchor" style="text-decoration: none;">Compare Images</a>
+          
+        
+      </h2>
+    
+
+<p>
+  <figure>
+    <div class="juxtapose juxtapose-0" style="max-width: 896px; max-height: 512px; margin: 20px auto auto; height: 100%; width: 100%;">
+      <div class="jx-slider">
+        <div class="jx-handle" style="left: 50%;">
+          <div class="jx-arrow jx-left"></div>
+          <div class="jx-control">
+            <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <div class="jx-arrow jx-right"></div>
+        </div>
+        <div class="jx-image jx-left" style="width: 50%;">
+          <img src="https://cdn.factorio.com/assets/img/blog/fff-351-06-alt-mode-old.png" alt="Old Image">
+        </div>
+        <div class="jx-image jx-right" style="width: 50%;">
+          <img src="https://cdn.factorio.com/assets/img/blog/fff-351-06-alt-mode-new.png" alt="New Image">
+        </div>
+        <a href="https://juxtapose.knightlab.com" target="_blank" rel="noopener" class="jx-knightlab">
+          <div class="knightlab-logo">
+          </div>
+          <span class="juxtapose-name">JuxtaposeJS</span>
+        </a>
+      </div>
+    </div>
+    <figcaption></figcaption>
+  </figure>
+</p>
       <h2 id="using-math-mathjax-drmagpie">
         
         
@@ -374,43 +462,6 @@ $$
 \end{aligned}\]
 
 <p>You can preview your formulas <a href="https://www.mathjax.org/#demo">here</a></p>
-      <h2 id="compare-images">
-        
-        
-            <a href="#compare-images" class="anchor" style="text-decoration: none;">Compare Images</a>
-          
-        
-      </h2>
-    
-
-<p>
-  <figure>
-    <div class="juxtapose juxtapose-0" style="max-width: 896px; max-height: 512px; margin: 20px auto auto; height: 100%; width: 100%;">
-      <div class="jx-slider">
-        <div class="jx-handle" style="left: 50%;">
-          <div class="jx-arrow jx-left"></div>
-          <div class="jx-control">
-            <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            </div>
-          </div>
-          <div class="jx-arrow jx-right"></div>
-        </div>
-        <div class="jx-image jx-left" style="width: 50%;">
-          <img src="https://cdn.factorio.com/assets/img/blog/fff-351-06-alt-mode-old.png" alt="Old Image">
-        </div>
-        <div class="jx-image jx-right" style="width: 50%;">
-          <img src="https://cdn.factorio.com/assets/img/blog/fff-351-06-alt-mode-new.png" alt="New Image">
-        </div>
-        <a href="https://juxtapose.knightlab.com" target="_blank" rel="noopener" class="jx-knightlab">
-          <div class="knightlab-logo">
-          </div>
-          <span class="juxtapose-name">JuxtaposeJS</span>
-        </a>
-      </div>
-    </div>
-    <figcaption></figcaption>
-  </figure>
-</p>
 
 
 

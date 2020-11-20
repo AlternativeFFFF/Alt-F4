@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-19T01:05:37+00:00</updated>
+  <updated>2020-11-20T12:27:58+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #14 – Das Unendliche erforschen</title>
+    <link href="https://alt-f4.blog/de/ALTF4-14/" />
+    <id>https://alt-f4.blog/ALTF4-14</id>
+    <updated>2020-11-20T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Diese Woche nimmt uns &lt;em&gt;ironic toblerone&lt;/em&gt; auf ein verrücktes Abenteuer ins Weltall mit der fantastischem &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration Mod&lt;/a&gt; von &lt;em&gt;Earendel&lt;/em&gt; mit. Mach dich bereit und schnall dich an, das ist eine lustige Ausgabe!&lt;/p&gt; &lt;h2 id=&quot;mod-spotlight-space-exploration-erforschung-des-weltraums-ironic-toblerone&quot;&gt;Mod Spotlight: &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; (Erforschung des Weltraums) &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Space Exploration ist eine Mod,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-5</id>
     <updated>2020-09-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Willkommen zur fünften Ausgabe von Alt-F4, und wir nehmen noch immer Fahrt auf! Viele Mitwirkende, Übersetzer und Technikfreaks helfen weiterhin fleißig, das Projekt fortzuführen, was einfach nur großartig ist. Wenn du am Spaß teilhaben möchtest, schau dir den &lt;em&gt;Beitragen&lt;/em&gt;-Abschnitt am Ende der Ausgabe an. Zu den echten Neuigkeiten: Diese Woche...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #4 – Das Entwickeln von Blaupausen</title>
-    <link href="https://alt-f4.blog/de/ALTF4-4/" />
-    <id>https://alt-f4.blog/ALTF4-4</id>
-    <updated>2020-09-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Willkommen zur vierten Ausgabe von Alt-F4, welche den allerersten Monat an Beiträgen abschließt! Diese Woche beschreibt gamebuster800 seinen Prozess für das Entwickeln von Blaupausen, Landmine752 teilt einige seiner Liebling-Fanarts mit uns, und Romner zeigt uns einige Einblicke in seine Mod über realistische Fusionsenergie (der erste Teil einer zweiteiligen Serie).&lt;/p&gt; &lt;p&gt;Außerdem...</content>
   </entry>
   
   

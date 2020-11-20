@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-19T01:05:37+00:00</updated>
+  <updated>2020-11-20T12:27:58+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #14 - Explorer l’infini</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-14/" />
+    <id>https://alt-f4.blog/ALTF4-14</id>
+    <updated>2020-11-20T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Cette semaine, &lt;em&gt;ironic toblerone&lt;/em&gt; nous emmène dans une folle aventure spatiale avec le fantastique mod &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; de &lt;em&gt;Earendel&lt;/em&gt;. Enfilez votre scaphandre et attachez votre ceinture, c’est génial !&lt;/p&gt; &lt;h2 id=&quot;présentation-de-mod--space-exploration-ironic-toblerone&quot;&gt;Présentation de mod : &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Space Exploration est un mod de révision qui vous emmène...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-5</id>
     <updated>2020-09-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Bienvenue dans le cinquième numéro des Alt-F4, et nous avons le vent en poupe ! Nous avons beaucoup de contributeurs, traducteurs et techniciens, tel un essaim d’abeilles, qui aident ce projet à avancer plus loin ! Si vous souhaitez rejoindre cette effervescence, rendez-vous dans la section “Contributions” qui se trouve...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #4 - Planification de plans</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-4/" />
-    <id>https://alt-f4.blog/ALTF4-4</id>
-    <updated>2020-09-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Bienvenue dans ce quatrième numéro d’Alt-F4, où nous allons terminer le premier mois de publication ! Cette semaine, gamebuster800 décrit son processus de planification de plans, Landmine725 nous partage quelques-unes de ses créations de fan tandis que Romner va nous donner quelques détails concernant sa modification “Realistic Fusion Power” (première...</content>
   </entry>
   
   
