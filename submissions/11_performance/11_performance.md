@@ -40,7 +40,7 @@ Then, I tested a base whose layout is closer to what you or me would construct. 
 
 [[ CHART! ]]
 
-Lastly, I took a look at a somewhat unusual candiate, a gigantic, messy map titled [Besenovsky Pajzel](https://factoriobox.1au.us/map/info/06fde508f4db1afd18ae17903af1dd830a50ecf7af342afef3df99ee00c3b6bc), which presumably is the name of its creator. It's described as `Huge map (13300x7400 tiles) with inefficient production ranged from 2,4 up to 4K SPM`. So this one uses a mix of all the things, with the most significant difference to the previous two being the extensive use of trains. What we expect from this is that the impact of the optimizations in 1.1 is overall smaller as the thing that has been improved is less relevant on this map.
+Lastly, I took a look at a somewhat unusual candiate, a gigantic, messy map titled [Besenovsky Pajzel](https://factoriobox.1au.us/map/info/06fde508f4db1afd18ae17903af1dd830a50ecf7af342afef3df99ee00c3b6bc), which presumably is the name of its creator. It's described as 'Huge map (13300x7400 tiles) with inefficient production ranged from 2,4 up to 4K SPM'. So this one uses a mix of all the things, with the most significant difference to the previous two being the extensive use of trains. What we expect from this is that the impact of the optimizations in 1.1 is overall smaller as the thing that has been improved is less relevant on this map.
 
 [[ CHART! ]]
 
