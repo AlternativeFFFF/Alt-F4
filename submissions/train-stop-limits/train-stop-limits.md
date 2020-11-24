@@ -1,6 +1,6 @@
-## 1.1 Feature Discussion - Train stop limits <author>Conor_</author>
+## 1.1 Feature Discussion - Train Stop Limits <author>Conor_</author>
 
-With the Factorio 1.1 beta released to the public, we thought this an appropriate time to talk about some of the changes it bring as well as to talk about how the community has been accounting for the lack of these features up until now.
+With the Factorio 1.1 beta released to the public, we thought this an appropriate time to talk about some of the changes it brings as well as to talk about how the community has been accounting for the lack of these features up until now. Of course, I decided to investigate the new Train Stop Limit feature because [I love trains!](https://alt-f4.blog/ALTF4-8/#i-love-factorio-because-of-trains-conor_)
 
 ### A simple mistake by a younger, more naive Conor_
 
@@ -10,13 +10,13 @@ A while ago now, I was building one of my first large bases (I believe to suppor
 
 *This truely was a lovely pipe dream.* Instead of what I asked for, I was quite rightly pointed towards [TSM](https://mods.factorio.com/mod/train-pubsub) and [LTN](https://mods.factorio.com/mods/Optera/LogisticTrainNetwork), then told to move along. Now, the devs have shouted down from on high, **We have a new train feature!** Okay devs, you have my attention...
 
-### What is it?
+### What are Train Stop Limits?
 
 The train stop limit, dicussed here in [FFF-361](https://factorio.com/blog/post/fff-361), allows you to set a limit on the number of trains at any one stop. The technical details of this system are talked about much more in the FFF (which is definitely worth a read!), but essentially a train should only go to a train stop if there is space for it to be recieved, exactly what young *Conor_* wanted. But does it hold up in comparison to my new love, TSM? 
 
 {% include image.html src='https://cdn.factorio.com/assets/img/blog/fff-361-train-stop-limit.png' alt='Train Stop Limit GUI' caption='Source: <a href="https://www.factorio.com/blog/post/fff-361">FFF-361</a>' %}
 
-### How have modders been bypassing it?
+### What is TSM and why should I care?
 
 Train supply manager, a.k.a. train pub sub, is a mod which allow train stops to request a train when certain circuit conditions are true, for example when less than a certain number of trains are enroute to the stop. It also allows you do more complex circuit wizardry such as only requesting a train when there is enough material to actually fill the train, though I have never used this functionality.
 
@@ -24,7 +24,7 @@ The dream for TSM, is to fully implement a [just in time](https://en.wikipedia.o
 
 {% include video.html mp4='https://media.alt-f4.blog/ALTF4/15/TSL-Video-1.mp4' width='1000px' height='900px' alt='Video of TSM in action' caption='In the video, the loading and unloading stop each only ever have one train stopped at them ensuring no backlogs. When a stop becomes empty, a train is dispatched from the depot by TSM to refill the stop which most urgently needs it.' %}
 
-### When will TSM be needed?
+### Can Train Stop Limits replace TSM?
 
 To understand when TSM will be needed vs just using the train stop limit, I recreated the same testing TSM setup in vanilla 1.1 with [great sucess](https://www.youtube.com/watch?v=J88-RdWnNT0)! 
 
