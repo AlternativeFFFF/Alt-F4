@@ -24,11 +24,9 @@ This approach is very similar in nature to how the improved fluid update logic t
 
 ### Brass Tacks: What's the real-world difference?
 
-All that theory is nice and all, but you're wondering what the actual impact on performance is. Well wonder no longer, as I've brought charts. This first one shows the results of the changes in 1.1 averaged over the three saves that I took a look at. I'll give some detail on each below.
+All that theory is nice and all, but you're wondering what the actual impact on performance is. Well wonder no longer, as I've brought charts!
 
-[[ CHART! ]]
-
-As a disclaimer, the UPS changes don't only come from the performance improvements made to the belt logic, as the entity update times have also improved a bit with 1.1. I can't isolate the effect of only the belt changes when benchmarking, so take this into account when viewing the numbers.
+As a disclaimer, the UPS changes don't only come from the performance improvements made to the belt logic, as the entity update times have also improved a bit with 1.1. I can't isolate the effect of only the belt changes when benchmarking, so take this into account when interpreting these numbers.
 
 I benchmarked three different saves with different characteristics, although all of them use a lot of belts. You can't improve the performance of the non-existant after all. The numbers were not measured with super rigourous methods, I only want to see the general trend. Let's meet our contestants, all of which are taken from the amazing [FactorioBox](https://factoriobox.1au.us) website, which has a small collection of maps that are useful for benchmarking.
 
@@ -44,4 +42,6 @@ Lastly, I took a look at a somewhat unusual candiate, a gigantic, messy map titl
 
 [[ CHART! ]]
 
-As we can see, the improvement with 1.1 depends somewhat on your base layout (it might even be [worse](https://forums.factorio.com/viewtopic.php?f=30&t=91678) in some very specific cases?), but in general it's a nice improvement. After all, it doesn't really matter if a particular performance improvement has a large effect, it's the sum of all the small improvements that lead to the game running an order of magnitude quicker. We explored this a [couple of weeks back](https://alt-f4.blog/ALTF4-13/#running-the-factory-in-10) on Alt-F4, and I expect that base to get an additional uptick in performance.
+If we average these three very rough benchmarks, we get an average UPS improvement of X%, with the update time going down by X%. All in all, the improvement with 1.1 depends somewhat on your base layout (it might even be [worse](https://forums.factorio.com/viewtopic.php?f=30&t=91678) in some very specific cases?), but in general it's a nice improvement.
+
+After all, it doesn't really matter if a particular performance improvement has a large effect, it's the sum of all the small improvements that lead to the game running an order of magnitude quicker. We explored this a [couple of weeks back](https://alt-f4.blog/ALTF4-13/#running-the-factory-in-10) on Alt-F4, and I expect that base to get an additional uptick in performance.
