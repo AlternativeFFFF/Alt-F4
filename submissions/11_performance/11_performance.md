@@ -42,6 +42,6 @@ Lastly, I took a look at a somewhat unusual candiate, a gigantic, messy map titl
 
 [[ CHART! ]]
 
-If we average these three very rough benchmarks, we get an average UPS improvement of X%, with the update time going down by X%. All in all, the improvement with 1.1 depends somewhat on your base layout (it might even be [worse](https://forums.factorio.com/viewtopic.php?f=30&t=91678) in some very specific cases?), but in general it's a nice improvement.
+If we average these three very rough benchmarks, we get an average UPS improvement of X%, with the update time going down by X%. All in all, the improvement with 1.1 depends somewhat on your base layout, but in general it's a nice improvement.
 
 After all, it doesn't really matter if a particular performance improvement has a large effect, it's the sum of all the small improvements that lead to the game running an order of magnitude quicker. We explored this a [couple of weeks back](https://alt-f4.blog/ALTF4-13/#running-the-factory-in-10) on Alt-F4, and I expect that base to get an additional uptick in performance.
