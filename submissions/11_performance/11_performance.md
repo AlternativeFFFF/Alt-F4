@@ -26,7 +26,7 @@ This approach is very similar in nature to how the improved fluid update logic t
 
 All that theory is nice and all, but you're wondering what the actual impact on performance is. Well wonder no longer, as I've brought charts!
 
-As a disclaimer, the UPS changes don't only come from the performance improvements made to the belt logic, as the entity update times have also improved a bit with 1.1. I can't isolate the effect of only the belt changes when benchmarking, so take this into account when interpreting these numbers. Additionally, the numbers were not measured with super rigourous methods, which means the numbers I show have a non-insignificant margin of error.
+As a disclaimer, these measurements were made on version 1.0.0 and 1.1.1 respectively. I used the in-game console to increase the speed of the game, allowing me to achieve [UPS](https://www.reddit.com/r/factorio/comments/5dmura/can_someone_explain_ups/) of more than 60. The numbers were not measured with super rigourous methods, which means they have a non-negligeable margin of error. What also needs to be considered is that the entity update performance was increased as well according to the patch notes, so I included it as well, although I don't think my measurement is precise enough to draw definitive conclusions.
 
 I benchmarked three different saves with different characteristics, although all of them use a lot of belts. You can't improve the performance of the non-existant after all. Let's meet our contestants, all of which are taken from the amazing [FactorioBox](https://factoriobox.1au.us) website, which has a small collection of maps that are useful for benchmarking.
 
