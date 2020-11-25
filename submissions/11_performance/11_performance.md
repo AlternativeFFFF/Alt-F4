@@ -1,6 +1,6 @@
 ## 1.1 Performance Improvements <author>Therenas</author>
 
-The most recent experimental version of Factorio brought with it many changes, one of which I want to take a closer look at today. It’s meekly hiding away in the [1.1 changelog](https://forums.factorio.com/viewtopic.php?p=521942#p521942) and hasn’t been mentioned in any editions of [FFF](https://factorio.com/blog/) preceding the release. It’s just four words: Multithreaded belt update logic. I’m here to find out what that means, and what impact it actually has.
+The most recent experimental version of Factorio brought with it many changes, one of which I want to take a closer look at today. It’s meekly hiding away in the [1.1.0 changelog](https://forums.factorio.com/viewtopic.php?p=521942#p521942) and hasn’t been mentioned in any editions of [FFF](https://factorio.com/blog/) preceding the release. It’s just four words: Multithreaded belt update logic. I’m here to find out what that means, and what impact it actually has.
 
 ### How does this optimization work on a technical level?
 
