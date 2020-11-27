@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/ru/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-20T13:54:53+00:00</updated>
+  <updated>2020-11-27T12:49:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #15 - Investigating 1.1</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-15/" />
+    <id>https://alt-f4.blog/ALTF4-15</id>
+    <updated>2020-11-27T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, with 1.1 experimental just released, we take a look at two of the things it brings with it. First, &lt;em&gt;Conor_&lt;/em&gt; investigates what the new train stop limit allows him to do in his TSM-based factory. Then, &lt;em&gt;Therenas&lt;/em&gt; explores what the multithreading update to belts means, both in theory...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-6</id>
     <updated>2020-09-25T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Hello and welcome to the sixth issue of the community-driven weekly blog by the name Alt-F4! This week, you can read about the insanity that is &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt;’s raycasting engine constructed with vanilla Factorio, while stringweasel gives us a history lesson on how biters used to take...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #5 - Improving on Perfection</title>
-    <link href="https://alt-f4.blog/ru/ALTF4-5/" />
-    <id>https://alt-f4.blog/ALTF4-5</id>
-    <updated>2020-09-18T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Welcome to the fifth issue of Alt-F4, and we’re still picking up steam! Many contributors, translators and techies are being busy bees helping to further the project, which is just great. If you want to join in the fun check out the Contributing section at the end of this issue....</content>
   </entry>
   
   

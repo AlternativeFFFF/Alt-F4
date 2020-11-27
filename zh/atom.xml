@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-11-20T13:54:53+00:00</updated>
+  <updated>2020-11-27T12:49:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,21 @@
   
   
   <entry>
+    <title>Alt-F4 #15 - 1.1 版本调研</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-15/" />
+    <id>https://alt-f4.blog/ALTF4-15</id>
+    <updated>2020-11-27T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周 1.1 实验版刚刚出炉，我们来看一看新版本带来的 2 个新变化。首先，Conor_ 研究了如何利用新的车站限流功能对他基于 TSM 的工厂做些什么。然后 Therenas 分别从理论和实践层面探讨了多线程更新对传送带的意义。细心点读也许能学到点东西！&lt;/p&gt; &lt;h2 id=&quot;车站限流-conor_&quot;&gt;车站限流 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;当谈到 1.1 带来的新变化时，我最想讨论的当然是火车站限流功能，因为&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-8/#%E6%88%91%E7%88%B1%E5%BC%82%E6%98%9F%E5%B7%A5%E5%8E%82%E7%9A%84%E9%93%81%E8%B7%AF-conor_&quot;&gt;我钟爱火车&lt;/a&gt;！接下来，我将研究新功能解决了什么问题，并介绍此前我是如何处理这些问题的。&lt;/p&gt; &lt;h3 id=&quot;天真的小白-conor_-曾犯过的低级错误&quot;&gt;天真的小白 Conor_ 曾犯过的低级错误&lt;/h3&gt; &lt;p&gt;不久前，我正在建立自己的第一个大型基地，并尝试在 5 倍研究费用（我&lt;em&gt;喜欢&lt;/em&gt;这样）下攻克 &lt;a href=&quot;https://mods.factorio.com/mod/SpaceMod&quot;&gt;SpaceX&lt;/a&gt; 模组。很快，我注意到自己的意大利面条式火车网络存在一些问题。在幼稚和无知的驱使下，我决定给运送相同货物的所有车站共用一个站名，再部署大量的火车运行在其间以保证这些车站都能得到充分的利用。然而事实证明这并不是一个好点子，这个易于实现的系统随后带给我的是痛苦和折磨——自从我搞明白原油处理以后，还没再经历过这样的痛苦。在仅有数个车站且相距不远的小基地中，这套系统可以运行的很好。但基地规模变大时，我发现火车根本不会前往远处的站点。一部分车站水泄不通甚至导致了死锁，而剩下的车站则空空荡荡被闲置。作为一个优秀的工程师，我决定必须拿出一个更好的方案来解决这个问题。于是我 &lt;del&gt;努力地研究，开发，实现更好的方案&lt;/del&gt; 在 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/creeix/train_distribution_mod/&quot;&gt;Reddit&lt;/a&gt; 上提问。&lt;/p&gt; &lt;div class=&quot;m0 h100 flex flex-column flex-center quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter&quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;有没有人知道什么 Mod 可以把火车分配到拥有相同站名的不同站点，无论距离远近？例如，所有的卸货站都叫一个名字，但每一个不同的站站都有相同数量的列车。&lt;/p&gt; &lt;/div&gt; &lt;hr...</content>
+  </entry>
+  
+  
+  
+  <entry>
     <title>Alt-F4 #14 - 探索无限</title>
     <link href="https://alt-f4.blog/zh/ALTF4-14/" />
     <id>https://alt-f4.blog/ALTF4-14</id>
     <updated>2020-11-20T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周 &lt;em&gt;ironic toblerone&lt;/em&gt; 带我们体验一场疯狂的太空冒险之旅，由 &lt;em&gt;Earendel&lt;/em&gt; 制作的梦幻&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt; Mod 所提供。穿好太空服系好安全带，安心体验吧。&lt;/p&gt; &lt;h2 id=&quot;mod-聚焦太空探索space-exploration-ironic-toblerone&quot;&gt;Mod 聚焦：&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;太空探索是一款大改 Mod，能带你踏上史诗般的星际之旅。它充满了全新的挑战，原创的机制和独特的体验。下面是我的故事。&lt;/p&gt; &lt;p&gt;我发射了一枚火箭，部署了一颗卫星，让我能够以卫星视角观察世界，脱离我的躯体。寻找星球边缘的任务由此简单多了……是的，星球有边界。Nauvis 是有极限的。&lt;/p&gt; &lt;p&gt;但那是什么？我的卫星还发现了一些遗弃在星球轨道上的东西。我可以用卫星去观察，这是某种太空平台，里面可能有一些宝物。你知道这意味着什么了：是时候亲自去太空了。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/14/space-exploration-you-are-here.png&quot; alt=&quot;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&quot; /&gt; &lt;figcaption&gt;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;我建立起自己的基地，并制造了一个装满材料的货运火箭，跳进去后点击发射。乘坐火箭的感觉很爽，在零重力中飘来飘去的感觉很神奇。不过神奇是短暂的，在轨道上，你需要带上生命支持，没有宝贵的 O&lt;sub&gt;2&lt;/sub&gt;，我死了。点下重生。看来死亡终究不是那么糟糕。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img...</content>
+    <content type="html">&lt;p&gt;本周 &lt;em&gt;ironic toblerone&lt;/em&gt; 带我们体验一场疯狂的太空冒险之旅，由 &lt;em&gt;Earendel&lt;/em&gt; 制作的梦幻&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt; Mod 所提供。穿好太空服系好安全带，安心体验吧。&lt;/p&gt; &lt;h2 id=&quot;mod-聚焦太空探索space-exploration-ironic-toblerone&quot;&gt;Mod 聚焦：&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;太空探索是一款大改 Mod，能带你踏上史诗般的星际之旅。它充满了全新的挑战，原创的机制和独特的体验。下面是我的故事。&lt;/p&gt; &lt;p&gt;我发射了一枚火箭，部署了一颗卫星，让我能够以卫星视角观察世界，脱离我的躯体。寻找星球边缘的任务由此简单多了……是的，星球有边界。Nauvis 是有极限的。&lt;/p&gt; &lt;p&gt;但那是什么？我的卫星还发现了一些遗弃在星球轨道上的东西。我可以用卫星去观察，这是某种太空平台，里面可能有一些宝物。你知道这意味着什么了：是时候亲自去太空了。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/14/space-exploration-you-are-here.png&quot; alt=&quot;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;我建立起自己的基地，并制造了一个装满材料的货运火箭，跳进去后点击发射。乘坐火箭的感觉很爽，在零重力中飘来飘去的感觉很神奇。不过神奇是短暂的，在轨道上，你需要带上生命支持，没有宝贵的 O&lt;sub&gt;2&lt;/sub&gt;，我死了。点下重生。看来死亡终究不是那么糟糕。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt;...</content>
   </entry>
   
   
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-6</id>
     <updated>2020-09-25T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;大家好，欢迎来到名为 Alt-F4 的社区驱动的每周博客第六期！本周，你可以看到 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 用原版异星工厂制作光线投射图像引擎的疯狂之举，而 stringweasel 则给我们上了一堂关于虫群如何参与进科研生产的历史课，psixhius 则推荐了一篇异星工厂的评测，对于新手和老鸟来说都值得一看。&lt;/p&gt; &lt;h2 id=&quot;facto-rayo-v20-arrow-in-my-gluteus-maximus&quot;&gt;Facto-RayO v2.0 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;差不多一年半以前，我在异星工厂社区发布了一个&lt;a href=&quot;https://www.reddit.com/r/factorio/comments/bgj05z/raycasting_engine_in_factorio_vanilla_017/&quot;&gt;光线投射（Raycasting）引擎&lt;/a&gt;。不过它并没有达到我开始这个项目时所期望的高度，因此没过多久我就着手开发一个改进版。&lt;/p&gt; &lt;p&gt;在开始工作后不久，我不得不暂停开发了数个月，一些私人事务阻碍了我的工作，比如说完成我的硕士学位。不过经过几个月的休整，我开始将工作进展上传到我的第二个 &lt;a href=&quot;https://www.youtube.com/channel/UCNQRKtG2pU8LGS08TFiyyAA&quot;&gt;YouTube 频道&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;我首先开发的是一个全新的改进型屏幕。使用内置的照明灯局限太大，这次改用基于传送带的显示方式。接下来，我通过一个并行查找表实现了一个缩放纹理的方法。纹理的比例取决于你迭代表格中所有像素的速度。每三个时间片执行256个并行查找，以找到要显示的下一行的像素。所有其他组件稍后也得到了更新。&lt;/p&gt; &lt;p&gt;通过这一切努力，我获得了一个更紧凑和保真度更高的设计，更重要的是这个设计易于扩展。我的 YouTube 视频里有更详细的介绍：&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/28UzqVz1r24&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;有趣的是：这段视频，以及我之前的许多视频，都是完全通过游戏内截图来录制的。 总计超过 12000 张截图，每张约 20MB。（最大的一张有 77MB）。&lt;/p&gt; &lt;p&gt;这种录像技术有几个优点：&lt;/p&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #5 - 精益求精</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-5/" />
-    <id>https://alt-f4.blog/ALTF4-5</id>
-    <updated>2020-09-18T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;欢迎来到第五期 Alt-F4，让我们再接再厉。翻译员和技术员们都像勤劳的蜜蜂，为本项目添砖加瓦，有这么多贡献者真是太棒了。如果你也想加入其中，请查阅文末的征稿部分。在本周的新闻中，pocarski 提出了允许再次挖掘填海料的理由，Romner 跟进了他们&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-4/#mod-%E8%81%9A%E7%84%A6%E7%9C%9F%E5%AE%9E%E8%81%9A%E5%8F%98%E5%8F%91%E7%94%B5realistic-fusion-power-romner&quot;&gt;上周&lt;/a&gt;的投稿，谈到用核聚变的力量消灭虫子，而 Dr.MagPie 则把我们带到了 Factorio Zone！&lt;/p&gt; &lt;h2 id=&quot;关于填海料的碎碎念-pocarski&quot;&gt;关于填海料的碎碎念 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;“你犯的错误没有任何代价，除了时间”，&lt;a href=&quot;https://www.reddit.com/user/talrich&quot;&gt;u/talrich&lt;/a&gt; 在 &lt;a href=&quot;https://www.reddit.com/r/factorio/&quot;&gt;Factorio subreddit&lt;/a&gt; 上讲过这句话。没错，在这个游戏中你做的几乎所有事情，都可以随时撤销。事实上，你能建造的所有东西都是如此，除了填海料。将任何其他实体或地砖放置在错误的位置上只会浪费你片刻的时间，但对填海料而言，摆错位置不仅意味着你不可逆地失去了相当昂贵的填海料本身，而且还留下了一个尴尬的地块，你既不想要它，也无法移除它。在这篇文章中，我介绍了填海料的不可逆性所带来的问题，希望亲爱的读者你，也能清楚地认识到让它变为可移除地砖的好处。&lt;/p&gt; &lt;h3 id=&quot;过时的机制&quot;&gt;过时的机制&lt;/h3&gt; &lt;p&gt;虽然在 0.17 之前，不能挖出填海料是完全合理的，当时的填海料只是默认的 “grass-1” 地砖，但在 0.17.10 中，它被分离成了独立的地砖。在 0.17.0 中，除了允许机器人放置填海料并将其包含在蓝图中之外，这也为移除填海料创造了完美的条件，或者至少允许我们对它做一些其他地砖无法完成的事。&lt;/p&gt; &lt;h3 id=&quot;昂贵的失误&quot;&gt;昂贵的失误&lt;/h3&gt; &lt;p&gt;每块填海料需要 20 块石头来生产，也就是说整整 800k 石头的矿带只够填埋一个 200×200 的水域，考虑到很多设施的占地大小，这个区域真算不得大。很久以前，我做了一个核反应堆的设计，需要 &lt;em&gt;2700 个填海料&lt;/em&gt;，而它的装机容量仅有 480MW！一开始把蓝图摆错一个格子，就有50个的填海料(字面意义上的&lt;strong&gt;1000石矿&lt;/strong&gt;!)被浪费，不能再供你使用，带来的痛苦难以言喻。&lt;/p&gt; &lt;h3 id=&quot;扰乱供水泵的摆放&quot;&gt;扰乱供水泵的摆放&lt;/h3&gt; &lt;p&gt;既然我刚才提到了核电站，是时候讲一下大多数大型反应堆能够正常工作的方式：内建供水泵。这些是蓝图本身包含的供水泵，它们依靠填海料铺设的形状来放置。如果您在放置时不小心拖动了蓝图，那么您会毁了整个填海地基。在最好的情况下，您只需要移动一些水泵，它仍然可以工作，在最坏的情况下，你不慎填堵了一个重要的水坑，现在整个平台都无法使用，只能被仍在一边，还辣眼睛。&lt;/p&gt; &lt;p&gt;与此相关的另一件事是，虽然你可以在现有的供水泵周围进行填埋，不过一旦供水泵被移走，就不能再放回去。这意味着，如果你需要将任何东西直接放置在供水泵旁边，你&lt;em&gt;必须&lt;/em&gt;先在那里放置填海料，而供水泵只能在水域的岸边才能放置。这意味着你必须先确保供水泵的摆放，如果你不慎移除它，你将不得不解决些挠头的问题，比如找出能连接到另一个供水泵的管道线。&lt;/p&gt; &lt;h3 id=&quot;结论&quot;&gt;结论&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;不可逆的填海料是一种过时的机制，可以而且应该加以修正。&lt;/li&gt;...</content>
   </entry>
   
   
