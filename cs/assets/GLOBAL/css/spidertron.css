@@ -85,6 +85,7 @@ SOFTWARE.
     position: absolute;
     width: 22px;
 
+    box-sizing: content-box;
     margin-left: -11px;
     margin-top: -4px;
     padding-top: 4px;
@@ -147,6 +148,7 @@ SOFTWARE.
     position: absolute;
     width: 20px;
 
+    box-sizing: content-box;
     margin-left: -10px;
     margin-top: -5px;
     padding-top: 5px;
@@ -280,6 +282,15 @@ SOFTWARE.
 .spidertron-leg7-upper .spidertron-leg-upper-end-a { background-position: -132px 0px; transform: scaleY(0.85); }
 .spidertron-leg8-upper .spidertron-leg-upper-end-a { background-position: -154px 0px; transform: scaleY(0.65); }
 
+.spidertron-leg1-upper .spidertron-leg-upper-stretchable { background-position: 0px 0px; }
+.spidertron-leg2-upper .spidertron-leg-upper-stretchable { background-position: -15px 0px; }
+.spidertron-leg3-upper .spidertron-leg-upper-stretchable { background-position: -30px 0px; }
+.spidertron-leg4-upper .spidertron-leg-upper-stretchable { background-position: -45px 0px; }
+.spidertron-leg5-upper .spidertron-leg-upper-stretchable { background-position: -60px 0px; }
+.spidertron-leg6-upper .spidertron-leg-upper-stretchable { background-position: -75px 0px; }
+.spidertron-leg7-upper .spidertron-leg-upper-stretchable { background-position: -90px 0px; }
+.spidertron-leg8-upper .spidertron-leg-upper-stretchable { background-position: -105px 0px; }
+
 .spidertron-leg1-upper .spidertron-leg-upper-end-b { background-position: 0px 0px; }
 .spidertron-leg2-upper .spidertron-leg-upper-end-b { background-position: -20px 0px; transform: scaleY(0.95); }
 .spidertron-leg3-upper .spidertron-leg-upper-end-b { background-position: -40px 0px; transform: scaleY(0.85); }
@@ -306,6 +317,15 @@ SOFTWARE.
 .spidertron-leg6-lower .spidertron-leg-lower-end-a { background-position: -100px 0px; }
 .spidertron-leg7-lower .spidertron-leg-lower-end-a { background-position: -120px 0px; }
 .spidertron-leg8-lower .spidertron-leg-lower-end-a { background-position: -140px 0px; }
+
+.spidertron-leg1-lower .spidertron-leg-lower-stretchable { background-position: 0px 0px; }
+.spidertron-leg2-lower .spidertron-leg-lower-stretchable { background-position: -12px 0px; }
+.spidertron-leg3-lower .spidertron-leg-lower-stretchable { background-position: -24px 0px; }
+.spidertron-leg4-lower .spidertron-leg-lower-stretchable { background-position: -36px 0px; }
+.spidertron-leg5-lower .spidertron-leg-lower-stretchable { background-position: -48px 0px; }
+.spidertron-leg6-lower .spidertron-leg-lower-stretchable { background-position: -60px 0px; }
+.spidertron-leg7-lower .spidertron-leg-lower-stretchable { background-position: -72px 0px; }
+.spidertron-leg8-lower .spidertron-leg-lower-stretchable { background-position: -84px 0px; }
 
 .spidertron-leg1-lower .spidertron-leg-lower-end-b { background-position: 0px 0px; }
 .spidertron-leg2-lower .spidertron-leg-lower-end-b { background-position: -18px 0px; }
