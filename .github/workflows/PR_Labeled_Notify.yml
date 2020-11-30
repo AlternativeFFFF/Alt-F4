@@ -30,4 +30,4 @@ jobs:
         DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'	
       uses: Ilshidur/action-discord@0.2.0	
       with:	
-        args: "{{ EVENT_PAYLOAD.pull_request.title }} has been updated.\nCurrent labels are {{ EVENT_PAYLOAD.pull_request.labels }}\n{{ EVENT_PAYLOAD.pull_request.html_url }}"
+        args: "*{{ EVENT_PAYLOAD.pull_request.title }}* - has been updated.\n{{ EVENT_PAYLOAD.pull_request.html_url }}"
