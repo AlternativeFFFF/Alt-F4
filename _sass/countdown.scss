@@ -14,14 +14,14 @@
   border-radius: 3px;
 }
 
-.countdown > :not(:last-child) {
+.countdown > :not(:last-child):not(#past-text) {
   margin-right: 5px;
 }
 
-.countdown.past > * {
+.countdown:not(.past) > #past-text {
   display: none;
 }
 
-.countdown.past::before {
-  content: "Countdown expired";
+.countdown.past > *:not(#past-text) {
+  display: none;
 }

@@ -1,27 +1,31 @@
 <!-- Use include.data in the ID as it makes it unique -->
 {%- assign id = include.date | replace: ":", "-" | prepend: "countdown-" -%}
 <p>
-  <span class="countdown" id="{{ id }}"><span id="days"></span> <span id="hours"></span> <span id="minutes"></span> <span id="seconds"></span></span> 
+  <span class="countdown" id="{{ id }}">
+    <span id="past-text">{{ site.data.locale.countdown-past | default: site.data.locale.en.countdown-past }}</span>
+
+    <span id="days"></span>
+    <span id="hours"></span>
+    <span id="minutes"></span>
+    <span id="seconds"></span>
+  </span>
+
   <script>
-    let countdownEl = document.getElementById('{{ id }}');
+    const countdownEl = document.getElementById('{{ id }}');
 
-    let daysEl = document.querySelector('#{{ id }} #days'); //document.getElementById('days');
-    let hoursEl = document.querySelector('#{{ id }} #hours'); //document.getElementById('hours');
-    let minutesEl = document.querySelector('#{{ id }} #minutes'); //document.getElementById('minutes');
-    let secondsEl = document.querySelector('#{{ id }} #seconds'); //document.getElementById('seconds');
+    const daysEl = document.querySelector('#{{ id }} #days');
+    const hoursEl = document.querySelector('#{{ id }} #hours');
+    const minutesEl = document.querySelector('#{{ id }} #minutes');
+    const secondsEl = document.querySelector('#{{ id }} #seconds');
 
-    let allEl = [daysEl, hoursEl, minutesEl, secondsEl];
+    const countdownDate = new Date(Date.UTC(...('{{ include.date }}'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
 
-    let countdownDate = new Date(Date.UTC(...('{{ include.date }}'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
-    console.log(countdownDate);
-
-    let interval = setInterval(updateCountdown, 1000);
+    const interval = setInterval(updateCountdown, 1000);
 
     function updateCountdown() {
-      let distance = countdownDate - Date.now();
+      const distance = countdownDate - Date.now();
 
       if (distance < 0) {
-        allEl.forEach((x) => { x.textContent = ''; });
         countdownEl.classList.add('past');
 
         clearInterval(interval);
