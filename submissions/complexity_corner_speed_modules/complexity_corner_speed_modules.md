@@ -8,8 +8,7 @@ Welcome back to Complexity Corner! This is a series of articles that spotlight s
 
 Speed modules make machines work faster. That means the machines will produce more per minute. Building more assemblers can get the same result for cheaper, but sometimes that’s not a viable an option. Sometimes, the logistics of supporting those extra buildings is too much, or you don’t have the room to expand. Sometimes your base is just too big for your computer and you need to make the game itself run more efficiently. Sometimes you’re trying to fit into a complex build, or trying to change the speed of one building to match a certain recipe.
 
-// TODO: add width, height, alt, etc
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/16/GC-speed-comparison.mp4 caption='On the left, the assembler producing green circuits is idle sometimes. On the right, it runs continuously.' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/16/GC-speed-comparison.mp4' alt='Video of two circuit makers, one working faster because of speed modules.' caption='On the left, the assembler producing green circuits is idle sometimes. On the right, it runs continuously.' width='1280px' height='720px' %}
 
 ### What results can they give?
 
@@ -17,7 +16,7 @@ The speed increase granted by a speed module ranges from +20% to +50%, and these
 
 Speaking of ratios, carefully selecting which module goes where can make a complex ratio much simpler. In the green circuit build shown above, you can see how the mismatched speeds of the wire and circuit assemblers are perfectly balanced by adding a few speed modules to only the wire assembler (it just needs a +50% bonus). Deploying speed modules tactically, in the right spots, can have a big effect on overall output. In the image below, you can see how just a handful of speed modules can make a small science build work in sync.
 
-{% image.html src='https://media.alt-f4.blog/ALTF4/16/9spm-calculator.png' href='https://kirkmcdonald.github.io/calc.html#zip=dZA7DoQwDAVvk4pIQImUw1jGsBb5oMQp9vZLtiROZ2ms53neQcAtdrazCRzdao5K3uWEF4lts2GhUBxUSQGEU7QFmSKSvQGv7diWyaeTizD2JLBngfztCX4oMIJ/k3W6c9or6peqtMA+zvAZU6aRpW6o2+lmIyvVyIRn11NxeslCg489YFS+UKNq/T/6AQ==' caption='Have you noticed yet that I don’t do these calculations by hand?'
+{% include image.html src='https://media.alt-f4.blog/ALTF4/16/9spm-calculator.jpg' href='https://kirkmcdonald.github.io/calc.html#zip=dZA7DoQwDAVvk4pIQImUw1jGsBb5oMQp9vZLtiROZ2ms53neQcAtdrazCRzdao5K3uWEF4lts2GhUBxUSQGEU7QFmSKSvQGv7diWyaeTizD2JLBngfztCX4oMIJ/k3W6c9or6peqtMA+zvAZU6aRpW6o2+lmIyvVyIRn11NxeslCg489YFS+UKNq/T/6AQ==' caption='Have you noticed yet that I don’t do these calculations by hand?' %}
 
 Remember I said we’d come back to using more power? Now’s a good time to do that. If power or pollution is a concern, you will use less power and produce less pollution by making more assemblers instead of using speed modules (remember, pollution is matched to power usage). By making your machine work at 120% speed, it uses 150% power! The trade-off gets better as you use higher tiers of modules, but it will always take less energy and produce less pollution to have more buildings instead of using speed modules.
 
