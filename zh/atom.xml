@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-01T16:04:00+00:00</updated>
+  <updated>2020-12-04T12:37:19+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #16 - 调制速度</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-16/" />
+    <id>https://alt-f4.blog/ALTF4-16</id>
+    <updated>2020-12-04T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;新的一周，新的一期 Alt-F4！确切的说，是这个快乐系文学的第十六周。为了庆祝，TheKool 继续他的复杂角系列，问了关于速度插件的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BA%94%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88&quot;&gt;五个为什么&lt;/a&gt;。之后，DedlySpyder 对来自于意料之外的 Mod 灵感进行了论述。&lt;/p&gt; &lt;h2 id=&quot;复杂角速度插件-thekool&quot;&gt;复杂角：速度插件 &lt;author&gt;TheKool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到“复杂角”！这是一个系列文章，聚焦于游戏中看似复杂的方面，试图对它们进行足够的说明，让初学者得以使用它们。为此，我们将提出三个问题：&lt;em&gt;它是什么？&lt;/em&gt;，&lt;em&gt;它能提供什么效果？&lt;/em&gt;，_它应该用在哪里？_虽然这些文章是针对新手的，但即便是资深玩家，也可能在某个特定的主题上是一名初学者，所以请大家一起来看看吧！&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-12/#%E5%A4%8D%E6%9D%82%E8%A7%92%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6-thekool&quot;&gt;上一次&lt;/a&gt;我讲了产能插件，今天我接着讲速度插件。除了从它们本身谈起，我还会介绍它们与产能插件的不同之处，以及如何根据情况决定使用哪个插件。&lt;/p&gt; &lt;h3 id=&quot;速度插件是什么&quot;&gt;速度插件是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E9%80%9F%E5%BA%A6%E6%8F%92%E4%BB%B6&quot;&gt;速度插件&lt;/a&gt;，就像&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6&quot;&gt;产能插件&lt;/a&gt;一样，是可以放置在建筑物中以改变建筑物工作方式的物品。与产能插件不同，它们提供了一个非常简单的权衡：建筑会消耗更多的能量，但工作速度更快。更多关于消耗更多电力的内容将在后面介绍。速度模块也可以放到&lt;a href=&quot;https://wiki.factorio.com/Beacon/zh&quot;&gt;插件效果分享塔&lt;/a&gt;中，但我会在未来的文章中介绍，重点将是插件效果分享塔及其使用。&lt;/p&gt; &lt;p&gt;速度插件使机器工作得更快。这意味着机器的每分钟产量会增加。建造更多的组装机可以以更便宜的价格得到同样的结果，但这有时并不是一个可行的选择。有时，支持这些额外建筑的物流工作太过繁重，或者你缺乏扩张的空间。有时，你的基地对于你的电脑来说实在是太大了，你需要让游戏本身更高效地运行。有时，你想塞进一个复杂的建筑群，或者想改变一个建筑的速度来配合某个配方。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 1280px; max-height: 720px&quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/16/GC-speed-comparison.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt; --&gt; 两个电路板组装机的视频，其中一个因为速度插件而工作得更快。...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-7</id>
     <updated>2020-10-02T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;我们又来了，为您提供每周的异星工厂内容！在今天的第 7 期中，ChurchOrganist 给我们带来了 Yuoki Mod 的近况，LoneWolf 给我们介绍了为什么分散式熔炼是最好的方式，而 T-A-R 则告诉我们本周末将有一个联机社区活动。&lt;/p&gt; &lt;h2 id=&quot;mod-聚焦yuoki-工业yuoki-industries-churchorganist&quot;&gt;Mod 聚焦：&lt;a href=&quot;https://mods.factorio.com/mod/Yuoki&quot;&gt;Yuoki 工业（Yuoki Industries）&lt;/a&gt; &lt;author&gt;ChurchOrganist&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Yuoki 工业 Mod 套装与其他大改版 Mod（如 Krastorio 2、Bob、Angel 还有 Pyanodon）类似，都创造了新的游戏内容，但其独特之处在于它并没有替换掉原版的内容，而是在其基础上增加新的内容，通常是一些替代配方。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/7/yuoki-industries-icon.png&quot; alt=&quot;Yuoki mod 缩略图&quot; /&gt;&lt;/p&gt; &lt;p&gt;它的独特之处还在于，游戏进程不是由科技树决定的，而是通过获得制造一个物品所需的材料来实现。为此，它在游戏中加入了新的材料和技术，包括新的发电方式、农业和众多额外的轨道车辆。&lt;/p&gt; &lt;p&gt;Yuoki 工业最近经历了一个艰难的时期，原因是作者 YuokiTani（以向各种异星工厂 Mod 提供图形素材而闻名）没空玩异星工厂，因此无法测试 Mod 的新内容。&lt;/p&gt; &lt;p&gt;为了补救这个问题，YuokiTani 为他的 Mod 建立了一个 &lt;a href=&quot;https://github.com/Yuoki-Industries&quot;&gt;GitHub 仓库&lt;/a&gt;，这使得社区中的程序员们能够站出来提供帮助。因此，Yuoki Mod 最近正在改版，来让它能更符合当前原版游戏的状态。&lt;/p&gt; &lt;p&gt;该...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #6 - 紫球</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-6/" />
-    <id>https://alt-f4.blog/ALTF4-6</id>
-    <updated>2020-09-25T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;大家好，欢迎来到名为 Alt-F4 的社区驱动的每周博客第六期！本周，你可以看到 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 用原版异星工厂制作光线投射图像引擎的疯狂之举，而 stringweasel 则给我们上了一堂关于虫群如何参与进科研生产的历史课，psixhius 则推荐了一篇异星工厂的评测，对于新手和老鸟来说都值得一看。&lt;/p&gt; &lt;h2 id=&quot;facto-rayo-v20-arrow-in-my-gluteus-maximus&quot;&gt;Facto-RayO v2.0 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;差不多一年半以前，我在异星工厂社区发布了一个&lt;a href=&quot;https://www.reddit.com/r/factorio/comments/bgj05z/raycasting_engine_in_factorio_vanilla_017/&quot;&gt;光线投射（Raycasting）引擎&lt;/a&gt;。不过它并没有达到我开始这个项目时所期望的高度，因此没过多久我就着手开发一个改进版。&lt;/p&gt; &lt;p&gt;在开始工作后不久，我不得不暂停开发了数个月，一些私人事务阻碍了我的工作，比如说完成我的硕士学位。不过经过几个月的休整，我开始将工作进展上传到我的第二个 &lt;a href=&quot;https://www.youtube.com/channel/UCNQRKtG2pU8LGS08TFiyyAA&quot;&gt;YouTube 频道&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;我首先开发的是一个全新的改进型屏幕。使用内置的照明灯局限太大，这次改用基于传送带的显示方式。接下来，我通过一个并行查找表实现了一个缩放纹理的方法。纹理的比例取决于你迭代表格中所有像素的速度。每三个时间片执行256个并行查找，以找到要显示的下一行的像素。所有其他组件稍后也得到了更新。&lt;/p&gt; &lt;p&gt;通过这一切努力，我获得了一个更紧凑和保真度更高的设计，更重要的是这个设计易于扩展。我的 YouTube 视频里有更详细的介绍：&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/28UzqVz1r24&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;有趣的是：这段视频，以及我之前的许多视频，都是完全通过游戏内截图来录制的。 总计超过 12000 张截图，每张约 20MB。（最大的一张有 77MB）。&lt;/p&gt; &lt;p&gt;这种录像技术有几个优点：&lt;/p&gt;...</content>
   </entry>
   
   
