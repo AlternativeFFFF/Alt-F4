@@ -41,3 +41,5 @@ not-found:
     ## Spiacenti, non siamo riusciti a trovare la pagina da te richiesta.
     ### Puoi provare a ricaricare la pagina o
   btn: tornare alla homepage
+countdown-past: Countdown has passed #TODO: TRANSLATE
+image-fullres: Click to view full resolution #TODO: TRANSLATE
