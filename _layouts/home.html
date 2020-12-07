@@ -19,8 +19,8 @@ layout: default
 				{% include author.html %}
 			</div>
 			<hr>
-			<div class="snippet snippet-2">
-				<p>{{ post.content | strip_html | truncatewords:50 }}</p>
+			<div class="snippet">
+				<p>{{ post.content | first_paragraph | strip_html}}</p>
 			</div>
 		</div>
 	</a>
