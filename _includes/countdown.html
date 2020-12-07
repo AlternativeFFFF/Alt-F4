@@ -11,6 +11,11 @@
   </span>
 
   <script>
+    const second = 1000
+    const minute = second * 60
+    const hour = minute * 60
+    const day = hour * 24
+
     const countdownEl = document.getElementById('{{ id }}');
 
     const daysEl = document.querySelector('#{{ id }} #days');
@@ -20,7 +25,7 @@
 
     const countdownDate = new Date(Date.UTC(...('{{ include.date }}'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
 
-    const interval = setInterval(updateCountdown, 1000);
+    const interval = setInterval(updateCountdown, second);
 
     function updateCountdown() {
       const distance = countdownDate - Date.now();
@@ -33,10 +38,10 @@
         return;
       }
 
-      daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-      hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-      minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-      secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+      daysEl.textContent = Math.floor(distance / day).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % day) / hour).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % hour) / minute).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % minute) / second).toString().padStart(2, '0');
     }
 
     updateCountdown();
