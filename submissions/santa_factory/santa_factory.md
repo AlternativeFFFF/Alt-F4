@@ -1,13 +1,13 @@
 ## Santa Factory - Red Circuit Event
 
-Red Circuit is comiting to create presents for Santa! They invite you to join their Factorio Santa Factory event that will be held on Saturday, 12th of December at 12pmUTC. It will be slightly modded to make you feel the winter feeling, and science is replaced by presents for Santa. We hope to see you there!
+<a href="https://red-circuit.org/events/?e=Santa%20Factory">Red Circuit</a> is comiting to create presents for Santa! They invite you to join their Factorio Santa Factory event that will be held on Saturday, 12th of December at 12pmUTC. It will be slightly modded to make you feel the winter feeling, and science is replaced by presents for Santa. We hope to see you there!
 
 {% include countdown.html date="2020:12:12:12" %}
 
 {% capture quote_text_english %}
 Twas the 12th of December when all through our ship<br>
 Not a computer was working, not even a blip.<br>
-The Red Circuit team was all snug in discord<br>
+The Red Circuit team was all snug in <a href=https://discord.red-circuit.org>discord</a><br>
 With hopes you join us and bring more aboard!<br>
 When from the ship there came a loud crash<br>
 All jumped off board for it was all smash<br>
