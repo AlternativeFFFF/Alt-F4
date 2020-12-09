@@ -41,3 +41,5 @@ not-found:
     ## Spiacenti, non siamo riusciti a trovare la pagina da te richiesta.
     ### Puoi provare a ricaricare la pagina o
   btn: tornare alla homepage
+countdown-past: Il countdown è terminato
+image-fullres: "Clicca per vedere l'immagine nella risoluzione originale"
