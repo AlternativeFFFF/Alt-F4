@@ -9,6 +9,21 @@
     text-align: left;
     min-height: 64px;
     line-height: 1.3;
+    span {
+      display: inherit;
+      padding: 1px;
+      margin: 12px 0;
+      box-shadow: inset 0 1px 1px 0 #131313, inset 0 -1px 1px 0 #838383, 0 0 4px 0 #392f2e;
+    }
+    .vertical {
+      display: flex;
+      flex-direction: row;
+      span {
+        padding: 1px;
+        margin: 0 12px;
+        box-shadow: inset 1px 0 1px 0 #131313, inset -1px 0 1px 0 #838383, 0 0 4px 0 #392f2e;
+      }
+    }
     p {
       display: inline;
     }
@@ -21,6 +36,13 @@
   @media (max-width: 750px) {
     blockquote {
       padding: 60px 0 60px;
+      .vertical {
+        flex-direction: column;
+        span {
+          margin: 12px 0;
+          box-shadow: inset 0 1px 1px 0 #131313, inset 0 -1px 1px 0 #838383, 0 0 4px 0 #392f2e;
+        }
+      }
     }
   }
   .highlight,
