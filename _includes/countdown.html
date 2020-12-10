@@ -1,6 +1,6 @@
 <!-- Use include.data in the ID as it makes it unique -->
 {%- assign id = include.date | replace: ":", "-" | prepend: "countdown-" -%}
-<p>
+<p class="center">
   <span class="countdown" id="{{ id }}">
     <span id="past-text">{{ site.data.locale.countdown-past | default: site.data.locale.en.countdown-past }}</span>
 
