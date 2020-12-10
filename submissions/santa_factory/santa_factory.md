@@ -19,6 +19,6 @@ Come join us this day at 12 UTC<br>
 And build a factory for the whole world to see!
 {% endcapture %}
 
-{% include quote.html text=quote_text_english author='Dr_Doof'%}
+{% include quote.html vertical='true' text=quote_text_english author='Dr_Doof'%}
 
 {% include youtube.html id="q1kjv-X3JYY" %}
