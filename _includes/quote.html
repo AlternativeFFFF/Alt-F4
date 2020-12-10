@@ -1,18 +1,18 @@
 <div class="m0 h100 flex flex-column flex-center quote">
   <blockquote cite="{{ include.cite }}">
     <div class="panel-inset-lighter {% if include.vertical %}vertical{% endif %}">
-      {% if include.translation %}
-        <div class="translation">
-          {{ include.translation | default: 'Place Holder' | markdownify }}
-        </div>
-        <span/>
-      {% endif %}
+    {% if include.translation %}
+      <div class="translation">
+        {{ include.translation | default: 'Place Holder' | markdownify }}
+      </div>
+      <span/>
+    {% endif %}
       <div class="original">
         {{ include.text | default: 'Place Holder' | markdownify }}
       </div>
-      <author>
-      — {{ include.author | default: 'Place Holder'}}
-      </author>
     </div>
+    <author>
+    — {{ include.author | default: 'Place Holder'}}
+    </author>
   </blockquote>
 </div>
