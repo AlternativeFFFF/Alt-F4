@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-09T16:14:15+00:00</updated>
+  <updated>2020-12-11T14:28:10+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #17 - Interface Design Philosophy</title>
+    <link href="https://alt-f4.blog/de/ALTF4-17/" />
+    <id>https://alt-f4.blog/ALTF4-17</id>
+    <updated>2020-12-11T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For this week’s issue of Alt-F4, &lt;em&gt;Therenas&lt;/em&gt; takes a page out of the FFF playbook and talks about the development process of the next big update for his mod Factory Planner, going into his somewhat philosophical thoughts on interface design. &lt;em&gt;Dr_Doof&lt;/em&gt; also shares a cosy little Christmas event with us,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-8</id>
     <updated>2020-10-09T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Für diese Ausgabe von Alt-F4 haben wir uns entschieden etwas Besonderes zu machen: Wir fragen die Community, wieso genau sie das Spiel so sehr mag. Jeder war eingeladen einen kurzen Text einzureichen, der im Detail seine absolute Lieblingssache an Factorio beschreibt, was viele kurz darauf gemacht haben. Auf eines der...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #7 – Megabasis-Denkweise</title>
-    <link href="https://alt-f4.blog/de/ALTF4-7/" />
-    <id>https://alt-f4.blog/ALTF4-7</id>
-    <updated>2020-10-02T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Wir sind zurück mit der wöchentlichen Dosis von Factorioartikeln. In der heutigen Ausgabe Nummer sieben wird ChurchOrganist uns auf den neuesten Stand des Geschehens um Yuoki’s Mods bringen, LoneWolf erläutert warum dezentrales Schmelzen der richtige Weg ist und T-A-R informiert über ein MMO-Event, welches an diesem Wochenende stattfindet.&lt;/p&gt; &lt;h2 id=&quot;modvorstellung-yuoki-industries-churchorganist&quot;&gt;Modvorstellung:...</content>
   </entry>
   
   
