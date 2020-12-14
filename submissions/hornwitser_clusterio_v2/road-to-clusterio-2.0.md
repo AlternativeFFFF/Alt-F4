@@ -89,22 +89,33 @@ I spent most of the time making these setting up an automated toolchain with Ble
 Save patching
 -------------
 
-As my work continued the first major improvement I worked on was save patching, but before I talk about it I want to mention what it was set out to replace.
-The Gridlock cluster used scenario code to implement the train teleportation and in-game server switcher, this is often called soft-modding as it means you don't need to download any mods and restart Factorio to connect to the servers.
-The code was constantly being improved as the event went on so it would not have been sufficient to put the code into a scenario and call it a day.
-Updating a scenario on a server mid-game without the use of mods is kind of tricky.
+As my work continued the first major improvement I worked on was save patching, but before I talk about it I want give some context to the problem it's trying to solve.
+The game engine permits modifying the behaviour of the game with Lua code through mods and/or scenarios.
+Mods are loaded when the game starts and updating them requires restarting the game.
+Scenarios are Lua code packaged with the game saves, and changing to a different scenario code requires only loading a different save.
+When game changing behaviour is put into scenario code it's often called soft-modding as you don't need to download any mods and restart Factorio in order to join a server using such scenario code.
+While it's easy to update a mod and continue an existing save game, it's not as straight forward with scenario code.
 
-So the code was loaded into the game via a scenario called Hotpatch (also known as Server-side Multi-mod Scenario).
+There's essentially three ways to updating scenario code in a save, which I will list out roughly in the order of difficulty to implement.
+- For scenarios distributed via a mod it's possible to add a migration script in the mod that updates the scenario when the mod is updated.
+  While this is quite simple to do, it comes with the major drawback of the mod having to be installed to run the migration.
+- Replacing the scenario code stored in the save while the game is not running.
+  This is what I call save patching and it's relatively simple to do as the saves are regular zip files and the Lua code is stored in them as ordinary text files.
+- Using the dynamic nature of Lua to load and execute new code while the game and scenario is running.
+  This option is by far the most complicated but comes with the power of being able to apply fixes to the game while it's running.
+  The drawbacks is that it's complicated to implement and get right, increasing the chances that something will go wrong.
+  And the only way to send data into a running game is via commands which get problemetic when they are long.
+
+For The Gridlock Cluster the third option was done via a scenario called Hotpatch (also known as Server-side Multi-mod Scenario).
 Conceptually Hotpatch is a very cool thing, it lets you load in mod like code while the game is running and it'll execute that code in an environment that emulates the Factorio mod environment.
-But there were major issues with Hotpatch: it's poorly documented making it hard to use correctly, the implementation was incomplete and buggy, and most troublesome was that all the code had to be sent as a command on startup.
-Factorio is very slow with long commands which leads to the game running for quite a while on the old code while the new code is being sent over.
+But there were major issues with using Hotpatch: it's poorly documented making it hard to use correctly, the implementation was incomplete and buggy, but most troublesome was that the updated scenario code was sent as long commands on startup.
+If players joined the servers while they were starting up and in the process of sending those long commands to update the scenario things went haywire, which is just one of the many ways the servers at Gridlock failed to function.
 
-In search of a solution for the problems with Hotpatch I looked at how the game stores scenario code in a save.
-It's remarkably simple: a saved is a regular zip file and the Lua files of the scenario are stored in it as regular text files.
-Replace those Lua files in the save and the code for the scenario has been updated.
-With some more thought to the issue, I came up with a simple module system based on the event\_handler Lua library that Factorio comes with.
-Lua code to be run in the game is put into its own folder and before starting the Factorio server Clusterio will copy that code into the save and generate scenario code to load it.
-It's not without its downsides though, but the benefits of not having to deal with Hotpatch was more than worth it.
+While many of the issues with Hotpatch has been fixed, the complexity and difficulties working with it has teached a valuable lesson.
+Having advanced capabilites like being able to fix code at runtime, or technical marvels of any kind for that matter, does not always justify the complexity and issues that such advanced systems face.
+Something I got to experience first hand with trying to fix issues that Hotpatch had a part in, everyone in the crew (myself included) struggled with understanding the system and how to solve the issues with it.
+For that reason I decided to replace the role Hotpatch had in Clusterio with something more simple and stupid: save patching.
+It's a less capable solution with more limitations to how code for it is written, but the simplicity in the way it works more than makes up for it.
 
 
 Breaking Everything
