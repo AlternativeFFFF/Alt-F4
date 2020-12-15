@@ -2,15 +2,13 @@
 
 I want to tell the story of how I ended up spending a year developing Clusterio 2.0, which still has a long way to go before a release. If you haven’t heard of Clusterio before, it’s open source server software written by _Danielv123_ (with [contributions from around 30 others](https://github.com/clusterio/factorioClusterio/graphs/contributors)) that enables mods to interact across servers. It is perhaps best known for the Clusterio 60k event in 2018 where teleport chests were used to transfer items between some 46 Factorio servers in order to build a vanilla-like factory that could do 60k science per minute. These teleportation chests work like active provider and requester chests; one removes items from the game and puts them in shared cloud storage and the other takes items requested from that cloud storage and puts them in the game.
 
-[Insert clusterio v1 video here]
-[Caption: Iron ore being mined on the server on the left, then sent to the server on the right via Clusterio teleportation chests.]
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/18/clusterio-v1.mp4' alt='Items being transported across servers using clusterio V1' caption='Iron ore being mined on the server on the left, then sent to the server on the right via Clusterio teleportation chests.'%}
 
 Clusterio has always been composed of two parts: the gameplay interactions that are implemented in mod code and run inside the game, and the server-side infrastructure which deals with moving data between the various game servers. In the beginning, the server side was coded around handling the teleportation chests, but as development progressed and more and more features where added the idea of what Clusterio _is_ changed from teleporting chests to a modular server-side platform for making such cross-server gameplay elements.
 
 In July 2019, The Gridlock Cluster event was held. Instead of teleportation chests for transporting items between servers, there were trains that could teleport from the edge of one server to the edge of another server using teleporting train stops. The code for teleporting the trains was implemented by _Godmave_ as a plugin to Clusterio.
 
-[Insert train video here]
-[Caption: Train teleporting from the edge of one server to the edge of another.]
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/18/train.mp4' alt='Train teleporting between servers' caption='Train teleporting from the edge of one server to the edge of another.'%}
 
 Sadly, the code was plagued with issues, which is where I enter the picture.
 
@@ -32,8 +30,7 @@ After the tests were fixed, my focus turned to cleaning up the code itself. Doin
 
 One of the changes that started to take shape was moving the code for the teleportation chests out of the main codebase and into a separate plugin. Since Clusterio is first and foremost the server software making cross-server mod interactions possible, having these teleportation chests also called Clusterio is confusing when we’re expecting more and more that Clusterio will be used for other things than those chests. So we also decided to rebrand the item-teleportation-through-magical-chests feature as Subspace Storage. While I was at it, I also decided to replace those wonky sky chest and collection net sprites with something more appropriate to subspace storage.
 
-[Insert subpsace-storage-sprites.jpg here]
-[Caption: New placeholder sprites for the item, fluid, and electricity inputs and outputs in the Subspace Storage mod.]
+{% include image.html src='https://media.alt-f4.blog/ALTF4/18/subspace-storage-sprites.jpg' alt='Subspace storage placeholder sprites' caption='New placeholder sprites for the item, fluid, and electricity inputs and outputs in the Subspace Storage mod.' %}
 
 They are still more of a placeholder though, since I’m not much of a 3D artist when it comes to texturing and mechanical modelling. I took the time to set up an automated toolchain with Blender to render, crop and output the sprites into the mod. You know how it is with programmers: automate all the things.
 
