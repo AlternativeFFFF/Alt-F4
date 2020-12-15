@@ -22,12 +22,7 @@ Even though regional differences might seem like the biggest troublemaker, what 
 
 One thing where it pays off to have different people working on the same thing though is synonyms. Or technically 'not-synonyms', because even though some words might have a similar meaning to most people, especially in tech some words sound a bit off, even though they translate to the same english word as the correct one. For scenarios like this it really pays off to have your translation proofread by up to 4 more people, all with other areas of expertise. However this is also were our biggest weekly challenge comes in:
 
-<!--
-
-- new section, open to more general than just german as the points later are relevant for other languages too
-- Bellow, need to remove all particular focus german stuff, and just illustrate the argument with german
-- @editors: we may have to link the paragraph below to your process, if you present it in the article, to flag that "not having enough time" for translation is the great wall of china and then, we have to handle with it
-- @editors: is the translation concatenation and final check we are doing Conor and me is included in the editor work, or should we discuss it here?-->
+### Heading
 
 Translating takes time. We don't have that. Currently, articles come in at Thursday morning, we start translating at noon or in the afternoon, and have a first translation in the evening. But then someone wants to proofread it. And I can't remember the last time, we didn't have corrections after someone went through a translation. Corrections might not always be better though, even though they were well-meant[?] (we have a German word for that, "verschlimmbessern", *to worsen something by trying to improve it*); thus we now always have the original translator read through the corrections. But you guessed it, that takes time too. If we have a good day, and everyone is available, we are sometimes less than half an hour before release still busy ironing out some hiccups, correcting errors, and fiddling with non-synonyms.
 
