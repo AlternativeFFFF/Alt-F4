@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-11T14:35:34+00:00</updated>
+  <updated>2020-12-18T12:25:47+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #18 – Der Weg zu Clusterio 2.0</title>
+    <link href="https://alt-f4.blog/de/ALTF4-18/" />
+    <id>https://alt-f4.blog/ALTF4-18</id>
+    <updated>2020-12-18T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Während sich das Jahr dem Ende nähert haben wir zwei Artikel zur Modentwicklung ausgewählt. Zuerst erzählt uns &lt;em&gt;Hornwitser&lt;/em&gt; etwas über den langen Entwicklungsprozess von Clusterio 2.0 und die damit verbundenen Schwierigkeiten. Im Anschluss berichtet &lt;em&gt;DedlySpyder&lt;/em&gt; über die Entwicklung einer einfachen Mod und den dabei auftretenden Kompatibilitätsproblemen.&lt;/p&gt; &lt;h2 id=&quot;der-weg-zu-clusterio-20-hornwitser&quot;&gt;Der Weg zu...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-9</id>
     <updated>2020-10-16T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Nach unserer speziellen &lt;a href=&quot;https://alt-f4.blog/de/ALTF4-8/&quot;&gt;Liebesbrief&lt;/a&gt;-Ausgabe letzte Woche, sind wir diese Woche wieder zurück mit dem regulär geplanten Programm und Ausgabe neun! TheEnemy42 gibt uns einen Einblick in den Übersetzungsprozess und wie durch Crowdsourcing Factorio in viele verschiedene Sprachen übersetzt wird, und stringweasel führt mit seiner &lt;a href=&quot;https://alt-f4.blog/de/ALTF4-6/#nauvis-archives-wie-weit-wir-gekommen-sind-stringweasel&quot;&gt;Nauvis Archives&lt;/a&gt; Serie fort...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #8 – Ein Liebesbrief an Factorio</title>
-    <link href="https://alt-f4.blog/de/ALTF4-8/" />
-    <id>https://alt-f4.blog/ALTF4-8</id>
-    <updated>2020-10-09T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Für diese Ausgabe von Alt-F4 haben wir uns entschieden etwas Besonderes zu machen: Wir fragen die Community, wieso genau sie das Spiel so sehr mag. Jeder war eingeladen einen kurzen Text einzureichen, der im Detail seine absolute Lieblingssache an Factorio beschreibt, was viele kurz darauf gemacht haben. Auf eines der...</content>
   </entry>
   
   
