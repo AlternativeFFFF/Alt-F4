@@ -1,6 +1,6 @@
-<div class="m0 h100 flex flex-column flex-center quote">
+<div class="m0 h100 quote">
   <blockquote cite="{{ include.cite }}">
-    <div class="panel-inset-lighter flex-center {% if include.vertical %}vertical{% endif %}">
+    <div class="panel-inset-lighter {% if include.vertical %}vertical{% endif %}">
     {% if include.translation %}
       <div class="translation">
         {{ include.translation | default: 'Place Holder' | markdownify }}
