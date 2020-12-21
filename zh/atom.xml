@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-19T15:36:27+00:00</updated>
+  <updated>2020-12-21T10:25:01+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,21 +13,21 @@
   
   
   <entry>
-    <title>Alt-F4 #18 - The Road to Clusterio 2.0</title>
+    <title>Alt-F4 #18 - Clusterio 2.0 之路</title>
     <link href="https://alt-f4.blog/zh/ALTF4-18/" />
     <id>https://alt-f4.blog/ALTF4-18</id>
     <updated>2020-12-18T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;As the year draws to a close, we picked two mod-related topics for this week’s 18th issue of Alt-F4. First, &lt;em&gt;Hornwitser&lt;/em&gt; gives us some insight into the long development progress of Clusterio 2.0 and the challenges that it poses. Then, &lt;em&gt;DedlySpyder&lt;/em&gt; talks about their process of developing a simple mod...</content>
+    <content type="html">&lt;p&gt;年关将至，我们在本周的第 18 期 Alt-F4 中挑选了两个与 Mod 相关的话题。首先，&lt;em&gt;Hornwitser&lt;/em&gt; 为我们介绍了 Clusterio 2.0 漫长的开发进度以及它所带来的挑战。然后，&lt;em&gt;DedlySpyder&lt;/em&gt; 讲述了他们开发一个简单 Mod 的过程以及面临的兼容性挑战。&lt;/p&gt; &lt;h2 id=&quot;clusterio-20-之路hornwitser&quot;&gt;Clusterio 2.0 之路&lt;author&gt;Hornwitser&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我想讲讲我如何花了一年时间开发 Clusterio 2.0 的故事，它离发布还有很长的路要走。如果你之前没有听说过 Clusterio，它是由 &lt;em&gt;Danielv123&lt;/em&gt;（以及&lt;a href=&quot;https://github.com/clusterio/factorioClusterio/graphs/contributors&quot;&gt;大约 30 贡献者&lt;/a&gt;）所编写的开源服务器软件，可以让 Mod 跨服务器互动。它最出名的可能是 2018 年的 Clusterio 60k 活动，在这个活动中，传送箱被用来在大约 46 个异星工厂服务器之间传送物品，以建立一个类似原版的工厂，达到每分钟可以做 60 千瓶。这些传送箱的工作原理就像主动供货箱和集货箱一样，一个从游戏中取出物品，并将它们放在共享的云存储中，另一个则从该云存储中取出请求的物品，并将它们放在游戏中。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: ; max-height: &quot; playsinline=&quot;&quot; autoplay=&quot;&quot;...</content>
   </entry>
   
   
   
   <entry>
-    <title>Alt-F4 #17 - Interface Design Philosophy</title>
+    <title>Alt-F4 #17 - 界面设计哲学</title>
     <link href="https://alt-f4.blog/zh/ALTF4-17/" />
     <id>https://alt-f4.blog/ALTF4-17</id>
     <updated>2020-12-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For this week’s issue of Alt-F4, &lt;em&gt;Therenas&lt;/em&gt; takes a page out of the FFF playbook and talks about the development process of the next big update for his mod Factory Planner, going into his somewhat philosophical thoughts on interface design. &lt;em&gt;Dr_Doof&lt;/em&gt; also shares a cosy little Christmas event with us,...</content>
+    <content type="html">&lt;p&gt;在本周的 Alt-F4 中，&lt;em&gt;Therenas&lt;/em&gt; 从 FFF 的游戏手册中抽出一页，谈论了他的 Mod 工厂规划师（Factory Planner）的下一个大更新的开发过程，并谈到了他对界面设计的一些哲学思考。&lt;em&gt;Dr_Doof&lt;/em&gt; 还和我们分享了由 Red Circuit 团队组织的一个圣诞温馨小活动。&lt;/p&gt; &lt;h2 id=&quot;界面设计的注意事项-therenas&quot;&gt;界面设计的注意事项 &lt;author&gt;Therenas&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在过去的几个月里，我一直在对&lt;a href=&quot;https://mods.factorio.com/mod/factoryplanner&quot;&gt;工厂规划师（Factory Planner）&lt;/a&gt; Mod 进行大规模的重新设计，跟大家分享一些设计上的考究我认为会很有趣。我将专注于主界面中最有趣的部分，因为那是重新设计中最复杂的部分，需要投入最多的思考和规划。&lt;/p&gt; &lt;p&gt;就算你不熟悉这个 Mod 也没问题，我将谈论我的设计方法，大致上也能适用于其他情况；Mod 只是一个让我聚焦这些想法的镜头。同样你也不需要成为一个设计师来才能理解这些内容（我就不是）；好的设计应该是任何人都能看出来的。&lt;/p&gt; &lt;h3 id=&quot;概述&quot;&gt;概述&lt;/h3&gt; &lt;p&gt;那么，我们就来看看吧。左边是当前的版本，而右边则是更精美的新版。首先，我先简单介绍一下，让大家熟悉这个 Mod。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;div class=&quot;juxtapose juxtapose-0&quot; style=&quot;max-width: 2856px; max-height: 1754px; margin: 20px auto auto; height: 100%; width: 100%;&quot;&gt; &lt;div class=&quot;jx-slider&quot;&gt; &lt;div class=&quot;jx-handle&quot;...</content>
   </entry>
   
   
