@@ -1,5 +1,14 @@
 ## Nauvis Archives: From Mod to Vanilla <author>stringweasel</author>
 
+Other:
+ - Upgrade Planner
+ - Auto-Trash
+ - Nuclear Power (https://mods.factorio.com/mod/Reactors)
+ - Research queue
+
+ Looked up to 0.15
+
+
 Factorio has a very rich modding communnity. There's mods for almost anything you can think of. From complete overhaul mods like Space Exploration or Krastorio, to small quality of life mods like Far Reach, or even to listen to [KnighRider music while you're driving](https://mods.factorio.com/mod/JKIL-KnightRider). There are even mods with over 1 million downloads. However, the greatest honor a modder can likely achieve is to have the mod incorporated into the vanilla game. 
 
 The developers can focus on making sure the game engine is perfect and optimized, while the modders can freely explore different ideas. SovietWomble has a [great series](https://www.youtube.com/watch?v=ZtNtbPuUdFc&ab_channel=SovietWomble) on this idea, but unlike ARMA, Wube adds the mods that the players really enjoy or need, as long as it fits in their vision.
