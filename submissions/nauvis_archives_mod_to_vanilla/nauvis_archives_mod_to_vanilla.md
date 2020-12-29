@@ -48,7 +48,9 @@ POCKET BOTS IN USE VIDEO
 
 The developers noticed how popular and useful this mod was, and almost exactly a year later the vanilla [Personal Roboport](https://wiki.factorio.com/Personal_roboport) was teased in [Factorio Friday Facts #92](https://factorio.com/blog/post/fff-92) in preperation for Factorio 0.12. It should be noted that in Factorio 0.12 there was only one personal roboport type, and no upgraded MK2 version. This meant to have 100 personal construction robots you had to have 10(!) personal roboports. It wasn't until Factorio 0.17, released on February 2019, that we received the [Personal Roboport MK2](https://wiki.factorio.com/Personal_roboport_MK2), which allowed you to fit 100 bots in your pocket using only 4 Personal Roboport MK2s.
 
-But what use would a personal roboport be, or even a construction robot for that matter, without the use of blueprints?
+### Blueprint String
+
+
 
 ### Blueprints
 
@@ -56,4 +58,15 @@ Blueprints is a very important feature on Factorio. Without it it would be frust
 
 ![](media/blueprints_nanobots_technology.png)
 
-*Caption: The Blueprints technology screen as shown in Factorio 0.7*
+*Caption: The Blueprints technology screen as shown in Factorio 0.7. The little yellow robot is the old Robotics Technology icon. It's also used as the mod's nanobots - more on that later.*
+
+This mod was first posted on the Factorio Forums on 13 March 2013 - just over a month after kovarex mentioned blueprints in the aforementioned forum and before Factorio 0.4. These blueprints did not work nearly as intuitively as they do today. This is simply because the game was just over a year old at the time. There wasn't construction bots back then, or even a roboport. The lonely logistic bots just hovered around. But most importantly, mod functionality were not nearly as extensive as it is today. 
+
+To circumvent these limitations the creator created markers that you can place down. These markers was used to designate an area to either save as blueprint or where to place down a saved blueprint. There was even an option to select an area to upgrade. You then required nanobots (the little yellow bots in the picture above) in your inventory that was then expended to build the blueprint in the designated area. The creator made a [YouTube tutorial](https://youtu.be/jpekc8DchQg) for more information. Below you can see a quick demonstration that I put together:
+
+BLUEPRINT DEMO VIDEO
+![](media/blueprints_demo.mp4)
+
+*Caption: An example of the pocket bots in use. Notice the temporary creation of a logistic chest at the players feet.*
+
+Blueprints were added to Factorio 0.9 on 14 February 2014, which means this mod was the only way to duplicate any part of your factory for over a year. And although it was deprecated quite quickly, it *most likely* influenced other massive mods to be created, like [Nanobots by Nexela](https://mods.factorio.com/mod/Nanobots) and [Upgrade Planner](https://forums.factorio.com/viewtopic.php?f=92&t=14781).
