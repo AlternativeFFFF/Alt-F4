@@ -15,9 +15,13 @@ The developers can focus on making sure the game engine is perfect and optimized
 
 THIS DOESN'T WORK.
 
-There are various instances of where mods was incorporated into vanilla that most of you will know about. For example: [train fluid tankers](https://mods.factorio.com/mod/RailTanker), the [ability to barrel any liquid](https://mods.factorio.com/mod/Omnibarrels) (initially you could only barrel crude oil), [Landfill](https://forums.factorio.com/viewtopic.php?p=27982#p27982), to name only a few. There is even a case where an active modder was incorporated into vanilla when [Rseding joined the Wube team](https://factorio.com/blog/post/fff-300).
+~~There are various instances of where mods was incorporated into vanilla that most of you will know about. For example: [train fluid tankers](https://mods.factorio.com/mod/RailTanker), the [ability to barrel any liquid](https://mods.factorio.com/mod/Omnibarrels) (initially you could only barrel crude oil), [Landfill](https://forums.factorio.com/viewtopic.php?p=27982#p27982), to name only a few.~~ There is even a case where an active modder was incorporated into vanilla when [Rseding joined the Wube team](https://factorio.com/blog/post/fff-300).
 
 Oldest version in Roadmap is 0.4, 3 May 2013
+
+### Fluids: Barrels and Fluid Wagons
+
+
 
 ### The Picker Tool (The Q-key)
 [*by Nexela*](https://mods.factorio.com/mod/PickerExtended)
@@ -33,7 +37,7 @@ A very useful feature is the personal roboport. It's so integral to expanding yo
 
 ![](media/pocket_bots_technology.png)
 
-*Caption: The Pocket Bots technology screen*
+*Caption: The Pocket Bots technology screen as shown in Factorio 0.12*
 
 Pocket Bots was released on 21 June 2014 by JamesOFarrell on a Factorio Forums thread called: [*Pocket Bots: Construction bots for your pocket*](https://forums.factorio.com/viewtopic.php?f=190&t=4441&p=33858&hilit=pocket+bots#p33858). Of course this mod became very popular and was by many. However, JamesOFarrell had to be clever to mod it into the game. It seems like he had to create a temporary logistic chest at the players feet for the robots to be able to pick up (or drop) the items. There was no other way to pick it up directly from the players inventory. It had other quirks as well, like only working outside your roboport coverage, but that is where it typically was most used.
 
@@ -48,5 +52,8 @@ But what use would a personal roboport be, or even a construction robot for that
 
 ### Blueprints
 
-Blueprints is a very important feature on Factorio. Without it it would be frustratingly tedious to expand your factory, build another outpost, do train networks, etc. I would not want to play Factorio today without blueprints. But, this was also a mod before it was accesable to everyone.
+Blueprints is a very important feature on Factorio. Without it it would be frustratingly tedious to expand your factory, build another outpost, do train networks, etc. This feature has been on the wishlist a long time for Factorio's creator, kovarex. This can be seen in his [forum post](https://forums.factorio.com/viewtopic.php?f=9&t=6&p=7&hilit=blueprint#p7) from 2013 - when Factorio was still in infancy - where they were still deciding in what direction to take the game. But, it was not the developers who got to implement it first. No, the original creator was a modder named *drs9999*.
 
+![](media/blueprints_nanobots_technology.png)
+
+*Caption: The Blueprints technology screen as shown in Factorio 0.7*
