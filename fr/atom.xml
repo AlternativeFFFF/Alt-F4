@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-21T10:25:01+00:00</updated>
+  <updated>2021-01-01T15:23:09+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #19 - A Retrospective</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-19/" />
+    <id>https://alt-f4.blog/ALTF4-19</id>
+    <updated>2021-01-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, in the new year, we wanted to take a look back at the project &lt;em&gt;Therenas&lt;/em&gt; started four and a half months ago to fill the void that the absence of the FFF left in all our hearts. We asked the people involved in the process about their specialty,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-10</id>
     <updated>2020-10-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Bienvenu dans la dixième édition d’Alt-F4, où nous passons les nombres à deux chiffres pour la première fois ! Cette semaine, Recon419A reviens pour nous présenter une nouvelle argumentation, cette fois à propos de comment vous devriez établir les frontières de votre empire. Puis, trupen fait de la science et...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #9 - Processus de traduction</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-9/" />
-    <id>https://alt-f4.blog/ALTF4-9</id>
-    <updated>2020-10-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Après notre numéro spécial &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-8/&quot;&gt;de lettres d’amour à Factorio&lt;/a&gt; de la semaine dernière, nous sommes de retour cette semaine à notre planning programmé avec notre 9ème numéro ! TheEnemy42 nous donne quelques idées sur le processus de traduction coopérative effectué pour traduire Factorio dans plusieurs langues différentes, et stringweasel...</content>
   </entry>
   
   

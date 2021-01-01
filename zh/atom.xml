@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-21T10:25:01+00:00</updated>
+  <updated>2021-01-01T15:23:09+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #19 - A Retrospective</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-19/" />
+    <id>https://alt-f4.blog/ALTF4-19</id>
+    <updated>2021-01-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, in the new year, we wanted to take a look back at the project &lt;em&gt;Therenas&lt;/em&gt; started four and a half months ago to fill the void that the absence of the FFF left in all our hearts. We asked the people involved in the process about their specialty,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-10</id>
     <updated>2020-10-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;欢迎来到第十期的Alt-F4，首次突破两位数！本周，Recon419A 再次提出了一个令人信服的论点，这次是关于你应该如何去设置帝国的边界。接下来，trupen 做了一些科学，并深入到异星工厂中一些罕见的恼人之处。最后，stringweasel 对&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-9/&quot;&gt;上周&lt;/a&gt; Alt-F4 中关于 Nauvis 的起源做了一些修正。&lt;/p&gt; &lt;h2 id=&quot;边境墙-recon419a&quot;&gt;边境墙 &lt;author&gt;Recon419A&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在异星工厂中最大的挑战之一——在我看来也是最有趣的挑战之一——就是应对源源不断前来攻击你基地的虫群。从你最初建造的炮塔到游戏后期设置的火炮前哨，对付虫群是你主要的两个资源消耗点之一——另一个是科研。你花在对付虫群上的铁、铜、钢，以及最终的能源和其他材料，是帮助你平衡基地生产的一部分。我发现如果没有它们，你往往会在某些材料上比其他材料储备更多，尤其是在玩 AngelBob 这样的 Mod 时。不幸的是，对于许多玩家来说，与虫群打交道可能会成为一个持续的头疼问题，甚至会消耗他们的乐趣，我认识很多玩家都把他们拒之门外。几个存档前，我已经找到了一种处理它们的方法，它能最大限度地减少烦扰，同时还能享受到看着无数波虫群冲击你的防线的乐趣：基于炮塔的边境墙。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/10/border-walls-1.jpg&quot; alt=&quot;一个使用边界墙的基地的地图概览&quot; /&gt;&lt;/p&gt; &lt;p&gt;现在，每个人都很熟悉在你的工厂周围建造墙壁，并用炮塔加固它们的概念。人们会争论激光、机枪炮塔还是火焰喷射炮塔是最好的，如果你玩的是像 Bob 这样的 Mod，你可能还有更多其他选择，比如等离子炮塔。不过人们往往没有意识到的是，墙的形状会带来巨大的差异。在我年轻的时候，当我第一次玩异星工厂的时候，我倾向于在被攻击的地区周围建造墙壁，通常也是在我的整个工厂周围。我会把墙壁建在基地附近——毕竟，防守到比必要的地方更远的地方会浪费资源，而且会迫使我清理无数的虫巢。但后来我发现了改变这一切的东西：关隘的魔力。通过利用天然的悬崖、水体，以及污染只能扩散到这么远的事实，可以在比我原来意识到的更远的地方建立一堵边境墙–这不仅是可能的，实际上也是有利的。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/10/border-walls-2.jpg&quot; alt=&quot;一堵利用天然关隘的墙&quot; /&gt;&lt;/p&gt; &lt;p&gt;在比你的工厂边缘更远的地方建立一堵边境墙有很多好处。首先，它允许你选择在哪里处理那些讨厌的虫子。如果你清理出一个关隘，然后守住这个关隘，你就不用担心来自这个方向的攻击——而如果你在所有方向都这样做，你就根本不用担心攻击。推开你的污染边界，意味着虫子甚至不会主动攻击这些防御系统：炮塔在那里的唯一作用就是阻止虫子向已经清理好的领土扩张。通过使用自然屏障，如悬崖和水来帮助你的防御，你可以用很少的资源切断地图的大片区域。我估计我的边界墙有百分之四十到八十的地方都是天然形成的不可通行障碍。由于树木和地块吸收了我的污染，而不是虫巢，我甚至不会经常受到攻击——这一点至关重要，因为它允许我在一个关隘扔下几百发穿甲弹药，然后让它独自呆上几个小时。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/10/border-walls-3.jpg&quot; alt=&quot;一个用少量炮塔防卫的边境墙例子&quot; /&gt;&lt;/p&gt; &lt;p&gt;在这么远的地方修建边境墙的第二大好处是，它不会抑制你的工厂。当你需要扩张出一片铁矿的时候，很可能你的边界内已经有了一片。当你需要地方来建造一个大规模的炼油厂时，你已经有了空地，因为你在各个方向都有三四倍于你工厂半径的空地。即使你开始为遥远的前哨站设置铁轨，很可能那些都是——也应该是——在你的边界内，所以你不必保卫它们。不需要在每次扩建工厂时都要搬迁一堵墙，你搬迁你的墙来扩张领土，然后在你认为合适的时候扩建你的工厂，而不用担心攻击。&lt;/p&gt; &lt;p&gt;科学的边境墙改变了我的生活。我曾经用一排又一排的激光炮塔来保卫前哨，随着虫子们的增加，我需要努力保持它们的维修和补给。现在，我只需推进到天然关口，并手动保持它们的弹药供应：每小时只用几十发子弹，这样我的天然关口在污染边界外的存活时间远远超过在污染边界内的存活时间。在游戏后期，当我终于可以使用火炮的时候，我甚至会沿着我的边界墙放上重炮炮塔–这让我可以在不需要手动清理虫子的情况下进行扩张。缓慢爬行的墙体将我所要处理的伤害量降低到几乎为零——同时，我还可以保持虫群的开启，让我可以看着它们时不时地冲击我精心准备的防御。&lt;/p&gt; &lt;h2 id=&quot;异星工厂的小烦恼-trupen&quot;&gt;异星工厂的小烦恼 &lt;author&gt;trupen&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;一款游戏中令人烦恼的地方通常是因人而异的。比方说我个人觉得悬崖就是魔鬼出的馊主意，而 xterminator 会对着火车尖叫，还有人抱怨不慎摆错的填海料绝对是最遭的体验。所以，为了以相对科学的方式回答这个问题，我发起了 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/ishfwd/altf4_needs_your_help_to_find_the_most/&quot;&gt;Reddit 社区里的投票&lt;/a&gt;，询问大家“异星工厂中最让人烦恼的东西是什么？”回答的内容众说纷纭：&lt;/p&gt; &lt;p&gt; &lt;div class=&quot;img-pair&quot;&gt; &lt;img id=&quot;image-element&quot;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #9 - 翻译流程</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-9/" />
-    <id>https://alt-f4.blog/ALTF4-9</id>
-    <updated>2020-10-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在我们上周的&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-8/&quot;&gt;情书特辑&lt;/a&gt;之后，本周我们又回到了常规节目第九期！TheEnemy42 为我们展示了异星工厂的众包翻译流程，而 stringweasel 啧继续他们的 &lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-6/#nauvis-%E6%A1%A3%E6%A1%88%E6%88%91%E4%BB%AC%E8%B5%B0%E8%BF%87%E7%9A%84%E9%95%BF%E5%BE%81%E8%B7%AF-stringweasel&quot;&gt;Nauvis 档案&lt;/a&gt;系列，挖掘了一些游戏相关词语的起源。敬请欣赏！&lt;/p&gt; &lt;h2 id=&quot;一段翻译异星工厂的故事-theenemy42&quot;&gt;一段翻译异星工厂的故事 &lt;author&gt;TheEnemy42&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;和大多数来自丹麦的玩家一样，我总是用英语玩游戏，甚至不会考虑切换到我的母语丹麦语。一些 PC 或智能手机应用程序可能认为它们应该默使用当地语言，这还会导致我的咒骂并将它们切换回英语。直到我向时年 7 岁的女儿介绍异星工厂的时候，我才意识到这款游戏可以选择丹麦语。&lt;/p&gt; &lt;p&gt;没过多久，我就发现游戏的翻译工作远未完成。一半的内容还是英语，剩下的则到处都是语法错误、不三不四的翻译和前后不一致的地方。有的即使有一个丹麦单词存在，也重新用回了英语原文，可能是因为译者习惯了游戏中的英语术语，这也不能全赖他们。&lt;/p&gt; &lt;p&gt;一段时间后，我开始好奇，并开始研究异星工厂团队是如何进行翻译的。在&lt;a href=&quot;https://forums.factorio.com/&quot;&gt;官方论坛&lt;/a&gt;上的&lt;a href=&quot;https://forums.factorio.com/viewforum.php?f=12&quot;&gt;翻译板块&lt;/a&gt;中，提到了 &lt;a href=&quot;https://crowdin.com/project/factorio&quot;&gt;Crowdin&lt;/a&gt; 这个在线翻译工具。所有的翻译都是由志愿者完成的，我要做的就是去申请访问。Crowdin 是一个很精巧的工具，它的工作方式是，每个人都可以为给定的文本提出翻译建议，然后用户投票选出喜欢的翻译。得票最多的就会被 Wube 选中，并放入下个版本。然后，我们可以在游戏中看到新的翻译。最后，有一个校对员，他有能力批准给定的翻译，从而覆盖投票过程，不过通常投票最高的那个会被选中。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/9/translation-1.jpg&quot; alt=&quot;Crowdin 工具展示&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;em&gt;这是 Crowdin 工作区。左边是要翻译的原文列表。顶部是当前选定的要翻译的原文，下面是一个文本框，可以输入你的翻译。底部是当前建议的译文及其票数，还有一个复选标记显示当前已批准的译文。右边是一些评论标签页和一些常用的翻译术语，以维持前后一致。&lt;/em&gt;&lt;/p&gt; &lt;p&gt;尽管我没有真正的翻译经验，但我还是开始贡献翻译，我注意到所有之前的译者都已经有几年没有活动了。有几个人在这里和那里贡献了几个词，但不多。那么，摆在我面前会是一个相当大的任务。原文字符串由大约 25000 多个单词组成，当时丹麦语翻译大约完成了 65%，而批准率只有 18%。&lt;/p&gt; &lt;p&gt;当然，我把游戏换成了丹麦语，在游戏中看到自己的劳动成果，其实真的很有成就感。我迷上了这个工作并开始在晚上和上班路上花几个小时翻译。大部分都是体力活，有些则是让人头疼的难题，因为一些英语或技术术语在并不存在对应的丹麦语。&lt;/p&gt; &lt;p&gt;翻译的另一个有趣的挑战是丹麦语（像德语或类似的语言）会将名词连缀成较长的单词（例如 &lt;em&gt;transport belt&lt;/em&gt; 会变成 &lt;em&gt;transportbelt&lt;/em&gt;）。这可能会导致相当长的单词，对游戏的布局不利。我相信其他语言的译者也会因为语法、语言结构等原因面临类似的挑战。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://media.alt-f4.blog/ALTF4/9/translation-2.jpg&quot; alt=&quot;游戏内布局出错例 1&quot; /&gt;&lt;/p&gt;...</content>
   </entry>
   
   

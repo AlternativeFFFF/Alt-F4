@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-21T10:25:01+00:00</updated>
+  <updated>2021-01-01T15:23:09+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #19 - A Retrospective</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-19/" />
+    <id>https://alt-f4.blog/ALTF4-19</id>
+    <updated>2021-01-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, in the new year, we wanted to take a look back at the project &lt;em&gt;Therenas&lt;/em&gt; started four and a half months ago to fill the void that the absence of the FFF left in all our hearts. We asked the people involved in the process about their specialty,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-10</id>
     <updated>2020-10-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Welcome to the tenth edition of Alt-F4, breaking into double digits! This week, Recon419A returns to present a compelling argument, this time about how you should go about setting up the borders of your empire. Next, trupen does some science and dives into some of the rare annoying aspects of...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #9 - Translation Process</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-9/" />
-    <id>https://alt-f4.blog/ALTF4-9</id>
-    <updated>2020-10-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;After our special &lt;a href=&quot;https://alt-f4.blog/ALTF4-8/&quot;&gt;love letter issue&lt;/a&gt; last week, we’re back to our regularly scheduled programming this week with issue nine! TheEnemy42 gives us some insight on how the crowdsourced process of translating Factorio into many different languages works, and stringweasel continues their &lt;a href=&quot;https://alt-f4.blog/ALTF4-6/#nauvis-archives-how-far-weve-come-stringweasel&quot;&gt;Nauvis Archives&lt;/a&gt; series by digging into...</content>
   </entry>
   
   

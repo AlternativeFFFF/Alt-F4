@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/it/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2020-12-21T10:25:01+00:00</updated>
+  <updated>2021-01-01T15:23:09+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #19 - A Retrospective</title>
+    <link href="https://alt-f4.blog/it/ALTF4-19/" />
+    <id>https://alt-f4.blog/ALTF4-19</id>
+    <updated>2021-01-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, in the new year, we wanted to take a look back at the project &lt;em&gt;Therenas&lt;/em&gt; started four and a half months ago to fill the void that the absence of the FFF left in all our hearts. We asked the people involved in the process about their specialty,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-10</id>
     <updated>2020-10-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Benvenuti nella decima edizione di Alt-F4, arriviamo così a due cifre per la prima volta! Qesta settimana, Recon419A ritorna su un problema attuale e impellente, questa volta riguardo come si dovrebbero delimitare i confini del proprio impero. Successivamente, trupen usa la scienza per immergersi in alcuni fra i rari aspetti...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #9 - Processo di Traduzione</title>
-    <link href="https://alt-f4.blog/it/ALTF4-9/" />
-    <id>https://alt-f4.blog/ALTF4-9</id>
-    <updated>2020-10-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Dopo la nostra speciale &lt;a href=&quot;https://alt-f4.blog/it/ALTF4-8/&quot;&gt;edizione-lettera d’amore&lt;/a&gt; della scorsa settimana, siamo tornati tornati alla nostra programmazione regolare questa settimana con il nono articolo! TheEnemy42 si fornisce un approfondimento su come funzioni il processo ad atto di volontari di traduzione di Factorio in varie lingue, e stringweasel continua la sua serie...</content>
   </entry>
   
   
