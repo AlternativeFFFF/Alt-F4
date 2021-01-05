@@ -1,0 +1,33 @@
+name: PR Labeled Notfiy
+
+on:	
+  pull_request_target:	
+    branches:	
+      - master
+    types:	
+      - labeled	
+
+jobs:	
+  notify:	
+    name: Notification	
+    if: github.repository == 'AlternativeFFFF/Alt-F4'	
+    runs-on: ubuntu-latest	
+    steps:	
+
+    - name: Checkout PR	
+      uses: actions/checkout@master	
+
+    - id: checkLabel	
+      uses: Dreamcodeio/pr-has-label-action@master	
+      with:	
+        label: impact:submission	
+
+    - name: Discord notification	
+      if: steps.checkLabel.outputs.hasLabel	
+      env:	
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_EDITORIAL }}	
+        DISCORD_USERNAME: 'ALT-F4 Bot'	
+        DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'	
+      uses: Ilshidur/action-discord@0.2.0	
+      with:	
+        args: "*{{ EVENT_PAYLOAD.pull_request.title }}* - has been updated.\n{{ EVENT_PAYLOAD.pull_request.html_url }}"

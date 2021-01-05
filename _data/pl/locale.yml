@@ -40,3 +40,5 @@ not-found:
     ## Przepraszamy, ale nie możemy odnaleść żądanej strony.
     ### Możesz spróbować ponownie
   btn: wróć do strony głównej
+countdown-past: Countdown has passed #TODO: TRANSLATE
+image-fullres: Click to view full resolution #TODO: TRANSLATE
