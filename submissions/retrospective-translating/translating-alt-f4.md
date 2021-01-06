@@ -1,3 +1,5 @@
+## Translating Alt-F4 <author>nanogamer7</auhtor>
+
 The beginnings were small. One man, one issue, one language. But with the next issue there were already a dozen people eager to help. Looking desperately for something to do, that wasn't already someone else' job, the suggestion of translations came. With a multinational community there were quickly a few interested translators for some major and minor languages, like german, which I will focus on today. A single person has quite obvious limitations, for example the workload can't be split up, and while reviewing your translation definitely helps with quality, having more eyes look at it provides a far greater value. But multiple people pose interesting challenges of their own. First though I'd like to give you an idea of how much translation we actually do.
 
 [graph, x=*week*, y=*translated text (total characters)*; I'd like to get time of translation publish from GitHub PRs, not week of associated issue; Graph as lines, with either one line for english and one for total translated content, or one for english and one for every other language, or both]
@@ -10,7 +12,7 @@ The beginnings were small. One man, one issue, one language. But with the next i
 
 [Transition to next section, dunno am uncreative]
 
-### German inefficiency
+### German Inefficiency
 
 I want to go into more detail with translating into German, as I think it's a great example for some of the benefits of having multiple people, but also highlights some challenges, that come up with organising the process or translating itself, and, let's be real, I just don't know that much about the other languages.
 
@@ -40,4 +42,4 @@ With how much I've complained about, you might wonder, "Why do we even translate
 
 The reality is, at least I translate, because I enjoy it. It's sort of like programming, but instead of confusing flowcharts or messy thoughts in your head, we have an English text, and instead of translating to programming languages, we translate into real ones, which can be frustrating, as coding can be too, but all in all, is a fun puzzle.
 
-But you, dear reader, are one of those people we do reach, and if you want to help us out, it would be great of you could tell your local factorio community about alt-f4, be it translated or not ;)
+But you, dear reader, are one of those people we do reach, and if you want to help us out, it would be great of you could tell your local factorio community about alt-f4, be it translated or not!
