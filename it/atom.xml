@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/it/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-01-07T10:40:08+00:00</updated>
+  <updated>2021-01-08T14:07:41+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #20 - Retrospective 2: Electric Boogaloo</title>
+    <link href="https://alt-f4.blog/it/ALTF4-20/" />
+    <id>https://alt-f4.blog/ALTF4-20</id>
+    <updated>2021-01-08T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Rounding out the first five months of issues, Alt-F4 #20 brings the second part of our retrospective and look behind the scenes. &lt;em&gt;Nanogamer7&lt;/em&gt; takes us through how the translation process got started and what some of the problems are that came up. But before that, &lt;em&gt;Conor_&lt;/em&gt; presents us with a...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-11</id>
     <updated>2020-10-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Benvenuti nell’undicesima edizione di Alt-F4, in cui si parla sia di analisi matematica che di storia. Quindi, sull’attenti, scolari! Pocarski si è preso la briga di controllare se la matematica reale funzionasse anche su Nauvis. Allarme spoiler: no. In oltre stringweasel torna un’altra volta per guardare la storia, più precisamente...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #10 - Proteggere il proprio Impero</title>
-    <link href="https://alt-f4.blog/it/ALTF4-10/" />
-    <id>https://alt-f4.blog/ALTF4-10</id>
-    <updated>2020-10-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Benvenuti nella decima edizione di Alt-F4, arriviamo così a due cifre per la prima volta! Qesta settimana, Recon419A ritorna su un problema attuale e impellente, questa volta riguardo come si dovrebbero delimitare i confini del proprio impero. Successivamente, trupen usa la scienza per immergersi in alcuni fra i rari aspetti...</content>
   </entry>
   
   

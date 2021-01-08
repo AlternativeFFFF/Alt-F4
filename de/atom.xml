@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-01-07T10:40:08+00:00</updated>
+  <updated>2021-01-08T14:07:41+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #20 – Rückblick 2: Electric Boogie</title>
+    <link href="https://alt-f4.blog/de/ALTF4-20/" />
+    <id>https://alt-f4.blog/ALTF4-20</id>
+    <updated>2021-01-08T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Zum Abschluss der ersten fünf Monate bringt Alt-F4 #20 den zweiten Teil unseres Rückblicks und Blicks hinter die Kulissen. &lt;em&gt;Nanogamer7&lt;/em&gt; zeigt uns, wie der Übersetzungsprozess begonnen hat und welche Probleme dabei aufgetreten sind. Doch zuvor präsentiert uns &lt;em&gt;Conor_&lt;/em&gt; eine Art Missionserklärung, welche unsere Gedanken zum Projekt in eine prägnante Form...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-11</id>
     <updated>2020-10-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Willkommen zur elften Ausgabe von Alt-F4, die dir sowohl eine mathematische Analyse als auch eine Geschichtsstunde bietet. Also, gib Acht, Schüler! Pocarski nahm es auf sich, zu prüfen, ob die Mathematik der realen Welt auch auf Nauvis funktioniert. Spoileralarm: Das tut sie nicht. Dann kehrt stringweasel noch einmal zurück, um...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #10 – Dein Reich schützen</title>
-    <link href="https://alt-f4.blog/de/ALTF4-10/" />
-    <id>https://alt-f4.blog/ALTF4-10</id>
-    <updated>2020-10-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Willkommen zur zehnten Ausgabe von Alt-F4, das erste Mal im zweistelligen Bereich. Diese Woche kehrt Recon419A zurück, um ein überzeugendes Argument vorzubringen, dieses Mal darüber, wie du die Grenzen deines Reichs aufsetzen solltest. Als nächstes macht trupen ein bisschen Wissenschaft und taucht in die seltenen nervigen Aspekte von Factorio ein....</content>
   </entry>
   
   

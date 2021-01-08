@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-01-07T10:40:08+00:00</updated>
+  <updated>2021-01-08T14:07:41+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #20 - Rétrospective 2 : Le retour</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-20/" />
+    <id>https://alt-f4.blog/ALTF4-20</id>
+    <updated>2021-01-08T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Complétant les cinq premiers mois d’articles en continu, le numéro 20 de Alt-F4 vous apporte la deuxième partie de notre rétrospective et de ce qu’il se passe en coulisses. &lt;em&gt;Nanogamer7&lt;/em&gt; nous emmène sur les traces de comment le processus de traduction a commencé, et quelques-uns des problèmes rencontrés. Mais avant,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-11</id>
     <updated>2020-10-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Bienvenue dans la onzième édition de Alt-F4, qui vous amène des maths et de l’histoire. Donc, écoutez bien, étudiants ! Pocarski a pris sur lui-même pour aller voir si les maths du monde réel s’appliquaient bien à Nauvis. Spoiler : nope. Puis, stringweasel revient une fois de plus pour nous...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #10 - Protégez votre empire!</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-10/" />
-    <id>https://alt-f4.blog/ALTF4-10</id>
-    <updated>2020-10-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Bienvenu dans la dixième édition d’Alt-F4, où nous passons les nombres à deux chiffres pour la première fois ! Cette semaine, Recon419A reviens pour nous présenter une nouvelle argumentation, cette fois à propos de comment vous devriez établir les frontières de votre empire. Puis, trupen fait de la science et...</content>
   </entry>
   
   

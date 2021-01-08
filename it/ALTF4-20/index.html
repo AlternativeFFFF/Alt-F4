@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="it" class="it">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177230094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177230094-1');
+</script>
+
+
+	<title>Alt-F4 #20 - Retrospective 2: Electric Boogaloo</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 #20 - Retrospective 2: Electric Boogaloo | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #20 - Retrospective 2: Electric Boogaloo">
+<meta name="author" content="Conor_, Nanogamer7, Therenas">
+<meta property="og:locale" content="en">
+<meta name="description" content="Rounding out the first five months of issues, Alt-F4 #20 brings the second part of our retrospective and look behind the scenes. Nanogamer7 takes us through how the translation process got started and what some of the problems are that came up. But before that, Conor_ presents us with a sort of mission statement, which puts our thoughts on the project into a succinct form. A public declaration of what we want Alt-F4 to be Conor_ Alt-F4 isn’t Reddit. It isn’t the forum. It isn’t Discord. It also isn’t the FFF. These might seem like obvious statements but they have been a helpful guiding light, pointing us towards the type of content and presentation style we want to achieve. We want to be the place to go for polished writing related to the game we love so much. These stories might be about the UI design of an awesome Factorio mod, a tale of exploring the harsh and unforgiving galaxy, or even just us getting really nerdy with maths, but they’re all telling a story about what makes this game special for each of us. Each week we finish our releases with a call for contributions, and looking at that helps tell the story of what we want Alt-F4 to be: If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. — Therenas It shows that contributing to Alt-F4 shouldn’t feel like a chore or an obligation; We want it to be a collaborative process of us helping you to tell the story you want to tell, whatever it might be about. We regularly have long conversions in our Discord (which you should totally join if you haven’t!) with contributors about where we think they should take their writing. When I personally give feedback, it’s often a case of “I want more information about this really cool topic”, while trying to convey enthusiasm in the hopes that I can inspire more creativity. We also do our darndest to make the barrier of entry as low as possible, making sure that anyone and everyone who wants to contribute can do so. We’ll take submissions in whatever form they come, good or great grammar, long or short, in fancy-pants markdown, a text file, or even handwritten! Everyone is welcome to contribute and I encourage all of you to think about whether there’s anything at all you want to write about, and if there is, come and chat with us about it, we’ll be happy to have you! I’ve personally never particularly enjoyed writing, but doing so for Alt-F4 in release #15 was great fun and I fully intend to write more in the future. For me, it makes it so much easier writing about something you are passionate about, and I think we’re all passionate about this silly little factory game. Translating Alt-F4 Nanogamer7 The beginnings of Alt-F4 were small. One man, one issue, one language. The second week, there already were a dozen people eager to help. Looking desperately for something to do that wasn’t already someone else’s job, the idea of translations came up. With the multinational community that Factorio has, there quickly were a few interested translators for various languages, like German in my case, which I will focus on today. A single person has quite obvious limitations: For example, the workload can’t be split up, and while reviewing your own translation definitely helps with quality, having more eyes looking at it provides a far greater value. Coordinating multiple people poses interesting challenges of its own though; more on that later. First I’d like to give you an idea of how much translation we actually do. As we can see, every language has the first issue translated, as it is a bit shorter, but with more technical, longer articles (like #11) and the constant work every week, there are fewer translations for each issue. With over 3000 words though in some recent articles, we do more than ever, even though it’s only across 3 to 4 languages The chart above shows how many people worked on the translation for an issue (translating and proofreading). The first few issues didn’t have a translation in any language, but for later languages something interesting got apparent: A single translator can translate a full issue by himself, and multiple translators don’t always guarantee a translation at release. Let me explain. German Overengineering I want to go into more detail regarding the German translation process as I think it’s a great example of some of the benefits of having multiple people working on one article, but also highlights some challenges that come up with both organisation and the translation itself. Also, I just don’t know that much about the other languages, seeing as I only work on the German one. We got started as a group of three people, and after ironing out some initial technical hiccups, we were already going through the backlog of the first few issues. Then, the first new issue came up. For older issues it was fine for a single translator to work on it for however long it took him, but when the deadline is in 24 hours, we need to parallelise the work. Luckily it got apparent pretty quickly that individual articles could be provided earlier than the whole issue by the editorial team, and with the added benefit of more time to work on them, we already started to split the workload. But what do we do with our finished articles? Just sending them into our Discord channel without any versioning proved pretty chaotic early on, and our own GitHub repo was on the table but proved too big of a hassle for those without experience with git. So _v1 version suffixes it was. With a (mostly) consistent naming scheme, and an online difference checking tool, we had everything we would need from GitHub, right there in our Discord channel. “Great, they now sorted everything, and that’s it, no more problems, right?”, you might think. Wrong! You might be correct with technical issues, those mostly were sorted out indeed. But language isn’t just ‘right’ or ‘false’, there are way more nuances to it. You might have encountered different spellings between American and British English. Those often only have one letter changed though, and even if they are two completely different words, a Brit will still understand what an eggplant is. In German, however, there are many words an Austrian uses every day, but someone from northern Germany might have never heard of. Even though regional differences might seem like the biggest troublemaker, what kills us are actually the more subtle quirks, like the fact that we have a formal and a more informal version for ‘you’, and those sometimes completely change the structure of a sentence. In some settings, it’s unambiguous which form you should use, but especially for a blog, there are great arguments for both sides. (This is also the reason why I don’t like dubbing, even big-budget films get it wrong all the time, and it just feels so unnatural when someone “Siezt” (formal ‘you’) a close friend.) One case where it pays off to have different people working on the same thing though is synonyms. Well, technically ‘not-synonyms’, because even though some words might have a similar meaning to most people, especially in tech, some words sound a bit off, even though they translate to the same English word. For scenarios like this, it really pays off to have your translation proofread by up to four more people, all with other areas of expertise. This however is also were our biggest weekly challenge comes in: Limited Time Translating takes time. We don’t have that. Currently, articles come in on Thursday morning (Note: this isn’t always the case, but for most articles it is), we start translating at noon or in the afternoon, and have a first translation in the evening. But then someone wants to proofread it. And I can’t remember the last time we didn’t have corrections after someone went through a translation. Corrections might not always be better though, even though they were well-meant (we have a German word for that of course: “verschlimmbessern”, to worsen something by trying to improve it); thus we now always have the original translator read through the corrections. But you guessed it: that takes time too. If we have a good day, and everyone is available, we are sometimes less than half an hour before release still busy ironing out some hiccups, correcting errors, and fiddling with non-synonyms. Sometimes these problems, especially the more technical ones, result in changes for all languages, sometimes even the original English text. For example, quotes are like they are now because we couldn’t figure out how to incorporate translations while still keeping the original quote. Most of the time Firerazer and Conor_ resolve those problems with their final reviews, right before merging and publishing the article. Not all Translating is Made Equal I want to briefly talk about translating continuous text versus individual strings (TheEnemy42 touched upon this in his translating the game article). While it’s an art form in itself to translate Alt-F4 while staying within a reasonable length and keeping the meaning of the text as close to the original as possible, translating it in a way that conveys all the content while still being enjoyable to read is on a completely different level. Both suffer from a similar problem though, which stringweasel mentioned in the very same issue: jargon. A large part of a game’s jargon is composed of contractions and abbreviations of in-game terms and existing technical jargon from the real world, which often doesn’t translate to other languages, or even make any sense in them. So we try to find the words in our own language that convey the intended meaning as best as possible. With how much I’ve complained, you might now wonder “Why do we even translate? Is it for the readers?”. Well, I mostly do it because I enjoy it. It’s sort of like programming, but instead of confusing flowcharts or messy thoughts in your head, we have an English text, and instead of translating to programming languages, we translate into real ones, which can be frustrating, as coding can be too, but all in all, is a fun puzzle. In the end though, the readers are the reason why there even are translations, and we really think our work can bring ALT-F4 to a larger audience. So if you know people that are interested in more Factorio content, we’d be more than happy if you told them about this blog, whether they read the translated versions or not! Conclusion Therenas So hopefully these last two issues contained some interesting insight into the project and how it evolved to what it is today. We’re not done, of course, we’re planning to keep this going for as long as we enjoy putting it together and you enjoy reading it. To that end, I wanted to bring up that we need submissions from all of you to make this project work. All these processes are well and good, but it’s our goal to give community members a platform to make their voice heard and to present an interesting and enjoyable read to everyone. So if you got anything you’re passionate about that people should hear, please join the Discord and share it with us. I want to thank everyone that contributed to the project, you are all amazing. Be it the translators, who spend many hours putting together their translations in a collaborative way so that the content can be enjoyed by many more people around the world, reaching non-English speaking communities in ways the FFF did not. Be it the writers who come up with some great ideas to write about, incorporating feedback and just being the lifeblood of the project in general. Be it the techies, who jump at our every request to allow us to present the content in a nicer way, and making it all as accessible as possible to all readers. Be it the editorial staff that puts in the effort to give good feedback to writers, polishing the weekly articles as much as possible, and for putting up with my personal nitpicks on things. Factorio has the nicest community I have ever been a part of, and the subset that gathered for Alt-F4 is even nicer if such a thing is possible. I don’t think I had a single negative interaction this entire time. Seeing as how much of a toxic wasteland some gaming communities are, I’m so grateful ours is the way it is. Thanks to everyone for being such nice people, it really makes all this a joy to work on and makes it worth the effort.">
+<meta property="og:description" content="Rounding out the first five months of issues, Alt-F4 #20 brings the second part of our retrospective and look behind the scenes. Nanogamer7 takes us through how the translation process got started and what some of the problems are that came up. But before that, Conor_ presents us with a sort of mission statement, which puts our thoughts on the project into a succinct form. A public declaration of what we want Alt-F4 to be Conor_ Alt-F4 isn’t Reddit. It isn’t the forum. It isn’t Discord. It also isn’t the FFF. These might seem like obvious statements but they have been a helpful guiding light, pointing us towards the type of content and presentation style we want to achieve. We want to be the place to go for polished writing related to the game we love so much. These stories might be about the UI design of an awesome Factorio mod, a tale of exploring the harsh and unforgiving galaxy, or even just us getting really nerdy with maths, but they’re all telling a story about what makes this game special for each of us. Each week we finish our releases with a call for contributions, and looking at that helps tell the story of what we want Alt-F4 to be: If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. — Therenas It shows that contributing to Alt-F4 shouldn’t feel like a chore or an obligation; We want it to be a collaborative process of us helping you to tell the story you want to tell, whatever it might be about. We regularly have long conversions in our Discord (which you should totally join if you haven’t!) with contributors about where we think they should take their writing. When I personally give feedback, it’s often a case of “I want more information about this really cool topic”, while trying to convey enthusiasm in the hopes that I can inspire more creativity. We also do our darndest to make the barrier of entry as low as possible, making sure that anyone and everyone who wants to contribute can do so. We’ll take submissions in whatever form they come, good or great grammar, long or short, in fancy-pants markdown, a text file, or even handwritten! Everyone is welcome to contribute and I encourage all of you to think about whether there’s anything at all you want to write about, and if there is, come and chat with us about it, we’ll be happy to have you! I’ve personally never particularly enjoyed writing, but doing so for Alt-F4 in release #15 was great fun and I fully intend to write more in the future. For me, it makes it so much easier writing about something you are passionate about, and I think we’re all passionate about this silly little factory game. Translating Alt-F4 Nanogamer7 The beginnings of Alt-F4 were small. One man, one issue, one language. The second week, there already were a dozen people eager to help. Looking desperately for something to do that wasn’t already someone else’s job, the idea of translations came up. With the multinational community that Factorio has, there quickly were a few interested translators for various languages, like German in my case, which I will focus on today. A single person has quite obvious limitations: For example, the workload can’t be split up, and while reviewing your own translation definitely helps with quality, having more eyes looking at it provides a far greater value. Coordinating multiple people poses interesting challenges of its own though; more on that later. First I’d like to give you an idea of how much translation we actually do. As we can see, every language has the first issue translated, as it is a bit shorter, but with more technical, longer articles (like #11) and the constant work every week, there are fewer translations for each issue. With over 3000 words though in some recent articles, we do more than ever, even though it’s only across 3 to 4 languages The chart above shows how many people worked on the translation for an issue (translating and proofreading). The first few issues didn’t have a translation in any language, but for later languages something interesting got apparent: A single translator can translate a full issue by himself, and multiple translators don’t always guarantee a translation at release. Let me explain. German Overengineering I want to go into more detail regarding the German translation process as I think it’s a great example of some of the benefits of having multiple people working on one article, but also highlights some challenges that come up with both organisation and the translation itself. Also, I just don’t know that much about the other languages, seeing as I only work on the German one. We got started as a group of three people, and after ironing out some initial technical hiccups, we were already going through the backlog of the first few issues. Then, the first new issue came up. For older issues it was fine for a single translator to work on it for however long it took him, but when the deadline is in 24 hours, we need to parallelise the work. Luckily it got apparent pretty quickly that individual articles could be provided earlier than the whole issue by the editorial team, and with the added benefit of more time to work on them, we already started to split the workload. But what do we do with our finished articles? Just sending them into our Discord channel without any versioning proved pretty chaotic early on, and our own GitHub repo was on the table but proved too big of a hassle for those without experience with git. So _v1 version suffixes it was. With a (mostly) consistent naming scheme, and an online difference checking tool, we had everything we would need from GitHub, right there in our Discord channel. “Great, they now sorted everything, and that’s it, no more problems, right?”, you might think. Wrong! You might be correct with technical issues, those mostly were sorted out indeed. But language isn’t just ‘right’ or ‘false’, there are way more nuances to it. You might have encountered different spellings between American and British English. Those often only have one letter changed though, and even if they are two completely different words, a Brit will still understand what an eggplant is. In German, however, there are many words an Austrian uses every day, but someone from northern Germany might have never heard of. Even though regional differences might seem like the biggest troublemaker, what kills us are actually the more subtle quirks, like the fact that we have a formal and a more informal version for ‘you’, and those sometimes completely change the structure of a sentence. In some settings, it’s unambiguous which form you should use, but especially for a blog, there are great arguments for both sides. (This is also the reason why I don’t like dubbing, even big-budget films get it wrong all the time, and it just feels so unnatural when someone “Siezt” (formal ‘you’) a close friend.) One case where it pays off to have different people working on the same thing though is synonyms. Well, technically ‘not-synonyms’, because even though some words might have a similar meaning to most people, especially in tech, some words sound a bit off, even though they translate to the same English word. For scenarios like this, it really pays off to have your translation proofread by up to four more people, all with other areas of expertise. This however is also were our biggest weekly challenge comes in: Limited Time Translating takes time. We don’t have that. Currently, articles come in on Thursday morning (Note: this isn’t always the case, but for most articles it is), we start translating at noon or in the afternoon, and have a first translation in the evening. But then someone wants to proofread it. And I can’t remember the last time we didn’t have corrections after someone went through a translation. Corrections might not always be better though, even though they were well-meant (we have a German word for that of course: “verschlimmbessern”, to worsen something by trying to improve it); thus we now always have the original translator read through the corrections. But you guessed it: that takes time too. If we have a good day, and everyone is available, we are sometimes less than half an hour before release still busy ironing out some hiccups, correcting errors, and fiddling with non-synonyms. Sometimes these problems, especially the more technical ones, result in changes for all languages, sometimes even the original English text. For example, quotes are like they are now because we couldn’t figure out how to incorporate translations while still keeping the original quote. Most of the time Firerazer and Conor_ resolve those problems with their final reviews, right before merging and publishing the article. Not all Translating is Made Equal I want to briefly talk about translating continuous text versus individual strings (TheEnemy42 touched upon this in his translating the game article). While it’s an art form in itself to translate Alt-F4 while staying within a reasonable length and keeping the meaning of the text as close to the original as possible, translating it in a way that conveys all the content while still being enjoyable to read is on a completely different level. Both suffer from a similar problem though, which stringweasel mentioned in the very same issue: jargon. A large part of a game’s jargon is composed of contractions and abbreviations of in-game terms and existing technical jargon from the real world, which often doesn’t translate to other languages, or even make any sense in them. So we try to find the words in our own language that convey the intended meaning as best as possible. With how much I’ve complained, you might now wonder “Why do we even translate? Is it for the readers?”. Well, I mostly do it because I enjoy it. It’s sort of like programming, but instead of confusing flowcharts or messy thoughts in your head, we have an English text, and instead of translating to programming languages, we translate into real ones, which can be frustrating, as coding can be too, but all in all, is a fun puzzle. In the end though, the readers are the reason why there even are translations, and we really think our work can bring ALT-F4 to a larger audience. So if you know people that are interested in more Factorio content, we’d be more than happy if you told them about this blog, whether they read the translated versions or not! Conclusion Therenas So hopefully these last two issues contained some interesting insight into the project and how it evolved to what it is today. We’re not done, of course, we’re planning to keep this going for as long as we enjoy putting it together and you enjoy reading it. To that end, I wanted to bring up that we need submissions from all of you to make this project work. All these processes are well and good, but it’s our goal to give community members a platform to make their voice heard and to present an interesting and enjoyable read to everyone. So if you got anything you’re passionate about that people should hear, please join the Discord and share it with us. I want to thank everyone that contributed to the project, you are all amazing. Be it the translators, who spend many hours putting together their translations in a collaborative way so that the content can be enjoyed by many more people around the world, reaching non-English speaking communities in ways the FFF did not. Be it the writers who come up with some great ideas to write about, incorporating feedback and just being the lifeblood of the project in general. Be it the techies, who jump at our every request to allow us to present the content in a nicer way, and making it all as accessible as possible to all readers. Be it the editorial staff that puts in the effort to give good feedback to writers, polishing the weekly articles as much as possible, and for putting up with my personal nitpicks on things. Factorio has the nicest community I have ever been a part of, and the subset that gathered for Alt-F4 is even nicer if such a thing is possible. I don’t think I had a single negative interaction this entire time. Seeing as how much of a toxic wasteland some gaming communities are, I’m so grateful ours is the way it is. Thanks to everyone for being such nice people, it really makes all this a joy to work on and makes it worth the effort.">
+<link rel="canonical" href="https://alt-f4.blog/it/ALTF4-20/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-20/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-01-08T00:00:00+00:00">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Conor_, Nanogamer7, Therenas"},"description":"Rounding out the first five months of issues, Alt-F4 #20 brings the second part of our retrospective and look behind the scenes. Nanogamer7 takes us through how the translation process got started and what some of the problems are that came up. But before that, Conor_ presents us with a sort of mission statement, which puts our thoughts on the project into a succinct form. A public declaration of what we want Alt-F4 to be Conor_ Alt-F4 isn’t Reddit. It isn’t the forum. It isn’t Discord. It also isn’t the FFF. These might seem like obvious statements but they have been a helpful guiding light, pointing us towards the type of content and presentation style we want to achieve. We want to be the place to go for polished writing related to the game we love so much. These stories might be about the UI design of an awesome Factorio mod, a tale of exploring the harsh and unforgiving galaxy, or even just us getting really nerdy with maths, but they’re all telling a story about what makes this game special for each of us. Each week we finish our releases with a call for contributions, and looking at that helps tell the story of what we want Alt-F4 to be: If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. — Therenas It shows that contributing to Alt-F4 shouldn’t feel like a chore or an obligation; We want it to be a collaborative process of us helping you to tell the story you want to tell, whatever it might be about. We regularly have long conversions in our Discord (which you should totally join if you haven’t!) with contributors about where we think they should take their writing. When I personally give feedback, it’s often a case of “I want more information about this really cool topic”, while trying to convey enthusiasm in the hopes that I can inspire more creativity. We also do our darndest to make the barrier of entry as low as possible, making sure that anyone and everyone who wants to contribute can do so. We’ll take submissions in whatever form they come, good or great grammar, long or short, in fancy-pants markdown, a text file, or even handwritten! Everyone is welcome to contribute and I encourage all of you to think about whether there’s anything at all you want to write about, and if there is, come and chat with us about it, we’ll be happy to have you! I’ve personally never particularly enjoyed writing, but doing so for Alt-F4 in release #15 was great fun and I fully intend to write more in the future. For me, it makes it so much easier writing about something you are passionate about, and I think we’re all passionate about this silly little factory game. Translating Alt-F4 Nanogamer7 The beginnings of Alt-F4 were small. One man, one issue, one language. The second week, there already were a dozen people eager to help. Looking desperately for something to do that wasn’t already someone else’s job, the idea of translations came up. With the multinational community that Factorio has, there quickly were a few interested translators for various languages, like German in my case, which I will focus on today. A single person has quite obvious limitations: For example, the workload can’t be split up, and while reviewing your own translation definitely helps with quality, having more eyes looking at it provides a far greater value. Coordinating multiple people poses interesting challenges of its own though; more on that later. First I’d like to give you an idea of how much translation we actually do. As we can see, every language has the first issue translated, as it is a bit shorter, but with more technical, longer articles (like #11) and the constant work every week, there are fewer translations for each issue. With over 3000 words though in some recent articles, we do more than ever, even though it’s only across 3 to 4 languages The chart above shows how many people worked on the translation for an issue (translating and proofreading). The first few issues didn’t have a translation in any language, but for later languages something interesting got apparent: A single translator can translate a full issue by himself, and multiple translators don’t always guarantee a translation at release. Let me explain. German Overengineering I want to go into more detail regarding the German translation process as I think it’s a great example of some of the benefits of having multiple people working on one article, but also highlights some challenges that come up with both organisation and the translation itself. Also, I just don’t know that much about the other languages, seeing as I only work on the German one. We got started as a group of three people, and after ironing out some initial technical hiccups, we were already going through the backlog of the first few issues. Then, the first new issue came up. For older issues it was fine for a single translator to work on it for however long it took him, but when the deadline is in 24 hours, we need to parallelise the work. Luckily it got apparent pretty quickly that individual articles could be provided earlier than the whole issue by the editorial team, and with the added benefit of more time to work on them, we already started to split the workload. But what do we do with our finished articles? Just sending them into our Discord channel without any versioning proved pretty chaotic early on, and our own GitHub repo was on the table but proved too big of a hassle for those without experience with git. So _v1 version suffixes it was. With a (mostly) consistent naming scheme, and an online difference checking tool, we had everything we would need from GitHub, right there in our Discord channel. “Great, they now sorted everything, and that’s it, no more problems, right?”, you might think. Wrong! You might be correct with technical issues, those mostly were sorted out indeed. But language isn’t just ‘right’ or ‘false’, there are way more nuances to it. You might have encountered different spellings between American and British English. Those often only have one letter changed though, and even if they are two completely different words, a Brit will still understand what an eggplant is. In German, however, there are many words an Austrian uses every day, but someone from northern Germany might have never heard of. Even though regional differences might seem like the biggest troublemaker, what kills us are actually the more subtle quirks, like the fact that we have a formal and a more informal version for ‘you’, and those sometimes completely change the structure of a sentence. In some settings, it’s unambiguous which form you should use, but especially for a blog, there are great arguments for both sides. (This is also the reason why I don’t like dubbing, even big-budget films get it wrong all the time, and it just feels so unnatural when someone “Siezt” (formal ‘you’) a close friend.) One case where it pays off to have different people working on the same thing though is synonyms. Well, technically ‘not-synonyms’, because even though some words might have a similar meaning to most people, especially in tech, some words sound a bit off, even though they translate to the same English word. For scenarios like this, it really pays off to have your translation proofread by up to four more people, all with other areas of expertise. This however is also were our biggest weekly challenge comes in: Limited Time Translating takes time. We don’t have that. Currently, articles come in on Thursday morning (Note: this isn’t always the case, but for most articles it is), we start translating at noon or in the afternoon, and have a first translation in the evening. But then someone wants to proofread it. And I can’t remember the last time we didn’t have corrections after someone went through a translation. Corrections might not always be better though, even though they were well-meant (we have a German word for that of course: “verschlimmbessern”, to worsen something by trying to improve it); thus we now always have the original translator read through the corrections. But you guessed it: that takes time too. If we have a good day, and everyone is available, we are sometimes less than half an hour before release still busy ironing out some hiccups, correcting errors, and fiddling with non-synonyms. Sometimes these problems, especially the more technical ones, result in changes for all languages, sometimes even the original English text. For example, quotes are like they are now because we couldn’t figure out how to incorporate translations while still keeping the original quote. Most of the time Firerazer and Conor_ resolve those problems with their final reviews, right before merging and publishing the article. Not all Translating is Made Equal I want to briefly talk about translating continuous text versus individual strings (TheEnemy42 touched upon this in his translating the game article). While it’s an art form in itself to translate Alt-F4 while staying within a reasonable length and keeping the meaning of the text as close to the original as possible, translating it in a way that conveys all the content while still being enjoyable to read is on a completely different level. Both suffer from a similar problem though, which stringweasel mentioned in the very same issue: jargon. A large part of a game’s jargon is composed of contractions and abbreviations of in-game terms and existing technical jargon from the real world, which often doesn’t translate to other languages, or even make any sense in them. So we try to find the words in our own language that convey the intended meaning as best as possible. With how much I’ve complained, you might now wonder “Why do we even translate? Is it for the readers?”. Well, I mostly do it because I enjoy it. It’s sort of like programming, but instead of confusing flowcharts or messy thoughts in your head, we have an English text, and instead of translating to programming languages, we translate into real ones, which can be frustrating, as coding can be too, but all in all, is a fun puzzle. In the end though, the readers are the reason why there even are translations, and we really think our work can bring ALT-F4 to a larger audience. So if you know people that are interested in more Factorio content, we’d be more than happy if you told them about this blog, whether they read the translated versions or not! Conclusion Therenas So hopefully these last two issues contained some interesting insight into the project and how it evolved to what it is today. We’re not done, of course, we’re planning to keep this going for as long as we enjoy putting it together and you enjoy reading it. To that end, I wanted to bring up that we need submissions from all of you to make this project work. All these processes are well and good, but it’s our goal to give community members a platform to make their voice heard and to present an interesting and enjoyable read to everyone. So if you got anything you’re passionate about that people should hear, please join the Discord and share it with us. I want to thank everyone that contributed to the project, you are all amazing. Be it the translators, who spend many hours putting together their translations in a collaborative way so that the content can be enjoyed by many more people around the world, reaching non-English speaking communities in ways the FFF did not. Be it the writers who come up with some great ideas to write about, incorporating feedback and just being the lifeblood of the project in general. Be it the techies, who jump at our every request to allow us to present the content in a nicer way, and making it all as accessible as possible to all readers. Be it the editorial staff that puts in the effort to give good feedback to writers, polishing the weekly articles as much as possible, and for putting up with my personal nitpicks on things. Factorio has the nicest community I have ever been a part of, and the subset that gathered for Alt-F4 is even nicer if such a thing is possible. I don’t think I had a single negative interaction this entire time. Seeing as how much of a toxic wasteland some gaming communities are, I’m so grateful ours is the way it is. Thanks to everyone for being such nice people, it really makes all this a joy to work on and makes it worth the effort.","@type":"BlogPosting","url":"https://alt-f4.blog/ALTF4-20/","headline":"Alt-F4 #20 - Retrospective 2: Electric Boogaloo","dateModified":"2021-01-08T00:00:00+00:00","datePublished":"2021-01-08T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-20/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/20/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/20/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/it/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/it/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/it/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/it/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/it/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/it/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/it/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Il seguito degli amati Factorio Friday Facts gestito dalla community</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-20/" onclick="setLanguage('en')">en</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-20/" onclick="setLanguage('cs')">cs</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-20/" onclick="setLanguage('de')">de</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-20/" onclick="setLanguage('es')">es</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-20/" onclick="setLanguage('fr')">fr</a>
+				
+				<a class="button button-green lang-button" href="/it/ALTF4-20/" onclick="setLanguage('it')">it</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-20/" onclick="setLanguage('nl')">nl</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-20/" onclick="setLanguage('pt-br')">pt-br</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-20/" onclick="setLanguage('ru')">ru</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-20/" onclick="setLanguage('zh')">zh</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #20 - Retrospective 2: Electric Boogaloo  <author>08-01-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Scritto da <em>Conor_, Nanogamer7, Therenas</em>,
+
+
+
+editato da <em>stringweasel, nicgarner, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Tabella dei Contenuti</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li><a href="#a-public-declaration-of-what-we-want-alt-f4-to-be-conor_">A public declaration of what we want Alt-F4 to be <author>Conor_</author></a></li>
+  <li>
+<a href="#translating-alt-f4-nanogamer7">Translating Alt-F4 <author>Nanogamer7</author></a>
+    <ul>
+      <li><a href="#german-overengineering">German Overengineering</a></li>
+      <li><a href="#limited-time">Limited Time</a></li>
+      <li><a href="#not-all-translating-is-made-equal">Not all Translating is Made Equal</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion-therenas">Conclusion <author>Therenas</author></a></li>
+</ul>
+
+  </div>
+</details>
+
+
+<div class="center banner">
+  <p>Siamo spiacenti, ma questo articolo non è ancora stato tradotto in Italiano, perciò lo state vedendo in Inglese. Se volete darci una mano a rimediare, vi invitiamo ad entrare nel server <a href="https://discord.gg/h4uv2fM">Discord</a> di Alt-F4. Grazie per la pazienza!</p>
+
+</div>
+
+
+
+<p>Rounding out the first five months of issues, Alt-F4 #20 brings the second part of our retrospective and look behind the scenes. <em>Nanogamer7</em> takes us through how the translation process got started and what some of the problems are that came up. But before that, <em>Conor_</em> presents us with a sort of mission statement, which puts our thoughts on the project into a succinct form.</p>
+      <h2 id="a-public-declaration-of-what-we-want-alt-f4-to-be-conor_">
+        
+        
+            <a href="#a-public-declaration-of-what-we-want-alt-f4-to-be-conor_" class="anchor" style="text-decoration: none;">A public declaration of what we want Alt-F4 to be <author>Conor_</author></a>
+          
+        
+      </h2>
+    
+
+<p>Alt-F4 isn’t Reddit. It isn’t the forum. It isn’t Discord. It also isn’t the FFF. These might seem like obvious statements but they have been a helpful guiding light, pointing us towards the type of content and presentation style we want to achieve. We want to be the place to go for polished writing related to the game we love so much. These stories might be about the <a href="https://alt-f4.blog/it/ALTF4-17/#interface-design-considerations-therenas">UI design of an awesome Factorio mod</a>, <a href="https://alt-f4.blog/it/ALTF4-14/#mod-spotlight-space-exploration-ironic-toblerone">a tale of exploring the harsh and unforgiving galaxy</a>, or even just us <a href="https://alt-f4.blog/it/ALTF4-11/#a-scientific-examination-of-the-factorio-world-pocarski">getting really nerdy with maths</a>, but they’re all telling a story about what makes this game special for each of us. Each week we finish our releases with a call for contributions, and looking at that helps tell the story of what we want Alt-F4 to be:</p>
+
+<div class="m0 h100 quote">
+  <blockquote cite="">
+    <div class="panel-inset-lighter ">
+    
+      <div class="original">
+        <p>If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions.</p>
+
+      </div>
+    </div>
+    <author>
+    — Therenas
+    </author>
+  </blockquote>
+</div>
+
+<p>It shows that contributing to Alt-F4 shouldn’t feel like a chore or an obligation; We want it to be a collaborative process of us helping you to tell the story you want to tell, whatever it might be about. We regularly have long conversions in our <a href="https://discord.gg/nxnCFkb">Discord</a> (which you should totally join if you haven’t!) with contributors about where we think they should take their writing. When I personally give feedback, it’s often a case of “I want more information about this really cool topic”, while trying to convey enthusiasm in the hopes that I can inspire more creativity.</p>
+
+<p>We also do our darndest to make the barrier of entry as low as possible, making sure that anyone and everyone who wants to contribute can do so. We’ll take submissions in whatever form they come, good or great grammar, long or short, in fancy-pants markdown, a text file, or even handwritten! Everyone is welcome to contribute and I encourage all of you to think about whether there’s anything at all you want to write about, and if there is, come and chat with us about it, we’ll be happy to have you! I’ve personally never particularly enjoyed writing, but doing so for Alt-F4 in <a href="https://alt-f4.blog/it/ALTF4-15/">release #15</a> was great fun and I fully intend to write more in the future. For me, it makes it so much easier writing about something you are passionate about, and I think we’re all passionate about this silly little factory game.</p>
+      <h2 id="translating-alt-f4-nanogamer7">
+        
+        
+            <a href="#translating-alt-f4-nanogamer7" class="anchor" style="text-decoration: none;">Translating Alt-F4 <author>Nanogamer7</author></a>
+          
+        
+      </h2>
+    
+
+<p>The beginnings of Alt-F4 were small. One man, one issue, one language. The second week, there already were a dozen people eager to help. Looking desperately for something to do that wasn’t already someone else’s job, the idea of translations came up. With the multinational community that Factorio has, there quickly were a few interested translators for various languages, like German in my case, which I will focus on today. A single person has quite obvious limitations: For example, the workload can’t be split up, and while reviewing your own translation definitely helps with quality, having more eyes looking at it provides a far greater value. Coordinating multiple people poses interesting challenges of its own though; more on that later. First I’d like to give you an idea of how much translation we actually do.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/20/combined-total.svg" alt="Total translated word count per issue" style="max-width: ; max-height: ">
+      
+      <figcaption>As we can see, every language has the first issue translated, as it is a bit shorter, but with more technical, longer articles (like <a href="https://alt-f4.blog/it/ALTF4-11/">#11</a>) and the constant work every week, there are fewer translations for each issue. With over 3000 words though in some recent articles, we do more than ever, even though it’s only across 3 to 4 languages</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/20/people-per-issue.svg" alt="People working on a issue, and whether it released on time" style="max-width: ; max-height: ">
+      
+      <figcaption>The chart above shows how many people worked on the translation for an issue (translating and proofreading). The first few issues didn’t have a translation in any language, but for later languages something interesting got apparent: A single translator <b>can</b> translate a full issue by himself, and multiple translators don’t always guarantee a translation at release. Let me explain.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="german-overengineering">
+        
+        
+            <a href="#german-overengineering" class="anchor" style="text-decoration: none;">German Overengineering</a>
+          
+        
+      </h3>
+    
+
+<p>I want to go into more detail regarding the German translation process as I think it’s a great example of some of the benefits of having multiple people working on one article, but also highlights some challenges that come up with both organisation and the translation itself. Also, I just don’t know that much about the other languages, seeing as I only work on the German one.</p>
+
+<p>We got started as a group of three people, and after ironing out some initial technical hiccups, we were already going through the backlog of the first few issues. Then, the first new issue came up. For older issues it was fine for a single translator to work on it for however long it took him, but when the deadline is in 24 hours, we need to parallelise the work. Luckily it got apparent pretty quickly that individual articles could be provided earlier than the whole issue by the editorial team, and with the added benefit of more time to work on them, we already started to split the workload. But what do we do with our finished articles? Just sending them into our Discord channel without any versioning proved pretty chaotic early on, and our own GitHub repo was on the table but proved too big of a hassle for those without experience with git. So <code class="language-plaintext highlighter-rouge">_v1</code> version suffixes it was. With a (mostly) consistent naming scheme, and an <a href="https://www.diffchecker.com/">online difference checking tool</a>, we had everything we would need from GitHub, right there in our Discord channel.</p>
+
+<p>“Great, they now sorted everything, and that’s it, no more problems, right?”, you might think. Wrong! You might be correct with technical issues, those mostly were sorted out indeed. But language isn’t just ‘right’ or ‘false’, there are way more nuances to it. You might have encountered different spellings between American and British English. Those often only have one letter changed though, and even if they are two completely different words, a Brit will still understand what an <em>eggplant</em> is. In German, however, there are many words an Austrian uses every day, but someone from northern Germany might have never heard of.</p>
+
+<p>Even though regional differences might seem like the biggest troublemaker, what kills us are actually the more subtle quirks, like the fact that we have a formal and a more informal version for ‘you’, and those sometimes completely change the structure of a sentence. In some settings, it’s unambiguous which form you should use, but especially for a blog, there are great arguments for both sides. (This is also the reason why I don’t like dubbing, even big-budget films get it wrong all the time, and it just feels so unnatural when someone “Siezt” (formal ‘you’) a close friend.)</p>
+
+<p>One case where it pays off to have different people working on the same thing though is synonyms. Well, technically ‘not-synonyms’, because even though some words might have a similar meaning to most people, especially in tech, some words sound a bit off, even though they translate to the same English word. For scenarios like this, it really pays off to have your translation proofread by up to four more people, all with other areas of expertise. This however is also were our biggest weekly challenge comes in:</p>
+      <h3 id="limited-time">
+        
+        
+            <a href="#limited-time" class="anchor" style="text-decoration: none;">Limited Time</a>
+          
+        
+      </h3>
+    
+
+<p>Translating takes time. We don’t have that. Currently, articles come in on Thursday morning <em>(Note: this isn’t always the case, but for most articles it is)</em>, we start translating at noon or in the afternoon, and have a first translation in the evening. But then someone wants to proofread it. And I can’t remember the last time we didn’t have corrections after someone went through a translation. Corrections might not always be better though, even though they were well-meant (we have a German word for that of course: “verschlimmbessern”, <em>to worsen something by trying to improve it</em>); thus we now always have the original translator read through the corrections. But you guessed it: that takes time too. If we have a good day, and everyone is available, we are sometimes less than half an hour before release still busy ironing out some hiccups, correcting errors, and fiddling with non-synonyms.</p>
+
+<p>Sometimes these problems, especially the more technical ones, result in changes for all languages, sometimes even the original English text. For example, quotes are like they are now because we couldn’t figure out how to incorporate translations while still keeping the original quote. Most of the time <em>Firerazer</em> and <em>Conor_</em> resolve those problems with their final reviews, right before merging and publishing the article.</p>
+      <h3 id="not-all-translating-is-made-equal">
+        
+        
+            <a href="#not-all-translating-is-made-equal" class="anchor" style="text-decoration: none;">Not all Translating is Made Equal</a>
+          
+        
+      </h3>
+    
+
+<p>I want to briefly talk about translating continuous text versus individual strings (<em>TheEnemy42</em> touched upon this in his <a href="https://alt-f4.blog/it/ALTF4-9/#a-story-about-translating-factorio-theenemy42">translating the game</a> article). While it’s an art form in itself to translate Alt-F4 while staying within a reasonable length and keeping the meaning of the text as close to the original as possible, translating it in a way that conveys all the content while still being enjoyable to read is on a completely different level. Both suffer from a similar problem though, which <em>stringweasel</em> mentioned <a href="https://alt-f4.blog/it/ALTF4-9/#nauvis-archives-factorio-jargon-stringweasel">in the very same issue</a>: jargon. A large part of a game’s jargon is composed of contractions and abbreviations of in-game terms and existing technical jargon from the real world, which often doesn’t translate to other languages, or even make any sense in them. So we try to find the words in our own language that convey the intended meaning as best as possible.</p>
+
+<p>With how much I’ve complained, you might now wonder “Why do we even translate? Is it for the readers?”. Well, I mostly do it because I enjoy it. It’s sort of like programming, but instead of confusing flowcharts or messy thoughts in your head, we have an English text, and instead of translating to programming languages, we translate into real ones, which can be frustrating, as coding can be too, but all in all, is a fun puzzle.</p>
+
+<p>In the end though, the readers are the reason why there even are translations, and we really think our work can bring ALT-F4 to a larger audience. So if you know people that are interested in more Factorio content, we’d be more than happy if you told them about this blog, whether they read the translated versions or not!</p>
+      <h2 id="conclusion-therenas">
+        
+        
+            <a href="#conclusion-therenas" class="anchor" style="text-decoration: none;">Conclusion <author>Therenas</author></a>
+          
+        
+      </h2>
+    
+
+<p>So hopefully these last two issues contained some interesting insight into the project and how it evolved to what it is today. We’re not done, of course, we’re planning to keep this going for as long as we enjoy putting it together and you enjoy reading it. To that end, I wanted to bring up that we need submissions from all of you to make this project work. All these processes are well and good, but it’s our goal to give community members a platform to make their voice heard and to present an interesting and enjoyable read to everyone. So if you got anything you’re passionate about that people should hear, please join the <a href="https://discord.gg/nxnCFkb">Discord</a> and share it with us.</p>
+
+<p>I want to thank everyone that contributed to the project, you are all amazing. Be it the translators, who spend many hours putting together their translations in a collaborative way so that the content can be enjoyed by many more people around the world, reaching non-English speaking communities in ways the FFF did not. Be it the writers who come up with some great ideas to write about, incorporating feedback and just being the lifeblood of the project in general. Be it the techies, who jump at our every request to allow us to present the content in a nicer way, and making it all as accessible as possible to all readers. Be it the editorial staff that puts in the effort to give good feedback to writers, polishing the weekly articles as much as possible, and for putting up with my personal nitpicks on things.</p>
+
+<p>Factorio has the nicest community I have ever been a part of, and the subset that gathered for Alt-F4 is even nicer if such a thing is possible. I don’t think I had a single negative interaction this entire time. Seeing as how much of a toxic wasteland some gaming communities are, I’m so grateful ours is the way it is. Thanks to everyone for being such nice people, it really makes all this a joy to work on and makes it worth the effort.</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Discutine su Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/it/ALTF4-19/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/it/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/it/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/it/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Questo è un progetto gestito dai fan e non direttamente dagli sviluppatori Wube Software Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

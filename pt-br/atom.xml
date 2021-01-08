@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Alternative Friday Factorio Fan Facts</title>
+  <link href="https://alt-f4.blog/pt-br/atom.xml" rel="self" />
+  <id>https://alt-f4.blog</id>
+  <updated>2021-01-08T14:07:41+00:00</updated>
+  <author>
+    <name>Therenas</name>
+    <uri>https://alt-f4.blog/about</uri>
+    <email>AlternativeFridayFacts@gmail.com</email>
+  </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #20 - Retrospectiva 2: Boogaloo elétrico</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-20/" />
+    <id>https://alt-f4.blog/ALTF4-20</id>
+    <updated>2021-01-08T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Completando os primeiros cinco meses de publicações, o Alt-F4 #20 traz a segunda parte de nossa retrospectiva e bastidores. &lt;em&gt;nanogamer7&lt;/em&gt; mostra como o processo de tradução começou e quais são alguns dos problemas que surgiram. Mas antes disso, &lt;em&gt;Conor_&lt;/em&gt; nos apresenta uma espécie de declaração de missão, que coloca nossa...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #19 - A Retrospective</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-19/" />
+    <id>https://alt-f4.blog/ALTF4-19</id>
+    <updated>2021-01-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, in the new year, we wanted to take a look back at the project &lt;em&gt;Therenas&lt;/em&gt; started four and a half months ago to fill the void that the absence of the FFF left in all our hearts. We asked the people involved in the process about their specialty,...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #18 - The Road to Clusterio 2.0</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-18/" />
+    <id>https://alt-f4.blog/ALTF4-18</id>
+    <updated>2020-12-18T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;As the year draws to a close, we picked two mod-related topics for this week’s 18th issue of Alt-F4. First, &lt;em&gt;Hornwitser&lt;/em&gt; gives us some insight into the long development progress of Clusterio 2.0 and the challenges that it poses. Then, &lt;em&gt;DedlySpyder&lt;/em&gt; talks about their process of developing a simple mod...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #17 - Interface Design Philosophy</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-17/" />
+    <id>https://alt-f4.blog/ALTF4-17</id>
+    <updated>2020-12-11T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For this week’s issue of Alt-F4, &lt;em&gt;Therenas&lt;/em&gt; takes a page out of the FFF playbook and talks about the development process of the next big update for his mod Factory Planner, going into his somewhat philosophical thoughts on interface design. &lt;em&gt;Dr_Doof&lt;/em&gt; also shares a cosy little Christmas event with us,...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #16 - Modulating Pure Speed</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-16/" />
+    <id>https://alt-f4.blog/ALTF4-16</id>
+    <updated>2020-12-04T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Another week, another issue of Alt-F4! The sixteenth week of this merry series of words to be precise. To celebrate, TheKool continues his Complexity Corner series by asking the &lt;a href=&quot;https://en.wikipedia.org/wiki/Five_Ws&quot;&gt;five Ws&lt;/a&gt; about speed modules. Afterwards, DedlySpyder pontificates on how modding inspiration sometimes comes from unexpected places.&lt;/p&gt; &lt;h2 id=&quot;complexity-corner-speed-modules-thekool&quot;&gt;Complexity Corner:...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #15 - Investigating 1.1</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-15/" />
+    <id>https://alt-f4.blog/ALTF4-15</id>
+    <updated>2020-11-27T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, with 1.1 experimental just released, we take a look at two of the things it brings with it. First, &lt;em&gt;Conor_&lt;/em&gt; investigates what the new train stop limit allows him to do in his TSM-based factory. Then, &lt;em&gt;Therenas&lt;/em&gt; explores what the multithreading update to belts means, both in theory...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #14 - Exploring the Infinite</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-14/" />
+    <id>https://alt-f4.blog/ALTF4-14</id>
+    <updated>2020-11-20T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week &lt;em&gt;ironic toblerone&lt;/em&gt; takes us on a crazy adventure into space featuring the fantastic &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; mod by &lt;em&gt;Earendel&lt;/em&gt;. Suit up and strap in, this is a fun one!&lt;/p&gt; &lt;h2 id=&quot;mod-spotlight-space-exploration-ironic-toblerone&quot;&gt;Mod Spotlight: &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Space Exploration is an overhaul mod that takes you on an...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #13 - Megabase Archaeology</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-13/" />
+    <id>https://alt-f4.blog/ALTF4-13</id>
+    <updated>2020-11-13T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this spookily coincidental issue 13 of Alt-F4 published on Friday 13th (it’s almost like we planned this), we focus on a single topic: building as many rocket defences as possible. What are rocket defences, you ask? Well, stringweasel is here to tell you, taking you back to a simpler...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #12 - Reverse Engineering the Spider</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-12/" />
+    <id>https://alt-f4.blog/ALTF4-12</id>
+    <updated>2020-11-06T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this very easily divisible issue number 12 of Alt-F4, &lt;em&gt;xthexder&lt;/em&gt; goes into some of the technical behind-the-scenes regarding the bouncy spider at the bottom of the page. Then, &lt;em&gt;TheKool&lt;/em&gt; gives some newcomer-friendly insight into production modules and their uses. Finally, &lt;em&gt;T-A-R&lt;/em&gt; shares some info on an upcoming community event...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #11 - Scientific Curiosities</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-11/" />
+    <id>https://alt-f4.blog/ALTF4-11</id>
+    <updated>2020-10-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the eleventh edition of Alt-F4, bringing you both mathematical analysis and a history lesson. So, listen up, student! Pocarski took it upon themself to see whether real-world mathematics works out on Nauvis. Spoiler alert: it doesn’t. Then, stringweasel returns once again to take a look at a bit...</content>
+  </entry>
+  
+  
+</feed>
