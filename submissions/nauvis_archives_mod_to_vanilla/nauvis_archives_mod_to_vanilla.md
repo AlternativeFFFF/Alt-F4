@@ -19,11 +19,28 @@ THIS DOESN'T WORK.
 
 Oldest version in Roadmap is 0.4, 3 May 2013
 
-I downloaded these mods and tried to use them.
+I downloaded these mods and tried to use them. You might notice that some of the referenced mod pages link to the [Factorio Forums](https://forums.factorio.com/viewforum.php?f=190) and not the [Mod Portal](https://mods.factorio.com/). This is because before Factorio 0.13 (6 June 2014) all mods were hosted on the Factorio Forums. It was only with the [launch of Factorio 0.13](https://www.factorio.com/blog/post/fff-141) that the Mod Portal was available.
 
-### Fluids: Barrels and Fluid Wagons
+### Transporting Fluids
 
+Today fluids are very easy to transport. You can use trains with fluid wagons, maybe simple pipes, or even barrels to transport any fluid to any location. However, it wasn't always this easy. Fluid Wagons wasn't added to vanilla until 24 April 2017 with Factorio 0.15. Before that you had to barrel your crude-oil at the outpost and unbarrel it again at your base - which requries very careful empty barrel management. Or, you could download the [Rail Tanker mod](https://mods.factorio.com/mod/RailTanker) which was originally made by JamesOFarrell and released on 27 May 2014 as an extension of his [Wagons mod](https://forums.factorio.com/viewtopic.php?f=190&t=3926). The modder Choumiko took over maintaining the mod around Factorio 0.14, and it was moved to the [mod portal](https://mods.factorio.com/mod/RailTanker).
 
+RAIL TANKER VIDEO EXAMPLE
+![](media/railtanker_0.12.mp4)
+
+*Caption: The Railtanker mod as seen in Factorio 0.12 (although released in Factorio 0.11 originally). Notice the old train graphics, and how there is [no one-tile-gap](https://www.factorio.com/blog/post/fff-133) between the wagons.*
+
+This mod had a few limitations. For example, you could not place any inserters next to this rail tanker, because it would remove the *fake items* inside the tanker and corrupt it. The only way to fill up the tanker was using a maximum of two of the very weak small pumps - there was no regular pump yet. And the placement of the pump was icky (?), especially after train sizes changed in Factorio 0.13, but the rail tanker's size remained mostly the same. As an interesting side note, when the vanilla fluid wagon was finally added in Factorio 0.15, you could originally store store *three* different liquids inside one fluid wagon. Ever wondered why the fluid wagon has three tanks?
+
+The other main way of transporting fluids long distance was using barrels. Barrels was part of Factorio from relatively early on, but initially the player was limited to *only* barreling crude-oil. The first person to mitigate this problem was *btw* with his [Liquid Station mod](https://forums.factorio.com/viewtopic.php?f=14&t=2797) which was released on 15 March 2014 for Factorio 0.9. In this mod you could to barrel any fluid, but you had to use a special machine to do so. 
+
+LIQUID STATION EXAMPLE
+![](media/liquid_station.mp4)
+
+*Caption: The Liquid Station mod as seen in Factorio 0.10. In the example sulpheric acid is moved between two storage tanks*
+
+This is the first barrel mod maybe Mar 15, 2014
+https://forums.factorio.com/viewtopic.php?f=14&t=2797
 
 ### The Picker Tool (The Q-key)
 
@@ -36,7 +53,6 @@ In the old days of Factorio you could not simply press `Q` while hovering over a
 In Factorio 0.15 some of this mod's functionality was [included](https://forums.factorio.com/viewtopic.php?t=50827) in the vanilla game. It should be noted that only a small part of the mod's functionality was added to vanilla. The mod is still available, and has an extensive set of extra useful features. 
 
 ### Personal Roboport
-
 
 A very useful feature is the personal roboport. It's so integral to expanding your base I personally would not play Factorio without it. You only need to imagine building your entire rail network by hand ([see this base that likely did](https://alt-f4.blog/ALTF4-13)), or by first covering the entire area with roboports. Not to even think about the outposts. This amazing tool was only added to vanilla Factorio in 17 July 2015 with Factorio 0.12. Before that this feature was known only as Pocket Bots, and it was only available as a mod.
 
