@@ -9,7 +9,7 @@ Other:
  Looked up to 0.15
 
 
-Factorio has a very rich modding communnity. There's mods for almost anything you can think of. From complete overhaul mods like Space Exploration or Krastorio, to small quality of life mods like Far Reach, or even to listen to [KnighRider music while you're driving](https://mods.factorio.com/mod/JKIL-KnightRider). There are even mods with over 1 million downloads. However, the greatest honor a modder can likely achieve is to have the mod incorporated into the vanilla game. 
+Factorio has a very rich modding communnity. There's mods for almost anything you can think of. From complete overhaul mods like Space Exploration or Krastorio, to small quality of life mods like Far Reach, or even to listen to [KnighRider music while you're driving](https://mods.factorio.com/mod/JKIL-KnightRider). There are even mods with over 1 million downloads. However, the greatest honor a modder can likely achieve is to have his mod incorporated into the vanilla game. 
 
 The developers can focus on making sure the game engine is perfect and optimized, while the modders can freely explore different ideas. SovietWomble has a [great series](https://www.youtube.com/watch?v=ZtNtbPuUdFc&ab_channel=SovietWomble) on this idea, but unlike ARMA, Wube adds the mods that the players really enjoy or need, as long as it fits in their vision.
 
@@ -32,15 +32,14 @@ RAIL TANKER VIDEO EXAMPLE
 
 This mod had a few limitations. For example, you could not place any inserters next to this rail tanker, because it would remove the *fake items* inside the tanker and corrupt it. The only way to fill up the tanker was using a maximum of two of the very weak small pumps - there was no regular pump yet. And the placement of the pump was icky (?), especially after train sizes changed in Factorio 0.13, but the rail tanker's size remained mostly the same. As an interesting side note, when the vanilla fluid wagon was finally added in Factorio 0.15, you could originally store store *three* different liquids inside one fluid wagon. Ever wondered why the fluid wagon has three tanks?
 
-The other main way of transporting fluids long distance was using barrels. Barrels was part of Factorio from relatively early on, but initially the player was limited to *only* barreling crude-oil. The first person to mitigate this problem was *btw* with his [Liquid Station mod](https://forums.factorio.com/viewtopic.php?f=14&t=2797) which was released on 15 March 2014 for Factorio 0.9. In this mod you could to barrel any fluid, but you had to use a special machine to do so. 
+The other main way of transporting fluids long distance was using barrels. Barrels was part of Factorio from relatively early on, but initially the player was limited to *only* barreling crude-oil. The first person to mitigate this problem was *btw* with his [Liquid Station mod](https://forums.factorio.com/viewtopic.php?f=14&t=2797) which was released on 15 March 2014 for Factorio 0.9. In this mod you could to barrel any fluid, but you had to use a special machine - called a Liquid Station - to do so. 
 
 LIQUID STATION EXAMPLE
 ![](media/liquid_station.mp4)
 
 *Caption: The Liquid Station mod as seen in Factorio 0.10. In the example sulpheric acid is moved between two storage tanks*
 
-This is the first barrel mod maybe Mar 15, 2014
-https://forums.factorio.com/viewtopic.php?f=14&t=2797
+This mod was not maintained for long. However, it prompted a new mod which is much closer to what we know today. This mod was called [Fluid Barrels](https://forums.factorio.com/viewtopic.php?f=94&t=7887&hilit=fluid+barrel#p62260), as was created by firegrenade and published on 8 January 2015 for Factorio 0.11 (and later transfered to the [mod portal](https://mods.factorio.com/mods/jockeril/fluid-barrel)). In this mod any assembler could be used for barreling/unbarreling, as it is today. It was only in April 2017 with Factorio 0.15 - three years after the Liquid Station Mod - that any fluid could be barrelled in vanilla Factorio.
 
 ### The Picker Tool (The Q-key)
 
