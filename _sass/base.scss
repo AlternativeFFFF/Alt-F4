@@ -17,8 +17,10 @@ body {
   min-height: 100%;
 }
 
-body {
-  background-image: url("/assets/GLOBAL/img/mobile-bg.jpg");
+@media (max-width: 500px) {
+  body {
+    background-image: url("/assets/GLOBAL/img/mobile-bg.jpg");
+  }
 }
 
 @media (min-width: 500px) {
