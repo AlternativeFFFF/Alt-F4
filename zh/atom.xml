@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-01-13T14:27:12+00:00</updated>
+  <updated>2021-01-15T13:56:32+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #21 - Mod 的至高荣誉</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-21/" />
+    <id>https://alt-f4.blog/ALTF4-21</id>
+    <updated>2021-01-15T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周，我们又回到了常规节目，带来最受喜爱系列节目的新一集：Nauvis档案！&lt;em&gt;stringweasel&lt;/em&gt; 再次打开历史书，看看一些旧的 Mod，以及它们是如何成为游戏本体的一部分。在最后，我们为亲爱的读者您准备了一个快速投票；如果愿意花两分钟时间来回答这些问题，我们将非常感激。&lt;/p&gt; &lt;h2 id=&quot;nauvis-档案从-mod-到原版-stringweasel&quot;&gt;Nauvis 档案：从 Mod 到原版 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;异星工厂有一个非常丰富的 Mod 社区。几乎所有你能想到的东西都有对应的 Mod。从像&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt;或 &lt;a href=&quot;https://mods.factorio.com/mod/Krastorio2&quot;&gt;Krastorio 2&lt;/a&gt; 这样的大改 Mod，到像&lt;a href=&quot;https://mods.factorio.com/mod/Squeak%20Through&quot;&gt;缩地成寸（Squeak Through）&lt;/a&gt;这样的小型生活质量 Mod，或者是可以&lt;a href=&quot;https://mods.factorio.com/mod/JKIL-KnightRider&quot;&gt;在开车时听霹雳游侠音乐&lt;/a&gt;。有些 Mod 比其他 Mod 更受欢迎——有些甚至超过了百万的下载量。然而，一个 Mod 作者所能获得的最大荣誉是将他们的 Mod 纳入到原版游戏中。一个简单例子是&lt;a href=&quot;https://mods.factorio.com/mod/research-queue&quot;&gt;研究队列（Research Queue）&lt;/a&gt;或&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?f=190&amp;amp;t=3793&quot;&gt;填海料（Landfill）&lt;/a&gt;，甚至是 &lt;del&gt;Mod&lt;/del&gt; Mod 作者 &lt;a href=&quot;https://factorio.com/blog/post/fff-300&quot;&gt;&lt;em&gt;Rseding&lt;/em&gt; 受邀加入了游戏团队&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;我下载并调查了其中一些在之后添加进游戏本体中的 Mod。你可能会注意到，一些 Mod 的引用链接指向&lt;a href=&quot;https://forums.factorio.com/viewforum.php?f=190&quot;&gt;异星工厂论坛&lt;/a&gt;，而不是 &lt;a href=&quot;https://mods.factorio.com/&quot;&gt;Mod 门户&lt;/a&gt;。这是因为在异星工厂 0.13（发布于...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-12</id>
     <updated>2020-11-06T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在这期非常容易整除的第 12 期 Alt-F4 中，&lt;em&gt;xthexder&lt;/em&gt; 介绍了一些关于页面底部的弹跳蜘蛛的技术幕后。然后，&lt;em&gt;TheKool&lt;/em&gt; 给大家介绍了一些新手对产能插件及其用途的看法。最后，&lt;em&gt;T-A-R&lt;/em&gt; 分享了一些关于即将到来的社区活动的信息，看起来很有趣。&lt;/p&gt; &lt;h2 id=&quot;在网页上创建蜘蛛机甲-xthexder&quot;&gt;在网页上创建蜘蛛机甲 &lt;author&gt;xthexder&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;正如你所知道的，Alt-F4 网站的每个页面底部都有一个蜘蛛机甲，类似于异星工厂网站上的火箭。很多人可能都曾点击过它，希望有什么激动人心的事情发生，但失望的发现蜘蛛机甲只会原地跳动。现在，眼尖的读者可能已经注意到，随着&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-8/&quot;&gt;Alt-F4 #8 致异星工厂的一封情书&lt;/a&gt;的发布蜘蛛机甲学会了新戏法。如果你还没看到，不妨&lt;a href=&quot;#spidertron&quot;&gt;滚动到底部&lt;/a&gt;，点击你的小伙伴，让他跟你一起走吧！&lt;/p&gt; &lt;p&gt;当我们最初建立网站的时候，显然我们想让蜘蛛机甲做些事情，但我们在并没有时间去录制它的闲置动画以外的东西。录制蜘蛛机甲是很棘手的，因为我们需要在没有任何背景的情况下进行录制。最初我们使用 Klonan 的一个秘密 Mod 实现，它使用未记录在异星工厂 API 中函数来录制 GIF。由于蜘蛛机甲的运动是半随机的，所以录制一个循环就更加棘手了，因此除了空闲动画之外，任何其他的东西都需要一些额外的努力才能获得正确的效果。&lt;/p&gt; &lt;p&gt;最初的计划是让蜘蛛机甲爬上页面，和异星工厂官方网站上的火箭一样，成为回到顶部的按钮。这需要录制一个向上行走的动画，然后在我们将其向上移动时循环播放。然后，Dr.MagPie 想到了让蜘蛛机甲跟着遥控器在页面上走，就像游戏中一样。这远远超出了使用录像能够做到的范围，因为这需要太多的组合。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;考虑到这是我们所知的社区，可能真会有一些疯狂的伙计会来挑战不可能…&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div class=&quot;original&quot;&gt; &lt;p&gt;Though knowing our community, there are...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #11 - 科学趣闻</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-11/" />
-    <id>https://alt-f4.blog/ALTF4-11</id>
-    <updated>2020-10-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;欢迎来到第十一期的 Alt-F4，为大家带来数学分析和历史课。所以，听好了，学生们！Pocarski 亲自上阵，看看现实世界的数学是否能在 Nauvis 上发挥作用。剧透一下：不行。然后，stringweasel 再次回头看看历史，这次的重点是一些在现在已经过时的机制。&lt;/p&gt; &lt;h2 id=&quot;对异星工厂世界的科学考察-pocarski&quot;&gt;对异星工厂世界的科学考察 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;搁置怀疑是一个众所周知的概念，但这并不妨碍我们中的一些人完全忽视它。最近，我看到了一个关于计算 Nauvis 密度的 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/jaz6yl/calculating_the_density_of_nauvis/&quot;&gt;Reddit 帖子&lt;/a&gt;，这让我有了一个想法，就是把异星工厂宇宙中所有荒唐而好玩的科学做个汇编。毕竟，这个社区一直都是一群拥有太多空闲时间的死宅，为什么不当一个沉迷于娱乐的死宅呢？&lt;/p&gt; &lt;p&gt;明显的警告：这篇文章包含了过多的数学内容；如果你对数学过敏，敬请跳过这部分。&lt;/p&gt; &lt;h3 id=&quot;nauvis-是一颗白矮星&quot;&gt;Nauvis 是一颗白矮星&lt;/h3&gt; &lt;p&gt;这是我刚才提到的 &lt;a href=&quot;https://www.reddit.com/user/DaveMcW/&quot;&gt;u/DaveMcW&lt;/a&gt; 的 Reddit 帖子的复述。请注意，这个理论假设 Nauvis 的昼夜周期实际上是由自转导致的，这一点我稍会提出要反对。&lt;/p&gt; &lt;p&gt;大的天体是靠引力结合在一起的，为了使行星不被&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%9B%A2%E5%BF%83%E5%8A%9B&quot;&gt;离心力&lt;/a&gt;撕裂，赤道处的重力必须大于&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%90%91%E5%BF%83%E5%8A%9B&quot;&gt;向心力&lt;/a&gt;。假设一颗球形的行星，利用向心力和重力的公式，我们可以说明：&lt;/p&gt; &lt;p&gt;$ \frac{GMm}{r^2} &amp;gt; mr\omega^2 $, 其中 $G$ 是&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%B8%87%E6%9C%89%E5%BC%95%E5%8A%9B%E5%B8%B8%E6%95%B0&quot;&gt;万有引力常数&lt;/a&gt;，$r$ 是行星半径，$M$ 是行星质量，$\omega$ 是行星的自转角速度，$m$ 是这些力所作用的物体的质量；&lt;/p&gt; &lt;p&gt;$ \frac{GM}{r^2} &amp;gt; r\omega^2 \quad\Rightarrow\quad GM &amp;gt;...</content>
   </entry>
   
   
