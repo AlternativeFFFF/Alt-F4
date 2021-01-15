@@ -12,6 +12,7 @@ author:
 # Build settings
 source: .
 markdown: kramdown
+highlighter: rouge
 permalink: /:title/ #pretty
 destination: ./_site
 excerpt_separator: "<!--more-->"
@@ -56,18 +57,18 @@ defaults:
 
 #Polyglot
 languages:
- - en
- - cs
- - de
- - es
- - fr
- - it
- - nl
-# - pl
- - pt-br
- - ru
-# - ua
- - zh
+  - en
+  - cs
+  - de
+  - es
+  - fr
+  - it
+  - nl
+  # - pl
+  - pt-br
+  - ru
+  # - ua
+  - zh
 default_lang: en
 lang_from_path: true
 parallel_localization: true
