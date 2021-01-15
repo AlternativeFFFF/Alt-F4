@@ -85,6 +85,7 @@ DEPENDENCIES
   jekyll-sitemap
   jekyll-spaceship
   nokogiri
+  rouge
 
 BUNDLED WITH
    2.1.4
