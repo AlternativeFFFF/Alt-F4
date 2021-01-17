@@ -5,13 +5,47 @@
 > I would never have added the blueprint library :) Not a popular opinion but I've had it ruin a few multiplayer games I was enjoying; someone comes through with a 'base in a blueprint' and all the creativity and fun is now over; it's just 'build that'.
 - Rseding91
 
-### Importing blueprints is bad
+### The goal of Factorio
 
+The goal of Factorio is, *spoiler alert*, to build a factory, but it's so much more than that. Its about optimizing and improving your production setups, whether it be to produce more of the final product, make the bare minimum required in the tiniest space possible or keep that UPS up at 60 while allow you to keep building onwards. Each and every time you build, a green circuit maker for example, you get to use your experience to make it better than the last. Maybe this time you'll use productivity modules? Maybe you wan't to try centralized green circuit production this time round, but only have basic tiers of machines. This is the challenge of Factorio, designing within the constraints of the situation and making the best of it.
 
+![](Green circuit maker screenshot)
+*A simple but large green circuit maker I recently designed to allow the production of 2 belts of green circuits, using only low tier assemblers. Notice the unique and slightly odd design, because why not?.*
+
+By just importing a blueprint every time you need to make something new, you aren't problem solving and designing, you are a construction bot blinding placing racks of machines, and plumbing up the inputs and outputs. That to me really doesn't sound very fun. It sounds like you're playing the fun*ish* in-game scenario, transport belt madness rather than pursuing your own destiny in freeplay.
 
 ### Unless, blueprint importing is good?
 
-### Blueprint library?
+I will concede, in some **RARE** situations, importing blueprints can be handy to avoid several minutes of monotony. The perfect example of this is solar setups, generally tiling masses containing solar panels and accumulators, in the hope of one day cleanly powering your factory. Spending 5-10 minutes faffing around, trying to perfectly fill up the space around one roboport may sound like fun to some people, but this is a problem that doesn't particularly change depending on the game scenario. Whether you have just researched solar panels or are several hundred hours into maximising the SPM of a save, your solar panel setups are gonna look basically the same, with probably the main difference being the size of the blueprint placed at a single time.
+
+![](Generic tiling Solar Array blueprint)
+
+Balancers, *the black magic creations*, are another example of something that most players want to use, with fair reason, but don't want to learn and understand the maths and mechanics behind them. Figuring out the exact combination of belts, splitters and undergrounds to make the ratios perfect make sounds like a fantastic sunday afternoon for some people, but many would find it dull and unexciting. In both these scenarios, allowing the importing of blueprints will *likely* improve the players enjoyment of the game as they wont get stuck making monotonous blueprints or diving into the maths of balancers.
+
+![](Factorio balancer overview)
+
+### Blueprint library
+
+
+
+### Kovarex you say?
+
+As a final note before my conclusion, I'd like to highlight just how much space for creativity there is in this game and the missed opportunities airising from blindly importing blueprints, using the [Kovarex enrichment process](https://wiki.factorio.com/Kovarex_enrichment_process). This late game uranium processing method allows you to increase the quantity of useful Uranium-235 using a cyclical process. I believe that it is probably one of the more blueprinted processes in the game due to the initial complexity it appears to have.
+
+![](Kovarex recipe from wiki)
+
+Recently on the [r/factorio](https://www.reddit.com/r/factorio/) subreddit, there was a flood of different Kovarex enrichment setup photos, each one trying to one up the last in creativity, efficiency and all out weirdness. I'd like to share a few of these here, to highlight just how many options there are in this game.
+
+https://www.reddit.com/r/factorio/comments/ju509t/my_noobish_try_at_kovarex_enrichment/
+
+https://www.reddit.com/r/factorio/comments/it53gn/so_i_built_a_kovarex_enrichment_process_setup/
+
+https://www.reddit.com/r/factorio/comments/jkmkyc/my_overkill_beaconed_buffered_uranium_processing/
+
+https://www.reddit.com/r/factorio/comments/hgb8zn/the_1_million_monkeys_method_of_kovarex_enrichment/
+
+https://www.reddit.com/r/factorio/comments/jj4nsl/my_take_on_kovarex_circle_nuketrain_violently/
 
 ### Stop using blueprint websites
 
+The beauty of Factorio is of course how free you are to do whatever your heart desires, which is a both a blessing and a curse. The ability to use these simple building blocks to build sprawling factories and compact megabases is truely fantastic. Unfortunately, by providing and open sandbox, Wube has accidentally created a situation where people can "play the game" without truely playing it and not enjoying it along the way. The blueprint import feature will never be removed, so instead I implore you to design your own stuff, avoiding looking at other peoples designs as much as possible and be creative. I'm sure that if you take the time to design something, it will be much more rewarding than searching for blueprints for 20 minutes, trying to find exactly what you want.
