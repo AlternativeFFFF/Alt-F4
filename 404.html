@@ -14,10 +14,16 @@ permalink: "404"
 
 <script>
   (() => {
+    const langs = {
+    {% for language in site.languages %}
+      '{{language}}':'{{ site.data[language].locale.not-found.title }}',
+    {% endfor %}
+    }
     const language = getLanguage();
     if (language !== 'en') {
       document.getElementById(language).setAttribute('class', '');
       document.getElementById('en').setAttribute('class', 'hide');
+      document.getElementsByClassName('page-title-headder')[0].innerHTML = langs[language]
     }
   })()
 </script>

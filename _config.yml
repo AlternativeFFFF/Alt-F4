@@ -62,7 +62,9 @@ languages:
  - es
  - fr
  - it
+ - nl
 # - pl
+ - pt-br
  - ru
 # - ua
  - zh

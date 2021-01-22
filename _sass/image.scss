@@ -1,0 +1,45 @@
+.image {
+  position: relative;
+  text-align: center;
+  a {
+    text-decoration: none;
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: transparent;
+    }
+  }
+  img#desktop {
+    display: block;
+    visibility: visible;
+  }
+  img#mobile {
+    display: none;
+    visibility: hidden;
+  }
+  a:hover {
+    i {
+      color: inherit;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .image {
+    img#desktop {
+      display: none;
+      visibility: hidden;
+    }
+    img#mobile {
+      display: block;
+      visibility: visible;
+    }
+    a {
+      i {
+        color: inherit;
+      }
+    }
+  }
+}

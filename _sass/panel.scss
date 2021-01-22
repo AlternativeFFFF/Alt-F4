@@ -76,8 +76,16 @@ table.panel-hole td,
 //   padding: 2px;
 // }
 
-.blog-card {
+.blog-card,
+.blog-card:hover {
   display: flex;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* underline title when card is hovered */
+.blog-card:hover .blog-card-text > h3 {
+  text-decoration: underline;
 }
 
 .blog-card-thumbnail {

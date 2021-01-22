@@ -1,0 +1,56 @@
+.quote {
+  padding: 16px 0;
+  blockquote {
+    width: auto;
+    margin: auto;
+    background: url("/assets/GLOBAL/img/quot-left-sm.png") 0% 0%, url("/assets/GLOBAL/img/quot-right-sm.png") 100% 100%;
+    background-repeat: no-repeat;
+    font-style: italic;
+    font-size: 110%;
+    padding: 6px 80px 16px;
+    text-align: left;
+    min-height: 64px;
+    line-height: 1.3;
+    span {
+      display: inherit;
+      padding: 1px;
+      margin: 12px 0;
+      box-shadow: inset 0 1px 1px 0 #131313, inset 0 -1px 1px 0 #838383, 0 0 4px 0 #392f2e;
+    }
+    .vertical {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      span {
+        padding: 1px;
+        margin: 0 12px;
+        box-shadow: inset 1px 0 1px 0 #131313, inset -1px 0 1px 0 #838383, 0 0 4px 0 #392f2e;
+      }
+    }
+    p {
+      display: inline;
+    }
+    author {
+      display: flex;
+      justify-content: flex-end !important;
+      margin-top: -6px;
+    }
+  }
+  @media (max-width: 750px) {
+    blockquote {
+      padding: 60px 0 60px;
+      .vertical {
+        flex-direction: column;
+        span {
+          margin: 12px 0;
+          box-shadow: inset 0 1px 1px 0 #131313, inset 0 -1px 1px 0 #838383, 0 0 4px 0 #392f2e;
+        }
+      }
+    }
+  }
+  .highlight,
+  .highlighter-rouge {
+    line-height: 1.5em;
+    background-color: #28221f;
+  }
+}
