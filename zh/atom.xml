@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-01-17T18:57:01+00:00</updated>
+  <updated>2021-01-22T12:35:53+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #22 - 蓝图暴言</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-22/" />
+    <id>https://alt-f4.blog/ALTF4-22</id>
+    <updated>2021-01-22T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在今天的第 22 期 Alt-F4 中，&lt;em&gt;Conor_&lt;/em&gt; 想和我们分享他对蓝图的偏激意见，以及为什么蓝图可能会阻碍你在异星工厂中获得最大的乐趣。我们相信他很乐意听到你的想法，欢迎在评论中分享你的意见！&lt;/p&gt; &lt;h2 id=&quot;蓝图烂透了-conor_&quot;&gt;蓝图烂透了 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;好吧，蓝图&lt;strong&gt;&lt;em&gt;大多&lt;/em&gt;&lt;/strong&gt;很烂。蓝图最早是在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.9.0&lt;/code&gt; 版本中加入的，允许我们创建各种机器的幽灵副本，并将它们放置在我们庞大工厂的任何地方。我对这个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;复制粘贴&lt;/code&gt;功能没有任何意见，我特别喜欢在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.17.10&lt;/code&gt; 的&lt;a href=&quot;https://www.factorio.com/blog/post/fff-278&quot;&gt;工具栏大改&lt;/a&gt;中增加的直接复制和粘贴按钮和快捷键。但我不能认可的是蓝图库和字符串导入功能。我认为 &lt;em&gt;Rseding91&lt;/em&gt; 在他最&lt;em&gt;近&lt;/em&gt;的 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/in5d3i/developer_technicaloriented_ama/g45d2t3/?context=1&quot;&gt;Reddit 有问必答&lt;/a&gt;中说得很好，他被问到他最想改变异星工厂的一件事是：&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;我会不添加蓝图库 :) 可能不是一个流行的观点，但这玩意儿毁了好几个我喜欢的多人游戏；有人带着一套“蓝图中的基地”加入进来，然后所有的创造力和乐趣现在都结束了；只留下“建造那个”。&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div class=&quot;original&quot;&gt; &lt;p&gt;I would never have added...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-13</id>
     <updated>2020-11-13T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在这期有者诡异巧合的 13 日星期五出版的第 13 期 Alt-F4 中（简直就像我们计划好的一样），我们只关注一个话题：尽可能多地建造火箭防御系统。你问什么是火箭防御系统？stringweasel 会在这里告诉你，带你回到一个更简单的时期，异星工厂 0.11 的年代。&lt;/p&gt; &lt;h2 id=&quot;nauvis-档案每分钟一火箭防御系统-stringweasel&quot;&gt;Nauvis 档案：每分钟一火箭防御系统 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;从一开始，玩家们就一直在挑战异星工厂的极限；在游戏停止运行并屈服于缓慢而痛苦的 UPS 死亡之前，看看他们能建造多大规模的工厂。多年来，随着玩家达到新的高度，这些极限记录一次又一次地被打破。今天，记录的重点是不断地消耗尽可能多的科研包，以每分钟科研数（science per minute）即 spm 来衡量。这里的主要限制因素是，建造更大的工厂也会降低你计算机可以运行的的“每秒更新”，或 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/5dmura/can_someone_explain_ups/&quot;&gt;UPS&lt;/a&gt; 速度。让一个大规模的巨型基地运行在接近理想的 60 UPS 本身就是一种&lt;a href=&quot;https://mulark.github.io/test-index.html&quot;&gt;艺术形式&lt;/a&gt;，而用较低的 UPS 来进行游戏则会在物理上减慢游戏速度，使得进一步扩大你的基地非常耗时。&lt;/p&gt; &lt;p&gt;目前，spm 的世界纪录持有者应该是 &lt;a href=&quot;https://www.reddit.com/user/swolar/&quot;&gt;u/swolar&lt;/a&gt; 的 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/gely3v/20000_science_per_minute_hybrid_modular_megabase/&quot;&gt;60 UPS 20 千瓶基地&lt;/a&gt;。这个不可思议的基地运行在原版游戏上，但它是使用了一些 &lt;a href=&quot;https://mods.factorio.com/mod/factorio-world&quot;&gt;Mod&lt;/a&gt; 和 &lt;a href=&quot;https://wiki.factorio.com/Console/zh&quot;&gt;控制台命令&lt;/a&gt; 来生产矿石等。差不多三年前，这个记录很可能是由 &lt;a href=&quot;https://www.reddit.com/user/Stevetrov/posts/&quot;&gt;u/SteveTrov&lt;/a&gt; 的原版式 &lt;a...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #12 - 逆向工程蜘蛛</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-12/" />
-    <id>https://alt-f4.blog/ALTF4-12</id>
-    <updated>2020-11-06T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在这期非常容易整除的第 12 期 Alt-F4 中，&lt;em&gt;xthexder&lt;/em&gt; 介绍了一些关于页面底部的弹跳蜘蛛的技术幕后。然后，&lt;em&gt;TheKool&lt;/em&gt; 给大家介绍了一些新手对产能插件及其用途的看法。最后，&lt;em&gt;T-A-R&lt;/em&gt; 分享了一些关于即将到来的社区活动的信息，看起来很有趣。&lt;/p&gt; &lt;h2 id=&quot;在网页上创建蜘蛛机甲-xthexder&quot;&gt;在网页上创建蜘蛛机甲 &lt;author&gt;xthexder&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;正如你所知道的，Alt-F4 网站的每个页面底部都有一个蜘蛛机甲，类似于异星工厂网站上的火箭。很多人可能都曾点击过它，希望有什么激动人心的事情发生，但失望的发现蜘蛛机甲只会原地跳动。现在，眼尖的读者可能已经注意到，随着&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-8/&quot;&gt;Alt-F4 #8 致异星工厂的一封情书&lt;/a&gt;的发布蜘蛛机甲学会了新戏法。如果你还没看到，不妨&lt;a href=&quot;#spidertron&quot;&gt;滚动到底部&lt;/a&gt;，点击你的小伙伴，让他跟你一起走吧！&lt;/p&gt; &lt;p&gt;当我们最初建立网站的时候，显然我们想让蜘蛛机甲做些事情，但我们在并没有时间去录制它的闲置动画以外的东西。录制蜘蛛机甲是很棘手的，因为我们需要在没有任何背景的情况下进行录制。最初我们使用 Klonan 的一个秘密 Mod 实现，它使用未记录在异星工厂 API 中函数来录制 GIF。由于蜘蛛机甲的运动是半随机的，所以录制一个循环就更加棘手了，因此除了空闲动画之外，任何其他的东西都需要一些额外的努力才能获得正确的效果。&lt;/p&gt; &lt;p&gt;最初的计划是让蜘蛛机甲爬上页面，和异星工厂官方网站上的火箭一样，成为回到顶部的按钮。这需要录制一个向上行走的动画，然后在我们将其向上移动时循环播放。然后，Dr.MagPie 想到了让蜘蛛机甲跟着遥控器在页面上走，就像游戏中一样。这远远超出了使用录像能够做到的范围，因为这需要太多的组合。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;考虑到这是我们所知的社区，可能真会有一些疯狂的伙计会来挑战不可能…&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div class=&quot;original&quot;&gt; &lt;p&gt;Though knowing our community, there are...</content>
   </entry>
   
   

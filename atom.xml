@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-01-17T18:57:01+00:00</updated>
+  <updated>2021-01-22T12:35:53+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #22 - Blueprint Rant</title>
+    <link href="https://alt-f4.blog/ALTF4-22/" />
+    <id>https://alt-f4.blog/ALTF4-22</id>
+    <updated>2021-01-22T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For today’s 22nd issue of Alt-F4, &lt;em&gt;Conor_&lt;/em&gt; wanted to share his rather strong opinions on blueprints with us, and why they might prevent you from having the most fun while playing Factorio. We’re sure he’d be happy to hear your take on this, so please feel free to share it...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-13</id>
     <updated>2020-11-13T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In this spookily coincidental issue 13 of Alt-F4 published on Friday 13th (it’s almost like we planned this), we focus on a single topic: building as many rocket defences as possible. What are rocket defences, you ask? Well, stringweasel is here to tell you, taking you back to a simpler...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #12 - Reverse Engineering the Spider</title>
-    <link href="https://alt-f4.blog/ALTF4-12/" />
-    <id>https://alt-f4.blog/ALTF4-12</id>
-    <updated>2020-11-06T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In this very easily divisible issue number 12 of Alt-F4, &lt;em&gt;xthexder&lt;/em&gt; goes into some of the technical behind-the-scenes regarding the bouncy spider at the bottom of the page. Then, &lt;em&gt;TheKool&lt;/em&gt; gives some newcomer-friendly insight into production modules and their uses. Finally, &lt;em&gt;T-A-R&lt;/em&gt; shares some info on an upcoming community event...</content>
   </entry>
   
   
