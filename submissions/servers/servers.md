@@ -1,0 +1,30 @@
+## Factorio Servers <author>oof2win2</author>
+
+Most of us have been at the point of connecting to a Factorio server at least once, to play with friends or just check out builds of someone else.
+
+### History of Multiplayer
+
+In October 2014 with `0.11.0`, multiplayer itself was intoduced into the game, however, it was being worked on since [`0.9.4`](https://www.factorio.com/blog/post/fff-26). Instead of using the Server Browser or Connect to Friend via Steam features, you needed to know the IP adresses of the servers. When the first multiplayer was released, there were quite a few bugs, such as [the first warning here](https://forums.factorio.com/viewtopic.php?t=6285) which I find pretty amusing. There was also [this one](https://forums.factorio.com/viewtopic.php?t=6414), which didn't allow more than 3 people to connect at once (unlike the [500 player multiplayer session](https://www.factorio.com/blog/post/fff-332)).
+In `0.12.0`, a major feature, headless servers was added. This basically means that servers could now run on machines without GPUs, which greatly reduced the cost of Factorio servers and improved accessibility. It also allowed multiple instances (servers) to run at the same time on one machine, which is very useful in some cases.
+In `0.14.0`, servers no longer stop when a client takes too much time to do something. This basically means that if your computer can't handle the game, the server won't slow down for you to handle it, which is a bummer in some cases, but useful if someone randomly joins and has a bad internet connection/computer (so it doesn't slow down your game).
+Since version `0.14.4`, multiplayer hasn't been touched according to it's [wiki page](https://wiki.factorio.com/multiplayer#History)
+
+### Fully Deterministic Game Approach
+
+Since we now know when Factorio multiplayer was created, let's check how it works behind the scenes. Firstly, I should explain some terminology:
+- Fully Deterministic Algorithm: A deterministic algorithm is an algorithm which, given a particular input, will always produce the same output, with the underlying machine always passing through the same sequence of states ~ [Wikipedia](https://en.wikipedia.org/wiki/Deterministic_algorithm)
+- Client: In this sense, a client is anyone who is connected to the server, which can also be said with the word 'player'
+
+As mentioned in [FFF-30](https://www.factorio.com/blog/post/fff-30), all clients and the server must simulate the game in the same way, exactly same actions at (prefferably) exactly same ticks. An example of this would be a client stamping down a blueprint. All blueprints are saved in the **shared** game library, which you may have noticed when you see something like the left image below. As you may see, the blueprints are grayed out. This is because they are in your *private* game library, but not in the *game's* library. When you have your blueprints imported, the blueprint icons won't be grayed out anymore, such as the right image below. This is because when you click on them, you choose to transfer them to the game's 'shared' library. Players can't place them down themselves (the blueprints don't show up in the Game tab), but their individual games can place them down when necessary. When you place a blueprint down after it is transferred to the game's shared library, your client tells the server that you placed the blueprint down at XY coordinates. The server then tells all other clients that it has been placed down at those same coordinates. Every individual client then simulates all robots coming out of their roboports, getting resources, placing the entity they have and coming back to their chosen roboport. All clients simulate this by themselves without any further input - only exception to this if a *player's personal robport construction area enters* a part of the area where something is to be placed and the plaayer has said item - then that player's client sends out information that they have said item and their robot is placing it down.
+
+{% include compare.html id="0" old='blueprint-library-import.png' new='blueprint-library-imported.png' %}
+
+You may wonder, how do desyncs not occur with this approach? Somewhere in the game's C++ code, there is a list of inactive robots (robots returning to roboports). If there aren't any close to the site of building, the game dispatches a 'fresh' robot from a roboport. The ghosts are iterated over sequentially - they are put in a list, probably according to XY coordinate of entity, and the robot with the shortest path to that entity is dispatched (from roboport to logistic chest to entity). Keep in mind, this information **is an incomplete thought** of *curiosity* as nobody (except the game devs) knows how this works exactly.
+
+This has been only one example of many: robot construction, biter AI simulations, and even mod things. If you would want to use `math.random()` in a mod or scenario of yours, there would be consistent results - all clients would get the same result of the function. If you know a bit of programming, you may understand seeding a random function. If not, seeding a random function is done with a so-called 'random seed', which initializes the random number generator. It is important to note it is a *pseudorandom* generator, and therefore not truly random, as it is initialized with a pre-determined number, which allows the results to be reproduced anywhere. See [this](https://en.wikipedia.org/wiki/Random_seed). Since this happens with Lua scripting, it would probably be same or similar in the C++ code of the game itself, which allows things to not be truly random.
+
+I couldn't explain everything about this in one simple post. If you would want to learn more about this, you should probably visit one of these:
+- [Wikipedia: Pseudorandom number generator](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)
+- [Wikipedia: Deterministic Algorithm](https://en.wikipedia.org/wiki/Deterministic_algorithm)
+- [FFF#26](https://www.factorio.com/blog/post/fff-26)
+- [FFF#30](https://www.factorio.com/blog/post/fff-30)
