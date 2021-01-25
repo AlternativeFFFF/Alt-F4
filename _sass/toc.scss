@@ -24,8 +24,12 @@
   color: #ffe6c0;
 }
 
-.toc summary > h2 {
-  display: inline;
+.toc summary {
+  cursor: pointer;
+  h2 {
+    cursor: pointer;
+    display: inline;
+  }
 }
 
 .toc .panel-inset > ul ul {
