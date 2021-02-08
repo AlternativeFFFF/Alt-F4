@@ -54,10 +54,6 @@ The first digit is simply A AND B. However, for the second digit, we need someth
 
 An XOR gate's logic is, "A or B, but not both", and therefore an XOR gate is just *(A OR B) AND NOT (A AND B)*. Here is how to do this with the basic gates discussed earlier:
 
-![XOR Gate image]()
-
-Combining the AND and XOR gates, we can produce a half adder circuit as shown below:
-
 ![A half-adder](https://cdn.discordapp.com/attachments/699618487097884723/802622555218247710/half_adder.png)
 
 We also get an AND gate output for free from the combined duplicator-NOT circuit, giving us a complete half-adder. It just so happens that we can combine the first item swapper with the second AND gate, which allows us to get rid of a splitter:
