@@ -153,3 +153,10 @@ sub {
   display: flex;
   justify-content: center;
 }
+
+table,
+th,
+td {
+  border: 2px solid rgba(17, 17, 17, 1);
+  padding: 3px;
+}
