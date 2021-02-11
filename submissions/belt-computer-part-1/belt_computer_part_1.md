@@ -19,17 +19,17 @@ The truth table below shows their respective outputs based on the range of possi
 | 1    | 0    | 0     | 1      | 0       |
 | 1    | 1    | 0     | 1      | 1       |
 
-It is a known fact that by chaining these logic gates in specific ways (and sometimes looping some wires), it is possible to construct a [Turing machine](https://en.wikipedia.org/wiki/Turing_machine). All three of the basic gate types can be created entirely with belts and splitters. I don't want to make people scroll over tons of images for an hour, so I only show the default all-inputs-zero state for most circuits. Here a link to a [blueprint book](https://media.alt-f4.blog/ALTF4/23/belt-computer-blueprint-book.txt) with everything from this article, for anyone who would like to experiment with the circuits themselves. I will refer to different items as "item type 1/2/3/...", for convenience and generality, and priority/non-priority inputs and outputs as "primary/secondary", mostly just for convenience. I will also be using different colours in the images, to differentiate between item types.
+It is a known fact that by chaining these logic gates in specific ways (and sometimes looping some wires), it is possible to construct a [Turing machine](https://en.wikipedia.org/wiki/Turing_machine). All three of the basic gate types can be created entirely with belts and splitters. Here a link to a [blueprint book](https://media.alt-f4.blog/ALTF4/23/belt-computer-blueprint-book.txt) with everything from this article, for anyone who would like to experiment with the circuits themselves. I will refer to different items as "item type 1/2/3/...", for convenience and generality, and priority/non-priority inputs and outputs as "primary/secondary", mostly just for convenience. I will also be using different colours in the images, to differentiate between item types.
 
 ### The basic gates
 
 The AND and OR gates are as simple as a single splitter with a set priority:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/23/and_and_or.jpg' alt='A single splitter acting both as an AND and an OR gate' caption='The primary output acts as an OR gate, whilst the secondary output acts as an AND gate.' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/23/and_and_or.mp4' alt='A single splitter acting both as an AND and an OR gate' caption='The primary output acts as an OR gate, whilst the secondary output acts as an AND gate.' width='960px' %}
 
 The NOT gate is a bit trickier to make, but it can be done by using more than one item type and some clever filtering and prioritizing:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/23/very_useful_circuit.jpg' alt='A combined NOT gate, and signal duplicator' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/23/very_useful_circuit.mp4' alt='A combined NOT gate, and signal duplicator' width='960px' %}
 
 Whilst *input A* is 0, the first splitter is only receiving one input, and so item type 2 is going onto the primary output, meaning only the *NOT A output* is 1. When input A is on, the first splitter is now getting 2 inputs; item type 1 is going into the primary input, therefore it gets put on the primary output, replacing item type 2 which is now coming out of the secondary output. The secondary output is effectively a copy of A, but with a different item type.
 
@@ -54,11 +54,11 @@ We can see that the first digit is simply *A AND B*. However, for the second dig
 
 An XOR gate's logic is, "A or B, but not both", and therefore an XOR gate is just *(A OR B) AND NOT (A AND B)*. Here is how to do this with the basic gates discussed earlier:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/23/half_adder.jpg' alt='A half-adder' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/23/half_adder.mp4' alt='A half-adder' width='960px' %}
 
 Notice that we also get the AND gate output for free thanks to the combined duplicator-NOT circuit, giving us a complete half-adder. It just so happens that we can combine the first item swapper with the second AND gate, which allows us to get rid of a splitter:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/23/simpler_half_adder.jpg' alt='A slightly simpler half-adder'%}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/23/simpler_half_adder.mp4' alt='A slightly simpler half-adder' width='960px' %}
 
 ### The final product
 
@@ -68,14 +68,14 @@ Now, to convert our half-adder to a full adder, we need to connect 2 of them in 
 
 As you can see, a full adder is just 2 half-adders chained in a specific way. Now, we could just copy and paste the circuit, but thanks to the properties of belts, there is a much better and smaller way. The 2 lanes of a belt are processed by splitters independently from each other, meaning that instead of chaining two half-adders, we can instead **run everything through a single half-adder twice**. This is usually impossible with traditional logic circuits, but in this brave new world of Factorio computers, anything goes. Here is how:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/23/spread_out_full_adder.jpg' alt='A full adder' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/23/spread_out_full_adder.mp4' alt='A full adder' width='960px' %}
 
 Here, the first half-adder uses the right-hand side of the belt, and the second half-adder uses the left-hand side of the belt. First, the inputs make it through the first half-adder as normal on the right-hand side of the belt. Next, the half adder's XOR output is looped all the way back and is now put on the left side of the belt. It goes through the same mechanisms again, but since it's on the left side, it doesn't interact with the right side at all. The second half-adder still has a free input, though, so we have to connect a third input belt, this time on the left side to act as the *carry in* bit. The AND outputs of both half-adders are sideloaded onto a belt, automatically creating an OR. Internal delays might cause both half-adders' carries to output at the same time, causing it to attempt to unload a full belt onto half of a belt. Therefore, we also need an overflow protection splitter so that the carry bit doesn't back up and break the entire circuit. After some rearranging of the components, we get this:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/23/compacted_full_adder.jpg' alt='A compact full adder' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/23/compacted_full_adder.mp4' alt='A compact full adder' width='960px' %}
 
 This is *exactly* the same circuit as in the previous image, and I leave it as an exercise to the reader to verify that. The only thing left to do is to stack a bunch of these together and feed them numbers, so here is a belt-only adder calculating 01001101 (77) + 10001011 (139) = 011011000 (216):
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/23/8_bit_adder.jpg' alt='An array of adders calculating 01001101 (77) + 10001011 (139) = 011011000 (216)' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/23/adder_stack.mp4' alt='An array of adders calculating 01001101 (77) + 10001011 (139) = 011011000 (216)' width='960px' %}
 
 Adding numbers is cool and all, but it's nothing without some kind of memory, which is exactly what we will be exploring in the next issue. Stay tuned!
