@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-09T16:33:06+00:00</updated>
+  <updated>2021-02-12T12:14:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #23 – Extravagante Fließbänder</title>
+    <link href="https://alt-f4.blog/de/ALTF4-23/" />
+    <id>https://alt-f4.blog/ALTF4-23</id>
+    <updated>2021-02-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Nach einer zweiwöchigen Pause aufgrund einiger druckfrischer FFFs, sind wir diese Woche mit zwei Artikeln rund um das Thema Fließbänder zurück. In dem ersten erforscht Recon419A ein interessantes Konzept, bei dem die Fließbänder Gegenstände just-in-time liefern. Danach wird es mit einem tiefen Blick in den Aufbau einer Turing-Maschine nur mit...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-14</id>
     <updated>2020-11-20T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Diese Woche nimmt uns &lt;em&gt;ironic toblerone&lt;/em&gt; auf ein verrücktes Abenteuer ins Weltall mit der fantastischem &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration Mod&lt;/a&gt; von &lt;em&gt;Earendel&lt;/em&gt; mit. Mach dich bereit und schnall dich an, das ist eine lustige Ausgabe!&lt;/p&gt; &lt;h2 id=&quot;mod-spotlight-space-exploration-erforschung-des-weltraums-ironic-toblerone&quot;&gt;Mod Spotlight: &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; (Erforschung des Weltraums) &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Space Exploration ist eine Mod,...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #13 – Megabasenarchäologie</title>
-    <link href="https://alt-f4.blog/de/ALTF4-13/" />
-    <id>https://alt-f4.blog/ALTF4-13</id>
-    <updated>2020-11-13T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In dieser 13ten Ausgabe von Alt-F4, die geisterhafterweise auf Freitag den 13ten fällt (fast als hätten wir das so geplant), fokussieren wir unsere Aufmerksamkeit auf ein einziges Thema: So viele Raketenverteidigungen wie möglich zu produzieren. Jetzt stellt sich die Frage, was sind Raketenverteidigungen? Nun stringweasel ist hier, um uns aufzuklären...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-09T16:33:06+00:00</updated>
+  <updated>2021-02-12T12:14:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°23 - Spaghetti en folie</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-23/" />
+    <id>https://alt-f4.blog/ALTF4-23</id>
+    <updated>2021-02-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Après une interruption de deux semaines en raison de quelques FFF tout juste sortis des presse, nous revenons cette semaine avec deux articles sur les convoyeurs. Dans le premier, Recon419A explore un concept intéressant dans lequel les convoyeurs livrent des objets en flux tendu. Ensuite, les choses deviennent vraiment dingues...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-14</id>
     <updated>2020-11-20T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Cette semaine, &lt;em&gt;ironic toblerone&lt;/em&gt; nous emmène dans une folle aventure spatiale avec le fantastique mod &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; de &lt;em&gt;Earendel&lt;/em&gt;. Enfilez votre scaphandre et attachez votre ceinture, c’est génial !&lt;/p&gt; &lt;h2 id=&quot;présentation-de-mod--space-exploration-ironic-toblerone&quot;&gt;Présentation de mod : &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Space Exploration est un mod de révision qui vous emmène...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°13 - Recherches achéologiques de Mégabases</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-13/" />
-    <id>https://alt-f4.blog/ALTF4-13</id>
-    <updated>2020-11-13T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Dans ce numéro 13 des Alt-F4, publié comme par un étrange hasard le vendredi 13 (c’est presque comme si nous l’avions prévu), nous nous concentrons sur un seul sujet : la construction du plus grand nombre possible de missiles de défense. Qu’est-ce qu’un missile de défense, me demandez-vous ? Eh...</content>
   </entry>
   
   

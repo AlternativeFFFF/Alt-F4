@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-09T16:33:06+00:00</updated>
+  <updated>2021-02-12T12:14:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #23 - 传送带狂欢节</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-23/" />
+    <id>https://alt-f4.blog/ALTF4-23</id>
+    <updated>2021-02-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在为之前两周的 FFF 让出热度而短暂休刊之后，我们又回来了，带来两篇关于传送带的文章。在第一篇文章中，Recon419A 探讨了一个有趣的概念，让传送带以即时化的方式送达物品。然后，pocarski 深入研究了如何利用传送带来构建图灵机，技术宅狂喜。建议读者先获取计算机科学相关学位。&lt;/p&gt; &lt;h2 id=&quot;物流传送带-recon419a&quot;&gt;物流传送带 &lt;author&gt;Recon419A&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在异星工厂中移动物品有三种主要方式：传送带、物流机器人和列车。传送带适用于单种或两种物品的输入输出，火车适用于大量的单种物品，物流机器人适用于复杂的制作任务。然而，有时候，你需要组合这些方法，这就是诸如回转寿司等技术可以发挥作用的地方。在本文中，我想谈谈另一种我称之为“物流传送带”的方法。和回转寿司一样，物流传送带有没有 Mod 都可以使用，它本身也并不是一个 Mod，而是一种利用传送带和非常简单的电路来控制什么资源去哪里的方法。就像原版的物流网络和某些基于火车的 Mod 例如 LTN，它们的目的是成为一种比基本的传送带更智能的资源运送方式。&lt;/p&gt; &lt;h3 id=&quot;物流传送带说明&quot;&gt;物流传送带说明&lt;/h3&gt; &lt;p&gt;物流传送带是一个有点复杂的概念，但当你看到一个实际例子后，理解起来就简单多了。在这个例子中，请注意几种物品是如何沿着同一条传送带发送的，每种物品只有在要求时才会被装上传送带。如果只需要铁和铜，那么就不会有钢铁被送来；同样，如果什么都不需要，那么传送带就会保持空的状态。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 1280px; max-height: 720px&quot; playsinline=&quot;&quot; muted=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/23/logistics-belts-demo.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; 物流传送带概念的视频演示。 &lt;/video&gt; &lt;figcaption&gt;使用电路条件、筛选分流器和装卸机的物流传送带演示。机械臂可以代替装卸机，但根据传送带速度可能需要增加二至三倍的数量。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/p&gt; &lt;p&gt;在例子中可以看到，电路条件设置为当目的地的物料少于 100 时发送物料。在现实中，传送带的长度会影响到发送材料的数量，如果传送带很长，当一百个材料进入缓冲箱时，还有几百个材料位于传送带上。在不溢出接收箱的要求下，传送带在理论上 &lt;em&gt;有&lt;/em&gt; 长度限制，但在实际操作中，只要你使用的是钢制箱就不大可能碰到；在非常大的距离上，你肯定会用列车来代替。如果你想玩一玩这个物流带的设置，可以在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/23/logistics-belt-blueprint.txt&quot;&gt;这里&lt;/a&gt;下载蓝图字符串，不过请注意该蓝图使用了 &lt;a href=&quot;https://mods.factorio.com/mods/Optera/LoaderRedux&quot;&gt;Loader Redux&lt;/a&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-14</id>
     <updated>2020-11-20T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周 &lt;em&gt;ironic toblerone&lt;/em&gt; 带我们体验一场疯狂的太空冒险之旅，由 &lt;em&gt;Earendel&lt;/em&gt; 制作的梦幻&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt;Mod 所提供。穿好太空服系好安全带，安心体验吧。&lt;/p&gt; &lt;h2 id=&quot;mod-聚焦太空探索space-exploration-ironic-toblerone&quot;&gt;Mod 聚焦：&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;太空探索是一款大改 Mod，能带你踏上史诗般的星际之旅。它充满了全新的挑战，原创的机制和独特的体验。下面是我的故事。&lt;/p&gt; &lt;p&gt;我发射了一枚火箭，部署了一颗卫星，让我能够以卫星视角观察世界，脱离我的躯体。寻找星球边缘的任务由此简单多了……是的，星球有边界。Nauvis 是有极限的。&lt;/p&gt; &lt;p&gt;但那是什么？我的卫星还发现了一些遗弃在星球轨道上的东西。我可以用卫星去观察，这是某种太空平台，里面可能有一些宝物。你知道这意味着什么了：是时候亲自去太空了。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/14/space-exploration-you-are-here.png&quot; alt=&quot;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;我建立起自己的基地，并制造了一个装满材料的货运火箭，跳进去后点击发射。乘坐火箭的感觉很爽，在零重力中飘来飘去的感觉很神奇。不过神奇是短暂的，在轨道上，你需要带上生命支持，没有宝贵的 O&lt;sub&gt;2&lt;/sub&gt;，我死了。点下重生。看来死亡终究不是那么糟糕。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #13 - 巨型基地考古</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-13/" />
-    <id>https://alt-f4.blog/ALTF4-13</id>
-    <updated>2020-11-13T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在这期有者诡异巧合的 13 日星期五出版的第 13 期 Alt-F4 中（简直就像我们计划好的一样），我们只关注一个话题：尽可能多地建造火箭防御系统。你问什么是火箭防御系统？stringweasel 会在这里告诉你，带你回到一个更简单的时期，异星工厂 0.11 的年代。&lt;/p&gt; &lt;h2 id=&quot;nauvis-档案每分钟一火箭防御系统-stringweasel&quot;&gt;Nauvis 档案：每分钟一火箭防御系统 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;从一开始，玩家们就一直在挑战异星工厂的极限；在游戏停止运行并屈服于缓慢而痛苦的 UPS 死亡之前，看看他们能建造多大规模的工厂。多年来，随着玩家达到新的高度，这些极限记录一次又一次地被打破。今天，记录的重点是不断地消耗尽可能多的科研包，以每分钟科研数（science per minute）即 spm 来衡量。这里的主要限制因素是，建造更大的工厂也会降低你计算机可以运行的的“每秒更新（update per second）”，即 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/5dmura/can_someone_explain_ups/&quot;&gt;UPS&lt;/a&gt; 速度。让一个大规模的巨型基地运行在接近理想的 60 UPS 本身就是一种&lt;a href=&quot;https://mulark.github.io/test-index.html&quot;&gt;艺术形式&lt;/a&gt;，而用较低的 UPS 来进行游戏则会在物理上减慢游戏速度，使得进一步扩大你的基地非常耗时。&lt;/p&gt; &lt;p&gt;目前，spm 的世界纪录持有者应该是 &lt;a href=&quot;https://www.reddit.com/user/swolar/&quot;&gt;u/swolar&lt;/a&gt; 的 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/gely3v/20000_science_per_minute_hybrid_modular_megabase/&quot;&gt;60 UPS 20 千瓶基地&lt;/a&gt;。这个不可思议的基地运行在原版游戏上，但它是使用了一些 &lt;a href=&quot;https://mods.factorio.com/mod/factorio-world&quot;&gt;Mod&lt;/a&gt; 和&lt;a href=&quot;https://wiki.factorio.com/Console/zh&quot;&gt;控制台命令&lt;/a&gt;来生产矿石等。差不多三年前，这个记录很可能是由 &lt;a href=&quot;https://www.reddit.com/user/Stevetrov/posts/&quot;&gt;u/SteveTrov&lt;/a&gt; 的原版式 &lt;a...</content>
   </entry>
   
   
