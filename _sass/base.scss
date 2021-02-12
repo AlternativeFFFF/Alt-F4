@@ -153,3 +153,20 @@ sub {
   display: flex;
   justify-content: center;
 }
+
+table,
+th,
+td {
+  border-bottom: 1px solid #757575;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+thead {
+  border-bottom: 2px solid #b9b9b9;
+}
