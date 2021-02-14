@@ -1,25 +1,29 @@
 ## Recipe-Oriented Factorio Life <author>Ph.X</author>
 
-This paper proposes a universal factorio design philosophy. To better implement, [LTN - Logistic Train Network](https://mods.factorio.com/mods/Optera/LogisticTrainNetwork), [AAI Containers & Warehouses](https://mods.factorio.com/mod/aai-containers), and [Miniloader](https://mods.factorio.com/mod/miniloader) mods are being used.
+[Ph.X]: <> (TODO: a better introduction)
 
 ### What is ROFL
 
-People with programming experience should have heard of ~~[Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)~~ [Modular Programming](https://en.wikipedia.org/wiki/Modular_programming), and it is the theory which Recipe-Oriented Factorio Life (ROFL) mimics.
+People with programming experience should have heard of ~~[Object-Oriented Programming](https://en.wikipedia.org/wiki/Object-oriented_programming)~~ [Modular Programming](https://en.wikipedia.org/wiki/Modular_programming), and it is the theory which Recipe-Oriented Factorio Life (ROFL) mimics. Modular programming is a software design technique that emphasizes separating the functionality of a program into independent, interchangeable modules, such that each contains everything necessary to execute only one aspect of the desired functionality. In ROFL, we divide the whole factory into independent, interchangeable subfactory modules, such that each contains everything necessary to process only one recipe of the desired factory.
 
-Like most philosophies, ROFL tries to find one eternal object as the base of everything, in this case, it is the recipe in Factorio. Red circuits can be crafted by an assembly machine of any tier, which may be affected by different modules, and the required raw materials may come from a belt, a logistics chest, or even an adjacent copper wire assembly machine, but no matter how other conditions may change, the recipe itself keeps being copper wires, electronic circuits with plastic bars to the advanced circuit.
+Like most philosophies, ROFL tries to find one eternal object as the base of everything, in this case, it is the recipe in Factorio. Red circuits can be crafted by an assembly machine of any tier, which may be affected by different modules, and the required raw materials may come from a belt, a logistics chest, or even an adjacent copper wire assembly machine, but no matter how other conditions may change, the recipe itself keeps being copper wires, electronic circuits with plastic bars to the advanced circuit. The Recipe is kind of an atomic operation in factorio, an uncuttable smallest unit.
 
-Based on a certain recipe, a dedicated subfactory is packaged into a module. Such a module contains everything necessary to process only one recipe of the desired factory. A separate logistics system is used to obtain raw materials and supply products for the modules. The purpose of this division is to achieve high cohesion inside the modules and low coupling between the modules.
+Based on a certain recipe, a dedicated subfactory is packaged into a module. A separate logistics system is used to obtain raw materials and supply products for the modules, as the interface for external interaction of the module. The purpose of this division is to achieve high cohesion inside the modules and low coupling between the modules. High cohesion inside the module meaning the module contains all the facilities (assemble machines, inserters, belts, power poles, beacons, etc.) needed to make the recipe so it can works independently. Low coupling between the modules meaning modules interact with each other through predefined interfaces (power grid and rail grid in the following examples) without direct dependencies so they are interchangeable.
+
+To better implement, [LTN - Logistic Train Network](https://mods.factorio.com/mods/Optera/LogisticTrainNetwork), [AAI Containers & Warehouses](https://mods.factorio.com/mod/aai-containers), and [Miniloader](https://mods.factorio.com/mod/miniloader) mods are being used in the following examples. The blueprints for all the examples below can be downloaded [here](attachment/rofl_example_blueprint).
 
 ### Interface design
 
 Before actually bulid any subfactory modules, we need to design a universal logistics network as the interface between the modules. Although a main bus or logistic robots can be implemented as such logistics system to some extent, a city-block rail grid far exceeds other solutions in terms of throughput, reusability, and coolness.
 
-In vanilla trains can only run on a predetermined schedule, which is not flexible and "logistical". This is where LTN comes in handy. In LTN, trains are parked in the depot stations when they are idle, just like logistic robots are placed in the roboports. Logistic train stop can acts like a requester chest or a provider chest depending on the signal they received. When there is a logistic demand, LTN will find a suitable train at the depots and generate a schedule for it to fetch the specified items at provider station, then go to the requester station for unloading, then return to a depot station, similar to the behavior of a logistic robot. But unlike logistic robots, the trains do not load or unload themselves, so inserters or loaders at the stations are needed. The LTN is powerful than the logistic robot network because of the huge cargo capacity, high speed, and fluid support.
+In vanilla trains can only run on a predetermined schedule, which is not flexible and "logistical". This is where LTN comes in handy. In LTN, trains are parked in the depot stations (logistic train stop reciving "depot" signal, as a parking lot for trains) just like logistic robots are placed in the roboports. Logistic train stop can also acts like a requester chest or a provider chest depending on the signal they received. When there is a logistic demand, LTN will find a suitable train at the depots and generate a schedule for it to fetch the specified items at provider station, then go to the requester station for unloading, then return to a depot station, similar to the behavior of a logistic robot. But unlike logistic robots, the trains do not load or unload themselves, so inserters or loaders at the stations are needed. The LTN is powerful than the logistic robot network because of the huge cargo capacity, high speed, and fluid support.
 
 The chosen rail grid in my practice is a two-way left-hand traffic railroad in order to place the rail signals between the rails. Junctions are straight and left turn only for space-saving. Most stations have a train stop limit of 2 to ensure that a maximum of one train waits outside the station. Sections occupied by a handful of trains waiting outside the stations can be detoured through the fully interconnected grid.
 
 ![rail grid](figure/rail_grid.jpg)
-_Only the center grid will build a module, the rest grids are used for traffic and solar paving_
+_Only the center grid will contain a crafting module_
+
+The modules are kept at a grid distance from each other, the grids between the modules are used for train traffic management, solar power generation and robot logistics networks separation. Robots excel in short-distance logistics but are terrible at long-distance transportation. A separated logistics network can prevent robots from being involved in unnecessary long-distance logistics because that part of the job belongs to trains.
 
 The smallest 2 car trains with 1 locomotive and 1 cargo/fluid wagon were chosen to reduce the size and eliminate the need to balance loading and unloading between wagons. Fuel replenishment for the locomotives set in the LTN's depot stations where trains return to after each delivery.
 
@@ -54,10 +58,10 @@ There are also some unconventional recipes, such as research, thermal power plan
 _Research center module, which doesn't need an output station_
 
 ![thermal power plant module](figure/thermal_power_plant_module.jpg)
-_Thermal power plant with landfill to place on water._
+_Thermal power plant with landfill to place on water. Or you can use [Landfill Everything](https://mods.factorio.com/mod/LandfillEverything) to prepare the site._
 
 ![rocket silo module](figure/rocket_silo_module.jpg)
-_Rocket silo module. Independent logistics robot network can be used within the module. The bottom station is for materials needed to build rockets, and the station on right is for payloads of the rocket, usually satellites._
+_Rocket silo module. Independent logistics robot network are be used within the module. The bottom station is for materials needed to build rockets, and the station on right is for payloads of the rocket, usually satellites._
 
 ### Pros and cons of ROFL
 
