@@ -41,7 +41,7 @@ This circuit we just made is called a **D latch**. It has two inputs: *D* for "D
 
 ### Master-slave memory cell
 
-Many problems can be solved by just building another copy, and the D latch's issue is no exception. We duplicate and invert *input E*, and feed its inversion into another D latch's enable input. Then, we make the first latch's output go into the second one's data input. Just like last week, the two sides of belts come to the rescue, and we don't actually need to build a whole other copy, we can just do some clever looping:
+Many problems can be solved by just building another copy, and the D latch's issue is no exception. We duplicate and invert *input E*, and feed its inversion into another D latch's enable input. Then, we make the first latch's output go into the second one's data input. The inversion here is done by introducing a third item type, which gets overridden by the enable input. Just like last week, the two sides of belts come to the rescue, and we don't actually need to build a whole other copy, we can just do some clever looping:
 
 {% include video.html mp4='https://media.alt-f4.blog/ALTF4/24/spread_out_master-slave.mp4' alt='Spread out master-slave memory cell' width='960px' %}
 
