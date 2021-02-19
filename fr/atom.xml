@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-12T12:44:09+00:00</updated>
+  <updated>2021-02-19T12:25:27+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°24 - Créer des mémoires</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-24/" />
+    <id>https://alt-f4.blog/ALTF4-24</id>
+    <updated>2021-02-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Cette semaine, nous continuons l’article de pocarski de la semaine dernière qui n’est rien de moins que la possibilité de créer un ordinateur dans Factorio en utilisant seulement des convoyeurs. Cette fois, nous tentons de vous montrer comment se rappeler de choses. Jetons-y un oeil.&lt;/p&gt; &lt;h2 id=&quot;linformatique-par-convoyeurs-deuxième-partie--noubliez-jamais-pocarski&quot;&gt;L’informatique par convoyeurs, Deuxième...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-15</id>
     <updated>2020-11-27T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Cette semaine, alors que la version expérimentale 1.1 vient de sortir, nous nous penchons sur deux des éléments qu’elle introduit. Tout d’abord, Conor_ étudie ce que la nouvelle limite d’arrêt de trains lui permet de faire dans son usine utilisant le mod TSM. Ensuite, Therenas explore ce que signifie la...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°14 - Explorer l’infini</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-14/" />
-    <id>https://alt-f4.blog/ALTF4-14</id>
-    <updated>2020-11-20T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Cette semaine, &lt;em&gt;ironic toblerone&lt;/em&gt; nous emmène dans une folle aventure spatiale avec le fantastique mod &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; de &lt;em&gt;Earendel&lt;/em&gt;. Enfilez votre scaphandre et attachez votre ceinture, c’est génial !&lt;/p&gt; &lt;h2 id=&quot;présentation-de-mod--space-exploration-ironic-toblerone&quot;&gt;Présentation de mod : &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Space Exploration est un mod de révision qui vous emmène...</content>
   </entry>
   
   

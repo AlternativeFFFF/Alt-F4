@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-12T12:44:09+00:00</updated>
+  <updated>2021-02-19T12:25:27+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #24 - 创造记忆</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-24/" />
+    <id>https://alt-f4.blog/ALTF4-24</id>
+    <updated>2021-02-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周，我们会跟进 pocarski 上周的文章，内容是关于如何在异星工厂内只用传送带来搭建一台电脑。这一次，我们要教它如何记住东西。让我们看看效果如何。&lt;/p&gt; &lt;h2 id=&quot;纯传送带计算第二部分永不忘记-pocarski&quot;&gt;纯传送带计算，第二部分：永不忘记 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;本周，我将继续延续我的关于纯传送带计算的文章。我强烈建议大家回到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/#%E7%BA%AF%E4%BC%A0%E9%80%81%E5%B8%A6%E8%AE%A1%E7%AE%97%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%8D%E5%A4%AA%E7%AE%80%E6%98%8E%E7%9A%84%E6%95%B0%E5%AD%A6-pocarski&quot;&gt;上期&lt;/a&gt;去复习一下。&lt;/p&gt; &lt;p&gt;在开始之前，先做一个简短的说明：在本周的 &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; 里 &lt;em&gt;BlueCheetah#7844&lt;/em&gt; 对我的加法器回路进行了重大的布局改进，现在它略微长了一些，但仅有四格宽。以下是改进后的图片，做着与上周一样的计算。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/24/improved-8-bit-adder.jpg&quot; alt=&quot;更好的加法器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;看完了这个，我们就开始讲正事吧。上一次，我们探讨了只用传送带和分流器进行数字加法，本周我们将探讨在计算方面同样重要的东西：内存。能够给数字做加法的能力是很棒的，但如果没有办法存储指令或结果，一切都是徒劳。在 CPU 内部，加法的结果会被记住，然后经过一些操作，反馈回刚才做计算的加法器。这样一来，就可以实现几乎所有能够想象到的数学运算。&lt;/p&gt; &lt;p&gt;和上周一样，欢迎大家下载本文中的所有电路的&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/24/belt-computer-blueprint-book-2.txt&quot;&gt;蓝图簿&lt;/a&gt;来亲身体验一下。&lt;/p&gt; &lt;h3 id=&quot;数据选择器&quot;&gt;数据选择器&lt;/h3&gt; &lt;p&gt;首先介绍一个新的电路：&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E5%99%A8&quot;&gt;数据选择器&lt;/a&gt;。数据选择器有两个数据输入 &lt;em&gt;A&lt;/em&gt; 和 &lt;em&gt;B&lt;/em&gt;，一个指针输入 &lt;em&gt;P&lt;/em&gt;，一个输出 &lt;em&gt;O&lt;/em&gt;。下面是这个多路复用器的真值表（“-”表示输入不影响输出）：&lt;/p&gt; &lt;table&gt; &lt;thead&gt; &lt;tr&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-15</id>
     <updated>2020-11-27T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周 1.1 实验版刚刚出炉，我们来看一看新版本带来的 2 个新变化。首先，Conor_ 研究了如何利用新的车站限流功能对他基于 TSM 的工厂做些什么。然后 Therenas 分别从理论和实践层面探讨了多线程更新对传送带的意义。细心点读也许能学到点东西！&lt;/p&gt; &lt;h2 id=&quot;车站限流-conor_&quot;&gt;车站限流 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;当谈到 1.1 带来的新变化时，我最想讨论的当然是火车站限流功能，因为&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-8/#%E6%88%91%E7%88%B1%E5%BC%82%E6%98%9F%E5%B7%A5%E5%8E%82%E7%9A%84%E9%93%81%E8%B7%AF-conor_&quot;&gt;我钟爱火车&lt;/a&gt;！接下来，我将研究新功能解决了什么问题，并介绍此前我是如何处理这些问题的。&lt;/p&gt; &lt;h3 id=&quot;天真的小白-conor_-曾犯过的低级错误&quot;&gt;天真的小白 Conor_ 曾犯过的低级错误&lt;/h3&gt; &lt;p&gt;不久前，我正在建立自己的第一个大型基地，并尝试在 5 倍研究费用（我 &lt;em&gt;喜欢&lt;/em&gt; 这样）下攻克 &lt;a href=&quot;https://mods.factorio.com/mod/SpaceMod&quot;&gt;SpaceX&lt;/a&gt; 模组。很快，我注意到自己的意大利面条式火车网络存在一些问题。在幼稚和无知的驱使下，我决定给运送相同货物的所有车站共用一个站名，再部署大量的火车运行在其间以保证这些车站都能得到充分的利用。然而事实证明这并不是一个好点子，这个易于实现的系统随后带给我的是痛苦和折磨——自从我搞明白原油处理以后，还没再经历过这样的痛苦。在仅有数个车站且相距不远的小基地中，这套系统可以运行的很好。但基地规模变大时，我发现火车根本不会前往远处的站点。一部分车站水泄不通甚至导致了死锁，而剩下的车站则空空荡荡被闲置。作为一个优秀的工程师，我决定必须拿出一个更好的方案来解决这个问题。于是我 &lt;del&gt;努力地研究，开发，实现更好的方案&lt;/del&gt; 在 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/creeix/train_distribution_mod/&quot;&gt;Reddit&lt;/a&gt; 上提问。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;有没有人知道什么 Mod 可以把火车分配到拥有相同站名的不同站点，无论距离远近？例如，所有的卸货站都叫一个名字，但每一个不同的站站都有相同数量的列车。&lt;/p&gt; &lt;/div&gt; &lt;span...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #14 - 探索无限</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-14/" />
-    <id>https://alt-f4.blog/ALTF4-14</id>
-    <updated>2020-11-20T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周 &lt;em&gt;ironic toblerone&lt;/em&gt; 带我们体验一场疯狂的太空冒险之旅，由 &lt;em&gt;Earendel&lt;/em&gt; 制作的梦幻&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt;Mod 所提供。穿好太空服系好安全带，安心体验吧。&lt;/p&gt; &lt;h2 id=&quot;mod-聚焦太空探索space-exploration-ironic-toblerone&quot;&gt;Mod 聚焦：&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;太空探索是一款大改 Mod，能带你踏上史诗般的星际之旅。它充满了全新的挑战，原创的机制和独特的体验。下面是我的故事。&lt;/p&gt; &lt;p&gt;我发射了一枚火箭，部署了一颗卫星，让我能够以卫星视角观察世界，脱离我的躯体。寻找星球边缘的任务由此简单多了……是的，星球有边界。Nauvis 是有极限的。&lt;/p&gt; &lt;p&gt;但那是什么？我的卫星还发现了一些遗弃在星球轨道上的东西。我可以用卫星去观察，这是某种太空平台，里面可能有一些宝物。你知道这意味着什么了：是时候亲自去太空了。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/14/space-exploration-you-are-here.png&quot; alt=&quot;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;星球地图。我的主基地。这是我的家园，我所坠落的星球。这个星球很大。恒星系地图。我的家园。星际地图：我的恒星系。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;我建立起自己的基地，并制造了一个装满材料的货运火箭，跳进去后点击发射。乘坐火箭的感觉很爽，在零重力中飘来飘去的感觉很神奇。不过神奇是短暂的，在轨道上，你需要带上生命支持，没有宝贵的 O&lt;sub&gt;2&lt;/sub&gt;，我死了。点下重生。看来死亡终究不是那么糟糕。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div...</content>
   </entry>
   
   

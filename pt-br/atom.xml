@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/pt-br/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-12T12:44:09+00:00</updated>
+  <updated>2021-02-19T12:25:27+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #24 - Criando Memórias</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-24/" />
+    <id>https://alt-f4.blog/ALTF4-24</id>
+    <updated>2021-02-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Esta semana, estamos dando sequência ao artigo de pocarski da semana passada que era sobre como construir um computador dentro da Factorio usando apenas esteiras. Desta vez, estamos tentando ensiná-lo a lembrar das coisas. Vamos ver no que isso da.&lt;/p&gt; &lt;h2 id=&quot;computação-somente-de-esteiras-parte-2-nunca-esqueçer-pocarski&quot;&gt;Computação somente de esteiras, Parte 2: Nunca esqueçer &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-15</id>
     <updated>2020-11-27T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;This week, with 1.1 experimental just released, we take a look at two of the things it brings with it. First, &lt;em&gt;Conor_&lt;/em&gt; investigates what the new train stop limit allows him to do in his TSM-based factory. Then, &lt;em&gt;Therenas&lt;/em&gt; explores what the multithreading update to belts means, both in theory...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #14 - Exploring the Infinite</title>
-    <link href="https://alt-f4.blog/pt-br/ALTF4-14/" />
-    <id>https://alt-f4.blog/ALTF4-14</id>
-    <updated>2020-11-20T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This week &lt;em&gt;ironic toblerone&lt;/em&gt; takes us on a crazy adventure into space featuring the fantastic &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; mod by &lt;em&gt;Earendel&lt;/em&gt;. Suit up and strap in, this is a fun one!&lt;/p&gt; &lt;h2 id=&quot;mod-spotlight-space-exploration-ironic-toblerone&quot;&gt;Mod Spotlight: &lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;Space Exploration&lt;/a&gt; &lt;author&gt;ironic toblerone&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Space Exploration is an overhaul mod that takes you on an...</content>
   </entry>
   
   

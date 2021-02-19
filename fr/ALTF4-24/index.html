@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177230094-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-177230094-1');
+</script>
+
+
+	<title>Alt-F4 n°24 - Créer des mémoires</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 n°24 - Créer des mémoires | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 n°24 - Créer des mémoires">
+<meta name="author" content="pocarski">
+<meta property="og:locale" content="fr">
+<meta name="description" content="Cette semaine, nous continuons l’article de pocarski de la semaine dernière qui n’est rien de moins que la possibilité de créer un ordinateur dans Factorio en utilisant seulement des convoyeurs. Cette fois, nous tentons de vous montrer comment se rappeler de choses. Jetons-y un oeil. L’informatique par convoyeurs, Deuxième partie : N’oubliez jamais pocarski Cette semaine, je vais poursuivre mon article à propos de l’informatique basée sur les convoyeurs. Je vous conseille vivement de revenir au numéro précédent pour vous rafraîchir la mémoire. Une petite note avant de commencer : cette semaine, BlueCheetah#7844, utilisateur du Discord, a apporté d’importantes améliorations à la configuration de mon circuit d’additionneur : il est maintenant légèrement plus long, mais plus large de quatre tuiles. Voici une image de ce circuit, effectuant les mêmes calculs que la semaine dernière : La dernière fois, nous avons étudié la possibilité d’additionner des nombres en utilisant uniquement des convoyeurs et des répartiteurs. Cette semaine, nous allons nous pencher sur un élément tout aussi important en matière d’informatique : la mémoire. La possibilité d’ajouter des nombres est une opération simple, mais en fin de compte inutile s’il n’y a aucun moyen de stocker les instructions ou le résultat. Dans un processeur, les résultats de l’addition sont mémorisés puis, après quelques manipulations, renvoyés à ces mêmes additionneurs. Cela permet d’effectuer pratiquement toutes les opérations mathématiques imaginables. Comme la semaine dernière, tout le monde est invité à faire ses propres expériences grâce au livre de plans contenant tous les circuits de cet article. Le multiplexeur Pour commencer, nous allons introduire un nouveau circuit : le multiplexeur. Un multiplexeur a deux entrées de données A et B, une entrée pointeur P et une sortie O. Voici la table de vérité pour ce multiplexeur (“-“ signifie que l’entrée n’a pas d’influence sur la sortie) : A B P O 0 - 0 0 1 - 0 1 - 0 1 0 - 1 1 1 L’entrée P choisit en fait les entrées de données qui doivent être transmises à la sortie. Si P est à 0, notre sortie sera égale à la valeur de A, et s’il est à 1, notre sortie sera la valeur de B. Maintenant, pour construire ça en pratique, nous pouvons utiliser des portes ET. Elles nous permettent d’ignorer délibérément une entrée. Nous pouvons choisir de faire passer une entrée ou non en activant ou en désactivant simplement l’autre entrée de la porte. En gardant cela à l’esprit, nous pouvons reformuler le multiplexeur sous la forme (A ET NON P) OU (B ET P). Ce sont tous des éléments que nous connaissons déjà, ce qui signifie qu’un multiplexeur peut être construit de cette manière : &lt;/source&gt; Multiplexeur à base de convoyeurs Il s’agit simplement d’un circuit Duplicateur-NON et de deux portes ET. Nous avons également besoin de quelques échangeurs d’objets, pour faire correspondre tous les types d’objets en entrée et en sortie. Cellule mémoire de base Les cellules mémoire semblent très compliquées à première vue. Un circuit qui se souvient d’une entrée ? Il faudrait sûrement une sorte de stockage, mais comment faire en sorte que la sortie reste disponible sans que le stockage ne s’épuise ? C’est là qu’intervient notre nouvel ami, le multiplexeur. Que se passe-t-il si nous ramenons la sortie au début et l’introduisons dans sa propre entrée A ? La réponse est la suivante : C’est magique ! &lt;/source&gt; Multiplexeur bouclé Comme vous pouvez le voir, grâce à ce seul changement, nous avons transformé notre multiplexeur en une cellule mémoire très basique. L’ancienne entrée B est maintenant la seule entrée de données de la cellule mémoire, et l’ancienne entrée P est maintenant l’entrée “écriture”. Mais comme ce circuit n’a plus de sortie maintenant que nous l’avons bouclé, nous avons corrigé cela en ajoutant un duplicateur (et en combinant également un échangeur avec un ET, comme la dernière fois) : &lt;/source&gt; Verrou basique Ce circuit que nous venons de faire s’appelle un Verrou D. Il a deux entrées : D pour “Donnée” et E pour “Écrire”. Contrairement aux calculateurs électroniques, nous devons laisser E allumé pendant un certain temps, car les objets doivent revenir au début pour que la sortie devienne stable. Cependant, un verrou D a un problème assez important, à savoir que, tant que l’entrée E est allumée, la sortie recopie systématiquement l’entrée D, transformant effectivement le tout en un flux fantaisiste. Nous devons garantir la stabilité de la sortie, et pour cela, nous avons besoin de quelque chose de plus que le simple verrou D. Cellule mémoire maître-esclave De nombreux problèmes peuvent être résolus en construisant simplement une autre copie, et celui du verrou D ne fait pas exception Nous dupliquons et inversons l’entrée E, et nous l’introduisons dans l’entrée d’écriture d’un autre verrou D. Ensuite, nous faisons passer la sortie du premier verrou dans l’entrée de données du second. L’inversion se fait ici en introduisant un troisième type d’objet, qui est remplacé par l’entrée d’écriture. Tout comme la semaine dernière, les deux côtés du convoyeur viennent à notre secours, et nous n’avons en fait pas besoin de construire une autre copie complète, nous pouvons juste faire des boucles intelligentes : &lt;/source&gt; Cellule mémoire maître-esclave étalée Ce système de double verrou crée une sorte d’escalier pour notre valeur de données, où elle est admise sur la première marche lorsque l’entrée E s’allume, et autorisée à continuer seulement après qu’elle se soit éteinte. Cela protège la sortie contre tout changement jusqu’à ce que nous ayons terminé un cycle. Maintenant, nous pouvons tout réorganiser pour en faire un module compact : &lt;/source&gt; Cellule mémoire compacte Il est intéressant de noter qu’il a exactement les mêmes dimensions que le module d’additionneur de la semaine dernière (ou qu’il avait, jusqu’à l’intervention de BlueCheetah). Quelle coïncidence agréable ! Remarque finale Maintenant que nous avons un additionneur et de la mémoire, nous sommes en mesure de construire un processeur. Bien sûr, nous avons besoin d’une horloge pour tout faire fonctionner, mais c’est aussi simple qu’une boucle de demi-convoyeurs pleins avec un duplicateur. L’unité arithmétique et logique (UAL) n’est rien d’autre qu’un groupe d’additionneurs qui se repassent les données en boucle à travers un registre, qui n’est lui-même qu’un groupe de cellules mémoire. Mes connaissances en informatique ne sont pas assez étendues pour tout expliquer complètement, alors je vous invite à suivre letao12 sur YouTube, car c’est sa série qui m’a inspiré à tester cette logique à base de convoyeurs. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="Cette semaine, nous continuons l’article de pocarski de la semaine dernière qui n’est rien de moins que la possibilité de créer un ordinateur dans Factorio en utilisant seulement des convoyeurs. Cette fois, nous tentons de vous montrer comment se rappeler de choses. Jetons-y un oeil. L’informatique par convoyeurs, Deuxième partie : N’oubliez jamais pocarski Cette semaine, je vais poursuivre mon article à propos de l’informatique basée sur les convoyeurs. Je vous conseille vivement de revenir au numéro précédent pour vous rafraîchir la mémoire. Une petite note avant de commencer : cette semaine, BlueCheetah#7844, utilisateur du Discord, a apporté d’importantes améliorations à la configuration de mon circuit d’additionneur : il est maintenant légèrement plus long, mais plus large de quatre tuiles. Voici une image de ce circuit, effectuant les mêmes calculs que la semaine dernière : La dernière fois, nous avons étudié la possibilité d’additionner des nombres en utilisant uniquement des convoyeurs et des répartiteurs. Cette semaine, nous allons nous pencher sur un élément tout aussi important en matière d’informatique : la mémoire. La possibilité d’ajouter des nombres est une opération simple, mais en fin de compte inutile s’il n’y a aucun moyen de stocker les instructions ou le résultat. Dans un processeur, les résultats de l’addition sont mémorisés puis, après quelques manipulations, renvoyés à ces mêmes additionneurs. Cela permet d’effectuer pratiquement toutes les opérations mathématiques imaginables. Comme la semaine dernière, tout le monde est invité à faire ses propres expériences grâce au livre de plans contenant tous les circuits de cet article. Le multiplexeur Pour commencer, nous allons introduire un nouveau circuit : le multiplexeur. Un multiplexeur a deux entrées de données A et B, une entrée pointeur P et une sortie O. Voici la table de vérité pour ce multiplexeur (“-“ signifie que l’entrée n’a pas d’influence sur la sortie) : A B P O 0 - 0 0 1 - 0 1 - 0 1 0 - 1 1 1 L’entrée P choisit en fait les entrées de données qui doivent être transmises à la sortie. Si P est à 0, notre sortie sera égale à la valeur de A, et s’il est à 1, notre sortie sera la valeur de B. Maintenant, pour construire ça en pratique, nous pouvons utiliser des portes ET. Elles nous permettent d’ignorer délibérément une entrée. Nous pouvons choisir de faire passer une entrée ou non en activant ou en désactivant simplement l’autre entrée de la porte. En gardant cela à l’esprit, nous pouvons reformuler le multiplexeur sous la forme (A ET NON P) OU (B ET P). Ce sont tous des éléments que nous connaissons déjà, ce qui signifie qu’un multiplexeur peut être construit de cette manière : &lt;/source&gt; Multiplexeur à base de convoyeurs Il s’agit simplement d’un circuit Duplicateur-NON et de deux portes ET. Nous avons également besoin de quelques échangeurs d’objets, pour faire correspondre tous les types d’objets en entrée et en sortie. Cellule mémoire de base Les cellules mémoire semblent très compliquées à première vue. Un circuit qui se souvient d’une entrée ? Il faudrait sûrement une sorte de stockage, mais comment faire en sorte que la sortie reste disponible sans que le stockage ne s’épuise ? C’est là qu’intervient notre nouvel ami, le multiplexeur. Que se passe-t-il si nous ramenons la sortie au début et l’introduisons dans sa propre entrée A ? La réponse est la suivante : C’est magique ! &lt;/source&gt; Multiplexeur bouclé Comme vous pouvez le voir, grâce à ce seul changement, nous avons transformé notre multiplexeur en une cellule mémoire très basique. L’ancienne entrée B est maintenant la seule entrée de données de la cellule mémoire, et l’ancienne entrée P est maintenant l’entrée “écriture”. Mais comme ce circuit n’a plus de sortie maintenant que nous l’avons bouclé, nous avons corrigé cela en ajoutant un duplicateur (et en combinant également un échangeur avec un ET, comme la dernière fois) : &lt;/source&gt; Verrou basique Ce circuit que nous venons de faire s’appelle un Verrou D. Il a deux entrées : D pour “Donnée” et E pour “Écrire”. Contrairement aux calculateurs électroniques, nous devons laisser E allumé pendant un certain temps, car les objets doivent revenir au début pour que la sortie devienne stable. Cependant, un verrou D a un problème assez important, à savoir que, tant que l’entrée E est allumée, la sortie recopie systématiquement l’entrée D, transformant effectivement le tout en un flux fantaisiste. Nous devons garantir la stabilité de la sortie, et pour cela, nous avons besoin de quelque chose de plus que le simple verrou D. Cellule mémoire maître-esclave De nombreux problèmes peuvent être résolus en construisant simplement une autre copie, et celui du verrou D ne fait pas exception Nous dupliquons et inversons l’entrée E, et nous l’introduisons dans l’entrée d’écriture d’un autre verrou D. Ensuite, nous faisons passer la sortie du premier verrou dans l’entrée de données du second. L’inversion se fait ici en introduisant un troisième type d’objet, qui est remplacé par l’entrée d’écriture. Tout comme la semaine dernière, les deux côtés du convoyeur viennent à notre secours, et nous n’avons en fait pas besoin de construire une autre copie complète, nous pouvons juste faire des boucles intelligentes : &lt;/source&gt; Cellule mémoire maître-esclave étalée Ce système de double verrou crée une sorte d’escalier pour notre valeur de données, où elle est admise sur la première marche lorsque l’entrée E s’allume, et autorisée à continuer seulement après qu’elle se soit éteinte. Cela protège la sortie contre tout changement jusqu’à ce que nous ayons terminé un cycle. Maintenant, nous pouvons tout réorganiser pour en faire un module compact : &lt;/source&gt; Cellule mémoire compacte Il est intéressant de noter qu’il a exactement les mêmes dimensions que le module d’additionneur de la semaine dernière (ou qu’il avait, jusqu’à l’intervention de BlueCheetah). Quelle coïncidence agréable ! Remarque finale Maintenant que nous avons un additionneur et de la mémoire, nous sommes en mesure de construire un processeur. Bien sûr, nous avons besoin d’une horloge pour tout faire fonctionner, mais c’est aussi simple qu’une boucle de demi-convoyeurs pleins avec un duplicateur. L’unité arithmétique et logique (UAL) n’est rien d’autre qu’un groupe d’additionneurs qui se repassent les données en boucle à travers un registre, qui n’est lui-même qu’un groupe de cellules mémoire. Mes connaissances en informatique ne sont pas assez étendues pour tout expliquer complètement, alors je vous invite à suivre letao12 sur YouTube, car c’est sa série qui m’a inspiré à tester cette logique à base de convoyeurs. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-24/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-24/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-02-19T00:00:00+00:00">
+<script type="application/ld+json">
+{"description":"Cette semaine, nous continuons l’article de pocarski de la semaine dernière qui n’est rien de moins que la possibilité de créer un ordinateur dans Factorio en utilisant seulement des convoyeurs. Cette fois, nous tentons de vous montrer comment se rappeler de choses. Jetons-y un oeil. L’informatique par convoyeurs, Deuxième partie : N’oubliez jamais pocarski Cette semaine, je vais poursuivre mon article à propos de l’informatique basée sur les convoyeurs. Je vous conseille vivement de revenir au numéro précédent pour vous rafraîchir la mémoire. Une petite note avant de commencer : cette semaine, BlueCheetah#7844, utilisateur du Discord, a apporté d’importantes améliorations à la configuration de mon circuit d’additionneur : il est maintenant légèrement plus long, mais plus large de quatre tuiles. Voici une image de ce circuit, effectuant les mêmes calculs que la semaine dernière : La dernière fois, nous avons étudié la possibilité d’additionner des nombres en utilisant uniquement des convoyeurs et des répartiteurs. Cette semaine, nous allons nous pencher sur un élément tout aussi important en matière d’informatique : la mémoire. La possibilité d’ajouter des nombres est une opération simple, mais en fin de compte inutile s’il n’y a aucun moyen de stocker les instructions ou le résultat. Dans un processeur, les résultats de l’addition sont mémorisés puis, après quelques manipulations, renvoyés à ces mêmes additionneurs. Cela permet d’effectuer pratiquement toutes les opérations mathématiques imaginables. Comme la semaine dernière, tout le monde est invité à faire ses propres expériences grâce au livre de plans contenant tous les circuits de cet article. Le multiplexeur Pour commencer, nous allons introduire un nouveau circuit : le multiplexeur. Un multiplexeur a deux entrées de données A et B, une entrée pointeur P et une sortie O. Voici la table de vérité pour ce multiplexeur (“-“ signifie que l’entrée n’a pas d’influence sur la sortie) : A B P O 0 - 0 0 1 - 0 1 - 0 1 0 - 1 1 1 L’entrée P choisit en fait les entrées de données qui doivent être transmises à la sortie. Si P est à 0, notre sortie sera égale à la valeur de A, et s’il est à 1, notre sortie sera la valeur de B. Maintenant, pour construire ça en pratique, nous pouvons utiliser des portes ET. Elles nous permettent d’ignorer délibérément une entrée. Nous pouvons choisir de faire passer une entrée ou non en activant ou en désactivant simplement l’autre entrée de la porte. En gardant cela à l’esprit, nous pouvons reformuler le multiplexeur sous la forme (A ET NON P) OU (B ET P). Ce sont tous des éléments que nous connaissons déjà, ce qui signifie qu’un multiplexeur peut être construit de cette manière : &lt;/source&gt; Multiplexeur à base de convoyeurs Il s’agit simplement d’un circuit Duplicateur-NON et de deux portes ET. Nous avons également besoin de quelques échangeurs d’objets, pour faire correspondre tous les types d’objets en entrée et en sortie. Cellule mémoire de base Les cellules mémoire semblent très compliquées à première vue. Un circuit qui se souvient d’une entrée ? Il faudrait sûrement une sorte de stockage, mais comment faire en sorte que la sortie reste disponible sans que le stockage ne s’épuise ? C’est là qu’intervient notre nouvel ami, le multiplexeur. Que se passe-t-il si nous ramenons la sortie au début et l’introduisons dans sa propre entrée A ? La réponse est la suivante : C’est magique ! &lt;/source&gt; Multiplexeur bouclé Comme vous pouvez le voir, grâce à ce seul changement, nous avons transformé notre multiplexeur en une cellule mémoire très basique. L’ancienne entrée B est maintenant la seule entrée de données de la cellule mémoire, et l’ancienne entrée P est maintenant l’entrée “écriture”. Mais comme ce circuit n’a plus de sortie maintenant que nous l’avons bouclé, nous avons corrigé cela en ajoutant un duplicateur (et en combinant également un échangeur avec un ET, comme la dernière fois) : &lt;/source&gt; Verrou basique Ce circuit que nous venons de faire s’appelle un Verrou D. Il a deux entrées : D pour “Donnée” et E pour “Écrire”. Contrairement aux calculateurs électroniques, nous devons laisser E allumé pendant un certain temps, car les objets doivent revenir au début pour que la sortie devienne stable. Cependant, un verrou D a un problème assez important, à savoir que, tant que l’entrée E est allumée, la sortie recopie systématiquement l’entrée D, transformant effectivement le tout en un flux fantaisiste. Nous devons garantir la stabilité de la sortie, et pour cela, nous avons besoin de quelque chose de plus que le simple verrou D. Cellule mémoire maître-esclave De nombreux problèmes peuvent être résolus en construisant simplement une autre copie, et celui du verrou D ne fait pas exception Nous dupliquons et inversons l’entrée E, et nous l’introduisons dans l’entrée d’écriture d’un autre verrou D. Ensuite, nous faisons passer la sortie du premier verrou dans l’entrée de données du second. L’inversion se fait ici en introduisant un troisième type d’objet, qui est remplacé par l’entrée d’écriture. Tout comme la semaine dernière, les deux côtés du convoyeur viennent à notre secours, et nous n’avons en fait pas besoin de construire une autre copie complète, nous pouvons juste faire des boucles intelligentes : &lt;/source&gt; Cellule mémoire maître-esclave étalée Ce système de double verrou crée une sorte d’escalier pour notre valeur de données, où elle est admise sur la première marche lorsque l’entrée E s’allume, et autorisée à continuer seulement après qu’elle se soit éteinte. Cela protège la sortie contre tout changement jusqu’à ce que nous ayons terminé un cycle. Maintenant, nous pouvons tout réorganiser pour en faire un module compact : &lt;/source&gt; Cellule mémoire compacte Il est intéressant de noter qu’il a exactement les mêmes dimensions que le module d’additionneur de la semaine dernière (ou qu’il avait, jusqu’à l’intervention de BlueCheetah). Quelle coïncidence agréable ! Remarque finale Maintenant que nous avons un additionneur et de la mémoire, nous sommes en mesure de construire un processeur. Bien sûr, nous avons besoin d’une horloge pour tout faire fonctionner, mais c’est aussi simple qu’une boucle de demi-convoyeurs pleins avec un duplicateur. L’unité arithmétique et logique (UAL) n’est rien d’autre qu’un groupe d’additionneurs qui se repassent les données en boucle à travers un registre, qui n’est lui-même qu’un groupe de cellules mémoire. Mes connaissances en informatique ne sont pas assez étendues pour tout expliquer complètement, alors je vous invite à suivre letao12 sur YouTube, car c’est sa série qui m’a inspiré à tester cette logique à base de convoyeurs. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","@type":"BlogPosting","url":"https://alt-f4.blog/ALTF4-24/","headline":"Alt-F4 n°24 - Créer des mémoires","dateModified":"2021-02-19T00:00:00+00:00","datePublished":"2021-02-19T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-24/"},"author":{"@type":"Person","name":"pocarski"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/24/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/24/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-24/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-24/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-24/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-24/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-24/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-24/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-24/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-24/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-24/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-24/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°24 - Créer des mémoires  <author>19-02-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>pocarski</em>,
+
+
+
+édité par <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev, Firerazer</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Sommaire</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#linformatique-par-convoyeurs-deuxi%C3%A8me-partie--noubliez-jamais-pocarski">L’informatique par convoyeurs, Deuxième partie : N’oubliez jamais <author>pocarski</author></a>
+    <ul>
+      <li><a href="#le-multiplexeur">Le multiplexeur</a></li>
+      <li><a href="#cellule-m%C3%A9moire-de-base">Cellule mémoire de base</a></li>
+      <li><a href="#cellule-m%C3%A9moire-ma%C3%AEtre-esclave">Cellule mémoire maître-esclave</a></li>
+      <li><a href="#remarque-finale">Remarque finale</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>Cette semaine, nous continuons l’article de pocarski de la semaine dernière qui n’est rien de moins que la possibilité de créer un ordinateur dans Factorio en utilisant seulement des convoyeurs. Cette fois, nous tentons de vous montrer comment se rappeler de choses. Jetons-y un oeil.</p>
+      <h2 id="linformatique-par-convoyeurs-deuxième-partie--noubliez-jamais-pocarski">
+        
+        
+            <a href="#linformatique-par-convoyeurs-deuxi%C3%A8me-partie--noubliez-jamais-pocarski" class="anchor" style="text-decoration: none;">L’informatique par convoyeurs, Deuxième partie : N’oubliez jamais <author>pocarski</author></a>
+          
+        
+      </h2>
+    
+
+<p>Cette semaine, je vais poursuivre mon article à propos de l’informatique basée sur les convoyeurs. Je vous conseille vivement de revenir au <a href="https://alt-f4.blog/fr/ALTF4-23/#linformatique-par-convoyeurs-premi%C3%A8re-partie--des-maths-pas-si-rapides-pocarski">numéro précédent</a> pour vous rafraîchir la mémoire.</p>
+
+<p>Une petite note avant de commencer : cette semaine, <em>BlueCheetah#7844</em>, utilisateur du <a href="https://discord.gg/AsXAwyV">Discord</a>, a apporté d’importantes améliorations à la configuration de mon circuit d’additionneur : il est maintenant légèrement plus long, mais plus large de quatre tuiles. Voici une image de ce circuit, effectuant les mêmes calculs que la semaine dernière :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/24/improved-8-bit-adder.jpg" alt="Un meilleur additionneur" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>La dernière fois, nous avons étudié la possibilité d’additionner des nombres en utilisant uniquement des convoyeurs et des répartiteurs. Cette semaine, nous allons nous pencher sur un élément tout aussi important en matière d’informatique : la mémoire. La possibilité d’ajouter des nombres est une opération simple, mais en fin de compte inutile s’il n’y a aucun moyen de stocker les instructions ou le résultat. Dans un processeur, les résultats de l’addition sont mémorisés puis, après quelques manipulations, renvoyés à ces mêmes additionneurs. Cela permet d’effectuer pratiquement toutes les opérations mathématiques imaginables.</p>
+
+<p>Comme la semaine dernière, tout le monde est invité à faire ses propres expériences grâce au <a href="https://media.alt-f4.blog/ALTF4/24/belt-computer-blueprint-book-2.txt">livre de plans</a> contenant tous les circuits de cet article.</p>
+      <h3 id="le-multiplexeur">
+        
+        
+            <a href="#le-multiplexeur" class="anchor" style="text-decoration: none;">Le multiplexeur</a>
+          
+        
+      </h3>
+    
+
+<p>Pour commencer, nous allons introduire un nouveau circuit : le <a href="https://fr.wikipedia.org/wiki/Multiplexeur">multiplexeur</a>. Un multiplexeur a deux entrées de données <em>A</em> et <em>B</em>, une entrée pointeur <em>P</em> et une sortie <em>O</em>. Voici la table de vérité pour ce multiplexeur (“-“ signifie que l’entrée n’a pas d’influence sur la sortie) :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>P</th>
+      <th>O</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>-</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>-</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>L’<em>entrée P</em> choisit en fait les entrées de données qui doivent être transmises à la sortie. Si <em>P</em> est à <code class="language-plaintext highlighter-rouge">0</code>, notre sortie sera égale à la valeur de <em>A</em>, et s’il est à <code class="language-plaintext highlighter-rouge">1</code>, notre sortie sera la valeur de <em>B</em>. Maintenant, pour construire ça en pratique, nous pouvons utiliser des portes ET. Elles nous permettent d’ignorer délibérément une entrée. Nous pouvons choisir de faire passer une entrée ou non en activant ou en désactivant simplement l’autre entrée de la porte. En gardant cela à l’esprit, nous pouvons reformuler le multiplexeur sous la forme <code class="language-plaintext highlighter-rouge">(A ET NON P) OU (B ET P)</code>. Ce sont tous des éléments que nous connaissons déjà, ce qui signifie qu’un multiplexeur peut être construit de cette manière :</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/multiplexer.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Multiplexeur à base de convoyeurs
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Il s’agit simplement d’un circuit Duplicateur-NON et de deux portes ET. Nous avons également besoin de quelques échangeurs d’objets, pour faire correspondre tous les types d’objets en entrée et en sortie.</p>
+      <h3 id="cellule-mémoire-de-base">
+        
+        
+            <a href="#cellule-m%C3%A9moire-de-base" class="anchor" style="text-decoration: none;">Cellule mémoire de base</a>
+          
+        
+      </h3>
+    
+
+<p>Les cellules mémoire semblent très compliquées à première vue. Un circuit qui <em>se souvient</em> d’une entrée ? Il faudrait sûrement une sorte de stockage, mais comment faire en sorte que la sortie reste disponible sans que le stockage ne s’épuise ? C’est là qu’intervient notre nouvel ami, le multiplexeur. Que se passe-t-il si nous ramenons la sortie au début et l’introduisons dans sa propre <em>entrée A</em> ? La réponse est la suivante : <em>C’est magique !</em></p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/looped_mux.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Multiplexeur bouclé
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Comme vous pouvez le voir, grâce à ce seul changement, nous avons transformé notre multiplexeur en une cellule mémoire très basique. L’ancienne <em>entrée B</em> est maintenant la seule entrée de données de la cellule mémoire, et l’ancienne <em>entrée P</em> est maintenant l’entrée “écriture”. Mais comme ce circuit n’a plus de sortie maintenant que nous l’avons bouclé, nous avons corrigé cela en ajoutant un duplicateur (et en combinant également un échangeur avec un ET, comme la dernière fois) :</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/basic_latch.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Verrou basique
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Ce circuit que nous venons de faire s’appelle un <strong>Verrou D</strong>. Il a deux entrées : <em>D</em> pour “Donnée” et <em>E</em> pour “Écrire”. Contrairement aux calculateurs électroniques, nous devons laisser <em>E</em> allumé pendant un certain temps, car les objets doivent revenir au début pour que la sortie devienne stable. Cependant, un verrou D a un problème assez important, à savoir que, tant que l’<em>entrée E</em> est allumée, la sortie recopie systématiquement l’<em>entrée D</em>, transformant effectivement le tout en un flux fantaisiste. Nous devons garantir la stabilité de la sortie, et pour cela, nous avons besoin de quelque chose de plus que le simple verrou D.</p>
+      <h3 id="cellule-mémoire-maître-esclave">
+        
+        
+            <a href="#cellule-m%C3%A9moire-ma%C3%AEtre-esclave" class="anchor" style="text-decoration: none;">Cellule mémoire maître-esclave</a>
+          
+        
+      </h3>
+    
+
+<p>De nombreux problèmes peuvent être résolus en construisant simplement une autre copie, et celui du verrou D ne fait pas exception Nous dupliquons et inversons l’<em>entrée E</em>, et nous l’introduisons dans l’entrée d’écriture d’un autre verrou D. Ensuite, nous faisons passer la sortie du premier verrou dans l’entrée de données du second. L’inversion se fait ici en introduisant un troisième type d’objet, qui est remplacé par l’entrée d’écriture. Tout comme la semaine dernière, les deux côtés du convoyeur viennent à notre secours, et nous n’avons en fait pas besoin de construire une autre copie complète, nous pouvons juste faire des boucles intelligentes :</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/spread_out_master-slave.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Cellule mémoire maître-esclave étalée
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Ce système de double verrou crée une sorte d’escalier pour notre valeur de données, où elle est admise sur la première marche lorsque l’<em>entrée E</em> s’allume, et autorisée à continuer seulement après qu’elle se soit éteinte. Cela protège la sortie contre tout changement jusqu’à ce que nous ayons terminé un cycle. Maintenant, nous pouvons tout réorganiser pour en faire un module compact :</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/compact_memory_cell.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Cellule mémoire compacte
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Il est intéressant de noter qu’il a exactement les mêmes dimensions que le module d’additionneur de la semaine dernière (ou qu’il avait, jusqu’à l’intervention de BlueCheetah). Quelle coïncidence agréable !</p>
+      <h3 id="remarque-finale">
+        
+        
+            <a href="#remarque-finale" class="anchor" style="text-decoration: none;">Remarque finale</a>
+          
+        
+      </h3>
+    
+
+<p>Maintenant que nous avons un additionneur et de la mémoire, nous sommes en mesure de construire un processeur. Bien sûr, nous avons besoin d’une horloge pour tout faire fonctionner, mais c’est aussi simple qu’une boucle de demi-convoyeurs pleins avec un duplicateur. L’unité arithmétique et logique (UAL) n’est rien d’autre qu’un groupe d’additionneurs qui se repassent les données en boucle à travers un registre, qui n’est lui-même qu’un groupe de cellules mémoire. Mes connaissances en informatique ne sont pas assez étendues pour tout expliquer complètement, alors je vous invite à suivre <a href="https://www.youtube.com/channel/UC6BeS4toXnPJe-Kds9E_FEQ">letao12</a> sur YouTube, car c’est sa série qui m’a inspiré à tester cette logique à base de convoyeurs.</p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://discord.gg/nxnCFkb">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-23/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
