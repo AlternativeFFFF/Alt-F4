@@ -16,20 +16,20 @@ Even if you do generate all your power from solar, efficiency modules will still
 
 To show the effect efficiency modules can have on your pollution cloud, I used the editor to design and build a factory that is roughly the size of an average player's pre-rocket factory, maybe even a bit smaller. It makes 45 SPM, produces all its power from solid fuel and steam, and uses mid-tier machines (steel furnaces, electric mining drills, Mk2 assemblers). I placed this complete factory on a map with no pollution and let it run for ten hours, then took a screenshot of the pollution cloud. Next, I reloaded the map with no pollution, placed the base down again, and this time added efficiency modules before running it for ten hours. You can see for yourself how much smaller the pollution cloud is.
 
-[Juxtaposed pollution cloud images]
+{% include compare.html id="0" width="800px" height="800px" old="https://media.alt-f4.blog/ALTF4/25/pollution-no-modules.jpg" new="https://media.alt-f4.blog/ALTF4/25/pollution-modules.jpg"  %}
 
 ### Where should they be used?
 
-There's many reasons for using efficiency modules, and they can benefit any factory, but the main three use cases are deathworlds, mining outposts, and solar fields. Let's go into these in a little more detail.
+There are many reasons for using efficiency modules, and they can benefit any factory, but the main three use cases are Death worlds, mining outposts, and solar fields. Let's go into these in a little more detail.
 
-* Deathworlds can be pretty tough, but it's important to remember that if you can keep the nests out of your pollution cloud, you get far fewer and smaller attack waves. Why go on difficult conquests to clear your cloud when you can just have a smaller cloud?
+* Death worlds can be pretty tough, but it's important to remember that if you can keep the nests out of your pollution cloud, you get far fewer and smaller attack waves. Why go on difficult conquests to clear your cloud when you can just have a smaller cloud?
 
 * Mining drills have one of the highest pollution rates of any machine in the game, so a large mining outpost could easily be putting out more pollution than your entire main factory. If you fill them with efficiency 1 modules, your entire outpost produces 80% less pollution, making it much easier to defend.
 
 * Solar fields can be downright massive, and fairly expensive to set up. If your factory is full of efficiency modules, it can wind up using less than half the power, which means a solar field that's less than half the size!
 
-[Image comparison: large solar field on the left, small on the right | caption: The aforementioned mining outpost with efficiency modules, benefitting from a smaller solar field.]
+{% include compare.html id="1" width="1280px" height="720px" old="https://media.alt-f4.blog/ALTF4/25/mining-no-modules.jpg" new="https://media.alt-f4.blog/ALTF4/25/mining-modules.jpg" caption='The aforementioned mining outpost with efficiency modules, benefitting from a smaller solar field.' %}
 
-Because efficiency modules don't have a direct drawback, they are a great thing to just toss in wherever you have free slots. Nothing but benefits await, the only costs are a few red and green circuits. As with any module, or even solar panels and accumulators, a true full analysis of the costs and benefits should include the material and energy costs to create it in the first place. While that's well beyond the scope of this series, a few reddit users such as *Antun789* have [taken a pass at it](https://www.reddit.com/r/factorio/comments/gp454w/build_cost_and_power_efficiency_math_of_8_and_12/). Feel free to take a look at their work, and perhaps add your own pages. I know I plan to add a few!
+Because efficiency modules don't have a direct drawback, they are a great thing to just toss in wherever you have free slots. Nothing but benefits await, the only costs are a few red and green circuits. As with any module, or even solar panels and accumulators, a true full analysis of the costs and benefits should include the material and energy costs to create it in the first place. While that's well beyond the scope of this series, a few Reddit users such as *Antun789* have [taken a pass at it](https://www.reddit.com/r/factorio/comments/gp454w/build_cost_and_power_efficiency_math_of_8_and_12/). Feel free to take a look at their work, and perhaps add your own pages. I know I plan to add a few!
 
 Finally, because you can usually hit the 80% maximum benefit from just tier 1 modules, many people jump to the conclusion that the higher tier efficiency modules are useless. That isn't true, as they can be combined with other high-tier modules to offset their drawbacks, but that's a discussion for another day. Until then, I'll see you on the factory floor!
