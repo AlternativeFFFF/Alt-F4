@@ -22,7 +22,7 @@ To show the effect efficiency modules can have on your pollution cloud, I used t
 
 There are many reasons for using efficiency modules, and they can benefit any factory, but the main three use cases are Death worlds, mining outposts, and solar fields. Let's go into these in a little more detail.
 
-* Death worlds can be pretty tough, but it's important to remember that if you can keep the nests out of your pollution cloud, you get far fewer and smaller attack waves. Why go on difficult conquests to clear your cloud when you can just have a smaller cloud?
+* Death worlds can be pretty tough, but it's important to remember that if you can keep the nests out of your pollution cloud, you get far fewer and smaller attack waves, as we explored in [Alt-F4 #10](https://alt-f4.blog/ALTF4-10/#border-walls-recon419a). Why go on difficult conquests to clear your cloud when you can just have a smaller cloud?
 
 * Mining drills have one of the highest pollution rates of any machine in the game, so a large mining outpost could easily be putting out more pollution than your entire main factory. If you fill them with efficiency 1 modules, your entire outpost produces 80% less pollution, making it much easier to defend.
 
