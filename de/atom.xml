@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-21T12:05:35+00:00</updated>
+  <updated>2021-02-26T11:09:49+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #25 – Effizienz, Effizienz, Effizienz!</title>
+    <link href="https://alt-f4.blog/de/ALTF4-25/" />
+    <id>https://alt-f4.blog/ALTF4-25</id>
+    <updated>2021-02-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In dieser silbernen Geburtstagsausgabe von Alt-F4 kehrt TheKool für diese dritte und letzte Folge seiner Serie über Module zurück. Darin deckt er Effizienzmodule ab, indem er über die Theorie spricht und dann ein reales Experiment vorstellt!&lt;/p&gt; &lt;h2 id=&quot;komplexitäts-ecke-effizienzmodule-the-kool&quot;&gt;Komplexitäts-Ecke: Effizienzmodule &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Diese Woche geht es weiter mit der dritten Ausgabe...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-16</id>
     <updated>2020-12-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Eine weitere Woche, eine weitere Ausgabe von Alt-F4! Die sechzehnte Woche dieser fröhlichen Serie von Wörtern, um genau zu sein. Zur Feier des Tages setzt TheKool seine Complexity Corner-Reihe fort, indem er die &lt;a href=&quot;https://de.wikipedia.org/wiki/5-Why-Methode?oldformat=true&quot;&gt;fünf Warums&lt;/a&gt; über Geschwindigkeitsmodule fragt. Danach erklärt DedlySpyder, wie die Inspiration für Modding manchmal von unerwarteten...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #15 – Nachforschungen zu 1.1</title>
-    <link href="https://alt-f4.blog/de/ALTF4-15/" />
-    <id>https://alt-f4.blog/ALTF4-15</id>
-    <updated>2020-11-27T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Diese Woche werfen wir mit der Veröffentlichung der experimentellen Version 1.1 einen Blick auf zwei Dinge, die diese mit sich bringt. Zuerst untersucht Conor_, was ihm die neuen Zughaltestellenbeschränkungen in seiner TSM-basierten Fabrik alles ermöglicht. Danach erkundet Therenas, was das Multithreading-Update für die Fließbänder sowohl in Theorie als auch in...</content>
   </entry>
   
   

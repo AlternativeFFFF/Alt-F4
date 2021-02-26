@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-21T12:05:35+00:00</updated>
+  <updated>2021-02-26T11:09:49+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #25 - 效率，效率，效率！</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-25/" />
+    <id>https://alt-f4.blog/ALTF4-25</id>
+    <updated>2021-02-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在这期 Alt-F4 的 25 期生日刊中，TheKool 将为大家带来他关于插件系列的第三期也是最后一期。在这期中，他通过谈论理论以及展示一个（几乎）真实世界实验来涵盖节能插件！&lt;/p&gt; &lt;h2 id=&quot;复杂角节能插件-the-kool&quot;&gt;复杂角：节能插件 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;本周，我们将进入第三期的复杂角！如果你没看过先前的内容，建议先读一下我过去的文章，关于&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-12/#%E5%A4%8D%E6%9D%82%E8%A7%92%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6-thekool&quot;&gt;产能&lt;/a&gt;和&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-16/#%E5%A4%8D%E6%9D%82%E8%A7%92%E9%80%9F%E5%BA%A6%E6%8F%92%E4%BB%B6-thekool&quot;&gt;速度&lt;/a&gt;插件的文章，因为今天我们将继续这个系列，讲讲三个插件中的最后一个：&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E8%8A%82%E8%83%BD%E6%8F%92%E4%BB%B6&quot;&gt;节能插件&lt;/a&gt;。和往期文章一样，我们将关注三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”我们的目标是要告诉那些对使用这些机制犹豫不决的人，它们其实是超级容易上手的。&lt;/p&gt; &lt;h3 id=&quot;节能插件是什么&quot;&gt;节能插件是什么？&lt;/h3&gt; &lt;p&gt;与其他两个插件一样，节能插件可以放置在建筑物中以改变它们运行的方式。和速度插件一样，节能插件也可以放置在机器和插件效果分享塔中。不过与速度插件和产能插件不同，节能插件只有一个效果，没有直接的缺点和副作用。嗯，其实就是一个效果，有两个好处。它们降低了建筑运行所需的电力，也减少了其产生的污染。&lt;/p&gt; &lt;h3 id=&quot;它们能提供什么效果&quot;&gt;它们能提供什么效果？&lt;/h3&gt; &lt;p&gt;它们可以降低已经压榨到极限的电网压力，或者通过无需制造大量发电设施来节省资源，但最主要的好处是减少污染。相当 &lt;em&gt;大&lt;/em&gt; 程度的污染减少。一个节能插件 1 就能减少高达 30% 的功耗和污染！这也是一个非常惊人的数字。不过有一点很重要，那就是每台机器最多只能受益于 80% 的减排量，所以你在使用的时候要记住这一点。&lt;/p&gt; &lt;p&gt;很多理论工作者喜欢假设整个工厂使用清洁能源。也就是说，所有的电力都来自于太阳能，而太阳能没有污染。但对于我们很多人来说，在游玩的过程中大部分时间都是依靠蒸汽或核能，而这两种能源都会产生污染（尽管核能是通过制作燃料棒间接产生污染）。事实上，我们很多人从来没有试过纯太阳能。这意味着降低电力消耗就能减少发电带来的污染。&lt;/p&gt; &lt;p&gt;即便你真的全部用太阳能发电，节能插件也会减少机器本身产生的污染。对于那些不知道的人来说，有些机器本身就会&lt;a href=&quot;https://wiki.factorio.com/Pollution/zh#%E6%B1%A1%E6%9F%93%E6%BA%90&quot;&gt;产生污染&lt;/a&gt;，不管它们消耗的电力来自哪里。但是，这个污染率也会受到用电倍率的影响。这意味着，如果你的机器因为节能插件而少用了 60% 的电，那么它产生的直接污染也就少了 60%。例如，一台组装机 2 型如果有两个节能插件 1，每分钟只会产生 1.2 的污染，低于正常的每分钟 3。&lt;/p&gt; &lt;p&gt;为了展示节能插件对污染云的影响，我用编辑器设计并建造了一个工厂，它的规模大概相当于一个普通玩家的前火箭工厂，甚至可能更小一些。它的产量为 45 SPM，电力全部来自固体燃料和蒸汽，使用的是中级机器（钢炉、电力采矿机、组装机 2 型）。我把这个完整的工厂放在一个没有污染的地图上，让它运行了十个小时，然后拍下污染云的截图。接下来，我重新加载了没有污染的地图，又把基地放了下来，这次在运行十个小时之前添加了节能插件。大家可以自己看看污染云小了多少。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;div class=&quot;juxtapose juxtapose-0&quot;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-16</id>
     <updated>2020-12-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;新的一周，新的一期 Alt-F4！确切的说，是这个快乐系文学的第十六周。为了庆祝，TheKool 继续他的复杂角系列，问了关于速度插件的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BA%94%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88&quot;&gt;五个为什么&lt;/a&gt;。之后，DedlySpyder 对来自于意料之外的 Mod 灵感进行了论述。&lt;/p&gt; &lt;h2 id=&quot;复杂角速度插件-thekool&quot;&gt;复杂角：速度插件 &lt;author&gt;TheKool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到“复杂角”！这是一个系列文章，聚焦于游戏中看似复杂的方面，试图对它们进行足够的说明，让初学者得以使用它们。为此，我们将提出三个问题：&lt;em&gt;它是什么？&lt;/em&gt; &lt;em&gt;它能提供什么效果？&lt;/em&gt; 和 &lt;em&gt;它应该用在哪里？&lt;/em&gt; 虽然这些文章是针对新手的，但即便是资深玩家，也可能在某个特定的主题上是一名初学者，所以请大家一起来看看吧！&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-12/#%E5%A4%8D%E6%9D%82%E8%A7%92%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6-thekool&quot;&gt;上一次&lt;/a&gt;我讲了产能插件，今天我接着讲速度插件。除了从它们本身谈起，我还会介绍它们与产能插件的不同之处，以及如何根据情况决定使用哪个插件。&lt;/p&gt; &lt;h3 id=&quot;速度插件是什么&quot;&gt;速度插件是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E9%80%9F%E5%BA%A6%E6%8F%92%E4%BB%B6&quot;&gt;速度插件&lt;/a&gt;，就像&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6&quot;&gt;产能插件&lt;/a&gt;一样，是可以放置在建筑物中以改变建筑物工作方式的物品。与产能插件不同，它们提供了一个非常简单的权衡：建筑会消耗更多的能量，但工作速度更快。更多关于消耗更多电力的内容将在后面介绍。速度模块也可以放到&lt;a href=&quot;https://wiki.factorio.com/Beacon/zh&quot;&gt;插件效果分享塔&lt;/a&gt;中，但我会在未来的文章中介绍，重点将是插件效果分享塔及其使用。&lt;/p&gt; &lt;p&gt;速度插件使机器工作得更快。这意味着机器的每分钟产量会增加。建造更多的组装机可以以更便宜的价格得到同样的结果，但这有时并不是一个可行的选择。有时，支持这些额外建筑的物流工作太过繁重，或者你缺乏扩张的空间。有时，你的基地对于你的电脑来说实在是太大了，你需要让游戏本身更高效地运行。有时，你想塞进一个复杂的建筑群，或者想改变一个建筑的速度来配合某个配方。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 1280px; max-height: 720px&quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/16/GC-speed-comparison.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #15 - 1.1 版本调研</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-15/" />
-    <id>https://alt-f4.blog/ALTF4-15</id>
-    <updated>2020-11-27T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周 1.1 实验版刚刚出炉，我们来看一看新版本带来的 2 个新变化。首先，Conor_ 研究了如何利用新的车站限流功能对他基于 TSM 的工厂做些什么。然后 Therenas 分别从理论和实践层面探讨了多线程更新对传送带的意义。细心点读也许能学到点东西！&lt;/p&gt; &lt;h2 id=&quot;车站限流-conor_&quot;&gt;车站限流 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;当谈到 1.1 带来的新变化时，我最想讨论的当然是火车站限流功能，因为&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-8/#%E6%88%91%E7%88%B1%E5%BC%82%E6%98%9F%E5%B7%A5%E5%8E%82%E7%9A%84%E9%93%81%E8%B7%AF-conor_&quot;&gt;我钟爱火车&lt;/a&gt;！接下来，我将研究新功能解决了什么问题，并介绍此前我是如何处理这些问题的。&lt;/p&gt; &lt;h3 id=&quot;天真的小白-conor_-曾犯过的低级错误&quot;&gt;天真的小白 Conor_ 曾犯过的低级错误&lt;/h3&gt; &lt;p&gt;不久前，我正在建立自己的第一个大型基地，并尝试在 5 倍研究费用（我 &lt;em&gt;喜欢&lt;/em&gt; 这样）下攻克 &lt;a href=&quot;https://mods.factorio.com/mod/SpaceMod&quot;&gt;SpaceX&lt;/a&gt; 模组。很快，我注意到自己的意大利面条式火车网络存在一些问题。在幼稚和无知的驱使下，我决定给运送相同货物的所有车站共用一个站名，再部署大量的火车运行在其间以保证这些车站都能得到充分的利用。然而事实证明这并不是一个好点子，这个易于实现的系统随后带给我的是痛苦和折磨——自从我搞明白原油处理以后，还没再经历过这样的痛苦。在仅有数个车站且相距不远的小基地中，这套系统可以运行的很好。但基地规模变大时，我发现火车根本不会前往远处的站点。一部分车站水泄不通甚至导致了死锁，而剩下的车站则空空荡荡被闲置。作为一个优秀的工程师，我决定必须拿出一个更好的方案来解决这个问题。于是我 &lt;del&gt;努力地研究，开发，实现更好的方案&lt;/del&gt; 在 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/creeix/train_distribution_mod/&quot;&gt;Reddit&lt;/a&gt; 上提问。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;有没有人知道什么 Mod 可以把火车分配到拥有相同站名的不同站点，无论距离远近？例如，所有的卸货站都叫一个名字，但每一个不同的站站都有相同数量的列车。&lt;/p&gt; &lt;/div&gt; &lt;span...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/nl/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-21T12:05:35+00:00</updated>
+  <updated>2021-02-26T11:09:49+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #25 - Efficiency, Efficiency, Efficiency!</title>
+    <link href="https://alt-f4.blog/nl/ALTF4-25/" />
+    <id>https://alt-f4.blog/ALTF4-25</id>
+    <updated>2021-02-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this silver birthday issue of Alt-F4, TheKool returns for this third and final instalment of his series about modules. In it, he covers efficiency modules by talking about the theory and then presenting a real(ish)-world experiment!&lt;/p&gt; &lt;h2 id=&quot;complexity-corner-efficiency-modules-the-kool&quot;&gt;Complexity Corner: Efficiency Modules &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;This week, we’re on to the...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-16</id>
     <updated>2020-12-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Another week, another issue of Alt-F4! The sixteenth week of this merry series of words to be precise. To celebrate, TheKool continues his Complexity Corner series by asking the &lt;a href=&quot;https://en.wikipedia.org/wiki/Five_Ws&quot;&gt;five Ws&lt;/a&gt; about speed modules. Afterwards, DedlySpyder pontificates on how modding inspiration sometimes comes from unexpected places.&lt;/p&gt; &lt;h2 id=&quot;complexity-corner-speed-modules-thekool&quot;&gt;Complexity Corner:...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #15 - Investigating 1.1</title>
-    <link href="https://alt-f4.blog/nl/ALTF4-15/" />
-    <id>https://alt-f4.blog/ALTF4-15</id>
-    <updated>2020-11-27T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This week, with 1.1 experimental just released, we take a look at two of the things it brings with it. First, &lt;em&gt;Conor_&lt;/em&gt; investigates what the new train stop limit allows him to do in his TSM-based factory. Then, &lt;em&gt;Therenas&lt;/em&gt; explores what the multithreading update to belts means, both in theory...</content>
   </entry>
   
   
