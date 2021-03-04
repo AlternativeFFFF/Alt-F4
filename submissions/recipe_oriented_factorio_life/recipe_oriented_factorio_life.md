@@ -10,7 +10,7 @@ Like most philosophies, ROFL tries to find one eternal object as the base of eve
 
 Based on a certain recipe, a dedicated subfactory is packaged into a module. A separate logistics system is used to obtain raw materials and supply products for the modules, as the interface for external interaction of the module. The purpose of this division is to achieve high cohesion inside the modules and low coupling between the modules. High cohesion inside the module meaning the module contains all the facilities (assemble machines, inserters, belts, power poles, beacons, etc.) needed to make the recipe so it can works independently. Low coupling between the modules meaning modules interact with each other through predefined interfaces (power grid and rail grid in the following examples) without direct dependencies so they are interchangeable.
 
-To better implement, [LTN - Logistic Train Network](https://mods.factorio.com/mods/Optera/LogisticTrainNetwork), [AAI Containers & Warehouses](https://mods.factorio.com/mod/aai-containers), and [Miniloader](https://mods.factorio.com/mod/miniloader) mods are being used in the following examples. The blueprints for all the examples below can be downloaded [here](attachment/rofl_example_blueprint).
+To better implement, [LTN - Logistic Train Network](https://mods.factorio.com/mods/Optera/LogisticTrainNetwork), [AAI Containers & Warehouses](https://mods.factorio.com/mod/aai-containers), and [Miniloader](https://mods.factorio.com/mod/miniloader) mods are being used in the following examples. The blueprints for all the examples below can be downloaded [here](attachment/rofl_example_blueprint.txt).
 
 ### Interface design
 
