@@ -20,47 +20,47 @@ In vanilla trains can only run on a predetermined schedule, which is not flexibl
 
 The chosen rail grid in my practice is a two-way left-hand traffic railroad in order to place the rail signals between the rails. Junctions are straight and left turn only for space-saving. Most stations have a train stop limit of 2 to ensure that a maximum of one train waits outside the station. Sections occupied by a handful of trains waiting outside the stations can be detoured through the fully interconnected grid.
 
-![rail grid](figure/rail_grid.jpg)
+![rail grid](figure/rail_grid.png)
 _Only the center grid will contain a crafting module_
 
 The modules are kept at a grid distance from each other, the grids between the modules are used for train traffic management, solar power generation and robot logistics networks separation. Robots excel in short-distance logistics but are terrible at long-distance transportation. A separated logistics network can prevent robots from being involved in unnecessary long-distance logistics because that part of the job belongs to trains.
 
 The smallest 2 car trains with 1 locomotive and 1 cargo/fluid wagon were chosen to reduce the size and eliminate the need to balance loading and unloading between wagons. Fuel replenishment for the locomotives set in the LTN's depot stations where trains return to after each delivery.
 
-![rail yard module](figure/rail_yard_module.jpg)
+![rail yard module](figure/rail_yard_module.png)
 _Fuel used for locomotives replenishment are also acquired via LTN._
 
 ### Module design
 
 Let's start with the simplest example, the iron gear wheel, a recipe with a single ingredient and a single product. A logistic train stop at the bottom of the grid is requesting 8000 iron plates, and a logistic train stop at the top of the grid is providing items (i.e. gears) from the connected warehouse.
 
-![Gear module](figure/rofl_gear_module.jpg)
+![Gear module](figure/rofl_gear_module.png)
 _Simply gear module. Raw material station is below, product station is above_
 
 Since the inputs and outputs within this module are fulfilled by trains, our modification and upgrade of the production line within the module will not affect other modules.
 
-![Alt gear module](figure/rofl_gear_module_2.jpg)
+![Alt gear module](figure/rofl_gear_module_2.png)
 _Gear module with beacons. No change of stations, only the production line between stations._
 
 Next, let‘s look at an advanced circuit module with three types of raw materials. By setting the logistic train stop requesting multiple ingredients, we were able to unload all of our raw materials at a single station. At this point all the raw materials are mixed in one warehouse， we then use filter miniloaders (similar to filter inserters) to separate each material onto a separate belt to supply the assembly machine.
 
-![Advanced circuit module](figure/advanced_circuit_module.jpg)
+![Advanced circuit module](figure/advanced_circuit_module.png)
 _Advanced circuit module. Use a single station to obtain raw materials._
 
 The feedstock of recipes that produce/consume fluids can also be transported in a fluid wagon, such as oil processing.
 
-![Oil refinery module](figure/oil_refinery_module.jpg)
+![Oil refinery module](figure/oil_refinery_module.png)
 _Oil refinery module. Note that by controlling the pump via the LTN signal allows different fluids to be loaded or unloaded at the same station without mixing._
 
 There are also some unconventional recipes, such as research, thermal power plant, and rocket silo.
 
-![research center module](figure/research_center_module.jpg)
+![research center module](figure/research_center_module.png)
 _Research center module, which doesn't need an output station_
 
-![thermal power plant module](figure/thermal_power_plant_module.jpg)
+![thermal power plant module](figure/thermal_power_plant_module.png)
 _Thermal power plant with landfill to place on water. Or you can use [Landfill Everything](https://mods.factorio.com/mod/LandfillEverything) to prepare the site._
 
-![rocket silo module](figure/rocket_silo_module.jpg)
+![rocket silo module](figure/rocket_silo_module.png)
 _Rocket silo module. Independent logistics robot network are be used within the module. The bottom station is for materials needed to build rockets, and the station on right is for payloads of the rocket, usually satellites._
 
 ### Pros and cons of ROFL
