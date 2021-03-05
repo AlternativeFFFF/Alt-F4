@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-26T11:17:08+00:00</updated>
+  <updated>2021-03-05T12:43:53+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #26 - 给游戏添加多人</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-26/" />
+    <id>https://alt-f4.blog/ALTF4-26</id>
+    <updated>2021-03-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在本周的第 26 期 Alt-F4 中（半周年！），of2win2 前往异星工厂多人游戏，并解释了它背后的一些技术机理。如果你曾想知道什么是 Desync，或者游戏是如何同时处理数百名玩家和数千个实体的，欢迎深入阅读！&lt;/p&gt; &lt;h2 id=&quot;异星工厂服务器-oof2win2&quot;&gt;异星工厂服务器 &lt;author&gt;oof2win2&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;大多数玩家可能至少连接过一次异星工厂服务器，可能与朋友一起玩，或只是查看一些其他人的世界。在今天的 Alt-F4 中，我将简述多人游戏的历史，然后我会深入解释多人游戏在技术上 &lt;em&gt;如何&lt;/em&gt; 工作的。其中我将解释完全确定性算法和锁步算法的使用。&lt;/p&gt; &lt;h3 id=&quot;多人游戏发展史&quot;&gt;多人游戏发展史&lt;/h3&gt; &lt;p&gt;异星工厂在 2014 年 10 月的推出 0.11.0 版本中引入了多人游戏功能，该功能的开发是从&lt;a href=&quot;https://www.factorio.com/blog/post/fff-26&quot;&gt;异星工厂 0.9.4&lt;/a&gt; 开始的。这个多人游戏和你今天看到的不一样，你不能比如说通过 Steam 轻松的“加入好友”或者使用服务器浏览器——你需要知道服务器的确切 IP 地址。当多人游戏最初发布时，有不少 Bug，比如&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?t=6285&quot;&gt;这个 Bug&lt;/a&gt; 不允许多人游戏持续超过 20 秒。当然，它被修复了，仅仅 3 个小时之后，经典的 Wube 式更新。还有&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?t=6414&quot;&gt;这个 Bug&lt;/a&gt;，它不允许一次连接超过三个人——不像六年后的&lt;a href=&quot;https://www.factorio.com/blog/post/fff-332&quot;&gt;这个 500 多个玩家的多人游戏&lt;/a&gt;。多人游戏开发上投入的海量工作才让 500 名玩家能够同时连接。&lt;/p&gt; &lt;p&gt;作为一项主要功能，异星工厂从 0.12.0...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-17</id>
     <updated>2020-12-11T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在本周的 Alt-F4 中，&lt;em&gt;Therenas&lt;/em&gt; 从 FFF 的游戏手册中抽出一页，谈论了他的 Mod 工厂规划师（Factory Planner）的下一个大更新的开发过程，并谈到了他对界面设计的一些哲学思考。&lt;em&gt;Dr_Doof&lt;/em&gt; 还和我们分享了由 Red Circuit 团队组织的一个圣诞温馨小活动。&lt;/p&gt; &lt;h2 id=&quot;界面设计的注意事项-therenas&quot;&gt;界面设计的注意事项 &lt;author&gt;Therenas&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在过去的几个月里，我一直在对&lt;a href=&quot;https://mods.factorio.com/mod/factoryplanner&quot;&gt;工厂规划师（Factory Planner）&lt;/a&gt;Mod 进行大规模的重新设计，跟大家分享一些设计上的考究我认为会很有趣。我将专注于主界面中最有趣的部分，因为那是重新设计中最复杂的部分，需要投入最多的思考和规划。&lt;/p&gt; &lt;p&gt;就算你不熟悉这个 Mod 也没问题，我将谈论我的设计方法，大致上也能适用于其他情况；Mod 只是一个让我聚焦这些想法的镜头。同样你也不需要成为一个设计师来才能理解这些内容（我就不是）；好的设计应该是任何人都能看出来的。&lt;/p&gt; &lt;h3 id=&quot;概述&quot;&gt;概述&lt;/h3&gt; &lt;p&gt;那么，我们就来看看吧。左边是当前的版本，而右边则是更精美的新版。首先，我先简单介绍一下，让大家熟悉这个 Mod。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;div class=&quot;juxtapose juxtapose-0&quot; style=&quot;max-width: 2856px; max-height: 1754px; margin: 20px auto auto; height: 100%; width: 100%;&quot;&gt; &lt;div class=&quot;jx-slider&quot;&gt; &lt;div class=&quot;jx-handle&quot; style=&quot;left:...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #16 - 调制速度</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-16/" />
-    <id>https://alt-f4.blog/ALTF4-16</id>
-    <updated>2020-12-04T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;新的一周，新的一期 Alt-F4！确切的说，是这个快乐系文学的第十六周。为了庆祝，TheKool 继续他的复杂角系列，问了关于速度插件的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BA%94%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88&quot;&gt;五个为什么&lt;/a&gt;。之后，DedlySpyder 对来自于意料之外的 Mod 灵感进行了论述。&lt;/p&gt; &lt;h2 id=&quot;复杂角速度插件-thekool&quot;&gt;复杂角：速度插件 &lt;author&gt;TheKool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到“复杂角”！这是一个系列文章，聚焦于游戏中看似复杂的方面，试图对它们进行足够的说明，让初学者得以使用它们。为此，我们将提出三个问题：&lt;em&gt;它是什么？&lt;/em&gt; &lt;em&gt;它能提供什么效果？&lt;/em&gt; 和 &lt;em&gt;它应该用在哪里？&lt;/em&gt; 虽然这些文章是针对新手的，但即便是资深玩家，也可能在某个特定的主题上是一名初学者，所以请大家一起来看看吧！&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-12/#%E5%A4%8D%E6%9D%82%E8%A7%92%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6-thekool&quot;&gt;上一次&lt;/a&gt;我讲了产能插件，今天我接着讲速度插件。除了从它们本身谈起，我还会介绍它们与产能插件的不同之处，以及如何根据情况决定使用哪个插件。&lt;/p&gt; &lt;h3 id=&quot;速度插件是什么&quot;&gt;速度插件是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E9%80%9F%E5%BA%A6%E6%8F%92%E4%BB%B6&quot;&gt;速度插件&lt;/a&gt;，就像&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6&quot;&gt;产能插件&lt;/a&gt;一样，是可以放置在建筑物中以改变建筑物工作方式的物品。与产能插件不同，它们提供了一个非常简单的权衡：建筑会消耗更多的能量，但工作速度更快。更多关于消耗更多电力的内容将在后面介绍。速度模块也可以放到&lt;a href=&quot;https://wiki.factorio.com/Beacon/zh&quot;&gt;插件效果分享塔&lt;/a&gt;中，但我会在未来的文章中介绍，重点将是插件效果分享塔及其使用。&lt;/p&gt; &lt;p&gt;速度插件使机器工作得更快。这意味着机器的每分钟产量会增加。建造更多的组装机可以以更便宜的价格得到同样的结果，但这有时并不是一个可行的选择。有时，支持这些额外建筑的物流工作太过繁重，或者你缺乏扩张的空间。有时，你的基地对于你的电脑来说实在是太大了，你需要让游戏本身更高效地运行。有时，你想塞进一个复杂的建筑群，或者想改变一个建筑的速度来配合某个配方。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 1280px; max-height: 720px&quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/16/GC-speed-comparison.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source...</content>
   </entry>
   
   

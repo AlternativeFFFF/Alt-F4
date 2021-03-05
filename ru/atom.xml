@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/ru/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-02-26T11:17:08+00:00</updated>
+  <updated>2021-03-05T12:43:53+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #26 - Putting the Multi in Player</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-26/" />
+    <id>https://alt-f4.blog/ALTF4-26</id>
+    <updated>2021-03-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this week’s 26th issue of Alt-F4 (half a year of issues!), oof2win2 goes into the Factorio multiplayer and explains some of the technical machinations behind it. If you’ve ever wondered what a desync is or how the game manages to handle hundreds of players and many thousands of entities...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-17</id>
     <updated>2020-12-11T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;For this week’s issue of Alt-F4, &lt;em&gt;Therenas&lt;/em&gt; takes a page out of the FFF playbook and talks about the development process of the next big update for his mod Factory Planner, going into his somewhat philosophical thoughts on interface design. &lt;em&gt;Dr_Doof&lt;/em&gt; also shares a cosy little Christmas event with us,...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #16 - Modulating Pure Speed</title>
-    <link href="https://alt-f4.blog/ru/ALTF4-16/" />
-    <id>https://alt-f4.blog/ALTF4-16</id>
-    <updated>2020-12-04T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Another week, another issue of Alt-F4! The sixteenth week of this merry series of words to be precise. To celebrate, TheKool continues his Complexity Corner series by asking the &lt;a href=&quot;https://en.wikipedia.org/wiki/Five_Ws&quot;&gt;five Ws&lt;/a&gt; about speed modules. Afterwards, DedlySpyder pontificates on how modding inspiration sometimes comes from unexpected places.&lt;/p&gt; &lt;h2 id=&quot;complexity-corner-speed-modules-thekool&quot;&gt;Complexity Corner:...</content>
   </entry>
   
   

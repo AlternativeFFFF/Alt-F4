@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 n°26 - Mettre du multi dans le jeu</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 n°26 - Mettre du multi dans le jeu | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 n°26 - Mettre du multi dans le jeu">
+<meta name="author" content="oof2win2">
+<meta property="og:locale" content="fr">
+<meta name="description" content="Dans ce numéro 26 de Alt-F4 (déjà une demi-année de parutions !), oof2win2 aborde le mode multijoueur de Factorio et explique certains des rouages techniques cachés. Si vous vous êtes déjà demandé ce qu’est une désynchronisation ou comment le jeu parvient à gérer des centaines de joueurs et plusieurs milliers d’entités à la fois, n’hésitez pas à vous y plonger ! Les serveurs Factorio oof2win2 La plupart d’entre nous se sont probablement déjà connectés au moins une fois à un serveur Factorio, que ce soit pour jouer avec des amis ou simplement pour voir les constructions de quelqu’un d’autre. Dans le numéro d’aujourd’hui de Alt-F4, j’expliquerai brièvement l’histoire du mode multijoueur, puis je me plongerai plus profondément dans l’explication de comment cela fonctionne techniquement. J’expliquerai entre autres l’utilisation des algorithmes entièrement déterministes et du protocole Lockstep. L’histoire du mode multijoueur En octobre 2014, avec la version 0.11.0 de Factorio, le mode multijoueur a été introduit dans le jeu, bien qu’il ait été développé depuis la version 0.9.4. Ce mode multijoueur était différent de celui que vous voyez aujourd’hui, vous ne pouviez pas par exemple “Rejoindre un ami” facilement via Steam ou utiliser la liste des serveurs - vous deviez connaître l’adresse IP exacte de celui-ci. Lorsque la première version du mode multijoueur est sorti, il y avait un certain nombre de bugs, comme celui-ci qui ne permettait pas aux parties en multijoueur de durer plus de 20 secondes. Il a bien sûr été corrigé moins de trois heures plus tard, comme d’habitude avec Wube. Il y avait aussi ce bug qui empêchait plus de trois personnes de se connecter en même temps - alors que, près de six ans plus tard, cette session multijoueur en a rassemblé plus de 500. Beaucoup de travail a dû être consacré au développement du mode multijoueur pour que 500 joueurs puissent se connecter en même temps. Avec la version 0.12.0, les serveurs headless ont été ajoutés en tant que caractéristique majeure. Cela signifie que les serveurs peuvent désormais fonctionner sur des machines sans processeur graphique, ce qui réduit considérablement le coût des serveurs Factorio et améliore l’accessibilité. Cela a également permis à plusieurs instances de serveur de fonctionner en même temps sur une seule machine, ce qui est très utile dans certains cas. Depuis la version 0.14.0, les serveurs Factorio ne mettent plus le jeu en pause pour tous les joueurs si l’ordinateur d’un joueur prend trop de temps à traiter une mise à jour. Cela signifie que si vous avez un ordinateur plus ancien, le serveur n’attendra plus que vous rattrapiez votre retard de traitement. C’est très utile sur les grands serveurs qui peuvent avoir des dizaines ou des centaines de joueurs en ligne à la fois, car on ne doit plus attendre les derniers pour pouvoir jouer. Une approche entièrement déterministe Comme mentionné dans le FFF-30, tous les clients doivent simuler le jeu de la même manière que le serveur, les mêmes actions exactement au même moment. Cela signifie que si une personne fait quelque chose sur son ordinateur, les instances de Factorio des autres personnes doivent faire de même. Une instance est une occurrence de quelque chose, de la même manière qu’il peut y avoir de nombreuses instances de pommes dans un panier ou d’onglets dans Chrome. Factorio est très différent de la plupart des jeux multijoueurs, comme CS:GO ou Overwatch, de sorte que les développeurs ne pouvaient pas simplement reprendre le modèle d’implémentation en multijoueur de ces jeux et le transposer dans Factorio, car cela ne fonctionnerait pas correctement. Au contraire, lors de la création du mode multijoueur, les développeurs ont utilisé le protocole Lockstep. Dans Factorio, la connexion commence par l’envoi de la carte par le serveur. Ensuite, ce dernier vous indique uniquement si quelque chose change, en fonction des entrées des utilisateurs, par exemple si un joueur place un convoyeur à un certain endroit, meurt à cause d’un déchiqueteur (ou d’un train), etc. On vous dit seulement que ceci est arrivé à ce moment-là, votre jeu doit mettre à jour sa simulation locale par lui-même. Il ne reçoit cependant pas une mise à jour détaillée à chaque tick de toutes les choses qui se passent à ce moment, comme les robots qui se déplacent et les trains qui s’arrêtent. La transmission de tout ce qui se passe, à chaque tick, nécessiterait beaucoup trop de bande passante de réseau, car il faudrait transférer des informations telles que “ce robot logistique s’est déplacé ici”, ce qui devrait se produire des dizaines de milliers de fois par tick avec les grosses sauvegardes. Sans parler de certaines autres informations qui conduiraient à transférer toute la sauvegarde à chaque tick, ce qui se traduirait dans certains cas par un transfert de 1500 Mo par seconde. Au lieu de cela, on vous communique uniquement les informations vraiment importantes, qui sont principalement les interactions des joueurs avec le jeu, et votre client exécute le jeu comme si personne d’autre n’était là. Il existe de nombreuses autres façons pour un jeu de gérer le multijoueur. Par exemple, Overwatch est un jeu qui garde une trace de presque tout, de manière centralisée sur son serveur de jeu, en surveillant chaque objet, joueur, balle, etc. et qui corrige activement votre instance client si quelque chose s’est mal passée. Factorio ne surveille que les entrées des joueurs et lance une désynchronisation si quelque chose se passe mal. Je vous expliquerai plus tard ce qu’est une désynchronisation. Ces deux implémentations sont différentes car les jeux sont radicalement différents : dans Overwatch, vous avez récupéré toutes les cartes lors du téléchargement initial du jeu, il vous suffit donc de transmettre les positions des joueurs et des projectiles. Dans Factorio, en revanche, les cartes changent tout le temps. Dans Factorio, vous avez des positions différentes pour les machines d’assemblage, les lampes, les poteaux électriques, les convoyeurs, les bras et à peu près tout le reste, car chaque base est unique. C’est la raison pour laquelle, dans Factorio, seuls les changements générés par les joueurs sont transférés. Factorio peut alors simuler le jeu comme s’il s’agissait d’un jeu en solo, en recevant simplement les changements des autres joueurs via le serveur. C’est beaucoup plus facile que de transférer la carte entière, il suffit uniquement de fournir la carte au client lorsqu’il se connecte et de lui indiquer toute autre entrée qui pourrait modifier la simulation en cours, comme un joueur qui se déplace de dix tuiles vers la droite, etc. Voyez l’image ci-dessous. Pour les curieux, le mode multijoueur d’Overwatch est expliqué ici (vidéo plus courte) et peut-être ici plus en détail, par les développeurs d’Overwatch. Joueur : Salut à vous ! Puis-je rejoindre le serveur Factorio ? Serveur : Oui, bien sûr ! Voici la carte en cours, téléchargez-la. [carte en annexe] Serveur : Vous apparaissez à la position x=0, y=3 Serveur : Votre ami “M. Patate” a configuré le filtre logistique de l’emplacement 33 pour l’objet “convoyeur rapide”. Configurez-le aussi et continuez la simulation ! Serveur : Votre ami “M. Patate” s’est déplacé de 3 tuiles vers la droite Joueur : Je me suis déplacé de 4 tuiles vers la gauche Serveur : Confirmé. Je transmets — Serveur Factorio Factorio utilise des algorithmes entièrement déterministes, qui produisent exactement le même résultat avec la même entrée. Cela signifie que les résultats ne sont jamais aléatoires, ce qui est nécessaire dans certains cas comme dans celui de Factorio. Un algorithme entièrement déterministe est nécessaire lorsque plusieurs instances de Factorio sont exécutées, afin que toutes les instances fonctionnent selon un algorithme Lockstep et restent synchronisées. La raison d’être des algorithmes entièrement déterministes serait que si vous avez des fonctions qui produisent des résultats aléatoires, vous ne pouvez pas utiliser l’architecture Lockstep, car le système entier se plante si les fonctions qui traitent les choses ne donnent pas les mêmes résultats pour chaque client, à chaque fois. Un algorithme entièrement déterministe est défini par : Il ne doit pas utiliser d’autres données que celles qui entrent dans l’algorithme. Données interdites : nombres aléatoires, données stockées sur le disque, variables globales, temporisateurs (c’est-à-dire le temps écoulé depuis le démarrage du programme) L’algorithme doit fonctionner de manière à ne pas être dépendant du temps Un exemple contraire serait si plusieurs instances d’un programme écrivaient dans une feuille de calcul Excel alors qu’un autre programme est en train de lire la dernière ligne de la feuille. Cela rendrait le programme dépendant du temps, car si une des instances en écriture est retardée de quelques secondes, cela peut produire un ordre complètement différent des données dans les lignes d’Excel, fournissant au programme qui lit la dernière ligne une donnée complètement différente. Un exemple d’algorithmes Lockstep et entièrement déterministes est la pose d’un plan par un client. Lorsque vous cliquez sur un plan pour l’importer dans la bibliothèque partagée, les icônes du plan ne sont plus grisées, comme dans l’image de droite ci-dessous. En effet, lorsque vous cliquez dessus, vous choisissez de le transférer dans la bibliothèque partagée du jeu. Lorsque vous le déposez ensuite quelque part, votre client indique au serveur que vous avez placé le plan à certaines coordonnées XY. Le serveur indique ensuite à tous les autres clients connectés qu’il a été placé là. Chaque client individuel simule ensuite la sortie de tous les robots de leur roboport, afin d’obtenir des ressources, de placer l’entité en leur possession et de revenir au roboport de leur choix. Tous les clients simulent cela par eux-mêmes, sans aucune autre entrée, et le font de la même manière grâce aux algorithmes entièrement déterministes mentionnés précédemment. JuxtaposeJS Une désynchronisation est le fait que deux ordinateurs qui sont censés faire quelque chose en même temps avec les mêmes résultats selon les algorithmes entièrement déterministes, ne le font pas. Normalement, lorsque le client et le serveur font la même chose en même temps, ils sont heureux, car ils sont synchronisés. Une désynchronisation peut se produire lorsque deux clients calculent une mise à jour avec des résultats différents, généralement en raison d’une erreur de programmation. Voyez l’image ci-dessous pour un exemple de la façon dont une désynchronisation peut se produire. Si un moddeur ou un créateur de scénario ne gère pas bien ses données, cela peut également provoquer une désynchronisation. Une désynchronisation obligera votre client à se déconnecter du serveur et à générer un rapport de désynchronisation, que les développeurs utilisent pour l’analyser. Joueur : Hé, donc le résultat du calcul de l’énergie nette au tick 33859 est de 348. C’est correct ? Serveur : Quoi ?? J’ai 936. Vous avez tort. Je vous envoie la carte et je vous déconnecte, vous pouvez vous reconnecter après. — Serveur Factorio Vous vous demandez peut-être comment il se fait que des désynchronisations ne se produisent pas avec le déplacement des robots sur la carte ? Sûrement que s’ils sont tous capables d’effectuer une tâche et que certains robots sont sélectionnés pour l’effectuer, les différents clients pourraient choisir des robots différents, non ? Non. Tous les clients choisiront toujours le même robot au même moment parce que l’algorithme qui choisit le robot est entièrement déterministe. Deux trains arrivant en gare en provenance d’un stacker ? Toujours le même train, car c’est aussi entièrement déterministe. Quelle tourelle un cracheur décide-t-il d’attaquer dans votre avant-poste minier ? C’est aussi entièrement déterministe. Ce ne sont là que quelques exemples, mais tout dans le jeu est entièrement déterministe. Si ce n’était pas le cas, vous auriez une désynchronisation ici, une autre là, et le mode multijoueur ne serait plus du tout jouable. En multijoueur, les désynchronisations peuvent être causées par de nombreuses choses, comme la construction par robots, les simulations de l’IA des déchiqueteurs et, surtout, les choses causées par les moddeurs eux-mêmes. Même si vous utilisez quelque chose d’aussi simple que math.random() pour obtenir un nombre aléatoire dans un de vos mods ou scénarios, les résultats seront cohérents - tous les clients obtiendront le même résultat. Ceci est dû au fait que le générateur de nombres aléatoires de Factorio est initialisé. Il reçoit un certain nombre de données au départ, qu’il utilise ensuite pour générer des nombres aléatoires dans le temps. Si vous faites en sorte que tous les clients utilisent une initialisation identique, vos nombres aléatoires seront synchronisés. Il est important de noter qu’il s’agit d’un générateur pseudo-aléatoire, et donc pas vraiment aléatoire, car il est initialisé avec un nombre prédéterminé, ce qui permet de produire le même résultat partout. Consultez ceci pour plus d’informations sur les graines aléatoires. Vous en savez maintenant un peu plus sur ce qui se passe lorsque vous cliquez sur un serveur dans la liste des serveurs, que vous le rejoignez par adresse IP, via Steam ou via un réseau local. Les développeurs de Factorio ont travaillé très dur sur le mode multijoueur, ce qui nous a permis de créer de grandes parties telles que la session multijoueur de plus de 500 joueurs ou les configurations complexes de Clusterio, fournissant aux créateurs les outils dont ils ont besoin pour élaborer toutes ces choses amusantes. Il y a de moins en moins de limites à ce que vous pouvez faire, des bases énormes, des quantités massives de joueurs, peut-être même les deux ! Tout cela dépend de vous et de la façon dont vous le paramétrez. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="Dans ce numéro 26 de Alt-F4 (déjà une demi-année de parutions !), oof2win2 aborde le mode multijoueur de Factorio et explique certains des rouages techniques cachés. Si vous vous êtes déjà demandé ce qu’est une désynchronisation ou comment le jeu parvient à gérer des centaines de joueurs et plusieurs milliers d’entités à la fois, n’hésitez pas à vous y plonger ! Les serveurs Factorio oof2win2 La plupart d’entre nous se sont probablement déjà connectés au moins une fois à un serveur Factorio, que ce soit pour jouer avec des amis ou simplement pour voir les constructions de quelqu’un d’autre. Dans le numéro d’aujourd’hui de Alt-F4, j’expliquerai brièvement l’histoire du mode multijoueur, puis je me plongerai plus profondément dans l’explication de comment cela fonctionne techniquement. J’expliquerai entre autres l’utilisation des algorithmes entièrement déterministes et du protocole Lockstep. L’histoire du mode multijoueur En octobre 2014, avec la version 0.11.0 de Factorio, le mode multijoueur a été introduit dans le jeu, bien qu’il ait été développé depuis la version 0.9.4. Ce mode multijoueur était différent de celui que vous voyez aujourd’hui, vous ne pouviez pas par exemple “Rejoindre un ami” facilement via Steam ou utiliser la liste des serveurs - vous deviez connaître l’adresse IP exacte de celui-ci. Lorsque la première version du mode multijoueur est sorti, il y avait un certain nombre de bugs, comme celui-ci qui ne permettait pas aux parties en multijoueur de durer plus de 20 secondes. Il a bien sûr été corrigé moins de trois heures plus tard, comme d’habitude avec Wube. Il y avait aussi ce bug qui empêchait plus de trois personnes de se connecter en même temps - alors que, près de six ans plus tard, cette session multijoueur en a rassemblé plus de 500. Beaucoup de travail a dû être consacré au développement du mode multijoueur pour que 500 joueurs puissent se connecter en même temps. Avec la version 0.12.0, les serveurs headless ont été ajoutés en tant que caractéristique majeure. Cela signifie que les serveurs peuvent désormais fonctionner sur des machines sans processeur graphique, ce qui réduit considérablement le coût des serveurs Factorio et améliore l’accessibilité. Cela a également permis à plusieurs instances de serveur de fonctionner en même temps sur une seule machine, ce qui est très utile dans certains cas. Depuis la version 0.14.0, les serveurs Factorio ne mettent plus le jeu en pause pour tous les joueurs si l’ordinateur d’un joueur prend trop de temps à traiter une mise à jour. Cela signifie que si vous avez un ordinateur plus ancien, le serveur n’attendra plus que vous rattrapiez votre retard de traitement. C’est très utile sur les grands serveurs qui peuvent avoir des dizaines ou des centaines de joueurs en ligne à la fois, car on ne doit plus attendre les derniers pour pouvoir jouer. Une approche entièrement déterministe Comme mentionné dans le FFF-30, tous les clients doivent simuler le jeu de la même manière que le serveur, les mêmes actions exactement au même moment. Cela signifie que si une personne fait quelque chose sur son ordinateur, les instances de Factorio des autres personnes doivent faire de même. Une instance est une occurrence de quelque chose, de la même manière qu’il peut y avoir de nombreuses instances de pommes dans un panier ou d’onglets dans Chrome. Factorio est très différent de la plupart des jeux multijoueurs, comme CS:GO ou Overwatch, de sorte que les développeurs ne pouvaient pas simplement reprendre le modèle d’implémentation en multijoueur de ces jeux et le transposer dans Factorio, car cela ne fonctionnerait pas correctement. Au contraire, lors de la création du mode multijoueur, les développeurs ont utilisé le protocole Lockstep. Dans Factorio, la connexion commence par l’envoi de la carte par le serveur. Ensuite, ce dernier vous indique uniquement si quelque chose change, en fonction des entrées des utilisateurs, par exemple si un joueur place un convoyeur à un certain endroit, meurt à cause d’un déchiqueteur (ou d’un train), etc. On vous dit seulement que ceci est arrivé à ce moment-là, votre jeu doit mettre à jour sa simulation locale par lui-même. Il ne reçoit cependant pas une mise à jour détaillée à chaque tick de toutes les choses qui se passent à ce moment, comme les robots qui se déplacent et les trains qui s’arrêtent. La transmission de tout ce qui se passe, à chaque tick, nécessiterait beaucoup trop de bande passante de réseau, car il faudrait transférer des informations telles que “ce robot logistique s’est déplacé ici”, ce qui devrait se produire des dizaines de milliers de fois par tick avec les grosses sauvegardes. Sans parler de certaines autres informations qui conduiraient à transférer toute la sauvegarde à chaque tick, ce qui se traduirait dans certains cas par un transfert de 1500 Mo par seconde. Au lieu de cela, on vous communique uniquement les informations vraiment importantes, qui sont principalement les interactions des joueurs avec le jeu, et votre client exécute le jeu comme si personne d’autre n’était là. Il existe de nombreuses autres façons pour un jeu de gérer le multijoueur. Par exemple, Overwatch est un jeu qui garde une trace de presque tout, de manière centralisée sur son serveur de jeu, en surveillant chaque objet, joueur, balle, etc. et qui corrige activement votre instance client si quelque chose s’est mal passée. Factorio ne surveille que les entrées des joueurs et lance une désynchronisation si quelque chose se passe mal. Je vous expliquerai plus tard ce qu’est une désynchronisation. Ces deux implémentations sont différentes car les jeux sont radicalement différents : dans Overwatch, vous avez récupéré toutes les cartes lors du téléchargement initial du jeu, il vous suffit donc de transmettre les positions des joueurs et des projectiles. Dans Factorio, en revanche, les cartes changent tout le temps. Dans Factorio, vous avez des positions différentes pour les machines d’assemblage, les lampes, les poteaux électriques, les convoyeurs, les bras et à peu près tout le reste, car chaque base est unique. C’est la raison pour laquelle, dans Factorio, seuls les changements générés par les joueurs sont transférés. Factorio peut alors simuler le jeu comme s’il s’agissait d’un jeu en solo, en recevant simplement les changements des autres joueurs via le serveur. C’est beaucoup plus facile que de transférer la carte entière, il suffit uniquement de fournir la carte au client lorsqu’il se connecte et de lui indiquer toute autre entrée qui pourrait modifier la simulation en cours, comme un joueur qui se déplace de dix tuiles vers la droite, etc. Voyez l’image ci-dessous. Pour les curieux, le mode multijoueur d’Overwatch est expliqué ici (vidéo plus courte) et peut-être ici plus en détail, par les développeurs d’Overwatch. Joueur : Salut à vous ! Puis-je rejoindre le serveur Factorio ? Serveur : Oui, bien sûr ! Voici la carte en cours, téléchargez-la. [carte en annexe] Serveur : Vous apparaissez à la position x=0, y=3 Serveur : Votre ami “M. Patate” a configuré le filtre logistique de l’emplacement 33 pour l’objet “convoyeur rapide”. Configurez-le aussi et continuez la simulation ! Serveur : Votre ami “M. Patate” s’est déplacé de 3 tuiles vers la droite Joueur : Je me suis déplacé de 4 tuiles vers la gauche Serveur : Confirmé. Je transmets — Serveur Factorio Factorio utilise des algorithmes entièrement déterministes, qui produisent exactement le même résultat avec la même entrée. Cela signifie que les résultats ne sont jamais aléatoires, ce qui est nécessaire dans certains cas comme dans celui de Factorio. Un algorithme entièrement déterministe est nécessaire lorsque plusieurs instances de Factorio sont exécutées, afin que toutes les instances fonctionnent selon un algorithme Lockstep et restent synchronisées. La raison d’être des algorithmes entièrement déterministes serait que si vous avez des fonctions qui produisent des résultats aléatoires, vous ne pouvez pas utiliser l’architecture Lockstep, car le système entier se plante si les fonctions qui traitent les choses ne donnent pas les mêmes résultats pour chaque client, à chaque fois. Un algorithme entièrement déterministe est défini par : Il ne doit pas utiliser d’autres données que celles qui entrent dans l’algorithme. Données interdites : nombres aléatoires, données stockées sur le disque, variables globales, temporisateurs (c’est-à-dire le temps écoulé depuis le démarrage du programme) L’algorithme doit fonctionner de manière à ne pas être dépendant du temps Un exemple contraire serait si plusieurs instances d’un programme écrivaient dans une feuille de calcul Excel alors qu’un autre programme est en train de lire la dernière ligne de la feuille. Cela rendrait le programme dépendant du temps, car si une des instances en écriture est retardée de quelques secondes, cela peut produire un ordre complètement différent des données dans les lignes d’Excel, fournissant au programme qui lit la dernière ligne une donnée complètement différente. Un exemple d’algorithmes Lockstep et entièrement déterministes est la pose d’un plan par un client. Lorsque vous cliquez sur un plan pour l’importer dans la bibliothèque partagée, les icônes du plan ne sont plus grisées, comme dans l’image de droite ci-dessous. En effet, lorsque vous cliquez dessus, vous choisissez de le transférer dans la bibliothèque partagée du jeu. Lorsque vous le déposez ensuite quelque part, votre client indique au serveur que vous avez placé le plan à certaines coordonnées XY. Le serveur indique ensuite à tous les autres clients connectés qu’il a été placé là. Chaque client individuel simule ensuite la sortie de tous les robots de leur roboport, afin d’obtenir des ressources, de placer l’entité en leur possession et de revenir au roboport de leur choix. Tous les clients simulent cela par eux-mêmes, sans aucune autre entrée, et le font de la même manière grâce aux algorithmes entièrement déterministes mentionnés précédemment. JuxtaposeJS Une désynchronisation est le fait que deux ordinateurs qui sont censés faire quelque chose en même temps avec les mêmes résultats selon les algorithmes entièrement déterministes, ne le font pas. Normalement, lorsque le client et le serveur font la même chose en même temps, ils sont heureux, car ils sont synchronisés. Une désynchronisation peut se produire lorsque deux clients calculent une mise à jour avec des résultats différents, généralement en raison d’une erreur de programmation. Voyez l’image ci-dessous pour un exemple de la façon dont une désynchronisation peut se produire. Si un moddeur ou un créateur de scénario ne gère pas bien ses données, cela peut également provoquer une désynchronisation. Une désynchronisation obligera votre client à se déconnecter du serveur et à générer un rapport de désynchronisation, que les développeurs utilisent pour l’analyser. Joueur : Hé, donc le résultat du calcul de l’énergie nette au tick 33859 est de 348. C’est correct ? Serveur : Quoi ?? J’ai 936. Vous avez tort. Je vous envoie la carte et je vous déconnecte, vous pouvez vous reconnecter après. — Serveur Factorio Vous vous demandez peut-être comment il se fait que des désynchronisations ne se produisent pas avec le déplacement des robots sur la carte ? Sûrement que s’ils sont tous capables d’effectuer une tâche et que certains robots sont sélectionnés pour l’effectuer, les différents clients pourraient choisir des robots différents, non ? Non. Tous les clients choisiront toujours le même robot au même moment parce que l’algorithme qui choisit le robot est entièrement déterministe. Deux trains arrivant en gare en provenance d’un stacker ? Toujours le même train, car c’est aussi entièrement déterministe. Quelle tourelle un cracheur décide-t-il d’attaquer dans votre avant-poste minier ? C’est aussi entièrement déterministe. Ce ne sont là que quelques exemples, mais tout dans le jeu est entièrement déterministe. Si ce n’était pas le cas, vous auriez une désynchronisation ici, une autre là, et le mode multijoueur ne serait plus du tout jouable. En multijoueur, les désynchronisations peuvent être causées par de nombreuses choses, comme la construction par robots, les simulations de l’IA des déchiqueteurs et, surtout, les choses causées par les moddeurs eux-mêmes. Même si vous utilisez quelque chose d’aussi simple que math.random() pour obtenir un nombre aléatoire dans un de vos mods ou scénarios, les résultats seront cohérents - tous les clients obtiendront le même résultat. Ceci est dû au fait que le générateur de nombres aléatoires de Factorio est initialisé. Il reçoit un certain nombre de données au départ, qu’il utilise ensuite pour générer des nombres aléatoires dans le temps. Si vous faites en sorte que tous les clients utilisent une initialisation identique, vos nombres aléatoires seront synchronisés. Il est important de noter qu’il s’agit d’un générateur pseudo-aléatoire, et donc pas vraiment aléatoire, car il est initialisé avec un nombre prédéterminé, ce qui permet de produire le même résultat partout. Consultez ceci pour plus d’informations sur les graines aléatoires. Vous en savez maintenant un peu plus sur ce qui se passe lorsque vous cliquez sur un serveur dans la liste des serveurs, que vous le rejoignez par adresse IP, via Steam ou via un réseau local. Les développeurs de Factorio ont travaillé très dur sur le mode multijoueur, ce qui nous a permis de créer de grandes parties telles que la session multijoueur de plus de 500 joueurs ou les configurations complexes de Clusterio, fournissant aux créateurs les outils dont ils ont besoin pour élaborer toutes ces choses amusantes. Il y a de moins en moins de limites à ce que vous pouvez faire, des bases énormes, des quantités massives de joueurs, peut-être même les deux ! Tout cela dépend de vous et de la façon dont vous le paramétrez. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-26/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-26/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-05T00:00:00+00:00">
+<script type="application/ld+json">
+{"description":"Dans ce numéro 26 de Alt-F4 (déjà une demi-année de parutions !), oof2win2 aborde le mode multijoueur de Factorio et explique certains des rouages techniques cachés. Si vous vous êtes déjà demandé ce qu’est une désynchronisation ou comment le jeu parvient à gérer des centaines de joueurs et plusieurs milliers d’entités à la fois, n’hésitez pas à vous y plonger ! Les serveurs Factorio oof2win2 La plupart d’entre nous se sont probablement déjà connectés au moins une fois à un serveur Factorio, que ce soit pour jouer avec des amis ou simplement pour voir les constructions de quelqu’un d’autre. Dans le numéro d’aujourd’hui de Alt-F4, j’expliquerai brièvement l’histoire du mode multijoueur, puis je me plongerai plus profondément dans l’explication de comment cela fonctionne techniquement. J’expliquerai entre autres l’utilisation des algorithmes entièrement déterministes et du protocole Lockstep. L’histoire du mode multijoueur En octobre 2014, avec la version 0.11.0 de Factorio, le mode multijoueur a été introduit dans le jeu, bien qu’il ait été développé depuis la version 0.9.4. Ce mode multijoueur était différent de celui que vous voyez aujourd’hui, vous ne pouviez pas par exemple “Rejoindre un ami” facilement via Steam ou utiliser la liste des serveurs - vous deviez connaître l’adresse IP exacte de celui-ci. Lorsque la première version du mode multijoueur est sorti, il y avait un certain nombre de bugs, comme celui-ci qui ne permettait pas aux parties en multijoueur de durer plus de 20 secondes. Il a bien sûr été corrigé moins de trois heures plus tard, comme d’habitude avec Wube. Il y avait aussi ce bug qui empêchait plus de trois personnes de se connecter en même temps - alors que, près de six ans plus tard, cette session multijoueur en a rassemblé plus de 500. Beaucoup de travail a dû être consacré au développement du mode multijoueur pour que 500 joueurs puissent se connecter en même temps. Avec la version 0.12.0, les serveurs headless ont été ajoutés en tant que caractéristique majeure. Cela signifie que les serveurs peuvent désormais fonctionner sur des machines sans processeur graphique, ce qui réduit considérablement le coût des serveurs Factorio et améliore l’accessibilité. Cela a également permis à plusieurs instances de serveur de fonctionner en même temps sur une seule machine, ce qui est très utile dans certains cas. Depuis la version 0.14.0, les serveurs Factorio ne mettent plus le jeu en pause pour tous les joueurs si l’ordinateur d’un joueur prend trop de temps à traiter une mise à jour. Cela signifie que si vous avez un ordinateur plus ancien, le serveur n’attendra plus que vous rattrapiez votre retard de traitement. C’est très utile sur les grands serveurs qui peuvent avoir des dizaines ou des centaines de joueurs en ligne à la fois, car on ne doit plus attendre les derniers pour pouvoir jouer. Une approche entièrement déterministe Comme mentionné dans le FFF-30, tous les clients doivent simuler le jeu de la même manière que le serveur, les mêmes actions exactement au même moment. Cela signifie que si une personne fait quelque chose sur son ordinateur, les instances de Factorio des autres personnes doivent faire de même. Une instance est une occurrence de quelque chose, de la même manière qu’il peut y avoir de nombreuses instances de pommes dans un panier ou d’onglets dans Chrome. Factorio est très différent de la plupart des jeux multijoueurs, comme CS:GO ou Overwatch, de sorte que les développeurs ne pouvaient pas simplement reprendre le modèle d’implémentation en multijoueur de ces jeux et le transposer dans Factorio, car cela ne fonctionnerait pas correctement. Au contraire, lors de la création du mode multijoueur, les développeurs ont utilisé le protocole Lockstep. Dans Factorio, la connexion commence par l’envoi de la carte par le serveur. Ensuite, ce dernier vous indique uniquement si quelque chose change, en fonction des entrées des utilisateurs, par exemple si un joueur place un convoyeur à un certain endroit, meurt à cause d’un déchiqueteur (ou d’un train), etc. On vous dit seulement que ceci est arrivé à ce moment-là, votre jeu doit mettre à jour sa simulation locale par lui-même. Il ne reçoit cependant pas une mise à jour détaillée à chaque tick de toutes les choses qui se passent à ce moment, comme les robots qui se déplacent et les trains qui s’arrêtent. La transmission de tout ce qui se passe, à chaque tick, nécessiterait beaucoup trop de bande passante de réseau, car il faudrait transférer des informations telles que “ce robot logistique s’est déplacé ici”, ce qui devrait se produire des dizaines de milliers de fois par tick avec les grosses sauvegardes. Sans parler de certaines autres informations qui conduiraient à transférer toute la sauvegarde à chaque tick, ce qui se traduirait dans certains cas par un transfert de 1500 Mo par seconde. Au lieu de cela, on vous communique uniquement les informations vraiment importantes, qui sont principalement les interactions des joueurs avec le jeu, et votre client exécute le jeu comme si personne d’autre n’était là. Il existe de nombreuses autres façons pour un jeu de gérer le multijoueur. Par exemple, Overwatch est un jeu qui garde une trace de presque tout, de manière centralisée sur son serveur de jeu, en surveillant chaque objet, joueur, balle, etc. et qui corrige activement votre instance client si quelque chose s’est mal passée. Factorio ne surveille que les entrées des joueurs et lance une désynchronisation si quelque chose se passe mal. Je vous expliquerai plus tard ce qu’est une désynchronisation. Ces deux implémentations sont différentes car les jeux sont radicalement différents : dans Overwatch, vous avez récupéré toutes les cartes lors du téléchargement initial du jeu, il vous suffit donc de transmettre les positions des joueurs et des projectiles. Dans Factorio, en revanche, les cartes changent tout le temps. Dans Factorio, vous avez des positions différentes pour les machines d’assemblage, les lampes, les poteaux électriques, les convoyeurs, les bras et à peu près tout le reste, car chaque base est unique. C’est la raison pour laquelle, dans Factorio, seuls les changements générés par les joueurs sont transférés. Factorio peut alors simuler le jeu comme s’il s’agissait d’un jeu en solo, en recevant simplement les changements des autres joueurs via le serveur. C’est beaucoup plus facile que de transférer la carte entière, il suffit uniquement de fournir la carte au client lorsqu’il se connecte et de lui indiquer toute autre entrée qui pourrait modifier la simulation en cours, comme un joueur qui se déplace de dix tuiles vers la droite, etc. Voyez l’image ci-dessous. Pour les curieux, le mode multijoueur d’Overwatch est expliqué ici (vidéo plus courte) et peut-être ici plus en détail, par les développeurs d’Overwatch. Joueur : Salut à vous ! Puis-je rejoindre le serveur Factorio ? Serveur : Oui, bien sûr ! Voici la carte en cours, téléchargez-la. [carte en annexe] Serveur : Vous apparaissez à la position x=0, y=3 Serveur : Votre ami “M. Patate” a configuré le filtre logistique de l’emplacement 33 pour l’objet “convoyeur rapide”. Configurez-le aussi et continuez la simulation ! Serveur : Votre ami “M. Patate” s’est déplacé de 3 tuiles vers la droite Joueur : Je me suis déplacé de 4 tuiles vers la gauche Serveur : Confirmé. Je transmets — Serveur Factorio Factorio utilise des algorithmes entièrement déterministes, qui produisent exactement le même résultat avec la même entrée. Cela signifie que les résultats ne sont jamais aléatoires, ce qui est nécessaire dans certains cas comme dans celui de Factorio. Un algorithme entièrement déterministe est nécessaire lorsque plusieurs instances de Factorio sont exécutées, afin que toutes les instances fonctionnent selon un algorithme Lockstep et restent synchronisées. La raison d’être des algorithmes entièrement déterministes serait que si vous avez des fonctions qui produisent des résultats aléatoires, vous ne pouvez pas utiliser l’architecture Lockstep, car le système entier se plante si les fonctions qui traitent les choses ne donnent pas les mêmes résultats pour chaque client, à chaque fois. Un algorithme entièrement déterministe est défini par : Il ne doit pas utiliser d’autres données que celles qui entrent dans l’algorithme. Données interdites : nombres aléatoires, données stockées sur le disque, variables globales, temporisateurs (c’est-à-dire le temps écoulé depuis le démarrage du programme) L’algorithme doit fonctionner de manière à ne pas être dépendant du temps Un exemple contraire serait si plusieurs instances d’un programme écrivaient dans une feuille de calcul Excel alors qu’un autre programme est en train de lire la dernière ligne de la feuille. Cela rendrait le programme dépendant du temps, car si une des instances en écriture est retardée de quelques secondes, cela peut produire un ordre complètement différent des données dans les lignes d’Excel, fournissant au programme qui lit la dernière ligne une donnée complètement différente. Un exemple d’algorithmes Lockstep et entièrement déterministes est la pose d’un plan par un client. Lorsque vous cliquez sur un plan pour l’importer dans la bibliothèque partagée, les icônes du plan ne sont plus grisées, comme dans l’image de droite ci-dessous. En effet, lorsque vous cliquez dessus, vous choisissez de le transférer dans la bibliothèque partagée du jeu. Lorsque vous le déposez ensuite quelque part, votre client indique au serveur que vous avez placé le plan à certaines coordonnées XY. Le serveur indique ensuite à tous les autres clients connectés qu’il a été placé là. Chaque client individuel simule ensuite la sortie de tous les robots de leur roboport, afin d’obtenir des ressources, de placer l’entité en leur possession et de revenir au roboport de leur choix. Tous les clients simulent cela par eux-mêmes, sans aucune autre entrée, et le font de la même manière grâce aux algorithmes entièrement déterministes mentionnés précédemment. JuxtaposeJS Une désynchronisation est le fait que deux ordinateurs qui sont censés faire quelque chose en même temps avec les mêmes résultats selon les algorithmes entièrement déterministes, ne le font pas. Normalement, lorsque le client et le serveur font la même chose en même temps, ils sont heureux, car ils sont synchronisés. Une désynchronisation peut se produire lorsque deux clients calculent une mise à jour avec des résultats différents, généralement en raison d’une erreur de programmation. Voyez l’image ci-dessous pour un exemple de la façon dont une désynchronisation peut se produire. Si un moddeur ou un créateur de scénario ne gère pas bien ses données, cela peut également provoquer une désynchronisation. Une désynchronisation obligera votre client à se déconnecter du serveur et à générer un rapport de désynchronisation, que les développeurs utilisent pour l’analyser. Joueur : Hé, donc le résultat du calcul de l’énergie nette au tick 33859 est de 348. C’est correct ? Serveur : Quoi ?? J’ai 936. Vous avez tort. Je vous envoie la carte et je vous déconnecte, vous pouvez vous reconnecter après. — Serveur Factorio Vous vous demandez peut-être comment il se fait que des désynchronisations ne se produisent pas avec le déplacement des robots sur la carte ? Sûrement que s’ils sont tous capables d’effectuer une tâche et que certains robots sont sélectionnés pour l’effectuer, les différents clients pourraient choisir des robots différents, non ? Non. Tous les clients choisiront toujours le même robot au même moment parce que l’algorithme qui choisit le robot est entièrement déterministe. Deux trains arrivant en gare en provenance d’un stacker ? Toujours le même train, car c’est aussi entièrement déterministe. Quelle tourelle un cracheur décide-t-il d’attaquer dans votre avant-poste minier ? C’est aussi entièrement déterministe. Ce ne sont là que quelques exemples, mais tout dans le jeu est entièrement déterministe. Si ce n’était pas le cas, vous auriez une désynchronisation ici, une autre là, et le mode multijoueur ne serait plus du tout jouable. En multijoueur, les désynchronisations peuvent être causées par de nombreuses choses, comme la construction par robots, les simulations de l’IA des déchiqueteurs et, surtout, les choses causées par les moddeurs eux-mêmes. Même si vous utilisez quelque chose d’aussi simple que math.random() pour obtenir un nombre aléatoire dans un de vos mods ou scénarios, les résultats seront cohérents - tous les clients obtiendront le même résultat. Ceci est dû au fait que le générateur de nombres aléatoires de Factorio est initialisé. Il reçoit un certain nombre de données au départ, qu’il utilise ensuite pour générer des nombres aléatoires dans le temps. Si vous faites en sorte que tous les clients utilisent une initialisation identique, vos nombres aléatoires seront synchronisés. Il est important de noter qu’il s’agit d’un générateur pseudo-aléatoire, et donc pas vraiment aléatoire, car il est initialisé avec un nombre prédéterminé, ce qui permet de produire le même résultat partout. Consultez ceci pour plus d’informations sur les graines aléatoires. Vous en savez maintenant un peu plus sur ce qui se passe lorsque vous cliquez sur un serveur dans la liste des serveurs, que vous le rejoignez par adresse IP, via Steam ou via un réseau local. Les développeurs de Factorio ont travaillé très dur sur le mode multijoueur, ce qui nous a permis de créer de grandes parties telles que la session multijoueur de plus de 500 joueurs ou les configurations complexes de Clusterio, fournissant aux créateurs les outils dont ils ont besoin pour élaborer toutes ces choses amusantes. Il y a de moins en moins de limites à ce que vous pouvez faire, des bases énormes, des quantités massives de joueurs, peut-être même les deux ! Tout cela dépend de vous et de la façon dont vous le paramétrez. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","@type":"BlogPosting","url":"https://alt-f4.blog/ALTF4-26/","headline":"Alt-F4 n°26 - Mettre du multi dans le jeu","dateModified":"2021-03-05T00:00:00+00:00","datePublished":"2021-03-05T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-26/"},"author":{"@type":"Person","name":"oof2win2"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/26/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/26/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-26/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-26/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-26/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-26/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-26/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-26/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-26/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-26/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-26/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-26/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°26 - Mettre du multi dans le jeu  <author>05-03-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>oof2win2</em>,
+
+
+
+édité par <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev, Firerazer</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Sommaire</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#les-serveurs-factorio-oof2win2">Les serveurs Factorio <author>oof2win2</author></a>
+    <ul>
+      <li><a href="#lhistoire-du-mode-multijoueur">L’histoire du mode multijoueur</a></li>
+      <li><a href="#une-approche-enti%C3%A8rement-d%C3%A9terministe">Une approche entièrement déterministe</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>Dans ce numéro 26 de Alt-F4 (déjà une demi-année de parutions !), oof2win2 aborde le mode multijoueur de Factorio et explique certains des rouages techniques cachés. Si vous vous êtes déjà demandé ce qu’est une désynchronisation ou comment le jeu parvient à gérer des centaines de joueurs et plusieurs milliers d’entités à la fois, n’hésitez pas à vous y plonger !</p>
+      <h2 id="les-serveurs-factorio-oof2win2">
+        
+        
+            <a href="#les-serveurs-factorio-oof2win2" class="anchor" style="text-decoration: none;">Les serveurs Factorio <author>oof2win2</author></a>
+          
+        
+      </h2>
+    
+
+<p>La plupart d’entre nous se sont probablement déjà connectés au moins une fois à un serveur Factorio, que ce soit pour jouer avec des amis ou simplement pour voir les constructions de quelqu’un d’autre. Dans le numéro d’aujourd’hui de Alt-F4, j’expliquerai brièvement l’histoire du mode multijoueur, puis je me plongerai plus profondément dans l’explication de <em>comment</em> cela fonctionne techniquement. J’expliquerai entre autres l’utilisation des algorithmes entièrement déterministes et du protocole Lockstep.</p>
+      <h3 id="lhistoire-du-mode-multijoueur">
+        
+        
+            <a href="#lhistoire-du-mode-multijoueur" class="anchor" style="text-decoration: none;">L’histoire du mode multijoueur</a>
+          
+        
+      </h3>
+    
+
+<p>En octobre 2014, avec la version 0.11.0 de Factorio, le mode multijoueur a été introduit dans le jeu, bien qu’il ait été développé depuis la version <a href="https://www.factorio.com/blog/post/fff-26">0.9.4</a>. Ce mode multijoueur était différent de celui que vous voyez aujourd’hui, vous ne pouviez pas par exemple “Rejoindre un ami” facilement via Steam ou utiliser la liste des serveurs - vous deviez connaître l’adresse IP exacte de celui-ci. Lorsque la première version du mode multijoueur est sorti, il y avait un certain nombre de bugs, comme <a href="https://forums.factorio.com/viewtopic.php?t=6285">celui-ci</a> qui ne permettait pas aux parties en multijoueur de durer plus de 20 secondes. Il a bien sûr été corrigé moins de trois heures plus tard, comme d’habitude avec Wube. Il y avait aussi <a href="https://forums.factorio.com/viewtopic.php?t=6414">ce bug</a> qui empêchait plus de trois personnes de se connecter en même temps - alors que, près de six ans plus tard, <a href="https://www.factorio.com/blog/post/fff-332">cette session multijoueur</a> en a rassemblé plus de 500. Beaucoup de travail a dû être consacré au développement du mode multijoueur pour que 500 joueurs puissent se connecter en même temps.</p>
+
+<p>Avec la version 0.12.0, les serveurs <em>headless</em> ont été ajoutés en tant que caractéristique majeure. Cela signifie que les serveurs peuvent désormais fonctionner sur des machines sans processeur graphique, ce qui réduit considérablement le coût des serveurs Factorio et améliore l’accessibilité. Cela a également permis à plusieurs instances de serveur de fonctionner en même temps sur une seule machine, ce qui est très utile dans certains cas.</p>
+
+<p>Depuis la version 0.14.0, les serveurs Factorio ne mettent plus le jeu en pause pour tous les joueurs si l’ordinateur d’un joueur prend trop de temps à traiter une mise à jour. Cela signifie que si vous avez un ordinateur plus ancien, le serveur n’attendra plus que vous rattrapiez votre retard de traitement. C’est très utile sur les grands serveurs qui peuvent avoir des dizaines ou des centaines de joueurs en ligne à la fois, car on ne doit plus attendre les derniers pour pouvoir jouer.</p>
+      <h3 id="une-approche-entièrement-déterministe">
+        
+        
+            <a href="#une-approche-enti%C3%A8rement-d%C3%A9terministe" class="anchor" style="text-decoration: none;">Une approche entièrement déterministe</a>
+          
+        
+      </h3>
+    
+
+<p>Comme mentionné dans le <a href="https://www.factorio.com/blog/post/fff-30">FFF-30</a>, tous les clients doivent simuler le jeu de la même manière que le serveur, les mêmes actions exactement au même moment. Cela signifie que si une personne fait quelque chose sur son ordinateur, les instances de Factorio des autres personnes doivent faire de même. Une instance est une occurrence de quelque chose, de la même manière qu’il peut y avoir de nombreuses instances de pommes dans un panier ou d’onglets dans Chrome. Factorio est très différent de la plupart des jeux multijoueurs, comme CS:GO ou Overwatch, de sorte que les développeurs ne pouvaient pas simplement reprendre le modèle d’implémentation en multijoueur de ces jeux et le transposer dans Factorio, car cela ne fonctionnerait pas correctement.</p>
+
+<p>Au contraire, lors de la création du mode multijoueur, les développeurs ont utilisé le <a href="https://en.wikipedia.org/wiki/Lockstep_protocol">protocole Lockstep</a>. Dans Factorio, la connexion commence par l’envoi de la carte par le serveur. Ensuite, ce dernier vous indique uniquement si quelque chose change, en fonction des entrées des utilisateurs, par exemple si un joueur place un convoyeur à un certain endroit, meurt à cause d’un déchiqueteur <em>(ou d’un train)</em>, etc. On vous dit seulement <em>que</em> ceci est arrivé à ce moment-là, votre jeu doit mettre à jour sa simulation locale par lui-même. Il ne reçoit cependant pas une mise à jour détaillée à chaque tick de toutes les choses qui se passent à ce moment, comme les robots qui se déplacent et les trains qui s’arrêtent.</p>
+
+<p>La transmission de tout ce qui se passe, à chaque tick, nécessiterait beaucoup trop de bande passante de réseau, car il faudrait transférer des informations telles que “ce robot logistique s’est déplacé ici”, ce qui devrait se produire des dizaines de milliers de fois par tick avec les grosses sauvegardes. Sans parler de certaines autres informations qui conduiraient à transférer toute la sauvegarde à chaque tick, ce qui se traduirait dans certains cas par un transfert de 1500 Mo par seconde. Au lieu de cela, on vous communique uniquement les informations vraiment importantes, qui sont principalement les interactions des joueurs avec le jeu, et votre client exécute le jeu comme si personne d’autre n’était là.</p>
+
+<p>Il existe de nombreuses autres façons pour un jeu de gérer le multijoueur. Par exemple, Overwatch est un jeu qui garde une trace de presque tout, de manière centralisée sur son serveur de jeu, en surveillant chaque objet, joueur, balle, etc. et qui corrige activement votre instance client si quelque chose s’est mal passée. Factorio ne surveille que les entrées des joueurs et lance une désynchronisation si quelque chose se passe mal. Je vous expliquerai plus tard ce qu’est une désynchronisation. Ces deux implémentations sont différentes car les jeux sont radicalement différents : dans Overwatch, vous avez récupéré toutes les cartes lors du téléchargement initial du jeu, il vous suffit donc de transmettre les positions des joueurs et des projectiles. Dans Factorio, en revanche, les cartes changent tout le temps.</p>
+
+<p>Dans Factorio, vous avez des positions différentes pour les machines d’assemblage, les lampes, les poteaux électriques, les convoyeurs, les bras et à peu près tout le reste, car chaque base est unique. C’est la raison pour laquelle, dans Factorio, seuls les changements générés par les joueurs sont transférés. Factorio peut alors simuler le jeu comme s’il s’agissait d’un jeu en solo, en recevant simplement les changements des autres joueurs via le serveur. C’est beaucoup plus facile que de transférer la carte entière, il suffit uniquement de fournir la carte au client lorsqu’il se connecte et de lui indiquer toute autre entrée qui pourrait modifier la simulation en cours, comme un joueur qui se déplace de dix tuiles vers la droite, etc. Voyez l’image ci-dessous. Pour les curieux, le mode multijoueur d’Overwatch est expliqué <a href="https://www.youtube.com/watch?v=vTH2ZPgYujQ">ici (vidéo plus courte)</a> et <a href="https://www.youtube.com/watch?v=W3aieHjyNvw">peut-être ici</a> plus en détail, par les développeurs d’Overwatch.</p>
+
+<div class="m0 h100 quote">
+  <blockquote cite="">
+    <div class="panel-inset-lighter vertical">
+    
+      <div class="translation">
+        
+<p><strong>Joueur :</strong> Salut à vous ! Puis-je rejoindre le serveur Factorio ? <br><br></p>
+
+<p><strong>Serveur :</strong> Oui, bien sûr ! Voici la carte en cours, téléchargez-la. [carte en annexe] <br><br></p>
+
+<p><strong>Serveur :</strong> Vous apparaissez à la position x=0, y=3 <br><br></p>
+
+<p><strong>Serveur :</strong> Votre ami “M. Patate” a configuré le filtre logistique de l’emplacement 33 pour l’objet “convoyeur rapide”. Configurez-le aussi et continuez la simulation ! <br><br></p>
+
+<p><strong>Serveur :</strong> Votre ami “M. Patate” s’est déplacé de 3 tuiles vers la droite <br><br></p>
+
+<p><strong>Joueur :</strong> Je me suis déplacé de 4 tuiles vers la gauche <br><br></p>
+
+<p><strong>Serveur :</strong> Confirmé. Je transmets <br><br></p>
+
+      </div>
+      <span></span>
+    
+      <div class="original">
+        <p><img src="https://media.alt-f4.blog/ALTF4/26/factorioserverjoin.jpg" alt="Extrait de discussion illustrant le fonctionnement des serveurs Factorio"></p>
+
+      </div>
+    </div>
+    <author>
+    — Serveur Factorio
+    </author>
+  </blockquote>
+</div>
+
+<p>Factorio utilise des <a href="https://fr.wikipedia.org/wiki/Algorithme_d%C3%A9terministe">algorithmes entièrement déterministes</a>, qui produisent exactement le même résultat avec la même entrée. Cela signifie que les résultats ne sont jamais aléatoires, ce qui est nécessaire dans certains cas comme dans celui de Factorio. Un algorithme entièrement déterministe est nécessaire lorsque plusieurs instances de Factorio sont exécutées, afin que toutes les instances fonctionnent selon un algorithme Lockstep et restent synchronisées. La raison d’être des algorithmes entièrement déterministes serait que si vous avez des fonctions qui produisent des résultats aléatoires, vous ne pouvez pas utiliser l’architecture Lockstep, car le système entier se plante si les fonctions qui traitent les choses ne donnent pas les mêmes résultats pour chaque client, à chaque fois. Un algorithme entièrement déterministe est défini par :</p>
+
+<ul>
+  <li>Il ne doit pas utiliser d’autres données que celles qui entrent dans l’algorithme. Données interdites : nombres aléatoires, données stockées sur le disque, variables globales, temporisateurs (c’est-à-dire le temps écoulé depuis le démarrage du programme)</li>
+  <li>L’algorithme doit fonctionner de manière à ne pas être dépendant du temps</li>
+</ul>
+
+<p>Un exemple contraire serait si plusieurs instances d’un programme écrivaient dans une feuille de calcul Excel alors qu’un autre programme est en train de lire la dernière ligne de la feuille. Cela rendrait le programme dépendant du temps, car si une des instances en écriture est retardée de quelques secondes, cela peut produire un ordre complètement différent des données dans les lignes d’Excel, fournissant au programme qui lit la dernière ligne une donnée complètement différente.</p>
+
+<p>Un exemple d’algorithmes Lockstep et entièrement déterministes est la pose d’un plan par un client. Lorsque vous cliquez sur un plan pour l’importer dans la bibliothèque partagée, les icônes du plan ne sont plus grisées, comme dans l’image de droite ci-dessous. En effet, lorsque vous cliquez dessus, vous choisissez de le transférer dans la bibliothèque partagée du jeu. Lorsque vous le déposez ensuite quelque part, votre client indique au serveur que vous avez placé le plan à certaines coordonnées XY. Le serveur indique ensuite à tous les autres clients connectés qu’il a été placé là. Chaque client individuel simule ensuite la sortie de tous les robots de leur roboport, afin d’obtenir des ressources, de placer l’entité en leur possession et de revenir au roboport de leur choix. Tous les clients simulent cela par eux-mêmes, sans aucune autre entrée, et le font de la même manière grâce aux algorithmes entièrement déterministes mentionnés précédemment.</p>
+
+<p>
+  <figure>
+    <div class="juxtapose juxtapose-0" style="max-width: 600px; max-height: ; margin: 20px auto auto; height: 100%; width: 100%;">
+      <div class="jx-slider">
+        <div class="jx-handle" style="left: 50%;">
+          <div class="jx-arrow jx-left"></div>
+          <div class="jx-control">
+            <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <div class="jx-arrow jx-right"></div>
+        </div>
+        <div class="jx-image jx-left" style="width: 50%;">
+          <img src="https://media.alt-f4.blog/ALTF4/26/blueprints-not-imported.jpg" alt="Old Image">
+        </div>
+        <div class="jx-image jx-right" style="width: 50%;">
+          <img src="https://media.alt-f4.blog/ALTF4/26/blueprints-imported.jpg" alt="New Image">
+        </div>
+        <a href="https://juxtapose.knightlab.com" target="_blank" rel="noopener" class="jx-knightlab">
+          <div class="knightlab-logo">
+          </div>
+          <span class="juxtapose-name">JuxtaposeJS</span>
+        </a>
+      </div>
+    </div>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Une désynchronisation est le fait que deux ordinateurs qui sont censés faire quelque chose en même temps avec les mêmes résultats selon les algorithmes entièrement déterministes, ne le font pas. Normalement, lorsque le client et le serveur font la même chose en même temps, ils sont heureux, car ils sont synchronisés. Une désynchronisation peut se produire lorsque deux clients calculent une mise à jour avec des résultats différents, généralement en raison d’une erreur de programmation. Voyez l’image ci-dessous pour un exemple de la façon dont une désynchronisation peut se produire. Si un moddeur ou un créateur de scénario ne gère pas bien ses données, cela peut également provoquer une désynchronisation. Une désynchronisation obligera votre client à se déconnecter du serveur et à générer un rapport de désynchronisation, que les développeurs utilisent pour l’analyser.</p>
+
+<div class="m0 h100 quote">
+  <blockquote cite="">
+    <div class="panel-inset-lighter vertical">
+    
+      <div class="translation">
+        
+<p><strong>Joueur :</strong> Hé, donc le résultat du calcul de l’énergie nette au tick 33859 est de 348. C’est correct ? <br><br></p>
+
+<p><strong>Serveur :</strong> Quoi ?? J’ai 936. Vous avez tort. Je vous envoie la carte et je vous déconnecte, vous pouvez vous reconnecter après. <br><br></p>
+
+      </div>
+      <span></span>
+    
+      <div class="original">
+        <p><img src="https://media.alt-f4.blog/ALTF4/26/desync-chat.jpg" alt="Extrait de discussion illustrant ce qui se passe durant une désynchronisation"></p>
+
+      </div>
+    </div>
+    <author>
+    — Serveur Factorio
+    </author>
+  </blockquote>
+</div>
+
+<p>Vous vous demandez peut-être comment il se fait que des désynchronisations ne se produisent pas avec le déplacement des robots sur la carte ? Sûrement que s’ils sont tous capables d’effectuer une tâche et que certains robots sont sélectionnés pour l’effectuer, les différents clients pourraient choisir des robots différents, non ? Non. Tous les clients choisiront toujours le même robot au même moment parce que l’algorithme qui choisit le robot est <em>entièrement déterministe</em>. Deux trains arrivant en gare en provenance d’un stacker ? Toujours le même train, car c’est <em>aussi entièrement déterministe</em>. Quelle tourelle un cracheur décide-t-il d’attaquer dans votre avant-poste minier ? C’est aussi entièrement déterministe. Ce ne sont là que quelques exemples, mais <strong>tout</strong> dans le jeu est entièrement déterministe. Si ce n’était pas le cas, vous auriez une désynchronisation ici, une autre là, et le mode multijoueur ne serait plus du tout jouable. En multijoueur, les désynchronisations peuvent être causées par de nombreuses choses, comme la construction par robots, les simulations de l’IA des déchiqueteurs et, surtout, les choses causées par les moddeurs eux-mêmes.</p>
+
+<p>Même si vous utilisez quelque chose d’aussi simple que <code class="language-plaintext highlighter-rouge">math.random()</code> pour obtenir un nombre <em>aléatoire</em> dans un de vos mods ou scénarios, les résultats seront cohérents - tous les clients obtiendront le même résultat. Ceci est dû au fait que le générateur de nombres aléatoires de Factorio est <em>initialisé</em>. Il reçoit un certain nombre de données au départ, qu’il utilise ensuite pour générer des nombres aléatoires dans le temps. Si vous faites en sorte que tous les clients utilisent une initialisation identique, vos nombres <em>aléatoires</em> seront synchronisés. Il est important de noter qu’il s’agit d’un générateur <em>pseudo-aléatoire</em>, et donc pas vraiment aléatoire, car il est initialisé avec un nombre prédéterminé, ce qui permet de produire le même résultat partout. Consultez <a href="https://fr.wikipedia.org/wiki/Graine_al%C3%A9atoire">ceci</a> pour plus d’informations sur les graines aléatoires.</p>
+
+<p>Vous en savez maintenant un peu plus sur ce qui se passe lorsque vous cliquez sur un serveur dans la liste des serveurs, que vous le rejoignez par adresse IP, via Steam ou via un réseau local. Les développeurs de Factorio ont travaillé très dur sur le mode multijoueur, ce qui nous a permis de créer de grandes parties telles que la session multijoueur de plus de 500 joueurs ou les configurations complexes de <a href="https://alt-f4.blog/fr/ALTF4-18/#en-route-vers-clusterio-20-hornwitser">Clusterio</a>, fournissant aux créateurs les outils dont ils ont besoin pour élaborer toutes ces choses amusantes. Il y a de moins en moins de limites à ce que vous pouvez faire, des bases énormes, des quantités massives de joueurs, peut-être même les deux ! Tout cela dépend de vous et de la façon dont vous le paramétrez.</p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://discord.gg/nxnCFkb">Discord</a> pour ne rien rater !</p>
+
+
+
+
+<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-25/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
