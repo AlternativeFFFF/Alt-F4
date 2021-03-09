@@ -9,13 +9,13 @@ This article won't go very deep into balancer design principles since we will be
 * **Throughput-limited**: Has internal bottlenecks. An example of a throughput-limited system would be merging two belts into one, and then splitting it back into two. Such a system has a maximum throughput of one belt, even though two belts are available both on input and output.
 * **Throughput-unlimited**: Opposite of throughput-limited, has no internal bottlenecks. If X belts *can* be going through, they *will* be going through.
 
-All blueprints from this article (and a couple extras) can be found [here](https://controlc.com/70909aae).
+All blueprints from this article (and a couple extras) can be found [here](https://media.alt-f4.blog/ALTF4/27/8to8blueprint.txt).
 
 ### The Premise
 
 Picture the following: You're a new player, and you've just heard about those things called "balancers" and how useful they are. You want to balance one belt into three. You should be using a 1-3 balancer for that, but you aren't aware of those yet, so instead you try to use a 4-4 balancer with only one input and three outputs hooked up. Instead of the expected 1:1:1 output ratio, you're met with a 1:1:2 ratio, and much disappointment:
 
-![How not to use a balancer](failed_1-3_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/failed_1-3_compressed.jpg' alt='How not to use a balancer' %}
 
 With this article, I set myself the goal to make a balancer for which this sort of intuition works; In other words, no matter the input/output configuration, all outputs are always equal, and all inputs are drawn from evenly. This kind of balancer is known as a "universal balancer", a concept first explored and named in [this post](https://www.reddit.com/r/factorio/comments/a5ferf/i_present_to_you_the_44_universal_balancer/) by Reddit user [u/tzwaan](https://www.reddit.com/user/tzwaan), who is one of the moderators of the [Factorio subreddit](https://www.reddit.com/r/factorio).
 
@@ -25,27 +25,27 @@ Universal balancers can do what no balancer should be able to: no matter the con
 
 Let's think about how to convert a 4-4 balancer into a 3-3 balancer. That is done by looping the extra output back into the first splitter. We will use this idea as our base principle:
 
-![Looped 4-4](loop_example_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/' alt='Looped 4-4' %}
 
 We want the following behavior: When an output starts overflowing, we want the excess items to automatically travel back into the balancer's inputs in order to maintain full throughput on all outputs. How would we do that? Simple, we use priority splitters. By making their non-priority output put items onto the loop, we guarantee that the overflow, and only the overflow, goes on it. We also need to merge the looping items with the inputs. For that we once again need priority splitters, but this time with input priority. We set the loop to be the non-prioritized input, so that the items on the loop don't interfere with the input in any way:
 
-![Auto-looping 4-4](autoloops_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/autoloops_compressed.jpg' alt='Auto-looping 4-4' %}
 
 After some testing, we'll discover a major issue. If the looping items try to enter a belt that's already full, they just back up all the way to the split-off point and block the overflow, putting us back to square one:
 
-![Broken auto-looping 4-4](failed_autoloops_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/failed_autoloops_compressed.jpg' alt='Broken auto-looping 4-4' %}
 
 To remedy this, we need to make sure every item on the loop can get to every single one of the loop's exits. This can be done in many ways, but for our needs we're looking for the smallest number of splitters. It just so happens that the most splitter-economical way to do this is with another balancer. Let's add it to the loop:
 
-![Fixed 4-4](secondary_balancer_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/secondary_balancer_compressed.jpg' alt='Fixed 4-4' %}
 
 We now have a fully functional universal 4-4 balancer. However, it can be improved. Because of certain balancer mechanics, we don't actually need four belts looping back. In general, we need three belts less than our balancer is made for. This means we can optimize our balancer by compressing the looping belts into two, and then splitting them again:
 
-![Simpler universal 4-4](simplified_balancer_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/simplified_balancer_compressed.jpg' alt='Simpler universal 4-4' %}
 
 Now we can shuffle the components around until we get something small, such as this:
 
-![Small universal 4-4](small_balancer_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/small_balancer_compressed.jpg' alt='Small universal 4-4' %}
 
 This balancer, while pretty long, is only six wide, which means you can fit it in a standard four belt bus, and have just enough space to tile them next to each other. It's important to note that this is not my design, although it's based on one of mine. Sadly, I've lost the name of the designer, so I can't give proper credit.
 
@@ -53,23 +53,23 @@ This balancer, while pretty long, is only six wide, which means you can fit it i
 
 Now, let's try something bigger: a universal 8-8. We begin by doing the same steps as with our 4-4, except we use 8-8 balancers instead. This is what we get:
 
-![Basic universal 8-8](simple_8-8_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/simple_8-8_compressed.jpg' alt='Basic universal 8-8' %}
 
 Unfortunately, the universal 8-8 we get this way is imperfect. Unlike the standard 4-4 balancer, the standard 8-8 balancer is throughput-limited, which makes the whole universal 8-8 balancer throughput-limited. Here is one condition which makes it bottleneck:
 
-![Basic 8-8 bottlenecking](failed_8-8_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/failed_8-8_compressed.jpg' alt='Basic 8-8 bottlenecking' %}
 
 As you can see, six belts of input and output are available, but less than six are coming through. Luckily, this is easily fixed by simply replacing the core balancer with a throughput-unlimited one:
 
-![Proper universal 8-8](TU_8-8_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/TU_8-8_compressed.jpg' alt='Proper universal 8-8' %}
 
 Notice how the secondary balancer can stay throughput-limited, because its only job is to allow items access to all belts. Now, we could try to use our loopback compressing trick, but we'd need to compress eight belts into five, and then split back into eight. That takes way more splitters than we need if we just skip the compression and balance the eight belts directly. Since we're using blue belts, we can employ belt weaving and squish the eight blue belts of loopback into a couple of two tile wide corridors on either side:
 
-![Compacted 8-8 universal](small_8-8_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/small_8-8_compressed.jpg' alt='Compacted 8-8 universal' %}
 
 The whole thing is unrecognizable, but that's because the secondary balancer is now inline with the main one, meaning we have to deal with up to twelve belts shoved into a eight tile wide space, which forces the secondary balancer to be extremely spread out. When we downgrade from blue belts to red belts, we can also ditch the belt weaving entirely, and just use a couple blue undergrounds to get eight red belts into a space of four. This also makes it easy to downgrade to yellows, granted that we still have to use some red and blue undergrounds:
 
-![A blue, red and yellow universal 8-8s together](red_and_yellow_compressed.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/red_and_yellow_compressed.jpg' alt='A blue, red and yellow universal 8-8s together' %}
 
 It's definitely possible to make a yellow belt design without any blue undergrounds, but that would make the whole thing much longer. It is also possible to make both the red and yellow designs without any higher-level undergrounds at all, but that would make the whole thing 33% wider and who knows how much longer.
 
@@ -77,7 +77,7 @@ It's definitely possible to make a yellow belt design without any blue undergrou
 
 I intentionally left some mysteries in this article, as some were too awkward to explain in the process, and some I don't understand that well myself. This is the part where I (try to) clear them up, so fair warning that some technical stuff is coming.
 
-* Why is a balancer the most splitter-efficient redistributor?
+* How do you know that a balancer is the most efficient way to distribute items across belts?
 
 Let's prove this using induction. First, imagine that we already have the most efficient possible distributor across 2<sup>N-1</sup> belts, we'll call it the "small distributor". Now, let's add a row of splitters to split each of its outputs into 2. We now have a 2<sup>N-1</sup>-2<sup>N</sup> distributor. To have the right number of inputs, let's clone the small distributor and feed its outputs to the remaining inputs of the added row of splitters. We now have a 2<sup>N</sup>-2<sup>N</sup> distributor with the smallest possible amount of splitters. Now we just say that a 2-2 distributor is a single splitter, which is obviously the most efficient. This efficient redistributor generation algorithm is identical to the simplest possible balancer generation algorithm, and you can feel free to test that yourself.
 
