@@ -1,11 +1,11 @@
 ## Universal 8-8: Perfectly Balanced, as All Things Should Be <author>pocarski</author>
 
-[Recently](https://alt-f4.blog/ALTF4-23/#belt-only-computing-part-1-not-so-quick-maths-pocarski), I made a bunch of computer parts with belts and splitters. This week, I will continue my unhealthy obsession with moving items around by making something that's actually at least slightly practical: a balancer. Now, why would I write a whole article on designing a balancer? Well that is because the one we will be making today is not your average balancer!
+[Recently](https://alt-f4.blog/ALTF4-23/#belt-only-computing-part-1-not-so-quick-maths-pocarski), I made a bunch of computer parts with belts and splitters. This week, I will continue my unhealthy obsession with moving items around by making something that's actually at least slightly practical: a balancer. Now, why would I write a whole article on designing a balancer? Well, that is because the one we will be making today is not your average balancer!
 
 This article won't go very deep into balancer design principles since we will be using pre-made and well-known blueprints for the most part. However, not all balancers are created equal, so you will need to know some terminology:
 
-* **Input-balanced**: Draws from all inputs evenly. Especially important when merging many inputs to a few outputs.
-* **Output-balanced**: Gives to all outputs evenly. Especially important when splitting a few inputs to many outputs.
+* **Input-balanced**: Draws from all inputs evenly. Especially important when merging many inputs into a few outputs.
+* **Output-balanced**: Gives to all outputs evenly. Especially important when splitting a few inputs into many outputs.
 * **Throughput-limited**: Has internal bottlenecks. An example of a throughput-limited system would be merging two belts into one, and then splitting it back into two. Such a system has a maximum throughput of one belt, even though two belts are available both on input and output.
 * **Throughput-unlimited**: Opposite of throughput-limited, has no internal bottlenecks. If X belts *can* be going through, they *will* be going through.
 
@@ -13,7 +13,7 @@ All blueprints from this article (and a couple extras) can be found [here](https
 
 ### The Premise
 
-Picture the following: You're a new player, and you've just heard about those things called "balancers" and how useful they are. You want to balance one belt into three. You should be using a 1-3 balancer for that, but you aren't aware of those yet, so instead you try to use a 4-4 balancer with only one input and three outputs hooked up. Instead of the expected 1:1:1 output ratio, you're met with a 1:1:2 ratio, and much disappointment:
+Picture the following: You're a new player, and you've just heard about those things called "balancers" and how useful they are. You want to balance one belt into three. You should be using a 1-3 balancer for that, but you aren't aware of those yet, so instead, you try to use a 4-4 balancer with only one input and three outputs hooked up. Instead of the expected 1:1:1 output ratio, you're met with a 1:1:2 ratio and much disappointment:
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/27/failed_1-3_compressed.jpg' alt='How not to use a balancer' %}
 
@@ -25,9 +25,9 @@ Universal balancers can do what no balancer should be able to: no matter the con
 
 Let's think about how to convert a 4-4 balancer into a 3-3 balancer. That is done by looping the extra output back into the first splitter. We will use this idea as our base principle:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/27/' alt='Looped 4-4' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/27/loop_example_compressed.jpg' alt='Looped 4-4' %}
 
-We want the following behavior: When an output starts overflowing, we want the excess items to automatically travel back into the balancer's inputs in order to maintain full throughput on all outputs. How would we do that? Simple, we use priority splitters. By making their non-priority output put items onto the loop, we guarantee that the overflow, and only the overflow, goes on it. We also need to merge the looping items with the inputs. For that we once again need priority splitters, but this time with input priority. We set the loop to be the non-prioritized input, so that the items on the loop don't interfere with the input in any way:
+We want the following behaviour: When an output starts overflowing, we want the excess items to automatically travel back into the balancer's inputs to maintain full throughput on all outputs. How would we do that? Simple, we use priority splitters. By making their non-priority output put items onto the loop, we guarantee that the overflow, and only the overflow, go on it. We also need to merge the looping items with the inputs. For that we once again need priority splitters, but this time with input priority. We set the loop to be the non-prioritized input so that the items on the loop don't interfere with the input in any way:
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/27/autoloops_compressed.jpg' alt='Auto-looping 4-4' %}
 
@@ -35,7 +35,7 @@ After some testing, we'll discover a major issue. If the looping items try to en
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/27/failed_autoloops_compressed.jpg' alt='Broken auto-looping 4-4' %}
 
-To remedy this, we need to make sure every item on the loop can get to every single one of the loop's exits. This can be done in many ways, but for our needs we're looking for the smallest number of splitters. It just so happens that the most splitter-economical way to do this is with another balancer. Let's add it to the loop:
+To remedy this, we need to make sure every item on the loop can get to every single one of the loop's exits. This can be done in many ways, but for our needs, we're looking for the smallest number of splitters. It just so happens that the most splitter-economical way to do this is with another balancer. Let's add it to the loop:
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/27/secondary_balancer_compressed.jpg' alt='Fixed 4-4' %}
 
@@ -63,11 +63,11 @@ As you can see, six belts of input and output are available, but less than six a
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/27/TU_8-8_compressed.jpg' alt='Proper universal 8-8' %}
 
-Notice how the secondary balancer can stay throughput-limited, because its only job is to allow items access to all belts. Now, we could try to use our loopback compressing trick, but we'd need to compress eight belts into five, and then split back into eight. That takes way more splitters than we need if we just skip the compression and balance the eight belts directly. Since we're using blue belts, we can employ belt weaving and squish the eight blue belts of loopback into a couple of two tile wide corridors on either side:
+Notice how the secondary balancer can stay throughput-limited because its only job is to allow items access to all belts. Now, we could try to use our loopback compressing trick, but we'd need to compress eight belts into five, and then split back into eight. That takes way more splitters than we need if we just skip the compression and balance the eight belts directly. Since we're using blue belts, we can employ belt weaving and squish the eight blue belts of loopback into a couple of two tile wide corridors on either side:
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/27/small_8-8_compressed.jpg' alt='Compacted 8-8 universal' %}
 
-The whole thing is unrecognizable, but that's because the secondary balancer is now inline with the main one, meaning we have to deal with up to twelve belts shoved into a eight tile wide space, which forces the secondary balancer to be extremely spread out. When we downgrade from blue belts to red belts, we can also ditch the belt weaving entirely, and just use a couple blue undergrounds to get eight red belts into a space of four. This also makes it easy to downgrade to yellows, granted that we still have to use some red and blue undergrounds:
+The whole thing is unrecognizable, but that's because the secondary balancer is now in line with the main one, meaning we have to deal with up to twelve belts shoved into an eight tile wide space, which forces the secondary balancer to be extremely spread out. When we downgrade from blue belts to red belts, we can also ditch the belt weaving entirely, and just use a couple of blue undergrounds to get eight red belts into a space of four. This also makes it easy to downgrade to yellows, granted that we still have to use some red and blue undergrounds:
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/27/red_and_yellow_compressed.jpg' alt='A blue, red and yellow universal 8-8s together' %}
 
@@ -85,10 +85,10 @@ Let's prove this using induction. First, imagine that we already have the most e
 
 For any N-N balancer, if no outputs are congested, then all of them have the same throughput regardless of inputs. Similarly, if no inputs are starved, all of them have the same throughput regardless of outputs. So long as the loopback has enough capacity to feed all the missing inputs, there will be input balancing.
 
-* Why three less belts in the loopback?
+* Why three fewer belts in the loopback?
 
 To be honest, I don't fully understand this myself. It's an experimentally obtained result, and it has something to do with three being the smallest number that doesn't divide 2<sup>N</sup>, which makes three open outputs the worst case the loopback has to deal with. I can't explain why one and two don't need full loopback throughput, though. If anyone wants to volunteer and help me out with the math here, I'd be more than grateful.
 
 ### Conclusion
 
-This has been a more or less surface-level look at the world of universal balancing. We could have taken a deeper dive, such as exploring the N-3 theorem, but I don't think universal balancers are useful enough to warrant that. They're really more of a fidget toy and a neat curiosity than something applicable to real problems. I can only think of two potential use cases for a universal balancer, one being loading/unloading trains with variable lengths, and the other being not wanting to scroll through blueprint books of balancers. Universal balancers (and really, all balancers) are just too big for not enough benefit, and you should be using priority based belt compressors instead anyway. The universal 8-8 balancer is an experiment in what can be done with belts (it's almost as if it's a spiritual successor to the belt adder and memory), and is not intended to be used in any meaningful way. If you manage to find a niche for it, please let me know, as I am very curious myself about what this monstrosity can be useful for. You're also welcome to try and make the presented designs smaller, if you're an absolute maniac and have way too much free time.
+This has been a more or less surface-level look at the world of universal balancing. We could have taken a deeper dive, such as exploring the N-3 theorem, but I don't think universal balancers are useful enough to warrant that. They're really more of a fidget toy and a neat curiosity than something applicable to real problems. I can only think of two potential use cases for a universal balancer, one being loading/unloading trains with variable lengths, and the other being not wanting to scroll through blueprint books of balancers. Universal balancers (and really, all balancers) are just too big for not enough benefit, and you should be using priority-based belt compressors instead anyway. The universal 8-8 balancer is an experiment in what can be done with belts (it's almost as if it's a spiritual successor to the belt adder and memory) and is not intended to be used in any meaningful way. If you manage to find a niche for it, please let me know, as I am very curious myself about what this monstrosity can be useful for. You're also welcome to try and make the presented designs smaller if you're an absolute maniac and have way too much free time.
