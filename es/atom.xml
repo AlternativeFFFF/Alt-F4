@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/es/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-05T18:38:38+00:00</updated>
+  <updated>2021-03-12T13:58:13+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #27 - Designing the Unnecessary</title>
+    <link href="https://alt-f4.blog/es/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, pocarski continues his descent into belt-related madness by taking a look at universal balancers. The result is as crazy as it is useless, so you know we’re in for a treat!&lt;/p&gt; &lt;h2 id=&quot;universal-8-8-perfectly-balanced-as-all-things-should-be-pocarski&quot;&gt;Universal 8-8: Perfectly Balanced, as All Things Should Be &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/ALTF4-23/#belt-only-computing-part-1-not-so-quick-maths-pocarski&quot;&gt;Recently&lt;/a&gt;, I made a bunch...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-18</id>
     <updated>2020-12-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;A medida que el año llega a su fin, elegimos dos temas relacionados con las modificaciones para el número 18 de Alt-F4 de esta semana. Primero, &lt;em&gt;Hornwitser&lt;/em&gt; nos da una idea del largo progreso de desarrollo de Clusterio 2.0 y los desafíos que plantea. Luego, &lt;em&gt;DedlySpyder&lt;/em&gt; habla sobre su proceso...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #17 - Filosofía de diseño de las interfaces</title>
-    <link href="https://alt-f4.blog/es/ALTF4-17/" />
-    <id>https://alt-f4.blog/ALTF4-17</id>
-    <updated>2020-12-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Para la edición de esta semana de Alt-F4, &lt;em&gt;Therenas&lt;/em&gt; toma una página del libro de jugadas de FFF y habla sobre el proceso de desarrollo de la próxima gran actualización para su mod Factory Planner, y analiza sus pensamientos un tanto filosóficos sobre el diseño de interfaces. &lt;em&gt;Dr_Doof&lt;/em&gt; también comparte...</content>
   </entry>
   
   

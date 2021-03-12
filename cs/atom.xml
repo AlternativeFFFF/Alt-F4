@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-05T18:38:38+00:00</updated>
+  <updated>2021-03-12T13:58:13+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #27 - Designování Zbytečného</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Tento týden, pocarski pokračuje s jeho sestupem do pásově-orientovaného šílenství tím, že se podívá na univerzální balancéry. Výsledek je jak šílený jako je zbytečný, takvíte, že tu máte pochoutku!&lt;/p&gt; &lt;h2 id=&quot;univerzální-8-8-perfectly-balanced-as-all-things-should-be-pocarski&quot;&gt;Univerzální 8-8: Perfectly Balanced, as All Things Should Be &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/cs/ALTF4-23/#vypo%C4%8D%C3%ADt%C3%A1n%C3%ADn-pouze-s-p%C3%A1sy-%C4%8D%C3%A1st-prvn%C3%AD-ne-tak-rychl%C3%A1-matematika-pocarski&quot;&gt;Nedávno&lt;/a&gt;, vyrobil jsem několik počítačových částí s pásy a...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-18</id>
     <updated>2020-12-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;As the year draws to a close, we picked two mod-related topics for this week’s 18th issue of Alt-F4. First, &lt;em&gt;Hornwitser&lt;/em&gt; gives us some insight into the long development progress of Clusterio 2.0 and the challenges that it poses. Then, &lt;em&gt;DedlySpyder&lt;/em&gt; talks about their process of developing a simple mod...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #17 - Interface Design Philosophy</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-17/" />
-    <id>https://alt-f4.blog/ALTF4-17</id>
-    <updated>2020-12-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For this week’s issue of Alt-F4, &lt;em&gt;Therenas&lt;/em&gt; takes a page out of the FFF playbook and talks about the development process of the next big update for his mod Factory Planner, going into his somewhat philosophical thoughts on interface design. &lt;em&gt;Dr_Doof&lt;/em&gt; also shares a cosy little Christmas event with us,...</content>
   </entry>
   
   

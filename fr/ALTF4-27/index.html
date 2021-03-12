@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 n°27 - Concevoir l’inutile</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 n°27 - Concevoir l’inutile | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 n°27 - Concevoir l’inutile">
+<meta name="author" content="pocarski">
+<meta property="og:locale" content="fr">
+<meta name="description" content="Cette semaine, Pocarski poursuit sa descente dans la folie des convoyeurs en s’intéressant aux équilibreurs universels. Le résultat est aussi délirant qu’inutile, alors vous pensez bien qu’on va se régaler ! Un 8-8 universel : Parfaitement équilibré, comme toutes choses devraient l’être pocarski Récemment, j’ai fabriqué un tas de composants informatiques avec des convoyeurs et des répartiteurs. Cette semaine, je vais poursuivre mon obsession malsaine pour le déplacement d’objets en fabriquant quelque chose d’au moins un peu plus pratique : un équilibreur. Mais pourquoi devrais-je écrire un article entier sur la conception d’un équilibreur ? Eh bien, c’est parce que celui que nous allons fabriquer aujourd’hui n’est pas un équilibreur ordinaire ! Cet article ne s’attardera pas trop sur les principes de conception des équilibreurs, car nous utiliserons principalement des modèles préétablis et bien connus. Cependant, tous les équilibreurs ne sont pas équivalents et vous devez donc connaître certains termes : Équilibré en entrée : prélève uniformément sur toutes les entrées. Particulièrement important lors de la fusion de nombreuses entrées en un petit nombre de sorties. Équilibré en sortie : distribue uniformément vers toutes les sorties. Particulièrement important lorsque l’on divise un petit nombre d’entrées en beaucoup de sorties. Débit limité : possède des goulots d’étranglement internes. La fusion de deux convoyeurs en un seul, puis leur séparation ultérieure en deux, est un exemple de système à débit limité. Un tel système a un débit maximal d’un seul convoyeur, même s’il y en a deux à l’entrée et à la sortie. Débit illimité : c’est l’opposé, il n’a pas de goulot d’étranglement interne. Si x convoyeurs peuvent le traverser, ils le feront. Tous les plans de cet article (et quelques autres) sont disponibles ici. Introduction Imaginez la situation suivante : vous êtes un nouveau joueur, et vous venez d’entendre parler de ces choses appelées “équilibreurs” et de leur grande utilité. Vous voulez séparer un convoyeur en trois. Vous devriez utiliser pour cela un équilibreur 1-3, mais vous ne connaissez pas encore ces dispositifs, alors à la place, vous tentez d’utiliser un équilibreur 4-4 avec une seule entrée et trois sorties connectées. Au lieu du rapport de sortie 1:1:1 attendu, vous vous retrouvez avec un rapport 1:1:2, et une grande déception : Avec cet article, je me suis fixé pour objectif de réaliser un équilibreur pour lequel cette sorte d’intuition fonctionne ; en d’autres termes, quelle que soit la configuration des entrées/sorties, toutes les sorties sont toujours égales, et toutes les entrées sont prélevées de manière équivalente. Ce type d’équilibreur est connu sous le nom d’”équilibreur universel”, un concept exploré et dénommé pour la première fois dans cet article par l’utilisateur Reddit u/tzwaan, qui est l’un des modérateurs du sousReddit de Factorio. Les équilibreurs universels peuvent faire ce qu’aucun équilibreur ne devrait être en mesure de faire : quelle que soit la configuration, ils sont à la fois équilibrés en entrée, équilibrés en sortie, et illimités en débit ! Il s’agit d’un ensemble de propriétés que l’on pensait jusqu’à présent réservées à l’équilibreur 2-2, qui n’est qu’un simple répartiteur. L’inconvénient est qu’ils deviennent énormes. Principes de conception Réfléchissons à la manière de convertir un équilibreur 4-4 en un équilibreur 3-3. Pour ce faire, il suffit de renvoyer la sortie supplémentaire dans le premier répartiteur. Nous allons utiliser cette idée comme principe de base : Nous voulons le comportement suivant : lorsqu’une sortie commence à déborder, il faut que les objets en excès retournent automatiquement dans les entrées de l’équilibreur afin de maintenir un débit complet sur toutes les sorties. Comment faire ? C’est simple, nous utilisons des répartiteurs avec une priorité. En faisant en sorte que leur sortie non prioritaire envoie les objets vers la boucle, nous garantissons que le trop-plein, et seulement le trop-plein, ira par là. Nous devons également fusionner les objets issus de la boucle avec les entrées. Pour cela, nous avons encore une fois besoin de répartiteurs avec une priorité, mais cette fois-ci en entrée. Nous ajustons la boucle pour qu’elle soit l’entrée non prioritaire afin que les objets de la boucle n’interfèrent pas du tout avec l’entrée : Après quelques tests, nous avons découvert un problème majeur. Si les objets de la boucle essaient d’entrer dans un convoyeur déjà plein, ils le saturent jusqu’au point de séparation et bloquent le système de trop-plein, ce qui nous ramène à la case départ : Pour éviter cela, nous devons nous assurer que chaque objet de la boucle peut atteindre chacune des sorties de la boucle. Cela peut être fait de plusieurs façons, mais pour nos besoins, nous cherchons à réduire au maximum le nombre de répartiteurs. Il se trouve que la façon la plus économique de le faire est d’utiliser un autre équilibreur. Ajoutons-le à la boucle : Nous avons maintenant un équilibreur 4-4 universel complètement fonctionnel. Cependant, il peut être amélioré. Grâce à certains mécanismes de l’équilibreur, nous n’avons en fait pas besoin de quatre convoyeurs pour la boucle. En général, nous avons besoin de trois convoyeurs de moins que ce pour quoi notre équilibreur est conçu. Cela signifie que nous pouvons optimiser notre équilibreur en réduisant les convoyeurs de la boucle à deux, puis en les divisant à nouveau : Maintenant, nous pouvons réorganiser les composants jusqu’à ce que nous obtenions quelque chose de compact, comme ceci : Cet équilibreur, bien que plutôt long, ne fait que six tuiles de large, ce qui signifie que vous pouvez le placer dans un bus standard à quatre convoyeurs, et avoir juste assez d’espace pour les empiler les uns à côté des autres. Il est important de noter que ceci n’est pas de ma conception, bien qu’il soit basé sur l’une des miennes. Malheureusement, j’ai perdu le nom du concepteur, donc je ne pourrai pas lui donner le mérite qui lui revient. Conception améliorée Maintenant, essayons quelque chose de plus grand : un 8-8 universel. Nous commençons par suivre les mêmes étapes que pour notre 4-4, sauf que nous utilisons des équilibreurs 8-8 à la place. Voilà à quoi nous arrivons : Malheureusement, le 8-8 universel que nous obtenons de cette manière est imparfait. Contrairement à l’équilibreur 4-4 standard, l’équilibreur 8-8 standard a un débit limité, ce qui limite le débit de l’équilibreur 8-8 universel dans son ensemble. Voici une situation qui provoque ce goulot d’étranglement : Comme vous pouvez le voir, six convoyeurs d’entrée et de sortie sont disponibles, mais moins de six parviennent à passer. Heureusement, ce problème est facilement résolu en remplaçant simplement l’équilibreur central par un équilibreur à débit illimité : Remarquez que l’équilibreur secondaire peut lui rester limité en termes de débit car son seul rôle est de permettre aux objets d’accéder à tous les convoyeurs en entrée. Maintenant, nous pourrions essayer d’utiliser notre astuce de compression de la boucle, mais nous aurions besoin de comprimer huit convoyeurs en cinq, puis de les diviser à nouveau en huit. Or cela nécessite beaucoup plus de répartiteurs que si l’on se contente de renoncer à la compression et d’équilibrer les huit bandes directement. Vu que nous utilisons des convoyeurs bleus, nous pouvons utiliser le tissage de convoyeurs souterrains et comprimer les huit convoyeurs bleus de la boucle dans deux couloirs de deux tuiles de large de chaque côté : L’ensemble est méconnaissable, mais c’est parce que l’équilibreur secondaire est maintenant aligné avec l’équilibreur principal, ce qui signifie que nous devons gérer jusqu’à douze courroies comprimées dans un espace de huit tuiles de large, ce qui oblige l’équilibreur secondaire à être extrêmement étalé. Lorsque nous passons des convoyeurs bleus aux convoyeurs rouges, nous pouvons également complètement abandonner le tissage des souterrains, et simplement utiliser quelques souterrains bleus pour obtenir huit convoyeurs rouges dans un espace de quatre. Cela facilite également le passage aux convoyeurs jaunes, même si nous devons toujours utiliser des souterrains rouges et bleus : Il est tout à fait possible de créer un modèle avec des convoyeurs jaunes sans souterrains bleus, mais cela rendrait l’ensemble beaucoup plus long. Il est également possible de réaliser les modèles en rouge ou en jaune sans aucun souterrain de niveau supérieur, mais cela rendrait l’ensemble 33 % plus large et qui sait de combien plus long. Explications finales J’ai intentionnellement laissé quelques mystères dans cet article, car certains étaient trop compliqués à expliquer dans la démarche, et pour d’autres, je ne les comprends pas très bien moi-même. C’est dans cette partie que vais (tenter de) les éclaircir, alors je vous préviens que certains aspects techniques vous attendent. Comment savez-vous qu’un équilibreur est le moyen le plus efficace de distribuer des objets sur des convoyeurs ? On peut prouver cela par induction. Premièrement, imaginons que nous avons déjà le distributeur le plus efficace possible pour 2N-1 convoyeurs, nous l’appellerons le “petit distributeur”. Maintenant, ajoutons une rangée de répartiteurs pour diviser chacune de ses sorties en 2. Nous avons maintenant un distributeur 2N-1-2N. Pour avoir le bon nombre d’entrées, copions le petit distributeur et envoyons ses sorties vers les entrées restantes de la rangée de répartiteurs ajoutée. Nous avons maintenant un distributeur 2N-2N avec le plus petit nombre possible de répartiteurs. Maintenant, nous disons simplement qu’un distributeur 2-2 est un simple répartiteur, ce qui est évidemment le plus efficace. Cet algorithme de génération de distributeurs efficaces est identique à l’algorithme de génération des équilibreurs les plus simples possible, et vous êtes libre de vérifier cela par vous-même. Comment garantissez-vous l’équilibrage des entrées ? Pour tout équilibreur N-N, si aucune sortie n’est saturée, elles ont toutes le même débit, quelles que soient les entrées. De même, si aucune entrée n’est en manque, elles ont toutes le même débit, quelles que soient les sorties. Tant que la boucle de retour a une capacité suffisante pour alimenter toutes les entrées manquantes, il y aura un équilibrage des entrées. Pourquoi trois convoyeurs en moins dans la boucle ? Pour être honnête, je ne le comprends pas vraiment moi-même. C’est un résultat obtenu expérimentalement, et cela a quelque chose à voir avec le fait que trois est le plus petit nombre qui ne divise pas 2N, ce qui fait de trois sorties ouvertes le pire cas que la boucle doit gérer. Cependant, je ne peux pas expliquer pourquoi le premier et le deuxième n’ont pas besoin d’un débit de boucle complet. Si quelqu’un veut se porter volontaire pour m’aider à faire ces calculs, je lui en serai plus que reconnaissant. Conclusion Nous avons jeté un regard plus ou moins superficiel sur le monde de l’équilibrage universel. Nous aurions pu approfondir le sujet, en explorant le théorème N-3, mais je ne pense pas que les équilibreurs universels soient suffisamment utiles pour le justifier. Il s’agit plus d’un jouet et d’une curiosité que d’un outil applicable à des problèmes réels. Je ne vois que deux cas d’utilisation potentiels pour un équilibreur universel, l’un étant le chargement/déchargement de trains de longueur variable, et l’autre étant le souhait de ne pas avoir à parcourir des livres de plans d’équilibreurs. Les équilibreurs universels (et en fait, tous les équilibreurs) sont tout simplement trop volumineux et ne présentent pas assez d’avantages, et vous devriez de toute façon plutôt utiliser des compresseurs à convoyeurs basés sur les priorités. L’équilibreur universel 8-8 est une expérience de ce qui peut être fait avec des convoyeurs (c’est presque comme si c’était un successeur spirituel de l’additionneur et de la mémoire à base de convoyeurs) et n’est pas destiné à être utilisé de manière utile. Si vous parvenez à lui trouver une utilisation, faites-le moi savoir, car je suis moi-même très curieux de savoir à quoi peut servir cette monstruosité. Vous êtes également invités à essayer de réduire la taille des modèles présentés si vous êtes un maniaque absolu et que vous avez beaucoup trop de temps libre. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="Cette semaine, Pocarski poursuit sa descente dans la folie des convoyeurs en s’intéressant aux équilibreurs universels. Le résultat est aussi délirant qu’inutile, alors vous pensez bien qu’on va se régaler ! Un 8-8 universel : Parfaitement équilibré, comme toutes choses devraient l’être pocarski Récemment, j’ai fabriqué un tas de composants informatiques avec des convoyeurs et des répartiteurs. Cette semaine, je vais poursuivre mon obsession malsaine pour le déplacement d’objets en fabriquant quelque chose d’au moins un peu plus pratique : un équilibreur. Mais pourquoi devrais-je écrire un article entier sur la conception d’un équilibreur ? Eh bien, c’est parce que celui que nous allons fabriquer aujourd’hui n’est pas un équilibreur ordinaire ! Cet article ne s’attardera pas trop sur les principes de conception des équilibreurs, car nous utiliserons principalement des modèles préétablis et bien connus. Cependant, tous les équilibreurs ne sont pas équivalents et vous devez donc connaître certains termes : Équilibré en entrée : prélève uniformément sur toutes les entrées. Particulièrement important lors de la fusion de nombreuses entrées en un petit nombre de sorties. Équilibré en sortie : distribue uniformément vers toutes les sorties. Particulièrement important lorsque l’on divise un petit nombre d’entrées en beaucoup de sorties. Débit limité : possède des goulots d’étranglement internes. La fusion de deux convoyeurs en un seul, puis leur séparation ultérieure en deux, est un exemple de système à débit limité. Un tel système a un débit maximal d’un seul convoyeur, même s’il y en a deux à l’entrée et à la sortie. Débit illimité : c’est l’opposé, il n’a pas de goulot d’étranglement interne. Si x convoyeurs peuvent le traverser, ils le feront. Tous les plans de cet article (et quelques autres) sont disponibles ici. Introduction Imaginez la situation suivante : vous êtes un nouveau joueur, et vous venez d’entendre parler de ces choses appelées “équilibreurs” et de leur grande utilité. Vous voulez séparer un convoyeur en trois. Vous devriez utiliser pour cela un équilibreur 1-3, mais vous ne connaissez pas encore ces dispositifs, alors à la place, vous tentez d’utiliser un équilibreur 4-4 avec une seule entrée et trois sorties connectées. Au lieu du rapport de sortie 1:1:1 attendu, vous vous retrouvez avec un rapport 1:1:2, et une grande déception : Avec cet article, je me suis fixé pour objectif de réaliser un équilibreur pour lequel cette sorte d’intuition fonctionne ; en d’autres termes, quelle que soit la configuration des entrées/sorties, toutes les sorties sont toujours égales, et toutes les entrées sont prélevées de manière équivalente. Ce type d’équilibreur est connu sous le nom d’”équilibreur universel”, un concept exploré et dénommé pour la première fois dans cet article par l’utilisateur Reddit u/tzwaan, qui est l’un des modérateurs du sousReddit de Factorio. Les équilibreurs universels peuvent faire ce qu’aucun équilibreur ne devrait être en mesure de faire : quelle que soit la configuration, ils sont à la fois équilibrés en entrée, équilibrés en sortie, et illimités en débit ! Il s’agit d’un ensemble de propriétés que l’on pensait jusqu’à présent réservées à l’équilibreur 2-2, qui n’est qu’un simple répartiteur. L’inconvénient est qu’ils deviennent énormes. Principes de conception Réfléchissons à la manière de convertir un équilibreur 4-4 en un équilibreur 3-3. Pour ce faire, il suffit de renvoyer la sortie supplémentaire dans le premier répartiteur. Nous allons utiliser cette idée comme principe de base : Nous voulons le comportement suivant : lorsqu’une sortie commence à déborder, il faut que les objets en excès retournent automatiquement dans les entrées de l’équilibreur afin de maintenir un débit complet sur toutes les sorties. Comment faire ? C’est simple, nous utilisons des répartiteurs avec une priorité. En faisant en sorte que leur sortie non prioritaire envoie les objets vers la boucle, nous garantissons que le trop-plein, et seulement le trop-plein, ira par là. Nous devons également fusionner les objets issus de la boucle avec les entrées. Pour cela, nous avons encore une fois besoin de répartiteurs avec une priorité, mais cette fois-ci en entrée. Nous ajustons la boucle pour qu’elle soit l’entrée non prioritaire afin que les objets de la boucle n’interfèrent pas du tout avec l’entrée : Après quelques tests, nous avons découvert un problème majeur. Si les objets de la boucle essaient d’entrer dans un convoyeur déjà plein, ils le saturent jusqu’au point de séparation et bloquent le système de trop-plein, ce qui nous ramène à la case départ : Pour éviter cela, nous devons nous assurer que chaque objet de la boucle peut atteindre chacune des sorties de la boucle. Cela peut être fait de plusieurs façons, mais pour nos besoins, nous cherchons à réduire au maximum le nombre de répartiteurs. Il se trouve que la façon la plus économique de le faire est d’utiliser un autre équilibreur. Ajoutons-le à la boucle : Nous avons maintenant un équilibreur 4-4 universel complètement fonctionnel. Cependant, il peut être amélioré. Grâce à certains mécanismes de l’équilibreur, nous n’avons en fait pas besoin de quatre convoyeurs pour la boucle. En général, nous avons besoin de trois convoyeurs de moins que ce pour quoi notre équilibreur est conçu. Cela signifie que nous pouvons optimiser notre équilibreur en réduisant les convoyeurs de la boucle à deux, puis en les divisant à nouveau : Maintenant, nous pouvons réorganiser les composants jusqu’à ce que nous obtenions quelque chose de compact, comme ceci : Cet équilibreur, bien que plutôt long, ne fait que six tuiles de large, ce qui signifie que vous pouvez le placer dans un bus standard à quatre convoyeurs, et avoir juste assez d’espace pour les empiler les uns à côté des autres. Il est important de noter que ceci n’est pas de ma conception, bien qu’il soit basé sur l’une des miennes. Malheureusement, j’ai perdu le nom du concepteur, donc je ne pourrai pas lui donner le mérite qui lui revient. Conception améliorée Maintenant, essayons quelque chose de plus grand : un 8-8 universel. Nous commençons par suivre les mêmes étapes que pour notre 4-4, sauf que nous utilisons des équilibreurs 8-8 à la place. Voilà à quoi nous arrivons : Malheureusement, le 8-8 universel que nous obtenons de cette manière est imparfait. Contrairement à l’équilibreur 4-4 standard, l’équilibreur 8-8 standard a un débit limité, ce qui limite le débit de l’équilibreur 8-8 universel dans son ensemble. Voici une situation qui provoque ce goulot d’étranglement : Comme vous pouvez le voir, six convoyeurs d’entrée et de sortie sont disponibles, mais moins de six parviennent à passer. Heureusement, ce problème est facilement résolu en remplaçant simplement l’équilibreur central par un équilibreur à débit illimité : Remarquez que l’équilibreur secondaire peut lui rester limité en termes de débit car son seul rôle est de permettre aux objets d’accéder à tous les convoyeurs en entrée. Maintenant, nous pourrions essayer d’utiliser notre astuce de compression de la boucle, mais nous aurions besoin de comprimer huit convoyeurs en cinq, puis de les diviser à nouveau en huit. Or cela nécessite beaucoup plus de répartiteurs que si l’on se contente de renoncer à la compression et d’équilibrer les huit bandes directement. Vu que nous utilisons des convoyeurs bleus, nous pouvons utiliser le tissage de convoyeurs souterrains et comprimer les huit convoyeurs bleus de la boucle dans deux couloirs de deux tuiles de large de chaque côté : L’ensemble est méconnaissable, mais c’est parce que l’équilibreur secondaire est maintenant aligné avec l’équilibreur principal, ce qui signifie que nous devons gérer jusqu’à douze courroies comprimées dans un espace de huit tuiles de large, ce qui oblige l’équilibreur secondaire à être extrêmement étalé. Lorsque nous passons des convoyeurs bleus aux convoyeurs rouges, nous pouvons également complètement abandonner le tissage des souterrains, et simplement utiliser quelques souterrains bleus pour obtenir huit convoyeurs rouges dans un espace de quatre. Cela facilite également le passage aux convoyeurs jaunes, même si nous devons toujours utiliser des souterrains rouges et bleus : Il est tout à fait possible de créer un modèle avec des convoyeurs jaunes sans souterrains bleus, mais cela rendrait l’ensemble beaucoup plus long. Il est également possible de réaliser les modèles en rouge ou en jaune sans aucun souterrain de niveau supérieur, mais cela rendrait l’ensemble 33 % plus large et qui sait de combien plus long. Explications finales J’ai intentionnellement laissé quelques mystères dans cet article, car certains étaient trop compliqués à expliquer dans la démarche, et pour d’autres, je ne les comprends pas très bien moi-même. C’est dans cette partie que vais (tenter de) les éclaircir, alors je vous préviens que certains aspects techniques vous attendent. Comment savez-vous qu’un équilibreur est le moyen le plus efficace de distribuer des objets sur des convoyeurs ? On peut prouver cela par induction. Premièrement, imaginons que nous avons déjà le distributeur le plus efficace possible pour 2N-1 convoyeurs, nous l’appellerons le “petit distributeur”. Maintenant, ajoutons une rangée de répartiteurs pour diviser chacune de ses sorties en 2. Nous avons maintenant un distributeur 2N-1-2N. Pour avoir le bon nombre d’entrées, copions le petit distributeur et envoyons ses sorties vers les entrées restantes de la rangée de répartiteurs ajoutée. Nous avons maintenant un distributeur 2N-2N avec le plus petit nombre possible de répartiteurs. Maintenant, nous disons simplement qu’un distributeur 2-2 est un simple répartiteur, ce qui est évidemment le plus efficace. Cet algorithme de génération de distributeurs efficaces est identique à l’algorithme de génération des équilibreurs les plus simples possible, et vous êtes libre de vérifier cela par vous-même. Comment garantissez-vous l’équilibrage des entrées ? Pour tout équilibreur N-N, si aucune sortie n’est saturée, elles ont toutes le même débit, quelles que soient les entrées. De même, si aucune entrée n’est en manque, elles ont toutes le même débit, quelles que soient les sorties. Tant que la boucle de retour a une capacité suffisante pour alimenter toutes les entrées manquantes, il y aura un équilibrage des entrées. Pourquoi trois convoyeurs en moins dans la boucle ? Pour être honnête, je ne le comprends pas vraiment moi-même. C’est un résultat obtenu expérimentalement, et cela a quelque chose à voir avec le fait que trois est le plus petit nombre qui ne divise pas 2N, ce qui fait de trois sorties ouvertes le pire cas que la boucle doit gérer. Cependant, je ne peux pas expliquer pourquoi le premier et le deuxième n’ont pas besoin d’un débit de boucle complet. Si quelqu’un veut se porter volontaire pour m’aider à faire ces calculs, je lui en serai plus que reconnaissant. Conclusion Nous avons jeté un regard plus ou moins superficiel sur le monde de l’équilibrage universel. Nous aurions pu approfondir le sujet, en explorant le théorème N-3, mais je ne pense pas que les équilibreurs universels soient suffisamment utiles pour le justifier. Il s’agit plus d’un jouet et d’une curiosité que d’un outil applicable à des problèmes réels. Je ne vois que deux cas d’utilisation potentiels pour un équilibreur universel, l’un étant le chargement/déchargement de trains de longueur variable, et l’autre étant le souhait de ne pas avoir à parcourir des livres de plans d’équilibreurs. Les équilibreurs universels (et en fait, tous les équilibreurs) sont tout simplement trop volumineux et ne présentent pas assez d’avantages, et vous devriez de toute façon plutôt utiliser des compresseurs à convoyeurs basés sur les priorités. L’équilibreur universel 8-8 est une expérience de ce qui peut être fait avec des convoyeurs (c’est presque comme si c’était un successeur spirituel de l’additionneur et de la mémoire à base de convoyeurs) et n’est pas destiné à être utilisé de manière utile. Si vous parvenez à lui trouver une utilisation, faites-le moi savoir, car je suis moi-même très curieux de savoir à quoi peut servir cette monstruosité. Vous êtes également invités à essayer de réduire la taille des modèles présentés si vous êtes un maniaque absolu et que vous avez beaucoup trop de temps libre. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-27/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-27/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-27/"},"description":"Cette semaine, Pocarski poursuit sa descente dans la folie des convoyeurs en s’intéressant aux équilibreurs universels. Le résultat est aussi délirant qu’inutile, alors vous pensez bien qu’on va se régaler ! Un 8-8 universel : Parfaitement équilibré, comme toutes choses devraient l’être pocarski Récemment, j’ai fabriqué un tas de composants informatiques avec des convoyeurs et des répartiteurs. Cette semaine, je vais poursuivre mon obsession malsaine pour le déplacement d’objets en fabriquant quelque chose d’au moins un peu plus pratique : un équilibreur. Mais pourquoi devrais-je écrire un article entier sur la conception d’un équilibreur ? Eh bien, c’est parce que celui que nous allons fabriquer aujourd’hui n’est pas un équilibreur ordinaire ! Cet article ne s’attardera pas trop sur les principes de conception des équilibreurs, car nous utiliserons principalement des modèles préétablis et bien connus. Cependant, tous les équilibreurs ne sont pas équivalents et vous devez donc connaître certains termes : Équilibré en entrée : prélève uniformément sur toutes les entrées. Particulièrement important lors de la fusion de nombreuses entrées en un petit nombre de sorties. Équilibré en sortie : distribue uniformément vers toutes les sorties. Particulièrement important lorsque l’on divise un petit nombre d’entrées en beaucoup de sorties. Débit limité : possède des goulots d’étranglement internes. La fusion de deux convoyeurs en un seul, puis leur séparation ultérieure en deux, est un exemple de système à débit limité. Un tel système a un débit maximal d’un seul convoyeur, même s’il y en a deux à l’entrée et à la sortie. Débit illimité : c’est l’opposé, il n’a pas de goulot d’étranglement interne. Si x convoyeurs peuvent le traverser, ils le feront. Tous les plans de cet article (et quelques autres) sont disponibles ici. Introduction Imaginez la situation suivante : vous êtes un nouveau joueur, et vous venez d’entendre parler de ces choses appelées “équilibreurs” et de leur grande utilité. Vous voulez séparer un convoyeur en trois. Vous devriez utiliser pour cela un équilibreur 1-3, mais vous ne connaissez pas encore ces dispositifs, alors à la place, vous tentez d’utiliser un équilibreur 4-4 avec une seule entrée et trois sorties connectées. Au lieu du rapport de sortie 1:1:1 attendu, vous vous retrouvez avec un rapport 1:1:2, et une grande déception : Avec cet article, je me suis fixé pour objectif de réaliser un équilibreur pour lequel cette sorte d’intuition fonctionne ; en d’autres termes, quelle que soit la configuration des entrées/sorties, toutes les sorties sont toujours égales, et toutes les entrées sont prélevées de manière équivalente. Ce type d’équilibreur est connu sous le nom d’”équilibreur universel”, un concept exploré et dénommé pour la première fois dans cet article par l’utilisateur Reddit u/tzwaan, qui est l’un des modérateurs du sousReddit de Factorio. Les équilibreurs universels peuvent faire ce qu’aucun équilibreur ne devrait être en mesure de faire : quelle que soit la configuration, ils sont à la fois équilibrés en entrée, équilibrés en sortie, et illimités en débit ! Il s’agit d’un ensemble de propriétés que l’on pensait jusqu’à présent réservées à l’équilibreur 2-2, qui n’est qu’un simple répartiteur. L’inconvénient est qu’ils deviennent énormes. Principes de conception Réfléchissons à la manière de convertir un équilibreur 4-4 en un équilibreur 3-3. Pour ce faire, il suffit de renvoyer la sortie supplémentaire dans le premier répartiteur. Nous allons utiliser cette idée comme principe de base : Nous voulons le comportement suivant : lorsqu’une sortie commence à déborder, il faut que les objets en excès retournent automatiquement dans les entrées de l’équilibreur afin de maintenir un débit complet sur toutes les sorties. Comment faire ? C’est simple, nous utilisons des répartiteurs avec une priorité. En faisant en sorte que leur sortie non prioritaire envoie les objets vers la boucle, nous garantissons que le trop-plein, et seulement le trop-plein, ira par là. Nous devons également fusionner les objets issus de la boucle avec les entrées. Pour cela, nous avons encore une fois besoin de répartiteurs avec une priorité, mais cette fois-ci en entrée. Nous ajustons la boucle pour qu’elle soit l’entrée non prioritaire afin que les objets de la boucle n’interfèrent pas du tout avec l’entrée : Après quelques tests, nous avons découvert un problème majeur. Si les objets de la boucle essaient d’entrer dans un convoyeur déjà plein, ils le saturent jusqu’au point de séparation et bloquent le système de trop-plein, ce qui nous ramène à la case départ : Pour éviter cela, nous devons nous assurer que chaque objet de la boucle peut atteindre chacune des sorties de la boucle. Cela peut être fait de plusieurs façons, mais pour nos besoins, nous cherchons à réduire au maximum le nombre de répartiteurs. Il se trouve que la façon la plus économique de le faire est d’utiliser un autre équilibreur. Ajoutons-le à la boucle : Nous avons maintenant un équilibreur 4-4 universel complètement fonctionnel. Cependant, il peut être amélioré. Grâce à certains mécanismes de l’équilibreur, nous n’avons en fait pas besoin de quatre convoyeurs pour la boucle. En général, nous avons besoin de trois convoyeurs de moins que ce pour quoi notre équilibreur est conçu. Cela signifie que nous pouvons optimiser notre équilibreur en réduisant les convoyeurs de la boucle à deux, puis en les divisant à nouveau : Maintenant, nous pouvons réorganiser les composants jusqu’à ce que nous obtenions quelque chose de compact, comme ceci : Cet équilibreur, bien que plutôt long, ne fait que six tuiles de large, ce qui signifie que vous pouvez le placer dans un bus standard à quatre convoyeurs, et avoir juste assez d’espace pour les empiler les uns à côté des autres. Il est important de noter que ceci n’est pas de ma conception, bien qu’il soit basé sur l’une des miennes. Malheureusement, j’ai perdu le nom du concepteur, donc je ne pourrai pas lui donner le mérite qui lui revient. Conception améliorée Maintenant, essayons quelque chose de plus grand : un 8-8 universel. Nous commençons par suivre les mêmes étapes que pour notre 4-4, sauf que nous utilisons des équilibreurs 8-8 à la place. Voilà à quoi nous arrivons : Malheureusement, le 8-8 universel que nous obtenons de cette manière est imparfait. Contrairement à l’équilibreur 4-4 standard, l’équilibreur 8-8 standard a un débit limité, ce qui limite le débit de l’équilibreur 8-8 universel dans son ensemble. Voici une situation qui provoque ce goulot d’étranglement : Comme vous pouvez le voir, six convoyeurs d’entrée et de sortie sont disponibles, mais moins de six parviennent à passer. Heureusement, ce problème est facilement résolu en remplaçant simplement l’équilibreur central par un équilibreur à débit illimité : Remarquez que l’équilibreur secondaire peut lui rester limité en termes de débit car son seul rôle est de permettre aux objets d’accéder à tous les convoyeurs en entrée. Maintenant, nous pourrions essayer d’utiliser notre astuce de compression de la boucle, mais nous aurions besoin de comprimer huit convoyeurs en cinq, puis de les diviser à nouveau en huit. Or cela nécessite beaucoup plus de répartiteurs que si l’on se contente de renoncer à la compression et d’équilibrer les huit bandes directement. Vu que nous utilisons des convoyeurs bleus, nous pouvons utiliser le tissage de convoyeurs souterrains et comprimer les huit convoyeurs bleus de la boucle dans deux couloirs de deux tuiles de large de chaque côté : L’ensemble est méconnaissable, mais c’est parce que l’équilibreur secondaire est maintenant aligné avec l’équilibreur principal, ce qui signifie que nous devons gérer jusqu’à douze courroies comprimées dans un espace de huit tuiles de large, ce qui oblige l’équilibreur secondaire à être extrêmement étalé. Lorsque nous passons des convoyeurs bleus aux convoyeurs rouges, nous pouvons également complètement abandonner le tissage des souterrains, et simplement utiliser quelques souterrains bleus pour obtenir huit convoyeurs rouges dans un espace de quatre. Cela facilite également le passage aux convoyeurs jaunes, même si nous devons toujours utiliser des souterrains rouges et bleus : Il est tout à fait possible de créer un modèle avec des convoyeurs jaunes sans souterrains bleus, mais cela rendrait l’ensemble beaucoup plus long. Il est également possible de réaliser les modèles en rouge ou en jaune sans aucun souterrain de niveau supérieur, mais cela rendrait l’ensemble 33 % plus large et qui sait de combien plus long. Explications finales J’ai intentionnellement laissé quelques mystères dans cet article, car certains étaient trop compliqués à expliquer dans la démarche, et pour d’autres, je ne les comprends pas très bien moi-même. C’est dans cette partie que vais (tenter de) les éclaircir, alors je vous préviens que certains aspects techniques vous attendent. Comment savez-vous qu’un équilibreur est le moyen le plus efficace de distribuer des objets sur des convoyeurs ? On peut prouver cela par induction. Premièrement, imaginons que nous avons déjà le distributeur le plus efficace possible pour 2N-1 convoyeurs, nous l’appellerons le “petit distributeur”. Maintenant, ajoutons une rangée de répartiteurs pour diviser chacune de ses sorties en 2. Nous avons maintenant un distributeur 2N-1-2N. Pour avoir le bon nombre d’entrées, copions le petit distributeur et envoyons ses sorties vers les entrées restantes de la rangée de répartiteurs ajoutée. Nous avons maintenant un distributeur 2N-2N avec le plus petit nombre possible de répartiteurs. Maintenant, nous disons simplement qu’un distributeur 2-2 est un simple répartiteur, ce qui est évidemment le plus efficace. Cet algorithme de génération de distributeurs efficaces est identique à l’algorithme de génération des équilibreurs les plus simples possible, et vous êtes libre de vérifier cela par vous-même. Comment garantissez-vous l’équilibrage des entrées ? Pour tout équilibreur N-N, si aucune sortie n’est saturée, elles ont toutes le même débit, quelles que soient les entrées. De même, si aucune entrée n’est en manque, elles ont toutes le même débit, quelles que soient les sorties. Tant que la boucle de retour a une capacité suffisante pour alimenter toutes les entrées manquantes, il y aura un équilibrage des entrées. Pourquoi trois convoyeurs en moins dans la boucle ? Pour être honnête, je ne le comprends pas vraiment moi-même. C’est un résultat obtenu expérimentalement, et cela a quelque chose à voir avec le fait que trois est le plus petit nombre qui ne divise pas 2N, ce qui fait de trois sorties ouvertes le pire cas que la boucle doit gérer. Cependant, je ne peux pas expliquer pourquoi le premier et le deuxième n’ont pas besoin d’un débit de boucle complet. Si quelqu’un veut se porter volontaire pour m’aider à faire ces calculs, je lui en serai plus que reconnaissant. Conclusion Nous avons jeté un regard plus ou moins superficiel sur le monde de l’équilibrage universel. Nous aurions pu approfondir le sujet, en explorant le théorème N-3, mais je ne pense pas que les équilibreurs universels soient suffisamment utiles pour le justifier. Il s’agit plus d’un jouet et d’une curiosité que d’un outil applicable à des problèmes réels. Je ne vois que deux cas d’utilisation potentiels pour un équilibreur universel, l’un étant le chargement/déchargement de trains de longueur variable, et l’autre étant le souhait de ne pas avoir à parcourir des livres de plans d’équilibreurs. Les équilibreurs universels (et en fait, tous les équilibreurs) sont tout simplement trop volumineux et ne présentent pas assez d’avantages, et vous devriez de toute façon plutôt utiliser des compresseurs à convoyeurs basés sur les priorités. L’équilibreur universel 8-8 est une expérience de ce qui peut être fait avec des convoyeurs (c’est presque comme si c’était un successeur spirituel de l’additionneur et de la mémoire à base de convoyeurs) et n’est pas destiné à être utilisé de manière utile. Si vous parvenez à lui trouver une utilisation, faites-le moi savoir, car je suis moi-même très curieux de savoir à quoi peut servir cette monstruosité. Vous êtes également invités à essayer de réduire la taille des modèles présentés si vous êtes un maniaque absolu et que vous avez beaucoup trop de temps libre. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","url":"https://alt-f4.blog/ALTF4-27/","@type":"BlogPosting","headline":"Alt-F4 n°27 - Concevoir l’inutile","dateModified":"2021-03-12T00:00:00+00:00","datePublished":"2021-03-12T00:00:00+00:00","author":{"@type":"Person","name":"pocarski"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/27/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/27/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-27/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-27/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-27/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-27/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-27/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-27/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-27/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-27/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-27/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-27/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°27 - Concevoir l’inutile  <author>12-03-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>pocarski</em>,
+
+
+
+édité par <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev</em>,
+
+
+
+relu par <em>Firerazer</em>
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Sommaire</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#un-8-8-universel--parfaitement-%C3%A9quilibr%C3%A9-comme-toutes-choses-devraient-l%C3%AAtre-pocarski">Un 8-8 universel : Parfaitement équilibré, comme toutes choses devraient l’être <author>pocarski</author></a>
+    <ul>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#principes-de-conception">Principes de conception</a></li>
+      <li><a href="#conception-am%C3%A9lior%C3%A9e">Conception améliorée</a></li>
+      <li><a href="#explications-finales">Explications finales</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>Cette semaine, Pocarski poursuit sa descente dans la folie des convoyeurs en s’intéressant aux équilibreurs universels. Le résultat est aussi délirant qu’inutile, alors vous pensez bien qu’on va se régaler !</p>
+      <h2 id="un-8-8-universel--parfaitement-équilibré-comme-toutes-choses-devraient-lêtre-pocarski">
+        
+        
+            <a href="#un-8-8-universel--parfaitement-%C3%A9quilibr%C3%A9-comme-toutes-choses-devraient-l%C3%AAtre-pocarski" class="anchor" style="text-decoration: none;">Un 8-8 universel : Parfaitement équilibré, comme toutes choses devraient l’être <author>pocarski</author></a>
+          
+        
+      </h2>
+    
+
+<p><a href="https://alt-f4.blog/fr/ALTF4-23/#linformatique-par-convoyeurs-premi%C3%A8re-partie--des-maths-pas-si-rapides-pocarski">Récemment</a>, j’ai fabriqué un tas de composants informatiques avec des convoyeurs et des répartiteurs. Cette semaine, je vais poursuivre mon obsession malsaine pour le déplacement d’objets en fabriquant quelque chose d’au moins un peu plus pratique : un équilibreur. Mais pourquoi devrais-je écrire un article entier sur la conception d’un équilibreur ? Eh bien, c’est parce que celui que nous allons fabriquer aujourd’hui n’est pas un équilibreur ordinaire !</p>
+
+<p>Cet article ne s’attardera pas trop sur les principes de conception des équilibreurs, car nous utiliserons principalement des modèles préétablis et bien connus. Cependant, tous les équilibreurs ne sont pas équivalents et vous devez donc connaître certains termes :</p>
+
+<ul>
+  <li>
+<strong>Équilibré en entrée</strong> : prélève uniformément sur toutes les entrées. Particulièrement important lors de la fusion de nombreuses entrées en un petit nombre de sorties.</li>
+  <li>
+<strong>Équilibré en sortie</strong> : distribue uniformément vers toutes les sorties. Particulièrement important lorsque l’on divise un petit nombre d’entrées en beaucoup de sorties.</li>
+  <li>
+<strong>Débit limité</strong> : possède des goulots d’étranglement internes. La fusion de deux convoyeurs en un seul, puis leur séparation ultérieure en deux, est un exemple de système à débit limité. Un tel système a un débit maximal d’un seul convoyeur, même s’il y en a deux à l’entrée et à la sortie.</li>
+  <li>
+<strong>Débit illimité</strong> : c’est l’opposé, il n’a pas de goulot d’étranglement interne. Si x convoyeurs <em>peuvent</em> le traverser, ils le <em>feront</em>.</li>
+</ul>
+
+<p>Tous les plans de cet article (et quelques autres) sont disponibles <a href="https://media.alt-f4.blog/ALTF4/27/8to8blueprint.txt">ici</a>.</p>
+      <h3 id="introduction">
+        
+        
+            <a href="#introduction" class="anchor" style="text-decoration: none;">Introduction</a>
+          
+        
+      </h3>
+    
+
+<p>Imaginez la situation suivante : vous êtes un nouveau joueur, et vous venez d’entendre parler de ces choses appelées “équilibreurs” et de leur grande utilité. Vous voulez séparer un convoyeur en trois. Vous devriez utiliser pour cela un équilibreur 1-3, mais vous ne connaissez pas encore ces dispositifs, alors à la place, vous tentez d’utiliser un équilibreur 4-4 avec une seule entrée et trois sorties connectées. Au lieu du rapport de sortie 1:1:1 attendu, vous vous retrouvez avec un rapport 1:1:2, et une grande déception :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/failed_1-3_compressed.jpg" alt="Comment il ne faut pas utiliser un équilibreur" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Avec cet article, je me suis fixé pour objectif de réaliser un équilibreur pour lequel cette sorte d’intuition fonctionne ; en d’autres termes, quelle que soit la configuration des entrées/sorties, toutes les sorties sont toujours égales, et toutes les entrées sont prélevées de manière équivalente. Ce type d’équilibreur est connu sous le nom d’”équilibreur universel”, un concept exploré et dénommé pour la première fois dans <a href="https://www.reddit.com/r/factorio/comments/a5ferf/i_present_to_you_the_44_universal_balancer/">cet article</a> par l’utilisateur Reddit <a href="https://www.reddit.com/user/tzwaan">u/tzwaan</a>, qui est l’un des modérateurs du <a href="https://www.reddit.com/r/factorio">sousReddit de Factorio</a>.</p>
+
+<p>Les équilibreurs universels peuvent faire ce qu’aucun équilibreur ne devrait être en mesure de faire : quelle que soit la configuration, ils sont à la fois équilibrés en entrée, équilibrés en sortie, <em>et</em> illimités en débit ! Il s’agit d’un ensemble de propriétés que l’on pensait jusqu’à présent réservées à l’équilibreur 2-2, qui n’est qu’un simple répartiteur. L’inconvénient est qu’ils deviennent <em>énormes</em>.</p>
+      <h3 id="principes-de-conception">
+        
+        
+            <a href="#principes-de-conception" class="anchor" style="text-decoration: none;">Principes de conception</a>
+          
+        
+      </h3>
+    
+
+<p>Réfléchissons à la manière de convertir un équilibreur 4-4 en un équilibreur 3-3. Pour ce faire, il suffit de renvoyer la sortie supplémentaire dans le premier répartiteur. Nous allons utiliser cette idée comme principe de base :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/loop_example_compressed.jpg" alt="4-4 bouclé" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Nous voulons le comportement suivant : lorsqu’une sortie commence à déborder, il faut que les objets en excès retournent automatiquement dans les entrées de l’équilibreur afin de maintenir un débit complet sur toutes les sorties. Comment faire ? C’est simple, nous utilisons des répartiteurs avec une priorité. En faisant en sorte que leur sortie non prioritaire envoie les objets vers la boucle, nous garantissons que le trop-plein, et seulement le trop-plein, ira par là. Nous devons également fusionner les objets issus de la boucle avec les entrées. Pour cela, nous avons encore une fois besoin de répartiteurs avec une priorité, mais cette fois-ci en entrée. Nous ajustons la boucle pour qu’elle soit l’entrée non prioritaire afin que les objets de la boucle n’interfèrent pas du tout avec l’entrée :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/autoloops_compressed.jpg" alt="4-4 bouclé automatiquement" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Après quelques tests, nous avons découvert un problème majeur. Si les objets de la boucle essaient d’entrer dans un convoyeur déjà plein, ils le saturent jusqu’au point de séparation et bloquent le système de trop-plein, ce qui nous ramène à la case départ :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/failed_autoloops_compressed.jpg" alt="4-4 bouclé automatiquement cassé" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Pour éviter cela, nous devons nous assurer que chaque objet de la boucle peut atteindre chacune des sorties de la boucle. Cela peut être fait de plusieurs façons, mais pour nos besoins, nous cherchons à réduire au maximum le nombre de répartiteurs. Il se trouve que la façon la plus économique de le faire est d’utiliser un autre équilibreur. Ajoutons-le à la boucle :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/secondary_balancer_compressed.jpg" alt="4-4 corrigé" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Nous avons maintenant un équilibreur 4-4 universel complètement fonctionnel. Cependant, il peut être amélioré. Grâce à certains mécanismes de l’équilibreur, nous n’avons en fait pas besoin de quatre convoyeurs pour la boucle. En général, nous avons besoin de trois convoyeurs de moins que ce pour quoi notre équilibreur est conçu. Cela signifie que nous pouvons optimiser notre équilibreur en réduisant les convoyeurs de la boucle à deux, puis en les divisant à nouveau :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/simplified_balancer_compressed.jpg" alt="4-4 universel" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Maintenant, nous pouvons réorganiser les composants jusqu’à ce que nous obtenions quelque chose de compact, comme ceci :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/small_balancer_compressed.jpg" alt="4-4 universel compact" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Cet équilibreur, bien que plutôt long, ne fait que six tuiles de large, ce qui signifie que vous pouvez le placer dans un bus standard à quatre convoyeurs, et avoir juste assez d’espace pour les empiler les uns à côté des autres. Il est important de noter que ceci n’est pas de ma conception, bien qu’il soit basé sur l’une des miennes. Malheureusement, j’ai perdu le nom du concepteur, donc je ne pourrai pas lui donner le mérite qui lui revient.</p>
+      <h3 id="conception-améliorée">
+        
+        
+            <a href="#conception-am%C3%A9lior%C3%A9e" class="anchor" style="text-decoration: none;">Conception améliorée</a>
+          
+        
+      </h3>
+    
+
+<p>Maintenant, essayons quelque chose de plus grand : un 8-8 universel. Nous commençons par suivre les mêmes étapes que pour notre 4-4, sauf que nous utilisons des équilibreurs 8-8 à la place. Voilà à quoi nous arrivons :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/simple_8-8_compressed.jpg" alt="8-8 universel basique" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Malheureusement, le 8-8 universel que nous obtenons de cette manière est imparfait. Contrairement à l’équilibreur 4-4 standard, l’équilibreur 8-8 standard a un débit limité, ce qui limite le débit de l’équilibreur 8-8 universel dans son ensemble. Voici une situation qui provoque ce goulot d’étranglement :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/failed_8-8_compressed.jpg" alt="8-8 basique bloqué" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Comme vous pouvez le voir, six convoyeurs d’entrée et de sortie sont disponibles, mais moins de six parviennent à passer. Heureusement, ce problème est facilement résolu en remplaçant simplement l’équilibreur central par un équilibreur à débit illimité :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/TU_8-8_compressed.jpg" alt="8-8 universel correct" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Remarquez que l’équilibreur secondaire peut lui rester limité en termes de débit car son seul rôle est de permettre aux objets d’accéder à tous les convoyeurs en entrée. Maintenant, nous pourrions essayer d’utiliser notre astuce de compression de la boucle, mais nous aurions besoin de comprimer huit convoyeurs en cinq, puis de les diviser à nouveau en huit. Or cela nécessite beaucoup plus de répartiteurs que si l’on se contente de renoncer à la compression et d’équilibrer les huit bandes directement. Vu que nous utilisons des convoyeurs bleus, nous pouvons utiliser le tissage de convoyeurs souterrains et comprimer les huit convoyeurs bleus de la boucle dans deux couloirs de deux tuiles de large de chaque côté :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/small_8-8_compressed.jpg" alt="8-8 universel compact" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>L’ensemble est méconnaissable, mais c’est parce que l’équilibreur secondaire est maintenant aligné avec l’équilibreur principal, ce qui signifie que nous devons gérer jusqu’à douze courroies comprimées dans un espace de huit tuiles de large, ce qui oblige l’équilibreur secondaire à être extrêmement étalé. Lorsque nous passons des convoyeurs bleus aux convoyeurs rouges, nous pouvons également complètement abandonner le tissage des souterrains, et simplement utiliser quelques souterrains bleus pour obtenir huit convoyeurs rouges dans un espace de quatre. Cela facilite également le passage aux convoyeurs jaunes, même si nous devons toujours utiliser des souterrains rouges et bleus :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/red_and_yellow_compressed.jpg" alt="Un 8-8 universel bleu, rouge et jaune" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Il est tout à fait possible de créer un modèle avec des convoyeurs jaunes sans souterrains bleus, mais cela rendrait l’ensemble beaucoup plus long. Il est également possible de réaliser les modèles en rouge ou en jaune sans aucun souterrain de niveau supérieur, mais cela rendrait l’ensemble 33 % plus large et qui sait de combien plus long.</p>
+      <h3 id="explications-finales">
+        
+        
+            <a href="#explications-finales" class="anchor" style="text-decoration: none;">Explications finales</a>
+          
+        
+      </h3>
+    
+
+<p>J’ai intentionnellement laissé quelques mystères dans cet article, car certains étaient trop compliqués à expliquer dans la démarche, et pour d’autres, je ne les comprends pas très bien moi-même. C’est dans cette partie que vais (tenter de) les éclaircir, alors je vous préviens que certains aspects techniques vous attendent.</p>
+
+<ul>
+  <li>Comment savez-vous qu’un équilibreur est le moyen le plus efficace de distribuer des objets sur des convoyeurs ?</li>
+</ul>
+
+<p>On peut prouver cela par induction. Premièrement, imaginons que nous avons déjà le distributeur le plus efficace possible pour 2<sup>N-1</sup> convoyeurs, nous l’appellerons le “petit distributeur”. Maintenant, ajoutons une rangée de répartiteurs pour diviser chacune de ses sorties en 2. Nous avons maintenant un distributeur 2<sup>N-1</sup>-2<sup>N</sup>. Pour avoir le bon nombre d’entrées, copions le petit distributeur et envoyons ses sorties vers les entrées restantes de la rangée de répartiteurs ajoutée. Nous avons maintenant un distributeur 2<sup>N</sup>-2<sup>N</sup> avec le plus petit nombre possible de répartiteurs. Maintenant, nous disons simplement qu’un distributeur 2-2 est un simple répartiteur, ce qui est évidemment le plus efficace. Cet algorithme de génération de distributeurs efficaces est identique à l’algorithme de génération des équilibreurs les plus simples possible, et vous êtes libre de vérifier cela par vous-même.</p>
+
+<ul>
+  <li>Comment garantissez-vous l’équilibrage des entrées ?</li>
+</ul>
+
+<p>Pour tout équilibreur N-N, si aucune sortie n’est saturée, elles ont toutes le même débit, quelles que soient les entrées. De même, si aucune entrée n’est en manque, elles ont toutes le même débit, quelles que soient les sorties. Tant que la boucle de retour a une capacité suffisante pour alimenter toutes les entrées manquantes, il y aura un équilibrage des entrées.</p>
+
+<ul>
+  <li>Pourquoi trois convoyeurs en moins dans la boucle ?</li>
+</ul>
+
+<p>Pour être honnête, je ne le comprends pas vraiment moi-même. C’est un résultat obtenu expérimentalement, et cela a quelque chose à voir avec le fait que trois est le plus petit nombre qui ne divise pas 2<sup>N</sup>, ce qui fait de trois sorties ouvertes le pire cas que la boucle doit gérer. Cependant, je ne peux pas expliquer pourquoi le premier et le deuxième n’ont pas besoin d’un débit de boucle complet. Si quelqu’un veut se porter volontaire pour m’aider à faire ces calculs, je lui en serai plus que reconnaissant.</p>
+      <h3 id="conclusion">
+        
+        
+            <a href="#conclusion" class="anchor" style="text-decoration: none;">Conclusion</a>
+          
+        
+      </h3>
+    
+
+<p>Nous avons jeté un regard plus ou moins superficiel sur le monde de l’équilibrage universel. Nous aurions pu approfondir le sujet, en explorant le théorème N-3, mais je ne pense pas que les équilibreurs universels soient suffisamment utiles pour le justifier. Il s’agit plus d’un jouet et d’une curiosité que d’un outil applicable à des problèmes réels. Je ne vois que deux cas d’utilisation potentiels pour un équilibreur universel, l’un étant le chargement/déchargement de trains de longueur variable, et l’autre étant le souhait de ne pas avoir à parcourir des livres de plans d’équilibreurs. Les équilibreurs universels (et en fait, tous les équilibreurs) sont tout simplement trop volumineux et ne présentent pas assez d’avantages, et vous devriez de toute façon plutôt utiliser des compresseurs à convoyeurs basés sur les priorités. L’équilibreur universel 8-8 est une expérience de ce qui peut être fait avec des convoyeurs (c’est presque comme si c’était un successeur spirituel de l’additionneur et de la mémoire à base de convoyeurs) et n’est pas destiné à être utilisé de manière utile. Si vous parvenez à lui trouver une utilisation, faites-le moi savoir, car je suis moi-même très curieux de savoir à quoi peut servir cette monstruosité. Vous êtes également invités à essayer de réduire la taille des modèles présentés si vous êtes un maniaque absolu et que vous avez beaucoup trop de temps libre.</p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://discord.gg/nxnCFkb">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-26/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

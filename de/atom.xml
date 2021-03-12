@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-05T18:38:38+00:00</updated>
+  <updated>2021-03-12T13:58:13+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #27 – Entwerfen des Unnötigen</title>
+    <link href="https://alt-f4.blog/de/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Diese Woche setzt pocarski seinen Ausflug in den Fließband-Wahnsinn fort, indem er einen Blick auf Universal-Balancierer wirft. Das Ergebnis ist ebenso verrückt wie nutzlos, also weißt du, dass wir uns auf einen Leckerbissen freuen können!&lt;/p&gt; &lt;h2 id=&quot;universal-8-8-perfekt-ausgeglichen-wie-es-alles-sein-sollte-pocarski&quot;&gt;Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/de/ALTF4-23/#flie%C3%9Fbandbasierter-rechner-teil-1-nicht-ganz-so-schnelle-mathematik-pocarski&quot;&gt;Letztens&lt;/a&gt; habe ich...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-18</id>
     <updated>2020-12-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Während sich das Jahr dem Ende nähert haben wir zwei Artikel zur Modentwicklung ausgewählt. Zuerst erzählt uns &lt;em&gt;Hornwitser&lt;/em&gt; etwas über den langen Entwicklungsprozess von Clusterio 2.0 und die damit verbundenen Schwierigkeiten. Im Anschluss berichtet &lt;em&gt;DedlySpyder&lt;/em&gt; über die Entwicklung einer einfachen Mod und den dabei auftretenden Kompatibilitätsproblemen.&lt;/p&gt; &lt;h2 id=&quot;der-weg-zu-clusterio-20-hornwitser&quot;&gt;Der Weg zu...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #17 – Interface Design Philosophie</title>
-    <link href="https://alt-f4.blog/de/ALTF4-17/" />
-    <id>https://alt-f4.blog/ALTF4-17</id>
-    <updated>2020-12-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In der dieswöchigen Ausgabe von Alt-F4 nimmt &lt;em&gt;Therenas&lt;/em&gt; eine Seite aus dem FFF Buch und erzählt uns über den Entwicklungsprozess des nächsten großen Updates seiner Mod, Factory Planner, wobei er in etwas philosophische Gedanken über Interface Design eintaucht. Und &lt;em&gt;Dr_Doof&lt;/em&gt; teilt ein gemütliches kleines Weihnachtsevent mit uns, welches von der...</content>
   </entry>
   
   

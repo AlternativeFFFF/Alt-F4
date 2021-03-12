@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #27 – Entwerfen des Unnötigen</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 #27 – Entwerfen des Unnötigen | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #27 – Entwerfen des Unnötigen">
+<meta name="author" content="pocarski">
+<meta property="og:locale" content="de">
+<meta name="description" content="Diese Woche setzt pocarski seinen Ausflug in den Fließband-Wahnsinn fort, indem er einen Blick auf Universal-Balancierer wirft. Das Ergebnis ist ebenso verrückt wie nutzlos, also weißt du, dass wir uns auf einen Leckerbissen freuen können! Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte pocarski Letztens habe ich einen Haufen Computerteile mit Fließbändern und Teilerfließbändern hergestellt. Diese Woche werde ich meine ungesunde Besessenheit mit dem Herumschieben von Gegenständen fortsetzen, indem ich etwas herstelle, das tatsächlich zumindest ein wenig praktisch ist: einen Balancierer. Nun, warum sollte ich einen ganzen Artikel über die Konstruktion eines Balancierers schreiben? Das liegt daran, dass der Balancierer, den wir heute herstellen werden, kein gewöhnlicher Balancierer ist! Dieser Artikel wird nicht sehr tief in die Prinzipien des Balancierer-Designs gehen, da wir größtenteils vorgefertigte und bekannte Blueprints verwenden werden. Allerdings sind nicht alle Balancierer gleich, so dass du einige Begriffe kennen musst: Eingangsbalanciert: Zieht aus allen Eingängen gleichmäßig. Besonders wichtig, wenn viele Eingänge in wenige Ausgänge zusammengeführt werden. Ausgangsbalanciert: Gibt an alle Ausgänge gleichmäßig ab. Besonders wichtig bei der Aufteilung von wenigen Eingängen auf viele Ausgänge. Durchsatz-begrenzt: Hat interne Engpässe. Ein Beispiel für ein durchsatzbegrenztes System wäre die Zusammenführung von zwei Fließbändern zu einem und die anschließende Aufteilung in zwei Bänder. Ein solches System hat einen maximalen Durchsatz von einem Band, obwohl sowohl am Eingang als auch am Ausgang zwei Bänder vorhanden sind. Durchsatz-unbegrenzt: Das Gegenteil von durchsatzbegrenzt, hat keine internen Engpässe. Wenn X Bänder durchlaufen können, werden sie auch durchlaufen. Alle Baupläne aus diesem Artikel (und ein paar Extras) findest du hier. Die Prämisse Stelle dir folgendes vor: Du bist ein neuer Spieler und hast gerade von diesen Dingen namens „Balancierer“ gehört, und wie nützlich sie sind. Du willst ein Fließband in drei ausgleichen. Dafür solltest du einen 1-3 Balancierer verwenden, aber die kennst du noch nicht, also versuchst du es stattdessen mit einem 4-4 Balancer, an dem nur ein Eingang und drei Ausgänge angeschlossen sind. Statt des erwarteten Ausgangsverhältnisses von 1:1:1 erhältst du ein Verhältnis von 1:1:2 und bist sehr enttäuscht: Mit diesem Artikel habe ich mir das Ziel gesetzt, einen Balancer zu bauen, für den diese Art von Intuition funktioniert; mit anderen Worten, unabhängig von der Eingangs-/Ausgangskonfiguration sind alle Ausgänge immer gleich, und alle Eingänge werden gleichmäßig entnommen. Diese Art von Balancierer ist als „universeller Balancierer“ bekannt, ein Konzept, das erstmals in diesem Beitrag vom Reddit-Benutzer u/tzwaan, einem der Moderatoren des Factorio-Subreddit, untersucht und benannt wurde. Universal-Balancierer können, was kein Balancierer können sollte: Unabhängig von der Konfiguration sind sie input-balanciert, output-balanciert und gleichzeitig durchsatzunbegrenzt! Dies ist eine Reihe von Eigenschaften, von denen man bisher dachte, dass sie nur ein 2-2-Balancer besitzt, der nur ein einzelner Teiler ist. Der Nachteil ist, dass sie groß werden. Konstruktionsprinzipien Lasst uns darüber nachdenken, wie man einen 4-4 Balancer in einen 3-3 Balancer umwandeln kann. Das geschieht, indem der zusätzliche Ausgang in den ersten Fließbandteiler zurückgeschleift wird. Wir werden diese Idee als unser Grundprinzip verwenden: Wir wollen das folgende Verhalten: Wenn ein Ausgang überläuft, möchten wir, dass die überschüssigen Elemente automatisch in die Eingänge des Balancers zurückfließen, um den vollen Durchsatz an allen Ausgängen aufrechtzuerhalten. Wie würden wir das machen? Ganz einfach, wir verwenden Prioritätsteilerfließbänder. Indem wir die nicht-prioritären Ausgänge anschließen, sodass ihre Gegenstände auf die Schleife gelegt werden, garantieren wir, dass der Überlauf, und nur der Überlauf, in die Schleife geht. Wir müssen auch die Elemente in der Schleife mit den Eingängen zusammenführen. Dafür brauchen wir wieder Prioritätsteiler, aber dieses Mal mit Eingangspriorität. Wir setzen die Schleife als den nicht priorisierten Eingang, damit die Elemente auf der Schleife die Eingänge in keiner Weise beeinträchtigen: Nach einigen Tests entdecken wir ein großes Problem. Wenn die Schleifenobjekte versuchen, ein Band zu betreten, das bereits voll ist, stauen sie sich einfach bis zum Abtrennungspunkt und blockieren den Überlauf, wodurch wir wieder am Anfang stehen: Um hier Abhilfe zu schaffen, müssen wir sicherstellen, dass jedes Element der Schleife zu jedem einzelnen Ausgang der Schleife gelangen kann. Das kann auf viele Arten geschehen, aber für unsere Bedürfnisse suchen wir nach der kleinsten Anzahl von Verteilern. Zufälligerweise ist der sparsamste Weg, dies zu erreichen, ein weiterer Balancer. Fügen wir ihn der Schleife hinzu: Wir haben jetzt einen voll funktionsfähigen universellen 4-4 Balancierer. Er kann aber noch verbessert werden. Aufgrund der Mechanik des Balancierers brauchen wir eigentlich keine vier Fließbänder, die in einer Schleife zurücklaufen. Im Allgemeinen benötigen wir drei Fließbänder weniger, als für unseren Balancierer vorgesehen sind. Das bedeutet, dass wir unseren Balancierer optimieren können, indem wir die durchlaufenden Fließbänder auf zwei komprimieren und sie dann wieder aufteilen: Jetzt können wir die Komponenten umherschieben, bis wir etwas Kleines erhalten, etwa so: Dieser Balancierer, ist zwar ziemlich lang, aber nur sechs breit, was bedeutet, dass man ihn in einen Standard-Vierbandbus einbauen kann und gerade genug Platz hat, um sie nebeneinander zu kacheln. Es ist wichtig zu beachten, dass dies nicht mein Design ist, obwohl es auf einem von mir basiert. Leider habe ich den Namen des Designers verloren, sodass ich keine angemessene Würdigung geben kann. Erweiterte Konstruktion Nun wollen wir etwas Größeres ausprobieren: einen universellen 8-8. Wir beginnen mit den gleichen Schritten wie bei unserem 4-4, nur dass wir stattdessen 8-8 Balancierer verwenden. Das ist das Ergebnis: Leider ist der universelle 8-8, den wir auf diese Weise erhalten, unvollkommen. Anders als der Standard-4-4-Balancer ist der Standard-8-8-Balancer durchsatzbegrenzt, was den gesamten universellen 8-8-Balancer durchsatzbegrenzt macht. Hier ist eine der Ursachen, die ihn zum Engpass machen: Wie du sehen kannst, sind sechs Bänder des Eingangs und des Ausgangs verfügbar, aber weniger als sechs kommen durch. Glücklicherweise lässt sich dies leicht beheben, indem man den Kernbalancierer einfach durch einen durchsatzunbegrenzten ersetzt: Beachte, dass der sekundäre Balancierer durchsatzbegrenzt bleiben kann, da seine einzige Aufgabe darin besteht, den Elementen den Zugriff auf alle Bänder zu ermöglichen. Nun könnten wir versuchen, unseren Loopback-Komprimierungstrick anzuwenden, aber wir müssten acht Bänder auf fünf komprimieren und dann wieder auf acht aufteilen. Das erfordert viel mehr Splitter, als wir brauchen, wenn wir die Komprimierung überspringen und die acht Bänder direkt ausgleichen. Da wir blaue Bänder verwenden, können wir die acht blauen Bänder des Loopbacks in ein paar zwei Kacheln breite Korridore auf beiden Seiten quetschen: Das Ganze ist nicht wiederzuerkennen, aber das liegt daran, dass der sekundäre Balancierer jetzt in einer Linie mit dem Hauptbalancierer liegt, was bedeutet, dass wir es mit bis zu zwölf Fließbändern zu tun haben, die in einen acht Kacheln breiten Raum geschoben werden, was den sekundären Balancierer zwingt, sich extrem zu verteilen. Wenn wir von blauen Fließbändern auf rote Fließbändern herunterstufen, können wir auch das Fließband komplett weglassen und einfach ein paar blaue Untergrundfließbänder verwenden, um acht rote Fließbänder in einen Raum von vier zu bekommen. Das macht auch ein Abstufen zu gelben Fließbändern einfach, wir müssen aber immer noch einige rote und blaue Untergrundfließbänder verwenden: Es ist definitiv möglich, ein gelbes Fließbanddesign ohne blaue Untergrundfließbänder zu realisieren, aber das würde das ganze Ding viel länger machen. Es ist auch möglich, sowohl das rote als auch das gelbe Design ohne jegliche übergeordnete Untergrundfließbänder zu realisieren, aber das würde die ganze Sache um 33 % breiter und wer weiß wie viel länger machen. Abschließende Erklärungen Ich habe absichtlich einige Rätsel in diesem Artikel gelassen, da einige zu umständlich waren, um sie hier zu erklären, und einige verstehe ich selbst nicht so gut. Das ist der Teil, in dem ich (versuche), sie aufzuklären, also faire Warnung, es kommt technisches Zeug. Woher weiß man, dass ein Balancierer die effizienteste Art ist, Gegenstände auf Fließbänder zu verteilen? Lasst uns dies mittels Induktion beweisen. Stellen wir uns zunächst vor, dass wir bereits den effizientesten möglichen Verteiler über 2N-1 Fließbänder haben, wir nennen ihn den „kleinen Verteiler“. Nun fügen wir eine Reihe von Verteilern hinzu, um jeden seiner Ausgänge in 2 zu teilen. Wir haben nun einen 2N-1-2N-Verteiler. Um die richtige Anzahl von Eingängen zu haben, kopieren wir den kleinen Verteiler und speisen seine Ausgänge in die verbleibenden Eingänge der hinzugefügten Reihe an Verteilern ein. Wir haben nun einen 2N-2N-Verteiler mit der kleinstmöglichen Anzahl von Verteilern. Jetzt sagen wir einfach, dass ein 2-2-Verteiler ein einzelner Teiler ist, was offensichtlich am effizientesten ist. Dieser effiziente Algorithmus zur Erzeugung von Umverteilern ist identisch mit dem einfachstmöglichen Algorithmus zur Erzeugung von Balancern, und du kannst dich frei fühlen, das selbst zu testen. Wie garantieren Sie die Eingangsbalancierung? Wenn bei einem N-N-Balancer keine Ausgänge überlastet sind, haben alle Ausgänge den gleichen Durchsatz, unabhängig von den Eingängen. Wenn keine Eingänge überlastet sind, haben alle den gleichen Durchsatz, unabhängig von den Ausgängen. Solange der Loopback über genügend Kapazität verfügt, um alle fehlenden Eingänge zu versorgen, findet ein Eingangsausgleich statt. Warum drei Bänder weniger in der Rückschleife? Um ehrlich zu sein, verstehe ich das selbst nicht ganz. Es ist ein experimentell gewonnenes Ergebnis und es hat etwas damit zu tun, dass drei die kleinste Zahl ist, die 2N nicht teilt, was drei offene Ausgänge zum schlimmsten Fall macht, mit dem der Loopback umgehen muss. Ich kann mir allerdings nicht erklären, warum eins und zwei nicht den vollen Loopback-Durchsatz benötigen. Wenn sich jemand freiwillig meldet und mir bei den Berechnungen helfen möchte, wäre ich sehr dankbar. Zusammenfassung Dies war ein mehr oder weniger oberflächlicher Einblick in die Welt des universellen Balancierens. Wir hätten tiefer eintauchen können, z. B. in die N-3-Theorie, aber ich glaube nicht, dass universelle Ausgleicher nützlich genug sind, um das zu rechtfertigen. Sie sind wirklich mehr ein Spielzeug und eine nette Kuriosität als etwas, das auf reale Probleme anwendbar ist. Mir fallen nur zwei potentielle Anwendungsfälle für einen Universalbalancer ein, zum einen das Be- und Entladen von Zügen mit variabler Länge und zum anderen, dass man sich nicht durch Blaupausenbücher von Balancern blättern möchte. Universal-Balancierer (und eigentlich alle Balancierer) sind einfach zu groß für zu wenig Nutzen, und man sollte stattdessen sowieso prioritätsbasierte Fließbandteiler verwenden. Der universelle 8-8 Balancierer ist ein Experiment, was man mit Fließbändern machen kann (es ist fast so, als ob er ein geistiger Nachfolger des Förderband-Addierers und des Speichers ist) und ist nicht dazu gedacht, in irgendeiner sinnvollen Weise verwendet zu werden. Wenn du eine Nische dafür findest, lass es mich bitte wissen, denn ich bin selbst sehr neugierig, wozu dieses Ungetüm nützlich sein kann. Du kannst auch gerne versuchen, die vorgestellten Designs kleiner zu machen, wenn du ein absoluter Verrückter bist und viel zu viel Freizeit hast. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="Diese Woche setzt pocarski seinen Ausflug in den Fließband-Wahnsinn fort, indem er einen Blick auf Universal-Balancierer wirft. Das Ergebnis ist ebenso verrückt wie nutzlos, also weißt du, dass wir uns auf einen Leckerbissen freuen können! Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte pocarski Letztens habe ich einen Haufen Computerteile mit Fließbändern und Teilerfließbändern hergestellt. Diese Woche werde ich meine ungesunde Besessenheit mit dem Herumschieben von Gegenständen fortsetzen, indem ich etwas herstelle, das tatsächlich zumindest ein wenig praktisch ist: einen Balancierer. Nun, warum sollte ich einen ganzen Artikel über die Konstruktion eines Balancierers schreiben? Das liegt daran, dass der Balancierer, den wir heute herstellen werden, kein gewöhnlicher Balancierer ist! Dieser Artikel wird nicht sehr tief in die Prinzipien des Balancierer-Designs gehen, da wir größtenteils vorgefertigte und bekannte Blueprints verwenden werden. Allerdings sind nicht alle Balancierer gleich, so dass du einige Begriffe kennen musst: Eingangsbalanciert: Zieht aus allen Eingängen gleichmäßig. Besonders wichtig, wenn viele Eingänge in wenige Ausgänge zusammengeführt werden. Ausgangsbalanciert: Gibt an alle Ausgänge gleichmäßig ab. Besonders wichtig bei der Aufteilung von wenigen Eingängen auf viele Ausgänge. Durchsatz-begrenzt: Hat interne Engpässe. Ein Beispiel für ein durchsatzbegrenztes System wäre die Zusammenführung von zwei Fließbändern zu einem und die anschließende Aufteilung in zwei Bänder. Ein solches System hat einen maximalen Durchsatz von einem Band, obwohl sowohl am Eingang als auch am Ausgang zwei Bänder vorhanden sind. Durchsatz-unbegrenzt: Das Gegenteil von durchsatzbegrenzt, hat keine internen Engpässe. Wenn X Bänder durchlaufen können, werden sie auch durchlaufen. Alle Baupläne aus diesem Artikel (und ein paar Extras) findest du hier. Die Prämisse Stelle dir folgendes vor: Du bist ein neuer Spieler und hast gerade von diesen Dingen namens „Balancierer“ gehört, und wie nützlich sie sind. Du willst ein Fließband in drei ausgleichen. Dafür solltest du einen 1-3 Balancierer verwenden, aber die kennst du noch nicht, also versuchst du es stattdessen mit einem 4-4 Balancer, an dem nur ein Eingang und drei Ausgänge angeschlossen sind. Statt des erwarteten Ausgangsverhältnisses von 1:1:1 erhältst du ein Verhältnis von 1:1:2 und bist sehr enttäuscht: Mit diesem Artikel habe ich mir das Ziel gesetzt, einen Balancer zu bauen, für den diese Art von Intuition funktioniert; mit anderen Worten, unabhängig von der Eingangs-/Ausgangskonfiguration sind alle Ausgänge immer gleich, und alle Eingänge werden gleichmäßig entnommen. Diese Art von Balancierer ist als „universeller Balancierer“ bekannt, ein Konzept, das erstmals in diesem Beitrag vom Reddit-Benutzer u/tzwaan, einem der Moderatoren des Factorio-Subreddit, untersucht und benannt wurde. Universal-Balancierer können, was kein Balancierer können sollte: Unabhängig von der Konfiguration sind sie input-balanciert, output-balanciert und gleichzeitig durchsatzunbegrenzt! Dies ist eine Reihe von Eigenschaften, von denen man bisher dachte, dass sie nur ein 2-2-Balancer besitzt, der nur ein einzelner Teiler ist. Der Nachteil ist, dass sie groß werden. Konstruktionsprinzipien Lasst uns darüber nachdenken, wie man einen 4-4 Balancer in einen 3-3 Balancer umwandeln kann. Das geschieht, indem der zusätzliche Ausgang in den ersten Fließbandteiler zurückgeschleift wird. Wir werden diese Idee als unser Grundprinzip verwenden: Wir wollen das folgende Verhalten: Wenn ein Ausgang überläuft, möchten wir, dass die überschüssigen Elemente automatisch in die Eingänge des Balancers zurückfließen, um den vollen Durchsatz an allen Ausgängen aufrechtzuerhalten. Wie würden wir das machen? Ganz einfach, wir verwenden Prioritätsteilerfließbänder. Indem wir die nicht-prioritären Ausgänge anschließen, sodass ihre Gegenstände auf die Schleife gelegt werden, garantieren wir, dass der Überlauf, und nur der Überlauf, in die Schleife geht. Wir müssen auch die Elemente in der Schleife mit den Eingängen zusammenführen. Dafür brauchen wir wieder Prioritätsteiler, aber dieses Mal mit Eingangspriorität. Wir setzen die Schleife als den nicht priorisierten Eingang, damit die Elemente auf der Schleife die Eingänge in keiner Weise beeinträchtigen: Nach einigen Tests entdecken wir ein großes Problem. Wenn die Schleifenobjekte versuchen, ein Band zu betreten, das bereits voll ist, stauen sie sich einfach bis zum Abtrennungspunkt und blockieren den Überlauf, wodurch wir wieder am Anfang stehen: Um hier Abhilfe zu schaffen, müssen wir sicherstellen, dass jedes Element der Schleife zu jedem einzelnen Ausgang der Schleife gelangen kann. Das kann auf viele Arten geschehen, aber für unsere Bedürfnisse suchen wir nach der kleinsten Anzahl von Verteilern. Zufälligerweise ist der sparsamste Weg, dies zu erreichen, ein weiterer Balancer. Fügen wir ihn der Schleife hinzu: Wir haben jetzt einen voll funktionsfähigen universellen 4-4 Balancierer. Er kann aber noch verbessert werden. Aufgrund der Mechanik des Balancierers brauchen wir eigentlich keine vier Fließbänder, die in einer Schleife zurücklaufen. Im Allgemeinen benötigen wir drei Fließbänder weniger, als für unseren Balancierer vorgesehen sind. Das bedeutet, dass wir unseren Balancierer optimieren können, indem wir die durchlaufenden Fließbänder auf zwei komprimieren und sie dann wieder aufteilen: Jetzt können wir die Komponenten umherschieben, bis wir etwas Kleines erhalten, etwa so: Dieser Balancierer, ist zwar ziemlich lang, aber nur sechs breit, was bedeutet, dass man ihn in einen Standard-Vierbandbus einbauen kann und gerade genug Platz hat, um sie nebeneinander zu kacheln. Es ist wichtig zu beachten, dass dies nicht mein Design ist, obwohl es auf einem von mir basiert. Leider habe ich den Namen des Designers verloren, sodass ich keine angemessene Würdigung geben kann. Erweiterte Konstruktion Nun wollen wir etwas Größeres ausprobieren: einen universellen 8-8. Wir beginnen mit den gleichen Schritten wie bei unserem 4-4, nur dass wir stattdessen 8-8 Balancierer verwenden. Das ist das Ergebnis: Leider ist der universelle 8-8, den wir auf diese Weise erhalten, unvollkommen. Anders als der Standard-4-4-Balancer ist der Standard-8-8-Balancer durchsatzbegrenzt, was den gesamten universellen 8-8-Balancer durchsatzbegrenzt macht. Hier ist eine der Ursachen, die ihn zum Engpass machen: Wie du sehen kannst, sind sechs Bänder des Eingangs und des Ausgangs verfügbar, aber weniger als sechs kommen durch. Glücklicherweise lässt sich dies leicht beheben, indem man den Kernbalancierer einfach durch einen durchsatzunbegrenzten ersetzt: Beachte, dass der sekundäre Balancierer durchsatzbegrenzt bleiben kann, da seine einzige Aufgabe darin besteht, den Elementen den Zugriff auf alle Bänder zu ermöglichen. Nun könnten wir versuchen, unseren Loopback-Komprimierungstrick anzuwenden, aber wir müssten acht Bänder auf fünf komprimieren und dann wieder auf acht aufteilen. Das erfordert viel mehr Splitter, als wir brauchen, wenn wir die Komprimierung überspringen und die acht Bänder direkt ausgleichen. Da wir blaue Bänder verwenden, können wir die acht blauen Bänder des Loopbacks in ein paar zwei Kacheln breite Korridore auf beiden Seiten quetschen: Das Ganze ist nicht wiederzuerkennen, aber das liegt daran, dass der sekundäre Balancierer jetzt in einer Linie mit dem Hauptbalancierer liegt, was bedeutet, dass wir es mit bis zu zwölf Fließbändern zu tun haben, die in einen acht Kacheln breiten Raum geschoben werden, was den sekundären Balancierer zwingt, sich extrem zu verteilen. Wenn wir von blauen Fließbändern auf rote Fließbändern herunterstufen, können wir auch das Fließband komplett weglassen und einfach ein paar blaue Untergrundfließbänder verwenden, um acht rote Fließbänder in einen Raum von vier zu bekommen. Das macht auch ein Abstufen zu gelben Fließbändern einfach, wir müssen aber immer noch einige rote und blaue Untergrundfließbänder verwenden: Es ist definitiv möglich, ein gelbes Fließbanddesign ohne blaue Untergrundfließbänder zu realisieren, aber das würde das ganze Ding viel länger machen. Es ist auch möglich, sowohl das rote als auch das gelbe Design ohne jegliche übergeordnete Untergrundfließbänder zu realisieren, aber das würde die ganze Sache um 33 % breiter und wer weiß wie viel länger machen. Abschließende Erklärungen Ich habe absichtlich einige Rätsel in diesem Artikel gelassen, da einige zu umständlich waren, um sie hier zu erklären, und einige verstehe ich selbst nicht so gut. Das ist der Teil, in dem ich (versuche), sie aufzuklären, also faire Warnung, es kommt technisches Zeug. Woher weiß man, dass ein Balancierer die effizienteste Art ist, Gegenstände auf Fließbänder zu verteilen? Lasst uns dies mittels Induktion beweisen. Stellen wir uns zunächst vor, dass wir bereits den effizientesten möglichen Verteiler über 2N-1 Fließbänder haben, wir nennen ihn den „kleinen Verteiler“. Nun fügen wir eine Reihe von Verteilern hinzu, um jeden seiner Ausgänge in 2 zu teilen. Wir haben nun einen 2N-1-2N-Verteiler. Um die richtige Anzahl von Eingängen zu haben, kopieren wir den kleinen Verteiler und speisen seine Ausgänge in die verbleibenden Eingänge der hinzugefügten Reihe an Verteilern ein. Wir haben nun einen 2N-2N-Verteiler mit der kleinstmöglichen Anzahl von Verteilern. Jetzt sagen wir einfach, dass ein 2-2-Verteiler ein einzelner Teiler ist, was offensichtlich am effizientesten ist. Dieser effiziente Algorithmus zur Erzeugung von Umverteilern ist identisch mit dem einfachstmöglichen Algorithmus zur Erzeugung von Balancern, und du kannst dich frei fühlen, das selbst zu testen. Wie garantieren Sie die Eingangsbalancierung? Wenn bei einem N-N-Balancer keine Ausgänge überlastet sind, haben alle Ausgänge den gleichen Durchsatz, unabhängig von den Eingängen. Wenn keine Eingänge überlastet sind, haben alle den gleichen Durchsatz, unabhängig von den Ausgängen. Solange der Loopback über genügend Kapazität verfügt, um alle fehlenden Eingänge zu versorgen, findet ein Eingangsausgleich statt. Warum drei Bänder weniger in der Rückschleife? Um ehrlich zu sein, verstehe ich das selbst nicht ganz. Es ist ein experimentell gewonnenes Ergebnis und es hat etwas damit zu tun, dass drei die kleinste Zahl ist, die 2N nicht teilt, was drei offene Ausgänge zum schlimmsten Fall macht, mit dem der Loopback umgehen muss. Ich kann mir allerdings nicht erklären, warum eins und zwei nicht den vollen Loopback-Durchsatz benötigen. Wenn sich jemand freiwillig meldet und mir bei den Berechnungen helfen möchte, wäre ich sehr dankbar. Zusammenfassung Dies war ein mehr oder weniger oberflächlicher Einblick in die Welt des universellen Balancierens. Wir hätten tiefer eintauchen können, z. B. in die N-3-Theorie, aber ich glaube nicht, dass universelle Ausgleicher nützlich genug sind, um das zu rechtfertigen. Sie sind wirklich mehr ein Spielzeug und eine nette Kuriosität als etwas, das auf reale Probleme anwendbar ist. Mir fallen nur zwei potentielle Anwendungsfälle für einen Universalbalancer ein, zum einen das Be- und Entladen von Zügen mit variabler Länge und zum anderen, dass man sich nicht durch Blaupausenbücher von Balancern blättern möchte. Universal-Balancierer (und eigentlich alle Balancierer) sind einfach zu groß für zu wenig Nutzen, und man sollte stattdessen sowieso prioritätsbasierte Fließbandteiler verwenden. Der universelle 8-8 Balancierer ist ein Experiment, was man mit Fließbändern machen kann (es ist fast so, als ob er ein geistiger Nachfolger des Förderband-Addierers und des Speichers ist) und ist nicht dazu gedacht, in irgendeiner sinnvollen Weise verwendet zu werden. Wenn du eine Nische dafür findest, lass es mich bitte wissen, denn ich bin selbst sehr neugierig, wozu dieses Ungetüm nützlich sein kann. Du kannst auch gerne versuchen, die vorgestellten Designs kleiner zu machen, wenn du ein absoluter Verrückter bist und viel zu viel Freizeit hast. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-27/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-27/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-27/"},"description":"Diese Woche setzt pocarski seinen Ausflug in den Fließband-Wahnsinn fort, indem er einen Blick auf Universal-Balancierer wirft. Das Ergebnis ist ebenso verrückt wie nutzlos, also weißt du, dass wir uns auf einen Leckerbissen freuen können! Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte pocarski Letztens habe ich einen Haufen Computerteile mit Fließbändern und Teilerfließbändern hergestellt. Diese Woche werde ich meine ungesunde Besessenheit mit dem Herumschieben von Gegenständen fortsetzen, indem ich etwas herstelle, das tatsächlich zumindest ein wenig praktisch ist: einen Balancierer. Nun, warum sollte ich einen ganzen Artikel über die Konstruktion eines Balancierers schreiben? Das liegt daran, dass der Balancierer, den wir heute herstellen werden, kein gewöhnlicher Balancierer ist! Dieser Artikel wird nicht sehr tief in die Prinzipien des Balancierer-Designs gehen, da wir größtenteils vorgefertigte und bekannte Blueprints verwenden werden. Allerdings sind nicht alle Balancierer gleich, so dass du einige Begriffe kennen musst: Eingangsbalanciert: Zieht aus allen Eingängen gleichmäßig. Besonders wichtig, wenn viele Eingänge in wenige Ausgänge zusammengeführt werden. Ausgangsbalanciert: Gibt an alle Ausgänge gleichmäßig ab. Besonders wichtig bei der Aufteilung von wenigen Eingängen auf viele Ausgänge. Durchsatz-begrenzt: Hat interne Engpässe. Ein Beispiel für ein durchsatzbegrenztes System wäre die Zusammenführung von zwei Fließbändern zu einem und die anschließende Aufteilung in zwei Bänder. Ein solches System hat einen maximalen Durchsatz von einem Band, obwohl sowohl am Eingang als auch am Ausgang zwei Bänder vorhanden sind. Durchsatz-unbegrenzt: Das Gegenteil von durchsatzbegrenzt, hat keine internen Engpässe. Wenn X Bänder durchlaufen können, werden sie auch durchlaufen. Alle Baupläne aus diesem Artikel (und ein paar Extras) findest du hier. Die Prämisse Stelle dir folgendes vor: Du bist ein neuer Spieler und hast gerade von diesen Dingen namens „Balancierer“ gehört, und wie nützlich sie sind. Du willst ein Fließband in drei ausgleichen. Dafür solltest du einen 1-3 Balancierer verwenden, aber die kennst du noch nicht, also versuchst du es stattdessen mit einem 4-4 Balancer, an dem nur ein Eingang und drei Ausgänge angeschlossen sind. Statt des erwarteten Ausgangsverhältnisses von 1:1:1 erhältst du ein Verhältnis von 1:1:2 und bist sehr enttäuscht: Mit diesem Artikel habe ich mir das Ziel gesetzt, einen Balancer zu bauen, für den diese Art von Intuition funktioniert; mit anderen Worten, unabhängig von der Eingangs-/Ausgangskonfiguration sind alle Ausgänge immer gleich, und alle Eingänge werden gleichmäßig entnommen. Diese Art von Balancierer ist als „universeller Balancierer“ bekannt, ein Konzept, das erstmals in diesem Beitrag vom Reddit-Benutzer u/tzwaan, einem der Moderatoren des Factorio-Subreddit, untersucht und benannt wurde. Universal-Balancierer können, was kein Balancierer können sollte: Unabhängig von der Konfiguration sind sie input-balanciert, output-balanciert und gleichzeitig durchsatzunbegrenzt! Dies ist eine Reihe von Eigenschaften, von denen man bisher dachte, dass sie nur ein 2-2-Balancer besitzt, der nur ein einzelner Teiler ist. Der Nachteil ist, dass sie groß werden. Konstruktionsprinzipien Lasst uns darüber nachdenken, wie man einen 4-4 Balancer in einen 3-3 Balancer umwandeln kann. Das geschieht, indem der zusätzliche Ausgang in den ersten Fließbandteiler zurückgeschleift wird. Wir werden diese Idee als unser Grundprinzip verwenden: Wir wollen das folgende Verhalten: Wenn ein Ausgang überläuft, möchten wir, dass die überschüssigen Elemente automatisch in die Eingänge des Balancers zurückfließen, um den vollen Durchsatz an allen Ausgängen aufrechtzuerhalten. Wie würden wir das machen? Ganz einfach, wir verwenden Prioritätsteilerfließbänder. Indem wir die nicht-prioritären Ausgänge anschließen, sodass ihre Gegenstände auf die Schleife gelegt werden, garantieren wir, dass der Überlauf, und nur der Überlauf, in die Schleife geht. Wir müssen auch die Elemente in der Schleife mit den Eingängen zusammenführen. Dafür brauchen wir wieder Prioritätsteiler, aber dieses Mal mit Eingangspriorität. Wir setzen die Schleife als den nicht priorisierten Eingang, damit die Elemente auf der Schleife die Eingänge in keiner Weise beeinträchtigen: Nach einigen Tests entdecken wir ein großes Problem. Wenn die Schleifenobjekte versuchen, ein Band zu betreten, das bereits voll ist, stauen sie sich einfach bis zum Abtrennungspunkt und blockieren den Überlauf, wodurch wir wieder am Anfang stehen: Um hier Abhilfe zu schaffen, müssen wir sicherstellen, dass jedes Element der Schleife zu jedem einzelnen Ausgang der Schleife gelangen kann. Das kann auf viele Arten geschehen, aber für unsere Bedürfnisse suchen wir nach der kleinsten Anzahl von Verteilern. Zufälligerweise ist der sparsamste Weg, dies zu erreichen, ein weiterer Balancer. Fügen wir ihn der Schleife hinzu: Wir haben jetzt einen voll funktionsfähigen universellen 4-4 Balancierer. Er kann aber noch verbessert werden. Aufgrund der Mechanik des Balancierers brauchen wir eigentlich keine vier Fließbänder, die in einer Schleife zurücklaufen. Im Allgemeinen benötigen wir drei Fließbänder weniger, als für unseren Balancierer vorgesehen sind. Das bedeutet, dass wir unseren Balancierer optimieren können, indem wir die durchlaufenden Fließbänder auf zwei komprimieren und sie dann wieder aufteilen: Jetzt können wir die Komponenten umherschieben, bis wir etwas Kleines erhalten, etwa so: Dieser Balancierer, ist zwar ziemlich lang, aber nur sechs breit, was bedeutet, dass man ihn in einen Standard-Vierbandbus einbauen kann und gerade genug Platz hat, um sie nebeneinander zu kacheln. Es ist wichtig zu beachten, dass dies nicht mein Design ist, obwohl es auf einem von mir basiert. Leider habe ich den Namen des Designers verloren, sodass ich keine angemessene Würdigung geben kann. Erweiterte Konstruktion Nun wollen wir etwas Größeres ausprobieren: einen universellen 8-8. Wir beginnen mit den gleichen Schritten wie bei unserem 4-4, nur dass wir stattdessen 8-8 Balancierer verwenden. Das ist das Ergebnis: Leider ist der universelle 8-8, den wir auf diese Weise erhalten, unvollkommen. Anders als der Standard-4-4-Balancer ist der Standard-8-8-Balancer durchsatzbegrenzt, was den gesamten universellen 8-8-Balancer durchsatzbegrenzt macht. Hier ist eine der Ursachen, die ihn zum Engpass machen: Wie du sehen kannst, sind sechs Bänder des Eingangs und des Ausgangs verfügbar, aber weniger als sechs kommen durch. Glücklicherweise lässt sich dies leicht beheben, indem man den Kernbalancierer einfach durch einen durchsatzunbegrenzten ersetzt: Beachte, dass der sekundäre Balancierer durchsatzbegrenzt bleiben kann, da seine einzige Aufgabe darin besteht, den Elementen den Zugriff auf alle Bänder zu ermöglichen. Nun könnten wir versuchen, unseren Loopback-Komprimierungstrick anzuwenden, aber wir müssten acht Bänder auf fünf komprimieren und dann wieder auf acht aufteilen. Das erfordert viel mehr Splitter, als wir brauchen, wenn wir die Komprimierung überspringen und die acht Bänder direkt ausgleichen. Da wir blaue Bänder verwenden, können wir die acht blauen Bänder des Loopbacks in ein paar zwei Kacheln breite Korridore auf beiden Seiten quetschen: Das Ganze ist nicht wiederzuerkennen, aber das liegt daran, dass der sekundäre Balancierer jetzt in einer Linie mit dem Hauptbalancierer liegt, was bedeutet, dass wir es mit bis zu zwölf Fließbändern zu tun haben, die in einen acht Kacheln breiten Raum geschoben werden, was den sekundären Balancierer zwingt, sich extrem zu verteilen. Wenn wir von blauen Fließbändern auf rote Fließbändern herunterstufen, können wir auch das Fließband komplett weglassen und einfach ein paar blaue Untergrundfließbänder verwenden, um acht rote Fließbänder in einen Raum von vier zu bekommen. Das macht auch ein Abstufen zu gelben Fließbändern einfach, wir müssen aber immer noch einige rote und blaue Untergrundfließbänder verwenden: Es ist definitiv möglich, ein gelbes Fließbanddesign ohne blaue Untergrundfließbänder zu realisieren, aber das würde das ganze Ding viel länger machen. Es ist auch möglich, sowohl das rote als auch das gelbe Design ohne jegliche übergeordnete Untergrundfließbänder zu realisieren, aber das würde die ganze Sache um 33 % breiter und wer weiß wie viel länger machen. Abschließende Erklärungen Ich habe absichtlich einige Rätsel in diesem Artikel gelassen, da einige zu umständlich waren, um sie hier zu erklären, und einige verstehe ich selbst nicht so gut. Das ist der Teil, in dem ich (versuche), sie aufzuklären, also faire Warnung, es kommt technisches Zeug. Woher weiß man, dass ein Balancierer die effizienteste Art ist, Gegenstände auf Fließbänder zu verteilen? Lasst uns dies mittels Induktion beweisen. Stellen wir uns zunächst vor, dass wir bereits den effizientesten möglichen Verteiler über 2N-1 Fließbänder haben, wir nennen ihn den „kleinen Verteiler“. Nun fügen wir eine Reihe von Verteilern hinzu, um jeden seiner Ausgänge in 2 zu teilen. Wir haben nun einen 2N-1-2N-Verteiler. Um die richtige Anzahl von Eingängen zu haben, kopieren wir den kleinen Verteiler und speisen seine Ausgänge in die verbleibenden Eingänge der hinzugefügten Reihe an Verteilern ein. Wir haben nun einen 2N-2N-Verteiler mit der kleinstmöglichen Anzahl von Verteilern. Jetzt sagen wir einfach, dass ein 2-2-Verteiler ein einzelner Teiler ist, was offensichtlich am effizientesten ist. Dieser effiziente Algorithmus zur Erzeugung von Umverteilern ist identisch mit dem einfachstmöglichen Algorithmus zur Erzeugung von Balancern, und du kannst dich frei fühlen, das selbst zu testen. Wie garantieren Sie die Eingangsbalancierung? Wenn bei einem N-N-Balancer keine Ausgänge überlastet sind, haben alle Ausgänge den gleichen Durchsatz, unabhängig von den Eingängen. Wenn keine Eingänge überlastet sind, haben alle den gleichen Durchsatz, unabhängig von den Ausgängen. Solange der Loopback über genügend Kapazität verfügt, um alle fehlenden Eingänge zu versorgen, findet ein Eingangsausgleich statt. Warum drei Bänder weniger in der Rückschleife? Um ehrlich zu sein, verstehe ich das selbst nicht ganz. Es ist ein experimentell gewonnenes Ergebnis und es hat etwas damit zu tun, dass drei die kleinste Zahl ist, die 2N nicht teilt, was drei offene Ausgänge zum schlimmsten Fall macht, mit dem der Loopback umgehen muss. Ich kann mir allerdings nicht erklären, warum eins und zwei nicht den vollen Loopback-Durchsatz benötigen. Wenn sich jemand freiwillig meldet und mir bei den Berechnungen helfen möchte, wäre ich sehr dankbar. Zusammenfassung Dies war ein mehr oder weniger oberflächlicher Einblick in die Welt des universellen Balancierens. Wir hätten tiefer eintauchen können, z. B. in die N-3-Theorie, aber ich glaube nicht, dass universelle Ausgleicher nützlich genug sind, um das zu rechtfertigen. Sie sind wirklich mehr ein Spielzeug und eine nette Kuriosität als etwas, das auf reale Probleme anwendbar ist. Mir fallen nur zwei potentielle Anwendungsfälle für einen Universalbalancer ein, zum einen das Be- und Entladen von Zügen mit variabler Länge und zum anderen, dass man sich nicht durch Blaupausenbücher von Balancern blättern möchte. Universal-Balancierer (und eigentlich alle Balancierer) sind einfach zu groß für zu wenig Nutzen, und man sollte stattdessen sowieso prioritätsbasierte Fließbandteiler verwenden. Der universelle 8-8 Balancierer ist ein Experiment, was man mit Fließbändern machen kann (es ist fast so, als ob er ein geistiger Nachfolger des Förderband-Addierers und des Speichers ist) und ist nicht dazu gedacht, in irgendeiner sinnvollen Weise verwendet zu werden. Wenn du eine Nische dafür findest, lass es mich bitte wissen, denn ich bin selbst sehr neugierig, wozu dieses Ungetüm nützlich sein kann. Du kannst auch gerne versuchen, die vorgestellten Designs kleiner zu machen, wenn du ein absoluter Verrückter bist und viel zu viel Freizeit hast. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","url":"https://alt-f4.blog/ALTF4-27/","@type":"BlogPosting","headline":"Alt-F4 #27 – Entwerfen des Unnötigen","dateModified":"2021-03-12T00:00:00+00:00","datePublished":"2021-03-12T00:00:00+00:00","author":{"@type":"Person","name":"pocarski"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/27/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/27/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-27/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-27/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-27/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-27/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-27/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-27/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-27/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-27/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-27/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-27/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #27 – Entwerfen des Unnötigen  <author>12.03.2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>pocarski</em>,
+
+
+
+editiert von <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>dexteritas</em>,
+
+
+
+lektoriert von <em>Nanogamer7</em>
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Inhaltsverzeichnis</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#universal-8-8-perfekt-ausgeglichen-wie-es-alles-sein-sollte-pocarski">Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte <author>pocarski</author></a>
+    <ul>
+      <li><a href="#die-pr%C3%A4misse">Die Prämisse</a></li>
+      <li><a href="#konstruktionsprinzipien">Konstruktionsprinzipien</a></li>
+      <li><a href="#erweiterte-konstruktion">Erweiterte Konstruktion</a></li>
+      <li><a href="#abschlie%C3%9Fende-erkl%C3%A4rungen">Abschließende Erklärungen</a></li>
+      <li><a href="#zusammenfassung">Zusammenfassung</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>Diese Woche setzt pocarski seinen Ausflug in den Fließband-Wahnsinn fort, indem er einen Blick auf Universal-Balancierer wirft. Das Ergebnis ist ebenso verrückt wie nutzlos, also weißt du, dass wir uns auf einen Leckerbissen freuen können!</p>
+      <h2 id="universal-8-8-perfekt-ausgeglichen-wie-es-alles-sein-sollte-pocarski">
+        
+        
+            <a href="#universal-8-8-perfekt-ausgeglichen-wie-es-alles-sein-sollte-pocarski" class="anchor" style="text-decoration: none;">Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte <author>pocarski</author></a>
+          
+        
+      </h2>
+    
+
+<p><a href="https://alt-f4.blog/de/ALTF4-23/#flie%C3%9Fbandbasierter-rechner-teil-1-nicht-ganz-so-schnelle-mathematik-pocarski">Letztens</a> habe ich einen Haufen Computerteile mit Fließbändern und Teilerfließbändern hergestellt. Diese Woche werde ich meine ungesunde Besessenheit mit dem Herumschieben von Gegenständen fortsetzen, indem ich etwas herstelle, das tatsächlich zumindest ein wenig praktisch ist: einen Balancierer. Nun, warum sollte ich einen ganzen Artikel über die Konstruktion eines Balancierers schreiben? Das liegt daran, dass der Balancierer, den wir heute herstellen werden, kein gewöhnlicher Balancierer ist!</p>
+
+<p>Dieser Artikel wird nicht sehr tief in die Prinzipien des Balancierer-Designs gehen, da wir größtenteils vorgefertigte und bekannte Blueprints verwenden werden. Allerdings sind nicht alle Balancierer gleich, so dass du einige Begriffe kennen musst:</p>
+
+<ul>
+  <li>
+<strong>Eingangsbalanciert</strong>: Zieht aus allen Eingängen gleichmäßig. Besonders wichtig, wenn viele Eingänge in wenige Ausgänge zusammengeführt werden.</li>
+  <li>
+<strong>Ausgangsbalanciert</strong>: Gibt an alle Ausgänge gleichmäßig ab. Besonders wichtig bei der Aufteilung von wenigen Eingängen auf viele Ausgänge.</li>
+  <li>
+<strong>Durchsatz-begrenzt</strong>: Hat interne Engpässe. Ein Beispiel für ein durchsatzbegrenztes System wäre die Zusammenführung von zwei Fließbändern zu einem und die anschließende Aufteilung in zwei Bänder. Ein solches System hat einen maximalen Durchsatz von einem Band, obwohl sowohl am Eingang als auch am Ausgang zwei Bänder vorhanden sind.</li>
+  <li>
+<strong>Durchsatz-unbegrenzt</strong>: Das Gegenteil von durchsatzbegrenzt, hat keine internen Engpässe. Wenn X Bänder durchlaufen <em>können</em>, <em>werden</em> sie auch durchlaufen.</li>
+</ul>
+
+<p>Alle Baupläne aus diesem Artikel (und ein paar Extras) findest du <a href="https://media.alt-f4.blog/ALTF4/27/8to8blueprint.txt">hier</a>.</p>
+      <h3 id="die-prämisse">
+        
+        
+            <a href="#die-pr%C3%A4misse" class="anchor" style="text-decoration: none;">Die Prämisse</a>
+          
+        
+      </h3>
+    
+
+<p>Stelle dir folgendes vor: Du bist ein neuer Spieler und hast gerade von diesen Dingen namens „Balancierer“ gehört, und wie nützlich sie sind.</p>
+
+<p>Du willst ein Fließband in drei ausgleichen. Dafür solltest du einen 1-3 Balancierer verwenden, aber die kennst du noch nicht, also versuchst du es stattdessen mit einem 4-4 Balancer, an dem nur ein Eingang und drei Ausgänge angeschlossen sind. Statt des erwarteten Ausgangsverhältnisses von 1:1:1 erhältst du ein Verhältnis von 1:1:2 und bist sehr enttäuscht:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/failed_1-3_compressed.jpg" alt="Wie man einen Balancierer nicht verwendet" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Mit diesem Artikel habe ich mir das Ziel gesetzt, einen Balancer zu bauen, für den diese Art von Intuition funktioniert; mit anderen Worten, unabhängig von der Eingangs-/Ausgangskonfiguration sind alle Ausgänge immer gleich, und alle Eingänge werden gleichmäßig entnommen. Diese Art von Balancierer ist als „universeller Balancierer“ bekannt, ein Konzept, das erstmals in <a href="https://www.reddit.com/r/factorio/comments/a5ferf/i_present_to_you_the_44_universal_balancer/">diesem Beitrag</a> vom Reddit-Benutzer <a href="https://www.reddit.com/user/tzwaan">u/tzwaan</a>, einem der Moderatoren des <a href="https://www.reddit.com/r/factorio">Factorio-Subreddit</a>, untersucht und benannt wurde.</p>
+
+<p>Universal-Balancierer können, was kein Balancierer können sollte: Unabhängig von der Konfiguration sind sie input-balanciert, output-balanciert <em>und</em> gleichzeitig durchsatzunbegrenzt! Dies ist eine Reihe von Eigenschaften, von denen man bisher dachte, dass sie nur ein 2-2-Balancer besitzt, der nur ein einzelner Teiler ist. Der Nachteil ist, dass sie <em>groß</em> werden.</p>
+      <h3 id="konstruktionsprinzipien">
+        
+        
+            <a href="#konstruktionsprinzipien" class="anchor" style="text-decoration: none;">Konstruktionsprinzipien</a>
+          
+        
+      </h3>
+    
+
+<p>Lasst uns darüber nachdenken, wie man einen 4-4 Balancer in einen 3-3 Balancer umwandeln kann. Das geschieht, indem der zusätzliche Ausgang in den ersten Fließbandteiler zurückgeschleift wird. Wir werden diese Idee als unser Grundprinzip verwenden:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/loop_example_compressed.jpg" alt="Geschleifter 4-4" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir wollen das folgende Verhalten: Wenn ein Ausgang überläuft, möchten wir, dass die überschüssigen Elemente automatisch in die Eingänge des Balancers zurückfließen, um den vollen Durchsatz an allen Ausgängen aufrechtzuerhalten. Wie würden wir das machen?</p>
+
+<p>Ganz einfach, wir verwenden Prioritätsteilerfließbänder. Indem wir die nicht-prioritären Ausgänge anschließen, sodass ihre Gegenstände auf die Schleife gelegt werden, garantieren wir, dass der Überlauf, und nur der Überlauf, in die Schleife geht. Wir müssen auch die Elemente in der Schleife mit den Eingängen zusammenführen. Dafür brauchen wir wieder Prioritätsteiler, aber dieses Mal mit Eingangspriorität. Wir setzen die Schleife als den nicht priorisierten Eingang, damit die Elemente auf der Schleife die Eingänge in keiner Weise beeinträchtigen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/autoloops_compressed.jpg" alt="Automatisches Schleifen 4-4" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Nach einigen Tests entdecken wir ein großes Problem. Wenn die Schleifenobjekte versuchen, ein Band zu betreten, das bereits voll ist, stauen sie sich einfach bis zum Abtrennungspunkt und blockieren den Überlauf, wodurch wir wieder am Anfang stehen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/failed_autoloops_compressed.jpg" alt="Kaputtes Automatisches Schleifen 4-4" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Um hier Abhilfe zu schaffen, müssen wir sicherstellen, dass jedes Element der Schleife zu jedem einzelnen Ausgang der Schleife gelangen kann. Das kann auf viele Arten geschehen, aber für unsere Bedürfnisse suchen wir nach der kleinsten Anzahl von Verteilern. Zufälligerweise ist der sparsamste Weg, dies zu erreichen, ein weiterer Balancer. Fügen wir ihn der Schleife hinzu:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/secondary_balancer_compressed.jpg" alt="Reparierter 4-4" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir haben jetzt einen voll funktionsfähigen universellen 4-4 Balancierer. Er kann aber noch verbessert werden. Aufgrund der Mechanik des Balancierers brauchen wir eigentlich keine vier Fließbänder, die in einer Schleife zurücklaufen. Im Allgemeinen benötigen wir drei Fließbänder weniger, als für unseren Balancierer vorgesehen sind. Das bedeutet, dass wir unseren Balancierer optimieren können, indem wir die durchlaufenden Fließbänder auf zwei komprimieren und sie dann wieder aufteilen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/simplified_balancer_compressed.jpg" alt="Einfacher universeller Balancierer 4-4" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Jetzt können wir die Komponenten umherschieben, bis wir etwas Kleines erhalten, etwa so:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/small_balancer_compressed.jpg" alt="Kleiner universeller Balancierer 4-4" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Dieser Balancierer, ist zwar ziemlich lang, aber nur sechs breit, was bedeutet, dass man ihn in einen Standard-Vierbandbus einbauen kann und gerade genug Platz hat, um sie nebeneinander zu kacheln. Es ist wichtig zu beachten, dass dies nicht mein Design ist, obwohl es auf einem von mir basiert. Leider habe ich den Namen des Designers verloren, sodass ich keine angemessene Würdigung geben kann.</p>
+      <h3 id="erweiterte-konstruktion">
+        
+        
+            <a href="#erweiterte-konstruktion" class="anchor" style="text-decoration: none;">Erweiterte Konstruktion</a>
+          
+        
+      </h3>
+    
+
+<p>Nun wollen wir etwas Größeres ausprobieren: einen universellen 8-8. Wir beginnen mit den gleichen Schritten wie bei unserem 4-4, nur dass wir stattdessen 8-8 Balancierer verwenden. Das ist das Ergebnis:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/simple_8-8_compressed.jpg" alt="Grundlegend universeller 8-8" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Leider ist der universelle 8-8, den wir auf diese Weise erhalten, unvollkommen. Anders als der Standard-4-4-Balancer ist der Standard-8-8-Balancer durchsatzbegrenzt, was den gesamten universellen 8-8-Balancer durchsatzbegrenzt macht. Hier ist eine der Ursachen, die ihn zum Engpass machen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/failed_8-8_compressed.jpg" alt="Grundlegend universeller 8-8 Engpässe" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wie du sehen kannst, sind sechs Bänder des Eingangs und des Ausgangs verfügbar, aber weniger als sechs kommen durch. Glücklicherweise lässt sich dies leicht beheben, indem man den Kernbalancierer einfach durch einen durchsatzunbegrenzten ersetzt:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/TU_8-8_compressed.jpg" alt="Korrekter universeller 8-8" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Beachte, dass der sekundäre Balancierer durchsatzbegrenzt bleiben kann, da seine einzige Aufgabe darin besteht, den Elementen den Zugriff auf alle Bänder zu ermöglichen. Nun könnten wir versuchen, unseren Loopback-Komprimierungstrick anzuwenden, aber wir müssten acht Bänder auf fünf komprimieren und dann wieder auf acht aufteilen. Das erfordert viel mehr Splitter, als wir brauchen, wenn wir die Komprimierung überspringen und die acht Bänder direkt ausgleichen. Da wir blaue Bänder verwenden, können wir die acht blauen Bänder des Loopbacks in ein paar zwei Kacheln breite Korridore auf beiden Seiten quetschen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/small_8-8_compressed.jpg" alt="Verdichteter universeller 8-8" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Das Ganze ist nicht wiederzuerkennen, aber das liegt daran, dass der sekundäre Balancierer jetzt in einer Linie mit dem Hauptbalancierer liegt, was bedeutet, dass wir es mit bis zu zwölf Fließbändern zu tun haben, die in einen acht Kacheln breiten Raum geschoben werden, was den sekundären Balancierer zwingt, sich extrem zu verteilen. Wenn wir von blauen Fließbändern auf rote Fließbändern herunterstufen, können wir auch das Fließband komplett weglassen und einfach ein paar blaue Untergrundfließbänder verwenden, um acht rote Fließbänder in einen Raum von vier zu bekommen. Das macht auch ein Abstufen zu gelben Fließbändern einfach, wir müssen aber immer noch einige rote und blaue Untergrundfließbänder verwenden:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/27/red_and_yellow_compressed.jpg" alt="Ein blauer, roter und gelber universeller 8-8er zusammen" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Es ist definitiv möglich, ein gelbes Fließbanddesign ohne blaue Untergrundfließbänder zu realisieren, aber das würde das ganze Ding viel länger machen. Es ist auch möglich, sowohl das rote als auch das gelbe Design ohne jegliche übergeordnete Untergrundfließbänder zu realisieren, aber das würde die ganze Sache um 33 % breiter und wer weiß wie viel länger machen.</p>
+      <h3 id="abschließende-erklärungen">
+        
+        
+            <a href="#abschlie%C3%9Fende-erkl%C3%A4rungen" class="anchor" style="text-decoration: none;">Abschließende Erklärungen</a>
+          
+        
+      </h3>
+    
+
+<p>Ich habe absichtlich einige Rätsel in diesem Artikel gelassen, da einige zu umständlich waren, um sie hier zu erklären, und einige verstehe ich selbst nicht so gut. Das ist der Teil, in dem ich (versuche), sie aufzuklären, also faire Warnung, es kommt technisches Zeug.</p>
+
+<ul>
+  <li>Woher weiß man, dass ein Balancierer die effizienteste Art ist, Gegenstände auf Fließbänder zu verteilen?</li>
+</ul>
+
+<p>Lasst uns dies mittels Induktion beweisen. Stellen wir uns zunächst vor, dass wir bereits den effizientesten möglichen Verteiler über 2<sup>N-1</sup> Fließbänder haben, wir nennen ihn den „kleinen Verteiler“. Nun fügen wir eine Reihe von Verteilern hinzu, um jeden seiner Ausgänge in 2 zu teilen. Wir haben nun einen 2<sup>N-1</sup>-2<sup>N</sup>-Verteiler. Um die richtige Anzahl von Eingängen zu haben, kopieren wir den kleinen Verteiler und speisen seine Ausgänge in die verbleibenden Eingänge der hinzugefügten Reihe an Verteilern ein. Wir haben nun einen 2<sup>N</sup>-2<sup>N</sup>-Verteiler mit der kleinstmöglichen Anzahl von Verteilern. Jetzt sagen wir einfach, dass ein 2-2-Verteiler ein einzelner Teiler ist, was offensichtlich am effizientesten ist. Dieser effiziente Algorithmus zur Erzeugung von Umverteilern ist identisch mit dem einfachstmöglichen Algorithmus zur Erzeugung von Balancern, und du kannst dich frei fühlen, das selbst zu testen.</p>
+
+<ul>
+  <li>Wie garantieren Sie die Eingangsbalancierung?</li>
+</ul>
+
+<p>Wenn bei einem N-N-Balancer keine Ausgänge überlastet sind, haben alle Ausgänge den gleichen Durchsatz, unabhängig von den Eingängen. Wenn keine Eingänge überlastet sind, haben alle den gleichen Durchsatz, unabhängig von den Ausgängen. Solange der Loopback über genügend Kapazität verfügt, um alle fehlenden Eingänge zu versorgen, findet ein Eingangsausgleich statt.</p>
+
+<ul>
+  <li>Warum drei Bänder weniger in der Rückschleife?</li>
+</ul>
+
+<p>Um ehrlich zu sein, verstehe ich das selbst nicht ganz. Es ist ein experimentell gewonnenes Ergebnis und es hat etwas damit zu tun, dass drei die kleinste Zahl ist, die 2<sup>N</sup> nicht teilt, was drei offene Ausgänge zum schlimmsten Fall macht, mit dem der Loopback umgehen muss. Ich kann mir allerdings nicht erklären, warum eins und zwei nicht den vollen Loopback-Durchsatz benötigen. Wenn sich jemand freiwillig meldet und mir bei den Berechnungen helfen möchte, wäre ich sehr dankbar.</p>
+      <h3 id="zusammenfassung">
+        
+        
+            <a href="#zusammenfassung" class="anchor" style="text-decoration: none;">Zusammenfassung</a>
+          
+        
+      </h3>
+    
+
+<p>Dies war ein mehr oder weniger oberflächlicher Einblick in die Welt des universellen Balancierens. Wir hätten tiefer eintauchen können, z. B. in die N-3-Theorie, aber ich glaube nicht, dass universelle Ausgleicher nützlich genug sind, um das zu rechtfertigen. Sie sind wirklich mehr ein Spielzeug und eine nette Kuriosität als etwas, das auf reale Probleme anwendbar ist. Mir fallen nur zwei potentielle Anwendungsfälle für einen Universalbalancer ein, zum einen das Be- und Entladen von Zügen mit variabler Länge und zum anderen, dass man sich nicht durch Blaupausenbücher von Balancern blättern möchte. Universal-Balancierer (und eigentlich alle Balancierer) sind einfach zu groß für zu wenig Nutzen, und man sollte stattdessen sowieso prioritätsbasierte Fließbandteiler verwenden. Der universelle 8-8 Balancierer ist ein Experiment, was man mit Fließbändern machen kann (es ist fast so, als ob er ein geistiger Nachfolger des Förderband-Addierers und des Speichers ist) und ist nicht dazu gedacht, in irgendeiner sinnvollen Weise verwendet zu werden. Wenn du eine Nische dafür findest, lass es mich bitte wissen, denn ich bin selbst sehr neugierig, wozu dieses Ungetüm nützlich sein kann. Du kannst auch gerne versuchen, die vorgestellten Designs kleiner zu machen, wenn du ein absoluter Verrückter bist und viel zu viel Freizeit hast.</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten  Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://discord.gg/nxnCFkb">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-26/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-05T18:38:38+00:00</updated>
+  <updated>2021-03-12T13:58:13+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #27 - 设计不必要的东西</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周，pocarski 继续他的传送带疯狂之旅，来看看通用平衡器。其结果是如此疯狂而又无用，你应该知道我们是在享受这个过程！&lt;/p&gt; &lt;h2 id=&quot;通用-8-8完美平衡万物皆宜-pocarski&quot;&gt;通用 8-8：完美平衡，万物皆宜 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/#%E7%BA%AF%E4%BC%A0%E9%80%81%E5%B8%A6%E8%AE%A1%E7%AE%97%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%8D%E5%A4%AA%E7%AE%80%E6%98%8E%E7%9A%84%E6%95%B0%E5%AD%A6-pocarski&quot;&gt;最近&lt;/a&gt;，我用传送带和分流器做了一堆电脑零件。本周我将继续我对移动物品的不健康的痴迷，制作一些至少能有点用处东西：平衡器。为什么我要写一整篇文章来设计一个平衡器呢？嗯，那是因为我们今天要做的这个平衡器可不一般！&lt;/p&gt; &lt;p&gt;这篇文章不会很深入地探讨平衡器的设计原理，因为我们将在大多数情况下使用预制且熟知的蓝图。然而，并非所有的平衡器皆生而平等，所以你需要了解一些术语：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;输入平衡&lt;/strong&gt;：均匀地从所有输入中提取。在将多个输入合并为较少的输出时尤其重要。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;输出平衡&lt;/strong&gt;：均匀分配给所有输出。当把几个输入分割成更多输出时尤其重要。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;有限吞吐量&lt;/strong&gt;：存在内部瓶颈。一个有限吞吐量系统的例子是将两条传送带合并成一条，然后再将其分割成两条。这样的一个系统即使在输入和输出上都有两条传送带，但最大吞吐量只有一条传送带。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;无限吞吐量&lt;/strong&gt;：与有限吞吐量相反，不存在内部瓶颈。如果 &lt;em&gt;能&lt;/em&gt; 通过 X 条传送带，它们就 &lt;em&gt;会&lt;/em&gt; 通过。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;本文中的所有蓝图（还有一些额外的内容）都可以在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/27/8to8blueprint.txt&quot;&gt;这里&lt;/a&gt;下载。&lt;/p&gt; &lt;h3 id=&quot;前提&quot;&gt;前提&lt;/h3&gt; &lt;p&gt;想象一下下面的情景：你作为一个新手，刚刚听说了那些被称为“平衡器”的玩意儿以及它们的功能。你想把一条传送带平衡成三条。你本应该使用 1-3 的平衡器，但你还不知道这些，所以，你尝试使用 4-4 的平衡器，但只连接一个输入和三个输出。然而这么做得到的并非预期的 1:1:1 的输出比例，而是 1:1:2 的比例，令你大失所望。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/27/failed_1-3_compressed.jpg&quot; alt=&quot;如何错误的使用平衡器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-18</id>
     <updated>2020-12-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;年关将至，我们在本周的第 18 期 Alt-F4 中挑选了两个与 Mod 相关的话题。首先，&lt;em&gt;Hornwitser&lt;/em&gt; 为我们介绍了 Clusterio 2.0 漫长的开发进度以及它所带来的挑战。然后，&lt;em&gt;DedlySpyder&lt;/em&gt; 讲述了他们开发一个简单 Mod 的过程以及面临的兼容性挑战。&lt;/p&gt; &lt;h2 id=&quot;clusterio-20-之路-hornwitser&quot;&gt;Clusterio 2.0 之路 &lt;author&gt;Hornwitser&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我想讲讲我如何花了一年时间开发 Clusterio 2.0 的故事，它离发布还有很长的路要走。如果你之前没有听说过 Clusterio，它是由 &lt;em&gt;Danielv123&lt;/em&gt;（以及&lt;a href=&quot;https://github.com/clusterio/factorioClusterio/graphs/contributors&quot;&gt;大约 30 位贡献者&lt;/a&gt;）所编写的开源服务器软件，可以让 Mod 跨服务器互动。它最出名的可能是 2018 年的 Clusterio 60k 活动，在这个活动中，传送箱被用来在大约 46 个异星工厂服务器之间传送物品，以建立一个类似原版的工厂，达到每分钟可以做 60 千瓶。这些传送箱的工作原理就像主动供货箱和集货箱一样，一个从游戏中取出物品，并将它们放在共享的云存储中，另一个则从该云存储中取出请求的物品，并将它们放在游戏中。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: ; max-height: &quot; playsinline=&quot;&quot;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #17 - 界面设计哲学</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-17/" />
-    <id>https://alt-f4.blog/ALTF4-17</id>
-    <updated>2020-12-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在本周的 Alt-F4 中，&lt;em&gt;Therenas&lt;/em&gt; 从 FFF 的游戏手册中抽出一页，谈论了他的 Mod 工厂规划师（Factory Planner）的下一个大更新的开发过程，并谈到了他对界面设计的一些哲学思考。&lt;em&gt;Dr_Doof&lt;/em&gt; 还和我们分享了由 Red Circuit 团队组织的一个圣诞温馨小活动。&lt;/p&gt; &lt;h2 id=&quot;界面设计的注意事项-therenas&quot;&gt;界面设计的注意事项 &lt;author&gt;Therenas&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在过去的几个月里，我一直在对&lt;a href=&quot;https://mods.factorio.com/mod/factoryplanner&quot;&gt;工厂规划师（Factory Planner）&lt;/a&gt;Mod 进行大规模的重新设计，跟大家分享一些设计上的考究我认为会很有趣。我将专注于主界面中最有趣的部分，因为那是重新设计中最复杂的部分，需要投入最多的思考和规划。&lt;/p&gt; &lt;p&gt;就算你不熟悉这个 Mod 也没问题，我将谈论我的设计方法，大致上也能适用于其他情况；Mod 只是一个让我聚焦这些想法的镜头。同样你也不需要成为一个设计师来才能理解这些内容（我就不是）；好的设计应该是任何人都能看出来的。&lt;/p&gt; &lt;h3 id=&quot;概述&quot;&gt;概述&lt;/h3&gt; &lt;p&gt;那么，我们就来看看吧。左边是当前的版本，而右边则是更精美的新版。首先，我先简单介绍一下，让大家熟悉这个 Mod。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;div class=&quot;juxtapose juxtapose-0&quot; style=&quot;max-width: 2856px; max-height: 1754px; margin: 20px auto auto; height: 100%; width: 100%;&quot;&gt; &lt;div class=&quot;jx-slider&quot;&gt; &lt;div class=&quot;jx-handle&quot; style=&quot;left:...</content>
   </entry>
   
   

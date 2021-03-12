@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-05T18:38:38+00:00</updated>
+  <updated>2021-03-12T13:58:13+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°27 - Concevoir l’inutile</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Cette semaine, Pocarski poursuit sa descente dans la folie des convoyeurs en s’intéressant aux équilibreurs universels. Le résultat est aussi délirant qu’inutile, alors vous pensez bien qu’on va se régaler !&lt;/p&gt; &lt;h2 id=&quot;un-8-8-universel--parfaitement-équilibré-comme-toutes-choses-devraient-lêtre-pocarski&quot;&gt;Un 8-8 universel : Parfaitement équilibré, comme toutes choses devraient l’être &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-23/#linformatique-par-convoyeurs-premi%C3%A8re-partie--des-maths-pas-si-rapides-pocarski&quot;&gt;Récemment&lt;/a&gt;, j’ai fabriqué un tas...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-18</id>
     <updated>2020-12-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Alors que l’année touche à sa fin, nous avons choisi cette semaine, pour le 18ème numéro de Alt-F4, deux sujets liés à des mods. Premièrement, &lt;em&gt;Hornwitser&lt;/em&gt; nous donne un aperçu du long processus de développement de Clusterio 2.0 et des défis qu’il pose. Ensuite, &lt;em&gt;DedlySpyder&lt;/em&gt; parle de son travail de...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°17 - Philosophie de conception d’une interface</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-17/" />
-    <id>https://alt-f4.blog/ALTF4-17</id>
-    <updated>2020-12-11T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Pour le numéro de Alt-F4 de cette semaine, &lt;em&gt;Therenas&lt;/em&gt; fait comme dans les FFF et nous parle du processus de développement de la prochaine grande mise à jour de son mod Factory Planner, en détaillant ses réflexions quelque peu philosophiques sur la conception d’une interface. &lt;em&gt;Dr_Doof&lt;/em&gt; partage également avec nous...</content>
   </entry>
   
   
