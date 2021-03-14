@@ -94,11 +94,6 @@
     },
     
     {
-      "name": "automatic-station-painter",
-      "enabled": false
-    },
-    
-    {
       "name": "Automatic_Train_Painter",
       "enabled": true
     },
@@ -224,11 +219,6 @@
     },
     
     {
-      "name": "Orbital Ion Cannon",
-      "enabled": false
-    },
-    
-    {
       "name": "Orphan Finder",
       "enabled": true
     },
@@ -301,16 +291,6 @@
     {
       "name": "YARM",
       "enabled": true
-    },
-    
-    {
-      "name": "zh-CN",
-      "enabled": false
-    },
-    
-    {
-      "name": "zhcnremake",
-      "enabled": false
     }
   ]
 }
