@@ -42,7 +42,7 @@ Next, let‘s look at an advanced circuit module with three types of raw materia
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/28/advanced_circuit_module.jpg' alt='Advanced circuit module' caption='Advanced circuit module. Use a single station to obtain raw materials.' %}
 
-The same works for recipes that produce/consume fluids if we use a fluid wagon instead. In this case, since there are multiple output fluids and they can't be mixed in a fluid wagon, we use more than one output station.
+The same works for recipes that produce/consume fluids if we use a fluid wagon instead.
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/28/oil_refinery_module.jpg' alt='Oil refinery module' caption='Oil refinery module. Note that by controlling the pump via the LTN signal allows different fluids to be loaded or unloaded at the same station without mixing.' %}
 
