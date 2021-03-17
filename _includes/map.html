@@ -1,3 +1,6 @@
 <div class="yt">
+	{% if include.caption %}<figure>{% endif %}
 	<iframe src="{{ include.link }}" frameborder="0"></iframe>
+	{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+    {% if include.caption %}</figure>{% endif %}
 </div>
