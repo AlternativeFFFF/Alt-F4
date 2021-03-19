@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/pt-br/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-12T14:11:04+00:00</updated>
+  <updated>2021-03-19T12:14:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #28 - ROFL</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-28/" />
+    <id>https://alt-f4.blog/ALTF4-28</id>
+    <updated>2021-03-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This fine week in March, first-time contributor Ph.X talks about their very compartmentalized system for laying out a base using isolated modules and connecting them through a Logistic Train Network. Taking inspiration from software development and the lessons learned there, Ph.X uses the concepts of Modular Programming to their advantage.&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-19</id>
     <updated>2021-01-01T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;This week, in the new year, we wanted to take a look back at the project &lt;em&gt;Therenas&lt;/em&gt; started four and a half months ago to fill the void that the absence of the FFF left in all our hearts. We asked the people involved in the process about their specialty,...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #18 - The Road to Clusterio 2.0</title>
-    <link href="https://alt-f4.blog/pt-br/ALTF4-18/" />
-    <id>https://alt-f4.blog/ALTF4-18</id>
-    <updated>2020-12-18T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;As the year draws to a close, we picked two mod-related topics for this week’s 18th issue of Alt-F4. First, &lt;em&gt;Hornwitser&lt;/em&gt; gives us some insight into the long development progress of Clusterio 2.0 and the challenges that it poses. Then, &lt;em&gt;DedlySpyder&lt;/em&gt; talks about their process of developing a simple mod...</content>
   </entry>
   
   

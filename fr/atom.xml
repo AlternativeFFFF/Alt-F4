@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-12T14:11:04+00:00</updated>
+  <updated>2021-03-19T12:14:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°28 - FOR</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-28/" />
+    <id>https://alt-f4.blog/ALTF4-28</id>
+    <updated>2021-03-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;En cette belle semaine de mars, Ph.X, dont c’est la première contribution, nous parle de son système très compartimenté pour l’aménagement d’une base, à l’aide d’unités isolées reliées par un réseau de trains logistiques. S’inspirant du développement de logiciels et de ses leçons de programmation, Ph.X utilise les concepts de...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-19</id>
     <updated>2021-01-01T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Cette semaine, en cette nouvelle année, nous avons voulu revenir sur le projet que Therenas a lancé il y a quatre mois et demi pour combler le vide que l’absence des FFF a laissé en nos cœurs. Nous avons interrogé les personnes impliquées dans le projet sur leur spécialité, en...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°18 - En route vers Clusterio 2.0</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-18/" />
-    <id>https://alt-f4.blog/ALTF4-18</id>
-    <updated>2020-12-18T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Alors que l’année touche à sa fin, nous avons choisi cette semaine, pour le 18ème numéro de Alt-F4, deux sujets liés à des mods. Premièrement, &lt;em&gt;Hornwitser&lt;/em&gt; nous donne un aperçu du long processus de développement de Clusterio 2.0 et des défis qu’il pose. Ensuite, &lt;em&gt;DedlySpyder&lt;/em&gt; parle de son travail de...</content>
   </entry>
   
   

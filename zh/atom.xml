@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-12T14:11:04+00:00</updated>
+  <updated>2021-03-19T12:14:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #28 - ROFL</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-28/" />
+    <id>https://alt-f4.blog/ALTF4-28</id>
+    <updated>2021-03-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在三月的这个美好的一周，首次撰稿人 Ph.X 讲述了他们利用独立的模块来布置基地，并通过物流列车网络将它们连接起来的分隔系统。Ph.X 从软件开发中获得灵感和经验，将模块化编程的概念运用到异星工厂之中。&lt;/p&gt; &lt;p&gt;另外，还有个新闻，我们现在提供了一个可以订阅的电子邮件列表！如果你不经常浏览 Reddit 或论坛，甚至不经常来我们的 &lt;a href=&quot;https://discord.gg/nxnCFkb&quot;&gt;Discord&lt;/a&gt;，我们现在提供了一个同样受欢迎的电子邮件列表的选项。只要在&lt;a href=&quot;https://www.freelists.org/list/alt-f4&quot;&gt;这里&lt;/a&gt;输入你的电子邮件地址，你就会在每周五最新一期发布时收到通知。当然，我们只会将此用于 Alt-F4 的更新，而不会给你发送垃圾邮件。&lt;/p&gt; &lt;h2 id=&quot;面向配方的异星工厂之道-phx&quot;&gt;面向配方的异星工厂之道 &lt;author&gt;Ph.X&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;异星工厂有一个复杂的生产线网络（即意大利面条），这使得游戏充满了乐趣和挑战。其作为一个复杂的工程问题存在着与软件工程类似的挑战，因此我认为可以用一些源自现实世界经验来改善游戏体验。&lt;/p&gt; &lt;h3 id=&quot;什么是rofl&quot;&gt;什么是“ROFL”&lt;/h3&gt; &lt;p&gt;有编程经验的人应该听说过 &lt;del&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1&quot;&gt;面向对象编程&lt;/a&gt;&lt;/del&gt; &lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B&quot;&gt;模块化编程&lt;/a&gt;，而这正是面向配方异星工厂之道（Recip-Oriented Factorio Life, ROFL）旨在模仿的理论。模块化编程，是强调将计算机程序的功能分离成独立的、可互换的“模块”的软件设计技术，它使得每个模块都包含着执行预期功能的一个唯一方面所必需的所有东西。在 ROFL 中，我们将整个工厂分离成独立的、可互换的“子工厂模块”，每个模块都包含了执行预期工厂的一个唯一配方必需的所有东西。&lt;/p&gt; &lt;p&gt;和大多数哲学一样，ROFL 试图找到一个永恒&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%A7%8B%E5%9F%BA&quot;&gt;始基&lt;/a&gt;作为一切事物的来源；在我们这里，我们选择的始基是配方。集成电路可以由任何级别的组装机制作，它可能会受到不同插件的影响，所需的原材料可能来自传送带、物流箱，甚至是相邻的铜线组装机，但无论其他条件如何变化，配方本身一直是铜线、电路板与塑料合成集成电路。配方有点像异星工厂中的原子操作：一个不可分割的，无法进一步分解的，最小单位。&lt;/p&gt; &lt;p&gt;根据一个特定的配方，将专用于实现该配方的子工厂打包成模块。一个单独的物流系统作为模块对外交互的接口为其获取原料和供应产品。这样划分的目的是为了实现模块内部的高内聚和模块之间的低耦合。模块内部的高内聚指模块包含了制作配方所需的所有设施（组装机、机械臂、传送带、电线杆、插件效果分享塔等等），让模块可以独立工作。模块之间的低耦合性意味着模块之间通过预定义的接口（如电力和铁路网）进行交互，没有直接的依赖关系，使得模块之间可以互换。&lt;/p&gt; &lt;p&gt;为了更好地实现这个想法，下面的例子中使用了&lt;a href=&quot;https://mods.factorio.com/mods/Optera/LogisticTrainNetwork&quot;&gt;物流列车网络（LTN - Logistic Train Network）&lt;/a&gt;、&lt;a href=&quot;https://mods.factorio.com/mod/aai-containers&quot;&gt;AAI 箱子和仓库（AAI Containers &amp;amp; Warehouses）&lt;/a&gt;和&lt;a href=&quot;https://mods.factorio.com/mod/miniloader&quot;&gt;迷你装卸机（Miniloader）&lt;/a&gt;Mod。以下所有例子的蓝图都可在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/28/rofl_example_blueprint.txt&quot;&gt;这里&lt;/a&gt;下载。&lt;/p&gt; &lt;h3 id=&quot;接口设计&quot;&gt;接口设计&lt;/h3&gt; &lt;p&gt;在实际建造任何子工厂模块之前，我们需要设计一个通用的物流网络作为模块之间的接口。虽然总线或物流机器人在一定程度上可以实现这样的物流系统，但街区式铁路网格在吞吐量、可重复使用性和纯粹的 &lt;em&gt;炫酷程度&lt;/em&gt; 上都远超过其他方案。&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-19</id>
     <updated>2021-01-01T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周的新年伊始，我们想回顾一下这个由 &lt;em&gt;Therenas&lt;/em&gt; 在四个半月前开创的，用以填补 FFF 停更在我们所有人心中留下空缺的项目。我们询问了参与者们的特长，并让他们写下了一些发展史。&lt;/p&gt; &lt;h2 id=&quot;缘起-therenas&quot;&gt;缘起 &lt;author&gt;Therenas&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在某个时刻，我们得知了 FFF &lt;a href=&quot;https://factorio.com/blog/post/fff-360&quot;&gt;即将结束&lt;/a&gt;的消息，在那之后的几天里，人们普遍感到悲伤，并就如何保留这个周常进行了一些&lt;a href=&quot;https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/&quot;&gt;讨论&lt;/a&gt;。不过似乎没有取得任何进展，这时我傻傻地决定自己动手。我在周三晚上打出了&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-1/&quot;&gt;第一期&lt;/a&gt;，在 FFF 360 之后的一周。我还在&lt;a href=&quot;https://discord.com/channels/139677590393716737/603392474458882065/745706599871414434&quot;&gt;异星工厂 Discord&lt;/a&gt; 上询问了关于名字的建议（我很不擅长命名），幸运的是有人提出了一个很棒的名字，Alternative Friday Factorio Fan Facts，简称 Alt-F4。很巧妙，同时又和它所模仿的东西有相似之处。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;Alternative Factorio Friday Fan Facts，简称 Alt F4&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div class=&quot;original&quot;&gt; &lt;p&gt;Alternative Factorio...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #18 - Clusterio 2.0 之路</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-18/" />
-    <id>https://alt-f4.blog/ALTF4-18</id>
-    <updated>2020-12-18T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;年关将至，我们在本周的第 18 期 Alt-F4 中挑选了两个与 Mod 相关的话题。首先，&lt;em&gt;Hornwitser&lt;/em&gt; 为我们介绍了 Clusterio 2.0 漫长的开发进度以及它所带来的挑战。然后，&lt;em&gt;DedlySpyder&lt;/em&gt; 讲述了他们开发一个简单 Mod 的过程以及面临的兼容性挑战。&lt;/p&gt; &lt;h2 id=&quot;clusterio-20-之路-hornwitser&quot;&gt;Clusterio 2.0 之路 &lt;author&gt;Hornwitser&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我想讲讲我如何花了一年时间开发 Clusterio 2.0 的故事，它离发布还有很长的路要走。如果你之前没有听说过 Clusterio，它是由 &lt;em&gt;Danielv123&lt;/em&gt;（以及&lt;a href=&quot;https://github.com/clusterio/factorioClusterio/graphs/contributors&quot;&gt;大约 30 位贡献者&lt;/a&gt;）所编写的开源服务器软件，可以让 Mod 跨服务器互动。它最出名的可能是 2018 年的 Clusterio 60k 活动，在这个活动中，传送箱被用来在大约 46 个异星工厂服务器之间传送物品，以建立一个类似原版的工厂，达到每分钟可以做 60 千瓶。这些传送箱的工作原理就像主动供货箱和集货箱一样，一个从游戏中取出物品，并将它们放在共享的云存储中，另一个则从该云存储中取出请求的物品，并将它们放在游戏中。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: ; max-height: &quot; playsinline=&quot;&quot;...</content>
   </entry>
   
   

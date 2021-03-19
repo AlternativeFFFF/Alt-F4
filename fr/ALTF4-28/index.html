@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 n°28 - FOR</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 n°28 - FOR | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 n°28 - FOR">
+<meta name="author" content="Ph.X">
+<meta property="og:locale" content="fr">
+<meta name="description" content="En cette belle semaine de mars, Ph.X, dont c’est la première contribution, nous parle de son système très compartimenté pour l’aménagement d’une base, à l’aide d’unités isolées reliées par un réseau de trains logistiques. S’inspirant du développement de logiciels et de ses leçons de programmation, Ph.X utilise les concepts de la programmation modulaire à son avantage. Autre nouvelle, nous proposons désormais une liste de diffusion à laquelle vous pouvez vous inscrire ! Si vous ne naviguez pas régulièrement sur Reddit, les forums ou même notre Discord, nous vous offrons désormais la possibilité de vous inscrire à une liste d’adresses électroniques, un concept toujours très en vogue. Il vous suffit de nous communiquer votre adresse électronique ici et vous serez informé chaque vendredi de la sortie du dernier numéro. Bien entendu, nous n’utiliserons cette liste que pour les publications de Alt-F4 et nous ne vous inonderons pas de conneries sans intérêt. Factorio Orienté Recette Ph.X Factorio comprend un réseau complexe de chaînes de production (c’est-à-dire des spaghetti) qui rendent le jeu amusant et stimulant. Il s’agit d’un problème d’ingénierie complexe, avec des défis similaires à ceux du développement de logiciels. Je pense donc que ça vaut la peine d’utiliser une certaine approche de la vie réelle pour améliorer l’expérience de jeu. “FOR”, c’est quoi ? Les personnes ayant une expérience de la programmation devraient avoir entendu parler de la programmation modulaire orientée objet, qui est la théorie que Factorio Orienté Recette (FOR) vise à reproduire. La programmation modulaire est une technique de conception de logiciels qui met l’accent sur la séparation du fonctionnement d’un programme en plusieurs modules indépendants et interchangeables, de sorte que chacun d’entre eux contient tout ce qui est nécessaire pour exécuter un seul aspect du fonctionnement souhaité. Avec FOR, nous divisons l’ensemble de l’usine en unités de sous-usines indépendantes et interchangeables, de sorte que chacune d’entre elles contient tout ce qui est nécessaire pour traiter une seule recette de l’usine souhaitée. Comme la plupart des philosophies, FOR essaie de trouver une Arkhè intemporelle comme origine de tout ; dans notre cas, nous choisissons la recette. Les circuits rouges peuvent être fabriqués par une machine d’assemblage de n’importe quel niveau, qui peut être affectée par différents modules, et les matières premières nécessaires peuvent provenir d’un convoyeur, d’un coffre logistique, ou même d’une machine d’assemblage de fils de cuivre adjacente, mais peu importe comment ces autres conditions peuvent changer, la recette elle-même reste des fils de cuivre, des circuits électroniques et des barres de plastique pour obtenir un circuit avancé. La recette est une sorte d’opération atomique dans Factorio : une unité indivisible, car elle ne peut être décomposée davantage. En fonction de la recette choisie, une sous-usine dédiée est présentée comme une unité de fabrication. Un système logistique distinct est utilisé pour aller chercher les matières premières et acheminer les produits vers les unités, agissant comme une interface d’interaction entre elles et l’extérieur. L’objectif de cette division est d’obtenir une forte cohésion à l’intérieur des unités et une faible interaction entre elles. Une forte cohésion à l’intérieur de l’unité, ça signifie qu’elle contient toutes les installations (machines d’assemblage, bras, convoyeurs, poteaux électriques, diffuseurs, etc.) nécessaires à la réalisation de la recette afin qu’elle puisse fonctionner de manière autonome. Un faible couplage entre les unités, ça signifie qu’elles interagissent les unes avec les autres via des interfaces prédéfinies (par exemple, les réseaux électriques et ferroviaires) sans dépendance directe, ce qui les rend interchangeables. Pour mieux mettre en œuvre cette idée, les mods LTN - Logistic Train Network, AAI Containers &amp; Warehouses et Miniloader sont utilisés dans les exemples suivants. Les plans de tous les exemples ci-dessous peuvent être téléchargés ici. Conception des interfaces Avant de construire les unités de sous-usines, nous devons concevoir un réseau logistique universel qui servira d’interface entre elles. Même si un bus principal ou des robots logistiques peuvent être mis en œuvre en tant que système logistique dans une certaine mesure, un réseau ferroviaire maillé dépasse de loin les autres solutions en termes de débit, de réutilisation et de pure élégance. Avec le jeu de base, les trains ne peuvent circuler que selon un horaire prédéterminé, ce qui n’est pas très flexible ni “logistique”. C’est là que le réseau de trains logistiques s’avère utile. Avec LTN, les trains sont parqués dans des gares de dépôt, tout comme les robots logistiques patientent dans des roboports. Lorsqu’il y a une demande logistique, le système trouve un train approprié au dépôt et génère un horaire pour qu’il aille chercher les objets spécifiés à la gare du fournisseur, puis se rende à celle du demandeur pour le déchargement, puis revienne à une gare de dépôt, de façon similaire au comportement d’un robot logistique. Mais contrairement aux robots logistiques, les trains ne se chargent ni ne se déchargent eux-mêmes, ce qui nécessite l’installation de bras ou de chargeurs dans les gares. Le réseau LTN est plus puissant qu’un réseau de robots logistiques en raison de l’énorme capacité de chargement, de la vitesse élevée et de la prise en charge des transports de fluides. Dans mon exemple, le réseau ferroviaire choisi est une voie ferrée à double sens et circulation à gauche, ce qui me permet de placer les signaux ferroviaires entre les rails. Les embranchements sont perpendiculaires et ne permettent que de tourner à gauche, pour gagner de l’espace. La plupart des gares ont une limite de deux trains pour s’assurer qu’un seul train au maximum patiente à l’extérieur de la gare. Les sections occupées par des trains qui attendraient à l’extérieur des gares peuvent être contournées grâce au réseau entièrement interconnecté. Seule la case centrale contiendra une unité de fabrication. Les unités sont maintenues à une certaine distance les unes des autres. Les mailles entre les unités sont utilisées pour la gestion du trafic ferroviaire, la production d’énergie solaire et la séparation des réseaux logistiques des robots. Les robots excellent dans la logistique à courte distance, mais sont très mauvais dans le transport à longue distance. Un réseau logistique séparé permet d’éviter que les robots ne fassent des vols longue distance inutiles, car cette partie du travail appartient aux trains. Pour réduire la taille des trains et éliminer la nécessité d’équilibrer le chargement et le déchargement entre les wagons, on a choisi les plus petits trains possibles : deux voitures, c’est-à-dire une locomotive et un wagon de marchandises/wagon-citerne. Le réapprovisionnement en carburant des locomotives s’effectue dans les gares de dépôt LTN où les trains reviennent après chaque livraison. Le carburant utilisé pour le réapprovisionnement des locomotives est également acheminé via LTN. Conception des unités Commençons par l’exemple le plus simple, l’engrenage ; une recette avec un seul ingrédient et un seul produit. Un arrêt de train logistique en bas de la maille demande 8000 plaques de fer, et un arrêt de train logistique en haut fournit les objets (c’est-à-dire les engrenages) depuis l’entrepôt connecté. Une unité d’engrenages simple. La gare des matières premières se trouve en bas, celle des produits est située en haut. Étant donné que les entrées et les sorties de cette unité sont réalisées par des trains, les modifications ou les mises à niveau de la chaîne de production au sein de cette unité n’affecteront pas les autres. Ainsi, nous pourrions la transformer en une installation entièrement modulée sans rien changer d’autre dans l’usine globale. Unité d’engrenages avec diffuseurs. Pas de changement pour les gares, seule la ligne de production entre les gares est modifiée. Maintenant, examinons une unité de circuits avancés avec trois types de matières premières. En paramétrant l’arrêt de train logistique pour demander plusieurs ingrédients, nous sommes en mesure de décharger toutes nos matières premières dans une seule et même gare. À ce stade, toutes les matières premières sont mélangées dans un seul entrepôt. Nous utilisons dès lors des chargeurs avec un filtre (similaires aux bras robotisés filtrables) pour séparer chaque matériau sur un convoyeur différent afin d’alimenter les machines d’assemblage. Unité de circuits avancés. Utilisation d’une seule gare pour fournir les matières premières. Il en va de même pour les recettes qui produisent/consomment des fluides, si nous utilisons un wagon-citerne à la place. Unité de raffinage du pétrole. Notez que le contrôle de la pompe via le signal LTN permet de charger ou décharger différents fluides à la même gare sans les mélanger. Il existe également des recettes non conventionnelles, comme la recherche, la centrale électrique à vapeur et le silo à fusées. Unité de centre de recherche, qui n’a pas besoin de gare de sortie. Centrale électrique à vapeur avec des remblais à placer sur l’eau. Ou bien vous pouvez utiliser Landfill Everything pour préparer le site. Unité de silo à fusées. Des réseaux de robots logistiques indépendants sont utilisés à l’intérieur de l’unité. La gare du bas est destinée aux matériaux nécessaires à la construction des fusées, et la gare de droite est destinée aux charges utiles de la fusée, généralement des satellites. FOR, le pour et le contre FOR s’adresse aux personnes ayant une âme d’ingénieur et permet aux joueurs de diviser et de maîtriser facilement les problèmes de production. Lorsque vous devez mettre en œuvre une certaine recette, il suffit de configurer les gares d’entrée et de sortie dans la maille qui correspondent aux types de matières premières et de produits, puis de concevoir des lignes de production entre les gares. Lorsque le débit est insuffisant, vous pouvez directement copier et coller l’unité correspondante et l’intégrer à l’ensemble de la production de l’usine sans alourdir les entrées et les sorties. FOR n’est pas optimisé pour une production parfaite, car il ne s’agit pas d’une ligne de production à ratio parfait, il est donc fréquent que les structures s’arrêtent de fonctionner en raison d’un manque de matières premières ou d’un débordement de produits. Chaque objet doit être chargé et déchargé d’un wagon, ce qui ajoute de nombreux goulots d’étranglement à l’entrée et à la sortie, le plus souvent dans le cas du fil de cuivre, où le nombre de produits dépasse le nombre de matières premières et où le nombre de piles est élevé alors que la demande est énorme. Il y a un stock très important pour chaque unité à cause des entrepôts, ce qui ne vous aide pas à identifier à temps les objets dont la production est insuffisante (mais ce sera certainement le minerai de fer). Le réseau ferroviaire utilisé pour la logistique inter-unités dans l’usine est coûteux à construire et présente également un grand nombre de risques d’accidents de la circulation (merci au Spidertron). Conclusion FOR est plus un mode de pensée qui tente de simplifier des problèmes complexes qu’un livre de plans. Les exemples ci-dessus ne sont qu’une illustration de solutions qui utilisent FOR comme guide. Utiliser LTN pour construire un réseau ferroviaire peut être considéré par certains comme une tricherie, mais cette idée peut également être utilisée avec le bus principal par exemple. Il n’y aura jamais une seule façon “correcte” de jouer à Factorio, c’est la variété qui le rend génial. Une partie avec le mod Space Exploration et utilisant le schéma FOR expliqué ci-dessus. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="En cette belle semaine de mars, Ph.X, dont c’est la première contribution, nous parle de son système très compartimenté pour l’aménagement d’une base, à l’aide d’unités isolées reliées par un réseau de trains logistiques. S’inspirant du développement de logiciels et de ses leçons de programmation, Ph.X utilise les concepts de la programmation modulaire à son avantage. Autre nouvelle, nous proposons désormais une liste de diffusion à laquelle vous pouvez vous inscrire ! Si vous ne naviguez pas régulièrement sur Reddit, les forums ou même notre Discord, nous vous offrons désormais la possibilité de vous inscrire à une liste d’adresses électroniques, un concept toujours très en vogue. Il vous suffit de nous communiquer votre adresse électronique ici et vous serez informé chaque vendredi de la sortie du dernier numéro. Bien entendu, nous n’utiliserons cette liste que pour les publications de Alt-F4 et nous ne vous inonderons pas de conneries sans intérêt. Factorio Orienté Recette Ph.X Factorio comprend un réseau complexe de chaînes de production (c’est-à-dire des spaghetti) qui rendent le jeu amusant et stimulant. Il s’agit d’un problème d’ingénierie complexe, avec des défis similaires à ceux du développement de logiciels. Je pense donc que ça vaut la peine d’utiliser une certaine approche de la vie réelle pour améliorer l’expérience de jeu. “FOR”, c’est quoi ? Les personnes ayant une expérience de la programmation devraient avoir entendu parler de la programmation modulaire orientée objet, qui est la théorie que Factorio Orienté Recette (FOR) vise à reproduire. La programmation modulaire est une technique de conception de logiciels qui met l’accent sur la séparation du fonctionnement d’un programme en plusieurs modules indépendants et interchangeables, de sorte que chacun d’entre eux contient tout ce qui est nécessaire pour exécuter un seul aspect du fonctionnement souhaité. Avec FOR, nous divisons l’ensemble de l’usine en unités de sous-usines indépendantes et interchangeables, de sorte que chacune d’entre elles contient tout ce qui est nécessaire pour traiter une seule recette de l’usine souhaitée. Comme la plupart des philosophies, FOR essaie de trouver une Arkhè intemporelle comme origine de tout ; dans notre cas, nous choisissons la recette. Les circuits rouges peuvent être fabriqués par une machine d’assemblage de n’importe quel niveau, qui peut être affectée par différents modules, et les matières premières nécessaires peuvent provenir d’un convoyeur, d’un coffre logistique, ou même d’une machine d’assemblage de fils de cuivre adjacente, mais peu importe comment ces autres conditions peuvent changer, la recette elle-même reste des fils de cuivre, des circuits électroniques et des barres de plastique pour obtenir un circuit avancé. La recette est une sorte d’opération atomique dans Factorio : une unité indivisible, car elle ne peut être décomposée davantage. En fonction de la recette choisie, une sous-usine dédiée est présentée comme une unité de fabrication. Un système logistique distinct est utilisé pour aller chercher les matières premières et acheminer les produits vers les unités, agissant comme une interface d’interaction entre elles et l’extérieur. L’objectif de cette division est d’obtenir une forte cohésion à l’intérieur des unités et une faible interaction entre elles. Une forte cohésion à l’intérieur de l’unité, ça signifie qu’elle contient toutes les installations (machines d’assemblage, bras, convoyeurs, poteaux électriques, diffuseurs, etc.) nécessaires à la réalisation de la recette afin qu’elle puisse fonctionner de manière autonome. Un faible couplage entre les unités, ça signifie qu’elles interagissent les unes avec les autres via des interfaces prédéfinies (par exemple, les réseaux électriques et ferroviaires) sans dépendance directe, ce qui les rend interchangeables. Pour mieux mettre en œuvre cette idée, les mods LTN - Logistic Train Network, AAI Containers &amp; Warehouses et Miniloader sont utilisés dans les exemples suivants. Les plans de tous les exemples ci-dessous peuvent être téléchargés ici. Conception des interfaces Avant de construire les unités de sous-usines, nous devons concevoir un réseau logistique universel qui servira d’interface entre elles. Même si un bus principal ou des robots logistiques peuvent être mis en œuvre en tant que système logistique dans une certaine mesure, un réseau ferroviaire maillé dépasse de loin les autres solutions en termes de débit, de réutilisation et de pure élégance. Avec le jeu de base, les trains ne peuvent circuler que selon un horaire prédéterminé, ce qui n’est pas très flexible ni “logistique”. C’est là que le réseau de trains logistiques s’avère utile. Avec LTN, les trains sont parqués dans des gares de dépôt, tout comme les robots logistiques patientent dans des roboports. Lorsqu’il y a une demande logistique, le système trouve un train approprié au dépôt et génère un horaire pour qu’il aille chercher les objets spécifiés à la gare du fournisseur, puis se rende à celle du demandeur pour le déchargement, puis revienne à une gare de dépôt, de façon similaire au comportement d’un robot logistique. Mais contrairement aux robots logistiques, les trains ne se chargent ni ne se déchargent eux-mêmes, ce qui nécessite l’installation de bras ou de chargeurs dans les gares. Le réseau LTN est plus puissant qu’un réseau de robots logistiques en raison de l’énorme capacité de chargement, de la vitesse élevée et de la prise en charge des transports de fluides. Dans mon exemple, le réseau ferroviaire choisi est une voie ferrée à double sens et circulation à gauche, ce qui me permet de placer les signaux ferroviaires entre les rails. Les embranchements sont perpendiculaires et ne permettent que de tourner à gauche, pour gagner de l’espace. La plupart des gares ont une limite de deux trains pour s’assurer qu’un seul train au maximum patiente à l’extérieur de la gare. Les sections occupées par des trains qui attendraient à l’extérieur des gares peuvent être contournées grâce au réseau entièrement interconnecté. Seule la case centrale contiendra une unité de fabrication. Les unités sont maintenues à une certaine distance les unes des autres. Les mailles entre les unités sont utilisées pour la gestion du trafic ferroviaire, la production d’énergie solaire et la séparation des réseaux logistiques des robots. Les robots excellent dans la logistique à courte distance, mais sont très mauvais dans le transport à longue distance. Un réseau logistique séparé permet d’éviter que les robots ne fassent des vols longue distance inutiles, car cette partie du travail appartient aux trains. Pour réduire la taille des trains et éliminer la nécessité d’équilibrer le chargement et le déchargement entre les wagons, on a choisi les plus petits trains possibles : deux voitures, c’est-à-dire une locomotive et un wagon de marchandises/wagon-citerne. Le réapprovisionnement en carburant des locomotives s’effectue dans les gares de dépôt LTN où les trains reviennent après chaque livraison. Le carburant utilisé pour le réapprovisionnement des locomotives est également acheminé via LTN. Conception des unités Commençons par l’exemple le plus simple, l’engrenage ; une recette avec un seul ingrédient et un seul produit. Un arrêt de train logistique en bas de la maille demande 8000 plaques de fer, et un arrêt de train logistique en haut fournit les objets (c’est-à-dire les engrenages) depuis l’entrepôt connecté. Une unité d’engrenages simple. La gare des matières premières se trouve en bas, celle des produits est située en haut. Étant donné que les entrées et les sorties de cette unité sont réalisées par des trains, les modifications ou les mises à niveau de la chaîne de production au sein de cette unité n’affecteront pas les autres. Ainsi, nous pourrions la transformer en une installation entièrement modulée sans rien changer d’autre dans l’usine globale. Unité d’engrenages avec diffuseurs. Pas de changement pour les gares, seule la ligne de production entre les gares est modifiée. Maintenant, examinons une unité de circuits avancés avec trois types de matières premières. En paramétrant l’arrêt de train logistique pour demander plusieurs ingrédients, nous sommes en mesure de décharger toutes nos matières premières dans une seule et même gare. À ce stade, toutes les matières premières sont mélangées dans un seul entrepôt. Nous utilisons dès lors des chargeurs avec un filtre (similaires aux bras robotisés filtrables) pour séparer chaque matériau sur un convoyeur différent afin d’alimenter les machines d’assemblage. Unité de circuits avancés. Utilisation d’une seule gare pour fournir les matières premières. Il en va de même pour les recettes qui produisent/consomment des fluides, si nous utilisons un wagon-citerne à la place. Unité de raffinage du pétrole. Notez que le contrôle de la pompe via le signal LTN permet de charger ou décharger différents fluides à la même gare sans les mélanger. Il existe également des recettes non conventionnelles, comme la recherche, la centrale électrique à vapeur et le silo à fusées. Unité de centre de recherche, qui n’a pas besoin de gare de sortie. Centrale électrique à vapeur avec des remblais à placer sur l’eau. Ou bien vous pouvez utiliser Landfill Everything pour préparer le site. Unité de silo à fusées. Des réseaux de robots logistiques indépendants sont utilisés à l’intérieur de l’unité. La gare du bas est destinée aux matériaux nécessaires à la construction des fusées, et la gare de droite est destinée aux charges utiles de la fusée, généralement des satellites. FOR, le pour et le contre FOR s’adresse aux personnes ayant une âme d’ingénieur et permet aux joueurs de diviser et de maîtriser facilement les problèmes de production. Lorsque vous devez mettre en œuvre une certaine recette, il suffit de configurer les gares d’entrée et de sortie dans la maille qui correspondent aux types de matières premières et de produits, puis de concevoir des lignes de production entre les gares. Lorsque le débit est insuffisant, vous pouvez directement copier et coller l’unité correspondante et l’intégrer à l’ensemble de la production de l’usine sans alourdir les entrées et les sorties. FOR n’est pas optimisé pour une production parfaite, car il ne s’agit pas d’une ligne de production à ratio parfait, il est donc fréquent que les structures s’arrêtent de fonctionner en raison d’un manque de matières premières ou d’un débordement de produits. Chaque objet doit être chargé et déchargé d’un wagon, ce qui ajoute de nombreux goulots d’étranglement à l’entrée et à la sortie, le plus souvent dans le cas du fil de cuivre, où le nombre de produits dépasse le nombre de matières premières et où le nombre de piles est élevé alors que la demande est énorme. Il y a un stock très important pour chaque unité à cause des entrepôts, ce qui ne vous aide pas à identifier à temps les objets dont la production est insuffisante (mais ce sera certainement le minerai de fer). Le réseau ferroviaire utilisé pour la logistique inter-unités dans l’usine est coûteux à construire et présente également un grand nombre de risques d’accidents de la circulation (merci au Spidertron). Conclusion FOR est plus un mode de pensée qui tente de simplifier des problèmes complexes qu’un livre de plans. Les exemples ci-dessus ne sont qu’une illustration de solutions qui utilisent FOR comme guide. Utiliser LTN pour construire un réseau ferroviaire peut être considéré par certains comme une tricherie, mais cette idée peut également être utilisée avec le bus principal par exemple. Il n’y aura jamais une seule façon “correcte” de jouer à Factorio, c’est la variété qui le rend génial. Une partie avec le mod Space Exploration et utilisant le schéma FOR expliqué ci-dessus. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-28/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-28/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-19T00:00:00+00:00">
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-28/"},"description":"En cette belle semaine de mars, Ph.X, dont c’est la première contribution, nous parle de son système très compartimenté pour l’aménagement d’une base, à l’aide d’unités isolées reliées par un réseau de trains logistiques. S’inspirant du développement de logiciels et de ses leçons de programmation, Ph.X utilise les concepts de la programmation modulaire à son avantage. Autre nouvelle, nous proposons désormais une liste de diffusion à laquelle vous pouvez vous inscrire ! Si vous ne naviguez pas régulièrement sur Reddit, les forums ou même notre Discord, nous vous offrons désormais la possibilité de vous inscrire à une liste d’adresses électroniques, un concept toujours très en vogue. Il vous suffit de nous communiquer votre adresse électronique ici et vous serez informé chaque vendredi de la sortie du dernier numéro. Bien entendu, nous n’utiliserons cette liste que pour les publications de Alt-F4 et nous ne vous inonderons pas de conneries sans intérêt. Factorio Orienté Recette Ph.X Factorio comprend un réseau complexe de chaînes de production (c’est-à-dire des spaghetti) qui rendent le jeu amusant et stimulant. Il s’agit d’un problème d’ingénierie complexe, avec des défis similaires à ceux du développement de logiciels. Je pense donc que ça vaut la peine d’utiliser une certaine approche de la vie réelle pour améliorer l’expérience de jeu. “FOR”, c’est quoi ? Les personnes ayant une expérience de la programmation devraient avoir entendu parler de la programmation modulaire orientée objet, qui est la théorie que Factorio Orienté Recette (FOR) vise à reproduire. La programmation modulaire est une technique de conception de logiciels qui met l’accent sur la séparation du fonctionnement d’un programme en plusieurs modules indépendants et interchangeables, de sorte que chacun d’entre eux contient tout ce qui est nécessaire pour exécuter un seul aspect du fonctionnement souhaité. Avec FOR, nous divisons l’ensemble de l’usine en unités de sous-usines indépendantes et interchangeables, de sorte que chacune d’entre elles contient tout ce qui est nécessaire pour traiter une seule recette de l’usine souhaitée. Comme la plupart des philosophies, FOR essaie de trouver une Arkhè intemporelle comme origine de tout ; dans notre cas, nous choisissons la recette. Les circuits rouges peuvent être fabriqués par une machine d’assemblage de n’importe quel niveau, qui peut être affectée par différents modules, et les matières premières nécessaires peuvent provenir d’un convoyeur, d’un coffre logistique, ou même d’une machine d’assemblage de fils de cuivre adjacente, mais peu importe comment ces autres conditions peuvent changer, la recette elle-même reste des fils de cuivre, des circuits électroniques et des barres de plastique pour obtenir un circuit avancé. La recette est une sorte d’opération atomique dans Factorio : une unité indivisible, car elle ne peut être décomposée davantage. En fonction de la recette choisie, une sous-usine dédiée est présentée comme une unité de fabrication. Un système logistique distinct est utilisé pour aller chercher les matières premières et acheminer les produits vers les unités, agissant comme une interface d’interaction entre elles et l’extérieur. L’objectif de cette division est d’obtenir une forte cohésion à l’intérieur des unités et une faible interaction entre elles. Une forte cohésion à l’intérieur de l’unité, ça signifie qu’elle contient toutes les installations (machines d’assemblage, bras, convoyeurs, poteaux électriques, diffuseurs, etc.) nécessaires à la réalisation de la recette afin qu’elle puisse fonctionner de manière autonome. Un faible couplage entre les unités, ça signifie qu’elles interagissent les unes avec les autres via des interfaces prédéfinies (par exemple, les réseaux électriques et ferroviaires) sans dépendance directe, ce qui les rend interchangeables. Pour mieux mettre en œuvre cette idée, les mods LTN - Logistic Train Network, AAI Containers &amp; Warehouses et Miniloader sont utilisés dans les exemples suivants. Les plans de tous les exemples ci-dessous peuvent être téléchargés ici. Conception des interfaces Avant de construire les unités de sous-usines, nous devons concevoir un réseau logistique universel qui servira d’interface entre elles. Même si un bus principal ou des robots logistiques peuvent être mis en œuvre en tant que système logistique dans une certaine mesure, un réseau ferroviaire maillé dépasse de loin les autres solutions en termes de débit, de réutilisation et de pure élégance. Avec le jeu de base, les trains ne peuvent circuler que selon un horaire prédéterminé, ce qui n’est pas très flexible ni “logistique”. C’est là que le réseau de trains logistiques s’avère utile. Avec LTN, les trains sont parqués dans des gares de dépôt, tout comme les robots logistiques patientent dans des roboports. Lorsqu’il y a une demande logistique, le système trouve un train approprié au dépôt et génère un horaire pour qu’il aille chercher les objets spécifiés à la gare du fournisseur, puis se rende à celle du demandeur pour le déchargement, puis revienne à une gare de dépôt, de façon similaire au comportement d’un robot logistique. Mais contrairement aux robots logistiques, les trains ne se chargent ni ne se déchargent eux-mêmes, ce qui nécessite l’installation de bras ou de chargeurs dans les gares. Le réseau LTN est plus puissant qu’un réseau de robots logistiques en raison de l’énorme capacité de chargement, de la vitesse élevée et de la prise en charge des transports de fluides. Dans mon exemple, le réseau ferroviaire choisi est une voie ferrée à double sens et circulation à gauche, ce qui me permet de placer les signaux ferroviaires entre les rails. Les embranchements sont perpendiculaires et ne permettent que de tourner à gauche, pour gagner de l’espace. La plupart des gares ont une limite de deux trains pour s’assurer qu’un seul train au maximum patiente à l’extérieur de la gare. Les sections occupées par des trains qui attendraient à l’extérieur des gares peuvent être contournées grâce au réseau entièrement interconnecté. Seule la case centrale contiendra une unité de fabrication. Les unités sont maintenues à une certaine distance les unes des autres. Les mailles entre les unités sont utilisées pour la gestion du trafic ferroviaire, la production d’énergie solaire et la séparation des réseaux logistiques des robots. Les robots excellent dans la logistique à courte distance, mais sont très mauvais dans le transport à longue distance. Un réseau logistique séparé permet d’éviter que les robots ne fassent des vols longue distance inutiles, car cette partie du travail appartient aux trains. Pour réduire la taille des trains et éliminer la nécessité d’équilibrer le chargement et le déchargement entre les wagons, on a choisi les plus petits trains possibles : deux voitures, c’est-à-dire une locomotive et un wagon de marchandises/wagon-citerne. Le réapprovisionnement en carburant des locomotives s’effectue dans les gares de dépôt LTN où les trains reviennent après chaque livraison. Le carburant utilisé pour le réapprovisionnement des locomotives est également acheminé via LTN. Conception des unités Commençons par l’exemple le plus simple, l’engrenage ; une recette avec un seul ingrédient et un seul produit. Un arrêt de train logistique en bas de la maille demande 8000 plaques de fer, et un arrêt de train logistique en haut fournit les objets (c’est-à-dire les engrenages) depuis l’entrepôt connecté. Une unité d’engrenages simple. La gare des matières premières se trouve en bas, celle des produits est située en haut. Étant donné que les entrées et les sorties de cette unité sont réalisées par des trains, les modifications ou les mises à niveau de la chaîne de production au sein de cette unité n’affecteront pas les autres. Ainsi, nous pourrions la transformer en une installation entièrement modulée sans rien changer d’autre dans l’usine globale. Unité d’engrenages avec diffuseurs. Pas de changement pour les gares, seule la ligne de production entre les gares est modifiée. Maintenant, examinons une unité de circuits avancés avec trois types de matières premières. En paramétrant l’arrêt de train logistique pour demander plusieurs ingrédients, nous sommes en mesure de décharger toutes nos matières premières dans une seule et même gare. À ce stade, toutes les matières premières sont mélangées dans un seul entrepôt. Nous utilisons dès lors des chargeurs avec un filtre (similaires aux bras robotisés filtrables) pour séparer chaque matériau sur un convoyeur différent afin d’alimenter les machines d’assemblage. Unité de circuits avancés. Utilisation d’une seule gare pour fournir les matières premières. Il en va de même pour les recettes qui produisent/consomment des fluides, si nous utilisons un wagon-citerne à la place. Unité de raffinage du pétrole. Notez que le contrôle de la pompe via le signal LTN permet de charger ou décharger différents fluides à la même gare sans les mélanger. Il existe également des recettes non conventionnelles, comme la recherche, la centrale électrique à vapeur et le silo à fusées. Unité de centre de recherche, qui n’a pas besoin de gare de sortie. Centrale électrique à vapeur avec des remblais à placer sur l’eau. Ou bien vous pouvez utiliser Landfill Everything pour préparer le site. Unité de silo à fusées. Des réseaux de robots logistiques indépendants sont utilisés à l’intérieur de l’unité. La gare du bas est destinée aux matériaux nécessaires à la construction des fusées, et la gare de droite est destinée aux charges utiles de la fusée, généralement des satellites. FOR, le pour et le contre FOR s’adresse aux personnes ayant une âme d’ingénieur et permet aux joueurs de diviser et de maîtriser facilement les problèmes de production. Lorsque vous devez mettre en œuvre une certaine recette, il suffit de configurer les gares d’entrée et de sortie dans la maille qui correspondent aux types de matières premières et de produits, puis de concevoir des lignes de production entre les gares. Lorsque le débit est insuffisant, vous pouvez directement copier et coller l’unité correspondante et l’intégrer à l’ensemble de la production de l’usine sans alourdir les entrées et les sorties. FOR n’est pas optimisé pour une production parfaite, car il ne s’agit pas d’une ligne de production à ratio parfait, il est donc fréquent que les structures s’arrêtent de fonctionner en raison d’un manque de matières premières ou d’un débordement de produits. Chaque objet doit être chargé et déchargé d’un wagon, ce qui ajoute de nombreux goulots d’étranglement à l’entrée et à la sortie, le plus souvent dans le cas du fil de cuivre, où le nombre de produits dépasse le nombre de matières premières et où le nombre de piles est élevé alors que la demande est énorme. Il y a un stock très important pour chaque unité à cause des entrepôts, ce qui ne vous aide pas à identifier à temps les objets dont la production est insuffisante (mais ce sera certainement le minerai de fer). Le réseau ferroviaire utilisé pour la logistique inter-unités dans l’usine est coûteux à construire et présente également un grand nombre de risques d’accidents de la circulation (merci au Spidertron). Conclusion FOR est plus un mode de pensée qui tente de simplifier des problèmes complexes qu’un livre de plans. Les exemples ci-dessus ne sont qu’une illustration de solutions qui utilisent FOR comme guide. Utiliser LTN pour construire un réseau ferroviaire peut être considéré par certains comme une tricherie, mais cette idée peut également être utilisée avec le bus principal par exemple. Il n’y aura jamais une seule façon “correcte” de jouer à Factorio, c’est la variété qui le rend génial. Une partie avec le mod Space Exploration et utilisant le schéma FOR expliqué ci-dessus. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","url":"https://alt-f4.blog/ALTF4-28/","@type":"BlogPosting","headline":"Alt-F4 n°28 - FOR","dateModified":"2021-03-19T00:00:00+00:00","datePublished":"2021-03-19T00:00:00+00:00","author":{"@type":"Person","name":"Ph.X"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/28/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/28/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<script src="/assets/GLOBAL/js/modernizr-webp.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-28/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-28/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-28/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-28/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-28/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-28/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-28/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-28/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-28/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-28/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°28 - FOR  <author>19-03-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>Ph.X</em>,
+
+
+
+édité par <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Sommaire</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#factorio-orient%C3%A9-recette-phx">Factorio Orienté Recette <author>Ph.X</author></a>
+    <ul>
+      <li><a href="#for-cest-quoi-">“FOR”, c’est quoi ?</a></li>
+      <li><a href="#conception-des-interfaces">Conception des interfaces</a></li>
+      <li><a href="#conception-des-unit%C3%A9s">Conception des unités</a></li>
+      <li><a href="#for-le-pour-et-le-contre">FOR, le pour et le contre</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>En cette belle semaine de mars, Ph.X, dont c’est la première contribution, nous parle de son système très compartimenté pour l’aménagement d’une base, à l’aide d’unités isolées reliées par un réseau de trains logistiques. S’inspirant du développement de logiciels et de ses leçons de programmation, Ph.X utilise les concepts de la programmation modulaire à son avantage.</p>
+
+<p>Autre nouvelle, nous proposons désormais une liste de diffusion à laquelle vous pouvez vous inscrire ! Si vous ne naviguez pas régulièrement sur Reddit, les forums ou même notre <a href="https://discord.gg/nxnCFkb">Discord</a>, nous vous offrons désormais la possibilité de vous inscrire à une liste d’adresses électroniques, un concept toujours très en vogue. Il vous suffit de nous communiquer votre adresse électronique <a href="https://www.freelists.org/list/alt-f4">ici</a> et vous serez informé chaque vendredi de la sortie du dernier numéro. Bien entendu, nous n’utiliserons cette liste que pour les publications de Alt-F4 et nous ne vous inonderons pas de conneries sans intérêt.</p>
+      <h2 id="factorio-orienté-recette-phx">
+        
+        
+            <a href="#factorio-orient%C3%A9-recette-phx" class="anchor" style="text-decoration: none;">Factorio Orienté Recette <author>Ph.X</author></a>
+          
+        
+      </h2>
+    
+
+<p>Factorio comprend un réseau complexe de chaînes de production (c’est-à-dire des spaghetti) qui rendent le jeu amusant et stimulant. Il s’agit d’un problème d’ingénierie complexe, avec des défis similaires à ceux du développement de logiciels. Je pense donc que ça vaut la peine d’utiliser une certaine approche de la vie réelle pour améliorer l’expérience de jeu.</p>
+      <h3 id="for-cest-quoi-">
+        
+        
+            <a href="#for-cest-quoi-" class="anchor" style="text-decoration: none;">“FOR”, c’est quoi ?</a>
+          
+        
+      </h3>
+    
+
+<p>Les personnes ayant une expérience de la programmation devraient avoir entendu parler de la <a href="https://fr.wikipedia.org/wiki/Programmation_modulaire">programmation modulaire</a> <del><a href="https://fr.wikipedia.org/wiki/Programmation_orient%C3%A9e_objet">orientée objet</a></del>, qui est la théorie que Factorio Orienté Recette (FOR) vise à reproduire. La programmation modulaire est une technique de conception de logiciels qui met l’accent sur la séparation du fonctionnement d’un programme en plusieurs modules indépendants et interchangeables, de sorte que chacun d’entre eux contient tout ce qui est nécessaire pour exécuter un seul aspect du fonctionnement souhaité. Avec FOR, nous divisons l’ensemble de l’usine en unités de sous-usines indépendantes et interchangeables, de sorte que chacune d’entre elles contient tout ce qui est nécessaire pour traiter une seule recette de l’usine souhaitée.</p>
+
+<p>Comme la plupart des philosophies, FOR essaie de trouver une <a href="https://fr.wikipedia.org/wiki/Arkh%C3%A8">Arkhè</a> intemporelle comme origine de tout ; dans notre cas, nous choisissons la recette. Les circuits rouges peuvent être fabriqués par une machine d’assemblage de n’importe quel niveau, qui peut être affectée par différents modules, et les matières premières nécessaires peuvent provenir d’un convoyeur, d’un coffre logistique, ou même d’une machine d’assemblage de fils de cuivre adjacente, mais peu importe comment ces autres conditions peuvent changer, la recette elle-même reste des fils de cuivre, des circuits électroniques et des barres de plastique pour obtenir un circuit avancé. La recette est une sorte d’opération atomique dans Factorio : une unité indivisible, car elle ne peut être décomposée davantage.</p>
+
+<p>En fonction de la recette choisie, une sous-usine dédiée est présentée comme une unité de fabrication. Un système logistique distinct est utilisé pour aller chercher les matières premières et acheminer les produits vers les unités, agissant comme une interface d’interaction entre elles et l’extérieur. L’objectif de cette division est d’obtenir une forte cohésion à l’intérieur des unités et une faible interaction entre elles. Une forte cohésion à l’intérieur de l’unité, ça signifie qu’elle contient toutes les installations (machines d’assemblage, bras, convoyeurs, poteaux électriques, diffuseurs, etc.) nécessaires à la réalisation de la recette afin qu’elle puisse fonctionner de manière autonome. Un faible couplage entre les unités, ça signifie qu’elles interagissent les unes avec les autres via des interfaces prédéfinies (par exemple, les réseaux électriques et ferroviaires) sans dépendance directe, ce qui les rend interchangeables.</p>
+
+<p>Pour mieux mettre en œuvre cette idée, les mods <a href="https://mods.factorio.com/mods/Optera/LogisticTrainNetwork">LTN - Logistic Train Network</a>, <a href="https://mods.factorio.com/mod/aai-containers">AAI Containers &amp; Warehouses</a> et <a href="https://mods.factorio.com/mod/miniloader">Miniloader</a> sont utilisés dans les exemples suivants. Les plans de tous les exemples ci-dessous peuvent être téléchargés <a href="https://media.alt-f4.blog/ALTF4/28/rofl_example_blueprint.txt">ici</a>.</p>
+      <h3 id="conception-des-interfaces">
+        
+        
+            <a href="#conception-des-interfaces" class="anchor" style="text-decoration: none;">Conception des interfaces</a>
+          
+        
+      </h3>
+    
+
+<p>Avant de construire les unités de sous-usines, nous devons concevoir un réseau logistique universel qui servira d’interface entre elles. Même si un bus principal ou des robots logistiques peuvent être mis en œuvre en tant que système logistique dans une certaine mesure, un réseau ferroviaire maillé dépasse de loin les autres solutions en termes de débit, de réutilisation et de pure <em>élégance</em>.</p>
+
+<p>Avec le jeu de base, les trains ne peuvent circuler que selon un horaire prédéterminé, ce qui n’est pas très flexible ni “logistique”. C’est là que le réseau de trains <em>logistiques</em> s’avère utile. Avec LTN, les trains sont parqués dans des gares de dépôt, tout comme les robots logistiques patientent dans des roboports. Lorsqu’il y a une demande logistique, le système trouve un train approprié au dépôt et génère un horaire pour qu’il aille chercher les objets spécifiés à la gare du fournisseur, puis se rende à celle du demandeur pour le déchargement, puis revienne à une gare de dépôt, de façon similaire au comportement d’un robot logistique. Mais contrairement aux robots logistiques, les trains ne se chargent ni ne se déchargent eux-mêmes, ce qui nécessite l’installation de bras ou de chargeurs dans les gares. Le réseau LTN est plus puissant qu’un réseau de robots logistiques en raison de l’énorme capacité de chargement, de la vitesse élevée et de la prise en charge des transports de fluides.</p>
+
+<p>Dans mon exemple, le réseau ferroviaire choisi est une voie ferrée à double sens et circulation à gauche, ce qui me permet de placer les signaux ferroviaires entre les rails. Les embranchements sont perpendiculaires et ne permettent que de tourner à gauche, pour gagner de l’espace. La plupart des gares ont une limite de deux trains pour s’assurer qu’un seul train au maximum patiente à l’extérieur de la gare. Les sections occupées par des trains qui attendraient à l’extérieur des gares peuvent être contournées grâce au réseau entièrement interconnecté.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rail_grid.jpg" alt="Réseau ferroviaire" style="max-width: ; max-height: ">
+      
+      <figcaption>Seule la case centrale contiendra une unité de fabrication.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Les unités sont maintenues à une certaine distance les unes des autres. Les mailles entre les unités sont utilisées pour la gestion du trafic ferroviaire, la production d’énergie solaire et la séparation des réseaux logistiques des robots. Les robots excellent dans la logistique à courte distance, mais sont très mauvais dans le transport à longue distance. Un réseau logistique séparé permet d’éviter que les robots ne fassent des vols longue distance inutiles, car cette partie du travail appartient aux trains.</p>
+
+<p>Pour réduire la taille des trains et éliminer la nécessité d’équilibrer le chargement et le déchargement entre les wagons, on a choisi les plus petits trains possibles : deux voitures, c’est-à-dire une locomotive et un wagon de marchandises/wagon-citerne. Le réapprovisionnement en carburant des locomotives s’effectue dans les gares de dépôt LTN où les trains reviennent après chaque livraison.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rail_yard_module.jpg" alt="Unité de dépôt ferroviaire" style="max-width: ; max-height: ">
+      
+      <figcaption>Le carburant utilisé pour le réapprovisionnement des locomotives est également acheminé via LTN.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="conception-des-unités">
+        
+        
+            <a href="#conception-des-unit%C3%A9s" class="anchor" style="text-decoration: none;">Conception des unités</a>
+          
+        
+      </h3>
+    
+
+<p>Commençons par l’exemple le plus simple, l’engrenage ; une recette avec un seul ingrédient et un seul produit. Un arrêt de train logistique en bas de la maille demande 8000 plaques de fer, et un arrêt de train logistique en haut fournit les objets (c’est-à-dire les engrenages) depuis l’entrepôt connecté.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rofl_gear_module.jpg" alt="Unité d’engrenages" style="max-width: ; max-height: ">
+      
+      <figcaption>Une unité d’engrenages simple. La gare des matières premières se trouve en bas, celle des produits est située en haut.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Étant donné que les entrées et les sorties de cette unité sont réalisées par des trains, les modifications ou les mises à niveau de la chaîne de production au sein de cette unité n’affecteront pas les autres. Ainsi, nous pourrions la transformer en une installation entièrement modulée sans rien changer d’autre dans l’usine globale.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rofl_gear_module_2.jpg" alt="Unité d’engrenages alternative" style="max-width: ; max-height: ">
+      
+      <figcaption>Unité d’engrenages avec diffuseurs. Pas de changement pour les gares, seule la ligne de production entre les gares est modifiée.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Maintenant, examinons une unité de circuits avancés avec trois types de matières premières. En paramétrant l’arrêt de train logistique pour demander plusieurs ingrédients, nous sommes en mesure de décharger toutes nos matières premières dans une seule et même gare. À ce stade, toutes les matières premières sont mélangées dans un seul entrepôt. Nous utilisons dès lors des chargeurs avec un filtre (similaires aux bras robotisés filtrables) pour séparer chaque matériau sur un convoyeur différent afin d’alimenter les machines d’assemblage.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/advanced_circuit_module.jpg" alt="Unité de circuits avancés" style="max-width: ; max-height: ">
+      
+      <figcaption>Unité de circuits avancés. Utilisation d’une seule gare pour fournir les matières premières.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Il en va de même pour les recettes qui produisent/consomment des fluides, si nous utilisons un wagon-citerne à la place.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/oil_refinery_module.jpg" alt="Unité de raffinage du pétrole" style="max-width: ; max-height: ">
+      
+      <figcaption>Unité de raffinage du pétrole. Notez que le contrôle de la pompe via le signal LTN permet de charger ou décharger différents fluides à la même gare sans les mélanger.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Il existe également des recettes non conventionnelles, comme la recherche, la centrale électrique à vapeur et le silo à fusées.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/research_centre_module.jpg" alt="Unité de centre de recherche" style="max-width: ; max-height: ">
+      
+      <figcaption>Unité de centre de recherche, qui n’a pas besoin de gare de sortie.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/thermal_power_plant_module.jpg" alt="Unité de centrale électrique à vapeur" style="max-width: ; max-height: ">
+      
+      <figcaption>Centrale électrique à vapeur avec des remblais à placer sur l’eau. Ou bien vous pouvez utiliser <a href="https://mods.factorio.com/mod/LandfillEverything">Landfill Everything</a> pour préparer le site.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rocket_silo_module.jpg" alt="Unité de silo à fusées" style="max-width: ; max-height: ">
+      
+      <figcaption>Unité de silo à fusées. Des réseaux de robots logistiques indépendants sont utilisés à l’intérieur de l’unité. La gare du bas est destinée aux matériaux nécessaires à la construction des fusées, et la gare de droite est destinée aux charges utiles de la fusée, généralement des satellites.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="for-le-pour-et-le-contre">
+        
+        
+            <a href="#for-le-pour-et-le-contre" class="anchor" style="text-decoration: none;">FOR, le pour et le contre</a>
+          
+        
+      </h3>
+    
+
+<p>FOR s’adresse aux personnes ayant une âme d’ingénieur et permet aux joueurs de diviser et de maîtriser facilement les problèmes de production. Lorsque vous devez mettre en œuvre une certaine recette, il suffit de configurer les gares d’entrée et de sortie dans la maille qui correspondent aux types de matières premières et de produits, puis de concevoir des lignes de production entre les gares. Lorsque le débit est insuffisant, vous pouvez directement copier et coller l’unité correspondante et l’intégrer à l’ensemble de la production de l’usine sans <a href="https://alt-f4.blog/fr/ALTF4-22/#le-but-de-factorio">alourdir les entrées et les sorties</a>.</p>
+
+<p>FOR n’est pas optimisé pour une production parfaite, car il ne s’agit pas d’une ligne de production à ratio parfait, il est donc fréquent que les structures s’arrêtent de fonctionner en raison d’un manque de matières premières ou d’un débordement de produits. Chaque objet doit être chargé et déchargé d’un wagon, ce qui ajoute de nombreux goulots d’étranglement à l’entrée et à la sortie, le plus souvent dans le cas du fil de cuivre, où le nombre de produits dépasse le nombre de matières premières et où le nombre de piles est élevé alors que la demande est énorme. Il y a un stock très important pour chaque unité à cause des entrepôts, ce qui ne vous aide pas à identifier à temps les objets dont la production est insuffisante (mais ce sera certainement le minerai de fer). Le réseau ferroviaire utilisé pour la logistique inter-unités dans l’usine est coûteux à construire et présente également un grand nombre de risques d’accidents de la circulation (merci au Spidertron).</p>
+      <h3 id="conclusion">
+        
+        
+            <a href="#conclusion" class="anchor" style="text-decoration: none;">Conclusion</a>
+          
+        
+      </h3>
+    
+
+<p>FOR est plus un mode de pensée qui tente de simplifier des problèmes complexes qu’un livre de plans. Les exemples ci-dessus ne sont qu’une illustration de solutions qui utilisent FOR comme guide. Utiliser LTN pour construire un réseau ferroviaire peut être considéré par certains comme une tricherie, mais cette idée peut également être utilisée avec le bus principal par exemple. Il n’y aura jamais une seule façon “correcte” de jouer à Factorio, c’est la variété qui le rend génial.</p>
+
+<figure>
+		<div class="aspect-ratio">
+			<iframe src="https://media.alt-f4.blog/ALTF4/28/mapshot/index.html" frameborder="0"></iframe>
+		</div>
+		<figcaption>Une partie avec le mod Space Exploration et utilisant le schéma FOR expliqué ci-dessus.</figcaption>
+</figure>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://discord.gg/nxnCFkb">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-27/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
