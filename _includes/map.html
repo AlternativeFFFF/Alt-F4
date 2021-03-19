@@ -1,3 +1,6 @@
-<div class="yt">
-	<iframe src="{{ include.link }}" frameborder="0"></iframe>
-</div>
+<figure>
+		<div class="aspect-ratio">
+			<iframe src="{{ include.link }}" frameborder="0"></iframe>
+		</div>
+		{% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+</figure>
