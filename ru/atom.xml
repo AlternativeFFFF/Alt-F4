@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Alternative Friday Factorio Fan Facts</title>
+  <link href="https://alt-f4.blog/ru/atom.xml" rel="self" />
+  <id>https://alt-f4.blog</id>
+  <updated>2021-03-20T18:45:12+00:00</updated>
+  <author>
+    <name>Therenas</name>
+    <uri>https://alt-f4.blog/about</uri>
+    <email>AlternativeFridayFacts@gmail.com</email>
+  </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #28 - ROFL</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-28/" />
+    <id>https://alt-f4.blog/ALTF4-28</id>
+    <updated>2021-03-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This fine week in March, first-time contributor Ph.X talks about their very compartmentalized system for laying out a base using isolated modules and connecting them through a Logistic Train Network. Taking inspiration from software development and the lessons learned there, Ph.X uses the concepts of Modular Programming to their advantage.&lt;/p&gt;...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #27 - Designing the Unnecessary</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, pocarski continues his descent into belt-related madness by taking a look at universal balancers. The result is as crazy as it is useless, so you know we’re in for a treat!&lt;/p&gt; &lt;h2 id=&quot;universal-8-8-perfectly-balanced-as-all-things-should-be-pocarski&quot;&gt;Universal 8-8: Perfectly Balanced, as All Things Should Be &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/ALTF4-23/#belt-only-computing-part-1-not-so-quick-maths-pocarski&quot;&gt;Recently&lt;/a&gt;, I made a bunch...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #26 - Putting the Multi in Player</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-26/" />
+    <id>https://alt-f4.blog/ALTF4-26</id>
+    <updated>2021-03-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this week’s 26th issue of Alt-F4 (half a year of issues!), oof2win2 goes into the Factorio multiplayer and explains some of the technical machinations behind it. If you’ve ever wondered what a desync is or how the game manages to handle hundreds of players and many thousands of entities...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #25 - Эффективность, эффективность, эффективность!</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-25/" />
+    <id>https://alt-f4.blog/ALTF4-25</id>
+    <updated>2021-02-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;В серебряный юбилей Alt-F4, TheKool возвращается с третьей и последней главой в своей серии о модулях. В ней он обьясняет модули эффективности, говоря о теории и затем представляя настоящий эксперимент!&lt;/p&gt; &lt;h2 id=&quot;уголок-усложнения-модули-эффективности-the-kool&quot;&gt;Уголок Усложнения: Модули эффективности &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;На этой неделе, мы на третьей и последней части Уголка Усложнения! Если вы...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #24 - Creating Memories</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-24/" />
+    <id>https://alt-f4.blog/ALTF4-24</id>
+    <updated>2021-02-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, we’re following up on pocarski’s piece from last week that was all about how to build a computer inside Factorio using only belts. This time, we’re trying to teach it how to remember things. Let’s see how that goes.&lt;/p&gt; &lt;h2 id=&quot;belt-only-computing-part-2-never-forget-pocarski&quot;&gt;Belt-only Computing, Part 2: Never Forget &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;This...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #23 - Beltravaganza</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-23/" />
+    <id>https://alt-f4.blog/ALTF4-23</id>
+    <updated>2021-02-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;After a hiatus of two weeks due to a couple of FFF’s hot off the presses, we’re back this week with two articles all about belts. In the first one, Recon419A explores an interesting concept that has belts deliver items in a just-in-time fashion. Then, things get truly nerdy as...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #22 - Blueprint Rant</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-22/" />
+    <id>https://alt-f4.blog/ALTF4-22</id>
+    <updated>2021-01-22T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For today’s 22nd issue of Alt-F4, &lt;em&gt;Conor_&lt;/em&gt; wanted to share his rather strong opinions on blueprints with us, and why they might prevent you from having the most fun while playing Factorio. We’re sure he’d be happy to hear your take on this, so please feel free to share it...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #21 - The Ultimate Modding Honour</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-21/" />
+    <id>https://alt-f4.blog/ALTF4-21</id>
+    <updated>2021-01-15T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, we’re back to our regularly scheduled programming with another episode of our favorite series: The Nauvis Archives! &lt;em&gt;stringweasel&lt;/em&gt; cracks open the history books once again to look at some old mods, and how they eventually became part of the vanilla experience. At the end, we have a quick...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #20 - Retrospective 2: Electric Boogaloo</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-20/" />
+    <id>https://alt-f4.blog/ALTF4-20</id>
+    <updated>2021-01-08T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Rounding out the first five months of issues, Alt-F4 #20 brings the second part of our retrospective and look behind the scenes. &lt;em&gt;Nanogamer7&lt;/em&gt; takes us through how the translation process got started and what some of the problems are that came up. But before that, &lt;em&gt;Conor_&lt;/em&gt; presents us with a...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #19 - A Retrospective</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-19/" />
+    <id>https://alt-f4.blog/ALTF4-19</id>
+    <updated>2021-01-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, in the new year, we wanted to take a look back at the project &lt;em&gt;Therenas&lt;/em&gt; started four and a half months ago to fill the void that the absence of the FFF left in all our hearts. We asked the people involved in the process about their specialty,...</content>
+  </entry>
+  
+  
+</feed>
