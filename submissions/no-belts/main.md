@@ -18,3 +18,5 @@ You may also ask about performance. That is a very valid question and understand
 | Ryzen 7 2700, 16GB RAM, RTX 3080 (UHD res) | 35                        | 40-50                         |
 | Ryzen 5 3600, 32gb ram @ 3000mhz, GTX 1070 | 20                        | 40-50                         |
 | (Laptop) i7-5700, 8GB RAM, integrated      | 19                        | 27                            |
+
+I wish you, who might want to try the mod out, best of luck! If you happen to create something amazing (as the community just won't stop doing), reach out to me on Discord, prefferably through the [Alt-F4 discord](https://discord.gg/ceKebbY). I might want to feature you on my mod page!
