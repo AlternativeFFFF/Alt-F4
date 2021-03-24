@@ -10,7 +10,7 @@ The [beacon](https://wiki.factorio.com/Beacon) is a building that you can place 
 
 Most people see beacons as a megabase tool, and it's true, they are very effective at improving performance, or UPS (**U**pdates **P**er **S**econd). With faster machines, you need fewer of them, and fewer things moving means your computer can handle bigger factories. Improving UPS is far from they only thing they do, though.
 
-[Image: the two beacon arrangements]
+[Image: beacons]
 
 The two best ways to use a beacon are to surround one beacon with buildings, or to surround one building with beacons. The first case is good for making those expensive tier 3 modules do more work per module (as much as four modules worth of work), and the second case is for pushing a building far beyond its normal capacity. With speed modules in and around an Assembly Machine 3, the speed of the building is 2.6x as fast as it would be without beacons, and 8x as fast as with no modules at all.
 
@@ -20,10 +20,10 @@ A quick note must be given to what beacons cannot do: Beacons cannot contain pro
 
 You may think it doesn't make sense to put efficiency modules in beacons because beacons draw a lot of power on their own, but consider this: Since a beacon always uses 480MW of power, if you can save at least that much power on affected buildings then you are reducing overall power draw. For example, the base power draw of three Assembly Machine 3s is 1,125MW. If you place two Efficiency 3 modules in a beacon, they will reduce the power draw of nearby buildings by 50%. Since 1,125 / 2 = 562.5MW, you're saving 82.5MW. And that's with only 3 assembly machines, you can easily fit more in there. Just be careful about the 20% minimum power draw limit on machines!
 
-Speed modules in beacons are much more common. If you have something that just *needs* to run as fast as possible (like exhausted oil pumpjacks), you can surround it with speed-filled beacons. You can do the same thing in a grid if you have a part of your factory that is getting way too large, such as furnace arrays, in order to get their size way down. Remember: you don't have to go full megabase to play around with beacons in your base, so give them a try in small corners where you think they'll help!
+Speed modules in beacons are much more common. If you have something that just *needs* to run as fast as possible (like exhausted oil pumpjacks), you can surround it with speed-filled beacons. You can use a line of beacons between buildings if you have a part of your factory that is getting way too large, such as furnace arrays, in order to get their size way down. Remember: you don't have to go full megabase to play around with beacons in your base, so give them a try in small corners where you think they'll help!
 
-[Image: sample beaconed furnace array | Caption: Each of these furnaces replaces 8 steel furnaces.]
+[Image: beaconed furnaces | Caption: The left block and the right block have the same throughput.]
 
-Finally, I should say that efficiency modules will offset the penalty from other modules, so you can mix them together in an array like the one above to significantly reduce the pollution output. The minimum power draw (and thus pollution factor) is 20% of the building's original value, not the value after penalties, so your efficiency 3 modules really start to shine here. If you mix 14 Efficiency 3 and 10 Speed 3 modules in a 12-beacon array, you completely negate the pollution increase of the speed modules and still get a 250% speed increase.
+Finally, I should say that efficiency modules will offset the penalty from other modules, so you can use them together around your furnaces and mining drills to significantly reduce the pollution output. The minimum power draw (and thus pollution factor) is 20% of the building's original value, not the value after penalties, so your Efficiency 3 modules really start to shine here. If you mix 14 Efficiency 3 and 10 Speed 3 modules in a 12-beacon array, you completely negate the pollution increase of the speed modules and still get a 250% speed increase.
 
 See, I told you Efficiency 3 modules are useful! And if you have anything to say about that, come find me on the [Discord](https://discord.gg/AsXAwyV) and help me put together a future article. Until then, I'll see you on the factory floor!
