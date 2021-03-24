@@ -8,9 +8,9 @@ The [beacon](https://wiki.factorio.com/Beacon) is a building that you can place 
 
 ### What results can they give?
 
-Most people see beacons as a megabase tool, and it's true, they are very effective at improving performance, or UPS (**U**pdates **P**er **S**econd). With faster machines, you need fewer of them, and fewer things moving means your computer can handle bigger factories. Improving UPS is far from they only thing they do, though.
+Most people see beacons as a megabase tool, and it's true, they are very effective at improving performance, or UPS (**U**pdates **P**er **S**econd). With faster machines, you need fewer of them, and fewer things moving means your computer can handle bigger factories. Improving UPS is far from the only thing they do, though.
 
-[Image: beacons]
+{% include image.html src='https://media.alt-f4.blog/ALTF4/29/beacons.jpg' alt='Beacons surrounding an assembler and vica versa.' %}
 
 The two best ways to use a beacon are to surround one beacon with buildings, or to surround one building with beacons. The first case is good for making those expensive tier 3 modules do more work per module (as much as four modules worth of work), and the second case is for pushing a building far beyond its normal capacity. With speed modules in and around an Assembly Machine 3, the speed of the building is 2.6x as fast as it would be without beacons, and 8x as fast as with no modules at all.
 
@@ -22,7 +22,7 @@ You may think it doesn't make sense to put efficiency modules in beacons because
 
 Speed modules in beacons are much more common. If you have something that just *needs* to run as fast as possible (like exhausted oil pumpjacks), you can surround it with speed-filled beacons. You can use a line of beacons between buildings if you have a part of your factory that is getting way too large, such as furnace arrays, in order to get their size way down. Remember: you don't have to go full megabase to play around with beacons in your base, so give them a try in small corners where you think they'll help!
 
-[Image: beaconed furnaces | Caption: The left block and the right block have the same throughput.]
+{% include image.html src='https://media.alt-f4.blog/ALTF4/29/beaconed_furnaces.jpg' alt='Beaconed electric furnaces vs steel furnaces with the same capacity.' caption='Note that the left and right blocks have the same smelting throughput.' %}
 
 Finally, I should say that efficiency modules will offset the penalty from other modules, so you can use them together around your furnaces and mining drills to significantly reduce the pollution output. The minimum power draw (and thus pollution factor) is 20% of the building's original value, not the value after penalties, so your Efficiency 3 modules really start to shine here. If you mix 14 Efficiency 3 and 10 Speed 3 modules in a 12-beacon array, you completely negate the pollution increase of the speed modules and still get a 250% speed increase.
 
