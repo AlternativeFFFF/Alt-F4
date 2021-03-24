@@ -6,9 +6,7 @@ The grind in the start may feel a bit harder, but it has a reward: everything ca
 
 {%include image.html src='./fullres_screenshot.png' alt='Bot based LDS' caption='Belt based LDS factory turned into bot-based' }
 
-Above, you can see a low density structure production facility. This is an example of a blueprint that has been converted from using belts to using robots. In this case, it was very easy, as I just used a beacon forest. You can however create any design you like! The blueprints are available [here](blueprints.txt), 
-but the bot based factory isn't as productive as it can be - it has 1k LDS less due to robot issues, but that can be easily fixed by just adding in a bit more roboports (or a mod that increases charging capacity and charging speed).
-// CHARGING SPEED is being increased, so this comment may not be true after. Will need to test it
+Above, you can see a low density structure production facility. This is an example of a blueprint that has been converted from using belts to using robots. In this case, it was very easy, as I just used a beacon forest. You can however create any design you like! The blueprints are available [here](blueprints.txt), but the bot based factory isn't as productive as it can be - it has 1k LDS less due to some issues that I am unable to identify (as I'm not very good with blueprints and factory design).
 
 You may also ask about performance. That is a very valid question and understandable with robots being considered as UPS killers. I have thought of this, so I experimented. I gave the Alt-F4 team the save, and they gave their results back, so below is a table. Remember, looking at bots means looking at 100k bots in one place, which is something you wouldn't encounter in your average playthrough
 
