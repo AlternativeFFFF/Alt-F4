@@ -13,7 +13,7 @@ You may wonder about performance. That is a very valid and understandable questi
 | PC Specs                                   | FPS/UPS (looking at bots) | FPS/UPS (not looking at bots) |
 |--------------------------------------------|---------------------------|-------------------------------|
 | i7-8700, 16GB RAM @ 3200MHz, GTX 1060      | 25                        | 60                            |
-| Ryzen 7 2700, 16GB RAM @ 3200MHz, RTX 3080 | 35                        | 40-50                         |
+| Ryzen 7 2700, 16GB RAM @ 3200MHz, RTX 3080 | 35                        | 55                            |
 | Ryzen 5 3600, 32GB RAM @ 3000MHz, GTX 1070 | 20                        | 57                            |
 | (Laptop) i7-5700, 8GB RAM, integrated      | 19                        | 27                            |
 
