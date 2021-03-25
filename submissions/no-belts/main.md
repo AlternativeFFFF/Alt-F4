@@ -14,7 +14,7 @@ You may wonder about performance. That is a very valid and understandable questi
 |--------------------------------------------|---------------------------|-------------------------------|
 | i7-8700, 16GB RAM @ 3200MHz, GTX 1060      | 25                        | 60                            |
 | Ryzen 7 2700, 16GB RAM @ 3200MHz, RTX 3080 | 35                        | 40-50                         |
-| Ryzen 5 3600, 32GB RAM @ 3000MHz, GTX 1070 | 20                        | 40-50                         |
+| Ryzen 5 3600, 32GB RAM @ 3000MHz, GTX 1070 | 20                        | 57                            |
 | (Laptop) i7-5700, 8GB RAM, integrated      | 19                        | 27                            |
 
 I wish you, the person who might want to try the mod out, the best of luck! This mod forces you to rethink your traditional Factorio playstyle so should hopefully offer a new challenge to anyone who tries it. If you happen to create something amazing (as the community just always does), reach out to me (@oof2win2#3149) on Discord, preferably through the [Alt-F4 Discord](https://discord.gg/ceKebbY). You might even get featured on my mod page!
