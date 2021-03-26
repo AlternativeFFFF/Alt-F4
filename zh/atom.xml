@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-26T12:51:22+00:00</updated>
+  <updated>2021-03-26T13:05:34+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -17,7 +17,7 @@
     <link href="https://alt-f4.blog/zh/ALTF4-29/" />
     <id>https://alt-f4.blog/ALTF4-29</id>
     <updated>2021-03-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周第 29 期，我们又迎来了难得的双主题！首先，TheKool，继续谈论插件，通过插件效果分享塔和它们的作用来结束他的 &lt;em&gt;复杂角&lt;/em&gt; 传奇。然后，oof2win2 将用他们的 Mod &lt;em&gt;无传送带&lt;/em&gt;，为我们提供一个非常有趣的另类游戏视角。&lt;/p&gt; &lt;h2 id=&quot;复杂角插件效果分享塔-the-kool&quot;&gt;复杂角：插件效果分享塔 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到“复杂角”！本周我将继续前三篇文章中讲到的插件的话题。这次我将介绍插件效果分享塔的概念，一个完全依靠插件而存在的建筑。和之前一样，我会对这个可能陌生的东西提出三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”。我的目标是让还未曾用过的人能知道，它有多么易用。&lt;/p&gt; &lt;h3 id=&quot;插件效果分享塔是什么&quot;&gt;插件效果分享塔是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Beacon/zh&quot;&gt;插件效果分享塔&lt;/a&gt;是一个可以放置插件的建筑，它可以将这些插件的效果扩散到附近的建筑。它占用的空间为 3x3 格，辐射范围为 9x9 格，也就是说它可以影响到三格之内的任何东西。它在常规游戏中比较晚出现，需要紫色的科研包来研究，但制作它所需的最高级原料是红色电路。一个插件效果分享塔有两个插件槽，会将槽位内的任何插件效果的一半传送给附近的建筑，同时持续消耗 480MW 的电力。&lt;/p&gt; &lt;h3 id=&quot;它们能提供什么效果&quot;&gt;它们能提供什么效果？&lt;/h3&gt; &lt;p&gt;大多数人都把插件效果分享塔看作是巨型基地的工具，这倒没错，它们对提高性能非常有效，或者说 UPS（&lt;strong&gt;U&lt;/strong&gt;pdates &lt;strong&gt;P&lt;/strong&gt;er &lt;strong&gt;S&lt;/strong&gt;econd，每秒更新数）。有了更快的机器，你只需更少的机器，更少的物品移动意味着你的计算机可以处理更大的工厂。不过，改进 UPS 远不是它们唯一的作用。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/29/beacons.jpg&quot; alt=&quot;围绕着组装机的插件效果分享塔，以及反之。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt;...</content>
+    <content type="html">&lt;p&gt;本周第 29 期，我们又迎来了难得的双主题！首先，TheKool，继续谈论插件，通过插件效果分享塔和它们的作用来结束他的 &lt;em&gt;复杂角&lt;/em&gt; 传奇。然后，oof2win2 将用他们的 Mod &lt;em&gt;无传送带&lt;/em&gt;，为我们提供一个非常有趣的另类游戏视角。&lt;/p&gt; &lt;h2 id=&quot;复杂角插件效果分享塔-the-kool&quot;&gt;复杂角：插件效果分享塔 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到“复杂角”！本周我将继续前三篇文章中讲到的插件的话题。这次我将介绍插件效果分享塔的概念，一个完全依靠插件而存在的建筑。和之前一样，我会对这个可能陌生的东西提出三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”。我的目标是让还未曾用过的人能知道，它有多么易用。&lt;/p&gt; &lt;h3 id=&quot;插件效果分享塔是什么&quot;&gt;插件效果分享塔是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Beacon/zh&quot;&gt;插件效果分享塔&lt;/a&gt;是一个可以放置插件的建筑，它可以将这些插件的效果扩散到附近的建筑。它占用的空间为 3x3 格，辐射范围为 9x9 格，也就是说它可以影响到三格之内的任何东西。它在常规游戏中比较晚出现，需要紫色的科研包来研究，但制作它所需的最高级原料是红色电路。一个插件效果分享塔有两个插件槽，会将槽位内的任何插件效果的一半传送给附近的建筑，同时持续消耗 480kW 的电力。&lt;/p&gt; &lt;h3 id=&quot;它们能提供什么效果&quot;&gt;它们能提供什么效果？&lt;/h3&gt; &lt;p&gt;大多数人都把插件效果分享塔看作是巨型基地的工具，这倒没错，它们对提高性能非常有效，或者说 UPS（&lt;strong&gt;U&lt;/strong&gt;pdates &lt;strong&gt;P&lt;/strong&gt;er &lt;strong&gt;S&lt;/strong&gt;econd，每秒更新数）。有了更快的机器，你只需更少的机器，更少的物品移动意味着你的计算机可以处理更大的工厂。不过，改进 UPS 远不是它们唯一的作用。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/29/beacons.jpg&quot; alt=&quot;围绕着组装机的插件效果分享塔，以及反之。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt;...</content>
   </entry>
   
   
