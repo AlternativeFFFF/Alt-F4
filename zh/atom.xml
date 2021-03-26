@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-20T18:45:12+00:00</updated>
+  <updated>2021-03-26T12:40:05+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #29 - 插件效果分享塔和无传送带</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-29/" />
+    <id>https://alt-f4.blog/ALTF4-29</id>
+    <updated>2021-03-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周第 29 期，我们又迎来了难得的双主题！首先，TheKool，继续谈论插件，通过插件效果分享塔和它们的作用来结束他的 &lt;em&gt;复杂角&lt;/em&gt; 传奇。然后，oof2win2 将用他们的 Mod &lt;em&gt;无传送带&lt;/em&gt;，为我们提供一个非常有趣的另类游戏视角。&lt;/p&gt; &lt;h2 id=&quot;复杂角插件效果分享塔-the-kool&quot;&gt;复杂角：插件效果分享塔 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到“复杂角”！本周我将继续前三篇文章中讲到的插件的话题。这次我将介绍插件效果分享塔的概念，一个完全依靠插件而存在的建筑。和之前一样，我会对这个可能陌生的东西提出三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”。我的目标是让还未曾用过的人能知道，它有多么易用。&lt;/p&gt; &lt;h3 id=&quot;插件效果分享塔是什么&quot;&gt;插件效果分享塔是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Beacon/zh&quot;&gt;插件效果分享塔&lt;/a&gt;是一个可以放置插件的建筑，它可以将这些插件的效果扩散到附近的建筑。它占用的空间为 3x3 格，辐射范围为 9x9 格，也就是说它可以影响到三格之内的任何东西。它在常规游戏中比较晚出现，需要紫色的科研包来研究，但制作它所需的最高级原料是红色电路。一个插件效果分享塔有两个插件槽，会将槽位内的任何插件效果的一半传送给附近的建筑，同时持续消耗 480MW 的电力。&lt;/p&gt; &lt;h3 id=&quot;它们能提供什么效果&quot;&gt;它们能提供什么效果？&lt;/h3&gt; &lt;p&gt;大多数人都把插件效果分享塔看作是巨型基地的工具，这倒没错，它们对提高性能非常有效，或者说 UPS（&lt;strong&gt;U&lt;/strong&gt;pdates &lt;strong&gt;P&lt;/strong&gt;er &lt;strong&gt;S&lt;/strong&gt;econd，每秒更新数）。有了更快的机器，你只需更少的机器，更少的物品移动意味着你的计算机可以处理更大的工厂。不过，改进 UPS 远不是它们唯一的作用。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/29/beacons.jpg&quot; alt=&quot;围绕着组装机的插件效果分享塔，以及反之。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-20</id>
     <updated>2021-01-08T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;作为前五个月文章的总结，Alt-F4 #20 带来了我们回顾和幕后揭秘的第二部分。&lt;em&gt;Nanogamer7&lt;/em&gt; 带我们回顾了翻译流程是如何开始的，以及出现了哪些问题。但在这之前，&lt;em&gt;Conor_&lt;/em&gt; 给我们带来了一篇使命宣言，以一种简洁的形式呈现了我们对这个项目的想法。&lt;/p&gt; &lt;h2 id=&quot;我们希望-alt-f4-成为什么的公开宣言-conor_&quot;&gt;我们希望 Alt-F4 成为什么的公开宣言 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Alt-F4 不是 Reddit。它不是论坛。它不是 Discord。它也不是 FFF。虽然这些声明看似显而易见，但它们就像一盏明灯，为我们指明了我们想要实现的内容类型和表现风格。我们希望成为刊载与这款受我们热爱的游戏相关的优美文章的地方。这些故事可能是关于&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-17/#%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-therenas&quot;&gt;一个很棒的异星工厂 Mod UI 设计&lt;/a&gt;，&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-14/#mod-%E8%81%9A%E7%84%A6%E5%A4%AA%E7%A9%BA%E6%8E%A2%E7%B4%A2space-exploration-ironic-toblerone&quot;&gt;一个探索严酷无情的银河系的故事&lt;/a&gt;，甚至只是我们&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-11/#%E5%AF%B9%E5%BC%82%E6%98%9F%E5%B7%A5%E5%8E%82%E4%B8%96%E7%95%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E8%80%83%E5%AF%9F-pocarski&quot;&gt;对数学上瘾&lt;/a&gt;，但它们都在讲述一个关于为何这个游戏对我们很特别的故事。每周的结尾我们都会征稿，看下这个有助于我们讲述希望 Alt-F4 成为的故事：&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;如果您有些有趣的想法，并乐于与社区分享，这里就是一个好地方。如果您没有太大把握，我们会很乐意帮助您讨论内容创意和结构问题。&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div class=&quot;original&quot;&gt; &lt;p&gt;If you have something interesting in mind that you want...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #19 - 一篇回顾</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-19/" />
-    <id>https://alt-f4.blog/ALTF4-19</id>
-    <updated>2021-01-01T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周的新年伊始，我们想回顾一下这个由 &lt;em&gt;Therenas&lt;/em&gt; 在四个半月前开创的，用以填补 FFF 停更在我们所有人心中留下空缺的项目。我们询问了参与者们的特长，并让他们写下了一些发展史。&lt;/p&gt; &lt;h2 id=&quot;缘起-therenas&quot;&gt;缘起 &lt;author&gt;Therenas&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在某个时刻，我们得知了 FFF &lt;a href=&quot;https://factorio.com/blog/post/fff-360&quot;&gt;即将结束&lt;/a&gt;的消息，在那之后的几天里，人们普遍感到悲伤，并就如何保留这个周常进行了一些&lt;a href=&quot;https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/&quot;&gt;讨论&lt;/a&gt;。不过似乎没有取得任何进展，这时我傻傻地决定自己动手。我在周三晚上打出了&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-1/&quot;&gt;第一期&lt;/a&gt;，在 FFF 360 之后的一周。我还在&lt;a href=&quot;https://discord.com/channels/139677590393716737/603392474458882065/745706599871414434&quot;&gt;异星工厂 Discord&lt;/a&gt; 上询问了关于名字的建议（我很不擅长命名），幸运的是有人提出了一个很棒的名字，Alternative Friday Factorio Fan Facts，简称 Alt-F4。很巧妙，同时又和它所模仿的东西有相似之处。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;Alternative Factorio Friday Fan Facts，简称 Alt F4&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div class=&quot;original&quot;&gt; &lt;p&gt;Alternative Factorio...</content>
   </entry>
   
   
