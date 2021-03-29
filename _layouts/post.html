@@ -1,15 +1,17 @@
 ---
 layout: page
 ---
-
-<details class="panel toc">
-  <summary>
-    <h2>{{ site.data.locale.table-of-contents }}</h2>
-  </summary>
-  <div class="panel-inset mb0">
-    {% include toc.html html=content sanitize=true %}
-  </div>
-</details>
+<div class="post-header">
+  <img src="{{ page.image.url }}" alt="{{ post.image.transcription }}" style="margin: 1px;">
+  <details class="panel toc">
+    <summary>
+      <h2>{{ site.data.locale.table-of-contents }}</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      {% include toc.html html=content sanitize=true %}
+    </div>
+  </details>
+</div>
 
 {% if site.active_lang != page.lang %}
 <div class="center banner">
