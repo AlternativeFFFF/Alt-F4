@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-26T13:10:28+00:00</updated>
+  <updated>2021-04-01T11:12:56+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>TTT #30 - Workshop Support ... Finally!</title>
+    <link href="https://alt-f4.blog/zh/TTT-30/" />
+    <id>https://alt-f4.blog/TTT-30</id>
+    <updated>2021-04-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In today’s 30th issue of Terraria Thursday Thoughts, Nanogamer7 talks about the major influence that the new Steam Workshop will have on the Terraria community and what it could mean for the modding scene in general.&lt;/p&gt; &lt;h2 id=&quot;terraria-steam-workshop&quot;&gt;Terraria: Steam Workshop&lt;/h2&gt; &lt;p&gt;On Monday, Re-Logic &lt;a href=&quot;https://terraria.fandom.com/wiki/1.4.0.1&quot;&gt;announced&lt;/a&gt; the addition of Terraria to...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-21</id>
     <updated>2021-01-15T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周，我们又回到了常规节目，带来最受喜爱系列节目的新一集：Nauvis档案！&lt;em&gt;stringweasel&lt;/em&gt; 再次打开历史书，看看一些旧的 Mod，以及它们是如何成为游戏本体的一部分。在最后，我们为亲爱的读者您准备了一个快速投票；如果愿意花两分钟时间来回答这些问题，我们将非常感激。&lt;/p&gt; &lt;h2 id=&quot;nauvis-档案从-mod-到原版-stringweasel&quot;&gt;Nauvis 档案：从 Mod 到原版 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;异星工厂有一个非常丰富的 Mod 社区。几乎所有你能想到的东西都有对应的 Mod。从像&lt;a href=&quot;https://mods.factorio.com/mod/space-exploration&quot;&gt;太空探索（Space Exploration）&lt;/a&gt;或 &lt;a href=&quot;https://mods.factorio.com/mod/Krastorio2&quot;&gt;Krastorio 2&lt;/a&gt; 这样的大改 Mod，到像&lt;a href=&quot;https://mods.factorio.com/mod/Squeak%20Through&quot;&gt;缩地成寸（Squeak Through）&lt;/a&gt;这样的小型生活质量 Mod，或者是可以&lt;a href=&quot;https://mods.factorio.com/mod/JKIL-KnightRider&quot;&gt;在开车时听霹雳游侠音乐&lt;/a&gt;。有些 Mod 比其他 Mod 更受欢迎——有些甚至超过了百万的下载量。然而，一个 Mod 作者所能获得的最大荣誉是将他们的 Mod 纳入到原版游戏中。一个简单例子是&lt;a href=&quot;https://mods.factorio.com/mod/research-queue&quot;&gt;研究队列（Research Queue）&lt;/a&gt;或&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?f=190&amp;amp;t=3793&quot;&gt;填海料（Landfill）&lt;/a&gt;，甚至是 &lt;del&gt;Mod&lt;/del&gt; Mod 作者 &lt;a href=&quot;https://factorio.com/blog/post/fff-300&quot;&gt;&lt;em&gt;Rseding&lt;/em&gt; 受邀加入了游戏团队&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;我下载并调查了其中一些在之后添加进游戏本体中的 Mod。你可能会注意到，一些 Mod 的引用链接指向&lt;a href=&quot;https://forums.factorio.com/viewforum.php?f=190&quot;&gt;异星工厂论坛&lt;/a&gt;，而不是 &lt;a href=&quot;https://mods.factorio.com/&quot;&gt;Mod 门户&lt;/a&gt;。这是因为在异星工厂 0.13（发布于...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #20 - 回顾 2：电布加洛舞</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-20/" />
-    <id>https://alt-f4.blog/ALTF4-20</id>
-    <updated>2021-01-08T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;作为前五个月文章的总结，Alt-F4 #20 带来了我们回顾和幕后揭秘的第二部分。&lt;em&gt;Nanogamer7&lt;/em&gt; 带我们回顾了翻译流程是如何开始的，以及出现了哪些问题。但在这之前，&lt;em&gt;Conor_&lt;/em&gt; 给我们带来了一篇使命宣言，以一种简洁的形式呈现了我们对这个项目的想法。&lt;/p&gt; &lt;h2 id=&quot;我们希望-alt-f4-成为什么的公开宣言-conor_&quot;&gt;我们希望 Alt-F4 成为什么的公开宣言 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Alt-F4 不是 Reddit。它不是论坛。它不是 Discord。它也不是 FFF。虽然这些声明看似显而易见，但它们就像一盏明灯，为我们指明了我们想要实现的内容类型和表现风格。我们希望成为刊载与这款受我们热爱的游戏相关的优美文章的地方。这些故事可能是关于&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-17/#%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-therenas&quot;&gt;一个很棒的异星工厂 Mod UI 设计&lt;/a&gt;，&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-14/#mod-%E8%81%9A%E7%84%A6%E5%A4%AA%E7%A9%BA%E6%8E%A2%E7%B4%A2space-exploration-ironic-toblerone&quot;&gt;一个探索严酷无情的银河系的故事&lt;/a&gt;，甚至只是我们&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-11/#%E5%AF%B9%E5%BC%82%E6%98%9F%E5%B7%A5%E5%8E%82%E4%B8%96%E7%95%8C%E7%9A%84%E7%A7%91%E5%AD%A6%E8%80%83%E5%AF%9F-pocarski&quot;&gt;对数学上瘾&lt;/a&gt;，但它们都在讲述一个关于为何这个游戏对我们很特别的故事。每周的结尾我们都会征稿，看下这个有助于我们讲述希望 Alt-F4 成为的故事：&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;如果您有些有趣的想法，并乐于与社区分享，这里就是一个好地方。如果您没有太大把握，我们会很乐意帮助您讨论内容创意和结构问题。&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div class=&quot;original&quot;&gt; &lt;p&gt;If you have something interesting in mind that you want...</content>
   </entry>
   
   

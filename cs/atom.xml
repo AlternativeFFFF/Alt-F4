@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-03-26T13:10:28+00:00</updated>
+  <updated>2021-04-01T11:12:56+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>TTT #30 - Workshop Support ... Finally!</title>
+    <link href="https://alt-f4.blog/cs/TTT-30/" />
+    <id>https://alt-f4.blog/TTT-30</id>
+    <updated>2021-04-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In today’s 30th issue of Terraria Thursday Thoughts, Nanogamer7 talks about the major influence that the new Steam Workshop will have on the Terraria community and what it could mean for the modding scene in general.&lt;/p&gt; &lt;h2 id=&quot;terraria-steam-workshop&quot;&gt;Terraria: Steam Workshop&lt;/h2&gt; &lt;p&gt;On Monday, Re-Logic &lt;a href=&quot;https://terraria.fandom.com/wiki/1.4.0.1&quot;&gt;announced&lt;/a&gt; the addition of Terraria to...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-21</id>
     <updated>2021-01-15T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Tento týden jsme zpět na nášem regulérně plánovaném programu s další epizodou naší oblíbené série: Nauvis Archívy! &lt;em&gt;stringweasel&lt;/em&gt; otevírá učebnice historie znovu, aby se podíval na některé staré mody, a jak nakonec se spojil(a) s vanillou. Na konci, máme pro vás rychlý dotazník, drahý čtenáři; byli bychom velmi rádi, kdyby...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #20 - Retrospective 2: Electric Boogaloo</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-20/" />
-    <id>https://alt-f4.blog/ALTF4-20</id>
-    <updated>2021-01-08T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Rounding out the first five months of issues, Alt-F4 #20 brings the second part of our retrospective and look behind the scenes. &lt;em&gt;Nanogamer7&lt;/em&gt; takes us through how the translation process got started and what some of the problems are that came up. But before that, &lt;em&gt;Conor_&lt;/em&gt; presents us with a...</content>
   </entry>
   
   
