@@ -4,8 +4,6 @@
 
 .toc {
   width: 100%;
-  margin-top: 0;
-  margin-bottom: 0 !important;
   z-index: 800;
 }
 
@@ -47,7 +45,23 @@
     left: calc(50vw - 955px);
     width: 350px;
     img {
-      height: 348px;
+      height: 350px;
+    }
+  }
+  .outer {
+    position: relative;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: (1 / 1) * 100%;
+    }
+    > .inner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 }
@@ -55,5 +69,22 @@
 @media (max-width: 720px) {
   .post-header {
     flex-direction: column;
+    margin-bottom: 5px;
+  }
+  .outer {
+    position: relative;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: (1 / 1) * 100%;
+    }
+    > .inner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }

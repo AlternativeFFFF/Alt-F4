@@ -2,7 +2,11 @@
 layout: page
 ---
 <div class="post-header">
-  <img src="{{ page.image.url }}" alt="{{ post.image.transcription }}" style="margin: 1px;">
+  <div class="panel" >
+    <div class="outer">
+      <img class="inner" src="{{ page.image.url }}" alt="{{ post.image.transcription }}" style="margin: 1px;">
+    </div>
+  </div>
   <details class="panel toc">
     <summary>
       <h2>{{ site.data.locale.table-of-contents }}</h2>
