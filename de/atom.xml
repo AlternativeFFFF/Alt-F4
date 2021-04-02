@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Alternative Friday Factorio Fan Facts</title>
+  <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
+  <id>https://alt-f4.blog</id>
+  <updated>2021-04-02T12:39:31+00:00</updated>
+  <author>
+    <name>Therenas</name>
+    <uri>https://alt-f4.blog/about</uri>
+    <email>AlternativeFridayFacts@gmail.com</email>
+  </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #30 – Die nauvisianische Perspektive: Zisteau</title>
+    <link href="https://alt-f4.blog/de/ALTF4-30/" />
+    <id>https://alt-f4.blog/ALTF4-30</id>
+    <updated>2021-04-02T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Auf dem Weg in den Zahlenbereich, welcher mit drei beginnt hat stringweasel in Ausgabe #30 ein einigermaßen neues Format für Alt-F4: ein Interview. Er sprach mit dem berühmten YouTuber Zisteau über seine Perspektive bezüglich verschiedener Themen zu unserem Spiel.&lt;/p&gt; &lt;h3 id=&quot;die-nauvisianische-perspektive-zisteau-stringweasel&quot;&gt;Die nauvisianische Perspektive: Zisteau &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h3&gt; &lt;p&gt;Es gibt viele bekannte Namen,...</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #29 – Effektverteiler und keine Fließbänder</title>
+    <link href="https://alt-f4.blog/de/ALTF4-29/" />
+    <id>https://alt-f4.blog/ALTF4-29</id>
+    <updated>2021-03-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Diese Woche haben wir für Ausgabe #29 wieder ein seltenes Doppel-Feature! Als erstes rundet TheKool, der nicht aufhören kann, über Module zu reden, seine Komplexitäts-Ecke-Saga ab, indem er über Effektverteiler spricht und wofür sie gut sind. Dann kehrt oof2win2 zurück, um das Rampenlicht auf ihre Mod &lt;em&gt;No Belts&lt;/em&gt; zu richten,...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #28 - ROFL</title>
+    <link href="https://alt-f4.blog/de/ALTF4-28/" />
+    <id>https://alt-f4.blog/ALTF4-28</id>
+    <updated>2021-03-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In dieser schönen Märzwoche wird uns Ph.X in seinem ersten Artikel sein aufgegliedertes System für eine modulare Fabrik mithilfe isolierter Module, welche durch ein Logistic Train Network verbunden werden, darstellen. Inspiriert von Erfahrungen aus der Software-Entwicklung nutzt Ph.X Konzepte der Modularen Programmierung zu seinem Vorteil.&lt;/p&gt; &lt;p&gt;Außerdem bieten wir jetzt einen...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #27 – Entwerfen des Unnötigen</title>
+    <link href="https://alt-f4.blog/de/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Diese Woche setzt pocarski seinen Ausflug in den Fließband-Wahnsinn fort, indem er einen Blick auf Universal-Balancierer wirft. Das Ergebnis ist ebenso verrückt wie nutzlos, also weißt du, dass wir uns auf einen Leckerbissen freuen können!&lt;/p&gt; &lt;h2 id=&quot;universal-8-8-perfekt-ausgeglichen-wie-es-alles-sein-sollte-pocarski&quot;&gt;Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/de/ALTF4-23/#flie%C3%9Fbandbasierter-rechner-teil-1-nicht-ganz-so-schnelle-mathematik-pocarski&quot;&gt;Letztens&lt;/a&gt; habe ich...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #26 - Das Mehr in Spieler geben</title>
+    <link href="https://alt-f4.blog/de/ALTF4-26/" />
+    <id>https://alt-f4.blog/ALTF4-26</id>
+    <updated>2021-03-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In der dieswöchigen 26. Ausgabe von Alt-F4 (schon ein halbes Jahr!) erklärt oof2win2 den Factorio Mehrspielermodus und einige der technischen Machenschaften dahinter. Falls du dich je gewundert hast, was ein Desync ist oder wie das Spiel Hunderte an Spielern und mehrere Tausend Entitäten auf einmal bewältigt, tu dir keinen Zwang...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #25 – Effizienz, Effizienz, Effizienz!</title>
+    <link href="https://alt-f4.blog/de/ALTF4-25/" />
+    <id>https://alt-f4.blog/ALTF4-25</id>
+    <updated>2021-02-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In dieser silbernen Geburtstagsausgabe von Alt-F4 kehrt TheKool für diese dritte und letzte Folge seiner Serie über Module zurück. Darin deckt er Effizienzmodule ab, indem er über die Theorie spricht und dann ein reales Experiment vorstellt!&lt;/p&gt; &lt;h2 id=&quot;komplexitäts-ecke-effizienzmodule-the-kool&quot;&gt;Komplexitäts-Ecke: Effizienzmodule &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Diese Woche geht es weiter mit der dritten Ausgabe...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #24 - Erinnerungen schaffen</title>
+    <link href="https://alt-f4.blog/de/ALTF4-24/" />
+    <id>https://alt-f4.blog/ALTF4-24</id>
+    <updated>2021-02-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In dieser Woche geht es weiter mit pocarski´s Fließbandcomputer, den wir bereits letzte Woche angefangen haben. Dieses Mal versuchen wir ihm beizubringen, sich zu erinnern. Mal schauen wie das wird.&lt;/p&gt; &lt;h2 id=&quot;fließbandbasierter-rechner-teil-2-niemals-vergessen-pocarski&quot;&gt;Fließbandbasierter Rechner, Teil 2: Niemals vergessen &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;In dieser Woche geht es weiter mit meinen Artikeln zu fließbandbasierten Rechnern....</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #23 – Extravagante Fließbänder</title>
+    <link href="https://alt-f4.blog/de/ALTF4-23/" />
+    <id>https://alt-f4.blog/ALTF4-23</id>
+    <updated>2021-02-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Nach einer zweiwöchigen Pause aufgrund einiger druckfrischer FFFs, sind wir diese Woche mit zwei Artikeln rund um das Thema Fließbänder zurück. In dem ersten erforscht Recon419A ein interessantes Konzept, bei dem die Fließbänder Gegenstände just-in-time liefern. Danach wird es mit einem tiefen Blick in den Aufbau einer Turing-Maschine nur mit...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #22 – Schimpfen über Blaupausen</title>
+    <link href="https://alt-f4.blog/de/ALTF4-22/" />
+    <id>https://alt-f4.blog/ALTF4-22</id>
+    <updated>2021-01-22T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In der heutigen 22. Ausgabe von Alt-F4 möchte &lt;em&gt;Conor_&lt;/em&gt; seine doch sehr klare Meinung zu Blaupausen mit uns teilen und warum diese dich davon abhalten könnten das beste Spielerlebnis mit Factorio zu haben. Wir sind sicher, dass es ihn freuen würde deine Sicht auf die Dinge zu hören, fühl dich...</content>
+  </entry>
+  
+  
+</feed>

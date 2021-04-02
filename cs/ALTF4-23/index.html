@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="cs" class="cs">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #23 - Pásová Extravaganza</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 #23 - Pásová Extravaganza | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #23 - Pásová Extravaganza">
+<meta name="author" content="Recon419A, pocarski">
+<meta property="og:locale" content="cs">
+<meta name="description" content="Po dvoutýdenní pauze kvůli pár FFF horkých z pánve jsme zpět s dvoumi články o pásech. V prvním, Recon419A objevuje zajimavý koncept, který umožnuje dopravovat itemy v stylu právě v čas. Poté, věci se stanou velmi nerdy když pocarski se ponoří do hlubin stavění turingového stroje pomocí pouhých pásů. Titul z počítačové vědy doporučen! Logistické pásy Recon419A Factorio má tři hlavní metody transportování věcí: pásy, roboti, a vlaky. Pásy jsou dobré jedno nebo dvoj-itemovou propustnost, vlaky na masivní kvantity jednoho druhu, a roboti na komplikované recepty výroby. Někdy, je ale potřeba použít kombinaci těchto přístupů, kde se techniky jako sushi pásy prokážou. V tomto článku chci mluvit o jiném způsobu, který nazývám “logistické pásy”. Jako sushi pásy, logistické pásy mohou být použity s a bez módů a nejsou módy samotnými; radši jsou způsob, jak kontrolovat jaké suroviny jdou kam s použitím pásů a velmi lehkých obvodů. Jako vanillový logistický systém a některé vlakové módy jako LTN, cílí být cestou jak dopravit suroviny, která je chytřejší než pouhé pásy. Popis Logistického Pásu Logistické pásy jsou poněkud komplikovaný koncept, ale je mnohem lehčí pochopit, jakmile to vidíte v akci. V tomto příkladě dávejte pozor na to kolikrát několik itemů jsou posílány po stejném páse, každý se nakládá na pás pouze když je požadován. Pokud železo a měď jsou jediné věci, které jsou potřeba, žádná ocel se nepošle; rovněž, když nic není potřeba, pás zůstane prázdný. &lt;/source&gt; Video demonstace konceptu logistických pásů. Demonstrace logistického pásu s použitím obvodových kondicí, filtrových rozdělovaču a nakládačů. Podavače také mohou být použity místo nakládačů, ale mohou být muset zněkolikanásobněny kvůli rychlosti pásu. Můžete vidět v příklade, že obvodová kondice je nastavena, aby se materiály poslaly, pokud destinace má méně než sto. V realitě, délka pásu ovlivní kolik itemů se pošle, pokud je pás dlouhý, sto bude nabufferováno s dalšímy stovkami pořád na páse. Existuje teoretický limit na jak dlouhý pás můžete mít, než přeplníte příjemový kontejner, ale v praxi budete používat místo toho vlaky. Pokud by jste si chtěli pohrát s tímto setupem, tiskový řetězec je zde, ale mělo by být poznamenáno, že plán používá nakládače z Loader Redux módu. Příklad obvové kondice pro logistický pás. Všimněte si, že nastavení limitu na 100 pošle zhruba 270 plátů přes tuto délku, protože pláty zůstávají na páse poté, co se systém zastaví Použití Logistických pásů Logistické pásy jsou užitečné, když potřebujete hodně druhů itemů najednou a poté žádné po nějakou dobu. Kdokoli kdo automatizoval pásy s roboty bude velmi známý s fenoménem známým jako “nabíjecí oblak”, který přichází, když váš logistický systém chce né méně něž deset tisíc koleček a tisíc pět set elektronických obvodů. Nápodobně, když se zeptáte o něco jako materiály na výrobu nukleárního reaktoru nebo raketového sila, roboti mají tendenci se seskupit kolem výrobny, která nikdy nebyla designována na takovou produkci. Když potřebujete hodně jednoho itemu, je mnohem lehčí ho přivést na páse: posílání deseti tisíc koleček trvá méně než čtyři minuty a neškodí to vašemu UPS; s roboty by to trvalo 2500 cest a nejspíše mnoho robotů půjde do vzduchu a pravděpodobně zaplaví nabíjecí kapacitu, která nikdy nebyla na to designována a bude to trvat věčnost, než se to znovu stabilizuje. Používání dedikovaných pásů ale vytváří své vlastní problémy; často budou pásy nečinně sedět a zabírat místo, vy také nemusíte mít místo na používání osmi-busu v první fázi. Pro něco jako pásové nákupní centrum, posílání velké kvantity koleček smíchaných s velkou dávkou elektronických obvodů je triviální činnost pro logistický pás; když přijedou na správné místo, používání robotů je mnohem méně nákladová činnost pro váš logistický systém. Limitace: Několik destinací Problém s posíláním více než jednoho itemu na několik destinací je netriviální, je to něco, co jsem osobně nebyl schopen vyřešit. Protože filtrační rozdělovače vezmou všechen vstup, posílání toho itemu přes filtrační rozdělovač pouze někdy vyžaduje komplikované uspořádání rozdělovačů a několik obvodových podmínek pocházejících z různých destinací. Dal jsem tomuto problému docela dost myšlenek, a i když jsem přišel na několik prototypů, většina z nich byla náchylná k chování jako zasekávání nebo posílání moc itemů na špatnou desttinaci, potenciálně způsobující přetok pokud necháno bez dozoru. S Factorio komunitou existující jak je, nebyl bych překvapen, kdyby tento problém mohl být překonán za týden nebo dva, v několika různých případech; možná uslyšíme o vašem řešení v budoucím vydání Alt-F4. Prozatím, nechal bych to ale jako výzvu pro komunitu. Řekněte mi o tom, co jste vymysleli! Poznámka o sushi pásech Hřáči, kteří jsou kolem hry delší dobu mohli již slyšet o podobném konceptu: sushi pásech. Jako logistické pásy, sushi pásy dovolí pokládat více než jeden druh itemu na pás, ale toto obecně dělají v smyčce vyrobené pro komplikovanou výrobu. Obvodová podmínka na začátku nebo kolem celého pásu pomáhá kontrolovat množství každé suroviny, což může vést k extrémně komplikovaným designům jako “bloodbus” - ohěhový systém pro vaši továrnu. Mezitím co koncept logistického pásu je podobný, má to několik důležiých důvodů, klíčová je jejich funkce: mezitím co sushi pásy jdou kolem a mají tendenci obsluhovat několik výroben v žádném zvláštním pořadí, logistické pásy jdou k a mají tendenci direktovat suroviny z jednoho místa na druhé. Ve skutečnosti, logistický pás může být použit na krmení sushi pásu místo normálního busu - když jsou suroviny potřeba, mohou být poslány, s opatrně monitorovanýmy systémy na rízení rychlosti, preventující přepopulaci pásového kola. Jiné koncepty jako časované pásy nebo limitování podavačů zde taky může být aplikováno, může dokonce být spojeno s logistickýmy pásy k dosáhnutí monumentálních výkonů inženýrství. V mé hlavě, logistické pásy samotné jsou pouze součástí hráčovy nabídky nástrojů. &lt;/source&gt; Video báze sushi městských bloků. Šílený příklad sushi pásů v akci na obří báze městských bloků. Zdroj: u/dentoidův redditový post Vypočítánín pouze s pásy, část první: Ne-tak-rychlá matematika pocarski V Factoriu, můžeme již použít ovládací síť na stavění systémů, začínající s lehkou binární logikou, až na kompletně funční počítač, a poté, někdo dost šílený příjde s tím, že na tom hraje DOOM. Co je ale méně zřejmé, je ale fakt že ovládací síť není pouze jediný Turingově uplný (podívejte se na odkázanou stránku pokud si nejste známí) systém ve hře. Vskutku, jste schopni postavit počítač z čehokoli základního, něco co dostanete skoro na začátku hry: pásy (transportéery). V této dvoudílné sérii vás budu provázet procesem designování dvou systémů používaných v realitě s ničím jiným kromě pásů a rodzělovačů. Budu používat nakládače a nekonečné truhly, ale kdykoliv přichází stejné množství entit co odchází, takže všechny pásy by mohly být propojeny zkrz buffer. Nerozhodl jsem se to dělat kvůli kompaktnosti a vybýbání se špagetovému designu. Musím dát zásluhu uživateli letao12, který udělal sérii videí o vyrábění CPU s použitím pouze pásů, což je věc, která mě inspirovala k vrácení se k jeho nápadu s mým vlastním pohledem na věc. Aby jakýkoli systém byl Turingově úplný, musí být možnost vytvořit takzvaná logická hradla. Logická hradla jsou lehké elementy, které provádí základní operace binární algebry způsobem vracení výstupu, který je založen pouze na aktuálních vstupech. Jsou pouze dvě čísla v binární algebře: 1 a 0. V elektronikách, korespondují k vysokému a nízkému napětí, ale v našem případě, řekněme, že pásy s itemy jsou 1 a prázdné pásy jsou 0. Existují 3 základní logická hradla: OR hradlo - vrací 1 když aspoň jeden vstup je 1 AND hradlo - vrací 1 pokud všechny vstupy jsou 1 NOT hradlo - vrací 1 pouze když vstup je 0 Pravdivostní tabulka níže ukazuje jejich respektivní výstupy založeny na výběru možných vstupů. A B NOT A A OR B A AND B 0 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 1 0 1 1 Je známým faktem, že když tyto hradla změníte specifickýmy způsoby (a někdy vytváření smyčky drátů), je možné vytvořit Turingův stroj. Všechny tři základní logická hradla mohou být vytvořena s pásy a rozdělovači. Zde je odkaz na knihu plánů se vším z tohoto článku, pro kohokoli, kdo by chtěl sám experimentovat s obvody. Budu odkazovat k různým itemům jako “item druhu 1/2/3/…”, pro pohodlí a obecnost, a prioritní/neprioritní výstupy jako “primární/sekundární”, spíše z pohodlí. Budu také používat jiné barvy v obrázcích, aby bylo rozpoznávat mezi druhy itemů. Základní hradlo AND a OR hradlo jsou lehké jako jeden rozdělovač s nastavenou prioritou: &lt;/source&gt; Jeden rozdělovač, který se chová jako AND a OR hradlo najednou Primární výstup se chová jako OR hradlo, mezitím co sekundární výstup se chová jako AND hradlo. NOT hradlo je tročku těžší na výrobu, ale může být vyrobeno s vícero druhů itemů a chytrou mechanikou filtrování a prioritizování: &lt;/source&gt; Kombinované NOT hradlo a signálový duplikátor Mezitím co vstup A je 0, první rozdělovač dostává pouze jeden vstup, a tak item druhu 2 půjde do primárního vstupu, což znamená pouze NOT A výstup je 1. Když vstup A je zapnutý, první rozdělovač nyní získává dva vstupy; item druhu 1 jde na primární vstup, tak je dán na primární výstup, nahrazující item druhu 2, který teď vystupuje z sekundárního výstupu. Sekundární výstup je efektivně kopie A, ale s různým druhem itemů. Primární výstup prvního rozdělovače je vždy 1, ale mění druh itemu záležící na vstupu. Použitím prvního rozdělovače, jsme schopni rozdělit hodnotu druhu itemu na 2 dráty: jeden bude pouze signál A přicházející rovnou zkrz s stejným druhem itemu jako originální vstup, typ 1, a druhý bude NOT A, s itemovým druhem 2. Druhý obvod je výjmečně užitečný, protože kombinuje NOT hradlo, signálový duplikátor, a měnič itemů. Potřebujeme signálové duplikátory, protože větvení pásu s rozdělovačem nechá tok itemů nezasycený, což nechává interakci s ostatními rozdělovači špatnou, protože to není 0 ani 1. Také potřebujeme měniče itemů, protože je často nesoulad mezi výstupem ovládací sítě a vstupu jiné věci. Poloviční sčítač Teď když máme základní tři komponenty, postavme poloviční sčítač. K čemu by byl poloviční sčítač? No, jak jméno může napovídat, poloviční sčítač je polovina plného sčítače, což je obvod, který má schopnost sčítat binární čísla. Toto nám umožní provádět sčítání, a kreativní použití sčítání nám umožní implementovat doslova jakoukoli jinou matematickou operaci která existuje. Poloviční sčítač je obvod, který sčítá dvě jednočíselné binární čísla. Toto může znít jako komplikovaná činnost, ale v realitě, je to velmi lehké. Oba vstupy A a B jsou jsou jednočíselná binární čísla, což znamená že maximální možný výstup je 2 (1+1), což, bohužel, se nevejde do jediného výstupu. Místo toho, použijeme dvoučíselnou binární hodnotu, kde první číslo má hodnotu 2 (21) a druhé číslo má hodnotu 1 (20). Když toto vezmeme v potaz, zde je pravdivostní tabulka polovičního sčítače: A B První číslo A + B Druhé číslo A + B 0 0 0 0 0 1 0 1 1 0 0 1 1 1 1 0 Můžeme si všimnout, že první číslo je pouze A A B. Nicméně, pro druhé číslo, potřebujeme věc nazývanou XOR hradlo (XOR znamená “exklusivní OR”). XOR hradlo má výstup 1 pokud pouze 1 vstup je 1, což je přesně co potřebujeme na druhé číslo. Logika XOR hradla je, “A nebo B, ale ne oboje”, a proto je XOR hradlo pouze (A NEBO B) A NE (A A B). Zde je jak se toto vytvoří s základními hradly, která jsem vysvětlil předtím: &lt;/source&gt; Poloviční sčítač Všimněte si, že dostaneme výstup AND hradla zdarma díky kombinovanému duplikátor-NOT hradlu, což nám dává kompletní poloviční sčítač. Je náhoda, že můžeme kombinovat první měnič itemů s druhým AND hraldem, což nám umožnuje odstranit rozdělovač: &lt;/source&gt; Trochu lehčí poloviční sčítač Finální produkt Tak, aby jsme změnili náš poloviční sčítač na plný sčítač, potřebujeme připojit dva za sebou (proto jméno “poloviční sčítač”): Jak můžete vidět, plný sčítač jsou pouze dva poloviční sčítače dány dohromady v specifickém způsobu. Teď, mohli bychom pouze kopírovat a vložit tento obvod, ale díky vlastnostem pásů, existuje mnohem lepší a menší způsob. Dvě poloviny pásů jsou procesovány odděleně od sebe, což znamená že místo toho abychom dávali dva poloviční sčítače, jsme schopni nechat všechno běžět skrz poloviční sčítač dvakrát. Toto je většinou nemožné s tradičnímy logickýmy hradly, ale v tomto novém světě Factorio počítačů, cokoliv existuje. Zde je jak: &lt;/source&gt; Plný sčítač Zde, první poloviční sčítač používá pravou stranu pásu a druhý poloviční sčítač používá levou část pásu. První, vstupy projdou zkrz první poloviční sčítač normálně na pravé straně pásu. Poté, XOR hradlo polovičního sčítače je vráceno až na začátek a je dáno na levou část pásu. Projde kdrz stejné mechanizmy znovu, ale protože je to na levé straně, nemá vůbec interakci s pravou stranou pásu. Druhý poloviční sčítač pořád má volný výstup, takže ho musíme připojit na třetí vstupový pás, tentokrát na levé straně, aby se to chovalo jako přenosová část. AND výstup obou polovičních sčítačů je bočně naložen na jeden pás, automaticky vytvářející OR. Interní spoždění mohou poloviční sčítače posunout výstup ve stejný čas, tímpádem se bude snažit naložit dva celé pásy na půl pásu. Proto potřebujeme přidat přetokový rozdělovač aby se přenos nezastavil a nezničil celý obvod. Po přeskupení některých komponentů, získáme toto: &lt;/source&gt; Kompaktní plný sčítač Toto je přesně stejný obvod jako v minulém obrázku, a nechám to jako cvičení pro čtenáře aby to ověřil. Jediná věc, která zbývá je naskládat několik těchto obvodů dohromady a dát jim čísla, takže zde je pásový sčítač, který sčítá 01001101 (77) + 10001011 (139) = 011011000 (216): &lt;/source&gt; Několik sčítačů počítajících 01001101 (77) + 10001011 (139) = 011011000 (216) Sčítání čísel je hezké, ale není to nic bez jakékoli paměti, což bude přesně to, co budu dělat při příštím vydání. Zůstaňte naladěni! Přispívání Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na Discord aby jste začali!">
+<meta property="og:description" content="Po dvoutýdenní pauze kvůli pár FFF horkých z pánve jsme zpět s dvoumi články o pásech. V prvním, Recon419A objevuje zajimavý koncept, který umožnuje dopravovat itemy v stylu právě v čas. Poté, věci se stanou velmi nerdy když pocarski se ponoří do hlubin stavění turingového stroje pomocí pouhých pásů. Titul z počítačové vědy doporučen! Logistické pásy Recon419A Factorio má tři hlavní metody transportování věcí: pásy, roboti, a vlaky. Pásy jsou dobré jedno nebo dvoj-itemovou propustnost, vlaky na masivní kvantity jednoho druhu, a roboti na komplikované recepty výroby. Někdy, je ale potřeba použít kombinaci těchto přístupů, kde se techniky jako sushi pásy prokážou. V tomto článku chci mluvit o jiném způsobu, který nazývám “logistické pásy”. Jako sushi pásy, logistické pásy mohou být použity s a bez módů a nejsou módy samotnými; radši jsou způsob, jak kontrolovat jaké suroviny jdou kam s použitím pásů a velmi lehkých obvodů. Jako vanillový logistický systém a některé vlakové módy jako LTN, cílí být cestou jak dopravit suroviny, která je chytřejší než pouhé pásy. Popis Logistického Pásu Logistické pásy jsou poněkud komplikovaný koncept, ale je mnohem lehčí pochopit, jakmile to vidíte v akci. V tomto příkladě dávejte pozor na to kolikrát několik itemů jsou posílány po stejném páse, každý se nakládá na pás pouze když je požadován. Pokud železo a měď jsou jediné věci, které jsou potřeba, žádná ocel se nepošle; rovněž, když nic není potřeba, pás zůstane prázdný. &lt;/source&gt; Video demonstace konceptu logistických pásů. Demonstrace logistického pásu s použitím obvodových kondicí, filtrových rozdělovaču a nakládačů. Podavače také mohou být použity místo nakládačů, ale mohou být muset zněkolikanásobněny kvůli rychlosti pásu. Můžete vidět v příklade, že obvodová kondice je nastavena, aby se materiály poslaly, pokud destinace má méně než sto. V realitě, délka pásu ovlivní kolik itemů se pošle, pokud je pás dlouhý, sto bude nabufferováno s dalšímy stovkami pořád na páse. Existuje teoretický limit na jak dlouhý pás můžete mít, než přeplníte příjemový kontejner, ale v praxi budete používat místo toho vlaky. Pokud by jste si chtěli pohrát s tímto setupem, tiskový řetězec je zde, ale mělo by být poznamenáno, že plán používá nakládače z Loader Redux módu. Příklad obvové kondice pro logistický pás. Všimněte si, že nastavení limitu na 100 pošle zhruba 270 plátů přes tuto délku, protože pláty zůstávají na páse poté, co se systém zastaví Použití Logistických pásů Logistické pásy jsou užitečné, když potřebujete hodně druhů itemů najednou a poté žádné po nějakou dobu. Kdokoli kdo automatizoval pásy s roboty bude velmi známý s fenoménem známým jako “nabíjecí oblak”, který přichází, když váš logistický systém chce né méně něž deset tisíc koleček a tisíc pět set elektronických obvodů. Nápodobně, když se zeptáte o něco jako materiály na výrobu nukleárního reaktoru nebo raketového sila, roboti mají tendenci se seskupit kolem výrobny, která nikdy nebyla designována na takovou produkci. Když potřebujete hodně jednoho itemu, je mnohem lehčí ho přivést na páse: posílání deseti tisíc koleček trvá méně než čtyři minuty a neškodí to vašemu UPS; s roboty by to trvalo 2500 cest a nejspíše mnoho robotů půjde do vzduchu a pravděpodobně zaplaví nabíjecí kapacitu, která nikdy nebyla na to designována a bude to trvat věčnost, než se to znovu stabilizuje. Používání dedikovaných pásů ale vytváří své vlastní problémy; často budou pásy nečinně sedět a zabírat místo, vy také nemusíte mít místo na používání osmi-busu v první fázi. Pro něco jako pásové nákupní centrum, posílání velké kvantity koleček smíchaných s velkou dávkou elektronických obvodů je triviální činnost pro logistický pás; když přijedou na správné místo, používání robotů je mnohem méně nákladová činnost pro váš logistický systém. Limitace: Několik destinací Problém s posíláním více než jednoho itemu na několik destinací je netriviální, je to něco, co jsem osobně nebyl schopen vyřešit. Protože filtrační rozdělovače vezmou všechen vstup, posílání toho itemu přes filtrační rozdělovač pouze někdy vyžaduje komplikované uspořádání rozdělovačů a několik obvodových podmínek pocházejících z různých destinací. Dal jsem tomuto problému docela dost myšlenek, a i když jsem přišel na několik prototypů, většina z nich byla náchylná k chování jako zasekávání nebo posílání moc itemů na špatnou desttinaci, potenciálně způsobující přetok pokud necháno bez dozoru. S Factorio komunitou existující jak je, nebyl bych překvapen, kdyby tento problém mohl být překonán za týden nebo dva, v několika různých případech; možná uslyšíme o vašem řešení v budoucím vydání Alt-F4. Prozatím, nechal bych to ale jako výzvu pro komunitu. Řekněte mi o tom, co jste vymysleli! Poznámka o sushi pásech Hřáči, kteří jsou kolem hry delší dobu mohli již slyšet o podobném konceptu: sushi pásech. Jako logistické pásy, sushi pásy dovolí pokládat více než jeden druh itemu na pás, ale toto obecně dělají v smyčce vyrobené pro komplikovanou výrobu. Obvodová podmínka na začátku nebo kolem celého pásu pomáhá kontrolovat množství každé suroviny, což může vést k extrémně komplikovaným designům jako “bloodbus” - ohěhový systém pro vaši továrnu. Mezitím co koncept logistického pásu je podobný, má to několik důležiých důvodů, klíčová je jejich funkce: mezitím co sushi pásy jdou kolem a mají tendenci obsluhovat několik výroben v žádném zvláštním pořadí, logistické pásy jdou k a mají tendenci direktovat suroviny z jednoho místa na druhé. Ve skutečnosti, logistický pás může být použit na krmení sushi pásu místo normálního busu - když jsou suroviny potřeba, mohou být poslány, s opatrně monitorovanýmy systémy na rízení rychlosti, preventující přepopulaci pásového kola. Jiné koncepty jako časované pásy nebo limitování podavačů zde taky může být aplikováno, může dokonce být spojeno s logistickýmy pásy k dosáhnutí monumentálních výkonů inženýrství. V mé hlavě, logistické pásy samotné jsou pouze součástí hráčovy nabídky nástrojů. &lt;/source&gt; Video báze sushi městských bloků. Šílený příklad sushi pásů v akci na obří báze městských bloků. Zdroj: u/dentoidův redditový post Vypočítánín pouze s pásy, část první: Ne-tak-rychlá matematika pocarski V Factoriu, můžeme již použít ovládací síť na stavění systémů, začínající s lehkou binární logikou, až na kompletně funční počítač, a poté, někdo dost šílený příjde s tím, že na tom hraje DOOM. Co je ale méně zřejmé, je ale fakt že ovládací síť není pouze jediný Turingově uplný (podívejte se na odkázanou stránku pokud si nejste známí) systém ve hře. Vskutku, jste schopni postavit počítač z čehokoli základního, něco co dostanete skoro na začátku hry: pásy (transportéery). V této dvoudílné sérii vás budu provázet procesem designování dvou systémů používaných v realitě s ničím jiným kromě pásů a rodzělovačů. Budu používat nakládače a nekonečné truhly, ale kdykoliv přichází stejné množství entit co odchází, takže všechny pásy by mohly být propojeny zkrz buffer. Nerozhodl jsem se to dělat kvůli kompaktnosti a vybýbání se špagetovému designu. Musím dát zásluhu uživateli letao12, který udělal sérii videí o vyrábění CPU s použitím pouze pásů, což je věc, která mě inspirovala k vrácení se k jeho nápadu s mým vlastním pohledem na věc. Aby jakýkoli systém byl Turingově úplný, musí být možnost vytvořit takzvaná logická hradla. Logická hradla jsou lehké elementy, které provádí základní operace binární algebry způsobem vracení výstupu, který je založen pouze na aktuálních vstupech. Jsou pouze dvě čísla v binární algebře: 1 a 0. V elektronikách, korespondují k vysokému a nízkému napětí, ale v našem případě, řekněme, že pásy s itemy jsou 1 a prázdné pásy jsou 0. Existují 3 základní logická hradla: OR hradlo - vrací 1 když aspoň jeden vstup je 1 AND hradlo - vrací 1 pokud všechny vstupy jsou 1 NOT hradlo - vrací 1 pouze když vstup je 0 Pravdivostní tabulka níže ukazuje jejich respektivní výstupy založeny na výběru možných vstupů. A B NOT A A OR B A AND B 0 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 1 0 1 1 Je známým faktem, že když tyto hradla změníte specifickýmy způsoby (a někdy vytváření smyčky drátů), je možné vytvořit Turingův stroj. Všechny tři základní logická hradla mohou být vytvořena s pásy a rozdělovači. Zde je odkaz na knihu plánů se vším z tohoto článku, pro kohokoli, kdo by chtěl sám experimentovat s obvody. Budu odkazovat k různým itemům jako “item druhu 1/2/3/…”, pro pohodlí a obecnost, a prioritní/neprioritní výstupy jako “primární/sekundární”, spíše z pohodlí. Budu také používat jiné barvy v obrázcích, aby bylo rozpoznávat mezi druhy itemů. Základní hradlo AND a OR hradlo jsou lehké jako jeden rozdělovač s nastavenou prioritou: &lt;/source&gt; Jeden rozdělovač, který se chová jako AND a OR hradlo najednou Primární výstup se chová jako OR hradlo, mezitím co sekundární výstup se chová jako AND hradlo. NOT hradlo je tročku těžší na výrobu, ale může být vyrobeno s vícero druhů itemů a chytrou mechanikou filtrování a prioritizování: &lt;/source&gt; Kombinované NOT hradlo a signálový duplikátor Mezitím co vstup A je 0, první rozdělovač dostává pouze jeden vstup, a tak item druhu 2 půjde do primárního vstupu, což znamená pouze NOT A výstup je 1. Když vstup A je zapnutý, první rozdělovač nyní získává dva vstupy; item druhu 1 jde na primární vstup, tak je dán na primární výstup, nahrazující item druhu 2, který teď vystupuje z sekundárního výstupu. Sekundární výstup je efektivně kopie A, ale s různým druhem itemů. Primární výstup prvního rozdělovače je vždy 1, ale mění druh itemu záležící na vstupu. Použitím prvního rozdělovače, jsme schopni rozdělit hodnotu druhu itemu na 2 dráty: jeden bude pouze signál A přicházející rovnou zkrz s stejným druhem itemu jako originální vstup, typ 1, a druhý bude NOT A, s itemovým druhem 2. Druhý obvod je výjmečně užitečný, protože kombinuje NOT hradlo, signálový duplikátor, a měnič itemů. Potřebujeme signálové duplikátory, protože větvení pásu s rozdělovačem nechá tok itemů nezasycený, což nechává interakci s ostatními rozdělovači špatnou, protože to není 0 ani 1. Také potřebujeme měniče itemů, protože je často nesoulad mezi výstupem ovládací sítě a vstupu jiné věci. Poloviční sčítač Teď když máme základní tři komponenty, postavme poloviční sčítač. K čemu by byl poloviční sčítač? No, jak jméno může napovídat, poloviční sčítač je polovina plného sčítače, což je obvod, který má schopnost sčítat binární čísla. Toto nám umožní provádět sčítání, a kreativní použití sčítání nám umožní implementovat doslova jakoukoli jinou matematickou operaci která existuje. Poloviční sčítač je obvod, který sčítá dvě jednočíselné binární čísla. Toto může znít jako komplikovaná činnost, ale v realitě, je to velmi lehké. Oba vstupy A a B jsou jsou jednočíselná binární čísla, což znamená že maximální možný výstup je 2 (1+1), což, bohužel, se nevejde do jediného výstupu. Místo toho, použijeme dvoučíselnou binární hodnotu, kde první číslo má hodnotu 2 (21) a druhé číslo má hodnotu 1 (20). Když toto vezmeme v potaz, zde je pravdivostní tabulka polovičního sčítače: A B První číslo A + B Druhé číslo A + B 0 0 0 0 0 1 0 1 1 0 0 1 1 1 1 0 Můžeme si všimnout, že první číslo je pouze A A B. Nicméně, pro druhé číslo, potřebujeme věc nazývanou XOR hradlo (XOR znamená “exklusivní OR”). XOR hradlo má výstup 1 pokud pouze 1 vstup je 1, což je přesně co potřebujeme na druhé číslo. Logika XOR hradla je, “A nebo B, ale ne oboje”, a proto je XOR hradlo pouze (A NEBO B) A NE (A A B). Zde je jak se toto vytvoří s základními hradly, která jsem vysvětlil předtím: &lt;/source&gt; Poloviční sčítač Všimněte si, že dostaneme výstup AND hradla zdarma díky kombinovanému duplikátor-NOT hradlu, což nám dává kompletní poloviční sčítač. Je náhoda, že můžeme kombinovat první měnič itemů s druhým AND hraldem, což nám umožnuje odstranit rozdělovač: &lt;/source&gt; Trochu lehčí poloviční sčítač Finální produkt Tak, aby jsme změnili náš poloviční sčítač na plný sčítač, potřebujeme připojit dva za sebou (proto jméno “poloviční sčítač”): Jak můžete vidět, plný sčítač jsou pouze dva poloviční sčítače dány dohromady v specifickém způsobu. Teď, mohli bychom pouze kopírovat a vložit tento obvod, ale díky vlastnostem pásů, existuje mnohem lepší a menší způsob. Dvě poloviny pásů jsou procesovány odděleně od sebe, což znamená že místo toho abychom dávali dva poloviční sčítače, jsme schopni nechat všechno běžět skrz poloviční sčítač dvakrát. Toto je většinou nemožné s tradičnímy logickýmy hradly, ale v tomto novém světě Factorio počítačů, cokoliv existuje. Zde je jak: &lt;/source&gt; Plný sčítač Zde, první poloviční sčítač používá pravou stranu pásu a druhý poloviční sčítač používá levou část pásu. První, vstupy projdou zkrz první poloviční sčítač normálně na pravé straně pásu. Poté, XOR hradlo polovičního sčítače je vráceno až na začátek a je dáno na levou část pásu. Projde kdrz stejné mechanizmy znovu, ale protože je to na levé straně, nemá vůbec interakci s pravou stranou pásu. Druhý poloviční sčítač pořád má volný výstup, takže ho musíme připojit na třetí vstupový pás, tentokrát na levé straně, aby se to chovalo jako přenosová část. AND výstup obou polovičních sčítačů je bočně naložen na jeden pás, automaticky vytvářející OR. Interní spoždění mohou poloviční sčítače posunout výstup ve stejný čas, tímpádem se bude snažit naložit dva celé pásy na půl pásu. Proto potřebujeme přidat přetokový rozdělovač aby se přenos nezastavil a nezničil celý obvod. Po přeskupení některých komponentů, získáme toto: &lt;/source&gt; Kompaktní plný sčítač Toto je přesně stejný obvod jako v minulém obrázku, a nechám to jako cvičení pro čtenáře aby to ověřil. Jediná věc, která zbývá je naskládat několik těchto obvodů dohromady a dát jim čísla, takže zde je pásový sčítač, který sčítá 01001101 (77) + 10001011 (139) = 011011000 (216): &lt;/source&gt; Několik sčítačů počítajících 01001101 (77) + 10001011 (139) = 011011000 (216) Sčítání čísel je hezké, ale není to nic bez jakékoli paměti, což bude přesně to, co budu dělat při příštím vydání. Zůstaňte naladěni! Přispívání Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na Discord aby jste začali!">
+<link rel="canonical" href="https://alt-f4.blog/cs/ALTF4-23/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-23/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-02-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-23/"},"description":"Po dvoutýdenní pauze kvůli pár FFF horkých z pánve jsme zpět s dvoumi články o pásech. V prvním, Recon419A objevuje zajimavý koncept, který umožnuje dopravovat itemy v stylu právě v čas. Poté, věci se stanou velmi nerdy když pocarski se ponoří do hlubin stavění turingového stroje pomocí pouhých pásů. Titul z počítačové vědy doporučen! Logistické pásy Recon419A Factorio má tři hlavní metody transportování věcí: pásy, roboti, a vlaky. Pásy jsou dobré jedno nebo dvoj-itemovou propustnost, vlaky na masivní kvantity jednoho druhu, a roboti na komplikované recepty výroby. Někdy, je ale potřeba použít kombinaci těchto přístupů, kde se techniky jako sushi pásy prokážou. V tomto článku chci mluvit o jiném způsobu, který nazývám “logistické pásy”. Jako sushi pásy, logistické pásy mohou být použity s a bez módů a nejsou módy samotnými; radši jsou způsob, jak kontrolovat jaké suroviny jdou kam s použitím pásů a velmi lehkých obvodů. Jako vanillový logistický systém a některé vlakové módy jako LTN, cílí být cestou jak dopravit suroviny, která je chytřejší než pouhé pásy. Popis Logistického Pásu Logistické pásy jsou poněkud komplikovaný koncept, ale je mnohem lehčí pochopit, jakmile to vidíte v akci. V tomto příkladě dávejte pozor na to kolikrát několik itemů jsou posílány po stejném páse, každý se nakládá na pás pouze když je požadován. Pokud železo a měď jsou jediné věci, které jsou potřeba, žádná ocel se nepošle; rovněž, když nic není potřeba, pás zůstane prázdný. &lt;/source&gt; Video demonstace konceptu logistických pásů. Demonstrace logistického pásu s použitím obvodových kondicí, filtrových rozdělovaču a nakládačů. Podavače také mohou být použity místo nakládačů, ale mohou být muset zněkolikanásobněny kvůli rychlosti pásu. Můžete vidět v příklade, že obvodová kondice je nastavena, aby se materiály poslaly, pokud destinace má méně než sto. V realitě, délka pásu ovlivní kolik itemů se pošle, pokud je pás dlouhý, sto bude nabufferováno s dalšímy stovkami pořád na páse. Existuje teoretický limit na jak dlouhý pás můžete mít, než přeplníte příjemový kontejner, ale v praxi budete používat místo toho vlaky. Pokud by jste si chtěli pohrát s tímto setupem, tiskový řetězec je zde, ale mělo by být poznamenáno, že plán používá nakládače z Loader Redux módu. Příklad obvové kondice pro logistický pás. Všimněte si, že nastavení limitu na 100 pošle zhruba 270 plátů přes tuto délku, protože pláty zůstávají na páse poté, co se systém zastaví Použití Logistických pásů Logistické pásy jsou užitečné, když potřebujete hodně druhů itemů najednou a poté žádné po nějakou dobu. Kdokoli kdo automatizoval pásy s roboty bude velmi známý s fenoménem známým jako “nabíjecí oblak”, který přichází, když váš logistický systém chce né méně něž deset tisíc koleček a tisíc pět set elektronických obvodů. Nápodobně, když se zeptáte o něco jako materiály na výrobu nukleárního reaktoru nebo raketového sila, roboti mají tendenci se seskupit kolem výrobny, která nikdy nebyla designována na takovou produkci. Když potřebujete hodně jednoho itemu, je mnohem lehčí ho přivést na páse: posílání deseti tisíc koleček trvá méně než čtyři minuty a neškodí to vašemu UPS; s roboty by to trvalo 2500 cest a nejspíše mnoho robotů půjde do vzduchu a pravděpodobně zaplaví nabíjecí kapacitu, která nikdy nebyla na to designována a bude to trvat věčnost, než se to znovu stabilizuje. Používání dedikovaných pásů ale vytváří své vlastní problémy; často budou pásy nečinně sedět a zabírat místo, vy také nemusíte mít místo na používání osmi-busu v první fázi. Pro něco jako pásové nákupní centrum, posílání velké kvantity koleček smíchaných s velkou dávkou elektronických obvodů je triviální činnost pro logistický pás; když přijedou na správné místo, používání robotů je mnohem méně nákladová činnost pro váš logistický systém. Limitace: Několik destinací Problém s posíláním více než jednoho itemu na několik destinací je netriviální, je to něco, co jsem osobně nebyl schopen vyřešit. Protože filtrační rozdělovače vezmou všechen vstup, posílání toho itemu přes filtrační rozdělovač pouze někdy vyžaduje komplikované uspořádání rozdělovačů a několik obvodových podmínek pocházejících z různých destinací. Dal jsem tomuto problému docela dost myšlenek, a i když jsem přišel na několik prototypů, většina z nich byla náchylná k chování jako zasekávání nebo posílání moc itemů na špatnou desttinaci, potenciálně způsobující přetok pokud necháno bez dozoru. S Factorio komunitou existující jak je, nebyl bych překvapen, kdyby tento problém mohl být překonán za týden nebo dva, v několika různých případech; možná uslyšíme o vašem řešení v budoucím vydání Alt-F4. Prozatím, nechal bych to ale jako výzvu pro komunitu. Řekněte mi o tom, co jste vymysleli! Poznámka o sushi pásech Hřáči, kteří jsou kolem hry delší dobu mohli již slyšet o podobném konceptu: sushi pásech. Jako logistické pásy, sushi pásy dovolí pokládat více než jeden druh itemu na pás, ale toto obecně dělají v smyčce vyrobené pro komplikovanou výrobu. Obvodová podmínka na začátku nebo kolem celého pásu pomáhá kontrolovat množství každé suroviny, což může vést k extrémně komplikovaným designům jako “bloodbus” - ohěhový systém pro vaši továrnu. Mezitím co koncept logistického pásu je podobný, má to několik důležiých důvodů, klíčová je jejich funkce: mezitím co sushi pásy jdou kolem a mají tendenci obsluhovat několik výroben v žádném zvláštním pořadí, logistické pásy jdou k a mají tendenci direktovat suroviny z jednoho místa na druhé. Ve skutečnosti, logistický pás může být použit na krmení sushi pásu místo normálního busu - když jsou suroviny potřeba, mohou být poslány, s opatrně monitorovanýmy systémy na rízení rychlosti, preventující přepopulaci pásového kola. Jiné koncepty jako časované pásy nebo limitování podavačů zde taky může být aplikováno, může dokonce být spojeno s logistickýmy pásy k dosáhnutí monumentálních výkonů inženýrství. V mé hlavě, logistické pásy samotné jsou pouze součástí hráčovy nabídky nástrojů. &lt;/source&gt; Video báze sushi městských bloků. Šílený příklad sushi pásů v akci na obří báze městských bloků. Zdroj: u/dentoidův redditový post Vypočítánín pouze s pásy, část první: Ne-tak-rychlá matematika pocarski V Factoriu, můžeme již použít ovládací síť na stavění systémů, začínající s lehkou binární logikou, až na kompletně funční počítač, a poté, někdo dost šílený příjde s tím, že na tom hraje DOOM. Co je ale méně zřejmé, je ale fakt že ovládací síť není pouze jediný Turingově uplný (podívejte se na odkázanou stránku pokud si nejste známí) systém ve hře. Vskutku, jste schopni postavit počítač z čehokoli základního, něco co dostanete skoro na začátku hry: pásy (transportéery). V této dvoudílné sérii vás budu provázet procesem designování dvou systémů používaných v realitě s ničím jiným kromě pásů a rodzělovačů. Budu používat nakládače a nekonečné truhly, ale kdykoliv přichází stejné množství entit co odchází, takže všechny pásy by mohly být propojeny zkrz buffer. Nerozhodl jsem se to dělat kvůli kompaktnosti a vybýbání se špagetovému designu. Musím dát zásluhu uživateli letao12, který udělal sérii videí o vyrábění CPU s použitím pouze pásů, což je věc, která mě inspirovala k vrácení se k jeho nápadu s mým vlastním pohledem na věc. Aby jakýkoli systém byl Turingově úplný, musí být možnost vytvořit takzvaná logická hradla. Logická hradla jsou lehké elementy, které provádí základní operace binární algebry způsobem vracení výstupu, který je založen pouze na aktuálních vstupech. Jsou pouze dvě čísla v binární algebře: 1 a 0. V elektronikách, korespondují k vysokému a nízkému napětí, ale v našem případě, řekněme, že pásy s itemy jsou 1 a prázdné pásy jsou 0. Existují 3 základní logická hradla: OR hradlo - vrací 1 když aspoň jeden vstup je 1 AND hradlo - vrací 1 pokud všechny vstupy jsou 1 NOT hradlo - vrací 1 pouze když vstup je 0 Pravdivostní tabulka níže ukazuje jejich respektivní výstupy založeny na výběru možných vstupů. A B NOT A A OR B A AND B 0 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 1 0 1 1 Je známým faktem, že když tyto hradla změníte specifickýmy způsoby (a někdy vytváření smyčky drátů), je možné vytvořit Turingův stroj. Všechny tři základní logická hradla mohou být vytvořena s pásy a rozdělovači. Zde je odkaz na knihu plánů se vším z tohoto článku, pro kohokoli, kdo by chtěl sám experimentovat s obvody. Budu odkazovat k různým itemům jako “item druhu 1/2/3/…”, pro pohodlí a obecnost, a prioritní/neprioritní výstupy jako “primární/sekundární”, spíše z pohodlí. Budu také používat jiné barvy v obrázcích, aby bylo rozpoznávat mezi druhy itemů. Základní hradlo AND a OR hradlo jsou lehké jako jeden rozdělovač s nastavenou prioritou: &lt;/source&gt; Jeden rozdělovač, který se chová jako AND a OR hradlo najednou Primární výstup se chová jako OR hradlo, mezitím co sekundární výstup se chová jako AND hradlo. NOT hradlo je tročku těžší na výrobu, ale může být vyrobeno s vícero druhů itemů a chytrou mechanikou filtrování a prioritizování: &lt;/source&gt; Kombinované NOT hradlo a signálový duplikátor Mezitím co vstup A je 0, první rozdělovač dostává pouze jeden vstup, a tak item druhu 2 půjde do primárního vstupu, což znamená pouze NOT A výstup je 1. Když vstup A je zapnutý, první rozdělovač nyní získává dva vstupy; item druhu 1 jde na primární vstup, tak je dán na primární výstup, nahrazující item druhu 2, který teď vystupuje z sekundárního výstupu. Sekundární výstup je efektivně kopie A, ale s různým druhem itemů. Primární výstup prvního rozdělovače je vždy 1, ale mění druh itemu záležící na vstupu. Použitím prvního rozdělovače, jsme schopni rozdělit hodnotu druhu itemu na 2 dráty: jeden bude pouze signál A přicházející rovnou zkrz s stejným druhem itemu jako originální vstup, typ 1, a druhý bude NOT A, s itemovým druhem 2. Druhý obvod je výjmečně užitečný, protože kombinuje NOT hradlo, signálový duplikátor, a měnič itemů. Potřebujeme signálové duplikátory, protože větvení pásu s rozdělovačem nechá tok itemů nezasycený, což nechává interakci s ostatními rozdělovači špatnou, protože to není 0 ani 1. Také potřebujeme měniče itemů, protože je často nesoulad mezi výstupem ovládací sítě a vstupu jiné věci. Poloviční sčítač Teď když máme základní tři komponenty, postavme poloviční sčítač. K čemu by byl poloviční sčítač? No, jak jméno může napovídat, poloviční sčítač je polovina plného sčítače, což je obvod, který má schopnost sčítat binární čísla. Toto nám umožní provádět sčítání, a kreativní použití sčítání nám umožní implementovat doslova jakoukoli jinou matematickou operaci která existuje. Poloviční sčítač je obvod, který sčítá dvě jednočíselné binární čísla. Toto může znít jako komplikovaná činnost, ale v realitě, je to velmi lehké. Oba vstupy A a B jsou jsou jednočíselná binární čísla, což znamená že maximální možný výstup je 2 (1+1), což, bohužel, se nevejde do jediného výstupu. Místo toho, použijeme dvoučíselnou binární hodnotu, kde první číslo má hodnotu 2 (21) a druhé číslo má hodnotu 1 (20). Když toto vezmeme v potaz, zde je pravdivostní tabulka polovičního sčítače: A B První číslo A + B Druhé číslo A + B 0 0 0 0 0 1 0 1 1 0 0 1 1 1 1 0 Můžeme si všimnout, že první číslo je pouze A A B. Nicméně, pro druhé číslo, potřebujeme věc nazývanou XOR hradlo (XOR znamená “exklusivní OR”). XOR hradlo má výstup 1 pokud pouze 1 vstup je 1, což je přesně co potřebujeme na druhé číslo. Logika XOR hradla je, “A nebo B, ale ne oboje”, a proto je XOR hradlo pouze (A NEBO B) A NE (A A B). Zde je jak se toto vytvoří s základními hradly, která jsem vysvětlil předtím: &lt;/source&gt; Poloviční sčítač Všimněte si, že dostaneme výstup AND hradla zdarma díky kombinovanému duplikátor-NOT hradlu, což nám dává kompletní poloviční sčítač. Je náhoda, že můžeme kombinovat první měnič itemů s druhým AND hraldem, což nám umožnuje odstranit rozdělovač: &lt;/source&gt; Trochu lehčí poloviční sčítač Finální produkt Tak, aby jsme změnili náš poloviční sčítač na plný sčítač, potřebujeme připojit dva za sebou (proto jméno “poloviční sčítač”): Jak můžete vidět, plný sčítač jsou pouze dva poloviční sčítače dány dohromady v specifickém způsobu. Teď, mohli bychom pouze kopírovat a vložit tento obvod, ale díky vlastnostem pásů, existuje mnohem lepší a menší způsob. Dvě poloviny pásů jsou procesovány odděleně od sebe, což znamená že místo toho abychom dávali dva poloviční sčítače, jsme schopni nechat všechno běžět skrz poloviční sčítač dvakrát. Toto je většinou nemožné s tradičnímy logickýmy hradly, ale v tomto novém světě Factorio počítačů, cokoliv existuje. Zde je jak: &lt;/source&gt; Plný sčítač Zde, první poloviční sčítač používá pravou stranu pásu a druhý poloviční sčítač používá levou část pásu. První, vstupy projdou zkrz první poloviční sčítač normálně na pravé straně pásu. Poté, XOR hradlo polovičního sčítače je vráceno až na začátek a je dáno na levou část pásu. Projde kdrz stejné mechanizmy znovu, ale protože je to na levé straně, nemá vůbec interakci s pravou stranou pásu. Druhý poloviční sčítač pořád má volný výstup, takže ho musíme připojit na třetí vstupový pás, tentokrát na levé straně, aby se to chovalo jako přenosová část. AND výstup obou polovičních sčítačů je bočně naložen na jeden pás, automaticky vytvářející OR. Interní spoždění mohou poloviční sčítače posunout výstup ve stejný čas, tímpádem se bude snažit naložit dva celé pásy na půl pásu. Proto potřebujeme přidat přetokový rozdělovač aby se přenos nezastavil a nezničil celý obvod. Po přeskupení některých komponentů, získáme toto: &lt;/source&gt; Kompaktní plný sčítač Toto je přesně stejný obvod jako v minulém obrázku, a nechám to jako cvičení pro čtenáře aby to ověřil. Jediná věc, která zbývá je naskládat několik těchto obvodů dohromady a dát jim čísla, takže zde je pásový sčítač, který sčítá 01001101 (77) + 10001011 (139) = 011011000 (216): &lt;/source&gt; Několik sčítačů počítajících 01001101 (77) + 10001011 (139) = 011011000 (216) Sčítání čísel je hezké, ale není to nic bez jakékoli paměti, což bude přesně to, co budu dělat při příštím vydání. Zůstaňte naladěni! Přispívání Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na Discord aby jste začali!","url":"https://alt-f4.blog/ALTF4-23/","@type":"BlogPosting","headline":"Alt-F4 #23 - Pásová Extravaganza","dateModified":"2021-02-12T00:00:00+00:00","datePublished":"2021-02-12T00:00:00+00:00","author":{"@type":"Person","name":"Recon419A, pocarski"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/23/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/23/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/cs/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/cs/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/cs/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Komunitou tvořené pokračování našich milovaných "Factorio Friday Facts"</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-23/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button button-green lang-button" href="/cs/ALTF4-23/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-23/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-23/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-23/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-23/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-23/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-23/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-23/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-23/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #23 - Pásová Extravaganza  <author>12-02-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Napsal <em>Recon419A, pocarski</em>,
+
+
+
+upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>přeložil <em>oof2win2</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Obsah</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#logistick%C3%A9-p%C3%A1sy-recon419a">Logistické pásy <author>Recon419A</author></a>
+    <ul>
+      <li><a href="#popis-logistick%C3%A9ho-p%C3%A1su">Popis Logistického Pásu</a></li>
+      <li><a href="#pou%C5%BEit%C3%AD-logistick%C3%BDch-p%C3%A1s%C5%AF">Použití Logistických pásů</a></li>
+      <li><a href="#limitace-n%C4%9Bkolik-destinac%C3%AD">Limitace: Několik destinací</a></li>
+      <li><a href="#pozn%C3%A1mka-o-sushi-p%C3%A1sech">Poznámka o sushi pásech</a></li>
+    </ul>
+  </li>
+  <li><a href="#vypo%C4%8D%C3%ADt%C3%A1n%C3%ADn-pouze-s-p%C3%A1sy-%C4%8D%C3%A1st-prvn%C3%AD-ne-tak-rychl%C3%A1-matematika-pocarski">Vypočítánín pouze s pásy, část první: Ne-tak-rychlá matematika <author>pocarski</author></a></li>
+  <li>
+<a href="#z%C3%A1kladn%C3%AD-hradlo">Základní hradlo</a>
+    <ul>
+      <li><a href="#polovi%C4%8Dn%C3%AD-s%C4%8D%C3%ADta%C4%8D">Poloviční sčítač</a></li>
+      <li><a href="#fin%C3%A1ln%C3%AD-produkt">Finální produkt</a></li>
+    </ul>
+  </li>
+  <li><a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD">Přispívání</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>Po dvoutýdenní pauze kvůli pár FFF horkých z pánve jsme zpět s dvoumi články o pásech. V prvním, Recon419A objevuje zajimavý koncept, který umožnuje dopravovat itemy v stylu právě v čas. Poté, věci se stanou velmi nerdy když pocarski se ponoří do hlubin stavění turingového stroje pomocí pouhých pásů. Titul z počítačové vědy doporučen!</p>
+      <h2 id="logistické-pásy-recon419a">
+        
+        
+            <a href="#logistick%C3%A9-p%C3%A1sy-recon419a" class="anchor" style="text-decoration: none;">Logistické pásy <author>Recon419A</author></a>
+          
+        
+      </h2>
+    
+
+<p>Factorio má tři hlavní metody transportování věcí: pásy, roboti, a vlaky. Pásy jsou dobré jedno nebo dvoj-itemovou propustnost, vlaky na masivní kvantity jednoho druhu, a roboti na komplikované recepty výroby. Někdy, je ale potřeba použít kombinaci těchto přístupů, kde se techniky jako sushi pásy prokážou. V tomto článku chci mluvit o jiném způsobu, který nazývám “logistické pásy”. Jako sushi pásy, logistické pásy mohou být použity s a bez módů a nejsou módy samotnými; radši jsou způsob, jak kontrolovat jaké suroviny jdou kam s použitím pásů a velmi lehkých obvodů. Jako vanillový logistický systém a některé vlakové módy jako LTN, cílí být cestou jak dopravit suroviny, která je chytřejší než pouhé pásy.</p>
+      <h3 id="popis-logistického-pásu">
+        
+        
+            <a href="#popis-logistick%C3%A9ho-p%C3%A1su" class="anchor" style="text-decoration: none;">Popis Logistického Pásu</a>
+          
+        
+      </h3>
+    
+
+<p>Logistické pásy jsou poněkud komplikovaný koncept, ale je mnohem lehčí pochopit, jakmile to vidíte v akci. V tomto příkladě dávejte pozor na to kolikrát několik itemů jsou posílány po stejném páse, každý se nakládá na pás pouze když je požadován. Pokud železo a měď jsou jediné věci, které jsou potřeba, žádná ocel se nepošle; rovněž, když nic není potřeba, pás zůstane prázdný.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1280px; max-height: 720px" playsinline="" muted="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/logistics-belts-demo.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      Video demonstace konceptu logistických pásů.
+    </video>
+    <figcaption>Demonstrace logistického pásu s použitím obvodových kondicí, filtrových rozdělovaču a nakládačů. Podavače také mohou být použity místo nakládačů, ale mohou být muset zněkolikanásobněny kvůli rychlosti pásu.</figcaption>
+  </figure>
+  </p>
+
+<p>Můžete vidět v příklade, že obvodová kondice je nastavena, aby se materiály poslaly, pokud destinace má méně než sto. V realitě, délka pásu ovlivní kolik itemů se pošle, pokud je pás dlouhý, sto bude nabufferováno s dalšímy stovkami pořád na páse. <em>Existuje</em> teoretický limit na jak dlouhý pás můžete mít, než přeplníte příjemový kontejner, ale v praxi budete používat místo toho vlaky. Pokud by jste si chtěli pohrát s tímto setupem, tiskový řetězec je <a href="https://media.alt-f4.blog/ALTF4/23/logistics-belt-blueprint.txt">zde</a>, ale mělo by být poznamenáno, že plán používá nakládače z <a href="https://mods.factorio.com/mods/Optera/LoaderRedux">Loader Redux</a> módu.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/23/logistics-belt-circuit-condition.jpg" alt="Příklad obvové kondice pro logistický pás." style="max-width: ; max-height: ">
+      
+      <figcaption>Příklad obvové kondice pro logistický pás. Všimněte si, že nastavení limitu na 100 pošle zhruba 270 plátů přes tuto délku, protože pláty zůstávají na páse poté, co se systém zastaví</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="použití-logistických-pásů">
+        
+        
+            <a href="#pou%C5%BEit%C3%AD-logistick%C3%BDch-p%C3%A1s%C5%AF" class="anchor" style="text-decoration: none;">Použití Logistických pásů</a>
+          
+        
+      </h3>
+    
+
+<p>Logistické pásy jsou užitečné, když potřebujete hodně druhů itemů najednou a poté žádné po nějakou dobu. Kdokoli kdo automatizoval pásy s roboty bude velmi známý s fenoménem známým jako “nabíjecí oblak”, který přichází, když váš logistický systém chce né méně něž deset tisíc koleček a tisíc pět set elektronických obvodů. Nápodobně, když se zeptáte o něco jako materiály na výrobu nukleárního reaktoru nebo raketového sila, roboti mají tendenci se seskupit kolem výrobny, která nikdy nebyla designována na takovou produkci. Když potřebujete hodně jednoho itemu, je mnohem lehčí ho přivést na páse: posílání deseti tisíc koleček trvá méně než čtyři minuty a neškodí to vašemu UPS; s roboty by to trvalo 2500 cest a nejspíše mnoho robotů půjde do vzduchu a pravděpodobně zaplaví nabíjecí kapacitu, která nikdy nebyla na to designována a bude to trvat věčnost, než se to znovu stabilizuje. Používání dedikovaných pásů ale vytváří své vlastní problémy; často budou pásy nečinně sedět a zabírat místo, vy také nemusíte mít místo na používání osmi-busu v první fázi. Pro něco jako pásové nákupní centrum, posílání velké kvantity koleček smíchaných s velkou dávkou elektronických obvodů je triviální činnost pro logistický pás; když přijedou na správné místo, používání robotů je mnohem méně nákladová činnost pro váš logistický systém.</p>
+      <h3 id="limitace-několik-destinací">
+        
+        
+            <a href="#limitace-n%C4%9Bkolik-destinac%C3%AD" class="anchor" style="text-decoration: none;">Limitace: Několik destinací</a>
+          
+        
+      </h3>
+    
+
+<p>Problém s posíláním více než jednoho itemu na několik destinací je netriviální, je to něco, co jsem osobně nebyl schopen vyřešit. Protože filtrační rozdělovače vezmou všechen vstup, posílání toho itemu přes filtrační rozdělovač <em>pouze někdy</em> vyžaduje komplikované uspořádání rozdělovačů a několik obvodových podmínek pocházejících z různých destinací. Dal jsem tomuto problému docela dost myšlenek, a i když jsem přišel na několik prototypů, většina z nich byla náchylná k chování jako zasekávání nebo posílání moc itemů na špatnou desttinaci, potenciálně způsobující přetok pokud necháno bez dozoru. S Factorio komunitou existující jak je, nebyl bych překvapen, kdyby tento problém mohl být překonán za týden nebo dva, v několika různých případech; možná uslyšíme o <em>vašem</em> řešení v budoucím vydání Alt-F4. Prozatím, nechal bych to ale jako výzvu pro komunitu. Řekněte mi o tom, co jste vymysleli!</p>
+      <h3 id="poznámka-o-sushi-pásech">
+        
+        
+            <a href="#pozn%C3%A1mka-o-sushi-p%C3%A1sech" class="anchor" style="text-decoration: none;">Poznámka o sushi pásech</a>
+          
+        
+      </h3>
+    
+
+<p>Hřáči, kteří jsou kolem hry delší dobu mohli již slyšet o podobném konceptu: sushi pásech. Jako logistické pásy, sushi pásy dovolí pokládat více než jeden druh itemu na pás, ale toto obecně dělají v smyčce vyrobené pro komplikovanou výrobu. Obvodová podmínka na začátku nebo kolem celého pásu pomáhá kontrolovat množství každé suroviny, což může vést k extrémně komplikovaným designům jako <a href="https://imgur.com/gallery/Q4oR0#Jiwed0Q">“bloodbus”</a> - ohěhový systém pro vaši továrnu. Mezitím co koncept logistického pásu je podobný, má to několik důležiých důvodů, klíčová je jejich funkce: mezitím co sushi pásy jdou <em>kolem</em> a mají tendenci obsluhovat několik výroben v žádném zvláštním pořadí, logistické pásy jdou <em>k</em> a mají tendenci direktovat suroviny z jednoho místa na druhé. Ve skutečnosti, logistický pás může být použit na krmení sushi pásu místo normálního busu - když jsou suroviny potřeba, mohou být poslány, s opatrně monitorovanýmy systémy na rízení rychlosti, preventující přepopulaci pásového kola. Jiné koncepty jako časované pásy nebo limitování podavačů zde taky může být aplikováno, může dokonce být spojeno s logistickýmy pásy k dosáhnutí monumentálních výkonů inženýrství. V mé hlavě, logistické pásy samotné jsou pouze součástí hráčovy nabídky nástrojů.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 800px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/sushi_belts_chaos.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Video báze sushi městských bloků.
+    </video>
+    <figcaption>Šílený příklad sushi pásů v akci na obří báze městských bloků. Zdroj: <a href="https://www.reddit.com/r/factorio/comments/kv53ym/you_have_heard_of_sushi_belts_and_you_have_heard/">u/dentoidův redditový post</a></figcaption>
+  </figure>
+  </p>
+      <h2 id="vypočítánín-pouze-s-pásy-část-první-ne-tak-rychlá-matematika-pocarski">
+        
+        
+            <a href="#vypo%C4%8D%C3%ADt%C3%A1n%C3%ADn-pouze-s-p%C3%A1sy-%C4%8D%C3%A1st-prvn%C3%AD-ne-tak-rychl%C3%A1-matematika-pocarski" class="anchor" style="text-decoration: none;">Vypočítánín pouze s pásy, část první: Ne-tak-rychlá matematika <author>pocarski</author></a>
+          
+        
+      </h2>
+    
+
+<p>V Factoriu, můžeme již použít ovládací síť na stavění systémů, začínající s lehkou binární logikou, až na kompletně funční počítač, a poté, někdo dost šílený příjde s tím, že <a href="https://www.youtube.com/playlist?list=PLdkxm81SV4uVs7EHAxeGcaPLe9xX_7tjb">na tom hraje DOOM</a>. Co je ale méně zřejmé, je ale fakt že ovládací síť není pouze jediný <a href="https://en.wikipedia.org/wiki/Turing_completeness">Turingově uplný</a> (podívejte se na odkázanou stránku pokud si nejste známí) systém ve hře. Vskutku, jste schopni postavit počítač z čehokoli základního, něco co dostanete skoro na začátku hry: pásy (transportéery).</p>
+
+<p>V této dvoudílné sérii vás budu provázet procesem designování dvou systémů používaných v realitě s ničím jiným kromě pásů a rodzělovačů. Budu používat nakládače a nekonečné truhly, ale kdykoliv přichází stejné množství entit co odchází, takže všechny pásy by mohly být propojeny zkrz buffer. Nerozhodl jsem se to dělat kvůli kompaktnosti a vybýbání se špagetovému designu. Musím dát zásluhu uživateli <a href="https://www.youtube.com/channel/UC6BeS4toXnPJe-Kds9E_FEQ">letao12</a>, který udělal sérii videí o vyrábění CPU s použitím pouze pásů, což je věc, která mě inspirovala k vrácení se k jeho nápadu s mým vlastním pohledem na věc.</p>
+
+<p>Aby jakýkoli systém byl Turingově úplný, musí být možnost vytvořit takzvaná logická hradla. Logická hradla jsou lehké elementy, které provádí základní operace <a href="https://en.wikipedia.org/wiki/Boolean_algebra">binární algebry</a> způsobem vracení výstupu, který je založen pouze na aktuálních vstupech. Jsou pouze dvě čísla v binární algebře: 1 a 0. V elektronikách, korespondují k vysokému a nízkému napětí, ale v našem případě, řekněme, že pásy s itemy jsou 1 a prázdné pásy jsou 0. Existují 3 základní logická hradla:</p>
+
+<ul>
+  <li>OR hradlo - vrací 1 <strong>když aspoň jeden</strong> vstup je 1</li>
+  <li>AND hradlo - vrací 1 <strong>pokud všechny</strong> vstupy jsou 1</li>
+  <li>NOT hradlo - vrací 1 <strong>pouze když</strong> vstup je 0</li>
+</ul>
+
+<p>Pravdivostní tabulka níže ukazuje jejich respektivní výstupy založeny na výběru možných vstupů.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>NOT A</th>
+      <th>A OR B</th>
+      <th>A AND B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Je známým faktem, že když tyto hradla změníte specifickýmy způsoby (a někdy vytváření smyčky drátů), je možné vytvořit <a href="https://en.wikipedia.org/wiki/Turing_machine">Turingův stroj</a>. Všechny tři základní logická hradla mohou být vytvořena s pásy a rozdělovači. Zde je odkaz na <a href="https://media.alt-f4.blog/ALTF4/23/belt-computer-blueprint-book.txt">knihu plánů</a> se vším z tohoto článku, pro kohokoli, kdo by chtěl sám experimentovat s obvody. Budu odkazovat k různým itemům jako “item druhu 1/2/3/…”, pro pohodlí a obecnost, a prioritní/neprioritní výstupy jako “primární/sekundární”, spíše z pohodlí. Budu také používat jiné barvy v obrázcích, aby bylo rozpoznávat mezi druhy itemů.</p>
+      <h2 id="základní-hradlo">
+        
+        
+            <a href="#z%C3%A1kladn%C3%AD-hradlo" class="anchor" style="text-decoration: none;">Základní hradlo</a>
+          
+        
+      </h2>
+    
+
+<p>AND a OR hradlo jsou lehké jako jeden rozdělovač s nastavenou prioritou:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/and_and_or.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Jeden rozdělovač, který se chová jako AND a OR hradlo najednou
+    </video>
+    <figcaption>Primární výstup se chová jako OR hradlo, mezitím co sekundární výstup se chová jako AND hradlo.</figcaption>
+  </figure>
+  </p>
+
+<p>NOT hradlo je tročku těžší na výrobu, ale může být vyrobeno s vícero druhů itemů a chytrou mechanikou filtrování a prioritizování:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/very_useful_circuit.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Kombinované NOT hradlo a signálový duplikátor
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Mezitím co <em>vstup A</em> je 0, první rozdělovač dostává pouze jeden vstup, a tak item druhu 2 půjde do primárního vstupu, což znamená pouze <em>NOT A výstup</em> je 1. Když vstup A je zapnutý, první rozdělovač nyní získává dva vstupy; item druhu 1 jde na primární vstup, tak je dán na primární výstup, nahrazující item druhu 2, který teď vystupuje z sekundárního výstupu. Sekundární výstup je efektivně kopie A, ale s různým druhem itemů.</p>
+
+<p>Primární výstup prvního rozdělovače je vždy 1, ale mění druh itemu záležící na vstupu. Použitím prvního rozdělovače, jsme schopni rozdělit hodnotu druhu itemu na 2 dráty: jeden bude pouze signál A přicházející rovnou zkrz s stejným druhem itemu jako originální vstup, typ 1, a druhý bude <em>NOT A</em>, s itemovým druhem 2.</p>
+
+<p>Druhý obvod je výjmečně užitečný, protože kombinuje NOT hradlo, signálový duplikátor, a měnič itemů. Potřebujeme signálové duplikátory, protože větvení pásu s rozdělovačem nechá tok itemů nezasycený, což nechává interakci s ostatními rozdělovači špatnou, protože to není 0 ani 1. Také potřebujeme měniče itemů, protože je často nesoulad mezi výstupem ovládací sítě a vstupu jiné věci.</p>
+      <h3 id="poloviční-sčítač">
+        
+        
+            <a href="#polovi%C4%8Dn%C3%AD-s%C4%8D%C3%ADta%C4%8D" class="anchor" style="text-decoration: none;">Poloviční sčítač</a>
+          
+        
+      </h3>
+    
+
+<p>Teď když máme základní tři komponenty, postavme poloviční sčítač. <em>K čemu by byl poloviční sčítač?</em> No, jak jméno může napovídat, poloviční sčítač je polovina plného sčítače, což je obvod, který má schopnost sčítat binární čísla. Toto nám umožní provádět sčítání, a kreativní použití sčítání nám umožní implementovat <em>doslova</em> jakoukoli jinou matematickou operaci která existuje.</p>
+
+<p>Poloviční sčítač je obvod, který sčítá dvě jednočíselné binární čísla. Toto může znít jako komplikovaná činnost, ale v realitě, je to velmi lehké. Oba vstupy A a B jsou jsou jednočíselná binární čísla, což znamená že maximální možný výstup je 2 (1+1), což, bohužel, se nevejde do jediného výstupu. Místo toho, použijeme dvoučíselnou binární hodnotu, kde první číslo má hodnotu 2 (2<sup>1</sup>) a druhé číslo má hodnotu 1 (2<sup>0</sup>). Když toto vezmeme v potaz, zde je pravdivostní tabulka polovičního sčítače:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>První číslo A + B</th>
+      <th>Druhé číslo A + B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Můžeme si všimnout, že první číslo je pouze <em>A A B</em>. Nicméně, pro druhé číslo, potřebujeme věc nazývanou XOR hradlo (XOR znamená “exklusivní OR”). XOR hradlo má výstup 1 pokud <strong>pouze 1</strong> vstup je 1, což je přesně co potřebujeme na druhé číslo.</p>
+
+<p>Logika XOR hradla je, “A nebo B, ale ne oboje”, a proto je XOR hradlo pouze <em>(A NEBO B) A NE (A A B)</em>. Zde je jak se toto vytvoří s základními hradly, která jsem vysvětlil předtím:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/half_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Poloviční sčítač
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Všimněte si, že dostaneme výstup AND hradla zdarma díky kombinovanému duplikátor-NOT hradlu, což nám dává kompletní poloviční sčítač. Je náhoda, že můžeme kombinovat první měnič itemů s druhým AND hraldem, což nám umožnuje odstranit rozdělovač:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/simpler_half_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Trochu lehčí poloviční sčítač
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+      <h3 id="finální-produkt">
+        
+        
+            <a href="#fin%C3%A1ln%C3%AD-produkt" class="anchor" style="text-decoration: none;">Finální produkt</a>
+          
+        
+      </h3>
+    
+
+<p>Tak, aby jsme změnili náš poloviční sčítač na plný sčítač, potřebujeme připojit dva za sebou (proto jméno “poloviční sčítač”):</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/23/full-adder-diagram.jpg" alt="Diagram plného sčítače" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Jak můžete vidět, plný sčítač jsou pouze dva poloviční sčítače dány dohromady v specifickém způsobu. Teď, mohli bychom pouze kopírovat a vložit tento obvod, ale díky vlastnostem pásů, existuje mnohem lepší a menší způsob. Dvě poloviny pásů jsou procesovány odděleně od sebe, což znamená že místo toho abychom dávali dva poloviční sčítače, jsme schopni <strong>nechat všechno běžět skrz poloviční sčítač dvakrát</strong>. Toto je většinou nemožné s tradičnímy logickýmy hradly, ale v tomto novém světě Factorio počítačů, cokoliv existuje. Zde je jak:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/spread_out_full_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Plný sčítač
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Zde, první poloviční sčítač používá pravou stranu pásu a druhý poloviční sčítač používá levou část pásu. První, vstupy projdou zkrz první poloviční sčítač normálně na pravé straně pásu. Poté, XOR hradlo polovičního sčítače je vráceno až na začátek a je dáno na levou část pásu. Projde kdrz stejné mechanizmy znovu, ale protože je to na levé straně, nemá vůbec interakci s pravou stranou pásu. Druhý poloviční sčítač pořád má volný výstup, takže ho musíme připojit na třetí vstupový pás, tentokrát na levé straně, aby se to chovalo jako <em>přenosová</em> část. AND výstup obou polovičních sčítačů je bočně naložen na jeden pás, automaticky vytvářející OR. Interní spoždění mohou poloviční sčítače posunout výstup ve stejný čas, tímpádem se bude snažit naložit dva celé pásy na půl pásu. Proto potřebujeme přidat přetokový rozdělovač aby se přenos nezastavil a nezničil celý obvod. Po přeskupení některých komponentů, získáme toto:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/compacted_full_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Kompaktní plný sčítač
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Toto je <em>přesně</em> stejný obvod jako v minulém obrázku, a nechám to jako cvičení pro čtenáře aby to ověřil. Jediná věc, která zbývá je naskládat několik těchto obvodů dohromady a dát jim čísla, takže zde je pásový sčítač, který sčítá 01001101 (77) + 10001011 (139) = 011011000 (216):</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/adder_stack.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Několik sčítačů počítajících 01001101 (77) + 10001011 (139) = 011011000 (216)
+    </video>
+    <figcaption></figcaption>
+  </figure>
+  </p>
+
+<p>Sčítání čísel je hezké, ale není to nic bez jakékoli paměti, což bude přesně to, co budu dělat při příštím vydání. Zůstaňte naladěni!</p>
+      <h2 id="přispívání">
+        
+        
+            <a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD" class="anchor" style="text-decoration: none;">Přispívání</a>
+          
+        
+      </h2>
+    
+
+<p>Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na <a href="https://discord.gg/nxnCFkb">Discord</a> aby jste začali!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=96076">
+    Diskutujte na Factorio fórech
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/li9wxy/altf4_23_beltravaganza/">
+    Diskutujte na Redditu
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Diskutujte na Discordu
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/cs/ALTF4-22/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/cs/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/cs/ALTF4-24/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/cs/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/cs/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Tato webová stránka je čistě projektem fanoušků, není nijak přímo spojena s Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

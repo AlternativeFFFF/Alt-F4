@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="cs" class="cs">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #26 - Dávání Multi do Playeru</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 #26 - Dávání Multi do Playeru | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #26 - Dávání Multi do Playeru">
+<meta name="author" content="oof2win2">
+<meta property="og:locale" content="cs">
+<meta name="description" content="V této 26. edici Alt-F4 (půl roku výtusků!), oofěwině jde do Factorio multiplayeru a vysvětluje trochu více o technických věcí za tím. Pokud jste si někdy lámali hlavu o tom, jak hra dokáže zvládat stovky hráčů a mnohy tisíc entit najednou, jste vítání se podívat do této edice! Factorio Servery oof2win2 Většina z nás se již někdy připojila na Factorio server alespoň jednou, buďto aby jste si zahráli s kamarády nebo se podívaly na stavby jiných. V této edici Alt-F4, krátce vysvětlím historii multiplayeru, a poté se trochu více do hloubky podívám jak multiplayer funguje technicky. Budu vysvětlovat využívání plně deterministických algoritmů a lockstepových algoritmů mimo jiné věci. Historie Multiplayeru V říjnu 204 s Factoriem 0.11.0, multiplayer byl přidán do hry, i když se na něm pracovalo od verze Factoria 0.9.4. Tento multiplayer byl něco kompletně jiného od toho co známe dnes, třeba jste nemohli kliknout na “Připojit se k kamarádovi” přes Steam nebo použít prohlížeč serverů - museli jste znát přesnou IP adresu serveru. Když multiplayer poprvé vyšel, bylo v něm docela dost bugů jako tento, který nedovolil hráčum hrát přes 20 sekund. Byl ale rychle opraven, ani ne o tři hodiny později, jako je to u Wubu normální. Existoval také tento bug, který nedovolil více než třem hrácům být online najednou - narozdíl od tohoto online sessionu, kde se vyskytlo přes 500 hráčů zhruba o šest let později. Hodně práce šlo do toho, aby se mohlo více než 500 hráčů připojit najednou. V Factorio 0.12.0, jako hlavní funkce, bezhlavé servery byly přidány. Toto znamenalo, že servery teď mohou bežet na počítačích bez GPU, což značne snížilo cenu Factorio serverů a jejich dostupnost. Také to umožnilo, aby několik instancín beželo najednou na stejném počítači, což je velmi užitečné v některých případech. S Factoriem 0.14.0, Factorio servery již nepausijí hru pro všechny hráče, pokud počítač jednoho hráče je moc pomalý, aby procesoval updaty současně s ostatními. Toto znamená, že pokud máte starší počítač, server na vás již nebude čekat, aby jste se dohnali v procesování updatů. Toto je velmi užitečné na hrách s větším počtem hráčů, které mají tendenci mít desítky až stovky hráčů online najednou, protože nikdo nemusí čekat aby si mohli zahrát. Plně Deterministický Přístup Jako bylo řečeno v FFF-30, všichni klienti a server musí simulovat hru stejným způsobem, stejné akce v stejně přesný čas. Toto znamená, že když jeden člověk udělá něco na svém počítači, instance Factoria ostatních lidí musí udělat tu stejnou věc. Instance je výskyt něčeho, třeba, může být několik instancí jablek v košíku nebo záložek v Chromu. Factorio je podstatně jiné od jiných populárních her jako CS:GO nebo Overwatch, takže vývojáři nemohli prostě vzít přístup jiné hry a přidat ho do Factoria, protože by to nefungovalo správně. Místo toho, při vývoji multiplayeru, vývojáři ho vytvořili s použitím lockstepového protokolu. V Factoriu, připojení k serveru začíná tím, že vám serveru pošle mapu. Poté, server vám pouze posílá informace, pokud je nějaká změná od hráče, třeba kdyby hráč položil pás na nějaké součadnice, umřel kvůli kousači (nebo vlaku), atd. Je vám řečeno pouze že se to stalo, a poté vaše instance hry musí aktualizovat lokální simulaci sama od sebe. Nedostane detailovaný výpys toho, co se aktuálně děje, třeba jako pohyb logistických robotů a posun vlaků. Přenos všeho co se děje, každý tik hry, by využilo neskutečné množství internetového připojení, a potřebovali by jste přenášet informace jako “tento logistický robot se posunul sem”, což by se muselo dít desítky tisíc krát za herní tik na velkých bázích. Nemluvě o jiných informacích, což by vedlo k neuvěřitelně velkým přenosům dat, z čeho by mohly vznikat přenosy až 1500MB v některých případech. Místo toho, jsou vám řečeny pouze důležité změny, které jsou většinou interakce hráču s hrou, které váš klient poté simuluje, jako kdyby tam nikdo jiný nebyl. Je mnoho jiných způsobů, kterými by hra mohla přistupovat k multiplayeru. Například, Overwatch je hra, která sleduje skoro vše centrálně na jejich serverech, monitorují všechny itemy, hráče, kulky atd. a aktivně opravují váš klient, pokud se něco stalo špatně. Factorio monitoruje pouze vstupy hráče a hází desynchronizace, pokud se něco udělá špatně. Vysvětlím, co desynchronizace je později. Tyto dvě implementace jsou od sebe odlišné, protože hry jsou od sebe radikálně odlišné: v Overwatchi, jste schopni mít všechny mapy předem staženy když stáhnete hru, takže pouze potřebujete přesouvat data o projektilech a o hráčích. V Factoriu, mapy se ale mění pořád. V Factoriu, máte různé pozice monvoten, lamp, pásů, elektrických tyčí, podavačů a obecně všeho, protože každá báze v Factoriu je jiná. To je důvod, proč pouze změny od hráčů jsou přenášeny, protože Factorio je schopné simulovat hru jako kdyby jste ji hráli sami, pouze příjmá vstupy od jiných hráčů od serveru. Než přenášet celou mapu každý tik, je mnohem lehčí přenést mapu když se hráč připojí a poté mu posílat pouze změny do jeho simulace hry, třeba kdyby se hráč pohnul o 10 kostiček doprava atd. Viz obrázek níže. Pro někoho, komu to příjde zajímavé, multiplayer Overwatche se vyzvětluje zde (kratší video) a možná zde Overwatch vývojáři ve větším detailu. Player: Ahoj! Můžu se připojit na Factorio server? Server: Jo, klidně! Zde je aktuální mapa, stáhni si jí [mapa jako příloha] Server: Spawnuješ se na x=0, y=3 Server: Tvůj kamarád ’potatoman’ si nastavil jeho logistický filter v slotu č. 33 na item “fast-transport-belt”. Nastav to pro něj taky a simuluj dál Server: Tvůj kamarád ’potatoman’ se posunul o 3 bloky doprava Player: Posunul jsem se o 4 bloky doleva Server: Rozumím. Přeposílám — Factorio Server Plně deterministické algoritmy jsou používány v Factoriu a takové algoritmy budou mít stejný výstup, pokud jim jde dán stejný vstup. To znamená, že není náhodnost v výstupu, což je nutno pro některé účely jako Factorio. Plně deterministický algoritmus je nutný, aby jste mohli mít několik instancí Factoria v lockstepovém algoritmu a aby byly v synchronizaci. Důvod, proč používat plně deterministické algoritmy by byl, že pokud nejste schopni mít funkce, které mají stejné výstupy na stejné vstupy, nejste schopni mít lockstepovou architekturu, a celý systém jde do háje pokud všechny instance mají jiné výstupy. Plně deterministický algoritmus je definován následujícími pravidly: Nesmí použít jiná data než vstup do algoritmu. Zakázaná data: náhodná čísla, uložené soubory na disku, globální proměnné, časovače (čas od začátku programu) Algoritmus musí pracovat cestou, která není časově sensitivní Příklad opaku by bylo pokud máte několik instancí programu, který zapisuje do Excelové tabulky a jiný program by si chtěl přečíst poslední řádek tabulky. Toto by učiniloo program časově sensitivním, protože když jedna instance bude být o trochu opožděna o pár vteřin, tak to může vytvořit úplně jiné pořadí řádků v té tebulce, což nechá program který si to čte s úplně jiným vstupem. Příklad lockstepového a plně deterministického algoritmu by byl kdyby klient položil plán. Když kliknete na plán, aby se importoval do sdílené knihovny, ikonky plánu poté nebudou zašedivělé, jako obrázek na pravé straně. Toto je protože když kliknete na plán, váš klient ho sdílí do sdílené herní knihovny. Když plán někde položíte, váš klient řekne serveru, že jste položili plán na specifické XY souřadnice. Server to poté řekne všem ostatním připojeným klientům, že plán byl položen na ty stejné souřadnice. Každý individuální klient poté simuluje pohyb všech robotů, sbírání surovin, pokládání entit a vracení se k jejich vybranému roboportu. Všichni klienti musí toto simulovat sami, bez jakýchkoli jiných vstupů, a dělají to v stejném způsobu díky předem řečeným plně deterministickým algoritmům. JuxtaposeJS Desynchronizace (‘desync’) je když několik počítačů má něco dělat v stejný čas stejným způsobem s stejnými výsledky díky plně deterministickým algoritmům, ale nedělají to. Normálně, když klient a server dělají to stejné, jsosu štastní, protože jsou synchronizování (‘v syncu’). Desync se může stát protože dva klienty vypočítali update s jinými výsledky, což se většinou stává kvůli programátorské chybě. Podívejte se na obrázek níže, jak se desynchronizace může stát. Pokud moddér nebo vývojář scénáře nedělá management dat správně, desynchronizace se tím také může stát. Desynchronizace odpojí váš klient od serveru a váš klient začne generovat desynchronizační zprávu, což je něco užitečného co vývojáři využívají k vyšetřování desynchronizací. Player: Hej, můj výsledek na výpočet na netto elektřiny při tiku 33859 je 348. Mám to správně? Server: Cože?? Já dostal 936. Máš to špatně. Pošlu ti mapu a odpojím tě, můžeš se poté připojit později — Factorio Server Můžete si myslet, jak se desynchronizace nestávají s roboty, kteří se posouvají přes mapu? Jistěže, když udělají všechny úkoly a někteří roboti jsou vybráni na udělání specifických úkolů, různí klienti si vyberou jiné roboty, aby udělali dané úkoly, ne? Ne. Každý klient si vždy vybere stejné roboty ve stejný čas, protože algoritmus na vybírání robotů je plně deterministický. Dva vlaky přicházející z stackeru do stanice? Pokaždé stejný vlak, protože toto je také plně deterministické. Na kterou věž kousač zaútočí první na vaší těžící základně? Také plně deterministické. Toto bylo pouze pár příkladů, ale všechno v hře je plně deterministické. Kdyby to nebylo, měli by jste jednu desynchronizaci zde, druhou jinde, a multiplayer by nebyl vůbec hratelný. V multiplayeru, desynchronizace mohou být způsobeny několika věcmi, třeba konstrukcí robotů, simulace AI kousače, a nejvíce ze všech, věci od moddérů. I kdyby jste chtěli použít něco lehkého jako math.random() aby jste získali náhodné číslo v módu nebo scénáři, byly by konsistentní výsledky - všichni klienti by získali stejný výsledek z funkce. Toto je protože generátor náhodných čísel Factoria je seedován. Je mu dáno číslo, s kterým poté generuje další náhodná čísla. Pokud budete seedovat všechny klienty stejným způsobem, vaše náhodná čísla budou v synchronizaci. Je důležité poznamenat, že to je pseudonáhodný generátor, a proto není úplně náhodný, protože je inicializován předem dohodnutým číslem, které dovoluje tomu, aby výsledky byly reprodukované. Podívejte se zde pro další informace o náhodných seedech. Teď vítetrochu více o tom, co se stává když se připojíte na server v prohlížeči serverů, připojíte se přes IP adresu, přes Steam nebo přes LAN. Vývojáři Factoria strávili hodně času prácí na multiplayeru, což nám dovolilo dělat projekty jako přes 500 hráčů v multiplayeru najednou nebo Clusterio setupy, což dává tvůrcům nástroje na vyvíjení skvělých věcí které vytvářejí. Existuje méně a méně limitací k tomu, co jste schopni dělat, masivní báze, masivní množství hráčů, možná i obojí! Vše z toho je pouze na vás, aby jste to založili. Přispívání Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na Discord aby jste začali!">
+<meta property="og:description" content="V této 26. edici Alt-F4 (půl roku výtusků!), oofěwině jde do Factorio multiplayeru a vysvětluje trochu více o technických věcí za tím. Pokud jste si někdy lámali hlavu o tom, jak hra dokáže zvládat stovky hráčů a mnohy tisíc entit najednou, jste vítání se podívat do této edice! Factorio Servery oof2win2 Většina z nás se již někdy připojila na Factorio server alespoň jednou, buďto aby jste si zahráli s kamarády nebo se podívaly na stavby jiných. V této edici Alt-F4, krátce vysvětlím historii multiplayeru, a poté se trochu více do hloubky podívám jak multiplayer funguje technicky. Budu vysvětlovat využívání plně deterministických algoritmů a lockstepových algoritmů mimo jiné věci. Historie Multiplayeru V říjnu 204 s Factoriem 0.11.0, multiplayer byl přidán do hry, i když se na něm pracovalo od verze Factoria 0.9.4. Tento multiplayer byl něco kompletně jiného od toho co známe dnes, třeba jste nemohli kliknout na “Připojit se k kamarádovi” přes Steam nebo použít prohlížeč serverů - museli jste znát přesnou IP adresu serveru. Když multiplayer poprvé vyšel, bylo v něm docela dost bugů jako tento, který nedovolil hráčum hrát přes 20 sekund. Byl ale rychle opraven, ani ne o tři hodiny později, jako je to u Wubu normální. Existoval také tento bug, který nedovolil více než třem hrácům být online najednou - narozdíl od tohoto online sessionu, kde se vyskytlo přes 500 hráčů zhruba o šest let později. Hodně práce šlo do toho, aby se mohlo více než 500 hráčů připojit najednou. V Factorio 0.12.0, jako hlavní funkce, bezhlavé servery byly přidány. Toto znamenalo, že servery teď mohou bežet na počítačích bez GPU, což značne snížilo cenu Factorio serverů a jejich dostupnost. Také to umožnilo, aby několik instancín beželo najednou na stejném počítači, což je velmi užitečné v některých případech. S Factoriem 0.14.0, Factorio servery již nepausijí hru pro všechny hráče, pokud počítač jednoho hráče je moc pomalý, aby procesoval updaty současně s ostatními. Toto znamená, že pokud máte starší počítač, server na vás již nebude čekat, aby jste se dohnali v procesování updatů. Toto je velmi užitečné na hrách s větším počtem hráčů, které mají tendenci mít desítky až stovky hráčů online najednou, protože nikdo nemusí čekat aby si mohli zahrát. Plně Deterministický Přístup Jako bylo řečeno v FFF-30, všichni klienti a server musí simulovat hru stejným způsobem, stejné akce v stejně přesný čas. Toto znamená, že když jeden člověk udělá něco na svém počítači, instance Factoria ostatních lidí musí udělat tu stejnou věc. Instance je výskyt něčeho, třeba, může být několik instancí jablek v košíku nebo záložek v Chromu. Factorio je podstatně jiné od jiných populárních her jako CS:GO nebo Overwatch, takže vývojáři nemohli prostě vzít přístup jiné hry a přidat ho do Factoria, protože by to nefungovalo správně. Místo toho, při vývoji multiplayeru, vývojáři ho vytvořili s použitím lockstepového protokolu. V Factoriu, připojení k serveru začíná tím, že vám serveru pošle mapu. Poté, server vám pouze posílá informace, pokud je nějaká změná od hráče, třeba kdyby hráč položil pás na nějaké součadnice, umřel kvůli kousači (nebo vlaku), atd. Je vám řečeno pouze že se to stalo, a poté vaše instance hry musí aktualizovat lokální simulaci sama od sebe. Nedostane detailovaný výpys toho, co se aktuálně děje, třeba jako pohyb logistických robotů a posun vlaků. Přenos všeho co se děje, každý tik hry, by využilo neskutečné množství internetového připojení, a potřebovali by jste přenášet informace jako “tento logistický robot se posunul sem”, což by se muselo dít desítky tisíc krát za herní tik na velkých bázích. Nemluvě o jiných informacích, což by vedlo k neuvěřitelně velkým přenosům dat, z čeho by mohly vznikat přenosy až 1500MB v některých případech. Místo toho, jsou vám řečeny pouze důležité změny, které jsou většinou interakce hráču s hrou, které váš klient poté simuluje, jako kdyby tam nikdo jiný nebyl. Je mnoho jiných způsobů, kterými by hra mohla přistupovat k multiplayeru. Například, Overwatch je hra, která sleduje skoro vše centrálně na jejich serverech, monitorují všechny itemy, hráče, kulky atd. a aktivně opravují váš klient, pokud se něco stalo špatně. Factorio monitoruje pouze vstupy hráče a hází desynchronizace, pokud se něco udělá špatně. Vysvětlím, co desynchronizace je později. Tyto dvě implementace jsou od sebe odlišné, protože hry jsou od sebe radikálně odlišné: v Overwatchi, jste schopni mít všechny mapy předem staženy když stáhnete hru, takže pouze potřebujete přesouvat data o projektilech a o hráčích. V Factoriu, mapy se ale mění pořád. V Factoriu, máte různé pozice monvoten, lamp, pásů, elektrických tyčí, podavačů a obecně všeho, protože každá báze v Factoriu je jiná. To je důvod, proč pouze změny od hráčů jsou přenášeny, protože Factorio je schopné simulovat hru jako kdyby jste ji hráli sami, pouze příjmá vstupy od jiných hráčů od serveru. Než přenášet celou mapu každý tik, je mnohem lehčí přenést mapu když se hráč připojí a poté mu posílat pouze změny do jeho simulace hry, třeba kdyby se hráč pohnul o 10 kostiček doprava atd. Viz obrázek níže. Pro někoho, komu to příjde zajímavé, multiplayer Overwatche se vyzvětluje zde (kratší video) a možná zde Overwatch vývojáři ve větším detailu. Player: Ahoj! Můžu se připojit na Factorio server? Server: Jo, klidně! Zde je aktuální mapa, stáhni si jí [mapa jako příloha] Server: Spawnuješ se na x=0, y=3 Server: Tvůj kamarád ’potatoman’ si nastavil jeho logistický filter v slotu č. 33 na item “fast-transport-belt”. Nastav to pro něj taky a simuluj dál Server: Tvůj kamarád ’potatoman’ se posunul o 3 bloky doprava Player: Posunul jsem se o 4 bloky doleva Server: Rozumím. Přeposílám — Factorio Server Plně deterministické algoritmy jsou používány v Factoriu a takové algoritmy budou mít stejný výstup, pokud jim jde dán stejný vstup. To znamená, že není náhodnost v výstupu, což je nutno pro některé účely jako Factorio. Plně deterministický algoritmus je nutný, aby jste mohli mít několik instancí Factoria v lockstepovém algoritmu a aby byly v synchronizaci. Důvod, proč používat plně deterministické algoritmy by byl, že pokud nejste schopni mít funkce, které mají stejné výstupy na stejné vstupy, nejste schopni mít lockstepovou architekturu, a celý systém jde do háje pokud všechny instance mají jiné výstupy. Plně deterministický algoritmus je definován následujícími pravidly: Nesmí použít jiná data než vstup do algoritmu. Zakázaná data: náhodná čísla, uložené soubory na disku, globální proměnné, časovače (čas od začátku programu) Algoritmus musí pracovat cestou, která není časově sensitivní Příklad opaku by bylo pokud máte několik instancí programu, který zapisuje do Excelové tabulky a jiný program by si chtěl přečíst poslední řádek tabulky. Toto by učiniloo program časově sensitivním, protože když jedna instance bude být o trochu opožděna o pár vteřin, tak to může vytvořit úplně jiné pořadí řádků v té tebulce, což nechá program který si to čte s úplně jiným vstupem. Příklad lockstepového a plně deterministického algoritmu by byl kdyby klient položil plán. Když kliknete na plán, aby se importoval do sdílené knihovny, ikonky plánu poté nebudou zašedivělé, jako obrázek na pravé straně. Toto je protože když kliknete na plán, váš klient ho sdílí do sdílené herní knihovny. Když plán někde položíte, váš klient řekne serveru, že jste položili plán na specifické XY souřadnice. Server to poté řekne všem ostatním připojeným klientům, že plán byl položen na ty stejné souřadnice. Každý individuální klient poté simuluje pohyb všech robotů, sbírání surovin, pokládání entit a vracení se k jejich vybranému roboportu. Všichni klienti musí toto simulovat sami, bez jakýchkoli jiných vstupů, a dělají to v stejném způsobu díky předem řečeným plně deterministickým algoritmům. JuxtaposeJS Desynchronizace (‘desync’) je když několik počítačů má něco dělat v stejný čas stejným způsobem s stejnými výsledky díky plně deterministickým algoritmům, ale nedělají to. Normálně, když klient a server dělají to stejné, jsosu štastní, protože jsou synchronizování (‘v syncu’). Desync se může stát protože dva klienty vypočítali update s jinými výsledky, což se většinou stává kvůli programátorské chybě. Podívejte se na obrázek níže, jak se desynchronizace může stát. Pokud moddér nebo vývojář scénáře nedělá management dat správně, desynchronizace se tím také může stát. Desynchronizace odpojí váš klient od serveru a váš klient začne generovat desynchronizační zprávu, což je něco užitečného co vývojáři využívají k vyšetřování desynchronizací. Player: Hej, můj výsledek na výpočet na netto elektřiny při tiku 33859 je 348. Mám to správně? Server: Cože?? Já dostal 936. Máš to špatně. Pošlu ti mapu a odpojím tě, můžeš se poté připojit později — Factorio Server Můžete si myslet, jak se desynchronizace nestávají s roboty, kteří se posouvají přes mapu? Jistěže, když udělají všechny úkoly a někteří roboti jsou vybráni na udělání specifických úkolů, různí klienti si vyberou jiné roboty, aby udělali dané úkoly, ne? Ne. Každý klient si vždy vybere stejné roboty ve stejný čas, protože algoritmus na vybírání robotů je plně deterministický. Dva vlaky přicházející z stackeru do stanice? Pokaždé stejný vlak, protože toto je také plně deterministické. Na kterou věž kousač zaútočí první na vaší těžící základně? Také plně deterministické. Toto bylo pouze pár příkladů, ale všechno v hře je plně deterministické. Kdyby to nebylo, měli by jste jednu desynchronizaci zde, druhou jinde, a multiplayer by nebyl vůbec hratelný. V multiplayeru, desynchronizace mohou být způsobeny několika věcmi, třeba konstrukcí robotů, simulace AI kousače, a nejvíce ze všech, věci od moddérů. I kdyby jste chtěli použít něco lehkého jako math.random() aby jste získali náhodné číslo v módu nebo scénáři, byly by konsistentní výsledky - všichni klienti by získali stejný výsledek z funkce. Toto je protože generátor náhodných čísel Factoria je seedován. Je mu dáno číslo, s kterým poté generuje další náhodná čísla. Pokud budete seedovat všechny klienty stejným způsobem, vaše náhodná čísla budou v synchronizaci. Je důležité poznamenat, že to je pseudonáhodný generátor, a proto není úplně náhodný, protože je inicializován předem dohodnutým číslem, které dovoluje tomu, aby výsledky byly reprodukované. Podívejte se zde pro další informace o náhodných seedech. Teď vítetrochu více o tom, co se stává když se připojíte na server v prohlížeči serverů, připojíte se přes IP adresu, přes Steam nebo přes LAN. Vývojáři Factoria strávili hodně času prácí na multiplayeru, což nám dovolilo dělat projekty jako přes 500 hráčů v multiplayeru najednou nebo Clusterio setupy, což dává tvůrcům nástroje na vyvíjení skvělých věcí které vytvářejí. Existuje méně a méně limitací k tomu, co jste schopni dělat, masivní báze, masivní množství hráčů, možná i obojí! Vše z toho je pouze na vás, aby jste to založili. Přispívání Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na Discord aby jste začali!">
+<link rel="canonical" href="https://alt-f4.blog/cs/ALTF4-26/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-26/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-05T00:00:00+00:00">
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-26/"},"description":"V této 26. edici Alt-F4 (půl roku výtusků!), oofěwině jde do Factorio multiplayeru a vysvětluje trochu více o technických věcí za tím. Pokud jste si někdy lámali hlavu o tom, jak hra dokáže zvládat stovky hráčů a mnohy tisíc entit najednou, jste vítání se podívat do této edice! Factorio Servery oof2win2 Většina z nás se již někdy připojila na Factorio server alespoň jednou, buďto aby jste si zahráli s kamarády nebo se podívaly na stavby jiných. V této edici Alt-F4, krátce vysvětlím historii multiplayeru, a poté se trochu více do hloubky podívám jak multiplayer funguje technicky. Budu vysvětlovat využívání plně deterministických algoritmů a lockstepových algoritmů mimo jiné věci. Historie Multiplayeru V říjnu 204 s Factoriem 0.11.0, multiplayer byl přidán do hry, i když se na něm pracovalo od verze Factoria 0.9.4. Tento multiplayer byl něco kompletně jiného od toho co známe dnes, třeba jste nemohli kliknout na “Připojit se k kamarádovi” přes Steam nebo použít prohlížeč serverů - museli jste znát přesnou IP adresu serveru. Když multiplayer poprvé vyšel, bylo v něm docela dost bugů jako tento, který nedovolil hráčum hrát přes 20 sekund. Byl ale rychle opraven, ani ne o tři hodiny později, jako je to u Wubu normální. Existoval také tento bug, který nedovolil více než třem hrácům být online najednou - narozdíl od tohoto online sessionu, kde se vyskytlo přes 500 hráčů zhruba o šest let později. Hodně práce šlo do toho, aby se mohlo více než 500 hráčů připojit najednou. V Factorio 0.12.0, jako hlavní funkce, bezhlavé servery byly přidány. Toto znamenalo, že servery teď mohou bežet na počítačích bez GPU, což značne snížilo cenu Factorio serverů a jejich dostupnost. Také to umožnilo, aby několik instancín beželo najednou na stejném počítači, což je velmi užitečné v některých případech. S Factoriem 0.14.0, Factorio servery již nepausijí hru pro všechny hráče, pokud počítač jednoho hráče je moc pomalý, aby procesoval updaty současně s ostatními. Toto znamená, že pokud máte starší počítač, server na vás již nebude čekat, aby jste se dohnali v procesování updatů. Toto je velmi užitečné na hrách s větším počtem hráčů, které mají tendenci mít desítky až stovky hráčů online najednou, protože nikdo nemusí čekat aby si mohli zahrát. Plně Deterministický Přístup Jako bylo řečeno v FFF-30, všichni klienti a server musí simulovat hru stejným způsobem, stejné akce v stejně přesný čas. Toto znamená, že když jeden člověk udělá něco na svém počítači, instance Factoria ostatních lidí musí udělat tu stejnou věc. Instance je výskyt něčeho, třeba, může být několik instancí jablek v košíku nebo záložek v Chromu. Factorio je podstatně jiné od jiných populárních her jako CS:GO nebo Overwatch, takže vývojáři nemohli prostě vzít přístup jiné hry a přidat ho do Factoria, protože by to nefungovalo správně. Místo toho, při vývoji multiplayeru, vývojáři ho vytvořili s použitím lockstepového protokolu. V Factoriu, připojení k serveru začíná tím, že vám serveru pošle mapu. Poté, server vám pouze posílá informace, pokud je nějaká změná od hráče, třeba kdyby hráč položil pás na nějaké součadnice, umřel kvůli kousači (nebo vlaku), atd. Je vám řečeno pouze že se to stalo, a poté vaše instance hry musí aktualizovat lokální simulaci sama od sebe. Nedostane detailovaný výpys toho, co se aktuálně děje, třeba jako pohyb logistických robotů a posun vlaků. Přenos všeho co se děje, každý tik hry, by využilo neskutečné množství internetového připojení, a potřebovali by jste přenášet informace jako “tento logistický robot se posunul sem”, což by se muselo dít desítky tisíc krát za herní tik na velkých bázích. Nemluvě o jiných informacích, což by vedlo k neuvěřitelně velkým přenosům dat, z čeho by mohly vznikat přenosy až 1500MB v některých případech. Místo toho, jsou vám řečeny pouze důležité změny, které jsou většinou interakce hráču s hrou, které váš klient poté simuluje, jako kdyby tam nikdo jiný nebyl. Je mnoho jiných způsobů, kterými by hra mohla přistupovat k multiplayeru. Například, Overwatch je hra, která sleduje skoro vše centrálně na jejich serverech, monitorují všechny itemy, hráče, kulky atd. a aktivně opravují váš klient, pokud se něco stalo špatně. Factorio monitoruje pouze vstupy hráče a hází desynchronizace, pokud se něco udělá špatně. Vysvětlím, co desynchronizace je později. Tyto dvě implementace jsou od sebe odlišné, protože hry jsou od sebe radikálně odlišné: v Overwatchi, jste schopni mít všechny mapy předem staženy když stáhnete hru, takže pouze potřebujete přesouvat data o projektilech a o hráčích. V Factoriu, mapy se ale mění pořád. V Factoriu, máte různé pozice monvoten, lamp, pásů, elektrických tyčí, podavačů a obecně všeho, protože každá báze v Factoriu je jiná. To je důvod, proč pouze změny od hráčů jsou přenášeny, protože Factorio je schopné simulovat hru jako kdyby jste ji hráli sami, pouze příjmá vstupy od jiných hráčů od serveru. Než přenášet celou mapu každý tik, je mnohem lehčí přenést mapu když se hráč připojí a poté mu posílat pouze změny do jeho simulace hry, třeba kdyby se hráč pohnul o 10 kostiček doprava atd. Viz obrázek níže. Pro někoho, komu to příjde zajímavé, multiplayer Overwatche se vyzvětluje zde (kratší video) a možná zde Overwatch vývojáři ve větším detailu. Player: Ahoj! Můžu se připojit na Factorio server? Server: Jo, klidně! Zde je aktuální mapa, stáhni si jí [mapa jako příloha] Server: Spawnuješ se na x=0, y=3 Server: Tvůj kamarád ’potatoman’ si nastavil jeho logistický filter v slotu č. 33 na item “fast-transport-belt”. Nastav to pro něj taky a simuluj dál Server: Tvůj kamarád ’potatoman’ se posunul o 3 bloky doprava Player: Posunul jsem se o 4 bloky doleva Server: Rozumím. Přeposílám — Factorio Server Plně deterministické algoritmy jsou používány v Factoriu a takové algoritmy budou mít stejný výstup, pokud jim jde dán stejný vstup. To znamená, že není náhodnost v výstupu, což je nutno pro některé účely jako Factorio. Plně deterministický algoritmus je nutný, aby jste mohli mít několik instancí Factoria v lockstepovém algoritmu a aby byly v synchronizaci. Důvod, proč používat plně deterministické algoritmy by byl, že pokud nejste schopni mít funkce, které mají stejné výstupy na stejné vstupy, nejste schopni mít lockstepovou architekturu, a celý systém jde do háje pokud všechny instance mají jiné výstupy. Plně deterministický algoritmus je definován následujícími pravidly: Nesmí použít jiná data než vstup do algoritmu. Zakázaná data: náhodná čísla, uložené soubory na disku, globální proměnné, časovače (čas od začátku programu) Algoritmus musí pracovat cestou, která není časově sensitivní Příklad opaku by bylo pokud máte několik instancí programu, který zapisuje do Excelové tabulky a jiný program by si chtěl přečíst poslední řádek tabulky. Toto by učiniloo program časově sensitivním, protože když jedna instance bude být o trochu opožděna o pár vteřin, tak to může vytvořit úplně jiné pořadí řádků v té tebulce, což nechá program který si to čte s úplně jiným vstupem. Příklad lockstepového a plně deterministického algoritmu by byl kdyby klient položil plán. Když kliknete na plán, aby se importoval do sdílené knihovny, ikonky plánu poté nebudou zašedivělé, jako obrázek na pravé straně. Toto je protože když kliknete na plán, váš klient ho sdílí do sdílené herní knihovny. Když plán někde položíte, váš klient řekne serveru, že jste položili plán na specifické XY souřadnice. Server to poté řekne všem ostatním připojeným klientům, že plán byl položen na ty stejné souřadnice. Každý individuální klient poté simuluje pohyb všech robotů, sbírání surovin, pokládání entit a vracení se k jejich vybranému roboportu. Všichni klienti musí toto simulovat sami, bez jakýchkoli jiných vstupů, a dělají to v stejném způsobu díky předem řečeným plně deterministickým algoritmům. JuxtaposeJS Desynchronizace (‘desync’) je když několik počítačů má něco dělat v stejný čas stejným způsobem s stejnými výsledky díky plně deterministickým algoritmům, ale nedělají to. Normálně, když klient a server dělají to stejné, jsosu štastní, protože jsou synchronizování (‘v syncu’). Desync se může stát protože dva klienty vypočítali update s jinými výsledky, což se většinou stává kvůli programátorské chybě. Podívejte se na obrázek níže, jak se desynchronizace může stát. Pokud moddér nebo vývojář scénáře nedělá management dat správně, desynchronizace se tím také může stát. Desynchronizace odpojí váš klient od serveru a váš klient začne generovat desynchronizační zprávu, což je něco užitečného co vývojáři využívají k vyšetřování desynchronizací. Player: Hej, můj výsledek na výpočet na netto elektřiny při tiku 33859 je 348. Mám to správně? Server: Cože?? Já dostal 936. Máš to špatně. Pošlu ti mapu a odpojím tě, můžeš se poté připojit později — Factorio Server Můžete si myslet, jak se desynchronizace nestávají s roboty, kteří se posouvají přes mapu? Jistěže, když udělají všechny úkoly a někteří roboti jsou vybráni na udělání specifických úkolů, různí klienti si vyberou jiné roboty, aby udělali dané úkoly, ne? Ne. Každý klient si vždy vybere stejné roboty ve stejný čas, protože algoritmus na vybírání robotů je plně deterministický. Dva vlaky přicházející z stackeru do stanice? Pokaždé stejný vlak, protože toto je také plně deterministické. Na kterou věž kousač zaútočí první na vaší těžící základně? Také plně deterministické. Toto bylo pouze pár příkladů, ale všechno v hře je plně deterministické. Kdyby to nebylo, měli by jste jednu desynchronizaci zde, druhou jinde, a multiplayer by nebyl vůbec hratelný. V multiplayeru, desynchronizace mohou být způsobeny několika věcmi, třeba konstrukcí robotů, simulace AI kousače, a nejvíce ze všech, věci od moddérů. I kdyby jste chtěli použít něco lehkého jako math.random() aby jste získali náhodné číslo v módu nebo scénáři, byly by konsistentní výsledky - všichni klienti by získali stejný výsledek z funkce. Toto je protože generátor náhodných čísel Factoria je seedován. Je mu dáno číslo, s kterým poté generuje další náhodná čísla. Pokud budete seedovat všechny klienty stejným způsobem, vaše náhodná čísla budou v synchronizaci. Je důležité poznamenat, že to je pseudonáhodný generátor, a proto není úplně náhodný, protože je inicializován předem dohodnutým číslem, které dovoluje tomu, aby výsledky byly reprodukované. Podívejte se zde pro další informace o náhodných seedech. Teď vítetrochu více o tom, co se stává když se připojíte na server v prohlížeči serverů, připojíte se přes IP adresu, přes Steam nebo přes LAN. Vývojáři Factoria strávili hodně času prácí na multiplayeru, což nám dovolilo dělat projekty jako přes 500 hráčů v multiplayeru najednou nebo Clusterio setupy, což dává tvůrcům nástroje na vyvíjení skvělých věcí které vytvářejí. Existuje méně a méně limitací k tomu, co jste schopni dělat, masivní báze, masivní množství hráčů, možná i obojí! Vše z toho je pouze na vás, aby jste to založili. Přispívání Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na Discord aby jste začali!","url":"https://alt-f4.blog/ALTF4-26/","@type":"BlogPosting","headline":"Alt-F4 #26 - Dávání Multi do Playeru","dateModified":"2021-03-05T00:00:00+00:00","datePublished":"2021-03-05T00:00:00+00:00","author":{"@type":"Person","name":"oof2win2"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/26/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/26/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/cs/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/cs/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/cs/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Komunitou tvořené pokračování našich milovaných "Factorio Friday Facts"</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-26/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button button-green lang-button" href="/cs/ALTF4-26/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-26/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-26/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-26/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-26/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-26/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-26/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-26/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-26/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #26 - Dávání Multi do Playeru  <author>05-03-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Napsal <em>oof2win2</em>,
+
+
+
+upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>přeložil <em>oof2win2</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Obsah</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#factorio-servery-oof2win2">Factorio Servery <author>oof2win2</author></a>
+    <ul>
+      <li><a href="#historie-multiplayeru">Historie Multiplayeru</a></li>
+      <li><a href="#pln%C4%9B-deterministick%C3%BD-p%C5%99%C3%ADstup">Plně Deterministický Přístup</a></li>
+    </ul>
+  </li>
+  <li><a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD">Přispívání</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>V této 26. edici Alt-F4 (půl roku výtusků!), oofěwině jde do Factorio multiplayeru a vysvětluje trochu více o technických věcí za tím. Pokud jste si někdy lámali hlavu o tom, jak hra dokáže zvládat stovky hráčů a mnohy tisíc entit najednou, jste vítání se podívat do této edice!</p>
+      <h2 id="factorio-servery-oof2win2">
+        
+        
+            <a href="#factorio-servery-oof2win2" class="anchor" style="text-decoration: none;">Factorio Servery <author>oof2win2</author></a>
+          
+        
+      </h2>
+    
+
+<p>Většina z nás se již někdy připojila na Factorio server alespoň jednou, buďto aby jste si zahráli s kamarády nebo se podívaly na stavby jiných. V této edici Alt-F4, krátce vysvětlím historii multiplayeru, a poté se trochu více do hloubky podívám <em>jak</em> multiplayer funguje technicky. Budu vysvětlovat využívání plně deterministických algoritmů a lockstepových algoritmů mimo jiné věci.</p>
+      <h3 id="historie-multiplayeru">
+        
+        
+            <a href="#historie-multiplayeru" class="anchor" style="text-decoration: none;">Historie Multiplayeru</a>
+          
+        
+      </h3>
+    
+
+<p>V říjnu 204 s Factoriem 0.11.0, multiplayer byl přidán do hry, i když se na něm pracovalo od verze <a href="https://www.factorio.com/blog/post/fff-26">Factoria 0.9.4</a>. Tento multiplayer byl něco kompletně jiného od toho co známe dnes, třeba jste nemohli kliknout na “Připojit se k kamarádovi” přes Steam nebo použít prohlížeč serverů - museli jste znát přesnou IP adresu serveru. Když multiplayer poprvé vyšel, bylo v něm docela dost bugů jako <a href="https://forums.factorio.com/viewtopic.php?t=6285">tento</a>, který nedovolil hráčum hrát přes 20 sekund. Byl ale rychle opraven, ani ne o tři hodiny později, jako je to u Wubu normální. Existoval také <a href="https://forums.factorio.com/viewtopic.php?t=6414">tento bug</a>, který nedovolil více než třem hrácům být online najednou - narozdíl od <a href="https://www.factorio.com/blog/post/fff-332">tohoto online sessionu, kde se vyskytlo přes 500 hráčů</a> zhruba o šest let později. Hodně práce šlo do toho, aby se mohlo více než 500 hráčů připojit najednou.</p>
+
+<p>V Factorio 0.12.0, jako hlavní funkce, bezhlavé servery byly přidány. Toto znamenalo, že servery teď mohou bežet na počítačích bez GPU, což značne snížilo cenu Factorio serverů a jejich dostupnost. Také to umožnilo, aby několik instancín beželo najednou na stejném počítači, což je velmi užitečné v některých případech.</p>
+
+<p>S Factoriem 0.14.0, Factorio servery již nepausijí hru pro všechny hráče, pokud počítač jednoho hráče je moc pomalý, aby procesoval updaty současně s ostatními. Toto znamená, že pokud máte starší počítač, server na vás již nebude čekat, aby jste se dohnali v procesování updatů. Toto je velmi užitečné na hrách s větším počtem hráčů, které mají tendenci mít desítky až stovky hráčů online najednou, protože nikdo nemusí čekat aby si mohli zahrát.</p>
+      <h3 id="plně-deterministický-přístup">
+        
+        
+            <a href="#pln%C4%9B-deterministick%C3%BD-p%C5%99%C3%ADstup" class="anchor" style="text-decoration: none;">Plně Deterministický Přístup</a>
+          
+        
+      </h3>
+    
+
+<p>Jako bylo řečeno v <a href="https://www.factorio.com/blog/post/fff-30">FFF-30</a>, všichni klienti a server musí simulovat hru stejným způsobem, stejné akce v stejně přesný čas. Toto znamená, že když jeden člověk udělá něco na svém počítači, instance Factoria ostatních lidí musí udělat tu stejnou věc. Instance je výskyt něčeho, třeba, může být několik instancí jablek v košíku nebo záložek v Chromu. Factorio je podstatně jiné od jiných populárních her jako CS:GO nebo Overwatch, takže vývojáři nemohli prostě vzít přístup jiné hry a přidat ho do Factoria, protože by to nefungovalo správně.</p>
+
+<p>Místo toho, při vývoji multiplayeru, vývojáři ho vytvořili s použitím <a href="https://en.wikipedia.org/wiki/Lockstep_protocol">lockstepového protokolu</a>. V Factoriu, připojení k serveru začíná tím, že vám serveru pošle mapu. Poté, server vám pouze posílá informace, pokud je nějaká změná od hráče, třeba kdyby hráč položil pás na nějaké součadnice, umřel kvůli kousači <em>(nebo vlaku)</em>, atd. Je vám řečeno pouze <em>že</em> se to stalo, a poté vaše instance hry musí aktualizovat lokální simulaci sama od sebe. Nedostane detailovaný výpys toho, co se aktuálně děje, třeba jako pohyb logistických robotů a posun vlaků.</p>
+
+<p>Přenos všeho co se děje, každý tik hry, by využilo neskutečné množství internetového připojení, a potřebovali by jste přenášet informace jako “tento logistický robot se posunul sem”, což by se muselo dít desítky tisíc krát za herní tik na velkých bázích. Nemluvě o jiných informacích, což by vedlo k neuvěřitelně velkým přenosům dat, z čeho by mohly vznikat přenosy až 1500MB v některých případech. Místo toho, jsou vám řečeny pouze důležité změny, které jsou většinou interakce hráču s hrou, které váš klient poté simuluje, jako kdyby tam nikdo jiný nebyl.</p>
+
+<p>Je mnoho jiných způsobů, kterými by hra mohla přistupovat k multiplayeru. Například, Overwatch je hra, která sleduje skoro vše centrálně na jejich serverech, monitorují všechny itemy, hráče, kulky atd. a aktivně opravují váš klient, pokud se něco stalo špatně. Factorio monitoruje pouze vstupy hráče a hází desynchronizace, pokud se něco udělá špatně. Vysvětlím, co desynchronizace je později. Tyto dvě implementace jsou od sebe odlišné, protože hry jsou od sebe radikálně odlišné: v Overwatchi, jste schopni mít všechny mapy předem staženy když stáhnete hru, takže pouze potřebujete přesouvat data o projektilech a o hráčích. V Factoriu, mapy se ale mění pořád.</p>
+
+<p>V Factoriu, máte různé pozice monvoten, lamp, pásů, elektrických tyčí, podavačů a obecně všeho, protože každá báze v Factoriu je jiná. To je důvod, proč pouze změny od hráčů jsou přenášeny, protože Factorio je schopné simulovat hru jako kdyby jste ji hráli sami, pouze příjmá vstupy od jiných hráčů od serveru. Než přenášet celou mapu každý tik, je mnohem lehčí přenést mapu když se hráč připojí a poté mu posílat pouze změny do jeho simulace hry, třeba kdyby se hráč pohnul o 10 kostiček doprava atd. Viz obrázek níže. Pro někoho, komu to příjde zajímavé, multiplayer Overwatche se vyzvětluje <a href="https://www.youtube.com/watch?v=vTH2ZPgYujQ">zde (kratší video)</a> a <a href="https://www.youtube.com/watch?v=W3aieHjyNvw">možná zde</a> Overwatch vývojáři ve větším detailu.</p>
+
+<div class="m0 h100 quote">
+  <blockquote cite="">
+    <div class="panel-inset-lighter vertical">
+    
+      <div class="translation">
+        
+<p><strong>Player:</strong> Ahoj! Můžu se připojit na Factorio server? <br><br></p>
+
+<p><strong>Server:</strong> Jo, klidně! Zde je aktuální mapa, stáhni si jí [mapa jako příloha] <br><br></p>
+
+<p><strong>Server:</strong> Spawnuješ se na x=0, y=3 <br><br></p>
+
+<p><strong>Server:</strong> Tvůj kamarád ’potatoman’ si nastavil jeho logistický filter v slotu č. 33 na item “fast-transport-belt”. Nastav to pro něj taky a simuluj dál <br><br></p>
+
+<p><strong>Server:</strong> Tvůj kamarád ’potatoman’ se posunul o 3 bloky doprava <br><br></p>
+
+<p><strong>Player:</strong> Posunul jsem se o 4 bloky doleva <br><br></p>
+
+<p><strong>Server:</strong> Rozumím. Přeposílám <br><br></p>
+
+      </div>
+      <span></span>
+    
+      <div class="original">
+        <p><img src="https://media.alt-f4.blog/ALTF4/26/factorioserverjoin.jpg" alt="Log chatu k ilustraci jak Factorio servery fungují"></p>
+
+      </div>
+    </div>
+    <author>
+    — Factorio Server
+    </author>
+  </blockquote>
+</div>
+
+<p><a href="https://en.wikipedia.org/wiki/Deterministic_algorithm">Plně deterministické algoritmy</a> jsou používány v Factoriu a takové algoritmy budou mít stejný výstup, pokud jim jde dán stejný vstup. To znamená, že není náhodnost v výstupu, což je nutno pro některé účely jako Factorio. Plně deterministický algoritmus je nutný, aby jste mohli mít několik instancí Factoria v lockstepovém algoritmu a aby byly v synchronizaci. Důvod, proč používat plně deterministické algoritmy by byl, že pokud nejste schopni mít funkce, které mají stejné výstupy na stejné vstupy, nejste schopni mít lockstepovou architekturu, a celý systém jde do háje pokud všechny instance mají jiné výstupy. Plně deterministický algoritmus je definován následujícími pravidly:</p>
+
+<ul>
+  <li>Nesmí použít jiná data než vstup do algoritmu. Zakázaná data: náhodná čísla, uložené soubory na disku, globální proměnné, časovače (čas od začátku programu)</li>
+  <li>Algoritmus musí pracovat cestou, která není časově sensitivní</li>
+</ul>
+
+<p>Příklad opaku by bylo pokud máte několik instancí programu, který zapisuje do Excelové tabulky a jiný program by si chtěl přečíst poslední řádek tabulky. Toto by učiniloo program časově sensitivním, protože když jedna instance bude být o trochu opožděna o pár vteřin, tak to může vytvořit úplně jiné pořadí řádků v té tebulce, což nechá program který si to čte s úplně jiným vstupem.</p>
+
+<p>Příklad lockstepového a plně deterministického algoritmu by byl kdyby klient položil plán. Když kliknete na plán, aby se importoval do sdílené knihovny, ikonky plánu poté nebudou zašedivělé, jako obrázek na pravé straně. Toto je protože když kliknete na plán, váš klient ho sdílí do sdílené herní knihovny. Když plán někde položíte, váš klient řekne serveru, že jste položili plán na specifické XY souřadnice. Server to poté řekne všem ostatním připojeným klientům, že plán byl položen na ty stejné souřadnice. Každý individuální klient poté simuluje pohyb všech robotů, sbírání surovin, pokládání entit a vracení se k jejich vybranému roboportu. Všichni klienti musí toto simulovat sami, bez jakýchkoli jiných vstupů, a dělají to v stejném způsobu díky předem řečeným plně deterministickým algoritmům.</p>
+
+<p>
+  <figure>
+    <div class="juxtapose juxtapose-0" style="max-width: 600px; max-height: ; margin: 20px auto auto; height: 100%; width: 100%;">
+      <div class="jx-slider">
+        <div class="jx-handle" style="left: 50%;">
+          <div class="jx-arrow jx-left"></div>
+          <div class="jx-control">
+            <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <div class="jx-arrow jx-right"></div>
+        </div>
+        <div class="jx-image jx-left" style="width: 50%;">
+          <img src="https://media.alt-f4.blog/ALTF4/26/blueprints-not-imported.jpg" alt="Old Image">
+        </div>
+        <div class="jx-image jx-right" style="width: 50%;">
+          <img src="https://media.alt-f4.blog/ALTF4/26/blueprints-imported.jpg" alt="New Image">
+        </div>
+        <a href="https://juxtapose.knightlab.com" target="_blank" rel="noopener" class="jx-knightlab">
+          <div class="knightlab-logo">
+          </div>
+          <span class="juxtapose-name">JuxtaposeJS</span>
+        </a>
+      </div>
+    </div>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Desynchronizace (‘desync’) je když několik počítačů má něco dělat v stejný čas stejným způsobem s stejnými výsledky díky plně deterministickým algoritmům, ale nedělají to. Normálně, když klient a server dělají to stejné, jsosu štastní, protože jsou synchronizování (‘v syncu’). Desync se může stát protože dva klienty vypočítali update s jinými výsledky, což se většinou stává kvůli programátorské chybě. Podívejte se na obrázek níže, jak se desynchronizace může stát. Pokud moddér nebo vývojář scénáře nedělá management dat správně, desynchronizace se tím také může stát. Desynchronizace odpojí váš klient od serveru a váš klient začne generovat desynchronizační zprávu, což je něco užitečného co vývojáři využívají k vyšetřování desynchronizací.</p>
+
+<div class="m0 h100 quote">
+  <blockquote cite="">
+    <div class="panel-inset-lighter vertical">
+    
+      <div class="translation">
+        
+<p><strong>Player:</strong> Hej, můj výsledek na výpočet na netto elektřiny při tiku 33859 je 348. Mám to správně? <br><br></p>
+
+<p><strong>Server:</strong> Cože?? Já dostal 936. Máš to špatně. Pošlu ti mapu a odpojím tě, můžeš se poté připojit později <br><br></p>
+
+      </div>
+      <span></span>
+    
+      <div class="original">
+        <p><img src="https://media.alt-f4.blog/ALTF4/26/desync-chat.jpg" alt="Obrázek na ilustraci, co se stane během desynchronizace"></p>
+
+      </div>
+    </div>
+    <author>
+    — Factorio Server
+    </author>
+  </blockquote>
+</div>
+
+<p>Můžete si myslet, jak se desynchronizace nestávají s roboty, kteří se posouvají přes mapu? Jistěže, když udělají všechny úkoly a někteří roboti jsou vybráni na udělání specifických úkolů, různí klienti si vyberou jiné roboty, aby udělali dané úkoly, ne? Ne. Každý klient si vždy vybere stejné roboty ve stejný čas, protože algoritmus na vybírání robotů je <em>plně deterministický</em>. Dva vlaky přicházející z stackeru do stanice? Pokaždé stejný vlak, protože toto je <em>také plně deterministické</em>. Na kterou věž kousač zaútočí první na vaší těžící základně? Také plně deterministické. Toto bylo pouze pár příkladů, ale <strong>všechno</strong> v hře je plně deterministické. Kdyby to nebylo, měli by jste jednu desynchronizaci zde, druhou jinde, a multiplayer by nebyl vůbec hratelný. V multiplayeru, desynchronizace mohou být způsobeny několika věcmi, třeba konstrukcí robotů, simulace AI kousače, a nejvíce ze všech, věci od moddérů.</p>
+
+<p>I kdyby jste chtěli použít něco lehkého jako <code class="language-plaintext highlighter-rouge">math.random()</code> aby jste získali <em>náhodné</em> číslo v módu nebo scénáři, byly by konsistentní výsledky - všichni klienti by získali stejný výsledek z funkce. Toto je protože generátor náhodných čísel Factoria je <em>seedován</em>. Je mu dáno číslo, s kterým poté generuje další náhodná čísla. Pokud budete seedovat všechny klienty stejným způsobem, vaše <em>náhodná</em> čísla budou v synchronizaci. Je důležité poznamenat, že to je <em>pseudonáhodný</em> generátor, a proto není úplně náhodný, protože je inicializován předem dohodnutým číslem, které dovoluje tomu, aby výsledky byly reprodukované. Podívejte se <a href="https://en.wikipedia.org/wiki/Random_seed">zde</a> pro další informace o náhodných seedech.</p>
+
+<p>Teď vítetrochu více o tom, co se stává když se připojíte na server v prohlížeči serverů, připojíte se přes IP adresu, přes Steam nebo přes LAN. Vývojáři Factoria strávili hodně času prácí na multiplayeru, což nám dovolilo dělat projekty jako přes 500 hráčů v multiplayeru najednou nebo <a href="https://alt-f4.blog/cs/ALTF4-18/#the-road-to-clusterio-20-hornwitser">Clusterio</a>  setupy, což dává tvůrcům nástroje na vyvíjení skvělých věcí které vytvářejí. Existuje méně a méně limitací k tomu, co jste schopni dělat, masivní báze, masivní množství hráčů, možná i obojí! Vše z toho je pouze na vás, aby jste to založili.</p>
+      <h2 id="přispívání">
+        
+        
+            <a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD" class="anchor" style="text-decoration: none;">Přispívání</a>
+          
+        
+      </h2>
+    
+
+<p>Jako vždy, hledáme lidi, kteří chtějí přispívat k Alt-F4, buď to je přidáváním zajímavěho článku nebo překladem. Pokud máte něco zajímavého na mysli co by jste chtěli sdílet s komunitou v hezkém způsobu, toto je ideální místo kde o tom diskutovat. Pokud si nejste moc jisti o tom, rádi pomůžeme s diskuzí nápadů o obsahu a strukturování otázek. Pokud to zní jako něco zajímavého, připojte se na <a href="https://discord.gg/nxnCFkb">Discord</a> aby jste začali!</p>
+
+
+
+
+<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=96680">
+    Diskutujte na Factorio fórech
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/lyb2wx/altf4_26_putting_the_multi_in_player/">
+    Diskutujte na Redditu
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Diskutujte na Discordu
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/cs/ALTF4-25/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/cs/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/cs/ALTF4-27/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/cs/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/cs/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Tato webová stránka je čistě projektem fanoušků, není nijak přímo spojena s Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

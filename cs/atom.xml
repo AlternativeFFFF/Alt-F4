@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Alternative Friday Factorio Fan Facts</title>
+  <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
+  <id>https://alt-f4.blog</id>
+  <updated>2021-04-02T12:39:31+00:00</updated>
+  <author>
+    <name>Therenas</name>
+    <uri>https://alt-f4.blog/about</uri>
+    <email>AlternativeFridayFacts@gmail.com</email>
+  </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #30 - Nauvijská Perspektiva: Zisteau</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-30/" />
+    <id>https://alt-f4.blog/ALTF4-30</id>
+    <updated>2021-04-02T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Když se přesouváme do světa čísel, které začínají s trojkou, vydání #30 má stringweasela, který přináší trochu nový formát do Alt-F4: interview, tak trochu. Mluvil s YouTube známým člověkem Zisteauem o jeho perspektivě o různých tématech, které se vstahují k té naší hře.&lt;/p&gt; &lt;h3 id=&quot;nauvijská-perspektiva-zisteau-stringweasel&quot;&gt;Nauvijská Perspektiva: Zisteau &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h3&gt; &lt;p&gt;Existuje mnoho...</content>
+  </entry>
+  
+  
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #29 - Majáky a No Belts</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-29/" />
+    <id>https://alt-f4.blog/ALTF4-29</id>
+    <updated>2021-03-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Tento týden, pro 26. vydání, znovu budeme mít raritu, dva články! Jako první, TheKool, který nemůže přestat mluvit o svých modulech, zakončí jeho ságu &lt;em&gt;Roh Komplexity&lt;/em&gt; mluvením o majácích a k čemu jsou dobré. Poté, oof2win2 se vrací, aby ukázal jeho mód &lt;em&gt;No Belts&lt;/em&gt;, který dovoluje vytvoří zajímavou a alternativní...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #28 - ROFL</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-28/" />
+    <id>https://alt-f4.blog/ALTF4-28</id>
+    <updated>2021-03-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;V tomto hezkém březnovém týdnu, poprvé kontribující Ph.X pmluví o jejich velmi kompartmentalizovaném systému pro layout báze s použitím izolovaných modulů a propojování jich skrz Logistic Train Network. Inspirován vývojem softwaru a informacemi tam získanými, Ph.X používa koncepty Modulárního Programování k jejich výhodě.&lt;/p&gt; &lt;p&gt;Také, v jiných novinkách, nyní nabízíme emailový...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #27 - Designování Zbytečného</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-27/" />
+    <id>https://alt-f4.blog/ALTF4-27</id>
+    <updated>2021-03-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Tento týden, pocarski pokračuje s jeho sestupem do pásově-orientovaného šílenství tím, že se podívá na univerzální balancéry. Výsledek je jak šílený jako je zbytečný, takvíte, že tu máte pochoutku!&lt;/p&gt; &lt;h2 id=&quot;univerzální-8-8-perfectly-balanced-as-all-things-should-be-pocarski&quot;&gt;Univerzální 8-8: Perfectly Balanced, as All Things Should Be &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/cs/ALTF4-23/#vypo%C4%8D%C3%ADt%C3%A1n%C3%ADn-pouze-s-p%C3%A1sy-%C4%8D%C3%A1st-prvn%C3%AD-ne-tak-rychl%C3%A1-matematika-pocarski&quot;&gt;Nedávno&lt;/a&gt;, vyrobil jsem několik počítačových částí s pásy a...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #26 - Dávání Multi do Playeru</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-26/" />
+    <id>https://alt-f4.blog/ALTF4-26</id>
+    <updated>2021-03-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;V této 26. edici Alt-F4 (půl roku výtusků!), oofěwině jde do Factorio multiplayeru a vysvětluje trochu více o technických věcí za tím. Pokud jste si někdy lámali hlavu o tom, jak hra dokáže zvládat stovky hráčů a mnohy tisíc entit najednou, jste vítání se podívat do této edice!&lt;/p&gt; &lt;h2 id=&quot;factorio-servery-oof2win2&quot;&gt;Factorio...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #25 - Efektivita, Efektivita, Efektivita!</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-25/" />
+    <id>https://alt-f4.blog/ALTF4-25</id>
+    <updated>2021-02-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;V této stříbrné narozeninové edici Alt-F4, TheKool se vrací k jeho třetí a finální instalaci z jeho série o modulech. V ní, mluví o modulech efektivity tak, že mluví o teorii a poté prezentuje (docela) realisticý experiment!&lt;/p&gt; &lt;h2 id=&quot;roh-komplexity-moduly-efektivity-the-kool&quot;&gt;Roh Komplexity: Moduly Efektivity &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Tento týden, jsme v třetí edici...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #24 - Výroba vzpomínek</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-24/" />
+    <id>https://alt-f4.blog/ALTF4-24</id>
+    <updated>2021-02-19T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Tento týden, budeme pokračovat na pocarskiho kuse z minulého týdne, který byl celý o tom, jak postavit počítač v Factoriu s pomocí pouhých pásů. Tentokrát, budeme se snažit pořítač naučit jak si zapamatovávat věci. Uvidíme, jak to půjde.&lt;/p&gt; &lt;h2 id=&quot;pásové-vypočítávání-část-druhá-nikdy-nezapomeň-pocarski&quot;&gt;Pásové vypočítávání, část druhá: Nikdy Nezapomeň &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Tento týden, budu pokračovat...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #23 - Pásová Extravaganza</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-23/" />
+    <id>https://alt-f4.blog/ALTF4-23</id>
+    <updated>2021-02-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Po dvoutýdenní pauze kvůli pár FFF horkých z pánve jsme zpět s dvoumi články o pásech. V prvním, Recon419A objevuje zajimavý koncept, který umožnuje dopravovat itemy v stylu právě v čas. Poté, věci se stanou velmi nerdy když pocarski se ponoří do hlubin stavění turingového stroje pomocí pouhých pásů. Titul...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #22 - Nadávka na plány</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-22/" />
+    <id>https://alt-f4.blog/ALTF4-22</id>
+    <updated>2021-01-22T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Pro dnešní 22. vydání Alt-F4, &lt;em&gt;Conor_&lt;/em&gt; chtěl sdílet jeho docela silné názory na plány s námi, a proč mohou být důvodem, díky kterému si v Factoriu neužijete tolik zábavy. Rádi bychom slyšeli váš názor na toto téma, tak se neváhejte o něj podělit v komentářích!&lt;/p&gt; &lt;h2 id=&quot;plány-jsou-špatné-conor_&quot;&gt;Plány jsou špatné &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt;...</content>
+  </entry>
+  
+  
+</feed>

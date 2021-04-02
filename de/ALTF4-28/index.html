@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #28 - ROFL</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="generator" content="Jekyll">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Alt-F4 #28 - ROFL | Alternative Friday Factorio Fan Facts</title>
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #28 - ROFL">
+<meta name="author" content="Ph.X">
+<meta property="og:locale" content="de">
+<meta name="description" content="In dieser schönen Märzwoche wird uns Ph.X in seinem ersten Artikel sein aufgegliedertes System für eine modulare Fabrik mithilfe isolierter Module, welche durch ein Logistic Train Network verbunden werden, darstellen. Inspiriert von Erfahrungen aus der Software-Entwicklung nutzt Ph.X Konzepte der Modularen Programmierung zu seinem Vorteil. Außerdem bieten wir jetzt einen abonnierbaren Email-Newsletter an. Falls du nicht auf Reddit, dem Forum oder unserem Discord unterwegs bist, gibt es jetzt die beliebte Möglichkeit eines Email-Newsletters. Gib einfach hier deine Mailadresse an, und du wirst jeden Freitag informiert, wenn es eine neue Ausgabe gibt. Wir werden deine Adresse natürlich nur für Alt-F4 verwenden, und dich nicht mit anderem irrelevanten Dingen zumüllen. Rezept-Orientiertes Factorio Leben Ph.X Factorio besitzt ein komplexes Netzwerk aus Produktionsketten (Spaghetti), welche das Spiel zu einer spannenden Herausforderung machen. Dieses komplexe Konstruktionsproblem ist ähnlich zu Herausforderungen, die in der Programmierung vorkommen, deswegen ist es denke ich sinnvoll, Erfahrungen aus diesem Feld zu verwenden, um das Spielerlebnis zu verbessern. Was ist „ROFL“ Alle mit etwas Programmiererfahrung haben wahrscheinlich schonmal von objektorientierter modularer Programmierung gehört. Dieses Paradigma versucht Rezept-Orientiertes Factorio Leben (ROFL) nachzustellen. Modulare Programmierung ist ein Paradigma, bei dem das Programm in einzelne, unabhängige und austauschbare Module aufgeteilt wird, sodass jedes Modul alles beinhaltet, um einen einzelnen Aspekt des Programms auszuführen. In ROFL unterteilen wir die Fabrik in unabhängige und austauschbare Subfabriken, die sich immer nur um genau ein Rezept kümmern. Wie in den meisten Philosophien, müssen wir den Archē als Ursprung für alles finden. In unserem Fall ist das das Rezept. Erweiterte Schaltkreise, beispielsweise, können in jeder Montagemaschine gefertigt werden, welche möglicherweise von verschiedenen Modulen beeinflusst werden, wo die benötigten Rohstoffe über Fließbänder, Logistikkisten oder eine angrenzende Kupferkabelfabrik geliefert werden, aber unabhängig davon, wie sich diese anderen Faktoren verändern, das Rezept selbst bleibt immer gleich. Es werden immer Kupferkabel, elektronische Schaltkreise und Plastik benötigt. Das Rezept stellt somit ein Atom in Factorio dar, eine unteilbare Einheit, die nicht weitervereinfacht und aufgeteilt werden kann. Basierend auf einem bestimmten Rezept wird eine Subfabrik in ein Modul verpackt. Ein zusätzliches Logistiksystem wird verwendet, um Material anzuliefern und fertige Produkte anzutransportieren. Das Ziel ist, eine hohe Kohäsion innerhalb des Moduls zu erzielen und gleichzeitig die Module möglichst unabhängig voneinander zu halten. Hohe Kohäsion bedeutet, dass in dem Modul alle benötigten Montagemaschinen, Greifer, Fließbänder, Effektverteiler und Strommasten enthalten sind, damit das Modul ohne zusätzliche Bauten unabhängig arbeiten kann. Unabhängigkeit zwischen den Modulen meint, dass die Module nur über die vorher festgelegten Schnittstellen (Strom und das Schienennetz) miteinander interagieren und daher einfach austauschbar sind. Um diese Idee besser umzusetzen, werden in den folgenden Beispielen die LTN - Logistic Train Network, die AAI Containers &amp; Warehouses und die Miniloader Mod verwendet. Alle Blaupausen für die gezeigten Beispiele sind hier erhältlich. Schnittstellendesign Bevor wir damit beginnen, erste Subfabriken zu designen, müssen wir erst ein universelles Logistiknetz als Schnittstelle zwischen den Modulen ausdenken. Obwohl ein Main-Bus oder Logistikroboter als solches System fungieren können, übertrifft ein Cityblock-Schienensystem diese Lösungen in Durchsatz, Wiederverwendbarkeit und allgemeiner Coolheit. In Vanilla können Züge nur einen vorher festgelegten Fahrplan abarbeiten, was nicht besonders flexibel und „logistisch“ ist. Das ist der Punkt, an dem Logistic Train Network (zu Deutsch: „Logistisches Zugnetzwerk“) zum tragen kommt. Mit LTN werden Züge in einem Depot geparkt, so wie Logistikroboter in Hangars warten. Wenn es zu einer logistischen Nachfrage kommt, wählt das System einen passenden Zug aus dem Depot aus und erstellt einen passenden Fahrplan, um die geforderten Gegenstände von der anbietenden Station abzuholen und zur nachfragenden Station zu transportieren, um danach wieder ins Depot zurückzukehren. Aber im Gegensatz zu Logistikrobotern, die sich ähnlich verhalten, können sich Züge nicht selbstständig be- &amp; entladen, so das Greifer an den Bahnhöfen benötigt werden. LTN ist leistungsstärker als Logistikroboter, da eine große Menge Gegenstände oder Flüssigkeiten mit hoher Geschwindigkeit transportiert werden können. In diesem Beispiel verwende ich ein zweigleisiges Linksverkehr-Schienensystem, welches mir erlaubt, Signale zwischen den Schienen zu platzieren. An Kreuzungen kann gerade aus gefahren oder links abgebogen werden, hautsächlich um Platz zu sparen. Die meisten Stationen haben ein Zuglimit von zwei, sodass maximal ein Zug außerhalb des Bahnhofes warten muss. Abschnitte, welche durch wartende Züge blockiert werden, können durch das vollständig verbundene Netzwerk umfahren werden. Nur die zentrale Zelle wird ein Produktionsmodul enthalten. Diese Module werden so in einem Raster angeordnet, dass der Platz zwischen den Modulen für Schienen, Solargeneratoren und Logistiknetztrennung genutzt werden kann. Roboter sind gut über kurze Entfernungen, aber katastrophal über lange Strecken, weswegen dort Züge zum Einsatz kommen. Über getrennte Logistiknetze werden die Roboter daran gehindert, an solchen Langstreckenflügen teilzunehmen. Als Zuggröße habe ich mich für den kleinstmöglichen Zug mit einer Lokomotive und einem Wagon entschieden, um die Größe zu minimieren und mir die gleichmäßige Beladung an den Bahnhöfen zu sparen. Aufgetankt werden die Züge im Depot, wohin sie nach jeder Fahrt zurückkehren. Treibstoff fürs auftanken der Züge wird auch über LTN angefordert. Moduldesign Beginnen wir mit dem einfachsten Beispiel, Eisenzahnräder: Einem Rezept mit einem einzelnen benötigten Rohstoff und einem einzelnen Produkt. Eine Logistikstation an der unteren Kante fordert 8000 Eisenplatten an und eine Logistikstation oben bietet die fertigen Produkte (hier also Eisenzahnräder) aus dem angeschlossenen Warenhaus im LTN zur Abholung an. Einfaches Eisenzahnradmodul. Die Rohmaterialstation befindet sich unten, die Produktstation oben. Da die Ein- und Ausgänge dieses Moduls über Züge realisiert werden, werden Modifikationen und Verbesserungen innerhalb des Produktionszweiges im Modul keinen Einfluss auf andere Module haben. So können wir zu einem Design mit Effektverteilern wechseln, ohne andere Module in der Fabrik zu beeinflussen. Eisenzahnradmodul mit Effektverteilern. Die Stationen sind unverändert, nur die Produktionslinie dazwischen wurde verändert. Als nächstes betrachten wir das etwas komplexere Rezept von erweiterten Schaltkreisen. Indem wir die Logistikstation so einstellen, dass mehrere Rohstoffe angefordert werden, können wir alle Rohstoffe an eine Station anliefern lassen. So sind alle Rohstoffe in einem Warenhaus zusammen, und wir können filternde Belader (funktionieren ähnlich wie filternde Greifer) verwenden, um die Materialien auf getrennte Fließbänder aufzuteilen, um sie den Montagemaschinen zuzuführen. Modul für erweiterte Schaltkreise. Es wird eine einzelne Station verwendet, um mehrere verschiedene Rohstoffe anzufordern. Das funktioniert genauso für Rezepte, welche Flüssigkeiten benötigen, nur das wir dort dann Kesselwägen verwenden müssen. Ölraffineriemodul. Durch Kontrolle der Pumpe durch das LTN-Signal ist es möglich, mehrere Flüssigkeiten zu verladen, ohne dass sie sich vermischen. Es gibt auch einige unkonventionelle Rezepte, wie Forschung, ein Dampfkraftwerk oder Raketensilos. Forschungsmodul, welches keine Produktstation benötigt. Dampfkraftwerk welches mit Landaufschüttung auf Wasser platziert wird. Oder du verwendest Landfill Everything um den Bauplatz vorzubereiten. Raketensilomodul. Unabhängige Roboterlogistiknetzwerke werden innerhalb des Moduls verwendet. Die untere Station ist für die Materialien, die benötigt werden, um Raketen zu bauen, die rechte für die Nutzlast, also im Regelfall Satelliten. Vor- und Nachteile von ROFL ROFL‘s Zielgruppe sind Menschen mit Ingenieursmäßigen Denken. Es vereinfacht es, Probleme aufzuteilen und einzeln abzuarbeiten. Wenn ein bestimmtes Rezept hergestellt werden muss, kann man einfach im Schienennetz die Stationen für die benötigten Materialien passend einstellen und dann die Produktionsanlage dazwischen konstruieren. Falls die bestehende Anlage nicht ausreicht, kannst du einfach die Anlage kopieren und ein weiteres Mal einfügen, ohne dir viel Arbeit mit dem Anschließen zu machen. ROFL ist nicht für perfekte Produktion optimiert, da es keine Produktionslinie mit perfekten Verhältnissen darstellt, und so ist es typisch, das die Anlage manchmal nicht produziert, aufgrund fehlender Rohstoffe oder verstopfter Ausgänge. Jeder Artikel muss auf einen Waggon geladen und von diesem entladen werden, was eine Menge Input- und Output-Engpässe mit sich bringt, am typischsten bei Kupferdraht, wo die Anzahl der Produkte die Anzahl der Rohstoffe übersteigt und die Anzahl der Stapel hoch ist, während die Nachfrage riesig ist. Es gibt auch ein großes Rückhaltevolumen, da in den Warenhäusern in jedem Modul viele Gegenstände vorgehalten werden. So ist es schwierig, Gegenstände mit Unterproduktion zu erkennen (es ist aber sicher Eisenerz). Das Schienennetz um die einzelnen Module zu verbinden ist teuer, und stellt ein erhebliches Unfallrisiko dar (zum Glück gibt’s den Spidertron). Abschlussgedanken ROFL ist eher ein Denkmuster, um komplexe Probleme herunterzubrechen, anstatt ein fertiges Blaupausenbuch. Die oben beschriebenen Beispiele sind nur eine Lösung, die ROFL als Grundgedanke verwendet. LTN zu verwenden, um ein Schienennetz zu bauen, wird von einigen als ein bisschen schummelnd gesehen, aber diese Idee kann auch für Mainbus-Systeme und mehr verwendet werden. Es wird nie einen „korrekten“ Weg geben, Factorio zu spielen, und diese Vielfalt ist das, was das Factorio so großartig macht. Ein Space Exploration Spielstand, der das oben erklärte ROFL-Schema verwendet. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="In dieser schönen Märzwoche wird uns Ph.X in seinem ersten Artikel sein aufgegliedertes System für eine modulare Fabrik mithilfe isolierter Module, welche durch ein Logistic Train Network verbunden werden, darstellen. Inspiriert von Erfahrungen aus der Software-Entwicklung nutzt Ph.X Konzepte der Modularen Programmierung zu seinem Vorteil. Außerdem bieten wir jetzt einen abonnierbaren Email-Newsletter an. Falls du nicht auf Reddit, dem Forum oder unserem Discord unterwegs bist, gibt es jetzt die beliebte Möglichkeit eines Email-Newsletters. Gib einfach hier deine Mailadresse an, und du wirst jeden Freitag informiert, wenn es eine neue Ausgabe gibt. Wir werden deine Adresse natürlich nur für Alt-F4 verwenden, und dich nicht mit anderem irrelevanten Dingen zumüllen. Rezept-Orientiertes Factorio Leben Ph.X Factorio besitzt ein komplexes Netzwerk aus Produktionsketten (Spaghetti), welche das Spiel zu einer spannenden Herausforderung machen. Dieses komplexe Konstruktionsproblem ist ähnlich zu Herausforderungen, die in der Programmierung vorkommen, deswegen ist es denke ich sinnvoll, Erfahrungen aus diesem Feld zu verwenden, um das Spielerlebnis zu verbessern. Was ist „ROFL“ Alle mit etwas Programmiererfahrung haben wahrscheinlich schonmal von objektorientierter modularer Programmierung gehört. Dieses Paradigma versucht Rezept-Orientiertes Factorio Leben (ROFL) nachzustellen. Modulare Programmierung ist ein Paradigma, bei dem das Programm in einzelne, unabhängige und austauschbare Module aufgeteilt wird, sodass jedes Modul alles beinhaltet, um einen einzelnen Aspekt des Programms auszuführen. In ROFL unterteilen wir die Fabrik in unabhängige und austauschbare Subfabriken, die sich immer nur um genau ein Rezept kümmern. Wie in den meisten Philosophien, müssen wir den Archē als Ursprung für alles finden. In unserem Fall ist das das Rezept. Erweiterte Schaltkreise, beispielsweise, können in jeder Montagemaschine gefertigt werden, welche möglicherweise von verschiedenen Modulen beeinflusst werden, wo die benötigten Rohstoffe über Fließbänder, Logistikkisten oder eine angrenzende Kupferkabelfabrik geliefert werden, aber unabhängig davon, wie sich diese anderen Faktoren verändern, das Rezept selbst bleibt immer gleich. Es werden immer Kupferkabel, elektronische Schaltkreise und Plastik benötigt. Das Rezept stellt somit ein Atom in Factorio dar, eine unteilbare Einheit, die nicht weitervereinfacht und aufgeteilt werden kann. Basierend auf einem bestimmten Rezept wird eine Subfabrik in ein Modul verpackt. Ein zusätzliches Logistiksystem wird verwendet, um Material anzuliefern und fertige Produkte anzutransportieren. Das Ziel ist, eine hohe Kohäsion innerhalb des Moduls zu erzielen und gleichzeitig die Module möglichst unabhängig voneinander zu halten. Hohe Kohäsion bedeutet, dass in dem Modul alle benötigten Montagemaschinen, Greifer, Fließbänder, Effektverteiler und Strommasten enthalten sind, damit das Modul ohne zusätzliche Bauten unabhängig arbeiten kann. Unabhängigkeit zwischen den Modulen meint, dass die Module nur über die vorher festgelegten Schnittstellen (Strom und das Schienennetz) miteinander interagieren und daher einfach austauschbar sind. Um diese Idee besser umzusetzen, werden in den folgenden Beispielen die LTN - Logistic Train Network, die AAI Containers &amp; Warehouses und die Miniloader Mod verwendet. Alle Blaupausen für die gezeigten Beispiele sind hier erhältlich. Schnittstellendesign Bevor wir damit beginnen, erste Subfabriken zu designen, müssen wir erst ein universelles Logistiknetz als Schnittstelle zwischen den Modulen ausdenken. Obwohl ein Main-Bus oder Logistikroboter als solches System fungieren können, übertrifft ein Cityblock-Schienensystem diese Lösungen in Durchsatz, Wiederverwendbarkeit und allgemeiner Coolheit. In Vanilla können Züge nur einen vorher festgelegten Fahrplan abarbeiten, was nicht besonders flexibel und „logistisch“ ist. Das ist der Punkt, an dem Logistic Train Network (zu Deutsch: „Logistisches Zugnetzwerk“) zum tragen kommt. Mit LTN werden Züge in einem Depot geparkt, so wie Logistikroboter in Hangars warten. Wenn es zu einer logistischen Nachfrage kommt, wählt das System einen passenden Zug aus dem Depot aus und erstellt einen passenden Fahrplan, um die geforderten Gegenstände von der anbietenden Station abzuholen und zur nachfragenden Station zu transportieren, um danach wieder ins Depot zurückzukehren. Aber im Gegensatz zu Logistikrobotern, die sich ähnlich verhalten, können sich Züge nicht selbstständig be- &amp; entladen, so das Greifer an den Bahnhöfen benötigt werden. LTN ist leistungsstärker als Logistikroboter, da eine große Menge Gegenstände oder Flüssigkeiten mit hoher Geschwindigkeit transportiert werden können. In diesem Beispiel verwende ich ein zweigleisiges Linksverkehr-Schienensystem, welches mir erlaubt, Signale zwischen den Schienen zu platzieren. An Kreuzungen kann gerade aus gefahren oder links abgebogen werden, hautsächlich um Platz zu sparen. Die meisten Stationen haben ein Zuglimit von zwei, sodass maximal ein Zug außerhalb des Bahnhofes warten muss. Abschnitte, welche durch wartende Züge blockiert werden, können durch das vollständig verbundene Netzwerk umfahren werden. Nur die zentrale Zelle wird ein Produktionsmodul enthalten. Diese Module werden so in einem Raster angeordnet, dass der Platz zwischen den Modulen für Schienen, Solargeneratoren und Logistiknetztrennung genutzt werden kann. Roboter sind gut über kurze Entfernungen, aber katastrophal über lange Strecken, weswegen dort Züge zum Einsatz kommen. Über getrennte Logistiknetze werden die Roboter daran gehindert, an solchen Langstreckenflügen teilzunehmen. Als Zuggröße habe ich mich für den kleinstmöglichen Zug mit einer Lokomotive und einem Wagon entschieden, um die Größe zu minimieren und mir die gleichmäßige Beladung an den Bahnhöfen zu sparen. Aufgetankt werden die Züge im Depot, wohin sie nach jeder Fahrt zurückkehren. Treibstoff fürs auftanken der Züge wird auch über LTN angefordert. Moduldesign Beginnen wir mit dem einfachsten Beispiel, Eisenzahnräder: Einem Rezept mit einem einzelnen benötigten Rohstoff und einem einzelnen Produkt. Eine Logistikstation an der unteren Kante fordert 8000 Eisenplatten an und eine Logistikstation oben bietet die fertigen Produkte (hier also Eisenzahnräder) aus dem angeschlossenen Warenhaus im LTN zur Abholung an. Einfaches Eisenzahnradmodul. Die Rohmaterialstation befindet sich unten, die Produktstation oben. Da die Ein- und Ausgänge dieses Moduls über Züge realisiert werden, werden Modifikationen und Verbesserungen innerhalb des Produktionszweiges im Modul keinen Einfluss auf andere Module haben. So können wir zu einem Design mit Effektverteilern wechseln, ohne andere Module in der Fabrik zu beeinflussen. Eisenzahnradmodul mit Effektverteilern. Die Stationen sind unverändert, nur die Produktionslinie dazwischen wurde verändert. Als nächstes betrachten wir das etwas komplexere Rezept von erweiterten Schaltkreisen. Indem wir die Logistikstation so einstellen, dass mehrere Rohstoffe angefordert werden, können wir alle Rohstoffe an eine Station anliefern lassen. So sind alle Rohstoffe in einem Warenhaus zusammen, und wir können filternde Belader (funktionieren ähnlich wie filternde Greifer) verwenden, um die Materialien auf getrennte Fließbänder aufzuteilen, um sie den Montagemaschinen zuzuführen. Modul für erweiterte Schaltkreise. Es wird eine einzelne Station verwendet, um mehrere verschiedene Rohstoffe anzufordern. Das funktioniert genauso für Rezepte, welche Flüssigkeiten benötigen, nur das wir dort dann Kesselwägen verwenden müssen. Ölraffineriemodul. Durch Kontrolle der Pumpe durch das LTN-Signal ist es möglich, mehrere Flüssigkeiten zu verladen, ohne dass sie sich vermischen. Es gibt auch einige unkonventionelle Rezepte, wie Forschung, ein Dampfkraftwerk oder Raketensilos. Forschungsmodul, welches keine Produktstation benötigt. Dampfkraftwerk welches mit Landaufschüttung auf Wasser platziert wird. Oder du verwendest Landfill Everything um den Bauplatz vorzubereiten. Raketensilomodul. Unabhängige Roboterlogistiknetzwerke werden innerhalb des Moduls verwendet. Die untere Station ist für die Materialien, die benötigt werden, um Raketen zu bauen, die rechte für die Nutzlast, also im Regelfall Satelliten. Vor- und Nachteile von ROFL ROFL‘s Zielgruppe sind Menschen mit Ingenieursmäßigen Denken. Es vereinfacht es, Probleme aufzuteilen und einzeln abzuarbeiten. Wenn ein bestimmtes Rezept hergestellt werden muss, kann man einfach im Schienennetz die Stationen für die benötigten Materialien passend einstellen und dann die Produktionsanlage dazwischen konstruieren. Falls die bestehende Anlage nicht ausreicht, kannst du einfach die Anlage kopieren und ein weiteres Mal einfügen, ohne dir viel Arbeit mit dem Anschließen zu machen. ROFL ist nicht für perfekte Produktion optimiert, da es keine Produktionslinie mit perfekten Verhältnissen darstellt, und so ist es typisch, das die Anlage manchmal nicht produziert, aufgrund fehlender Rohstoffe oder verstopfter Ausgänge. Jeder Artikel muss auf einen Waggon geladen und von diesem entladen werden, was eine Menge Input- und Output-Engpässe mit sich bringt, am typischsten bei Kupferdraht, wo die Anzahl der Produkte die Anzahl der Rohstoffe übersteigt und die Anzahl der Stapel hoch ist, während die Nachfrage riesig ist. Es gibt auch ein großes Rückhaltevolumen, da in den Warenhäusern in jedem Modul viele Gegenstände vorgehalten werden. So ist es schwierig, Gegenstände mit Unterproduktion zu erkennen (es ist aber sicher Eisenerz). Das Schienennetz um die einzelnen Module zu verbinden ist teuer, und stellt ein erhebliches Unfallrisiko dar (zum Glück gibt’s den Spidertron). Abschlussgedanken ROFL ist eher ein Denkmuster, um komplexe Probleme herunterzubrechen, anstatt ein fertiges Blaupausenbuch. Die oben beschriebenen Beispiele sind nur eine Lösung, die ROFL als Grundgedanke verwendet. LTN zu verwenden, um ein Schienennetz zu bauen, wird von einigen als ein bisschen schummelnd gesehen, aber diese Idee kann auch für Mainbus-Systeme und mehr verwendet werden. Es wird nie einen „korrekten“ Weg geben, Factorio zu spielen, und diese Vielfalt ist das, was das Factorio so großartig macht. Ein Space Exploration Spielstand, der das oben erklärte ROFL-Schema verwendet. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-28/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-28/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-03-19T00:00:00+00:00">
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-28/"},"description":"In dieser schönen Märzwoche wird uns Ph.X in seinem ersten Artikel sein aufgegliedertes System für eine modulare Fabrik mithilfe isolierter Module, welche durch ein Logistic Train Network verbunden werden, darstellen. Inspiriert von Erfahrungen aus der Software-Entwicklung nutzt Ph.X Konzepte der Modularen Programmierung zu seinem Vorteil. Außerdem bieten wir jetzt einen abonnierbaren Email-Newsletter an. Falls du nicht auf Reddit, dem Forum oder unserem Discord unterwegs bist, gibt es jetzt die beliebte Möglichkeit eines Email-Newsletters. Gib einfach hier deine Mailadresse an, und du wirst jeden Freitag informiert, wenn es eine neue Ausgabe gibt. Wir werden deine Adresse natürlich nur für Alt-F4 verwenden, und dich nicht mit anderem irrelevanten Dingen zumüllen. Rezept-Orientiertes Factorio Leben Ph.X Factorio besitzt ein komplexes Netzwerk aus Produktionsketten (Spaghetti), welche das Spiel zu einer spannenden Herausforderung machen. Dieses komplexe Konstruktionsproblem ist ähnlich zu Herausforderungen, die in der Programmierung vorkommen, deswegen ist es denke ich sinnvoll, Erfahrungen aus diesem Feld zu verwenden, um das Spielerlebnis zu verbessern. Was ist „ROFL“ Alle mit etwas Programmiererfahrung haben wahrscheinlich schonmal von objektorientierter modularer Programmierung gehört. Dieses Paradigma versucht Rezept-Orientiertes Factorio Leben (ROFL) nachzustellen. Modulare Programmierung ist ein Paradigma, bei dem das Programm in einzelne, unabhängige und austauschbare Module aufgeteilt wird, sodass jedes Modul alles beinhaltet, um einen einzelnen Aspekt des Programms auszuführen. In ROFL unterteilen wir die Fabrik in unabhängige und austauschbare Subfabriken, die sich immer nur um genau ein Rezept kümmern. Wie in den meisten Philosophien, müssen wir den Archē als Ursprung für alles finden. In unserem Fall ist das das Rezept. Erweiterte Schaltkreise, beispielsweise, können in jeder Montagemaschine gefertigt werden, welche möglicherweise von verschiedenen Modulen beeinflusst werden, wo die benötigten Rohstoffe über Fließbänder, Logistikkisten oder eine angrenzende Kupferkabelfabrik geliefert werden, aber unabhängig davon, wie sich diese anderen Faktoren verändern, das Rezept selbst bleibt immer gleich. Es werden immer Kupferkabel, elektronische Schaltkreise und Plastik benötigt. Das Rezept stellt somit ein Atom in Factorio dar, eine unteilbare Einheit, die nicht weitervereinfacht und aufgeteilt werden kann. Basierend auf einem bestimmten Rezept wird eine Subfabrik in ein Modul verpackt. Ein zusätzliches Logistiksystem wird verwendet, um Material anzuliefern und fertige Produkte anzutransportieren. Das Ziel ist, eine hohe Kohäsion innerhalb des Moduls zu erzielen und gleichzeitig die Module möglichst unabhängig voneinander zu halten. Hohe Kohäsion bedeutet, dass in dem Modul alle benötigten Montagemaschinen, Greifer, Fließbänder, Effektverteiler und Strommasten enthalten sind, damit das Modul ohne zusätzliche Bauten unabhängig arbeiten kann. Unabhängigkeit zwischen den Modulen meint, dass die Module nur über die vorher festgelegten Schnittstellen (Strom und das Schienennetz) miteinander interagieren und daher einfach austauschbar sind. Um diese Idee besser umzusetzen, werden in den folgenden Beispielen die LTN - Logistic Train Network, die AAI Containers &amp; Warehouses und die Miniloader Mod verwendet. Alle Blaupausen für die gezeigten Beispiele sind hier erhältlich. Schnittstellendesign Bevor wir damit beginnen, erste Subfabriken zu designen, müssen wir erst ein universelles Logistiknetz als Schnittstelle zwischen den Modulen ausdenken. Obwohl ein Main-Bus oder Logistikroboter als solches System fungieren können, übertrifft ein Cityblock-Schienensystem diese Lösungen in Durchsatz, Wiederverwendbarkeit und allgemeiner Coolheit. In Vanilla können Züge nur einen vorher festgelegten Fahrplan abarbeiten, was nicht besonders flexibel und „logistisch“ ist. Das ist der Punkt, an dem Logistic Train Network (zu Deutsch: „Logistisches Zugnetzwerk“) zum tragen kommt. Mit LTN werden Züge in einem Depot geparkt, so wie Logistikroboter in Hangars warten. Wenn es zu einer logistischen Nachfrage kommt, wählt das System einen passenden Zug aus dem Depot aus und erstellt einen passenden Fahrplan, um die geforderten Gegenstände von der anbietenden Station abzuholen und zur nachfragenden Station zu transportieren, um danach wieder ins Depot zurückzukehren. Aber im Gegensatz zu Logistikrobotern, die sich ähnlich verhalten, können sich Züge nicht selbstständig be- &amp; entladen, so das Greifer an den Bahnhöfen benötigt werden. LTN ist leistungsstärker als Logistikroboter, da eine große Menge Gegenstände oder Flüssigkeiten mit hoher Geschwindigkeit transportiert werden können. In diesem Beispiel verwende ich ein zweigleisiges Linksverkehr-Schienensystem, welches mir erlaubt, Signale zwischen den Schienen zu platzieren. An Kreuzungen kann gerade aus gefahren oder links abgebogen werden, hautsächlich um Platz zu sparen. Die meisten Stationen haben ein Zuglimit von zwei, sodass maximal ein Zug außerhalb des Bahnhofes warten muss. Abschnitte, welche durch wartende Züge blockiert werden, können durch das vollständig verbundene Netzwerk umfahren werden. Nur die zentrale Zelle wird ein Produktionsmodul enthalten. Diese Module werden so in einem Raster angeordnet, dass der Platz zwischen den Modulen für Schienen, Solargeneratoren und Logistiknetztrennung genutzt werden kann. Roboter sind gut über kurze Entfernungen, aber katastrophal über lange Strecken, weswegen dort Züge zum Einsatz kommen. Über getrennte Logistiknetze werden die Roboter daran gehindert, an solchen Langstreckenflügen teilzunehmen. Als Zuggröße habe ich mich für den kleinstmöglichen Zug mit einer Lokomotive und einem Wagon entschieden, um die Größe zu minimieren und mir die gleichmäßige Beladung an den Bahnhöfen zu sparen. Aufgetankt werden die Züge im Depot, wohin sie nach jeder Fahrt zurückkehren. Treibstoff fürs auftanken der Züge wird auch über LTN angefordert. Moduldesign Beginnen wir mit dem einfachsten Beispiel, Eisenzahnräder: Einem Rezept mit einem einzelnen benötigten Rohstoff und einem einzelnen Produkt. Eine Logistikstation an der unteren Kante fordert 8000 Eisenplatten an und eine Logistikstation oben bietet die fertigen Produkte (hier also Eisenzahnräder) aus dem angeschlossenen Warenhaus im LTN zur Abholung an. Einfaches Eisenzahnradmodul. Die Rohmaterialstation befindet sich unten, die Produktstation oben. Da die Ein- und Ausgänge dieses Moduls über Züge realisiert werden, werden Modifikationen und Verbesserungen innerhalb des Produktionszweiges im Modul keinen Einfluss auf andere Module haben. So können wir zu einem Design mit Effektverteilern wechseln, ohne andere Module in der Fabrik zu beeinflussen. Eisenzahnradmodul mit Effektverteilern. Die Stationen sind unverändert, nur die Produktionslinie dazwischen wurde verändert. Als nächstes betrachten wir das etwas komplexere Rezept von erweiterten Schaltkreisen. Indem wir die Logistikstation so einstellen, dass mehrere Rohstoffe angefordert werden, können wir alle Rohstoffe an eine Station anliefern lassen. So sind alle Rohstoffe in einem Warenhaus zusammen, und wir können filternde Belader (funktionieren ähnlich wie filternde Greifer) verwenden, um die Materialien auf getrennte Fließbänder aufzuteilen, um sie den Montagemaschinen zuzuführen. Modul für erweiterte Schaltkreise. Es wird eine einzelne Station verwendet, um mehrere verschiedene Rohstoffe anzufordern. Das funktioniert genauso für Rezepte, welche Flüssigkeiten benötigen, nur das wir dort dann Kesselwägen verwenden müssen. Ölraffineriemodul. Durch Kontrolle der Pumpe durch das LTN-Signal ist es möglich, mehrere Flüssigkeiten zu verladen, ohne dass sie sich vermischen. Es gibt auch einige unkonventionelle Rezepte, wie Forschung, ein Dampfkraftwerk oder Raketensilos. Forschungsmodul, welches keine Produktstation benötigt. Dampfkraftwerk welches mit Landaufschüttung auf Wasser platziert wird. Oder du verwendest Landfill Everything um den Bauplatz vorzubereiten. Raketensilomodul. Unabhängige Roboterlogistiknetzwerke werden innerhalb des Moduls verwendet. Die untere Station ist für die Materialien, die benötigt werden, um Raketen zu bauen, die rechte für die Nutzlast, also im Regelfall Satelliten. Vor- und Nachteile von ROFL ROFL‘s Zielgruppe sind Menschen mit Ingenieursmäßigen Denken. Es vereinfacht es, Probleme aufzuteilen und einzeln abzuarbeiten. Wenn ein bestimmtes Rezept hergestellt werden muss, kann man einfach im Schienennetz die Stationen für die benötigten Materialien passend einstellen und dann die Produktionsanlage dazwischen konstruieren. Falls die bestehende Anlage nicht ausreicht, kannst du einfach die Anlage kopieren und ein weiteres Mal einfügen, ohne dir viel Arbeit mit dem Anschließen zu machen. ROFL ist nicht für perfekte Produktion optimiert, da es keine Produktionslinie mit perfekten Verhältnissen darstellt, und so ist es typisch, das die Anlage manchmal nicht produziert, aufgrund fehlender Rohstoffe oder verstopfter Ausgänge. Jeder Artikel muss auf einen Waggon geladen und von diesem entladen werden, was eine Menge Input- und Output-Engpässe mit sich bringt, am typischsten bei Kupferdraht, wo die Anzahl der Produkte die Anzahl der Rohstoffe übersteigt und die Anzahl der Stapel hoch ist, während die Nachfrage riesig ist. Es gibt auch ein großes Rückhaltevolumen, da in den Warenhäusern in jedem Modul viele Gegenstände vorgehalten werden. So ist es schwierig, Gegenstände mit Unterproduktion zu erkennen (es ist aber sicher Eisenerz). Das Schienennetz um die einzelnen Module zu verbinden ist teuer, und stellt ein erhebliches Unfallrisiko dar (zum Glück gibt’s den Spidertron). Abschlussgedanken ROFL ist eher ein Denkmuster, um komplexe Probleme herunterzubrechen, anstatt ein fertiges Blaupausenbuch. Die oben beschriebenen Beispiele sind nur eine Lösung, die ROFL als Grundgedanke verwendet. LTN zu verwenden, um ein Schienennetz zu bauen, wird von einigen als ein bisschen schummelnd gesehen, aber diese Idee kann auch für Mainbus-Systeme und mehr verwendet werden. Es wird nie einen „korrekten“ Weg geben, Factorio zu spielen, und diese Vielfalt ist das, was das Factorio so großartig macht. Ein Space Exploration Spielstand, der das oben erklärte ROFL-Schema verwendet. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","url":"https://alt-f4.blog/ALTF4-28/","@type":"BlogPosting","headline":"Alt-F4 #28 - ROFL","dateModified":"2021-03-19T00:00:00+00:00","datePublished":"2021-03-19T00:00:00+00:00","author":{"@type":"Person","name":"Ph.X"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/28/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/28/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-28/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-28/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-28/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-28/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-28/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-28/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-28/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-28/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-28/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-28/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #28 - ROFL  <author>19.03.2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>Ph.X</em>,
+
+
+
+editiert von <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS</em>,
+
+
+
+lektoriert von <em>dexteritas, Nanogamer7</em>
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<details class="panel toc">
+  <summary>
+    <h2>Inhaltsverzeichnis</h2>
+  </summary>
+  <div class="panel-inset mb0">
+    <ul>
+  <li>
+<a href="#rezept-orientiertes-factorio-leben-phx">Rezept-Orientiertes Factorio Leben <author>Ph.X</author></a>
+    <ul>
+      <li><a href="#was-ist-rofl">Was ist „ROFL“</a></li>
+      <li><a href="#schnittstellendesign">Schnittstellendesign</a></li>
+      <li><a href="#moduldesign">Moduldesign</a></li>
+      <li><a href="#vor--und-nachteile-von-rofl">Vor- und Nachteile von ROFL</a></li>
+      <li><a href="#abschlussgedanken">Abschlussgedanken</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+  </div>
+</details>
+
+
+
+
+<p>In dieser schönen Märzwoche wird uns Ph.X in seinem ersten Artikel sein aufgegliedertes System für eine modulare Fabrik mithilfe isolierter Module, welche durch ein Logistic Train Network verbunden werden, darstellen. Inspiriert von Erfahrungen aus der Software-Entwicklung nutzt Ph.X Konzepte der Modularen Programmierung zu seinem Vorteil.</p>
+
+<p>Außerdem bieten wir jetzt einen abonnierbaren Email-Newsletter an. Falls du nicht auf Reddit, dem Forum oder unserem <a href="https://discord.gg/nxnCFkb">Discord</a> unterwegs bist, gibt es jetzt die beliebte Möglichkeit eines Email-Newsletters. Gib einfach <a href="https://www.freelists.org/list/alt-f4">hier</a> deine Mailadresse an, und du wirst jeden Freitag informiert, wenn es eine neue Ausgabe gibt. Wir werden deine Adresse natürlich nur für Alt-F4 verwenden, und dich nicht mit anderem irrelevanten Dingen zumüllen.</p>
+      <h2 id="rezept-orientiertes-factorio-leben-phx">
+        
+        
+            <a href="#rezept-orientiertes-factorio-leben-phx" class="anchor" style="text-decoration: none;">Rezept-Orientiertes Factorio Leben <author>Ph.X</author></a>
+          
+        
+      </h2>
+    
+
+<p>Factorio besitzt ein komplexes Netzwerk aus Produktionsketten (Spaghetti), welche das Spiel zu einer spannenden Herausforderung machen. Dieses komplexe Konstruktionsproblem ist ähnlich zu Herausforderungen, die in der Programmierung vorkommen, deswegen ist es denke ich sinnvoll, Erfahrungen aus diesem Feld zu verwenden, um das Spielerlebnis zu verbessern.</p>
+      <h3 id="was-ist-rofl">
+        
+        
+            <a href="#was-ist-rofl" class="anchor" style="text-decoration: none;">Was ist „ROFL“</a>
+          
+        
+      </h3>
+    
+
+<p>Alle mit etwas Programmiererfahrung haben wahrscheinlich schonmal von <del><a href="https://de.wikipedia.org/wiki/Objektorientierte_Programmierung">objektorientierter </a></del> <a href="https://de.wikipedia.org/wiki/Modulare_Programmierung">modularer Programmierung</a> gehört. Dieses Paradigma versucht Rezept-Orientiertes Factorio Leben (ROFL) nachzustellen. Modulare Programmierung ist ein Paradigma, bei dem das Programm in einzelne, unabhängige und austauschbare Module aufgeteilt wird, sodass jedes Modul alles beinhaltet, um einen einzelnen Aspekt des Programms auszuführen. In ROFL unterteilen wir die Fabrik in unabhängige und austauschbare Subfabriken, die sich immer nur um genau ein Rezept kümmern.</p>
+
+<p>Wie in den meisten Philosophien, müssen wir den <a href="https://de.wikipedia.org/wiki/Arch%C4%93">Archē</a> als Ursprung für alles finden. In unserem Fall ist das das Rezept. Erweiterte Schaltkreise, beispielsweise, können in jeder Montagemaschine gefertigt werden, welche möglicherweise von verschiedenen Modulen beeinflusst werden, wo die benötigten Rohstoffe über Fließbänder, Logistikkisten oder eine angrenzende Kupferkabelfabrik geliefert werden, aber unabhängig davon, wie sich diese anderen Faktoren verändern, das Rezept selbst bleibt immer gleich. Es werden immer Kupferkabel, elektronische Schaltkreise und Plastik benötigt. Das Rezept stellt somit ein Atom in Factorio dar, eine unteilbare Einheit, die nicht weitervereinfacht und aufgeteilt werden kann.</p>
+
+<p>Basierend auf einem bestimmten Rezept wird eine Subfabrik in ein Modul verpackt. Ein zusätzliches Logistiksystem wird verwendet, um Material anzuliefern und fertige Produkte anzutransportieren. Das Ziel ist, eine hohe Kohäsion innerhalb des Moduls zu erzielen und gleichzeitig die Module möglichst unabhängig voneinander zu halten. Hohe Kohäsion bedeutet, dass in dem Modul alle benötigten Montagemaschinen, Greifer, Fließbänder, Effektverteiler und Strommasten enthalten sind, damit das Modul ohne zusätzliche Bauten unabhängig arbeiten kann. Unabhängigkeit zwischen den Modulen meint, dass die Module nur über die vorher festgelegten Schnittstellen (Strom und das Schienennetz) miteinander interagieren und daher einfach austauschbar sind.</p>
+
+<p>Um diese Idee besser umzusetzen, werden in den folgenden Beispielen die <a href="https://mods.factorio.com/mods/Optera/LogisticTrainNetwork">LTN - Logistic Train Network</a>, die <a href="https://mods.factorio.com/mod/aai-containers">AAI Containers &amp; Warehouses</a> und die <a href="https://mods.factorio.com/mod/miniloader">Miniloader</a> Mod verwendet. Alle Blaupausen für die gezeigten Beispiele sind <a href="https://media.alt-f4.blog/ALTF4/28/rofl_example_blueprint.txt">hier</a> erhältlich.</p>
+      <h3 id="schnittstellendesign">
+        
+        
+            <a href="#schnittstellendesign" class="anchor" style="text-decoration: none;">Schnittstellendesign</a>
+          
+        
+      </h3>
+    
+
+<p>Bevor wir damit beginnen, erste Subfabriken zu designen, müssen wir erst ein universelles Logistiknetz als Schnittstelle zwischen den Modulen ausdenken. Obwohl ein Main-Bus oder Logistikroboter als solches System fungieren können, übertrifft ein Cityblock-Schienensystem diese Lösungen in Durchsatz, Wiederverwendbarkeit und allgemeiner <em>Coolheit</em>.</p>
+
+<p>In Vanilla können Züge nur einen vorher festgelegten Fahrplan abarbeiten, was nicht besonders flexibel und „logistisch“ ist. Das ist der Punkt, an dem Logistic Train Network (zu Deutsch: „<em>Logistische</em>s Zugnetzwerk“) zum tragen kommt. Mit LTN werden Züge in einem Depot geparkt, so wie Logistikroboter in Hangars warten. Wenn es zu einer logistischen Nachfrage kommt, wählt das System einen passenden Zug aus dem Depot aus und erstellt einen passenden Fahrplan, um die geforderten Gegenstände von der anbietenden Station abzuholen und zur nachfragenden Station zu transportieren, um danach wieder ins Depot zurückzukehren. Aber im Gegensatz zu Logistikrobotern, die sich ähnlich verhalten, können sich Züge nicht selbstständig be- &amp; entladen, so das Greifer an den Bahnhöfen benötigt werden. LTN ist leistungsstärker als Logistikroboter, da eine große Menge Gegenstände oder Flüssigkeiten mit hoher Geschwindigkeit transportiert werden können.</p>
+
+<p>In diesem Beispiel verwende ich ein zweigleisiges Linksverkehr-Schienensystem, welches mir erlaubt, Signale zwischen den Schienen zu platzieren. An Kreuzungen kann gerade aus gefahren oder links abgebogen werden, hautsächlich um Platz zu sparen. Die meisten Stationen haben ein Zuglimit von zwei, sodass maximal ein Zug außerhalb des Bahnhofes warten muss. Abschnitte, welche durch wartende Züge blockiert werden, können durch das vollständig verbundene Netzwerk umfahren werden.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rail_grid.jpg" alt="Schienennetz" style="max-width: ; max-height: ">
+      
+      <figcaption>Nur die zentrale Zelle wird ein Produktionsmodul enthalten.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Diese Module werden so in einem Raster angeordnet, dass der Platz zwischen den Modulen für Schienen, Solargeneratoren und Logistiknetztrennung genutzt werden kann. Roboter sind gut über kurze Entfernungen, aber katastrophal über lange Strecken, weswegen dort Züge zum Einsatz kommen. Über getrennte Logistiknetze werden die Roboter daran gehindert, an solchen Langstreckenflügen teilzunehmen.</p>
+
+<p>Als Zuggröße habe ich mich für den kleinstmöglichen Zug mit einer Lokomotive und einem Wagon entschieden, um die Größe zu minimieren und mir die gleichmäßige Beladung an den Bahnhöfen zu sparen. Aufgetankt werden die Züge im Depot, wohin sie nach jeder Fahrt zurückkehren.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rail_yard_module.jpg" alt="Bahnbetriebsmodul" style="max-width: ; max-height: ">
+      
+      <figcaption>Treibstoff fürs auftanken der Züge wird auch über LTN angefordert.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="moduldesign">
+        
+        
+            <a href="#moduldesign" class="anchor" style="text-decoration: none;">Moduldesign</a>
+          
+        
+      </h3>
+    
+
+<p>Beginnen wir mit dem einfachsten Beispiel, Eisenzahnräder: Einem Rezept mit einem einzelnen benötigten Rohstoff und einem einzelnen Produkt. Eine Logistikstation an der unteren Kante fordert 8000 Eisenplatten an und eine Logistikstation oben bietet die fertigen Produkte (hier also Eisenzahnräder) aus dem angeschlossenen Warenhaus im LTN zur Abholung an.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rofl_gear_module.jpg" alt="Eisenzahnradmodul" style="max-width: ; max-height: ">
+      
+      <figcaption>Einfaches Eisenzahnradmodul. Die Rohmaterialstation befindet sich unten, die Produktstation oben.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Da die Ein- und Ausgänge dieses Moduls über Züge realisiert werden, werden Modifikationen und Verbesserungen innerhalb des Produktionszweiges im Modul keinen Einfluss auf andere Module haben. So können wir zu einem Design mit Effektverteilern wechseln, ohne andere Module in der Fabrik zu beeinflussen.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rofl_gear_module_2.jpg" alt="Alternatives Eisenzahnradmodul" style="max-width: ; max-height: ">
+      
+      <figcaption>Eisenzahnradmodul mit Effektverteilern. Die Stationen sind unverändert, nur die Produktionslinie dazwischen wurde verändert.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Als nächstes betrachten wir das etwas komplexere Rezept von erweiterten Schaltkreisen. Indem wir die Logistikstation so einstellen, dass mehrere Rohstoffe angefordert werden, können wir alle Rohstoffe an eine Station anliefern lassen. So sind alle Rohstoffe in einem Warenhaus zusammen, und wir können filternde Belader (funktionieren ähnlich wie filternde Greifer) verwenden, um die Materialien auf getrennte Fließbänder aufzuteilen, um sie den Montagemaschinen zuzuführen.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/advanced_circuit_module.jpg" alt="Modul für erweiterte Schaltkreise" style="max-width: ; max-height: ">
+      
+      <figcaption>Modul für erweiterte Schaltkreise. Es wird eine einzelne Station verwendet, um mehrere verschiedene Rohstoffe anzufordern.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Das funktioniert genauso für Rezepte, welche Flüssigkeiten benötigen, nur das wir dort dann Kesselwägen verwenden müssen.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/oil_refinery_module.jpg" alt="Ölraffineriemodul" style="max-width: ; max-height: ">
+      
+      <figcaption>Ölraffineriemodul. Durch Kontrolle der Pumpe durch das LTN-Signal ist es möglich, mehrere Flüssigkeiten zu verladen, ohne dass sie sich vermischen.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Es gibt auch einige unkonventionelle Rezepte, wie Forschung, ein Dampfkraftwerk oder Raketensilos.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/research_centre_module.jpg" alt="Forschungsmodul" style="max-width: ; max-height: ">
+      
+      <figcaption>Forschungsmodul, welches keine Produktstation benötigt.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/thermal_power_plant_module.jpg" alt="Wärmekraftwerksmodul" style="max-width: ; max-height: ">
+      
+      <figcaption>Dampfkraftwerk welches mit Landaufschüttung auf Wasser platziert wird. Oder du verwendest <a href="https://mods.factorio.com/mod/LandfillEverything">Landfill Everything</a> um den Bauplatz vorzubereiten.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/28/rocket_silo_module.jpg" alt="Raketensilomodul" style="max-width: ; max-height: ">
+      
+      <figcaption>Raketensilomodul. Unabhängige Roboterlogistiknetzwerke werden innerhalb des Moduls verwendet. Die untere Station ist für die Materialien, die benötigt werden, um Raketen zu bauen, die rechte für die Nutzlast, also im Regelfall Satelliten.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="vor--und-nachteile-von-rofl">
+        
+        
+            <a href="#vor--und-nachteile-von-rofl" class="anchor" style="text-decoration: none;">Vor- und Nachteile von ROFL</a>
+          
+        
+      </h3>
+    
+
+<p>ROFL‘s Zielgruppe sind Menschen mit Ingenieursmäßigen Denken. Es vereinfacht es, Probleme aufzuteilen und einzeln abzuarbeiten. Wenn ein bestimmtes Rezept hergestellt werden muss, kann man einfach im Schienennetz die Stationen für die benötigten Materialien passend einstellen und dann die Produktionsanlage dazwischen konstruieren. Falls die bestehende Anlage nicht ausreicht, kannst du einfach die Anlage kopieren und ein weiteres Mal einfügen, ohne dir viel <a href="https://alt-f4.blog/de/ALTF4-22/#das-ziel-von-factorio">Arbeit mit dem Anschließen</a> zu machen.</p>
+
+<p>ROFL ist nicht für perfekte Produktion optimiert, da es keine Produktionslinie mit perfekten Verhältnissen darstellt, und so ist es typisch, das die Anlage manchmal nicht produziert, aufgrund fehlender Rohstoffe oder verstopfter Ausgänge. Jeder Artikel muss auf einen Waggon geladen und von diesem entladen werden, was eine Menge Input- und Output-Engpässe mit sich bringt, am typischsten bei Kupferdraht, wo die Anzahl der Produkte die Anzahl der Rohstoffe übersteigt und die Anzahl der Stapel hoch ist, während die Nachfrage riesig ist. Es gibt auch ein großes Rückhaltevolumen, da in den Warenhäusern in jedem Modul viele Gegenstände vorgehalten werden. So ist es schwierig, Gegenstände mit Unterproduktion zu erkennen (es ist aber sicher Eisenerz). Das Schienennetz um die einzelnen Module zu verbinden ist teuer, und stellt ein erhebliches Unfallrisiko dar (zum Glück gibt’s den Spidertron).</p>
+      <h3 id="abschlussgedanken">
+        
+        
+            <a href="#abschlussgedanken" class="anchor" style="text-decoration: none;">Abschlussgedanken</a>
+          
+        
+      </h3>
+    
+
+<p>ROFL ist eher ein Denkmuster, um komplexe Probleme herunterzubrechen, anstatt ein fertiges Blaupausenbuch. Die oben beschriebenen Beispiele sind nur eine Lösung, die ROFL als Grundgedanke verwendet. LTN zu verwenden, um ein Schienennetz zu bauen, wird von einigen als ein bisschen schummelnd gesehen, aber diese Idee kann auch für Mainbus-Systeme und mehr verwendet werden. Es wird nie einen „korrekten“ Weg geben, Factorio zu spielen, und diese Vielfalt ist das, was das Factorio so großartig macht.</p>
+
+<figure>
+		<div class="aspect-ratio">
+			<iframe src="https://media.alt-f4.blog/ALTF4/28/mapshot/index.html" frameborder="0"></iframe>
+		</div>
+		<figcaption>Ein Space Exploration Spielstand, der das oben erklärte ROFL-Schema verwendet.</figcaption>
+</figure>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://discord.gg/nxnCFkb">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 1920) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=97104">
+    Im Factorio-Forum diskutieren
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/m8fyz9/altf4_28_rofl/">
+    Auf Reddit diskutieren
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-27/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/de/ALTF4-29/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
