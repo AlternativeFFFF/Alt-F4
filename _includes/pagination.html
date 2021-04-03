@@ -5,11 +5,14 @@
     {% assign count = count | plus: 1 %}
   {% endunless %}
 {% endfor %}
-{% assign mod = count | modulo: 10 %}
-{% assign count = count | divided_by: 10 %}
+{% assign mod = count | modulo:  site.paginate %}
+{% assign count = count | divided_by: site.paginate %}
 {% if mod > 0 %}
   {% assign count = count | plus: 1 %}
 {% endif %}
+{% assign count = count | plus: 1 %}
+{% assign pre_last = paginator.total_pages | minus: 1 %}
+
 
 {% if count > 1 %}
 <div class="panel-inset text-right mb0 p4 flex flex-end flex-wrap">
@@ -29,20 +32,20 @@
 
   <!-- Page Numbers -->
   {% for page in (1..count) %}
-  {% if page == paginator.page %}
-  <a class="button square-sm  active">
-    {{ page }}
-  </a>
-  {% elsif page == 1 %}
-  <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="button square-sm">{{ page }}</a>
-  {% else %}
-  <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}"
-    class="button square-sm">{{ page }}</a>
-  {% endif %}
-  {% endfor %}
-  <!-- <div class="square-sm pagination-dots">
+    {% if page == paginator.page %}
+      <a class="button square-sm  active">{{ page }}</a>
+    {% elsif page == 1 %}
+      <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="button square-sm">{{ page }}</a>
+    {% else %}
+      {% if page == paginator.next_page or page == paginator.previous_page or page == paginator.total_pages or page == 2 or page == 3 %}
+        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="button square-sm">{{ page }}</a>
+      {% elsif page == 4 or page == pre_last %}
+        <div class="square-sm pagination-dots">
           <i class="fas fa-ellipsis-h"></i>
-        </div> -->
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
 
   <!-- Next Button -->
   {% if paginator.next_page %}
