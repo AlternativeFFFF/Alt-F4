@@ -14,10 +14,18 @@ It looked something like this:
 
 [insert old-dissector.png here]
 
-Sure, it would decode the framing and reassemble fragemented packets, but unless you happen to know what weird, odd, strange and coloured data means it just wouldn't be much of use.
+Sure, it would decode the framing and reassemble fragemented packets, but unless you happen to know what weird, odd, strange and coloured data means it just wouldn't be of much use.
 And this is also one of the reasons I haven't released this dissector, it's certainly better than looking at hex data, but not by much.
 It doesn't give you the sort of deep insights into the inner workings of the Factorio protocol that you'd expect from any of the other protocol dissectors Wireshark has.
 And so it became that this project was put on shelf not to be seen again.
+
+In the past _Twinsen_ has posted about making a dissector for Wireshark in [FFF #196](https://factorio.com/blog/post/fff-196).
+The post contains quite a lot of internal information about the protocol which I could have used when I made my dissector, but I chose not to as I wanted to make mine without relying on internal information from the game source code.
+An obvious question right now though is why not use _Twinsen_'s dissector instead of writing my own?
+Well for a start it's not publicly available.
+But more importantly _it can't be made publicly available_.
+The way _Twinsen's_ dissector worked was to build Factorio as a shared library, and then build a custom version of Wireshark that linked to that shared library.
+But Wireshark is licensed under the GPL and you are not allowed to distribute GPL code that links with proprietary code, so to distribute the dissector Wube would have to release Factorio under the GPL which is obviously not going to happen.
 
 But a few weeks ago, I realized something.
 The Windows version of Factorio ships with a .pdb file.
