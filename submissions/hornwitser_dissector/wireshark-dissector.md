@@ -12,7 +12,7 @@ It just wasn't worth all the effort of doing it.
 You see the output of my dissector wasn't all that useful for telling what's going on.
 It looked something like this:
 
-[insert old-dissector.png here]
+![](media/old-dissector.png)
 
 Sure, it would decode the framing and reassemble fragemented packets, but unless you happen to know what weird, odd, strange and coloured data means it just wouldn't be of much use.
 And this is also one of the reasons I haven't released this dissector, it's certainly better than looking at hex data, but not by much.
@@ -40,9 +40,10 @@ And once I had that it was pretty easy to find the names of the structures from 
 I could also get the enum definitions to translate numeric values to logical names for the fields that use them.
 And after some tidying up of the code and how the data was presented I was able to make the dissector output look like this:
 
-[insert new-dissector.png here]
+![](media/new-dissector.png)
 
 No longer does one have to guess what an "Odd Blue" value is, it's clearly it's the id of an InputActionSegment.
-But also the type is translated from the machine code looking 0xa2 into the much more friendly name "ServerCommand".
-
-[Insert note here and link to release on Github once I get a goahead from Wube about releasing this.]
+And you can alse see the type is translated from the machine code looking 0xa2 into the much more friendly name "ServerCommand".
+But by doing this my dissector is no longer a cleanly separate thing from Factorio and how that affects the legallites around distributing this dissector I really have no clue.
+I asked the Factorio developers and they said they were fine with me releasing this to the public.
+So if you want to try it out yourself or add it to your toolbox you can find it [in my repository for it on GitHub](https://github.com/Hornwitser/factorio_dissector)
