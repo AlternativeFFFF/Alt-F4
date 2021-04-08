@@ -2,8 +2,13 @@
 
 This is a project that started around the Gridlock Cluster.
 I was investigating some issues with clients randomly dropping from the game and that brought me into examining packet traces using Wireshark.
-But the issue was all I could see was hexadecimal goobelygook being sent between the server and the client.
-And I thought for myself, how difficult would it be to write a plugin for Wireshark to decode it?
+These packet traces are basically binary logs of packets that are sent and received by the network card of the computer that captured it.
+To understand what this binary data means Wireshark decodes it with protocol dissectors, something it has for protocols spanning all facets of networking.
+But it doesn't come with a dissector for Factorio so when I used Wireshark on Factorio traffic all I could see was hexadecimal goobelygook being sent between the server and the client.
+
+After looking at bytes going back and fourth between the server and the client I thought for myself, how difficult would it be to write a dissector for Wireshark to decode this data?
+I looked into what was needed and found the easiest way to be writing it in Lua which can be loaded as a plugin by Wireshark, in a system not too dissimilar to Factorio mods.
+And so I it was that I started staring at bytes in hexadecimal, comparing between them and seeking to find the structure they were put together in.
 It became a bit of a personal challenge to figure out what each of the bytes meant and have them decoded into Wireshark.
 I think I worked on the dissector for around 2 weeks before I sort of gave up on it.
 
@@ -28,8 +33,9 @@ The way _Twinsen's_ dissector worked was to build Factorio as a shared library, 
 But Wireshark is licensed under the GPL and you are not allowed to distribute GPL code that links with proprietary code, so to distribute the dissector Wube would have to release Factorio under the GPL which is obviously not going to happen.
 
 But a few weeks ago, I realized something.
-The Windows version of Factorio ships with a .pdb file.
-It's stuffed with debug symbols, the kind of data you'd need to attach a debugger to Factorio and inspect the values of variables used in the code.
+The Windows version of Factorio ships with a .pdb file which contain debug symbols.
+The developers use it to generate symbolized stack traces when the game crashes so that they can see where in the source code the crash happened.
+But it's stuffed with other kinds of debugging data too, like the kind need to attach a debugger to Factorio and inspect the values of variables stored in memory.
 And that means it contains type information.
 Type information means the structure of the data as defined in the code along with the names of fields and enums.
 The name of fields are very useful as it's the label developers put on a piece of data in order to reference it in the code.
@@ -47,3 +53,7 @@ And you can alse see the type is translated from the machine code looking 0xa2 i
 But by doing this my dissector is no longer a cleanly separate thing from Factorio and how that affects the legallites around distributing this dissector I really have no clue.
 I asked the Factorio developers and they said they were fine with me releasing this to the public.
 So if you want to try it out yourself or add it to your toolbox you can find it [in my repository for it on GitHub](https://github.com/Hornwitser/factorio_dissector)
+
+Personally I've used it to investigate networking issues with Factorio, from clients getting disconnected to nat punching not working and I've made some bug reports based on my findings that have lead to bugfixes in the game.
+With the move over to using names from the Factorio debug symbols the data it shows has become really clear and informative, at least compared to what it used to show.
+It's still more of a tool for people experienced with computer networking and Factorio internals though, so don't expect to understand much from it if you're not familiar with these things.
