@@ -4,24 +4,20 @@ Welcome back to Complexity Corner, where we look over the less used or more comp
 
 What is it?
 
-The [Programmable Speaker](https://wiki.factorio.com/Programmable_speaker) is a building of sorts that takes up only one tile.  When connected to a circuit, it can make sounds that you'll hear in game based on the signals on that circuit.  You can adjust the volume, pick a specific sound or note for it to play (or let the circuit determine the note), tell it to be audible no matter how far away you are, and even show a custom alert on the map.
+The [Programmable Speaker](https://wiki.factorio.com/Programmable_speaker) is a 'building' that takes up only one tile.  When connected to a circuit, it can make sounds that you'll hear in game based on the signals on that circuit.  You can adjust the volume, pick a specific sound for it to play, tell it to be audible no matter how far away you are, and even show a custom alert on the map.  The speaker is unlocked with the Circuits technology, which is so early in the tech tree that it could be your first green tech.
 
 What results can it give?
 
-Sounds!  Okay, that one was kind of a gimme.  Since you can set up musical notes on the speakers, some users like to make music from a string of speakers.  The easy way to do this is a string of speakers connected to a belt with an item rolling down the belt activating each one in turn, but there have been some pretty amazing musical contraptions built.
-
-[show that midi player the one guy on reddit made]
-
-The sounds can also hold a practical use as well.  If you hook a speaker up to your factory and set global playback, then have it give a custom alert, you can create warnings for yourself when certain reserves run low or...  well pretty much anything you want to alert yourself of.  You even get to give it a custom icon and title, because you'll absolutely forget what that sound means.
+Sounds!  Okay, that one was kind of a gimme.  While speakers are best known for [the musical contraptions](https://miditorio.com/) people build with them, they hold a practical use as well.  If you hook a speaker up to your factory and set global playback and an alert icon, you can design custom alerts for just about anything.  You even get to give it a custom icon and title, because you'll absolutely forget what the blaring klaxon is for.  This can help you catch problems before they become problems, like blackout spirals in your power grid.
 
 Where should it be used?
 
-There's two main practical uses I want to call attention to here.  The first is a 'low fuel' alarm.  Let's say for example you have a nuclear power plant.  In this example, you have a simple setup that runs the nuclear fuel cells to the reactors by belt.  All you need to do is connect the speaker to the belt right before the reactors, and tell it to sound an alarm if there's no fuel cells on that belt piece.  As long as you have fuel cells waiting on the belt you'll be fine, but as soon as you don't the alarm will sound, letting you know a blackout is imminent!  This setup can also be used on any resource that you have a buffer for (like crude oil), just by hooking the wire up to a chest or tank.
+Speaking of blackout spirals, try placing a speaker next to the coal belt leading to your boilers and hooking it to the belt with a wire.  A full belt holds 8 items, so if you set the speaker to trigger on less than 8 coal, you'll get an alarm if any gaps show up in your coal belt.  Set this alarm to global playback and giving it a name like "Check on your coal mining!" and you'll get the reminder even if you're halfway across the factory.
 
 [example alarm setup]
 
-A completely different type of alarm that you will absolutely thank me for after you've started using it is a train crossing alarm.  Hook a speaker up to a rail signal on your track where you like to cross, and one more signal in each direction (make sure you get the signals on both sides of the track).  Tell it to sound a local alarm if any of the signals are yellow.  Next time you head towards that rail and there's a train coming, you'll get a nice loud siren telling you to wait a moment before crossing!
+A completely different type of alarm is a train crossing alarm.  Hook a speaker up to a rail signal on your track where you like to cross, plus one more signal in each direction (make sure you get the signals on both sides of the track).  Tell it to sound a local alarm if any of the signals are yellow.  Next time you head towards that rail and there's a train coming, you'll get a nice loud siren telling you to wait a moment before crossing!
 
 [train crossing setup]
 
-There's plenty more uses for speakers, as useful as they are creative.  I hope this inspires you to come up with some of your own and prevents future blackouts.  Until next time, I'll see you on the factory floor...  and watch your step!
+There's plenty more uses for speakers, as practical as they are creative.  I hope this inspires you to come up with some of your own and prevents future blackouts.  Until next time, I'll see you on the factory floor...  and watch your step!
