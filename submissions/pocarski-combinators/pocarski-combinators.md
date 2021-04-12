@@ -8,8 +8,6 @@ There are 4 main components of the circuit network: wires, constant combinators,
 
 Constant combinators continuously output whatever you set them to (and also don't need power); decider combinators output some signal when a certain logical condition is met; arithmetic combinators perform mathematical operations. Wires act like a sort of "signal cloud", where all signals being output into a wire can be read by everything connected to it. Red and green wires have identical functionality, but can be connected to the same device without interacting with each other.
 
-There are also special symbols "anything", "everything" and "each". Those can be used to work with multiple signals at once, instead of a single value. I will get into how to use them later.
-
 ### Basic elements
 
 Let's look at 3 very simple single-combinator modules, which are widely used in circuits. These modules are: the monostable, the RS latch and the counter. Here's what they look like:
