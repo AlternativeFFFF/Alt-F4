@@ -23,7 +23,10 @@
   text-align: left;
 }
 
-.button i {
+.button i,
+.button-green i,
+.button-green-right i,
+.button-red i {
   margin-right: 0;
 }
 
@@ -56,7 +59,8 @@
 
 .button.disabled,
 .button.disabled:hover,
-.button.disabled:active {
+.button.disabled:active,
+.button.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;
@@ -69,32 +73,10 @@
 }
 
 .button-green {
+  @extend .button;
   background-color: #5eb663;
-  padding: 10px 12px;
-  font-size: 100%;
-  text-align: left;
-  color: #000;
-  font-weight: 600;
-  display: inline-block;
-  vertical-align: baseline;
-  min-width: 128px;
-  border: none;
-  line-height: inherit;
-  white-space: nowrap;
   box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 10px 2px -8px #95df99,
     inset 0 10px 2px -8px #163218, inset 0 -9px 2px -8px #000, 0 0 4px 0 #000;
-  position: relative;
-  margin-right: 14px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  height: 36px;
-  text-align: left;
-}
-
-.button-green i {
-  margin-right: 0;
 }
 
 .button-green:hover,
@@ -126,7 +108,8 @@
 
 .button-green.disabled,
 .button-green.disabled:hover,
-.button-green.disabled:active {
+.button-green.disabled:active,
+.button-green.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;
@@ -176,10 +159,6 @@
   background-size: contain;
 }
 
-.button-green-right i {
-  margin-right: 0;
-}
-
 .button-green-right:hover,
 .button-green-right:focus,
 .button-green-right.hover {
@@ -219,7 +198,8 @@
 
 .button-green-right.disabled,
 .button-green-right.disabled:hover,
-.button-green-right.disabled:active {
+.button-green-right.disabled:active,
+.button-green-right.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;
@@ -232,32 +212,10 @@
 }
 
 .button-red {
+  @extend .button;
   background-color: #fe5a5a;
-  padding: 10px 12px;
-  font-size: 100%;
-  text-align: left;
-  color: #000;
-  font-weight: 600;
-  display: inline-block;
-  vertical-align: baseline;
-  min-width: 128px;
-  border: none;
-  line-height: inherit;
-  white-space: nowrap;
   box-shadow: inset 8px 0 4px -8px #000, inset -8px 0 4px -8px #000, inset 0 10px 2px -8px #fda1a1,
     inset 0 10px 2px -8px #8b0101, inset 0 -9px 2px -8px #000, 0 0 4px 0 #000;
-  position: relative;
-  margin-right: 14px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  height: 36px;
-  text-align: left;
-}
-
-.button-red i {
-  margin-right: 0;
 }
 
 .button-red:hover,
@@ -289,7 +247,8 @@
 
 .button-red.disabled,
 .button-red.disabled:hover,
-.button-red.disabled:active {
+.button-red.disabled:active,
+.button-red.disabled.active {
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: default;

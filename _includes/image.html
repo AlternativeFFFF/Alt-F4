@@ -1,0 +1,12 @@
+<p></p> <!-- Spacing -->
+<div class="image">
+  {% if include.href %}<a href="{{ include.href }}" target="_blank">{% endif %}
+    {% if include.caption %}<figure>{% endif %}
+      <img {% if include.src-mob %}id="desktop"{% endif %} src="{{ include.src }}" alt="{{ include.alt }}" style="max-width: {{ include.width }}; max-height: {{ include.height }}">
+      {% if include.src-mob %}<img id="mobile" src="{{ include.src-mob }}" alt="{{ include.alt }}" style="max-width: {{ include.width }}; max-height: {{ include.height }}">{% endif %}
+      {% if include.caption %}<figcaption>{{ include.caption }}</figcaption>{% endif %}
+    {% if include.caption %}</figure>{% endif %}
+    {% if include.href %}<i>{{ site.data.locale.image-fullres }}</i>{% endif %}
+    {% if include.href %}</a>{% endif %}
+</div>
+<p></p> <!-- Spacing -->

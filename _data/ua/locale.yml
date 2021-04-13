@@ -1,13 +1,16 @@
+name: Українська
 title: Альтернативні П'ятничні Факти про Factorio (від фанатів)
 description: Продовження улюблених П'ятничних Фактів, але цього разу від гравців
 footer-copyright: Цей сайт є фан-проєктом і не пов'язаний з
 home-header: Альтернативні П'ятничні Факти
 date-format: "%d-%m-%Y"
 table-of-contents: Зміст
+not-translated: На жаль, це видання ще не перекладене на українську, тому вам доведеться прочитати його англійською.  Шоб це виправити, приєднайтеся до [Discord- ALT-F4](discord.gg/h4uv2fM) та почніть перекладати. Дякую!
 author:
   writtenby: Написано
   editedby: Відредаговано
   translator: Перекладено
+  proofreader: Редаговано
   date: у
 discuss:
   reddit: Обговорити на Reddit
@@ -16,18 +19,28 @@ discuss:
 about: |
   ## Про
 
-  Alt-F4 - це [щотижневий блог](http://alt-f4.blog), який пишуте та редагуюте сама спільнота [Factorio](https://factorio.com), та має різні підходящі теми, такі як огляди модів, розповіді від спільноти та пояснення/огляд ігрових механік.
+  Alt-F4 - це [щотижневий блог](http://alt-f4.blog/ua), який пишуте та редагуюте сама спільнота [Factorio](https://factorio.com), та має різні підходящі теми, такі як огляди модів, розповіді від спільноти та пояснення/огляд ігрових механік.
 
   Це продовження шанованих [П'ятничних фактів Factorio](https://factorio.com/blog/) ('FFF', 'ПФF'), що описували процес розробки Factorio впродовж 360 тижнів. Блог розказував нам про думки розробників щодо [цінової стратегії](https://www.factorio.com/blog/post/fff-247), пояснював їхні божевільні [оптимізації](https://www.factorio.com/blog/post/fff-176) та детально описував [дизайн різноманітних будівель та картинок](https://factorio.com/blog/post/fff-351).
 
-  Після проходження [повного кола](https://factorio.com/blog/post/fff-360) в серпні 2020 та повноцінного релізу гри, розробники вирішили покинути цю звичку та зробити собі заслужений відмочинок. Але спільнота не хоче закінчення цієї чудової традиції (та, якщо чесно, "лічильника п'ятниць" для деяких людей), [вирішила не покидати її](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) та [продовжує писати блог](http://alt-f4.blog/ALTF4-1). Фокус змінився з процесу розробки до різноманіття тем, цікавих спільноті та гравцям.
+  Після проходження [повного кола](https://factorio.com/blog/post/fff-360) в серпні 2020 та повноцінного релізу гри, розробники вирішили покинути цю звичку та зробити собі заслужений відмочинок. Але спільнота не хоче закінчення цієї чудової традиції (та, якщо чесно, "лічильника п'ятниць" для деяких людей), [вирішила не покидати її](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) та [продовжує писати блог](http://alt-f4.blog/ua/ALTF4-1). Фокус змінився з процесу розробки до різноманіття тем, цікавих спільноті та гравцям.
 
-  ### Подяки
+  ### Contribute
 
-  Цей вебсайт створений за допомогою Jekyll *Ypetremann* та *Dr.MagPie*, допомагали *lovely_santa* та *Therenas*.
-  Перекладено на українську *RMuskovets* (*null*).
+  If you want to contribute to this project in any way, be it by submitting your writing, translating the weekly issues, or just hanging out, please join [the Discord](https://discord.gg/AsXAwyV) (or check out [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) for more information. We’d love to have you.
+
+  ### Credits
+
+  Website created by *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* and *psihius*.
+
+  Hosting graciously provided by the [FMMO community](https://fmmo.eu/discord). Special thanks to *psihius* for setting us up!
+
+  Some of the assets and styling are the exclusive property of [Wube Software](https://factorio.com/game/about), used with their explicit permission.
+
 not-found:
   msg: |
     ## Вибачте, ми не змогли знайти цю сторінку.
     ### Ви можете спробувати знову повертаючись
   btn: назад на головну
+countdown-past: Час вийшов
+UA image-fullres: Натисніть для перегляду повнорозмірного зображення

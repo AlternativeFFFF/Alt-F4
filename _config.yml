@@ -2,7 +2,6 @@
 title: Alternative Friday Factorio Fan Facts
 url: "https://alt-f4.blog"
 description: The community-driven follow-on to the beloved Factorio Friday Facts
-google_analytics: true
 # author
 author:
   name: "Therenas"
@@ -12,6 +11,7 @@ author:
 # Build settings
 source: .
 markdown: kramdown
+highlighter: rouge
 permalink: /:title/ #pretty
 destination: ./_site
 excerpt_separator: "<!--more-->"
@@ -56,16 +56,18 @@ defaults:
 
 #Polyglot
 languages:
- - en
- - cs
- - de
- - es
- - fr
- - it
-# - pl
- - ru
-# - ua
- - zh
+  - en
+  - cs
+  - de
+  - es
+  - fr
+  - it
+  - nl
+  # - pl
+  - pt-br
+  - ru
+  # - ua
+  - zh
 default_lang: en
 lang_from_path: true
 parallel_localization: true
@@ -74,6 +76,7 @@ exclude_from_localization:
 
 jekyll-spaceship:
   processors:
+    - table-processor
     - mathjax-processor
     - mermaid-processor
     - media-processor
@@ -106,3 +109,4 @@ jekyll-spaceship:
       frameborder: 0
       style: "max-width: 896px;"
       allow: "encrypted-media; picture-in-picture"
+show_drafts: true

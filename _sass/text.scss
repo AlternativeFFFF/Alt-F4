@@ -1,3 +1,9 @@
+.zh {
+  p {
+    line-height: 1.5em;
+  }
+}
+
 .text-right {
   text-align: right;
 }
@@ -25,6 +31,13 @@
     0 1px 1px -1px #8f8c8b;
 }
 
+.blog-post video {
+  border: none;
+  box-shadow: inset 0 0 3px 0 #000, 0 -2px 2px -1px #000, -2px 0 2px -2px #28221f, -2px 0 2px -2px #28221f,
+    2px 0 2px -2px #28221f, 2px 0 2px -2px #28221f, 0 3px 3px -3px #8f8c8b, 0 2px 2px -2px #8f8c8b,
+    0 1px 1px -1px #8f8c8b;
+}
+
 a {
   color: #7dcaed;
   text-decoration: none;
@@ -44,7 +57,8 @@ i {
   font-style: italic;
 }
 
-em {
+.posted-by em,
+.blog-post > .panel-inset:nth-child(2) em {
   color: #ffe6c0;
 }
 
@@ -116,9 +130,9 @@ h3 > a:hover {
   color: inherit;
 }
 
-h2 > author,
-h3 > author,
-h4 > author {
+h2 author,
+h3 author,
+h4 author {
   margin-left: 16px;
   font-size: 80%;
   font-weight: 400;
@@ -184,6 +198,35 @@ pre {
   text-align: center;
   margin: auto;
 }
+
+.banner {
+  width: 60%;
+  // color: #222;
+  border: none;
+  margin: 12px auto;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ff9f1c;
+  // background-color: #ff9f1c;
+  // border-top: 1px solid #ff9f1c;
+  // border-bottom: 2px solid #862402;
+  // box-shadow: inset 0px 6px 22px -5px rgba(134, 36, 2, 1), 0px 4px 8px 0px rgba(17, 17, 17, 1);
+  h1 {
+    font-size: 1.6em;
+    // color: #222;
+    // text-shadow: -1px 0 1px #000, 1px 0 1px #ffc16d;
+  }
+  p {
+    // color: #222;
+  }
+}
+
+@media (max-width: 750px) {
+  .banner {
+    width: 100%;
+  }
+}
+
 .text-center,
 a.text-center {
   text-align: center;

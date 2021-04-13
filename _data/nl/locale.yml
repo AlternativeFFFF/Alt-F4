@@ -1,0 +1,45 @@
+name: Nederlands
+title: Alternative Friday Factorio Fan Facts
+description: Het gemeenschap gedreven vervolg op de geliefde Factorio Friday Facts
+footer-copyright: Deze website is een fan project en niet direct aangesloten met
+home-header: Alternatieve Vrijdag Factorio Fan Feiten
+date-format: "%d-%m-%Y"
+table-of-contents: Inhoudsopgave
+not-translated: Jammer genoeg is dit artikel nog niet vertaald naar het Nederlands, daarom zie je het in het Engels. Als je wilt helpen om dit op te lossen kan je je aansluiten op de Alt-F4 [Discord](https://discord.gg/h2uv2fM/) om te beginnen. Bedankt!
+author:
+  writtenby: Geschreven door
+  editedby: Bewerkt door
+  translator: Vertaald door
+  proofreader: Proefgelezen door
+  date: "on"
+discuss:
+  reddit: Bespreek op Reddit
+  discord: Bespreek op Discord
+  forum: Bespreek op Factorio Forums
+about: |
+  ## Over ons
+
+  Als-F4 is een [wekelijkse blog](http://alt-f4.blog/nl) dit helemaal is geschreven door de [Factorio](https://factorio.com) - gemeenschap en bevat verschillende onderwerpen die voor hun relevant zijn, zoals mod-spotlights, gemeenschaps-showcases en gameplay-kolommen.
+
+  Dit is een vervolg op de geliefde [Factorio Friday Facts](https://factorio.com/blog/)('FFF'), die het ontwikkelingsproces van Factorio 360 weken lang documenteerde. Het bracht de mening van de ontwikkelaars over voor de [prijsstrategie](https://www.factorio.com/blog/post/fff-247) en leidde ons door hun gekke [optimalisatieproces](https://www.factorio.com/blog/post/fff-176), ook detailleerde het hoe een machineontwerp [tot stand komt](https://factorio.com/blog/post/fff-351).
+
+  Toen in augustus 2020 de ontwikkelaars [versie 1.0](https://factorio.com/blog/post/fff-360) hebben gereleased, is er besloten om te stoppen met de ontwikkelingsupdates en een welverdiende pauze te nemen. De gemeenschap wilde deze traditie nog niet [opgeven](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) en besloten om hiermee [door te gaan](http://alt-f4.blog/nl/ALTF4-1). De focus verschoof hiermee wel van inzichten in de ontwikkeling naar onderwerpen die interessant zijn voor de gemeenschap.
+
+  ###Bijdragen
+
+  Als je wilt bijdragen aan dit project, zij het door stukken te schrijven, de wekelijkse oplage te vertalen of gewoon om gezellig te praten, sluit je dan aan bij de [Discord](https://discord.gg/AsXAwyV) (of ga naar de [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) voor meer informatie. Je bent altijd welkom.
+
+  ###Credits
+
+  Website gemaakt door *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* en *psihius*. Hosting wordt geleverd door de [FMMO-gemeenschap](https://fmmo.eu/discord). Speciale dank aan *psihius* voor het opstarten van deze site!
+
+  Sommige van de bedrijfsmiddelen en stijlen zijn het exclusieve eigendom van [Wube Software](https://factorio.com/game/about), welke gebruikt zijn met hun uitdrukkelijke toestemming.
+
+not-found:
+  title: 404 - Pagina niet gevonden
+  msg: |
+    ## Sorry, we konden de pagina die je zoekt niet vinden.
+    ### Je kan proberen de pagina te herladen of
+  btn: teruggaan naar de startpagina
+countdown-past: Het aftellen is voorbij
+image-fullres: Klik om volledige resolutie te bekijken

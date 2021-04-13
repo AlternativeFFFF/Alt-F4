@@ -70,7 +70,7 @@
   font-size: 20px;
 
   height: 34px;
-  width: 58px;
+  // width: 58px;
   min-width: 0;
 
   padding: 7px 9px;
@@ -94,7 +94,7 @@
   width: 120px;
 
   background-image: url("/assets/GLOBAL/img/Alt-F4-logo_colour.png");
-  
+
   background-repeat: no-repeat; /* Size the image correctly */
   background-size: cover;
 
@@ -110,7 +110,8 @@
   background-image: url("/assets/GLOBAL/img/Alt-F4-logo_white.png"); /* Switch to white logo on hover */
 }
 
-body:after { /* For preloading the hover image so it does not flicker on first hover */
+body:after {
+  /* For preloading the hover image so it does not flicker on first hover */
   display: none;
   content: url("/assets/GLOBAL/img/Alt-F4-logo_white.png");
 }
@@ -144,7 +145,7 @@ body:after { /* For preloading the hover image so it does not flicker on first h
     padding-left: 0;
     padding-right: 0;
 
-    margin-bottom: 100px;
+    margin-bottom: 30px;
   }
 
   body .footer {
@@ -176,25 +177,12 @@ body:after { /* For preloading the hover image so it does not flicker on first h
     }
   }
 
-  body .panel, body .panel-inset {
+  body .panel,
+  body .panel-inset {
     padding: 8px;
   }
 
   body .panel-inset-lighter {
     padding: 8px;
-  }
-
-  .footer .footer-inner {
-    display: block;
-  }
-
-  .footer-inner .footer-copyright {
-    margin-left: 0;
-    margin-top: 10px;
-    width: 100%;
-  }
-
-  .footer-inner .footer-links {
-    width: 100%;
   }
 }

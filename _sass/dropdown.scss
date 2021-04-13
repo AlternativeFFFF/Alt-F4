@@ -4,8 +4,9 @@
   visibility: hidden;
   flex-direction: column;
   transition: all 0.1s ease;
+  margin-top: 35px;
   opacity: 0;
-  z-index: 5;
+  z-index: 801;
 }
 
 .dropdown:hover > .submenu,
@@ -14,4 +15,8 @@
 .dropdown .submenu:focus {
   visibility: visible;
   opacity: 1;
+}
+
+.dropdown {
+  display: flex;
 }

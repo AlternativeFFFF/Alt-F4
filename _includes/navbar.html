@@ -9,7 +9,7 @@
 			<a href="https://factorio.com/blog" class="">FFF</a>
 		</div>
 		<div class="sites links flex hide-tag-line">
-			<i>{{ site.data.locale.description }}</i>
+			<em>{{ site.data.locale.description }}</em>
 		</div>
 		<div class="dropdown flex-end">
 			<a class="button flex flex-space-between" href="#">
@@ -17,10 +17,10 @@
 			</a>
 			<div class="submenu">
 				{% for language in site.languages %}
-				<a {% if language == site.active_lang %} class="button button-green lang-button" {% else %}
+				<a {% if language==site.active_lang %} class="button button-green lang-button" {% else %}
 					class="button lang-button" {% endif %}
 					href="{% if language == site.default_lang %}{{ '/..' | append: page.url }}{% else %}{{ site.baseurl }}/{{ language }}{{ page.url }}{% endif %}"
-					onclick="setLanguage('{{ language }}')">{{ language }}</a>
+					onclick="setLanguage('{{ language }}')">{{ site.data[language].locale.name }}</a>
 				{% endfor %}
 			</div>
 		</div>

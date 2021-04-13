@@ -1,15 +1,28 @@
 ---
 layout: page
 ---
-
-<details class="panel toc">
-  <summary>
-    <h2>{{ site.data.locale.table-of-contents }}</h2>
-  </summary>
-  <div class="panel-inset mb0">
-    {% include toc.html html=content sanitize=true %}
+<div class="post-header">
+  <div class="panel" >
+    <div class="outer">
+      <img class="inner" src="{{ page.image.url }}" alt="{{ post.image.transcription }}" style="margin: 1px;">
+    </div>
   </div>
-</details>
+  <details class="panel toc">
+    <summary>
+      <h2>{{ site.data.locale.table-of-contents }}</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      {% include toc.html html=content sanitize=true %}
+    </div>
+  </details>
+</div>
+
+{% if site.active_lang != page.lang %}
+<div class="center banner">
+  {{ site.data.locale.not-translated | markdownify }}
+</div>
+{% endif %}
+
 
 {% include anchor_headings.html html=content anchorClass='anchor' anchorAttrs='style="text-decoration: none;"' location="inplace" anchorBody='#' %}
 
@@ -17,12 +30,11 @@ layout: page
 {% if juxtapose %}
 <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
-
 {% endif %}
 
 <script>
   (() => {
-    if (window.innerWidth >= 1920) {
+    if (window.innerWidth >= 720) {
       document.getElementsByClassName('toc')[0].setAttribute('open', '')
     }
   })()

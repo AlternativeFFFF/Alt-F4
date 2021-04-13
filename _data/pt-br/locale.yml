@@ -1,0 +1,44 @@
+name: Português Brasileiro
+title: Alternative Friday Factorio Fan Facts
+description: A continuação conduzida pela comunidade dos amados Factorio Friday Facts
+footer-copyright: Este site é um projeto de fãs e não está diretamente relacionado com
+home-header: Alternative Friday Factorio Fan Facts
+date-format: "%d-%m-%Y"
+table-of-contents: Índice
+not-translated: Infelizmente, este artigo ainda não foi traduzido para o português, então você o está lendo em inglês. Se você quiser ajudar no reparo, por favor entre no servidor do [Alt-F4 no Discord](https://discord.gg/h4uv2fM) para começar. Obrigado!
+author:
+  writtenby: Escrito por
+  editedby: Editado por
+  translator: Traduzido por
+  proofreader: Revisado por
+  date: "on"
+discuss:
+  reddit: Discuta em Reddit
+  discord: Discuta no Discord
+  forum: Discuta nos Fóruns Factorio
+about: |
+  ## Sobre
+
+  Alt-F4 é um [blog semanal](http://alt-f4.blog) escrito e editado inteiramente pela comunidade [Factorio] (https://factorio.com) e apresenta vários tópicos que são relevantes para ela, como mod spotlights, community showcases e colunas de gameplay.
+
+  Ele é a continuação do veneravel [Factorio Friday Facts](https://factorio.com/blog/) (‘FFF’), que documentou o processo de desenvolvimento da Factorio por 360 semanas. Expressou os valores dos desenvolvedores em relação à [estratégia de preços](https://www.factorio.com/blog/post/fff-247), nos guiou através de seu louco [processo de otimização](https://www.factorio.com/blog/post/fff-176) e detalhou como é o [projeto de uma máquina](https://factorio.com/blog/post/fff-351).
+
+  Depois de completar [seu ciclo](https://factorio.com/blog/post/fff-360) em agosto de 2020 com o lançamento do jogo, os desenvolvedores decidiram descontinuar esse hábito e fazer um merecido descanso. Entretanto a comunidade não quis que essa tradição acabasse, então [pegamos a tocha](https://www.reddit.com/r/factorio/comments/i9pxb3/communityfff/) e [seguimos em frente](http://alt-f4.blog/ALTF4-1). O foco necessariamente mudou de insights sobre o desenvolvimento para tópicos de interesse da comunidade.
+
+  ### Contribute
+
+  Se você deseja contribuir com este projeto de alguma forma, seja enviando sua redação, traduzindo as edições semanais ou simplesmente saindo, por favor, participe do servidor no [Discord](https://discord.gg/AsXAwyV) (ou veja o  [GitHub](https://github.com/AlternativeFFFF/Alt-F4)) Para mais informações. Nós adoraríamos tê-lo como membro.
+
+  ### Credits
+
+  Website criado por *Dr.MagPie*, *Ypetremann*, *lovely_santa*, *Conor_*, *xthexder*, *Duck(o)*, *yay* e *psihius*.
+  Hospedagem gentilmente fornecida pela [comunidade FMMO](https://fmmo.eu/discord). Agradecimentos especiais a *psihius* por nos colocar no ar!
+
+  Alguns dos assets e estilos são propriedades exclusivas da [Wube Software](https://factorio.com/game/about), usado com sua permissão explícita.
+
+not-found:
+  title: 404 - Página não encontrada
+  msg: |
+    ## Desculpe, não conseguimos encontrar a página solicitada.
+    ### Você pode tentar recarregar a página ou
+  btn: Volte para a página inicial
