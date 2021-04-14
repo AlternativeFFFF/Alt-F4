@@ -14,10 +14,3 @@ The server will go live in the regular multiplayer lobby on Saturday 18:00 UTC/G
 Check the (discord)[https://discord.gg/N8G5nBn] for chat- and voice channels. Engineers are already gathering and joining factory planning. BCG also would love to welcome people there, who would like to participate in organizing events in the future. 
 
 Get your exoskeletons greased up, and enjoy the event!
-
-
-
-
-
-
-
