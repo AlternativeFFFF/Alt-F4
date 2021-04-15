@@ -22,7 +22,7 @@ Next is the RS latch. Its inputs are either 1 "S" signal or 1 "R" signal, standi
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/31/counter.jpg' alt='Counter circuit with Decider combinator' %}
 
-Finally, the counter. Structurally it is identical to the RS latch, but this time the output is set to "input count of everything". This means that while the decider's condition is followed, it will keep giving its own outputs to itself, thus remembering them. For every tick it receives a signal, it will increment the value of that signal in its memory by the amount received. As soon as the condition is broken, the memory is cleared, since the decider no longer allows signals to pass. Similarly to the counter, if you wish to make it remember only one signal, replace the "everything" in the output with the desired signal. This circuit, just like the pulser, has an immense number of uses, but the most popular one is to keep track of item amounts.
+Finally, the counter. Structurally it is identical to the RS latch, but this time the output is set to "input count of everything". This means that while the decider's condition is followed, it will keep giving its own outputs to itself, thus remembering them. For every tick it receives a signal, it will increment the value of that signal in its memory by the amount received. As soon as the condition is broken, the memory is cleared, since the decider no longer allows signals to pass. Similarly to the pulser, if you wish to make it remember only one signal, replace the "everything" in the output with the desired signal. This circuit, just like the pulser, has an immense number of uses, but the most popular one is to keep track of item amounts.
 
 ### Basic examples
 
