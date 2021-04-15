@@ -36,23 +36,23 @@ Except I left out some BIG issues (notice the missing quotes and the capital let
 
 Loops with more than one recipe are somewhat problematic. There are no loops in vanilla with more than one recipe (except for barreling and unbarrelling, which is not randomized by default anyway), so they’re pretty easy to miss, but in mods, they are everywhere, also the randomizer might accidentally create a loop in certain conditions. To illustrate the problem we’ll need an example. Let’s take synthetic sapphires in Industrial Revolution 2: Here you can crush a sapphire and then make another one from some of the dust, silica and pure nickel.
 
-(sapphire loop)
+![Sapphire loop](sapphire-loop.jpg)
 
-The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used instead of the one it started and ended with.
+The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used instead of the one it ended with.
 
-(sapphire unlooped)
+![Sapphire unlooped](sapphire-unlooped.jpg)
 
 And we end up with a recipe to make sapphires while leaving out the confusing details! But what happens when there’s branching loops or loops within loops?
 
-(insert loopy diagram)
+![Loopy diagram](loopy.jpg)
 
 Let's just say that things get loopy. I think I somewhat solved it but I won’t go into details here, this is not a graph theory course :D (and I’m not sure the solution works reliably).
 
 And now, time for the biggest issue of them all: recipes with multiple outputs. Let’s take for example advanced oil processing.
 
-(advanced oil processing)
+![Advanced oil processing](advanced-oil-processing.jpg)
 
-By default, crude oil has a value of 0.4 and we’ll ignore water for now. That means the recipe has a total value of 40. So we know that 25 heavy oil + 45 light oil + 55 petroleum gas should have a total value of 40, but how much of that value is each part? There are many ways to approach this and tackling this issue took the most time and it caused many headaches. Let’s go through the two most different options.
+By default, crude oil has a value of 0.4 and we’ll ignore water for now. That means the recipe has a total value of 40. So we know that 25 heavy oil + 45 light oil + 55 petroleum gas should have a value of 40 in total, but how much of that value is contained within each product? There are many ways to approach this and tackling this issue took the most time and it caused many headaches. Let’s go through the two most different options.
 
 The simplest: Just make each of the results worth an equal part of the total value. This is mostly reasonable, but it breaks when you introduce waste products. For example, the kovarex enrichment process makes 41 u-235 and 2 u-238, the algorithm would assume they both have the same value, but you probably know that u-235 is much more valuable. So this approach is not really usable.
 
