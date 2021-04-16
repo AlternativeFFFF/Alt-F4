@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/nl/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-02T16:45:04+00:00</updated>
+  <updated>2021-04-16T09:15:49+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #31 - Combinator Crash Course</title>
+    <link href="https://alt-f4.blog/nl/ALTF4-31/" />
+    <id>https://alt-f4.blog/ALTF4-31</id>
+    <updated>2021-04-16T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;After a quick one-week break, Alt-F4 is back with issue #31. In it, &lt;em&gt;pocarski&lt;/em&gt; returns to talk about yet more ways to build computer logic in Factorio, featuring combinators this time, which turn out to be simpler to use than you’d think! Afterwards, &lt;em&gt;Big Community Games&lt;/em&gt; announce another exciting event...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-23</id>
     <updated>2021-02-12T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;After a hiatus of two weeks due to a couple of FFF’s hot off the presses, we’re back this week with two articles all about belts. In the first one, Recon419A explores an interesting concept that has belts deliver items in a just-in-time fashion. Then, things get truly nerdy as...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #22 - Blueprint Rant</title>
-    <link href="https://alt-f4.blog/nl/ALTF4-22/" />
-    <id>https://alt-f4.blog/ALTF4-22</id>
-    <updated>2021-01-22T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For today’s 22nd issue of Alt-F4, &lt;em&gt;Conor_&lt;/em&gt; wanted to share his rather strong opinions on blueprints with us, and why they might prevent you from having the most fun while playing Factorio. We’re sure he’d be happy to hear your take on this, so please feel free to share it...</content>
   </entry>
   
   

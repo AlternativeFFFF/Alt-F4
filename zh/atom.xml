@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-02T16:45:04+00:00</updated>
+  <updated>2021-04-16T09:15:49+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #31 - 运算器速成班</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-31/" />
+    <id>https://alt-f4.blog/ALTF4-31</id>
+    <updated>2021-04-16T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;经过一周的短休，Alt-F4 带着第 31 期又回来了。本期中，&lt;em&gt;pocarski&lt;/em&gt; 又谈到了更多在异星工厂中构建计算机逻辑的方法，这次的主题是运算器，你能发现它的使用比你想象的要简单得多。之后，&lt;em&gt;Big Community Games&lt;/em&gt; 宣布了他们下一个激动人心的活动，这次将围绕着工业革命而展开。&lt;/p&gt; &lt;h2 id=&quot;运算器以及为什么你无需畏惧它们-pocarski&quot;&gt;运算器以及为什么你无需畏惧它们 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在科技树中，有很多技术并不是完成游戏所必需的，因此经常被排挤。有些是可以理解的，例如和平模式下的军事科技。而另一些尽管能够提供非凡的改进但也不被考虑。信号网络就是这样一种技术，这将是我在本文中探讨的内容。&lt;/p&gt; &lt;p&gt;信号网络主要有四部分组成：线缆、常量运算器、判断运算器和算术运算器。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/31/combinators.jpg&quot; alt=&quot;用线缆连接的 3 种运算器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;常量运算器持续输出你设定的任何信号（也无需供电）；判断运算器在满足某个逻辑条件时输出一些信号；算术运算器进行数学运算。线缆的作用就像一种“信号云”，所有输出到线缆上的信号都可以被连接到线缆上的所有东西读取。红线和绿线的功能相同，但可以连接到同一个设备上，而不会相互干扰。&lt;/p&gt; &lt;h3 id=&quot;基本元素&quot;&gt;基本元素&lt;/h3&gt; &lt;p&gt;我们来看看三个非常简单且有着广泛应用的单运算器模块。这些模块分别是：脉冲发生器、RS 锁存器和计数器。我们先从脉冲发生器说起，它长这个样子：&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/31/monostable.jpg&quot; alt=&quot;用算术运算器制作的脉冲发生器&quot; style=&quot;max-width: ;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-23</id>
     <updated>2021-02-12T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在为之前两周的 FFF 让出热度而短暂休刊之后，我们又回来了，带来两篇关于传送带的文章。在第一篇文章中，Recon419A 探讨了一个有趣的概念，让传送带以即时化的方式送达物品。然后，pocarski 深入研究了如何利用传送带来构建图灵机，技术宅狂喜。建议读者先获取计算机科学相关学位。&lt;/p&gt; &lt;h2 id=&quot;物流传送带-recon419a&quot;&gt;物流传送带 &lt;author&gt;Recon419A&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在异星工厂中移动物品有三种主要方式：传送带、物流机器人和列车。传送带适用于单种或两种物品的输入输出，火车适用于大量的单种物品，物流机器人适用于复杂的制作任务。然而，有时候，你需要组合这些方法，这就是诸如回转寿司等技术可以发挥作用的地方。在本文中，我想谈谈另一种我称之为“物流传送带”的方法。和回转寿司一样，物流传送带有没有 Mod 都可以使用，它本身也并不是一个 Mod，而是一种利用传送带和非常简单的电路来控制什么资源去哪里的方法。就像原版的物流网络和某些基于火车的 Mod 例如 LTN，它们的目的是成为一种比基本的传送带更智能的资源运送方式。&lt;/p&gt; &lt;h3 id=&quot;物流传送带说明&quot;&gt;物流传送带说明&lt;/h3&gt; &lt;p&gt;物流传送带是一个有点复杂的概念，但当你看到一个实际例子后，理解起来就简单多了。在这个例子中，请注意几种物品是如何沿着同一条传送带发送的，每种物品只有在要求时才会被装上传送带。如果只需要铁和铜，那么就不会有钢铁被送来；同样，如果什么都不需要，那么传送带就会保持空的状态。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 1280px; max-height: 720px&quot; playsinline=&quot;&quot; muted=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/23/logistics-belts-demo.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; 物流传送带概念的视频演示。 &lt;/video&gt; &lt;figcaption&gt;使用电路条件、筛选分流器和装卸机的物流传送带演示。机械臂可以代替装卸机，但根据传送带速度可能需要增加二至三倍的数量。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/p&gt; &lt;p&gt;在例子中可以看到，电路条件设置为当目的地的物料少于 100 时发送物料。在现实中，传送带的长度会影响到发送材料的数量，如果传送带很长，当一百个材料进入缓冲箱时，还有几百个材料位于传送带上。在不溢出接收箱的要求下，传送带在理论上 &lt;em&gt;有&lt;/em&gt; 长度限制，但在实际操作中，只要你使用的是钢制箱就不大可能碰到；在非常大的距离上，你肯定会用列车来代替。如果你想玩一玩这个物流带的设置，可以在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/23/logistics-belt-blueprint.txt&quot;&gt;这里&lt;/a&gt;下载蓝图字符串，不过请注意该蓝图使用了 &lt;a href=&quot;https://mods.factorio.com/mods/Optera/LoaderRedux&quot;&gt;Loader Redux&lt;/a&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #22 - 蓝图暴言</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-22/" />
-    <id>https://alt-f4.blog/ALTF4-22</id>
-    <updated>2021-01-22T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在今天的第 22 期 Alt-F4 中，&lt;em&gt;Conor_&lt;/em&gt; 想和我们分享他对蓝图的偏激意见，以及为什么蓝图可能会阻碍你在异星工厂中获得最大的乐趣。我们相信他很乐意听到你的想法，欢迎在评论中分享你的意见！&lt;/p&gt; &lt;h2 id=&quot;蓝图烂透了-conor_&quot;&gt;蓝图烂透了 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;好吧，蓝图 &lt;strong&gt;&lt;em&gt;大多&lt;/em&gt;&lt;/strong&gt; 很烂。蓝图最早是在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.9.0&lt;/code&gt; 版本中加入的，允许我们创建各种机器的幽灵副本，并将它们放置在我们庞大工厂的任何地方。我对这个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;复制粘贴&lt;/code&gt; 功能没有任何意见，我特别喜欢在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.17.10&lt;/code&gt; 的&lt;a href=&quot;https://www.factorio.com/blog/post/fff-278&quot;&gt;工具栏大改&lt;/a&gt;中增加的直接复制和粘贴按钮和快捷键。但我不能认可的是蓝图库和字符串导入功能。我认为 &lt;em&gt;Rseding91&lt;/em&gt; 在他最 &lt;em&gt;近&lt;/em&gt; 的 &lt;a href=&quot;https://www.reddit.com/r/factorio/comments/in5d3i/developer_technicaloriented_ama/g45d2t3/?context=1&quot;&gt;Reddit 有问必答&lt;/a&gt;中说得很好，他被问到他最想改变异星工厂的一件事是：&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt; &lt;div class=&quot;translation&quot;&gt; &lt;p&gt;我会不添加蓝图库 :) 可能不是一个流行的观点，但这玩意儿毁了好几个我喜欢的多人游戏；有人带着一套“蓝图中的基地”加入进来，然后所有的创造力和乐趣现在都结束了；只留下“建造那个玩意儿”。&lt;/p&gt; &lt;/div&gt; &lt;span /&gt; &lt;div...</content>
   </entry>
   
   
