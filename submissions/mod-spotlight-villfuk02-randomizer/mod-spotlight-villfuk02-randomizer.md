@@ -38,7 +38,7 @@ Loops with more than one recipe are somewhat problematic. There are no loops in 
 
 ![Sapphire loop](sapphire-loop.jpg)
 
-The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used instead of the one it ended with.
+The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used for the calculation instead of the one the straightened loop ended with.
 
 ![Sapphire unlooped](sapphire-unlooped.jpg)
 
