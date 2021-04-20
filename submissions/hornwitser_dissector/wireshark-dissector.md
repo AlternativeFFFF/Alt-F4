@@ -48,8 +48,9 @@ After some tidying up of my code and data presentation, I was able to make the d
 
 No longer does one have to guess what an "Odd Blue" value is: It's clearly the `id` of an `InputActionSegment`.
 Now, the type is translated from the machine code looking `0xa2` into the much more friendly name `ServerCommand`.
-One issue with creating the dissector by using data that ships with the game, the legality of distributing it is in question.
-So, I asked the Factorio developers, and they said they were fine with me releasing this to the public, so if you want to try it out yourself or add it to your toolbox, you can find it in my repository on [GitHub](https://github.com/Hornwitser/factorio_dissector).
+The only issue with creating the dissector by using data that ships with the game is that it's no longer clearly my original work, which puts the legality of distributing it in question.
+Rather than trying to figure out whether I had copyright law on my side, I asked the Factorio developers and they said they were fine with me releasing this to the public.
+So if you want to try it out yourself or add it to your toolbox, you can find it in my repository on [GitHub](https://github.com/Hornwitser/factorio_dissector).
 
 Personally, I've used it to investigate networking issues with Factorio, from clients getting disconnected to NAT punching not working. I've also written up some bug reports based on my findings that have lead to bugfixes in the game.
 With the move to using names from the Factorio debug symbols, the data it shows has become really clear and informative, at least compared to what it used to show.
