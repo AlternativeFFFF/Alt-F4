@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/it/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-21T16:11:27+00:00</updated>
+  <updated>2021-04-23T10:10:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #32 - Operation Wireshark</title>
+    <link href="https://alt-f4.blog/it/ALTF4-32/" />
+    <id>https://alt-f4.blog/ALTF4-32</id>
+    <updated>2021-04-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Welcome to the shark-filled issue #2⁵ of Alt-F4. In these treacherous waters, &lt;em&gt;The-Kool&lt;/em&gt; guides us towards putting speakers to good use, maybe even as a shark-warning-system, in the latest episode of Complexity Corner! Then, &lt;em&gt;Hornwitser&lt;/em&gt; gets to some actual shark hunting using Wireshark, telling the story of how he tracked...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-24</id>
     <updated>2021-02-19T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;This week, we’re following up on pocarski’s piece from last week that was all about how to build a computer inside Factorio using only belts. This time, we’re trying to teach it how to remember things. Let’s see how that goes.&lt;/p&gt; &lt;h2 id=&quot;belt-only-computing-part-2-never-forget-pocarski&quot;&gt;Belt-only Computing, Part 2: Never Forget &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;This...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #23 - Beltravaganza</title>
-    <link href="https://alt-f4.blog/it/ALTF4-23/" />
-    <id>https://alt-f4.blog/ALTF4-23</id>
-    <updated>2021-02-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;After a hiatus of two weeks due to a couple of FFF’s hot off the presses, we’re back this week with two articles all about belts. In the first one, Recon419A explores an interesting concept that has belts deliver items in a just-in-time fashion. Then, things get truly nerdy as...</content>
   </entry>
   
   

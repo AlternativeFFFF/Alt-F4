@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-21T16:11:27+00:00</updated>
+  <updated>2021-04-23T10:10:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°32 - Opération Wireshark</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-32/" />
+    <id>https://alt-f4.blog/ALTF4-32</id>
+    <updated>2021-04-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Bienvenue dans le numéro 2⁵ de Alt-F4, rempli de requins. Dans ces eaux dangereuses, &lt;em&gt;The-Kool&lt;/em&gt; nous guide pour que les haut-parleurs soient utilisés à bon escient, peut-être même comme un système d’alerte aux requins, dans le dernier épisode du Coin de la complexité ! Ensuite, &lt;em&gt;Hornwitser&lt;/em&gt; se lance dans une...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-24</id>
     <updated>2021-02-19T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Cette semaine, nous continuons l’article de pocarski de la semaine dernière qui n’est rien de moins que la possibilité de créer un ordinateur dans Factorio en utilisant seulement des convoyeurs. Cette fois, nous tentons de vous montrer comment se rappeler de choses. Jetons-y un oeil.&lt;/p&gt; &lt;h2 id=&quot;linformatique-par-convoyeurs-deuxième-partie--noubliez-jamais-pocarski&quot;&gt;L’informatique par convoyeurs, Deuxième...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°23 - Spaghetti en folie</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-23/" />
-    <id>https://alt-f4.blog/ALTF4-23</id>
-    <updated>2021-02-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Après une interruption de deux semaines en raison de quelques FFF tout juste sortis de presse, nous revenons cette semaine avec deux articles sur les convoyeurs. Dans le premier, Recon419A explore un concept intéressant dans lequel les convoyeurs livrent des objets en flux tendu. Ensuite, les choses deviennent vraiment dingues...</content>
   </entry>
   
   

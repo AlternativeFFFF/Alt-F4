@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-21T16:11:27+00:00</updated>
+  <updated>2021-04-23T10:10:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #32 - Operace Wireshark</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-32/" />
+    <id>https://alt-f4.blog/ALTF4-32</id>
+    <updated>2021-04-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Vítejte u žraloky-plného 2⁵ vydání Alt-F4. V těchto zrádných vodách, &lt;em&gt;The-Kool&lt;/em&gt; nás vede k používání reproduktorů k dobré věci, možná i jako varovací systém proti žralokům, v nejnovější epizodě Rohu Komplexity! Poté, &lt;em&gt;Hornwitser&lt;/em&gt; se dostane k doopravdovému lovení žraloků s použitím Wiresharku, vysvětlí jak vysledoval síťové problémy, které našel v...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-24</id>
     <updated>2021-02-19T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Tento týden, budeme pokračovat na pocarskiho kuse z minulého týdne, který byl celý o tom, jak postavit počítač v Factoriu s pomocí pouhých pásů. Tentokrát, budeme se snažit pořítač naučit jak si zapamatovávat věci. Uvidíme, jak to půjde.&lt;/p&gt; &lt;h2 id=&quot;pásové-vypočítávání-část-druhá-nikdy-nezapomeň-pocarski&quot;&gt;Pásové vypočítávání, část druhá: Nikdy Nezapomeň &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Tento týden, budu pokračovat...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #23 - Pásová Extravaganza</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-23/" />
-    <id>https://alt-f4.blog/ALTF4-23</id>
-    <updated>2021-02-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Po dvoutýdenní pauze kvůli pár FFF horkých z pánve jsme zpět s dvoumi články o pásech. V prvním, Recon419A objevuje zajimavý koncept, který umožnuje dopravovat itemy v stylu právě v čas. Poté, věci se stanou velmi nerdy když pocarski se ponoří do hlubin stavění turingového stroje pomocí pouhých pásů. Titul...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-21T16:11:27+00:00</updated>
+  <updated>2021-04-23T10:10:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #32 - 操作 Wireshark</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-32/" />
+    <id>https://alt-f4.blog/ALTF4-32</id>
+    <updated>2021-04-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;欢迎来到鲨鱼游弋的第 2⁵ 期 Alt-F4。在这个危险水域中，&lt;em&gt;The-Kool&lt;/em&gt; 在最新一集的复杂角中指导我们用好扬声器，比如用作鲨鱼警告系统！然后，&lt;em&gt;Hornwitser&lt;/em&gt; 用 Wireshark 进行了一些真正的捕鲨活动，讲述了他如何追踪游戏中遇到的网络问题的故事。拿起鱼叉，跳下水吧！&lt;/p&gt; &lt;h2 id=&quot;复杂角扬声器-the-kool&quot;&gt;复杂角：扬声器 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到复杂角，在这里我们将对游戏中较少使用或较复杂的机制进行梳理，为不熟悉这些机制的人做个介绍。在这篇文章中，我们将提出三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”。&lt;/p&gt; &lt;h3 id=&quot;它是什么&quot;&gt;它是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Programmable_speaker/zh&quot;&gt;程控扬声器&lt;/a&gt;是个只占一格“建筑”。当连接到一个电路时，它可以根据该电路上的信号发出你将在游戏中听到的声音。你可以调整音量，为它选择一个特定的声音，告诉它无论你在多远的地方都能听到，甚至在地图上显示一个自定义警报。扬声器是通过电路技术解锁的，这在科技树中是如此之早甚至可能是你的第一个绿色科技。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/32/speaker.jpg&quot; alt=&quot;程控扬声器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;它矗立与此，沐浴在荣光之中。来源：&lt;a href=&quot;https://wiki.factorio.com/File:Programmable_speaker_entity.png&quot;&gt;异星工厂 Wiki&lt;/a&gt;。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;它能提供什么效果&quot;&gt;它能提供什么效果？&lt;/h3&gt; &lt;p&gt;它能响！好吧，这句话有点废话。虽然扬声器因为用它们建造的&lt;a href=&quot;https://miditorio.com/&quot;&gt;乐器&lt;/a&gt;而闻名，但也有着一些实际用途。如果你把扬声器连接到你的工厂，并设置全局播放和警报图标，你就可以为任何事情设计自定义警报。你可以（而且应该！）给它一个自定义的图标和名字，因为你绝对会忘记这个响亮的警报器是用来干什么的。这是一个在整个工厂广播警报的简单方法，能够帮助你在小麻烦变成真正的大问题之前抓住警告信号。&lt;/p&gt; &lt;h3 id=&quot;它应该用在哪里&quot;&gt;它应该用在哪里？&lt;/h3&gt; &lt;p&gt;你是否曾经历过意外的电力不足，使你的煤矿采矿机放慢速度，导致你的锅炉燃料不足，最终进入停电的螺旋？试着在通往锅炉的运煤传送带旁放一个扬声器，用一根线缆将它与运煤带连接起来。一格完整的传送带可容纳 8 件物品，所以如果你将扬声器设置为在少于...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-24</id>
     <updated>2021-02-19T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周，我们会跟进 pocarski 上周的文章，内容是关于如何在异星工厂内只用传送带来搭建一台电脑。这一次，我们要教它如何记住东西。让我们看看效果如何。&lt;/p&gt; &lt;h2 id=&quot;纯传送带计算第二部分永不忘记-pocarski&quot;&gt;纯传送带计算，第二部分：永不忘记 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;本周，我将继续延续我的关于纯传送带计算的文章。我强烈建议大家回到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/#%E7%BA%AF%E4%BC%A0%E9%80%81%E5%B8%A6%E8%AE%A1%E7%AE%97%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%8D%E5%A4%AA%E7%AE%80%E6%98%8E%E7%9A%84%E6%95%B0%E5%AD%A6-pocarski&quot;&gt;上期&lt;/a&gt;去复习一下。&lt;/p&gt; &lt;p&gt;在开始之前，先做一个简短的说明：在本周的 &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; 里 &lt;em&gt;BlueCheetah#7844&lt;/em&gt; 对我的加法器回路进行了重大的布局改进，现在它略微长了一些，但仅有四格宽。以下是改进后的图片，做着与上周一样的计算。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/24/improved-8-bit-adder.jpg&quot; alt=&quot;更好的加法器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;看完了这个，我们就开始讲正事吧。上一次，我们探讨了只用传送带和分流器进行数字加法，本周我们将探讨在计算方面同样重要的东西：内存。能够给数字做加法的能力是很棒的，但如果没有办法存储指令或结果，一切都是徒劳。在 CPU 内部，加法的结果会被记住，然后经过一些操作，反馈回刚才做计算的加法器。这样一来，就可以实现几乎所有能够想象到的数学运算。&lt;/p&gt; &lt;p&gt;和上周一样，欢迎大家下载本文中的所有电路的&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/24/belt-computer-blueprint-book-2.txt&quot;&gt;蓝图簿&lt;/a&gt;来亲身体验一下。&lt;/p&gt; &lt;h3 id=&quot;数据选择器&quot;&gt;数据选择器&lt;/h3&gt; &lt;p&gt;首先介绍一个新的电路：&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E5%99%A8&quot;&gt;数据选择器&lt;/a&gt;。数据选择器有两个数据输入 &lt;em&gt;A&lt;/em&gt; 和 &lt;em&gt;B&lt;/em&gt;，一个指针输入 &lt;em&gt;P&lt;/em&gt;，一个输出 &lt;em&gt;O&lt;/em&gt;。下面是这个多路复用器的真值表（“-”表示输入不影响输出）：&lt;/p&gt; &lt;table&gt; &lt;thead&gt; &lt;tr&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #23 - 传送带狂欢节</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-23/" />
-    <id>https://alt-f4.blog/ALTF4-23</id>
-    <updated>2021-02-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在为之前两周的 FFF 让出热度而短暂休刊之后，我们又回来了，带来两篇关于传送带的文章。在第一篇文章中，Recon419A 探讨了一个有趣的概念，让传送带以即时化的方式送达物品。然后，pocarski 深入研究了如何利用传送带来构建图灵机，技术宅狂喜。建议读者先获取计算机科学相关学位。&lt;/p&gt; &lt;h2 id=&quot;物流传送带-recon419a&quot;&gt;物流传送带 &lt;author&gt;Recon419A&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在异星工厂中移动物品有三种主要方式：传送带、物流机器人和列车。传送带适用于单种或两种物品的输入输出，火车适用于大量的单种物品，物流机器人适用于复杂的制作任务。然而，有时候，你需要组合这些方法，这就是诸如回转寿司等技术可以发挥作用的地方。在本文中，我想谈谈另一种我称之为“物流传送带”的方法。和回转寿司一样，物流传送带有没有 Mod 都可以使用，它本身也并不是一个 Mod，而是一种利用传送带和非常简单的电路来控制什么资源去哪里的方法。就像原版的物流网络和某些基于火车的 Mod 例如 LTN，它们的目的是成为一种比基本的传送带更智能的资源运送方式。&lt;/p&gt; &lt;h3 id=&quot;物流传送带说明&quot;&gt;物流传送带说明&lt;/h3&gt; &lt;p&gt;物流传送带是一个有点复杂的概念，但当你看到一个实际例子后，理解起来就简单多了。在这个例子中，请注意几种物品是如何沿着同一条传送带发送的，每种物品只有在要求时才会被装上传送带。如果只需要铁和铜，那么就不会有钢铁被送来；同样，如果什么都不需要，那么传送带就会保持空的状态。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 1280px; max-height: 720px&quot; playsinline=&quot;&quot; muted=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/23/logistics-belts-demo.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; 物流传送带概念的视频演示。 &lt;/video&gt; &lt;figcaption&gt;使用电路条件、筛选分流器和装卸机的物流传送带演示。机械臂可以代替装卸机，但根据传送带速度可能需要增加二至三倍的数量。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/p&gt; &lt;p&gt;在例子中可以看到，电路条件设置为当目的地的物料少于 100 时发送物料。在现实中，传送带的长度会影响到发送材料的数量，如果传送带很长，当一百个材料进入缓冲箱时，还有几百个材料位于传送带上。在不溢出接收箱的要求下，传送带在理论上 &lt;em&gt;有&lt;/em&gt; 长度限制，但在实际操作中，只要你使用的是钢制箱就不大可能碰到；在非常大的距离上，你肯定会用列车来代替。如果你想玩一玩这个物流带的设置，可以在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/23/logistics-belt-blueprint.txt&quot;&gt;这里&lt;/a&gt;下载蓝图字符串，不过请注意该蓝图使用了 &lt;a href=&quot;https://mods.factorio.com/mods/Optera/LoaderRedux&quot;&gt;Loader Redux&lt;/a&gt;...</content>
   </entry>
   
   

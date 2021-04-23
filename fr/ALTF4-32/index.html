@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 n°32 - Opération Wireshark</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 n°32 - Opération Wireshark">
+<meta name="author" content="The-Kool, Hornwitser">
+<meta property="og:locale" content="fr">
+<meta name="description" content="Bienvenue dans le numéro 2⁵ de Alt-F4, rempli de requins. Dans ces eaux dangereuses, The-Kool nous guide pour que les haut-parleurs soient utilisés à bon escient, peut-être même comme un système d’alerte aux requins, dans le dernier épisode du Coin de la complexité ! Ensuite, Hornwitser se lance dans une véritable chasse au requin à l’aide de Wireshark, racontant comment il a traqué les problèmes de réseau qu’il a rencontrés avec le jeu. Prenez un harpon et lancez-vous ! Le coin de la complexité : Les haut-parleurs The Kool Bienvenue à nouveau dans le Coin de la complexité, où nous passons en revue les mécanismes les moins utilisés ou les plus complexes du jeu afin d’en donner une introduction à ceux qui ne les connaissent pas. Dans cet article, nous allons poser trois questions : “Qu’est-ce que c’est ?”, “Quels résultats cela peut-il donner ?”, et “Où devrait-il être utilisé ?” Qu’est-ce que c’est ? Le Haut-parleur programmable est un “bâtiment” qui occupe une seule tuile. Lorsqu’il est connecté à un réseau logique, il peut émettre des sons que vous entendrez dans le jeu en fonction des signaux sur ce réseau. Vous pouvez régler le volume, choisir un son spécifique à émettre, lui demander d’être audible quelle que soit la distance à laquelle vous vous trouvez, et même afficher une alerte personnalisée sur la carte. Le haut-parleur est débloqué grâce à la technologie Réseau logique, qui est si précoce dans l’arbre des recherches qu’elle pourrait être votre première technologie verte. Il est là, dans toute sa majestueuse gloire. Origine : Wiki de Factorio. Quels résultats cela peut-il donner ? Ça produit des sons ! OK, c’était un peu facile à dire. Si les haut-parleurs sont surtout connus pour les bidules musicaux fabriqués avec, ils ont aussi des usages pratiques. Si vous connectez un haut-parleur à votre usine et que vous réglez la diffusion globale et une icône d’alerte, vous pouvez concevoir des alertes personnalisées pour à peu près tout. Vous pouvez (et devriez !) lui donner une icône et un titre personnalisés car vous allez rapidement complètement oublier à quoi sert ce klaxon hurlant. C’est un moyen facile de diffuser une alarme sur l’ensemble de votre usine et cela peut vous aider à détecter les signes avant-coureurs de problèmes, avant qu’ils ne deviennent de véritables problèmes. Où devrait-il être utilisé ? Avez-vous déjà mis à rude épreuve votre alimentation électrique et provoqué accidentellement le ralentissement de vos foreuses de charbon, vous faisant entrer dans une spirale menant à la panne de courant car vos chaudières sont en manque de combustible ? Essayez de placer un haut-parleur à côté du convoyeur de charbon menant à vos chaudières et de le connecter au convoyeur avec un câble. Un convoyeur complet contient 8 objets, donc si vous réglez le haut-parleur pour qu’il se déclenche sur moins de 8 charbons, vous recevrez une alarme si des manques apparaissent dans votre convoyeur de charbon. Réglez cette alarme sur une diffusion globale et donnez-lui un nom comme “Vérifiez votre extraction de charbon !” et vous recevrez l’avis, peu importe où vous êtes ou ce qui vous occupe. Si ce truc se déclenche, il est temps de laisser tomber ce que vous faites et de corriger votre approvisionnement en charbon. (Plan) Un type d’alarme complètement différent est l’alarme de passage de train. Reliez un haut-parleur à un signal ferroviaire sur votre voie à l’endroit où vous avez l’intention de traverser, plus un signal supplémentaire dans chaque direction (assurez-vous que vous récupérez les signaux des deux côtés de la voie). Dites-lui de déclencher une sirène locale si l’un des signaux est jaune (nombre de signaux jaunes &gt; 0). La prochaine fois que vous vous dirigerez vers ce rail et qu’un train arrivera, vous recevrez une belle sirène sonore vous disant d’attendre un moment avant de traverser ! Si seulement j’avais découvert ça il y a quelques centaines d’heures... (Plan) Comme beaucoup d’autres choses dans Factorio, les utilisations du haut-parleur sont illimitées, tant en termes de fonctionnalité que de créativité. Les constructions vont du super simple montré ci-dessus, aux lecteurs midi super complexes et au-delà. J’espère que cela vous inspirera et vous évitera quelques maux de tête. D’ici la prochaine fois, on se verra à l’usine… et attention où vous mettez les pieds ! Décodeur Wireshark pour Factorio Hornwitser Ce projet a débuté lors de l’événement Gridlock Cluster. J’enquêtais sur des problèmes où des clients étaient exclus de la partie de façon aléatoire, ce qui m’a amené à analyser les traces de paquets à l’aide de Wireshark. Ces traces de paquets sont essentiellement des rapports binaires des paquets envoyés et reçus par la carte réseau de l’ordinateur qui les a captés. Pour comprendre la signification de ces données binaires, Wireshark les décode à l’aide de décodeurs de protocole, il en possède pour les protocoles couvrant toutes les facettes des réseaux. Mais il n’y en a pas pour Factorio, donc lorsque j’ai utilisé Wireshark sur le trafic de Factorio, tout ce que j’ai pu voir était du charabia hexadécimal envoyé entre le serveur et le client. Après avoir examiné les octets qui vont et viennent entre le serveur et le client, je me suis demandé : Serait-il difficile d’écrire un décodeur pour Wireshark afin de décoder ces données ? Je me suis penché sur la question et j’ai découvert que la manière la plus simple de l’écrire serait en Lua. Il peut ensuite être chargé comme un plugin par Wireshark, dans un système pas trop différent des mods de Factorio. C’est ainsi que j’ai commencé à étudier les octets en hexadécimal et à comprendre la structure de tout cela. C’est devenu un peu un défi personnel de comprendre la signification de chacun des octets et de les décoder dans Wireshark. Je pense avoir travaillé sur le décodeur pendant environ deux semaines avant de l’abandonner. Ce n’est pas que je ne pouvais pas le faire. C’est juste que ça ne valait pas tous les efforts que j’y ai mis. Vous voyez, la sortie de mon décodeur n’était pas très utile pour dire ce qui se passait. Ça ressemblait à quelque chose comme ça : Bien sûr, il décode la trame et réassemble les paquets fragmentés, mais à moins que vous ne sachiez ce que signifient ces informations bizarres, curieuses, étranges ou colorées, il ne sert pas à grand-chose. C’est aussi une des raisons pour lesquelles je n’ai pas publié ce décodeur : c’est déjà mieux que de regarder les données hexadécimales, mais pas de beaucoup. Il ne vous donne pas le genre d’aperçu profond des rouages internes du protocole Factorio que vous attendriez de n’importe lequel des autres décodeurs de protocole dont dispose Wireshark. Et c’est ainsi que ce projet a été mis au placard, pour ne plus être étudié par la suite. Dans le passé, le développeur de Factorio Twinsen avait parlé de la création d’un décodeur pour Wireshark dans le FFF n°196. Cet article contient un grand nombre d’informations internes sur le protocole que j’aurais pu utiliser pour créer mon décodeur, mais j’avais choisi de ne pas y regarder car je voulais créer le mien, sans me fier aux informations internes du code source du jeu. Une question évidente se pose cependant : Pourquoi ne pas utiliser le décodeur de Twinsen au lieu d’écrire le mien ? Eh bien, pour commencer, il n’est pas disponible publiquement, mais plus important encore, il ne peut pas être rendu public. La façon dont le décodeur de Twinsen fonctionnait était de construire Factorio comme une bibliothèque partagée, puis de construire une version personnalisée de Wireshark qui était liée à cette bibliothèque partagée. Or, Wireshark est sous licence GPL et il est interdit de diffuser du code GPL lié à du code propriétaire. Pour diffuser le décodeur, Wube devrait donc publier Factorio sous licence GPL, ce qui ne se produira évidemment pas. Il y a quelques semaines cependant, j’ai découvert quelque chose. La version Windows de Factorio est livrée avec un fichier .pdb qui contient des symboles de débogage. Les développeurs l’utilisent pour générer des traces de pile symbolisées lorsque le jeu se plante, afin de pouvoir voir où, dans le code source, le crash s’est produit. Mais heureusement pour moi, ce fichier regorge aussi d’autres types de données de débogage, comme celles nécessaires pour attacher un débogueur à Factorio et inspecter les valeurs des variables stockées en mémoire. Cela signifie qu’il contient des informations de type, c’est-à-dire la structure des données telle que définie dans le code, ainsi que les noms des champs et des énumérations. Le nom des champs est très utile car c’est l’étiquette que les développeurs mettent sur un élément de données afin de le référencer dans le code. De même, les énumérations contiennent les correspondances entre les noms logiques et les valeurs numériques. J’ai pu extraire ce type d’information du fichier .pdb en quelque chose de lisible en utilisant l’outil “cvdump.exe”. Une fois que j’ai eu cela, il a été assez facile de trouver les noms des structures du fichier .pdb et de renommer tous les champs dans mon décodeur pour pouvoir les utiliser. J’ai également compris que les définitions des énumérations traduisent les valeurs numériques en noms logiques pour les champs qui les utilisent. Après avoir fait un peu de ménage dans mon code et dans la présentation des données, j’ai pu faire en sorte que la sortie du décodeur ressemble à ceci : On n’a plus besoin de deviner ce qu’est une valeur “Odd Blue” : C’est clairement l’id d’un InputActionSegment. Maintenant, le type est traduit du code machine 0xa2 en un nom beaucoup plus convivial, ServerCommand. Le seul problème que pose la création du décodeur à partir des données fournies avec le jeu est qu’il ne s’agit plus clairement de mon travail original, ce qui remet en question la légalité de sa diffusion. Plutôt que d’essayer de savoir si j’avais la loi sur les droits d’auteur de mon côté, j’ai demandé aux développeurs de Factorio et ils ont dit qu’ils étaient d’accord pour que je le rende public. Donc, si vous voulez l’essayer vous-même ou l’ajouter à votre boîte à outils, vous pouvez le trouver dans mon dépôt sur GitHub. Personnellement, je l’ai utilisé pour étudier des problèmes de réseau dans Factorio, allant de la déconnexion de clients à la défaillance de la fonction de punching NAT. J’ai également rédigé quelques rapports de bug basés sur mes découvertes qui ont conduit à des corrections de bug dans le jeu. Avec le passage à l’utilisation des noms des symboles de débogage de Factorio, les données qu’il affiche sont devenues vraiment claires et informatives, du moins par rapport à ce qu’il affichait auparavant. Cependant, il s’agit toujours d’un outil destiné aux personnes expérimentées dans le domaine des réseaux informatiques et des aspects internes de Factorio, donc ne vous attendez pas à comprendre ce que tout cela signifie si vous n’êtes pas familier avec ces choses. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="Bienvenue dans le numéro 2⁵ de Alt-F4, rempli de requins. Dans ces eaux dangereuses, The-Kool nous guide pour que les haut-parleurs soient utilisés à bon escient, peut-être même comme un système d’alerte aux requins, dans le dernier épisode du Coin de la complexité ! Ensuite, Hornwitser se lance dans une véritable chasse au requin à l’aide de Wireshark, racontant comment il a traqué les problèmes de réseau qu’il a rencontrés avec le jeu. Prenez un harpon et lancez-vous ! Le coin de la complexité : Les haut-parleurs The Kool Bienvenue à nouveau dans le Coin de la complexité, où nous passons en revue les mécanismes les moins utilisés ou les plus complexes du jeu afin d’en donner une introduction à ceux qui ne les connaissent pas. Dans cet article, nous allons poser trois questions : “Qu’est-ce que c’est ?”, “Quels résultats cela peut-il donner ?”, et “Où devrait-il être utilisé ?” Qu’est-ce que c’est ? Le Haut-parleur programmable est un “bâtiment” qui occupe une seule tuile. Lorsqu’il est connecté à un réseau logique, il peut émettre des sons que vous entendrez dans le jeu en fonction des signaux sur ce réseau. Vous pouvez régler le volume, choisir un son spécifique à émettre, lui demander d’être audible quelle que soit la distance à laquelle vous vous trouvez, et même afficher une alerte personnalisée sur la carte. Le haut-parleur est débloqué grâce à la technologie Réseau logique, qui est si précoce dans l’arbre des recherches qu’elle pourrait être votre première technologie verte. Il est là, dans toute sa majestueuse gloire. Origine : Wiki de Factorio. Quels résultats cela peut-il donner ? Ça produit des sons ! OK, c’était un peu facile à dire. Si les haut-parleurs sont surtout connus pour les bidules musicaux fabriqués avec, ils ont aussi des usages pratiques. Si vous connectez un haut-parleur à votre usine et que vous réglez la diffusion globale et une icône d’alerte, vous pouvez concevoir des alertes personnalisées pour à peu près tout. Vous pouvez (et devriez !) lui donner une icône et un titre personnalisés car vous allez rapidement complètement oublier à quoi sert ce klaxon hurlant. C’est un moyen facile de diffuser une alarme sur l’ensemble de votre usine et cela peut vous aider à détecter les signes avant-coureurs de problèmes, avant qu’ils ne deviennent de véritables problèmes. Où devrait-il être utilisé ? Avez-vous déjà mis à rude épreuve votre alimentation électrique et provoqué accidentellement le ralentissement de vos foreuses de charbon, vous faisant entrer dans une spirale menant à la panne de courant car vos chaudières sont en manque de combustible ? Essayez de placer un haut-parleur à côté du convoyeur de charbon menant à vos chaudières et de le connecter au convoyeur avec un câble. Un convoyeur complet contient 8 objets, donc si vous réglez le haut-parleur pour qu’il se déclenche sur moins de 8 charbons, vous recevrez une alarme si des manques apparaissent dans votre convoyeur de charbon. Réglez cette alarme sur une diffusion globale et donnez-lui un nom comme “Vérifiez votre extraction de charbon !” et vous recevrez l’avis, peu importe où vous êtes ou ce qui vous occupe. Si ce truc se déclenche, il est temps de laisser tomber ce que vous faites et de corriger votre approvisionnement en charbon. (Plan) Un type d’alarme complètement différent est l’alarme de passage de train. Reliez un haut-parleur à un signal ferroviaire sur votre voie à l’endroit où vous avez l’intention de traverser, plus un signal supplémentaire dans chaque direction (assurez-vous que vous récupérez les signaux des deux côtés de la voie). Dites-lui de déclencher une sirène locale si l’un des signaux est jaune (nombre de signaux jaunes &gt; 0). La prochaine fois que vous vous dirigerez vers ce rail et qu’un train arrivera, vous recevrez une belle sirène sonore vous disant d’attendre un moment avant de traverser ! Si seulement j’avais découvert ça il y a quelques centaines d’heures... (Plan) Comme beaucoup d’autres choses dans Factorio, les utilisations du haut-parleur sont illimitées, tant en termes de fonctionnalité que de créativité. Les constructions vont du super simple montré ci-dessus, aux lecteurs midi super complexes et au-delà. J’espère que cela vous inspirera et vous évitera quelques maux de tête. D’ici la prochaine fois, on se verra à l’usine… et attention où vous mettez les pieds ! Décodeur Wireshark pour Factorio Hornwitser Ce projet a débuté lors de l’événement Gridlock Cluster. J’enquêtais sur des problèmes où des clients étaient exclus de la partie de façon aléatoire, ce qui m’a amené à analyser les traces de paquets à l’aide de Wireshark. Ces traces de paquets sont essentiellement des rapports binaires des paquets envoyés et reçus par la carte réseau de l’ordinateur qui les a captés. Pour comprendre la signification de ces données binaires, Wireshark les décode à l’aide de décodeurs de protocole, il en possède pour les protocoles couvrant toutes les facettes des réseaux. Mais il n’y en a pas pour Factorio, donc lorsque j’ai utilisé Wireshark sur le trafic de Factorio, tout ce que j’ai pu voir était du charabia hexadécimal envoyé entre le serveur et le client. Après avoir examiné les octets qui vont et viennent entre le serveur et le client, je me suis demandé : Serait-il difficile d’écrire un décodeur pour Wireshark afin de décoder ces données ? Je me suis penché sur la question et j’ai découvert que la manière la plus simple de l’écrire serait en Lua. Il peut ensuite être chargé comme un plugin par Wireshark, dans un système pas trop différent des mods de Factorio. C’est ainsi que j’ai commencé à étudier les octets en hexadécimal et à comprendre la structure de tout cela. C’est devenu un peu un défi personnel de comprendre la signification de chacun des octets et de les décoder dans Wireshark. Je pense avoir travaillé sur le décodeur pendant environ deux semaines avant de l’abandonner. Ce n’est pas que je ne pouvais pas le faire. C’est juste que ça ne valait pas tous les efforts que j’y ai mis. Vous voyez, la sortie de mon décodeur n’était pas très utile pour dire ce qui se passait. Ça ressemblait à quelque chose comme ça : Bien sûr, il décode la trame et réassemble les paquets fragmentés, mais à moins que vous ne sachiez ce que signifient ces informations bizarres, curieuses, étranges ou colorées, il ne sert pas à grand-chose. C’est aussi une des raisons pour lesquelles je n’ai pas publié ce décodeur : c’est déjà mieux que de regarder les données hexadécimales, mais pas de beaucoup. Il ne vous donne pas le genre d’aperçu profond des rouages internes du protocole Factorio que vous attendriez de n’importe lequel des autres décodeurs de protocole dont dispose Wireshark. Et c’est ainsi que ce projet a été mis au placard, pour ne plus être étudié par la suite. Dans le passé, le développeur de Factorio Twinsen avait parlé de la création d’un décodeur pour Wireshark dans le FFF n°196. Cet article contient un grand nombre d’informations internes sur le protocole que j’aurais pu utiliser pour créer mon décodeur, mais j’avais choisi de ne pas y regarder car je voulais créer le mien, sans me fier aux informations internes du code source du jeu. Une question évidente se pose cependant : Pourquoi ne pas utiliser le décodeur de Twinsen au lieu d’écrire le mien ? Eh bien, pour commencer, il n’est pas disponible publiquement, mais plus important encore, il ne peut pas être rendu public. La façon dont le décodeur de Twinsen fonctionnait était de construire Factorio comme une bibliothèque partagée, puis de construire une version personnalisée de Wireshark qui était liée à cette bibliothèque partagée. Or, Wireshark est sous licence GPL et il est interdit de diffuser du code GPL lié à du code propriétaire. Pour diffuser le décodeur, Wube devrait donc publier Factorio sous licence GPL, ce qui ne se produira évidemment pas. Il y a quelques semaines cependant, j’ai découvert quelque chose. La version Windows de Factorio est livrée avec un fichier .pdb qui contient des symboles de débogage. Les développeurs l’utilisent pour générer des traces de pile symbolisées lorsque le jeu se plante, afin de pouvoir voir où, dans le code source, le crash s’est produit. Mais heureusement pour moi, ce fichier regorge aussi d’autres types de données de débogage, comme celles nécessaires pour attacher un débogueur à Factorio et inspecter les valeurs des variables stockées en mémoire. Cela signifie qu’il contient des informations de type, c’est-à-dire la structure des données telle que définie dans le code, ainsi que les noms des champs et des énumérations. Le nom des champs est très utile car c’est l’étiquette que les développeurs mettent sur un élément de données afin de le référencer dans le code. De même, les énumérations contiennent les correspondances entre les noms logiques et les valeurs numériques. J’ai pu extraire ce type d’information du fichier .pdb en quelque chose de lisible en utilisant l’outil “cvdump.exe”. Une fois que j’ai eu cela, il a été assez facile de trouver les noms des structures du fichier .pdb et de renommer tous les champs dans mon décodeur pour pouvoir les utiliser. J’ai également compris que les définitions des énumérations traduisent les valeurs numériques en noms logiques pour les champs qui les utilisent. Après avoir fait un peu de ménage dans mon code et dans la présentation des données, j’ai pu faire en sorte que la sortie du décodeur ressemble à ceci : On n’a plus besoin de deviner ce qu’est une valeur “Odd Blue” : C’est clairement l’id d’un InputActionSegment. Maintenant, le type est traduit du code machine 0xa2 en un nom beaucoup plus convivial, ServerCommand. Le seul problème que pose la création du décodeur à partir des données fournies avec le jeu est qu’il ne s’agit plus clairement de mon travail original, ce qui remet en question la légalité de sa diffusion. Plutôt que d’essayer de savoir si j’avais la loi sur les droits d’auteur de mon côté, j’ai demandé aux développeurs de Factorio et ils ont dit qu’ils étaient d’accord pour que je le rende public. Donc, si vous voulez l’essayer vous-même ou l’ajouter à votre boîte à outils, vous pouvez le trouver dans mon dépôt sur GitHub. Personnellement, je l’ai utilisé pour étudier des problèmes de réseau dans Factorio, allant de la déconnexion de clients à la défaillance de la fonction de punching NAT. J’ai également rédigé quelques rapports de bug basés sur mes découvertes qui ont conduit à des corrections de bug dans le jeu. Avec le passage à l’utilisation des noms des symboles de débogage de Factorio, les données qu’il affiche sont devenues vraiment claires et informatives, du moins par rapport à ce qu’il affichait auparavant. Cependant, il s’agit toujours d’un outil destiné aux personnes expérimentées dans le domaine des réseaux informatiques et des aspects internes de Factorio, donc ne vous attendez pas à comprendre ce que tout cela signifie si vous n’êtes pas familier avec ces choses. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-32/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-32/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-04-23T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-04-23T00:00:00+00:00","author":{"@type":"Person","name":"The-Kool, Hornwitser"},"description":"Bienvenue dans le numéro 2⁵ de Alt-F4, rempli de requins. Dans ces eaux dangereuses, The-Kool nous guide pour que les haut-parleurs soient utilisés à bon escient, peut-être même comme un système d’alerte aux requins, dans le dernier épisode du Coin de la complexité ! Ensuite, Hornwitser se lance dans une véritable chasse au requin à l’aide de Wireshark, racontant comment il a traqué les problèmes de réseau qu’il a rencontrés avec le jeu. Prenez un harpon et lancez-vous ! Le coin de la complexité : Les haut-parleurs The Kool Bienvenue à nouveau dans le Coin de la complexité, où nous passons en revue les mécanismes les moins utilisés ou les plus complexes du jeu afin d’en donner une introduction à ceux qui ne les connaissent pas. Dans cet article, nous allons poser trois questions : “Qu’est-ce que c’est ?”, “Quels résultats cela peut-il donner ?”, et “Où devrait-il être utilisé ?” Qu’est-ce que c’est ? Le Haut-parleur programmable est un “bâtiment” qui occupe une seule tuile. Lorsqu’il est connecté à un réseau logique, il peut émettre des sons que vous entendrez dans le jeu en fonction des signaux sur ce réseau. Vous pouvez régler le volume, choisir un son spécifique à émettre, lui demander d’être audible quelle que soit la distance à laquelle vous vous trouvez, et même afficher une alerte personnalisée sur la carte. Le haut-parleur est débloqué grâce à la technologie Réseau logique, qui est si précoce dans l’arbre des recherches qu’elle pourrait être votre première technologie verte. Il est là, dans toute sa majestueuse gloire. Origine : Wiki de Factorio. Quels résultats cela peut-il donner ? Ça produit des sons ! OK, c’était un peu facile à dire. Si les haut-parleurs sont surtout connus pour les bidules musicaux fabriqués avec, ils ont aussi des usages pratiques. Si vous connectez un haut-parleur à votre usine et que vous réglez la diffusion globale et une icône d’alerte, vous pouvez concevoir des alertes personnalisées pour à peu près tout. Vous pouvez (et devriez !) lui donner une icône et un titre personnalisés car vous allez rapidement complètement oublier à quoi sert ce klaxon hurlant. C’est un moyen facile de diffuser une alarme sur l’ensemble de votre usine et cela peut vous aider à détecter les signes avant-coureurs de problèmes, avant qu’ils ne deviennent de véritables problèmes. Où devrait-il être utilisé ? Avez-vous déjà mis à rude épreuve votre alimentation électrique et provoqué accidentellement le ralentissement de vos foreuses de charbon, vous faisant entrer dans une spirale menant à la panne de courant car vos chaudières sont en manque de combustible ? Essayez de placer un haut-parleur à côté du convoyeur de charbon menant à vos chaudières et de le connecter au convoyeur avec un câble. Un convoyeur complet contient 8 objets, donc si vous réglez le haut-parleur pour qu’il se déclenche sur moins de 8 charbons, vous recevrez une alarme si des manques apparaissent dans votre convoyeur de charbon. Réglez cette alarme sur une diffusion globale et donnez-lui un nom comme “Vérifiez votre extraction de charbon !” et vous recevrez l’avis, peu importe où vous êtes ou ce qui vous occupe. Si ce truc se déclenche, il est temps de laisser tomber ce que vous faites et de corriger votre approvisionnement en charbon. (Plan) Un type d’alarme complètement différent est l’alarme de passage de train. Reliez un haut-parleur à un signal ferroviaire sur votre voie à l’endroit où vous avez l’intention de traverser, plus un signal supplémentaire dans chaque direction (assurez-vous que vous récupérez les signaux des deux côtés de la voie). Dites-lui de déclencher une sirène locale si l’un des signaux est jaune (nombre de signaux jaunes &gt; 0). La prochaine fois que vous vous dirigerez vers ce rail et qu’un train arrivera, vous recevrez une belle sirène sonore vous disant d’attendre un moment avant de traverser ! Si seulement j’avais découvert ça il y a quelques centaines d’heures... (Plan) Comme beaucoup d’autres choses dans Factorio, les utilisations du haut-parleur sont illimitées, tant en termes de fonctionnalité que de créativité. Les constructions vont du super simple montré ci-dessus, aux lecteurs midi super complexes et au-delà. J’espère que cela vous inspirera et vous évitera quelques maux de tête. D’ici la prochaine fois, on se verra à l’usine… et attention où vous mettez les pieds ! Décodeur Wireshark pour Factorio Hornwitser Ce projet a débuté lors de l’événement Gridlock Cluster. J’enquêtais sur des problèmes où des clients étaient exclus de la partie de façon aléatoire, ce qui m’a amené à analyser les traces de paquets à l’aide de Wireshark. Ces traces de paquets sont essentiellement des rapports binaires des paquets envoyés et reçus par la carte réseau de l’ordinateur qui les a captés. Pour comprendre la signification de ces données binaires, Wireshark les décode à l’aide de décodeurs de protocole, il en possède pour les protocoles couvrant toutes les facettes des réseaux. Mais il n’y en a pas pour Factorio, donc lorsque j’ai utilisé Wireshark sur le trafic de Factorio, tout ce que j’ai pu voir était du charabia hexadécimal envoyé entre le serveur et le client. Après avoir examiné les octets qui vont et viennent entre le serveur et le client, je me suis demandé : Serait-il difficile d’écrire un décodeur pour Wireshark afin de décoder ces données ? Je me suis penché sur la question et j’ai découvert que la manière la plus simple de l’écrire serait en Lua. Il peut ensuite être chargé comme un plugin par Wireshark, dans un système pas trop différent des mods de Factorio. C’est ainsi que j’ai commencé à étudier les octets en hexadécimal et à comprendre la structure de tout cela. C’est devenu un peu un défi personnel de comprendre la signification de chacun des octets et de les décoder dans Wireshark. Je pense avoir travaillé sur le décodeur pendant environ deux semaines avant de l’abandonner. Ce n’est pas que je ne pouvais pas le faire. C’est juste que ça ne valait pas tous les efforts que j’y ai mis. Vous voyez, la sortie de mon décodeur n’était pas très utile pour dire ce qui se passait. Ça ressemblait à quelque chose comme ça : Bien sûr, il décode la trame et réassemble les paquets fragmentés, mais à moins que vous ne sachiez ce que signifient ces informations bizarres, curieuses, étranges ou colorées, il ne sert pas à grand-chose. C’est aussi une des raisons pour lesquelles je n’ai pas publié ce décodeur : c’est déjà mieux que de regarder les données hexadécimales, mais pas de beaucoup. Il ne vous donne pas le genre d’aperçu profond des rouages internes du protocole Factorio que vous attendriez de n’importe lequel des autres décodeurs de protocole dont dispose Wireshark. Et c’est ainsi que ce projet a été mis au placard, pour ne plus être étudié par la suite. Dans le passé, le développeur de Factorio Twinsen avait parlé de la création d’un décodeur pour Wireshark dans le FFF n°196. Cet article contient un grand nombre d’informations internes sur le protocole que j’aurais pu utiliser pour créer mon décodeur, mais j’avais choisi de ne pas y regarder car je voulais créer le mien, sans me fier aux informations internes du code source du jeu. Une question évidente se pose cependant : Pourquoi ne pas utiliser le décodeur de Twinsen au lieu d’écrire le mien ? Eh bien, pour commencer, il n’est pas disponible publiquement, mais plus important encore, il ne peut pas être rendu public. La façon dont le décodeur de Twinsen fonctionnait était de construire Factorio comme une bibliothèque partagée, puis de construire une version personnalisée de Wireshark qui était liée à cette bibliothèque partagée. Or, Wireshark est sous licence GPL et il est interdit de diffuser du code GPL lié à du code propriétaire. Pour diffuser le décodeur, Wube devrait donc publier Factorio sous licence GPL, ce qui ne se produira évidemment pas. Il y a quelques semaines cependant, j’ai découvert quelque chose. La version Windows de Factorio est livrée avec un fichier .pdb qui contient des symboles de débogage. Les développeurs l’utilisent pour générer des traces de pile symbolisées lorsque le jeu se plante, afin de pouvoir voir où, dans le code source, le crash s’est produit. Mais heureusement pour moi, ce fichier regorge aussi d’autres types de données de débogage, comme celles nécessaires pour attacher un débogueur à Factorio et inspecter les valeurs des variables stockées en mémoire. Cela signifie qu’il contient des informations de type, c’est-à-dire la structure des données telle que définie dans le code, ainsi que les noms des champs et des énumérations. Le nom des champs est très utile car c’est l’étiquette que les développeurs mettent sur un élément de données afin de le référencer dans le code. De même, les énumérations contiennent les correspondances entre les noms logiques et les valeurs numériques. J’ai pu extraire ce type d’information du fichier .pdb en quelque chose de lisible en utilisant l’outil “cvdump.exe”. Une fois que j’ai eu cela, il a été assez facile de trouver les noms des structures du fichier .pdb et de renommer tous les champs dans mon décodeur pour pouvoir les utiliser. J’ai également compris que les définitions des énumérations traduisent les valeurs numériques en noms logiques pour les champs qui les utilisent. Après avoir fait un peu de ménage dans mon code et dans la présentation des données, j’ai pu faire en sorte que la sortie du décodeur ressemble à ceci : On n’a plus besoin de deviner ce qu’est une valeur “Odd Blue” : C’est clairement l’id d’un InputActionSegment. Maintenant, le type est traduit du code machine 0xa2 en un nom beaucoup plus convivial, ServerCommand. Le seul problème que pose la création du décodeur à partir des données fournies avec le jeu est qu’il ne s’agit plus clairement de mon travail original, ce qui remet en question la légalité de sa diffusion. Plutôt que d’essayer de savoir si j’avais la loi sur les droits d’auteur de mon côté, j’ai demandé aux développeurs de Factorio et ils ont dit qu’ils étaient d’accord pour que je le rende public. Donc, si vous voulez l’essayer vous-même ou l’ajouter à votre boîte à outils, vous pouvez le trouver dans mon dépôt sur GitHub. Personnellement, je l’ai utilisé pour étudier des problèmes de réseau dans Factorio, allant de la déconnexion de clients à la défaillance de la fonction de punching NAT. J’ai également rédigé quelques rapports de bug basés sur mes découvertes qui ont conduit à des corrections de bug dans le jeu. Avec le passage à l’utilisation des noms des symboles de débogage de Factorio, les données qu’il affiche sont devenues vraiment claires et informatives, du moins par rapport à ce qu’il affichait auparavant. Cependant, il s’agit toujours d’un outil destiné aux personnes expérimentées dans le domaine des réseaux informatiques et des aspects internes de Factorio, donc ne vous attendez pas à comprendre ce que tout cela signifie si vous n’êtes pas familier avec ces choses. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","url":"https://alt-f4.blog/ALTF4-32/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-32/"},"headline":"Alt-F4 n°32 - Opération Wireshark","dateModified":"2021-04-23T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/32/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/32/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-32/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-32/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-32/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-32/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-32/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-32/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-32/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-32/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-32/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-32/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°32 - Opération Wireshark  <author>23-04-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>The-Kool, Hornwitser</em>,
+
+
+
+édité par <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev</em>,
+
+
+
+relu par <em>Firerazer</em>
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/32/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Sommaire</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#le-coin-de-la-complexit%C3%A9--les-haut-parleurs-the-kool">Le coin de la complexité : Les haut-parleurs <author>The Kool</author></a>
+    <ul>
+      <li><a href="#quest-ce-que-cest-">Qu’est-ce que c’est ?</a></li>
+      <li><a href="#quels-r%C3%A9sultats-cela-peut-il-donner-">Quels résultats cela peut-il donner ?</a></li>
+      <li><a href="#o%C3%B9-devrait-il-%C3%AAtre-utilis%C3%A9-">Où devrait-il être utilisé ?</a></li>
+    </ul>
+  </li>
+  <li><a href="#d%C3%A9codeur-wireshark-pour-factorio-hornwitser">Décodeur Wireshark pour Factorio <author>Hornwitser</author></a></li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Bienvenue dans le numéro 2⁵ de Alt-F4, rempli de requins. Dans ces eaux dangereuses, <em>The-Kool</em> nous guide pour que les haut-parleurs soient utilisés à bon escient, peut-être même comme un système d’alerte aux requins, dans le dernier épisode du Coin de la complexité ! Ensuite, <em>Hornwitser</em> se lance dans une véritable chasse au requin à l’aide de Wireshark, racontant comment il a traqué les problèmes de réseau qu’il a rencontrés avec le jeu. Prenez un harpon et lancez-vous !</p>
+      <h2 id="le-coin-de-la-complexité--les-haut-parleurs-the-kool">
+        
+        
+            <a href="#le-coin-de-la-complexit%C3%A9--les-haut-parleurs-the-kool" class="anchor" style="text-decoration: none;">Le coin de la complexité : Les haut-parleurs <author>The Kool</author></a>
+          
+        
+      </h2>
+    
+
+<p>Bienvenue à nouveau dans le Coin de la complexité, où nous passons en revue les mécanismes les moins utilisés ou les plus complexes du jeu afin d’en donner une introduction à ceux qui ne les connaissent pas. Dans cet article, nous allons poser trois questions : “Qu’est-ce que c’est ?”, “Quels résultats cela peut-il donner ?”, et “Où devrait-il être utilisé ?”</p>
+      <h3 id="quest-ce-que-cest-">
+        
+        
+            <a href="#quest-ce-que-cest-" class="anchor" style="text-decoration: none;">Qu’est-ce que c’est ?</a>
+          
+        
+      </h3>
+    
+
+<p>Le <a href="https://wiki.factorio.com/Programmable_speaker/fr">Haut-parleur programmable</a> est un “bâtiment” qui occupe une seule tuile. Lorsqu’il est connecté à un réseau logique, il peut émettre des sons que vous entendrez dans le jeu en fonction des signaux sur ce réseau. Vous pouvez régler le volume, choisir un son spécifique à émettre, lui demander d’être audible quelle que soit la distance à laquelle vous vous trouvez, et même afficher une alerte personnalisée sur la carte. Le haut-parleur est débloqué grâce à la technologie Réseau logique, qui est si précoce dans l’arbre des recherches qu’elle pourrait être votre première technologie verte.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/32/speaker.jpg" alt="Haut-parleur programmable" style="max-width: ; max-height: ">
+      
+      <figcaption>Il est là, dans toute sa majestueuse gloire. Origine : <a href="https://wiki.factorio.com/File:Programmable_speaker_entity.png">Wiki de Factorio</a>.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="quels-résultats-cela-peut-il-donner-">
+        
+        
+            <a href="#quels-r%C3%A9sultats-cela-peut-il-donner-" class="anchor" style="text-decoration: none;">Quels résultats cela peut-il donner ?</a>
+          
+        
+      </h3>
+    
+
+<p>Ça produit des sons ! OK, c’était un peu facile à dire. Si les haut-parleurs sont surtout connus pour <a href="https://miditorio.com/">les bidules musicaux</a> fabriqués avec, ils ont aussi des usages pratiques. Si vous connectez un haut-parleur à votre usine et que vous réglez la diffusion globale et une icône d’alerte, vous pouvez concevoir des alertes personnalisées pour à peu près tout. Vous pouvez (et devriez !) lui donner une icône et un titre personnalisés car vous allez rapidement complètement oublier à quoi sert ce klaxon hurlant. C’est un moyen facile de diffuser une alarme sur l’ensemble de votre usine et cela peut vous aider à détecter les signes avant-coureurs de problèmes, avant qu’ils ne deviennent de véritables problèmes.</p>
+      <h3 id="où-devrait-il-être-utilisé-">
+        
+        
+            <a href="#o%C3%B9-devrait-il-%C3%AAtre-utilis%C3%A9-" class="anchor" style="text-decoration: none;">Où devrait-il être utilisé ?</a>
+          
+        
+      </h3>
+    
+
+<p>Avez-vous déjà mis à rude épreuve votre alimentation électrique et provoqué accidentellement le ralentissement de vos foreuses de charbon, vous faisant entrer dans une spirale menant à la panne de courant car vos chaudières sont en manque de combustible ? Essayez de placer un haut-parleur à côté du convoyeur de charbon menant à vos chaudières et de le connecter au convoyeur avec un câble. Un convoyeur complet contient 8 objets, donc si vous réglez le haut-parleur pour qu’il se déclenche sur moins de 8 charbons, vous recevrez une alarme si des manques apparaissent dans votre convoyeur de charbon. Réglez cette alarme sur une diffusion globale et donnez-lui un nom comme “Vérifiez votre extraction de charbon !” et vous recevrez l’avis, peu importe où vous êtes ou ce qui vous occupe.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/32/coal_alarm.jpg" alt="Système d’alarme pour le charbon" style="max-width: ; max-height: ">
+      
+      <figcaption>Si ce truc se déclenche, il est temps de laisser tomber ce que vous faites et de corriger votre approvisionnement en charbon. (<a href="https://media.alt-f4.blog/ALTF4/32/coal_alarm_bp.txt">Plan</a>)</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Un type d’alarme complètement différent est l’alarme de passage de train. Reliez un haut-parleur à un signal ferroviaire sur votre voie à l’endroit où vous avez l’intention de traverser, plus un signal supplémentaire dans chaque direction (assurez-vous que vous récupérez les signaux des deux côtés de la voie). Dites-lui de déclencher une sirène locale si l’un des signaux est jaune (nombre de signaux jaunes &gt; 0). La prochaine fois que vous vous dirigerez vers ce rail et qu’un train arrivera, vous recevrez une belle sirène sonore vous disant d’attendre un moment avant de traverser !</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/32/train_alarm.jpg" alt="Système d’alarme pour le passage des trains" style="max-width: ; max-height: ">
+      
+      <figcaption>Si seulement j’avais découvert ça il y a quelques centaines d’heures... (<a href="https://media.alt-f4.blog/ALTF4/32/train_alarm_bp.txt">Plan</a>)</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Comme beaucoup d’autres choses dans Factorio, les utilisations du haut-parleur sont illimitées, tant en termes de fonctionnalité que de créativité. Les constructions vont du super simple montré ci-dessus, aux lecteurs midi super complexes et au-delà. J’espère que cela vous inspirera et vous évitera quelques maux de tête. D’ici la prochaine fois, on se verra à l’usine… et attention où vous mettez les pieds !</p>
+      <h2 id="décodeur-wireshark-pour-factorio-hornwitser">
+        
+        
+            <a href="#d%C3%A9codeur-wireshark-pour-factorio-hornwitser" class="anchor" style="text-decoration: none;">Décodeur Wireshark pour Factorio <author>Hornwitser</author></a>
+          
+        
+      </h2>
+    
+
+<p>Ce projet a débuté lors de l’événement <a href="https://www.reddit.com/r/factorio/comments/c98wui/the_gridlock_cluster_a_clusterio_based_event/">Gridlock Cluster</a>. J’enquêtais sur des problèmes où des clients étaient exclus de la partie de façon aléatoire, ce qui m’a amené à analyser les traces de paquets à l’aide de Wireshark. Ces traces de paquets sont essentiellement des rapports binaires des paquets envoyés et reçus par la carte réseau de l’ordinateur qui les a captés. Pour comprendre la signification de ces données binaires, Wireshark les décode à l’aide de décodeurs de protocole, il en possède pour les protocoles couvrant toutes les facettes des réseaux. Mais il n’y en a pas pour Factorio, donc lorsque j’ai utilisé Wireshark sur le trafic de Factorio, tout ce que j’ai pu voir était du charabia hexadécimal envoyé entre le serveur et le client.</p>
+
+<p>Après avoir examiné les octets qui vont et viennent entre le serveur et le client, je me suis demandé : Serait-il difficile d’écrire un décodeur pour Wireshark afin de décoder ces données ? Je me suis penché sur la question et j’ai découvert que la manière la plus simple de l’écrire serait en Lua. Il peut ensuite être chargé comme un plugin par Wireshark, dans un système pas trop différent des mods de Factorio. C’est ainsi que j’ai commencé à étudier les octets en hexadécimal et à comprendre la structure de tout cela. C’est devenu un peu un défi personnel de comprendre la signification de chacun des octets et de les décoder dans Wireshark. Je pense avoir travaillé sur le décodeur pendant environ deux semaines avant de l’abandonner.</p>
+
+<p>Ce n’est pas que je ne pouvais pas le faire. C’est juste que ça ne valait pas tous les efforts que j’y ai mis. Vous voyez, la sortie de mon décodeur n’était pas très utile pour dire ce qui se passait. Ça ressemblait à quelque chose comme ça :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/32/old-dissector.png" alt="Capture d’écran de l’ancien décodeur Wireshark" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Bien sûr, il décode la trame et réassemble les paquets fragmentés, mais à moins que vous ne sachiez ce que signifient ces informations bizarres, curieuses, étranges ou colorées, il ne sert pas à grand-chose. C’est aussi une des raisons pour lesquelles je n’ai pas publié ce décodeur : c’est déjà mieux que de regarder les données hexadécimales, mais pas de beaucoup. Il ne vous donne pas le genre d’aperçu profond des rouages internes du protocole Factorio que vous attendriez de n’importe lequel des autres décodeurs de protocole dont dispose Wireshark. Et c’est ainsi que ce projet a été mis au placard, pour ne plus être étudié par la suite.</p>
+
+<p>Dans le passé, le développeur de Factorio <em>Twinsen</em> avait parlé de la création d’un décodeur pour Wireshark dans le <a href="https://factorio.com/blog/post/fff-196">FFF n°196</a>. Cet article contient un grand nombre d’informations internes sur le protocole que j’aurais pu utiliser pour créer mon décodeur, mais j’avais choisi de ne pas y regarder car je voulais créer le mien, sans me fier aux informations internes du code source du jeu. Une question évidente se pose cependant : Pourquoi <em>ne pas</em> utiliser le décodeur de <em>Twinsen</em> au lieu d’écrire le mien ? Eh bien, pour commencer, il n’est pas disponible publiquement, mais plus important encore, il ne peut pas être rendu public. La façon dont le décodeur de <em>Twinsen</em> fonctionnait était de construire Factorio comme une bibliothèque partagée, puis de construire une version personnalisée de Wireshark qui était liée à cette bibliothèque partagée. Or, Wireshark est sous licence <a href="https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU">GPL</a> et il est interdit de diffuser du code GPL lié à du code propriétaire. Pour diffuser le décodeur, Wube devrait donc publier Factorio sous licence GPL, ce qui ne se produira évidemment pas.</p>
+
+<p>Il y a quelques semaines cependant, j’ai découvert quelque chose. La version Windows de Factorio est livrée avec un fichier <code class="language-plaintext highlighter-rouge">.pdb</code> qui contient des symboles de débogage. Les développeurs l’utilisent pour générer des traces de pile symbolisées lorsque le jeu se plante, afin de pouvoir voir où, dans le code source, le crash s’est produit. Mais heureusement pour moi, ce fichier regorge aussi d’autres types de données de débogage, comme celles nécessaires pour attacher un débogueur à Factorio et inspecter les valeurs des variables stockées en mémoire. Cela signifie qu’il contient des informations de type, c’est-à-dire la structure des données telle que définie dans le code, ainsi que les noms des champs et des énumérations. Le nom des champs est très utile car c’est l’étiquette que les développeurs mettent sur un élément de données afin de le référencer dans le code. De même, les énumérations contiennent les correspondances entre les noms logiques et les valeurs numériques.</p>
+
+<p>J’ai pu extraire ce type d’information du fichier <code class="language-plaintext highlighter-rouge">.pdb</code> en quelque chose de lisible en utilisant l’outil “cvdump.exe”. Une fois que j’ai eu cela, il a été assez facile de trouver les noms des structures du fichier <code class="language-plaintext highlighter-rouge">.pdb</code> et de renommer tous les champs dans mon décodeur pour pouvoir les utiliser. J’ai également compris que les définitions des énumérations traduisent les valeurs numériques en noms logiques pour les champs qui les utilisent. Après avoir fait un peu de ménage dans mon code et dans la présentation des données, j’ai pu faire en sorte que la sortie du décodeur ressemble à ceci :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/32/new-dissector.png" alt="Capture d’écran du nouveau décodeur Wireshark" style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>On n’a plus besoin de deviner ce qu’est une valeur “Odd Blue” : C’est clairement l’<code class="language-plaintext highlighter-rouge">id</code> d’un <code class="language-plaintext highlighter-rouge">InputActionSegment</code>. Maintenant, le type est traduit du code machine <code class="language-plaintext highlighter-rouge">0xa2</code> en un nom beaucoup plus convivial, <code class="language-plaintext highlighter-rouge">ServerCommand</code>. Le seul problème que pose la création du décodeur à partir des données fournies avec le jeu est qu’il ne s’agit plus clairement de mon travail original, ce qui remet en question la légalité de sa diffusion. Plutôt que d’essayer de savoir si j’avais la loi sur les droits d’auteur de mon côté, j’ai demandé aux développeurs de Factorio et ils ont dit qu’ils étaient d’accord pour que je le rende public. Donc, si vous voulez l’essayer vous-même ou l’ajouter à votre boîte à outils, vous pouvez le trouver dans mon dépôt sur <a href="https://github.com/Hornwitser/factorio_dissector">GitHub</a>.</p>
+
+<p>Personnellement, je l’ai utilisé pour étudier des problèmes de réseau dans Factorio, allant de la déconnexion de clients à la défaillance de la fonction de punching NAT. J’ai également rédigé quelques rapports de bug basés sur mes découvertes qui ont conduit à des corrections de bug dans le jeu. Avec le passage à l’utilisation des noms des symboles de débogage de Factorio, les données qu’il affiche sont devenues vraiment claires et informatives, du moins par rapport à ce qu’il affichait auparavant. Cependant, il s’agit toujours d’un outil destiné aux personnes expérimentées dans le domaine des réseaux informatiques et des aspects internes de Factorio, donc ne vous attendez pas à comprendre ce que tout cela signifie si vous n’êtes pas familier avec ces choses.</p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://discord.gg/nxnCFkb">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-31/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

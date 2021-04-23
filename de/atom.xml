@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-21T16:11:27+00:00</updated>
+  <updated>2021-04-23T10:10:52+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #32 – Operation Wireshark</title>
+    <link href="https://alt-f4.blog/de/ALTF4-32/" />
+    <id>https://alt-f4.blog/ALTF4-32</id>
+    <updated>2021-04-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Herzlich willkommen zur Ausgabe Nummer #2⁵, diesmal aber mit Haien! In diesen gefährlichen Gewässern zeigt uns &lt;em&gt;The-Kool&lt;/em&gt; wie man Lautsprecher praktisch einsetzen kann, möglicherweise sogar als Haiwarnsystem. Danach gehen wir mit &lt;em&gt;Hornwitser&lt;/em&gt; auf echte Haijagd mit Wireshark, und erfahren so, wie er Netzwerkprobleme im Spiel gefunden hat. Also schnapp dir...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-24</id>
     <updated>2021-02-19T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In dieser Woche geht es weiter mit pocarski´s Fließbandcomputer, den wir bereits letzte Woche angefangen haben. Dieses Mal versuchen wir ihm beizubringen, sich zu erinnern. Mal schauen wie das wird.&lt;/p&gt; &lt;h2 id=&quot;fließbandbasierter-rechner-teil-2-niemals-vergessen-pocarski&quot;&gt;Fließbandbasierter Rechner, Teil 2: Niemals vergessen &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;In dieser Woche geht es weiter mit meinen Artikeln zu fließbandbasierten Rechnern....</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #23 – Extravagante Fließbänder</title>
-    <link href="https://alt-f4.blog/de/ALTF4-23/" />
-    <id>https://alt-f4.blog/ALTF4-23</id>
-    <updated>2021-02-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Nach einer zweiwöchigen Pause aufgrund einiger druckfrischer FFFs, sind wir diese Woche mit zwei Artikeln rund um das Thema Fließbänder zurück. In dem ersten erforscht Recon419A ein interessantes Konzept, bei dem die Fließbänder Gegenstände just-in-time liefern. Danach wird es mit einem tiefen Blick in den Aufbau einer Turing-Maschine nur mit...</content>
   </entry>
   
   
