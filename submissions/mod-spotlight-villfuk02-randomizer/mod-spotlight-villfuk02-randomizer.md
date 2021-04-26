@@ -1,6 +1,6 @@
 ## Vanilla. Shaken, not stirred.
 
-*Vill’s Recipe Randomizer* does exactly what the name suggests - randomizes recipes. On the first sight, this can seem like a very stupid and a very simple idea. However, once you try to make it less stupid, it gets very complicated pretty quickly.
+[*Vill’s Recipe Randomizer*](https://mods.factorio.com/mod/ZRecipeRandomizer) does exactly what the name suggests - randomizes recipes. On the first sight, this can seem like a very stupid and a very simple idea. However, once you try to make it less stupid, it gets very complicated pretty quickly.
 
 ![Free spaghetti sample](spaghetti-sample.jpg)
 *Example factory making production (purple) science packs from distractor capsules, power switches and flamethrower ammo.*
@@ -15,12 +15,12 @@ After two other failed projects I came back to Factorio, this time, as a player.
 
 The mod could simply take each recipe and make it take random items as ingredients. But then it would be pretty useless, because for example red science could take nuclear fuel as an ingredient, but you don’t have it researched yet. So I decided to make it crawl through the tech tree, and for each recipe unlocked, take only the items unlocked before it as potential ingredients. There are of course exceptions in some mods, where you can unlock a recipe before you can even craft it, so I have to be a bit more careful.
 
-You probably wouldn’t want to make an underground belt from steam engines and labs. That would be way too expensive. I needed a way to make the recipes more balanced. So I decided to implement an algorithm that calculates the value of each item based on the resources you need to make it. Let’s say both copper and iron have a value of 1, that means electronic circuits would have a value of 2.5.
+You probably wouldn’t want to make an underground belt from steam engines and labs. That would be way too expensive. I needed a way to make the recipes more balanced. So I decided to implement an algorithm that calculates the value of each item based on the resources you need to make it. We can easily calculate that 1 electronic circuit takes 1 iron ore and 1.5 copper ore:
 
 ![How it's made: Electonic circuit](electronic-circuit.jpg)
-*How to calculate an item's value. 1.5 copper ore plus 1 iron ore makes a value of 2.5.*
+*1.5 copper ore plus 1 iron ore makes 1 electronic circuit.*
 
-Now the randomizer knows it can use for example 1 transport belt (1.5) and 1 copper ore (1) as a new recipe for electronic circuits. There is some variance in the final value. It makes the recipes a bit more unique, but most importantly, it’s easier to find a valid combination, speeding up the randomization process.
+Let's say that both copper ore and iron orea have a value of 1, that means electronic circuits would have a value of 2.5. Now the randomizer knows it can use for example 1 transport belt (1.5) and 1 copper ore (1) as a new recipe for electronic circuits. There is some variance in the final value. It makes the recipes a bit more unique, but most importantly, it’s easier to find a valid combination, speeding up the randomization process.
 
 At this point I published the mod and from feedback and some testing it became very apparent there were many bugs (of course) and two "big" issues. The word *big* is in quotes, because the mod was still more playable than you’d expect even from a randomizer. However I wanted the players to enjoy it, not just experience it.
 
@@ -47,15 +47,13 @@ Except I did not talk about some BIG issues (notice the missing quotes and the c
 ![Clean it up!](kovarex-and-liquefaction.jpg)
 *40 U-235 and 2 U-238 can be removed from kovarex and 25 heavy oil can be removed from coal liquefaction.*
 
-Loops with more than one recipe are somewhat problematic. There are no loops in vanilla with more than one recipe (except for barreling and unbarrelling, which is not randomized by default anyway), so they’re pretty easy to miss, but in mods, they are everywhere, also the randomizer might accidentally create a loop in certain conditions. To illustrate the problem we’ll need an example. Let’s take synthetic sapphires in Industrial Revolution 2:
+Loops with more than one recipe are somewhat problematic. There are no loops in vanilla with more than one recipe (except for barreling and unbarrelling, which is not randomized by default anyway), so they’re pretty easy to miss, but in mods, they are everywhere, also the randomizer might accidentally create a loop in certain conditions. To illustrate the problem we’ll need an example. Let’s take synthetic sapphires in Industrial Revolution 2. You need pure nickel mineral, silica and sapphire dust to make a sapphire, however, sapphire dust is made by crushing sapphires, forming a loop:
 
 ![Sapphire loop](sapphire-loop.jpg)
-*You need pure nickel mineral, silica and sapphire dust to make a sapphire, however, sapphire dust is made by crushing sapphires, forming a loop.*
 
-The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used for the calculation instead of the one the straightened loop ended with.
+The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used for the calculation instead of the one the straightened loop ended with. Here, the two recipes are merged by removing the 3 sapphire dust in the middle, then we can remove the 2 sapphires that are both an ingredient and a result:
 
 ![Sapphire unlooped](sapphire-unlooped.jpg)
-*Here, the two recipes are merged by removing the 3 sapphire dust in the middle, then we can remove the 2 sapphires that are both an ingredient and a result.*
 
 And we end up with a recipe to make sapphires while leaving out the problematic details! But what happens when there’s branching loops or loops within loops?
 
