@@ -1,6 +1,6 @@
 ## COMFY Minesweeper! <author>redlabel</author>
 
-To celebrate a new map design by legendary map maker [mewmew](https://github.com/M3wM3w) and a shiny new Ryzen 5 5950X powered by [Gerkiz](https://github.com/Gerkiz), [COMFY](https://getcomfy.eu/) Factorio is organizing a special event on May 1st @ 5PM UTC. Everyone and their families are invited, no need to RSVP.
+To celebrate a new map design by legendary map maker [mewmew](https://github.com/M3wM3w) and a shiny new Ryzen 9 5950X powered by [Gerkiz](https://github.com/Gerkiz), [COMFY](https://getcomfy.eu/) Factorio is organizing a special event on May 1st @ 5PM UTC. Everyone and their families are invited, no need to RSVP.
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/33/comfyimage.jpg' alt='Minesweeper in Factorio' %}
 
