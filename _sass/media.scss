@@ -41,3 +41,38 @@ iframe.iframe-inset {
   background-size: cover;
   background-position: center center;
 }
+
+.flex-space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.m8,
+div.m8 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+div.p8 {
+  padding: 8px;
+}
+
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-rows: 1fr, 1fr;
+  grid-auto-flow: dense;
+
+  img {
+    margin: auto;
+    // height: 100%;
+    object-fit: cover;
+  }
+  img#main {
+    grid-row: 2;
+    grid-column: 1/-1;
+    width: 100%;
+  }
+}
