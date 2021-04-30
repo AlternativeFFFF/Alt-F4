@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-23T10:15:56+00:00</updated>
+  <updated>2021-04-30T12:15:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°33 - Vanilla : au shaker, pas à la cuillère</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-33/" />
+    <id>https://alt-f4.blog/ALTF4-33</id>
+    <updated>2021-04-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Dans ce délicieux numéro 33 de Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; nous présente son mod le plus récent : “The Recipe Randomizer” ! Un effort particulier est placé pour vous montrer l’ensemble des problèmes qui doivent être surmontés pour créer un générateur de recettes aléatoires qui soit réellement correct. Après cela, &lt;em&gt;redlabel&lt;/em&gt; nous...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-25</id>
     <updated>2021-02-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Dans ce 25&lt;sup&gt;ième&lt;/sup&gt; numéro de Alt-F4, TheKool revient pour le troisième et dernier volet de sa série sur les modules. Dans cet article, il présente les modules d’efficacité en parlant de la théorie et en présentant une expérience pratique !&lt;/p&gt; &lt;h2 id=&quot;le-coin-de-la-complexité--les-modules-defficacité-the-kool&quot;&gt;Le coin de la complexité : Les modules d’efficacité...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°24 - Créer des mémoires</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-24/" />
-    <id>https://alt-f4.blog/ALTF4-24</id>
-    <updated>2021-02-19T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Cette semaine, nous continuons l’article de pocarski de la semaine dernière qui n’est rien de moins que la possibilité de créer un ordinateur dans Factorio en utilisant seulement des convoyeurs. Cette fois, nous tentons de vous montrer comment se rappeler de choses. Jetons-y un oeil.&lt;/p&gt; &lt;h2 id=&quot;linformatique-par-convoyeurs-deuxième-partie--noubliez-jamais-pocarski&quot;&gt;L’informatique par convoyeurs, Deuxième...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-23T10:15:56+00:00</updated>
+  <updated>2021-04-30T12:15:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #33 – Vanilla: Geschüttelt, nicht gerührt</title>
+    <link href="https://alt-f4.blog/de/ALTF4-33/" />
+    <id>https://alt-f4.blog/ALTF4-33</id>
+    <updated>2021-04-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In dieser wunderbaren 33. Ausgabe von Alt-F4 präsentiert &lt;em&gt;Villfuk02&lt;/em&gt; seine neuste Mod: Den Rezepte-Zufallsgenerator! Die Designprobleme, die man für einen guten Zufallsgenerator lösen muss, stehen hierbei besonders im Rampenlicht. Danach kündigt &lt;em&gt;redlabel&lt;/em&gt; das neuste COMFY Event an, welches vermutlich sehr &lt;em&gt;bombastisch&lt;/em&gt; wird.&lt;/p&gt; &lt;h2 id=&quot;vanilla-geschüttelt-nicht-gerührt-villfuk02&quot;&gt;Vanilla: Geschüttelt, nicht gerührt &lt;author&gt;Villfuk02&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://mods.factorio.com/mod/ZRecipeRandomizer&quot;&gt;&lt;em&gt;Vill‘s...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-25</id>
     <updated>2021-02-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In dieser silbernen Geburtstagsausgabe von Alt-F4 kehrt TheKool für diese dritte und letzte Folge seiner Serie über Module zurück. Darin deckt er Effizienzmodule ab, indem er über die Theorie spricht und dann ein reales Experiment vorstellt!&lt;/p&gt; &lt;h2 id=&quot;komplexitäts-ecke-effizienzmodule-the-kool&quot;&gt;Komplexitäts-Ecke: Effizienzmodule &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Diese Woche geht es weiter mit der dritten Ausgabe...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #24 - Erinnerungen schaffen</title>
-    <link href="https://alt-f4.blog/de/ALTF4-24/" />
-    <id>https://alt-f4.blog/ALTF4-24</id>
-    <updated>2021-02-19T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In dieser Woche geht es weiter mit pocarski´s Fließbandcomputer, den wir bereits letzte Woche angefangen haben. Dieses Mal versuchen wir ihm beizubringen, sich zu erinnern. Mal schauen wie das wird.&lt;/p&gt; &lt;h2 id=&quot;fließbandbasierter-rechner-teil-2-niemals-vergessen-pocarski&quot;&gt;Fließbandbasierter Rechner, Teil 2: Niemals vergessen &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;In dieser Woche geht es weiter mit meinen Artikeln zu fließbandbasierten Rechnern....</content>
   </entry>
   
   

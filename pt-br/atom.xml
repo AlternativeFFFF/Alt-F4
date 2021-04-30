@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/pt-br/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-23T10:15:56+00:00</updated>
+  <updated>2021-04-30T12:15:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #33 - Vanilla: Shaken, not Stirred</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-33/" />
+    <id>https://alt-f4.blog/ALTF4-33</id>
+    <updated>2021-04-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this delightful issue #33 of Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; presents their most recent mod creation: The Recipe Randomizer! A spotlight is put on all the design problems that needed to be overcome to make a recipe randomizer that is actually good. After that, &lt;em&gt;redlabel&lt;/em&gt; announces the most recent COMFY event, which...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-25</id>
     <updated>2021-02-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In this silver birthday issue of Alt-F4, TheKool returns for this third and final instalment of his series about modules. In it, he covers efficiency modules by talking about the theory and then presenting a real(ish)-world experiment!&lt;/p&gt; &lt;h2 id=&quot;complexity-corner-efficiency-modules-the-kool&quot;&gt;Complexity Corner: Efficiency Modules &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;This week, we’re on to the...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #24 - Criando Memórias</title>
-    <link href="https://alt-f4.blog/pt-br/ALTF4-24/" />
-    <id>https://alt-f4.blog/ALTF4-24</id>
-    <updated>2021-02-19T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Esta semana, estamos dando sequência ao artigo de pocarski da semana passada que era sobre como construir um computador dentro da Factorio usando apenas esteiras. Desta vez, estamos tentando ensiná-lo a lembrar das coisas. Vamos ver no que isso da.&lt;/p&gt; &lt;h2 id=&quot;computação-somente-de-esteiras-parte-2-nunca-esqueçer-pocarski&quot;&gt;Computação somente de esteiras, Parte 2: Nunca esqueçer &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt;...</content>
   </entry>
   
   

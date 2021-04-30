@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-23T10:15:56+00:00</updated>
+  <updated>2021-04-30T12:15:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #33 - 原版：摇匀，不要搅拌</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-33/" />
+    <id>https://alt-f4.blog/ALTF4-33</id>
+    <updated>2021-04-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在令人愉快的 Alt-F4 第 33 期中，&lt;em&gt;Villfuk02&lt;/em&gt; 介绍了他们的最新 Mod 创作。配方随机器！聚焦在需要克服的设计问题上，以制作一个真正好用的配方随机器。之后，&lt;em&gt;redlabel&lt;/em&gt; 宣布了最新的 COMFY 活动，这很可能是一个非常 &lt;em&gt;炸裂&lt;/em&gt; 的活动。&lt;/p&gt; &lt;h2 id=&quot;原版摇匀不要搅拌-villfuk02&quot;&gt;原版：摇匀，不要搅拌 &lt;author&gt;Villfuk02&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://mods.factorio.com/mod/ZRecipeRandomizer&quot;&gt;&lt;em&gt;Vill 的配方随机器（Vill’s Recipe Randomizer）&lt;/em&gt;&lt;/a&gt;的功能正如其名——它将配方随机化。乍一看，这感觉是一个非常愚蠢而且非常简单的主意。然而，一旦你试图让它变得不那么愚蠢，它很快就会变得非常复杂。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/33/spaghetti-sample.jpg&quot; alt=&quot;免费的意大利面样品&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;一个用掩护无人机，电闸和油料储罐制造生产科技包的工厂样例。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;从哪里开始的&quot;&gt;从哪里开始的&lt;/h3&gt; &lt;p&gt;我是在 2020 年 9 月开始这个项目的。当时，我试图做一个既简单又独特的...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-25</id>
     <updated>2021-02-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在这期 Alt-F4 的 25 期生日刊中，TheKool 将为大家带来他关于插件系列的第三期也是最后一期。在这期中，他通过谈论理论以及展示一个（几乎）真实世界实验来涵盖节能插件！&lt;/p&gt; &lt;h2 id=&quot;复杂角节能插件-the-kool&quot;&gt;复杂角：节能插件 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;本周，我们将进入第三期的复杂角！如果你没看过先前的内容，建议先读一下我过去的文章，关于&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-12/#%E5%A4%8D%E6%9D%82%E8%A7%92%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6-thekool&quot;&gt;产能&lt;/a&gt;和&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-16/#%E5%A4%8D%E6%9D%82%E8%A7%92%E9%80%9F%E5%BA%A6%E6%8F%92%E4%BB%B6-thekool&quot;&gt;速度&lt;/a&gt;插件的文章，因为今天我们将继续这个系列，讲讲三个插件中的最后一个：&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E8%8A%82%E8%83%BD%E6%8F%92%E4%BB%B6&quot;&gt;节能插件&lt;/a&gt;。和往期文章一样，我们将关注三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”我们的目标是要告诉那些对使用这些机制犹豫不决的人，它们其实是超级容易上手的。&lt;/p&gt; &lt;h3 id=&quot;节能插件是什么&quot;&gt;节能插件是什么？&lt;/h3&gt; &lt;p&gt;与其他两个插件一样，节能插件可以放置在建筑物中以改变它们运行的方式。和速度插件一样，节能插件也可以放置在机器和插件效果分享塔中。不过与速度插件和产能插件不同，节能插件只有一个效果，没有直接的缺点和副作用。嗯，其实就是一个效果，有两个好处。它们降低了建筑运行所需的电力，也减少了其产生的污染。&lt;/p&gt; &lt;h3 id=&quot;它们能提供什么效果&quot;&gt;它们能提供什么效果？&lt;/h3&gt; &lt;p&gt;它们可以降低已经压榨到极限的电网压力，或者通过无需制造大量发电设施来节省资源，但最主要的好处是减少污染。相当 &lt;em&gt;大&lt;/em&gt; 程度的污染减少。一个节能插件 1 就能减少高达 30% 的功耗和污染！这也是一个非常惊人的数字。不过有一点很重要，那就是每台机器最多只能受益于 80% 的减排量，所以你在使用的时候要记住这一点。&lt;/p&gt; &lt;p&gt;很多理论工作者喜欢假设整个工厂使用清洁能源。也就是说，所有的电力都来自于太阳能，而太阳能没有污染。但对于我们很多人来说，在游玩的过程中大部分时间都是依靠蒸汽或核能，而这两种能源都会产生污染（尽管核能是通过制作燃料棒间接产生污染）。事实上，我们很多人从来没有试过纯太阳能。这意味着降低电力消耗就能减少发电带来的污染。&lt;/p&gt; &lt;p&gt;即便你真的全部用太阳能发电，节能插件也会减少机器本身产生的污染。对于那些不知道的人来说，有些机器本身就会&lt;a href=&quot;https://wiki.factorio.com/Pollution/zh#%E6%B1%A1%E6%9F%93%E6%BA%90&quot;&gt;产生污染&lt;/a&gt;，不管它们消耗的电力来自哪里。但是，这个污染率也会受到用电倍率的影响。这意味着，如果你的机器因为节能插件而少用了 60% 的电，那么它产生的直接污染也就少了 60%。例如，一台组装机 2 型如果有两个节能插件 1，每分钟只会产生 1.2 的污染，低于正常的每分钟 3。&lt;/p&gt; &lt;p&gt;为了展示节能插件对污染云的影响，我用编辑器设计并建造了一个工厂，它的规模大概相当于一个普通玩家的前火箭工厂，甚至可能更小一些。它的产量为 45 SPM，电力全部来自固体燃料和蒸汽，使用的是中级机器（钢炉、电力采矿机、组装机 2 型）。我把这个完整的工厂放在一个没有污染的地图上，让它运行了十个小时，然后拍下污染云的截图。接下来，我重新加载了没有污染的地图，又把基地放了下来，这次在运行十个小时之前添加了节能插件。大家可以自己看看污染云小了多少。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;div class=&quot;juxtapose juxtapose-0&quot;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #24 - 创造记忆</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-24/" />
-    <id>https://alt-f4.blog/ALTF4-24</id>
-    <updated>2021-02-19T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周，我们会跟进 pocarski 上周的文章，内容是关于如何在异星工厂内只用传送带来搭建一台电脑。这一次，我们要教它如何记住东西。让我们看看效果如何。&lt;/p&gt; &lt;h2 id=&quot;纯传送带计算第二部分永不忘记-pocarski&quot;&gt;纯传送带计算，第二部分：永不忘记 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;本周，我将继续延续我的关于纯传送带计算的文章。我强烈建议大家回到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/#%E7%BA%AF%E4%BC%A0%E9%80%81%E5%B8%A6%E8%AE%A1%E7%AE%97%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%8D%E5%A4%AA%E7%AE%80%E6%98%8E%E7%9A%84%E6%95%B0%E5%AD%A6-pocarski&quot;&gt;上期&lt;/a&gt;去复习一下。&lt;/p&gt; &lt;p&gt;在开始之前，先做一个简短的说明：在本周的 &lt;a href=&quot;https://discord.gg/AsXAwyV&quot;&gt;Discord&lt;/a&gt; 里 &lt;em&gt;BlueCheetah#7844&lt;/em&gt; 对我的加法器回路进行了重大的布局改进，现在它略微长了一些，但仅有四格宽。以下是改进后的图片，做着与上周一样的计算。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/24/improved-8-bit-adder.jpg&quot; alt=&quot;更好的加法器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;看完了这个，我们就开始讲正事吧。上一次，我们探讨了只用传送带和分流器进行数字加法，本周我们将探讨在计算方面同样重要的东西：内存。能够给数字做加法的能力是很棒的，但如果没有办法存储指令或结果，一切都是徒劳。在 CPU 内部，加法的结果会被记住，然后经过一些操作，反馈回刚才做计算的加法器。这样一来，就可以实现几乎所有能够想象到的数学运算。&lt;/p&gt; &lt;p&gt;和上周一样，欢迎大家下载本文中的所有电路的&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/24/belt-computer-blueprint-book-2.txt&quot;&gt;蓝图簿&lt;/a&gt;来亲身体验一下。&lt;/p&gt; &lt;h3 id=&quot;数据选择器&quot;&gt;数据选择器&lt;/h3&gt; &lt;p&gt;首先介绍一个新的电路：&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E9%80%89%E6%8B%A9%E5%99%A8&quot;&gt;数据选择器&lt;/a&gt;。数据选择器有两个数据输入 &lt;em&gt;A&lt;/em&gt; 和 &lt;em&gt;B&lt;/em&gt;，一个指针输入 &lt;em&gt;P&lt;/em&gt;，一个输出 &lt;em&gt;O&lt;/em&gt;。下面是这个多路复用器的真值表（“-”表示输入不影响输出）：&lt;/p&gt; &lt;table&gt; &lt;thead&gt; &lt;tr&gt;...</content>
   </entry>
   
   
