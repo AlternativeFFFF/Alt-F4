@@ -35,5 +35,6 @@ jobs:
           app-id: '${{ secrets.REDDIT_APP_ID }}'
           app-secret: '${{ secrets.REDDIT_APP_SECRET }}'
           subreddit: factorio
+          flair-id: aae18ca2-dbf7-11e7-89dc-0e468bcaecf2
           title: "${{ github.event.release.name }}"
           url: "https://alt-f4.blog/${{ github.event.release.tag_name }}"
