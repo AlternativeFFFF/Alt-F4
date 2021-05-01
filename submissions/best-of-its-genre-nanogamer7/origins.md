@@ -6,7 +6,7 @@ We've all heard of Factorios insanely [good ratings](https://steamdb.info/stats/
 
 The first difficult question we'll have to answer though, would be what automation even is. In Cities:Skylines for example you are building your city, which then (theoretically) functions autonomously. The difference here is, your job isn't to automate – the cars spawn out of nothing, choose their destination, and get there by themselves, once you build roads – but to manage it. In Minecraft on the other hand, you are the one to make the automation even possible – just with pistons and hoppers, instead of inserters and belts. Comparing these two examples, I think you can loosely define the automation genre as *"making stuff that makes stuff"*.
 
-However that definition is still a bit vague: As someone who didn't play it Dwarf Fortress' gameplay of enabling dwarfs to *make stuff* would fall under my definition of automation. But let's not get to far from Factorio here, maybe someone else will explore this further in the future. *\*wink wink\**
+However that definition is still a bit vague: As someone who didn't play it, would Dwarf Fortress' gameplay of enabling dwarfs to *make stuff* would fall under my definition of automation? But let's not get to far from Factorio here, maybe someone else will explore this further in the future. *\*wink wink\**
 
 ### There's a mod for it
 
