@@ -60,18 +60,14 @@ div.p8 {
 .gallery {
   width: 100%;
   display: grid;
-  grid-gap: 1px;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-gap: 3px;
+  grid-row-gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-template-rows: 1fr, 1fr;
   grid-auto-flow: dense;
-
-  img {
-    margin: auto;
-    // height: 100%;
-    object-fit: cover;
-  }
+  justify-content: center;
   img#main {
-    grid-row: 2;
+    grid-row: 1;
     grid-column: 1/-1;
     width: 100%;
   }
