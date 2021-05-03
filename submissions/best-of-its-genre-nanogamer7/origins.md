@@ -4,7 +4,7 @@ We've all heard of Factorios insanely [good ratings](https://steamdb.info/stats/
 
 ### Automation defined
 
-The first difficult question we'll have to answer though, would be what automation even is. In Cities:Skylines for example you are building your city, which then (theoretically) functions autonomously. The difference here is, your job isn't to automate – the cars spawn out of nothing, choose their destination, and get there by themselves, once you build roads – but to manage it. In Minecraft on the other hand, you are the one to make the automation even possible – just with pistons and hoppers, instead of inserters and belts. Comparing these two examples, I think you can loosely define the automation genre as *"making stuff that makes stuff"*.
+The first difficult question we'll have to answer though, would be what automation even is. In Cities: Skylines for example you are building your city, which then (theoretically) functions autonomously. The difference here is, your job isn't to automate – the cars spawn out of nothing, choose their destination, and get there by themselves, once you build roads – but to manage it. In Vanilla Minecraft on the other hand, you are the one to make the automation even possible – just with pistons and hoppers, instead of inserters and belts. Comparing these two examples, I think you can loosely define the automation genre as *"making stuff that makes stuff"*.
 
 ![A simple smelting setup in vanilla Minecraft](media/minecraft-hopper.jpg)
 
@@ -32,4 +32,4 @@ You might ask, why did I dive into a concept of game design now? Well I believe 
 
 ### Conclusion
 
-While I originally tried to find Factorio's "predecessor", it stemming itself with only  the core gameplay loop as an external influence makes this conclusion even more rewarding. That being said, there have probably been more automation games in the past, and Factorio definitely had a big influence on some more recent games. Maybe we can explore this further in a future article, maybe even how Factorio inspired more than just games. You'll see ;)
+While I originally tried to find Factorio's "predecessor", my search left me to conclude that it's mostly an original work with only the core gameplay loop having external influences, which probably is a more rewarding answer than "we have Factorio and its precursor Nostalgorio". That being said, there have probably been more automation games in the past, and Factorio definitely had a big influence on some more recent games. Maybe we can explore this further in a future article, maybe even how Factorio inspired more than just games. You'll see ;)
