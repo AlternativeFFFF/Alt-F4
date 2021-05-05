@@ -1,4 +1,4 @@
-## The Best of Its Genre <author>Nanogamer7</author>
+## The Best of Its Genre – Factorio Origins<author>Nanogamer7</author>
 
 We've all heard of Factorio's insanely good [Steam ratings](https://steamdb.info/stats/gameratings/), consistently rising to second place just behind Portal 2. Obviously many others will try to imitate this success in the automation genre, but where did Factorio get its inspiration from? Was it the first game solely designed for automation or merely the first one to do it successfully? That's what I'll be trying to answer in this first article of a (probably) multi‐part series.
 
