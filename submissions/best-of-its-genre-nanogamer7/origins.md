@@ -10,7 +10,7 @@ The first difficult question we'll have to answer would be what automation even 
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/34/minecraft-hopper.jpg' alt='A simple smelting setup in vanilla Minecraft' caption='The hopper, Minecraft’s “belt”. In this case it’s supplying a furnace with coal (side) and items (top), while pulling smelted resources into the chest below.' %}
 
-{% include gallery.html items="https://media.alt-f4.blog/ALTF4/34/minecraft-hopper.jpg;https://media.alt-f4.blog/ALTF4/34/cities-throughput.jpg;https://media.alt-f4.blog/ALTF4/34/minecraft-furnace-array.jpg" caption='Needs caption' %}
+{% include gallery.html items="https://media.alt-f4.blog/ALTF4/34/minecraft-hopper.jpg;https://media.alt-f4.blog/ALTF4/34/minecraft-furnace-array.jpg;https://media.alt-f4.blog/ALTF4/34/cities-throughput.jpg" caption='The hopper, Minecraft’s “belt”, automatically supplying a furnace [1], which can be expanded into huge smelting arrays [2]. Compare this to Cities: Skylines with a focus on the throughput of your street network, but not the individual routes entities take [3].' %}
 
 ###### NOTE: ONE OF THESE TWO EMBEDS NEEDS TO BE REMOVED BEFORE RELEASE
 
