@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-30T12:33:38+00:00</updated>
+  <updated>2021-05-07T11:10:25+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #34 - How Did We Get Here?</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-34/" />
+    <id>https://alt-f4.blog/ALTF4-34</id>
+    <updated>2021-05-07T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week’s issue #34 has &lt;em&gt;Nanogamer7&lt;/em&gt; start on a potential new series of articles about the very origins of Factorio. This week features a dive into potential inspirations for this masterpiece of a game, with a diversion into game design here or there. Stay awhile and listen!&lt;/p&gt; &lt;h2 id=&quot;the-best-of-its-genre--factorio-origins-nanogamer7&quot;&gt;The Best...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-26</id>
     <updated>2021-03-05T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;V této 26. edici Alt-F4 (půl roku výtusků!), oofěwině jde do Factorio multiplayeru a vysvětluje trochu více o technických věcí za tím. Pokud jste si někdy lámali hlavu o tom, jak hra dokáže zvládat stovky hráčů a mnohy tisíc entit najednou, jste vítání se podívat do této edice!&lt;/p&gt; &lt;h2 id=&quot;factorio-servery-oof2win2&quot;&gt;Factorio...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #25 - Efektivita, Efektivita, Efektivita!</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-25/" />
-    <id>https://alt-f4.blog/ALTF4-25</id>
-    <updated>2021-02-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;V této stříbrné narozeninové edici Alt-F4, TheKool se vrací k jeho třetí a finální instalaci z jeho série o modulech. V ní, mluví o modulech efektivity tak, že mluví o teorii a poté prezentuje (docela) realisticý experiment!&lt;/p&gt; &lt;h2 id=&quot;roh-komplexity-moduly-efektivity-the-kool&quot;&gt;Roh Komplexity: Moduly Efektivity &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Tento týden, jsme v třetí edici...</content>
   </entry>
   
   

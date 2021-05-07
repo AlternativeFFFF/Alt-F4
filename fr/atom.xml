@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-30T12:33:38+00:00</updated>
+  <updated>2021-05-07T11:10:25+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°34 - Comment en sommes-nous arrivés là ?</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-34/" />
+    <id>https://alt-f4.blog/ALTF4-34</id>
+    <updated>2021-05-07T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Dans le numéro 34 de cette semaine, &lt;em&gt;Nanogamer7&lt;/em&gt; se lance dans une probable nouvelle série d’articles sur les origines mêmes de Factorio. Cette semaine, nous allons nous plonger dans les inspirations potentielles de ce chef-d’œuvre, avec un détour par le développement de jeux. Restez un peu et écoutez !&lt;/p&gt; &lt;h2...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-26</id>
     <updated>2021-03-05T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Dans ce numéro 26 de Alt-F4 (déjà une demi-année de parutions !), oof2win2 aborde le mode multijoueur de Factorio et explique certains des rouages techniques cachés. Si vous vous êtes déjà demandé ce qu’est une désynchronisation ou comment le jeu parvient à gérer des centaines de joueurs et plusieurs milliers...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°25 - Efficacité, Efficacité, Efficacité !</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-25/" />
-    <id>https://alt-f4.blog/ALTF4-25</id>
-    <updated>2021-02-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Dans ce 25&lt;sup&gt;ième&lt;/sup&gt; numéro de Alt-F4, TheKool revient pour le troisième et dernier volet de sa série sur les modules. Dans cet article, il présente les modules d’efficacité en parlant de la théorie et en présentant une expérience pratique !&lt;/p&gt; &lt;h2 id=&quot;le-coin-de-la-complexité--les-modules-defficacité-the-kool&quot;&gt;Le coin de la complexité : Les modules d’efficacité...</content>
   </entry>
   
   

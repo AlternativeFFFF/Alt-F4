@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-30T12:33:38+00:00</updated>
+  <updated>2021-05-07T11:10:25+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #34 - Wie sind wir hier hergekommen?</title>
+    <link href="https://alt-f4.blog/de/ALTF4-34/" />
+    <id>https://alt-f4.blog/ALTF4-34</id>
+    <updated>2021-05-07T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In der dieswöchigen Ausgabe Nummer #34 beginnt &lt;em&gt;Nanogamer7&lt;/em&gt; möglicherweise mit einer neuen Serie über die fernen Ursprünge von Factorio. In dieser Woche geht es um Inspirationen für dieses Meisterwerk, mit hin und wieder einigen Abstechern in Spieldesign.&lt;/p&gt; &lt;h2 id=&quot;das-beste-seines-genres--die-ursprünge-von-factorio-nanogamer7&quot;&gt;Das Beste Seines Genres – Die Ursprünge von Factorio &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Wir alle...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-26</id>
     <updated>2021-03-05T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In der dieswöchigen 26. Ausgabe von Alt-F4 (schon ein halbes Jahr!) erklärt oof2win2 den Factorio Mehrspielermodus und einige der technischen Machenschaften dahinter. Falls du dich je gewundert hast, was ein Desync ist oder wie das Spiel Hunderte an Spielern und mehrere Tausend Entitäten auf einmal bewältigt, tu dir keinen Zwang...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #25 – Effizienz, Effizienz, Effizienz!</title>
-    <link href="https://alt-f4.blog/de/ALTF4-25/" />
-    <id>https://alt-f4.blog/ALTF4-25</id>
-    <updated>2021-02-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In dieser silbernen Geburtstagsausgabe von Alt-F4 kehrt TheKool für diese dritte und letzte Folge seiner Serie über Module zurück. Darin deckt er Effizienzmodule ab, indem er über die Theorie spricht und dann ein reales Experiment vorstellt!&lt;/p&gt; &lt;h2 id=&quot;komplexitäts-ecke-effizienzmodule-the-kool&quot;&gt;Komplexitäts-Ecke: Effizienzmodule &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Diese Woche geht es weiter mit der dritten Ausgabe...</content>
   </entry>
   
   

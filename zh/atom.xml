@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-04-30T12:33:38+00:00</updated>
+  <updated>2021-05-07T11:10:25+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #34 - 我们是如何走到今天的？</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-34/" />
+    <id>https://alt-f4.blog/ALTF4-34</id>
+    <updated>2021-05-07T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周的第 34 期，&lt;em&gt;Nanogamer7&lt;/em&gt; 开始了一个关于异星工厂潜在起源的全新系列文章。本周的内容是深入研究这一游戏杰作的灵感来源，并在聊聊游戏设计。请留步，听我说个故事！&lt;/p&gt; &lt;h2 id=&quot;同类游戏中的佼佼者异星工厂起源-nanogamer7&quot;&gt;同类游戏中的佼佼者——异星工厂起源 &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我们都听闻异星工厂在 &lt;a href=&quot;https://steamdb.info/stats/gameratings/&quot;&gt;Steam 评分&lt;/a&gt;上的优异成绩，长期处于仅次于传送门 2 之后的第二名。显然有许多人会试图在自动化这种游戏类型中模仿其成功之处，但异星工厂本身的灵感来自哪里？它是第一个完全为自动化而设计的游戏么？还说仅仅是第一个成功做出来的游戏？这将是我在这个（可能的）系列文章的第一篇中试图回答的问题。&lt;/p&gt; &lt;h3 id=&quot;自动化的定义&quot;&gt;自动化的定义&lt;/h3&gt; &lt;p&gt;我们需要要回答的第一个难题将是到底什么是自动化。以“城市：天际线”为例，你建造你的城市，然后这个城市（理论上）将会自主运行。这里的区别是，你的工作——并非让汽车无中生有，选择目的地，通过你建造的道路自己到达那里——而是管理全局，这一点没有自动化。另一方面，在原版的我的世界中，你却可能实现自动化工作——只不过是用活塞和漏斗，而不是机械臂和传送带。通过比较这两个例子，我们可以宽泛地将自动化类定义为&lt;em&gt;“制作用于制作物品的物品”&lt;/em&gt;。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/34/minecraft-hopper.jpg&quot; alt=&quot;原版我的世界中的一个简单的冶炼设置&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;漏斗，我的世界中的“传送带”。在图示中，它为熔炉提供煤炭（侧面）和物品（顶部），同时将熔炼产出的资源拉到下面的箱子中。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;然而，这个定义还是有点模糊的。作为一个没有玩过这个游戏的人，矮人堡垒中让矮人&lt;em&gt;制造东西&lt;/em&gt;的玩法是否满足我对自动化的定义？为了本文的目的，我们假设它是。不管我们谈论的是电子电路、小麦和种子，还是木制刺钉，都算。也许将来会有其他人来进一步研究矮人堡垒&lt;em&gt;*眨眨眼*&lt;/em&gt;。&lt;/p&gt; &lt;h3 id=&quot;可以用一个-mod-来实现&quot;&gt;可以用一个 Mod 来实现&lt;/h3&gt; &lt;p&gt;我已经提到了我的世界作为自动化的一个例子，但其原版的内容根本不能与 Mod 相提并论。在 2013 年的大热之后许多技术型玩家齐聚一堂，形成了有史以来最大的 Mod 社区之一，这可能使它成为最流行的自动化样例。但这引起了我的思考，诸如建筑（BuildCraft）、工业时代（IndustrialCraft）和红石力量（Redpower）等游戏...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-26</id>
     <updated>2021-03-05T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在本周的第 26 期 Alt-F4 中（半周年！），of2win2 前往异星工厂多人游戏，并解释了它背后的一些技术机理。如果你曾想知道什么是 Desync，或者游戏是如何同时处理数百名玩家和数千个实体的，欢迎深入阅读！&lt;/p&gt; &lt;h2 id=&quot;异星工厂服务器-oof2win2&quot;&gt;异星工厂服务器 &lt;author&gt;oof2win2&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;大多数玩家可能至少连接过一次异星工厂服务器，可能与朋友一起玩，或只是查看一些其他人的世界。在今天的 Alt-F4 中，我将简述多人游戏的历史，然后我会深入解释多人游戏在技术上 &lt;em&gt;如何&lt;/em&gt; 工作的。其中我将解释完全确定性算法和锁步算法的使用。&lt;/p&gt; &lt;h3 id=&quot;多人游戏发展史&quot;&gt;多人游戏发展史&lt;/h3&gt; &lt;p&gt;异星工厂在 2014 年 10 月的推出 0.11.0 版本中引入了多人游戏功能，该功能的开发是从&lt;a href=&quot;https://www.factorio.com/blog/post/fff-26&quot;&gt;异星工厂 0.9.4&lt;/a&gt; 开始的。这个多人游戏和你今天看到的不一样，你不能比如说通过 Steam 轻松的“加入好友”或者使用服务器浏览器——你需要知道服务器的确切 IP 地址。当多人游戏最初发布时，有不少 Bug，比如&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?t=6285&quot;&gt;这个 Bug&lt;/a&gt; 不允许多人游戏持续超过 20 秒。当然，它被修复了，仅仅 3 个小时之后，经典的 Wube 式更新。还有&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?t=6414&quot;&gt;这个 Bug&lt;/a&gt;，它不允许一次连接超过三个人——不像六年后的&lt;a href=&quot;https://www.factorio.com/blog/post/fff-332&quot;&gt;这个 500 多个玩家的多人游戏&lt;/a&gt;。多人游戏开发上投入的海量工作才让 500 名玩家能够同时连接。&lt;/p&gt; &lt;p&gt;作为一项主要功能，异星工厂从 0.12.0...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #25 - 效率，效率，效率！</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-25/" />
-    <id>https://alt-f4.blog/ALTF4-25</id>
-    <updated>2021-02-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在这期 Alt-F4 的 25 期生日刊中，TheKool 将为大家带来他关于插件系列的第三期也是最后一期。在这期中，他通过谈论理论以及展示一个（几乎）真实世界实验来涵盖节能插件！&lt;/p&gt; &lt;h2 id=&quot;复杂角节能插件-the-kool&quot;&gt;复杂角：节能插件 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;本周，我们将进入第三期的复杂角！如果你没看过先前的内容，建议先读一下我过去的文章，关于&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-12/#%E5%A4%8D%E6%9D%82%E8%A7%92%E4%BA%A7%E8%83%BD%E6%8F%92%E4%BB%B6-thekool&quot;&gt;产能&lt;/a&gt;和&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-16/#%E5%A4%8D%E6%9D%82%E8%A7%92%E9%80%9F%E5%BA%A6%E6%8F%92%E4%BB%B6-thekool&quot;&gt;速度&lt;/a&gt;插件的文章，因为今天我们将继续这个系列，讲讲三个插件中的最后一个：&lt;a href=&quot;https://wiki.factorio.com/Module/zh#%E8%8A%82%E8%83%BD%E6%8F%92%E4%BB%B6&quot;&gt;节能插件&lt;/a&gt;。和往期文章一样，我们将关注三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”我们的目标是要告诉那些对使用这些机制犹豫不决的人，它们其实是超级容易上手的。&lt;/p&gt; &lt;h3 id=&quot;节能插件是什么&quot;&gt;节能插件是什么？&lt;/h3&gt; &lt;p&gt;与其他两个插件一样，节能插件可以放置在建筑物中以改变它们运行的方式。和速度插件一样，节能插件也可以放置在机器和插件效果分享塔中。不过与速度插件和产能插件不同，节能插件只有一个效果，没有直接的缺点和副作用。嗯，其实就是一个效果，有两个好处。它们降低了建筑运行所需的电力，也减少了其产生的污染。&lt;/p&gt; &lt;h3 id=&quot;它们能提供什么效果&quot;&gt;它们能提供什么效果？&lt;/h3&gt; &lt;p&gt;它们可以降低已经压榨到极限的电网压力，或者通过无需制造大量发电设施来节省资源，但最主要的好处是减少污染。相当 &lt;em&gt;大&lt;/em&gt; 程度的污染减少。一个节能插件 1 就能减少高达 30% 的功耗和污染！这也是一个非常惊人的数字。不过有一点很重要，那就是每台机器最多只能受益于 80% 的减排量，所以你在使用的时候要记住这一点。&lt;/p&gt; &lt;p&gt;很多理论工作者喜欢假设整个工厂使用清洁能源。也就是说，所有的电力都来自于太阳能，而太阳能没有污染。但对于我们很多人来说，在游玩的过程中大部分时间都是依靠蒸汽或核能，而这两种能源都会产生污染（尽管核能是通过制作燃料棒间接产生污染）。事实上，我们很多人从来没有试过纯太阳能。这意味着降低电力消耗就能减少发电带来的污染。&lt;/p&gt; &lt;p&gt;即便你真的全部用太阳能发电，节能插件也会减少机器本身产生的污染。对于那些不知道的人来说，有些机器本身就会&lt;a href=&quot;https://wiki.factorio.com/Pollution/zh#%E6%B1%A1%E6%9F%93%E6%BA%90&quot;&gt;产生污染&lt;/a&gt;，不管它们消耗的电力来自哪里。但是，这个污染率也会受到用电倍率的影响。这意味着，如果你的机器因为节能插件而少用了 60% 的电，那么它产生的直接污染也就少了 60%。例如，一台组装机 2 型如果有两个节能插件 1，每分钟只会产生 1.2 的污染，低于正常的每分钟 3。&lt;/p&gt; &lt;p&gt;为了展示节能插件对污染云的影响，我用编辑器设计并建造了一个工厂，它的规模大概相当于一个普通玩家的前火箭工厂，甚至可能更小一些。它的产量为 45 SPM，电力全部来自固体燃料和蒸汽，使用的是中级机器（钢炉、电力采矿机、组装机 2 型）。我把这个完整的工厂放在一个没有污染的地图上，让它运行了十个小时，然后拍下污染云的截图。接下来，我重新加载了没有污染的地图，又把基地放了下来，这次在运行十个小时之前添加了节能插件。大家可以自己看看污染云小了多少。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;div class=&quot;juxtapose juxtapose-0&quot;...</content>
   </entry>
   
   
