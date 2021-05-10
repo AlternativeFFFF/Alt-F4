@@ -1,4 +1,4 @@
-## Mod spotlight: [Hall of Fame: Menu Simulations and Screensaver](https://mods.factorio.com/mod/HallOfFame) <author>Conor_</author>
+## Mod Spotlight: [Hall of Fame](https://mods.factorio.com/mod/HallOfFame) <author>Conor_</author>
 
 Back in [FFF #362](https://factorio.com/blog/post/fff-362), *V453000* introduced us to the new main menu for Factorio: real-time simulations of the game running in the background, piggybacking off of the technology for the new and shiny [Tips and Tricks GUI](https://www.factorio.com/blog/post/fff-361). This was a great new feature, allowing for a much more interesting and spidertron-filled welcoming to the game.
 
