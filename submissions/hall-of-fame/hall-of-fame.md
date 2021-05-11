@@ -2,8 +2,7 @@
 
 Back in [FFF #362](https://factorio.com/blog/post/fff-362), *V453000* introduced us to the new main menu for Factorio: real-time simulations of the game running in the background, piggybacking off of the technology for the new and shiny [Tips and Tricks GUI](https://www.factorio.com/blog/post/fff-361). This was a great new feature, allowing for a much more interesting and spidertron-filled welcoming to the game.
 
-![New Factorio menu simulations](media/menu-sim.mp4)
-*[Buzz buzz?](https://mods.factorio.com/mod/bumble-bots)*
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/35/menu-sim.mp4' alt='New Factorio menu simulations' caption='<a href="https://mods.factorio.com/mod/bumble-bots">Buzz buzz?</a>' %}
 
 Wube, of course, being the ~~godlike~~ fantastic humans they are, made it easy for anyone to create a mod that adds its own main menu simulations. Our very own *stringweasel* (Editor of the rockstars that write for Alt-F4) took this as a challenge (with a [little suggestion](https://forums.factorio.com/viewtopic.php?p=520268#p520268) from forum user *conn11*) to continue his ongoing project of diving into the depths of Factorio of old (see Alt-F4's [#6](https://alt-f4.blog/ALTF4-6/#nauvis-archives-how-far-weve-come-stringweasel), [#9](https://alt-f4.blog/ALTF4-9/#nauvis-archives-factorio-jargon-stringweasel), [#11](https://alt-f4.blog/ALTF4-11/#nauvis-archives-outdated-techniques-stringweasel), [#13](https://alt-f4.blog/ALTF4-13/#nauvis-archives-one-rocket-defence-per-minute-stringweasel) and [#21](https://alt-f4.blog/ALTF4-21/#nauvis-archives-from-mod-to-vanilla-stringweasel)).
 
