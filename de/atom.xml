@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-09T20:46:46+00:00</updated>
+  <updated>2021-05-14T11:24:16+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #35 – Hebst du überhaupt, Bro?</title>
+    <link href="https://alt-f4.blog/de/ALTF4-35/" />
+    <id>https://alt-f4.blog/ALTF4-35</id>
+    <updated>2021-05-14T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Mitte Mai gibt es ganz passend mit Ausgabe #35 von Alt-F4 etwas für eure Augen. Geboten wird eine wissenschaftliche Untersuchung von &lt;em&gt;Romner&lt;/em&gt;, warum genau der Factorio-Ingenieur ein viel größerer Brocken ist als der Minecraft-Steve. Um dieses Fest für die Sinne abzurunden, gibt uns &lt;em&gt;Conor_&lt;/em&gt; dann noch einen Einblick in die...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-27</id>
     <updated>2021-03-12T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Diese Woche setzt pocarski seinen Ausflug in den Fließband-Wahnsinn fort, indem er einen Blick auf Universal-Balancierer wirft. Das Ergebnis ist ebenso verrückt wie nutzlos, also weißt du, dass wir uns auf einen Leckerbissen freuen können!&lt;/p&gt; &lt;h2 id=&quot;universal-8-8-perfekt-ausgeglichen-wie-es-alles-sein-sollte-pocarski&quot;&gt;Universal 8-8: Perfekt ausgeglichen, wie es alles sein sollte &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/de/ALTF4-23/#flie%C3%9Fbandbasierter-rechner-teil-1-nicht-ganz-so-schnelle-mathematik-pocarski&quot;&gt;Letztens&lt;/a&gt; habe ich...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #26 - Das Mehr in Spieler geben</title>
-    <link href="https://alt-f4.blog/de/ALTF4-26/" />
-    <id>https://alt-f4.blog/ALTF4-26</id>
-    <updated>2021-03-05T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In der dieswöchigen 26. Ausgabe von Alt-F4 (schon ein halbes Jahr!) erklärt oof2win2 den Factorio Mehrspielermodus und einige der technischen Machenschaften dahinter. Falls du dich je gewundert hast, was ein Desync ist oder wie das Spiel Hunderte an Spielern und mehrere Tausend Entitäten auf einmal bewältigt, tu dir keinen Zwang...</content>
   </entry>
   
   

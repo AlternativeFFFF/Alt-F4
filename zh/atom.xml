@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-09T20:46:46+00:00</updated>
+  <updated>2021-05-14T11:24:16+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #35 - 好兄弟你有去过健身房么？</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-35/" />
+    <id>https://alt-f4.blog/ALTF4-35</id>
+    <updated>2021-05-14T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;作为 5 月中旬的流行趋势，请让 Alt-F4 第 35 期在这里为您养眼。本期，&lt;em&gt;Romner&lt;/em&gt; 对为什么异星工厂的工程师比我的世界的史蒂夫更牛进行了科学探索。结束这场感官盛宴的则是 &lt;em&gt;Conor_&lt;/em&gt; 给我们介绍了 &lt;em&gt;stringweasel&lt;/em&gt; 的 &lt;em&gt;名人堂（Hall of Fame）&lt;/em&gt; Mod，作者&lt;em&gt;绝对&lt;/em&gt;不可能是 &lt;em&gt;nepotism&lt;/em&gt;。&lt;/p&gt; &lt;h2 id=&quot;工程师那挑战物理学的力量-romner&quot;&gt;工程师那挑战物理学的力量 &lt;author&gt;Romner&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我的世界里的史蒂夫很强壮。&lt;a href=&quot;https://www.reddit.com/r/Minecraft/comments/jmz6lz/actualized_maximum_weight_that_steve_can_hold/&quot;&gt;能够轻易举起数十亿千克的强壮&lt;/a&gt;。但他远不能与异星工厂的工程师 &lt;em&gt;相提并论&lt;/em&gt;。&lt;/p&gt; &lt;p&gt;假设没用任何 Mod，穿着一套能量装甲 MK2 的工程师有 120 个背包格，加上 30 个物流垃圾格，总共有 150 个可用的格子。据我所知，游戏中每个格子最重的物品是核反应堆。每个格子可以容纳 10 个反应堆，因此我们总共有 1500 个反应堆。根据&lt;a href=&quot;https://www.nextbigfuture.com/2007/07/constructing-lot-of-nuclear-power.html&quot;&gt;这篇文章&lt;/a&gt;，现代核反应堆每兆瓦使用 40 公吨的钢和 190m³ 的混凝土。异星工厂中的核反应堆可以生产 40 MW。每个！哦，还有毗邻加成，我们可以用一个等式来说明（假设有四个或更多的反应堆和 2xN 反应堆布局），其中 $n$ 是反应堆的数量，$P$ 是反应堆的基本功率输出：&lt;/p&gt; &lt;p&gt;$(n...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-27</id>
     <updated>2021-03-12T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周，pocarski 继续他的传送带疯狂之旅，来看看通用平衡器。其结果是如此疯狂而又无用，你应该知道我们是在享受这个过程！&lt;/p&gt; &lt;h2 id=&quot;通用-8-8完美平衡万物皆宜-pocarski&quot;&gt;通用 8-8：完美平衡，万物皆宜 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/#%E7%BA%AF%E4%BC%A0%E9%80%81%E5%B8%A6%E8%AE%A1%E7%AE%97%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%8D%E5%A4%AA%E7%AE%80%E6%98%8E%E7%9A%84%E6%95%B0%E5%AD%A6-pocarski&quot;&gt;最近&lt;/a&gt;，我用传送带和分流器做了一堆电脑零件。本周我将继续我对移动物品的不健康的痴迷，制作一些至少能有点用处东西：平衡器。为什么我要写一整篇文章来设计一个平衡器呢？嗯，那是因为我们今天要做的这个平衡器可不一般！&lt;/p&gt; &lt;p&gt;这篇文章不会很深入地探讨平衡器的设计原理，因为我们将在大多数情况下使用预制且熟知的蓝图。然而，并非所有的平衡器皆生而平等，所以你需要了解一些术语：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;输入平衡&lt;/strong&gt;：均匀地从所有输入中提取。在将多个输入合并为较少的输出时尤其重要。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;输出平衡&lt;/strong&gt;：均匀分配给所有输出。当把几个输入分割成更多输出时尤其重要。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;有限吞吐量&lt;/strong&gt;：存在内部瓶颈。一个有限吞吐量系统的例子是将两条传送带合并成一条，然后再将其分割成两条。这样的一个系统即使在输入和输出上都有两条传送带，但最大吞吐量只有一条传送带。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;无限吞吐量&lt;/strong&gt;：与有限吞吐量相反，不存在内部瓶颈。如果 &lt;em&gt;能&lt;/em&gt; 通过 X 条传送带，它们就 &lt;em&gt;会&lt;/em&gt; 通过。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;本文中的所有蓝图（还有一些额外的内容）都可以在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/27/8to8blueprint.txt&quot;&gt;这里&lt;/a&gt;下载。&lt;/p&gt; &lt;h3 id=&quot;前提&quot;&gt;前提&lt;/h3&gt; &lt;p&gt;想象一下下面的情景：你作为一个新手，刚刚听说了那些被称为“平衡器”的玩意儿以及它们的功能。你想把一条传送带平衡成三条。你本应该使用 1-3 的平衡器，但你还不知道这些，所以，你尝试使用 4-4 的平衡器，但只连接一个输入和三个输出。然而这么做得到的并非预期的 1:1:1 的输出比例，而是 1:1:2 的比例，令你大失所望。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/27/failed_1-3_compressed.jpg&quot; alt=&quot;如何错误的使用平衡器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #26 - 给游戏添加多人</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-26/" />
-    <id>https://alt-f4.blog/ALTF4-26</id>
-    <updated>2021-03-05T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在本周的第 26 期 Alt-F4 中（半周年！），of2win2 前往异星工厂多人游戏，并解释了它背后的一些技术机理。如果你曾想知道什么是 Desync，或者游戏是如何同时处理数百名玩家和数千个实体的，欢迎深入阅读！&lt;/p&gt; &lt;h2 id=&quot;异星工厂服务器-oof2win2&quot;&gt;异星工厂服务器 &lt;author&gt;oof2win2&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;大多数玩家可能至少连接过一次异星工厂服务器，可能与朋友一起玩，或只是查看一些其他人的世界。在今天的 Alt-F4 中，我将简述多人游戏的历史，然后我会深入解释多人游戏在技术上 &lt;em&gt;如何&lt;/em&gt; 工作的。其中我将解释完全确定性算法和锁步算法的使用。&lt;/p&gt; &lt;h3 id=&quot;多人游戏发展史&quot;&gt;多人游戏发展史&lt;/h3&gt; &lt;p&gt;异星工厂在 2014 年 10 月的推出 0.11.0 版本中引入了多人游戏功能，该功能的开发是从&lt;a href=&quot;https://www.factorio.com/blog/post/fff-26&quot;&gt;异星工厂 0.9.4&lt;/a&gt; 开始的。这个多人游戏和你今天看到的不一样，你不能比如说通过 Steam 轻松的“加入好友”或者使用服务器浏览器——你需要知道服务器的确切 IP 地址。当多人游戏最初发布时，有不少 Bug，比如&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?t=6285&quot;&gt;这个 Bug&lt;/a&gt; 不允许多人游戏持续超过 20 秒。当然，它被修复了，仅仅 3 个小时之后，经典的 Wube 式更新。还有&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?t=6414&quot;&gt;这个 Bug&lt;/a&gt;，它不允许一次连接超过三个人——不像六年后的&lt;a href=&quot;https://www.factorio.com/blog/post/fff-332&quot;&gt;这个 500 多个玩家的多人游戏&lt;/a&gt;。多人游戏开发上投入的海量工作才让 500 名玩家能够同时连接。&lt;/p&gt; &lt;p&gt;作为一项主要功能，异星工厂从 0.12.0...</content>
   </entry>
   
   
