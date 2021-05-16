@@ -1,3 +1,5 @@
+### Nauvian Perspective: Bentham and Xisumavoid <author>Bobby</author>
+
 *Something about Bentham voice and Xisuma text interview and such here*
 *also need to include images and gifs where possible - last job*
 
@@ -10,11 +12,11 @@ Bentham started off his YouTube channel with his down-to-earth and silly [“Let
 
 > It's currently yesterday, so I had to quickly scrabble to get something to replace the video, and so what I got was the Factorio demo... I'm sorry.
 
-Like the rest of us, he became hooked and thus marked the beginning of his Factorio adventures that ended up shaping his YouTube career.What made set his single-player series apart, is that instead of talking whilst playing, he recorded footage, then later in editing sped it up by x4 and put commentary on top of that. This method leads to a unique perspective where he can laugh or react to his own actions along with the audience, whilst explaining what he was doing, but not having to wait very long, due to the speed up, to explain why he was doing something. **Or even foreshadow upcoming blunders he made**. This led to a fine balance between those short, condensed, & high-effort videos and those long, stretched out, relaxing & slow gameplay styles. What [lead Bentham to this method](./Sips-Lets-Play.mp3) was the fact that Sips from Yogscast did a Factorio Let's Play, but his audience complained that it was boring because the game at the start was just that slow.
+Like the rest of us, he became hooked and thus marked the beginning of his Factorio adventures that ended up shaping his YouTube career.What made set his single-player series apart, is that instead of talking whilst playing, he recorded footage, then later in editing sped it up by x4 and put commentary on top of that. This method leads to a unique perspective where he can laugh or react to his own actions along with the audience, whilst explaining what he was doing, but not having to wait very long, due to the speed up, to explain why he was doing something. Or even foreshadow upcoming blunders he made. This led to a fine balance between those short, condensed, & high-effort videos and those long, stretched out, relaxing & slow gameplay styles. What [lead Bentham to this method](./Sips-Lets-Play.mp3) was the fact that Sips from Yogscast did a Factorio Let's Play, but his audience complained that it was boring because the game at the start was just that slow.
 
 Over the course of 2014, Bentham began a few different Factorio series. In August 2014, he began his popular and most favourite [Factorio Railworld](https://www.youtube.com/watch?v=aw9zgzrF2DY&list=PLOx2-nvzE_ZI69s1psHkAdeH2_uNmP9rg&index=1) series and the [Factorio No Crafting Challenge](https://www.youtube.com/watch?v=FTszEGCARW4&list=PLOx2-nvzE_ZKIrTTzJ5etReO2iFeo_WIp) series. Each video in the Railworld series attracted tens of thousands of views which grew his channel from a few hundred subscribers to many thousands.
 
-![Midpoint Station from Ep#63](./Midpoint-Station.png)
+![Midpoint Station from Ep#63](media/Midpoint-Station.png)
 
 It is sometimes thought that Bentham was the first person who properly coined the idea of a "main bus", although at the time he called it the "tree method", as the bus was the trunk with production lines on the sides as the branches. [He said in the interview](./Tree-Method.mp3) that in the forums, the "main bus" phrase started cropping up, and it took him a while to realise that it was the same thing as his tree method. Of course it's likely that the main bus is just the natural evolution of many Factorio players that wish to leave the spaghetti playstyle. 
 
@@ -24,9 +26,9 @@ If you are a long-time Factorio fan, you may have heard of him from his very pop
 
 Later, in 2015, he began the [Living with Biters](https://www.youtube.com/watch?v=83KSIH4dJg8&list=PLOx2-nvzE_ZJXS1sQDUzWtvBLn9ZPyUXk) series. The idea of living amongst biter bases on peaceful mode is fascinating, as it poses multiple challenges you wouldn’t get in any other normal vanilla campaign. This base is so interesting that stringweasel plans to put it into his fantastic [Hall of Fame mod](https://mods.factorio.com/mod/HallOfFame).
 
-![Living with Biters Ep#22 Thumbnail](./Living-With-Biters-Base.jpeg)
+![Living with Biters Ep#22 Thumbnail](media/Living-With-Biters-Base.jpg)
 
-It was around mid-2015 when he reached the monumental mid-point of his journey around the colossal lake, in his Railworld series. Coincidentally, at the same time, the 0.15 update dropped, bringing the Railworld preset. Bentham wondered if maybe the idea was from his Railworld series, so I asked Klonan (he created the preset) about it, who said "I want to keep some mystery in the world", so, we'll leave that thought at that :)*maybe remove this paragraph? seems like a nice thing to attribute to Bentham but then again, Klonan's answer...*
+It was around mid-2015 when he reached the monumental mid-point of his journey around the colossal lake, in his Railworld series. Coincidentally, at the same time, the 0.15 update dropped, which introduced the Railworld preset. Bentham wondered if maybe the idea was from his Railworld series, so I asked Klonan (he created the preset) about it, who said "I want to keep some mystery in the world", so, we'll leave that thought at that :)*maybe remove this paragraph? seems like a nice thing to attribute to Bentham but then again, Klonan's answer...*
 
 > One day when a developer was telling me about an upcoming update I asked if the railworld preset was inspired from my series. He answered that the name was possibly taken from that.
 
@@ -37,7 +39,7 @@ Now, busy with real life and being an admin of the tabletop games, roleplaying a
 ## Xisumavoid
 Whilst researching Bentham's first Factorio series, I came across a lot of comments from [Xisumavoid](https://www.youtube.com/c/XisumavoidMC/featured) - who is part of the hugely popular Minecraft SMP Hermitcraft server. I thought this was interesting because although I watched his [late 2014 Factorio series](https://www.youtube.com/watch?v=lKdAhv_LkLM&list=PL7VmhWGNRxKjVgYaRnIMZz31i1F9rNUBL&index=1), I didn't realise he had played the game all the way back in its very early days [in 2013](https://www.youtube.com/watch?v=ga-y3rXzVeo&list=PL7VmhWGNRxKjKohJTh9utStd3XdLN0q6h). Xisuma (his diminutive name) told me that he first heard of Factorio over 8 years ago! He couldn't remember where he stumbled upon it however he remembered being drawn to its visual style, which is a quality that he enjoys from games. I see a lot of similarities in Xisuma and Bentham - they are both down-to-earth and have similar humour (plus are both English!).
 
-![Xisuma reaches 1000 Hermitcraft episodes](./Ep-1000.jpg)
+![Xisuma reaches 1000 Hermitcraft episodes](media/Ep-1000.jpg)
 
 In my interview with Bentham, one of the questions I had was if maybe he had first heard of Factorio from Xisuma, which as I've covered earlier was not true. However, Bentham [gave an interesting story](./Youtube-Messenger-Bad.mp3) as to how he heard of Xisuma, involving the terrible YouTube messenger service and Steejo finding his personal Facebook account. Xisuma responded to this story;
 
@@ -45,6 +47,14 @@ In my interview with Bentham, one of the questions I had was if maybe he had fir
 
 Back in 2019, Xisuma tried a Factorio series again but hit that same problem that many other Factorio content creators have with the game - that it is too slow, so without having to put loads of effort into the editing, the content does not contain the same high entertainment standard than other games he plays like Minecraft.
 
+
 > "Minecraft feels endless. This is because your own creativity is what you put into game, you make the experience. Factorio on the other hand has a tech tree, creative direction and path to follow. To step outside of that you need to be really good at math and planning for the advanced mega base concepts which I am not."
 
-The series did end up as a flop and since then he never touched the game again. This is unfor
+The series did end up as a flop and since then he never touched the game again. This is unfortunate because he is known for making relaxed and fun videos and it would have been great to have him an active part of our community. However, it's only fair since it's his job to create entertaining content for his target audience and the Factorio series just had no success on his channel.
+
+When I asked if Xisuma might play Factorio again, maybe when the Expansion drops;
+
+> "I am definitely interested in playing it again. A DLC would be a good excuse to get back into it.
+
+## Closing thought
+Both Xisumavoid and Bentham contributed significantly to the Factorio's history. When Factorio was still relatively unknown they brought new players to the game. They were part of the first generation of Factorio content creators and players, and they might have even indirectly brought **you** to the game.
