@@ -50,7 +50,7 @@ Back in 2019, Xisuma tried a Factorio series again but hit that same problem tha
 
 > Minecraft feels endless. This is because your own creativity is what you put into game, you make the experience. Factorio on the other hand has a tech tree, creative direction and path to follow. To step outside of that you need to be really good at math and planning for the advanced mega base concepts which I am not.
 
-The series did end up as a flop and since then he didn't touche the game again. This is unfortunate because he is known for making relaxed and fun videos and it would have been great to have him an active part of our community. However, it's only fair since it's his job to create entertaining content for his target audience and the Factorio series just had no success on his channel.
+The series did end up as a flop and since then he didn't touch the game again. This is unfortunate because he is known for making relaxed and fun videos and it would have been great to have him an active part of our community. However, it's only fair since it's his job to create entertaining content for his target audience and the Factorio series just had no success on his channel.
 
 When I asked if Xisuma might play Factorio again, maybe when the Expansion drops:
 
