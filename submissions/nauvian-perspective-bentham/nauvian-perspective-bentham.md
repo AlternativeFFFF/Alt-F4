@@ -6,7 +6,7 @@ Like many others, I first came to Factorio from watching other people play it on
 
 {% include quote.html text='To let you in on a little secret, the whole thing is a really, really silly pun.' author='Bentham' %}
 
-Bentham started off his YouTube channel with videos that were laggy, had terrible audio quality and were recorded on an old laptop. He played FTL, KSP, and quite a few other random assortments of games. Yet, no Factorio until one fateful day in early 2014. In a frantic scramble, having heard of this game called Factorio from Aavak and looking for something easy to play (as the day’s previous recording of another game [didn’t quite go to plan](https://media.alt-f4.blog/ALTF4/36/How-Factorio-Began.mp4)), he [decided to give the demo a go](https://youtu.be/honPGJNoDI4).
+Bentham started off his YouTube channel with videos that were laggy, had terrible audio quality and were recorded on an old laptop. He played FTL, KSP, and quite a few other random assortments of games. Yet, no Factorio until one fateful day in early 2014. In a frantic scramble, having heard of this game called Factorio from Aavak and looking for something easy to play (as the day’s previous recording of another game [didn’t quite go to plan](https://media.alt-f4.blog/ALTF4/36/How-Factorio-Began.mp3)), he [decided to give the demo a go](https://youtu.be/honPGJNoDI4).
 
 {% include quote.html text='It’s currently yesterday, so I had to quickly scrabble to get something to replace the video, and so what I got was the Factorio demo... I’m sorry.' author='Bentham' %}
 
