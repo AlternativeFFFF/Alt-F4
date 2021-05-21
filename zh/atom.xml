@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-14T14:42:19+00:00</updated>
+  <updated>2021-05-21T10:15:13+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #36 - Nauvis 有约：Bentham 和 Xisumavoid <author>Bobby</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-36/" />
+    <id>https://alt-f4.blog/ALTF4-36</id>
+    <updated>2021-05-21T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周带来了第二期 &lt;em&gt;Nauvis 有约&lt;/em&gt;，涉及到与异星工厂名人谈论生命、宇宙及一切。这一次，&lt;em&gt;Bobby&lt;/em&gt; 与 Bentham 又名 MangledPorkGaming 聊了聊异星工厂最初的几年。&lt;/p&gt; &lt;h2 id=&quot;nauvis-有约bentham-和-xisumavoid-bobby&quot;&gt;Nauvis 有约：Bentham 和 Xisumavoid &lt;author&gt;Bobby&lt;/author&gt;&lt;/h2&gt; &lt;h3 id=&quot;mangledporkgaming又名-bentham&quot;&gt;MangledPorkGaming，又名 Bentham&lt;/h3&gt; &lt;p&gt;和许多其他人一样，我第一次接触异星工厂是在 YouTube 上看别人玩这个游戏。我是在 2014 年 6 月，也就是 0.10 版更新时开始接触的。在那个时期，我关注的异星工厂内容创作者有 &lt;a href=&quot;https://www.youtube.com/user/arumba07&quot;&gt;Arumba&lt;/a&gt;，&lt;a href=&quot;https://www.youtube.com/user/RotNSteejo&quot;&gt;Steejo&lt;/a&gt;，&lt;a href=&quot;https://www.youtube.com/user/Aavak&quot;&gt;Aavak&lt;/a&gt;，……以及 [MangledPorkGaming] (https://www.youtube.com/c/MangledPork/featured)。但为什么要用 MangledPork 这个拗口的名字？在我们的采访中，&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/36/Bent-Ham.mp3&quot;&gt;他说&lt;/a&gt;起初想用自己的名字 Bentham，但这是英国的一个小镇、一些名人等都在使用的普通名字。所以，他把这个名字从中间拆开，变成“Bent Ham”（弯曲 火腿），&lt;em&gt;显然&lt;/em&gt;这变成了他现在的名字 Mangled Pork（折碎的 猪肉）。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-28</id>
     <updated>2021-03-19T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在三月的这个美好的一周，首次撰稿人 Ph.X 讲述了他们利用独立的模块来布置基地，并通过物流列车网络将它们连接起来的分隔系统。Ph.X 从软件开发中获得灵感和经验，将模块化编程的概念运用到异星工厂之中。&lt;/p&gt; &lt;p&gt;另外，还有个新闻，我们现在提供了一个可以订阅的电子邮件列表！如果你不经常浏览 Reddit 或论坛，甚至不经常来我们的 &lt;a href=&quot;https://discord.gg/nxnCFkb&quot;&gt;Discord&lt;/a&gt;，我们现在提供了一个同样受欢迎的电子邮件列表的选项。只要在&lt;a href=&quot;https://www.freelists.org/list/alt-f4&quot;&gt;这里&lt;/a&gt;输入你的电子邮件地址，你就会在每周五最新一期发布时收到通知。当然，我们只会将此用于 Alt-F4 的更新，而不会给你发送垃圾邮件。&lt;/p&gt; &lt;h2 id=&quot;面向配方的异星工厂之道-phx&quot;&gt;面向配方的异星工厂之道 &lt;author&gt;Ph.X&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;异星工厂有一个复杂的生产线网络（即意大利面条），这使得游戏充满了乐趣和挑战。其作为一个复杂的工程问题存在着与软件工程类似的挑战，因此我认为可以用一些源自现实世界经验来改善游戏体验。&lt;/p&gt; &lt;h3 id=&quot;什么是rofl&quot;&gt;什么是“ROFL”&lt;/h3&gt; &lt;p&gt;有编程经验的人应该听说过 &lt;del&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1&quot;&gt;面向对象编程&lt;/a&gt;&lt;/del&gt; &lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B&quot;&gt;模块化编程&lt;/a&gt;，而这正是面向配方异星工厂之道（Recip-Oriented Factorio Life, ROFL）旨在模仿的理论。模块化编程，是强调将计算机程序的功能分离成独立的、可互换的“模块”的软件设计技术，它使得每个模块都包含着执行预期功能的一个唯一方面所必需的所有东西。在 ROFL 中，我们将整个工厂分离成独立的、可互换的“子工厂模块”，每个模块都包含了执行预期工厂的一个唯一配方必需的所有东西。&lt;/p&gt; &lt;p&gt;和大多数哲学一样，ROFL 试图找到一个永恒&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%A7%8B%E5%9F%BA&quot;&gt;始基&lt;/a&gt;作为一切事物的来源；在我们这里，我们选择的始基是配方。集成电路可以由任何级别的组装机制作，它可能会受到不同插件的影响，所需的原材料可能来自传送带、物流箱，甚至是相邻的铜线组装机，但无论其他条件如何变化，配方本身一直是铜线、电路板与塑料合成集成电路。配方有点像异星工厂中的原子操作：一个不可分割的，无法进一步分解的，最小单位。&lt;/p&gt; &lt;p&gt;根据一个特定的配方，将专用于实现该配方的子工厂打包成模块。一个单独的物流系统作为模块对外交互的接口为其获取原料和供应产品。这样划分的目的是为了实现模块内部的高内聚和模块之间的低耦合。模块内部的高内聚指模块包含了制作配方所需的所有设施（组装机、机械臂、传送带、电线杆、插件效果分享塔等等），让模块可以独立工作。模块之间的低耦合性意味着模块之间通过预定义的接口（如电力和铁路网）进行交互，没有直接的依赖关系，使得模块之间可以互换。&lt;/p&gt; &lt;p&gt;为了更好地实现这个想法，下面的例子中使用了&lt;a href=&quot;https://mods.factorio.com/mods/Optera/LogisticTrainNetwork&quot;&gt;物流列车网络（LTN - Logistic Train Network）&lt;/a&gt;、&lt;a href=&quot;https://mods.factorio.com/mod/aai-containers&quot;&gt;AAI 箱子和仓库（AAI Containers &amp;amp; Warehouses）&lt;/a&gt;和&lt;a href=&quot;https://mods.factorio.com/mod/miniloader&quot;&gt;迷你装卸机（Miniloader）&lt;/a&gt;Mod。以下所有例子的蓝图都可在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/28/rofl_example_blueprint.txt&quot;&gt;这里&lt;/a&gt;下载。&lt;/p&gt; &lt;h3 id=&quot;接口设计&quot;&gt;接口设计&lt;/h3&gt; &lt;p&gt;在实际建造任何子工厂模块之前，我们需要设计一个通用的物流网络作为模块之间的接口。虽然总线或物流机器人在一定程度上可以实现这样的物流系统，但街区式铁路网格在吞吐量、可重复使用性和纯粹的 &lt;em&gt;炫酷程度&lt;/em&gt; 上都远超过其他方案。&lt;/p&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #27 - 设计不必要的东西</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-27/" />
-    <id>https://alt-f4.blog/ALTF4-27</id>
-    <updated>2021-03-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周，pocarski 继续他的传送带疯狂之旅，来看看通用平衡器。其结果是如此疯狂而又无用，你应该知道我们是在享受这个过程！&lt;/p&gt; &lt;h2 id=&quot;通用-8-8完美平衡万物皆宜-pocarski&quot;&gt;通用 8-8：完美平衡，万物皆宜 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/#%E7%BA%AF%E4%BC%A0%E9%80%81%E5%B8%A6%E8%AE%A1%E7%AE%97%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E4%B8%8D%E5%A4%AA%E7%AE%80%E6%98%8E%E7%9A%84%E6%95%B0%E5%AD%A6-pocarski&quot;&gt;最近&lt;/a&gt;，我用传送带和分流器做了一堆电脑零件。本周我将继续我对移动物品的不健康的痴迷，制作一些至少能有点用处东西：平衡器。为什么我要写一整篇文章来设计一个平衡器呢？嗯，那是因为我们今天要做的这个平衡器可不一般！&lt;/p&gt; &lt;p&gt;这篇文章不会很深入地探讨平衡器的设计原理，因为我们将在大多数情况下使用预制且熟知的蓝图。然而，并非所有的平衡器皆生而平等，所以你需要了解一些术语：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;输入平衡&lt;/strong&gt;：均匀地从所有输入中提取。在将多个输入合并为较少的输出时尤其重要。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;输出平衡&lt;/strong&gt;：均匀分配给所有输出。当把几个输入分割成更多输出时尤其重要。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;有限吞吐量&lt;/strong&gt;：存在内部瓶颈。一个有限吞吐量系统的例子是将两条传送带合并成一条，然后再将其分割成两条。这样的一个系统即使在输入和输出上都有两条传送带，但最大吞吐量只有一条传送带。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;无限吞吐量&lt;/strong&gt;：与有限吞吐量相反，不存在内部瓶颈。如果 &lt;em&gt;能&lt;/em&gt; 通过 X 条传送带，它们就 &lt;em&gt;会&lt;/em&gt; 通过。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;本文中的所有蓝图（还有一些额外的内容）都可以在&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/27/8to8blueprint.txt&quot;&gt;这里&lt;/a&gt;下载。&lt;/p&gt; &lt;h3 id=&quot;前提&quot;&gt;前提&lt;/h3&gt; &lt;p&gt;想象一下下面的情景：你作为一个新手，刚刚听说了那些被称为“平衡器”的玩意儿以及它们的功能。你想把一条传送带平衡成三条。你本应该使用 1-3 的平衡器，但你还不知道这些，所以，你尝试使用 4-4 的平衡器，但只连接一个输入和三个输出。然而这么做得到的并非预期的 1:1:1 的输出比例，而是 1:1:2 的比例，令你大失所望。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/27/failed_1-3_compressed.jpg&quot; alt=&quot;如何错误的使用平衡器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt;...</content>
   </entry>
   
   

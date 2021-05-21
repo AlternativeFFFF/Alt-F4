@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-14T14:42:19+00:00</updated>
+  <updated>2021-05-21T10:15:13+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #36 - The Nauvian Perspective: Bentham and Xisumavoid</title>
+    <link href="https://alt-f4.blog/ALTF4-36/" />
+    <id>https://alt-f4.blog/ALTF4-36</id>
+    <updated>2021-05-21T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week brings back &lt;em&gt;The Nauvian Perspective&lt;/em&gt; for the second time, which involves talking to Factorio personalities about life, the universe, and everything. This time, &lt;em&gt;Bobby&lt;/em&gt; had a little chat with Bentham aka. MangledPorkGaming about the very early years of Factorio’s existence.&lt;/p&gt; &lt;h2 id=&quot;the-nauvian-perspective-bentham-and-xisumavoid-bobby&quot;&gt;The Nauvian Perspective: Bentham and Xisumavoid &lt;author&gt;Bobby&lt;/author&gt;&lt;/h2&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-28</id>
     <updated>2021-03-19T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;This fine week in March, first-time contributor Ph.X talks about their very compartmentalized system for laying out a base using isolated modules and connecting them through a Logistic Train Network. Taking inspiration from software development and the lessons learned there, Ph.X uses the concepts of Modular Programming to their advantage.&lt;/p&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #27 - Designing the Unnecessary</title>
-    <link href="https://alt-f4.blog/ALTF4-27/" />
-    <id>https://alt-f4.blog/ALTF4-27</id>
-    <updated>2021-03-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This week, pocarski continues his descent into belt-related madness by taking a look at universal balancers. The result is as crazy as it is useless, so you know we’re in for a treat!&lt;/p&gt; &lt;h2 id=&quot;universal-8-8-perfectly-balanced-as-all-things-should-be-pocarski&quot;&gt;Universal 8-8: Perfectly Balanced, as All Things Should Be &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/ALTF4-23/#belt-only-computing-part-1-not-so-quick-maths-pocarski&quot;&gt;Recently&lt;/a&gt;, I made a bunch...</content>
   </entry>
   
   
