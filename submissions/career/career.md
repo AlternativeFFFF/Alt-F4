@@ -1,3 +1,8 @@
+- The introduction works great, but imo doesn't really connect to the next paragraph, but ends quite abruptly
+- Your anecdote feels a bit off, it gets a bit to far from STEM, but it is definitely nice to read and highlights some of the reasons someone might get hooked by it
+ - I feel like the CS part is a bit on the shorter side, as well as the Correlation vs Causation part. Regarding the latter, you could maybe talk a bit more about the younger audience, there are definitely people that grew up with Minecraft (might be a bit difficult though, as many people post 2000 are still in school)
+- No conclusion
+
 ## Factorio and STEM
 
 The key parts of Factorio and other [logistics, base building, sandbox, puzzle, problem-solving, real-time strategy](https://www.reddit.com/r/factorio/comments/9z8x5m/does_factorio_merit_the_creation_of_a_new/) games are:
@@ -6,7 +11,7 @@ The key parts of Factorio and other [logistics, base building, sandbox, puzzle, 
  * Understanding and engaging with complexity
  * Creative Design
  * Biter slaughter
- * Mathmatical analysis of ratios and production
+ * Mathematical analysis of ratios and production
 
 To say these line up nicely with STE(A)M ideals would be an understanment in my opinion. Factorio has a cycle of understanding the problem, breaking it down into managable chunks, designing and testing the solution then using this knowledge in future to improve. This is about as STEM as it gets in my book.
 
@@ -26,7 +31,7 @@ Unfortunately, it wasn't all sunshine and roses in my journey into the depths of
 
 Several months later, my cousin came to visit and saw I had Factorio - he was excited to play it so we decided that together we would give it a go. After some sketchy library sharing (yay Steam offline mode), we spent a weekend of bliss together, figuring out how the game worked and progressing past the ever challenging blue science packs. *Side note: This is a really great example of Piracy for good since that weekend of Factorio caused my cousin to go home and buy the game himself so we could keep playing together, something that might not have happened if not for our dodgy dealings.* This push past the percieved complexity forever ruined me, it caused the crippling Cracktorio addiction that many of us share, meaning I never could put this beast back down.
 
-So... why am I telling you this? *Fantastic question, really glad you asked. Very well asked question I might add.* For me its pretty clear than playing modded Minecraft and Factorio pushed forward my critical thinking and mathmatical skills and diverted me down the STEM path of goodness. Now, I'm studying Robotic Engineering and though Factorio isn't the only thing that pushed me down this path, it definitely help guide me to where I am now.
+So... why am I telling you this? *Fantastic question, really glad you asked. Very well asked question I might add.* For me it's pretty clear that playing modded Minecraft and Factorio pushed forward my critical thinking and mathematical skills and diverted me down the STEM path of goodness. Now, I'm studying Robotic Engineering and though Factorio isn't the only thing that pushed me down this path, it definitely helped guide me to where I am now.
 
 ### The computer science angle
 
