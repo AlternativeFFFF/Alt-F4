@@ -13,7 +13,7 @@ The key parts of Factorio and other [logistics, base building, sandbox, puzzle, 
  * Biter slaughter
  * Mathematical analysis of ratios and production
 
-To say these line up nicely with STE(A)M ideals would be an understanment in my opinion. Factorio has a cycle of understanding the problem, breaking it down into managable chunks, designing and testing the solution then using this knowledge in future to improve. This is about as STEM as it gets in my book.
+To say these line up nicely with STE(A)M ideals would be an understatement in my opinion. Factorio has a cycle of understanding the problem, breaking it down into manageable chunks, designing and testing the solution then using this knowledge in future to improve. This is about as STEM as it gets in my book.
 
 ![Engineering Design process diagram](https://teachengineering.org/Images/edpHub/EDPHub_Graphic.jpg)
 *NOTE TO FUTURE CONOR - NEED to get a royalty free version*
