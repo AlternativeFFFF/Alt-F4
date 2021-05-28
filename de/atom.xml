@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-21T10:19:33+00:00</updated>
+  <updated>2021-05-28T12:55:00+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #37 – Kombinator Crash-Kurs Teil 2</title>
+    <link href="https://alt-f4.blog/de/ALTF4-37/" />
+    <id>https://alt-f4.blog/ALTF4-37</id>
+    <updated>2021-05-28T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In der 37sten Woche, in der eine neue Ausgabe ALT-F4 erscheint, präsentieren wir: Ausgabe 37! Was für eine Überraschung! In dieser Ausgabe ist unser aktiver Autor &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pocarski&lt;/code&gt; zurück, mit neuen einsteigerfreundlichen Erklärungen und Beispielen, wie du deine Fabrik mit einigen Kombinatoren und Schaltungen aufpeppen kannst.&lt;/p&gt; &lt;h2 id=&quot;kombinatoren-2-erweiterte-logistik-pocarski&quot;&gt;Kombinatoren 2:...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-29</id>
     <updated>2021-03-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Diese Woche haben wir für Ausgabe #29 wieder ein seltenes Doppel-Feature! Als erstes rundet TheKool, der nicht aufhören kann, über Module zu reden, seine Komplexitäts-Ecke-Saga ab, indem er über Effektverteiler spricht und wofür sie gut sind. Dann kehrt oof2win2 zurück, um das Rampenlicht auf ihre Mod &lt;em&gt;No Belts&lt;/em&gt; zu richten,...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #28 - ROFL</title>
-    <link href="https://alt-f4.blog/de/ALTF4-28/" />
-    <id>https://alt-f4.blog/ALTF4-28</id>
-    <updated>2021-03-19T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In dieser schönen Märzwoche wird uns Ph.X in seinem ersten Artikel sein aufgegliedertes System für eine modulare Fabrik mithilfe isolierter Module, welche durch ein Logistic Train Network verbunden werden, darstellen. Inspiriert von Erfahrungen aus der Software-Entwicklung nutzt Ph.X Konzepte der Modularen Programmierung zu seinem Vorteil.&lt;/p&gt; &lt;p&gt;Außerdem bieten wir jetzt einen...</content>
   </entry>
   
   

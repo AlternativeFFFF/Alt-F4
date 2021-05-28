@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-21T10:19:33+00:00</updated>
+  <updated>2021-05-28T12:55:00+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #37 - Combinator Crash Course Continuation</title>
+    <link href="https://alt-f4.blog/ALTF4-37/" />
+    <id>https://alt-f4.blog/ALTF4-37</id>
+    <updated>2021-05-28T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;On the 37th week during which an issue of Alt-F4 is being released, we present: Issue #37! What a surprise! In it, long-time contributor &lt;em&gt;pocarski&lt;/em&gt; is back with yet more very approachable explanations of how you can spice up and optimize your base with but a few combinators!&lt;/p&gt; &lt;h2 id=&quot;combinators-2-augmented-logistics-pocarski&quot;&gt;Combinators...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-29</id>
     <updated>2021-03-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;This week, for issue #29, we have a rare double feature again! First up, TheKool, who can’t stop talking about modules, rounds out his &lt;em&gt;Complexity Corner&lt;/em&gt; saga by talking about beacons and what they are good for. Then, oof2win2 returns to put the spotlight on their mod &lt;em&gt;No Belts&lt;/em&gt;, which...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #28 - ROFL</title>
-    <link href="https://alt-f4.blog/ALTF4-28/" />
-    <id>https://alt-f4.blog/ALTF4-28</id>
-    <updated>2021-03-19T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This fine week in March, first-time contributor Ph.X talks about their very compartmentalized system for laying out a base using isolated modules and connecting them through a Logistic Train Network. Taking inspiration from software development and the lessons learned there, Ph.X uses the concepts of Modular Programming to their advantage.&lt;/p&gt;...</content>
   </entry>
   
   

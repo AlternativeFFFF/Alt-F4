@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-21T10:19:33+00:00</updated>
+  <updated>2021-05-28T12:55:00+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°37 - Continuation du cours express sur les circuits logiques</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-37/" />
+    <id>https://alt-f4.blog/ALTF4-37</id>
+    <updated>2021-05-28T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;En cette 37ème semaine de parution de Alt-F4, nous présentons notre 37ème parution ! Quelle surprise ! A l’intérieur, notre contributeur de longue durée &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pocarski&lt;/code&gt; est de retour avec des explications encore plus appréciables sur comment vous pouvez améliorer et optimiser votre base avec seulement quelques combinateurs !&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -90,16 +100,6 @@
     <id>https://alt-f4.blog/ALTF4-29</id>
     <updated>2021-03-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Cette semaine, pour le numéro 29, nous avons à nouveau deux thèmes présentés ! Tout d’abord, TheKool, qui ne peut s’empêcher de parler de modules, termine sa saga &lt;em&gt;Le coin de la complexité&lt;/em&gt;, en parlant des diffuseurs et de leur utilité. Ensuite, oof2win2 revient pour présenter son mod &lt;em&gt;No Belts&lt;/em&gt;,...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°28 - FOR</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-28/" />
-    <id>https://alt-f4.blog/ALTF4-28</id>
-    <updated>2021-03-19T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;En cette belle semaine de mars, Ph.X, dont c’est la première contribution, nous parle de son système très compartimenté pour l’aménagement d’une base, à l’aide d’unités isolées reliées par un réseau de trains logistiques. S’inspirant du développement de logiciels et de ses leçons de programmation, Ph.X utilise les concepts de...</content>
   </entry>
   
   
