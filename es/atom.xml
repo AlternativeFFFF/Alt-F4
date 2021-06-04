@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/es/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-28T15:47:30+00:00</updated>
+  <updated>2021-06-04T10:39:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #38 - FacSTEMrio</title>
+    <link href="https://alt-f4.blog/es/ALTF4-38/" />
+    <id>https://alt-f4.blog/ALTF4-38</id>
+    <updated>2021-06-04T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, our in-house technical editor decided it was a good idea to write another article himself. We weren’t so sure about that, but nobody could stop him. So, we present: &lt;em&gt;Conor_&lt;/em&gt; writing about the relation between Factorio affinity and the STEM fields of study. Time to don your graduation...</content>
+  </entry>
+  
   
   
   <entry>
@@ -91,16 +101,6 @@
   </entry>
   
   
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #29 - Beacons and Not Belts</title>
-    <link href="https://alt-f4.blog/es/ALTF4-29/" />
-    <id>https://alt-f4.blog/ALTF4-29</id>
-    <updated>2021-03-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This week, for issue #29, we have a rare double feature again! First up, TheKool, who can’t stop talking about modules, rounds out his &lt;em&gt;Complexity Corner&lt;/em&gt; saga by talking about beacons and what they are good for. Then, oof2win2 returns to put the spotlight on their mod &lt;em&gt;No Belts&lt;/em&gt;, which...</content>
-  </entry>
   
   
 </feed>

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-05-28T15:47:30+00:00</updated>
+  <updated>2021-06-04T10:39:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #38 – Factorio MINT</title>
+    <link href="https://alt-f4.blog/de/ALTF4-38/" />
+    <id>https://alt-f4.blog/ALTF4-38</id>
+    <updated>2021-06-04T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In dieser Woche beschloss unser eigener technischer Editor, dass es eine gute Idee wäre, selbst einen Artikel zu schreiben. Wir waren uns da ja nicht so sicher, aber keiner konnte ihn aufhalten. Deshalb präsentieren wir: &lt;em&gt;Conor_&lt;/em&gt; schreibt über den Zusammenhang zwischen Factorio und MINT-Disziplinen. Also Studentenfutter rausholen und rein!&lt;/p&gt; &lt;h2...</content>
+  </entry>
+  
   
   
   <entry>
@@ -91,16 +101,6 @@
   </entry>
   
   
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #29 – Effektverteiler und keine Fließbänder</title>
-    <link href="https://alt-f4.blog/de/ALTF4-29/" />
-    <id>https://alt-f4.blog/ALTF4-29</id>
-    <updated>2021-03-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Diese Woche haben wir für Ausgabe #29 wieder ein seltenes Doppel-Feature! Als erstes rundet TheKool, der nicht aufhören kann, über Module zu reden, seine Komplexitäts-Ecke-Saga ab, indem er über Effektverteiler spricht und wofür sie gut sind. Dann kehrt oof2win2 zurück, um das Rampenlicht auf ihre Mod &lt;em&gt;No Belts&lt;/em&gt; zu richten,...</content>
-  </entry>
   
   
 </feed>
