@@ -2,9 +2,9 @@
 
 # JOSEF's Organically Self-Expanding Factory (JOSEF)
 
-![JOSEF at work](https://i.imgur.com/Q18m060.mp4)
+![JOSEF the self-expanding factory: One cell after another is analyzed and filled. Once all the cells are full, a new ring is built.](Alt-F4 JOSEF Media/Start Movie.mp4)
 
-This is JOSEF, a self-expanding factory. It starts of with a small amount of materials and slowly starts to grow, harvest more resources, make more building materials and grow some more. Assuming there are no mistakes left on my part (and you have infinite computing power), it would slowly grow forever. JOSEF uses the [recursive blueprints](https://mods.factorio.com/mod/recursive-blueprints) mod which allows you to automatically deploy blueprints and deconstruction planners using circuit signals. There are already a few examples of self-expanding factories, most notably [GreyGoo](https://www.youtube.com/watch?v=xF--1XdcOeM). Seeing this a long time ago finally motivated me to give this a shot myself!
+This is JOSEF, a self-expanding factory. It starts of with a small amount of materials and slowly starts to grow, harvest more resources, make more building materials and grow some more. Assuming there are no mistakes left on my part (and you have infinite computing power), it would slowly grow forever. JOSEF uses the [recursive blueprints](https://mods.factorio.com/mod/recursive-blueprints) mod which allows you to automatically deploy blueprints and deconstruction planners using circuit signals. There are already a few examples of self-expanding factories, most notably [GreyGoo](https://www.youtube.com/watch?v=xF--1XdcOeM) which was built by NiftyManiac in 2017. Seeing this a long time ago finally motivated me to give this a shot myself!
 
 This post tries to explain the inner workings of JOSEF. I‘ll try to give a more or less complete explanation of how it all works, although I won‘t be able to go too much into „combinator by combinator“ detail.
 
@@ -17,7 +17,7 @@ I‘ll roughly outline how JOSEF works, then dig a little bit into the different
 - A train goes through all the cells in a new ring and checks for ore patches.
 - Other trains come in to either dedicate the cell to mining, solar or production of building materials.
 - Once the existing ring is full, a new ring is started.
-- All the cells are connected via global roboport and circuit networks .
+- All the cells are connected via global roboport network and circuit network.
 
 ## Ring mechanism
 
@@ -32,7 +32,7 @@ The basic ring building mechanism is as follows:
 - The ring is split into the horizontal (top/bottom) and vertical rows (left/right). To build the horizontal (blue) rows, you want X to run continuously from the leftmost (-2) to the rightmost (2) coordinate and Y to flip between -2 and 2. Interchange X and Y and you get the vertical (orange) rows.
 
 
-![The basic ring logic](https://i.imgur.com/Gy4xVQg.png)
+![The basic ring logic: Horizontal (blue) rows are built by having the X offset run between -N and N and the Y offset flip between -N and N. Vertical rows are built the opposite way.](Alt-F4 JOSEF Media/Ring Mechanism.png)
 
 The last thing required to make this work is some way of increasing the ring number N. I included a combinator in every cell, sending a global “Q=1” signal. This way JOSEF will roughly know when the ring is done building - when *Q=(2N-1)^2*, to be precise. The "decider" train (that comes to new cells and determines what to do with them) will only go to new cells once this condition is fullfilled. This prevents the train from going to half-built cells and messing up. 
 
@@ -42,7 +42,7 @@ This splits the building process into two different phases: Ring building (until
 
 ## Managing individual cells
 
-![A new cell during uncoupling of the roboport network](https://i.imgur.com/IAONQEo.png)
+![A new cell during uncoupling of the roboport network. After the train comes in, the globally connected roboports are deconstructed and the central, uncoupled roboport is placed.](Alt-F4 JOSEF Media/New cell during uncoupling.png)
 
 Okay, so now there is a bunch of new, empty cells. How to handle those individually?
 
@@ -62,9 +62,9 @@ As an example for what kinds of problems you can run into if you're not careful 
 
 ## Resource Finder
 
-![Checking for ore patches and placing blueprints accordingly](https://i.imgur.com/NFgi72P.mp4)
+![Checking for ore patches: After uncoupling, a miner blueprint is placed. Only when a certain number of miners are missing from the supply chest, the rest of the mining cell is placed.](Alt-F4 JOSEF Media/Ore finding.mp4)
 
-Now for one of the crucial bits: How to find resources? There is no way of reading "ore on ground" in vanilla (or any of the mods I'm aware of), but it’s actually really simple once you have uncoupled roboport networks:
+Now for one of the crucial bits: How to find resources? There is no way of reading "ore on ground" in vanilla, but it’s actually really simple once you have uncoupled roboport networks:
 
 - The builder train unloads a fixed amount of mining drills. If you place a blueprint that includes miners, they will be taken from this chest, so you can precisely say how many miners were placed in that cell. To be on the safe side, the train carries 150 miners and 200 belts.
 
@@ -86,7 +86,7 @@ The “No Mining” cells are handled by two different trains, depending on….
 
 ## ...Power
 
-![Power: Roughly 7MW of continuous power per cell](https://i.imgur.com/YkO1Vjs.png)
+![Power: 7MW of continuous power per cell. Gets placed in cells without ore patches whenever accumulator charge drops too low.](Alt-F4 JOSEF Media/Power.png)
 
 To make the start a little easier, JOSEF was granted 30MW of continuous power by an EEI (electric energy interface). Once the power requirements exceed that, JOSEF will build "power" cells including solar panels and accumulators. One cell produces 7MW continuously (10MW peak), so you need a few of those.
 
@@ -94,7 +94,7 @@ JOSEF will determine a need for more power once the charge of an accumulator dro
 
 Due to my way of building complete, ever-increasing rings every now and then, there are huge power spikes. This leads to JOSEF overbuilding power by quite a bit as the first few new cells in every ring usually get dedicated to power. In my larger runs, average draw towards the end was around 500MW while potential power generation was about 1GW. This is not the worst in the world (actually, UPS-wise I'm happy with every cell that gets filled with power instead of production) but it would definitely be more efficient if I used a slow, GreyGoo-style expansion mechanism. 
 
-![Power graph: You can read off the time a certain ring took to build](https://i.imgur.com/mbDMv4R.png)
+![Power graph: You can read off the time a certain ring took to build by looking at the massive peaks in power draw. Also, you can see that the whole thing grows pretty linearly overall.](Alt-F4 JOSEF Media/Power Graph.png)
 
 Now there‘s only one little detail missing: We want JOSEF to actually make the materials that it‘s using! So all the remaining cells get dedicated to...
 
@@ -104,13 +104,13 @@ The production of building materials takes place in 2 different spaghetti cells.
 
 The builder train in charge simply alternates between the two different cells. There’s a simple “inserter cycle” that takes the blueprint book out of the train when it gets home, puts in the other one, then waits for the train to leave before activating again.
 
-![Production cell 1: Basic, non-oily things](https://i.imgur.com/BccZ1d9.png)
+![Production cell 1: Basic, non-oily things (Belts, inserters, assemblers, etc.)](Alt-F4 JOSEF Media/Prod 1.png)
 
 The first cell produces all the different basic building materials: Belts, assemblers, miners, inserters, rails, trains, stations, signals, power poles – more or less everything that doesn‘t require oil. The basic production cell needs to be built before JOSEF runs out of stuff like belts or rails. This may be a problem if you have too many resource patches in the center or if you don’t give it a enough to start with and it decides to just solar panel the world. But you can always fix this by giving it a few more starting materials.
 
   
 
-![Production cell 2: Advanced things using oil](https://i.imgur.com/CQsUf42.png)
+![Production cell 2: Advanced things using oil (roboports, robots, accumulators, etc.)](Alt-F4 JOSEF Media/Prod 2.png)
 
 The second cell produces the more advanced things: Roboports, robots, logistic chests, blueprint deployers, solar panels & accumulators. This one needs to be built before JOSEF runs out of roboports. The builder train brings in 10 barrels of heavy oil which get emptied, run through the refinery and get refilled as soon as possible. JOSEF is not producing barrels but instead relying on the initial ones getting recycled infinitely.
 
@@ -124,6 +124,8 @@ All trains have a simple "ore in until full -> ore out until empty" schedule and
 
 The fact that there are four trains for every production cell means that there will be a ridiculous number of trains, most of them inactive. In my >500 cell run JOSEF had 750 trains towards the end. Looking at the tiny, roundabout-heavy train grid it's a good thing that most of them were idle.
 
+![JOSEF's brain on the left and the train deployer cell on the right. The brain almost doesn't deserve its name - it mainly takes care of ring building and sending/stopping the builder trains. All the interesting logic is going on inside the cells.](Alt-F4 JOSEF Media/Brain & Deployer.png)
+
 ## Reviewing & Future Plans
 
 - A few numbers on JOSEF: 
@@ -133,20 +135,19 @@ The fact that there are four trains for every production cell means that there w
 
 - It’s quite interesting to see how JOSEF behaves when he gets a bit larger. Initially, expansion is fairly slow because building materials have to be produced. Looking at the power graph you can see how it initially speeds up from ring to ring, even though the number of cells it has to go through increases with every ring. This is due to the fact that production increases quadratically, while demand only increases linearly (or even stagnates at later stages). At some point around ring 9 or 10, production stops being the bottleneck and the time needed to fill up a ring increases, simply because more cells have to be filled.
 
+  ![The largest size JOSEF reached: 29x29 cells.](Alt-F4 JOSEF Media/29.png)
+
 - In this version, I relied quite heavily on bots transporting things across the whole base (mainly to stock up the builder train and return unused materials from newly analyzed cells). This was more due to my lazyness than anything else and I‘m definitely planning on improving that for future versions. But my system of spamming production cells everywhere, using an excessive amount of construction bots and giving them access to building materials scattered across the whole base worked a lot better than I had expected – Build jobs are given to nearby bots which always take things from the closest location available, as long as you only offer them one type of chest.
 
 - I loved coming up with the system, designing the cells and all that, but I have to be honest: Testing something like this is a bit annoying, especially if you‘re impatient and want to see it running. It‘s like testing a Rube Goldberg machine that runs for many hours – For every tiny change that you make, you have to start over, implement the change and let it run for a couple of hours. Many small fixes you quickly come up with will lead to more unforeseen problems that might only occur in ring 6 or so. You can of course make things easier by e.g. giving it infinite construction materials when you‘re testing the ore finding mechanism, but actual realistic tests are pretty tedious.
 
-This is certainly not the last JOSEF I‘m ever going to build. In fact, I started a small, unprofessional [tutorial series](https://youtube.com/playlist?list=PLqiMv9sOILspVylhnHefjleLWw1Ye2RrD) in which I‘m building a second version. I‘m not yet sure where this will go but this is what I've got so far:
+This is certainly not the last JOSEF I‘m ever going to build. In fact, I started a little, unprofessional [tutorial series](https://youtube.com/playlist?list=PLqiMv9sOILspVylhnHefjleLWw1Ye2RrD) in which I‘m building a second version and explaining how and why I do stuff along the way. This is what I've got so far:
 
-- Larger cells. I'm currently planning on doing 4x4 chunks instead of 2x2, but I'm not sure if I'll stick with that. I’ll have uncoupled bot networks to begin with which will greatly simplify the whole ore finding process.
-
-- Dealing with water, both as a resource and as an obstacle: Done!
-
-- Dealing with biters: Will be difficult to get right. I won‘t tackle deathworlds but small amounts of biters should be okay
-
+- Larger cells. I'm currently planning on doing 4x4 chunks instead of 2x2. I’ll have uncoupled bot networks to begin with which will greatly simplify the whole ore finding process.
+- I greatly simplified and stabilized the "decision tree" for going through a blueprint by having a fixed amount of combinators and pasting new settings onto them. This brings along new challenges but it allows for a lot more different cells from a single blueprint book without the need for more combinators.
+- Dealing with water, both as a resource and as an obstacle: [Done!](https://www.reddit.com/r/factorio/comments/np1t16/josef_2_ready_for_a_swim/)
+- Dealing with biters: Will be difficult to get right. I won‘t tackle deathworlds but small amounts of biters should be okay to deal with.
 - Dealing with cliffs: Will only be difficult psychologically. I‘ve always hated them and turned them off right away. Should be very easy to handle.
-
 - Making science: Theoretically done (I just included tiny, 3SPM science builds in the production cells), but it will be a little tricky once running, because it will hugely increase the draw on resources and the number of active trains. Also, I may have to introduce some additional safety measures to make sure that science doesn't take away from production materials. After all, the factory must grow.
 
 ## Final Thoughts
