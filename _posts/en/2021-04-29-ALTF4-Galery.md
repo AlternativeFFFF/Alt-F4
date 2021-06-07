@@ -14,7 +14,7 @@ asdmflkmasdlfmalsmflkmasdflkmasd
 asfl,as;ldf,c
 asdl;f;alsd,f
 
-{% include gallery.html items="https://www.w3schools.com/howto/img_nature.jpg;Forest,https://www.w3schools.com/howto/img_snow.jpg,https://www.w3schools.com/howto/img_mountains.jpg,https://www.w3schools.com/howto/img_lights.jpg" %}
+{% include gallery.html items="https://www.w3schools.com/howto/img_nature.jpg;Forest,https://www.w3schools.com/howto/img_snow.jpg,https://www.w3schools.com/howto/img_mountains.jpg,https://www.w3schools.com/howto/img_lights.jpg" caption="hello world" %}
 
 {% include gallery.html items="https://www.w3schools.com/howto/img_nature.jpg;Forest,https://www.w3schools.com/howto/img_snow.jpg,https://www.w3schools.com/howto/img_mountains.jpg,https://www.w3schools.com/howto/img_lights.jpg" %}
 
