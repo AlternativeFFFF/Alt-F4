@@ -4,6 +4,7 @@ Inputs:
     gallery item contains URL and alt text for image to be displayed. alt text is [optional]
     sample items="url1;alt1,url2,url3;alt3"
   - caption: string containing caption text [optional]
+{% include gallery.html items="https://www.w3schools.com/howto/img_nature.jpg;Forest,https://www.w3schools.com/howto/img_snow.jpg,https://www.w3schools.com/howto/img_mountains.jpg,https://www.w3schools.com/howto/img_lights.jpg" caption="hello world" %}
 -->{%- endcomment -%}
 
 {% assign images = include.items | split: ',' %}
