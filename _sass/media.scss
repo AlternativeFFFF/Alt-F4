@@ -41,3 +41,34 @@ iframe.iframe-inset {
   background-size: cover;
   background-position: center center;
 }
+
+.flex-space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.m8,
+div.m8 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+div.p8 {
+  padding: 8px;
+}
+
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-gap: 3px;
+  grid-row-gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: 1fr, 1fr;
+  grid-auto-flow: dense;
+  justify-content: center;
+  img#main {
+    grid-row: 1;
+    grid-column: 1/-1;
+    width: 100%;
+  }
+}

@@ -1,0 +1,28 @@
+{%- comment -%}<!--
+Inputs:
+  - items: comma seppaced list of gallery items.
+    gallery item contains URL and alt text for image to be displayed. alt text is [optional]
+    sample items="url1;alt1,url2,url3;alt3"
+  - caption: string containing caption text [optional]
+{% include gallery.html items="https://www.w3schools.com/howto/img_nature.jpg;Forest,https://www.w3schools.com/howto/img_snow.jpg,https://www.w3schools.com/howto/img_mountains.jpg,https://www.w3schools.com/howto/img_lights.jpg" caption="hello world" %}
+-->{%- endcomment -%}
+
+{% assign images = include.items | split: ',' %}
+{% assign first = images | first %}
+<div class="flex flex-column panel-inset" >
+  <div class="gallery">
+    {% for image in images %}
+      {% assign data = image | split: ';' %}
+      {% if image == first %}
+        <img id="main" data-tooltip="Thinking Cat" src="{{ data[0] }}" alt="{{ data[1] }}" onclick="if (this.id === 'main'){this.id = 'none';}else{try{document.getElementById('main').id = 'none';} catch(e){};this.id = 'main';}" />
+      {% else %}
+        <img src="{{ data[0] }}" alt="{{ data[1] }}" onclick="if (this.id === 'main'){this.id = 'none';}else{try{document.getElementById('main').id = 'none';} catch(e){};this.id = 'main';}" />
+        {% endif %}
+    {% else %}
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.tenor.com%2Fimages%2F835b8787f388d7daa2af0d639f19a900%2Ftenor.gif&f=1&nofb=1"/>
+    {% endfor %}
+  </div>
+  {% if include.caption %}
+    <p style="text-align: center; margin-top:8px">{{ include.caption }}</p>
+  {% endif %}
+</div>
