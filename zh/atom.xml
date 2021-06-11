@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-06-04T10:44:19+00:00</updated>
+  <updated>2021-06-11T08:58:24+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #39 - JOSEF</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-39/" />
+    <id>https://alt-f4.blog/ALTF4-39</id>
+    <updated>2021-06-11T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在本周可以被 13 整除（速算一下）的 Alt-F4 第 39 期中，&lt;em&gt;Drogiwan Cannobi&lt;/em&gt; 为本项目作出了首次供稿，他详细介绍了他的鲁布·戈德堡式的自扩张工厂的背景及其内部原理，该工厂被亲切地命名为 JOSEF。这是一个非常酷的概念，若你深入了解其细节甚至会发现它没有那么复杂。&lt;/p&gt; &lt;h2 id=&quot;josef-的有机自扩张工厂josefs-organically-self-expanding-factoryjosef-drogiwan-cannobi&quot;&gt;JOSEF 的有机自扩张工厂（JOSEF’s Organically Self-Expanding Factory，JOSEF） &lt;author&gt;Drogiwan Cannobi&lt;/author&gt;&lt;/h2&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 530px; max-height: &quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/39/start.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt; --&gt; 工作中的 JOSEF...</content>
+  </entry>
+  
   
   
   <entry>
@@ -99,8 +109,6 @@
     <updated>2021-04-02T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;跨入了以 3 开头的数字领域，在第 30 期中 stringweasel 给 Alt-F4 带来了一点新的形式：采访，算是一个采访。他和 YouTube 上的名人 Zisteau 聊了聊他对我们这个游戏中各种话题的看法。&lt;/p&gt; &lt;h3 id=&quot;nauvis-有约zisteau-stringweasel&quot;&gt;Nauvis 有约：Zisteau &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h3&gt; &lt;p&gt;谈到异星工厂，我们会想到很多知名人士。多年来，这些伟大的玩家创造了令人惊叹的内容和造物，并向更多人介绍了我们热爱的这款游戏。纪念这些玩家的一个好方法，也作为让我能与这些玩家交谈的借口，就是采访。因此，我们开始了一个新的系列文章（希望如此！）——Nauvis 有约。首先，我想谈谈一个长期帮助异星工厂及其社区的名字，名叫 &lt;a href=&quot;https://www.youtube.com/user/Zisteau&quot;&gt;Zisteau&lt;/a&gt; 的 YouTuber。我联系了他，询问能否问他几个问题，回答是“当然可以”。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 640px; max-height: &quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/30/zisteau-picture.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source...</content>
   </entry>
-  
-  
   
   
 </feed>
