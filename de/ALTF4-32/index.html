@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #32 – Operation Wireshark</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #32 – Operation Wireshark">
+<meta name="author" content="The-Kool, Hornwitser">
+<meta property="og:locale" content="de">
+<meta name="description" content="Herzlich willkommen zur Ausgabe Nummer #2⁵, diesmal aber mit Haien! In diesen gefährlichen Gewässern zeigt uns The-Kool wie man Lautsprecher praktisch einsetzen kann, möglicherweise sogar als Haiwarnsystem. Danach gehen wir mit Hornwitser auf echte Haijagd mit Wireshark, und erfahren so, wie er Netzwerkprobleme im Spiel gefunden hat. Also schnapp dir eine Harpune und sei auf unserer wilden Jagd mit dabei! Komplexitäts-Ecke: Lautsprecher The Kool Willkommen zurück in der Komplexitäts-Ecke, in der wir uns mit komplexen Mechaniken des Spiels befassen, um denen, die sich damit nicht auskennen, einen Einstieg zu ermöglichen. In diesem Artikel stellen wir drei Fragen: „Was ist das?“, „Welche Ergebnisse kann ich damit erzielen?“ und „Wo sollte ich soetwas verwenden?“ Was ist das? Der Programmierbare Lautsprecher ist ein „Gebäude“, welches nur einen Kachel benötigt. Wenn er mit einem Schaltungsnetzwerk verbunden ist, kann er als Reaktion zu den Signalen im Netzwerk Töne erzeugen, die dann im Spiel zu hören sind. Einstellbar ist dabei die Lautstärke, der spezifische Ton, eine extra Alarmbenachrichtigung auf der Karte und ob man den Ton unabhängig von der Entfernung zwischen Lautsprecher und Spieler hören kann. Der Lautsprecher wird mit der Schaltungsnetzforschung freigeschalten, welche so früh im Technologiebaum vorkommt, dass es deine erste grüne Forschung sein könnte. Dort steht er, in all seiner majestätischen Schönheit. Quelle: Factorio Wiki. Welche Ergebnisse kann ich damit erzielen? Er macht Geräusche! Nagut, das war jetzt irgendwie klar. Obwohl Lautsprecher hauptsächlich für die musikalischen Meisterwerke, die man damit errichten kann, bekannt sind, haben sie auch einen praktischen Nutzen. Wenn man einen Lautsprecher mit seiner Fabrik verbindet und einen globalen Alarm einstellt, kann man Alarme für praktisch alles selbst erstellen. Du kannst (und solltest!) ihm ein eigenes Icon und einen Titel zuordnen, weil du mit Sicherheit vergessen wirst, was die Bedeutung dieser lärmenden Hupe war. Das stellt einen einfachen Weg dar, um Alarme in deiner ganzen Fabrik zu verteilen, um Probleme zu beheben, bevor sie zu Katastrophen werden. Wo sollte ich soetwas verwenden? Hast du jemals deine Energieversorgung so überstrapaziert, dass alle deine Kohleförderer langsamer produzierten, und du so in einen Brownout-Kreislauf geraten bist, während deine Heizkessel keine Kohle bekommen? Versuche einen Lautsprecher nebem dem Kohlefließband aufzustellen und verbinde ihn mit einem Kabel. Auf einem vollen Band liegen 8 Gegenstände, wenn du also den Lautsprecher so einstellst, das ein Alarm ausgelöst wird, wenn weniger als 8 Kohle vorhanden sind bekommst du bei jeder Lücke in deiner Kohleversorgung ein Alarmsignal. Stelle diesen Alarm als globalen Alarm ein und gebe ihm einen Namen wie „Überprüfe deine Kohleförderung!“ und du bekommst eine Warnung, egal wo du gerade bist und was du gerade machst. Wenn dieser Alarm auslöst, lass alles andere stehen und liegen und repariere deine Kohleversorgung. Blaupause Eine völlig andere Alarmart ist ein Zugalarm. Verbinde einen Lautsprecher mit einem Signal an einer Stelle, an der du häufig die Schienen überquerst, und jeweils einem weiteren Signal in jede Richtung (denk daran, beide Fahrtrichtungen zu beachten). Sage ihm, er soll einen lokalen Alarm auslösen, wenn eines der Signale gelb ist (Anzahl der gelben Signale &gt; 0). Das nächste Mal, wenn du auf die Schienen zurennst und ein Zug kommt, wirst du eine schöne laute Warnung bekommen, dass du noch einen kleinen Moment warten solltest, bevor du die Schienen überquerst! Wenn ich das nur vor ein paar hundert Stunden herausgefunden hätte... Blaupause Wie mit vielen anderen Dingen in Factorio sind die Möglichkeiten unbegrenzt, sowohl in der Kreativität als auch in der Anzahl der praktischen Anwendungen. Aufbauten reichen von solch simplen Konstrukten wie oben beschrieben, bis hin zu unglaublich komplexen MIDI-Systemen und noch viel weiter. Ich hoffe, dieser Artikel konnte dich etwas dazu inspirieren, einige eigene Anwendungen zu entwerfen und dir so einiges an Kopfschmerzen zu ersparen. Bis zum nächsten Mal, wenn wir uns wieder in der Fabrik treffen, pass auf dich auf und lass dich nicht überfahren! Wireshark-Dissector für Factorio Hornwitser Dieses Projekt begann etwa zur selben Zeit wie das Gridlock Cluster-Event. Ich erforschte, warum einige Clients zufällig vom Spiel fallen gelassen wurden und untersuchte deswegen Packet Traces mit Wireshark. Diese Packet Traces sind im Prinzip binäre Logs von allen Paketen, die von der Netzwerkkarte des Rechners gesendet oder empfangen werden. Um diese Binärdaten zu verstehen zerlegt Wireshark diese mit sogenannten Protokoll Dissectoren, eine Technik, die für fast alle Arten von Netzwerkprotokollen eingebaut ist. Aber leider gibt es keinen für Factorio, weswegen ich nur hexadezimalen Kauderwelsch sehen konnte, als ich Wireshark für Factorio-Traffic zwischen Client und Server verwendet habe. Nachdem ich mir die Bytes angeschaut hab, die zwischen Client und Server ausgetauscht werden, dachte ich mir: Wie schwer würde es sein, einen Dissector für Factorio-Daten für Wireshark zu schreiben. Der einfachste Weg, dafür Code zu schreiben, ist in Lua, welcher dann einfach als Plugin in Wireshark geladen werden kann, ähnlich zu Factorio-Mods. Und so begann ich, mich mit den Bytes zu beschäftigen und Stück für Stück die Struktur dieses Protokolls zu erforschen. Es wurde zu einer persönlichen Herausforderung von mir, die Bedeutung der einzelnen Bytes herauszufinden und in Wireshark zu dekodieren. Ich habe wahrscheinlich ungefähr zwei Wochen lang am Dissector gearbeitet, bevor ich irgendwie aufgab. Es war nicht so, dass ich es nicht hätte schaffen können, es war nur den Aufwand nicht wert. Der Output meines Dissectors war nicht sehr hilfreich, um herauszufinden, was wirklich vor sich geht. Es sah in etwa so aus: Klar, es dekodierte den Rahmen und fügte fragmentierte Pakete zusammen, aber außer du weißt genau was diese bunten unverständlichen Buchstabenkombinationen bedeuten, war die ganze Sache eher wenig hilfreich. Das ist auch der Grund, warum ich diesen Dissector nicht veröffentlicht habe: Es ist zwar besser als nur auf Hex-Daten zu schauen, aber nicht viel. Er schafft nicht die tiefen Einblicke in die Funktionsweise des Factorio-Protokolls, so wie man es von Dissectoren für andere Protokolle kennt. Und so endete das Projekt in einer Schublade, aus der es nie wieder hervor kam. In der Vergangenheit schrieb der Factorio-Entwickler Twinsen in FFF #196 darüber, einen Dissector für Wireshark zu schreiben. Der Post enthält eine Menge nützlicher Informationen, die ich hätte nutzen können, aber ich wollte es schaffen, ohne auf internes Material des Factorio-Quellcodes zurückzugreifen. Eine offensichtliche Frage, die sich da nun stellt: Warum verwende ich nicht einfach Twinsen´s Dissector, anstelle meinen eigenen zu schreiben? Nun, zuerst ist er nicht öffentlich zugänglich, aber viel wichtiger ist, dass er nie öffentlich zugänglich gemacht werden darf. Die Art und Weise, wie Twinsen´s Dissector funktioniert, ist, dass er Factorio als Shared Library erstellt hat, und dann eine eigene Version von Wireshark erstellte, die auf diese Shared Library verweist. Nun ist aber Wireshark unter der GPL-Lizenz veröffentlicht, was bedeutet, dass der GPL-Code nicht öffentlich zugänglich gemacht werden darf, wenn dieser auf proprietäre Inhalte verweist. Um den Dissector öffentlich zugänglich zu machen, müsste also Factorio öffentlich zugänglich gemacht werden, und das wird einfach nicht passieren. Vor einigen Wochen viel mir aber etwas auf. Die Windowsversion von Factorio kommt mit einer .pdb-Datei, welche Debugsymbole enthält. Die Entwickler verwenden diese um symbolisierte Stapelpfade zu hinterlassen, wenn das Spiel abstürzt, um ihnen so zu zeigen, an welcher Stelle im Code es zum Fehlerfall kam. Glücklicherweise für mich enthält diese Datei auch jede Menge andere Daten, zum Beispiel Daten die benötigt werden, um einen Debugger an Factorio anzuschließen und die gespeicherten Daten im RAM auszulesen. Das bedeutet es enthält Typinformationen, welche vorgeben, wie Daten im Code strukturiert sind und auch alle Namen für Felder und Enums. Die Feldnamen sind sehr nützlich, da sie die Namen darstellen, die die Entwicklern dem Datenstück gegeben haben, um Referenzen dazu im Code unterzubringen. Ähnlich dazu stellen die Enums Verbindungen zwischen logischen Namen und numerischen Werten dar. Ich habe es geschafft, diese Daten aus den .pdb-Dateien mit Hilfe des cvdump.exe-Werkzeugs in etwas Lesbares zu extrahieren. Sobald ich das hatte, war es einfach, die Namen der Strukturen aus der .pdb-Datei zu finden und alle Felder in meinem Dissector umzubenennen, um diese Felder zu verwenden. Ich habe es auch geschafft, die Enums zum Übersetzen von numerischen Werten in logische Namen zu verwenden, in Feldern wo dies verwendet wird. Nachdem ich meinen Code etwas aufgeräumt und den Datenausgang etwas verschönert habe, sah das Ergebnis wie folgt aus: Man muss sich nicht länger fragen, was ein „komisch blauer“ Wert ist, es ist ganz klar die id eines InputActionSegment. Jetzt sind die Typen von einem Maschienencode 0xa2 in ein deutlich besser lesbares ServerCommand übersetzt. Das einzige Problem damit, einen Dissector aus Daten zu errichten, die mit dem Spiel mitgeliefert wurden, ist, dass es jetzt ganz klar nicht mehr vollständig meine eigene Arbeit ist, was die Legalität der Distribution in Frage stellt. Anstatt selbst herauszufinden, ob die Urheberrechtsgesetze jetzt auf meiner Seite waren oder nicht, habe ich einfach bei den Entwicklern nachgefragt, die kein Problem damit haben, dass ich den Dissector öffentlich zugänglich mache. Wenn ihr das also selber ausprobieren und diese Technik eurem Werkzeugkasten hinzufügen wollt, findet ihr ihn in meinem GitHub-Repo. Persöhnlich habe ich es verwendet, um Netzwerkprobleme mit Factorio zu beheben, von Clients, die sich nicht verbinden können zu NAT-Punching-Problemen. Ich habe auch einige Bugreports geschrieben, welche zu Bugfixes im Spiel führten. Mit der Technik, Namen aus den Factorio-Debugsymbolen zu verwenden, wurden die Daten leserlicher und verständlicher, zumindest verglichen mit dem, was vorher zu sehen war. Es ist immernoch hauptsächlich ein Werkzeug für Leute mit Erfahrung in Computernetzwerktechnik und Factorio-Code-Grundlagen, also erwarte nicht, alles zu verstehen, falls du dich mit diesen Themen nicht auskennst. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="Herzlich willkommen zur Ausgabe Nummer #2⁵, diesmal aber mit Haien! In diesen gefährlichen Gewässern zeigt uns The-Kool wie man Lautsprecher praktisch einsetzen kann, möglicherweise sogar als Haiwarnsystem. Danach gehen wir mit Hornwitser auf echte Haijagd mit Wireshark, und erfahren so, wie er Netzwerkprobleme im Spiel gefunden hat. Also schnapp dir eine Harpune und sei auf unserer wilden Jagd mit dabei! Komplexitäts-Ecke: Lautsprecher The Kool Willkommen zurück in der Komplexitäts-Ecke, in der wir uns mit komplexen Mechaniken des Spiels befassen, um denen, die sich damit nicht auskennen, einen Einstieg zu ermöglichen. In diesem Artikel stellen wir drei Fragen: „Was ist das?“, „Welche Ergebnisse kann ich damit erzielen?“ und „Wo sollte ich soetwas verwenden?“ Was ist das? Der Programmierbare Lautsprecher ist ein „Gebäude“, welches nur einen Kachel benötigt. Wenn er mit einem Schaltungsnetzwerk verbunden ist, kann er als Reaktion zu den Signalen im Netzwerk Töne erzeugen, die dann im Spiel zu hören sind. Einstellbar ist dabei die Lautstärke, der spezifische Ton, eine extra Alarmbenachrichtigung auf der Karte und ob man den Ton unabhängig von der Entfernung zwischen Lautsprecher und Spieler hören kann. Der Lautsprecher wird mit der Schaltungsnetzforschung freigeschalten, welche so früh im Technologiebaum vorkommt, dass es deine erste grüne Forschung sein könnte. Dort steht er, in all seiner majestätischen Schönheit. Quelle: Factorio Wiki. Welche Ergebnisse kann ich damit erzielen? Er macht Geräusche! Nagut, das war jetzt irgendwie klar. Obwohl Lautsprecher hauptsächlich für die musikalischen Meisterwerke, die man damit errichten kann, bekannt sind, haben sie auch einen praktischen Nutzen. Wenn man einen Lautsprecher mit seiner Fabrik verbindet und einen globalen Alarm einstellt, kann man Alarme für praktisch alles selbst erstellen. Du kannst (und solltest!) ihm ein eigenes Icon und einen Titel zuordnen, weil du mit Sicherheit vergessen wirst, was die Bedeutung dieser lärmenden Hupe war. Das stellt einen einfachen Weg dar, um Alarme in deiner ganzen Fabrik zu verteilen, um Probleme zu beheben, bevor sie zu Katastrophen werden. Wo sollte ich soetwas verwenden? Hast du jemals deine Energieversorgung so überstrapaziert, dass alle deine Kohleförderer langsamer produzierten, und du so in einen Brownout-Kreislauf geraten bist, während deine Heizkessel keine Kohle bekommen? Versuche einen Lautsprecher nebem dem Kohlefließband aufzustellen und verbinde ihn mit einem Kabel. Auf einem vollen Band liegen 8 Gegenstände, wenn du also den Lautsprecher so einstellst, das ein Alarm ausgelöst wird, wenn weniger als 8 Kohle vorhanden sind bekommst du bei jeder Lücke in deiner Kohleversorgung ein Alarmsignal. Stelle diesen Alarm als globalen Alarm ein und gebe ihm einen Namen wie „Überprüfe deine Kohleförderung!“ und du bekommst eine Warnung, egal wo du gerade bist und was du gerade machst. Wenn dieser Alarm auslöst, lass alles andere stehen und liegen und repariere deine Kohleversorgung. Blaupause Eine völlig andere Alarmart ist ein Zugalarm. Verbinde einen Lautsprecher mit einem Signal an einer Stelle, an der du häufig die Schienen überquerst, und jeweils einem weiteren Signal in jede Richtung (denk daran, beide Fahrtrichtungen zu beachten). Sage ihm, er soll einen lokalen Alarm auslösen, wenn eines der Signale gelb ist (Anzahl der gelben Signale &gt; 0). Das nächste Mal, wenn du auf die Schienen zurennst und ein Zug kommt, wirst du eine schöne laute Warnung bekommen, dass du noch einen kleinen Moment warten solltest, bevor du die Schienen überquerst! Wenn ich das nur vor ein paar hundert Stunden herausgefunden hätte... Blaupause Wie mit vielen anderen Dingen in Factorio sind die Möglichkeiten unbegrenzt, sowohl in der Kreativität als auch in der Anzahl der praktischen Anwendungen. Aufbauten reichen von solch simplen Konstrukten wie oben beschrieben, bis hin zu unglaublich komplexen MIDI-Systemen und noch viel weiter. Ich hoffe, dieser Artikel konnte dich etwas dazu inspirieren, einige eigene Anwendungen zu entwerfen und dir so einiges an Kopfschmerzen zu ersparen. Bis zum nächsten Mal, wenn wir uns wieder in der Fabrik treffen, pass auf dich auf und lass dich nicht überfahren! Wireshark-Dissector für Factorio Hornwitser Dieses Projekt begann etwa zur selben Zeit wie das Gridlock Cluster-Event. Ich erforschte, warum einige Clients zufällig vom Spiel fallen gelassen wurden und untersuchte deswegen Packet Traces mit Wireshark. Diese Packet Traces sind im Prinzip binäre Logs von allen Paketen, die von der Netzwerkkarte des Rechners gesendet oder empfangen werden. Um diese Binärdaten zu verstehen zerlegt Wireshark diese mit sogenannten Protokoll Dissectoren, eine Technik, die für fast alle Arten von Netzwerkprotokollen eingebaut ist. Aber leider gibt es keinen für Factorio, weswegen ich nur hexadezimalen Kauderwelsch sehen konnte, als ich Wireshark für Factorio-Traffic zwischen Client und Server verwendet habe. Nachdem ich mir die Bytes angeschaut hab, die zwischen Client und Server ausgetauscht werden, dachte ich mir: Wie schwer würde es sein, einen Dissector für Factorio-Daten für Wireshark zu schreiben. Der einfachste Weg, dafür Code zu schreiben, ist in Lua, welcher dann einfach als Plugin in Wireshark geladen werden kann, ähnlich zu Factorio-Mods. Und so begann ich, mich mit den Bytes zu beschäftigen und Stück für Stück die Struktur dieses Protokolls zu erforschen. Es wurde zu einer persönlichen Herausforderung von mir, die Bedeutung der einzelnen Bytes herauszufinden und in Wireshark zu dekodieren. Ich habe wahrscheinlich ungefähr zwei Wochen lang am Dissector gearbeitet, bevor ich irgendwie aufgab. Es war nicht so, dass ich es nicht hätte schaffen können, es war nur den Aufwand nicht wert. Der Output meines Dissectors war nicht sehr hilfreich, um herauszufinden, was wirklich vor sich geht. Es sah in etwa so aus: Klar, es dekodierte den Rahmen und fügte fragmentierte Pakete zusammen, aber außer du weißt genau was diese bunten unverständlichen Buchstabenkombinationen bedeuten, war die ganze Sache eher wenig hilfreich. Das ist auch der Grund, warum ich diesen Dissector nicht veröffentlicht habe: Es ist zwar besser als nur auf Hex-Daten zu schauen, aber nicht viel. Er schafft nicht die tiefen Einblicke in die Funktionsweise des Factorio-Protokolls, so wie man es von Dissectoren für andere Protokolle kennt. Und so endete das Projekt in einer Schublade, aus der es nie wieder hervor kam. In der Vergangenheit schrieb der Factorio-Entwickler Twinsen in FFF #196 darüber, einen Dissector für Wireshark zu schreiben. Der Post enthält eine Menge nützlicher Informationen, die ich hätte nutzen können, aber ich wollte es schaffen, ohne auf internes Material des Factorio-Quellcodes zurückzugreifen. Eine offensichtliche Frage, die sich da nun stellt: Warum verwende ich nicht einfach Twinsen´s Dissector, anstelle meinen eigenen zu schreiben? Nun, zuerst ist er nicht öffentlich zugänglich, aber viel wichtiger ist, dass er nie öffentlich zugänglich gemacht werden darf. Die Art und Weise, wie Twinsen´s Dissector funktioniert, ist, dass er Factorio als Shared Library erstellt hat, und dann eine eigene Version von Wireshark erstellte, die auf diese Shared Library verweist. Nun ist aber Wireshark unter der GPL-Lizenz veröffentlicht, was bedeutet, dass der GPL-Code nicht öffentlich zugänglich gemacht werden darf, wenn dieser auf proprietäre Inhalte verweist. Um den Dissector öffentlich zugänglich zu machen, müsste also Factorio öffentlich zugänglich gemacht werden, und das wird einfach nicht passieren. Vor einigen Wochen viel mir aber etwas auf. Die Windowsversion von Factorio kommt mit einer .pdb-Datei, welche Debugsymbole enthält. Die Entwickler verwenden diese um symbolisierte Stapelpfade zu hinterlassen, wenn das Spiel abstürzt, um ihnen so zu zeigen, an welcher Stelle im Code es zum Fehlerfall kam. Glücklicherweise für mich enthält diese Datei auch jede Menge andere Daten, zum Beispiel Daten die benötigt werden, um einen Debugger an Factorio anzuschließen und die gespeicherten Daten im RAM auszulesen. Das bedeutet es enthält Typinformationen, welche vorgeben, wie Daten im Code strukturiert sind und auch alle Namen für Felder und Enums. Die Feldnamen sind sehr nützlich, da sie die Namen darstellen, die die Entwicklern dem Datenstück gegeben haben, um Referenzen dazu im Code unterzubringen. Ähnlich dazu stellen die Enums Verbindungen zwischen logischen Namen und numerischen Werten dar. Ich habe es geschafft, diese Daten aus den .pdb-Dateien mit Hilfe des cvdump.exe-Werkzeugs in etwas Lesbares zu extrahieren. Sobald ich das hatte, war es einfach, die Namen der Strukturen aus der .pdb-Datei zu finden und alle Felder in meinem Dissector umzubenennen, um diese Felder zu verwenden. Ich habe es auch geschafft, die Enums zum Übersetzen von numerischen Werten in logische Namen zu verwenden, in Feldern wo dies verwendet wird. Nachdem ich meinen Code etwas aufgeräumt und den Datenausgang etwas verschönert habe, sah das Ergebnis wie folgt aus: Man muss sich nicht länger fragen, was ein „komisch blauer“ Wert ist, es ist ganz klar die id eines InputActionSegment. Jetzt sind die Typen von einem Maschienencode 0xa2 in ein deutlich besser lesbares ServerCommand übersetzt. Das einzige Problem damit, einen Dissector aus Daten zu errichten, die mit dem Spiel mitgeliefert wurden, ist, dass es jetzt ganz klar nicht mehr vollständig meine eigene Arbeit ist, was die Legalität der Distribution in Frage stellt. Anstatt selbst herauszufinden, ob die Urheberrechtsgesetze jetzt auf meiner Seite waren oder nicht, habe ich einfach bei den Entwicklern nachgefragt, die kein Problem damit haben, dass ich den Dissector öffentlich zugänglich mache. Wenn ihr das also selber ausprobieren und diese Technik eurem Werkzeugkasten hinzufügen wollt, findet ihr ihn in meinem GitHub-Repo. Persöhnlich habe ich es verwendet, um Netzwerkprobleme mit Factorio zu beheben, von Clients, die sich nicht verbinden können zu NAT-Punching-Problemen. Ich habe auch einige Bugreports geschrieben, welche zu Bugfixes im Spiel führten. Mit der Technik, Namen aus den Factorio-Debugsymbolen zu verwenden, wurden die Daten leserlicher und verständlicher, zumindest verglichen mit dem, was vorher zu sehen war. Es ist immernoch hauptsächlich ein Werkzeug für Leute mit Erfahrung in Computernetzwerktechnik und Factorio-Code-Grundlagen, also erwarte nicht, alles zu verstehen, falls du dich mit diesen Themen nicht auskennst. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-32/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-32/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-04-23T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-04-23T00:00:00+00:00","author":{"@type":"Person","name":"The-Kool, Hornwitser"},"description":"Herzlich willkommen zur Ausgabe Nummer #2⁵, diesmal aber mit Haien! In diesen gefährlichen Gewässern zeigt uns The-Kool wie man Lautsprecher praktisch einsetzen kann, möglicherweise sogar als Haiwarnsystem. Danach gehen wir mit Hornwitser auf echte Haijagd mit Wireshark, und erfahren so, wie er Netzwerkprobleme im Spiel gefunden hat. Also schnapp dir eine Harpune und sei auf unserer wilden Jagd mit dabei! Komplexitäts-Ecke: Lautsprecher The Kool Willkommen zurück in der Komplexitäts-Ecke, in der wir uns mit komplexen Mechaniken des Spiels befassen, um denen, die sich damit nicht auskennen, einen Einstieg zu ermöglichen. In diesem Artikel stellen wir drei Fragen: „Was ist das?“, „Welche Ergebnisse kann ich damit erzielen?“ und „Wo sollte ich soetwas verwenden?“ Was ist das? Der Programmierbare Lautsprecher ist ein „Gebäude“, welches nur einen Kachel benötigt. Wenn er mit einem Schaltungsnetzwerk verbunden ist, kann er als Reaktion zu den Signalen im Netzwerk Töne erzeugen, die dann im Spiel zu hören sind. Einstellbar ist dabei die Lautstärke, der spezifische Ton, eine extra Alarmbenachrichtigung auf der Karte und ob man den Ton unabhängig von der Entfernung zwischen Lautsprecher und Spieler hören kann. Der Lautsprecher wird mit der Schaltungsnetzforschung freigeschalten, welche so früh im Technologiebaum vorkommt, dass es deine erste grüne Forschung sein könnte. Dort steht er, in all seiner majestätischen Schönheit. Quelle: Factorio Wiki. Welche Ergebnisse kann ich damit erzielen? Er macht Geräusche! Nagut, das war jetzt irgendwie klar. Obwohl Lautsprecher hauptsächlich für die musikalischen Meisterwerke, die man damit errichten kann, bekannt sind, haben sie auch einen praktischen Nutzen. Wenn man einen Lautsprecher mit seiner Fabrik verbindet und einen globalen Alarm einstellt, kann man Alarme für praktisch alles selbst erstellen. Du kannst (und solltest!) ihm ein eigenes Icon und einen Titel zuordnen, weil du mit Sicherheit vergessen wirst, was die Bedeutung dieser lärmenden Hupe war. Das stellt einen einfachen Weg dar, um Alarme in deiner ganzen Fabrik zu verteilen, um Probleme zu beheben, bevor sie zu Katastrophen werden. Wo sollte ich soetwas verwenden? Hast du jemals deine Energieversorgung so überstrapaziert, dass alle deine Kohleförderer langsamer produzierten, und du so in einen Brownout-Kreislauf geraten bist, während deine Heizkessel keine Kohle bekommen? Versuche einen Lautsprecher nebem dem Kohlefließband aufzustellen und verbinde ihn mit einem Kabel. Auf einem vollen Band liegen 8 Gegenstände, wenn du also den Lautsprecher so einstellst, das ein Alarm ausgelöst wird, wenn weniger als 8 Kohle vorhanden sind bekommst du bei jeder Lücke in deiner Kohleversorgung ein Alarmsignal. Stelle diesen Alarm als globalen Alarm ein und gebe ihm einen Namen wie „Überprüfe deine Kohleförderung!“ und du bekommst eine Warnung, egal wo du gerade bist und was du gerade machst. Wenn dieser Alarm auslöst, lass alles andere stehen und liegen und repariere deine Kohleversorgung. Blaupause Eine völlig andere Alarmart ist ein Zugalarm. Verbinde einen Lautsprecher mit einem Signal an einer Stelle, an der du häufig die Schienen überquerst, und jeweils einem weiteren Signal in jede Richtung (denk daran, beide Fahrtrichtungen zu beachten). Sage ihm, er soll einen lokalen Alarm auslösen, wenn eines der Signale gelb ist (Anzahl der gelben Signale &gt; 0). Das nächste Mal, wenn du auf die Schienen zurennst und ein Zug kommt, wirst du eine schöne laute Warnung bekommen, dass du noch einen kleinen Moment warten solltest, bevor du die Schienen überquerst! Wenn ich das nur vor ein paar hundert Stunden herausgefunden hätte... Blaupause Wie mit vielen anderen Dingen in Factorio sind die Möglichkeiten unbegrenzt, sowohl in der Kreativität als auch in der Anzahl der praktischen Anwendungen. Aufbauten reichen von solch simplen Konstrukten wie oben beschrieben, bis hin zu unglaublich komplexen MIDI-Systemen und noch viel weiter. Ich hoffe, dieser Artikel konnte dich etwas dazu inspirieren, einige eigene Anwendungen zu entwerfen und dir so einiges an Kopfschmerzen zu ersparen. Bis zum nächsten Mal, wenn wir uns wieder in der Fabrik treffen, pass auf dich auf und lass dich nicht überfahren! Wireshark-Dissector für Factorio Hornwitser Dieses Projekt begann etwa zur selben Zeit wie das Gridlock Cluster-Event. Ich erforschte, warum einige Clients zufällig vom Spiel fallen gelassen wurden und untersuchte deswegen Packet Traces mit Wireshark. Diese Packet Traces sind im Prinzip binäre Logs von allen Paketen, die von der Netzwerkkarte des Rechners gesendet oder empfangen werden. Um diese Binärdaten zu verstehen zerlegt Wireshark diese mit sogenannten Protokoll Dissectoren, eine Technik, die für fast alle Arten von Netzwerkprotokollen eingebaut ist. Aber leider gibt es keinen für Factorio, weswegen ich nur hexadezimalen Kauderwelsch sehen konnte, als ich Wireshark für Factorio-Traffic zwischen Client und Server verwendet habe. Nachdem ich mir die Bytes angeschaut hab, die zwischen Client und Server ausgetauscht werden, dachte ich mir: Wie schwer würde es sein, einen Dissector für Factorio-Daten für Wireshark zu schreiben. Der einfachste Weg, dafür Code zu schreiben, ist in Lua, welcher dann einfach als Plugin in Wireshark geladen werden kann, ähnlich zu Factorio-Mods. Und so begann ich, mich mit den Bytes zu beschäftigen und Stück für Stück die Struktur dieses Protokolls zu erforschen. Es wurde zu einer persönlichen Herausforderung von mir, die Bedeutung der einzelnen Bytes herauszufinden und in Wireshark zu dekodieren. Ich habe wahrscheinlich ungefähr zwei Wochen lang am Dissector gearbeitet, bevor ich irgendwie aufgab. Es war nicht so, dass ich es nicht hätte schaffen können, es war nur den Aufwand nicht wert. Der Output meines Dissectors war nicht sehr hilfreich, um herauszufinden, was wirklich vor sich geht. Es sah in etwa so aus: Klar, es dekodierte den Rahmen und fügte fragmentierte Pakete zusammen, aber außer du weißt genau was diese bunten unverständlichen Buchstabenkombinationen bedeuten, war die ganze Sache eher wenig hilfreich. Das ist auch der Grund, warum ich diesen Dissector nicht veröffentlicht habe: Es ist zwar besser als nur auf Hex-Daten zu schauen, aber nicht viel. Er schafft nicht die tiefen Einblicke in die Funktionsweise des Factorio-Protokolls, so wie man es von Dissectoren für andere Protokolle kennt. Und so endete das Projekt in einer Schublade, aus der es nie wieder hervor kam. In der Vergangenheit schrieb der Factorio-Entwickler Twinsen in FFF #196 darüber, einen Dissector für Wireshark zu schreiben. Der Post enthält eine Menge nützlicher Informationen, die ich hätte nutzen können, aber ich wollte es schaffen, ohne auf internes Material des Factorio-Quellcodes zurückzugreifen. Eine offensichtliche Frage, die sich da nun stellt: Warum verwende ich nicht einfach Twinsen´s Dissector, anstelle meinen eigenen zu schreiben? Nun, zuerst ist er nicht öffentlich zugänglich, aber viel wichtiger ist, dass er nie öffentlich zugänglich gemacht werden darf. Die Art und Weise, wie Twinsen´s Dissector funktioniert, ist, dass er Factorio als Shared Library erstellt hat, und dann eine eigene Version von Wireshark erstellte, die auf diese Shared Library verweist. Nun ist aber Wireshark unter der GPL-Lizenz veröffentlicht, was bedeutet, dass der GPL-Code nicht öffentlich zugänglich gemacht werden darf, wenn dieser auf proprietäre Inhalte verweist. Um den Dissector öffentlich zugänglich zu machen, müsste also Factorio öffentlich zugänglich gemacht werden, und das wird einfach nicht passieren. Vor einigen Wochen viel mir aber etwas auf. Die Windowsversion von Factorio kommt mit einer .pdb-Datei, welche Debugsymbole enthält. Die Entwickler verwenden diese um symbolisierte Stapelpfade zu hinterlassen, wenn das Spiel abstürzt, um ihnen so zu zeigen, an welcher Stelle im Code es zum Fehlerfall kam. Glücklicherweise für mich enthält diese Datei auch jede Menge andere Daten, zum Beispiel Daten die benötigt werden, um einen Debugger an Factorio anzuschließen und die gespeicherten Daten im RAM auszulesen. Das bedeutet es enthält Typinformationen, welche vorgeben, wie Daten im Code strukturiert sind und auch alle Namen für Felder und Enums. Die Feldnamen sind sehr nützlich, da sie die Namen darstellen, die die Entwicklern dem Datenstück gegeben haben, um Referenzen dazu im Code unterzubringen. Ähnlich dazu stellen die Enums Verbindungen zwischen logischen Namen und numerischen Werten dar. Ich habe es geschafft, diese Daten aus den .pdb-Dateien mit Hilfe des cvdump.exe-Werkzeugs in etwas Lesbares zu extrahieren. Sobald ich das hatte, war es einfach, die Namen der Strukturen aus der .pdb-Datei zu finden und alle Felder in meinem Dissector umzubenennen, um diese Felder zu verwenden. Ich habe es auch geschafft, die Enums zum Übersetzen von numerischen Werten in logische Namen zu verwenden, in Feldern wo dies verwendet wird. Nachdem ich meinen Code etwas aufgeräumt und den Datenausgang etwas verschönert habe, sah das Ergebnis wie folgt aus: Man muss sich nicht länger fragen, was ein „komisch blauer“ Wert ist, es ist ganz klar die id eines InputActionSegment. Jetzt sind die Typen von einem Maschienencode 0xa2 in ein deutlich besser lesbares ServerCommand übersetzt. Das einzige Problem damit, einen Dissector aus Daten zu errichten, die mit dem Spiel mitgeliefert wurden, ist, dass es jetzt ganz klar nicht mehr vollständig meine eigene Arbeit ist, was die Legalität der Distribution in Frage stellt. Anstatt selbst herauszufinden, ob die Urheberrechtsgesetze jetzt auf meiner Seite waren oder nicht, habe ich einfach bei den Entwicklern nachgefragt, die kein Problem damit haben, dass ich den Dissector öffentlich zugänglich mache. Wenn ihr das also selber ausprobieren und diese Technik eurem Werkzeugkasten hinzufügen wollt, findet ihr ihn in meinem GitHub-Repo. Persöhnlich habe ich es verwendet, um Netzwerkprobleme mit Factorio zu beheben, von Clients, die sich nicht verbinden können zu NAT-Punching-Problemen. Ich habe auch einige Bugreports geschrieben, welche zu Bugfixes im Spiel führten. Mit der Technik, Namen aus den Factorio-Debugsymbolen zu verwenden, wurden die Daten leserlicher und verständlicher, zumindest verglichen mit dem, was vorher zu sehen war. Es ist immernoch hauptsächlich ein Werkzeug für Leute mit Erfahrung in Computernetzwerktechnik und Factorio-Code-Grundlagen, also erwarte nicht, alles zu verstehen, falls du dich mit diesen Themen nicht auskennst. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","url":"https://alt-f4.blog/ALTF4-32/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-32/"},"headline":"Alt-F4 #32 – Operation Wireshark","dateModified":"2021-04-23T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/32/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/32/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-32/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-32/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-32/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-32/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-32/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-32/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-32/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-32/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-32/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-32/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #32 – Operation Wireshark  <author>23.04.2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>The-Kool, Hornwitser</em>,
+
+
+
+editiert von <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS</em>,
+
+
+
+lektoriert von <em>BluePsyduck, Nanogamer7</em>
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/32/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhaltsverzeichnis</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#komplexit%C3%A4ts-ecke-lautsprecher-the-kool">Komplexitäts-Ecke: Lautsprecher <author>The Kool</author></a>
+    <ul>
+      <li><a href="#was-ist-das">Was ist das?</a></li>
+      <li><a href="#welche-ergebnisse-kann-ich-damit-erzielen">Welche Ergebnisse kann ich damit erzielen?</a></li>
+      <li><a href="#wo-sollte-ich-soetwas-verwenden">Wo sollte ich soetwas verwenden?</a></li>
+    </ul>
+  </li>
+  <li><a href="#wireshark-dissector-f%C3%BCr-factorio-hornwitser">Wireshark-Dissector für Factorio <author>Hornwitser</author></a></li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Herzlich willkommen zur Ausgabe Nummer #2⁵, diesmal aber mit Haien! In diesen gefährlichen Gewässern zeigt uns <em>The-Kool</em> wie man Lautsprecher praktisch einsetzen kann, möglicherweise sogar als Haiwarnsystem. Danach gehen wir mit <em>Hornwitser</em> auf echte Haijagd mit Wireshark, und erfahren so, wie er Netzwerkprobleme im Spiel gefunden hat. Also schnapp dir eine Harpune und sei auf unserer wilden Jagd mit dabei!</p>
+      <h2 id="komplexitäts-ecke-lautsprecher-the-kool">
+        
+        
+            <a href="#komplexit%C3%A4ts-ecke-lautsprecher-the-kool" class="anchor" style="text-decoration: none;">Komplexitäts-Ecke: Lautsprecher <author>The Kool</author></a>
+          
+        
+      </h2>
+    
+
+<p>Willkommen zurück in der Komplexitäts-Ecke, in der wir uns mit komplexen Mechaniken des Spiels befassen, um denen, die sich damit nicht auskennen, einen Einstieg zu ermöglichen. In diesem Artikel stellen wir drei Fragen: „Was ist das?“, „Welche Ergebnisse kann ich damit erzielen?“ und „Wo sollte ich soetwas verwenden?“</p>
+      <h3 id="was-ist-das">
+        
+        
+            <a href="#was-ist-das" class="anchor" style="text-decoration: none;">Was ist das?</a>
+          
+        
+      </h3>
+    
+
+<p>Der <a href="https://wiki.factorio.com/Programmable_speaker/de">Programmierbare Lautsprecher</a> ist ein „Gebäude“, welches nur einen Kachel benötigt. Wenn er mit einem Schaltungsnetzwerk verbunden ist, kann er als Reaktion zu den Signalen im Netzwerk Töne erzeugen, die dann im Spiel zu hören sind. Einstellbar ist dabei die Lautstärke, der spezifische Ton, eine extra Alarmbenachrichtigung auf der Karte und ob man den Ton unabhängig von der Entfernung zwischen Lautsprecher und Spieler hören kann. Der Lautsprecher wird mit der Schaltungsnetzforschung freigeschalten, welche so früh im Technologiebaum vorkommt, dass es deine erste grüne Forschung sein könnte.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/32/speaker.jpg" alt="Programmierbarer Lautsprecher" style="max-width: ; max-height: ">
+      
+      <figcaption>Dort steht er, in all seiner majestätischen Schönheit. Quelle: <a href="https://wiki.factorio.com/File:Programmable_speaker_entity.png">Factorio Wiki</a>.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="welche-ergebnisse-kann-ich-damit-erzielen">
+        
+        
+            <a href="#welche-ergebnisse-kann-ich-damit-erzielen" class="anchor" style="text-decoration: none;">Welche Ergebnisse kann ich damit erzielen?</a>
+          
+        
+      </h3>
+    
+
+<p>Er macht Geräusche! Nagut, das war jetzt irgendwie klar. Obwohl Lautsprecher hauptsächlich für die <a href="https://miditorio.com/">musikalischen Meisterwerke</a>, die man damit errichten kann, bekannt sind, haben sie auch einen praktischen Nutzen. Wenn man einen Lautsprecher mit seiner Fabrik verbindet und einen globalen Alarm einstellt, kann man Alarme für praktisch alles selbst erstellen. Du kannst (und solltest!) ihm ein eigenes Icon und einen Titel zuordnen, weil du mit Sicherheit vergessen wirst, was die Bedeutung dieser lärmenden Hupe war. Das stellt einen einfachen Weg dar, um Alarme in deiner ganzen Fabrik zu verteilen, um Probleme zu beheben, bevor sie zu Katastrophen werden.</p>
+      <h3 id="wo-sollte-ich-soetwas-verwenden">
+        
+        
+            <a href="#wo-sollte-ich-soetwas-verwenden" class="anchor" style="text-decoration: none;">Wo sollte ich soetwas verwenden?</a>
+          
+        
+      </h3>
+    
+
+<p>Hast du jemals deine Energieversorgung so überstrapaziert, dass alle deine Kohleförderer langsamer produzierten, und du so in einen Brownout-Kreislauf geraten bist, während deine Heizkessel keine Kohle bekommen? Versuche einen Lautsprecher nebem dem Kohlefließband aufzustellen und verbinde ihn mit einem Kabel. Auf einem vollen Band liegen 8 Gegenstände, wenn du also den Lautsprecher so einstellst, das ein Alarm ausgelöst wird, wenn weniger als 8 Kohle vorhanden sind bekommst du bei jeder Lücke in deiner Kohleversorgung ein Alarmsignal. Stelle diesen Alarm als globalen Alarm ein und gebe ihm einen Namen wie „Überprüfe deine Kohleförderung!“ und du bekommst eine Warnung, egal wo du gerade bist und was du gerade machst.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/32/coal_alarm.jpg" alt="Kohle-Alarmsystem" style="max-width: ; max-height: ">
+      
+      <figcaption>Wenn dieser Alarm auslöst, lass alles andere stehen und liegen und repariere deine Kohleversorgung. <a href="https://media.alt-f4.blog/ALTF4/32/coal_alarm_bp.txt">Blaupause</a></figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Eine völlig andere Alarmart ist ein Zugalarm. Verbinde einen Lautsprecher mit einem Signal an einer Stelle, an der du häufig die Schienen überquerst, und jeweils einem weiteren Signal in jede Richtung (denk daran, beide Fahrtrichtungen zu beachten). Sage ihm, er soll einen lokalen Alarm auslösen, wenn eines der Signale gelb ist (Anzahl der gelben Signale &gt; 0). Das nächste Mal, wenn du auf die Schienen zurennst und ein Zug kommt, wirst du eine schöne laute Warnung bekommen, dass du noch einen kleinen Moment warten solltest, bevor du die Schienen überquerst!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/32/train_alarm.jpg" alt="Bahnübergangsalarmsystem" style="max-width: ; max-height: ">
+      
+      <figcaption>Wenn ich das nur vor ein paar hundert Stunden herausgefunden hätte... <a href="https://media.alt-f4.blog/ALTF4/32/train_alarm_bp.txt">Blaupause</a></figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wie mit vielen anderen Dingen in Factorio sind die Möglichkeiten unbegrenzt, sowohl in der Kreativität als auch in der Anzahl der praktischen Anwendungen. Aufbauten reichen von solch simplen Konstrukten wie oben beschrieben, bis hin zu unglaublich komplexen MIDI-Systemen und noch viel weiter. Ich hoffe, dieser Artikel konnte dich etwas dazu inspirieren, einige eigene Anwendungen zu entwerfen und dir so einiges an Kopfschmerzen zu ersparen. Bis zum nächsten Mal, wenn wir uns wieder in der Fabrik treffen, pass auf dich auf und lass dich nicht überfahren!</p>
+      <h2 id="wireshark-dissector-für-factorio-hornwitser">
+        
+        
+            <a href="#wireshark-dissector-f%C3%BCr-factorio-hornwitser" class="anchor" style="text-decoration: none;">Wireshark-Dissector für Factorio <author>Hornwitser</author></a>
+          
+        
+      </h2>
+    
+
+<p>Dieses Projekt begann etwa zur selben Zeit wie das <a href="https://www.reddit.com/r/factorio/comments/c98wui/the_gridlock_cluster_a_clusterio_based_event/">Gridlock Cluster</a>-Event. Ich erforschte, warum einige Clients zufällig vom Spiel fallen gelassen wurden und untersuchte deswegen Packet Traces mit Wireshark. Diese Packet Traces sind im Prinzip binäre Logs von allen Paketen, die von der Netzwerkkarte des Rechners gesendet oder empfangen werden. Um diese Binärdaten zu verstehen zerlegt Wireshark diese mit sogenannten Protokoll Dissectoren, eine Technik, die für fast alle Arten von Netzwerkprotokollen eingebaut ist. Aber leider gibt es keinen für Factorio, weswegen ich nur hexadezimalen Kauderwelsch sehen konnte, als ich Wireshark für Factorio-Traffic zwischen Client und Server verwendet habe.</p>
+
+<p>Nachdem ich mir die Bytes angeschaut hab, die zwischen Client und Server ausgetauscht werden, dachte ich mir: Wie schwer würde es sein, einen Dissector für Factorio-Daten für Wireshark zu schreiben. Der einfachste Weg, dafür Code zu schreiben, ist in Lua, welcher dann einfach als Plugin in Wireshark geladen werden kann, ähnlich zu Factorio-Mods. Und so begann ich, mich mit den Bytes zu beschäftigen und Stück für Stück die Struktur dieses Protokolls zu erforschen. Es wurde zu einer persönlichen Herausforderung von mir, die Bedeutung der einzelnen Bytes herauszufinden und in Wireshark zu dekodieren. Ich habe wahrscheinlich ungefähr zwei Wochen lang am Dissector gearbeitet, bevor ich irgendwie aufgab.</p>
+
+<p>Es war nicht so, dass ich es nicht hätte schaffen können, es war nur den Aufwand nicht wert. Der Output meines Dissectors war nicht sehr hilfreich, um herauszufinden, was wirklich vor sich geht. Es sah in etwa so aus:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/32/old-dissector.png" alt="Bildschirmfoto des alten Wireshark-Dissectors." style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Klar, es dekodierte den Rahmen und fügte fragmentierte Pakete zusammen, aber außer du weißt genau was diese bunten unverständlichen Buchstabenkombinationen bedeuten, war die ganze Sache eher wenig hilfreich. Das ist auch der Grund, warum ich diesen Dissector nicht veröffentlicht habe: Es ist zwar besser als nur auf Hex-Daten zu schauen, aber nicht viel. Er schafft nicht die tiefen Einblicke in die Funktionsweise des Factorio-Protokolls, so wie man es von Dissectoren für andere Protokolle kennt. Und so endete das Projekt in einer Schublade, aus der es nie wieder hervor kam.</p>
+
+<p>In der Vergangenheit schrieb der Factorio-Entwickler <em>Twinsen</em> in <a href="https://factorio.com/blog/post/fff-196">FFF #196</a> darüber, einen Dissector für Wireshark zu schreiben. Der Post enthält eine Menge nützlicher Informationen, die ich hätte nutzen können, aber ich wollte es schaffen, ohne auf internes Material des Factorio-Quellcodes zurückzugreifen. Eine offensichtliche Frage, die sich da nun stellt: Warum verwende ich nicht einfach <em>Twinsen</em>´s Dissector, anstelle meinen eigenen zu schreiben? Nun, zuerst ist er nicht öffentlich zugänglich, aber viel wichtiger ist, dass er nie öffentlich zugänglich gemacht werden <em>darf</em>. Die Art und Weise, wie <em>Twinsen</em>´s Dissector funktioniert, ist, dass er Factorio als Shared Library erstellt hat, und dann eine eigene Version von Wireshark erstellte, die auf diese Shared Library verweist. Nun ist aber Wireshark unter der <a href="https://de.wikipedia.org/wiki/GNU_General_Public_License">GPL</a>-Lizenz veröffentlicht, was bedeutet, dass der GPL-Code nicht öffentlich zugänglich gemacht werden darf, wenn dieser auf proprietäre Inhalte verweist. Um den Dissector öffentlich zugänglich zu machen, müsste also Factorio öffentlich zugänglich gemacht werden, und das wird einfach nicht passieren.</p>
+
+<p>Vor einigen Wochen viel mir aber etwas auf. Die Windowsversion von Factorio kommt mit einer <code class="language-plaintext highlighter-rouge">.pdb</code>-Datei, welche Debugsymbole enthält. Die Entwickler verwenden diese um symbolisierte Stapelpfade zu hinterlassen, wenn das Spiel abstürzt, um ihnen so zu zeigen, an welcher Stelle im Code es zum Fehlerfall kam. Glücklicherweise für mich enthält diese Datei auch jede Menge andere Daten, zum Beispiel Daten die benötigt werden, um einen Debugger an Factorio anzuschließen und die gespeicherten Daten im RAM auszulesen. Das bedeutet es enthält Typinformationen, welche vorgeben, wie Daten im Code strukturiert sind und auch alle Namen für Felder und Enums. Die Feldnamen sind sehr nützlich, da sie die Namen darstellen, die die Entwicklern dem Datenstück gegeben haben, um Referenzen dazu im Code unterzubringen. Ähnlich dazu stellen die Enums Verbindungen zwischen logischen Namen und numerischen Werten dar.</p>
+
+<p>Ich habe es geschafft, diese Daten aus den <code class="language-plaintext highlighter-rouge">.pdb</code>-Dateien mit Hilfe des <code class="language-plaintext highlighter-rouge">cvdump.exe</code>-Werkzeugs in etwas Lesbares zu extrahieren. Sobald ich das hatte, war es einfach, die Namen der Strukturen aus der <code class="language-plaintext highlighter-rouge">.pdb</code>-Datei zu finden und alle Felder in meinem Dissector umzubenennen, um diese Felder zu verwenden. Ich habe es auch geschafft, die Enums zum Übersetzen von numerischen Werten in logische Namen zu verwenden, in Feldern wo dies verwendet wird. Nachdem ich meinen Code etwas aufgeräumt und den Datenausgang etwas verschönert habe, sah das Ergebnis wie folgt aus:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    
+      <img src="https://media.alt-f4.blog/ALTF4/32/new-dissector.png" alt="Bildschirmfoto des neuen Wireshark-Dissectors." style="max-width: ; max-height: ">
+      
+      
+    
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Man muss sich nicht länger fragen, was ein „komisch blauer“ Wert ist, es ist ganz klar die <code class="language-plaintext highlighter-rouge">id</code> eines <code class="language-plaintext highlighter-rouge">InputActionSegment</code>. Jetzt sind die Typen von einem Maschienencode <code class="language-plaintext highlighter-rouge">0xa2</code> in ein deutlich besser lesbares <code class="language-plaintext highlighter-rouge">ServerCommand</code> übersetzt. Das einzige Problem damit, einen Dissector aus Daten zu errichten, die mit dem Spiel mitgeliefert wurden, ist, dass es jetzt ganz klar nicht mehr vollständig meine eigene Arbeit ist, was die Legalität der Distribution in Frage stellt. Anstatt selbst herauszufinden, ob die Urheberrechtsgesetze jetzt auf meiner Seite waren oder nicht, habe ich einfach bei den Entwicklern nachgefragt, die kein Problem damit haben, dass ich den Dissector öffentlich zugänglich mache. Wenn ihr das also selber ausprobieren und diese Technik eurem Werkzeugkasten hinzufügen wollt, findet ihr ihn in meinem <a href="https://github.com/Hornwitser/factorio_dissector">GitHub-Repo</a>.</p>
+
+<p>Persöhnlich habe ich es verwendet, um Netzwerkprobleme mit Factorio zu beheben, von Clients, die sich nicht verbinden können zu NAT-Punching-Problemen. Ich habe auch einige Bugreports geschrieben, welche zu Bugfixes im Spiel führten. Mit der Technik, Namen aus den Factorio-Debugsymbolen zu verwenden, wurden die Daten leserlicher und verständlicher, zumindest verglichen mit dem, was vorher zu sehen war. Es ist immernoch hauptsächlich ein Werkzeug für Leute mit Erfahrung in Computernetzwerktechnik und Factorio-Code-Grundlagen, also erwarte nicht, alles zu verstehen, falls du dich mit diesen Themen nicht auskennst.</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://discord.gg/nxnCFkb">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=98035">
+    Im Factorio-Forum diskutieren
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/mws25h/altf4_32_operation_wireshark/">
+    Auf Reddit diskutieren
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-31/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/de/ALTF4-33/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

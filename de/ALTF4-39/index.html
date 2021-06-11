@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #39 – JOSEF</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #39 – JOSEF">
+<meta name="author" content="Drogiwan Cannobi">
+<meta property="og:locale" content="de">
+<meta name="description" content="In dieser Woche von Alt-F4 #39 macht Drogiwan Cannobi seinen ersten Beitrag zu dem Projekt, indem er den Hintergrund und die Funktionalität seiner Rube-Goldberg-artigen selbständig expandierenden Fabrik, liebevoll JOSEF genannt, erklärt. Es ist ein richtig cooles Konzept, dass gar nicht mal so komplex ist, wenn du zu den Details kommst. JOSEF‘s Organisch Selbstständig Expandierende Fabrik (JOSEF) Drogiwan Cannobi &lt;/source&gt; JOSEF‘s selbstständig expandierende Fabrik in Aktion. JOSEF, die selbstständig expandierende Fabrik: Eine Zelle nach der anderen wird analysiert und gefüllt. Wenn alle Zellen voll sind, wird ein neuer Ring gebaut. Das ist JOSEF, eine selbstständig expandierende Fabrik. Sie beginnt mit einer kleinen Menge Material und fängt langsam an zu wachsen, mehr Ressourcen abzubauen, mehr Gebäude zu fertigen und noch mehr zu wachsen. Vorausgesetzt, ich habe keinen Fehler gemacht (und du hast unendlich viel Rechenleistung), würde diese Fabrik bis in die Unendlichkeit wachsen. JOSEF verwendet die recursive blueprints Mod, welche es dir erlaubt, Blaupausen und Abrissplaner automatisch mit Schaltungssignalen zu platzieren. Es gibt bereits einige selbständig expandierende Fabriken, am bekanntesten ist dabei GreyGoo von NiftyManiac aus dem Jahre 2017, welche mich schlussendlich dazu inspiriert hat, es selbst zu versuchen! In diesem Artikel werde ich die Funktion von JOSEF erklären. Ich werde versuchen, eine vollständige Erklärung für die Funktionsweise zu geben, kann allerdings auf Grund der Komplexität nicht bis zu Kombinatoren hinunter alles erklären. Ich will dich davon überzeugen, dass du nicht Programmierer oder Zauberer sein musst, um es selbst zu versuchen! Ich hab auch nicht so unglaublich viel über komplexe Schaltungen gewusst, bevor ich das begonnen habe, und außerdem kann ich nur grundlegende Zauberei. Ich verspreche dir, wenn du weißt, wie man einen Kombinator benutzt und die Geduld hast, etwas herumzuprobieren, kannst auch du das schaffen! Erst einmal will ich einen groben Überblick darüber geben, wie JOSEF funktioniert, bevor ich auf die einzelnen Teile genauer eingehe. Im Groben funktioniert die ganze Sache folgendermaßen: Die Basis besteht aus einem simplen 2 · 2 Chunk Schienennetz um eine zentrale „Gehirnzelle“ herum. Ein neuer Ring wird gebaut, wenn alle bereits bestehenden Zellen gefüllt sind. Ein Zug hält an jeder Zelle eines neuen Rings und prüft, ob Erzfelder vorhanden sind. Andere Züge kommen durch und bestimmen die Zelle entweder für Erzabbau, Solarzellen oder Montage. Wenn ein bestehender Ring vollständig gefüllt ist, wird ein neuer Ring gestartet. Alle Zellen sind mit einem globalen Roboter- und Schaltungsnetz verbunden. Ringmechanismus Wenn alle bestehenden Zellen gefüllt sind, wird ein neuer vollständiger Ring gebaut. Das ist anders als bei GreyGoo, wo im Gegensatz eine Zelle nach der anderen gebaut, analysiert und verwendet wird, in einer langsamen, aber konstanten Spiralform. Ich verwende vollständige Ringe, denn es ist ehrlich gesagt viel einfacher und funktioniert, also warum sollte ich mir mehr Arbeit machen. Es braucht nur 10 bis 15 Kombinatoren und keinen komplexen Speicher, abgesehen von der aktuellen Ringnummer. Der grundlegende Mechanismus für Ringe funktioniert folgendermaßen: Die Position jeder Zelle wird mit (X/Y)-Koordinaten beschrieben. Die innerste Zelle hat die Koordinaten (0/0). Die links davon hat die Koordinaten (−1/0), die darüber (0/−1) und so weiter. Die Variable N beschreibt den Ring, der gerade gebaut wird (der innerste Ring ist N=1). Nehmen wir also den Ring N=3 als Beispiel an (also der Übergang von einem 3 · 3 zu einem 5 · 5 Ring). Der Ring wird in horizontale und vertikale Reihen aufgeteilt. Um die horizontalen (blauen) Reihen zu bauen, soll X von der am weitesten linken Koordinate (−2) bis zur am weitesten rechten Koordinate (2) laufen, während Y zwischen −2 und 2 wechselt. Vertauscht man nun X und Y, erhält man die vertikalen Reihen. Die grundlegende Ringlogik: Horizontale (blaue) Reihen werden gebaut, indem die X-Verschiebung von −N nach N läuft und die Y-Verschiebung zwischen −N und N wechselt. Vertikale Reihen werden genau umgekehrt gebaut. Schlussendlich wird noch ein Weg benötigt, die Ringnummer N mitzuzählen. Jede Zelle enthält einen Kombinator, der ein globales Q=1-Signal aussendet. Auf diesen Weg weiß JOSEF ungefähr, wann die Baumaßnahmen abgeschlossen sind, nämlich wenn $ Q=(2N−1)^2 $ ist. Der „Entscheidungszug“, welcher entscheidet, wofür die Zellen verwendet werden, fährt nur zu neuen Zellen, wenn diese Bedingung erfüllt ist. Das verhindert, dass er zu halbfertige Zellen fährt und irgendwas kaputt macht. Da ich nicht nur ein unendlich wachsendes Schienennetzwerk baue, gibt es noch eine zweite Bedingung, um einen neuen Ring zu starten: Jede existierende Zelle muss entweder mit Erzabbau (M), Strom (E) oder einer der beiden Produktionszellen (I, J) gefüllt sein. Anders gesagt, ein neuer Ring wird begonnen, wenn $ M+I+J+E=(2N−1)^2 $ gilt. Das teilt den Bauprozess in zwei einzelne Phasen: Konstruktion des Rings (bis genug „Q“-Signale vorhanden sind) und Zellenanalyse (bis genug M, P, I, J-Signale vorhanden sind). Verwaltung individueller Zellen Eine neue Zelle beim des Abkoppeln des Roboport-Netzwerks. Nachdem der Zug eingetroffen ist, werden die global verbundenen Roboterhangars abgerissen und ein zentraler, abgekoppelter Roboterhangar wird platziert. Okay, jetzt gibt es eine Menge neuer, leerer Zellen. Wie behandeln wir diese jetzt einzeln? Neue Zellen werden mit einer Station namens „New Cell“ (zu Deutsch: „Neue Zelle“) (unglaublich kreativ, ich weiß) und einem Kombinatorenblock gebaut. Diese Kombinatoren werden dazu verwendet, construction bot = N auszugeben, damit die N-te Blaupause des Buchs platziert wird, welches per Zug hertransportiert wurde. Das die Kombinatoren von Anfang an platziert sind erwies sich als deutlich einfacher, als sie erst während der Analyse zu platzieren, da halb aufgebaute oder abgerissene Kombinatorschaltungen mit Sicherheit nicht gut enden werden. Wenn alle Zellen in einem neuen Ring gebaut sind und genug Materialien im Schaltungsnetz vorhanden sind, beginnt der Konstruktionszug, jede einzeln abzuklappern. Er hat nur wenige Materialien und ein Blaupausenbuch bei sich, was in eine Deployer-Kiste [Anm. d. Übers.: Bestandteil der Mod Recursive Blueprints] entladen wird. Es gibt ein paar Tricks, um durch Blaupausen in einem Buch durchzuschalten, aber der Prozess ist zu kompliziert, um ihn hier zu beschreiben, aber wir können uns mal ein Beispiel anschauen. Alle Zellen beginnen mit dem global verknüpften Roboternetzwerk, aber um auf Erze zu prüfen, was im nächsten Abschnitt beschrieben wird, benötige ich ein abgekuppeltes Roboternetzwerk, was wir deswegen gleich als erstes tun. BP1 ist ein Abrissplaner für Roboterhangars. Die ursprünglichen Roboterhangars (global verbunden) geben ein Signal U-235=1 aus (da in der zentralen Zelle eine Kiste mit genau einem U-235 steht). Zu Beginn ist also ein U-235=4-Signal von den vier Roboterhangars im lokalen Schaltungsnetz. Wenn alle vier Roboterhangars abgerissen sind (und deshalb U-235=0 ist), wird ein Kombinator mit U-235=0 → construction bot = 1 aktiviert, sodass die nächste Blaupause platziert wird. BP2 baut einen Roboterhangar in der Mitte der Zelle, welcher abgekuppelt vom restlichen Netzwerk ist. Das vorgebaute Fließband fördert 50 Bauroboter vom Zug hinein. Der neue Roboterhangar wird auf „read robot statistics“ (zu Deutsch: „lese Roboterstatistiken“) eingestellt und ein Kombinator mit T=50 → construction bot = 1 löst BP3 aus, wenn 50 Roboter in das nun entkoppelte Netzwerk übertragen wurden. BP3 reißt das Fließband ab und löst direkt BP4 aus, welches den im nächsten Abschnitt erklärten Erzfindungsvorgang beginnt. Insgesamt willst du, um durch Blaupausen durchzuschalten, ein Gebäude finden, welches Schaltungssignale ausgeben kann, und das Aufbauen / Abreißen dieses Gebäudes dann nutzen um den nächsten Schritt auszulösen. Zusätzlich kannst du auch „idle construction bots (T=Z)“ (zu Deutsch: „wartende Bauroboter“) oder „item X available in logistic storage“ (zu Deutsch: „Gegenstand X im Logistiklager verfügbar“) verwenden, um zu prüfen, ob die Baumaßnahme tatsächlich abgeschlossen ist. Als Beispiel dafür, was für Probleme auftreten können, wenn du nicht vorsichtig bist oder zeitabhängige Bedingungen verwendest: Wie JOSEF begann größer zu werden, dauerte es etwas länger für Roboter zu kommen und den abgekoppelten Roboterhangar zu bauen. Wenn (aus später beschriebenen Gründen) 200 Fließbänder ausgeladen wurden, bevor der Roboterhangar gebaut war, wurde die Reihenfolge der Blaupausen zerstört und es wurden Fließbänder für den Erzabbau gebaut, ohne dass vorher das Roboterband abgerissen wurde, was dazu führte, dass die Zelle als „Nicht-Erzabbau“ klassifiziert wurde. Das führte schnell zu absolutem Chaos und dazu, dass sich die ganze Sache aufgehängt hat. Ressourcenfinder &lt;/source&gt; Aufbau automatischer Erzförderer. Prüfen auf Ressourcen: Nach dem Abkuppeln wird eine Blaupause platziert. Nur wenn eine bestimmte Anzahl an Erzförderern in der Versorgungskiste fehlt wird der Rest der Abbauzelle platziert. Nun zu den wichtigen Punkten: Wie finde ich Ressourcen? Es gibt in Vanilla keinen Weg auszulesen, ob Ressourcen im Boden sind, aber es ist trotzdem recht einfach zu machen, sobald man abgekoppelte Roboternetzwerke hat: Der Bauzug entlädt eine fixe Anzahl an Erzförderern. Wenn man eine Blaupause platziert, welche Erzförderer beinhaltet, werden diese aus der Kiste genommen, und man kann dadurch feststellen, wie viele Erzförderer in der Zelle platziert wurden. Um auf Nummer sicher zu gehen führt der Zug 150 Erzförderer und 200 Fließbänder mit. JOSEF wartet darauf, dass die Erzförderer vollständig entladen sind (indem er auf belts=200 wartet) und darauf, das die 50 Bauroboter in den Wartezustand übergegangen sind (indem er auf T=Z vom Roboterhangar wartet) nachdem er die Erzfördererblaupause platziert hat. Sie kontrolliert die Anzahl der platzierten Erzförderer und erhöht das Baurobotersignal entweder um 1 oder 2, je nachdem ob eine bestimmte Schwelle an Erzförderern übertroffen wurde. Ich habe 10 Erzförderer als Untergrenze gewählt, um die gesamte Zelle für Erzförderung vorzusehen. Das bedeutet, dass zwei verschiedene Blaupausen platziert werden können: die „Erzförderung“ oder „Keine Erzförderung“-Blaupause. Das ganze benötigt ein paar Schritte mehr, aber diese benennen hauptsächlich die Bahnstationen um, reißen Kisten ab und verbinden die Roboterhangars wieder mit dem globalen Netz. Auch wird das Blaupausenbuch zurück in den Zug gelegt, nachdem alles abgeschlossen wurde. Um Probleme mit gemischten Erzen vorzubeugen, besitzt jede Zelle einen Bahnhof für Kohle, Kupfererz, Eisenerz und Stein. Einzelne Stationen werden nur aktiviert, wenn genug Material vorhanden ist, um einen Zug zu füllen. Das bedeutet, dass die meisten Stationen nie aktiv sind. Jede neue Zelle wird auf diese Art und Weise geprüft. Wenn mehr als zehn Erzförderer platziert wurden, wird die gesamte Zelle für Erzförderung vorgesehen, unabhängig davon, ob Erze überhaupt benötigt werden. Das ist definitiv nicht der ordentlichste Weg, aber es funktioniert. Der ursprüngliche Bauzug hat seine Arbeit erledigt, wenn die Zelle entweder für den Erzabbau oder nicht für den Erzabbau bestimmt wurde, und das Roboternetzwerk wieder verbunden ist. Ein anderer Zug fährt in die Erzförderungszellen um die Bahnhöfe korrekt zu benennen, die Kombinatoren wegzureißen und ein „M“-Signal hinzuzufügen, um die Zelle als Erzförderung zu klassifizieren. Mein Weg um Erze zu finden hat ein großes Problem: Man darf niemals Erzförderer im globalen Logistiknetz haben, da diese teilweise sonst anstelle der Erzförderer aus dem abgekoppelten Netzwerk platziert werden. Mit meinen kleinen Zellen überlappen die Bauzonen der Roboterhangars so viel, dass auf die gesamte Zelle von außerhalb zugegriffen werden kann. Es gibt einige Sicherheitsvorkehrungen, die verhindern sollen, dass Erzförderer im globalen Netzwerk vorhanden sind (obwohl sie von Robotern in die Züge geladen werden), aber es kann zu Situationen kommen, in dem es bei der Erzsuche zu Fehlern kommt, hauptsächlich wenn die Basis sehr groß ist. Aber das passiert nur selten und macht nichts kaputt, deshalb habe ich damit kein Problem. In meiner nächsten Version werde ich aber trotzdem versuchen, die Erzförderer vollständig aus dem Logistiknetz rauszuhalten, außer natürlich in den Zellen, die gerade auf Erze geprüft werden. Die „Nicht-Erzförderungs“-Zellen werden dann von zwei verschiedenen Zügen behandelt, abhängig von ihrer Einteilung in… … Strom Strom: 7 MW kontinuierlicher Leistung pro Zelle. Sie wird in Erzfreien Zellen platziert wenn die Akkuladung zu gering ist. Um den Start etwas einfacher zu gestalten, bekam JOSEF zu Beginn 30 MW konstante Leistung aus einem EEI (electric energy interface; zu Deutsch: „Kreativenergiezelle“). Sobald der Verbrauch das überschreitet, beginnt JOSEF „Strom“-Zellen mit Solarzellen und Akkumulatoren bauen. Eine Zelle produziert konstante 7 MW (10 MW Spitzenwert), du brauchst also eine Menge davon. JOSEF entscheidet, dass mehr Strom benötigt wird, wenn ein Akku auf unter 70% Ladung fällt. Das erlaubt dem „Strom“-Zug zu starten. Ähnlich zum Erzfördererzug fährt dieser Zug zu den „Keine Erzförderung“-Bahnhöfen, platziert eine Solarblaupause, reißt Kombinatoren ab und fügt ein „E“-Signal hinzu und verzieht sich dann wieder. Es gibt keine weiteren Einschränkungen, da ich wollte, dass JOSEF immer mehr Stromproduktion bauen kann, falls sich die Sache mal ungünstig entwickelt. Aufgrund des Spielstils, immer neue und größere Ringe zu bauen gibt es manchmal große Leistungsspitzen. Das führt dazu, dass JOSEF die Stromproduktion meist überproportioniert, da die ersten Zellen in einem neuen Ring in der Regel für Strom verwendet werden. In meinen größeren Spielrunden war der Durchschnittsbedarf am Ende gegen 500 MW, während die Produktion sich auf etwa 1 GW belief. Das ist aber kein Weltuntergang (ich finde es sogar für die UPS besser, wenn Zellen mit Solar anstelle von Produktion gefüllt werden), aber es wäre mit Sicherheit effizienter, wenn ich ein langsameren Expansionsmodus verwenden würde, so wie GreyGoo. Leistungsgraph: Man erkennt anhand der großen Spitzen, wann ein neuer Ring gebaut wurde und wie lange das Bauen dauerte. Auch zu erkennen ist das insgesamt lineare Wachstum. Jetzt fehlt nur noch ein kleines Detail: JOSEF soll auch die Materialien produzieren, die er verbraucht! Deshalb sind die letzten Zellen vorgesehen für… … Produktion Die Produktion von Baumaterial teilt sich auf zwei verschiedene Spaghettizellen auf. Sie werden ähnlich gebaut wie die vorherigen: Wenn eine „Keine Erzförderung“ Station verfügbar ist und genug Materialien im Logistiknetzwerk sind (und der Strom nicht knapp wird), kommt ein Zug, platziert eine Blaupause und fügt entweder ein „I“ oder „J“ zum globalen Kombinator für Konstanten hinzu, je nachdem welche Produktionszelle gebaut wurde. Der Zug macht eine weitere Sache: Er fügt ein bisschen Kohle zum Logistiknetzwerk hinzu, damit weitere Züge etwas zum Fahren haben, und bei Produktionszellen 2 ein paar Schwerölfässer, um die Kohleverflüssigung zu starten. Der zuständige Bauzug wechselt einfach zwischen den beiden verschiedenen Zellen ab: Ein einfacher Greifarm-Kreislauf nimmt das eine Blaupausenbuch aus dem Zug heraus, wenn er wieder zurück ist, und wechselt es mit dem anderen aus. Dann wartet er bis der Zug die Station verlassen hat, bevor er sich wieder aktiviert. Produktionszelle 1: Einfache Sachen ohne Öl (Fließbänder, Greifarme, Montagemaschinen, usw.) Die erste Zelle produziert all die verschiedenen einfacheren Fabrikelemente: Fließbänder, Erzförderer, Greifarme, Schienen, Züge, Stationen, Signale, Strommasten – mehr oder weniger alles, das kein Öl braucht. die einfache Produktionszelle muss immer gebaut werden, bevor JOSEF Zeugs wie Schienen und Fließbänder ausgehen. Das kann ein Problem werden, wenn du zu viele Erze zu nahe an der Mitte hast, oder du nicht genügend zum Starten zur Verfügung stellst und es einfach überall Solarzellen hinklatscht. Aber du kannst das immer lösen indem du mehr Startmaterialien zur Verfügung stellst. Produktionszelle 2: Fortgeschrittenere Sachen, die Öl benötigen (Roboterhangars, Roboter selbst, Akkumulator, usw.) Die zweite Zelle produziert die eher fortgeschrittenen Sachen: Roboterhangars, Roboter, Logistikkisten, Blaupausenplatzierer, Solarzellen &amp; Akkumulatoren. Sie muss immer gebaut werden, bevor JOSEF keine Roboterhangars mehr hat. Der Bauzug bringt zehn Fässer mit Schweröl mit, welche entleert werden, durch die Raffinerie laufen und so schnell wie möglich wieder befüllt werden. JOSEF produziert aber keine weiteren Fässer, sondern verlässt sich auf den Recyclingprozess der ursprünglichen Fässer. Die beiden Produktionszellen sind bei weitem nicht mit passenden Verhältnissen optimiert. Sie produzieren langsam, aber stetig alle benötigten Sachen, aber es kann eine Stunde brauchen, bis eine spezifische Zelle beispielsweise ihre erste Zughaltestelle produziert, weil zuerst die Fließbänder aufgefüllt werden. Aber es zeigt sich, dass das Problem nach einiger Zeit irrelevant wird, mehr dazu aber später. Nach einer Weile gibt es etliche Produktionszellen quer über die ganze Fabrik verstreut. Das heißt, Bauroboter nehmen immer weniger Materialen von der Mitte (wo die ursprünglichen Baumaterialen zu finden sind), und beginnen Sachen von den Produktionszellen im Umkreis aufzuheben, was Reisezeit verringert. Aber wegen ein paar Faulheiten meinerseits, bringen sie weiterhin einige Baumaterialien in die Mitte um den Bauzug aufzufüllen, aber das ist eine andere Geschichte (die auch in JOSEF v2 wesentlich eleganter gelöst sein wird). Die Produktionszellen erhalten Rohstoffe mit Zügen. Eine eigene „Zugaufgleiszelle“ in der Mitte generiert vier neue Züge (einen pro unterschiedliches Erz), wenn eine neues „I“ oder „J“ Signal ankommt. Eine eigene Zelle für Züge zu haben (statt sie in Produktionszellen zu inkludieren) stellt sicher, dass bereits existenten Züge nie neue behindern. Ohne dieser Vorsichtsmaßnahme kann es vorkommen, dass Waggons durch Blaupausen an bestehende Züge angehängt werden, was vermieden werden sollte Alle Züge verfolgen einen einfachen „Erz rein bis voll“ → „Erz heraus bis leer“ Fahrplan, und nehmen immer die nächste Station. Das heißt, dass Produktionszellen näher an Erzquellen mehr Ressourcen erhalten, als jene, die weiter weg liegen. Aber das gleicht sich nach einiger Zeit sowieso aus, weil JOSEF sich langsam mit vielen Baumaterialien auffüllt und etliche Zellen nach einer Weile dann stillstehen. Der Fakt, dass es vier Züge für jede Produktionszelle gibt, heißt, dass es später eine irre Zahle an Zügen gibt, wovon die meisten still stehen. In meinem 500+ Zellen Durchlauf von JOSEF hatte ich am Schluss 750 Züge. Wenn man sich das kleine, Kreisverkehr-lastige Zugnetz aber anschaut, ist es sogar gut, dass nur wenige davon in Betrieb waren. JOSEF‘s Kopf links und der Zugaufgleiser rechts. Das Hirn ist seinem Namen fast nicht gerecht – es ist hauptsächlich für das Bauen vom Ring und dem Senden/Stoppen von Bauzügen verantwortlich. Die interessante Logik läuft großteils in den Zellen selbst ab. Rückblick &amp; zukünftige Pläne Ein paar Zahlen über JOSEF: Die größte Fabrik, die auf meinem (nicht so guter) Computer wachsen konnte, war 25 · 25 = 625 Zellen groß. Das hat etwa 34 Stunden an Zeit im Spiel gebraucht. Sie hat weiterhin funktioniert, aber die UPS lagen bei etwa 40 und alles hat einfach Ewigkeiten gebraucht, also habe ich dann einfach aufgehört. Sie hatte etwa 170 Solarstromzellen, 150 Erzförderzellen und zirka 100 Produktionszellen Ein netter Redditer mit einem stärkeren Computer hat sie zu 29 · 29 = 841 Zellen bei 45 UPS gebracht Es ist recht interessant zu sehen, wie JOSEF sich in einem größeren Maßstab verhält. Anfangs sind Erweiterungen recht langsam, weil Baumaterialien produziert werden müssen. Wenn man auf den Stromgraph schaut, kannst du sehen, wie sie ursprünglich von Ring zu Ring schneller wird, auch wenn die Anzahl an Zellen, durch die sie gehen muss, pro Ring mehr wird. Das ist, weil die Produktion quadratisch steigt, während die Nachfrage linear mehr wird (und später sogar stagniert). Irgendwann bei etwa Ring 9 oder 10 hört die Produktion auf, der Engpass zum auffüllen eines Rings zu sein, einfach weil mehr Zellen bebaut werden müssen Die größte Größe, die JOSEF erreicht hat: 29 · 29 Zellen. In dieser Version habe ich mir stark darauf gestützt, dass Roboter Sachen über die ganze Karte transportieren (hauptsächlich um den Bauzug nachzufüllen und unbenutzte Materialen von neuen Zellen zurück zu bringen). Das war vor allem wegen meiner Faulheit, und ich plane definitiv das für spätere Versionen zu verbessern. Insgesamt aber hat mein System Produktionszellen überall hinzuklatschend aber besser als erwartet funktioniert – Bauaufgaben wurden an nahgelegene Roboter vergeben, welche Sachen immer von der nächst-verfügbaren Stelle nehmen, solange du ihnen nur eine Sorte an Kisten gibst. Ich habe es geliebt, das System zu entwickeln, die Zellen und so zu entwerfen, aber um ehrlich zu sein: So etwas testen ist etwas anstrengend, vor allem wenn du ungeduldig bist und es in Betrieb sehen willst. Es ist wie eine Rube Goldberg Maschine, die mehrere Stunden läuft zu testen – für jede kleine Änderung, die du machst, musst du von neu starten, die Änderung einfügen und einige Stunden warten. Viele kleine Verbesserungen auf die du schnell kommst führen zu unerwarteten Problemen die nur in etwa Ring 6 entstehen. Du kannst natürlich Sachen einfacher machen, indem du z. B. unendlich viele Konstruktionsmaterialien zur Verfügung stellst, wenn du den Erzfindemechanismus testest, aber richtige, realistische Tests sind sehr anstrengend. Das ist sicherlich nicht die letzte JOSEF, die ich bauen werde. Ich habe sogar eine kleine, unprofessionelle Tutorial-Serie (englisch-sprachig) angefangen, in der ich die zweite Version baue und währenddessen erkläre, wie und warum ich Sachen mache: Bis jetzt hab ich schon: Größere Zellen. Momentan plane ich eine Größe von 4 · 4 Chunks statt 2 · 2. Ich habe Logistiknetzwerke abgetrennt, was den Erzfindeprozess wesentlich vereinfachen wird. Ich habe den Entscheidungsbaum um durch eine Blaupause zu wandern wesentlich vereinfacht und stabilisiert, indem ich eine fixe Anzahl an Kombinationen habe und die Einstellungen darauf kopiere. Das bringt neue Herausforderungen mit sich, aber erlaubt für wesentlich mehr verschiedene Zellen aus einem einzigen Blaupausenbuch ohne mehr Kombinationen zu benötigen. Mit Wasser, sowohl als Ressource, als auch als Hindernis zu handhaben: Fertig! Gegen Beißer zu verteidigen: Wird schwierig richtig zu kriegen. Ich werde keine Deathworlds probieren, aber eine kleinere Menge an Beißern sollte kein Problem werden. Klippen beseitigen: Wird nur psychologisch Schwierig. Ich habe sie schon immer gehasst und schalte sie sofort aus. Sollten aber einfach zu handhaben sei. Wissenschaft: Theoretisch fertig (Ich habe eine kleine 3SPM Montagelinie zu Produktionszellen hinzugefügt), aber es wird ein bisschen schwierige, wenn sie in Betrieb sind, weil sie die benötigten Ressourcen und aktiven Züge um einiges erhöhen. Zusätzlich muss ich eventuell ein paar weitere Sicherheitsmechanismen hinzufügen, um sicherzustellen, dass die Wissenschaft nicht von Produktionsmaterialien wegnimmt. Abschließende Gedanken Vor ein paar Jahren, als ich das Video über GreyGoo (vermutlich die bekannteste selbstständig expandierende Fabrik bis jetzt) gesehen habe, war ich recht eingeschüchtert und ich war mir sicher, dass ein absolutes Genie nicht von dieser Welt darauf gekommen sein musste. Ich dachte, es ist einfach unmöglich für einen normalen, halb-erfahrenen Factoriospieler so etwas je erreichen zu können. Ich werde jetzt nicht JOSEF mit GreyGoo vergleichen. JOSEF ist eine recht stumpfe SEF, und es gibt etliche Sachen die ich verbessern könnte (und werde!). Aber ich hab das Gefühl, dass die viele Leute, die mir zu dieser Leistung gratulieren eine ähnlichen Stand zu JOSEF haben, wie ich damals zu GreyGoo. Und obwohl ich trotzdem sehr stolz darüber und dankbar für all den Lob bin, bitte glaub mir, wenn ich sage: Das war nicht schwer! Jeder, der schon mal eine cleveres Vorrichtung für Sushi-Fließbänder, ausgeglichen Zugstationen, eine Kovarex-Fabrik, oder was auch sonst erstellt hat, kann das auch! Spiel einfach nur ein bisschen mit Schaltungen, und dir wird auffallen, dass es machbar ist. Ich hoffe, dass dieser Einblick in JOSEF‘s einfachere Funktionalität das bewiesen hat. Ich würde mich richtig freuen, von mehr Leuten einen Versuch dafür zu sehen. Es ist dir freigestellt, meine Ideen als Anfang zu nehmen, sie zu verbessern, oder herauszunehmen und ersetzten, wenn sie dir nicht gefallen. Und natürlich freut es mich immer darüber zu plaudern, zu helfen, testen und zu brainstormen. Einige von JOSEFs Features kamen nur durch Diskussionen mit tollen Leuten dieser wunderbaren Community zustande. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="In dieser Woche von Alt-F4 #39 macht Drogiwan Cannobi seinen ersten Beitrag zu dem Projekt, indem er den Hintergrund und die Funktionalität seiner Rube-Goldberg-artigen selbständig expandierenden Fabrik, liebevoll JOSEF genannt, erklärt. Es ist ein richtig cooles Konzept, dass gar nicht mal so komplex ist, wenn du zu den Details kommst. JOSEF‘s Organisch Selbstständig Expandierende Fabrik (JOSEF) Drogiwan Cannobi &lt;/source&gt; JOSEF‘s selbstständig expandierende Fabrik in Aktion. JOSEF, die selbstständig expandierende Fabrik: Eine Zelle nach der anderen wird analysiert und gefüllt. Wenn alle Zellen voll sind, wird ein neuer Ring gebaut. Das ist JOSEF, eine selbstständig expandierende Fabrik. Sie beginnt mit einer kleinen Menge Material und fängt langsam an zu wachsen, mehr Ressourcen abzubauen, mehr Gebäude zu fertigen und noch mehr zu wachsen. Vorausgesetzt, ich habe keinen Fehler gemacht (und du hast unendlich viel Rechenleistung), würde diese Fabrik bis in die Unendlichkeit wachsen. JOSEF verwendet die recursive blueprints Mod, welche es dir erlaubt, Blaupausen und Abrissplaner automatisch mit Schaltungssignalen zu platzieren. Es gibt bereits einige selbständig expandierende Fabriken, am bekanntesten ist dabei GreyGoo von NiftyManiac aus dem Jahre 2017, welche mich schlussendlich dazu inspiriert hat, es selbst zu versuchen! In diesem Artikel werde ich die Funktion von JOSEF erklären. Ich werde versuchen, eine vollständige Erklärung für die Funktionsweise zu geben, kann allerdings auf Grund der Komplexität nicht bis zu Kombinatoren hinunter alles erklären. Ich will dich davon überzeugen, dass du nicht Programmierer oder Zauberer sein musst, um es selbst zu versuchen! Ich hab auch nicht so unglaublich viel über komplexe Schaltungen gewusst, bevor ich das begonnen habe, und außerdem kann ich nur grundlegende Zauberei. Ich verspreche dir, wenn du weißt, wie man einen Kombinator benutzt und die Geduld hast, etwas herumzuprobieren, kannst auch du das schaffen! Erst einmal will ich einen groben Überblick darüber geben, wie JOSEF funktioniert, bevor ich auf die einzelnen Teile genauer eingehe. Im Groben funktioniert die ganze Sache folgendermaßen: Die Basis besteht aus einem simplen 2 · 2 Chunk Schienennetz um eine zentrale „Gehirnzelle“ herum. Ein neuer Ring wird gebaut, wenn alle bereits bestehenden Zellen gefüllt sind. Ein Zug hält an jeder Zelle eines neuen Rings und prüft, ob Erzfelder vorhanden sind. Andere Züge kommen durch und bestimmen die Zelle entweder für Erzabbau, Solarzellen oder Montage. Wenn ein bestehender Ring vollständig gefüllt ist, wird ein neuer Ring gestartet. Alle Zellen sind mit einem globalen Roboter- und Schaltungsnetz verbunden. Ringmechanismus Wenn alle bestehenden Zellen gefüllt sind, wird ein neuer vollständiger Ring gebaut. Das ist anders als bei GreyGoo, wo im Gegensatz eine Zelle nach der anderen gebaut, analysiert und verwendet wird, in einer langsamen, aber konstanten Spiralform. Ich verwende vollständige Ringe, denn es ist ehrlich gesagt viel einfacher und funktioniert, also warum sollte ich mir mehr Arbeit machen. Es braucht nur 10 bis 15 Kombinatoren und keinen komplexen Speicher, abgesehen von der aktuellen Ringnummer. Der grundlegende Mechanismus für Ringe funktioniert folgendermaßen: Die Position jeder Zelle wird mit (X/Y)-Koordinaten beschrieben. Die innerste Zelle hat die Koordinaten (0/0). Die links davon hat die Koordinaten (−1/0), die darüber (0/−1) und so weiter. Die Variable N beschreibt den Ring, der gerade gebaut wird (der innerste Ring ist N=1). Nehmen wir also den Ring N=3 als Beispiel an (also der Übergang von einem 3 · 3 zu einem 5 · 5 Ring). Der Ring wird in horizontale und vertikale Reihen aufgeteilt. Um die horizontalen (blauen) Reihen zu bauen, soll X von der am weitesten linken Koordinate (−2) bis zur am weitesten rechten Koordinate (2) laufen, während Y zwischen −2 und 2 wechselt. Vertauscht man nun X und Y, erhält man die vertikalen Reihen. Die grundlegende Ringlogik: Horizontale (blaue) Reihen werden gebaut, indem die X-Verschiebung von −N nach N läuft und die Y-Verschiebung zwischen −N und N wechselt. Vertikale Reihen werden genau umgekehrt gebaut. Schlussendlich wird noch ein Weg benötigt, die Ringnummer N mitzuzählen. Jede Zelle enthält einen Kombinator, der ein globales Q=1-Signal aussendet. Auf diesen Weg weiß JOSEF ungefähr, wann die Baumaßnahmen abgeschlossen sind, nämlich wenn $ Q=(2N−1)^2 $ ist. Der „Entscheidungszug“, welcher entscheidet, wofür die Zellen verwendet werden, fährt nur zu neuen Zellen, wenn diese Bedingung erfüllt ist. Das verhindert, dass er zu halbfertige Zellen fährt und irgendwas kaputt macht. Da ich nicht nur ein unendlich wachsendes Schienennetzwerk baue, gibt es noch eine zweite Bedingung, um einen neuen Ring zu starten: Jede existierende Zelle muss entweder mit Erzabbau (M), Strom (E) oder einer der beiden Produktionszellen (I, J) gefüllt sein. Anders gesagt, ein neuer Ring wird begonnen, wenn $ M+I+J+E=(2N−1)^2 $ gilt. Das teilt den Bauprozess in zwei einzelne Phasen: Konstruktion des Rings (bis genug „Q“-Signale vorhanden sind) und Zellenanalyse (bis genug M, P, I, J-Signale vorhanden sind). Verwaltung individueller Zellen Eine neue Zelle beim des Abkoppeln des Roboport-Netzwerks. Nachdem der Zug eingetroffen ist, werden die global verbundenen Roboterhangars abgerissen und ein zentraler, abgekoppelter Roboterhangar wird platziert. Okay, jetzt gibt es eine Menge neuer, leerer Zellen. Wie behandeln wir diese jetzt einzeln? Neue Zellen werden mit einer Station namens „New Cell“ (zu Deutsch: „Neue Zelle“) (unglaublich kreativ, ich weiß) und einem Kombinatorenblock gebaut. Diese Kombinatoren werden dazu verwendet, construction bot = N auszugeben, damit die N-te Blaupause des Buchs platziert wird, welches per Zug hertransportiert wurde. Das die Kombinatoren von Anfang an platziert sind erwies sich als deutlich einfacher, als sie erst während der Analyse zu platzieren, da halb aufgebaute oder abgerissene Kombinatorschaltungen mit Sicherheit nicht gut enden werden. Wenn alle Zellen in einem neuen Ring gebaut sind und genug Materialien im Schaltungsnetz vorhanden sind, beginnt der Konstruktionszug, jede einzeln abzuklappern. Er hat nur wenige Materialien und ein Blaupausenbuch bei sich, was in eine Deployer-Kiste [Anm. d. Übers.: Bestandteil der Mod Recursive Blueprints] entladen wird. Es gibt ein paar Tricks, um durch Blaupausen in einem Buch durchzuschalten, aber der Prozess ist zu kompliziert, um ihn hier zu beschreiben, aber wir können uns mal ein Beispiel anschauen. Alle Zellen beginnen mit dem global verknüpften Roboternetzwerk, aber um auf Erze zu prüfen, was im nächsten Abschnitt beschrieben wird, benötige ich ein abgekuppeltes Roboternetzwerk, was wir deswegen gleich als erstes tun. BP1 ist ein Abrissplaner für Roboterhangars. Die ursprünglichen Roboterhangars (global verbunden) geben ein Signal U-235=1 aus (da in der zentralen Zelle eine Kiste mit genau einem U-235 steht). Zu Beginn ist also ein U-235=4-Signal von den vier Roboterhangars im lokalen Schaltungsnetz. Wenn alle vier Roboterhangars abgerissen sind (und deshalb U-235=0 ist), wird ein Kombinator mit U-235=0 → construction bot = 1 aktiviert, sodass die nächste Blaupause platziert wird. BP2 baut einen Roboterhangar in der Mitte der Zelle, welcher abgekuppelt vom restlichen Netzwerk ist. Das vorgebaute Fließband fördert 50 Bauroboter vom Zug hinein. Der neue Roboterhangar wird auf „read robot statistics“ (zu Deutsch: „lese Roboterstatistiken“) eingestellt und ein Kombinator mit T=50 → construction bot = 1 löst BP3 aus, wenn 50 Roboter in das nun entkoppelte Netzwerk übertragen wurden. BP3 reißt das Fließband ab und löst direkt BP4 aus, welches den im nächsten Abschnitt erklärten Erzfindungsvorgang beginnt. Insgesamt willst du, um durch Blaupausen durchzuschalten, ein Gebäude finden, welches Schaltungssignale ausgeben kann, und das Aufbauen / Abreißen dieses Gebäudes dann nutzen um den nächsten Schritt auszulösen. Zusätzlich kannst du auch „idle construction bots (T=Z)“ (zu Deutsch: „wartende Bauroboter“) oder „item X available in logistic storage“ (zu Deutsch: „Gegenstand X im Logistiklager verfügbar“) verwenden, um zu prüfen, ob die Baumaßnahme tatsächlich abgeschlossen ist. Als Beispiel dafür, was für Probleme auftreten können, wenn du nicht vorsichtig bist oder zeitabhängige Bedingungen verwendest: Wie JOSEF begann größer zu werden, dauerte es etwas länger für Roboter zu kommen und den abgekoppelten Roboterhangar zu bauen. Wenn (aus später beschriebenen Gründen) 200 Fließbänder ausgeladen wurden, bevor der Roboterhangar gebaut war, wurde die Reihenfolge der Blaupausen zerstört und es wurden Fließbänder für den Erzabbau gebaut, ohne dass vorher das Roboterband abgerissen wurde, was dazu führte, dass die Zelle als „Nicht-Erzabbau“ klassifiziert wurde. Das führte schnell zu absolutem Chaos und dazu, dass sich die ganze Sache aufgehängt hat. Ressourcenfinder &lt;/source&gt; Aufbau automatischer Erzförderer. Prüfen auf Ressourcen: Nach dem Abkuppeln wird eine Blaupause platziert. Nur wenn eine bestimmte Anzahl an Erzförderern in der Versorgungskiste fehlt wird der Rest der Abbauzelle platziert. Nun zu den wichtigen Punkten: Wie finde ich Ressourcen? Es gibt in Vanilla keinen Weg auszulesen, ob Ressourcen im Boden sind, aber es ist trotzdem recht einfach zu machen, sobald man abgekoppelte Roboternetzwerke hat: Der Bauzug entlädt eine fixe Anzahl an Erzförderern. Wenn man eine Blaupause platziert, welche Erzförderer beinhaltet, werden diese aus der Kiste genommen, und man kann dadurch feststellen, wie viele Erzförderer in der Zelle platziert wurden. Um auf Nummer sicher zu gehen führt der Zug 150 Erzförderer und 200 Fließbänder mit. JOSEF wartet darauf, dass die Erzförderer vollständig entladen sind (indem er auf belts=200 wartet) und darauf, das die 50 Bauroboter in den Wartezustand übergegangen sind (indem er auf T=Z vom Roboterhangar wartet) nachdem er die Erzfördererblaupause platziert hat. Sie kontrolliert die Anzahl der platzierten Erzförderer und erhöht das Baurobotersignal entweder um 1 oder 2, je nachdem ob eine bestimmte Schwelle an Erzförderern übertroffen wurde. Ich habe 10 Erzförderer als Untergrenze gewählt, um die gesamte Zelle für Erzförderung vorzusehen. Das bedeutet, dass zwei verschiedene Blaupausen platziert werden können: die „Erzförderung“ oder „Keine Erzförderung“-Blaupause. Das ganze benötigt ein paar Schritte mehr, aber diese benennen hauptsächlich die Bahnstationen um, reißen Kisten ab und verbinden die Roboterhangars wieder mit dem globalen Netz. Auch wird das Blaupausenbuch zurück in den Zug gelegt, nachdem alles abgeschlossen wurde. Um Probleme mit gemischten Erzen vorzubeugen, besitzt jede Zelle einen Bahnhof für Kohle, Kupfererz, Eisenerz und Stein. Einzelne Stationen werden nur aktiviert, wenn genug Material vorhanden ist, um einen Zug zu füllen. Das bedeutet, dass die meisten Stationen nie aktiv sind. Jede neue Zelle wird auf diese Art und Weise geprüft. Wenn mehr als zehn Erzförderer platziert wurden, wird die gesamte Zelle für Erzförderung vorgesehen, unabhängig davon, ob Erze überhaupt benötigt werden. Das ist definitiv nicht der ordentlichste Weg, aber es funktioniert. Der ursprüngliche Bauzug hat seine Arbeit erledigt, wenn die Zelle entweder für den Erzabbau oder nicht für den Erzabbau bestimmt wurde, und das Roboternetzwerk wieder verbunden ist. Ein anderer Zug fährt in die Erzförderungszellen um die Bahnhöfe korrekt zu benennen, die Kombinatoren wegzureißen und ein „M“-Signal hinzuzufügen, um die Zelle als Erzförderung zu klassifizieren. Mein Weg um Erze zu finden hat ein großes Problem: Man darf niemals Erzförderer im globalen Logistiknetz haben, da diese teilweise sonst anstelle der Erzförderer aus dem abgekoppelten Netzwerk platziert werden. Mit meinen kleinen Zellen überlappen die Bauzonen der Roboterhangars so viel, dass auf die gesamte Zelle von außerhalb zugegriffen werden kann. Es gibt einige Sicherheitsvorkehrungen, die verhindern sollen, dass Erzförderer im globalen Netzwerk vorhanden sind (obwohl sie von Robotern in die Züge geladen werden), aber es kann zu Situationen kommen, in dem es bei der Erzsuche zu Fehlern kommt, hauptsächlich wenn die Basis sehr groß ist. Aber das passiert nur selten und macht nichts kaputt, deshalb habe ich damit kein Problem. In meiner nächsten Version werde ich aber trotzdem versuchen, die Erzförderer vollständig aus dem Logistiknetz rauszuhalten, außer natürlich in den Zellen, die gerade auf Erze geprüft werden. Die „Nicht-Erzförderungs“-Zellen werden dann von zwei verschiedenen Zügen behandelt, abhängig von ihrer Einteilung in… … Strom Strom: 7 MW kontinuierlicher Leistung pro Zelle. Sie wird in Erzfreien Zellen platziert wenn die Akkuladung zu gering ist. Um den Start etwas einfacher zu gestalten, bekam JOSEF zu Beginn 30 MW konstante Leistung aus einem EEI (electric energy interface; zu Deutsch: „Kreativenergiezelle“). Sobald der Verbrauch das überschreitet, beginnt JOSEF „Strom“-Zellen mit Solarzellen und Akkumulatoren bauen. Eine Zelle produziert konstante 7 MW (10 MW Spitzenwert), du brauchst also eine Menge davon. JOSEF entscheidet, dass mehr Strom benötigt wird, wenn ein Akku auf unter 70% Ladung fällt. Das erlaubt dem „Strom“-Zug zu starten. Ähnlich zum Erzfördererzug fährt dieser Zug zu den „Keine Erzförderung“-Bahnhöfen, platziert eine Solarblaupause, reißt Kombinatoren ab und fügt ein „E“-Signal hinzu und verzieht sich dann wieder. Es gibt keine weiteren Einschränkungen, da ich wollte, dass JOSEF immer mehr Stromproduktion bauen kann, falls sich die Sache mal ungünstig entwickelt. Aufgrund des Spielstils, immer neue und größere Ringe zu bauen gibt es manchmal große Leistungsspitzen. Das führt dazu, dass JOSEF die Stromproduktion meist überproportioniert, da die ersten Zellen in einem neuen Ring in der Regel für Strom verwendet werden. In meinen größeren Spielrunden war der Durchschnittsbedarf am Ende gegen 500 MW, während die Produktion sich auf etwa 1 GW belief. Das ist aber kein Weltuntergang (ich finde es sogar für die UPS besser, wenn Zellen mit Solar anstelle von Produktion gefüllt werden), aber es wäre mit Sicherheit effizienter, wenn ich ein langsameren Expansionsmodus verwenden würde, so wie GreyGoo. Leistungsgraph: Man erkennt anhand der großen Spitzen, wann ein neuer Ring gebaut wurde und wie lange das Bauen dauerte. Auch zu erkennen ist das insgesamt lineare Wachstum. Jetzt fehlt nur noch ein kleines Detail: JOSEF soll auch die Materialien produzieren, die er verbraucht! Deshalb sind die letzten Zellen vorgesehen für… … Produktion Die Produktion von Baumaterial teilt sich auf zwei verschiedene Spaghettizellen auf. Sie werden ähnlich gebaut wie die vorherigen: Wenn eine „Keine Erzförderung“ Station verfügbar ist und genug Materialien im Logistiknetzwerk sind (und der Strom nicht knapp wird), kommt ein Zug, platziert eine Blaupause und fügt entweder ein „I“ oder „J“ zum globalen Kombinator für Konstanten hinzu, je nachdem welche Produktionszelle gebaut wurde. Der Zug macht eine weitere Sache: Er fügt ein bisschen Kohle zum Logistiknetzwerk hinzu, damit weitere Züge etwas zum Fahren haben, und bei Produktionszellen 2 ein paar Schwerölfässer, um die Kohleverflüssigung zu starten. Der zuständige Bauzug wechselt einfach zwischen den beiden verschiedenen Zellen ab: Ein einfacher Greifarm-Kreislauf nimmt das eine Blaupausenbuch aus dem Zug heraus, wenn er wieder zurück ist, und wechselt es mit dem anderen aus. Dann wartet er bis der Zug die Station verlassen hat, bevor er sich wieder aktiviert. Produktionszelle 1: Einfache Sachen ohne Öl (Fließbänder, Greifarme, Montagemaschinen, usw.) Die erste Zelle produziert all die verschiedenen einfacheren Fabrikelemente: Fließbänder, Erzförderer, Greifarme, Schienen, Züge, Stationen, Signale, Strommasten – mehr oder weniger alles, das kein Öl braucht. die einfache Produktionszelle muss immer gebaut werden, bevor JOSEF Zeugs wie Schienen und Fließbänder ausgehen. Das kann ein Problem werden, wenn du zu viele Erze zu nahe an der Mitte hast, oder du nicht genügend zum Starten zur Verfügung stellst und es einfach überall Solarzellen hinklatscht. Aber du kannst das immer lösen indem du mehr Startmaterialien zur Verfügung stellst. Produktionszelle 2: Fortgeschrittenere Sachen, die Öl benötigen (Roboterhangars, Roboter selbst, Akkumulator, usw.) Die zweite Zelle produziert die eher fortgeschrittenen Sachen: Roboterhangars, Roboter, Logistikkisten, Blaupausenplatzierer, Solarzellen &amp; Akkumulatoren. Sie muss immer gebaut werden, bevor JOSEF keine Roboterhangars mehr hat. Der Bauzug bringt zehn Fässer mit Schweröl mit, welche entleert werden, durch die Raffinerie laufen und so schnell wie möglich wieder befüllt werden. JOSEF produziert aber keine weiteren Fässer, sondern verlässt sich auf den Recyclingprozess der ursprünglichen Fässer. Die beiden Produktionszellen sind bei weitem nicht mit passenden Verhältnissen optimiert. Sie produzieren langsam, aber stetig alle benötigten Sachen, aber es kann eine Stunde brauchen, bis eine spezifische Zelle beispielsweise ihre erste Zughaltestelle produziert, weil zuerst die Fließbänder aufgefüllt werden. Aber es zeigt sich, dass das Problem nach einiger Zeit irrelevant wird, mehr dazu aber später. Nach einer Weile gibt es etliche Produktionszellen quer über die ganze Fabrik verstreut. Das heißt, Bauroboter nehmen immer weniger Materialen von der Mitte (wo die ursprünglichen Baumaterialen zu finden sind), und beginnen Sachen von den Produktionszellen im Umkreis aufzuheben, was Reisezeit verringert. Aber wegen ein paar Faulheiten meinerseits, bringen sie weiterhin einige Baumaterialien in die Mitte um den Bauzug aufzufüllen, aber das ist eine andere Geschichte (die auch in JOSEF v2 wesentlich eleganter gelöst sein wird). Die Produktionszellen erhalten Rohstoffe mit Zügen. Eine eigene „Zugaufgleiszelle“ in der Mitte generiert vier neue Züge (einen pro unterschiedliches Erz), wenn eine neues „I“ oder „J“ Signal ankommt. Eine eigene Zelle für Züge zu haben (statt sie in Produktionszellen zu inkludieren) stellt sicher, dass bereits existenten Züge nie neue behindern. Ohne dieser Vorsichtsmaßnahme kann es vorkommen, dass Waggons durch Blaupausen an bestehende Züge angehängt werden, was vermieden werden sollte Alle Züge verfolgen einen einfachen „Erz rein bis voll“ → „Erz heraus bis leer“ Fahrplan, und nehmen immer die nächste Station. Das heißt, dass Produktionszellen näher an Erzquellen mehr Ressourcen erhalten, als jene, die weiter weg liegen. Aber das gleicht sich nach einiger Zeit sowieso aus, weil JOSEF sich langsam mit vielen Baumaterialien auffüllt und etliche Zellen nach einer Weile dann stillstehen. Der Fakt, dass es vier Züge für jede Produktionszelle gibt, heißt, dass es später eine irre Zahle an Zügen gibt, wovon die meisten still stehen. In meinem 500+ Zellen Durchlauf von JOSEF hatte ich am Schluss 750 Züge. Wenn man sich das kleine, Kreisverkehr-lastige Zugnetz aber anschaut, ist es sogar gut, dass nur wenige davon in Betrieb waren. JOSEF‘s Kopf links und der Zugaufgleiser rechts. Das Hirn ist seinem Namen fast nicht gerecht – es ist hauptsächlich für das Bauen vom Ring und dem Senden/Stoppen von Bauzügen verantwortlich. Die interessante Logik läuft großteils in den Zellen selbst ab. Rückblick &amp; zukünftige Pläne Ein paar Zahlen über JOSEF: Die größte Fabrik, die auf meinem (nicht so guter) Computer wachsen konnte, war 25 · 25 = 625 Zellen groß. Das hat etwa 34 Stunden an Zeit im Spiel gebraucht. Sie hat weiterhin funktioniert, aber die UPS lagen bei etwa 40 und alles hat einfach Ewigkeiten gebraucht, also habe ich dann einfach aufgehört. Sie hatte etwa 170 Solarstromzellen, 150 Erzförderzellen und zirka 100 Produktionszellen Ein netter Redditer mit einem stärkeren Computer hat sie zu 29 · 29 = 841 Zellen bei 45 UPS gebracht Es ist recht interessant zu sehen, wie JOSEF sich in einem größeren Maßstab verhält. Anfangs sind Erweiterungen recht langsam, weil Baumaterialien produziert werden müssen. Wenn man auf den Stromgraph schaut, kannst du sehen, wie sie ursprünglich von Ring zu Ring schneller wird, auch wenn die Anzahl an Zellen, durch die sie gehen muss, pro Ring mehr wird. Das ist, weil die Produktion quadratisch steigt, während die Nachfrage linear mehr wird (und später sogar stagniert). Irgendwann bei etwa Ring 9 oder 10 hört die Produktion auf, der Engpass zum auffüllen eines Rings zu sein, einfach weil mehr Zellen bebaut werden müssen Die größte Größe, die JOSEF erreicht hat: 29 · 29 Zellen. In dieser Version habe ich mir stark darauf gestützt, dass Roboter Sachen über die ganze Karte transportieren (hauptsächlich um den Bauzug nachzufüllen und unbenutzte Materialen von neuen Zellen zurück zu bringen). Das war vor allem wegen meiner Faulheit, und ich plane definitiv das für spätere Versionen zu verbessern. Insgesamt aber hat mein System Produktionszellen überall hinzuklatschend aber besser als erwartet funktioniert – Bauaufgaben wurden an nahgelegene Roboter vergeben, welche Sachen immer von der nächst-verfügbaren Stelle nehmen, solange du ihnen nur eine Sorte an Kisten gibst. Ich habe es geliebt, das System zu entwickeln, die Zellen und so zu entwerfen, aber um ehrlich zu sein: So etwas testen ist etwas anstrengend, vor allem wenn du ungeduldig bist und es in Betrieb sehen willst. Es ist wie eine Rube Goldberg Maschine, die mehrere Stunden läuft zu testen – für jede kleine Änderung, die du machst, musst du von neu starten, die Änderung einfügen und einige Stunden warten. Viele kleine Verbesserungen auf die du schnell kommst führen zu unerwarteten Problemen die nur in etwa Ring 6 entstehen. Du kannst natürlich Sachen einfacher machen, indem du z. B. unendlich viele Konstruktionsmaterialien zur Verfügung stellst, wenn du den Erzfindemechanismus testest, aber richtige, realistische Tests sind sehr anstrengend. Das ist sicherlich nicht die letzte JOSEF, die ich bauen werde. Ich habe sogar eine kleine, unprofessionelle Tutorial-Serie (englisch-sprachig) angefangen, in der ich die zweite Version baue und währenddessen erkläre, wie und warum ich Sachen mache: Bis jetzt hab ich schon: Größere Zellen. Momentan plane ich eine Größe von 4 · 4 Chunks statt 2 · 2. Ich habe Logistiknetzwerke abgetrennt, was den Erzfindeprozess wesentlich vereinfachen wird. Ich habe den Entscheidungsbaum um durch eine Blaupause zu wandern wesentlich vereinfacht und stabilisiert, indem ich eine fixe Anzahl an Kombinationen habe und die Einstellungen darauf kopiere. Das bringt neue Herausforderungen mit sich, aber erlaubt für wesentlich mehr verschiedene Zellen aus einem einzigen Blaupausenbuch ohne mehr Kombinationen zu benötigen. Mit Wasser, sowohl als Ressource, als auch als Hindernis zu handhaben: Fertig! Gegen Beißer zu verteidigen: Wird schwierig richtig zu kriegen. Ich werde keine Deathworlds probieren, aber eine kleinere Menge an Beißern sollte kein Problem werden. Klippen beseitigen: Wird nur psychologisch Schwierig. Ich habe sie schon immer gehasst und schalte sie sofort aus. Sollten aber einfach zu handhaben sei. Wissenschaft: Theoretisch fertig (Ich habe eine kleine 3SPM Montagelinie zu Produktionszellen hinzugefügt), aber es wird ein bisschen schwierige, wenn sie in Betrieb sind, weil sie die benötigten Ressourcen und aktiven Züge um einiges erhöhen. Zusätzlich muss ich eventuell ein paar weitere Sicherheitsmechanismen hinzufügen, um sicherzustellen, dass die Wissenschaft nicht von Produktionsmaterialien wegnimmt. Abschließende Gedanken Vor ein paar Jahren, als ich das Video über GreyGoo (vermutlich die bekannteste selbstständig expandierende Fabrik bis jetzt) gesehen habe, war ich recht eingeschüchtert und ich war mir sicher, dass ein absolutes Genie nicht von dieser Welt darauf gekommen sein musste. Ich dachte, es ist einfach unmöglich für einen normalen, halb-erfahrenen Factoriospieler so etwas je erreichen zu können. Ich werde jetzt nicht JOSEF mit GreyGoo vergleichen. JOSEF ist eine recht stumpfe SEF, und es gibt etliche Sachen die ich verbessern könnte (und werde!). Aber ich hab das Gefühl, dass die viele Leute, die mir zu dieser Leistung gratulieren eine ähnlichen Stand zu JOSEF haben, wie ich damals zu GreyGoo. Und obwohl ich trotzdem sehr stolz darüber und dankbar für all den Lob bin, bitte glaub mir, wenn ich sage: Das war nicht schwer! Jeder, der schon mal eine cleveres Vorrichtung für Sushi-Fließbänder, ausgeglichen Zugstationen, eine Kovarex-Fabrik, oder was auch sonst erstellt hat, kann das auch! Spiel einfach nur ein bisschen mit Schaltungen, und dir wird auffallen, dass es machbar ist. Ich hoffe, dass dieser Einblick in JOSEF‘s einfachere Funktionalität das bewiesen hat. Ich würde mich richtig freuen, von mehr Leuten einen Versuch dafür zu sehen. Es ist dir freigestellt, meine Ideen als Anfang zu nehmen, sie zu verbessern, oder herauszunehmen und ersetzten, wenn sie dir nicht gefallen. Und natürlich freut es mich immer darüber zu plaudern, zu helfen, testen und zu brainstormen. Einige von JOSEFs Features kamen nur durch Diskussionen mit tollen Leuten dieser wunderbaren Community zustande. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-39/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-39/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-06-11T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-06-11T00:00:00+00:00","author":{"@type":"Person","name":"Drogiwan Cannobi"},"description":"In dieser Woche von Alt-F4 #39 macht Drogiwan Cannobi seinen ersten Beitrag zu dem Projekt, indem er den Hintergrund und die Funktionalität seiner Rube-Goldberg-artigen selbständig expandierenden Fabrik, liebevoll JOSEF genannt, erklärt. Es ist ein richtig cooles Konzept, dass gar nicht mal so komplex ist, wenn du zu den Details kommst. JOSEF‘s Organisch Selbstständig Expandierende Fabrik (JOSEF) Drogiwan Cannobi &lt;/source&gt; JOSEF‘s selbstständig expandierende Fabrik in Aktion. JOSEF, die selbstständig expandierende Fabrik: Eine Zelle nach der anderen wird analysiert und gefüllt. Wenn alle Zellen voll sind, wird ein neuer Ring gebaut. Das ist JOSEF, eine selbstständig expandierende Fabrik. Sie beginnt mit einer kleinen Menge Material und fängt langsam an zu wachsen, mehr Ressourcen abzubauen, mehr Gebäude zu fertigen und noch mehr zu wachsen. Vorausgesetzt, ich habe keinen Fehler gemacht (und du hast unendlich viel Rechenleistung), würde diese Fabrik bis in die Unendlichkeit wachsen. JOSEF verwendet die recursive blueprints Mod, welche es dir erlaubt, Blaupausen und Abrissplaner automatisch mit Schaltungssignalen zu platzieren. Es gibt bereits einige selbständig expandierende Fabriken, am bekanntesten ist dabei GreyGoo von NiftyManiac aus dem Jahre 2017, welche mich schlussendlich dazu inspiriert hat, es selbst zu versuchen! In diesem Artikel werde ich die Funktion von JOSEF erklären. Ich werde versuchen, eine vollständige Erklärung für die Funktionsweise zu geben, kann allerdings auf Grund der Komplexität nicht bis zu Kombinatoren hinunter alles erklären. Ich will dich davon überzeugen, dass du nicht Programmierer oder Zauberer sein musst, um es selbst zu versuchen! Ich hab auch nicht so unglaublich viel über komplexe Schaltungen gewusst, bevor ich das begonnen habe, und außerdem kann ich nur grundlegende Zauberei. Ich verspreche dir, wenn du weißt, wie man einen Kombinator benutzt und die Geduld hast, etwas herumzuprobieren, kannst auch du das schaffen! Erst einmal will ich einen groben Überblick darüber geben, wie JOSEF funktioniert, bevor ich auf die einzelnen Teile genauer eingehe. Im Groben funktioniert die ganze Sache folgendermaßen: Die Basis besteht aus einem simplen 2 · 2 Chunk Schienennetz um eine zentrale „Gehirnzelle“ herum. Ein neuer Ring wird gebaut, wenn alle bereits bestehenden Zellen gefüllt sind. Ein Zug hält an jeder Zelle eines neuen Rings und prüft, ob Erzfelder vorhanden sind. Andere Züge kommen durch und bestimmen die Zelle entweder für Erzabbau, Solarzellen oder Montage. Wenn ein bestehender Ring vollständig gefüllt ist, wird ein neuer Ring gestartet. Alle Zellen sind mit einem globalen Roboter- und Schaltungsnetz verbunden. Ringmechanismus Wenn alle bestehenden Zellen gefüllt sind, wird ein neuer vollständiger Ring gebaut. Das ist anders als bei GreyGoo, wo im Gegensatz eine Zelle nach der anderen gebaut, analysiert und verwendet wird, in einer langsamen, aber konstanten Spiralform. Ich verwende vollständige Ringe, denn es ist ehrlich gesagt viel einfacher und funktioniert, also warum sollte ich mir mehr Arbeit machen. Es braucht nur 10 bis 15 Kombinatoren und keinen komplexen Speicher, abgesehen von der aktuellen Ringnummer. Der grundlegende Mechanismus für Ringe funktioniert folgendermaßen: Die Position jeder Zelle wird mit (X/Y)-Koordinaten beschrieben. Die innerste Zelle hat die Koordinaten (0/0). Die links davon hat die Koordinaten (−1/0), die darüber (0/−1) und so weiter. Die Variable N beschreibt den Ring, der gerade gebaut wird (der innerste Ring ist N=1). Nehmen wir also den Ring N=3 als Beispiel an (also der Übergang von einem 3 · 3 zu einem 5 · 5 Ring). Der Ring wird in horizontale und vertikale Reihen aufgeteilt. Um die horizontalen (blauen) Reihen zu bauen, soll X von der am weitesten linken Koordinate (−2) bis zur am weitesten rechten Koordinate (2) laufen, während Y zwischen −2 und 2 wechselt. Vertauscht man nun X und Y, erhält man die vertikalen Reihen. Die grundlegende Ringlogik: Horizontale (blaue) Reihen werden gebaut, indem die X-Verschiebung von −N nach N läuft und die Y-Verschiebung zwischen −N und N wechselt. Vertikale Reihen werden genau umgekehrt gebaut. Schlussendlich wird noch ein Weg benötigt, die Ringnummer N mitzuzählen. Jede Zelle enthält einen Kombinator, der ein globales Q=1-Signal aussendet. Auf diesen Weg weiß JOSEF ungefähr, wann die Baumaßnahmen abgeschlossen sind, nämlich wenn $ Q=(2N−1)^2 $ ist. Der „Entscheidungszug“, welcher entscheidet, wofür die Zellen verwendet werden, fährt nur zu neuen Zellen, wenn diese Bedingung erfüllt ist. Das verhindert, dass er zu halbfertige Zellen fährt und irgendwas kaputt macht. Da ich nicht nur ein unendlich wachsendes Schienennetzwerk baue, gibt es noch eine zweite Bedingung, um einen neuen Ring zu starten: Jede existierende Zelle muss entweder mit Erzabbau (M), Strom (E) oder einer der beiden Produktionszellen (I, J) gefüllt sein. Anders gesagt, ein neuer Ring wird begonnen, wenn $ M+I+J+E=(2N−1)^2 $ gilt. Das teilt den Bauprozess in zwei einzelne Phasen: Konstruktion des Rings (bis genug „Q“-Signale vorhanden sind) und Zellenanalyse (bis genug M, P, I, J-Signale vorhanden sind). Verwaltung individueller Zellen Eine neue Zelle beim des Abkoppeln des Roboport-Netzwerks. Nachdem der Zug eingetroffen ist, werden die global verbundenen Roboterhangars abgerissen und ein zentraler, abgekoppelter Roboterhangar wird platziert. Okay, jetzt gibt es eine Menge neuer, leerer Zellen. Wie behandeln wir diese jetzt einzeln? Neue Zellen werden mit einer Station namens „New Cell“ (zu Deutsch: „Neue Zelle“) (unglaublich kreativ, ich weiß) und einem Kombinatorenblock gebaut. Diese Kombinatoren werden dazu verwendet, construction bot = N auszugeben, damit die N-te Blaupause des Buchs platziert wird, welches per Zug hertransportiert wurde. Das die Kombinatoren von Anfang an platziert sind erwies sich als deutlich einfacher, als sie erst während der Analyse zu platzieren, da halb aufgebaute oder abgerissene Kombinatorschaltungen mit Sicherheit nicht gut enden werden. Wenn alle Zellen in einem neuen Ring gebaut sind und genug Materialien im Schaltungsnetz vorhanden sind, beginnt der Konstruktionszug, jede einzeln abzuklappern. Er hat nur wenige Materialien und ein Blaupausenbuch bei sich, was in eine Deployer-Kiste [Anm. d. Übers.: Bestandteil der Mod Recursive Blueprints] entladen wird. Es gibt ein paar Tricks, um durch Blaupausen in einem Buch durchzuschalten, aber der Prozess ist zu kompliziert, um ihn hier zu beschreiben, aber wir können uns mal ein Beispiel anschauen. Alle Zellen beginnen mit dem global verknüpften Roboternetzwerk, aber um auf Erze zu prüfen, was im nächsten Abschnitt beschrieben wird, benötige ich ein abgekuppeltes Roboternetzwerk, was wir deswegen gleich als erstes tun. BP1 ist ein Abrissplaner für Roboterhangars. Die ursprünglichen Roboterhangars (global verbunden) geben ein Signal U-235=1 aus (da in der zentralen Zelle eine Kiste mit genau einem U-235 steht). Zu Beginn ist also ein U-235=4-Signal von den vier Roboterhangars im lokalen Schaltungsnetz. Wenn alle vier Roboterhangars abgerissen sind (und deshalb U-235=0 ist), wird ein Kombinator mit U-235=0 → construction bot = 1 aktiviert, sodass die nächste Blaupause platziert wird. BP2 baut einen Roboterhangar in der Mitte der Zelle, welcher abgekuppelt vom restlichen Netzwerk ist. Das vorgebaute Fließband fördert 50 Bauroboter vom Zug hinein. Der neue Roboterhangar wird auf „read robot statistics“ (zu Deutsch: „lese Roboterstatistiken“) eingestellt und ein Kombinator mit T=50 → construction bot = 1 löst BP3 aus, wenn 50 Roboter in das nun entkoppelte Netzwerk übertragen wurden. BP3 reißt das Fließband ab und löst direkt BP4 aus, welches den im nächsten Abschnitt erklärten Erzfindungsvorgang beginnt. Insgesamt willst du, um durch Blaupausen durchzuschalten, ein Gebäude finden, welches Schaltungssignale ausgeben kann, und das Aufbauen / Abreißen dieses Gebäudes dann nutzen um den nächsten Schritt auszulösen. Zusätzlich kannst du auch „idle construction bots (T=Z)“ (zu Deutsch: „wartende Bauroboter“) oder „item X available in logistic storage“ (zu Deutsch: „Gegenstand X im Logistiklager verfügbar“) verwenden, um zu prüfen, ob die Baumaßnahme tatsächlich abgeschlossen ist. Als Beispiel dafür, was für Probleme auftreten können, wenn du nicht vorsichtig bist oder zeitabhängige Bedingungen verwendest: Wie JOSEF begann größer zu werden, dauerte es etwas länger für Roboter zu kommen und den abgekoppelten Roboterhangar zu bauen. Wenn (aus später beschriebenen Gründen) 200 Fließbänder ausgeladen wurden, bevor der Roboterhangar gebaut war, wurde die Reihenfolge der Blaupausen zerstört und es wurden Fließbänder für den Erzabbau gebaut, ohne dass vorher das Roboterband abgerissen wurde, was dazu führte, dass die Zelle als „Nicht-Erzabbau“ klassifiziert wurde. Das führte schnell zu absolutem Chaos und dazu, dass sich die ganze Sache aufgehängt hat. Ressourcenfinder &lt;/source&gt; Aufbau automatischer Erzförderer. Prüfen auf Ressourcen: Nach dem Abkuppeln wird eine Blaupause platziert. Nur wenn eine bestimmte Anzahl an Erzförderern in der Versorgungskiste fehlt wird der Rest der Abbauzelle platziert. Nun zu den wichtigen Punkten: Wie finde ich Ressourcen? Es gibt in Vanilla keinen Weg auszulesen, ob Ressourcen im Boden sind, aber es ist trotzdem recht einfach zu machen, sobald man abgekoppelte Roboternetzwerke hat: Der Bauzug entlädt eine fixe Anzahl an Erzförderern. Wenn man eine Blaupause platziert, welche Erzförderer beinhaltet, werden diese aus der Kiste genommen, und man kann dadurch feststellen, wie viele Erzförderer in der Zelle platziert wurden. Um auf Nummer sicher zu gehen führt der Zug 150 Erzförderer und 200 Fließbänder mit. JOSEF wartet darauf, dass die Erzförderer vollständig entladen sind (indem er auf belts=200 wartet) und darauf, das die 50 Bauroboter in den Wartezustand übergegangen sind (indem er auf T=Z vom Roboterhangar wartet) nachdem er die Erzfördererblaupause platziert hat. Sie kontrolliert die Anzahl der platzierten Erzförderer und erhöht das Baurobotersignal entweder um 1 oder 2, je nachdem ob eine bestimmte Schwelle an Erzförderern übertroffen wurde. Ich habe 10 Erzförderer als Untergrenze gewählt, um die gesamte Zelle für Erzförderung vorzusehen. Das bedeutet, dass zwei verschiedene Blaupausen platziert werden können: die „Erzförderung“ oder „Keine Erzförderung“-Blaupause. Das ganze benötigt ein paar Schritte mehr, aber diese benennen hauptsächlich die Bahnstationen um, reißen Kisten ab und verbinden die Roboterhangars wieder mit dem globalen Netz. Auch wird das Blaupausenbuch zurück in den Zug gelegt, nachdem alles abgeschlossen wurde. Um Probleme mit gemischten Erzen vorzubeugen, besitzt jede Zelle einen Bahnhof für Kohle, Kupfererz, Eisenerz und Stein. Einzelne Stationen werden nur aktiviert, wenn genug Material vorhanden ist, um einen Zug zu füllen. Das bedeutet, dass die meisten Stationen nie aktiv sind. Jede neue Zelle wird auf diese Art und Weise geprüft. Wenn mehr als zehn Erzförderer platziert wurden, wird die gesamte Zelle für Erzförderung vorgesehen, unabhängig davon, ob Erze überhaupt benötigt werden. Das ist definitiv nicht der ordentlichste Weg, aber es funktioniert. Der ursprüngliche Bauzug hat seine Arbeit erledigt, wenn die Zelle entweder für den Erzabbau oder nicht für den Erzabbau bestimmt wurde, und das Roboternetzwerk wieder verbunden ist. Ein anderer Zug fährt in die Erzförderungszellen um die Bahnhöfe korrekt zu benennen, die Kombinatoren wegzureißen und ein „M“-Signal hinzuzufügen, um die Zelle als Erzförderung zu klassifizieren. Mein Weg um Erze zu finden hat ein großes Problem: Man darf niemals Erzförderer im globalen Logistiknetz haben, da diese teilweise sonst anstelle der Erzförderer aus dem abgekoppelten Netzwerk platziert werden. Mit meinen kleinen Zellen überlappen die Bauzonen der Roboterhangars so viel, dass auf die gesamte Zelle von außerhalb zugegriffen werden kann. Es gibt einige Sicherheitsvorkehrungen, die verhindern sollen, dass Erzförderer im globalen Netzwerk vorhanden sind (obwohl sie von Robotern in die Züge geladen werden), aber es kann zu Situationen kommen, in dem es bei der Erzsuche zu Fehlern kommt, hauptsächlich wenn die Basis sehr groß ist. Aber das passiert nur selten und macht nichts kaputt, deshalb habe ich damit kein Problem. In meiner nächsten Version werde ich aber trotzdem versuchen, die Erzförderer vollständig aus dem Logistiknetz rauszuhalten, außer natürlich in den Zellen, die gerade auf Erze geprüft werden. Die „Nicht-Erzförderungs“-Zellen werden dann von zwei verschiedenen Zügen behandelt, abhängig von ihrer Einteilung in… … Strom Strom: 7 MW kontinuierlicher Leistung pro Zelle. Sie wird in Erzfreien Zellen platziert wenn die Akkuladung zu gering ist. Um den Start etwas einfacher zu gestalten, bekam JOSEF zu Beginn 30 MW konstante Leistung aus einem EEI (electric energy interface; zu Deutsch: „Kreativenergiezelle“). Sobald der Verbrauch das überschreitet, beginnt JOSEF „Strom“-Zellen mit Solarzellen und Akkumulatoren bauen. Eine Zelle produziert konstante 7 MW (10 MW Spitzenwert), du brauchst also eine Menge davon. JOSEF entscheidet, dass mehr Strom benötigt wird, wenn ein Akku auf unter 70% Ladung fällt. Das erlaubt dem „Strom“-Zug zu starten. Ähnlich zum Erzfördererzug fährt dieser Zug zu den „Keine Erzförderung“-Bahnhöfen, platziert eine Solarblaupause, reißt Kombinatoren ab und fügt ein „E“-Signal hinzu und verzieht sich dann wieder. Es gibt keine weiteren Einschränkungen, da ich wollte, dass JOSEF immer mehr Stromproduktion bauen kann, falls sich die Sache mal ungünstig entwickelt. Aufgrund des Spielstils, immer neue und größere Ringe zu bauen gibt es manchmal große Leistungsspitzen. Das führt dazu, dass JOSEF die Stromproduktion meist überproportioniert, da die ersten Zellen in einem neuen Ring in der Regel für Strom verwendet werden. In meinen größeren Spielrunden war der Durchschnittsbedarf am Ende gegen 500 MW, während die Produktion sich auf etwa 1 GW belief. Das ist aber kein Weltuntergang (ich finde es sogar für die UPS besser, wenn Zellen mit Solar anstelle von Produktion gefüllt werden), aber es wäre mit Sicherheit effizienter, wenn ich ein langsameren Expansionsmodus verwenden würde, so wie GreyGoo. Leistungsgraph: Man erkennt anhand der großen Spitzen, wann ein neuer Ring gebaut wurde und wie lange das Bauen dauerte. Auch zu erkennen ist das insgesamt lineare Wachstum. Jetzt fehlt nur noch ein kleines Detail: JOSEF soll auch die Materialien produzieren, die er verbraucht! Deshalb sind die letzten Zellen vorgesehen für… … Produktion Die Produktion von Baumaterial teilt sich auf zwei verschiedene Spaghettizellen auf. Sie werden ähnlich gebaut wie die vorherigen: Wenn eine „Keine Erzförderung“ Station verfügbar ist und genug Materialien im Logistiknetzwerk sind (und der Strom nicht knapp wird), kommt ein Zug, platziert eine Blaupause und fügt entweder ein „I“ oder „J“ zum globalen Kombinator für Konstanten hinzu, je nachdem welche Produktionszelle gebaut wurde. Der Zug macht eine weitere Sache: Er fügt ein bisschen Kohle zum Logistiknetzwerk hinzu, damit weitere Züge etwas zum Fahren haben, und bei Produktionszellen 2 ein paar Schwerölfässer, um die Kohleverflüssigung zu starten. Der zuständige Bauzug wechselt einfach zwischen den beiden verschiedenen Zellen ab: Ein einfacher Greifarm-Kreislauf nimmt das eine Blaupausenbuch aus dem Zug heraus, wenn er wieder zurück ist, und wechselt es mit dem anderen aus. Dann wartet er bis der Zug die Station verlassen hat, bevor er sich wieder aktiviert. Produktionszelle 1: Einfache Sachen ohne Öl (Fließbänder, Greifarme, Montagemaschinen, usw.) Die erste Zelle produziert all die verschiedenen einfacheren Fabrikelemente: Fließbänder, Erzförderer, Greifarme, Schienen, Züge, Stationen, Signale, Strommasten – mehr oder weniger alles, das kein Öl braucht. die einfache Produktionszelle muss immer gebaut werden, bevor JOSEF Zeugs wie Schienen und Fließbänder ausgehen. Das kann ein Problem werden, wenn du zu viele Erze zu nahe an der Mitte hast, oder du nicht genügend zum Starten zur Verfügung stellst und es einfach überall Solarzellen hinklatscht. Aber du kannst das immer lösen indem du mehr Startmaterialien zur Verfügung stellst. Produktionszelle 2: Fortgeschrittenere Sachen, die Öl benötigen (Roboterhangars, Roboter selbst, Akkumulator, usw.) Die zweite Zelle produziert die eher fortgeschrittenen Sachen: Roboterhangars, Roboter, Logistikkisten, Blaupausenplatzierer, Solarzellen &amp; Akkumulatoren. Sie muss immer gebaut werden, bevor JOSEF keine Roboterhangars mehr hat. Der Bauzug bringt zehn Fässer mit Schweröl mit, welche entleert werden, durch die Raffinerie laufen und so schnell wie möglich wieder befüllt werden. JOSEF produziert aber keine weiteren Fässer, sondern verlässt sich auf den Recyclingprozess der ursprünglichen Fässer. Die beiden Produktionszellen sind bei weitem nicht mit passenden Verhältnissen optimiert. Sie produzieren langsam, aber stetig alle benötigten Sachen, aber es kann eine Stunde brauchen, bis eine spezifische Zelle beispielsweise ihre erste Zughaltestelle produziert, weil zuerst die Fließbänder aufgefüllt werden. Aber es zeigt sich, dass das Problem nach einiger Zeit irrelevant wird, mehr dazu aber später. Nach einer Weile gibt es etliche Produktionszellen quer über die ganze Fabrik verstreut. Das heißt, Bauroboter nehmen immer weniger Materialen von der Mitte (wo die ursprünglichen Baumaterialen zu finden sind), und beginnen Sachen von den Produktionszellen im Umkreis aufzuheben, was Reisezeit verringert. Aber wegen ein paar Faulheiten meinerseits, bringen sie weiterhin einige Baumaterialien in die Mitte um den Bauzug aufzufüllen, aber das ist eine andere Geschichte (die auch in JOSEF v2 wesentlich eleganter gelöst sein wird). Die Produktionszellen erhalten Rohstoffe mit Zügen. Eine eigene „Zugaufgleiszelle“ in der Mitte generiert vier neue Züge (einen pro unterschiedliches Erz), wenn eine neues „I“ oder „J“ Signal ankommt. Eine eigene Zelle für Züge zu haben (statt sie in Produktionszellen zu inkludieren) stellt sicher, dass bereits existenten Züge nie neue behindern. Ohne dieser Vorsichtsmaßnahme kann es vorkommen, dass Waggons durch Blaupausen an bestehende Züge angehängt werden, was vermieden werden sollte Alle Züge verfolgen einen einfachen „Erz rein bis voll“ → „Erz heraus bis leer“ Fahrplan, und nehmen immer die nächste Station. Das heißt, dass Produktionszellen näher an Erzquellen mehr Ressourcen erhalten, als jene, die weiter weg liegen. Aber das gleicht sich nach einiger Zeit sowieso aus, weil JOSEF sich langsam mit vielen Baumaterialien auffüllt und etliche Zellen nach einer Weile dann stillstehen. Der Fakt, dass es vier Züge für jede Produktionszelle gibt, heißt, dass es später eine irre Zahle an Zügen gibt, wovon die meisten still stehen. In meinem 500+ Zellen Durchlauf von JOSEF hatte ich am Schluss 750 Züge. Wenn man sich das kleine, Kreisverkehr-lastige Zugnetz aber anschaut, ist es sogar gut, dass nur wenige davon in Betrieb waren. JOSEF‘s Kopf links und der Zugaufgleiser rechts. Das Hirn ist seinem Namen fast nicht gerecht – es ist hauptsächlich für das Bauen vom Ring und dem Senden/Stoppen von Bauzügen verantwortlich. Die interessante Logik läuft großteils in den Zellen selbst ab. Rückblick &amp; zukünftige Pläne Ein paar Zahlen über JOSEF: Die größte Fabrik, die auf meinem (nicht so guter) Computer wachsen konnte, war 25 · 25 = 625 Zellen groß. Das hat etwa 34 Stunden an Zeit im Spiel gebraucht. Sie hat weiterhin funktioniert, aber die UPS lagen bei etwa 40 und alles hat einfach Ewigkeiten gebraucht, also habe ich dann einfach aufgehört. Sie hatte etwa 170 Solarstromzellen, 150 Erzförderzellen und zirka 100 Produktionszellen Ein netter Redditer mit einem stärkeren Computer hat sie zu 29 · 29 = 841 Zellen bei 45 UPS gebracht Es ist recht interessant zu sehen, wie JOSEF sich in einem größeren Maßstab verhält. Anfangs sind Erweiterungen recht langsam, weil Baumaterialien produziert werden müssen. Wenn man auf den Stromgraph schaut, kannst du sehen, wie sie ursprünglich von Ring zu Ring schneller wird, auch wenn die Anzahl an Zellen, durch die sie gehen muss, pro Ring mehr wird. Das ist, weil die Produktion quadratisch steigt, während die Nachfrage linear mehr wird (und später sogar stagniert). Irgendwann bei etwa Ring 9 oder 10 hört die Produktion auf, der Engpass zum auffüllen eines Rings zu sein, einfach weil mehr Zellen bebaut werden müssen Die größte Größe, die JOSEF erreicht hat: 29 · 29 Zellen. In dieser Version habe ich mir stark darauf gestützt, dass Roboter Sachen über die ganze Karte transportieren (hauptsächlich um den Bauzug nachzufüllen und unbenutzte Materialen von neuen Zellen zurück zu bringen). Das war vor allem wegen meiner Faulheit, und ich plane definitiv das für spätere Versionen zu verbessern. Insgesamt aber hat mein System Produktionszellen überall hinzuklatschend aber besser als erwartet funktioniert – Bauaufgaben wurden an nahgelegene Roboter vergeben, welche Sachen immer von der nächst-verfügbaren Stelle nehmen, solange du ihnen nur eine Sorte an Kisten gibst. Ich habe es geliebt, das System zu entwickeln, die Zellen und so zu entwerfen, aber um ehrlich zu sein: So etwas testen ist etwas anstrengend, vor allem wenn du ungeduldig bist und es in Betrieb sehen willst. Es ist wie eine Rube Goldberg Maschine, die mehrere Stunden läuft zu testen – für jede kleine Änderung, die du machst, musst du von neu starten, die Änderung einfügen und einige Stunden warten. Viele kleine Verbesserungen auf die du schnell kommst führen zu unerwarteten Problemen die nur in etwa Ring 6 entstehen. Du kannst natürlich Sachen einfacher machen, indem du z. B. unendlich viele Konstruktionsmaterialien zur Verfügung stellst, wenn du den Erzfindemechanismus testest, aber richtige, realistische Tests sind sehr anstrengend. Das ist sicherlich nicht die letzte JOSEF, die ich bauen werde. Ich habe sogar eine kleine, unprofessionelle Tutorial-Serie (englisch-sprachig) angefangen, in der ich die zweite Version baue und währenddessen erkläre, wie und warum ich Sachen mache: Bis jetzt hab ich schon: Größere Zellen. Momentan plane ich eine Größe von 4 · 4 Chunks statt 2 · 2. Ich habe Logistiknetzwerke abgetrennt, was den Erzfindeprozess wesentlich vereinfachen wird. Ich habe den Entscheidungsbaum um durch eine Blaupause zu wandern wesentlich vereinfacht und stabilisiert, indem ich eine fixe Anzahl an Kombinationen habe und die Einstellungen darauf kopiere. Das bringt neue Herausforderungen mit sich, aber erlaubt für wesentlich mehr verschiedene Zellen aus einem einzigen Blaupausenbuch ohne mehr Kombinationen zu benötigen. Mit Wasser, sowohl als Ressource, als auch als Hindernis zu handhaben: Fertig! Gegen Beißer zu verteidigen: Wird schwierig richtig zu kriegen. Ich werde keine Deathworlds probieren, aber eine kleinere Menge an Beißern sollte kein Problem werden. Klippen beseitigen: Wird nur psychologisch Schwierig. Ich habe sie schon immer gehasst und schalte sie sofort aus. Sollten aber einfach zu handhaben sei. Wissenschaft: Theoretisch fertig (Ich habe eine kleine 3SPM Montagelinie zu Produktionszellen hinzugefügt), aber es wird ein bisschen schwierige, wenn sie in Betrieb sind, weil sie die benötigten Ressourcen und aktiven Züge um einiges erhöhen. Zusätzlich muss ich eventuell ein paar weitere Sicherheitsmechanismen hinzufügen, um sicherzustellen, dass die Wissenschaft nicht von Produktionsmaterialien wegnimmt. Abschließende Gedanken Vor ein paar Jahren, als ich das Video über GreyGoo (vermutlich die bekannteste selbstständig expandierende Fabrik bis jetzt) gesehen habe, war ich recht eingeschüchtert und ich war mir sicher, dass ein absolutes Genie nicht von dieser Welt darauf gekommen sein musste. Ich dachte, es ist einfach unmöglich für einen normalen, halb-erfahrenen Factoriospieler so etwas je erreichen zu können. Ich werde jetzt nicht JOSEF mit GreyGoo vergleichen. JOSEF ist eine recht stumpfe SEF, und es gibt etliche Sachen die ich verbessern könnte (und werde!). Aber ich hab das Gefühl, dass die viele Leute, die mir zu dieser Leistung gratulieren eine ähnlichen Stand zu JOSEF haben, wie ich damals zu GreyGoo. Und obwohl ich trotzdem sehr stolz darüber und dankbar für all den Lob bin, bitte glaub mir, wenn ich sage: Das war nicht schwer! Jeder, der schon mal eine cleveres Vorrichtung für Sushi-Fließbänder, ausgeglichen Zugstationen, eine Kovarex-Fabrik, oder was auch sonst erstellt hat, kann das auch! Spiel einfach nur ein bisschen mit Schaltungen, und dir wird auffallen, dass es machbar ist. Ich hoffe, dass dieser Einblick in JOSEF‘s einfachere Funktionalität das bewiesen hat. Ich würde mich richtig freuen, von mehr Leuten einen Versuch dafür zu sehen. Es ist dir freigestellt, meine Ideen als Anfang zu nehmen, sie zu verbessern, oder herauszunehmen und ersetzten, wenn sie dir nicht gefallen. Und natürlich freut es mich immer darüber zu plaudern, zu helfen, testen und zu brainstormen. Einige von JOSEFs Features kamen nur durch Diskussionen mit tollen Leuten dieser wunderbaren Community zustande. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","url":"https://alt-f4.blog/ALTF4-39/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-39/"},"headline":"Alt-F4 #39 – JOSEF","dateModified":"2021-06-11T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/39/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/39/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-39/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-39/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-39/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-39/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-39/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-39/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-39/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-39/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-39/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-39/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #39 – JOSEF  <author>11.06.2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>Drogiwan Cannobi</em>,
+
+
+
+editiert von <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS, Nanogamer7</em>,
+
+
+
+lektoriert von <em>dexteritas</em>
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/39/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhaltsverzeichnis</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#josefs-organisch-selbstst%C3%A4ndig-expandierende-fabrik-josef-drogiwan-cannobi">JOSEF‘s Organisch Selbstständig Expandierende Fabrik (JOSEF) <author>Drogiwan Cannobi</author></a>
+    <ul>
+      <li><a href="#ringmechanismus">Ringmechanismus</a></li>
+      <li><a href="#verwaltung-individueller-zellen">Verwaltung individueller Zellen</a></li>
+      <li><a href="#ressourcenfinder">Ressourcenfinder</a></li>
+      <li><a href="#-strom">… Strom</a></li>
+      <li><a href="#-produktion">… Produktion</a></li>
+      <li><a href="#r%C3%BCckblick--zuk%C3%BCnftige-pl%C3%A4ne">Rückblick &amp; zukünftige Pläne</a></li>
+      <li><a href="#abschlie%C3%9Fende-gedanken">Abschließende Gedanken</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>In dieser Woche von Alt-F4 #39 macht <em>Drogiwan Cannobi</em> seinen ersten Beitrag zu dem Projekt, indem er den Hintergrund und die Funktionalität seiner Rube-Goldberg-artigen selbständig expandierenden Fabrik, liebevoll JOSEF genannt, erklärt. Es ist ein richtig cooles Konzept, dass gar nicht mal so komplex ist, wenn du zu den Details kommst.</p>
+      <h2 id="josefs-organisch-selbstständig-expandierende-fabrik-josef-drogiwan-cannobi">
+        
+        
+            <a href="#josefs-organisch-selbstst%C3%A4ndig-expandierende-fabrik-josef-drogiwan-cannobi" class="anchor" style="text-decoration: none;">JOSEF‘s Organisch Selbstständig Expandierende Fabrik (JOSEF) <author>Drogiwan Cannobi</author></a>
+          
+        
+      </h2>
+    
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 530px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/39/start.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      JOSEF‘s selbstständig expandierende Fabrik in Aktion.
+    </video>
+    <figcaption>JOSEF, die selbstständig expandierende Fabrik: Eine Zelle nach der anderen wird analysiert und gefüllt. Wenn alle Zellen voll sind, wird ein neuer Ring gebaut.</figcaption>
+  </figure>
+  </p>
+
+<p>Das ist JOSEF, eine selbstständig expandierende Fabrik. Sie beginnt mit einer kleinen Menge Material und fängt langsam an zu wachsen, mehr Ressourcen abzubauen, mehr Gebäude zu fertigen und noch mehr zu wachsen. Vorausgesetzt, ich habe keinen Fehler gemacht (und du hast unendlich viel Rechenleistung), würde diese Fabrik bis in die Unendlichkeit wachsen. JOSEF verwendet die <a href="https://mods.factorio.com/mod/recursive-blueprints">recursive blueprints Mod</a>, welche es dir erlaubt, Blaupausen und Abrissplaner automatisch mit Schaltungssignalen zu platzieren. Es gibt bereits einige selbständig expandierende Fabriken, am bekanntesten ist dabei <a href="https://www.youtube.com/watch?v=xF--1XdcOeM">GreyGoo</a> von NiftyManiac aus dem Jahre 2017, welche mich schlussendlich dazu inspiriert hat, es selbst zu versuchen!</p>
+
+<p>In diesem Artikel werde ich die Funktion von JOSEF erklären. Ich werde versuchen, eine vollständige Erklärung für die Funktionsweise zu geben, kann allerdings auf Grund der Komplexität nicht bis zu Kombinatoren hinunter alles erklären.</p>
+
+<p>Ich will dich davon überzeugen, dass du nicht Programmierer oder Zauberer sein musst, um es selbst zu versuchen! Ich hab auch nicht so unglaublich viel über komplexe Schaltungen gewusst, bevor ich das begonnen habe, und außerdem kann ich nur grundlegende Zauberei. Ich verspreche dir, wenn du weißt, wie man einen Kombinator benutzt und die Geduld hast, etwas herumzuprobieren, kannst auch du das schaffen!</p>
+
+<p>Erst einmal will ich einen groben Überblick darüber geben, wie JOSEF funktioniert, bevor ich auf die einzelnen Teile genauer eingehe. Im Groben funktioniert die ganze Sache folgendermaßen:</p>
+
+<ul>
+  <li>Die Basis besteht aus einem simplen 2 · 2 Chunk Schienennetz um eine zentrale „Gehirnzelle“ herum.</li>
+  <li>Ein neuer Ring wird gebaut, wenn alle bereits bestehenden Zellen gefüllt sind.</li>
+  <li>Ein Zug hält an jeder Zelle eines neuen Rings und prüft, ob Erzfelder vorhanden sind.</li>
+  <li>Andere Züge kommen durch und bestimmen die Zelle entweder für Erzabbau, Solarzellen oder Montage.</li>
+  <li>Wenn ein bestehender Ring vollständig gefüllt ist, wird ein neuer Ring gestartet.</li>
+  <li>Alle Zellen sind mit einem globalen Roboter- und Schaltungsnetz verbunden.</li>
+</ul>
+      <h3 id="ringmechanismus">
+        
+        
+            <a href="#ringmechanismus" class="anchor" style="text-decoration: none;">Ringmechanismus</a>
+          
+        
+      </h3>
+    
+
+<p>Wenn alle bestehenden Zellen gefüllt sind, wird ein neuer vollständiger Ring gebaut. Das ist anders als bei GreyGoo, wo im Gegensatz eine Zelle nach der anderen gebaut, analysiert und verwendet wird, in einer langsamen, aber konstanten Spiralform. Ich verwende vollständige Ringe, denn es ist ehrlich gesagt viel einfacher und funktioniert, also warum sollte ich mir mehr Arbeit machen. Es braucht nur 10 bis 15 Kombinatoren und keinen komplexen Speicher, abgesehen von der aktuellen Ringnummer.</p>
+
+<p>Der grundlegende Mechanismus für Ringe funktioniert folgendermaßen:</p>
+
+<ul>
+  <li>Die Position jeder Zelle wird mit (X/Y)-Koordinaten beschrieben. Die innerste Zelle hat die Koordinaten (0/0). Die links davon hat die Koordinaten (−1/0), die darüber (0/−1) und so weiter.</li>
+  <li>Die Variable N beschreibt den Ring, der gerade gebaut wird (der innerste Ring ist N=1). Nehmen wir also den Ring N=3 als Beispiel an (also der Übergang von einem 3 · 3 zu einem 5 · 5 Ring).</li>
+  <li>Der Ring wird in horizontale und vertikale Reihen aufgeteilt. Um die horizontalen (blauen) Reihen zu bauen, soll X von der am weitesten linken Koordinate (−2) bis zur am weitesten rechten Koordinate (2) laufen, während Y zwischen −2 und 2 wechselt. Vertauscht man nun X und Y, erhält man die vertikalen Reihen.</li>
+</ul>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/39/ring.jpg" alt="Diagramm des Ringmechanismus." style="max-width: ; max-height: ">
+      
+      <figcaption>Die grundlegende Ringlogik: Horizontale (blaue) Reihen werden gebaut, indem die X-Verschiebung von −N nach N läuft und die Y-Verschiebung zwischen −N und N wechselt. Vertikale Reihen werden genau umgekehrt gebaut.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Schlussendlich wird noch ein Weg benötigt, die Ringnummer N mitzuzählen. Jede Zelle enthält einen Kombinator, der ein globales <code class="language-plaintext highlighter-rouge">Q=1</code>-Signal aussendet. Auf diesen Weg weiß JOSEF ungefähr, wann die Baumaßnahmen abgeschlossen sind, nämlich wenn $ Q=(2N−1)^2 $ ist. Der „Entscheidungszug“, welcher entscheidet, wofür die Zellen verwendet werden, fährt nur zu neuen Zellen, wenn diese Bedingung erfüllt ist. Das verhindert, dass er zu halbfertige Zellen fährt und irgendwas kaputt macht.</p>
+
+<p>Da ich nicht nur ein unendlich wachsendes Schienennetzwerk baue, gibt es noch eine zweite Bedingung, um einen neuen Ring zu starten: Jede existierende Zelle muss entweder mit Erzabbau (M), Strom (E) oder einer der beiden Produktionszellen (I, J) gefüllt sein. Anders gesagt, ein neuer Ring wird begonnen, wenn $ M+I+J+E=(2N−1)^2 $ gilt.</p>
+
+<p>Das teilt den Bauprozess in zwei einzelne Phasen: Konstruktion des Rings (bis genug „Q“-Signale vorhanden sind) und Zellenanalyse (bis genug M, P, I, J-Signale vorhanden sind).</p>
+      <h3 id="verwaltung-individueller-zellen">
+        
+        
+            <a href="#verwaltung-individueller-zellen" class="anchor" style="text-decoration: none;">Verwaltung individueller Zellen</a>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/39/uncoupling.jpg" alt="Eine neue Zelle beim des Abkoppeln des Roboport-Netzwerks." style="max-width: ; max-height: ">
+      
+      <figcaption>Eine neue Zelle beim des Abkoppeln des Roboport-Netzwerks. Nachdem der Zug eingetroffen ist, werden die global verbundenen Roboterhangars abgerissen und ein zentraler, abgekoppelter Roboterhangar wird platziert.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Okay, jetzt gibt es eine Menge neuer, leerer Zellen. Wie behandeln wir diese jetzt einzeln?</p>
+
+<p>Neue Zellen werden mit einer Station namens „New Cell“ (zu Deutsch: „Neue Zelle“) (unglaublich kreativ, ich weiß) und einem Kombinatorenblock gebaut. Diese Kombinatoren werden dazu verwendet, <code class="language-plaintext highlighter-rouge">construction bot = N</code> auszugeben, damit die N-te Blaupause des Buchs platziert wird, welches per Zug hertransportiert wurde. Das die Kombinatoren von Anfang an platziert sind erwies sich als deutlich einfacher, als sie erst während der Analyse zu platzieren, da halb aufgebaute oder abgerissene Kombinatorschaltungen mit Sicherheit nicht gut enden werden.</p>
+
+<p>Wenn alle Zellen in einem neuen Ring gebaut sind und genug Materialien im Schaltungsnetz vorhanden sind, beginnt der Konstruktionszug, jede einzeln abzuklappern. Er hat nur wenige Materialien und ein Blaupausenbuch bei sich, was in eine Deployer-Kiste [Anm. d. Übers.: Bestandteil der Mod <a href="https://mods.factorio.com/mod/recursive-blueprints">Recursive Blueprints</a>] entladen wird. Es gibt ein paar Tricks, um durch Blaupausen in einem Buch durchzuschalten, aber der Prozess ist zu kompliziert, um ihn hier zu beschreiben, aber wir können uns mal ein Beispiel anschauen. Alle Zellen beginnen mit dem global verknüpften Roboternetzwerk, aber um auf Erze zu prüfen, was im nächsten Abschnitt beschrieben wird, benötige ich ein abgekuppeltes Roboternetzwerk, was wir deswegen gleich als erstes tun.</p>
+
+<ul>
+  <li>BP1 ist ein Abrissplaner für Roboterhangars. Die ursprünglichen Roboterhangars (global verbunden) geben ein Signal <code class="language-plaintext highlighter-rouge">U-235=1</code> aus (da in der zentralen Zelle eine Kiste mit genau einem U-235 steht). Zu Beginn ist also ein <code class="language-plaintext highlighter-rouge">U-235=4</code>-Signal von den vier Roboterhangars im lokalen Schaltungsnetz. Wenn alle vier Roboterhangars abgerissen sind (und deshalb <code class="language-plaintext highlighter-rouge">U-235=0</code> ist), wird ein Kombinator mit <code class="language-plaintext highlighter-rouge">U-235=0</code> → <code class="language-plaintext highlighter-rouge">construction bot = 1</code> aktiviert, sodass die nächste Blaupause platziert wird.</li>
+  <li>BP2 baut einen Roboterhangar in der Mitte der Zelle, welcher abgekuppelt vom restlichen Netzwerk ist. Das vorgebaute Fließband fördert 50 Bauroboter vom Zug hinein. Der neue Roboterhangar wird auf „read robot statistics“ (zu Deutsch: „lese Roboterstatistiken“) eingestellt und ein Kombinator mit <code class="language-plaintext highlighter-rouge">T=50</code> → <code class="language-plaintext highlighter-rouge">construction bot = 1</code> löst BP3 aus, wenn 50 Roboter in das nun entkoppelte Netzwerk übertragen wurden.</li>
+  <li>BP3 reißt das Fließband ab und löst direkt BP4 aus, welches den im nächsten Abschnitt erklärten Erzfindungsvorgang beginnt.</li>
+</ul>
+
+<p>Insgesamt willst du, um durch Blaupausen durchzuschalten, ein Gebäude finden, welches Schaltungssignale ausgeben kann, und das Aufbauen / Abreißen dieses Gebäudes dann nutzen um den nächsten Schritt auszulösen. Zusätzlich kannst du auch „idle construction bots (<code class="language-plaintext highlighter-rouge">T=Z</code>)“ (zu Deutsch: „wartende Bauroboter“) oder „item X available in logistic storage“ (zu Deutsch: „Gegenstand X im Logistiklager verfügbar“) verwenden, um zu prüfen, ob die Baumaßnahme tatsächlich abgeschlossen ist.</p>
+
+<p>Als Beispiel dafür, was für Probleme auftreten können, wenn du nicht vorsichtig bist oder zeitabhängige Bedingungen verwendest: Wie JOSEF begann größer zu werden, dauerte es etwas länger für Roboter zu kommen und den abgekoppelten Roboterhangar zu bauen. Wenn (aus später beschriebenen Gründen) 200 Fließbänder ausgeladen wurden, bevor der Roboterhangar gebaut war, wurde die Reihenfolge der Blaupausen zerstört und es wurden Fließbänder für den Erzabbau gebaut, ohne dass vorher das Roboterband abgerissen wurde, was dazu führte, dass die Zelle als „Nicht-Erzabbau“ klassifiziert wurde. Das führte schnell zu absolutem Chaos und dazu, dass sich die ganze Sache aufgehängt hat.</p>
+      <h3 id="ressourcenfinder">
+        
+        
+            <a href="#ressourcenfinder" class="anchor" style="text-decoration: none;">Ressourcenfinder</a>
+          
+        
+      </h3>
+    
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 970px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/39/ore_find.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Aufbau automatischer Erzförderer.
+    </video>
+    <figcaption>Prüfen auf Ressourcen: Nach dem Abkuppeln wird eine Blaupause platziert. Nur wenn eine bestimmte Anzahl an Erzförderern in der Versorgungskiste fehlt wird der Rest der Abbauzelle platziert.</figcaption>
+  </figure>
+  </p>
+
+<p>Nun zu den wichtigen Punkten: Wie finde ich Ressourcen? Es gibt in Vanilla keinen Weg auszulesen, ob Ressourcen im Boden sind, aber es ist trotzdem recht einfach zu machen, sobald man abgekoppelte Roboternetzwerke hat:</p>
+
+<ul>
+  <li>Der Bauzug entlädt eine fixe Anzahl an Erzförderern. Wenn man eine Blaupause platziert, welche Erzförderer beinhaltet, werden diese aus der Kiste genommen, und man kann dadurch feststellen, wie viele Erzförderer in der Zelle platziert wurden. Um auf Nummer sicher zu gehen führt der Zug 150 Erzförderer und 200 Fließbänder mit.</li>
+  <li>JOSEF wartet darauf, dass die Erzförderer vollständig entladen sind (indem er auf <code class="language-plaintext highlighter-rouge">belts=200</code> wartet) und darauf, das die 50 Bauroboter in den Wartezustand übergegangen sind (indem er auf <code class="language-plaintext highlighter-rouge">T=Z</code> vom Roboterhangar wartet) nachdem er die Erzfördererblaupause platziert hat. Sie kontrolliert die Anzahl der platzierten Erzförderer und erhöht das Baurobotersignal entweder um 1 oder 2, je nachdem ob eine bestimmte Schwelle an Erzförderern übertroffen wurde. Ich habe 10 Erzförderer als Untergrenze gewählt, um die gesamte Zelle für Erzförderung vorzusehen.</li>
+  <li>Das bedeutet, dass zwei verschiedene Blaupausen platziert werden können: die „Erzförderung“ oder „Keine Erzförderung“-Blaupause. Das ganze benötigt ein paar Schritte mehr, aber diese benennen hauptsächlich die Bahnstationen um, reißen Kisten ab und verbinden die Roboterhangars wieder mit dem globalen Netz. Auch wird das Blaupausenbuch zurück in den Zug gelegt, nachdem alles abgeschlossen wurde.</li>
+</ul>
+
+<p>Um Probleme mit gemischten Erzen vorzubeugen, besitzt jede Zelle einen Bahnhof für Kohle, Kupfererz, Eisenerz und Stein. Einzelne Stationen werden nur aktiviert, wenn genug Material vorhanden ist, um einen Zug zu füllen. Das bedeutet, dass die meisten Stationen nie aktiv sind.</p>
+
+<p>Jede neue Zelle wird auf diese Art und Weise geprüft. Wenn mehr als zehn Erzförderer platziert wurden, wird die gesamte Zelle für Erzförderung vorgesehen, unabhängig davon, ob Erze überhaupt benötigt werden. Das ist definitiv nicht der ordentlichste Weg, aber es funktioniert.</p>
+
+<p>Der ursprüngliche Bauzug hat seine Arbeit erledigt, wenn die Zelle entweder für den Erzabbau oder nicht für den Erzabbau bestimmt wurde, und das Roboternetzwerk wieder verbunden ist. Ein anderer Zug fährt in die Erzförderungszellen um die Bahnhöfe korrekt zu benennen, die Kombinatoren wegzureißen und ein „M“-Signal hinzuzufügen, um die Zelle als Erzförderung zu klassifizieren.</p>
+
+<p>Mein Weg um Erze zu finden hat ein großes Problem: Man darf niemals Erzförderer im globalen Logistiknetz haben, da diese teilweise sonst anstelle der Erzförderer aus dem abgekoppelten Netzwerk platziert werden. Mit meinen kleinen Zellen überlappen die Bauzonen der Roboterhangars so viel, dass auf die gesamte Zelle von außerhalb zugegriffen werden kann. Es gibt einige Sicherheitsvorkehrungen, die verhindern sollen, dass Erzförderer im globalen Netzwerk vorhanden sind (obwohl sie von Robotern in die Züge geladen werden), aber es kann zu Situationen kommen, in dem es bei der Erzsuche zu Fehlern kommt, hauptsächlich wenn die Basis sehr groß ist. Aber das passiert nur selten und macht nichts kaputt, deshalb habe ich damit kein Problem. In meiner nächsten Version werde ich aber trotzdem versuchen, die Erzförderer vollständig aus dem Logistiknetz rauszuhalten, außer natürlich in den Zellen, die gerade auf Erze geprüft werden.</p>
+
+<p>Die „Nicht-Erzförderungs“-Zellen werden dann von zwei verschiedenen Zügen behandelt, abhängig von ihrer Einteilung in…</p>
+      <h3 id="-strom">
+        
+        
+            <a href="#-strom" class="anchor" style="text-decoration: none;">… Strom</a>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/39/power.jpg" alt="Solarstomzelle." style="max-width: ; max-height: ">
+      
+      <figcaption>Strom: 7 MW kontinuierlicher Leistung pro Zelle. Sie wird in Erzfreien Zellen platziert wenn die Akkuladung zu gering ist.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Um den Start etwas einfacher zu gestalten, bekam JOSEF zu Beginn 30 MW konstante Leistung aus einem EEI (electric energy interface; zu Deutsch: „Kreativenergiezelle“). Sobald der Verbrauch das überschreitet, beginnt JOSEF „Strom“-Zellen mit Solarzellen und Akkumulatoren bauen. Eine Zelle produziert konstante 7 MW (10 MW Spitzenwert), du brauchst also eine Menge davon.</p>
+
+<p>JOSEF entscheidet, dass mehr Strom benötigt wird, wenn ein Akku auf unter 70% Ladung fällt. Das erlaubt dem „Strom“-Zug zu starten. Ähnlich zum Erzfördererzug fährt dieser Zug zu den „Keine Erzförderung“-Bahnhöfen, platziert eine Solarblaupause, reißt Kombinatoren ab und fügt ein „E“-Signal hinzu und verzieht sich dann wieder. Es gibt keine weiteren Einschränkungen, da ich wollte, dass JOSEF immer mehr Stromproduktion bauen kann, falls sich die Sache mal ungünstig entwickelt.</p>
+
+<p>Aufgrund des Spielstils, immer neue und größere Ringe zu bauen gibt es manchmal große Leistungsspitzen. Das führt dazu, dass JOSEF die Stromproduktion meist überproportioniert, da die ersten Zellen in einem neuen Ring in der Regel für Strom verwendet werden. In meinen größeren Spielrunden war der Durchschnittsbedarf am Ende gegen 500 MW, während die Produktion sich auf etwa 1 GW belief. Das ist aber kein Weltuntergang (ich finde es sogar für die UPS besser, wenn Zellen mit Solar anstelle von Produktion gefüllt werden), aber es wäre mit Sicherheit effizienter, wenn ich ein langsameren Expansionsmodus verwenden würde, so wie GreyGoo.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/39/power_graph.jpg" alt="Graph des Stromverbrauches mit JOSEF." style="max-width: ; max-height: ">
+      
+      <figcaption>Leistungsgraph: Man erkennt anhand der großen Spitzen, wann ein neuer Ring gebaut wurde und wie lange das Bauen dauerte. Auch zu erkennen ist das insgesamt lineare Wachstum.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Jetzt fehlt nur noch ein kleines Detail: JOSEF soll auch die Materialien produzieren, die er verbraucht! Deshalb sind die letzten Zellen vorgesehen für…</p>
+      <h3 id="-produktion">
+        
+        
+            <a href="#-produktion" class="anchor" style="text-decoration: none;">… Produktion</a>
+          
+        
+      </h3>
+    
+
+<p>Die Produktion von Baumaterial teilt sich auf zwei verschiedene Spaghettizellen auf. Sie werden ähnlich gebaut wie die vorherigen: Wenn eine „Keine Erzförderung“ Station verfügbar ist und genug Materialien im Logistiknetzwerk sind (und der Strom nicht knapp wird), kommt ein Zug, platziert eine Blaupause und fügt entweder ein „I“ oder „J“ zum globalen Kombinator für Konstanten hinzu, je nachdem welche Produktionszelle gebaut wurde. Der Zug macht eine weitere Sache: Er fügt ein bisschen Kohle zum Logistiknetzwerk hinzu, damit weitere Züge etwas zum Fahren haben, und bei Produktionszellen 2 ein paar Schwerölfässer, um die Kohleverflüssigung zu starten.</p>
+
+<p>Der zuständige Bauzug wechselt einfach zwischen den beiden verschiedenen Zellen ab: Ein einfacher Greifarm-Kreislauf nimmt das eine Blaupausenbuch aus dem Zug heraus, wenn er wieder zurück ist, und wechselt es mit dem anderen aus. Dann wartet er bis der Zug die Station verlassen hat, bevor er sich wieder aktiviert.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/39/prod_1.jpg" alt="Einfache JOSEF Produktionszelle" style="max-width: ; max-height: ">
+      
+      <figcaption>Produktionszelle 1: Einfache Sachen ohne Öl (Fließbänder, Greifarme, Montagemaschinen, usw.)</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Die erste Zelle produziert all die verschiedenen einfacheren Fabrikelemente: Fließbänder, Erzförderer, Greifarme, Schienen, Züge, Stationen, Signale, Strommasten – mehr oder weniger alles, das kein Öl braucht. die einfache Produktionszelle muss immer gebaut werden, bevor JOSEF Zeugs wie Schienen und Fließbänder ausgehen. Das kann ein Problem werden, wenn du zu viele Erze zu nahe an der Mitte hast, oder du nicht genügend zum Starten zur Verfügung stellst und es einfach überall Solarzellen hinklatscht. Aber du kannst das immer lösen indem du mehr Startmaterialien zur Verfügung stellst.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/39/prod_2.jpg" alt="Fortgeschrittene JOSEF Produktionszelle" style="max-width: ; max-height: ">
+      
+      <figcaption>Produktionszelle 2: Fortgeschrittenere Sachen, die Öl benötigen (Roboterhangars, Roboter selbst, Akkumulator, usw.)</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Die zweite Zelle produziert die eher fortgeschrittenen Sachen: Roboterhangars, Roboter, Logistikkisten, Blaupausenplatzierer, Solarzellen &amp; Akkumulatoren. Sie muss immer gebaut werden, bevor JOSEF keine Roboterhangars mehr hat. Der Bauzug bringt zehn Fässer mit Schweröl mit, welche entleert werden, durch die Raffinerie laufen und so schnell wie möglich wieder befüllt werden. JOSEF produziert aber keine weiteren Fässer, sondern verlässt sich auf den Recyclingprozess der ursprünglichen Fässer.</p>
+
+<p>Die beiden Produktionszellen sind bei weitem nicht mit passenden Verhältnissen optimiert. Sie produzieren langsam, aber stetig alle benötigten Sachen, aber es kann eine Stunde brauchen, bis eine spezifische Zelle beispielsweise ihre erste Zughaltestelle produziert, weil zuerst die Fließbänder aufgefüllt werden. Aber es zeigt sich, dass das Problem nach einiger Zeit irrelevant wird, mehr dazu aber später.</p>
+
+<p>Nach einer Weile gibt es etliche Produktionszellen quer über die ganze Fabrik verstreut. Das heißt, Bauroboter nehmen immer weniger Materialen von der Mitte (wo die ursprünglichen Baumaterialen zu finden sind), und beginnen Sachen von den Produktionszellen im Umkreis aufzuheben, was Reisezeit verringert. Aber wegen ein paar Faulheiten meinerseits, bringen sie weiterhin einige Baumaterialien in die Mitte um den Bauzug aufzufüllen, aber das ist eine andere Geschichte (die auch in JOSEF v2 wesentlich eleganter gelöst sein wird).</p>
+
+<p>Die Produktionszellen erhalten Rohstoffe mit Zügen. Eine eigene „Zugaufgleiszelle“ in der Mitte generiert vier neue Züge (einen pro unterschiedliches Erz), wenn eine neues „I“ oder „J“ Signal ankommt. Eine eigene Zelle für Züge zu haben (statt sie in Produktionszellen zu inkludieren) stellt sicher, dass bereits existenten Züge nie neue behindern. Ohne dieser Vorsichtsmaßnahme kann es vorkommen, dass Waggons durch Blaupausen an bestehende Züge angehängt werden, was vermieden werden sollte</p>
+
+<p>Alle Züge verfolgen einen einfachen „Erz rein bis voll“ → „Erz heraus bis leer“ Fahrplan, und nehmen immer die nächste Station. Das heißt, dass Produktionszellen näher an Erzquellen mehr Ressourcen erhalten, als jene, die weiter weg liegen. Aber das gleicht sich nach einiger Zeit sowieso aus, weil JOSEF sich langsam mit vielen Baumaterialien auffüllt und etliche Zellen nach einer Weile dann stillstehen.</p>
+
+<p>Der Fakt, dass es vier Züge für jede Produktionszelle gibt, heißt, dass es später eine irre Zahle an Zügen gibt, wovon die meisten still stehen. In meinem 500+ Zellen Durchlauf von JOSEF hatte ich am Schluss 750 Züge. Wenn man sich das kleine, Kreisverkehr-lastige Zugnetz aber anschaut, ist es sogar gut, dass nur wenige davon in Betrieb waren.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/39/brain_deployer.jpg" alt="JOSEF‘s Kopf und Zugaufgleiser" style="max-width: ; max-height: ">
+      
+      <figcaption>JOSEF‘s Kopf links und der Zugaufgleiser rechts. Das Hirn ist seinem Namen fast nicht gerecht – es ist hauptsächlich für das Bauen vom Ring und dem Senden/Stoppen von Bauzügen verantwortlich. Die interessante Logik läuft großteils in den Zellen selbst ab.</figcaption>
+    </figure>
+    
+    
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="rückblick--zukünftige-pläne">
+        
+        
+            <a href="#r%C3%BCckblick--zuk%C3%BCnftige-pl%C3%A4ne" class="anchor" style="text-decoration: none;">Rückblick &amp; zukünftige Pläne</a>
+          
+        
+      </h3>
+    
+
+<ul>
+  <li>Ein paar Zahlen über JOSEF:
+    <ul>
+      <li>Die größte Fabrik, die auf meinem (nicht so guter) Computer wachsen konnte, war 25 · 25 = 625 Zellen groß. Das hat etwa 34 Stunden an Zeit im Spiel gebraucht. Sie hat weiterhin funktioniert, aber die UPS lagen bei etwa 40 und alles hat einfach Ewigkeiten gebraucht, also habe ich dann einfach aufgehört.</li>
+      <li>Sie hatte etwa 170 Solarstromzellen, 150 Erzförderzellen und zirka 100 Produktionszellen</li>
+      <li>Ein netter Redditer mit einem stärkeren Computer hat sie zu 29 · 29 = 841 Zellen bei 45 UPS gebracht</li>
+    </ul>
+  </li>
+  <li>Es ist recht interessant zu sehen, wie JOSEF sich in einem größeren Maßstab verhält. Anfangs sind Erweiterungen recht langsam, weil Baumaterialien produziert werden müssen. Wenn man auf den Stromgraph schaut, kannst du sehen, wie sie ursprünglich von Ring zu Ring schneller wird, auch wenn die Anzahl an Zellen, durch die sie gehen muss, pro Ring mehr wird. Das ist, weil die Produktion quadratisch steigt, während die Nachfrage linear mehr wird (und später sogar stagniert). Irgendwann bei etwa Ring 9 oder 10 hört die Produktion auf, der Engpass zum auffüllen eines Rings zu sein, einfach weil mehr Zellen bebaut werden müssen</li>
+</ul>
+
+<figure>
+		<div class="aspect-ratio">
+			<iframe src="https://media.alt-f4.blog/ALTF4/39/JOSEF/index.html?x=95.5&y=-66.4&z=2.0" frameborder="0"></iframe>
+		</div>
+		<figcaption>Die größte Größe, die JOSEF erreicht hat: 29 · 29 Zellen.</figcaption>
+</figure>
+
+<ul>
+  <li>In dieser Version habe ich mir stark darauf gestützt, dass Roboter Sachen über die ganze Karte transportieren (hauptsächlich um den Bauzug nachzufüllen und unbenutzte Materialen von neuen Zellen zurück zu bringen). Das war vor allem wegen meiner Faulheit, und ich plane definitiv das für spätere Versionen zu verbessern. Insgesamt aber hat mein System Produktionszellen überall hinzuklatschend aber besser als erwartet funktioniert – Bauaufgaben wurden an nahgelegene Roboter vergeben, welche Sachen immer von der nächst-verfügbaren Stelle nehmen, solange du ihnen nur eine Sorte an Kisten gibst.</li>
+  <li>Ich habe es geliebt, das System zu entwickeln, die Zellen und so zu entwerfen, aber um ehrlich zu sein: So etwas testen ist etwas anstrengend, vor allem wenn du ungeduldig bist und es in Betrieb sehen willst. Es ist wie eine Rube Goldberg Maschine, die mehrere Stunden läuft zu testen – für jede kleine Änderung, die du machst, musst du von neu starten, die Änderung einfügen und einige Stunden warten. Viele kleine Verbesserungen auf die du schnell kommst führen zu unerwarteten Problemen die nur in etwa Ring 6 entstehen. Du kannst natürlich Sachen einfacher machen, indem du z. B. unendlich viele Konstruktionsmaterialien zur Verfügung stellst, wenn du den Erzfindemechanismus testest, aber richtige, realistische Tests sind sehr anstrengend.</li>
+</ul>
+
+<p>Das ist sicherlich nicht die letzte JOSEF, die ich bauen werde. Ich habe sogar eine kleine, unprofessionelle <a href="https://youtube.com/playlist?list=PLqiMv9sOILspVylhnHefjleLWw1Ye2RrD">Tutorial-Serie</a> (englisch-sprachig) angefangen, in der ich die zweite Version baue und währenddessen erkläre, wie und warum ich Sachen mache: Bis jetzt hab ich schon:</p>
+
+<ul>
+  <li>Größere Zellen. Momentan plane ich eine Größe von 4 · 4 Chunks statt 2 · 2. Ich habe Logistiknetzwerke abgetrennt, was den Erzfindeprozess wesentlich vereinfachen wird.</li>
+  <li>Ich habe den Entscheidungsbaum um durch eine Blaupause zu wandern wesentlich vereinfacht und stabilisiert, indem ich eine fixe Anzahl an Kombinationen habe und die Einstellungen darauf kopiere. Das bringt neue Herausforderungen mit sich, aber erlaubt für wesentlich mehr verschiedene Zellen aus einem einzigen Blaupausenbuch ohne mehr Kombinationen zu benötigen.</li>
+  <li>Mit Wasser, sowohl als Ressource, als auch als Hindernis zu handhaben: <a href="https://www.reddit.com/r/factorio/comments/np1t16/josef_2_ready_for_a_swim/">Fertig!</a>
+</li>
+  <li>Gegen Beißer zu verteidigen: Wird schwierig richtig zu kriegen. Ich werde keine Deathworlds probieren, aber eine kleinere Menge an Beißern sollte kein Problem werden.</li>
+  <li>Klippen beseitigen: Wird nur psychologisch Schwierig. Ich habe sie schon immer gehasst und schalte sie sofort aus. Sollten aber einfach zu handhaben sei.</li>
+  <li>Wissenschaft: Theoretisch fertig (Ich habe eine kleine 3SPM Montagelinie zu Produktionszellen hinzugefügt), aber es wird ein bisschen schwierige, wenn sie in Betrieb sind, weil sie die benötigten Ressourcen und aktiven Züge um einiges erhöhen. Zusätzlich muss ich eventuell ein paar weitere Sicherheitsmechanismen hinzufügen, um sicherzustellen, dass die Wissenschaft nicht von Produktionsmaterialien wegnimmt.</li>
+</ul>
+      <h3 id="abschließende-gedanken">
+        
+        
+            <a href="#abschlie%C3%9Fende-gedanken" class="anchor" style="text-decoration: none;">Abschließende Gedanken</a>
+          
+        
+      </h3>
+    
+
+<p>Vor ein paar Jahren, als ich das Video über GreyGoo (vermutlich die bekannteste selbstständig expandierende Fabrik bis jetzt) gesehen habe, war ich recht eingeschüchtert und ich war mir sicher, dass ein absolutes Genie nicht von dieser Welt darauf gekommen sein musste. Ich dachte, es ist einfach unmöglich für einen normalen, halb-erfahrenen Factoriospieler so etwas je erreichen zu können.</p>
+
+<p>Ich werde jetzt nicht JOSEF mit GreyGoo vergleichen. JOSEF ist eine recht stumpfe SEF, und es gibt etliche Sachen die ich verbessern könnte (und werde!). Aber ich hab das Gefühl, dass die viele Leute, die mir zu dieser Leistung gratulieren eine ähnlichen Stand zu JOSEF haben, wie ich damals zu GreyGoo. Und obwohl ich trotzdem sehr stolz darüber und dankbar für all den Lob bin, bitte glaub mir, wenn ich sage: <strong>Das war nicht schwer!</strong> Jeder, der schon mal eine cleveres Vorrichtung für Sushi-Fließbänder, ausgeglichen Zugstationen, eine Kovarex-Fabrik, oder was auch sonst erstellt hat, kann das auch! Spiel einfach nur ein bisschen mit Schaltungen, und dir wird auffallen, dass es machbar ist. Ich hoffe, dass dieser Einblick in JOSEF‘s einfachere Funktionalität das bewiesen hat. Ich würde mich richtig freuen, von mehr Leuten einen Versuch dafür zu sehen.</p>
+
+<p>Es ist dir freigestellt, meine Ideen als Anfang zu nehmen, sie zu verbessern, oder herauszunehmen und ersetzten, wenn sie dir nicht gefallen. Und natürlich freut es mich immer darüber zu plaudern, zu helfen, testen und zu brainstormen. Einige von JOSEFs Features kamen nur durch Diskussionen mit tollen Leuten dieser wunderbaren Community zustande.</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://discord.gg/nxnCFkb">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=98794">
+    Im Factorio-Forum diskutieren
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/nxbftu/altf4_39_josef/">
+    Auf Reddit diskutieren
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-38/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
