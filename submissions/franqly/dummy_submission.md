@@ -1,0 +1,1 @@
+### Nauvian Perspective: Franqly <author>stringweasel</author>
