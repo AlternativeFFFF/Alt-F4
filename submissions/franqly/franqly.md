@@ -2,33 +2,32 @@
 
 - and franqly, it was Franqly.
 - *Into doesn't flow nice*
+- Need media!
 
-The fastest speedrunner in the world - at the time of writing - is Franqly. He joined the Factorio speedrunners recently with his first entry on [speedrun.com](https://www.speedrun.com/user/Franqly) only in October last year, after previously speedrunning The Legend of Zelda: Ocarina of Time a few times. However, today he is out-running legends like AntiElitz and Nefrums, and is the only player alive that can finish Factorio in [90 minutes flat](https://www.speedrun.com/factorio/run/y2xelq5m). In the time it takes you to watch the Bee Movie he can complete everything from crash landing on Nauvis to launching the rocket.
+The fastest speedrunner in the world - at time of writing this - is Franqly. He joined the Factorio speedrunners recently with his first entry on [speedrun.com](https://www.speedrun.com/user/Franqly) only in October last year. However, today he is out-running legends like AntiElitz and Nefrums, and is the only player alive that can finish Factorio in [90 minutes flat](https://www.speedrun.com/factorio/run/y2xelq5m). In the time it takes you to watch the Bee Movie he can complete everything from crash landing on Nauvis to launching the rocket.
 
-Recently Franqly was accepted to take part in the [Summer Games Done Quick](https://gamesdonequick.com/), or SGDQ for short, which is happening from 4 to 11 July 2021. This event is an enormous yearly speedrunning marathon which showcases about [150 different runs](https://gamesdonequick.com/tracker/runs/SGDQ2021). It sports various big names such as [TheMexicanRunner](https://www.speedrun.com/user/themexicanrunner) and [mitchflowerpower](https://www.speedrun.com/user/mitchflowerpower). The goal of this marathon to raise funds for [Doctors Without Borders](https://www.doctorswithoutborders.org/), for which it's **the largest fundraising event in the world!** Being accepted into SGDQ is no small feat either. This year the event received almost [2000 submissions](https://gamesdonequick.com/submission/all) of which only about 150 is accepted to take part.
+It's no suprise then that Franqly was recently accepted to take part in the [Summer Games Done Quick](https://gamesdonequick.com/), or SGDQ for short, which is happening from 4 to 11 July 2021. This event is an enormous yearly speedrunning marathon which showcases over [140 different runs](https://gamesdonequick.com/tracker/runs/SGDQ2021). It even sports various big names such as [TheMexicanRunner](https://www.speedrun.com/user/themexicanrunner) and [mitchflowerpower](https://www.speedrun.com/user/mitchflowerpower). And it's for a great cause too! The goal of this marathon to raise funds for [Doctors Without Borders](https://www.doctorswithoutborders.org/), for which it's **the largest fundraising event in the world!** Being accepted into SGDQ is no small feat either - this year the event received almost [2000 submissions](https://gamesdonequick.com/submission/all) of which only about 150 is accepted to take part.
 
 ## Speeding Through Factorio
 
-Speedrunning likely started with AntiElitz...
+Currently, Franqly is king of the `Any%` speedrunning category. The rules for this category is simple. The run is completed by launching the rocket by yourself. You are free to change the map generator settings, including enabling Peaceful Mode and using a specific Map Seed. And the importing of blueprints is not allowed, but you may use blueprints created in the run. The rest is up to you.
 
-Currently, Franqly is king of the `Any%` speedrunning category, which means to complete the game as quickly as possible. The rules for this category is simple. The run is completed by launching the rocket by yourself. You are free to change the map generator settings, including enabling Peaceful Mode and using a specific Map Seed. The importing of blueprints is not allowed, but you may use blueprints created in the run. The rest is up to you.
+Finishing Factorio in 90 minutes is no trivial task. There's a reason the `There's no Spoon` achievement is finishing Factorio in under only _8 hours_! The factory needs to be designed and built perfectly to research as possible while still expanding production as fast as possible to research _even_ faster and launch the rocket. Runners will easily spend hundreds of hours designing and fine-tuning their factories to maintain this fine balance of research and expansion.
 
-Finishing Factorio in 90 minutes is no trivial task - there's a reason the `There's no Spoon` achievement is finishing Factorio in under only 8 hours! The factory needs to be designed - and built - meticulously in order to research as possible *while still* expanding production as fast as possible to research even faster and launch the rocket. Runners will spend hundreds of hours to design and fine-tune their factories to maintain this fine balance of research and expansion.
+However, even if the factory design is perfect, it will take even more hundreds of hours to practice the actual building of the factory which requries the balancing of many different aspects. One example is hand crafting where runners have pre-calculated lists with exact amounts of what they need to craft at specific times to always be ready for the next build. Runners also need to practice placing machines quickly and efficiently. Then finally, they need to be able to build the _entire_ factory from memory, while already being underpressure and having to keep track of all these other aspects.
 
 { embed this twich clip? https://clips.twitch.tv/SoftPreciousVampireOSfrog-qkzdCpz4HTV3kH5X}
-
-However, even if the factory design is perfect, it will take even more hundreds of hours to practice the actual building of the factory which requries the balancing of many different aspects. One example is hand crafting where runners have pre-calculated lists with exact amounts of what they need to craft at specific times to always be ready for the next build. Then ..... Then finally, they need to be able to build the entire factory from memory, while already being underpressure and having to keep track of all these other aspects.
 
 ## Who is Franqly
 {*conor please change code blocks into quotes. I have them as code to make it easier to read for now*}
 
 {*Need to re-order and add fluff*}
 
-I reached out to Franqly to ask him a few questions about his time in Factorio, about his speedrunning, and a few other things. He was very gracious and gave a glimpse of his thoughts that I would like to share here.
+I reached out to Franqly to ask him a few questions. Mainly about his time in Factorio and how he managed to reach the top so fast after only speedrunning The Legend of Zelda: Ocarina of Time a few times. He was very gracious and gave a glimpse of his thoughts that I would like to share here.
 
 *Is there someone specific that got you into Factorio, and how much time have you spent in Factorio?*
 
-`No one specific.  I can't quite remember how i found it, but I probably saw someone playing on twitch.  I thought it looked like s**t tbh, but was interested in the concept.  Then a few months after, i saw it on steam.  It looked much better with .12, and decided to pick it up.  I had about 1500 hours before starting to speedrun.`
+`No one specific.  I can't quite remember how i found it, but I probably saw someone playing on twitch.  I thought it looked like s**t tbh, but was interested in the concept.  Then a few months after, i saw it on steam.  It looked much better with .12, and decided to pick it up.  I had about 1500 hours before starting to speedrun. [I am at] about 2200 [hours] now.`
 
 *When did you start speedrunning, and is there someone who inspired you to start? Is there someone now that you see as a type of mentor?*
 
@@ -47,6 +46,7 @@ I reached out to Franqly to ask him a few questions about his time in Factorio, 
 `The hardest part is the part i avoid, the design of the build from beginning to end.  I absolutely have stood and the shoulders of giants, in particular Nefrums for the current design we both run.  I was pretty hesitant to approach speedrunning the game in this way, but I haven't really received backlash from others in the community, and Nefrums has been completely on board and very helpful, and of course I didn't want a one-way street, so I've tried contributing in ways that use my strengths.  Compared to other games, what really stands factorio apart is that every single action has a ripple effect to the rest of the run.  It is basically impossible to launch the rocket under the same conditions as any other run.  In level based games, generally each segment will play the same everytime.  I can think of rpg speedruns being kind of on the level of early actions having effects throughout, but even then generally strategies are made to resync progress or adapt to a limited number of alternatives.`
 
 *I see you also did Zelda Speedruns in the past. How do you compare Zelda speedrunning with Factorio speedrunning?*
+
 `Completely different to Zelda!  Pretty much on every level.  I will say, i learned how to grind practice effectively, and that translated well.  I was never all that good at Ocarina of Time, but I really enjoyed it all the same.  I've dabbled in a few other games less seriously, including SM64, super metroid, SM sunshine, hollow knight, and celeste.`
 
 *What is your favourite part about speedrunning? And the part you dislike the most?*
@@ -56,6 +56,10 @@ I reached out to Franqly to ask him a few questions about his time in Factorio, 
 *How often do you practice/plan for you runs? And how long did you do speedruns before you were competing with the top runners?*
 
 `I pretty much live, eat, breathe, sleep with Factorio when I've learned a plan and practice it.  I do segmented practice in 2-3 minute chunks, over and over, trying out different movement routes or building placement order until i arrive at something I'm comfortable with and can consistently do fast.  While doing runs, i make mental note of segments that didn't go well, and later grind those again.  I began improving my times rapidly with this approach.  With the right amount of free time, determination, familiarity with the game, and general gaming skill, i was able to achieve the wr in about 5-6 months.`
+
+*Why did you decide to send a submission to SGDQ? And were you excited when you received the "letter" saying that you're in?*
+
+`I've been watching gdqs for years.  I wasn't really expecting to get in, so it was quite a surprise!  I'm very happy to be able to showcase factorio to a larger audience. just thought, what the hell, may as well apply`
 
 *Do you still play Factorio "normally"? And if you do, is it hard to "slow down" and play it in a more relaxed fashion?*
 
@@ -79,7 +83,9 @@ I reached out to Franqly to ask him a few questions about his time in Factorio, 
 
 ## The Event
 
-Go watch his event! Here at this time! It's gonna be fun.... *more fluff*
+We are all very excited to see Franqly take part in this great event where he will be representing Factorio! He has worked very hard and spent ~~countless~~ many hours achieving this amazing goal. And hopefully this will be the first inclusion of many of our favourite factory building game in mainstream events! 
+
+If you want to watch the event, here is a countdown timer to Franqly's run. There will likely be people hanging out here watching the run and on the Factorio Discord, so please stop by!
 
 { timer to his run }
 
