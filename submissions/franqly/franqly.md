@@ -1,8 +1,8 @@
 # Nauvian Perspective: Franqly <author>stringweasel</author>
 
-The fastest speedrunner in the world - at time of writing this - is Franqly. He joined the Factorio speedrunner community recently with his first entry on [speedrun.com](https://www.speedrun.com/user/Franqly) only in October last year. However, today he is out-running legends like AntiElitz and Nefrums, and is the only player alive that has finished Factorio in [90 minutes flat](https://www.speedrun.com/factorio/run/y2xelq5m). In the time it takes you to watch the Bee Movie he can complete everything from crash landing on Nauvis to launching the rocket.
+The fastest speedrunner in the world - at time of writing this - is a newish player called Franqly. He joined the Factorio speedrunner community recently with his first entry on [speedrun.com](https://www.speedrun.com/user/Franqly) only in October last year. However, today he is out-running legends like AntiElitz and Nefrums, and is the only player alive that has single-handedly finished Factorio in [90 minutes flat](https://www.speedrun.com/factorio/run/y2xelq5m). In the time it takes you to watch the Bee Movie he can complete everything from crash landing on Nauvis to launching the rocket.
 
-It's no suprise then that Franqly was recently accepted to take part in the [Summer Games Done Quick](https://gamesdonequick.com/), or SGDQ for short, which is happening from 4 to 11 July 2021. This event is an enormous yearly speedrunning marathon which showcases over [140 different runs](https://gamesdonequick.com/tracker/runs/SGDQ2021). It even sports various big names such as [TheMexicanRunner](https://www.speedrun.com/user/themexicanrunner) and [mitchflowerpower](https://www.speedrun.com/user/mitchflowerpower). And it's for a great and noble cause too! The goal of this marathon to raise funds for [Doctors Without Borders](https://www.doctorswithoutborders.org/), for which it's **the largest fundraising event in the world!** Being accepted into SGDQ is no small feat either - this year the event received almost [2000 submissions](https://gamesdonequick.com/submission/all) of which only about 150 is accepted to take part.
+It's no suprise then that Franqly was recently accepted to take part in the [Summer Games Done Quick](https://gamesdonequick.com/), or SGDQ for short, which is happening from 4 to 11 July 2021. This event is an enormous yearly speedrunning marathon which showcases over [140 different runs](https://gamesdonequick.com/tracker/runs/SGDQ2021). It even sports various big names such as [TheMexicanRunner](https://www.speedrun.com/user/themexicanrunner) and [mitchflowerpower](https://www.speedrun.com/user/mitchflowerpower). And it's for a great and noble cause too! The goal of this marathon to raise funds for [Doctors Without Borders](https://www.doctorswithoutborders.org/), for which it's **the largest fundraising event in the world!** Being accepted into SGDQ is no small feat either - this year the event received almost [2000 submissions](https://gamesdonequick.com/submission/all) of which only about 150 is accepted to take part. Talented Factorio players have submitted their runs in the hope to join this prestigeous event in the past, but was denied because Factorio was not "officially released".
 
 {map franqly.zip caption = "The base that Franqly launched a rocket from in under 90 mintues. A part of this base can also be seen in the unofficial Factorio [Hall of Fame](https://mods.factorio.com/mod/HallOfFame)."}
 
@@ -10,16 +10,15 @@ It's no suprise then that Franqly was recently accepted to take part in the [Sum
 
 Currently, Franqly is king of the `Any%` speedrunning category. The rules for this category is simple. The run is completed by launching the rocket by yourself. You are free to change the map generator settings, including enabling Peaceful Mode and using a specific Map Seed. And the importing of blueprints is not allowed, but you may use blueprints created in the run. The rest is up to you.
 
-Finishing Factorio in 90 minutes is no trivial task. There's a reason the `There's no Spoon` achievement is finishing Factorio in under only _8 hours_! It's also one of the few games that has no bugs that can be exploited in speedruns! Rather, the factory needs to be designed and built perfectly to research as possible while still expanding production as fast as possible to then research _even_ faster - all to launch the rocket as soon as possible. Runners will easily spend hundreds of hours designing and fine-tuning their factories to maintain this fine balance of research and expansion. 
+Finishing Factorio in 90 minutes is no trivial task. There's a reason the `There's no Spoon` achievement is finishing Factorio in under only _8 hours_! It's also one of the few games that has no bugs that can be exploited during speedruns! Rather, the factory needs to be designed and built perfectly to research as fast as possible while still expanding production as fast as possible to then research _even_ faster - all to launch the rocket in the shortest time. Runners will easily spend hundreds of hours designing and fine-tuning their factories to maintain this fine balance of research and expansion. Luckily the legendary runner Nefrums created a [helpful guide](https://www.speedrun.com/factorio/guide/jg8lg) for the community on how to design such a base, and a lot of top speedrunners even use Nefrums' base design in their runs.
 
 {
-    twich embed
+    twitch embed
     <iframe src="https://clips.twitch.tv/embed?clip=SoftPreciousVampireOSfrog-qkzdCpz4HTV3kH5X&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
     caption = "Rain9441 pole dancing during one of his practice runs in preperation for a much anticipated 100% Speedrun."
 }
 
-
-However, even if the factory design is perfect, it will take even more time to practice the actual building of the factory. Runners need to balance many different aspects of the game while sprinting around against the clock. One example is hand-crafting where runners have pre-calculated lists with exact amounts of what they need to craft at specific times to always be ready for the next build. Then they need to practice placing machines quickly, efficiently and meticulously. They then also need to be able to build the _entire_ factory from memory, while already being underpressure and having to keep track of all these other aspects. Every assembler, belt and inserter has a specific place, and one wrong move might cost you the title. 
+However, even if the factory design is perfect, it will take even more time to practice and perfect the actual building of the factory. There are many different approaches and strategies to speedrunning, but they all require runners to perfectly balance many different aspects of the game all while racing against the clock. One example is hand-crafting where some runners have pre-calculated lists with exact amounts of what they need to craft at specific times to always be ready for the next build. Some also need to be able to build the most of the factory from memory, sometimes having only pictures on hand as reference, all while already being under time pressure. And because a factory is such a complex mechanism one wrong placement can easily cost you the title. 
 
 { twitch embed
     <iframe src="https://clips.twitch.tv/embed?clip=GeniusStrongPeachMVGame-FoTU1sHX3_UzpcSk&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
@@ -45,7 +44,7 @@ Now, who is Franqly? The speedrunning scene was dominated for a long time by nam
 
 *Do you think a large part of your success is that you practice more? Not so much optimizing the factory, but rather your play-style? As you said, but choosing optimal routes to run for example. Do you think you practice these techniques more that other top runners?*
 
-`I can't say for sure.  I know i do all my practicing offstream, as i think most speedrunners do.  If i had to guess, yes that would be the case.  I've been in between work this last year and it gave me a lot of time.  Now I'm at 56hr/week :money_mouth:  Most others in the community have full time jobs.`
+`I can't say for sure.  I know i do all my practicing offstream, as i think most speedrunners do.  If i had to guess, yes that would be the case.  I've been in between work this last year and it gave me a lot of time.  Now I'm at 56hr/week. Most others in the community have full time jobs.`
 
 *What it the hardest part of speedrunning Factorio? How does this compare to speedrunning other games*
 
@@ -87,11 +86,15 @@ Now, who is Franqly? The speedrunning scene was dominated for a long time by nam
 
 `I enjoy spending time with my wife.  We watch shows, go on local walks or drive out to scenic hiking spots.  Nothing too crazy, my life is pretty chill atm.  Looking forward to having kids, which we're delaying until we have a house.  Saving as much as we can.  Housing market is ridiculous though.`
 
+{conor please constrain this picture, it's quite big and shouldn't fill the entire screen}
+![Franqly quite possibly pondering speedrunning techniques while on a hike with his wife.](media/hike.jpg)
+
+
 ## The Event with a Good Cause
 
 We are all very excited to see Franqly take part in this great event where he will be representing Factorio! He has worked very hard and spent ~~countless~~ many hours achieving this amazing goal. And hopefully this will be the first inclusion of many of our favourite factory building game in mainstream events! 
 
-We ask you all join and support Franqly with us! His will be joined in his stream by AntiElitz and Thue, and also [XenoCyber](https://www.twitch.tv/xenocyber) who will guide us through what Franqly is doing. His run will happen on the [GDQ Twitch Channel](https://www.twitch.tv/gamesdonequick) on Friday, 9 July, at 2:18 PM UTC time. 
+We ask you all join and support Franqly with us! His will be joined in his stream by [AntiElitz](https://www.twitch.tv/antielitz) and [Thue](https://www.speedrun.com/user/Thue), and also [XenoCyber](https://www.twitch.tv/xenocyber) who will guide us through what Franqly is doing. His run will happen on the [GDQ Twitch Channel](https://www.twitch.tv/gamesdonequick) on Friday, 9 July, at 2:18 PM UTC time. 
 
 { countdown timer to 9 July 2021 : 2:18PM UTC }
 
