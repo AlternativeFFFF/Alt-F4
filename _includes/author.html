@@ -1,6 +1,6 @@
 {% if page.author or post.author %}
 {{ site.data.locale.author.writtenby }} <em>{{ page.author | default: post.author }}</em>
-{%- if (page.editor or post.editor) or (page.translator or post.translator) -%},{% endif %}
+{%- if (page.editor or page.translator) -%},{% endif %}
 {% endif %}
 
 {% if page.editor %}
