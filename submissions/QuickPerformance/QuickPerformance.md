@@ -1,12 +1,24 @@
 ## Quick Performance Check <author>oof2win2</author>
 
-If you don't have a state-of-the-art computer, you probably have seen a message saying that you were dropped from the game because your network or computer was not fast enough. Well, what does that actually mean? What can you do about it in the short and long term?
+![Image of a dropped connection](dropped.png)
+{ % include image.html src="dropped.png" alt="Image of the player being dropped from the game" }
+
+If you don't have a state-of-the-art computer, you probably have seen a message like this saying that you were dropped from the game because your network or computer was not fast enough. Well, what does that actually mean? What can you do about it in the short and long term?
 
 ### Network Speed Issues
 
 Sometimes, your network may not be the best. That can be due to many things itself, such as maintenance from your ISP or a power outage of your DNS's datacenters. There are a few utilities that can however help mitigate these sorts of issues.
 
-To explain what Factorio requires, that is a long*er* process. However, *cube* has explained it largely in [FFF#136](https://factorio.com/blog/post/fff-136). Wube have done non-standard things to let the game work, such as re-implementing large parts of TCP in UDP (TCP and UDP are types of communication of packets. TCP makes sure that everything is confirmed and arrives properly, UDP basically "doesn't care". Common UDP uses are in torrenting, as you can get other parts of files later on. TCP is used for many day-to-day things, such as web browsing) so the player wouldn't need to have two ports opened and NAT punching would work (NAT punching is a thing that is used for your router/modem to send Factorio traffic properly, explained well in [FFF#143](https://factorio.com/blog/post/fff-143))
+To explain how Factorio's networking works, that is a longer process. However, *cube* has explained this process nicely in [FFF#136](https://factorio.com/blog/post/fff-136). One of the largest things they have done is using UDP but adding back things that are in TCP. [UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol) has the advantage of there being much faster speed than conventional TCP (which is used for most day-to-day things). UDP achieves this speed by not having a "handshake", which is two clients (computers) agreeing that they want to communicate together and establishing a connection, which simply means it doesn't care about what happens with the data, it *just sends it*. This however also removes the ability to guarantee the delivery of data, ordering the data properly or removing data duplicates (which can sometimes happen). 
+
+The fact that UDP removes the guarantee of delivering data however directly contradicts how Factorio must work using fully-deterministic, lockstep algorithms as I explained in an [earlier post](https://alt-f4.blog/ALTF4-26/), as the data *must* arrive or you would recieve a desync. *cube* said that Wube have solved this with implementing parts of the TCP protocol into their version of UDP. This means that they still have the speed that they want, but they can also have the reliability of TCP (or close to it, as the Factorio protocol is not publicly available for people to analyze).
+
+UDP is also very important because it allows NAT punching to work. NAT punching is the process of your client asking an external server (Pingpong server) to tell the Factorio server to establish a connection with your client, because some routers/firewalls may block "random" connections from IPs that you have not requested anything from, which is good in situations like preventing someone from brute-forcing open your computer, but an obstacle for the Factorio developers.
+
+![NAT Punching illustation](https://cdn.factorio.com/assets/img/blog/fff-143-connection-request.png)
+{% include image.html src="https://cdn.factorio.com/assets/img/blog/fff-143-connection-request.png" alt="NAT Punching illustation" }
+
+Now, let's try fixing your problems with Factorio dropping you from the game,
 
 Firstly, you can try a quick speed test, to check if your network is fast enough, from sites such as [Ookla's Speedtest](https://speedtest.net) or [fast.com (Netflix)](https://fast.com). Both sites will measure similar data, so pick your poison. There are however 3 things that matter (referencing Ookla's Speedtest):
 - Download speed
@@ -16,7 +28,16 @@ Firstly, you can try a quick speed test, to check if your network is fast enough
 ![Speedtest.net result for reference](SpeedtestResult.png)
 {% include image.html src="SpeedtestResult.png" alt="Speedtest.net result for reference" }
 
-For Factorio, your download and upload speeds don't need to be very high, as the map (savefile) is sent over to you when you connect to a server. The speed of the map downloading depends on your download speed and the server's upload speed; as you can't download something faster than it is being uploaded. Generally, savefiles are within 50MB (if you don't run with seriously modded games), so on an [average connection](https://www.speedtest.net/global-index), a save would be downloaded within 15 seconds. It doesn't however matter how fast a save downloads, since it is just a file transfer in the end. The speed of your download however affects for how many [ticks](https://wiki.factorio.com/Time#Ticks) (in-game unit of time, 60 per second with 100% performance) you will however be catching up (the part of loading the map after you download it). Generally speaking, anything *should* be fine, but mileage may vary. Another thing from Ookla's speedtest is your ping (latency) to their datacenter. That is not always accurate in respect towards a Factorio server, as Factorio servers can be anywhere in the world, whilst Ookla connects you to your *closest* datacenter.
+For Factorio, your download and upload speeds don't need to be very high, as the map (savefile) is sent over to you when you connect to a server. The speed of the map downloading depends on your download speed and the server's upload speed; as you can't download something faster than it is being uploaded. Generally, savefiles are within 50MB (if you don't run with seriously modded games), so on an [average connection](https://www.speedtest.net/global-index), a save would be downloaded within 15 seconds. It doesn't however matter how fast a save downloads, since it is just a file transfer in the end. The speed of your download however affects for how many [ticks](https://wiki.factorio.com/Time#Ticks) (in-game unit of time, 60 per second with 100% performance) you will however be catching up (the part of loading the map after you download it). Generally speaking, anything *should* be fine, but mileage may vary.
+
+"Catching up" is a process very specific to Factorio. It means that you are catching up to the new actions in the game, because you have an older copy and the server can't instantaneously send you a completely new copy of the save for you to run from. Instead, the process of joining a multiplayer session looks something like this:
+1. The server saves the map at a specific tick, let's say tick 100 and sends the saved map to you. The server also starts sending you all changes from now on (user inputs only, as described in my [other article](https://alt-f4.blog/ALTF4-26/) on Factorio multiplayer itself)
+2. You download the map. However, you don't have a good internet connection, so the download takes up 90 ticks during which other players have played on the game and have created other things
+3. Since you are 90 ticks behind the current state of the map, you cannot join the game. The server has however sent you every action done by players, so your client begins simulating the game and adds in the actions at the correct ticks. When the game is simulated to be at the same tick as the server's copy, you can finally join the game.
+
+There however is an issue at step 3. Sometimes, the progress bar called "catching up" will not move, but stay in the same place. The issue with that is that you are simulating the game at the same speed that the server is running it, so you can't ever catch up those 90 ticks. An analogy for this would be if you would be running on a track at the exact speed of 6km/h, but the track would be extended by 6km every hour, so you would never manage to finish running the track or reach the end of it, because you would be running at the same speed at which the track would be built. **An important thing to say is that catching up is not related to the network, you need to rather look at [potential hardware bottlenecks](#hardware-bottlenecks), which I will explain later.**
+
+Another thing from Ookla's speedtest is your ping (latency) to their datacenter. That is not always accurate in respect towards a Factorio server, as Factorio servers can be anywhere in the world, whilst Ookla connects you to your *closest* datacenter.
 
 ### Reliability
 
@@ -25,7 +46,7 @@ Your connection speed and latency is one thing. However, **network reliability c
 ![StarTrinity results for reference](StarTrinity.png)
 {% include image.html src="StarTrinity.png" alt="StarTrinity results for reference" }
 
-A way to fix
+A way to fix an unreliable internet connection is using wired ethernet rather than a wireless connection. Wired is much less prone to being unreliable, as the data is in the form of electricity and travels across a (usually) copper cable, but wireless can be blocked by concrete walls or metal reinforcements which are often in walls. If you really cannot stop using wireless, you should at least consider switching from 5G to 2.4G, as 5G has a much shorter range and is much more prone to being blocked by objects in the path of the airwaves than 2.4G is.
 
 ### Hardware Bottlenecks
 
@@ -36,6 +57,8 @@ A very important setting to see what is taking up CPU (FPS) time on your save is
 ### What to do about all of that?
 
 There are a few causes that I mentioned in the last paragraph, such as switching from nuclear to solar, that you can do yourself. However, some things just can't be done by you and must be done with commands. So, here is a selection of the ones that I thought were the most useful for uncontrollable things, such as pollution.
+
+The easiest solution to a friend not being able to catch up is simply pausing the game. That can be done by pressing `shift+space`. This is however often only temporary, as the game will still simulate after you unpause the game, so your friend's computer may not be able to keep up.
 
 If you have a lot of pollution in places and you are further into the game where biters are just an expansion nuisance, you can run this command:
 
@@ -77,8 +100,14 @@ It will disable biters from generating **only on your surface**, which by defaul
 If none of these work, the easiest resort to go to is reducing the game speed. Everything will run slower, but you will be able to play with your friends without them getting kicked off:
 
 ```lua
-/c game.speed = 0
+/c game.speed = 0.8
 ```
+This command slows down the game by changing it's speed (and thereby decreasing UPS). The default is 1, but you can go as low as 0.01, where pretty much nothing is happening. The best idea is to start going down from 1 in increments of 0.1 or 0.05, such as 0.9, 0.8, 0.7 etc. This command will globally reduce the game's speed, so there will be less updates per second to calculate. The UPS number in the corner of your screen will be multiplied from the base by this constant, in the way $1*60=60$, $0.8*60=48*$, $0.5*60=30$. 
 
 All of these have been sourced from the [Commands wiki page](https://wiki.factorio.com/Console) if you want to see more Lua magic. To run any command, simply copy it, open your chatbar and paste it in.
 
+### Optimization by Design
+
+Factorio is optimized by design and has always been. Therenas has dissected 1.1 performance upgrades [in his post](https://alt-f4.blog/ALTF4-15/#11-performance-improvements-therenas) and the Factorio devs have many more posts related to optimizing the game (all of the FFFs have been neatly categorized [here by spielsw](https://spieswl.github.io/blog/2020/seven-years-of-factorio-friday-facts), so you can easily find optimizations).
+
+You may have also noticed that I have not mentioned a way of how your GPU may be dropping you, even though the message at the top said "your computer". The reason is that Factorio doesn't care if your GPU is a 3090 Ti or just integrated graphhics, it will just tell it to "render stuff". If it won't render it, that's fine. You can always reduce your resolution or play around with the Factorio graphics settings which can give you an improvement.
