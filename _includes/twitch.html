@@ -10,7 +10,7 @@
 <p>
   <figure>
     {% if include.clip %}
-    <iframe src="https://clips.twitch.tv/embed?clip={{ include.clip }}&parent={{ include.parent | default: 'altf4.blog' }}" frameborder="0" allowfullscreen="true" scrolling="no" height="{{ include.height }}" width="{{ include.width }}" ></iframe>
+    <iframe src="https://clips.twitch.tv/embed?clip={{ include.clip }}&parent={{ include.parent | default: 'alt-f4.blog' }}" frameborder="0" allowfullscreen="true" scrolling="no" height="{{ include.height }}" width="{{ include.width }}" ></iframe>
     {% endif %}
     {% if include.caption %}
     <figcaption>{{ include.caption }}</figcaption>
