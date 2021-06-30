@@ -1,0 +1,21 @@
+{%- comment -%}<!--
+  Inputs:
+    - clip: Twithc Clip ID
+    - height: isn't it clear? 😉
+    - width: should be obvious. 😜
+    - caption: string containing caption text [optional]
+    - parent: parent domain [optional]
+{% include twitch.html clip='BashfulHelpfulSalamanderPrimeMe' caption='test' height='378' width='620' parent='netlify.app'%}
+  -->{%- endcomment -%}
+<p>
+  <figure>
+    {% if include.clip %}
+    <div class="yt twitch">
+    <iframe src="https://clips.twitch.tv/embed?clip={{ include.clip }}&parent={{ include.parent | default: 'alt-f4.blog' }}" frameborder="0" allowfullscreen="true" scrolling="no" max-height="{{ include.height }}" max-width="{{ include.width }}" ></iframe>
+    </div>
+    {% endif %}
+    {% if include.caption %}
+    <figcaption>{{ include.caption }}</figcaption>
+    {% endif %}
+  </figure>
+</p>
