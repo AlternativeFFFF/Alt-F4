@@ -4,7 +4,7 @@ The fastest Factorio singleplayer speedrunner in the world - at time of writing 
 
 It's no suprise then that Franqly was recently accepted to take part in the [Summer Games Done Quick](https://gamesdonequick.com/), or SGDQ for short, which is happening from the 4th to the 11th of July 2021. This event is an enormous yearly speedrunning marathon which showcases over [140 different runs](https://gamesdonequick.com/tracker/runs/SGDQ2021). Various big names in the speedrunning community such as [TheMexicanRunner](https://www.speedrun.com/user/themexicanrunner) and [mitchflowerpower](https://www.speedrun.com/user/mitchflowerpower) take part. And it's for a great and noble cause too! The goal of this marathon to raise funds for [Doctors Without Borders](https://www.doctorswithoutborders.org/), being its **largest fundraising event in the world!** Being accepted into SGDQ is no small feat either - this year the event received almost [2000 submissions](https://gamesdonequick.com/submission/all) of which only about 150 were selected to take part. Talented Factorio players had submitted their runs in the past, hoping to join this prestigeous event, but were denied because Factorio was not "officially released" yet.
 
-{% include map.html link='https://media.alt-f4.blog/ALTF4/40/franqly/index.html?x=21.2&y=144.9&z=3.4' caption='The base that Franqly launched a rocket from in under 90 minutes. A part of this base can also be seen in the unofficial Factorio <a href="https://mods.factorio.com/mod/HallOfFame">Hall of Fame</a>.' %}
+{% include map.html link='https://media.alt-f4.blog/ALTF4/40/franqly/index.html?x=21.2&y=144.9&z=2.0' caption='The base that Franqly launched a rocket from in under 90 minutes. A part of this base can also be seen in the unofficial Factorio <a href="https://mods.factorio.com/mod/HallOfFame">Hall of Fame</a>.' %}
 
 ### Speeding Through Factorio
 
@@ -19,8 +19,6 @@ However, even if the factory design is perfect, it will take even more time to p
 {% include twitch.html clip='GeniusStrongPeachMVGame-FoTU1sHX3_UzpcSk' caption='Legendary speedrunner <a href="https://www.twitch.tv/nefrums/">Nefrums</a> makes a tiny mistake that clogs a belt and ultimately costs him the run. Did you catch it?' height='378' width='620' parent='deploy-preview-512--elegant-fermi-d94da2.netlify.app' %}
 
 ### Who is Franqly
-
-{*conor please change code blocks into quotes. I have them as code to make it easier to read for now*}
 
 Now, who is Franqly? The speedrunning scene was dominated for a long time by names like AntiElitz, Nefrums, and Phoenix27833 - only to name a few. However, Franqly soon came around, and through practice and dedication he became one of the best. I reached out to him to ask him a few questions about his time in Factorio and how he managed to reach the top so fast after previously only speedrunning `The Legend of Zelda: Ocarina of Time` a few times. He was very gracious and gave us a glimpse into his speedrunning career.
 
