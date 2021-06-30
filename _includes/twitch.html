@@ -8,14 +8,14 @@
 {% include twitch.html clip='BashfulHelpfulSalamanderPrimeMe' caption='test' height='378' width='620' parent='netlify.app'%}
   -->{%- endcomment -%}
 <p>
-  <div class="yt">
-    <figure>
-      {% if include.clip %}
-      <iframe src="https://clips.twitch.tv/embed?clip={{ include.clip }}&parent={{ include.parent | default: 'alt-f4.blog' }}" frameborder="0" allowfullscreen="true" scrolling="no" max-height="{{ include.height }}" max-width="{{ include.width }}" ></iframe>
-      {% endif %}
-      {% if include.caption %}
-      <figcaption>{{ include.caption }}</figcaption>
-      {% endif %}
-    </figure>
-  </div>
+  <figure>
+    {% if include.clip %}
+    <div class="yt twitch">
+    <iframe src="https://clips.twitch.tv/embed?clip={{ include.clip }}&parent={{ include.parent | default: 'alt-f4.blog' }}" frameborder="0" allowfullscreen="true" scrolling="no" max-height="{{ include.height }}" max-width="{{ include.width }}" ></iframe>
+    </div>
+    {% endif %}
+    {% if include.caption %}
+    <figcaption>{{ include.caption }}</figcaption>
+    {% endif %}
+  </figure>
 </p>
