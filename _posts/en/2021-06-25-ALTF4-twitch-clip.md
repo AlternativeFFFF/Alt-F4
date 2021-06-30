@@ -7,9 +7,9 @@ title: "Alt-F4 #XX - Twitch clip"
 lang: en
 ---
 
-{% include twitch.html clip='BashfulHelpfulSalamanderPrimeMe' caption='test' height='378' width='620' parent='netlify.app'%}
+{% include twitch.html clip='BashfulHelpfulSalamanderPrimeMe' caption='test test test test test test test test test test test test test test test test ' height='378' width='620' parent='127.0.0.1' %}
 
-parent is used for testinng, removed before release
+parent is used for testing, removed before release
 
 ## one
 
