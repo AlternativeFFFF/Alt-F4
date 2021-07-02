@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-06-28T14:25:04+00:00</updated>
+  <updated>2021-07-02T09:15:18+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #40 - 向慈善曲速前进</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-40/" />
+    <id>https://alt-f4.blog/ALTF4-40</id>
+    <updated>2021-07-02T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;经过半故意的两周仲夏休刊，Alt-F4 带着第 40 期中光荣回归。本期中，最受粉丝们喜爱的编辑 &lt;em&gt;stringweasel&lt;/em&gt; 又做了一期 Nauvis 相关的采访，即全新的一期 Nauvis 有约。这一次，他采访了 &lt;em&gt;Franqly&lt;/em&gt;，一位将首次代表异星工厂参加夏季游戏速通大会慈善活动的速通玩家。活动详情参见本期末尾！&lt;/p&gt; &lt;h2 id=&quot;nauvis-有约franqly-stringweasel&quot;&gt;Nauvis 有约：Franqly &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;世界上最快的异星工厂单人速通玩家——截至撰稿时——是一位名叫 Franqly 的新玩家。他是最近才加入异星工厂速通社区的，自去年 10 月于 &lt;a href=&quot;https://www.speedrun.com/user/Franqly&quot;&gt;speedrun.com&lt;/a&gt;上发表了其首个速通成绩算起。然而现在他已经超过了 AntiElitz 和 Nefrums 等传奇人物，并且是唯一一个在 &lt;a href=&quot;https://www.speedrun.com/factorio/run/y2xelq5m&quot;&gt;90 分钟内&lt;/a&gt;单人打通异星工厂的玩家。在你看蜜蜂总动员的时间内，他可以完成从坠落在 Nauvis 到发射火箭的所有工作。&lt;/p&gt; &lt;p&gt;因此，Franqly 最近由&lt;a href=&quot;https://gamesdonequick.com/&quot;&gt;夏季游戏速通大会&lt;/a&gt;简称 SGDQ 录取，将参加于 2021 年 7 月 4 日至 11 日举行的活动。该活动是一场大规模的年度速通马拉松，展示了超过 &lt;a href=&quot;https://gamesdonequick.com/tracker/runs/SGDQ2021&quot;&gt;140 种不同的通关流程&lt;/a&gt;。速通界的各种大人物，如 &lt;a href=&quot;https://www.speedrun.com/user/themexicanrunner&quot;&gt;TheMexicanRunner&lt;/a&gt; 和...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-31</id>
     <updated>2021-04-16T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;经过一周的短休，Alt-F4 带着第 31 期又回来了。本期中，&lt;em&gt;pocarski&lt;/em&gt; 又谈到了更多在异星工厂中构建计算机逻辑的方法，这次的主题是运算器，你能发现它的使用比你想象的要简单得多。之后，&lt;em&gt;Big Community Games&lt;/em&gt; 宣布了他们下一个激动人心的活动，这次将围绕着工业革命而展开。&lt;/p&gt; &lt;h2 id=&quot;运算器以及为什么你无需畏惧它们-pocarski&quot;&gt;运算器以及为什么你无需畏惧它们 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在科技树中，有很多技术并不是完成游戏所必需的，因此经常被排挤。有些是可以理解的，例如和平模式下的军事科技。而另一些尽管能够提供非凡的改进但也不被考虑。信号网络就是这样一种技术，这将是我在本文中探讨的内容。&lt;/p&gt; &lt;p&gt;信号网络主要有四部分组成：线缆、常量运算器、判断运算器和算术运算器。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/31/combinators.jpg&quot; alt=&quot;用线缆连接的 3 种运算器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;常量运算器持续输出你设定的任何信号（也无需供电）；判断运算器在满足某个逻辑条件时输出一些信号；算术运算器进行数学运算。线缆的作用就像一种“信号云”，所有输出到线缆上的信号都可以被连接到线缆上的所有东西读取。红线和绿线的功能相同，但可以连接到同一个设备上，而不会相互干扰。&lt;/p&gt; &lt;h3 id=&quot;基本元素&quot;&gt;基本元素&lt;/h3&gt; &lt;p&gt;我们来看看三个非常简单且有着广泛应用的单运算器模块。这些模块分别是：脉冲发生器、RS 锁存器和计数器。我们先从脉冲发生器说起，它长这个样子：&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/31/monostable.jpg&quot; alt=&quot;用算术运算器制作的脉冲发生器&quot; style=&quot;max-width: ;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #30 - Nauvis 有约：Zisteau</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-30/" />
-    <id>https://alt-f4.blog/ALTF4-30</id>
-    <updated>2021-04-02T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;跨入了以 3 开头的数字领域，在第 30 期中 stringweasel 给 Alt-F4 带来了一点新的形式：采访，算是一个采访。他和 YouTube 上的名人 Zisteau 聊了聊他对我们这个游戏中各种话题的看法。&lt;/p&gt; &lt;h3 id=&quot;nauvis-有约zisteau-stringweasel&quot;&gt;Nauvis 有约：Zisteau &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h3&gt; &lt;p&gt;谈到异星工厂，我们会想到很多知名人士。多年来，这些伟大的玩家创造了令人惊叹的内容和造物，并向更多人介绍了我们热爱的这款游戏。纪念这些玩家的一个好方法，也作为让我能与这些玩家交谈的借口，就是采访。因此，我们开始了一个新的系列文章（希望如此！）——Nauvis 有约。首先，我想谈谈一个长期帮助异星工厂及其社区的名字，名叫 &lt;a href=&quot;https://www.youtube.com/user/Zisteau&quot;&gt;Zisteau&lt;/a&gt; 的 YouTuber。我联系了他，询问能否问他几个问题，回答是“当然可以”。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: 640px; max-height: &quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/30/zisteau-picture.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source...</content>
   </entry>
   
   

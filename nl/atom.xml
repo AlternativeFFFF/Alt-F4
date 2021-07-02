@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/nl/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-06-28T14:25:04+00:00</updated>
+  <updated>2021-07-02T09:15:18+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #40 - Warp Speed for Charity</title>
+    <link href="https://alt-f4.blog/nl/ALTF4-40/" />
+    <id>https://alt-f4.blog/ALTF4-40</id>
+    <updated>2021-07-02T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;After a semi-intentional two-week mid-summer break, Alt-F4 makes its glorious return with issue #40. In it, fan-favorite and editor extraordinaire &lt;em&gt;stringweasel&lt;/em&gt; does another one of his interviews that gets us some perspective on a Nauvis-related topic. A Nauvian Perspective, if you will. This time, he talked to &lt;em&gt;Franqly&lt;/em&gt; who’ll be...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-31</id>
     <updated>2021-04-16T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;After a quick one-week break, Alt-F4 is back with issue #31. In it, &lt;em&gt;pocarski&lt;/em&gt; returns to talk about yet more ways to build computer logic in Factorio, featuring combinators this time, which turn out to be simpler to use than you’d think! Afterwards, &lt;em&gt;Big Community Games&lt;/em&gt; announce another exciting event...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #30 - The Nauvian Perspective: Zisteau</title>
-    <link href="https://alt-f4.blog/nl/ALTF4-30/" />
-    <id>https://alt-f4.blog/ALTF4-30</id>
-    <updated>2021-04-02T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Crossing into the realm of numbers that start with a three, issue #30 has stringweasel bringing a bit of a new format to Alt-F4: an interview, sort of. He talked to YouTube famous person Zisteau about his perspective on various topics relating to this game of ours.&lt;/p&gt; &lt;h3 id=&quot;the-nauvian-perspective-zisteau-stringweasel&quot;&gt;The Nauvian...</content>
   </entry>
   
   
