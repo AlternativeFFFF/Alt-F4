@@ -97,7 +97,7 @@ If none of these work, the easiest resort to go to is reducing the game speed. E
 /c game.speed = 0.8
 ```
 
-This command slows down the game by changing its speed (and thereby decreasing UPS). The default is 1, but you can go as low as 0.01, where pretty much nothing is happening. The best idea is to start going down from 1 in increments of 0.1 or 0.05, such as 0.9, 0.8, 0.7 etc. This command will globally reduce the game's speed, so there will be less updates per second to calculate. The UPS number in the corner of your screen will be multiplied from the base by this constant, in the way $1*60=60$, $0.8*60=48*$, $0.5*60=30$.
+This command slows down the game by changing its speed (and thereby decreasing UPS). The default is 1, but you can go as low as 0.01, where pretty much nothing is happening. The best idea is to start going down from 1 in increments of 0.1 or 0.05, such as 0.9, 0.8, 0.7 etc. This command will globally reduce the game's speed, so there will be less updates per second to calculate. The UPS number in the corner of your screen will be multiplied from the base by this constant, in the way $ 1 \cdot 60 = 60 $, $ 0.8 \cdot 60 = 48 $, $ 0.5 \cdot 60 = 30 $.
 
 All of these have been sourced from the [Commands wiki page](https://wiki.factorio.com/Console) if you want to see more Lua magic. To run any command, simply copy it, open your chatbar and paste it in.
 
