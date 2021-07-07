@@ -1,7 +1,6 @@
 ## Quick Performance Check <author>oof2win2</author>
 
-![Image of a dropped connection](dropped.png)
-{ % include image.html src="dropped.png" alt="Image of the player being dropped from the game" }
+{% include image.html src="https://media.alt-f4.blog/ALTF4/41/dropped.jpg" alt="Image of the player being dropped from the game" %}
 
 If you don't have a state-of-the-art computer, you probably have seen a message like this saying that you were dropped from the game because your network or computer was not fast enough. Well, what does that actually mean? What can you do about it in the short and long term?
 
@@ -15,13 +14,11 @@ The fact that UDP removes the guarantee of delivering data however directly cont
 
 UDP is also very important because it allows NAT punching to work. NAT punching is the process of your client asking an external server ([Pingpong server](https://www.factorio.com/blog/post/fff-143), which is a server hosted by Factorio that serves just this purpose) to tell the Factorio game server to establish a connection with your client, because some routers and firewalls may block "random" connections from IPs that you have not requested anything from, which is good for preventing someone from brute-forcing your computer, but is also an obstacle for the Factorio developers.
 
-![NAT Punching illustation](https://cdn.factorio.com/assets/img/blog/fff-143-connection-request.png)
-{% include image.html src="https://cdn.factorio.com/assets/img/blog/fff-143-connection-request.png" alt="NAT Punching illustation" }
+{% include image.html src="https://media.alt-f4.blog/ALTF4/41/connect-request.png" alt="NAT Punching illustation" %}
 
 Now, let's try fixing the problem of Factorio dropping you from the game. First, you can try a quick speed test to check whether your network is fast enough using sites such as [Ookla's Speedtest](https://speedtest.net) or [fast.com (Netflix)](https://fast.com). Both sites will measure similar data, so pick your poison. There are however three things that matter (referencing Ookla's Speedtest): download speed, upload speed, and latency.
 
-![Speedtest.net result for reference](SpeedtestResult.png)
-{% include image.html src="SpeedtestResult.png" alt="Speedtest.net result for reference" }
+{% include image.html src="https://media.alt-f4.blog/ALTF4/41/SpeedtestResult.jpg" alt="Speedtest.net result for reference" %}
 
 For Factorio, your download and upload speeds don't need to be very high, as the map (savefile) is sent over to you when you connect to a server. The speed of the map downloading depends on your download speed and the server's upload speed; you can't download something faster than it is being uploaded. Generally, savefiles are within 50MB (if you don't run with seriously modded games), so on an [average connection](https://www.speedtest.net/global-index), a save would be downloaded within 15 seconds. It doesn't really matter how fast a save downloads though, since it is just a file transfer in the end. The speed of your download does however affect for how many [ticks](https://wiki.factorio.com/Time#Ticks) you will be catching up (the part of loading the map after you download it). Generally speaking, anything *should* be fine, but mileage may vary.
 
@@ -39,8 +36,7 @@ Another thing from Ookla's speedtest is your ping (latency) to their datacenter.
 
 Your connection speed and latency is one thing. However, **network reliability can be far more important**. An analogy for poor network reliability is if someone sends you 100 messages but only 10 of them actually arrive to you (that would be considered 90% [packet loss](https://en.wikipedia.org/wiki/Packet_loss) in networking terms). Network reliability can vary, such as one day, your packets may be travelling properly, whilst another day, a [shark may be eating up your data](https://www.youtube.com/watch?v=VVJlKJi9FWU). Network reliability can be measured on the commandline with the `ping` command or using software such as [StarTrinity's Constant Speed Test](http://startrinity.com/InternetQuality/ContinuousBandwidthTester.aspx), which is much more user-friendly and can display some extra data. For example in the image below, you can see that downloading has failed multiple times and this was due to an unreliable internet connection (turned off internet can simulate that). In reality, your result could be different. In any way, StarTrinity's speed test is also a good way to find the best spot for WiFi speeds and reliability.
 
-![StarTrinity results for reference](StarTrinity.png)
-{% include image.html src="StarTrinity.png" alt="StarTrinity results for reference" }
+{% include image.html src="https://media.alt-f4.blog/ALTF4/41/StarTrinity.jpg" alt="StarTrinity results for reference" %}
 
 A way to fix an unreliable internet connection is using wired ethernet rather than a wireless connection. Wired is much less prone to being unreliable, as the data is in the form of electricity and travels across a (usually) copper cable, but wireless can be blocked by concrete walls or metal reinforcements which are often in walls. If you really cannot stop using wireless, you should at least consider switching from 5G to 2.4G, as 5G has a much shorter range and is much more prone to being blocked by objects in the path of the airwaves than 2.4G is.
 
