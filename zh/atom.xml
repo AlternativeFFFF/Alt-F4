@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-02T14:28:54+00:00</updated>
+  <updated>2021-07-09T09:55:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #41 - Title loading, please stand by ...</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-41/" />
+    <id>https://alt-f4.blog/ALTF4-41</id>
+    <updated>2021-07-09T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week, for issue #41, &lt;em&gt;oof2win2&lt;/em&gt; returns with a somewhat more technical article about what exactly can go wrong when trying to connect to multiplayer games and how to potentially solve these issues. If you’ve ever wondered why Factorio wouldn’t let you join your friends’ multiplayer game, this article might...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-32</id>
     <updated>2021-04-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;欢迎来到鲨鱼游弋的第 2⁵ 期 Alt-F4。在这个危险水域中，&lt;em&gt;The-Kool&lt;/em&gt; 在最新一集的复杂角中指导我们用好扬声器，比如用作鲨鱼警告系统！然后，&lt;em&gt;Hornwitser&lt;/em&gt; 用 Wireshark 进行了一些真正的捕鲨活动，讲述了他如何追踪游戏中遇到的网络问题的故事。拿起鱼叉，跳下水吧！&lt;/p&gt; &lt;h2 id=&quot;复杂角扬声器-the-kool&quot;&gt;复杂角：扬声器 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到复杂角，在这里我们将对游戏中较少使用或较复杂的机制进行梳理，为不熟悉这些机制的人做个介绍。在这篇文章中，我们将提出三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”。&lt;/p&gt; &lt;h3 id=&quot;它是什么&quot;&gt;它是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Programmable_speaker/zh&quot;&gt;程控扬声器&lt;/a&gt;是个只占一格“建筑”。当连接到一个电路时，它可以根据该电路上的信号发出你将在游戏中听到的声音。你可以调整音量，为它选择一个特定的声音，告诉它无论你在多远的地方都能听到，甚至在地图上显示一个自定义警报。扬声器是通过电路技术解锁的，这在科技树中是如此之早甚至可能是你的第一个绿色科技。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/32/speaker.jpg&quot; alt=&quot;程控扬声器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;它矗立与此，沐浴在荣光之中。来源：&lt;a href=&quot;https://wiki.factorio.com/File:Programmable_speaker_entity.png&quot;&gt;异星工厂 Wiki&lt;/a&gt;。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;它能提供什么效果&quot;&gt;它能提供什么效果？&lt;/h3&gt; &lt;p&gt;它能响！好吧，这句话有点废话。虽然扬声器因为用它们建造的&lt;a href=&quot;https://miditorio.com/&quot;&gt;乐器&lt;/a&gt;而闻名，但也有着一些实际用途。如果你把扬声器连接到你的工厂，并设置全局播放和警报图标，你就可以为任何事情设计自定义警报。你可以（而且应该！）给它一个自定义的图标和名字，因为你绝对会忘记这个响亮的警报器是用来干什么的。这是一个在整个工厂广播警报的简单方法，能够帮助你在小麻烦变成真正的大问题之前抓住警告信号。&lt;/p&gt; &lt;h3 id=&quot;它应该用在哪里&quot;&gt;它应该用在哪里？&lt;/h3&gt; &lt;p&gt;你是否曾经历过意外的电力不足，使你的煤矿采矿机放慢速度，导致你的锅炉燃料不足，最终进入停电的螺旋？试着在通往锅炉的运煤传送带旁放一个扬声器，用一根线缆将它与运煤带连接起来。一格完整的传送带可容纳 8 件物品，所以如果你将扬声器设置为在少于...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #31 - 运算器速成班</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-31/" />
-    <id>https://alt-f4.blog/ALTF4-31</id>
-    <updated>2021-04-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;经过一周的短休，Alt-F4 带着第 31 期又回来了。本期中，&lt;em&gt;pocarski&lt;/em&gt; 又谈到了更多在异星工厂中构建计算机逻辑的方法，这次的主题是运算器，你能发现它的使用比你想象的要简单得多。之后，&lt;em&gt;Big Community Games&lt;/em&gt; 宣布了他们下一个激动人心的活动，这次将围绕着工业革命而展开。&lt;/p&gt; &lt;h2 id=&quot;运算器以及为什么你无需畏惧它们-pocarski&quot;&gt;运算器以及为什么你无需畏惧它们 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在科技树中，有很多技术并不是完成游戏所必需的，因此经常被排挤。有些是可以理解的，例如和平模式下的军事科技。而另一些尽管能够提供非凡的改进但也不被考虑。信号网络就是这样一种技术，这将是我在本文中探讨的内容。&lt;/p&gt; &lt;p&gt;信号网络主要有四部分组成：线缆、常量运算器、判断运算器和算术运算器。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/31/combinators.jpg&quot; alt=&quot;用线缆连接的 3 种运算器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;常量运算器持续输出你设定的任何信号（也无需供电）；判断运算器在满足某个逻辑条件时输出一些信号；算术运算器进行数学运算。线缆的作用就像一种“信号云”，所有输出到线缆上的信号都可以被连接到线缆上的所有东西读取。红线和绿线的功能相同，但可以连接到同一个设备上，而不会相互干扰。&lt;/p&gt; &lt;h3 id=&quot;基本元素&quot;&gt;基本元素&lt;/h3&gt; &lt;p&gt;我们来看看三个非常简单且有着广泛应用的单运算器模块。这些模块分别是：脉冲发生器、RS 锁存器和计数器。我们先从脉冲发生器说起，它长这个样子：&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/31/monostable.jpg&quot; alt=&quot;用算术运算器制作的脉冲发生器&quot; style=&quot;max-width: ;...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-02T14:28:54+00:00</updated>
+  <updated>2021-07-09T09:55:31+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°41 - Chargement du titre, veuillez patienter...</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-41/" />
+    <id>https://alt-f4.blog/ALTF4-41</id>
+    <updated>2021-07-09T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Cette semaine, pour le numéro 41, &lt;em&gt;oof2win2&lt;/em&gt; est de retour avec un article un peu plus technique sur ce qui peut mal se passer quand on essaie de se connecter à des parties multijoueur et comment il est parfois possible de résoudre ces problèmes. Si vous vous êtes déjà demandé...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-32</id>
     <updated>2021-04-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Bienvenue dans le numéro 2⁵ de Alt-F4, rempli de requins. Dans ces eaux dangereuses, &lt;em&gt;The-Kool&lt;/em&gt; nous guide pour que les haut-parleurs soient utilisés à bon escient, peut-être même comme un système d’alerte aux requins, dans le dernier épisode du Coin de la complexité ! Ensuite, &lt;em&gt;Hornwitser&lt;/em&gt; se lance dans une...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°31 - Cours express sur les circuits logiques</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-31/" />
-    <id>https://alt-f4.blog/ALTF4-31</id>
-    <updated>2021-04-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Après une courte pause d’une semaine, Alt-F4 est de retour avec le numéro 31. &lt;em&gt;pocarski&lt;/em&gt; est de retour pour nous parler d’autres façons de construire une logique de calcul dans Factorio, cette fois en utilisant les circuits logiques. Ces derniers s’avèrent être plus simples à utiliser que vous ne le...</content>
   </entry>
   
   
