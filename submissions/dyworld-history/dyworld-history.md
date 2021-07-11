@@ -1,55 +1,49 @@
 # DyWorld-Dynamics and it's history <author>Dysoch</author>
 
-## Learning to code ##
-Hello everybody, my name is Dysoch. I am a Factorio modder for about 8-9 years now. The first mod I ever released was DyTech which was for Factorio 0.7 and 0.8. 
-I had just started modding at that point, and my mod was not pretty. Missing technologies, weird balancing. Basically, I had no idea what I was doing. DyTech just had extra things like higher tiers of solar panels, assembling machines, transport belts, etc. I wrote everything by hand, it was tedious, horrible and a lot of fun to do.
+Hello everybody, my name is Dysoch. In this article I will write a bit about my history with modding Factorio, why I am doing it and what is coming. So, lets get to the history
 
-Eventually I came into contact with a person on forum called FreeER. He helped me create scripts and taught me how they worked. This gave me a lot of idea's, and I started to rewrite DyTech
+## History ##
+When I bought Factorio, I was already playing it for a year, but officialy bought it when Factorio 0.7 was in development. I simply loved the game, but felt it could be better. So I started modding. I had no idea what I was doing, but luckily a nice guy by the name of FreeER came to aid me, and learned me to code properly. I had several breaks over the years where I was burned out on modding or had too much to do in my life, but I always have an itch to come back.
 
-## DyTech-Dynamics ##
-I started to work on a mod alongside DyTech, called DyTech-Dynamics. This mod was basically a random mod. Every scripted idea I had, went into this. A different way to research, random power failures, random damages of machines etc. This was a made very clunky, but it served a purpose. This allowed me to learn to write codes and scripts better.
-And while I did all that, I kept working on DyTech as well, and writing more stuff into it. It had basically already become a major overhaul that worked together with F-Mod (from Ficolas)
+When I started to mod, there was only 1 major overhaul mod, called F-Mod. I wanted to have the same as that mod, and started. It was clunky in the beginning, but eventually DyTech touched every aspect of the game. I rewrote it several times under somewhat the same name, but the content stayed mostly the same. By rewriting, I learned to code it better, easier to read and edit things. I always had several ideas that were a little out of reach for me, but I always strived to make planets into Factorio since I started modding. Luckily Earendel did that now, and I can work on other projects
 
-## The next step ##
-I had learned so much over a year since I started modding, and thus I rewrote DyTech again. I started with many sub mods (like Bob's mods), and thus DyTech 3 was born, called [Core]-DyTech. I wrote many [Main] mods ([Main]-DyTech-Logistics, [Main]-DyTech-Assembling, [Main]-DyTech-Power) but I focused on 2 of them:
+The DyTech was very populair back in the day. I even played together a few times with Xterminator and Oninaig while they were doing a lets play on Youtube. After a few years (Factorio 0.15) I started to work on the next step of DyTech, DyWorld. A major rewrite after 2 years of no modding, to fit DyTech better into the ever evolving Factorio. I made great strides, and worked on it till just before Factorio 1.0.0. Several content creators played it on Youtube:
+[KatherineOfSky DyWorld Playthrough](https://www.youtube.com/playlist?list=PL4o6UvJIdPNqubR5oXdx9SqKFoYW_SL-q)
+[Nexxus Gaming DyWorld Playthrough](https://www.youtube.com/watch?v=Eqs8dakCzL8&list=PLXEOcXLt0r4RxjOgak-BRzO8PMoMnqnoy)
+[Lumatan DyWorld Playthrough (German)](https://www.youtube.com/watch?v=eH6lu5N-oPQ&list=PLEui1S1GUHOMKnVrLjgybKRKzBNMIHTfk)
 
-### [Main]-DyTech-Warfare ###
-This started to get my main focus. I really loved the automation aspect of the game, but always felt the fighting part was a bit stale. So I worked on making the natives a lot harder, add fun mechanics into it, a lot more enemies etc. This was fun, but some people didn't like it, which they can of course, but it seemed to lose interest from the players. So I shifted my attention into the next mod:
+About august of last year my itch to mod was back, bigger then before. I decided to rewrite the mod, and add the content of the mod around 1 very specific thing in mind: A story. Thus I rewrote DyWorld into DyWorld-Dynamics.
+But it is now almost a year later, and it is still not released. Well, due to some personal issues I could not do anything a few months. When that was taken care of, I returned to keep working on it. And now it is getting closer to release. Adding in content around a story is much more work then I previously anticipated, but it is fun to do. Luckily I have several beta testers to help me take care of issues while I write everything.
 
-### [Secondary]-DyTech-Dynamics and [Secondary]-DyTech-World###
-This mod featured a lot random things. Things from tools like Tinkers Constructs from Minecraft, to a different way to research based on stuff done, random power failures, etc. It was a lot of fun to make, but took ages. I worked on this so much, that I started to work less on DyTech it self, and eventually I burned out on modding
+## The Story ##
 
-## DyTech 4 ##
-After a 1,5 year break in modding I came back with new ideas. I rewrote the code again turning DyTech into the 4th version, DyTech 4. This happened really quick, since I knew how to script now, so I made the entire mod script generated.
-This made sure I could write quick, and implement my ideas quickly. This worked great, untill my real life became hectic and I left again
+This is my main focus of DyWorld-Dynamics. I wrote everything with the story elements in mind, but it will work without it as well. What is the story about?
 
-## DyWorld ##
-The time in Factorio is now version 0.15, I came back after 2 years since I last rewrote DyTech and I went into a complete rewrite mode. New name, new everything. This took months to create, but the result was highly loved by some people. A few content creators played and liked it. ([KoS DyWorld Playthrough](https://www.youtube.com/playlist?list=PL4o6UvJIdPNqubR5oXdx9SqKFoYW_SL-q))
-I worked a lot on this, and then 0.18 came, worked on it some more, and then left again for about a year. In this time, factorio released 1.0, but my life was hectic (once again)
+The story starts with crash landing on a desolate planet, filled with weird flora and fauna. You have no idea how you got there and where you are. As the story progresses, you name the planet, find out why you crash landed there, learn about other planets and move there and find an epic conclussion of the story.
 
-# DyWorld-Dynamics #
-About august of last year my itch to mod was back, bigger then before. I started on the next rewrite. I rewrote DyWorld into DyWorld-Dynamics, with 1 very specific thing in mind: A story.
-I am creating a story mode into a game about automation, I must be crazy right? Well I am, but it turned out to be so much fun to do and create. But it is now almost a year later, and it is still not released. Well, due to covid-19, I lost my job, and had to focus on keeping my life in order to be able to live normally. When that was taken care of, I returned to keep working on it. And now it is getting closer to release. So lets talk about what is in this mod:
+This is what will be available once it publicly releases. 3 Acts of story, with multiple objectives. the first 2 acts will learn you the basic mechanics of DyWorld-Dynamics with its complex recipes, and act 3 will completly focus on the story element that you can check out on your own pace
 
-> A fun, exciting, and long story:
+The mod does require a few other mods though, most notable are Nanobots and Space Exploration, since they are now required for the story. Most overhaul mods will be incompatible. Smaller mods will be compatible, but this requires testing, and you can ask for that on my [Discord](https://discord.gg/yR5vBWy).
 
-This is the main part of DyWorld-Dynamics. The story is all I work on. Everything I add in, is made for the story. The story consists of 5 acts, each with multiple phases. Currently 2 acts are done (about 21 phases total), and I am now working on the third act. (about 50 phases, very large story arc)
+## Complex mechanics ##
 
-> Other Mods:
+There are several mechanics added into DyWorld-Dynamics, such as an Survival system that increases player bonuses (such as mining speed, building reach etc) based on what you do, food and water usage, implant usage, scripted attacks and many more.
+Recipes are fun and complex as well, feedback loops, science packs creation with actual fluids, space mining, tree farming, agriculture and so much more. This will all tie nicely into Space Exploration, while keeping it intact the cool way it is.
 
-I had several idea's for the story, but rather then writing them all myself, I decided to use other mods as required. This list is slowly growing, but the largest of these is Space Exploration by Earendel. The story will span across multiple planets. 
-Adding in compatibility with Space Exploration took a long while. So many little things to fix, making sure not to destroy the progression of Space Exploration, etc. Well, this is almost done, so a public release is within 1,5 month away
+## Release Date ##
 
-> Complex, but fun mechanics
+Currently work is hard under way to get the mod ready. Many small things still have to be done, but it will be ready soon. Since KatherineOfSky played a concept of [DyWorld-Dynamics](https://www.youtube.com/playlist?list=PL4o6UvJIdPNp1ca01l6rci52uIL6oWYWN) when it was just starting, she will have exclusivity to play it publicly before anybody else. I am currently aiming to get the finished mod her on 30th of July. This is still an estimate, but I think I can manage that. Once she has it, a public release a only 1-2 weeks after that.
 
-DyWorld, and its previous iterations, always had somewhat of a RPG system built in. This increases player bonuses and allows you to become stronger the more you do. This is back in, but greatly expanded and actually fully incorporated into the story. Other mechanics are fluid creating recipes for science packs, complex feedback loops, and many more.
-The first 2 acts of the story help you progress, and will tell you how to get into this. The third act wil let this go, and you will be on your own (well, Multiplayer is fully supported, so no need to be alone)
+As for right now, I will leave you with the start of the story, and I hope to see you all playing DyWorld-Dynamics once it releases:
 
-> How to help?
+## Commanders Log ##
 
-Currently I am running a closed beta test for balancing purposes, and I can require a lot of help with this. You can help there, and info about that can be found on the [DyWorld Discord](https://discord.gg/yR5vBWy).
-Before you do this, be sure to check out another playlist from KatherineOfSky, which had a first look at the concept of a [DyWorld-Dynamics Playthrough](https://www.youtube.com/playlist?list=PL4o6UvJIdPNp1ca01l6rci52uIL6oWYWN)
+> Personal Log #1
 
-> When can I play this?
+> Location: Unknown
 
-Currently the release date of DyWorld-Dynamics is set to July 26th 2021, BUT this is an estimate. It can be later, but I am doing my best to reach for this. 
+> I have crash landed on a planet. All my instruments are dead, power to the ship is completely fried and on fire with explosions. I have no idea what happened to me, my ship or crew. One moment I was flying to Saturn to visit some family in the space station, the next I was flying like a fireball above some weird terrain. The crash was hard, destroyed the ship and killed all the crew except me. Luckily I found some materials that I can build with. My degree in engineering and designing will certainly help me there.
+
+> When I was going down towards this planet, I could see some things. There is so much life here! I could see trees, bushes and even some walking creatures. They all seemed different, but it was hard to see. Could have also sworn that I saw some ruins, but it went by so fast, so I am not completely sure.
+
+> There are plenty of metals around, so should be able to construct something to send for help. It will probably take a while, since I have almost nothing to start with. A scan around my ship shows no immediate signs of life, so I might be safe for a while. Still, should prepare for the worst, those creatures might not be friendly. I also have no food and water, so my first priority should be to sort this out. Luckily I found a basic gun in the ship with some ammo, so I can defend myself if I need to. This planet spins quite fast, so days and night are short, and the gravity is stronger then I am used too. This means I have to regain my strength slowly again. Well, lets get to work, I want to get off this planet as soon as I possible can!
