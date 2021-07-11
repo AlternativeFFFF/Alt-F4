@@ -8,8 +8,8 @@ When I bought Factorio, I was already playing it for a year, but officialy bough
 When I started to mod, there was only 1 major overhaul mod, called F-Mod. I wanted to have the same as that mod, and started. It was clunky in the beginning, but eventually DyTech touched every aspect of the game. I rewrote it several times under somewhat the same name, but the content stayed mostly the same. By rewriting, I learned to code it better, easier to read and edit things. I always had several ideas that were a little out of reach for me, but I always strived to make planets into Factorio since I started modding. Luckily Earendel did that now, and I can work on other projects
 
 The DyTech was very populair back in the day. I even played together a few times with Xterminator and Oninaig while they were doing a lets play on Youtube. After a few years (Factorio 0.15) I started to work on the next step of DyTech, DyWorld. A major rewrite after 2 years of no modding, to fit DyTech better into the ever evolving Factorio. I made great strides, and worked on it till just before Factorio 1.0.0. Several content creators played it on Youtube:
-[KatherineOfSky DyWorld Playthrough](https://www.youtube.com/playlist?list=PL4o6UvJIdPNqubR5oXdx9SqKFoYW_SL-q)
-[Nexxus Gaming DyWorld Playthrough](https://www.youtube.com/watch?v=Eqs8dakCzL8&list=PLXEOcXLt0r4RxjOgak-BRzO8PMoMnqnoy)
+[KatherineOfSky DyWorld Playthrough](https://www.youtube.com/playlist?list=PL4o6UvJIdPNqubR5oXdx9SqKFoYW_SL-q), 
+[Nexxus Gaming DyWorld Playthrough](https://www.youtube.com/watch?v=Eqs8dakCzL8&list=PLXEOcXLt0r4RxjOgak-BRzO8PMoMnqnoy), 
 [Lumatan DyWorld Playthrough (German)](https://www.youtube.com/watch?v=eH6lu5N-oPQ&list=PLEui1S1GUHOMKnVrLjgybKRKzBNMIHTfk)
 
 About august of last year my itch to mod was back, bigger then before. I decided to rewrite the mod, and add the content of the mod around 1 very specific thing in mind: A story. Thus I rewrote DyWorld into DyWorld-Dynamics.
