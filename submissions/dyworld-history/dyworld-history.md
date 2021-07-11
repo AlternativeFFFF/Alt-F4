@@ -32,7 +32,7 @@ Recipes are fun and complex as well, feedback loops, science packs creation with
 
 ## Release Date ##
 
-Currently work is hard under way to get the mod ready. Many small things still have to be done, but it will be ready soon. Since KatherineOfSky played a concept of [DyWorld-Dynamics](https://www.youtube.com/playlist?list=PL4o6UvJIdPNp1ca01l6rci52uIL6oWYWN) when it was just starting, she will have exclusivity to play it publicly before anybody else. I am currently aiming to get the finished mod to her on 30th of July. This is still an estimate, but I think I can manage that. Once she has it, a public release a only 1-2 weeks after that.
+Currently work is hard under way to get the mod ready. Many small things still have to be done, but it will be ready soon. Since KatherineOfSky played a concept of [DyWorld-Dynamics](https://www.youtube.com/playlist?list=PL4o6UvJIdPNp1ca01l6rci52uIL6oWYWN) when it was just starting, she will have exclusivity to play it publicly before anybody else. I am currently aiming to get the finished mod to her on 30th of July. This is still an estimate, but I think I can manage that. Once she has it, a public release is only 1-2 weeks after that.
 
 As for right now, I will leave you with the start of the story, and I hope to see you all playing DyWorld-Dynamics once it releases:
 
