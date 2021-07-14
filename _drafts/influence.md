@@ -24,7 +24,7 @@ These are some of the most important similarities between the three games. There
 
 Speaking of scenario, there is a forth game with this scenario, with a similar theme of multiple, small planets, with a great rating, with the “automation” tag on steam, and it is arguably even more popular than the other three games: [ASTRONEER](https://store.steampowered.com/app/361420/ASTRONEER/). Why didn’t I mention it before? It certainly has a similar scenario, you can automate large parts of your production, and so on.
 
-Let’s get back to the previous article, what does automation even mean, how can it be defined?:
+Let’s get back to the previous article, what does automation even mean?
 
 {% include quote.html text='One could loosely define automation as “making stuff that makes stuff”' author='Nano' %}
 
