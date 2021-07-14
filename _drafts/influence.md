@@ -4,24 +4,17 @@ A few months ago (in [issue #34](https://alt-f4.blog/ALTF4-34/)) I tried to find
 
 ### Part 1: The Big Three
 
-![](media/spaghetti.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/42/spaghetti.jpg' alt='Spaghetti in automation games.' %}
 
 When you ask someone to name some automation games other than Factorio, the most common response you’ll get are Satisfactory and Dyson Sphere Program. Together with Factorio, they are even regarded as the (un-)holy trinity of automation [by some players](https://discord.com/channels/745990677606826005/747187151841788078/836702997357920308). But what makes these games stand out from the rest (apart from their rating, the highest among all games [on Steam](https://steamdb.info/tag/255534/) with the “automation” tag)?
 
-![The top rated games on [steamdb](steamdb.info) with the automation tag](media/ratings.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/42/ratings.jpg' alt='Screenshot of SteamDB showing Factorio 1st, DSP 2nd and Satisfactory 3rd' caption='The top rated games on <a href="https://steamdb.info/">steamdb</a> with the automation tag' %}
 
 - All three games are set in an open world and you, the player, are an entity in it, building the factory. Neither of these are required for automation, as for example [shapez.io](https://store.steampowered.com/app/1318690/shapezio/) perfectly works without a playable character, and there a plenty of games like [Opus Magnum](https://store.steampowered.com/app/558990/Opus_Magnum/) that are in a level-based puzzle environment.
 - Your progression is mainly through a skill/technology tree (be it a very shallow one in Satisfactory); Special technology to send through a space elevator in Satisfactory, research matrixes in DSP, and finally, the bottle-shaped science packs in Factorio. Most open world (survival) games feature some sort of skill tree, but acquiring new points rarely features a connection to the game world. The factories, however, have to be built primarily for the tech tree itself; you don’t have some requirements to limit your progress in the “story”, the requirements are directly tied to the progress towards the final goal.
 - And finally, all three games mainly challenge your knowledge and understanding of logistics. While the spaghetti of some bases might suggest otherwise, space isn’t actually an issue (or at least not a big one) due to the open world, but getting massive amounts of raw resources from a mining outpost back to your main base requires you to overcome obstacles like mechanics, throughput, and environment. And it can get even more challenging, for example moving production to said outpost to export the most dense/compact products (see [Alt-F4 #7](https://alt-f4.blog/ALTF4-7/#megabase-thinking-lonewolf)) uses complex ratios to get the most efficiency. This challenge might be a direct result of the open-world nature of these games, but especially long range trucks and trains provide a much needed “unknown” variable to the defined ratios (unknown as in not as obvious as items per second on belts), as well as a challenge, a bottle neck scaling inversely with production.
 
-{3 following images should be a gallery;
-caption: *'The different research trees, with DSP more similar to Factorio, and Satisfactory in its shallow tier system'*}
-
-![](media/dsp-tree.png)
-
-![](media/satisfactory-tree.png)
-
-![](media/factorio-tree.png)
+{% include gallery.html items="https://media.alt-f4.blog/ALTF4/42/dsp-tree.jpg;DSP Tech Tree,https://media.alt-f4.blog/ALTF4/42/satisfactory-tree.jpg;Satisfactory Tech Tree,https://media.alt-f4.blog/ALTF4/42/factorio-tree.jpg;Factorio Tech Tree" caption="The different research trees, with DSP more similar to Factorio, and Satisfactory in its shallow tier system." %}
 
 Apart from the similarities in gameplay, the three games also feature a remarkably similar scenario of the player being dropped on an empty planet; however this is probably of the most obvious narrative reasons for the player to start from scratch. This article won’t elaborate on the story behind the games, but rather focus on the gameplay itself.
 
@@ -33,7 +26,7 @@ Speaking of scenario, there is a forth game with this scenario, with a similar t
 
 Let’s get back to the previous article, what does automation even mean, how can it be defined?:
 
-{quote: 'One could loosely define automation as “making stuff that makes stuff”' author: Nano/Myself}
+{% include quote.html text='One could loosely define automation as “making stuff that makes stuff”' author='Nano' %}
 
 Keep in mind this is only one possible definition of the genre, but it already runs into some problems. For example Nanocarbon Alloy, one of the most important Astroneer endgame materials, already fails to be automated at one of the most basic steps of getting all required resources together—which isn’t necessarily bad though, the game wasn’t developed as an automation game. The auto arm—and with it some other tools to automate—only got added in version [1.13](https://astroneer.fandom.com/wiki/Patch_1.13.121), a full year after the original `1.0` release of the pure survival game.
 
@@ -45,7 +38,7 @@ How do games not generally regarded as automation fall into the scheme from part
 
 ### Part 3: Simulation, Idle, and Puzzle Games
 
-![](opus.mp4)
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/42/opus.mp4' alt='Opus Magnum Game' width='826px' %}
 
 Most games so far are in some way an open-world survival or sandbox game, however there is a subgenre of automation most of us have come on contact with and regularly play: Designing the assembly line itself. There are numerous automation puzzlers which exclusively focus on that part of automation. One example is Opus Magnum, as already mentioned, or [factori](https://stargardengames.itch.io/factori), a game scoring one of the first places in the recent [GMTK 2021 game jam](https://itch.io/jam/gmtk-2021/results/top-marks). But fit the definition (“you make stuff that makes stuff”) chemicals in one, and letters in the other. Does [Emergency Protocol](https://haruzter.itch.io/emergency-protocol) (there area lot of puzzle games in game jams btw) fit the definition? You make a pattern that *makes* a path? In its core it sounds like automation—you tell a little robot what to do (program it), and it repeats your commands—but that also sounds similar to idle games—set something up, and it does a job for you while you are away.
 
