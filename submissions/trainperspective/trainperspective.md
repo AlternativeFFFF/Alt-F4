@@ -23,6 +23,8 @@ Screenshots also come to the rescue here. The take_screenshot command has an opt
 
 However I found out that in recent factorio versions the ui is no longer fixed to your player position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a color far away from other colors that occur in the game. I settled on pink. And I changed the image of some concret to be pure pink. I turned off clouds. And changed up the location of my gui screenshot so only the pink concrete is visible. This way I can get the ui by green screening, or rather pink screening to be more accurate.
 
+![](ui.mp4)
+
 There were a few small problems with that though. Turns out there are transparent parts in the gui: the details panel that shows up when you hover over things with your mouse. It looked purple now. I ended up manually cutting it out of the gui, and nobody seems to have noticed. 
 
 Next I created a small mod that played a sound whenever I started recording screenshots, this way I could sync up the in-game sounds with the screenshots. Similarly to how movie studios use clappers.
