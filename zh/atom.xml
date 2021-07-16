@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-09T09:58:50+00:00</updated>
+  <updated>2021-07-16T12:20:51+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,21 @@
   
   
   <entry>
-    <title>Alt-F4 #41 - Title loading, please stand by ...</title>
+    <title>Alt-F4 #42 - 自动化的意义</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-42/" />
+    <id>https://alt-f4.blog/ALTF4-42</id>
+    <updated>2021-07-16T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在本周的第 42 期 Alt-F4 中，在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-34/&quot;&gt;之前&lt;/a&gt;调查了影响过异星工厂的游戏之后，我们现在将看看异星工厂是如何影响整个自动化类游戏的，如果这也算一种类别的话。也可能不算。经过 750 万年的深思，&lt;em&gt;Nanogamer7&lt;/em&gt; 有了一个可能会让你吃惊答案。&lt;/p&gt; &lt;h2 id=&quot;同类中的佼佼者一款游戏的影响力-nanogamer7&quot;&gt;同类中的佼佼者——一款游戏的影响力 &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我在几个月前（&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-34/&quot;&gt;第 34 期&lt;/a&gt;中）曾试图寻找异星工厂的起源，以及自动化游戏的起源。自从 Wube 于 2013 年开创这一类型以来，已有许多游戏接受了这个想法，如 &lt;a href=&quot;https://store.steampowered.com/app/526870/Satisfactory/&quot;&gt;Satisfactory&lt;/a&gt; 和&lt;a href=&quot;https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/&quot;&gt;戴森球计划&lt;/a&gt;，但也有更注重生存的游戏，如 ASTRONEER，我的世界后期版本及其 Mod。在这篇文章中，我想探讨自动化游戏的发展，以及自动化游戏与有着自动化内容的生存游戏之间的差异。&lt;/p&gt; &lt;h3 id=&quot;第一部分三巨头&quot;&gt;第一部分：三巨头&lt;/h3&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/42/spaghetti.jpg&quot; alt=&quot;自动化类游戏中的意大利面。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;当你要求别人说出异星工厂以外的一些自动化游戏时，你最常得到的回答是 Satisfactory 和戴森球计划。它们与异星工厂一起，甚至&lt;a...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #41 - 标题载入中，请稍后…</title>
     <link href="https://alt-f4.blog/zh/ALTF4-41/" />
     <id>https://alt-f4.blog/ALTF4-41</id>
     <updated>2021-07-09T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This week, for issue #41, &lt;em&gt;oof2win2&lt;/em&gt; returns with a somewhat more technical article about what exactly can go wrong when trying to connect to multiplayer games and how to potentially solve these issues. If you’ve ever wondered why Factorio wouldn’t let you join your friends’ multiplayer game, this article might...</content>
+    <content type="html">&lt;p&gt;在本周的第 41 期中，&lt;em&gt;oof2win2&lt;/em&gt; 带回了一篇有点技术性的文章，讲述在试图连接到多人游戏时到底会出什么问题以及如何解决这些潜在问题。如果你曾经想知道为什么异星工厂不让你加入你朋友的多人游戏，这篇文章可能会给你一些解释！&lt;/p&gt; &lt;h2 id=&quot;快速性能检测-oof2win2&quot;&gt;快速性能检测 &lt;author&gt;oof2win2&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/41/dropped.jpg&quot; alt=&quot;玩家从游戏中掉线的图像&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;如果你没有一台顶配电脑，那么就很可能曾看到这样的提示，告诉你因网速或电脑跟不上而被从游戏中踢出。那么，这实际上意味着什么？从短期和长期来看，你能做些什么来改善这一状况？&lt;/p&gt; &lt;h3 id=&quot;网速问题&quot;&gt;网速问题&lt;/h3&gt; &lt;p&gt;有时，你的网络也会出问题。这可能是由于许多原因，如你的 ISP 正在维护或你的 DNS 数据中心遭遇停电。不过你可以用一些实用工具来缓解此类问题。&lt;/p&gt; &lt;p&gt;然而，要解释异星工厂网络的工作原理，将是个漫长的篇幅。&lt;em&gt;cube&lt;/em&gt; 在 &lt;a href=&quot;https://factorio.com/blog/post/fff-136&quot;&gt;FFF#136&lt;/a&gt; 中很好地解释了这个过程。他们所做的最重要的事情之一是使用 UDP，但把 TCP 中的功能加了回去。&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE&quot;&gt;UDP&lt;/a&gt; 的优势是比传统的 TCP（用于大多数日常事务）要快得多。UDP 通过去掉“握手”来实现这一速度，“握手”是指两个客户端（计算机）同意他们要通信并建立一个连接，这意味着它不关心数据会发生什么，&lt;em&gt;只管发送&lt;/em&gt;。然而，这也消除了保证数据交付的能力，正确排序数据或删除重复数据（有时会发生这种状况）。&lt;/p&gt; &lt;p&gt;UDP 缺乏可靠的数据传送直接违背了异星工厂必须使用完全确定的锁步算法工作方式，正如我在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-26/&quot;&gt;先前文章&lt;/a&gt;中解释的那样，数据&lt;em&gt;必须&lt;/em&gt;送达，否则你会收到一个解同步。&lt;em&gt;cube&lt;/em&gt; 说...</content>
   </entry>
   
   
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-33</id>
     <updated>2021-04-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在令人愉快的 Alt-F4 第 33 期中，&lt;em&gt;Villfuk02&lt;/em&gt; 介绍了他们的最新 Mod 创作。配方随机器！聚焦在需要克服的设计问题上，以制作一个真正好用的配方随机器。之后，&lt;em&gt;redlabel&lt;/em&gt; 宣布了最新的 COMFY 活动，这很可能是一个非常 &lt;em&gt;炸裂&lt;/em&gt; 的活动。&lt;/p&gt; &lt;h2 id=&quot;原版摇匀不要搅拌-villfuk02&quot;&gt;原版：摇匀，不要搅拌 &lt;author&gt;Villfuk02&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://mods.factorio.com/mod/ZRecipeRandomizer&quot;&gt;&lt;em&gt;Vill 的配方随机器（Vill’s Recipe Randomizer）&lt;/em&gt;&lt;/a&gt;的功能正如其名——它将配方随机化。乍一看，这感觉是一个非常愚蠢而且非常简单的主意。然而，一旦你试图让它变得不那么愚蠢，它很快就会变得非常复杂。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/33/spaghetti-sample.jpg&quot; alt=&quot;免费的意大利面样品&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;一个用掩护无人机，电闸和油料储罐制造生产科技包的工厂样例。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;从哪里开始的&quot;&gt;从哪里开始的&lt;/h3&gt; &lt;p&gt;我是在 2020 年 9 月开始这个项目的。当时，我试图做一个既简单又独特的...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #32 - 操作 Wireshark</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-32/" />
-    <id>https://alt-f4.blog/ALTF4-32</id>
-    <updated>2021-04-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;欢迎来到鲨鱼游弋的第 2⁵ 期 Alt-F4。在这个危险水域中，&lt;em&gt;The-Kool&lt;/em&gt; 在最新一集的复杂角中指导我们用好扬声器，比如用作鲨鱼警告系统！然后，&lt;em&gt;Hornwitser&lt;/em&gt; 用 Wireshark 进行了一些真正的捕鲨活动，讲述了他如何追踪游戏中遇到的网络问题的故事。拿起鱼叉，跳下水吧！&lt;/p&gt; &lt;h2 id=&quot;复杂角扬声器-the-kool&quot;&gt;复杂角：扬声器 &lt;author&gt;The Kool&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;欢迎回到复杂角，在这里我们将对游戏中较少使用或较复杂的机制进行梳理，为不熟悉这些机制的人做个介绍。在这篇文章中，我们将提出三个问题：“它是什么？”，“它能提供什么效果？”，“它应该用在哪里？”。&lt;/p&gt; &lt;h3 id=&quot;它是什么&quot;&gt;它是什么？&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://wiki.factorio.com/Programmable_speaker/zh&quot;&gt;程控扬声器&lt;/a&gt;是个只占一格“建筑”。当连接到一个电路时，它可以根据该电路上的信号发出你将在游戏中听到的声音。你可以调整音量，为它选择一个特定的声音，告诉它无论你在多远的地方都能听到，甚至在地图上显示一个自定义警报。扬声器是通过电路技术解锁的，这在科技树中是如此之早甚至可能是你的第一个绿色科技。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/32/speaker.jpg&quot; alt=&quot;程控扬声器&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;它矗立与此，沐浴在荣光之中。来源：&lt;a href=&quot;https://wiki.factorio.com/File:Programmable_speaker_entity.png&quot;&gt;异星工厂 Wiki&lt;/a&gt;。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;它能提供什么效果&quot;&gt;它能提供什么效果？&lt;/h3&gt; &lt;p&gt;它能响！好吧，这句话有点废话。虽然扬声器因为用它们建造的&lt;a href=&quot;https://miditorio.com/&quot;&gt;乐器&lt;/a&gt;而闻名，但也有着一些实际用途。如果你把扬声器连接到你的工厂，并设置全局播放和警报图标，你就可以为任何事情设计自定义警报。你可以（而且应该！）给它一个自定义的图标和名字，因为你绝对会忘记这个响亮的警报器是用来干什么的。这是一个在整个工厂广播警报的简单方法，能够帮助你在小麻烦变成真正的大问题之前抓住警告信号。&lt;/p&gt; &lt;h3 id=&quot;它应该用在哪里&quot;&gt;它应该用在哪里？&lt;/h3&gt; &lt;p&gt;你是否曾经历过意外的电力不足，使你的煤矿采矿机放慢速度，导致你的锅炉燃料不足，最终进入停电的螺旋？试着在通往锅炉的运煤传送带旁放一个扬声器，用一根线缆将它与运煤带连接起来。一格完整的传送带可容纳 8 件物品，所以如果你将扬声器设置为在少于...</content>
   </entry>
   
   

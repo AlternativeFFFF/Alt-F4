@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/ru/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-09T09:58:50+00:00</updated>
+  <updated>2021-07-16T12:20:51+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #42 - The Meaning of Automation</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-42/" />
+    <id>https://alt-f4.blog/ALTF4-42</id>
+    <updated>2021-07-16T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this week’s issue #42 of Alt-F4, after &lt;a href=&quot;https://alt-f4.blog/ALTF4-34/&quot;&gt;previously&lt;/a&gt; investigating the games that influenced Factorio, we’ll now be looking at how Factorio influenced the automation genre as a whole, if that’s even a thing. Maybe it isn’t. After 7.5 million years of contemplation, &lt;em&gt;Nanogamer7&lt;/em&gt; has an answer, and it...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-33</id>
     <updated>2021-04-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In this delightful issue #33 of Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; presents their most recent mod creation: The Recipe Randomizer! A spotlight is put on all the design problems that needed to be overcome to make a recipe randomizer that is actually good. After that, &lt;em&gt;redlabel&lt;/em&gt; announces the most recent COMFY event, which...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #32 - Operation Wireshark</title>
-    <link href="https://alt-f4.blog/ru/ALTF4-32/" />
-    <id>https://alt-f4.blog/ALTF4-32</id>
-    <updated>2021-04-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Welcome to the shark-filled issue #2⁵ of Alt-F4. In these treacherous waters, &lt;em&gt;The-Kool&lt;/em&gt; guides us towards putting speakers to good use, maybe even as a shark-warning-system, in the latest episode of Complexity Corner! Then, &lt;em&gt;Hornwitser&lt;/em&gt; gets to some actual shark hunting using Wireshark, telling the story of how he tracked...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-09T09:58:50+00:00</updated>
+  <updated>2021-07-16T12:20:51+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #42 - The Meaning of Automation</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-42/" />
+    <id>https://alt-f4.blog/ALTF4-42</id>
+    <updated>2021-07-16T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In this week’s issue #42 of Alt-F4, after &lt;a href=&quot;https://alt-f4.blog/ALTF4-34/&quot;&gt;previously&lt;/a&gt; investigating the games that influenced Factorio, we’ll now be looking at how Factorio influenced the automation genre as a whole, if that’s even a thing. Maybe it isn’t. After 7.5 million years of contemplation, &lt;em&gt;Nanogamer7&lt;/em&gt; has an answer, and it...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-33</id>
     <updated>2021-04-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;V tomto skvělém #33. vydáním Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; oznámí jejich nedávný módový výtvor: Znáhodňovač Receptů! Řekne o všech designových problémech, které musely být překročeny, aby mód byl opravdu dobrý. poté &lt;em&gt;redlabel&lt;/em&gt; nám řekne o nejnovějším COMFY eventu, který bude nejspíše trochu &lt;em&gt;vybuchující&lt;/em&gt;.&lt;/p&gt; &lt;h2 id=&quot;vanilla-protřepat-nemíchat-villfuk02&quot;&gt;Vanilla: Protřepat, nemíchat &lt;author&gt;Villfuk02&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://mods.factorio.com/mod/ZRecipeRandomizer&quot;&gt;&lt;em&gt;Vill’s Recipe Randomizer&lt;/em&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #32 - Operace Wireshark</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-32/" />
-    <id>https://alt-f4.blog/ALTF4-32</id>
-    <updated>2021-04-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Vítejte u žraloky-plného 2⁵ vydání Alt-F4. V těchto zrádných vodách, &lt;em&gt;The-Kool&lt;/em&gt; nás vede k používání reproduktorů k dobré věci, možná i jako varovací systém proti žralokům, v nejnovější epizodě Rohu Komplexity! Poté, &lt;em&gt;Hornwitser&lt;/em&gt; se dostane k doopravdovému lovení žraloků s použitím Wiresharku, vysvětlí jak vysledoval síťové problémy, které našel v...</content>
   </entry>
   
   

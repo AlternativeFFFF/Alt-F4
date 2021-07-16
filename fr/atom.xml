@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-09T09:58:50+00:00</updated>
+  <updated>2021-07-16T12:20:51+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°42 - Le sens de l’automatisation</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-42/" />
+    <id>https://alt-f4.blog/ALTF4-42</id>
+    <updated>2021-07-16T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Dans cette parution n°42 de Alt-F4, après &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-34/&quot;&gt;avoir précédement&lt;/a&gt; recherché les jeux qui ont inspiré Factorio, jetons un œil à comment Factorio a influencé le genre de l’automatisation dans son ensemble, s’il existe. Peut-être qu’il n’existe pas. Après 7,5 millions d’années de contemplation, &lt;em&gt;Nanogamer&lt;/em&gt; a une réponse, et elle...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-33</id>
     <updated>2021-04-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Dans ce délicieux numéro 33 de Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; nous présente son mod le plus récent : “The Recipe Randomizer” ! Un effort particulier est placé pour vous montrer l’ensemble des problèmes qui doivent être surmontés pour créer un générateur de recettes aléatoires qui soit réellement correct. Après cela, &lt;em&gt;redlabel&lt;/em&gt; nous...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°32 - Opération Wireshark</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-32/" />
-    <id>https://alt-f4.blog/ALTF4-32</id>
-    <updated>2021-04-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Bienvenue dans le numéro 2⁵ de Alt-F4, rempli de requins. Dans ces eaux dangereuses, &lt;em&gt;The-Kool&lt;/em&gt; nous guide pour que les haut-parleurs soient utilisés à bon escient, peut-être même comme un système d’alerte aux requins, dans le dernier épisode du Coin de la complexité ! Ensuite, &lt;em&gt;Hornwitser&lt;/em&gt; se lance dans une...</content>
   </entry>
   
   
