@@ -22,7 +22,10 @@ This is my main focus of DyWorld-Dynamics. I wrote everything with the story ele
 The story starts with crash landing on a desolate planet, filled with weird flora and fauna. You have no idea how you got there and where you are. As the story progresses, you name the planet, find out why you crash landed there, learn about other planets and move there and find an epic conclussion of the story. The conclussion will give you an nice history of fictional space fairing humans, and its encounter with a mysterious force.
 
 This is what will be available once it publicly releases. 3 Acts of story, with multiple objectives, and travelling between planets powered by the beautiful Space Exploration mod. The first two acts will learn you the basic mechanics of DyWorld-Dynamics with its complex recipes, and act 3 will completly focus on the story element that you can check out on your own pace. There are several mechanics added into DyWorld-Dynamics, such as an Survival system that increases player bonuses (such as mining speed, building reach etc) based on what you do, food and water usage, implant usage, scripted attacks and many more.
+![DyWorld-Dynamics Act 1 Phase 1](https://cdn.discordapp.com/attachments/471326116146184212/866260141732003840/Schermafdruk_2021-07-18_12.04.38.png)
 Recipes are fun and complex as well, feedback loops, science packs creation with actual fluids, space mining, tree farming, agriculture and so much more. This will all tie nicely into Space Exploration, while keeping it intact the cool way it is.
+Informatron is used to display many types of information, about surroundings, mechanics and even the story can be reread there
+![DyWorld-Dynamics Act 1 Phase 1](https://cdn.discordapp.com/attachments/471326116146184212/866260121318719538/Schermafdruk_2021-07-18_12.06.33.png)
 
 ## Release Date ##
 
@@ -32,12 +35,4 @@ As for right now, I will leave you with the start of the story, and I hope to se
 
 ## Commanders Log ##
 
-> Personal Log #1
-
-> Location: Unknown
-
-> I have crash landed on a planet. All my instruments are dead, power to the ship is completely fried and on fire with explosions. I have no idea what happened to me, my ship or crew. One moment I was flying to Saturn to visit some family in the space station, the next I was flying like a fireball above some weird terrain. The crash was hard, destroyed the ship and killed all the crew except me. Luckily I found some materials that I can build with. My degree in engineering and designing will certainly help me there.
-
-> When I was going down towards this planet, I could see some things. There is so much life here! I could see trees, bushes and even some walking creatures. They all seemed different, but it was hard to see. Could have also sworn that I saw some ruins, but it went by so fast, so I am not completely sure.
-
-> There are plenty of metals around, so should be able to construct something to send for help. It will probably take a while, since I have almost nothing to start with. A scan around my ship shows no immediate signs of life, so I might be safe for a while. Still, should prepare for the worst, those creatures might not be friendly. I also have no food and water, so my first priority should be to sort this out. Luckily I found a basic gun in the ship with some ammo, so I can defend myself if I need to. This planet spins quite fast, so days and night are short, and the gravity is stronger then I am used too. This means I have to regain my strength slowly again. Well, lets get to work, I want to get off this planet as soon as I possible can!
+![DyWorld-Dynamics Act 1 Phase 1](https://cdn.discordapp.com/attachments/471326116146184212/866260144235741194/Schermafdruk_2021-07-18_12.05.21.png)
