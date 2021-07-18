@@ -1,13 +1,13 @@
 # DyWorld-Dynamics and it's history <author>Dysoch</author>
 
-Hello everybody, my name is Dysoch. In this article I will write a bit about my history with modding Factorio, why I am doing it and what is coming. So, lets get to the history
+Hello everybody, my name is Dysoch, and I'm the creator of all the Dy mods. In this article I will write a bit about my many years of history with modding Factorio, and the next exciting release that I have been working on for almost a year. But first, I will explain where it all started.
 
 ## History ##
 When I bought Factorio, I was already playing it for a year, but officialy bought it when Factorio 0.7 was in development. I simply loved the game, but felt it could be better. So I started modding. I had no idea what I was doing, but luckily a nice guy by the name of FreeER came to aid me, and learned me to code properly. I had several breaks over the years where I was burned out on modding or had too much to do in my life, but I always have an itch to come back.
 
-When I started to mod, there was only 1 major overhaul mod, called F-Mod. I wanted to have the same as that mod, and started. It was clunky in the beginning, but eventually DyTech touched every aspect of the game. I rewrote it several times under somewhat the same name, but the content stayed mostly the same. By rewriting, I learned to code it better, easier to read and edit things. I always had several ideas that were a little out of reach for me, but I always strived to make planets into Factorio since I started modding. Luckily Earendel did that now, and I can work on other projects
+When I started to mod, there was only 1 major overhaul mod, called F-Mod. I wanted to have the same as that mod, and started. It was clunky in the beginning, but after years off hard work the DyTech franchise touched every aspect of the game. I rewrote it several times under somewhat the same name, but the content stayed mostly the same. By rewriting, I learned to code it better, easier to read and edit things. I always had several ideas that were a little out of reach for me, but I always strived to make planets into Factorio since I started modding. Luckily Earendel did that now, and I can work on other projects
 
-The DyTech was very populair back in the day. I even played together a few times with Xterminator and Oninaig while they were doing a lets play on Youtube. After a few years (Factorio 0.15) I started to work on the next step of DyTech, DyWorld. A major rewrite after 2 years of no modding, to fit DyTech better into the ever evolving Factorio. I made great strides, and worked on it till just before Factorio 1.0.0. Several content creators played it on Youtube:
+The DyTech was very populair back in the day. I even played together a few times with Xterminator and Oninaig while they were doing a lets play on [Youtube](https://www.youtube.com/watch?v=RGuc-OVRE94). After a few years (Factorio 0.15) I started to work on the next step of DyTech, DyWorld. A major rewrite after 2 years of no modding, to fit DyTech better into the ever evolving Factorio. This mod was better developed, had more exciting features. Started experimenting with heated furnaces and features that complimented that. I made great strides, and worked on it till just before Factorio 1.0.0. Several content creators played it on Youtube:
 [KatherineOfSky DyWorld Playthrough](https://www.youtube.com/playlist?list=PL4o6UvJIdPNqubR5oXdx9SqKFoYW_SL-q), 
 [Nexxus Gaming DyWorld Playthrough](https://www.youtube.com/watch?v=Eqs8dakCzL8&list=PLXEOcXLt0r4RxjOgak-BRzO8PMoMnqnoy), 
 [Lumatan DyWorld Playthrough (German)](https://www.youtube.com/watch?v=eH6lu5N-oPQ&list=PLEui1S1GUHOMKnVrLjgybKRKzBNMIHTfk)
@@ -19,15 +19,9 @@ But it is now almost a year later, and it is still not released. Well, due to so
 
 This is my main focus of DyWorld-Dynamics. I wrote everything with the story elements in mind, but it will work without it as well. What is the story about?
 
-The story starts with crash landing on a desolate planet, filled with weird flora and fauna. You have no idea how you got there and where you are. As the story progresses, you name the planet, find out why you crash landed there, learn about other planets and move there and find an epic conclussion of the story.
+The story starts with crash landing on a desolate planet, filled with weird flora and fauna. You have no idea how you got there and where you are. As the story progresses, you name the planet, find out why you crash landed there, learn about other planets and move there and find an epic conclussion of the story. The conclussion will give you an nice history of fictional space fairing humans, and its encounter with a mysterious force.
 
-This is what will be available once it publicly releases. 3 Acts of story, with multiple objectives. the first 2 acts will learn you the basic mechanics of DyWorld-Dynamics with its complex recipes, and act 3 will completly focus on the story element that you can check out on your own pace
-
-The mod does require a few other mods though, most notable are Nanobots and Space Exploration, since they are now required for the story. Most overhaul mods will be incompatible. Smaller mods will be compatible, but this requires testing, and you can ask for that on my [Discord](https://discord.gg/yR5vBWy).
-
-## Complex mechanics ##
-
-There are several mechanics added into DyWorld-Dynamics, such as an Survival system that increases player bonuses (such as mining speed, building reach etc) based on what you do, food and water usage, implant usage, scripted attacks and many more.
+This is what will be available once it publicly releases. 3 Acts of story, with multiple objectives, and travelling between planets powered by the beautiful Space Exploration mod. The first two acts will learn you the basic mechanics of DyWorld-Dynamics with its complex recipes, and act 3 will completly focus on the story element that you can check out on your own pace. There are several mechanics added into DyWorld-Dynamics, such as an Survival system that increases player bonuses (such as mining speed, building reach etc) based on what you do, food and water usage, implant usage, scripted attacks and many more.
 Recipes are fun and complex as well, feedback loops, science packs creation with actual fluids, space mining, tree farming, agriculture and so much more. This will all tie nicely into Space Exploration, while keeping it intact the cool way it is.
 
 ## Release Date ##
