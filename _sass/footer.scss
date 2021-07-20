@@ -94,8 +94,10 @@
 }
 
 @media (max-width: 543px) {
-  .footer .footer-inner {
-    display: block;
+  .footer {
+    margin-top: 80px;
+    .footer-inner {
+      display: block;
   }
 
   .footer-inner .footer-links {
