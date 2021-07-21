@@ -14,7 +14,7 @@ Well the idea might be simple, the execution is a bit more complicated.
 The first problem you come across is that screens aren’t circles.
 When rotating, stuff gets cut off, while other things are missing.
 
-{% include image.html src='rotation.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Simply rotating causes problems' href='rotation.jpg’' %}
+{% include image.html src='rotation.jpg' alt='example of a rotated image, corners have missing pixels because it's not a cirle' caption='Simply rotating causes problems' href='rotation.jpg' %}
 
 I ended up applying my usual solution to recording problems for factorio: use screenshots instead. Ingame screenshots are not bound by the limitations of normal screen recording. I simply capture a larger area than is normally visible.
 
@@ -22,6 +22,9 @@ The next problem is that the UI also rotates, this is not something we want.
 Screenshots also come to the rescue here. The take_screenshot command has an option called show_gui. So the trick is to take 2 screenshots every tick, one with ui and one without ui. If we take only the parts that differ, then we end up with the ui, which we can superimpose over the screenshot without ui. At least that was the plan. Various video editing problems made this non viable. For example my video editor did not support lossless formats (that I could find, I tried a bunch). Small differences in encoding end up in the ui.
 
 However I found out that in recent factorio versions the ui is no longer fixed to your player position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a color far away from other colors that occur in the game. I settled on pink. And I changed the image of some concret to be pure pink. I turned off clouds. And changed up the location of my gui screenshot so only the pink concrete is visible. This way I can get the ui by green screening, or rather pink screening to be more accurate.
+
+{% include image.html src='rotation.jpg' alt='example of a rotated image, corners have missing pixels because it's not a cirle' caption='Simply rotating causes problems' href='vlcsnap-2021-07-21-13h50m07s314.png' %}
+
 
 ![](ui.mp4)
 
