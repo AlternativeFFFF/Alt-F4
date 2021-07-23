@@ -1,0 +1,10 @@
+.juxtapose {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 750px) {
+  .juxtapose {
+    display: flex;
+    flex-direction: column;
+  }
+}
