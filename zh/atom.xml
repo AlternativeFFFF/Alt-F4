@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-20T11:48:35+00:00</updated>
+  <updated>2021-07-23T11:56:05+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #43 - DyWorld 传奇</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-43/" />
+    <id>https://alt-f4.blog/ALTF4-43</id>
+    <updated>2021-07-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在第 43 期的 Alt-F4 中，Mod 制作者 &lt;em&gt;Dysoch&lt;/em&gt; 讲述了他的 Mod 制作史（最早可追溯至异星工厂 0.7 版），概述了他的 Mod 如何与时俱进。之后会谈到他即将发布的最新和最伟大的项目。这将是一个大改 Mod，专注于一个完整的故事，目标是比以前的大 Mod 更具沉浸感。更多详情请见下文！&lt;/p&gt; &lt;h2 id=&quot;dyworld-dynamics-及其历史-dysoch&quot;&gt;DyWorld-Dynamics 及其历史 &lt;author&gt;Dysoch&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;大家好，我叫 Dysoch，是所有 Dy Mod 的制作者。在这篇文章中，我将写一些关于我多年来制作异星工厂 Mod 的历史，以及制作了近一年令人兴奋的最新版。但首先，我要解释一切的开端。&lt;/p&gt; &lt;h3 id=&quot;历史&quot;&gt;历史&lt;/h3&gt; &lt;p&gt;在购买异星工厂之前，我已经玩了它一年，但直到在异星工厂 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.7&lt;/code&gt; 开发期间才正式购买了它。我非常喜欢这个游戏，但觉得它还可以做得更好，所以我开始制作 Mod。我根本不知道自己在干什么，但幸运的得到一位叫 &lt;a href=&quot;https://forums.factorio.com/viewtopic.php?f=190&amp;amp;t=1568&quot;&gt;FreeER&lt;/a&gt; 的好人的帮助，教我如何编程。这些年来，我曾多次在感到厌倦或忙于现实生活时中断 Mod 制作，但总是心痒难耐回来继续开发。&lt;/p&gt; &lt;p&gt;在我刚开始做 Mod 的时候，只有一个叫 F-Mod 的大改 Mod（很遗憾，其旧论坛页面已经无法访问了）。我想要做和那个 Mod 一样的内容，于是开始操刀自己的游戏大改。最初很笨重，但经过多年的努力，DyTech 系列触及了游戏的各个方面。我用一个类似的名字重写了几次，但内容基本保持不变。通过重写，我学会了更好地编程，使它更易阅读和编辑。有几个我感觉遥不可及的想法，自从我开始做...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-34</id>
     <updated>2021-05-07T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周的第 34 期，&lt;em&gt;Nanogamer7&lt;/em&gt; 开始了一个关于异星工厂潜在起源的全新系列文章。本周的内容是深入研究这一游戏杰作的灵感来源，并在聊聊游戏设计。请留步，听我说个故事！&lt;/p&gt; &lt;h2 id=&quot;同类游戏中的佼佼者异星工厂起源-nanogamer7&quot;&gt;同类游戏中的佼佼者——异星工厂起源 &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我们都听闻异星工厂在 &lt;a href=&quot;https://steamdb.info/stats/gameratings/&quot;&gt;Steam 评分&lt;/a&gt;上的优异成绩，长期处于仅次于传送门 2 之后的第二名。显然有许多人会试图在自动化这种游戏类型中模仿其成功之处，但异星工厂本身的灵感来自哪里？它是第一个完全为自动化而设计的游戏么？还说仅仅是第一个成功做出来的游戏？这将是我在这个（可能的）系列文章的第一篇中试图回答的问题。&lt;/p&gt; &lt;h3 id=&quot;自动化的定义&quot;&gt;自动化的定义&lt;/h3&gt; &lt;p&gt;我们需要要回答的第一个难题将是到底什么是自动化。以“城市：天际线”为例，你建造你的城市，然后这个城市（理论上）将会自主运行。这里的区别是，你的工作——并非让汽车无中生有，选择目的地，通过你建造的道路自己到达那里——而是管理全局，这一点没有自动化。另一方面，在原版的我的世界中，你却可能实现自动化工作——只不过是用活塞和漏斗，而不是机械臂和传送带。通过比较这两个例子，我们可以宽泛地将自动化类定义为&lt;em&gt;“制作用于制作物品的物品”&lt;/em&gt;。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/34/minecraft-hopper.jpg&quot; alt=&quot;原版我的世界中的一个简单的冶炼设置&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;漏斗，我的世界中的“传送带”。在图示中，它为熔炉提供煤炭（侧面）和物品（顶部），同时将熔炼产出的资源拉到下面的箱子中。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;然而，这个定义还是有点模糊的。作为一个没有玩过这个游戏的人，矮人堡垒中让矮人&lt;em&gt;制造东西&lt;/em&gt;的玩法是否满足我对自动化的定义？为了本文的目的，我们假设它是。不管我们谈论的是电子电路、小麦和种子，还是木制刺钉，都算。也许将来会有其他人来进一步研究矮人堡垒&lt;em&gt;*眨眨眼*&lt;/em&gt;。&lt;/p&gt; &lt;h3 id=&quot;可以用一个-mod-来实现&quot;&gt;可以用一个 Mod 来实现&lt;/h3&gt; &lt;p&gt;我已经提到了我的世界作为自动化的一个例子，但其原版的内容根本不能与 Mod 相提并论。在 2013 年的大热之后许多技术型玩家齐聚一堂，形成了有史以来最大的 Mod 社区之一，这可能使它成为最流行的自动化样例。但这引起了我的思考，诸如建筑（BuildCraft）、工业时代（IndustrialCraft）和红石力量（Redpower）等游戏...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #33 - 原版：摇匀，不要搅拌</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-33/" />
-    <id>https://alt-f4.blog/ALTF4-33</id>
-    <updated>2021-04-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在令人愉快的 Alt-F4 第 33 期中，&lt;em&gt;Villfuk02&lt;/em&gt; 介绍了他们的最新 Mod 创作。配方随机器！聚焦在需要克服的设计问题上，以制作一个真正好用的配方随机器。之后，&lt;em&gt;redlabel&lt;/em&gt; 宣布了最新的 COMFY 活动，这很可能是一个非常 &lt;em&gt;炸裂&lt;/em&gt; 的活动。&lt;/p&gt; &lt;h2 id=&quot;原版摇匀不要搅拌-villfuk02&quot;&gt;原版：摇匀，不要搅拌 &lt;author&gt;Villfuk02&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://mods.factorio.com/mod/ZRecipeRandomizer&quot;&gt;&lt;em&gt;Vill 的配方随机器（Vill’s Recipe Randomizer）&lt;/em&gt;&lt;/a&gt;的功能正如其名——它将配方随机化。乍一看，这感觉是一个非常愚蠢而且非常简单的主意。然而，一旦你试图让它变得不那么愚蠢，它很快就会变得非常复杂。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/33/spaghetti-sample.jpg&quot; alt=&quot;免费的意大利面样品&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;一个用掩护无人机，电闸和油料储罐制造生产科技包的工厂样例。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;从哪里开始的&quot;&gt;从哪里开始的&lt;/h3&gt; &lt;p&gt;我是在 2020 年 9 月开始这个项目的。当时，我试图做一个既简单又独特的...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/it/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-20T11:48:35+00:00</updated>
+  <updated>2021-07-23T11:56:05+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #43 - The DyWorld Saga</title>
+    <link href="https://alt-f4.blog/it/ALTF4-43/" />
+    <id>https://alt-f4.blog/ALTF4-43</id>
+    <updated>2021-07-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In issue #43 of Alt-F4, mod-maker extraordinaire &lt;em&gt;Dysoch&lt;/em&gt; talks about his history of modding (which started all the way back in Factorio 0.7!), giving a bit of an overview of how his mods evolved over time. Then, he goes into his latest and greatest project that’s due for release very...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-34</id>
     <updated>2021-05-07T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;This week’s issue #34 has &lt;em&gt;Nanogamer7&lt;/em&gt; start on a potential new series of articles about the very origins of Factorio. This week features a dive into potential inspirations for this masterpiece of a game, with a diversion into game design here or there. Stay awhile and listen!&lt;/p&gt; &lt;h2 id=&quot;the-best-of-its-genre--factorio-origins-nanogamer7&quot;&gt;The Best...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #33 - Vanilla: Shaken, not Stirred</title>
-    <link href="https://alt-f4.blog/it/ALTF4-33/" />
-    <id>https://alt-f4.blog/ALTF4-33</id>
-    <updated>2021-04-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In this delightful issue #33 of Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; presents their most recent mod creation: The Recipe Randomizer! A spotlight is put on all the design problems that needed to be overcome to make a recipe randomizer that is actually good. After that, &lt;em&gt;redlabel&lt;/em&gt; announces the most recent COMFY event, which...</content>
   </entry>
   
   

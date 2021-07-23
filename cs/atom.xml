@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/cs/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-20T11:48:35+00:00</updated>
+  <updated>2021-07-23T11:56:05+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #43 - The DyWorld Saga</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-43/" />
+    <id>https://alt-f4.blog/ALTF4-43</id>
+    <updated>2021-07-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In issue #43 of Alt-F4, mod-maker extraordinaire &lt;em&gt;Dysoch&lt;/em&gt; talks about his history of modding (which started all the way back in Factorio 0.7!), giving a bit of an overview of how his mods evolved over time. Then, he goes into his latest and greatest project that’s due for release very...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-34</id>
     <updated>2021-05-07T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;V tomto 34. vydání, &lt;em&gt;Nanogamer7&lt;/em&gt; začne na potenciálně nové sérii článků o tom, jak se Factorio stalo Factoriem. Tento týden se ponoří do světa potenciálních inspirací pro toto mistrovské dílo hry, s diverzí do designu her semtam. Zustaňte vzhůru a poslouchejte!&lt;/p&gt; &lt;h2 id=&quot;nejlepší-z-žánru---původ-factoria-nanogamer7&quot;&gt;Nejlepší z Žánru - Původ Factoria &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Všichni...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #33 - Vanilla: Protřepat, nemíchat</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-33/" />
-    <id>https://alt-f4.blog/ALTF4-33</id>
-    <updated>2021-04-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;V tomto skvělém #33. vydáním Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; oznámí jejich nedávný módový výtvor: Znáhodňovač Receptů! Řekne o všech designových problémech, které musely být překročeny, aby mód byl opravdu dobrý. poté &lt;em&gt;redlabel&lt;/em&gt; nám řekne o nejnovějším COMFY eventu, který bude nejspíše trochu &lt;em&gt;vybuchující&lt;/em&gt;.&lt;/p&gt; &lt;h2 id=&quot;vanilla-protřepat-nemíchat-villfuk02&quot;&gt;Vanilla: Protřepat, nemíchat &lt;author&gt;Villfuk02&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://mods.factorio.com/mod/ZRecipeRandomizer&quot;&gt;&lt;em&gt;Vill’s Recipe Randomizer&lt;/em&gt;...</content>
   </entry>
   
   

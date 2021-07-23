@@ -61,6 +61,7 @@ const maxSpidertronSpeed = 400; // Pixels per second
 const legStepInterval = 100; // ms
 const activeLegCount = 3;
 const stepRandomness = 20;
+const boundingBoxPadding = 5;
 
 var spidertrons = [];
 
@@ -346,15 +347,15 @@ function updateSpidertron(spidertron, time) {
     let cssText = '--spidertron-scale:' + spidertron.scale + ';';
 
     // Caculate a bounding box for spidertron
-    let minX = -33;
-    let minY = -bodyHeight - 80;
-    let maxX = 33;
-    let maxY = 0;
+    let minX = -33 * spidertron.scale;
+    let minY = (-bodyHeight - 80) * spidertron.scale;
+    let maxX = 33 * spidertron.scale;
+    let maxY = -bodyHeight * spidertron.scale;
     let averageX = 0;
     let averageY = 0;
     for (let i = 0; i < spidertron.legs.length; i++) {
         minX = Math.min(spidertron.legs[i].currentX - spidertron.currentX, minX);
-        minY = Math.min(spidertron.legs[i].currentY - spidertron.currentY - zOffsets.legJoints * spidertron.scale, minY);
+        minY = Math.min(spidertron.legs[i].currentY - spidertron.currentY - (zOffsets.legJoints - zOffsets.bodyHeight) * spidertron.scale, minY);
         maxX = Math.max(spidertron.legs[i].currentX - spidertron.currentX, maxX);
         maxY = Math.max(spidertron.legs[i].currentY - spidertron.currentY, maxY);
         averageX += spidertron.legs[i].currentX;
@@ -362,12 +363,11 @@ function updateSpidertron(spidertron, time) {
     }
     averageX /= spidertron.legs.length;
     averageY /= spidertron.legs.length;
-    const boxPadding = 20;
     spidertron.boundingBox = {
-        x: minX - boxPadding,
-        y: minY - boxPadding,
-        width: maxX - minX + boxPadding * 2,
-        height: maxY - minY + boxPadding * 2
+        x: minX - boundingBoxPadding,
+        y: minY - boundingBoxPadding,
+        width: maxX - minX + boundingBoxPadding * 2,
+        height: maxY - minY + boundingBoxPadding * 2
     };
 
     let bodyOffsetX = averageX - spidertron.currentX;

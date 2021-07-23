@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/fr/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-20T11:48:35+00:00</updated>
+  <updated>2021-07-23T11:56:05+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°43 - La saga DyWorld</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-43/" />
+    <id>https://alt-f4.blog/ALTF4-43</id>
+    <updated>2021-07-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Dans cette parution n°43 d’Alt-F4, l’extraordinaire créateur de mods &lt;em&gt;Dysoch&lt;/em&gt; nous parle de son histoire de modding (qui a commencé tout au début de Factorio, avec la version 0.7), nous donnant un aperçu de l’évolution de ses mods au fil du temps. Maintenant, il est plongé dans son plus grand...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-34</id>
     <updated>2021-05-07T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Dans le numéro 34 de cette semaine, &lt;em&gt;Nanogamer7&lt;/em&gt; se lance dans une probable nouvelle série d’articles sur les origines mêmes de Factorio. Cette semaine, nous allons nous plonger dans les inspirations potentielles de ce chef-d’œuvre, avec un détour par le développement de jeux. Restez un peu et écoutez !&lt;/p&gt; &lt;h2...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°33 - Vanilla : au shaker, pas à la cuillère</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-33/" />
-    <id>https://alt-f4.blog/ALTF4-33</id>
-    <updated>2021-04-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Dans ce délicieux numéro 33 de Alt-F4, &lt;em&gt;Villfuk02&lt;/em&gt; nous présente son mod le plus récent : “The Recipe Randomizer” ! Un effort particulier est placé pour vous montrer l’ensemble des problèmes qui doivent être surmontés pour créer un générateur de recettes aléatoires qui soit réellement correct. Après cela, &lt;em&gt;redlabel&lt;/em&gt; nous...</content>
   </entry>
   
   

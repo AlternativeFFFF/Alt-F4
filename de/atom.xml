@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-20T11:48:35+00:00</updated>
+  <updated>2021-07-23T11:56:05+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #43 - The DyWorld Saga</title>
+    <link href="https://alt-f4.blog/de/ALTF4-43/" />
+    <id>https://alt-f4.blog/ALTF4-43</id>
+    <updated>2021-07-23T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;In issue #43 of Alt-F4, mod-maker extraordinaire &lt;em&gt;Dysoch&lt;/em&gt; talks about his history of modding (which started all the way back in Factorio 0.7!), giving a bit of an overview of how his mods evolved over time. Then, he goes into his latest and greatest project that’s due for release very...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-34</id>
     <updated>2021-05-07T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In der dieswöchigen Ausgabe Nummer #34 beginnt &lt;em&gt;Nanogamer7&lt;/em&gt; möglicherweise mit einer neuen Serie über die fernen Ursprünge von Factorio. In dieser Woche geht es um Inspirationen für dieses Meisterwerk, mit hin und wieder einigen Abstechern in Spieldesign.&lt;/p&gt; &lt;h2 id=&quot;das-beste-seines-genres--die-ursprünge-von-factorio-nanogamer7&quot;&gt;Das Beste Seines Genres – Die Ursprünge von Factorio &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;Wir alle...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #33 – Vanilla: Geschüttelt, nicht gerührt</title>
-    <link href="https://alt-f4.blog/de/ALTF4-33/" />
-    <id>https://alt-f4.blog/ALTF4-33</id>
-    <updated>2021-04-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In dieser wunderbaren 33. Ausgabe von Alt-F4 präsentiert &lt;em&gt;Villfuk02&lt;/em&gt; seine neuste Mod: Den Rezepte-Zufallsgenerator! Die Designprobleme, die man für einen guten Zufallsgenerator lösen muss, stehen hierbei besonders im Rampenlicht. Danach kündigt &lt;em&gt;redlabel&lt;/em&gt; das neuste COMFY Event an, welches vermutlich sehr &lt;em&gt;bombastisch&lt;/em&gt; wird.&lt;/p&gt; &lt;h2 id=&quot;vanilla-geschüttelt-nicht-gerührt-villfuk02&quot;&gt;Vanilla: Geschüttelt, nicht gerührt &lt;author&gt;Villfuk02&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://mods.factorio.com/mod/ZRecipeRandomizer&quot;&gt;&lt;em&gt;Vill‘s...</content>
   </entry>
   
   
