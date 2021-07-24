@@ -2,6 +2,7 @@
 
 Two months ago I released a video called: “A new perspective on trains in Factorio”.
 
+Some people have experienced some headaches after viewing this video, you have been warned. 
 {% include youtube.html id="5nRnnfKMZKQ" %}
 
 Those who downloaded [the mod linked in the description](https://mods.factorio.com/mod/train_perspective) know that this was an April first joke. For those who didn’t figure it out, sorry.
