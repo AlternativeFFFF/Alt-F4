@@ -57,4 +57,6 @@ So first record a replay normally at a normal speed. Then edit one of your mods 
 
 Sadly due to using replays I had to cut a few scenes. I was going to show how weird it feels to build things from a rotated perspective. But it turns out factorio doesn’t save your mouse position in the replay. So in the replay the UI follows your mouse at the time of playback, not the position your mouse was when you recorded it.
 
+{% include juxtapose.html left_mp4='replay_demo_1_no_audio.mp4' left_alt='video of building chests' left_width='' right_alt='video of building chests as seen through a replay' right_mp4=replay_demo_2_no_audio.mp4' right_width='' caption='Comparison how building looks normally (left) or when viewing a replay (right)' %}
+
 This was a fun challenge and I enjoyed confusing the Factorio players.
