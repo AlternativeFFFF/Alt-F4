@@ -6,13 +6,23 @@
 
 ### Why?
 
-Modding isn't about "why", it's about "why not"! I enjoyed both Factorio and Satisfactory, and over on the Satisfactory mod portal there's a mod that attempts to bring Factorio elements into Satisfactory. Things like Inserters, Science Packs and other small scale modifications. That seemed like a cool concept so I wondered if maybe I could bring Satisfactory elements into Factorio.
+Modding isn't about "why", it's about "why not"! I enjoyed both Factorio and Satisfactory, and over on the Satisfactory mod portal there's a mod that attempts to bring Factorio elements into Satisfactory. Things like Inserters, Science Packs and other small scale modifications. That seemed like a cool concept so I wondered if maybe I could bring Satisfactory elements into Factorio. This [has been attempted](https://mods.factorio.com/mod/Satisfactory) before, however development doesn't seem to have gone particularly far before it was abandoned.
+
+In particular I was interested in how Satisfactory conveyor belts connect directly to input/output slots on machines. This also applies to train stations, where a train pulls in and dumps its cargo in the platform storage, to then be loaded onto a belt. Certainly a lot simpler than some of the optimised loading/unloading setups I've seen in Factorio!
+
+### Who?
+
+Just for a little background, I'm quite new to the modding scene. In fact, aside from a couple of very small mods (one to [calculate solar panel ratios](https://mods.factorio.com/mod/SolarRatio) and one to [copy a snapshot of signals](https://mods.factorio.com/mod/PasteSignals) from power poles to a constant combinator), I've never attempted any signifiant modding efforts.
+
+I am, at least, a software developer. My day-job is working on a [free-to-play Pokémon fan-game](https://pokefarm.com/), which I've been doing for the past 12 years now. But even then, that's all done in PHP and JavaScript. Lua, the language mods are written in, was completely new to me. Fortunately, the general problem-solving skills carried over quite well, so it was mostly a matter of learning the syntax and structure of Lua scripts.
 
 ### How?
 
-Having never modded anything before, I set about figuring out how to connect belts directly to machines. I tried a few things with Loaders, but quickly found that they have a strong preference for one belt lane over the other, so I looked to Miniloaders and discovered that a pair of invisible inserters would do the job quite well.
+As a first step, I set about figuring out how to connect belts directly to machines. I tried a few things with Loaders, but quickly found that they have a strong preference for one belt lane over the other. If the input isn't saturated, then only the right lane gets used. If that lane fills, then the other gets started, and once the bottleneck clears you end up with doubled throughput for a while, which wasn't ideal.
 
 [[Image: one-lane-loaders.jpg]]
+
+I looked into other mods such as [Miniloader](https://mods.factorio.com/mod/miniloader) and [Editor Extensions](https://mods.factorio.com/mod/EditorExtensions) to see how they handled loading items onto both belt lanes, and discovered that the solution was to have a pair of invisible inserters, one outputting to each lane.
 
 Before too long I had a miner putting items on a belt, the belt could go into a smelter to produce ingots, then those go into a constructor to make plates, which get put in a storage container. Cool!
 
@@ -21,6 +31,8 @@ Before too long I had a miner putting items on a belt, the belt could go into a 
 I got a taste for modding and before I knew it I decided that whereas the mods that inspired me were limited in scope (one Satisfactory mod just adds Inserters, another adds Factorio recipes), *my* scope would be... *everything*. I was going to port everything Satisfactory has to offer, so I started writing down the feature list I would need to work on.
 
 Turns out, there's a lot of features! So I got to work on the easier ones. Recipes were of course quite easy to bring over, but others... not so much!
+
+While it's not possible to create entirely new types of building in Factorio, the desired effects can be reached through the use of "compound entities". That is, multiple different buildings stacked on (or at least near) each other. For example, the Miner doesn't actually mine items onto the belt; that would again result in only one lane being used. Instead, it places its results into an invisible chest, and the chest is then unloaded onto the belt by a Miniloader-like structure. Through this method, all kinds of new systems are possible!
 
 ### Major changes
 
@@ -34,7 +46,7 @@ On a similar note, you do not craft buildings as items in your inventory. Inseta
 
 [[Image: build-gun.jpg]]
 
-Another major difference is related to progression. Instead of mass-producing science packs to feed into labs, Satisfactory has you bring a selection of parts to the HUB for submission. I made another assembling machine for this, but this one doesn't actually craft anything at all. It is there because it provided a tidy way of offering Milestone Selection, and accepting the various parts required for submission. Once the ingredients are in place, a shiny button appears for you to click and unlock the next Milestone.
+Another major difference is related to progression. Instead of mass-producing science packs to feed into labs, Satisfactory has you bring a selection of parts to the HUB for submission. I made another assembling machine for this, but this one doesn't actually craft anything at all. It is there because the recipe selection is a close enough approximation of Milestone selection, and when a recipe is selected then the building will accept the required "ingredients". Once the items are in place, a shiny button appears for you to click and unlock the next Milestone.
 
 [[Image: hub-selection.jpg]]
 
@@ -46,13 +58,15 @@ Power management is another factor that has been reworked. In Factorio, if your 
 
 Satisfactory offers a remarkable number of features not present in Factorio, so these had to be replicated as closely as possible.
 
-Combat in the early-game is done with a melee weapon, and typically involves dodging enemy attacks while poking at them. Factorio doesn't really lend itself to this, but instead the player's weapon will deal knockback and stun. Essentially, if you land the first hit, you don't get hit in return.
+Combat in the early-game is done with a melee weapon, and typically involves dodging enemy attacks while poking at them. Factorio doesn't really lend itself to this, but instead the player's weapon will deal knockback and stun. When used correctly, this allows you to defeat early-game enemies without even taking damage! The enemies themselves do not build bases, but instead they are found in limited number guarding points of interest such as resource nodes and collectable items.
 
-Not all creatures are hostile! In Satisfactory you can find and tame Lizard Doggos to keep as pets, and they will repay you with occasional random loot. This has been recreated in the mod, so you can have a little farm!
+[[Image: enemy-guards.jpg]]
+
+Not all creatures are hostile! In Satisfactory you can find and tame Lizard Doggos to keep as pets, and they will repay you with occasional random loot. This has been recreated in the mod, so you can have a little farm! Check in on them every so often to see what they've found. Maybe it'll be a Power Slug, or maybe it'll be nuclear waste...
 
 [[Image: doggo-farm.jpg]]
 
-Vehicles are equipped with an autopilot feature. Record a path and then set it running automatically. Great for early-game logistics before you get trains.
+Vehicles are equipped with an autopilot feature. Record a path and then set it running automatically. Great for early-game logistics before you get trains. Vehicles can be loaded and unloaded at Truck Stations, allowing for well organised and distributed factories.
 
 [[Image: self-driving.jpg]]
 
@@ -60,7 +74,7 @@ Need more movement options? Satisfactory provides the Zipline, which lets you tr
 
 [[Image: jetpack.jpg]]
 
-Drones allow for efficient long-distance transport of items. They're like Logistics Robots but actually good!
+Drones allow for efficient long-distance transport of items. They're like Logistics Robots but actually good! Each drone can carry 9 stacks of items at once, waiting at the destination until they are all unloaded, before picking up any items that may be returned to the origin. They're blazing fast, reaching speeds over 240kmh! However, the loading and unloading process takes longer, making drones less effective for shorter journeys.
 
 [[Image: drone-port.jpg -- full canisters are sent out, empty ones are returned]]
 
@@ -70,9 +84,9 @@ There's more, but this has already been a pretty long list!
 
 As you have doubtless noticed from the screenshots above, I am a programmer, not a graphics person! Every building in the game is just a white card with the building's icon. It's perfectly playable in this state, but it doesn't look that good.
 
-If you have any experience making graphics for Factorio mods, I'd love to hear from you and perhaps make something happen.
+I am looking for help with this. If you have any experience making graphics for Factorio mods, I'd love to hear from you and perhaps make something happen.
 
-In the meantime, please enjoy the mod - I've spent almost a year non-stop on it!
+In the meantime, please [enjoy the mod](https://mods.factorio.com/mod/Satisfactorio) - I've spent almost a year non-stop on it!
 
 [[Image: aluminium-casing-build.jpg]]
 
