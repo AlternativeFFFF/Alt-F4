@@ -40,9 +40,9 @@ Step one would be to extract the raw image data (not to be confused with the .ra
 
 Next to get this into ffmpeg without saving to disk first. Turns out ffmpeg has built- in features for piping images, so a named pipe with a “.bmp” extension did the trick.
 
-Example command: ffmpeg -f image2pipe -framerate 60 -i - -r 60 -c:v libx264 -vf format=yuv420p -crf 1 example.mp4 -y < pipe.bmp
+Example command: `ffmpeg -f image2pipe -framerate 60 -i - -r 60 -c:v libx264 -vf format=yuv420p -crf 1 example.mp4 -y < pipe.bmp`
 Don’t forget to keep the pipe open between screenshots with a sleep command:
-sleep 10000000 > pipe.bmp, kill the sleep command to let ffmpeg finish the recording.
+`sleep 10000000 > pipe.bmp`, kill the sleep command to let ffmpeg finish the recording.
 
 
 I did a test run at a low fps and mhhhh, that’s not right… What’s going on here?
