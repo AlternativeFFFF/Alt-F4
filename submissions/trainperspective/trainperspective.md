@@ -33,7 +33,7 @@ There were a few small problems with that though. Turns out there are transparen
 
 Next I created a small mod that played a sound whenever I started recording screenshots, this way I could sync up the in-game sounds with the screenshots. Similarly to how movie studios use clappers.
 
-The mod also wrote out the value of game.players[1].vehicle.orientation into a text file. I used this to calculate how much rotation is needed, but smoothed out with some splines.
+The mod also wrote out the value of [game.players[1].vehicle.orientation](https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.orientation) into a text file. I used this to calculate how much rotation is needed, but smoothed out with some splines.
 
 I feared that these steps would not have been enough to make it believable. Taking that many screenshots slows down the game enormously. I was worried that it would be obvious that the footage was sped up by looking at my motion in game. So I looked for a way to make the recording go faster. After recording the screenshots I encoded them into an mp4 with ffmpeg, so why not cut out the middleman and try to hook up ffmpeg directly to factorio. Both encoding pngs and writing them to disks are expensive operations. So if I could skip these steps it would go a lot faster.
 Step one would be to extract the raw image data (not to be confused with the .raw format) directly from factorio instead of encoding it in a png. I couldn’t find an easy way to do it, but turns out a bmp is very close. It’s the image data backwards with a header slapped in front. So this should be way faster to encode than a png.
