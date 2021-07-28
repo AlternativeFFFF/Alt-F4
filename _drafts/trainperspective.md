@@ -1,12 +1,12 @@
 ## A new perspective on “A new perspective on trains in Factorio” <author>arrow in my gluteus maximus</author>
 
-Two months ago I released a video called: “A new perspective on trains in Factorio”. If you haven't seen it yet, please watch it before reading the article, as it won't make too much sense otherwise.
+Two months ago I released a video called: “A new perspective on trains in Factorio”. If you haven’t seen it yet, please watch it before reading the article, as it won’t make too much sense otherwise.
 
 Some people have reportedly experienced headaches after viewing this video. You have been warned.
 
 {% include youtube.html id="5nRnnfKMZKQ" %}
 
-Those who downloaded [the mod linked in the description](https://mods.factorio.com/mod/train_perspective) know that this was an April Fool's joke. For those who didn’t figure it out: I'm sorry. A few people have asked me for details on how I made this video, so I decided to write up a quick explanation. ~~Don't try this at home.~~
+Those who downloaded [the mod linked in the description](https://mods.factorio.com/mod/train_perspective) know that this was an April Fool’s joke. For those who didn’t figure it out: I’m sorry. A few people have asked me for details on how I made this video, so I decided to write up a quick explanation. ~~Don’t try this at home.~~
 
 I’ve seen some people speculating that I somehow extracted 3D models from the game. That’s not needed, it’s a simple rotation of what’s already shown on screen. While the idea might be simple though, the execution is a bit more complicated.
 
@@ -18,7 +18,7 @@ I ended up applying my usual solution to recording problems for Factorio: use sc
 
 The next problem is that the UI also rotates, this is not something we want. Screenshots also come to the rescue here. The [take_screenshot()](https://lua-api.factorio.com/latest/LuaGameScript.html#LuaGameScript.take_screenshot) command has an option called `show_gui`. The trick is to take two screenshots every tick, one with the UI visible and one without it. If we take only the parts that differ, then we end up with only the UI, which we can then superimpose over the screenshot without UI. At least that was the plan. Various video editing problems made this unviable. For example, my video editor did not support lossless formats (that I could find, I tried a bunch). Small differences in encoding thus end up in the UI.
 
-However, I found out that in recent Factorio versions the UI is no longer fixed to your player's position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a colour far away from other colours that occur in the game. I settled on pink. And I changed the image of some concrete to be pure pink and turned clouds off. I changed the location of my UI screenshot so only the pink concrete is visible. This way I can get the UI by using a sort of greenscreen, or rather a pinkscreen in this case.
+However, I found out that in recent Factorio versions the UI is no longer fixed to your player’s position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a colour far away from other colours that occur in the game. I settled on pink. And I changed the image of some concrete to be pure pink and turned clouds off. I changed the location of my UI screenshot so only the pink concrete is visible. This way I can get the UI by using a sort of greenscreen, or rather a pinkscreen in this case.
 
 {% include video.html mp4='https://media.alt-f4.blog/ALTF4/44/ui.mp4' alt='Factorio user interface above bright pink background.' caption='Pinkscreened UI' width='1920px' %}
 
@@ -32,7 +32,7 @@ I feared that these steps would not have been enough to make it believable. Taki
 
 Step one would be to extract the raw image data (not to be confused with the `.raw` format) directly from Factorio instead of encoding it in a png. I couldn’t find an easy way to do it, but turns out a `.bmp` is very close. It’s the image data backwards with a header slapped in front. So this should be way faster to encode than a png.
 
-Next to get this into FFmpeg without saving to disk first. Turns out FFmpeg has built-in features for piping images, so a named pipe with a “.bmp” extension did the trick.
+Next to get this into FFmpeg without saving to disk first. Turns out FFmpeg has built-in features for piping images, so a named pipe with a `.bmp` extension did the trick.
 
 Example command: `ffmpeg -f image2pipe -framerate 60 -i - -r 60 -c:v libx264 -vf format=yuv420p -crf 1 example.mp4 -y < pipe.bmp`
 
