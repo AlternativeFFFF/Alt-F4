@@ -54,6 +54,14 @@ Power management is another factor that has been reworked. In Factorio, if your 
 
 [[Image: blackout.jpg -- The entire factory has shut down!]]
 
+Splitting and merging belts is quite different. Rather than having a single "Splitter" entity that balances its two input and output belts, Satisfactory uses a Conveyor Splitter and Conveyor Merger, which split 1 belt into 3 or merge 3 into 1 respectively. This means balancers are a bit different! Although Satisfactory doesn't tend to need them, but they're still quite useful...
+
+[[Video: 3x3-balancer.mp4 -- A 3:3 balancer mixing belts together]]
+
+Satisfactory also provides the Smart Splitter (and a higher-tier Programmable Splitter) that allows you to set filters on items passing through:
+
+[[Video: smart-splitter.mp4 -- The mixed belt is split back into clean belts]]
+
 ### Extra features
 
 Satisfactory offers a remarkable number of features not present in Factorio, so these had to be replicated as closely as possible.
@@ -86,6 +94,6 @@ I am looking for help with this. If you have any experience making graphics for 
 
 In the meantime, please [enjoy the mod](https://mods.factorio.com/mod/Satisfactorio), out now on the Mod Portal!
 
-[[Image: aluminium-casing-build.jpg -- A small build producing aluminium casings]]
+[[Vudeo: aluminium-casing-build.mp4 -- A small build producing aluminium casings]]
 
 Stay effective!
