@@ -2,23 +2,23 @@
 
 ### What?
 
-**Satisfactorio** is an overhaul mod that bridges the gap between Satisfactory and Factorio. Every feature, from Milestones to Drones and everything in between, has been carefully re-created in Factorio.
+For the past year, I have been building a mod called **Satisfactorio**. It is an overhaul mod that allows you to have (almost) all of the experience of Satisfactory *inside* Factorio! Every feature, from Milestones to Drones and everything in between, has been carefully re-created in Factorio.
 
 ### Why?
 
-Modding isn't about "why", it's about "why not"! I enjoyed both Factorio and Satisfactory, and over on the Satisfactory mod portal there's a mod that attempts to bring Factorio elements into Satisfactory. Things like Inserters, Science Packs and other small scale modifications. That seemed like a cool concept so I wondered if maybe I could bring Satisfactory elements into Factorio. This [has been attempted](https://mods.factorio.com/mod/Satisfactory) before, however development doesn't seem to have gone particularly far before it was abandoned.
+Modding isn't about "why", it's about "why not"! I enjoyed both Factorio and Satisfactory, and over on the Satisfactory mod portal there's [a mod](https://ficsit.app/mod/5tEqdNJV8zHcxp) that re-creates Factorio in Satisfactory, including Inserters, the tech tree and the goal of launching a rocket. That seemed like a cool concept so I wondered if maybe I could bring Satisfactory elements into Factorio. This [has been attempted](https://mods.factorio.com/mod/Satisfactory) before, however development doesn't seem to have gone particularly far before it was abandoned.
 
-In particular I was interested in how Satisfactory conveyor belts connect directly to input/output slots on machines. This also applies to train stations, where a train pulls in and dumps its cargo in the platform storage, to then be loaded onto a belt. Certainly a lot simpler than some of the optimised loading/unloading setups I've seen in Factorio!
+One particular feature I was interested in before I started was how Satisfactory conveyor belts connect directly to input/output slots on machines. This also applies to train stations, where a train pulls in and dumps its cargo in the platform storage, to then be loaded onto a belt. Certainly a lot simpler than some of the optimised loading/unloading setups I've seen in Factorio!
 
 ### Who?
 
 Just for a little background, I'm quite new to the modding scene. In fact, aside from a couple of very small mods (one to [calculate solar panel ratios](https://mods.factorio.com/mod/SolarRatio) and one to [copy a snapshot of signals](https://mods.factorio.com/mod/PasteSignals) from power poles to a constant combinator), I've never attempted any signifiant modding efforts.
 
-I am, at least, a software developer. My day-job is working on a [free-to-play Pokémon fan-game](https://pokefarm.com/), which I've been doing for the past 12 years now. But even then, that's all done in PHP and JavaScript. Lua, the language mods are written in, was completely new to me. Fortunately, the general problem-solving skills carried over quite well, so it was mostly a matter of learning the syntax and structure of Lua scripts.
+I am, at least, a software developer. My day-job is working on a [free-to-play Pokémon fan-game](https://pokefarm.com/), which I've been doing for the past 12 years now. But even then, that's all done in PHP and JavaScript. Lua, the language mods are written in, was completely new to me. Fortunately, the general problem-solving skills carried over quite well, so it was mostly a matter of learning the syntax and structure of Lua scripts. The Factorio API is [exceptionally well-documented](https://lua-api.factorio.com/latest/index.html) and the [Factorio forums](https://forums.factorio.com/viewforum.php?f=82) were invaluable tools to help me get going.
 
 ### How?
 
-As a first step, I set about figuring out how to connect belts directly to machines. I tried a few things with Loaders, but quickly found that they have a strong preference for one belt lane over the other. If the input isn't saturated, then only the right lane gets used. If that lane fills, then the other gets started, and once the bottleneck clears you end up with doubled throughput for a while, which wasn't ideal.
+As a first step, I set about figuring out how to connect belts directly to machines. I tried a few things with Loaders, but quickly found that they have a strong preference for one belt lane over the other. If the input isn't saturated, then only the right lane gets used. If that lane fills, then the other gets started, and once the bottleneck clears you end up with doubled throughput for a while, which wasn't ideal. Satisfactory avoids this problem entirely by only having single-lane belts, but unfortunately that is not possible in Factorio.
 
 [[Video: one-lane-loaders.mp4 -- The miner only works on one belt lane, not both.]]
 
@@ -28,21 +28,21 @@ Before too long I had a miner putting items on a belt, the belt could go into a 
 
 [[Video: tiny-production-line.mp4 -- Mining iron, smelting ingots, and constructing plates]]
 
-I got a taste for modding and before I knew it I decided that whereas the mods that inspired me were limited in scope (one Satisfactory mod just adds Inserters, another adds Factorio recipes), *my* scope would be... *everything*. I was going to port everything Satisfactory has to offer, so I started writing down the feature list I would need to work on.
+I got a taste for modding and before I knew it I decided that I was going to port *everything* Satisfactory has to offer. Crazy, perhaps, but this small experiment had thoroughly [nerd sniped](https://xkcd.com/356/) me, so I started writing down the feature list I would need to work on.
 
-Turns out, there's a lot of features! So I got to work on the easier ones. Recipes were of course quite easy to bring over, but others... not so much!
+Turns out, there's a lot of features! I got to work on the easier ones. Recipes were of course quite easy to bring over, and making different assembling machines for different recipe categories was simple, but other features were much harder.
 
-While it's not possible to create entirely new types of building in Factorio, the desired effects can be reached through the use of "compound entities". That is, multiple different buildings stacked on (or at least near) each other. For example, the Miner doesn't actually mine items onto the belt; that would again result in only one lane being used. Instead, it places its results into an invisible chest, and the chest is then unloaded onto the belt by a Miniloader-like structure. Through this method, all kinds of new systems are possible!
+While it's not possible to create entirely new types of building in Factorio, the desired effects can be reached through the use of "compound entities". That is, multiple different buildings stacked on (or at least near) each other. For example, my re-creation of the [Miner](https://satisfactory.fandom.com/wiki/Miner) doesn't actually mine items onto the belt; that would again result in only one lane being used. Instead, it places its results into an invisible chest, and the chest is then unloaded onto the belt by a Miniloader-like structure. Through this method, all kinds of new systems are possible!
 
 ### Major changes
 
-While fundamentally Factorio and Satisfactory both share the similar core of "build stuff to build more stuff", there are some major differences that I had to make work.
+While fundamentally Factorio and Satisfactory both share the similar core of ["making stuff that makes stuff"](https://alt-f4.blog/ALTF4-42/#part-2-automation-in-other-games), there are some major differences that I had to make work.
 
-First of all, there is no hand-crafting in Satisfactory. At least, not in the sense that you can just fill up a crafting queue and go about your business until it's done. Instead, you have to go to the Craft Bench and you can't do anything else while working there. To replicate this, I made an assembling machine that doesn't require power, but only works if the player has the machine open on screen.
+First of all, there is no hand-crafting in Satisfactory. At least, not in the sense that you can just fill up a crafting queue and go about your business until it's done. Instead, you have to go to the [Craft Bench](https://satisfactory.fandom.com/wiki/Craft_Bench) and you can't do anything else while working there. To replicate this, I made an assembling machine that doesn't require power, but only works if the player has the machine open on screen.
 
 [[Image: handcrafting.jpg -- The Craft Bench requires manual interaction.]]
 
-On a similar note, you do not craft buildings as items in your inventory. Insetad, you can select a building and its materials will be pulled from your inventory automatically as you place down copies of the chosen building. Likewise, when picking up a building, its component parts are refunded.
+On a similar note, you do not craft buildings as items in your inventory. Instead, you can select a building and its materials will be pulled from your inventory automatically as you place down copies of the chosen building. Likewise, when picking up a building, its component parts are refunded.
 
 [[Video: build-gun.mp4 -- Select a building then stamp it down!]]
 
@@ -80,11 +80,11 @@ There's more, but this has already been a pretty long list!
 
 ### Help wanted!
 
-As you have doubtless noticed from the screenshots above, I am a programmer, not a graphics person! Every building in the game is just a white card with the building's icon. It's perfectly playable in this state, but it doesn't look that good.
+As you have doubtless noticed from the screenshots above, I am a programmer, not a graphics person! Every building in the game is just a white card with the Satisfactory building's icon. Functionally the game is very playable in this state, as you can quite easily get used to the "graphics", but it doesn't *look* that good.
 
 I am looking for help with this. If you have any experience making graphics for Factorio mods, I'd love to hear from you and perhaps make something happen.
 
-In the meantime, please [enjoy the mod](https://mods.factorio.com/mod/Satisfactorio) - I've spent almost a year non-stop on it!
+In the meantime, please [enjoy the mod](https://mods.factorio.com/mod/Satisfactorio), out now on the Mod Portal!
 
 [[Image: aluminium-casing-build.jpg -- A small build producing aluminium casings]]
 
