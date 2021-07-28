@@ -1,6 +1,8 @@
 .juxtapose {
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 @media (max-width: 750px) {
   .juxtapose {
