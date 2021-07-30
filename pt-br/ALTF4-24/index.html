@@ -253,7 +253,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Este é simplesmente um circuito NÃO-duplicador e duas portas AND. Também precisamos de alguns trocadores de itens, para combinar todos os tipos de itens de entrada e saída.</p>
       <h3 id="célula-básica-de-memória">
@@ -278,7 +278,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Como podo ver, com está única mudança nós transformamos o multiplexador em uma célula de memória muito básica. O que costumava ser a <em>entrada B</em> agora chama-se entrada de dados da célula de memória e o que costumava ser a <em>entrada P</em> agora é uma entrada de <em>escrita</em>. O circuito não em uma saída, já que esta está em loop, portanto resolvemos isso ao adicionar um duplicador (e também combinando um trocador com uma porta E, assim como fizemos da última vez):</p>
 
@@ -293,7 +293,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>O circuito que acabamos de construir é chamado de <strong>Flip-flop tipo D</strong>. Ele tem duas entradas: <em>D</em> para “Dados” e <em>E</em> para <em>Habilitar</em>. Diferente do que em computadores eletrônicos, temos que manter a entrada <em>E</em> ligada por um bom tempo já que os itens precisam viajar todo o caminho de volta ao começo para que a saída estabilize. Entretanto, o flip-flop tipo D tem um problema significativo de que enquanto a <em>entrada E</em> estiver ligada a saída copia completamente a <em>entrada D</em>, o que efetivamente transforma a coisa toda em um fio enfeitado. Então precisamos garantir a estabilidade da saída e para isso precisamos de algo mais simples que o flip-flop tipo D.</p>
       <h3 id="célula-de-memória-mestre-escravo">
@@ -318,7 +318,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Esse sistema de flip-flop duplo é como uma escadaria para nosso valor de dados, onde permite o primeiro passo quando <em>entrada E</em> é acionada e permite a sequência apenas depois que ela é desativada. Isso protege a saída de mudar até que o ciclo esteja completo. Agora podemos rearranjar tudo para tornar o módulo compacto:</p>
 
@@ -333,7 +333,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Interestingly, it has the exact same dimensions as last week’s adder module (or it used to until BlueCheetah came along). Talk about a satisfying coincidence!Curiosamente, ele tem exatamente as mesmas dimensões do módulo adicionador da semana passada (ou tinha até o BlueCheetah aparecer). Fale sobre uma coincidência satisfatória!</p>
       <h3 id="note-final">

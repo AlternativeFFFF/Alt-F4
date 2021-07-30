@@ -259,7 +259,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption>Šílený příklad sushi pásů v akci na obří báze městských bloků. Zdroj: <a href="https://www.reddit.com/r/factorio/comments/kv53ym/you_have_heard_of_sushi_belts_and_you_have_heard/">u/dentoidův redditový post</a></figcaption>
   </figure>
-  </p>
+</p>
       <h2 id="vypočítánín-pouze-s-pásy-část-první-ne-tak-rychlá-matematika-pocarski">
         
         
@@ -348,7 +348,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption>Primární výstup se chová jako OR hradlo, mezitím co sekundární výstup se chová jako AND hradlo.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>NOT hradlo je tročku těžší na výrobu, ale může být vyrobeno s vícero druhů itemů a chytrou mechanikou filtrování a prioritizování:</p>
 
@@ -363,7 +363,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Mezitím co <em>vstup A</em> je 0, první rozdělovač dostává pouze jeden vstup, a tak item druhu 2 půjde do primárního vstupu, což znamená pouze <em>NOT A výstup</em> je 1. Když vstup A je zapnutý, první rozdělovač nyní získává dva vstupy; item druhu 1 jde na primární vstup, tak je dán na primární výstup, nahrazující item druhu 2, který teď vystupuje z sekundárního výstupu. Sekundární výstup je efektivně kopie A, ale s různým druhem itemů.</p>
 
@@ -435,7 +435,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Všimněte si, že dostaneme výstup AND hradla zdarma díky kombinovanému duplikátor-NOT hradlu, což nám dává kompletní poloviční sčítač. Je náhoda, že můžeme kombinovat první měnič itemů s druhým AND hraldem, což nám umožnuje odstranit rozdělovač:</p>
 
@@ -450,7 +450,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
       <h3 id="finální-produkt">
         
         
@@ -490,7 +490,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Zde, první poloviční sčítač používá pravou stranu pásu a druhý poloviční sčítač používá levou část pásu. První, vstupy projdou zkrz první poloviční sčítač normálně na pravé straně pásu. Poté, XOR hradlo polovičního sčítače je vráceno až na začátek a je dáno na levou část pásu. Projde kdrz stejné mechanizmy znovu, ale protože je to na levé straně, nemá vůbec interakci s pravou stranou pásu. Druhý poloviční sčítač pořád má volný výstup, takže ho musíme připojit na třetí vstupový pás, tentokrát na levé straně, aby se to chovalo jako <em>přenosová</em> část. AND výstup obou polovičních sčítačů je bočně naložen na jeden pás, automaticky vytvářející OR. Interní spoždění mohou poloviční sčítače posunout výstup ve stejný čas, tímpádem se bude snažit naložit dva celé pásy na půl pásu. Proto potřebujeme přidat přetokový rozdělovač aby se přenos nezastavil a nezničil celý obvod. Po přeskupení některých komponentů, získáme toto:</p>
 
@@ -505,7 +505,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Toto je <em>přesně</em> stejný obvod jako v minulém obrázku, a nechám to jako cvičení pro čtenáře aby to ověřil. Jediná věc, která zbývá je naskládat několik těchto obvodů dohromady a dát jim čísla, takže zde je pásový sčítač, který sčítá 01001101 (77) + 10001011 (139) = 011011000 (216):</p>
 
@@ -520,7 +520,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Sčítání čísel je hezké, ale není to nic bez jakékoli paměti, což bude přesně to, co budu dělat při příštím vydání. Zůstaňte naladěni!</p>
       <h2 id="přispívání">

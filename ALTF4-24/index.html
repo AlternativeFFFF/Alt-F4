@@ -251,7 +251,7 @@ edited by <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>This is simply a duplicator-NOT circuit and two AND gates. We also need some item swappers, to match all input and output item types.</p>
       <h3 id="basic-memory-cell">
@@ -276,7 +276,7 @@ edited by <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>As you can see, with this single change we transformed the multiplexer into a very basic memory cell. What used to be <em>input B</em> is now the sole data input into the memory cell, and what used to be <em>input P</em> is now the “write” input. This circuit doesn’t have an output since we looped it, so we fix that by adding a duplicator (and also combining a swapper with an AND, just like last time):</p>
 
@@ -291,7 +291,7 @@ edited by <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>This circuit we just made is called a <strong>D latch</strong>. It has two inputs: <em>D</em> for “Data”, and <em>E</em> for “Enable”. Unlike in electronic computers, we have to keep <em>E</em> turned on for quite some time, since the items need to make their way back to the beginning for the output to become stable. However, a D latch has a pretty significant issue, that being, while <em>input E</em> is on, the output completely copies <em>input D</em>, effectively turning the entire thing into a fancy wire. We need to guarantee output stability, and for that, we need something more than a simple D latch.</p>
       <h3 id="master-slave-memory-cell">
@@ -316,7 +316,7 @@ edited by <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>This double latch system creates a sort of staircase for our data value, where it’s allowed on the first step when <em>input E</em> turns on, and allowed to keep going only after it turns back off. This protects the output from changing until we have completed a cycle. Now we can rearrange everything to make a compact module:</p>
 
@@ -331,7 +331,7 @@ edited by <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Interestingly, it has the exact same dimensions as last week’s adder module (or it used to until BlueCheetah came along). Talk about a satisfying coincidence!</p>
       <h3 id="final-note">

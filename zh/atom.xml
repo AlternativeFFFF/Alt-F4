@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-24T00:39:34+00:00</updated>
+  <updated>2021-07-30T11:27:28+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #44 - 一个新视角</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-44/" />
+    <id>https://alt-f4.blog/ALTF4-44</id>
+    <updated>2021-07-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;你还记得今年的愚人节吗？已经过去相当长的一段时间了，但如果你在那一天访问了 subreddit，那很可能看过 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 的视频。如果还没看过，本周的第 44 期 Alt-F4 将帮你补上这一课，然后再来看看这个黑魔法演示到底是如何实现的。&lt;/p&gt; &lt;h2 id=&quot;关于异星工厂列车新视角的新视角-arrow-in-my-gluteus-maximus&quot;&gt;关于“异星工厂列车新视角”的新视角 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;两个月前我发布了一个名为“异星工厂列车新视角”的视频。如果你还没看过，请在继续阅读本文之前观看，否则会无法理解这篇文章的内容。&lt;/p&gt; &lt;p&gt;有些人在观看该视频后声称自己出现了头痛等症状。你已经收到该健康提示了。&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/5nRnnfKMZKQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;那些下载了&lt;a href=&quot;https://mods.factorio.com/mod/train_perspective&quot;&gt;视频描述的 Mod&lt;/a&gt; 的人都知道这是一个愚人节玩笑。对于那些没搞清楚的人：我很抱歉。有不少人问我制作这个视频的细节，所以我决定写一个简介。&lt;del&gt;请勿在家尝试。&lt;/del&gt;&lt;/p&gt; &lt;p&gt;我看到有些人猜测我以某种方式从游戏中提取了 3D 模型。根本不需要，这只是对屏幕上已经显示的东西做个简单旋转。虽然这个想法可能很简单，但执行起来就有点复杂了。你遇到的第一个问题是，屏幕不是圆的。当旋转时，图像的一部分会被截断，而其他部分如 GUI 则会缺失。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;a...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-35</id>
     <updated>2021-05-14T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;作为 5 月中旬的流行趋势，请让 Alt-F4 第 35 期在这里为您养眼。本期，&lt;em&gt;Romner&lt;/em&gt; 对为什么异星工厂的工程师比我的世界的史蒂夫更牛进行了科学探索。结束这场感官盛宴的则是 &lt;em&gt;Conor_&lt;/em&gt; 给我们介绍了 &lt;em&gt;stringweasel&lt;/em&gt; 的 &lt;em&gt;名人堂（Hall of Fame）&lt;/em&gt; Mod，作者&lt;em&gt;绝对&lt;/em&gt;不可能是 &lt;em&gt;nepotism&lt;/em&gt;。&lt;/p&gt; &lt;h2 id=&quot;工程师那挑战物理学的力量-romner&quot;&gt;工程师那挑战物理学的力量 &lt;author&gt;Romner&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我的世界里的史蒂夫很强壮。&lt;a href=&quot;https://www.reddit.com/r/Minecraft/comments/jmz6lz/actualized_maximum_weight_that_steve_can_hold/&quot;&gt;能够轻易举起数十亿千克的强壮&lt;/a&gt;。但他远不能与异星工厂的工程师 &lt;em&gt;相提并论&lt;/em&gt;。&lt;/p&gt; &lt;p&gt;假设没用任何 Mod，穿着一套能量装甲 MK2 的工程师有 120 个背包格，加上 30 个物流垃圾格，总共有 150 个可用的格子。据我所知，游戏中每个格子最重的物品是核反应堆。每个格子可以容纳 10 个反应堆，因此我们总共有 1500 个反应堆。根据&lt;a href=&quot;https://www.nextbigfuture.com/2007/07/constructing-lot-of-nuclear-power.html&quot;&gt;这篇文章&lt;/a&gt;，现代核反应堆每兆瓦使用 40 公吨的钢和 190m³ 的混凝土。异星工厂中的核反应堆可以生产 40 MW。每个！哦，还有毗邻加成，我们可以用一个等式来说明（假设有四个或更多的反应堆和 2xN 反应堆布局），其中 $n$ 是反应堆的数量，$P$ 是反应堆的基本功率输出：&lt;/p&gt; &lt;p&gt;$(n...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #34 - 我们是如何走到今天的？</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-34/" />
-    <id>https://alt-f4.blog/ALTF4-34</id>
-    <updated>2021-05-07T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周的第 34 期，&lt;em&gt;Nanogamer7&lt;/em&gt; 开始了一个关于异星工厂潜在起源的全新系列文章。本周的内容是深入研究这一游戏杰作的灵感来源，并在聊聊游戏设计。请留步，听我说个故事！&lt;/p&gt; &lt;h2 id=&quot;同类游戏中的佼佼者异星工厂起源-nanogamer7&quot;&gt;同类游戏中的佼佼者——异星工厂起源 &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我们都听闻异星工厂在 &lt;a href=&quot;https://steamdb.info/stats/gameratings/&quot;&gt;Steam 评分&lt;/a&gt;上的优异成绩，长期处于仅次于传送门 2 之后的第二名。显然有许多人会试图在自动化这种游戏类型中模仿其成功之处，但异星工厂本身的灵感来自哪里？它是第一个完全为自动化而设计的游戏么？还说仅仅是第一个成功做出来的游戏？这将是我在这个（可能的）系列文章的第一篇中试图回答的问题。&lt;/p&gt; &lt;h3 id=&quot;自动化的定义&quot;&gt;自动化的定义&lt;/h3&gt; &lt;p&gt;我们需要要回答的第一个难题将是到底什么是自动化。以“城市：天际线”为例，你建造你的城市，然后这个城市（理论上）将会自主运行。这里的区别是，你的工作——并非让汽车无中生有，选择目的地，通过你建造的道路自己到达那里——而是管理全局，这一点没有自动化。另一方面，在原版的我的世界中，你却可能实现自动化工作——只不过是用活塞和漏斗，而不是机械臂和传送带。通过比较这两个例子，我们可以宽泛地将自动化类定义为&lt;em&gt;“制作用于制作物品的物品”&lt;/em&gt;。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/34/minecraft-hopper.jpg&quot; alt=&quot;原版我的世界中的一个简单的冶炼设置&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;漏斗，我的世界中的“传送带”。在图示中，它为熔炉提供煤炭（侧面）和物品（顶部），同时将熔炼产出的资源拉到下面的箱子中。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;然而，这个定义还是有点模糊的。作为一个没有玩过这个游戏的人，矮人堡垒中让矮人&lt;em&gt;制造东西&lt;/em&gt;的玩法是否满足我对自动化的定义？为了本文的目的，我们假设它是。不管我们谈论的是电子电路、小麦和种子，还是木制刺钉，都算。也许将来会有其他人来进一步研究矮人堡垒&lt;em&gt;*眨眨眼*&lt;/em&gt;。&lt;/p&gt; &lt;h3 id=&quot;可以用一个-mod-来实现&quot;&gt;可以用一个 Mod 来实现&lt;/h3&gt; &lt;p&gt;我已经提到了我的世界作为自动化的一个例子，但其原版的内容根本不能与 Mod 相提并论。在 2013 年的大热之后许多技术型玩家齐聚一堂，形成了有史以来最大的 Mod 社区之一，这可能使它成为最流行的自动化样例。但这引起了我的思考，诸如建筑（BuildCraft）、工业时代（IndustrialCraft）和红石力量（Redpower）等游戏...</content>
   </entry>
   
   

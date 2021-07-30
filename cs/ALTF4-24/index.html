@@ -253,7 +253,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Toto je lehce obvod duplikátor-NOT a dvě AND hradla. Také potřebujeme pár měničů itemů, aby jsme schodli vstupy a výstupy druhů itemů.</p>
       <h3 id="základní-paměťová-buňka">
@@ -278,7 +278,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Jak můžete vidět, s touto jedinou změnou jsme změnili multiplexor na velmi lehký paměťový článek. Co byl  <em>vstup B</em> ne teď jediný datový vstup do paměťového článku, a co byl kdysi <em>vstup P</em> je teď “psací” vstup. Obvod nemá výstup protože jsme ho dali do smučky, a to jsme opravili tím, že jsme tam dali duplikátor (a také kombinovali měnič s AND, jako minule):</p>
 
@@ -293,7 +293,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Obvod, který jsme teď vytvořili má název <strong>D latch</strong>. Má dva vstupy: <em>D</em> pro “Data”, a <em>E</em> pro “Zapnout<em>. Narozdíl od elektronických počítačů, potřebujeme nechat vstup *E</em> zapnutý na nějakou dobu, protože itemy se potřebují dostat zpět na začátek aby výstup byl stabilní. Nicméně, D latch má docela zásadní vadu; když je <em>vstup E</em> zapnutý, výstup kompletně kopíruje <em>vstup D</em>, efektivně měnící tuto jednotku na kompexní kabel. Potřebujeme garanci stability, a proto potřebujeme něco jiného než D latch.</p>
       <h3 id="otrokářská-paměťová-buňka">
@@ -318,7 +318,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Tento systém dvou latchů vyrábí takové schodiště pro náši datovou hodnotu, kde je povolena jít první krok pouze poté, co je znovu zapnuta. Toto ochraňuje výstup od změny dokud nedokončíme cyklus. Teď můžeme všechno přeskuput na kompaktní modul:</p>
 
@@ -333,7 +333,7 @@ upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Zajímavě, má to stejné dimenze jako sčítací modul z minulého týdne (nebo mělo dokud nepřišel BlueCheetah). Mluvte o uspokojující náhodě!</p>
       <h3 id="konečná-poznámka">

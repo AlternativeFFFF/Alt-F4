@@ -255,7 +255,7 @@ lektoriert von <em>marceljoint</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Das ist eine einfache Duplikator-NICHT-Schaltung und zwei UND-Gatter. Außerdem benötigen wir ein paar Itemtauscher, um Ein- und Ausgabeitemtyp anzugleichen.</p>
       <h3 id="einfache-speicherzelle">
@@ -280,7 +280,7 @@ lektoriert von <em>marceljoint</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Wie man erkennt haben wir mit einer kleinen Veränderung aus dem Multiplexer eine einfache Speicherzelle gemacht. Was früher der Eingang <em>B</em> war, ist jetzt der einzige Dateneingang, und was einmal der Zeigereingang <em>P</em> war, ist jetzt der <em>Schreibfreigabe</em>-Eingang. Diese Schaltung hat keinen Ausgang, da wir den zurück zum Eingang geführt haben, deswegen fügen wir noch einen Duplikator hinzu (und kombinieren einen Tauschen und ein UND-Gatter, so wie beim letzten Mal):</p>
 
@@ -295,7 +295,7 @@ lektoriert von <em>marceljoint</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Die Schaltung, die wir gerade gebaut haben nennt man <strong>D-Flipflop</strong>. Ein solches Flipflop hat zwei Eingänge: <em>D</em> für “Data” (Daten) und <em>E</em> für “Enable” (Schreibfreigabe). Im gegensatz zu elektronischen Computern müssen wir <em>E</em> für einige Zeit aktiv lassen, da die Items bis zurück zum anfang kommen müssen, damit die Schaltung stabil wird. Ein D-Flipflop hat aber einen großen Nachteil: während <em>E</em> aktiv ist, kopiert der Ausgang den Eingang <em>D</em>, und verwandelt währenddessen die Schaltung in ein sehr komplizierten Draht. Um die Stabilität des Ausgangs zu gewährleisten, brauchen wir etwas komplexeren als ein D-Flipflop.</p>
       <h3 id="master-slave-speicherzelle">
@@ -320,7 +320,7 @@ lektoriert von <em>marceljoint</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Dieses Doppel-Flipflop-System schafft eine Art Treppe für unseren Dateneingang, wo er auf der ersten Stufe erlaubt ist, wenn Eingang <em>E</em> aktiv ist und erst weiter darf, wenn er wieder aus ist. Das schützt unseren Ausgang vor Veränderungen, bis der gesamte Zyklus durchgelaufen ist. Jetzt können wir alles noch zu einem kompakteren Modul zusammenfassen:</p>
 
@@ -335,7 +335,7 @@ lektoriert von <em>marceljoint</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Interessanterweise ist dieses Modul genauso groß wie der Volladdierer von letzter Woche (zumindest war es das, bis BlueCheetah kam). Das ist doch ein schöner Zufall.</p>
       <h3 id="abschlussbemerkung">

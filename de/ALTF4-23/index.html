@@ -261,7 +261,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption>Ein verrücktes Beispiel für die Verwendung von Sushibändern in einer großen Cityblock-Fabrik. Quelle: <a href="https://www.reddit.com/r/factorio/comments/kv53ym/you_have_heard_of_sushi_belts_and_you_have_heard/">u/dentoid’s Reddit post</a></figcaption>
   </figure>
-  </p>
+</p>
       <h2 id="fließbandbasierter-rechner-teil-1-nicht-ganz-so-schnelle-mathematik-pocarski">
         
         
@@ -350,7 +350,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption>Der Primäre Ausgang verhält sich wie ein ODER-Gatter, der Sekundäre Ausgang wie ein UND-Gatter.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Das NICHT-Gatter ist etwas schwieriger, kann aber mit mehr als einem Gegenstandstyp und einigen cleveren Filtern und Prioritäten realisiert werden:</p>
 
@@ -365,7 +365,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Während <em>Eingang A</em> 0 ist, bekommt der erste Teiler nur einen Eingangswert, und so ist Gegenstandstyp 2 auf dem primären Ausgang, also ist der <em>NICHT-A-Ausgang</em> 1. Wenn Eingang A 1 ist, bekommt der erste Teiler nun zwei Eingabewerte, Gegenstandstyp 1 geht in den Primäreingang und somit auch auf den Primärausgang, wo es Gegenstandstyp 2 ersetzt, welches jetzt den sekundären Ausgang belegt. Der Sekundärausgang ist im Prinzip eine Kopie von A, allerdings mit einem anderen Gegenstandstyp.</p>
 
@@ -437,7 +437,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Zu beachten ist, dass wir den UND-Gatter-Ausgang durch die Kombination des Duplikator-NICHT-Gatters mit dazu bekommen, was uns einen kompletten Halbaddierer gibt. Praktischerweise können wir den ersten Gegenstandstauscher mit dem zweiten UND-Gatter kombinieren, was uns ermöglicht, einen Teiler zu sparen:</p>
 
@@ -452,7 +452,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
       <h3 id="das-endprodukt">
         
         
@@ -492,7 +492,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Hier verwendet der erste Halbaddierer die rechte Seite des Förderbandes, und der zweite Halbaddierer die linke Seite. Zuerst wandern die Eingabewerte ganz normal durch den ersten Halbaddierer auf der rechten Bandseite. Danach wird der XOR-Ausgang des Halbaddierers zurück an den Anfang gebracht und kommt jetzt auf die linke Seite des Förderbandes. Er geht wieder durch die selbe Mechanik wie vorher, da er aber jetzt auf der anderen Seite ist findet keine Interaktion statt. Der zweite Halbaddierer hat allerdings immer noch einen freien Eingang, und so müssen wir noch ein drittes Eingabeband verbinden, das sogenannte <em>Übertragseingabebit</em>. Die UND-Ausgänge beider Halbaddierer werden von der Seite auf ein Band geladen und wirken somit automatisch als ODER. Interne Verzögerungen können dazu führen, das beide Halbaddierer-Übertragsausgänge zur selben Zeit einen Ausgangswert haben, und so versucht wird, ein volles Band auf ein halbes Band zu entladen. Deshalb benötigen wir ein Überflussschutz, damit das Übertragsbit nicht den ganzen Mechanismus verstopft. Nach etwas Umstrukturierung kommen wir dann dazu:</p>
 
@@ -507,7 +507,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Das ist <em>exakt</em> die selbe Schaltung wie das vorherige Bild, und ich lasse es als eine Übung für den Leser das zu verifizieren. Das einzige was jetzt noch fehlt ist es, viele Halbaddierer zusammenzuschalten und einige Berechnungen durchführen zu lassen. Deshalb ist hier ein ausschließlich aus Fließbändern bestehender Additionsrechner, welcher 01001101 (77) + 10001011 (139) = 011011000 (216) berechnet:</p>
 
@@ -522,7 +522,7 @@ lektoriert von <em>dexteritas, Nanogamer7</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Zahlen addieren mach zwar Spaß, hat aber noch nichts mit irgendeiner Art von Speicher zu tun, was genau das ist, was wir uns in der nächsten Ausgabe anschauen werden. Bleibt gespannt!</p>
       <h2 id="beitragen">

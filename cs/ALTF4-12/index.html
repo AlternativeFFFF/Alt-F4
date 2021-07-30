@@ -211,7 +211,7 @@ upravil <em>Conor_, Therenas, nicgarner</em>
     </video>
     <figcaption>This is the upper leg segment. It is made of three sprites and animated entirely using HTML and CSS (no JavaScript).</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>
 <figure>
@@ -233,7 +233,7 @@ upravil <em>Conor_, Therenas, nicgarner</em>
     </video>
     <figcaption>In this first test, the knee was fixed at a 90° angle.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>I began studying videos of spidertron moving around in Factorio to try and determine how to make the leg movement look right. This <a href="https://www.youtube.com/watch?v=AsjE0ehkDtE">Factorio Crab Rave</a> video proved to be immensely useful, since I could jump around frame by frame and examine the leg movements. I went through many iterations, trying different ratios and formulas, but none quite matched the movement we see in game. Then it occurred to me that I wasn’t thinking in three dimensions. Spidertron’s body is hovering above the ground and, with Factorio’s isometric projection, this is done simply by subtracting part of the z-axis (height) from the y-axis (south). With this in mind, I went back to the video and noticed that spidertron’s knees are a fixed height (z-axis) above the body, and the knees are about halfway between the body and foot on the x- and y-axis. This 3D position is then projected into 2D, resulting in a near-perfect replica of the in-game proportions.</p>
 
@@ -248,7 +248,7 @@ upravil <em>Conor_, Therenas, nicgarner</em>
     </video>
     <figcaption>At this point it was three days, and not much sleep, later.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>To get spidertron walking on its own, I spent some time cleaning up the initial code-spaghetti and started with the idle animation. This was an easy one; it’s just a sine wave applied to the body’s height off the ground. The body originally had an independent speed and position; this was later changed to use the average of each leg’s position, to prevent the legs and body getting out of sync. That left just eight points to animate and make “steps” toward the target.</p>
 
@@ -267,7 +267,7 @@ upravil <em>Conor_, Therenas, nicgarner</em>
     </video>
     <figcaption>The first walking spidertron, bugs and all.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>On Thursday afternoon <a href="https://spidertron.alt-f4.blog/">spidertron.alt-f4.blog</a> was created so the whole Alt-F4 tech-team could test out spidertron and help with finding and fixing bugs. The way motion prediction was calculated in relation to frame rate caused any lag (of which there was plenty) to teleport the legs around, and very glitchy movements in general. Due to some CSS bugs the leg segments also had a minimum length which, in certain positions, caused further glitchy movements. After another late night of coding some of the major bugs were fixed, and the first public release went live on the blog.</p>
 
@@ -306,7 +306,7 @@ upravil <em>Conor_, Therenas, nicgarner</em>
     </video>
     <figcaption><a href="https://www.reddit.com/r/factorio/comments/jfiky6/small_update_to_the_science_river_blueprint/">u/Quazarz_’s Science River</a></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Complexity bias is a mental tendency to see things as more complex than they really are, especially when we don’t fully understand them. When it comes to projects this may manifest as procrastination, as we avoid a task that we expect to be long and difficult. When it comes to Factorio, this usually manifests as a preference to stick with the comfortable game mechanics we know and understand in order to avoid learning how new ones like circuits or nuclear power work. However, just as that task often turns out to be much easier than anticipated, I hope to show you that the game elements you’ve been avoiding may be simpler than you thought after all.</p>
 
@@ -340,7 +340,7 @@ upravil <em>Conor_, Therenas, nicgarner</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
       <h3 id="what-results-can-they-give">
         
         

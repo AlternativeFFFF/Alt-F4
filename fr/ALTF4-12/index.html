@@ -214,7 +214,7 @@
     </video>
     <figcaption>Ceci est la partie supérieure de la patte. Elle est constituée de trois sprites et animée entièrement en HTML et CSS (sans aucun JavaScript).</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>
 <figure>
@@ -236,7 +236,7 @@
     </video>
     <figcaption>Dans ce premier test, l’angle du genou était fixé à 90°.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>J’ai commencé à observer en détail des vidéos de spidertrons se déplaçant dans Factorio pour essayer de trouver comment rendre correctement le mouvement des pattes. Cette vidéo de <a href="https://www.youtube.com/watch?v=AsjE0ehkDtE">Crab Rave Factorio</a> fut énormément utile, parce que je pouvais l’examiner image par image pour analyser les mouvements des pattes. J’ai fait de nombreux essais de ratios et de formules, mais aucun ne correspondait vraiment au mouvement vu dans le jeu. Puis je me suis rendu compte que je ne pensais pas en 3 dimensions. Le corps du spidertron est suspendu au-dessus du sol et, avec la projection isométrique de Factorio, cela est fait simplement en soustrayant une partie de l’axe z (la hauteur) à l’axe y (sud). En gardant cela dans l’esprit, je suis retourné regarder la vidéo et j’ai remarqué que les genoux étaient à une hauteur (axe z) fixe au-dessus du corps, et qu’ils étaient à peu près à mi-chemin entre le corps et le pied sur les axes x et y. Cette position 3D est ensuite projetée en 2D, ce qui donne une reproduction presque parfaite des proportions du jeu.</p>
 
@@ -251,7 +251,7 @@
     </video>
     <figcaption>Ce point était trois jours, et peu de sommeil, plus tard.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Pour que le spidertron puisse se déplacer par lui-même, j’ai pris du temps pour nettoyer le code spaghetti initial et j’ai commencé par recréer l’animation de base. Celle-ci fut facile à faire ; il suffit d’appliquer une sinusoïde à la hauteur du corps au-dessus du sol. Initialement le corps avait une position et une vitesse indépendantes ; cela fut ensuite remplacé par la moyenne de la position de chaque patte, pour éviter de potentielles désynchronisations entre les pattes et le corps. Il suffisait donc d’animer les 8 points restants et leur faire faire “des pas” vers la cible.</p>
 
@@ -270,7 +270,7 @@
     </video>
     <figcaption>Le premier spidertron marcheur, les bugs et le reste.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Le jeudi après-midi, <a href="https://spidertron.alt-f4.blog/">spidertron.alt-f4.blog</a> a été créé pour que toute l’équipe technique de Alt-F4 puisse tester le spidertron et aider à trouver et à corriger les bugs. La façon dont la prédiction de mouvement a été calculée par rapport à la fréquence d’images provoquait un délai (très long) pour la téléportation des jambes et des mouvements très erratiques en général. En raison de certains bugs CSS, les segments de jambe avaient également une longueur minimale qui, dans certaines positions, provoquait d’autres mouvements parasites. Après une autre longue nuit de codage, certains des principaux bugs ont été corrigés, et la première version publique a été mise en ligne sur le blog.</p>
 
@@ -309,7 +309,7 @@
     </video>
     <figcaption><a href="https://www.reddit.com/r/factorio/comments/jfiky6/small_update_to_the_science_river_blueprint/"> Rivière de sciences de u/Quazarz_</a></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Le biais de complexité est une tendance mentale à considérer les choses comme plus complexes qu’elles ne le sont réellement, surtout lorsque nous ne les comprenons pas entièrement. Lorsqu’il s’agit de projets, cela peut se manifester par de la procrastination, car nous évitons une tâche que nous nous attendons à voir longue et difficile. Lorsqu’il s’agit de Factorio, cela se manifeste généralement par une préférence pour s’en tenir aux mécanismes de jeu confortables que nous connaissons et comprenons afin d’éviter d’apprendre comment fonctionnent les nouveaux mécanismes comme les circuits logiques ou l’énergie nucléaire. Cependant, tout comme cette tâche s’avère souvent beaucoup plus facile que prévu, j’espère vous montrer que les éléments de jeu que vous avez évités sont peut-être plus simples que vous ne le pensiez après tout.</p>
 
@@ -343,7 +343,7 @@
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
       <h3 id="quels-résultats-peuvent-ils-donner-">
         
         

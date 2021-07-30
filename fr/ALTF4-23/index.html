@@ -261,7 +261,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption>Un exemple dingue de convoyeur à sushi fonctionnant dans une immense base à quartiers. Source : <a href="https://www.reddit.com/r/factorio/comments/kv53ym/you_have_heard_of_sushi_belts_and_you_have_heard/">ce sujet Reddit d’u/dentoid</a></figcaption>
   </figure>
-  </p>
+</p>
       <h2 id="linformatique-par-convoyeurs-première-partie--des-maths-pas-si-rapides-pocarski">
         
         
@@ -350,7 +350,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption>La sortie primaire agit comme une porte OU, tandis que la sortie secondaire agit comme une porte ET.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>La porte NON est un peu plus difficile à réaliser, mais elle peut être obtenue en utilisant plus d’un type d’objet ainsi qu’un filtrage et une priorisation intelligents :</p>
 
@@ -365,7 +365,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Quand l’<em>entrée A</em> est à 0, le premier répartiteur ne reçoit qu’une seule entrée, et donc l’objet de type 2 va vers la sortie primaire, ce qui signifie que seule la <em>sortie NON A</em> est à 1. Quand l’entrée A est activée, le premier répartiteur reçoit maintenant 2 entrées ; l’objet de type 1 va vers l’entrée primaire, donc il est envoyé vers la sortie primaire, remplaçant l’objet de type 2 qui sort maintenant par la sortie secondaire. La sortie secondaire est en fait une copie de A, mais avec un type d’objet différent.</p>
 
@@ -437,7 +437,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Notez que nous obtenons également la sortie de la porte ET gratuitement grâce au circuit combiné Duplicateur-NON, ce qui nous donne un demi-additionneur complet. Il se trouve que nous pouvons combiner le premier échangeur d’objets avec la deuxième porte ET, ce qui nous permet de nous débarrasser d’un répartiteur :</p>
 
@@ -452,7 +452,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
       <h3 id="le-produit-final">
         
         
@@ -492,7 +492,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Ici, le premier demi-additionneur utilise le côté droit du convoyeur, et le second demi-additionneur utilise le côté gauche du convoyeur. Tout d’abord, les entrées passent par le premier demi-additionneur comme d’habitude, sur le côté droit du convoyeur. Ensuite, la sortie XOR du demi-additionneur est ramenée jusqu’au début et est maintenant envoyée sur le côté gauche du convoyeur. Elle passe à nouveau par les mêmes mécanismes, mais comme elle est du côté gauche, elle n’interagit pas du tout avec le côté droit. Le deuxième demi-additionneur a toujours une entrée libre, et nous pouvons donc y connecter un troisième convoyeur en entrée, cette fois-ci sur le côté gauche, pour permettre la prise en compte d’un bit issu d’un calcul précédent. Les sorties ET des deux demi-additionneurs sont chargées latéralement sur un convoyeur, créant automatiquement un OU. Des retards internes peuvent entraîner une sortie simultanée des deux demi-additionneurs, ce qui fait que le système tente de transférer un convoyeur complet sur une moitié de convoyeur. C’est pourquoi nous avons également besoin d’un répartiteur de protection contre les débordements afin que le bit de sortie ne fasse pas marche arrière et ne vienne pas perturber l’ensemble du circuit. Après un réaménagement des composants, nous obtenons ceci :</p>
 
@@ -507,7 +507,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>C’est <em>exactement</em> le même circuit que dans l’image précédente, et je laisse au lecteur le soin de le vérifier. La seule chose qu’il reste à faire est d’empiler un tas de ces circuits et de leur fournir des nombres. Voici donc un additionneur à convoyeurs qui calcule 01001101 (77) + 10001011 (139) = 011011000 (216) :</p>
 
@@ -522,7 +522,7 @@ relu par <em>Firerazer</em>
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Faire des additions, c’est cool comme idée, mais ce n’est rien sans une sorte de mémoire, et c’est exactement ce que nous allons explorer dans le prochain numéro. Restez à l’écoute !</p>
       <h2 id="contribuer">

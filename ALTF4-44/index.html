@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" class="en">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #44 - A New Perspective</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #44 - A New Perspective">
+<meta name="author" content="arrow in my gluteus maximus">
+<meta property="og:locale" content="en">
+<meta name="description" content="You remember April Fool’s day this year? Was quite a while ago already, but if you visited the subreddit on that day, you probably saw arrow in my gluteus maximus’s mind-bending video. If not, this week’s issue #44 of Alt-F4 will catch you up and then go over how exactly this dark magic presentation was achieved! A new perspective on “A new perspective on trains in Factorio” arrow in my gluteus maximus Two months ago I released a video called: “A new perspective on trains in Factorio”. If you haven’t seen it yet, please watch it before reading the article, as it won’t make too much sense otherwise. Some people have reportedly experienced headaches after viewing this video. You have been warned. Those who downloaded the mod linked in the description know that this was an April Fool’s joke. For those who didn’t figure it out: I’m sorry. A few people have asked me for details on how I made this video, so I decided to write up a quick explanation. Don’t try this at home. I’ve seen some people speculating that I somehow extracted 3D models from the game. That’s not needed, it’s a simple rotation of what’s already shown on screen. While the idea might be simple though, the execution is a bit more complicated. The first problem you come across is that screens aren’t circles. When rotating, parts of the image gets cut off, while other parts such as the GUI are missing. Simply rotating causes problems. Click to view full resolution I ended up applying my usual solution to recording problems for Factorio: use screenshots instead. Ingame screenshots are not bound by the limitations of normal screen recording. Therefore to capture the video I simply capture a screenshot every tick over a larger area than is normally visible. That way, no part of the screen is ever cut off when rotated. The next problem is that the UI also rotates, this is not something we want. Screenshots also come to the rescue here. The take_screenshot() command has an option called show_gui. The trick is to take two screenshots every tick, one with the UI visible and one without it. If we take only the parts that differ, then we end up with only the UI, which we can then superimpose over the screenshot without UI. At least that was the plan. Various video editing problems made this unviable. For example, my video editor did not support lossless formats (that I could find, I tried a bunch). Small differences in encoding thus end up in the UI. However, I found out that in recent Factorio versions the UI is no longer fixed to your player’s position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a colour far away from other colours that occur in the game. I settled on pink. And I changed the image of some concrete to be pure pink and turned clouds off. I changed the location of my UI screenshot so only the pink concrete is visible. This way I can get the UI by using a sort of greenscreen, or rather a pinkscreen in this case. &lt;/source&gt; Factorio user interface above bright pink background. Pinkscreened UI There were a few small problems with that though. Turns out there are transparent parts in the UI, namely the details panel that shows up when you hover over things with your mouse. It looked purple now. I ended up manually cutting it out of the UI, and nobody seems to have noticed. Next, I created a small mod that played a sound whenever I started recording screenshots, this way I could sync up the in-game sounds with the screenshots. Similarly to how movie studios use clappers. The mod also wrote out the value of game.players[1].vehicle.orientation into a text file. I used this to calculate how much rotation is needed but smoothed out using splines. I feared that these steps would not have been enough to make it believable. Taking that many screenshots slows down the game enormously. I was worried that it would be obvious that the footage was sped up by looking at my motion in-game. So I looked for a way to make the recording go faster. After recording the screenshots I encoded them into an mp4 with FFmpeg, so why not cut out the middleman and try to hook up FFmpeg directly to Factorio. Both encoding pngs and writing them to disks are expensive operations. So if I could skip these steps it would go a lot faster. Step one would be to extract the raw image data (not to be confused with the .raw format) directly from Factorio instead of encoding it in a png. I couldn’t find an easy way to do it, but turns out a .bmp is very close. It’s the image data backwards with a header slapped in front. So this should be way faster to encode than a png. Next to get this into FFmpeg without saving to disk first. Turns out FFmpeg has built-in features for piping images, so a named pipe with a .bmp extension did the trick. (Example command: ffmpeg -f image2pipe -framerate 60 -i - -r 60 -c:v libx264 -vf format=yuv420p -crf 1 example.mp4 -y &lt; pipe.bmp) Don’t forget to keep the pipe open between screenshots with a sleep command: sleep 10000000 &gt; pipe.bmp, kill the sleep command at the end to let FFmpeg finish the recording. I did a test run at a low fps and … that’s not right! What’s going on here? &lt;/source&gt; Factorio recording with low FPS The problem is that images are getting mixed. Factorio rendering is multithreaded. While one frame is still being written to the pipe, the next one might already start. Essentially mixing the pixels of both frames together. The fix is to force Factorio to wait until the previous frame is rendered before starting the next one. This can be done with by calling game.set_wait_for_screenshots_to_finish() every frame. This however slows down Factorio enough that we no longer can call it real-time. Although I still have some ideas to speed it up, at this point I spent way too much time on this project already and decided to go with the tried and true method of using replays. Factorio has this wonderful feature where it doesn’t check if the code of the mods used during the recording and playback of a replay are the same. So I first recorded a replay normally at a normal speed. Then I edited one of my mods to take screenshots every tick. Then, when playing the replay, Factorio will start taking screenshots. That is assuming the changes you made to the mod don’t change the game state. Sadly due to using replays, I had to cut a few scenes. I was going to show how weird it feels to build things from a rotated perspective, but it turns out Factorio doesn’t save your mouse position in the replay. So in the replay, the UI follows your mouse at the time of playback, not the position your mouse was in when you recorded it. &lt;/source&gt; video of building chests &lt;/source&gt; video of building chests as seen through a replay Comparison how building looks normally (left) or when viewing a replay (right) All in all, this was a fun challenge and I enjoyed confusing the Factorio players. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="You remember April Fool’s day this year? Was quite a while ago already, but if you visited the subreddit on that day, you probably saw arrow in my gluteus maximus’s mind-bending video. If not, this week’s issue #44 of Alt-F4 will catch you up and then go over how exactly this dark magic presentation was achieved! A new perspective on “A new perspective on trains in Factorio” arrow in my gluteus maximus Two months ago I released a video called: “A new perspective on trains in Factorio”. If you haven’t seen it yet, please watch it before reading the article, as it won’t make too much sense otherwise. Some people have reportedly experienced headaches after viewing this video. You have been warned. Those who downloaded the mod linked in the description know that this was an April Fool’s joke. For those who didn’t figure it out: I’m sorry. A few people have asked me for details on how I made this video, so I decided to write up a quick explanation. Don’t try this at home. I’ve seen some people speculating that I somehow extracted 3D models from the game. That’s not needed, it’s a simple rotation of what’s already shown on screen. While the idea might be simple though, the execution is a bit more complicated. The first problem you come across is that screens aren’t circles. When rotating, parts of the image gets cut off, while other parts such as the GUI are missing. Simply rotating causes problems. Click to view full resolution I ended up applying my usual solution to recording problems for Factorio: use screenshots instead. Ingame screenshots are not bound by the limitations of normal screen recording. Therefore to capture the video I simply capture a screenshot every tick over a larger area than is normally visible. That way, no part of the screen is ever cut off when rotated. The next problem is that the UI also rotates, this is not something we want. Screenshots also come to the rescue here. The take_screenshot() command has an option called show_gui. The trick is to take two screenshots every tick, one with the UI visible and one without it. If we take only the parts that differ, then we end up with only the UI, which we can then superimpose over the screenshot without UI. At least that was the plan. Various video editing problems made this unviable. For example, my video editor did not support lossless formats (that I could find, I tried a bunch). Small differences in encoding thus end up in the UI. However, I found out that in recent Factorio versions the UI is no longer fixed to your player’s position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a colour far away from other colours that occur in the game. I settled on pink. And I changed the image of some concrete to be pure pink and turned clouds off. I changed the location of my UI screenshot so only the pink concrete is visible. This way I can get the UI by using a sort of greenscreen, or rather a pinkscreen in this case. &lt;/source&gt; Factorio user interface above bright pink background. Pinkscreened UI There were a few small problems with that though. Turns out there are transparent parts in the UI, namely the details panel that shows up when you hover over things with your mouse. It looked purple now. I ended up manually cutting it out of the UI, and nobody seems to have noticed. Next, I created a small mod that played a sound whenever I started recording screenshots, this way I could sync up the in-game sounds with the screenshots. Similarly to how movie studios use clappers. The mod also wrote out the value of game.players[1].vehicle.orientation into a text file. I used this to calculate how much rotation is needed but smoothed out using splines. I feared that these steps would not have been enough to make it believable. Taking that many screenshots slows down the game enormously. I was worried that it would be obvious that the footage was sped up by looking at my motion in-game. So I looked for a way to make the recording go faster. After recording the screenshots I encoded them into an mp4 with FFmpeg, so why not cut out the middleman and try to hook up FFmpeg directly to Factorio. Both encoding pngs and writing them to disks are expensive operations. So if I could skip these steps it would go a lot faster. Step one would be to extract the raw image data (not to be confused with the .raw format) directly from Factorio instead of encoding it in a png. I couldn’t find an easy way to do it, but turns out a .bmp is very close. It’s the image data backwards with a header slapped in front. So this should be way faster to encode than a png. Next to get this into FFmpeg without saving to disk first. Turns out FFmpeg has built-in features for piping images, so a named pipe with a .bmp extension did the trick. (Example command: ffmpeg -f image2pipe -framerate 60 -i - -r 60 -c:v libx264 -vf format=yuv420p -crf 1 example.mp4 -y &lt; pipe.bmp) Don’t forget to keep the pipe open between screenshots with a sleep command: sleep 10000000 &gt; pipe.bmp, kill the sleep command at the end to let FFmpeg finish the recording. I did a test run at a low fps and … that’s not right! What’s going on here? &lt;/source&gt; Factorio recording with low FPS The problem is that images are getting mixed. Factorio rendering is multithreaded. While one frame is still being written to the pipe, the next one might already start. Essentially mixing the pixels of both frames together. The fix is to force Factorio to wait until the previous frame is rendered before starting the next one. This can be done with by calling game.set_wait_for_screenshots_to_finish() every frame. This however slows down Factorio enough that we no longer can call it real-time. Although I still have some ideas to speed it up, at this point I spent way too much time on this project already and decided to go with the tried and true method of using replays. Factorio has this wonderful feature where it doesn’t check if the code of the mods used during the recording and playback of a replay are the same. So I first recorded a replay normally at a normal speed. Then I edited one of my mods to take screenshots every tick. Then, when playing the replay, Factorio will start taking screenshots. That is assuming the changes you made to the mod don’t change the game state. Sadly due to using replays, I had to cut a few scenes. I was going to show how weird it feels to build things from a rotated perspective, but it turns out Factorio doesn’t save your mouse position in the replay. So in the replay, the UI follows your mouse at the time of playback, not the position your mouse was in when you recorded it. &lt;/source&gt; video of building chests &lt;/source&gt; video of building chests as seen through a replay Comparison how building looks normally (left) or when viewing a replay (right) All in all, this was a fun challenge and I enjoyed confusing the Factorio players. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/ALTF4-44/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-44/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-07-30T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-07-30T00:00:00+00:00","author":{"@type":"Person","name":"arrow in my gluteus maximus"},"description":"You remember April Fool’s day this year? Was quite a while ago already, but if you visited the subreddit on that day, you probably saw arrow in my gluteus maximus’s mind-bending video. If not, this week’s issue #44 of Alt-F4 will catch you up and then go over how exactly this dark magic presentation was achieved! A new perspective on “A new perspective on trains in Factorio” arrow in my gluteus maximus Two months ago I released a video called: “A new perspective on trains in Factorio”. If you haven’t seen it yet, please watch it before reading the article, as it won’t make too much sense otherwise. Some people have reportedly experienced headaches after viewing this video. You have been warned. Those who downloaded the mod linked in the description know that this was an April Fool’s joke. For those who didn’t figure it out: I’m sorry. A few people have asked me for details on how I made this video, so I decided to write up a quick explanation. Don’t try this at home. I’ve seen some people speculating that I somehow extracted 3D models from the game. That’s not needed, it’s a simple rotation of what’s already shown on screen. While the idea might be simple though, the execution is a bit more complicated. The first problem you come across is that screens aren’t circles. When rotating, parts of the image gets cut off, while other parts such as the GUI are missing. Simply rotating causes problems. Click to view full resolution I ended up applying my usual solution to recording problems for Factorio: use screenshots instead. Ingame screenshots are not bound by the limitations of normal screen recording. Therefore to capture the video I simply capture a screenshot every tick over a larger area than is normally visible. That way, no part of the screen is ever cut off when rotated. The next problem is that the UI also rotates, this is not something we want. Screenshots also come to the rescue here. The take_screenshot() command has an option called show_gui. The trick is to take two screenshots every tick, one with the UI visible and one without it. If we take only the parts that differ, then we end up with only the UI, which we can then superimpose over the screenshot without UI. At least that was the plan. Various video editing problems made this unviable. For example, my video editor did not support lossless formats (that I could find, I tried a bunch). Small differences in encoding thus end up in the UI. However, I found out that in recent Factorio versions the UI is no longer fixed to your player’s position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a colour far away from other colours that occur in the game. I settled on pink. And I changed the image of some concrete to be pure pink and turned clouds off. I changed the location of my UI screenshot so only the pink concrete is visible. This way I can get the UI by using a sort of greenscreen, or rather a pinkscreen in this case. &lt;/source&gt; Factorio user interface above bright pink background. Pinkscreened UI There were a few small problems with that though. Turns out there are transparent parts in the UI, namely the details panel that shows up when you hover over things with your mouse. It looked purple now. I ended up manually cutting it out of the UI, and nobody seems to have noticed. Next, I created a small mod that played a sound whenever I started recording screenshots, this way I could sync up the in-game sounds with the screenshots. Similarly to how movie studios use clappers. The mod also wrote out the value of game.players[1].vehicle.orientation into a text file. I used this to calculate how much rotation is needed but smoothed out using splines. I feared that these steps would not have been enough to make it believable. Taking that many screenshots slows down the game enormously. I was worried that it would be obvious that the footage was sped up by looking at my motion in-game. So I looked for a way to make the recording go faster. After recording the screenshots I encoded them into an mp4 with FFmpeg, so why not cut out the middleman and try to hook up FFmpeg directly to Factorio. Both encoding pngs and writing them to disks are expensive operations. So if I could skip these steps it would go a lot faster. Step one would be to extract the raw image data (not to be confused with the .raw format) directly from Factorio instead of encoding it in a png. I couldn’t find an easy way to do it, but turns out a .bmp is very close. It’s the image data backwards with a header slapped in front. So this should be way faster to encode than a png. Next to get this into FFmpeg without saving to disk first. Turns out FFmpeg has built-in features for piping images, so a named pipe with a .bmp extension did the trick. (Example command: ffmpeg -f image2pipe -framerate 60 -i - -r 60 -c:v libx264 -vf format=yuv420p -crf 1 example.mp4 -y &lt; pipe.bmp) Don’t forget to keep the pipe open between screenshots with a sleep command: sleep 10000000 &gt; pipe.bmp, kill the sleep command at the end to let FFmpeg finish the recording. I did a test run at a low fps and … that’s not right! What’s going on here? &lt;/source&gt; Factorio recording with low FPS The problem is that images are getting mixed. Factorio rendering is multithreaded. While one frame is still being written to the pipe, the next one might already start. Essentially mixing the pixels of both frames together. The fix is to force Factorio to wait until the previous frame is rendered before starting the next one. This can be done with by calling game.set_wait_for_screenshots_to_finish() every frame. This however slows down Factorio enough that we no longer can call it real-time. Although I still have some ideas to speed it up, at this point I spent way too much time on this project already and decided to go with the tried and true method of using replays. Factorio has this wonderful feature where it doesn’t check if the code of the mods used during the recording and playback of a replay are the same. So I first recorded a replay normally at a normal speed. Then I edited one of my mods to take screenshots every tick. Then, when playing the replay, Factorio will start taking screenshots. That is assuming the changes you made to the mod don’t change the game state. Sadly due to using replays, I had to cut a few scenes. I was going to show how weird it feels to build things from a rotated perspective, but it turns out Factorio doesn’t save your mouse position in the replay. So in the replay, the UI follows your mouse at the time of playback, not the position your mouse was in when you recorded it. &lt;/source&gt; video of building chests &lt;/source&gt; video of building chests as seen through a replay Comparison how building looks normally (left) or when viewing a replay (right) All in all, this was a fun challenge and I enjoyed confusing the Factorio players. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","url":"https://alt-f4.blog/ALTF4-44/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-44/"},"headline":"Alt-F4 #44 - A New Perspective","dateModified":"2021-07-30T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/44/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/44/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://discord.gg/AsXAwyV" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>The community-driven follow-on to the beloved Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button button-green lang-button" href="/../ALTF4-44/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-44/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-44/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-44/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-44/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-44/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-44/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-44/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-44/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-44/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #44 - A New Perspective  <author>2021-07-30</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Written by <em>arrow in my gluteus maximus</em>,
+
+
+
+edited by <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/44/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Table of Contents</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li><a href="#a-new-perspective-on-a-new-perspective-on-trains-in-factorio-arrow-in-my-gluteus-maximus">A new perspective on “A new perspective on trains in Factorio” <author>arrow in my gluteus maximus</author></a></li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>You remember April Fool’s day this year? Was quite a while ago already, but if you visited the subreddit on that day, you probably saw <em>arrow in my gluteus maximus</em>’s mind-bending video. If not, this week’s issue #44 of Alt-F4 will catch you up and then go over how exactly this dark magic presentation was achieved!</p>
+      <h2 id="a-new-perspective-on-a-new-perspective-on-trains-in-factorio-arrow-in-my-gluteus-maximus">
+        
+        
+            <a href="#a-new-perspective-on-a-new-perspective-on-trains-in-factorio-arrow-in-my-gluteus-maximus" class="anchor" style="text-decoration: none;">A new perspective on “A new perspective on trains in Factorio” <author>arrow in my gluteus maximus</author></a>
+          
+        
+      </h2>
+    
+
+<p>Two months ago I released a video called: “A new perspective on trains in Factorio”. If you haven’t seen it yet, please watch it before reading the article, as it won’t make too much sense otherwise.</p>
+
+<p>Some people have reportedly experienced headaches after viewing this video. You have been warned.</p>
+
+<div class="yt">
+	<iframe src="https://www.youtube.com/embed/5nRnnfKMZKQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="youtube"></iframe>
+</div>
+
+<p>Those who downloaded <a href="https://mods.factorio.com/mod/train_perspective">the mod linked in the description</a> know that this was an April Fool’s joke. For those who didn’t figure it out: I’m sorry. A few people have asked me for details on how I made this video, so I decided to write up a quick explanation. <del>Don’t try this at home.</del></p>
+
+<p>I’ve seen some people speculating that I somehow extracted 3D models from the game. That’s not needed, it’s a simple rotation of what’s already shown on screen. While the idea might be simple though, the execution is a bit more complicated. The first problem you come across is that screens aren’t circles. When rotating, parts of the image gets cut off, while other parts such as the GUI are missing.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+  <a href="https://media.alt-f4.blog/ALTF4/44/rotation.jpg" target="_blank">
+    <figure>
+      <img src="https://media.alt-f4.blog/ALTF4/44/rotation.jpg" alt="Example of a rotated image, corners have missing pixels because it’s not a circle." style="max-width: ; max-height: ">
+      
+      <figcaption>Simply rotating causes problems.</figcaption>
+    </figure>
+    <i>Click to view full resolution</i>
+    </a>
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>I ended up applying my usual solution to recording problems for Factorio: use screenshots instead. Ingame screenshots are not bound by the limitations of normal screen recording. Therefore to capture the video I simply capture a screenshot every tick over a larger area than is normally visible. That way, no part of the screen is ever cut off when rotated.</p>
+
+<p>The next problem is that the UI also rotates, this is not something we want. Screenshots also come to the rescue here. The <a href="https://lua-api.factorio.com/latest/LuaGameScript.html#LuaGameScript.take_screenshot">take_screenshot()</a> command has an option called <code class="language-plaintext highlighter-rouge">show_gui</code>. The trick is to take two screenshots every tick, one with the UI visible and one without it. If we take only the parts that differ, then we end up with only the UI, which we can then superimpose over the screenshot without UI. At least that was the plan. Various video editing problems made this unviable. For example, my video editor did not support lossless formats (that I could find, I tried a bunch). Small differences in encoding thus end up in the UI.</p>
+
+<p>However, I found out that in recent Factorio versions the UI is no longer fixed to your player’s position in screenshots. It is always visible no matter what part of the map you take a screenshot of. So I looked for a colour far away from other colours that occur in the game. I settled on pink. And I changed the image of some concrete to be pure pink and turned clouds off. I changed the location of my UI screenshot so only the pink concrete is visible. This way I can get the UI by using a sort of greenscreen, or rather a pinkscreen in this case.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1920px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/44/ui.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Factorio user interface above bright pink background.
+    </video>
+    <figcaption>Pinkscreened UI</figcaption>
+  </figure>
+</p>
+
+<p>There were a few small problems with that though. Turns out there are transparent parts in the UI, namely the details panel that shows up when you hover over things with your mouse. It looked purple now. I ended up manually cutting it out of the UI, and nobody seems to have noticed.</p>
+
+<p>Next, I created a small mod that played a sound whenever I started recording screenshots, this way I could sync up the in-game sounds with the screenshots. Similarly to how movie studios use <a href="https://en.wikipedia.org/wiki/Clapperboard">clappers</a>. The mod also wrote out the value of <a href="https://lua-api.factorio.com/latest/LuaEntity.html#LuaEntity.orientation">game.players[1].vehicle.orientation</a> into a text file. I used this to calculate how much rotation is needed but smoothed out using <a href="https://en.wikipedia.org/wiki/Spline_(mathematics)">splines</a>.</p>
+
+<p>I feared that these steps would not have been enough to make it believable. Taking that many screenshots slows down the game enormously. I was worried that it would be obvious that the footage was sped up by looking at my motion in-game. So I looked for a way to make the recording go faster. After recording the screenshots I encoded them into an mp4 with FFmpeg, so why not cut out the middleman and try to hook up FFmpeg directly to Factorio. Both encoding pngs and writing them to disks are expensive operations. So if I could skip these steps it would go a lot faster.</p>
+
+<p>Step one would be to extract the raw image data (not to be confused with the <code class="language-plaintext highlighter-rouge">.raw</code> format) directly from Factorio instead of encoding it in a png. I couldn’t find an easy way to do it, but turns out a <code class="language-plaintext highlighter-rouge">.bmp</code> is very close. It’s the image data backwards with a header slapped in front. So this should be way faster to encode than a png.</p>
+
+<p>Next to get this into FFmpeg without saving to disk first. Turns out FFmpeg has built-in features for piping images, so a named pipe with a <code class="language-plaintext highlighter-rouge">.bmp</code> extension did the trick. (Example command: <code class="language-plaintext highlighter-rouge">ffmpeg -f image2pipe -framerate 60 -i - -r 60 -c:v libx264 -vf format=yuv420p -crf 1 example.mp4 -y &lt; pipe.bmp</code>)</p>
+
+<p>Don’t forget to keep the pipe open between screenshots with a sleep command: <code class="language-plaintext highlighter-rouge">sleep 10000000 &gt; pipe.bmp</code>, kill the sleep command at the end to let FFmpeg finish the recording. I did a test run at a low fps and … that’s not right! What’s going on here?</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 800px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/44/render_420_2.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Factorio recording with low FPS
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>The problem is that images are getting mixed. Factorio rendering is multithreaded. While one frame is still being written to the pipe, the next one might already start. Essentially mixing the pixels of both frames together. The fix is to force Factorio to wait until the previous frame is rendered before starting the next one. This can be done with by calling <a href="https://lua-api.factorio.com/latest/LuaGameScript.html#LuaGameScript.set_wait_for_screenshots_to_finish">game.set_wait_for_screenshots_to_finish()</a> every frame. This however slows down Factorio enough that we no longer can call it real-time. Although I still have some ideas to speed it up, at this point I spent way too much time on this project already and decided to go with the tried and true method of using replays.</p>
+
+<p>Factorio has this wonderful feature where it doesn’t check if the code of the mods used during the recording and playback of a replay are the same. So I first recorded a replay normally at a normal speed. Then I edited one of my mods to take screenshots every tick. Then, when playing the replay, Factorio will start taking screenshots. That is assuming the changes you made to the mod don’t change the game state.</p>
+
+<p>Sadly due to using replays, I had to cut a few scenes. I was going to show how weird it feels to build things from a rotated perspective, but it turns out Factorio doesn’t save your mouse position in the replay. So in the replay, the UI follows your mouse at the time of playback, not the position your mouse was in when you recorded it.</p>
+
+<p>
+  <figure>
+    <div class="juxtapose">
+      <p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1280px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/44/replay_demo_1.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      video of building chests
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+  
+
+      <p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1280px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/44/replay_demo_2.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      video of building chests as seen through a replay
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+  
+
+    </div>
+    <figcaption>Comparison how building looks normally (left) or when viewing a replay (right)</figcaption>
+  </figure>
+</p>
+
+<p>All in all, this was a fun challenge and I enjoyed confusing the Factorio players.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://discord.gg/nxnCFkb">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://discord.gg/ceKebbY#">
+    Discuss on Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/ALTF4-43/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://discord.gg/ceKebbY" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      This website is a fan project and not directly affiliated with Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

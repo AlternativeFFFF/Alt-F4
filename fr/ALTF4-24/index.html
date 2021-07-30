@@ -253,7 +253,7 @@
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Il s’agit simplement d’un circuit Duplicateur-NON et de deux portes ET. Nous avons également besoin de quelques échangeurs d’objets, pour faire correspondre tous les types d’objets en entrée et en sortie.</p>
       <h3 id="cellule-mémoire-de-base">
@@ -278,7 +278,7 @@
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Comme vous pouvez le voir, grâce à ce seul changement, nous avons transformé notre multiplexeur en une cellule mémoire très basique. L’ancienne <em>entrée B</em> est maintenant la seule entrée de données de la cellule mémoire, et l’ancienne <em>entrée P</em> est maintenant l’entrée “écriture”. Mais comme ce circuit n’a plus de sortie maintenant que nous l’avons bouclé, nous avons corrigé cela en ajoutant un duplicateur (et en combinant également un échangeur avec un ET, comme la dernière fois) :</p>
 
@@ -293,7 +293,7 @@
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Ce circuit que nous venons de faire s’appelle un <strong>Verrou D</strong>. Il a deux entrées : <em>D</em> pour “Donnée” et <em>E</em> pour “Écrire”. Contrairement aux calculateurs électroniques, nous devons laisser <em>E</em> allumé pendant un certain temps, car les objets doivent revenir au début pour que la sortie devienne stable. Cependant, un verrou D a un problème assez important, à savoir que, tant que l’<em>entrée E</em> est allumée, la sortie recopie systématiquement l’<em>entrée D</em>, transformant effectivement le tout en un flux fantaisiste. Nous devons garantir la stabilité de la sortie, et pour cela, nous avons besoin de quelque chose de plus que le simple verrou D.</p>
       <h3 id="cellule-mémoire-maître-esclave">
@@ -318,7 +318,7 @@
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Ce système de double verrou crée une sorte d’escalier pour notre valeur de données, où elle est admise sur la première marche lorsque l’<em>entrée E</em> s’allume, et autorisée à continuer seulement après qu’elle se soit éteinte. Cela protège la sortie contre tout changement jusqu’à ce que nous ayons terminé un cycle. Maintenant, nous pouvons tout réorganiser pour en faire un module compact :</p>
 
@@ -333,7 +333,7 @@
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Il est intéressant de noter qu’il a exactement les mêmes dimensions que le module d’additionneur de la semaine dernière (ou qu’il avait, jusqu’à l’intervention de BlueCheetah). Quelle coïncidence agréable !</p>
       <h3 id="remarque-finale">

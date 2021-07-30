@@ -259,7 +259,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption>Um exemplo louco de esteiras sushi em ação em uma base enorme de quarteirões de cidade. Fonte: <a href="https://www.reddit.com/r/factorio/comments/kv53ym/you_have_heard_of_sushi_belts_and_you_have_heard/"> publicação de u/dentoid no reddit.</a></figcaption>
   </figure>
-  </p>
+</p>
       <h2 id="computação-somente-de-esteiras-parte-1-matemática-não-tão-rápida-pocarski">
         
         
@@ -348,7 +348,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption>A saída primária atua como uma porta OU, enquanto a saída secundária atua como uma porta E.</figcaption>
   </figure>
-  </p>
+</p>
 
 <p>A porta NÃO é um pouco mais complicada de se fazer, mas pode ser feita usando mais de um tipo de item e alguma filtragem inteligente e priorização:</p>
 
@@ -363,7 +363,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Embora a <em>entrada A</em> seja 0, o primeiro divisor está recebendo apenas uma entrada e, portanto, o tipo de item 2 vai para a saída primária, o que significa que apenas a saída <em>NÃO A</em> é 1. Quando a entrada A está ligada, o primeiro divisor está agora obtendo 2 entradas; O tipo de item 1 vai para a entrada primária, portanto, é colocado na saída primária, substituindo o tipo de item 2, que agora está saindo da saída secundária. A saída secundária é efetivamente uma cópia de A, mas com um tipo de item diferente.</p>
 
@@ -435,7 +435,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Observe que também obtemos a saída da porta E de graça graças ao circuito combinado duplicador-NÃO, o que nos dá um meio-somador completo. Acontece que podemos combinar o primeiro trocador de item com a segunda porta E, o que nos permite eliminar um divisor:</p>
 
@@ -450,7 +450,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
       <h3 id="o-produto-final">
         
         
@@ -490,7 +490,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Aqui, o primeiro meio-somador usa a via do lado direito da esteira e o segundo meio-somador usa a via do lado esquerdo da esteira. Primeiro, as entradas passam pelo primeiro meio-somador normalmente na via do lado direito da esteira. Em seguida, a saída XOR do meio-somador é retornada totalmente e agora é colocada na via do lado esquerdo da esteria. Ele passa pelos mesmos mecanismos novamente, mas como está na via do lado esquerdo, não interage de forma alguma com a via do lado direito. O segundo meio-somador ainda tem uma entrada livre, portanto, temos que conectar uma terceira esteira de entrada, desta vez na via do lado esquerdo para agir como o bit <em>carry in</em>. As saídas E de ambos os meio-somadores são carregadas lateralmente em uma esteira, criando automaticamente um OU. Atrasos internos podem fazer com que os carregamentos de ambos os meio-somadores saiam ao mesmo tempo, fazendo com que eles tentem descarregar uma esteira completa na metade de uma correia. Portanto, também precisamos de um divisor de proteção contra estouro para que o carry não volte e interrompa todo o circuito. Depois de alguns rearranjos dos componentes, obtemos o seguinte:</p>
 
@@ -505,7 +505,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Este é <em>exatamente</em> o mesmo circuito da imagem anterior, e deixo como um exercício para o leitor verificar isso. A única coisa que resta a fazer é empilhar um monte desses somadores juntos e alimentá-los com números, então aqui está um somador apenas de esteiras calculando 01001101 (77) + 10001011 (139) = 011011000 (216):</p>
 
@@ -520,7 +520,7 @@ editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
     </video>
     <figcaption></figcaption>
   </figure>
-  </p>
+</p>
 
 <p>Somar números é legal e tudo, mas não é nada sem algum tipo de memória, que é exatamente o que exploraremos na próxima edição. Fique ligado!</p>
       <h2 id="contribuindo">
