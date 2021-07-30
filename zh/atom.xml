@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-07-30T11:33:57+00:00</updated>
+  <updated>2021-07-30T12:57:46+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -17,7 +17,7 @@
     <link href="https://alt-f4.blog/zh/ALTF4-44/" />
     <id>https://alt-f4.blog/ALTF4-44</id>
     <updated>2021-07-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;你还记得今年的愚人节吗？已经过去相当长的一段时间了，但如果你在那一天访问了 subreddit，那很可能看过 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 的视频。如果还没看过，本周的第 44 期 Alt-F4 将帮你补上这一课，然后再来看看这个黑魔法演示到底是如何实现的。&lt;/p&gt; &lt;h2 id=&quot;关于异星工厂列车新视角的新视角-arrow-in-my-gluteus-maximus&quot;&gt;关于“异星工厂列车新视角”的新视角 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;两个月前我发布了一个名为“异星工厂列车新视角”的视频。如果你还没看过，请在继续阅读本文之前观看，否则会无法理解这篇文章的内容。&lt;/p&gt; &lt;p&gt;有些人在观看该视频后声称自己出现了头痛等症状。你已经收到该健康提示了。&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/5nRnnfKMZKQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;那些下载了&lt;a href=&quot;https://mods.factorio.com/mod/train_perspective&quot;&gt;视频描述的 Mod&lt;/a&gt; 的人都知道这是一个愚人节玩笑。对于那些没搞清楚的人：我很抱歉。有不少人问我制作这个视频的细节，所以我决定写一个简介。&lt;del&gt;请勿在家尝试。&lt;/del&gt;&lt;/p&gt; &lt;p&gt;我看到有些人猜测我以某种方式从游戏中提取了 3D 模型。根本不需要，这只是对屏幕上已经显示的东西做个简单旋转。虽然这个想法可能很简单，但执行起来就有点复杂了。你遇到的第一个问题是，屏幕不是圆的。当旋转时，图像的一部分会被截断，而其他部分如 GUI 则会缺失。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;a...</content>
+    <content type="html">&lt;p&gt;你还记得今年的愚人节吗？已经过去相当长的一段时间了，但如果你在那一天访问了 subreddit，那很可能看过 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 的视频。如果还没看过，本周的第 44 期 Alt-F4 将帮你补上这一课，然后再来看看这个黑魔法演示到底是如何实现的。&lt;/p&gt; &lt;h2 id=&quot;关于异星工厂列车新视角的新视角-arrow-in-my-gluteus-maximus&quot;&gt;关于“异星工厂列车新视角”的新视角 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;两个月前我发布了一个名为“异星工厂列车新视角”的视频。如果你还没看过，请在继续阅读本文之前观看，否则会无法理解这篇文章的内容。&lt;/p&gt; &lt;p&gt;有些人在观看该视频后声称自己出现了头痛等症状。你已经收到该健康提示了。&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/5nRnnfKMZKQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;（译注：若无法打开上面的视频也可&lt;a href=&quot;https://www.bilibili.com/video/BV1Tb4y1r7fo/&quot;&gt;点击此链接&lt;/a&gt;观看搬运视频。）&lt;/p&gt; &lt;p&gt;那些下载了&lt;a href=&quot;https://mods.factorio.com/mod/train_perspective&quot;&gt;视频描述的 Mod&lt;/a&gt; 的人都知道这是一个愚人节玩笑。对于那些没搞清楚的人：我很抱歉。有不少人问我制作这个视频的细节，所以我决定写一个简介。&lt;del&gt;请勿在家尝试。&lt;/del&gt;&lt;/p&gt; &lt;p&gt;我看到有些人猜测我以某种方式从游戏中提取了 3D 模型。根本不需要，这只是对屏幕上已经显示的东西做个简单旋转。虽然这个想法可能很简单，但执行起来就有点复杂了。你遇到的第一个问题是，屏幕不是圆的。当旋转时，图像的一部分会被截断，而其他部分如 GUI 则会缺失。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div...</content>
   </entry>
   
   
