@@ -1,4 +1,9 @@
-<div class="juxtapose">
-  {% include video.html mp4=include.left_mp4 alt=include.left_alt caption=include.left_caption width=include.left_width %}
-  {% include video.html mp4=include.right_mp4 alt=include.right_alt caption=include.right_caption width=include.right_width %}
-</div>
+<p>
+  <figure>
+    <div class="juxtapose">
+      {% include video.html mp4=include.left_mp4 alt=include.left_alt width=include.left_width %}
+      {% include video.html mp4=include.right_mp4 alt=include.right_alt width=include.right_width %}
+    </div>
+    <figcaption>{{ include.caption }}</figcaption>
+  </figure>
+</p>
