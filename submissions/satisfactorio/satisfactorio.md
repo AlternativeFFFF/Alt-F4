@@ -78,7 +78,7 @@ Vehicles are equipped with an autopilot feature. Record a path and then set it r
 
 Need more movement options? Satisfactory provides the Zipline, which lets you travel along power lines. Hyper Tubes allow for travel between two connected locations. Later on you can make a Jetpack to fly a fair distance, and later still there is a Hover Pack that uses electricity from the power grid to fly as long as you want.
 
-[[Video: jetpack.mp4 -- Wheeeeeeeee!!!]]
+[[Video: zipline.mp4 -- The Zipline allows you to ride alone power lines]]
 
 Drones allow for efficient long-distance transport of items. They're like Logistics Robots, but actually good! Each drone can carry nine stacks of items at once, waiting at the destination until they are all unloaded, before picking up any items that may be returned to the origin. They're blazing fast, reaching speeds over 240kmh! However, the loading and unloading process takes longer, making drones less effective for shorter journeys.
 
