@@ -17,7 +17,7 @@ One of the most fun parts each week for me comes on Thursday when we have to sel
 <script>
 var x ="", i;
 for (i=45; i>0; i--) {
-  x = x + "<div class='image' style='max-width: 150px; margin: 5px;'><a href='https://alt-f4.blog/ALTF4-" + i + "/' target='_blank'e><img src='https://alt-f4.blog/assets/ALTF4/" + i + "/thumbnail.jpg' alt='Alt-F4 #" + i + " Thumbnail'></div>";
+  x = x + "<div class='image' style='max-width: 150px; margin: 5px;'><a href='https://alt-f4.blog/ALTF4-" + i + "/' target='_blank'><img src='https://alt-f4.blog/assets/ALTF4/" + i + "/thumbnail.jpg' alt='Alt-F4 #" + i + " Thumbnail'></div>";
 }
 document.getElementById("grid").innerHTML = x;
 </script>
