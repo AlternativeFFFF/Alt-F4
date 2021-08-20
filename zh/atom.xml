@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-08-09T14:32:22+00:00</updated>
+  <updated>2021-08-20T12:00:41+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #46 - 越过一周年</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-46/" />
+    <id>https://alt-f4.blog/ALTF4-46</id>
+    <updated>2021-08-20T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;好家伙，从我开始这个项目算起都过了一整年了。难以想象的一年，同时不敢相信这个项目能坚持一年。起初我只是想尝试这个愚蠢的主意，看看它会发展到什么程度，并没有指望它能成为一个有数十人定期作出贡献的真正项目。没有这么多人站出来贡献，它很可能几周后就消失了。但是（至少在这个现实中）它没有，我对此感到非常高兴和感激。&lt;/p&gt; &lt;p&gt;Conor_ 将在下文中感谢核心团队，但我想感谢所有为该项目做出贡献的人。和你们一起工作是如此的快乐。感谢那些提供文章的人，感谢提出你们热情的项目，并乐于接受反馈。没有你们，就没有这个项目。还要感谢翻译人员，他们孜孜不倦地进行多语种翻译，让更多的人能够享受这个项目，并且时常忍受混乱的发行时间表。最后，感谢技术人员（特别是 MagPie）实现了我们关于网站的每一个需求。&lt;/p&gt; &lt;h2 id=&quot;alt-f4-一周年-conor_&quot;&gt;Alt-F4 一周年 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;牛逼，Alt-F4 一周年达成！在过去的 52 周中合计发行了 45 期间，期期都是围绕异星工厂社区的庆典。从&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-2/&quot;&gt;蜘蛛机甲!!!&lt;/a&gt;到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-14/#mod-%E8%81%9A%E7%84%A6%E5%A4%AA%E7%A9%BA%E6%8E%A2%E7%B4%A2space-exploration-ironic-toblerone&quot;&gt;太空探索&lt;/a&gt;，从&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/&quot;&gt;混乱的传送带&lt;/a&gt;到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-24/&quot;&gt;更多混乱的传送带&lt;/a&gt;。所有的供稿人加起来，我们已经书写了超过 100,000 字，在我看来能算个伟业了。&lt;/p&gt; &lt;h3 id=&quot;一些谢意&quot;&gt;一些谢意&lt;/h3&gt; &lt;p&gt;如果没有 Alt-F4 背后的强大团队，这一切都不可能实现。特别感谢 &lt;em&gt;stringweasel&lt;/em&gt;，他为 Alt-F4 寻找有趣的人，并指导他们写出精炼的文章。另外感谢 &lt;em&gt;Nano&lt;/em&gt;，他每周都会对我们的文章进行事实核查，以确保每一个晦涩的链接和愚蠢的笑话都指向正确的地方，当然他也为 Alt-F4 的编辑方向提供了指导。最后感谢 &lt;em&gt;Firerazer&lt;/em&gt; 为 Alt-F4 的翻译管理所做出的努力。&lt;/p&gt; &lt;h3 id=&quot;哇哦这个缩略图看起来有点怪&quot;&gt;哇哦，这个缩略图看起来有点怪&lt;/h3&gt; &lt;p&gt;对我而言，每周最有趣的部分之一是在星期四，此时我们需要为本周的更新选择标题和缩略图。这正是编辑团队发挥创意之时，围绕该周的文章做点好玩的东西。标题和缩略图是人们第一页就会看到的东西，能够吸引他们阅读投稿人精心准备的作品，所以我们很重视它们。&lt;em&gt;Nano&lt;/em&gt; 和 &lt;em&gt;stringweasel&lt;/em&gt; 通常会带头设计缩略图，在创作中倾注段子和梦想。下面，我制作了一个迄今为止所有缩略图的拼贴画，以展示它们的荣耀。如果你对其中任何一个感兴趣，欢迎点击进入该周的文章，我保证这一篇贼好！&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;div id=&quot;grid&quot; class=&quot;center flex flex-wrap flex-center&quot;&gt; &lt;script&gt; var...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-37</id>
     <updated>2021-05-28T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在 Alt-F4 发行的第 37 周，我们推出了第 37 期！想不到吧！在这一期中，长期撰稿人 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pocarski&lt;/code&gt; 又带来了更多简单易懂的内容，为您讲解如何通过一些运算器来调剂和优化你的基地！&lt;/p&gt; &lt;h2 id=&quot;运算器-2增强型物流-pocarski&quot;&gt;运算器 2：增强型物流 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;几周前，我写了一篇关于使用运算器来改善特定建筑的&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-31/#%E8%BF%90%E7%AE%97%E5%99%A8%E4%BB%A5%E5%8F%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%97%A0%E9%9C%80%E7%95%8F%E6%83%A7%E5%AE%83%E4%BB%AC-pocarski&quot;&gt;文章&lt;/a&gt;。这一次，我们将看看如何更普遍地应用信号网络，来提高你整个工厂的效率。我们将研究传统设计的缺陷，提出解决这些问题的方法，使用信号网络实现这些解决方案。此种改进可以在机器人和列车上进行，而且电路是如此简单几乎不需要判断运算器。让我们直接开始吧！&lt;/p&gt; &lt;h3 id=&quot;机器人网络对网络接口&quot;&gt;机器人：网络对网络接口&lt;/h3&gt; &lt;p&gt;我们都遇到过这样的问题：你创造了更多的机器人需求，突然间，所有来自你基地远端的机器人都决定要在没有机器人指令平台的地区行驶数千格。在最好的情况下，这将导致类似于现实生活中的送货服务的轻微挫折感，在最坏的情况下，机器人将不断被虫群摧毁，或在中途掉头，在他们刚刚离开的机器人指令平台充电，让你失去吞吐量。这种情况发生在你的物流网络是一个非凸多边形，有一个巨大的物流匮乏区，导致愚蠢的直线寻路机器人进入其中。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/37/corner-cutting.jpg&quot; alt=&quot;一个网络中大部分的机器人被卡在电池续航能力的边境中&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;这个基地的机器人没有足够的电量来越过凹地，所以它们在中途一直在掉头。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;因此，有一条戒律来避免这种情况：&lt;em&gt;“不可修建凹陷的物流网络”&lt;/em&gt;。听起来很简单，对吗？只要让你的基地成为一个由机器人指令平台组成的巨大矩形，就不存在任何可以拐弯抹角的地方。这是一个有效的解决方案，但它给你的扩张带来了非常大的限制，因为你将被迫扩大矩形来覆盖你所有新获得的地产。这将导致你实际的基地只占据你的物流网络覆盖区域一小部分的情况。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #36 - Nauvis 有约：Bentham 和 Xisumavoid <author>Bobby</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-36/" />
-    <id>https://alt-f4.blog/ALTF4-36</id>
-    <updated>2021-05-21T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;本周带来了第二期 &lt;em&gt;Nauvis 有约&lt;/em&gt;，涉及到与异星工厂名人谈论生命、宇宙及一切。这一次，&lt;em&gt;Bobby&lt;/em&gt; 与 Bentham 又名 MangledPorkGaming 聊了聊异星工厂最初的几年。&lt;/p&gt; &lt;h2 id=&quot;nauvis-有约bentham-和-xisumavoid-bobby&quot;&gt;Nauvis 有约：Bentham 和 Xisumavoid &lt;author&gt;Bobby&lt;/author&gt;&lt;/h2&gt; &lt;h3 id=&quot;mangledporkgaming又名-bentham&quot;&gt;MangledPorkGaming，又名 Bentham&lt;/h3&gt; &lt;p&gt;和许多其他人一样，我第一次接触异星工厂是在 YouTube 上看别人玩这个游戏。我是在 2014 年 6 月，也就是 0.10 版更新时开始接触的。在那个时期，我关注的异星工厂内容创作者有 &lt;a href=&quot;https://www.youtube.com/user/arumba07&quot;&gt;Arumba&lt;/a&gt;，&lt;a href=&quot;https://www.youtube.com/user/RotNSteejo&quot;&gt;Steejo&lt;/a&gt;，&lt;a href=&quot;https://www.youtube.com/user/Aavak&quot;&gt;Aavak&lt;/a&gt;，……以及 [MangledPorkGaming] (https://www.youtube.com/c/MangledPork/featured)。但为什么要用 MangledPork 这个拗口的名字？在我们的采访中，&lt;a href=&quot;https://media.alt-f4.blog/ALTF4/36/Bent-Ham.mp3&quot;&gt;他说&lt;/a&gt;起初想用自己的名字 Bentham，但这是英国的一个小镇、一些名人等都在使用的普通名字。所以，他把这个名字从中间拆开，变成“Bent Ham”（弯曲 火腿），&lt;em&gt;显然&lt;/em&gt;这变成了他现在的名字 Mangled Pork（折碎的 猪肉）。&lt;/p&gt; &lt;div class=&quot;m0 h100 quote&quot;&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;div class=&quot;panel-inset-lighter &quot;&gt;...</content>
   </entry>
   
   

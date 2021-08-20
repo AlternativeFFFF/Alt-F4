@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/nl/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-08-09T14:32:22+00:00</updated>
+  <updated>2021-08-20T12:00:41+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #46 - One Year And Counting</title>
+    <link href="https://alt-f4.blog/nl/ALTF4-46/" />
+    <id>https://alt-f4.blog/ALTF4-46</id>
+    <updated>2021-08-20T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Oh man. It really has been a year since I started this project. Can’t quite believe it’s already been a year, while also not quite believing the project carried on for a whole year. In the beginning, it was just a silly idea that I wanted to try out and...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-37</id>
     <updated>2021-05-28T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;On the 37th week during which an issue of Alt-F4 is being released, we present: Issue #37! What a surprise! In it, long-time contributor &lt;em&gt;pocarski&lt;/em&gt; is back with yet more very approachable explanations of how you can spice up and optimize your base with but a few combinators!&lt;/p&gt; &lt;h2 id=&quot;combinators-2-augmented-logistics-pocarski&quot;&gt;Combinators...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #36 - The Nauvian Perspective: Bentham and Xisumavoid</title>
-    <link href="https://alt-f4.blog/nl/ALTF4-36/" />
-    <id>https://alt-f4.blog/ALTF4-36</id>
-    <updated>2021-05-21T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This week brings back &lt;em&gt;The Nauvian Perspective&lt;/em&gt; for the second time, which involves talking to Factorio personalities about life, the universe, and everything. This time, &lt;em&gt;Bobby&lt;/em&gt; had a little chat with Bentham aka. MangledPorkGaming about the very early years of Factorio’s existence.&lt;/p&gt; &lt;h2 id=&quot;the-nauvian-perspective-bentham-and-xisumavoid-bobby&quot;&gt;The Nauvian Perspective: Bentham and Xisumavoid &lt;author&gt;Bobby&lt;/author&gt;&lt;/h2&gt;...</content>
   </entry>
   
   
