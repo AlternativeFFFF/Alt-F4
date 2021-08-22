@@ -18,7 +18,7 @@ jobs:
           DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
         uses: Ilshidur/action-discord@0.2.0
         with:
-          args: "{{ EVENT_PAYLOAD.release.name }}\nhttps://alt-f4.blog/{{ EVENT_PAYLOAD.release.tag_name }}"
+          args: "{{ EVENT_PAYLOAD.release.name }}\nhttps://alt-f4.blog/{{ EVENT_PAYLOAD.release.tag_name }}/"
       - name: Discord notification (2/2) # Factorio
         env:
           DISCORD_WEBHOOK: '${{ secrets.DISCORD_WEBHOOK_FACTORIO }}'
@@ -26,7 +26,7 @@ jobs:
           DISCORD_AVATAR: 'https://raw.githubusercontent.com/AlternativeFFFF/Alt-F4/master/assets/GLOBAL/img/spider.png'
         uses: Ilshidur/action-discord@0.2.0
         with:
-          args: "{{ EVENT_PAYLOAD.release.name }}\nhttps://alt-f4.blog/{{ EVENT_PAYLOAD.release.tag_name }}"
+          args: "{{ EVENT_PAYLOAD.release.name }}\nhttps://alt-f4.blog/{{ EVENT_PAYLOAD.release.tag_name }}/"
       - name: Reddit post
         uses: bluwy/release-for-reddit-action@v1
         with:
@@ -37,4 +37,4 @@ jobs:
           subreddit: factorio
           flair-id: aae18ca2-dbf7-11e7-89dc-0e468bcaecf2
           title: "${{ github.event.release.name }}"
-          url: "https://alt-f4.blog/${{ github.event.release.tag_name }}"
+          url: "https://alt-f4.blog/${{ github.event.release.tag_name }}/"
