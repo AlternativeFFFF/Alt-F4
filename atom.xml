@@ -6,7 +6,7 @@ layout: null
 <feed xmlns="https://www.w3.org/2005/Atom">
 
   <title>{{ site.title }}</title>
-  <link href="{{ site.url }}/atom.xml" rel="self" />
+  <link href="{{ site.url }}/atom.xml/" rel="self" />
   <id>{{ site.url }}</id>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <author>
@@ -21,7 +21,7 @@ layout: null
     <link href="{% if site.active_lang == site.default_lang %}{{site.url}}{{post.url}}{% else %}{{site.url}}/{{site.active_lang}}{{post.url}}{% endif %}" />
     <id>{{ site.url }}{{ post.id }}</id>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
-    <content type="html">{{ post.content | xml_escape | truncatewords:50 }}</content>
+    <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
   {% endunless %}
   {% endfor %}
