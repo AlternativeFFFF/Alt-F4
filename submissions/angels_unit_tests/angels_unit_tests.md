@@ -24,9 +24,13 @@ During the month January 2020 we had already eagerly started to update the mods 
 With the great help of the community we learned how the Angel's libary worked. For those that do not know what a library is, it is a set of helper functions that abstract the factorio code base such that it becomes easier to program. It is mainly a list with quality of life additions for the developer, such that he can focus on developing features, rather than writing boiler plate code to get something to work. You can compare Angel's library to some stand-alone mods like the [Factorio Library](https://mods.factorio.com/mod/flib), [Bob's Functions Library mod](https://mods.factorio.com/mod/boblibrary) or even my own attempt [Lovely_santa's library of knowledge](https://mods.factorio.com/mod/LSlib). There is no 'right' or 'wrong' way to implement a library, as long as it suits its purpose. By understanding Angel's library, which actually lives inside Angel's refining and not as a stand-alone mod, we figured more efficient ways of dealing with certain bugs arrising in the mod.
 
 I am confident now saying that we do not make coding mistakes anymore, code slipping through the cracks, which would result in a hard crash of the mods. Nowadays the issues are likely edge cases, unhandled cases or a strange modpack configuration. Most frequently we receive bugs from people who play with a few Angel's mods and a few Bob mods. The reason for this is simple: there are many configurations with many settings, which result in many oversights. [A small example](https://www.reddit.com/r/factorio/comments/pfvqn0/playing_an_angel_bobs_game_and_noticed_about_9/) is shown below; you fix a bug with some technology being unresearchable, in some exotic configuration:
-![Nickel processing is unresearchable](https://i.redd.it/7s8wfklgpwk71.png)
+
+![Nickel processing is unresearchable](https://raw.githubusercontent.com/LovelySanta/Alt-F4/angels-unit-tests/submissions/angels_unit_tests/nickel_processing_bug_1.png)
+
 After a while you notice another configuration:
-![Nickel processing is unresearchable AGAIN!](https://media.discordapp.net/attachments/693538202153123930/882911964215509012/unknown.png)
+
+![Nickel processing is unresearchable AGAIN!](https://raw.githubusercontent.com/LovelySanta/Alt-F4/angels-unit-tests/submissions/angels_unit_tests/nickel_processing_bug_2.png)
+
 As a solution, we began creating a list of configurations we had to test. [*pezzawinkle*](https://mods.factorio.com/user/pezzawinkle) recently made [a not-so-small list](https://github.com/Arch666Angel/mods/blob/master/Config_Testing_Regime.txt) with all configurations he tests every time he prepairs a release.
 
 Personally, I test every change I make with all the configurations I impacted. The most tedious part of fixing bugs is having to reload all Angel's mods into the mod folder over and over again. On the 11th of April 2020 I created [a small python script](https://github.com/Arch666Angel/mods/pull/188/commits/e37f2673f234e0c9271f56ecc6d4934b0d83cd50) to update all Angel's mods to the latest changes.
@@ -40,11 +44,14 @@ At the end of 2020, we decided to work on a big feature inside Angel's Industrie
 We realised that with the overhauls we created many more configuration, with even more settings. At this point it becomes quite tough to maintain and test this completely by hand. I started thinking about creating some [unit tests](https://en.wikipedia.org/wiki/Unit_testing) to take this burden of our shoulders. After some discussions and ideas from the great modding community I finally decided on the 30th of June 2021 to commit myself at creating the unit test infrastructure, groupted in a separate mod: [Angel's Dev - Unit Tests](https://github.com/Arch666Angel/mods/pull/634/commits/d59328e81235e26beb88ba66659cb78315827a00). A small note, You will not find this mod on the modportal.
 
 I already had a way of building the Angel's mods from the github folder to the factorio mod folder and a similar script to download bob mods from the mod portal. In order to test different configurations, I had to write two additional scripts. [The first script](https://github.com/Arch666Angel/mods/pull/634/commits/8977e17bba55d06fb3b60ff4c593e2307f110395) reads and rewrites the `mod-settings.dat` file with the mod settings. The settings file stores all the user configured settings, which can lead to different mod configurations. For example, in Angel's Industries it can be used to switch between *special vanilla*, *bob-angels* (= regular overhaul, also possible without bob mods), *component overhaul* or *science overhaul*. It basically can change the complete behaviour of angels mods with a few checkboxes:
-![Settings within Angel's Industries](TODO)
+
+![Settings within Angel's Industries](https://raw.githubusercontent.com/LovelySanta/Alt-F4/angels-unit-tests/submissions/angels_unit_tests/angels_industry_settings.png)
+
 Since the loading and saving part of mod settings is completely handled by the base game, it was a part that I didn't encounter in creating mods before. However, I was very surprised at finding [thorough documentation on the Factorio Wiki](https://wiki.factorio.com/Mod_settings_file_format) about this.
 
 [The second script](https://github.com/Arch666Angel/mods/pull/634/commits/abb64c2fe8007e060f112716ebe33864510b6451) configures the `mod-list.json` file, which contains the information about which mods have to be enabled. This is the part which are people most familiar with that play modded Factorio. They download mods from the portal, and after finishing the game they disable the mods and play with some other mods.
-![Factorio mod list with all Bob Angel's mods](TODO)
+
+![Factorio mod list with all Bob Angel's mods](https://raw.githubusercontent.com/LovelySanta/Alt-F4/angels-unit-tests/submissions/angels_unit_tests/mod_list.png)
 
 With these 4 scripts, everything is in place to launch factorio with a certain configuration of the latest mods and their mod settings. It was only a matter of telling factorio to launch over and over with different mod settings. Assuming an ingame mod (Angel's Dev - Unit Tests in this case) telling the testing infrastructure that the testing is over, it can shut down Factorio and launch the next configuration to test. At this point, the unit testing infrastructure could check if all configurations loaded without crashing. After loading the game, the unit testing mod could verify everything during the game, at runtime.
 
