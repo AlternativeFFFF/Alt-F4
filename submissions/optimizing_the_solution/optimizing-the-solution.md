@@ -6,6 +6,8 @@ Hi! As a long time user of the [Kirk McDonald Factorio Calculator](https://kirkm
 
 Let's start from the beginning. In factory games like [Factorio](https://factorio.com/), [Dyson Sphere Program](https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/), and [Satisfactory](https://www.satisfactorygame.com/), the objective is to mine raw resources, use those resources to craft items following a recipe, and use those items to discover more advanced items and recipes. Early in these games, the recipes and items involved are simple and do not require extensive planning, but as more items and recipes are unlocked, the production chain can become incredibly complicated. Factory calculators like [FactorioLab](https://factoriolab.github.io) and the [Kirk McDonald Factorio Calculator](https://kirkmcdonald.github.io) are intended to help determine how many raw resources and factories are required to sustainably produce items at a certain rate.
 
+![FactorioLab calculator](calculator.png)
+
 ## Concepts
 
 There are two important concepts in factory games that are important to understanding the math behind calculations: **items** and **recipes**.
