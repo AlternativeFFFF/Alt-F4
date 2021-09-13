@@ -17,27 +17,31 @@ There are two important concepts in factory games that are important to understa
 
 For example, in Factorio, a basic item is **Iron ore**. **Iron ore** is a raw resource, meaning it is produced via a recipe that takes no items as inputs:
 
-![Time](https://wiki.factorio.com/images/Time.png) (1 second) → ![Iron ore](https://wiki.factorio.com/images/thumb/Iron_ore.png/32px-Iron_ore.png) (1 **Iron ore**)
+![Iron ore recipe](iron-ore.png)
 
 This recipe can be crafted on an **Iron ore** resource patch, by hand or by a mining drill. **Iron ore** is primarily used as an ingredient to produce **Iron plates**, which use their own recipe:
 
-![Time](https://wiki.factorio.com/images/Time.png) (3.2 seconds) + ![Iron ore](https://wiki.factorio.com/images/thumb/Iron_ore.png/32px-Iron_ore.png) (1 **Iron ore**) → ![Iron plate](https://wiki.factorio.com/images/thumb/Iron_plate.png/32px-Iron_plate.png) (1 **Iron plate**)
+![Iron plate recipe](iron-plate.png)
 
 **Iron plates** cannot be crafted by hand, and must be produced in a furnace. Recipes can also include many inputs and outputs, such as one of the more complicated recipes in Factorio, **Advanced oil processing**:
 
-![Time](https://wiki.factorio.com/images/Time.png) (5 seconds) + ![Crude oil](https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png) (100 **Crude oil**) + ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (50 **Water**) → ![Heavy oil](https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png) (25 **Heavy oil**) + ![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png) (45 **Light oil**) + ![Petroleum gas](https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png) (55 **Petroleum gas**)
+![Advanced oil processing recipe](advanced-oil-processing.png)
 
 This recipe can only be crafted using an ![Oil refinery](https://wiki.factorio.com/images/thumb/Oil_refinery.png/32px-Oil_refinery.png) **Oil refinery**.
+
+### Crafting speed
+
+The real crafting time of a recipe is also affected by the crafting speed of the entity or factory used to craft the recipe. For example, the ![Electric mining drill](https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png) **Electric mining drill** has a crafting speed of 0.5, which means when it is used to mine **Iron ore** using the recipe above, it actually takes 2 seconds per iron ore. To simplify, we'll generally treat the crafting speed as **1**.
 
 ## Recipe equations
 
 You may notice that if you substitute the arrow for an equals sign, a recipe can easily be interpreted as an equation. Since time itself is not an actual item, to make this equation meaningful, we need to divide both sides by the amount of time and thus treat the numbers in equation as rates instead of a simple number of items. Hence, the **Iron ore** recipe becomes:
 
-0 = ![Iron ore](https://wiki.factorio.com/images/thumb/Iron_ore.png/32px-Iron_ore.png) (1 **Iron ore**/second)
+![Iron ore rate](iron-ore-s.png)
 
 In this case, the left side is zero since the recipe takes no inputs. Likewise, the **Iron plate** recipe becomes:
 
-![Iron ore](https://wiki.factorio.com/images/thumb/Iron_ore.png/32px-Iron_ore.png) (5/16 **Iron ore**/second) = ![Iron plate](https://wiki.factorio.com/images/thumb/Iron_plate.png/32px-Iron_plate.png) (5/16 **Iron plate**/second)
+![Iron plate rate](iron-plate-s.png)
 
 Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In **FactorioLab**, if the products specified can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, and then it becomes more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input.
 
@@ -47,38 +51,38 @@ The canonical problem in Factorio is **Advanced oil processing** and cracking, a
 
 ![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) **Crude oil (raw resource)**  
 **Crude oil** production speed varies based on the resource on the map, but can be treated in a simplified form.  
-![Time](https://wiki.factorio.com/images/Time.png) (1 second) → ![Crude oil](https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png) (10 **Crude oil**)
+![Crude oil recipe](crude-oil.png)
 
 ![Offshore pump](https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png) **Water (raw resource)**  
-![Time](https://wiki.factorio.com/images/Time.png) (1 second) → ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (1200 water)
+![Water recipe](water.png)
 
 ![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) **Advanced oil processing**  
-![Time](https://wiki.factorio.com/images/Time.png) (5 seconds) + ![Crude oil](https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png) (100 **Crude oil**) + ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (50 **Water**) → ![Heavy oil](https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png) (25 **Heavy oil**) + ![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png) (45 **Light oil**) + ![Petroleum gas](https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png) (55 **Petroleum gas**)
+![Advanced oil processing recipe](advanced-oil-processing.png)
 
 ![Heavy oil cracking](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) **Heavy oil cracking**  
-![Time](https://wiki.factorio.com/images/Time.png) (2 seconds) + ![Heavy oil](https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png) (40 **Heavy oil**) + ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (30 **Water**) → ![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png) (30 **Light oil**)
+![Heavy oil cracking recipe](heavy-oil-cracking.png)
 
 ![Light oil cracking](https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png) **Light oil cracking**  
-![Time](https://wiki.factorio.com/images/Time.png) (2 seconds) + ![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png) (30 **Light oil**) + ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (30 **Water**) → ![Petroleum gas](https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png) (20 **Petroleum gas**)
+![Light oil cracking recipe](light-oil-cracking.png)
 
 Note that other recipes may also be involved, such as **Basic oil processing** and **Coal liquefaction**, but these will be ignored at this time.
 
-Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements.
+Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements. Since the crafting speed of all the factories involved is **1**, we don't need to make any adjustments to account for crafting speed, but that would be necessary for many factories, or any time modules or beacons are involved.
 
 ![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) **Crude oil (raw resource)**  
-![Crude oil](https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png) (10 **Crude oil**/second)
+![Crude oil rate](crude-oil-s.png)
 
 ![Offshore pump](https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png) **Water (raw resource)**  
-![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (1200 **Water**/second)
+![Water rate](water-s.png)
 
 ![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) **Advanced oil processing**  
-![Crude oil](https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png) (20 **Crude oil**/second) + ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (10 **Water**/second) → ![Heavy oil](https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png) (5 **Heavy oil**/second) + ![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png) (9 **Light oil**/second) + ![Petroleum gas](https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png) (11 **Petroleum gas**/second)
+![Advanced oil processing rate](advanced-oil-processing-s.png)
 
 ![Heavy oil cracking](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) **Heavy oil cracking**  
-![Heavy oil](https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png) (20 **Heavy oil**/second) + ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (15 **Water**/second) → ![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png) (15 **Light oil**/second)
+![Heavy oil cracking rate](heavy-oil-cracking-s.png)
 
 ![Light oil cracking](https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png) **Light oil cracking**  
-![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png) (15 **Light oil**/second) + ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) (15 **Water**/second) → ![Petroleum gas](https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png) (10 **Petroleum gas**/second)
+![Light oil cracking rate](light-oil-cracking-s.png)
 
 These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil:  
 10 ![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) - 20 ![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) = # output ![Crude oil](https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png)
