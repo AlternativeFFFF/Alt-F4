@@ -31,7 +31,7 @@ This recipe can only be crafted using an ![Oil refinery](https://wiki.factorio.c
 
 ### Crafting speed
 
-The real crafting time of a recipe is also affected by the crafting speed of the entity or factory used to craft the recipe. For example, the ![Electric mining drill](https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png) **Electric mining drill** has a crafting speed of 0.5, which means when it is used to mine **Iron ore** using the recipe above, it actually takes 2 seconds per iron ore. To simplify, we'll generally treat the crafting speed as **1**.
+The real crafting time of a recipe is also affected by the crafting speed of the entity or factory used to craft the recipe. For example, the ![Electric mining drill](https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png) **Electric mining drill** has a crafting speed of 0.5, which means when it is used to mine **Iron ore** using the recipe above, it actually takes 2 seconds per **Iron ore**. To simplify, we'll generally treat the crafting speed as **1**.
 
 ## Recipe equations
 
