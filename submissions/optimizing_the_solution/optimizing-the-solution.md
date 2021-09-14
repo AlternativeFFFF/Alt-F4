@@ -1,6 +1,6 @@
 ## Optimizing the Solution <author>ilbJanissary</author>
 
-Hi! As an Angular developer and long time user of the [Kirk McDonald Factorio Calculator](https://kirkmcdonald.github.io), I decided to build my own web-based calculator for factory games called [FactorioLab](https://factoriolab.github.io)back in 2020. Kirk McDonald published an [essay](http://kirkmcdonald.github.io/posts/calculation.html) on his approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in **FactorioLab**, I wanted to share with the community what I learned when implementing a true simplex algorithm solver. A TL;DR can be found at the very bottom of the article.
+Hi! As an Angular developer and long time user of the [Kirk McDonald Factorio Calculator](https://kirkmcdonald.github.io), I decided to build my own web-based calculator for factory games called [FactorioLab](https://factoriolab.github.io) back in 2020. Kirk McDonald published an [essay](http://kirkmcdonald.github.io/posts/calculation.html) on his approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in **FactorioLab**, I wanted to share with the community what I learned when implementing a true simplex algorithm solver. A TL;DR can be found at the very bottom of the article.
 
 ### Why use a calculator?
 
@@ -31,7 +31,7 @@ This recipe can only be crafted using an ![Oil refinery](https://wiki.factorio.c
 
 ### Crafting speed
 
-The real crafting time of a recipe is also affected by the crafting speed of the machine used to craft the recipe. For example, the ![Electric mining drill](https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png) **Electric mining drill** has a crafting speed of `0.5`, which means when it is used to mine **Iron ore** using the recipe above, it actually takes two seconds per **Iron ore**. To simplify, we'll generally treat the crafting speed as **1**.
+The real crafting time of a recipe is also affected by the crafting speed of the machine used to craft the recipe. For example, the ![Electric mining drill](https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png) **Electric mining drill** has a crafting speed of `0.5`, which means when it is used to mine **Iron ore** using the recipe above, it actually takes two seconds per **Iron ore**. To simplify, we'll generally treat the crafting speed as `1`.
 
 ### Recipe equations
 
