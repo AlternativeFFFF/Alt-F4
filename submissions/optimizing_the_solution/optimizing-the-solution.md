@@ -1,14 +1,14 @@
-# Optimizing the Solution
+## Optimizing the Solution <author>ilbJanissary</author>
 
-Hi! As a long time user of the [Kirk McDonald Factorio Calculator](https://kirkmcdonald.github.io) and an Angular developer, in 2020 I decided to build my own web-based calculator for factory games called [FactorioLab](https://factoriolab.github.io). Kirk McDonald published an [essay](http://kirkmcdonald.github.io/posts/calculation.html) on his solution approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in **FactorioLab**, I wanted to share with the community what I learned when implementing a true simplex algorithm solver.
+Hi! As an Angular developer and long time user of the [Kirk McDonald Factorio Calculator](https://kirkmcdonald.github.io), I decided to build my own web-based calculator for factory games called [FactorioLab](https://factoriolab.github.io)back in 2020. Kirk McDonald published an [essay](http://kirkmcdonald.github.io/posts/calculation.html) on his approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in **FactorioLab**, I wanted to share with the community what I learned when implementing a true simplex algorithm solver. A TL;DR can be found at the very bottom of the article.
 
-## Why use a calculator?
+### Why use a calculator?
 
 Let's start from the beginning. In factory games like [Factorio](https://factorio.com/), [Dyson Sphere Program](https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/), and [Satisfactory](https://www.satisfactorygame.com/), the objective is to mine raw resources, use those resources to craft items following a recipe, and use those items to discover more advanced items and recipes. Early in these games, the recipes and items involved are simple and do not require extensive planning, but as more items and recipes are unlocked, the production chain can become incredibly complicated. Factory calculators like [FactorioLab](https://factoriolab.github.io) and the [Kirk McDonald Factorio Calculator](https://kirkmcdonald.github.io) are intended to help determine how many raw resources and factories are required to sustainably produce items at a certain rate.
 
 ![FactorioLab calculator](calculator.png)
 
-## Concepts
+### Concepts
 
 There are two important concepts in factory games that are important to understanding the math behind calculations: **items** and **recipes**.
 
@@ -31,9 +31,9 @@ This recipe can only be crafted using an ![Oil refinery](https://wiki.factorio.c
 
 ### Crafting speed
 
-The real crafting time of a recipe is also affected by the crafting speed of the entity or factory used to craft the recipe. For example, the ![Electric mining drill](https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png) **Electric mining drill** has a crafting speed of 0.5, which means when it is used to mine **Iron ore** using the recipe above, it actually takes 2 seconds per **Iron ore**. To simplify, we'll generally treat the crafting speed as **1**.
+The real crafting time of a recipe is also affected by the crafting speed of the machine used to craft the recipe. For example, the ![Electric mining drill](https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png) **Electric mining drill** has a crafting speed of `0.5`, which means when it is used to mine **Iron ore** using the recipe above, it actually takes two seconds per **Iron ore**. To simplify, we'll generally treat the crafting speed as **1**.
 
-## Recipe equations
+### Recipe equations
 
 You may notice that if you substitute the arrow for an equals sign, a recipe can easily be interpreted as an equation. Since time itself is not an actual item, to make this equation meaningful, we need to divide both sides by the amount of time and thus treat the numbers in equation as rates instead of a simple number of items. Hence, the **Iron ore** recipe becomes:
 
@@ -43,51 +43,51 @@ In this case, the left side is zero since the recipe takes no inputs. Likewise, 
 
 ![Iron plate rate](iron-plate-s.png)
 
-Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In **FactorioLab**, if the products specified can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, and then it becomes more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input.
+Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In **FactorioLab**, if the required products can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, making it more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input.
 
-## Recipe matrices
+### Recipe matrices
 
 The canonical problem in Factorio is **Advanced oil processing** and cracking, and will be used as the primary example of finding a solution. This problem usually involves at least five recipes and five items. The recipes are:
 
-![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) **Crude oil (raw resource)**  
-**Crude oil** production speed varies based on the resource on the map, but can be treated in a simplified form.  
+![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) **Crude oil (raw resource)**
+**Crude oil** production speed varies based on the resource on the map, but can be treated in a simplified form.
 ![Crude oil recipe](crude-oil.png)
 
-![Offshore pump](https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png) **Water (raw resource)**  
+![Offshore pump](https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png) **Water (raw resource)**
 ![Water recipe](water.png)
 
-![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) **Advanced oil processing**  
+![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) **Advanced oil processing**
 ![Advanced oil processing recipe](advanced-oil-processing.png)
 
-![Heavy oil cracking](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) **Heavy oil cracking**  
+![Heavy oil cracking](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) **Heavy oil cracking**
 ![Heavy oil cracking recipe](heavy-oil-cracking.png)
 
-![Light oil cracking](https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png) **Light oil cracking**  
+![Light oil cracking](https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png) **Light oil cracking**
 ![Light oil cracking recipe](light-oil-cracking.png)
 
 Note that other recipes may also be involved, such as **Basic oil processing** and **Coal liquefaction**, but these will be ignored at this time.
 
-Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements. Since the crafting speed of all the factories involved is **1**, we don't need to make any adjustments to account for crafting speed, but that would be necessary for many factories, or any time modules or beacons are involved.
+Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements. Since the crafting speed of all the factories involved is `1`, we don't need to make any adjustments to account for crafting speed, but that would be necessary for many factories, or any time modules or beacons are involved.
 
-![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) **Crude oil (raw resource)**  
+![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) **Crude oil (raw resource)**
 ![Crude oil rate](crude-oil-s.png)
 
-![Offshore pump](https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png) **Water (raw resource)**  
+![Offshore pump](https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png) **Water (raw resource)**
 ![Water rate](water-s.png)
 
-![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) **Advanced oil processing**  
+![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) **Advanced oil processing**
 ![Advanced oil processing rate](advanced-oil-processing-s.png)
 
-![Heavy oil cracking](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) **Heavy oil cracking**  
+![Heavy oil cracking](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) **Heavy oil cracking**
 ![Heavy oil cracking rate](heavy-oil-cracking-s.png)
 
-![Light oil cracking](https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png) **Light oil cracking**  
+![Light oil cracking](https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png) **Light oil cracking**
 ![Light oil cracking rate](light-oil-cracking-s.png)
 
-These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil:  
+These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil:
 10 ![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) - 20 ![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) = # output ![Crude oil](https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png)
 
-Dividing the item amounts by their recipe time, the full matrix looks like:
+Having divided the item amounts by their recipe time, the full matrix looks like:
 
 |                                                                                                   | ![Pumpjack](https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png) | ![Offshore pump](https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png) | ![Advanced oil processing](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) | ![Heavy oil cracking](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) | ![Light oil cracking](https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png) |
 | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -107,7 +107,7 @@ Next, we need to account for what we want to actually produce from our factory. 
 | ![Light oil](https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png)             | 0                                                                                  | 0                                                                                                 | 9                                                                                                                               | 15                                                                                                               | -15                                                                                                              | 0    |
 | ![Petroleum gas](https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png) | 0                                                                                  | 0                                                                                                 | 11                                                                                                                              | 0                                                                                                                | 10                                                                                                               | -100 |
 
-## Linear programming
+### Linear programming
 
 A matrix of this nature is called a linear program in mathematics, and can be solved using linear programming techniques. The most common method for solving a linear program is the [Simplex algorithm](https://en.wikipedia.org/wiki/Simplex_algorithm), and it is the method used by both **FactorioLab** and the [Kirk McDonald Factorio Calculator](https://kirkmcdonald.github.io). Since there are multiple possible solutions to this linear program, the Simplex algorithm takes the approach of maximizing an objective function, which is essentially another row in the matrix.
 
@@ -126,7 +126,7 @@ A cost function quantifies how difficult resources are to obtain, and how much e
 
 ### How do we define a cost function?
 
-The cost function can be rather abstract and arbitrary, as there is no specific cost of resources and factories in games like Factorio and Dyson Sphere Program. Instead, we have to rely on intuition of what is most difficult to obtain and set up in a factory. In **FactorioLab**, this comes down to a few specific variables that define the cost function:
+The cost function can be rather abstract and arbitrary as there is no specific cost of resources and factories in games like Factorio and Dyson Sphere Program. Instead, we have to rely on intuition of what is most difficult to obtain and set up in a factory. In **FactorioLab**, this comes down to a few specific variables that define the cost function:
 
 - A single factory running a recipe costs **1**.
 - One unit of ![Water](https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png) **Water** costs **100**, since water is generally cheap to obtain.
@@ -145,7 +145,7 @@ We can represent this cost function as an additional row in our matrix. In order
 | ![Petroleum gas](https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png) | 0                                                                                     | 0                                                                         | 11                                                                                                                              | 0                                                                                                                | 10                                                                                                               | -100 |
 | Cost                                                                                              | 10000                                                                                 | 100                                                                       | 1                                                                                                                               | 1                                                                                                                | 1                                                                                                                | 0    |
 
-## Dual minimization problem
+### Dual minimization problem
 
 Now, the issue with this linear program is that we want to minimize the cost of our solution, while the Simplex algorithm is designed to maximize an objective. Fortunately, there is a simple way to convert a minimization problem into a maximization problem that can be solved using the Simplex algorithm. This is accomplished by converting the minimization problem into its "dual maximization problem." Once a minimization problem is converted into its dual maximization problem, it is feasible to solve the dual problem using the Simplex algorithm. The solution to the maximization of the dual problem is the same as the solution to the minimization of the original problem, so we can accept this as our solution.
 
@@ -172,11 +172,11 @@ In order to handle potential surplus values, linear programming generally adds '
 
 Now, we finally have a canonical matrix that can be solved using the Simplex algorithm.
 
-## Solving with simplex
+### Solving with simplex
 
 The end goal of the Simplex algorithm is to arrive at a matrix where the objective function (in this case, the last row of the matrix) contains no negative numbers. In our initial matrix, note that our objective row has two columns with negative values, representing the two items we want to produce. In order to reach our solution, we simply need to apply 'pivot' operations until our objective row no longer has any negative values.
 
-### Pivot 1
+#### Pivot 1
 
 A Simplex pivot operation involves four steps.
 
@@ -202,7 +202,7 @@ A Simplex pivot operation involves four steps.
 
 Now, let's continue with the next pivot.
 
-### Pivot 2
+#### Pivot 2
 
 Column 1 (-181 9/11), Row 5 (Ratio 1/200)
 
@@ -215,7 +215,7 @@ Column 1 (-181 9/11), Row 5 (Ratio 1/200)
 | 1                                                                                      | -13/40                                                                     | -1/4                                                                                   | -1 11/40                                                                               | 0                                                                                                  | 0                                                                                     | 0                                                                         | -1/20                                                                                                                           | 0                                                                                                                | 11/200                                                                                                           | 1/200          |
 | 0                                                                                      | -150                                                                       | -5                                                                                     | -150                                                                                   | 0                                                                                                  | 0                                                                                     | 0                                                                         | 0                                                                                                                               | 0                                                                                                                | 10                                                                                                               | 10             |
 
-### Pivot 3
+#### Pivot 3
 
 Column 2 (-150), Row 2 (Ratio 100)
 
@@ -228,7 +228,7 @@ Column 2 (-150), Row 2 (Ratio 100)
 | 1                                                                                      | 0                                                                          | -1/4                                                                                   | -1 11/40                                                                               | 0                                                                                                  | 0                                                                                     | 13/40                                                                     | -1/20                                                                                                                           | 0                                                                                                                | 11/200                                                                                                           | 32 + 101/200  |
 | 0                                                                                      | 0                                                                          | -5                                                                                     | -150                                                                                   | 0                                                                                                  | 0                                                                                     | 150                                                                       | 0                                                                                                                               | 0                                                                                                                | 10                                                                                                               | 15010         |
 
-### Pivot 4
+#### Pivot 4
 
 Column 4 (-150), Row 4 (Ratio 133 2/5)
 
@@ -241,7 +241,7 @@ Column 4 (-150), Row 4 (Ratio 133 2/5)
 | 1                                                                                      | 0                                                                          | -1 19/20                                                                               | 0                                                                                      | 0                                                                                                  | 0                                                                                     | 1 3/5                                                                     | -1/20                                                                                                                           | 17/200                                                                                                           | 11/200                                                                                                           | 160 9/100   |
 | 0                                                                                      | 0                                                                          | -205                                                                                   | 0                                                                                      | 0                                                                                                  | 0                                                                                     | 300                                                                       | 0                                                                                                                               | 10                                                                                                               | 10                                                                                                               | 30020       |
 
-### Pivot 5
+#### Pivot 5
 
 Column 3 (-205), Row 1 (Ratio 5046 7/65)
 
@@ -260,7 +260,7 @@ Thus, our solution requires 105 5/39 ![Crude oil](https://wiki.factorio.com/imag
 
 This solution can be compared to the [result](https://factoriolab.github.io/list?p=heavy-oil*5_petroleum-gas*100&s=*0&v=1) in **FactorioLab**.
 
-## Matrix tab
+### Matrix tab
 
 The [Matrix](https://factoriolab.github.io/matrix) tab of **FactorioLab**, a relatively new feature, allows you to peek under the hood of the simplex solver. For recipe chains that can be solved without simplex, this tab is mostly empty, but when simplex is used, the tab exposes many details and even allows you to customize the cost function used by the solver.
 
@@ -296,11 +296,11 @@ The third table shows both the canonical matrix generated by the calculator and 
 
 ![Canonical tableau](tableau.png)
 
-## Alternate algorithms
+### Alternate algorithms
 
 The Simplex algorithm using dual maximization has proven to be a very effective method of solving factory calculations. However, simplex is not the only algorithm to solve a linear program. There are other methods such as [revised simplex](https://en.wikipedia.org/wiki/Revised_simplex_method), [criss-cross algorithm](https://en.wikipedia.org/wiki/Criss-cross_algorithm), [ellipsoid method](https://en.wikipedia.org/wiki/Ellipsoid_method), [Karmarkar's algorithm](https://en.wikipedia.org/wiki/Karmarkar%27s_algorithm), and the [interior-point method](https://en.wikipedia.org/wiki/Interior-point_method). In fact, in just 2019 the running time was improved by a new [matrix multiplication time algorithm](https://arxiv.org/abs/1810.07896). As linear programs grow large, especially in modded Factorio, the simplex algorithm used by **FactorioLab** can take a very long time to find a solution, especially when mods introduce 'recycling' recipes that introduce large numbers of loops. With further research, it is possible that a better algorithm for solving factory linear programs could be developed.
 
-## TL;DR
+### TL;DR
 
 - Simple factories are easy to calculate by hand, when items are only produced by a single recipe.
 - When items are produced by multiple different recipes, we need a way to figure out how much of each recipe to use.
@@ -311,4 +311,5 @@ The Simplex algorithm using dual maximization has proven to be a very effective 
   - Use common mod data sets
   - Run calculations and plan the factory from mobile devices or at work
   - [Calculate how much rocket fuel you can produce from a single refinery](https://factoriolab.github.io/list?p=rocket-fuel*1*3*advanced-oil-processing&s=**3&v=1)
-  - Join the [FactorioLab Discord](https://discord.gg/N4FKV687x2) to learn more!
+
+Join the [FactorioLab Discord](https://discord.gg/N4FKV687x2) to learn more!
