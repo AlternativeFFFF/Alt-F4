@@ -17,15 +17,15 @@ There are two important concepts in factory games that are important to understa
 
 For example, in Factorio, a basic item is **Iron ore**. **Iron ore** is a raw resource, meaning it is produced via a recipe that takes no items as inputs:
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-ore.png" alt="Iron ore recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-ore.png" alt="Iron ore recipe" style=';margin-left:0' %}
 
 This recipe can be crafted on an **Iron ore** resource patch, by hand or by a mining drill. **Iron ore** is primarily used as an ingredient to produce **Iron plates**, which use their own recipe:
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-plate.png" alt="Iron plate recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-plate.png" alt="Iron plate recipe" style=';margin-left:0' %}
 
 **Iron plates** cannot be crafted by hand, and must be produced in a furnace. Recipes can also include many inputs and outputs, such as one of the more complicated recipes in Factorio, **Advanced oil processing**:
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing.png" alt="Advanced oil processing recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing.png" alt="Advanced oil processing recipe" style=';margin-left:0'%}
 
 This recipe can only be crafted using an <img src="https://wiki.factorio.com/images/thumb/Oil_refinery.png/32px-Oil_refinery.png" alt="Oil refinery" class="inline"> **Oil refinery**.
 
@@ -37,11 +37,11 @@ The real crafting time of a recipe is also affected by the crafting speed of the
 
 You may notice that if you substitute the arrow for an equals sign, a recipe can easily be interpreted as an equation. Since time itself is not an actual item, to make this equation meaningful, we need to divide both sides by the amount of time and thus treat the numbers in equation as rates instead of a simple number of items. Hence, the **Iron ore** recipe becomes:
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-ore-s.png" alt="Iron ore rate" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-ore-s.png" alt="Iron ore rate" style=';margin-left:0' %}
 
 In this case, the left side is zero since the recipe takes no inputs. Likewise, the **Iron plate** recipe becomes:
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-plate-s.png" alt="Iron plate rate" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/iron-plate-s.png" alt="Iron plate rate" style=';margin-left:0' %}
 
 Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In **FactorioLab**, if the required products can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, making it more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input.
 
@@ -53,23 +53,23 @@ The canonical problem in Factorio is **Advanced oil processing** and cracking, a
 
 **Crude oil** production speed varies based on the resource on the map, but can be treated in a simplified form.
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/crude-oil.png" alt="Crude oil recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/crude-oil.png" alt="Crude oil recipe" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png" alt="Offshore pump" class="inline"> **Water (raw resource)**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/water.png" alt="Water recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/water.png" alt="Water recipe" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> **Advanced oil processing**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing.png" alt="Advanced oil processing recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing.png" alt="Advanced oil processing recipe" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"> **Heavy oil cracking**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/heavy-oil-cracking.png" alt="Heavy oil cracking recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/heavy-oil-cracking.png" alt="Heavy oil cracking recipe" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"> **Light oil cracking**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/light-oil-cracking.png" alt="Light oil cracking recipe" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/light-oil-cracking.png" alt="Light oil cracking recipe" style=';margin-left:0'%}
 
 Note that other recipes may also be involved, such as **Basic oil processing** and **Coal liquefaction**, but these will be ignored at this time.
 
@@ -77,23 +77,23 @@ Dividing these recipes by their recipe time yields an equation based on rates, w
 
 <img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"> **Crude oil (raw resource)**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/crude-oil-s.png" alt="Crude oil rate" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/crude-oil-s.png" alt="Crude oil rate" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png" alt="Offshore pump" class="inline"> **Water (raw resource)**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/water-s.png" alt="Water rate" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/water-s.png" alt="Water rate" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> **Advanced oil processing**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing-s.png" alt="Advanced oil processing rate" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing-s.png" alt="Advanced oil processing rate" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"> **Heavy oil cracking**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/heavy-oil-cracking-s.png" alt="Heavy oil cracking rate" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/heavy-oil-cracking-s.png" alt="Heavy oil cracking rate" style=';margin-left:0'%}
 
 <img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"> **Light oil cracking**
 
-{% include image.html src="https://media.alt-f4.blog/ALTF4/47/light-oil-cracking-s.png" alt="Light oil cracking rate" %}
+{% include image.html src="https://media.alt-f4.blog/ALTF4/47/light-oil-cracking-s.png" alt="Light oil cracking rate" style=';margin-left:0'%}
 
 These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil:
 10 <img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"> - 20 <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> = # output <img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">
