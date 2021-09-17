@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-08-22T18:06:06+00:00</updated>
+  <updated>2021-09-17T14:46:03+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,21 @@
   
   
   <entry>
-    <title>Alt-F4 #46 - One Year And Counting</title>
+    <title>Alt-F4 #47 – Lösungsoptimierung</title>
+    <link href="https://alt-f4.blog/de/ALTF4-47/" />
+    <id>https://alt-f4.blog/ALTF4-47</id>
+    <updated>2021-09-17T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Nach einer Dreiwöchigen Unterbrechung ist Alf-F4 wieder zurück, mehr motiviert denn je! Wir starten mit einem Paukenschlag, da &lt;em&gt;ilbJanissary&lt;/em&gt; erklärt ausführlich, wie die Berechnungs-Engine hinter &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; ihre Magie entfaltet. Auf den ersten Blick mag es kompliziert erscheinen, aber der Prozess ist in einzelne Teile untergliedert, die mit konkreten Beispielen...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #46 - das erste Jahr</title>
     <link href="https://alt-f4.blog/de/ALTF4-46/" />
     <id>https://alt-f4.blog/ALTF4-46</id>
     <updated>2021-08-20T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Oh man. It really has been a year since I started this project. Can’t quite believe it’s already been a year, while also not quite believing the project carried on for a whole year. In the beginning, it was just a silly idea that I wanted to try out and...</content>
+    <content type="html">&lt;p&gt;Oh Gott. Es ist wirklich schon ein Jahr her, das ich dieses Projekt angefangen habe. Ich kann nicht wirklich glauben, das es schon ein Jahr ist, auf der anderen Seite kann ich aber auch nicht glauben, das dieses Projekt über ein Jahr überlebt hat. Am Anfang war das ganze eine...</content>
   </entry>
   
   
@@ -53,11 +63,11 @@
   
   
   <entry>
-    <title>Alt-F4 #42 - The Meaning of Automation</title>
+    <title>Alt-F4 #42 - Die Bedeutung von Autommation</title>
     <link href="https://alt-f4.blog/de/ALTF4-42/" />
     <id>https://alt-f4.blog/ALTF4-42</id>
     <updated>2021-07-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In this week’s issue #42 of Alt-F4, after &lt;a href=&quot;https://alt-f4.blog/ALTF4-34/&quot;&gt;previously&lt;/a&gt; investigating the games that influenced Factorio, we’ll now be looking at how Factorio influenced the automation genre as a whole, if that’s even a thing. Maybe it isn’t. After 7.5 million years of contemplation, &lt;em&gt;Nanogamer7&lt;/em&gt; has an answer, and it...</content>
+    <content type="html">&lt;p&gt;In der dieswöchigen Ausgabe #42 von Alt-F4 schauen wir uns heute an, wie Factorio das Automatisierungsgenre beeinflusst hat, falls es das überhaupt gibt, nachdem wir uns &lt;a href=&quot;https://alt-f4.blog/de/ALTF4-34/&quot;&gt;bereits angeschaut&lt;/a&gt; haben, welche Spiele Factorio beeinflusst haben. Nach siebeneinhalb Millionen Jahren Bedenkzeit hat &lt;em&gt;Nanogamer7&lt;/em&gt; eine Antwort, die dich vielleicht überraschen wird.&lt;/p&gt; &lt;h2...</content>
   </entry>
   
   
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-38</id>
     <updated>2021-06-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In dieser Woche beschloss unser eigener technischer Editor, dass es eine gute Idee wäre, selbst einen Artikel zu schreiben. Wir waren uns da ja nicht so sicher, aber keiner konnte ihn aufhalten. Deshalb präsentieren wir: &lt;em&gt;Conor_&lt;/em&gt; schreibt über den Zusammenhang zwischen Factorio und MINT-Disziplinen. Also Studentenfutter rausholen und rein!&lt;/p&gt; &lt;h2...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #37 – Kombinator Crash-Kurs Teil 2</title>
-    <link href="https://alt-f4.blog/de/ALTF4-37/" />
-    <id>https://alt-f4.blog/ALTF4-37</id>
-    <updated>2021-05-28T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In der 37sten Woche, in der eine neue Ausgabe ALT-F4 erscheint, präsentieren wir: Ausgabe 37! Was für eine Überraschung! In dieser Ausgabe ist unser aktiver Autor &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pocarski&lt;/code&gt; zurück, mit neuen einsteigerfreundlichen Erklärungen und Beispielen, wie du deine Fabrik mit einigen Kombinatoren und Schaltungen aufpeppen kannst.&lt;/p&gt; &lt;h2 id=&quot;kombinatoren-2-erweiterte-logistik-pocarski&quot;&gt;Kombinatoren 2:...</content>
   </entry>
   
   

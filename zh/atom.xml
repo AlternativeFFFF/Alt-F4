@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-08-22T18:06:06+00:00</updated>
+  <updated>2021-09-17T14:46:03+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #47 - Optimizing the Solution</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-47/" />
+    <id>https://alt-f4.blog/ALTF4-47</id>
+    <updated>2021-09-17T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;After a three-week hiatus, Alt-F4 is back, more motivated than ever! We start off with a bang as &lt;em&gt;ilbJanissary&lt;/em&gt; goes into depth about how the calculation engine behind &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; does its magic. It might seem complicated at the surface, but the process is broken down into granular parts that...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-38</id>
     <updated>2021-06-04T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周，我们的内部技术编辑决定再写一篇文章。我们对此并不确定，但没人能阻止他。因此，为您呈现：&lt;em&gt;Conor_&lt;/em&gt; 所著关于异星工厂亲和力与 STEM 领域之间的关系。是时候戴上你的毕业帽了！&lt;/p&gt; &lt;h2 id=&quot;异星工厂和-stem-conor_&quot;&gt;异星工厂和 STEM &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在我的 &lt;em&gt;青春年华&lt;/em&gt; 中正经玩的第一款游戏是我的世界。是的，我知道，我知道，我年纪太小了。在原版我的世界中玩了一段时间后，我对缺乏明确的目标和相当有限的物品种类感到厌烦。我渴望更多的复杂性，以及更广泛的可能性。&lt;strong&gt;输入：Mod&lt;/strong&gt;。加了 Mod 的我的世界就此接管了我的生活。让我好好玩了一两年的的选择是&lt;a href=&quot;https://atlauncher.com/pack/skyfactory&quot;&gt;天空工厂 2（Sky Factory 2）&lt;/a&gt;；我也有尝试其他 Mod，但天空工厂设法保持了我的注意力。即使是现在，我偶尔也会回去，启动我的世界 1.7.10，再玩一遍这个 Mod。对于任何没有玩过天空工厂 Mod 包的人来说，它基本上是一个传统的空岛生存加上 Mod，允许你从泥土，砾石，沙子等提取资源（如矿石或种子）。最重要的是，这个过程是可以自动化的。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/38/sky_factory.jpg&quot; alt=&quot;天空工厂自动过筛+处理设置&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;自动开采鹅卵石并将其被粉碎成砾石，再将其筛选和冶炼成珍贵的矿石。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;我可以制作一个替我工作的东西，这个想法超棒的。任何玩过异星工厂的人当然会认识到这个想法是游戏中的关键目标——&lt;strong&gt;自动化 &lt;em&gt;一切&lt;/em&gt;&lt;/strong&gt;。在天空工厂上花了太多、太多时间之后，我把视野扩大到其他游戏，但发现我的朋友们喜欢的游戏类型（主要是 FPS 游戏）并不是我的菜。在遥远的雾气中，异星工厂向我招手，我立马买了这个游戏，并为它提供的可能性而感到兴奋。&lt;/p&gt; &lt;p&gt;不幸的是，在我深入异星工厂的旅程中，并不全是阳光和玫瑰。正如常见的那样，我兴高采烈地进入游戏，制作并自动化了红色和绿色科研包，然后就燃尽了。回想起来，我被制作蓝色科研包所需的大量组件和步骤所淹没（那时的蓝色科研包甚至更加复杂），在异星工厂中如果你不准备分解问题并理解每个组件的话这将是个非常常见的状况。可怜的异星工厂在我尝试其他游戏的时候被搁置在一边，交不到一个朋友。&lt;/p&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #37 - 运算器速成班续集</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-37/" />
-    <id>https://alt-f4.blog/ALTF4-37</id>
-    <updated>2021-05-28T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在 Alt-F4 发行的第 37 周，我们推出了第 37 期！想不到吧！在这一期中，长期撰稿人 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pocarski&lt;/code&gt; 又带来了更多简单易懂的内容，为您讲解如何通过一些运算器来调剂和优化你的基地！&lt;/p&gt; &lt;h2 id=&quot;运算器-2增强型物流-pocarski&quot;&gt;运算器 2：增强型物流 &lt;author&gt;pocarski&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;几周前，我写了一篇关于使用运算器来改善特定建筑的&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-31/#%E8%BF%90%E7%AE%97%E5%99%A8%E4%BB%A5%E5%8F%8A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E6%97%A0%E9%9C%80%E7%95%8F%E6%83%A7%E5%AE%83%E4%BB%AC-pocarski&quot;&gt;文章&lt;/a&gt;。这一次，我们将看看如何更普遍地应用信号网络，来提高你整个工厂的效率。我们将研究传统设计的缺陷，提出解决这些问题的方法，使用信号网络实现这些解决方案。此种改进可以在机器人和列车上进行，而且电路是如此简单几乎不需要判断运算器。让我们直接开始吧！&lt;/p&gt; &lt;h3 id=&quot;机器人网络对网络接口&quot;&gt;机器人：网络对网络接口&lt;/h3&gt; &lt;p&gt;我们都遇到过这样的问题：你创造了更多的机器人需求，突然间，所有来自你基地远端的机器人都决定要在没有机器人指令平台的地区行驶数千格。在最好的情况下，这将导致类似于现实生活中的送货服务的轻微挫折感，在最坏的情况下，机器人将不断被虫群摧毁，或在中途掉头，在他们刚刚离开的机器人指令平台充电，让你失去吞吐量。这种情况发生在你的物流网络是一个非凸多边形，有一个巨大的物流匮乏区，导致愚蠢的直线寻路机器人进入其中。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/37/corner-cutting.jpg&quot; alt=&quot;一个网络中大部分的机器人被卡在电池续航能力的边境中&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;这个基地的机器人没有足够的电量来越过凹地，所以它们在中途一直在掉头。&lt;/figcaption&gt; &lt;/figure&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;因此，有一条戒律来避免这种情况：&lt;em&gt;“不可修建凹陷的物流网络”&lt;/em&gt;。听起来很简单，对吗？只要让你的基地成为一个由机器人指令平台组成的巨大矩形，就不存在任何可以拐弯抹角的地方。这是一个有效的解决方案，但它给你的扩张带来了非常大的限制，因为你将被迫扩大矩形来覆盖你所有新获得的地产。这将导致你实际的基地只占据你的物流网络覆盖区域一小部分的情况。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt;...</content>
   </entry>
   
   

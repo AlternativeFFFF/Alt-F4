@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="cs" class="cs">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #47 - Optimizing the Solution</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #47 - Optimizing the Solution">
+<meta name="author" content="ilbJanissary">
+<meta property="og:locale" content="en">
+<meta name="description" content="After a three-week hiatus, Alt-F4 is back, more motivated than ever! We start off with a bang as ilbJanissary goes into depth about how the calculation engine behind FactorioLab does its magic. It might seem complicated at the surface, but the process is broken down into granular parts that are illustrated with actual examples. No eyes will glaze over reading this piece (hopefully!). Optimizing the Solution ilbJanissary Hi! As an Angular developer and long time user of the Kirk McDonald Factorio Calculator, I decided to build my own web-based calculator for factory games called FactorioLab back in 2020. Kirk McDonald published an essay on his approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in FactorioLab, I wanted to share with the community what I learned when implementing a true simplex algorithm solver. A TL;DR can be found at the very bottom of the article. Why use a calculator? Let’s start from the beginning. In factory games like Factorio, Dyson Sphere Program, and Satisfactory, the objective is to mine raw resources, use those resources to craft items following a recipe, and use those items to discover more advanced items and recipes. Early in these games, the recipes and items involved are simple and do not require extensive planning, but as more items and recipes are unlocked, the production chain can become incredibly complicated. Factory calculators like FactorioLab and the Kirk McDonald Factorio Calculator are intended to help determine how many raw resources and factories are required to sustainably produce items at a certain rate. Concepts There are two important concepts in factory games that are important to understanding the math behind calculations: items and recipes. Items are the products and ingredients in factory games. Some items only exist as intermediates, and cannot do anything on their own, such as most raw resources. Some items can also serve a purpose in the game, such as fuel, transport belts, furnaces, assemblers, power generation, power distribution, etc. Recipes are the ways in which players craft new, more advanced items in the game. Some items can be crafted by hand using a recipe, and other recipes can only be performed by specific factory buildings, like assemblers or furnaces. Recipes usually take a specific set of items as inputs, take a specific amount of time to perform, and produce a specific set of items as products. Recipes are often represented as a list of ingredients and an amount of time to craft to the left of an arrow, which points to the list of products on the right. For example, in Factorio, a basic item is Iron ore. Iron ore is a raw resource, meaning it is produced via a recipe that takes no items as inputs: This recipe can be crafted on an Iron ore resource patch, by hand or by a mining drill. Iron ore is primarily used as an ingredient to produce Iron plates, which use their own recipe: Iron plates cannot be crafted by hand, and must be produced in a furnace. Recipes can also include many inputs and outputs, such as one of the more complicated recipes in Factorio, Advanced oil processing: This recipe can only be crafted using an Oil refinery. Crafting speed The real crafting time of a recipe is also affected by the crafting speed of the machine used to craft the recipe. For example, the Electric mining drill has a crafting speed of 0.5, which means when it is used to mine Iron ore using the recipe above, it actually takes two seconds per Iron ore. To simplify, we’ll generally treat the crafting speed as 1. Recipe equations You may notice that if you substitute the arrow for an equals sign, a recipe can easily be interpreted as an equation. Since time itself is not an actual item, to make this equation meaningful, we need to divide both sides by the amount of time and thus treat the numbers in equation as rates instead of a simple number of items. Hence, the Iron ore recipe becomes: In this case, the left side is zero since the recipe takes no inputs. Likewise, the Iron plate recipe becomes: Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In FactorioLab, if the required products can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, making it more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input. Recipe matrices The canonical problem in Factorio is Advanced oil processing and cracking, and will be used as the primary example of finding a solution. This problem usually involves at least five recipes and five items. The recipes are: Crude oil (raw resource) Crude oil production speed varies based on the resource on the map, but can be treated in a simplified form. Water (raw resource) Advanced oil processing Heavy oil cracking Light oil cracking Note that other recipes may also be involved, such as Basic oil processing and Coal liquefaction, but these will be ignored at this time. Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements. Since the crafting speed of all the factories involved is 1, we don’t need to make any adjustments to account for crafting speed, but that would be necessary for many factories, or any time modules or beacons are involved. Crude oil (raw resource) Water (raw resource) Advanced oil processing Heavy oil cracking Light oil cracking These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil: 10 - 20 = # output Having divided the item amounts by their recipe time, the full matrix looks like:   10 0 -20 0 0 0 1200 -10 -15 -15 0 0 5 -20 0 0 0 9 15 -15 0 0 11 0 10 Next, we need to account for what we want to actually produce from our factory. To handle this, we can add a column to represent the final outputs of our factory. As an example, let’s say that we want to produce 5 Heavy oil/second and 100 Petroleum gas/second. In order to represent this idea in the matrix, we need to make these values negative, because we’re indicating that we’re taking that amount out of the system.   Out 10 0 -20 0 0 0 0 1200 -10 -15 -15 0 0 0 5 -20 0 -5 0 0 9 15 -15 0 0 0 11 0 10 -100 Linear programming A matrix of this nature is called a linear program in mathematics, and can be solved using linear programming techniques. The most common method for solving a linear program is the Simplex algorithm, and it is the method used by both FactorioLab and the Kirk McDonald Factorio Calculator. Since there are multiple possible solutions to this linear program, the Simplex algorithm takes the approach of maximizing an objective function, which is essentially another row in the matrix. While we do not necessarily have anything we want to maximize in our linear program, we do want to minimize the amount of resources and factories required to produce our output items. So, instead of adding an objective we want to maximize, we can first add a “Cost” function to our linear program so that we can describe how we want to minimize the number of resources and factories in our solution. Why do we need a cost function? For simple factories where there is only a single recipe for each factory, we don’t even need a cost function. We can calculate how many of each ingredient we need, and keep going down the recipe chain, until we get a solution. So why does the linear program need a cost function? Let’s look at the oil processing example in Factorio. In our example, we want to produce Petroleum gas and Heavy oil. Note that Advanced oil processing produces both of these products. Hence, a viable solution is to completely ignore the cracking recipes, and just produce all the oil products we need directly from Advanced oil processing. So, why do we ever use cracking in Factorio? There are two main reasons: The equation is not balanced, meaning in almost any factory the output oil products will not match the ratio of desired oil products, and eventually one of them will fill up all available storage and force production to halt completely. In most factories producing pure science products, the culprit will be Light oil. There is no way to just “burn off” excess in Factorio, and manually emptying storage tanks is tedious. It uses excess Crude oil. Crude oil is not as easy to obtain as water, so we usually want to minimize the amount that is required. By cracking the excess Light oil into Petroleum gas, we can both address the excess Light oil and reduce the amount of Crude oil required, at the expense of extra Water, which is easier to obtain. A cost function quantifies how difficult resources are to obtain, and how much effort is involved in setting up factories. A solution that requires less resources is better than a solution that requires a lot of resources, and a solution that requires less factories is better than a solution that requires more factories. By putting specific numbers onto the cost of obtaining resources and setting up factories, we can directly quantify the cost of a solution, and the calculator can use that cost to determine which solution is optimal. How do we define a cost function? The cost function can be rather abstract and arbitrary as there is no specific cost of resources and factories in games like Factorio and Dyson Sphere Program. Instead, we have to rely on intuition of what is most difficult to obtain and set up in a factory. In FactorioLab, this comes down to a few specific variables that define the cost function: A single factory running a recipe costs 1. One unit of Water costs 100, since water is generally cheap to obtain. One unit of Crude oil costs 1000, since is generally produced in higher quantities than other mined resources. One unit of ‘mined’ resources costs 10,000. In Factorio, this applies to Coal, Uranium ore, Stone, Iron ore, and Copper ore. Generally, these are the resources we want to minimize most. One unit of ‘manually collected’ resources costs 100,000. In Factorio, this applies to Wood, for example. While Wood is generally not part of any important recipes in vanilla Factorio, we want to minimize any use of resources we cannot collect automatically. We can represent this cost function as an additional row in our matrix. In order to accurately account for the cost of mined resources, we will simplify those recipes so that the cost is based on the number of items, rather than the number of factories mining the resource. Thus the Pumpjack and Offshore pump recipes are simplified into a recipe that has higher cost and only produces 1 item per second. Once we calculate an amount of Crude oil and Water for the solution, it is trivial to convert this production number back into a number of factories.   Out 1 0 -20 0 0 0 0 1 -10 -15 -15 0 0 0 5 -20 0 -5 0 0 9 15 -15 0 0 0 11 0 10 -100 Cost 10000 100 1 1 1 0 Dual minimization problem Now, the issue with this linear program is that we want to minimize the cost of our solution, while the Simplex algorithm is designed to maximize an objective. Fortunately, there is a simple way to convert a minimization problem into a maximization problem that can be solved using the Simplex algorithm. This is accomplished by converting the minimization problem into its “dual maximization problem.” Once a minimization problem is converted into its dual maximization problem, it is feasible to solve the dual problem using the Simplex algorithm. The solution to the maximization of the dual problem is the same as the solution to the minimization of the original problem, so we can accept this as our solution. The dual problem is simply a transpose of the original problem, or swapping the rows and columns. This results in:   Cost 1 0 0 0 0 10000 0 1 0 0 0 100 -20 -10 5 9 11 1 0 -15 -20 15 0 1 0 -15 0 -15 10 1 Out 0 0 -5 0 -100 0 In order to handle potential surplus values, linear programming generally adds ‘surplus’ or ‘slack’ variables to the program. For instance, for a factory to produce only Heavy oil, there is no solution that does not involve some surplus amount of Light oil and Petroleum gas. These are represented by additional columns in the matrix where each column has a ‘1’ value in the row matching its item.   + + + + Cost 1 0 0 0 0 1 0 0 0 0 10000 0 1 0 0 0 0 1 0 0 0 100 -20 -10 5 9 11 0 0 1 0 0 1 0 -15 -20 15 0 0 0 0 1 0 1 0 -15 0 -15 10 0 0 0 0 1 1 Out 0 0 -5 0 -100 0 0 0 0 0 0 Now, we finally have a canonical matrix that can be solved using the Simplex algorithm. Solving with simplex The end goal of the Simplex algorithm is to arrive at a matrix where the objective function (in this case, the last row of the matrix) contains no negative numbers. In our initial matrix, note that our objective row has two columns with negative values, representing the two items we want to produce. In order to reach our solution, we simply need to apply ‘pivot’ operations until our objective row no longer has any negative values. Pivot 1 A Simplex pivot operation involves four steps. Choose a column to pivot. This must be a negative column, and is usually chosen as the largest negative number. In our matrix, this would be the Petroleum gas column. Choose a row to pivot. Check each row where the chosen column has a value greater than zero, and calculate the ratio of the cost column in that row to the value of the chosen column in that row. The pivot row is the row with the lowest ratio. In our matrix, we can check each row: : column is 0, ignore this row. : column is 0, ignore this row. : column is 11, cost column is 1, so the ratio is 1/11. : column is 0, ignore this row. : column is 10, cost column is 1, so the ratio is 1/10. The lowest ratio is the row at 1/11, so we will pivot this row. Divide the pivot row by the reciprocal of the pivot element. In our pivot row, this yields -20/11, -10/11, 5/11, 9/11, 1, 0, 0, 1/11, 0, 0, 1/11 Add multiples of the pivot row to other rows to change the pivot column to 0. The final result is: + + + + + Cost 1 0 0 0 0 1 0 0 0 0 10000 0 1 0 0 0 0 1 0 0 0 100 -1 9/11 -10/11 5/11 9/11 1 0 0 1/11 0 0 1/11 0 -15 -20 -20 15 0 0 0 1 0 1 18 2/11 -5 10/11 -4 6/11 -23 2/11 0 0 0 -10/11 0 1 1/11 -181 + 9/11 -90 10/11 40 5/11 81 9/11 0 0 0 9 1/11 0 0 9 1/11 Now, let’s continue with the next pivot. Pivot 2 Column 1 (-181 9/11), Row 5 (Ratio 1/200) + + + + + Cost 0 13/40 1/4 1 + 11/40 0 1 0 1/20 0 -11/200 9999 + 199/200 0 1 0 0 0 0 1 0 0 0 100 0 -1 1/2 0 -1 1/2 1 0 0 0 0 1/10 1/10 0 -15 -20 15 0 0 0 0 1 0 1 1 -13/40 -1/4 -1 11/40 0 0 0 -1/20 0 11/200 1/200 0 -150 -5 -150 0 0 0 0 0 10 10 Pivot 3 Column 2 (-150), Row 2 (Ratio 100) + + + + + Cost 0 0 1/4 1 + 11/40 0 1 -13/40 1/20 0 -11/200 9967 + 99/200 0 1 0 0 0 0 1 0 0 0 100 0 0 0 -1 1/2 1 0 1 1/2 0 0 1/10 150 + 1/10 0 0 -20 15 0 0 15 0 1 0 1501 1 0 -1/4 -1 11/40 0 0 13/40 -1/20 0 11/200 32 + 101/200 0 0 -5 -150 0 0 150 0 0 10 15010 Pivot 4 Column 4 (-150), Row 4 (Ratio 133 2/5) + + + + + Cost 0 0 1 19/20 0 0 1 -1 3/5 1/20 -17/200 -11/200 9839 91/100 0 1 0 0 0 0 1 0 0 0 100 0 0 -2 0 1 0 3 0 1/10 1/10 300 + 1/5 0 0 -1 1/3 1 0 0 1 0 1/15 0 100 1/15 1 0 -1 19/20 0 0 0 1 3/5 -1/20 17/200 11/200 160 9/100 0 0 -205 0 0 0 300 0 10 10 30020 Pivot 5 Column 3 (-205), Row 1 (Ratio 5046 7/65) + + + + + Cost 0 0 1 0 0 20/39 -32/39 1/39 -17/390 -11/390 5046 7/65 0 1 0 0 0 0 1 0 0 0 100 0 0 0 0 1 1 1/39 1 14/39 2/39 1/78 17/390 10392 27/65 0 0 0 1 0 80/117 -11/117 4/117 1/117 -22/585 6828 41/195 1 0 0 0 0 1 0 0 0 0 10000 0 0 0 0 0 105 5/39 131 31/39 5 10/39 1 5/78 4 17/78 1064472 1/13 The final row in the matrix now has no negative values, so this is recognized as the solution. The solution can be extracted from the last row, where the first five columns represent surplus values (in this case, all zero), the next two values represent the input Crude oil and Water, the next three values represent the number of factories running Advanced oil processing, Heavy oil cracking, and Light oil cracking, and the last value represents the ‘cost’ of this solution. Thus, our solution requires 105 5/39 , 131 31/39 , 5 10/39 , 1 5/78 , and 4 17/78 . This solution can be compared to the result in FactorioLab. Matrix tab The Matrix tab of FactorioLab, a relatively new feature, allows you to peek under the hood of the simplex solver. For recipe chains that can be solved without simplex, this tab is mostly empty, but when simplex is used, the tab exposes many details and even allows you to customize the cost function used by the solver. Result information The first table exposes details on the current simplex solver result. The Simplex Result from the solver Skipped: The simplex solver was not used, either because it is disabled or because it was not required to solve the recipe chain. Failed: The simplex solver encountered an error, usually due to a recipe loop that cannot be solved (e.g. if iron plates require two iron gears and iron gears require two iron plates) Cancelled: The user cancelled the solver manually when prompted after running for at least five seconds. Solved: A valid solution was found. The Runtime of the simplex solver, in ms The total number of Pivots performed by the solver The Size of the canonical matrix Cost modifiers The second table allows the user to tweak the cost function used in the canonical matrix. Recipe is a factor that multiplies the cost of recipes with a defined cost, usually mining recipes representing raw inputs Factory is a factor that multiplies the cost of the number of factories themselves, which is usually only a secondary consideration Input defines the cost of items that cannot be produced by any recipe, such as Wood in Factorio Ignored defines the cost of items which have been explicitly ignored, which defaults to zero Simplex canonical tableau and solution The third table shows both the canonical matrix generated by the calculator and the solution row with the final cost. Note that this is displayed as the dual minimization problem, which is how the calculator minimizes cost using the simplex method. In each recipe row, the cost of the recipe is displayed and can also be overridden using the cost input field to the right. Values are represented as items/second in this table regardless of the user’s display rate selection, since this is how calculations are always performed internally. Alternate algorithms The Simplex algorithm using dual maximization has proven to be a very effective method of solving factory calculations. However, simplex is not the only algorithm to solve a linear program. There are other methods such as revised simplex, criss-cross algorithm, ellipsoid method, Karmarkar’s algorithm, and the interior-point method. In fact, in just 2019 the running time was improved by a new matrix multiplication time algorithm. As linear programs grow large, especially in modded Factorio, the simplex algorithm used by FactorioLab can take a very long time to find a solution, especially when mods introduce ‘recycling’ recipes that introduce large numbers of loops. With further research, it is possible that a better algorithm for solving factory linear programs could be developed. TL;DR Simple factories are easy to calculate by hand, when items are only produced by a single recipe. When items are produced by multiple different recipes, we need a way to figure out how much of each recipe to use. Since there are multiple potential solutions, we need to measure the cost of a solution to determine which is best. Simplex is the most commonly used algorithm (though not the fastest) to solve these kinds of problems, in both the Factorio and mathematics communities. FactorioLab uses the Simplex algorithm to optimize the solution for complex factories and allows users to: Customize the cost function since it is subjective Use common mod data sets Run calculations and plan the factory from mobile devices or at work Calculate how much rocket fuel you can produce from a single refinery Join the FactorioLab Discord to learn more! Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="After a three-week hiatus, Alt-F4 is back, more motivated than ever! We start off with a bang as ilbJanissary goes into depth about how the calculation engine behind FactorioLab does its magic. It might seem complicated at the surface, but the process is broken down into granular parts that are illustrated with actual examples. No eyes will glaze over reading this piece (hopefully!). Optimizing the Solution ilbJanissary Hi! As an Angular developer and long time user of the Kirk McDonald Factorio Calculator, I decided to build my own web-based calculator for factory games called FactorioLab back in 2020. Kirk McDonald published an essay on his approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in FactorioLab, I wanted to share with the community what I learned when implementing a true simplex algorithm solver. A TL;DR can be found at the very bottom of the article. Why use a calculator? Let’s start from the beginning. In factory games like Factorio, Dyson Sphere Program, and Satisfactory, the objective is to mine raw resources, use those resources to craft items following a recipe, and use those items to discover more advanced items and recipes. Early in these games, the recipes and items involved are simple and do not require extensive planning, but as more items and recipes are unlocked, the production chain can become incredibly complicated. Factory calculators like FactorioLab and the Kirk McDonald Factorio Calculator are intended to help determine how many raw resources and factories are required to sustainably produce items at a certain rate. Concepts There are two important concepts in factory games that are important to understanding the math behind calculations: items and recipes. Items are the products and ingredients in factory games. Some items only exist as intermediates, and cannot do anything on their own, such as most raw resources. Some items can also serve a purpose in the game, such as fuel, transport belts, furnaces, assemblers, power generation, power distribution, etc. Recipes are the ways in which players craft new, more advanced items in the game. Some items can be crafted by hand using a recipe, and other recipes can only be performed by specific factory buildings, like assemblers or furnaces. Recipes usually take a specific set of items as inputs, take a specific amount of time to perform, and produce a specific set of items as products. Recipes are often represented as a list of ingredients and an amount of time to craft to the left of an arrow, which points to the list of products on the right. For example, in Factorio, a basic item is Iron ore. Iron ore is a raw resource, meaning it is produced via a recipe that takes no items as inputs: This recipe can be crafted on an Iron ore resource patch, by hand or by a mining drill. Iron ore is primarily used as an ingredient to produce Iron plates, which use their own recipe: Iron plates cannot be crafted by hand, and must be produced in a furnace. Recipes can also include many inputs and outputs, such as one of the more complicated recipes in Factorio, Advanced oil processing: This recipe can only be crafted using an Oil refinery. Crafting speed The real crafting time of a recipe is also affected by the crafting speed of the machine used to craft the recipe. For example, the Electric mining drill has a crafting speed of 0.5, which means when it is used to mine Iron ore using the recipe above, it actually takes two seconds per Iron ore. To simplify, we’ll generally treat the crafting speed as 1. Recipe equations You may notice that if you substitute the arrow for an equals sign, a recipe can easily be interpreted as an equation. Since time itself is not an actual item, to make this equation meaningful, we need to divide both sides by the amount of time and thus treat the numbers in equation as rates instead of a simple number of items. Hence, the Iron ore recipe becomes: In this case, the left side is zero since the recipe takes no inputs. Likewise, the Iron plate recipe becomes: Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In FactorioLab, if the required products can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, making it more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input. Recipe matrices The canonical problem in Factorio is Advanced oil processing and cracking, and will be used as the primary example of finding a solution. This problem usually involves at least five recipes and five items. The recipes are: Crude oil (raw resource) Crude oil production speed varies based on the resource on the map, but can be treated in a simplified form. Water (raw resource) Advanced oil processing Heavy oil cracking Light oil cracking Note that other recipes may also be involved, such as Basic oil processing and Coal liquefaction, but these will be ignored at this time. Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements. Since the crafting speed of all the factories involved is 1, we don’t need to make any adjustments to account for crafting speed, but that would be necessary for many factories, or any time modules or beacons are involved. Crude oil (raw resource) Water (raw resource) Advanced oil processing Heavy oil cracking Light oil cracking These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil: 10 - 20 = # output Having divided the item amounts by their recipe time, the full matrix looks like:   10 0 -20 0 0 0 1200 -10 -15 -15 0 0 5 -20 0 0 0 9 15 -15 0 0 11 0 10 Next, we need to account for what we want to actually produce from our factory. To handle this, we can add a column to represent the final outputs of our factory. As an example, let’s say that we want to produce 5 Heavy oil/second and 100 Petroleum gas/second. In order to represent this idea in the matrix, we need to make these values negative, because we’re indicating that we’re taking that amount out of the system.   Out 10 0 -20 0 0 0 0 1200 -10 -15 -15 0 0 0 5 -20 0 -5 0 0 9 15 -15 0 0 0 11 0 10 -100 Linear programming A matrix of this nature is called a linear program in mathematics, and can be solved using linear programming techniques. The most common method for solving a linear program is the Simplex algorithm, and it is the method used by both FactorioLab and the Kirk McDonald Factorio Calculator. Since there are multiple possible solutions to this linear program, the Simplex algorithm takes the approach of maximizing an objective function, which is essentially another row in the matrix. While we do not necessarily have anything we want to maximize in our linear program, we do want to minimize the amount of resources and factories required to produce our output items. So, instead of adding an objective we want to maximize, we can first add a “Cost” function to our linear program so that we can describe how we want to minimize the number of resources and factories in our solution. Why do we need a cost function? For simple factories where there is only a single recipe for each factory, we don’t even need a cost function. We can calculate how many of each ingredient we need, and keep going down the recipe chain, until we get a solution. So why does the linear program need a cost function? Let’s look at the oil processing example in Factorio. In our example, we want to produce Petroleum gas and Heavy oil. Note that Advanced oil processing produces both of these products. Hence, a viable solution is to completely ignore the cracking recipes, and just produce all the oil products we need directly from Advanced oil processing. So, why do we ever use cracking in Factorio? There are two main reasons: The equation is not balanced, meaning in almost any factory the output oil products will not match the ratio of desired oil products, and eventually one of them will fill up all available storage and force production to halt completely. In most factories producing pure science products, the culprit will be Light oil. There is no way to just “burn off” excess in Factorio, and manually emptying storage tanks is tedious. It uses excess Crude oil. Crude oil is not as easy to obtain as water, so we usually want to minimize the amount that is required. By cracking the excess Light oil into Petroleum gas, we can both address the excess Light oil and reduce the amount of Crude oil required, at the expense of extra Water, which is easier to obtain. A cost function quantifies how difficult resources are to obtain, and how much effort is involved in setting up factories. A solution that requires less resources is better than a solution that requires a lot of resources, and a solution that requires less factories is better than a solution that requires more factories. By putting specific numbers onto the cost of obtaining resources and setting up factories, we can directly quantify the cost of a solution, and the calculator can use that cost to determine which solution is optimal. How do we define a cost function? The cost function can be rather abstract and arbitrary as there is no specific cost of resources and factories in games like Factorio and Dyson Sphere Program. Instead, we have to rely on intuition of what is most difficult to obtain and set up in a factory. In FactorioLab, this comes down to a few specific variables that define the cost function: A single factory running a recipe costs 1. One unit of Water costs 100, since water is generally cheap to obtain. One unit of Crude oil costs 1000, since is generally produced in higher quantities than other mined resources. One unit of ‘mined’ resources costs 10,000. In Factorio, this applies to Coal, Uranium ore, Stone, Iron ore, and Copper ore. Generally, these are the resources we want to minimize most. One unit of ‘manually collected’ resources costs 100,000. In Factorio, this applies to Wood, for example. While Wood is generally not part of any important recipes in vanilla Factorio, we want to minimize any use of resources we cannot collect automatically. We can represent this cost function as an additional row in our matrix. In order to accurately account for the cost of mined resources, we will simplify those recipes so that the cost is based on the number of items, rather than the number of factories mining the resource. Thus the Pumpjack and Offshore pump recipes are simplified into a recipe that has higher cost and only produces 1 item per second. Once we calculate an amount of Crude oil and Water for the solution, it is trivial to convert this production number back into a number of factories.   Out 1 0 -20 0 0 0 0 1 -10 -15 -15 0 0 0 5 -20 0 -5 0 0 9 15 -15 0 0 0 11 0 10 -100 Cost 10000 100 1 1 1 0 Dual minimization problem Now, the issue with this linear program is that we want to minimize the cost of our solution, while the Simplex algorithm is designed to maximize an objective. Fortunately, there is a simple way to convert a minimization problem into a maximization problem that can be solved using the Simplex algorithm. This is accomplished by converting the minimization problem into its “dual maximization problem.” Once a minimization problem is converted into its dual maximization problem, it is feasible to solve the dual problem using the Simplex algorithm. The solution to the maximization of the dual problem is the same as the solution to the minimization of the original problem, so we can accept this as our solution. The dual problem is simply a transpose of the original problem, or swapping the rows and columns. This results in:   Cost 1 0 0 0 0 10000 0 1 0 0 0 100 -20 -10 5 9 11 1 0 -15 -20 15 0 1 0 -15 0 -15 10 1 Out 0 0 -5 0 -100 0 In order to handle potential surplus values, linear programming generally adds ‘surplus’ or ‘slack’ variables to the program. For instance, for a factory to produce only Heavy oil, there is no solution that does not involve some surplus amount of Light oil and Petroleum gas. These are represented by additional columns in the matrix where each column has a ‘1’ value in the row matching its item.   + + + + Cost 1 0 0 0 0 1 0 0 0 0 10000 0 1 0 0 0 0 1 0 0 0 100 -20 -10 5 9 11 0 0 1 0 0 1 0 -15 -20 15 0 0 0 0 1 0 1 0 -15 0 -15 10 0 0 0 0 1 1 Out 0 0 -5 0 -100 0 0 0 0 0 0 Now, we finally have a canonical matrix that can be solved using the Simplex algorithm. Solving with simplex The end goal of the Simplex algorithm is to arrive at a matrix where the objective function (in this case, the last row of the matrix) contains no negative numbers. In our initial matrix, note that our objective row has two columns with negative values, representing the two items we want to produce. In order to reach our solution, we simply need to apply ‘pivot’ operations until our objective row no longer has any negative values. Pivot 1 A Simplex pivot operation involves four steps. Choose a column to pivot. This must be a negative column, and is usually chosen as the largest negative number. In our matrix, this would be the Petroleum gas column. Choose a row to pivot. Check each row where the chosen column has a value greater than zero, and calculate the ratio of the cost column in that row to the value of the chosen column in that row. The pivot row is the row with the lowest ratio. In our matrix, we can check each row: : column is 0, ignore this row. : column is 0, ignore this row. : column is 11, cost column is 1, so the ratio is 1/11. : column is 0, ignore this row. : column is 10, cost column is 1, so the ratio is 1/10. The lowest ratio is the row at 1/11, so we will pivot this row. Divide the pivot row by the reciprocal of the pivot element. In our pivot row, this yields -20/11, -10/11, 5/11, 9/11, 1, 0, 0, 1/11, 0, 0, 1/11 Add multiples of the pivot row to other rows to change the pivot column to 0. The final result is: + + + + + Cost 1 0 0 0 0 1 0 0 0 0 10000 0 1 0 0 0 0 1 0 0 0 100 -1 9/11 -10/11 5/11 9/11 1 0 0 1/11 0 0 1/11 0 -15 -20 -20 15 0 0 0 1 0 1 18 2/11 -5 10/11 -4 6/11 -23 2/11 0 0 0 -10/11 0 1 1/11 -181 + 9/11 -90 10/11 40 5/11 81 9/11 0 0 0 9 1/11 0 0 9 1/11 Now, let’s continue with the next pivot. Pivot 2 Column 1 (-181 9/11), Row 5 (Ratio 1/200) + + + + + Cost 0 13/40 1/4 1 + 11/40 0 1 0 1/20 0 -11/200 9999 + 199/200 0 1 0 0 0 0 1 0 0 0 100 0 -1 1/2 0 -1 1/2 1 0 0 0 0 1/10 1/10 0 -15 -20 15 0 0 0 0 1 0 1 1 -13/40 -1/4 -1 11/40 0 0 0 -1/20 0 11/200 1/200 0 -150 -5 -150 0 0 0 0 0 10 10 Pivot 3 Column 2 (-150), Row 2 (Ratio 100) + + + + + Cost 0 0 1/4 1 + 11/40 0 1 -13/40 1/20 0 -11/200 9967 + 99/200 0 1 0 0 0 0 1 0 0 0 100 0 0 0 -1 1/2 1 0 1 1/2 0 0 1/10 150 + 1/10 0 0 -20 15 0 0 15 0 1 0 1501 1 0 -1/4 -1 11/40 0 0 13/40 -1/20 0 11/200 32 + 101/200 0 0 -5 -150 0 0 150 0 0 10 15010 Pivot 4 Column 4 (-150), Row 4 (Ratio 133 2/5) + + + + + Cost 0 0 1 19/20 0 0 1 -1 3/5 1/20 -17/200 -11/200 9839 91/100 0 1 0 0 0 0 1 0 0 0 100 0 0 -2 0 1 0 3 0 1/10 1/10 300 + 1/5 0 0 -1 1/3 1 0 0 1 0 1/15 0 100 1/15 1 0 -1 19/20 0 0 0 1 3/5 -1/20 17/200 11/200 160 9/100 0 0 -205 0 0 0 300 0 10 10 30020 Pivot 5 Column 3 (-205), Row 1 (Ratio 5046 7/65) + + + + + Cost 0 0 1 0 0 20/39 -32/39 1/39 -17/390 -11/390 5046 7/65 0 1 0 0 0 0 1 0 0 0 100 0 0 0 0 1 1 1/39 1 14/39 2/39 1/78 17/390 10392 27/65 0 0 0 1 0 80/117 -11/117 4/117 1/117 -22/585 6828 41/195 1 0 0 0 0 1 0 0 0 0 10000 0 0 0 0 0 105 5/39 131 31/39 5 10/39 1 5/78 4 17/78 1064472 1/13 The final row in the matrix now has no negative values, so this is recognized as the solution. The solution can be extracted from the last row, where the first five columns represent surplus values (in this case, all zero), the next two values represent the input Crude oil and Water, the next three values represent the number of factories running Advanced oil processing, Heavy oil cracking, and Light oil cracking, and the last value represents the ‘cost’ of this solution. Thus, our solution requires 105 5/39 , 131 31/39 , 5 10/39 , 1 5/78 , and 4 17/78 . This solution can be compared to the result in FactorioLab. Matrix tab The Matrix tab of FactorioLab, a relatively new feature, allows you to peek under the hood of the simplex solver. For recipe chains that can be solved without simplex, this tab is mostly empty, but when simplex is used, the tab exposes many details and even allows you to customize the cost function used by the solver. Result information The first table exposes details on the current simplex solver result. The Simplex Result from the solver Skipped: The simplex solver was not used, either because it is disabled or because it was not required to solve the recipe chain. Failed: The simplex solver encountered an error, usually due to a recipe loop that cannot be solved (e.g. if iron plates require two iron gears and iron gears require two iron plates) Cancelled: The user cancelled the solver manually when prompted after running for at least five seconds. Solved: A valid solution was found. The Runtime of the simplex solver, in ms The total number of Pivots performed by the solver The Size of the canonical matrix Cost modifiers The second table allows the user to tweak the cost function used in the canonical matrix. Recipe is a factor that multiplies the cost of recipes with a defined cost, usually mining recipes representing raw inputs Factory is a factor that multiplies the cost of the number of factories themselves, which is usually only a secondary consideration Input defines the cost of items that cannot be produced by any recipe, such as Wood in Factorio Ignored defines the cost of items which have been explicitly ignored, which defaults to zero Simplex canonical tableau and solution The third table shows both the canonical matrix generated by the calculator and the solution row with the final cost. Note that this is displayed as the dual minimization problem, which is how the calculator minimizes cost using the simplex method. In each recipe row, the cost of the recipe is displayed and can also be overridden using the cost input field to the right. Values are represented as items/second in this table regardless of the user’s display rate selection, since this is how calculations are always performed internally. Alternate algorithms The Simplex algorithm using dual maximization has proven to be a very effective method of solving factory calculations. However, simplex is not the only algorithm to solve a linear program. There are other methods such as revised simplex, criss-cross algorithm, ellipsoid method, Karmarkar’s algorithm, and the interior-point method. In fact, in just 2019 the running time was improved by a new matrix multiplication time algorithm. As linear programs grow large, especially in modded Factorio, the simplex algorithm used by FactorioLab can take a very long time to find a solution, especially when mods introduce ‘recycling’ recipes that introduce large numbers of loops. With further research, it is possible that a better algorithm for solving factory linear programs could be developed. TL;DR Simple factories are easy to calculate by hand, when items are only produced by a single recipe. When items are produced by multiple different recipes, we need a way to figure out how much of each recipe to use. Since there are multiple potential solutions, we need to measure the cost of a solution to determine which is best. Simplex is the most commonly used algorithm (though not the fastest) to solve these kinds of problems, in both the Factorio and mathematics communities. FactorioLab uses the Simplex algorithm to optimize the solution for complex factories and allows users to: Customize the cost function since it is subjective Use common mod data sets Run calculations and plan the factory from mobile devices or at work Calculate how much rocket fuel you can produce from a single refinery Join the FactorioLab Discord to learn more! Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/cs/ALTF4-47/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-47/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-17T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-09-17T00:00:00+00:00","author":{"@type":"Person","name":"ilbJanissary"},"description":"After a three-week hiatus, Alt-F4 is back, more motivated than ever! We start off with a bang as ilbJanissary goes into depth about how the calculation engine behind FactorioLab does its magic. It might seem complicated at the surface, but the process is broken down into granular parts that are illustrated with actual examples. No eyes will glaze over reading this piece (hopefully!). Optimizing the Solution ilbJanissary Hi! As an Angular developer and long time user of the Kirk McDonald Factorio Calculator, I decided to build my own web-based calculator for factory games called FactorioLab back in 2020. Kirk McDonald published an essay on his approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in FactorioLab, I wanted to share with the community what I learned when implementing a true simplex algorithm solver. A TL;DR can be found at the very bottom of the article. Why use a calculator? Let’s start from the beginning. In factory games like Factorio, Dyson Sphere Program, and Satisfactory, the objective is to mine raw resources, use those resources to craft items following a recipe, and use those items to discover more advanced items and recipes. Early in these games, the recipes and items involved are simple and do not require extensive planning, but as more items and recipes are unlocked, the production chain can become incredibly complicated. Factory calculators like FactorioLab and the Kirk McDonald Factorio Calculator are intended to help determine how many raw resources and factories are required to sustainably produce items at a certain rate. Concepts There are two important concepts in factory games that are important to understanding the math behind calculations: items and recipes. Items are the products and ingredients in factory games. Some items only exist as intermediates, and cannot do anything on their own, such as most raw resources. Some items can also serve a purpose in the game, such as fuel, transport belts, furnaces, assemblers, power generation, power distribution, etc. Recipes are the ways in which players craft new, more advanced items in the game. Some items can be crafted by hand using a recipe, and other recipes can only be performed by specific factory buildings, like assemblers or furnaces. Recipes usually take a specific set of items as inputs, take a specific amount of time to perform, and produce a specific set of items as products. Recipes are often represented as a list of ingredients and an amount of time to craft to the left of an arrow, which points to the list of products on the right. For example, in Factorio, a basic item is Iron ore. Iron ore is a raw resource, meaning it is produced via a recipe that takes no items as inputs: This recipe can be crafted on an Iron ore resource patch, by hand or by a mining drill. Iron ore is primarily used as an ingredient to produce Iron plates, which use their own recipe: Iron plates cannot be crafted by hand, and must be produced in a furnace. Recipes can also include many inputs and outputs, such as one of the more complicated recipes in Factorio, Advanced oil processing: This recipe can only be crafted using an Oil refinery. Crafting speed The real crafting time of a recipe is also affected by the crafting speed of the machine used to craft the recipe. For example, the Electric mining drill has a crafting speed of 0.5, which means when it is used to mine Iron ore using the recipe above, it actually takes two seconds per Iron ore. To simplify, we’ll generally treat the crafting speed as 1. Recipe equations You may notice that if you substitute the arrow for an equals sign, a recipe can easily be interpreted as an equation. Since time itself is not an actual item, to make this equation meaningful, we need to divide both sides by the amount of time and thus treat the numbers in equation as rates instead of a simple number of items. Hence, the Iron ore recipe becomes: In this case, the left side is zero since the recipe takes no inputs. Likewise, the Iron plate recipe becomes: Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In FactorioLab, if the required products can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, making it more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input. Recipe matrices The canonical problem in Factorio is Advanced oil processing and cracking, and will be used as the primary example of finding a solution. This problem usually involves at least five recipes and five items. The recipes are: Crude oil (raw resource) Crude oil production speed varies based on the resource on the map, but can be treated in a simplified form. Water (raw resource) Advanced oil processing Heavy oil cracking Light oil cracking Note that other recipes may also be involved, such as Basic oil processing and Coal liquefaction, but these will be ignored at this time. Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements. Since the crafting speed of all the factories involved is 1, we don’t need to make any adjustments to account for crafting speed, but that would be necessary for many factories, or any time modules or beacons are involved. Crude oil (raw resource) Water (raw resource) Advanced oil processing Heavy oil cracking Light oil cracking These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil: 10 - 20 = # output Having divided the item amounts by their recipe time, the full matrix looks like:   10 0 -20 0 0 0 1200 -10 -15 -15 0 0 5 -20 0 0 0 9 15 -15 0 0 11 0 10 Next, we need to account for what we want to actually produce from our factory. To handle this, we can add a column to represent the final outputs of our factory. As an example, let’s say that we want to produce 5 Heavy oil/second and 100 Petroleum gas/second. In order to represent this idea in the matrix, we need to make these values negative, because we’re indicating that we’re taking that amount out of the system.   Out 10 0 -20 0 0 0 0 1200 -10 -15 -15 0 0 0 5 -20 0 -5 0 0 9 15 -15 0 0 0 11 0 10 -100 Linear programming A matrix of this nature is called a linear program in mathematics, and can be solved using linear programming techniques. The most common method for solving a linear program is the Simplex algorithm, and it is the method used by both FactorioLab and the Kirk McDonald Factorio Calculator. Since there are multiple possible solutions to this linear program, the Simplex algorithm takes the approach of maximizing an objective function, which is essentially another row in the matrix. While we do not necessarily have anything we want to maximize in our linear program, we do want to minimize the amount of resources and factories required to produce our output items. So, instead of adding an objective we want to maximize, we can first add a “Cost” function to our linear program so that we can describe how we want to minimize the number of resources and factories in our solution. Why do we need a cost function? For simple factories where there is only a single recipe for each factory, we don’t even need a cost function. We can calculate how many of each ingredient we need, and keep going down the recipe chain, until we get a solution. So why does the linear program need a cost function? Let’s look at the oil processing example in Factorio. In our example, we want to produce Petroleum gas and Heavy oil. Note that Advanced oil processing produces both of these products. Hence, a viable solution is to completely ignore the cracking recipes, and just produce all the oil products we need directly from Advanced oil processing. So, why do we ever use cracking in Factorio? There are two main reasons: The equation is not balanced, meaning in almost any factory the output oil products will not match the ratio of desired oil products, and eventually one of them will fill up all available storage and force production to halt completely. In most factories producing pure science products, the culprit will be Light oil. There is no way to just “burn off” excess in Factorio, and manually emptying storage tanks is tedious. It uses excess Crude oil. Crude oil is not as easy to obtain as water, so we usually want to minimize the amount that is required. By cracking the excess Light oil into Petroleum gas, we can both address the excess Light oil and reduce the amount of Crude oil required, at the expense of extra Water, which is easier to obtain. A cost function quantifies how difficult resources are to obtain, and how much effort is involved in setting up factories. A solution that requires less resources is better than a solution that requires a lot of resources, and a solution that requires less factories is better than a solution that requires more factories. By putting specific numbers onto the cost of obtaining resources and setting up factories, we can directly quantify the cost of a solution, and the calculator can use that cost to determine which solution is optimal. How do we define a cost function? The cost function can be rather abstract and arbitrary as there is no specific cost of resources and factories in games like Factorio and Dyson Sphere Program. Instead, we have to rely on intuition of what is most difficult to obtain and set up in a factory. In FactorioLab, this comes down to a few specific variables that define the cost function: A single factory running a recipe costs 1. One unit of Water costs 100, since water is generally cheap to obtain. One unit of Crude oil costs 1000, since is generally produced in higher quantities than other mined resources. One unit of ‘mined’ resources costs 10,000. In Factorio, this applies to Coal, Uranium ore, Stone, Iron ore, and Copper ore. Generally, these are the resources we want to minimize most. One unit of ‘manually collected’ resources costs 100,000. In Factorio, this applies to Wood, for example. While Wood is generally not part of any important recipes in vanilla Factorio, we want to minimize any use of resources we cannot collect automatically. We can represent this cost function as an additional row in our matrix. In order to accurately account for the cost of mined resources, we will simplify those recipes so that the cost is based on the number of items, rather than the number of factories mining the resource. Thus the Pumpjack and Offshore pump recipes are simplified into a recipe that has higher cost and only produces 1 item per second. Once we calculate an amount of Crude oil and Water for the solution, it is trivial to convert this production number back into a number of factories.   Out 1 0 -20 0 0 0 0 1 -10 -15 -15 0 0 0 5 -20 0 -5 0 0 9 15 -15 0 0 0 11 0 10 -100 Cost 10000 100 1 1 1 0 Dual minimization problem Now, the issue with this linear program is that we want to minimize the cost of our solution, while the Simplex algorithm is designed to maximize an objective. Fortunately, there is a simple way to convert a minimization problem into a maximization problem that can be solved using the Simplex algorithm. This is accomplished by converting the minimization problem into its “dual maximization problem.” Once a minimization problem is converted into its dual maximization problem, it is feasible to solve the dual problem using the Simplex algorithm. The solution to the maximization of the dual problem is the same as the solution to the minimization of the original problem, so we can accept this as our solution. The dual problem is simply a transpose of the original problem, or swapping the rows and columns. This results in:   Cost 1 0 0 0 0 10000 0 1 0 0 0 100 -20 -10 5 9 11 1 0 -15 -20 15 0 1 0 -15 0 -15 10 1 Out 0 0 -5 0 -100 0 In order to handle potential surplus values, linear programming generally adds ‘surplus’ or ‘slack’ variables to the program. For instance, for a factory to produce only Heavy oil, there is no solution that does not involve some surplus amount of Light oil and Petroleum gas. These are represented by additional columns in the matrix where each column has a ‘1’ value in the row matching its item.   + + + + Cost 1 0 0 0 0 1 0 0 0 0 10000 0 1 0 0 0 0 1 0 0 0 100 -20 -10 5 9 11 0 0 1 0 0 1 0 -15 -20 15 0 0 0 0 1 0 1 0 -15 0 -15 10 0 0 0 0 1 1 Out 0 0 -5 0 -100 0 0 0 0 0 0 Now, we finally have a canonical matrix that can be solved using the Simplex algorithm. Solving with simplex The end goal of the Simplex algorithm is to arrive at a matrix where the objective function (in this case, the last row of the matrix) contains no negative numbers. In our initial matrix, note that our objective row has two columns with negative values, representing the two items we want to produce. In order to reach our solution, we simply need to apply ‘pivot’ operations until our objective row no longer has any negative values. Pivot 1 A Simplex pivot operation involves four steps. Choose a column to pivot. This must be a negative column, and is usually chosen as the largest negative number. In our matrix, this would be the Petroleum gas column. Choose a row to pivot. Check each row where the chosen column has a value greater than zero, and calculate the ratio of the cost column in that row to the value of the chosen column in that row. The pivot row is the row with the lowest ratio. In our matrix, we can check each row: : column is 0, ignore this row. : column is 0, ignore this row. : column is 11, cost column is 1, so the ratio is 1/11. : column is 0, ignore this row. : column is 10, cost column is 1, so the ratio is 1/10. The lowest ratio is the row at 1/11, so we will pivot this row. Divide the pivot row by the reciprocal of the pivot element. In our pivot row, this yields -20/11, -10/11, 5/11, 9/11, 1, 0, 0, 1/11, 0, 0, 1/11 Add multiples of the pivot row to other rows to change the pivot column to 0. The final result is: + + + + + Cost 1 0 0 0 0 1 0 0 0 0 10000 0 1 0 0 0 0 1 0 0 0 100 -1 9/11 -10/11 5/11 9/11 1 0 0 1/11 0 0 1/11 0 -15 -20 -20 15 0 0 0 1 0 1 18 2/11 -5 10/11 -4 6/11 -23 2/11 0 0 0 -10/11 0 1 1/11 -181 + 9/11 -90 10/11 40 5/11 81 9/11 0 0 0 9 1/11 0 0 9 1/11 Now, let’s continue with the next pivot. Pivot 2 Column 1 (-181 9/11), Row 5 (Ratio 1/200) + + + + + Cost 0 13/40 1/4 1 + 11/40 0 1 0 1/20 0 -11/200 9999 + 199/200 0 1 0 0 0 0 1 0 0 0 100 0 -1 1/2 0 -1 1/2 1 0 0 0 0 1/10 1/10 0 -15 -20 15 0 0 0 0 1 0 1 1 -13/40 -1/4 -1 11/40 0 0 0 -1/20 0 11/200 1/200 0 -150 -5 -150 0 0 0 0 0 10 10 Pivot 3 Column 2 (-150), Row 2 (Ratio 100) + + + + + Cost 0 0 1/4 1 + 11/40 0 1 -13/40 1/20 0 -11/200 9967 + 99/200 0 1 0 0 0 0 1 0 0 0 100 0 0 0 -1 1/2 1 0 1 1/2 0 0 1/10 150 + 1/10 0 0 -20 15 0 0 15 0 1 0 1501 1 0 -1/4 -1 11/40 0 0 13/40 -1/20 0 11/200 32 + 101/200 0 0 -5 -150 0 0 150 0 0 10 15010 Pivot 4 Column 4 (-150), Row 4 (Ratio 133 2/5) + + + + + Cost 0 0 1 19/20 0 0 1 -1 3/5 1/20 -17/200 -11/200 9839 91/100 0 1 0 0 0 0 1 0 0 0 100 0 0 -2 0 1 0 3 0 1/10 1/10 300 + 1/5 0 0 -1 1/3 1 0 0 1 0 1/15 0 100 1/15 1 0 -1 19/20 0 0 0 1 3/5 -1/20 17/200 11/200 160 9/100 0 0 -205 0 0 0 300 0 10 10 30020 Pivot 5 Column 3 (-205), Row 1 (Ratio 5046 7/65) + + + + + Cost 0 0 1 0 0 20/39 -32/39 1/39 -17/390 -11/390 5046 7/65 0 1 0 0 0 0 1 0 0 0 100 0 0 0 0 1 1 1/39 1 14/39 2/39 1/78 17/390 10392 27/65 0 0 0 1 0 80/117 -11/117 4/117 1/117 -22/585 6828 41/195 1 0 0 0 0 1 0 0 0 0 10000 0 0 0 0 0 105 5/39 131 31/39 5 10/39 1 5/78 4 17/78 1064472 1/13 The final row in the matrix now has no negative values, so this is recognized as the solution. The solution can be extracted from the last row, where the first five columns represent surplus values (in this case, all zero), the next two values represent the input Crude oil and Water, the next three values represent the number of factories running Advanced oil processing, Heavy oil cracking, and Light oil cracking, and the last value represents the ‘cost’ of this solution. Thus, our solution requires 105 5/39 , 131 31/39 , 5 10/39 , 1 5/78 , and 4 17/78 . This solution can be compared to the result in FactorioLab. Matrix tab The Matrix tab of FactorioLab, a relatively new feature, allows you to peek under the hood of the simplex solver. For recipe chains that can be solved without simplex, this tab is mostly empty, but when simplex is used, the tab exposes many details and even allows you to customize the cost function used by the solver. Result information The first table exposes details on the current simplex solver result. The Simplex Result from the solver Skipped: The simplex solver was not used, either because it is disabled or because it was not required to solve the recipe chain. Failed: The simplex solver encountered an error, usually due to a recipe loop that cannot be solved (e.g. if iron plates require two iron gears and iron gears require two iron plates) Cancelled: The user cancelled the solver manually when prompted after running for at least five seconds. Solved: A valid solution was found. The Runtime of the simplex solver, in ms The total number of Pivots performed by the solver The Size of the canonical matrix Cost modifiers The second table allows the user to tweak the cost function used in the canonical matrix. Recipe is a factor that multiplies the cost of recipes with a defined cost, usually mining recipes representing raw inputs Factory is a factor that multiplies the cost of the number of factories themselves, which is usually only a secondary consideration Input defines the cost of items that cannot be produced by any recipe, such as Wood in Factorio Ignored defines the cost of items which have been explicitly ignored, which defaults to zero Simplex canonical tableau and solution The third table shows both the canonical matrix generated by the calculator and the solution row with the final cost. Note that this is displayed as the dual minimization problem, which is how the calculator minimizes cost using the simplex method. In each recipe row, the cost of the recipe is displayed and can also be overridden using the cost input field to the right. Values are represented as items/second in this table regardless of the user’s display rate selection, since this is how calculations are always performed internally. Alternate algorithms The Simplex algorithm using dual maximization has proven to be a very effective method of solving factory calculations. However, simplex is not the only algorithm to solve a linear program. There are other methods such as revised simplex, criss-cross algorithm, ellipsoid method, Karmarkar’s algorithm, and the interior-point method. In fact, in just 2019 the running time was improved by a new matrix multiplication time algorithm. As linear programs grow large, especially in modded Factorio, the simplex algorithm used by FactorioLab can take a very long time to find a solution, especially when mods introduce ‘recycling’ recipes that introduce large numbers of loops. With further research, it is possible that a better algorithm for solving factory linear programs could be developed. TL;DR Simple factories are easy to calculate by hand, when items are only produced by a single recipe. When items are produced by multiple different recipes, we need a way to figure out how much of each recipe to use. Since there are multiple potential solutions, we need to measure the cost of a solution to determine which is best. Simplex is the most commonly used algorithm (though not the fastest) to solve these kinds of problems, in both the Factorio and mathematics communities. FactorioLab uses the Simplex algorithm to optimize the solution for complex factories and allows users to: Customize the cost function since it is subjective Use common mod data sets Run calculations and plan the factory from mobile devices or at work Calculate how much rocket fuel you can produce from a single refinery Join the FactorioLab Discord to learn more! Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","url":"https://alt-f4.blog/ALTF4-47/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-47/"},"headline":"Alt-F4 #47 - Optimizing the Solution","dateModified":"2021-09-17T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/47/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/47/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/cs/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/cs/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/cs/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/cs/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Komunitou tvořené pokračování našich milovaných "Factorio Friday Facts"</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-47/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button button-green lang-button" href="/cs/ALTF4-47/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-47/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-47/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-47/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-47/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-47/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-47/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-47/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-47/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #47 - Optimizing the Solution  <author>17-09-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Napsal <em>ilbJanissary</em>,
+
+
+
+upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/47/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Obsah</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#optimizing-the-solution-ilbjanissary">Optimizing the Solution <author>ilbJanissary</author></a>
+    <ul>
+      <li><a href="#why-use-a-calculator">Why use a calculator?</a></li>
+      <li><a href="#concepts">Concepts</a></li>
+      <li><a href="#crafting-speed">Crafting speed</a></li>
+      <li><a href="#recipe-equations">Recipe equations</a></li>
+      <li><a href="#recipe-matrices">Recipe matrices</a></li>
+      <li><a href="#linear-programming">Linear programming</a></li>
+      <li><a href="#why-do-we-need-a-cost-function">Why do we need a cost function?</a></li>
+      <li><a href="#how-do-we-define-a-cost-function">How do we define a cost function?</a></li>
+      <li><a href="#dual-minimization-problem">Dual minimization problem</a></li>
+      <li>
+<a href="#solving-with-simplex">Solving with simplex</a>
+        <ul>
+          <li><a href="#pivot-1">Pivot 1</a></li>
+          <li><a href="#pivot-2">Pivot 2</a></li>
+          <li><a href="#pivot-3">Pivot 3</a></li>
+          <li><a href="#pivot-4">Pivot 4</a></li>
+          <li><a href="#pivot-5">Pivot 5</a></li>
+        </ul>
+      </li>
+      <li><a href="#matrix-tab">Matrix tab</a></li>
+      <li><a href="#result-information">Result information</a></li>
+      <li><a href="#cost-modifiers">Cost modifiers</a></li>
+      <li><a href="#simplex-canonical-tableau-and-solution">Simplex canonical tableau and solution</a></li>
+      <li><a href="#alternate-algorithms">Alternate algorithms</a></li>
+      <li><a href="#tldr">TL;DR</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>Tento článek ještě bohužel nebyl přeložen do češtiny, takže je vám zatím zobrazena anglická verze. Pokud byste měli chuť s překladem pomoci, zastavte se na Alt-F4 <a href="https://alt-f4.blog/cs/discord">Discordu</a>. Děkujeme!</p>
+
+</div>
+
+
+
+<p>After a three-week hiatus, Alt-F4 is back, more motivated than ever! We start off with a bang as <em>ilbJanissary</em> goes into depth about how the calculation engine behind <a href="https://factoriolab.github.io">FactorioLab</a> does its magic. It might seem complicated at the surface, but the process is broken down into granular parts that are illustrated with actual examples. No eyes will glaze over reading this piece (hopefully!).</p>
+      <h2 id="optimizing-the-solution-ilbjanissary">
+        
+        
+            <a href="#optimizing-the-solution-ilbjanissary" class="anchor" style="text-decoration: none;">Optimizing the Solution <author>ilbJanissary</author></a>
+          
+        
+      </h2>
+    
+
+<p>Hi! As an Angular developer and long time user of the <a href="https://kirkmcdonald.github.io">Kirk McDonald Factorio Calculator</a>, I decided to build my own web-based calculator for factory games called <a href="https://factoriolab.github.io">FactorioLab</a> back in 2020. Kirk McDonald published an <a href="http://kirkmcdonald.github.io/posts/calculation.html">essay</a> on his approach that helped me to get started, but it stops short of explaining the algorithm it uses to find a solution. After struggling through the math for some time and building two iterations of non-simplex solvers in <strong>FactorioLab</strong>, I wanted to share with the community what I learned when implementing a true simplex algorithm solver. A TL;DR can be found at the very bottom of the article.</p>
+      <h3 id="why-use-a-calculator">
+        
+        
+            <a href="#why-use-a-calculator" class="anchor" style="text-decoration: none;">Why use a calculator?</a>
+          
+        
+      </h3>
+    
+
+<p>Let’s start from the beginning. In factory games like <a href="https://factorio.com/">Factorio</a>, <a href="https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/">Dyson Sphere Program</a>, and <a href="https://www.satisfactorygame.com/">Satisfactory</a>, the objective is to mine raw resources, use those resources to craft items following a recipe, and use those items to discover more advanced items and recipes. Early in these games, the recipes and items involved are simple and do not require extensive planning, but as more items and recipes are unlocked, the production chain can become incredibly complicated. Factory calculators like <a href="https://factoriolab.github.io">FactorioLab</a> and the <a href="https://kirkmcdonald.github.io">Kirk McDonald Factorio Calculator</a> are intended to help determine how many raw resources and factories are required to sustainably produce items at a certain rate.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/calculator.png" alt="FactorioLab calculator" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="concepts">
+        
+        
+            <a href="#concepts" class="anchor" style="text-decoration: none;">Concepts</a>
+          
+        
+      </h3>
+    
+
+<p>There are two important concepts in factory games that are important to understanding the math behind calculations: <strong>items</strong> and <strong>recipes</strong>.</p>
+
+<ol>
+  <li>
+<strong>Items</strong> are the products and ingredients in factory games. Some items only exist as intermediates, and cannot do anything on their own, such as most raw resources. Some items can also serve a purpose in the game, such as fuel, transport belts, furnaces, assemblers, power generation, power distribution, etc.</li>
+  <li>
+<strong>Recipes</strong> are the ways in which players craft new, more advanced items in the game. Some items can be crafted by hand using a recipe, and other recipes can only be performed by specific factory buildings, like assemblers or furnaces. Recipes usually take a specific set of items as inputs, take a specific amount of time to perform, and produce a specific set of items as products. Recipes are often represented as a list of ingredients and an amount of time to craft to the left of an arrow, which points to the list of products on the right.</li>
+</ol>
+
+<p>For example, in Factorio, a basic item is <strong>Iron ore</strong>. <strong>Iron ore</strong> is a raw resource, meaning it is produced via a recipe that takes no items as inputs:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/iron-ore.png" alt="Iron ore recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>This recipe can be crafted on an <strong>Iron ore</strong> resource patch, by hand or by a mining drill. <strong>Iron ore</strong> is primarily used as an ingredient to produce <strong>Iron plates</strong>, which use their own recipe:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/iron-plate.png" alt="Iron plate recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><strong>Iron plates</strong> cannot be crafted by hand, and must be produced in a furnace. Recipes can also include many inputs and outputs, such as one of the more complicated recipes in Factorio, <strong>Advanced oil processing</strong>:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing.png" alt="Advanced oil processing recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>This recipe can only be crafted using an <img src="https://wiki.factorio.com/images/thumb/Oil_refinery.png/32px-Oil_refinery.png" alt="Oil refinery" class="inline"> <strong>Oil refinery</strong>.</p>
+      <h3 id="crafting-speed">
+        
+        
+            <a href="#crafting-speed" class="anchor" style="text-decoration: none;">Crafting speed</a>
+          
+        
+      </h3>
+    
+
+<p>The real crafting time of a recipe is also affected by the crafting speed of the machine used to craft the recipe. For example, the <img src="https://wiki.factorio.com/images/thumb/Electric_mining_drill.png/32px-Electric_mining_drill.png" alt="Electric mining drill" class="inline"> <strong>Electric mining drill</strong> has a crafting speed of <code class="language-plaintext highlighter-rouge">0.5</code>, which means when it is used to mine <strong>Iron ore</strong> using the recipe above, it actually takes two seconds per <strong>Iron ore</strong>. To simplify, we’ll generally treat the crafting speed as <code class="language-plaintext highlighter-rouge">1</code>.</p>
+      <h3 id="recipe-equations">
+        
+        
+            <a href="#recipe-equations" class="anchor" style="text-decoration: none;">Recipe equations</a>
+          
+        
+      </h3>
+    
+
+<p>You may notice that if you substitute the arrow for an equals sign, a recipe can easily be interpreted as an equation. Since time itself is not an actual item, to make this equation meaningful, we need to divide both sides by the amount of time and thus treat the numbers in equation as rates instead of a simple number of items. Hence, the <strong>Iron ore</strong> recipe becomes:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/iron-ore-s.png" alt="Iron ore rate" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>In this case, the left side is zero since the recipe takes no inputs. Likewise, the <strong>Iron plate</strong> recipe becomes:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/iron-plate-s.png" alt="Iron plate rate" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Up to a certain point, these equations are relatively simple to solve. Many items can only be produced by a single recipe, and thus it only requires simple algebra to determine the number of items and recipes involved to produce items at a certain rate. In <strong>FactorioLab</strong>, if the required products can only be produced by one recipe, these equations are solved directly as far down the production chain as possible. However, some items can be produced via multiple different recipes, making it more complex to determine which recipe, or often how many of each recipe, is optimal to produce the desired items while consuming less input.</p>
+      <h3 id="recipe-matrices">
+        
+        
+            <a href="#recipe-matrices" class="anchor" style="text-decoration: none;">Recipe matrices</a>
+          
+        
+      </h3>
+    
+
+<p>The canonical problem in Factorio is <strong>Advanced oil processing</strong> and cracking, and will be used as the primary example of finding a solution. This problem usually involves at least five recipes and five items. The recipes are:</p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"> <strong>Crude oil (raw resource)</strong></p>
+
+<p><strong>Crude oil</strong> production speed varies based on the resource on the map, but can be treated in a simplified form.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/crude-oil.png" alt="Crude oil recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png" alt="Offshore pump" class="inline"> <strong>Water (raw resource)</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/water.png" alt="Water recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> <strong>Advanced oil processing</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing.png" alt="Advanced oil processing recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"> <strong>Heavy oil cracking</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/heavy-oil-cracking.png" alt="Heavy oil cracking recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"> <strong>Light oil cracking</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/light-oil-cracking.png" alt="Light oil cracking recipe" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Note that other recipes may also be involved, such as <strong>Basic oil processing</strong> and <strong>Coal liquefaction</strong>, but these will be ignored at this time.</p>
+
+<p>Dividing these recipes by their recipe time yields an equation based on rates, which is the form the calculator needs to calculate production requirements. Since the crafting speed of all the factories involved is <code class="language-plaintext highlighter-rouge">1</code>, we don’t need to make any adjustments to account for crafting speed, but that would be necessary for many factories, or any time modules or beacons are involved.</p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"> <strong>Crude oil (raw resource)</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/crude-oil-s.png" alt="Crude oil rate" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png" alt="Offshore pump" class="inline"> <strong>Water (raw resource)</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/water-s.png" alt="Water rate" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> <strong>Advanced oil processing</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/advanced-oil-processing-s.png" alt="Advanced oil processing rate" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"> <strong>Heavy oil cracking</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/heavy-oil-cracking-s.png" alt="Heavy oil cracking rate" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"> <strong>Light oil cracking</strong></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/light-oil-cracking-s.png" alt="Light oil cracking rate" style="max-width: ; max-height:  ;margin-left:0">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>These recipes can be organized into a matrix. This matrix should have columns for recipes, and rows for items. This creates a different set of equations, one equation for each item. For example, for crude oil:
+10 <img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"> - 20 <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> = # output <img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></p>
+
+<p>Having divided the item amounts by their recipe time, the full matrix looks like:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png" alt="Offshore pump" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></td>
+      <td>10</td>
+      <td>0</td>
+      <td>-20</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></td>
+      <td>0</td>
+      <td>1200</td>
+      <td>-10</td>
+      <td>-15</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>-20</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>15</td>
+      <td>-15</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Next, we need to account for what we want to actually produce from our factory. To handle this, we can add a column to represent the final outputs of our factory. As an example, let’s say that we want to produce 5 <img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"> <strong>Heavy oil</strong>/second and 100 <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> <strong>Petroleum gas</strong>/second. In order to represent this idea in the matrix, we need to make these values negative, because we’re indicating that we’re taking that amount out of the system.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png" alt="Offshore pump" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+      <th>Out</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></td>
+      <td>10</td>
+      <td>0</td>
+      <td>-20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></td>
+      <td>0</td>
+      <td>1200</td>
+      <td>-10</td>
+      <td>-15</td>
+      <td>-15</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>-20</td>
+      <td>0</td>
+      <td>-5</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>15</td>
+      <td>-15</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0</td>
+      <td>10</td>
+      <td>-100</td>
+    </tr>
+  </tbody>
+</table>
+      <h3 id="linear-programming">
+        
+        
+            <a href="#linear-programming" class="anchor" style="text-decoration: none;">Linear programming</a>
+          
+        
+      </h3>
+    
+
+<p>A matrix of this nature is called a linear program in mathematics, and can be solved using linear programming techniques. The most common method for solving a linear program is the <a href="https://en.wikipedia.org/wiki/Simplex_algorithm">Simplex algorithm</a>, and it is the method used by both <strong>FactorioLab</strong> and the <a href="https://kirkmcdonald.github.io">Kirk McDonald Factorio Calculator</a>. Since there are multiple possible solutions to this linear program, the Simplex algorithm takes the approach of maximizing an objective function, which is essentially another row in the matrix.</p>
+
+<p>While we do not necessarily have anything we want to maximize in our linear program, we do want to minimize the amount of resources and factories required to produce our output items. So, instead of adding an objective we want to maximize, we can first add a “Cost” function to our linear program so that we can describe how we want to minimize the number of resources and factories in our solution.</p>
+      <h3 id="why-do-we-need-a-cost-function">
+        
+        
+            <a href="#why-do-we-need-a-cost-function" class="anchor" style="text-decoration: none;">Why do we need a cost function?</a>
+          
+        
+      </h3>
+    
+
+<p>For simple factories where there is only a single recipe for each factory, we don’t even need a cost function. We can calculate how many of each ingredient we need, and keep going down the recipe chain, until we get a solution. So why does the linear program need a cost function?</p>
+
+<p>Let’s look at the oil processing example in Factorio. In our example, we want to produce <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> <strong>Petroleum gas</strong> and <img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"> <strong>Heavy oil</strong>. Note that <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> <strong>Advanced oil processing</strong> produces both of these products. Hence, a viable solution is to completely ignore the cracking recipes, and just produce all the oil products we need directly from <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> <strong>Advanced oil processing</strong>. So, why do we ever use cracking in Factorio? There are two main reasons:</p>
+
+<ol>
+  <li>The equation is not balanced, meaning in almost any factory the output oil products will not match the ratio of desired oil products, and eventually one of them will fill up all available storage and force production to halt completely. In most factories producing pure science products, the culprit will be <img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline"> <strong>Light oil</strong>. There is no way to just “burn off” excess in Factorio, and manually emptying storage tanks is tedious.</li>
+  <li>It uses excess <img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"> <strong>Crude oil</strong>. <strong>Crude oil</strong> is not as easy to obtain as water, so we usually want to minimize the amount that is required. By cracking the excess <strong>Light oil</strong> into <strong>Petroleum gas</strong>, we can both address the excess <strong>Light oil</strong> and reduce the amount of <strong>Crude oil</strong> required, at the expense of extra <img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"> <strong>Water</strong>, which is easier to obtain.</li>
+</ol>
+
+<p>A cost function quantifies how difficult resources are to obtain, and how much effort is involved in setting up factories. A solution that requires less resources is better than a solution that requires a lot of resources, and a solution that requires less factories is better than a solution that requires more factories. By putting specific numbers onto the cost of obtaining resources and setting up factories, we can directly quantify the cost of a solution, and the calculator can use that cost to determine which solution is optimal.</p>
+      <h3 id="how-do-we-define-a-cost-function">
+        
+        
+            <a href="#how-do-we-define-a-cost-function" class="anchor" style="text-decoration: none;">How do we define a cost function?</a>
+          
+        
+      </h3>
+    
+
+<p>The cost function can be rather abstract and arbitrary as there is no specific cost of resources and factories in games like Factorio and Dyson Sphere Program. Instead, we have to rely on intuition of what is most difficult to obtain and set up in a factory. In <strong>FactorioLab</strong>, this comes down to a few specific variables that define the cost function:</p>
+
+<ul>
+  <li>A single factory running a recipe costs <strong>1</strong>.</li>
+  <li>One unit of <img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"> <strong>Water</strong> costs <strong>100</strong>, since water is generally cheap to obtain.</li>
+  <li>One unit of <img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"> <strong>Crude oil</strong> costs <strong>1000</strong>, since is generally produced in higher quantities than other mined resources.</li>
+  <li>One unit of ‘mined’ resources costs <strong>10,000</strong>. In Factorio, this applies to <strong>Coal</strong>, <strong>Uranium ore</strong>, <strong>Stone</strong>, <strong>Iron ore</strong>, and <strong>Copper ore</strong>. Generally, these are the resources we want to minimize most.</li>
+  <li>One unit of ‘manually collected’ resources costs <strong>100,000</strong>. In Factorio, this applies to <strong>Wood</strong>, for example. While <strong>Wood</strong> is generally not part of any important recipes in vanilla Factorio, we want to minimize any use of resources we cannot collect automatically.</li>
+</ul>
+
+<p>We can represent this cost function as an additional row in our matrix. In order to accurately account for the cost of mined resources, we will simplify those recipes so that the cost is based on the number of items, rather than the number of factories mining the resource. Thus the <img src="https://wiki.factorio.com/images/thumb/Pumpjack.png/32px-Pumpjack.png" alt="Pumpjack" class="inline"> <strong>Pumpjack</strong> and <img src="https://wiki.factorio.com/images/thumb/Offshore_pump.png/32px-Offshore_pump.png" alt="Offshore pump" class="inline"> <strong>Offshore pump</strong> recipes are simplified into a recipe that has higher cost and only produces 1 item per second. Once we calculate an amount of <img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"> <strong>Crude oil</strong> and <img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"> <strong>Water</strong> for the solution, it is trivial to convert this production number back into a number of factories.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+      <th>Out</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></td>
+      <td>1</td>
+      <td>0</td>
+      <td>-20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></td>
+      <td>0</td>
+      <td>1</td>
+      <td>-10</td>
+      <td>-15</td>
+      <td>-15</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>-20</td>
+      <td>0</td>
+      <td>-5</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>15</td>
+      <td>-15</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"></td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0</td>
+      <td>10</td>
+      <td>-100</td>
+    </tr>
+    <tr>
+      <td>Cost</td>
+      <td>10000</td>
+      <td>100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+      <h3 id="dual-minimization-problem">
+        
+        
+            <a href="#dual-minimization-problem" class="anchor" style="text-decoration: none;">Dual minimization problem</a>
+          
+        
+      </h3>
+    
+
+<p>Now, the issue with this linear program is that we want to minimize the cost of our solution, while the Simplex algorithm is designed to maximize an objective. Fortunately, there is a simple way to convert a minimization problem into a maximization problem that can be solved using the Simplex algorithm. This is accomplished by converting the minimization problem into its “dual maximization problem.” Once a minimization problem is converted into its dual maximization problem, it is feasible to solve the dual problem using the Simplex algorithm. The solution to the maximization of the dual problem is the same as the solution to the minimization of the original problem, so we can accept this as our solution.</p>
+
+<p>The dual problem is simply a transpose of the original problem, or swapping the rows and columns. This results in:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"></th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></td>
+      <td>-20</td>
+      <td>-10</td>
+      <td>5</td>
+      <td>9</td>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></td>
+      <td>0</td>
+      <td>-15</td>
+      <td>-20</td>
+      <td>15</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></td>
+      <td>0</td>
+      <td>-15</td>
+      <td>0</td>
+      <td>-15</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Out</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-5</td>
+      <td>0</td>
+      <td>-100</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In order to handle potential surplus values, linear programming generally adds ‘surplus’ or ‘slack’ variables to the program. For instance, for a factory to produce only <img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"> <strong>Heavy oil</strong>, there is no solution that does not involve some surplus amount of <img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline"> <strong>Light oil</strong> and <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> <strong>Petroleum gas</strong>. These are represented by additional columns in the matrix where each column has a ‘1’ value in the row matching its item.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"></th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline">
+</th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"></th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></td>
+      <td>-20</td>
+      <td>-10</td>
+      <td>5</td>
+      <td>9</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></td>
+      <td>0</td>
+      <td>-15</td>
+      <td>-20</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></td>
+      <td>0</td>
+      <td>-15</td>
+      <td>0</td>
+      <td>-15</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Out</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-5</td>
+      <td>0</td>
+      <td>-100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Now, we finally have a canonical matrix that can be solved using the Simplex algorithm.</p>
+      <h3 id="solving-with-simplex">
+        
+        
+            <a href="#solving-with-simplex" class="anchor" style="text-decoration: none;">Solving with simplex</a>
+          
+        
+      </h3>
+    
+
+<p>The end goal of the Simplex algorithm is to arrive at a matrix where the objective function (in this case, the last row of the matrix) contains no negative numbers. In our initial matrix, note that our objective row has two columns with negative values, representing the two items we want to produce. In order to reach our solution, we simply need to apply ‘pivot’ operations until our objective row no longer has any negative values.</p>
+      <h4 id="pivot-1">
+        
+        
+            <a href="#pivot-1" class="anchor" style="text-decoration: none;">Pivot 1</a>
+          
+        
+      </h4>
+    
+
+<p>A Simplex pivot operation involves four steps.</p>
+
+<ol>
+  <li>Choose a column to pivot. This must be a negative column, and is usually chosen as the largest negative number. In our matrix, this would be the <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> <strong>Petroleum gas</strong> column.</li>
+  <li>Choose a row to pivot. Check each row where the chosen column has a value greater than zero, and calculate the ratio of the cost column in that row to the value of the chosen column in that row. The pivot row is the row with the lowest ratio. In our matrix, we can check each row:
+    <ol>
+      <li>
+<img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">: <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> column is 0, ignore this row.</li>
+      <li>
+<img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">: <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> column is 0, ignore this row.</li>
+      <li>
+<img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline">: <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> column is 11, cost column is 1, so the ratio is 1/11.</li>
+      <li>
+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline">: <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> column is 0, ignore this row.</li>
+      <li>
+<img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline">: <img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline"> column is 10, cost column is 1, so the ratio is 1/10.</li>
+      <li>The lowest ratio is the <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> row at 1/11, so we will pivot this row.</li>
+    </ol>
+  </li>
+  <li>Divide the pivot row by the reciprocal of the pivot element. In our pivot row, this yields -20/11, -10/11, 5/11, 9/11, 1, 0, 0, 1/11, 0, 0, 1/11</li>
+  <li>Add multiples of the pivot row to other rows to change the pivot column to 0. The final result is:</li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline">
+</th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>-1 9/11</td>
+      <td>-10/11</td>
+      <td>5/11</td>
+      <td>9/11</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1/11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1/11</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>-15</td>
+      <td>-20</td>
+      <td>-20</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>18 2/11</td>
+      <td>-5 10/11</td>
+      <td>-4 6/11</td>
+      <td>-23 2/11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-10/11</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1/11</td>
+    </tr>
+    <tr>
+      <td>-181 + 9/11</td>
+      <td>-90 10/11</td>
+      <td>40 5/11</td>
+      <td>81 9/11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9 1/11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9 1/11</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Now, let’s continue with the next pivot.</p>
+      <h4 id="pivot-2">
+        
+        
+            <a href="#pivot-2" class="anchor" style="text-decoration: none;">Pivot 2</a>
+          
+        
+      </h4>
+    
+
+<p>Column 1 (-181 9/11), Row 5 (Ratio 1/200)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline">
+</th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>13/40</td>
+      <td>1/4</td>
+      <td>1 + 11/40</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1/20</td>
+      <td>0</td>
+      <td>-11/200</td>
+      <td>9999 + 199/200</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>-1 1/2</td>
+      <td>0</td>
+      <td>-1 1/2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1/10</td>
+      <td>1/10</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>-15</td>
+      <td>-20</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>-13/40</td>
+      <td>-1/4</td>
+      <td>-1 11/40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1/20</td>
+      <td>0</td>
+      <td>11/200</td>
+      <td>1/200</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>-150</td>
+      <td>-5</td>
+      <td>-150</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+      <h4 id="pivot-3">
+        
+        
+            <a href="#pivot-3" class="anchor" style="text-decoration: none;">Pivot 3</a>
+          
+        
+      </h4>
+    
+
+<p>Column 2 (-150), Row 2 (Ratio 100)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline">
+</th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1/4</td>
+      <td>1 + 11/40</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-13/40</td>
+      <td>1/20</td>
+      <td>0</td>
+      <td>-11/200</td>
+      <td>9967 + 99/200</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1 1/2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1 1/2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1/10</td>
+      <td>150 + 1/10</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>-20</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1501</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>-1/4</td>
+      <td>-1 11/40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13/40</td>
+      <td>-1/20</td>
+      <td>0</td>
+      <td>11/200</td>
+      <td>32 + 101/200</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>-5</td>
+      <td>-150</td>
+      <td>0</td>
+      <td>0</td>
+      <td>150</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>15010</td>
+    </tr>
+  </tbody>
+</table>
+      <h4 id="pivot-4">
+        
+        
+            <a href="#pivot-4" class="anchor" style="text-decoration: none;">Pivot 4</a>
+          
+        
+      </h4>
+    
+
+<p>Column 4 (-150), Row 4 (Ratio 133 2/5)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline">
+</th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1 19/20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-1 3/5</td>
+      <td>1/20</td>
+      <td>-17/200</td>
+      <td>-11/200</td>
+      <td>9839 91/100</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>-2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1/10</td>
+      <td>1/10</td>
+      <td>300 + 1/5</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>-1 1/3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1/15</td>
+      <td>0</td>
+      <td>100 1/15</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>-1 19/20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1 3/5</td>
+      <td>-1/20</td>
+      <td>17/200</td>
+      <td>11/200</td>
+      <td>160 9/100</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>-205</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>300</td>
+      <td>0</td>
+      <td>10</td>
+      <td>10</td>
+      <td>30020</td>
+    </tr>
+  </tbody>
+</table>
+      <h4 id="pivot-5">
+        
+        
+            <a href="#pivot-5" class="anchor" style="text-decoration: none;">Pivot 5</a>
+          
+        
+      </h4>
+    
+
+<p>Column 3 (-205), Row 1 (Ratio 5046 7/65)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil.png/32px-Heavy_oil.png" alt="Heavy oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Light_oil.png/32px-Light_oil.png" alt="Light oil" class="inline">
+</th>
+      <th>+<img src="https://wiki.factorio.com/images/thumb/Petroleum_gas.png/32px-Petroleum_gas.png" alt="Petroleum gas" class="inline">
+</th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"></th>
+      <th><img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"></th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20/39</td>
+      <td>-32/39</td>
+      <td>1/39</td>
+      <td>-17/390</td>
+      <td>-11/390</td>
+      <td>5046 7/65</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1 1/39</td>
+      <td>1 14/39</td>
+      <td>2/39</td>
+      <td>1/78</td>
+      <td>17/390</td>
+      <td>10392 27/65</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>80/117</td>
+      <td>-11/117</td>
+      <td>4/117</td>
+      <td>1/117</td>
+      <td>-22/585</td>
+      <td>6828 41/195</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>105 5/39</td>
+      <td>131 31/39</td>
+      <td>5 10/39</td>
+      <td>1 5/78</td>
+      <td>4 17/78</td>
+      <td>1064472 1/13</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The final row in the matrix now has no negative values, so this is recognized as the solution. The solution can be extracted from the last row, where the first five columns represent surplus values (in this case, all zero), the next two values represent the input <img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline"> <strong>Crude oil</strong> and <img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline"> <strong>Water</strong>, the next three values represent the number of factories running <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> <strong>Advanced oil processing</strong>, <img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"> <strong>Heavy oil cracking</strong>, and <img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"> <strong>Light oil cracking</strong>, and the last value represents the ‘cost’ of this solution.</p>
+
+<p>Thus, our solution requires 105 5/39 <img src="https://wiki.factorio.com/images/thumb/Crude_oil.png/32px-Crude_oil.png" alt="Crude oil" class="inline">, 131 31/39 <img src="https://wiki.factorio.com/images/thumb/Water.png/32px-Water.png" alt="Water" class="inline">, 5 10/39 <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing" class="inline"> <img src="https://wiki.factorio.com/images/thumb/Oil_refinery.png/32px-Oil_refinery.png" alt="Refinery" class="inline">, 1 5/78 <img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking" class="inline"> <img src="https://wiki.factorio.com/images/thumb/Chemical_plant.png/32px-Chemical_plant.png" alt="Chemical plant" class="inline">, and 4 17/78 <img src="https://wiki.factorio.com/images/thumb/Light_oil_cracking.png/32px-Light_oil_cracking.png" alt="Light oil cracking" class="inline"> <img src="https://wiki.factorio.com/images/thumb/Chemical_plant.png/32px-Chemical_plant.png" alt="Chemical plant" class="inline">.</p>
+
+<p>This solution can be compared to the <a href="https://factoriolab.github.io/list?p=heavy-oil*5_petroleum-gas*100&amp;s=*0&amp;v=1">result</a> in <strong>FactorioLab</strong>.</p>
+      <h3 id="matrix-tab">
+        
+        
+            <a href="#matrix-tab" class="anchor" style="text-decoration: none;">Matrix tab</a>
+          
+        
+      </h3>
+    
+
+<p>The <a href="https://factoriolab.github.io/matrix">Matrix</a> tab of <strong>FactorioLab</strong>, a relatively new feature, allows you to peek under the hood of the simplex solver. For recipe chains that can be solved without simplex, this tab is mostly empty, but when simplex is used, the tab exposes many details and even allows you to customize the cost function used by the solver.</p>
+      <h3 id="result-information">
+        
+        
+            <a href="#result-information" class="anchor" style="text-decoration: none;">Result information</a>
+          
+        
+      </h3>
+    
+
+<p>The first table exposes details on the current simplex solver result.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/result.png" alt="Result information" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<ul>
+  <li>The <strong>Simplex Result</strong> from the solver
+    <ul>
+      <li>Skipped: The simplex solver was not used, either because it is disabled or because it was not required to solve the recipe chain.</li>
+      <li>Failed: The simplex solver encountered an error, usually due to a recipe loop that cannot be solved (e.g. if iron plates require two iron gears and iron gears require two iron plates)</li>
+      <li>Cancelled: The user cancelled the solver manually when prompted after running for at least five seconds.</li>
+      <li>Solved: A valid solution was found.</li>
+    </ul>
+  </li>
+  <li>The <strong>Runtime</strong> of the simplex solver, in ms</li>
+  <li>The total number of <strong>Pivots</strong> performed by the solver</li>
+  <li>The <strong>Size</strong> of the canonical matrix</li>
+</ul>
+      <h3 id="cost-modifiers">
+        
+        
+            <a href="#cost-modifiers" class="anchor" style="text-decoration: none;">Cost modifiers</a>
+          
+        
+      </h3>
+    
+
+<p>The second table allows the user to tweak the cost function used in the canonical matrix.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/modifiers.png" alt="Cost modifiers" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<ul>
+  <li>
+<strong>Recipe</strong> is a factor that multiplies the cost of recipes with a defined cost, usually mining recipes representing raw inputs</li>
+  <li>
+<strong>Factory</strong> is a factor that multiplies the cost of the number of factories themselves, which is usually only a secondary consideration</li>
+  <li>
+<strong>Input</strong> defines the cost of items that cannot be produced by any recipe, such as Wood in Factorio</li>
+  <li>
+<strong>Ignored</strong> defines the cost of items which have been explicitly ignored, which defaults to zero</li>
+</ul>
+      <h3 id="simplex-canonical-tableau-and-solution">
+        
+        
+            <a href="#simplex-canonical-tableau-and-solution" class="anchor" style="text-decoration: none;">Simplex canonical tableau and solution</a>
+          
+        
+      </h3>
+    
+
+<p>The third table shows both the canonical matrix generated by the calculator and the solution row with the final cost. Note that this is displayed as the dual minimization problem, which is how the calculator minimizes cost using the simplex method. In each recipe row, the cost of the recipe is displayed and can also be overridden using the cost input field to the right. Values are represented as items/second in this table regardless of the user’s display rate selection, since this is how calculations are always performed internally.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/47/tableau.png" alt="Canonical tableau" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="alternate-algorithms">
+        
+        
+            <a href="#alternate-algorithms" class="anchor" style="text-decoration: none;">Alternate algorithms</a>
+          
+        
+      </h3>
+    
+
+<p>The Simplex algorithm using dual maximization has proven to be a very effective method of solving factory calculations. However, simplex is not the only algorithm to solve a linear program. There are other methods such as <a href="https://en.wikipedia.org/wiki/Revised_simplex_method">revised simplex</a>, <a href="https://en.wikipedia.org/wiki/Criss-cross_algorithm">criss-cross algorithm</a>, <a href="https://en.wikipedia.org/wiki/Ellipsoid_method">ellipsoid method</a>, <a href="https://en.wikipedia.org/wiki/Karmarkar%27s_algorithm">Karmarkar’s algorithm</a>, and the <a href="https://en.wikipedia.org/wiki/Interior-point_method">interior-point method</a>. In fact, in just 2019 the running time was improved by a new <a href="https://arxiv.org/abs/1810.07896">matrix multiplication time algorithm</a>. As linear programs grow large, especially in modded Factorio, the simplex algorithm used by <strong>FactorioLab</strong> can take a very long time to find a solution, especially when mods introduce ‘recycling’ recipes that introduce large numbers of loops. With further research, it is possible that a better algorithm for solving factory linear programs could be developed.</p>
+      <h3 id="tldr">
+        
+        
+            <a href="#tldr" class="anchor" style="text-decoration: none;">TL;DR</a>
+          
+        
+      </h3>
+    
+
+<ul>
+  <li>Simple factories are easy to calculate by hand, when items are only produced by a single recipe.</li>
+  <li>When items are produced by multiple different recipes, we need a way to figure out how much of each recipe to use.</li>
+  <li>Since there are multiple potential solutions, we need to measure the <strong>cost</strong> of a solution to determine which is best.</li>
+  <li>
+<strong>Simplex</strong> is the most commonly used algorithm (though not the fastest) to solve these kinds of problems, in both the Factorio and mathematics communities.</li>
+  <li>
+<a href="https://factoriolab.github.io">FactorioLab</a> uses the <strong>Simplex</strong> algorithm to optimize the solution for complex factories and allows users to:
+    <ul>
+      <li>Customize the <strong>cost</strong> function since it is subjective</li>
+      <li>Use common mod data sets</li>
+      <li>Run calculations and plan the factory from mobile devices or at work</li>
+      <li><a href="https://factoriolab.github.io/list?p=rocket-fuel*1*3*advanced-oil-processing&amp;s=**3&amp;v=1">Calculate how much rocket fuel you can produce from a single refinery</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Join the <a href="https://discord.gg/N4FKV687x2">FactorioLab Discord</a> to learn more!</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/cs/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/cs/discord">
+    Diskutujte na Discordu
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/cs/ALTF4-46/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/cs/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/cs/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/cs/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/cs/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Tato webová stránka je čistě projektem fanoušků, není nijak přímo spojena s Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
