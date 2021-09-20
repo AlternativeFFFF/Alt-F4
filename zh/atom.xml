@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/zh/atom.xml" rel="self" />
   <id>https://alt-f4.blog</id>
-  <updated>2021-09-17T15:03:12+00:00</updated>
+  <updated>2021-09-20T14:17:30+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,11 @@
   
   
   <entry>
-    <title>Alt-F4 #47 - Optimizing the Solution</title>
+    <title>Alt-F4 #47 - 优化解决方案</title>
     <link href="https://alt-f4.blog/zh/ALTF4-47/" />
     <id>https://alt-f4.blog/ALTF4-47</id>
     <updated>2021-09-17T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;After a three-week hiatus, Alt-F4 is back, more motivated than ever! We start off with a bang as &lt;em&gt;ilbJanissary&lt;/em&gt; goes into depth about how the calculation engine behind &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; does its magic. It might seem complicated at the surface, but the process is broken down into granular parts that...</content>
+    <content type="html">&lt;p&gt;Alt-F4 经过三周的休整现已复工，而且比以往任何时候都更有动力! 复刊第一炮由 &lt;em&gt;ilbJanissary&lt;/em&gt; 来为我们深入介绍 &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; 背后的计算引擎是如何运转的。虽然看起来很复杂，但这个过程被分解成细小的部分，并辅以实例加以说明。阅读这篇文章时，不会有眼睛发花的情况（希望如此！）。&lt;/p&gt; &lt;h2 id=&quot;优化解决方案-ilbjanissary&quot;&gt;优化解决方案 &lt;author&gt;ilbJanissary&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;嗨！作为 Angular 的开发者和&lt;a href=&quot;https://kirkmcdonald.github.io&quot;&gt;柯克·麦克唐纳的计算器（KirkMcDonald’s Calculator）&lt;/a&gt;的长期用户，我在 2020 年决定为这个工厂游戏建立自己的计算器网站，名为 &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt;。Kirk McDonald 发布了一篇关于他所用方法的&lt;a href=&quot;http://kirkmcdonald.github.io/posts/calculation.html&quot;&gt;短文&lt;/a&gt;，帮助我入门，但并没有解释它用来求解的算法。在数学的汪洋中挣扎了一段时间，并在 &lt;strong&gt;FactorioLab&lt;/strong&gt; 中建立了两个迭代的非单项式求解器后，我希望与社区分享我在实现真正的单项式算法求解器时学到的东西。太长不看版可以在文章的末尾找到。&lt;/p&gt; &lt;h3 id=&quot;为什么要用计算器&quot;&gt;为什么要用计算器？&lt;/h3&gt; &lt;p&gt;让我们从头开始。在&lt;a href=&quot;https://factorio.com/&quot;&gt;异星工厂&lt;/a&gt;、&lt;a href=&quot;https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/&quot;&gt;戴森球计划&lt;/a&gt;和&lt;a href=&quot;https://www.satisfactorygame.com/&quot;&gt;Satisfactory&lt;/a&gt;等工厂游戏中，游戏目标是开采原始资源，使用这些资源按照配方制造物品，并使用这些物品来发现更高级的物品和配方。在这些游戏的初期，所涉及的配方和物品很简单，不需要大量的计划，但随着更多的物品和配方的解锁，生产链会变得非常复杂。像 &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; 和&lt;a href=&quot;https://kirkmcdonald.github.io&quot;&gt;柯克·麦克唐纳的计算器&lt;/a&gt;这样的工厂计算器旨在帮助计算以一定速度持续生产某物品时需要多少原始资源和加工设施。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/47/calculator.png&quot; alt=&quot;FactorioLab 计算器&quot; style=&quot;max-width: ; max-height: &quot; /&gt;...</content>
   </entry>
   
   
