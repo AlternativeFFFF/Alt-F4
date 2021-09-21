@@ -12,11 +12,11 @@ With the help of the community, we learned how the Angel's libary worked. For th
 
 I am confident now saying that we do not make coding mistakes anymore which would result in a hard crash of the mods. Nowadays the issues are likely edge cases, unhandled cases or a strange modpack configuration. Most frequently we receive bugs from people who play with a few Angel's mods and a few Bob's mods. The reason for this is simple: there are many configurations with many settings, which result in many oversights. [A small example](https://www.reddit.com/r/factorio/comments/pfvqn0/playing_an_angel_bobs_game_and_noticed_about_9/) is shown below: You fix a bug with some technology being unresearchable, in some exotic configuration shown below. The reason why it is unresearchable is simple: It has a prerequisite technology that isn't researched yet, but since the prerequisite is hidden, it does not show up in the technology tree.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_1.jpg' alt='Nickel processing is unresearchable' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_1.jpg' alt='Nickel processing is unresearchable' caption='Nickel processing is unresearchable' %}
 
 After a while you notice another configuration with a similar issue.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_2.jpg' alt='Nickel processing is unresearchable AGAIN!' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_2.jpg' alt='Nickel processing is unresearchable AGAIN!' caption='Nickel processing is unresearchable AGAIN!' %}
 
 As a solution, we began creating a list of configurations we had to test. [*pezzawinkle*](https://mods.factorio.com/user/pezzawinkle) recently made [a not-so-small list](https://github.com/Arch666Angel/mods/blob/master/Config_Testing_Regime.txt) with all the configurations he tests every time he prepairs a release.
 
@@ -32,13 +32,13 @@ We realised that with the overhauls we created many more configurations, with ev
 
 I already had a way of building the Angel's mods from the Github folder to the Factorio mod folder and a similar script to download Bob's mods from the mod portal. In order to test different configurations, I had to write two additional scripts. [The first script](https://github.com/Arch666Angel/mods/pull/634/commits/8977e17bba55d06fb3b60ff4c593e2307f110395) reads and rewrites the `mod-settings.dat` file with the mod settings. The settings file stores all the user configured settings, which can lead to different mod configurations. For example, in Angel's Industries it can be used to switch between *special vanilla*, *bob-angels* (= regular overhaul, also possible without Bob's mods), *component overhaul* or *science overhaul*. It basically can change the complete behaviour of Angel's mods with a few checkboxes:
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/48/angels_industry_settings.jpg' alt='Settings within Angel’s Industries' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/angels_industry_settings.jpg' alt='Settings within Angel’s Industries' caption='Settings within Angel’s Industries' %}
 
 Since the loading and saving part of mod settings is completely handled by the base game, it was a part that I didn't encounter when creating mods before. However, I was very surprised at finding [thorough documentation on the Factorio Wiki](https://wiki.factorio.com/Mod_settings_file_format) about this.
 
 [The second script](https://github.com/Arch666Angel/mods/pull/634/commits/abb64c2fe8007e060f112716ebe33864510b6451) configures the `mod-list.json` file, which contains the information about which mods are to be enabled. This is the part which are people most familiar with that play modded Factorio. They download mods from the portal, and after finishing the game they disable the mods and play with some other mods. A sample of the Bob Angel's modlist is depicted below, completely configured through script.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/48/mod_list.jpg' alt='Factorio mod list with all Bob Angel’s mods enabled, configured through script' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/mod_list.jpg' alt='Factorio mod list with all Bob Angel’s mods enabled, configured through script' caption='Factorio mod list with all Bob Angel’s mods enabled, configured through script' %}
 
 With these four scripts, everything is in place to launch Factorio with a certain configuration of the latest mods and their mod settings. It was only a matter of telling Factorio to launch over and over with different mod settings. Assuming an in-game mod ('Angel's Dev - Unit Tests' in this case) is telling the testing infrastructure that the tests are over, it can shut down Factorio and launch the next configuration to test. At this point, the unit testing infrastructure could check if all configurations loaded without crashing. After loading the game, the unit testing mod could verify everything during the game, at runtime.
 
