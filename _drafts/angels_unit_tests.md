@@ -1,0 +1,100 @@
+## A successful attempt at automated mod testing <author>Lovely_Santa</author>
+
+Before I tell you a story about automating the boring parts of creating a Factorio mod, I have to take you back to the beginning... Once upon a time, -no.. I have to start somewhere at the end of 2019. And by that I do not mean the well-known story of how COVID-19 started, but with the sad story of *Arch666Angel* stepping back from working on his ever-famous [Angel's mods](https://mods.factorio.com/user/Arch666Angel). This all came due to [IRL changes in his life](https://forums.factorio.com/viewtopic.php?p=439389#p439389). I'm not gonna bother explaining all the details, but it resulted in a few modders being interested in taking over his projects and legacy.
+
+It took until the 27th of January 2020 to convince Arch666Angel to let the community contribute to his creation. After working out all the details, he selected few people to keep his vision of the mods alive, at which point we could inform the public about this. The main interaction at the time went through the Factorio forums, where you can still read the [announcement message](https://forums.factorio.com/viewtopic.php?p=475786#p475786) today.
+
+During January 2020, we had already eagerly started to update the mods from 0.17 to 0.18 with all the breaking changes the base game introduced. After Arch666Angel's approval, we released our first version [*"Initial 0.18 release"*](https://github.com/Arch666Angel/mods/commit/8b7ff10ba82d3071f374e08452b5ca22d42e4780)! Soon after celebrating our success, reality slapped us in the face with a great amount of bug reports on the forums. Little did we know how huge this undertaking would be, how much time we'd spend bugfixing and most of all, how great the community would be, trying to help figure out the issues.
+
+### It all started small
+
+With the help of the community, we learned how the Angel's libary worked. For those that do not know what a library is, it is a set of helper functions that abstract the Factorio code base such that it becomes easier to program with. It is mainly a list with quality of life additions for the developer, such that he can focus on developing features, rather than writing boiler plate code to get something to work. You can compare Angel's library to some stand-alone mods like the [Factorio Library](https://mods.factorio.com/mod/flib), [Bob's Functions Library mod](https://mods.factorio.com/mod/boblibrary), or even my own attempt: [Lovely_santa's library of knowledge](https://mods.factorio.com/mod/LSlib). There is no 'right' or 'wrong' way to implement a library, as long as it suits its purpose. By understanding Angel's library, which actually lives inside Angel's refining and not as a stand-alone mod, we figured more efficient ways of dealing with certain bugs arrising in the mod.
+
+I am confident now saying that we do not make coding mistakes anymore which would result in a hard crash of the mods. Nowadays the issues are likely edge cases, unhandled cases or a strange modpack configuration. Most frequently we receive bugs from people who play with a few Angel's mods and a few Bob's mods. The reason for this is simple: there are many configurations with many settings, which result in many oversights. [A small example](https://www.reddit.com/r/factorio/comments/pfvqn0/playing_an_angel_bobs_game_and_noticed_about_9/) is shown below: You fix a bug with some technology being unresearchable, in some exotic configuration shown below. The reason why it is unresearchable is simple: It has a prerequisite technology that isn't researched yet, but since the prerequisite is hidden, it does not show up in the technology tree.
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_1.jpg' alt='Nickel processing is unresearchable' caption='Nickel processing is unresearchable' %}
+
+After a while you notice another configuration with a similar issue.
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_2.jpg' alt='Nickel processing is unresearchable AGAIN!' caption='Nickel processing is unresearchable AGAIN!' %}
+
+As a solution, we began creating a list of configurations we had to test. [*pezzawinkle*](https://mods.factorio.com/user/pezzawinkle) recently made [a not-so-small list](https://github.com/Arch666Angel/mods/blob/master/Config_Testing_Regime.txt) with all the configurations he tests every time he prepairs a release.
+
+Personally, I test every change I make with all the configurations I impacted. The most tedious part of fixing bugs is having to reload all Angel's mods into the mod folder over and over again. On the 11th of April 2020 I created [a small python script](https://github.com/Arch666Angel/mods/pull/188/commits/e37f2673f234e0c9271f56ecc6d4934b0d83cd50) to update all Angel's mods to the latest changes.
+
+This script saved me so much time, allowing for a sporadic coffee break while it reloaded the mods after tweaking that one line that still didn't behave as intended. By using this script over time, I had another issue: Bob. Yes, [*bobingabout*](https://mods.factorio.com/user/bobingabout) released an update of his mods, and it broke all the work I just did fixing a bug... On the 3rd of May 2021, almost a year later, I created [another small python script](https://github.com/Arch666Angel/mods/pull/591/commits/3d0a7de0a68c3ec6566cbd45c3599b036ab775bb) to download all Bob's mods from the portal, rather than doing this in-game, one by one.
+
+### The ball sped up rolling downhill
+
+At the end of 2020, we decided to work on a big feature inside Angel's Industries: a decent implementation of the component and technology overhaul. This was the last feature Arch666Angel was working on before he pulled back from modding. On the 26th of May 2021 (half a year since the last release), we presented the new version of the overhauls to the public, after which the bug reports started rolling in quickly.
+
+We realised that with the overhauls we created many more configurations, with even more settings. At this point it became quite tough to maintain and test this completely by hand. I started thinking about creating some [unit tests](https://en.wikipedia.org/wiki/Unit_testing) to take this burden of our shoulders. After some discussions and ideas from the always-helpful modding community, I finally decided on the 30th of June 2021 to commit myself at creating the unit test infrastructure, groupted in a separate mod: [Angel's Dev - Unit Tests](https://github.com/Arch666Angel/mods/pull/634/commits/d59328e81235e26beb88ba66659cb78315827a00). You won't find this mod on the modportal though.
+
+I already had a way of building the Angel's mods from the Github folder to the Factorio mod folder and a similar script to download Bob's mods from the mod portal. In order to test different configurations, I had to write two additional scripts. [The first script](https://github.com/Arch666Angel/mods/pull/634/commits/8977e17bba55d06fb3b60ff4c593e2307f110395) reads and rewrites the `mod-settings.dat` file with the mod settings. The settings file stores all the user configured settings, which can lead to different mod configurations. For example, in Angel's Industries it can be used to switch between *special vanilla*, *bob-angels* (= regular overhaul, also possible without Bob's mods), *component overhaul* or *science overhaul*. It basically can change the complete behaviour of Angel's mods with a few checkboxes:
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/angels_industry_settings.jpg' alt='Settings within Angel’s Industries' caption='Settings within Angel’s Industries' %}
+
+Since the loading and saving part of mod settings is completely handled by the base game, it was a part that I didn't encounter when creating mods before. However, I was very surprised at finding [thorough documentation on the Factorio Wiki](https://wiki.factorio.com/Mod_settings_file_format) about this.
+
+[The second script](https://github.com/Arch666Angel/mods/pull/634/commits/abb64c2fe8007e060f112716ebe33864510b6451) configures the `mod-list.json` file, which contains the information about which mods are to be enabled. This is the part which are people most familiar with that play modded Factorio. They download mods from the portal, and after finishing the game they disable the mods and play with some other mods. A sample of the Bob Angel's modlist is depicted below, completely configured through script.
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/48/mod_list.jpg' alt='Factorio mod list with all Bob Angel’s mods enabled, configured through script' caption='Factorio mod list with all Bob Angel’s mods enabled, configured through script' %}
+
+With these four scripts, everything is in place to launch Factorio with a certain configuration of the latest mods and their mod settings. It was only a matter of telling Factorio to launch over and over with different mod settings. Assuming an in-game mod ('Angel's Dev - Unit Tests' in this case) is telling the testing infrastructure that the tests are over, it can shut down Factorio and launch the next configuration to test. At this point, the unit testing infrastructure could check if all configurations loaded without crashing. After loading the game, the unit testing mod could verify everything during the game, at runtime.
+
+### The last piece of the puzzle
+
+A week later, on the 8th of June 2021 I finished writing [the most basic unit test](https://github.com/Arch666Angel/mods/pull/634/commits/1435fbd2f1134b08307406e21fdd657f1cafa019) which did nothing more than reporting which mods are active ingame. After the unit test was finished logging the results, the [main script](https://github.com/Arch666Angel/mods/pull/634/commits/64ea68023f19c2505aa3cfbb7642f13cf7f70fbd) could launch the next configuration. A sample output of this single unit test for a single configuration can be seen below:
+
+```r
+
+angelsdev-unit-test: Testing Special vanilla (light)
+angelsdev-unit-test: Launching factorio.exe
+angelsdev-unit-test: Starting 1 unit tests...
+angelsdev-unit-test: Starting unit test 001.
+angelsdev-unit-test:     Unit testing mod configuration:
+angelsdev-unit-test:     angelsdev-unit-test version 0.0.1
+angelsdev-unit-test:     angelspetrochem version 0.9.21
+angelsdev-unit-test:     angelsrefining version 0.12.1
+angelsdev-unit-test:     angelssmelting version 0.6.18
+angelsdev-unit-test:     base version 1.1.38
+angelsdev-unit-test: Unit test 001 PASSED!
+angelsdev-unit-test: Finished testing! All unit tests passed!
+angelsdev-unit-test: Closing factorio.exe
+
+... <output of other configurations>
+
+angelsdev-unit-test: Summary:
+angelsdev-unit-test: [PASSED] Special vanilla (light)
+angelsdev-unit-test: [PASSED] Special vanilla (regular)
+angelsdev-unit-test: [PASSED] Special vanilla (extended)
+angelsdev-unit-test: [PASSED] Special vanilla (BA)
+angelsdev-unit-test: [PASSED] BA (light)
+angelsdev-unit-test: [PASSED] BA (regular)
+angelsdev-unit-test: [PASSED] BA (extended)
+angelsdev-unit-test: [PASSED] BA (extended components)
+angelsdev-unit-test: [PASSED] BA (extended technology)
+angelsdev-unit-test: [PASSED] BA (BobPower non-default + overhaul)
+angelsdev-unit-test: [PASSED] BA (BobPower non-default + components)
+angelsdev-unit-test: [PASSED] BA (BobPower non-default + technology)
+angelsdev-unit-test: [PASSED] BA (BobAssembly non-default + overhaul)
+angelsdev-unit-test: [PASSED] BA (BobLogistics non-default + overhaul)
+angelsdev-unit-test: [PASSED] BA (BobRevamp non-default + overhaul)
+angelsdev-unit-test: [PASSED] BA (Bob other non-default + overhaul)
+angelsdev-unit-test: [PASSED] Pure Angels (overhaul)
+angelsdev-unit-test: [PASSED] Pure Angels (components)
+angelsdev-unit-test: [PASSED] Pure Angels (technology)
+
+```
+
+As any developer will know, this minimal viable product (MVP) could still use some polishing. After some extensive use, on the 22nd of August 2021, I added two more features, of which the first added a separate file containing [all the test configurations](https://github.com/Arch666Angel/mods/commit/27b899d43b1db04d99cc8c8086cf7ece83376419#diff-f7f9cb110df5ea99bfdecacc536b281dba523acc5418d1e9774fc803f7846348), such that it becomes easier to add new configurations as needed. The second feature added the ability to [log the test results to a file](https://github.com/Arch666Angel/mods/commit/a5732a52c5dfdcd6d9c5f4d89ad699ea9bd90bda#diff-f7f9cb110df5ea99bfdecacc536b281dba523acc5418d1e9774fc803f7846348). Doing this the new test results could be compared with the old test results by using some external tools such as [ExamDiff Pro](https://www.prestosoft.com/edp_examdiffpro.asp). This is mainly to verify that some rapported issues are resolved (lines missing in the new test results), without introducing new issues (lines added in the new test results).
+
+### The result
+
+Since the use of the minimal viable product, we released already an update. After two weeks of waiting for major game breaking bugs, we were surprised at finding that we had close to no breaking bugs. I personally have a new 'rule' while maintaining Angel's mods; if a bug is found, first create an appropriate unit test to catch this bug, before resolving the issue. It does unfortunately take quite some time to run all the unit tests, but that is easily planned around by running the unit tests while taking a coffee break.
+
+Currently the (few) unit tests we have only check the loading stage of the game (also known as [the data stage](https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir#The_data_stage)). However, nothing is limiting us to also create complex unit tests which test behaviour during the game (also known as [the runtime stage](https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir#Runtime_stage)).
+
+I hope this helps me (as a developer) spending less time in the future fixing bugs, and spending more quality time implementing new features. I understand that this is not required for small stand-alone mods, but it is very useful for maintaining quite a large codebase, especially when you are developing with multiple people where you are not able to look at every line of code someone else wrote and knowing all details of every feature that is added.
+
+This is my personal story, explaining how I learned first-hand how and why bigger companies use unit tests, code integration and many automated tools to automate their process of pushing out new features with the confidence that the code will succeed in what it was intended to do, and not frustrate millions of people with a small undescriptive message *"Task failed succesfully. Contact the developers."*
