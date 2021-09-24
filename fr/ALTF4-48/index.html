@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 n°48 - Tests unitaires automatiques pour Angel</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 n°48 - Tests unitaires automatiques pour Angel">
+<meta name="author" content="Lovely_Santa">
+<meta property="og:locale" content="fr">
+<meta name="description" content="Après une longue pause, un ancien contrinuteur du nom de Lovely_Santa est de retour à la tâche ! La dernière fois que nous avions entendu parler de notre héros, c’était avec notre parution n°2 où il expérimentait les possibilités de modding du nouveau (en ce temps là) spidertron. Cette fois-ci, il reste sur son sujet de la suite de mods Angel, tout en écrivant quelque chose de tout à fait différent… Une tentative réussie de tests automatiques de mods Lovely_Santa Avant de vous parler de cette histoire d’automatisation de la partie la plus ennuyeuse de la création d’un mod pour Factorio, je dois vous ramener au commencement… Il était une fois, non… Il faut que je commence quelque part vers la fin de 2019. Et je ne parle pas des débuts bien connus de la COVID-19, mais de la triste nouvelle de Arch666Angel qui a alors décidé de ne plus travailler sur ses célèbres mods d’Angel. Tout cela est dû à des changements dans sa vie. Je ne vais pas vous en expliquer tous les détails, mais il en a résulté que quelques moddeurs ont souhaité reprendre ses projets et son œuvre. Il a fallu attendre le 27 janvier 2020 pour convaincre Arch666Angel de laisser la communauté contribuer à sa création. Après avoir réglé tous les détails, il a sélectionné quelques personnes pour faire perdurer sa vision des mods, et c’est à ce moment-là que nous avons pu en informer la communauté. La principale communication s’est faite à l’époque via les forums de Factorio, où vous pouvez aujourd’hui encore lire le message d’annonce. En janvier 2020, nous avions déjà commencé à mettre à jour les mods de la version 0.17 à la version 0.18, avec tous les changements introduits dans le jeu de base. Après l’approbation d’Arch666Angel, nous avons publié notre première version “Initial 0.18 release” ! Peu de temps après avoir célébré notre succès, la réalité nous est retombée dessus, avec un grand nombre de rapports de bugs sur les forums. Nous étions loin de nous douter de l’ampleur de cette entreprise, du temps que nous allions consacrer aux corrections de bugs et, surtout, de la qualité de la communauté qui allait nous aider à résoudre ces problèmes. Tout a commencé modestement Avec l’aide de la communauté, nous avons appris comment fonctionnait la bibliothèque d’Angel. Pour ceux qui ne savent pas ce qu’est une bibliothèque, il s’agit d’un ensemble de fonctions d’aide qui permettent de rendre plus abstraite la base de code de Factorio afin qu’il soit plus facile de programmer avec. Il s’agit principalement d’une liste d’outils intéressants pour le développeur, de sorte qu’il puisse se concentrer sur le développement de fonctionnalités, plutôt que d’écrire du code banal pour que quelque chose fonctionne. Vous pouvez comparer la bibliothèque d’Angel à certains mods autonomes comme Factorio Library, Bob’s Functions Library, ou même ma propre tentative : Lovely_santa’s library of knowledge. Il n’y a pas de “bonne” ou de “mauvaise” façon d’implémenter une bibliothèque, tant qu’elle remplit son rôle. En analysant la bibliothèque d’Angel, qui se trouve en fait au sein du mod Angel’s refining et non en tant que mod autonome, nous avons trouvé des moyens plus efficaces de traiter certains bugs apparaissant dans le mod. Je suis maintenant persuadé que nous ne faisons plus d’erreurs de codage qui entraîneraient un crash brutal des mods. Aujourd’hui, les problèmes sont probablement des cas limites, des cas non gérés ou une configuration étrange du pack de mods. Le plus souvent, nous recevons des bugs de la part de personnes qui jouent avec certains mods d’Angel et certains mods de Bob. La raison en est simple : il existe de nombreuses configurations avec de nombreux paramètres, ce qui entraîne de nombreux oublis. Un petit exemple est présenté ci-dessous : vous corrigez un bug qui rend une technologie non accessible, dans une configuration exotique présentée ci-dessous. La raison pour laquelle cette technologie ne peut pas être recherchée est simple : elle a une technologie préalable qui n’est pas encore recherchée, mais comme la technologie préalable est cachée, elle n’apparaît pas dans l’arbre des technologies. Après un certain temps, vous remarquez qu’une autre configuration présente un problème similaire. Comme solution, nous avons commencé à créer une liste des configurations que nous devions tester. pezzawinkle a récemment dressé une liste pas si petite que ça de toutes les configurations qu’il teste à chaque fois qu’il prépare une nouvelle version. Personnellement, je teste chaque modification que je fais avec toutes les configurations que j’ai influencées. La partie la plus fastidieuse de la correction des bugs est de devoir recharger tous les mods d’Angel dans le dossier mod, encore et encore. Le 11 avril 2020, j’ai donc créé un petit script python qui met à jour tous les mods d’Angel avec les dernières modifications. Ce script m’a fait gagner énormément de temps, me permettant de faire une pause-café de temps en temps pendant qu’il rechargeait les mods, après avoir modifié cette ligne qui ne se comporte jamais comme prévu. En utilisant ce script au fil du temps, j’ai rencontré un autre problème : Bob. Oui, Bobbingabout avait publié une mise à jour de ses mods, et cela a cassé tout le travail que je venais de faire pour corriger un bug… Le 3 mai 2021, presque un an plus tard, j’ai créé un autre petit script python pour télécharger tous les mods de Bob depuis le portail, plutôt que de le faire en jeu, un par un. Tout s’est accéléré À la fin de 2020, nous avons décidé de travailler sur une grande fonctionnalité au sein du mod Angel’s Industries : une implémentation adéquate de la refonte des composants et des technologies. Il s’agissait de la dernière fonctionnalité sur laquelle Arch666Angel travaillait avant de se retirer du modding. Le 26 mai 2021 (six mois après la dernière version), nous avons présenté la nouvelle version de la refonte au public, après quoi les rapports de bugs ont commencé à affluer rapidement. Nous avons réalisé qu’avec les refontes, nous avons créé beaucoup plus de configurations, avec encore plus de paramètres. À ce stade, il est devenu assez difficile de maintenir et de tester tout cela à la main. J’ai donc commencé à envisager de créer des tests unitaires pour nous soulager de ce fardeau. Après quelques discussions et propositions de la part de la communauté des moddeurs, toujours très coopérative, j’ai finalement décidé le 30 juin 2021 de m’engager dans la création d’une infrastructure de tests unitaires, regroupée dans un mod séparé : Angel’s Dev - Unit Tests. Vous ne trouverez pas ce mod sur le portail de mods. J’avais déjà un moyen de transférer les mods d’Angel depuis le dossier Github vers le dossier des mods de Factorio et un script similaire pour télécharger les mods de Bob depuis le portail des mods. Afin de tester différentes configurations, j’ai dû écrire deux scripts supplémentaires. Le premier script lit et réécrit le fichier mod-settings.dat avec les paramètres du mod. Ce fichier stocke tous les paramètres configurés par l’utilisateur, ce qui peut conduire à des configurations très différentes du mod. Par exemple, dans Angel’s Industries, il peut être utilisé pour choisir entre spécial vanilla, bob-angels (= refonte classique, également possible sans les mods de Bob), révision des composants ou révision des sciences. En gros, il peut changer le comportement complet des mods d’Angel avec seulement quelques cases à cocher : Étant donné que le chargement et la sauvegarde des paramètres des mods sont entièrement gérés par le jeu de base, c’est une partie que je n’avais pas abordée auparavant lors de la création de mods. Cependant, j’ai été très surpris de trouver une documentation complète sur le Wiki de Factorio à ce sujet. Le deuxième script configure le fichier mod-list.json, qui contient les informations sur les mods qui doivent être activés. C’est la partie la plus connue des personnes qui jouent à Factorio avec des mods. Ils téléchargent des mods depuis le portail, et après avoir terminé la partie, ils désactivent les mods et jouent ensuite avec d’autres mods. Un exemple de la liste de mods de Bob Angel est présenté ci-dessous, entièrement configurée par un script. Avec ces quatre scripts, tout est en place pour lancer Factorio avec une configuration donnée des derniers mods et de leurs paramètres. Il ne restait plus qu’à demander à Factorio de se lancer encore et encore avec différents paramètres de mods. En supposant qu’un mod en jeu (“Angel’s Dev - Unit Tests” dans ce cas) indique à l’infrastructure de test que les tests sont terminés, celle-ci peut alors arrêter Factorio et lancer la prochaine configuration à vérifier. À ce stade, l’infrastructure de tests unitaires pourrait vérifier si toutes les configurations ont bien été chargées sans se planter. Après le chargement du jeu, le module de test unitaire pourrait vérifier tout ce qui se passe pendant le jeu, en cours d’exécution. La dernière pièce du puzzle Une semaine plus tard, le 8 juin 2021, j’ai fini d’écrire le test unitaire le plus basique qui ne fait rien d’autre que de signaler quels mods sont actifs dans le jeu. Après que le test unitaire a fini d’enregistrer les résultats, le script principal peut lancer la configuration suivante. Vous trouverez ci-dessous un exemple de résultat de ce test unitaire pour une seule configuration : angelsdev-unit-test: Testing Special vanilla (light) angelsdev-unit-test: Launching factorio.exe angelsdev-unit-test: Starting 1 unit tests... angelsdev-unit-test: Starting unit test 001. angelsdev-unit-test: Unit testing mod configuration: angelsdev-unit-test: angelsdev-unit-test version 0.0.1 angelsdev-unit-test: angelspetrochem version 0.9.21 angelsdev-unit-test: angelsrefining version 0.12.1 angelsdev-unit-test: angelssmelting version 0.6.18 angelsdev-unit-test: base version 1.1.38 angelsdev-unit-test: Unit test 001 PASSED! angelsdev-unit-test: Finished testing! All unit tests passed! angelsdev-unit-test: Closing factorio.exe ... &lt;output of other configurations&gt; angelsdev-unit-test: Summary: angelsdev-unit-test: [PASSED] Special vanilla (light) angelsdev-unit-test: [PASSED] Special vanilla (regular) angelsdev-unit-test: [PASSED] Special vanilla (extended) angelsdev-unit-test: [PASSED] Special vanilla (BA) angelsdev-unit-test: [PASSED] BA (light) angelsdev-unit-test: [PASSED] BA (regular) angelsdev-unit-test: [PASSED] BA (extended) angelsdev-unit-test: [PASSED] BA (extended components) angelsdev-unit-test: [PASSED] BA (extended technology) angelsdev-unit-test: [PASSED] BA (BobPower non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobPower non-default + components) angelsdev-unit-test: [PASSED] BA (BobPower non-default + technology) angelsdev-unit-test: [PASSED] BA (BobAssembly non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobLogistics non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobRevamp non-default + overhaul) angelsdev-unit-test: [PASSED] BA (Bob other non-default + overhaul) angelsdev-unit-test: [PASSED] Pure Angels (overhaul) angelsdev-unit-test: [PASSED] Pure Angels (components) angelsdev-unit-test: [PASSED] Pure Angels (technology) Comme tout développeur le sait, ce produit minimum viable (PMV) a encore besoin d’être peaufiné. Après une utilisation intensive, le 22 août 2021, j’ai ajouté deux fonctionnalités supplémentaires, dont la première consiste à ajouter un fichier séparé contenant toutes les configurations de test, de sorte qu’il devient plus facile d’ajouter de nouvelles configurations si nécessaire. La deuxième fonctionnalité permet d’enregistrer les résultats des tests dans un fichier. Grâce à cela, les nouveaux résultats de test peuvent être comparés avec les anciens résultats en utilisant des outils externes tels que ExamDiff Pro. C’est principalement destiné à vérifier que certains problèmes signalés sont résolus (lignes manquantes dans les nouveaux résultats de test), sans introduire de nouveaux problèmes (lignes ajoutées dans les nouveaux résultats de test). Le résultat Nous avons déjà publié une mise à jour depuis l’utilisation du produit minimum viable. Après deux semaines d’attente de bugs majeurs susceptibles de casser le jeu, nous avons été surpris de constater que nous n’en avions pratiquement pas. J’ai personnellement adopté une nouvelle “règle” lors de la maintenance des mods d’Angel : si un bug est découvert, il faut d’abord créer un test unitaire approprié pour le repérer, avant de résoudre le problème. Malheureusement, l’exécution de tous les tests unitaires prend un certain temps, mais il est facile de contourner ce problème en le faisant pendant une pause-café. Actuellement, les (quelques) tests unitaires dont nous disposons ne vérifient que la phase de chargement du jeu (également appelée phase de données). Cependant, rien ne nous empêche de créer également des tests unitaires complexes qui surveillent le comportement pendant le jeu (phase d’exécution). J’espère que cela m’aidera (en tant que développeur) à passer moins de temps à l’avenir à corriger les bugs, et à passer plus de temps à mettre en œuvre de nouvelles fonctionnalités. Je comprends que cela n’est pas nécessaire pour de petits mods autonomes, mais c’est très utile pour maintenir une base de code assez importante, surtout lorsque vous développez à plusieurs et que vous n’êtes pas en mesure de vérifier chaque ligne de code que quelqu’un d’autre a écrite, ni de connaître tous les détails de chaque fonctionnalité qui a été ajoutée. Voici mon histoire personnelle, expliquant comment j’ai appris par moi-même comment et pourquoi les grandes entreprises utilisent des tests unitaires, l’intégration de codes et de nombreux outils pour automatiser leur processus de diffusion de nouvelles fonctionnalités, avec la certitude que le code réussira à faire ce qu’il était censé faire, et ne frustrera pas des millions de personnes avec un petit message peu explicite “La tâche a échoué avec succès. Contactez les développeurs.” Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="Après une longue pause, un ancien contrinuteur du nom de Lovely_Santa est de retour à la tâche ! La dernière fois que nous avions entendu parler de notre héros, c’était avec notre parution n°2 où il expérimentait les possibilités de modding du nouveau (en ce temps là) spidertron. Cette fois-ci, il reste sur son sujet de la suite de mods Angel, tout en écrivant quelque chose de tout à fait différent… Une tentative réussie de tests automatiques de mods Lovely_Santa Avant de vous parler de cette histoire d’automatisation de la partie la plus ennuyeuse de la création d’un mod pour Factorio, je dois vous ramener au commencement… Il était une fois, non… Il faut que je commence quelque part vers la fin de 2019. Et je ne parle pas des débuts bien connus de la COVID-19, mais de la triste nouvelle de Arch666Angel qui a alors décidé de ne plus travailler sur ses célèbres mods d’Angel. Tout cela est dû à des changements dans sa vie. Je ne vais pas vous en expliquer tous les détails, mais il en a résulté que quelques moddeurs ont souhaité reprendre ses projets et son œuvre. Il a fallu attendre le 27 janvier 2020 pour convaincre Arch666Angel de laisser la communauté contribuer à sa création. Après avoir réglé tous les détails, il a sélectionné quelques personnes pour faire perdurer sa vision des mods, et c’est à ce moment-là que nous avons pu en informer la communauté. La principale communication s’est faite à l’époque via les forums de Factorio, où vous pouvez aujourd’hui encore lire le message d’annonce. En janvier 2020, nous avions déjà commencé à mettre à jour les mods de la version 0.17 à la version 0.18, avec tous les changements introduits dans le jeu de base. Après l’approbation d’Arch666Angel, nous avons publié notre première version “Initial 0.18 release” ! Peu de temps après avoir célébré notre succès, la réalité nous est retombée dessus, avec un grand nombre de rapports de bugs sur les forums. Nous étions loin de nous douter de l’ampleur de cette entreprise, du temps que nous allions consacrer aux corrections de bugs et, surtout, de la qualité de la communauté qui allait nous aider à résoudre ces problèmes. Tout a commencé modestement Avec l’aide de la communauté, nous avons appris comment fonctionnait la bibliothèque d’Angel. Pour ceux qui ne savent pas ce qu’est une bibliothèque, il s’agit d’un ensemble de fonctions d’aide qui permettent de rendre plus abstraite la base de code de Factorio afin qu’il soit plus facile de programmer avec. Il s’agit principalement d’une liste d’outils intéressants pour le développeur, de sorte qu’il puisse se concentrer sur le développement de fonctionnalités, plutôt que d’écrire du code banal pour que quelque chose fonctionne. Vous pouvez comparer la bibliothèque d’Angel à certains mods autonomes comme Factorio Library, Bob’s Functions Library, ou même ma propre tentative : Lovely_santa’s library of knowledge. Il n’y a pas de “bonne” ou de “mauvaise” façon d’implémenter une bibliothèque, tant qu’elle remplit son rôle. En analysant la bibliothèque d’Angel, qui se trouve en fait au sein du mod Angel’s refining et non en tant que mod autonome, nous avons trouvé des moyens plus efficaces de traiter certains bugs apparaissant dans le mod. Je suis maintenant persuadé que nous ne faisons plus d’erreurs de codage qui entraîneraient un crash brutal des mods. Aujourd’hui, les problèmes sont probablement des cas limites, des cas non gérés ou une configuration étrange du pack de mods. Le plus souvent, nous recevons des bugs de la part de personnes qui jouent avec certains mods d’Angel et certains mods de Bob. La raison en est simple : il existe de nombreuses configurations avec de nombreux paramètres, ce qui entraîne de nombreux oublis. Un petit exemple est présenté ci-dessous : vous corrigez un bug qui rend une technologie non accessible, dans une configuration exotique présentée ci-dessous. La raison pour laquelle cette technologie ne peut pas être recherchée est simple : elle a une technologie préalable qui n’est pas encore recherchée, mais comme la technologie préalable est cachée, elle n’apparaît pas dans l’arbre des technologies. Après un certain temps, vous remarquez qu’une autre configuration présente un problème similaire. Comme solution, nous avons commencé à créer une liste des configurations que nous devions tester. pezzawinkle a récemment dressé une liste pas si petite que ça de toutes les configurations qu’il teste à chaque fois qu’il prépare une nouvelle version. Personnellement, je teste chaque modification que je fais avec toutes les configurations que j’ai influencées. La partie la plus fastidieuse de la correction des bugs est de devoir recharger tous les mods d’Angel dans le dossier mod, encore et encore. Le 11 avril 2020, j’ai donc créé un petit script python qui met à jour tous les mods d’Angel avec les dernières modifications. Ce script m’a fait gagner énormément de temps, me permettant de faire une pause-café de temps en temps pendant qu’il rechargeait les mods, après avoir modifié cette ligne qui ne se comporte jamais comme prévu. En utilisant ce script au fil du temps, j’ai rencontré un autre problème : Bob. Oui, Bobbingabout avait publié une mise à jour de ses mods, et cela a cassé tout le travail que je venais de faire pour corriger un bug… Le 3 mai 2021, presque un an plus tard, j’ai créé un autre petit script python pour télécharger tous les mods de Bob depuis le portail, plutôt que de le faire en jeu, un par un. Tout s’est accéléré À la fin de 2020, nous avons décidé de travailler sur une grande fonctionnalité au sein du mod Angel’s Industries : une implémentation adéquate de la refonte des composants et des technologies. Il s’agissait de la dernière fonctionnalité sur laquelle Arch666Angel travaillait avant de se retirer du modding. Le 26 mai 2021 (six mois après la dernière version), nous avons présenté la nouvelle version de la refonte au public, après quoi les rapports de bugs ont commencé à affluer rapidement. Nous avons réalisé qu’avec les refontes, nous avons créé beaucoup plus de configurations, avec encore plus de paramètres. À ce stade, il est devenu assez difficile de maintenir et de tester tout cela à la main. J’ai donc commencé à envisager de créer des tests unitaires pour nous soulager de ce fardeau. Après quelques discussions et propositions de la part de la communauté des moddeurs, toujours très coopérative, j’ai finalement décidé le 30 juin 2021 de m’engager dans la création d’une infrastructure de tests unitaires, regroupée dans un mod séparé : Angel’s Dev - Unit Tests. Vous ne trouverez pas ce mod sur le portail de mods. J’avais déjà un moyen de transférer les mods d’Angel depuis le dossier Github vers le dossier des mods de Factorio et un script similaire pour télécharger les mods de Bob depuis le portail des mods. Afin de tester différentes configurations, j’ai dû écrire deux scripts supplémentaires. Le premier script lit et réécrit le fichier mod-settings.dat avec les paramètres du mod. Ce fichier stocke tous les paramètres configurés par l’utilisateur, ce qui peut conduire à des configurations très différentes du mod. Par exemple, dans Angel’s Industries, il peut être utilisé pour choisir entre spécial vanilla, bob-angels (= refonte classique, également possible sans les mods de Bob), révision des composants ou révision des sciences. En gros, il peut changer le comportement complet des mods d’Angel avec seulement quelques cases à cocher : Étant donné que le chargement et la sauvegarde des paramètres des mods sont entièrement gérés par le jeu de base, c’est une partie que je n’avais pas abordée auparavant lors de la création de mods. Cependant, j’ai été très surpris de trouver une documentation complète sur le Wiki de Factorio à ce sujet. Le deuxième script configure le fichier mod-list.json, qui contient les informations sur les mods qui doivent être activés. C’est la partie la plus connue des personnes qui jouent à Factorio avec des mods. Ils téléchargent des mods depuis le portail, et après avoir terminé la partie, ils désactivent les mods et jouent ensuite avec d’autres mods. Un exemple de la liste de mods de Bob Angel est présenté ci-dessous, entièrement configurée par un script. Avec ces quatre scripts, tout est en place pour lancer Factorio avec une configuration donnée des derniers mods et de leurs paramètres. Il ne restait plus qu’à demander à Factorio de se lancer encore et encore avec différents paramètres de mods. En supposant qu’un mod en jeu (“Angel’s Dev - Unit Tests” dans ce cas) indique à l’infrastructure de test que les tests sont terminés, celle-ci peut alors arrêter Factorio et lancer la prochaine configuration à vérifier. À ce stade, l’infrastructure de tests unitaires pourrait vérifier si toutes les configurations ont bien été chargées sans se planter. Après le chargement du jeu, le module de test unitaire pourrait vérifier tout ce qui se passe pendant le jeu, en cours d’exécution. La dernière pièce du puzzle Une semaine plus tard, le 8 juin 2021, j’ai fini d’écrire le test unitaire le plus basique qui ne fait rien d’autre que de signaler quels mods sont actifs dans le jeu. Après que le test unitaire a fini d’enregistrer les résultats, le script principal peut lancer la configuration suivante. Vous trouverez ci-dessous un exemple de résultat de ce test unitaire pour une seule configuration : angelsdev-unit-test: Testing Special vanilla (light) angelsdev-unit-test: Launching factorio.exe angelsdev-unit-test: Starting 1 unit tests... angelsdev-unit-test: Starting unit test 001. angelsdev-unit-test: Unit testing mod configuration: angelsdev-unit-test: angelsdev-unit-test version 0.0.1 angelsdev-unit-test: angelspetrochem version 0.9.21 angelsdev-unit-test: angelsrefining version 0.12.1 angelsdev-unit-test: angelssmelting version 0.6.18 angelsdev-unit-test: base version 1.1.38 angelsdev-unit-test: Unit test 001 PASSED! angelsdev-unit-test: Finished testing! All unit tests passed! angelsdev-unit-test: Closing factorio.exe ... &lt;output of other configurations&gt; angelsdev-unit-test: Summary: angelsdev-unit-test: [PASSED] Special vanilla (light) angelsdev-unit-test: [PASSED] Special vanilla (regular) angelsdev-unit-test: [PASSED] Special vanilla (extended) angelsdev-unit-test: [PASSED] Special vanilla (BA) angelsdev-unit-test: [PASSED] BA (light) angelsdev-unit-test: [PASSED] BA (regular) angelsdev-unit-test: [PASSED] BA (extended) angelsdev-unit-test: [PASSED] BA (extended components) angelsdev-unit-test: [PASSED] BA (extended technology) angelsdev-unit-test: [PASSED] BA (BobPower non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobPower non-default + components) angelsdev-unit-test: [PASSED] BA (BobPower non-default + technology) angelsdev-unit-test: [PASSED] BA (BobAssembly non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobLogistics non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobRevamp non-default + overhaul) angelsdev-unit-test: [PASSED] BA (Bob other non-default + overhaul) angelsdev-unit-test: [PASSED] Pure Angels (overhaul) angelsdev-unit-test: [PASSED] Pure Angels (components) angelsdev-unit-test: [PASSED] Pure Angels (technology) Comme tout développeur le sait, ce produit minimum viable (PMV) a encore besoin d’être peaufiné. Après une utilisation intensive, le 22 août 2021, j’ai ajouté deux fonctionnalités supplémentaires, dont la première consiste à ajouter un fichier séparé contenant toutes les configurations de test, de sorte qu’il devient plus facile d’ajouter de nouvelles configurations si nécessaire. La deuxième fonctionnalité permet d’enregistrer les résultats des tests dans un fichier. Grâce à cela, les nouveaux résultats de test peuvent être comparés avec les anciens résultats en utilisant des outils externes tels que ExamDiff Pro. C’est principalement destiné à vérifier que certains problèmes signalés sont résolus (lignes manquantes dans les nouveaux résultats de test), sans introduire de nouveaux problèmes (lignes ajoutées dans les nouveaux résultats de test). Le résultat Nous avons déjà publié une mise à jour depuis l’utilisation du produit minimum viable. Après deux semaines d’attente de bugs majeurs susceptibles de casser le jeu, nous avons été surpris de constater que nous n’en avions pratiquement pas. J’ai personnellement adopté une nouvelle “règle” lors de la maintenance des mods d’Angel : si un bug est découvert, il faut d’abord créer un test unitaire approprié pour le repérer, avant de résoudre le problème. Malheureusement, l’exécution de tous les tests unitaires prend un certain temps, mais il est facile de contourner ce problème en le faisant pendant une pause-café. Actuellement, les (quelques) tests unitaires dont nous disposons ne vérifient que la phase de chargement du jeu (également appelée phase de données). Cependant, rien ne nous empêche de créer également des tests unitaires complexes qui surveillent le comportement pendant le jeu (phase d’exécution). J’espère que cela m’aidera (en tant que développeur) à passer moins de temps à l’avenir à corriger les bugs, et à passer plus de temps à mettre en œuvre de nouvelles fonctionnalités. Je comprends que cela n’est pas nécessaire pour de petits mods autonomes, mais c’est très utile pour maintenir une base de code assez importante, surtout lorsque vous développez à plusieurs et que vous n’êtes pas en mesure de vérifier chaque ligne de code que quelqu’un d’autre a écrite, ni de connaître tous les détails de chaque fonctionnalité qui a été ajoutée. Voici mon histoire personnelle, expliquant comment j’ai appris par moi-même comment et pourquoi les grandes entreprises utilisent des tests unitaires, l’intégration de codes et de nombreux outils pour automatiser leur processus de diffusion de nouvelles fonctionnalités, avec la certitude que le code réussira à faire ce qu’il était censé faire, et ne frustrera pas des millions de personnes avec un petit message peu explicite “La tâche a échoué avec succès. Contactez les développeurs.” Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-48/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-48/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-09-24T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-09-24T00:00:00+00:00","author":{"@type":"Person","name":"Lovely_Santa"},"description":"Après une longue pause, un ancien contrinuteur du nom de Lovely_Santa est de retour à la tâche ! La dernière fois que nous avions entendu parler de notre héros, c’était avec notre parution n°2 où il expérimentait les possibilités de modding du nouveau (en ce temps là) spidertron. Cette fois-ci, il reste sur son sujet de la suite de mods Angel, tout en écrivant quelque chose de tout à fait différent… Une tentative réussie de tests automatiques de mods Lovely_Santa Avant de vous parler de cette histoire d’automatisation de la partie la plus ennuyeuse de la création d’un mod pour Factorio, je dois vous ramener au commencement… Il était une fois, non… Il faut que je commence quelque part vers la fin de 2019. Et je ne parle pas des débuts bien connus de la COVID-19, mais de la triste nouvelle de Arch666Angel qui a alors décidé de ne plus travailler sur ses célèbres mods d’Angel. Tout cela est dû à des changements dans sa vie. Je ne vais pas vous en expliquer tous les détails, mais il en a résulté que quelques moddeurs ont souhaité reprendre ses projets et son œuvre. Il a fallu attendre le 27 janvier 2020 pour convaincre Arch666Angel de laisser la communauté contribuer à sa création. Après avoir réglé tous les détails, il a sélectionné quelques personnes pour faire perdurer sa vision des mods, et c’est à ce moment-là que nous avons pu en informer la communauté. La principale communication s’est faite à l’époque via les forums de Factorio, où vous pouvez aujourd’hui encore lire le message d’annonce. En janvier 2020, nous avions déjà commencé à mettre à jour les mods de la version 0.17 à la version 0.18, avec tous les changements introduits dans le jeu de base. Après l’approbation d’Arch666Angel, nous avons publié notre première version “Initial 0.18 release” ! Peu de temps après avoir célébré notre succès, la réalité nous est retombée dessus, avec un grand nombre de rapports de bugs sur les forums. Nous étions loin de nous douter de l’ampleur de cette entreprise, du temps que nous allions consacrer aux corrections de bugs et, surtout, de la qualité de la communauté qui allait nous aider à résoudre ces problèmes. Tout a commencé modestement Avec l’aide de la communauté, nous avons appris comment fonctionnait la bibliothèque d’Angel. Pour ceux qui ne savent pas ce qu’est une bibliothèque, il s’agit d’un ensemble de fonctions d’aide qui permettent de rendre plus abstraite la base de code de Factorio afin qu’il soit plus facile de programmer avec. Il s’agit principalement d’une liste d’outils intéressants pour le développeur, de sorte qu’il puisse se concentrer sur le développement de fonctionnalités, plutôt que d’écrire du code banal pour que quelque chose fonctionne. Vous pouvez comparer la bibliothèque d’Angel à certains mods autonomes comme Factorio Library, Bob’s Functions Library, ou même ma propre tentative : Lovely_santa’s library of knowledge. Il n’y a pas de “bonne” ou de “mauvaise” façon d’implémenter une bibliothèque, tant qu’elle remplit son rôle. En analysant la bibliothèque d’Angel, qui se trouve en fait au sein du mod Angel’s refining et non en tant que mod autonome, nous avons trouvé des moyens plus efficaces de traiter certains bugs apparaissant dans le mod. Je suis maintenant persuadé que nous ne faisons plus d’erreurs de codage qui entraîneraient un crash brutal des mods. Aujourd’hui, les problèmes sont probablement des cas limites, des cas non gérés ou une configuration étrange du pack de mods. Le plus souvent, nous recevons des bugs de la part de personnes qui jouent avec certains mods d’Angel et certains mods de Bob. La raison en est simple : il existe de nombreuses configurations avec de nombreux paramètres, ce qui entraîne de nombreux oublis. Un petit exemple est présenté ci-dessous : vous corrigez un bug qui rend une technologie non accessible, dans une configuration exotique présentée ci-dessous. La raison pour laquelle cette technologie ne peut pas être recherchée est simple : elle a une technologie préalable qui n’est pas encore recherchée, mais comme la technologie préalable est cachée, elle n’apparaît pas dans l’arbre des technologies. Après un certain temps, vous remarquez qu’une autre configuration présente un problème similaire. Comme solution, nous avons commencé à créer une liste des configurations que nous devions tester. pezzawinkle a récemment dressé une liste pas si petite que ça de toutes les configurations qu’il teste à chaque fois qu’il prépare une nouvelle version. Personnellement, je teste chaque modification que je fais avec toutes les configurations que j’ai influencées. La partie la plus fastidieuse de la correction des bugs est de devoir recharger tous les mods d’Angel dans le dossier mod, encore et encore. Le 11 avril 2020, j’ai donc créé un petit script python qui met à jour tous les mods d’Angel avec les dernières modifications. Ce script m’a fait gagner énormément de temps, me permettant de faire une pause-café de temps en temps pendant qu’il rechargeait les mods, après avoir modifié cette ligne qui ne se comporte jamais comme prévu. En utilisant ce script au fil du temps, j’ai rencontré un autre problème : Bob. Oui, Bobbingabout avait publié une mise à jour de ses mods, et cela a cassé tout le travail que je venais de faire pour corriger un bug… Le 3 mai 2021, presque un an plus tard, j’ai créé un autre petit script python pour télécharger tous les mods de Bob depuis le portail, plutôt que de le faire en jeu, un par un. Tout s’est accéléré À la fin de 2020, nous avons décidé de travailler sur une grande fonctionnalité au sein du mod Angel’s Industries : une implémentation adéquate de la refonte des composants et des technologies. Il s’agissait de la dernière fonctionnalité sur laquelle Arch666Angel travaillait avant de se retirer du modding. Le 26 mai 2021 (six mois après la dernière version), nous avons présenté la nouvelle version de la refonte au public, après quoi les rapports de bugs ont commencé à affluer rapidement. Nous avons réalisé qu’avec les refontes, nous avons créé beaucoup plus de configurations, avec encore plus de paramètres. À ce stade, il est devenu assez difficile de maintenir et de tester tout cela à la main. J’ai donc commencé à envisager de créer des tests unitaires pour nous soulager de ce fardeau. Après quelques discussions et propositions de la part de la communauté des moddeurs, toujours très coopérative, j’ai finalement décidé le 30 juin 2021 de m’engager dans la création d’une infrastructure de tests unitaires, regroupée dans un mod séparé : Angel’s Dev - Unit Tests. Vous ne trouverez pas ce mod sur le portail de mods. J’avais déjà un moyen de transférer les mods d’Angel depuis le dossier Github vers le dossier des mods de Factorio et un script similaire pour télécharger les mods de Bob depuis le portail des mods. Afin de tester différentes configurations, j’ai dû écrire deux scripts supplémentaires. Le premier script lit et réécrit le fichier mod-settings.dat avec les paramètres du mod. Ce fichier stocke tous les paramètres configurés par l’utilisateur, ce qui peut conduire à des configurations très différentes du mod. Par exemple, dans Angel’s Industries, il peut être utilisé pour choisir entre spécial vanilla, bob-angels (= refonte classique, également possible sans les mods de Bob), révision des composants ou révision des sciences. En gros, il peut changer le comportement complet des mods d’Angel avec seulement quelques cases à cocher : Étant donné que le chargement et la sauvegarde des paramètres des mods sont entièrement gérés par le jeu de base, c’est une partie que je n’avais pas abordée auparavant lors de la création de mods. Cependant, j’ai été très surpris de trouver une documentation complète sur le Wiki de Factorio à ce sujet. Le deuxième script configure le fichier mod-list.json, qui contient les informations sur les mods qui doivent être activés. C’est la partie la plus connue des personnes qui jouent à Factorio avec des mods. Ils téléchargent des mods depuis le portail, et après avoir terminé la partie, ils désactivent les mods et jouent ensuite avec d’autres mods. Un exemple de la liste de mods de Bob Angel est présenté ci-dessous, entièrement configurée par un script. Avec ces quatre scripts, tout est en place pour lancer Factorio avec une configuration donnée des derniers mods et de leurs paramètres. Il ne restait plus qu’à demander à Factorio de se lancer encore et encore avec différents paramètres de mods. En supposant qu’un mod en jeu (“Angel’s Dev - Unit Tests” dans ce cas) indique à l’infrastructure de test que les tests sont terminés, celle-ci peut alors arrêter Factorio et lancer la prochaine configuration à vérifier. À ce stade, l’infrastructure de tests unitaires pourrait vérifier si toutes les configurations ont bien été chargées sans se planter. Après le chargement du jeu, le module de test unitaire pourrait vérifier tout ce qui se passe pendant le jeu, en cours d’exécution. La dernière pièce du puzzle Une semaine plus tard, le 8 juin 2021, j’ai fini d’écrire le test unitaire le plus basique qui ne fait rien d’autre que de signaler quels mods sont actifs dans le jeu. Après que le test unitaire a fini d’enregistrer les résultats, le script principal peut lancer la configuration suivante. Vous trouverez ci-dessous un exemple de résultat de ce test unitaire pour une seule configuration : angelsdev-unit-test: Testing Special vanilla (light) angelsdev-unit-test: Launching factorio.exe angelsdev-unit-test: Starting 1 unit tests... angelsdev-unit-test: Starting unit test 001. angelsdev-unit-test: Unit testing mod configuration: angelsdev-unit-test: angelsdev-unit-test version 0.0.1 angelsdev-unit-test: angelspetrochem version 0.9.21 angelsdev-unit-test: angelsrefining version 0.12.1 angelsdev-unit-test: angelssmelting version 0.6.18 angelsdev-unit-test: base version 1.1.38 angelsdev-unit-test: Unit test 001 PASSED! angelsdev-unit-test: Finished testing! All unit tests passed! angelsdev-unit-test: Closing factorio.exe ... &lt;output of other configurations&gt; angelsdev-unit-test: Summary: angelsdev-unit-test: [PASSED] Special vanilla (light) angelsdev-unit-test: [PASSED] Special vanilla (regular) angelsdev-unit-test: [PASSED] Special vanilla (extended) angelsdev-unit-test: [PASSED] Special vanilla (BA) angelsdev-unit-test: [PASSED] BA (light) angelsdev-unit-test: [PASSED] BA (regular) angelsdev-unit-test: [PASSED] BA (extended) angelsdev-unit-test: [PASSED] BA (extended components) angelsdev-unit-test: [PASSED] BA (extended technology) angelsdev-unit-test: [PASSED] BA (BobPower non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobPower non-default + components) angelsdev-unit-test: [PASSED] BA (BobPower non-default + technology) angelsdev-unit-test: [PASSED] BA (BobAssembly non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobLogistics non-default + overhaul) angelsdev-unit-test: [PASSED] BA (BobRevamp non-default + overhaul) angelsdev-unit-test: [PASSED] BA (Bob other non-default + overhaul) angelsdev-unit-test: [PASSED] Pure Angels (overhaul) angelsdev-unit-test: [PASSED] Pure Angels (components) angelsdev-unit-test: [PASSED] Pure Angels (technology) Comme tout développeur le sait, ce produit minimum viable (PMV) a encore besoin d’être peaufiné. Après une utilisation intensive, le 22 août 2021, j’ai ajouté deux fonctionnalités supplémentaires, dont la première consiste à ajouter un fichier séparé contenant toutes les configurations de test, de sorte qu’il devient plus facile d’ajouter de nouvelles configurations si nécessaire. La deuxième fonctionnalité permet d’enregistrer les résultats des tests dans un fichier. Grâce à cela, les nouveaux résultats de test peuvent être comparés avec les anciens résultats en utilisant des outils externes tels que ExamDiff Pro. C’est principalement destiné à vérifier que certains problèmes signalés sont résolus (lignes manquantes dans les nouveaux résultats de test), sans introduire de nouveaux problèmes (lignes ajoutées dans les nouveaux résultats de test). Le résultat Nous avons déjà publié une mise à jour depuis l’utilisation du produit minimum viable. Après deux semaines d’attente de bugs majeurs susceptibles de casser le jeu, nous avons été surpris de constater que nous n’en avions pratiquement pas. J’ai personnellement adopté une nouvelle “règle” lors de la maintenance des mods d’Angel : si un bug est découvert, il faut d’abord créer un test unitaire approprié pour le repérer, avant de résoudre le problème. Malheureusement, l’exécution de tous les tests unitaires prend un certain temps, mais il est facile de contourner ce problème en le faisant pendant une pause-café. Actuellement, les (quelques) tests unitaires dont nous disposons ne vérifient que la phase de chargement du jeu (également appelée phase de données). Cependant, rien ne nous empêche de créer également des tests unitaires complexes qui surveillent le comportement pendant le jeu (phase d’exécution). J’espère que cela m’aidera (en tant que développeur) à passer moins de temps à l’avenir à corriger les bugs, et à passer plus de temps à mettre en œuvre de nouvelles fonctionnalités. Je comprends que cela n’est pas nécessaire pour de petits mods autonomes, mais c’est très utile pour maintenir une base de code assez importante, surtout lorsque vous développez à plusieurs et que vous n’êtes pas en mesure de vérifier chaque ligne de code que quelqu’un d’autre a écrite, ni de connaître tous les détails de chaque fonctionnalité qui a été ajoutée. Voici mon histoire personnelle, expliquant comment j’ai appris par moi-même comment et pourquoi les grandes entreprises utilisent des tests unitaires, l’intégration de codes et de nombreux outils pour automatiser leur processus de diffusion de nouvelles fonctionnalités, avec la certitude que le code réussira à faire ce qu’il était censé faire, et ne frustrera pas des millions de personnes avec un petit message peu explicite “La tâche a échoué avec succès. Contactez les développeurs.” Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","url":"https://alt-f4.blog/ALTF4-48/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-48/"},"headline":"Alt-F4 n°48 - Tests unitaires automatiques pour Angel","dateModified":"2021-09-24T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/48/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/48/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/fr/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-48/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-48/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-48/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-48/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-48/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-48/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-48/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-48/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-48/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-48/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°48 - Tests unitaires automatiques pour Angel  <author>24-09-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>Lovely_Santa</em>,
+
+
+
+édité par <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev, Firerazer</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/48/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Sommaire</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#une-tentative-r%C3%A9ussie-de-tests-automatiques-de-mods-lovely_santa">Une tentative réussie de tests automatiques de mods <author>Lovely_Santa</author></a>
+    <ul>
+      <li><a href="#tout-a-commenc%C3%A9-modestement">Tout a commencé modestement</a></li>
+      <li><a href="#tout-sest-acc%C3%A9l%C3%A9r%C3%A9">Tout s’est accéléré</a></li>
+      <li><a href="#la-derni%C3%A8re-pi%C3%A8ce-du-puzzle">La dernière pièce du puzzle</a></li>
+      <li><a href="#le-r%C3%A9sultat">Le résultat</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Après une longue pause, un ancien contrinuteur du nom de <em>Lovely_Santa</em> est de retour à la tâche ! La dernière fois que nous avions entendu parler de notre héros, c’était avec notre <a href="https://alt-f4.blog/fr/ALTF4-2/">parution n°2</a> où il expérimentait les possibilités de modding du nouveau (en ce temps là) spidertron. Cette fois-ci, il reste sur son sujet de la suite de mods Angel, tout en écrivant quelque chose de tout à fait différent…</p>
+      <h2 id="une-tentative-réussie-de-tests-automatiques-de-mods-lovely_santa">
+        
+        
+            <a href="#une-tentative-r%C3%A9ussie-de-tests-automatiques-de-mods-lovely_santa" class="anchor" style="text-decoration: none;">Une tentative réussie de tests automatiques de mods <author>Lovely_Santa</author></a>
+          
+        
+      </h2>
+    
+
+<p>Avant de vous parler de cette histoire d’automatisation de la partie la plus ennuyeuse de la création d’un mod pour Factorio, je dois vous ramener au commencement… Il était une fois, non… Il faut que je commence quelque part vers la fin de 2019. Et je ne parle pas des débuts bien connus de la COVID-19, mais de la triste nouvelle de <em>Arch666Angel</em> qui a alors décidé de ne plus travailler sur ses célèbres <a href="https://mods.factorio.com/user/Arch666Angel">mods d’Angel</a>. Tout cela est dû à des changements dans sa vie. Je ne vais pas vous en expliquer tous les détails, mais il en a résulté que quelques moddeurs ont souhaité reprendre ses projets et son œuvre.</p>
+
+<p>Il a fallu attendre le 27 janvier 2020 pour convaincre Arch666Angel de laisser la communauté contribuer à sa création. Après avoir réglé tous les détails, il a sélectionné quelques personnes pour faire perdurer sa vision des mods, et c’est à ce moment-là que nous avons pu en informer la communauté. La principale communication s’est faite à l’époque via les forums de Factorio, où vous pouvez aujourd’hui encore lire le <a href="https://forums.factorio.com/viewtopic.php?p=475786#p475786">message d’annonce</a>.</p>
+
+<p>En janvier 2020, nous avions déjà commencé à mettre à jour les mods de la version 0.17 à la version 0.18, avec tous les changements introduits dans le jeu de base. Après l’approbation d’Arch666Angel, nous avons publié notre première version <a href="https://github.com/Arch666Angel/mods/commit/8b7ff10ba82d3071f374e08452b5ca22d42e4780"><em>“Initial 0.18 release”</em></a> ! Peu de temps après avoir célébré notre succès, la réalité nous est retombée dessus, avec un grand nombre de rapports de bugs sur les forums. Nous étions loin de nous douter de l’ampleur de cette entreprise, du temps que nous allions consacrer aux corrections de bugs et, surtout, de la qualité de la communauté qui allait nous aider à résoudre ces problèmes.</p>
+      <h3 id="tout-a-commencé-modestement">
+        
+        
+            <a href="#tout-a-commenc%C3%A9-modestement" class="anchor" style="text-decoration: none;">Tout a commencé modestement</a>
+          
+        
+      </h3>
+    
+
+<p>Avec l’aide de la communauté, nous avons appris comment fonctionnait la bibliothèque d’Angel. Pour ceux qui ne savent pas ce qu’est une bibliothèque, il s’agit d’un ensemble de fonctions d’aide qui permettent de rendre plus abstraite la base de code de Factorio afin qu’il soit plus facile de programmer avec. Il s’agit principalement d’une liste d’outils intéressants pour le développeur, de sorte qu’il puisse se concentrer sur le développement de fonctionnalités, plutôt que d’écrire du code banal pour que quelque chose fonctionne. Vous pouvez comparer la bibliothèque d’Angel à certains mods autonomes comme <a href="https://mods.factorio.com/mod/flib">Factorio Library</a>, <a href="https://mods.factorio.com/mod/boblibrary">Bob’s Functions Library</a>, ou même ma propre tentative : <a href="https://mods.factorio.com/mod/LSlib">Lovely_santa’s library of knowledge</a>. Il n’y a pas de “bonne” ou de “mauvaise” façon d’implémenter une bibliothèque, tant qu’elle remplit son rôle. En analysant la bibliothèque d’Angel, qui se trouve en fait au sein du mod Angel’s refining et non en tant que mod autonome, nous avons trouvé des moyens plus efficaces de traiter certains bugs apparaissant dans le mod.</p>
+
+<p>Je suis maintenant persuadé que nous ne faisons plus d’erreurs de codage qui entraîneraient un crash brutal des mods. Aujourd’hui, les problèmes sont probablement des cas limites, des cas non gérés ou une configuration étrange du pack de mods. Le plus souvent, nous recevons des bugs de la part de personnes qui jouent avec certains mods d’Angel et certains mods de Bob. La raison en est simple : il existe de nombreuses configurations avec de nombreux paramètres, ce qui entraîne de nombreux oublis. <a href="https://www.reddit.com/r/factorio/comments/pfvqn0/playing_an_angel_bobs_game_and_noticed_about_9/">Un petit exemple</a> est présenté ci-dessous : vous corrigez un bug qui rend une technologie non accessible, dans une configuration exotique présentée ci-dessous. La raison pour laquelle cette technologie ne peut pas être recherchée est simple : elle a une technologie préalable qui n’est pas encore recherchée, mais comme la technologie préalable est cachée, elle n’apparaît pas dans l’arbre des technologies.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_1.jpg" alt="Le traitement du nickel ne peut pas être recherché." style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Après un certain temps, vous remarquez qu’une autre configuration présente un problème similaire.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/48/nickel_processing_bug_2.jpg" alt="Le traitement du nickel ne peut pas être recherché. ENCORE !" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Comme solution, nous avons commencé à créer une liste des configurations que nous devions tester. <a href="https://mods.factorio.com/user/pezzawinkle"><em>pezzawinkle</em></a> a récemment dressé une <a href="https://github.com/Arch666Angel/mods/blob/master/Config_Testing_Regime.txt">liste pas si petite que ça</a> de toutes les configurations qu’il teste à chaque fois qu’il prépare une nouvelle version.</p>
+
+<p>Personnellement, je teste chaque modification que je fais avec toutes les configurations que j’ai influencées. La partie la plus fastidieuse de la correction des bugs est de devoir recharger tous les mods d’Angel dans le dossier mod, encore et encore. Le 11 avril 2020, j’ai donc créé <a href="https://github.com/Arch666Angel/mods/pull/188/commits/e37f2673f234e0c9271f56ecc6d4934b0d83cd50">un petit script python</a> qui met à jour tous les mods d’Angel avec les dernières modifications.</p>
+
+<p>Ce script m’a fait gagner énormément de temps, me permettant de faire une pause-café de temps en temps pendant qu’il rechargeait les mods, après avoir modifié cette ligne qui ne se comporte jamais comme prévu. En utilisant ce script au fil du temps, j’ai rencontré un autre problème : Bob. Oui, <em>Bobbingabout</em> avait publié une mise à jour de ses mods, et cela a cassé tout le travail que je venais de faire pour corriger un bug… Le 3 mai 2021, presque un an plus tard, j’ai créé <a href="https://github.com/Arch666Angel/mods/pull/591/commits/3d0a7de0a68c3ec6566cbd45c3599b036ab775bb">un autre petit script python</a> pour télécharger tous les mods de Bob depuis le portail, plutôt que de le faire en jeu, un par un.</p>
+      <h3 id="tout-sest-accéléré">
+        
+        
+            <a href="#tout-sest-acc%C3%A9l%C3%A9r%C3%A9" class="anchor" style="text-decoration: none;">Tout s’est accéléré</a>
+          
+        
+      </h3>
+    
+
+<p>À la fin de 2020, nous avons décidé de travailler sur une grande fonctionnalité au sein du mod Angel’s Industries : une implémentation adéquate de la refonte des composants et des technologies. Il s’agissait de la dernière fonctionnalité sur laquelle Arch666Angel travaillait avant de se retirer du modding. Le 26 mai 2021 (six mois après la dernière version), nous avons présenté la nouvelle version de la refonte au public, après quoi les rapports de bugs ont commencé à affluer rapidement.</p>
+
+<p>Nous avons réalisé qu’avec les refontes, nous avons créé beaucoup plus de configurations, avec encore plus de paramètres. À ce stade, il est devenu assez difficile de maintenir et de tester tout cela à la main. J’ai donc commencé à envisager de créer des <a href="https://fr.wikipedia.org/wiki/Test_unitaire">tests unitaires</a> pour nous soulager de ce fardeau. Après quelques discussions et propositions de la part de la communauté des moddeurs, toujours très coopérative, j’ai finalement décidé le 30 juin 2021 de m’engager dans la création d’une infrastructure de tests unitaires, regroupée dans un mod séparé : <a href="https://github.com/Arch666Angel/mods/pull/634/commits/d59328e81235e26beb88ba66659cb78315827a00">Angel’s Dev - Unit Tests</a>. Vous ne trouverez pas ce mod sur le portail de mods.</p>
+
+<p>J’avais déjà un moyen de transférer les mods d’Angel depuis le dossier Github vers le dossier des mods de Factorio et un script similaire pour télécharger les mods de Bob depuis le portail des mods. Afin de tester différentes configurations, j’ai dû écrire deux scripts supplémentaires. <a href="https://github.com/Arch666Angel/mods/pull/634/commits/8977e17bba55d06fb3b60ff4c593e2307f110395">Le premier script</a> lit et réécrit le fichier <code class="language-plaintext highlighter-rouge">mod-settings.dat</code> avec les paramètres du mod. Ce fichier stocke tous les paramètres configurés par l’utilisateur, ce qui peut conduire à des configurations très différentes du mod. Par exemple, dans Angel’s Industries, il peut être utilisé pour choisir entre <em>spécial vanilla</em>, <em>bob-angels</em> (= refonte classique, également possible sans les mods de Bob), <em>révision des composants</em> ou <em>révision des sciences</em>. En gros, il peut changer le comportement complet des mods d’Angel avec seulement quelques cases à cocher :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/48/angels_industry_settings.jpg" alt="Configurations dans Angel’s Industries" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Étant donné que le chargement et la sauvegarde des paramètres des mods sont entièrement gérés par le jeu de base, c’est une partie que je n’avais pas abordée auparavant lors de la création de mods. Cependant, j’ai été très surpris de trouver une <a href="https://wiki.factorio.com/Mod_settings_file_format">documentation complète sur le Wiki de Factorio</a> à ce sujet.</p>
+
+<p><a href="https://github.com/Arch666Angel/mods/pull/634/commits/abb64c2fe8007e060f112716ebe33864510b6451">Le deuxième script</a> configure le fichier <code class="language-plaintext highlighter-rouge">mod-list.json</code>, qui contient les informations sur les mods qui doivent être activés. C’est la partie la plus connue des personnes qui jouent à Factorio avec des mods. Ils téléchargent des mods depuis le portail, et après avoir terminé la partie, ils désactivent les mods et jouent ensuite avec d’autres mods. Un exemple de la liste de mods de Bob Angel est présenté ci-dessous, entièrement configurée par un script.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/48/mod_list.jpg" alt="Liste des mods de Factorio avec tous les mods de Bob Angel activés, configurée par un script" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Avec ces quatre scripts, tout est en place pour lancer Factorio avec une configuration donnée des derniers mods et de leurs paramètres. Il ne restait plus qu’à demander à Factorio de se lancer encore et encore avec différents paramètres de mods. En supposant qu’un mod en jeu (“Angel’s Dev - Unit Tests” dans ce cas) indique à l’infrastructure de test que les tests sont terminés, celle-ci peut alors arrêter Factorio et lancer la prochaine configuration à vérifier. À ce stade, l’infrastructure de tests unitaires pourrait vérifier si toutes les configurations ont bien été chargées sans se planter. Après le chargement du jeu, le module de test unitaire pourrait vérifier tout ce qui se passe pendant le jeu, en cours d’exécution.</p>
+      <h3 id="la-dernière-pièce-du-puzzle">
+        
+        
+            <a href="#la-derni%C3%A8re-pi%C3%A8ce-du-puzzle" class="anchor" style="text-decoration: none;">La dernière pièce du puzzle</a>
+          
+        
+      </h3>
+    
+
+<p>Une semaine plus tard, le 8 juin 2021, j’ai fini d’écrire <a href="https://github.com/Arch666Angel/mods/pull/634/commits/1435fbd2f1134b08307406e21fdd657f1cafa019">le test unitaire le plus basique</a> qui ne fait rien d’autre que de signaler quels mods sont actifs dans le jeu. Après que le test unitaire a fini d’enregistrer les résultats, le <a href="https://github.com/Arch666Angel/mods/pull/634/commits/64ea68023f19c2505aa3cfbb7642f13cf7f70fbd">script principal</a> peut lancer la configuration suivante. Vous trouverez ci-dessous un exemple de résultat de ce test unitaire pour une seule configuration :</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Testing</span><span class="w"> </span><span class="n">Special</span><span class="w"> </span><span class="n">vanilla</span><span class="w"> </span><span class="p">(</span><span class="n">light</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Launching</span><span class="w"> </span><span class="n">factorio.exe</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="n">tests...</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Starting</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="m">001</span><span class="n">.</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w">     </span><span class="n">Unit</span><span class="w"> </span><span class="n">testing</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="n">configuration</span><span class="o">:</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w">     </span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">0.0.1</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w">     </span><span class="n">angelspetrochem</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">0.9.21</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w">     </span><span class="n">angelsrefining</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">0.12.1</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w">     </span><span class="n">angelssmelting</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">0.6.18</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w">     </span><span class="n">base</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="m">1.1.38</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Unit</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="m">001</span><span class="w"> </span><span class="n">PASSED</span><span class="o">!</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Finished</span><span class="w"> </span><span class="n">testing</span><span class="o">!</span><span class="w"> </span><span class="n">All</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="n">tests</span><span class="w"> </span><span class="n">passed</span><span class="o">!</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Closing</span><span class="w"> </span><span class="n">factorio.exe</span><span class="w">
+</span><span class="n">...</span><span class="w"> </span><span class="o">&lt;</span><span class="n">output</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">configurations</span><span class="o">&gt;</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="n">Summary</span><span class="o">:</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">Special</span><span class="w"> </span><span class="n">vanilla</span><span class="w"> </span><span class="p">(</span><span class="n">light</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">Special</span><span class="w"> </span><span class="n">vanilla</span><span class="w"> </span><span class="p">(</span><span class="n">regular</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">Special</span><span class="w"> </span><span class="n">vanilla</span><span class="w"> </span><span class="p">(</span><span class="n">extended</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">Special</span><span class="w"> </span><span class="n">vanilla</span><span class="w"> </span><span class="p">(</span><span class="n">BA</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">light</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">regular</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">extended</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">extended</span><span class="w"> </span><span class="n">components</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">extended</span><span class="w"> </span><span class="n">technology</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">BobPower</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">default</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">overhaul</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">BobPower</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">default</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">components</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">BobPower</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">default</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">technology</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">BobAssembly</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">default</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">overhaul</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">BobLogistics</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">default</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">overhaul</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">BobRevamp</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">default</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">overhaul</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="p">(</span><span class="n">Bob</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">default</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">overhaul</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">Pure</span><span class="w"> </span><span class="n">Angels</span><span class="w"> </span><span class="p">(</span><span class="n">overhaul</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">Pure</span><span class="w"> </span><span class="n">Angels</span><span class="w"> </span><span class="p">(</span><span class="n">components</span><span class="p">)</span><span class="w">
+</span><span class="n">angelsdev</span><span class="o">-</span><span class="n">unit</span><span class="o">-</span><span class="n">test</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">PASSED</span><span class="p">]</span><span class="w"> </span><span class="n">Pure</span><span class="w"> </span><span class="n">Angels</span><span class="w"> </span><span class="p">(</span><span class="n">technology</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Comme tout développeur le sait, ce produit minimum viable (PMV) a encore besoin d’être peaufiné. Après une utilisation intensive, le 22 août 2021, j’ai ajouté deux fonctionnalités supplémentaires, dont la première consiste à ajouter un fichier séparé contenant <a href="https://github.com/Arch666Angel/mods/commit/27b899d43b1db04d99cc8c8086cf7ece83376419#diff-f7f9cb110df5ea99bfdecacc536b281dba523acc5418d1e9774fc803f7846348">toutes les configurations de test</a>, de sorte qu’il devient plus facile d’ajouter de nouvelles configurations si nécessaire. La deuxième fonctionnalité permet d’<a href="https://github.com/Arch666Angel/mods/commit/a5732a52c5dfdcd6d9c5f4d89ad699ea9bd90bda#diff-f7f9cb110df5ea99bfdecacc536b281dba523acc5418d1e9774fc803f7846348">enregistrer les résultats des tests dans un fichier</a>. Grâce à cela, les nouveaux résultats de test peuvent être comparés avec les anciens résultats en utilisant des outils externes tels que <a href="https://www.prestosoft.com/edp_examdiffpro.asp">ExamDiff Pro</a>. C’est principalement destiné à vérifier que certains problèmes signalés sont résolus (lignes manquantes dans les nouveaux résultats de test), sans introduire de nouveaux problèmes (lignes ajoutées dans les nouveaux résultats de test).</p>
+      <h3 id="le-résultat">
+        
+        
+            <a href="#le-r%C3%A9sultat" class="anchor" style="text-decoration: none;">Le résultat</a>
+          
+        
+      </h3>
+    
+
+<p>Nous avons déjà publié une mise à jour depuis l’utilisation du produit minimum viable. Après deux semaines d’attente de bugs majeurs susceptibles de casser le jeu, nous avons été surpris de constater que nous n’en avions pratiquement pas. J’ai personnellement adopté une nouvelle “règle” lors de la maintenance des mods d’Angel : si un bug est découvert, il faut d’abord créer un test unitaire approprié pour le repérer, avant de résoudre le problème. Malheureusement, l’exécution de tous les tests unitaires prend un certain temps, mais il est facile de contourner ce problème en le faisant pendant une pause-café.</p>
+
+<p>Actuellement, les (quelques) tests unitaires dont nous disposons ne vérifient que la phase de chargement du jeu (également appelée <a href="https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir#The_data_stage">phase de données</a>). Cependant, rien ne nous empêche de créer également des tests unitaires complexes qui surveillent le comportement pendant le jeu (<a href="https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir#Runtime_stage">phase d’exécution</a>).</p>
+
+<p>J’espère que cela m’aidera (en tant que développeur) à passer moins de temps à l’avenir à corriger les bugs, et à passer plus de temps à mettre en œuvre de nouvelles fonctionnalités. Je comprends que cela n’est pas nécessaire pour de petits mods autonomes, mais c’est très utile pour maintenir une base de code assez importante, surtout lorsque vous développez à plusieurs et que vous n’êtes pas en mesure de vérifier chaque ligne de code que quelqu’un d’autre a écrite, ni de connaître tous les détails de chaque fonctionnalité qui a été ajoutée.</p>
+
+<p>Voici mon histoire personnelle, expliquant comment j’ai appris par moi-même comment et pourquoi les grandes entreprises utilisent des tests unitaires, l’intégration de codes et de nombreux outils pour automatiser leur processus de diffusion de nouvelles fonctionnalités, avec la certitude que le code réussira à faire ce qu’il était censé faire, et ne frustrera pas des millions de personnes avec un petit message peu explicite <em>“La tâche a échoué avec succès. Contactez les développeurs.”</em></p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://discord.gg/nxnCFkb">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/fr/discord">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-47/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/fr/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-09-23T09:24:49+00:00</updated>
+  <updated>2021-09-24T13:41:37+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #48 - Angel's Automated Unit Tests</title>
+    <link href="https://alt-f4.blog/de/ALTF4-48/" />
+    <id>https://alt-f4.blog/ALTF4-48</id>
+    <updated>2021-09-24T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;After a long while, an ancient contributor by the name of &lt;em&gt;Lovely_Santa&lt;/em&gt; is back in his writing pen! We’ve last heard from our hero all the way back in &lt;a href=&quot;https://alt-f4.blog/ALTF4-2/&quot;&gt;Issue #2&lt;/a&gt; where he was experimenting with the modding abilities of the new (at the time) spidertron. This time, he...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-39</id>
     <updated>2021-06-11T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In dieser Woche von Alt-F4 #39 macht &lt;em&gt;Drogiwan Cannobi&lt;/em&gt; seinen ersten Beitrag zu dem Projekt, indem er den Hintergrund und die Funktionalität seiner Rube-Goldberg-artigen selbständig expandierenden Fabrik, liebevoll JOSEF genannt, erklärt. Es ist ein richtig cooles Konzept, dass gar nicht mal so komplex ist, wenn du zu den Details kommst.&lt;/p&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #38 – Factorio MINT</title>
-    <link href="https://alt-f4.blog/de/ALTF4-38/" />
-    <id>https://alt-f4.blog/ALTF4-38</id>
-    <updated>2021-06-04T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In dieser Woche beschloss unser eigener technischer Editor, dass es eine gute Idee wäre, selbst einen Artikel zu schreiben. Wir waren uns da ja nicht so sicher, aber keiner konnte ihn aufhalten. Deshalb präsentieren wir: &lt;em&gt;Conor_&lt;/em&gt; schreibt über den Zusammenhang zwischen Factorio und MINT-Disziplinen. Also Studentenfutter rausholen und rein!&lt;/p&gt; &lt;h2...</content>
   </entry>
   
   
