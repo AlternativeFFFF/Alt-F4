@@ -5,7 +5,7 @@ I created a new mod, DyCore, a new core mod for all the coming DyWorld mods. Eve
 
 Well, now to address the elephant in the room: "When will it finally be released?" Due to the time it took to create this mod and its current state, I no longer feel it should be in closed beta. So, I have decided on a new route:
 
-![DyWorld3.png](DyWorld3.png)
+![DyWorld-00.png](DyWorld-00.png)
 
 As you can see here, I have decided to send the last closed developer build to the Red Circuit team members, who will stream it starting from the 16th of October.
 Quite a few streamers and YouTubers will attend this and me in voice chat with them, explaining many decisions, development, roadmap, etc.
