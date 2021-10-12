@@ -69,7 +69,7 @@ He knows that only he can get off this rock by building and researching because 
 Hey guys, my name is Max, better known on the internet as Maxi der Zocker, and I am a translator and beta tester for DyWorld-Dynamics.
 
 ### Backstory
-My experience with DyWorld, or DyWorld-Dynamics, as it is now called, started in 2020. I watched a small German Youtuber playing the DyWorld modpack with one of his friends. I wanted to play the modpack, but when I looked at the mods site on the Factorio Mod Portal, I quickly realized that it is deprecated, and a successor was inevitable.
+My experience with DyWorld, or DyWorld-Dynamics, as it is now called, started in 2020. I watched a small German Youtuber, called [Lumatan](https://www.youtube.com/playlist?list=PLEui1S1GUHOMKnVrLjgybKRKzBNMIHTfk), playing the DyWorld modpack with one of his friends. I wanted to play the modpack, but when I looked at the mods site on the Factorio Mod Portal, I quickly realized that it is deprecated, and a successor was inevitable.
 I joined the Discord, read through the rules, and looked at the announcements channel.
 There it was written: "The first public beta of DyWorld-Dynamics will probably follow in a few months' time."
 I was happily waiting. Near the end of the year, Dysoch asked on his Discord if someone wanted to translate the mod to any language. I offered myself to do the German translation. A few days later, I sent him my translations.
