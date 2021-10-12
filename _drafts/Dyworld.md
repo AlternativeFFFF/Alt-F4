@@ -1,10 +1,10 @@
 ## DyWorld-Dynamics’s Beta Testers Phase <author>Dysoch</author>
 
-In the last [Alt-F4 article](https://alt-f4.blog/ALTF4-43/), I talked about beta testing and releasing after that. Well, my testers have done quite a bit of work since then. More bugs have been fleshed out; Space Exploration broke a few new things (and fixed them after that), a few new features were added, and much more. I created a new mod, DyCore, a new core mod for all the coming DyWorld mods. Eventually, everything related to the story will move there, allowing other modders to create their own story elements.
+In my last [Alt-F4 article](https://alt-f4.blog/ALTF4-43/#dyworld-dynamics-and-its-history-dysoch), I talked about beta testing and releasing DyWorld. After that, well, my testers have done quite a bit of work since then. More bugs have been fleshed out; Space Exploration broke a few new things (and fixed them after that), a few new features were added, and much more. I created a new mod, DyCore, a new core mod for all the coming DyWorld mods. Eventually, everything related to the story will move there, allowing other modders to create their own story elements.
 
 Well, now to address the elephant in the room: "When will it finally be released?" Due to the time it took to create this mod and its current state, I no longer feel it should be in closed beta. So, I have decided on a new route:
 
-[![Red Circuit Streaming Event!](DyWorld3.png)](https://discord.red-circuit.org)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/DyWorld3.jpg' alt='Red Circuit Streaming Event!' caption='<a href="https://discord.red-circuit.org">Red Circuit Streaming Event!</a>' %}
 
 As you can see, I have decided to send the last closed developer build to the Red Circuit team members, who will stream it on a multiplayer server starting from the 16th of October. Quite a few streamers and YouTubers will attend this, including myself in voice chat with them, explaining many decisions, development, roadmap, etc.
 
@@ -49,11 +49,11 @@ Now I give the word to a few of my testers, who have tested it quite a bit and h
 
 The story's writing is incredible; it gives you a sense of purpose and has ties to realism. You have to monitor your food (you need to collect fish, and they have a real benefit as you do not auto-heal) and water, treat your health via med packs and defend yourself from the locals.
 
-![Use this custom GUI to keep track of your vitals and position.](Dyworld-01.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-01.jpg' caption='Use this custom GUI to keep track of your vitals and position.' %}
 
 The story does what a story should do: make you feel sympathy for the character. You're the only one on this world, and your ship is in ruins. Even though you tried to approach the locals, it is clear that your presence isn't wanted.You're determined, but also aware of the threats that linger just beyond the veil of darkness. You're aware that only you can get off this rock by building and researching, because the factory must grow!
 
-![A molten bronze metallurgic factory.](Dyworld-09.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-09.jpg' caption='A molten bronze metallurgic factory.' %}
 
 ## DyWorld-Dynamics Tester Experience <author>Maxi der Zocker</author>
 
@@ -75,11 +75,11 @@ The next day we first waited on a quick hotfix from him, and then shortly after,
 
 So, we began with our major redesign. It came out looking and functioning quite well, and we started with the research. Researching was significantly resource-intensive at that point in the game, but it worked out, and we were glad that we had redesigned our base. Soon we discovered that some recipes didn't work and unlocked properly, so Dysoch began working on yet another hotfix. We still played happily for another three hours without encountering another bug.
 
-![Enemies expand beyond your walls! Defend everything with turrets!](Dyworld-02.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-02.jpg' caption='Enemies expand beyond your walls! Defend everything with turrets!' %}
 
 Once, I patched up a hole in my defense line the aliens created on one side of my base, only to have them plow through the other side of the base. So I rebuilt up my defense lines, and also expanded the base at the same time. Around that time, I decided that I play-tested the mod for long enough.
 
-![A nice base after a few hours of Multiplayer Testing. Still in the starting phase though.](Dyworld-03.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-03.jpg' caption='A nice base after a few hours of Multiplayer Testing. Still in the starting phase though.' %}
 
 So, I stopped playing and returned to translating. All in all, I love this mod. It has a great difficulty curve and is very easy to pick up.
 
@@ -91,9 +91,14 @@ Currently, I am working on a massive roadmap. The mod is far from done. A large 
 
 But that is the future, and for now, let's focus on what is happening now. So I will leave you with plenty of nice screenshots from my beta testers to wet your tongue a bit. For further updates check out the [Dyworld discord server](https://discord.com/invite/yHJaZrq5Ww).
 
-![An effective wall setup for the early game. Once bigger natives come it will quickly be overrun though.](Dyworld-05.jpg)
-![Very basic starting ore smelting. Gets more efficient with research.](Dyworld-06.jpg)
-![End of the starting game ammo creation.](Dyworld-07.jpg)
-![A simple, but efficient way to get rid of slag from your metallurgic processes. Capable of using 100k slag per minute.](Dyworld-08.png)
-![A high efficient ore cleaning and smelting for the early game. Created by Peps.](Dyworld-10.jpg)
-![Masochist playthrough (hardest settings), destroyed right after this.](Dyworld-04.jpg)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-05.jpg' caption='An effective wall setup for the early game. Once bigger natives come it will quickly be overrun though.' %}
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-06.jpg' caption='Very basic starting ore smelting. Gets more efficient with research.' %}
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-07.jpg' caption='End of the starting game ammo creation.' %}
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-08.jpg' caption='A simple, but efficient way to get rid of slag from your metallurgic processes. Capable of using 100k slag per minute.' %}
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-10.jpg' caption='A high efficient ore cleaning and smelting for the early game. Created by Peps.' %}
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/49/Dyworld-04.jpg' caption='Masochist playthrough (hardest settings), destroyed right after this.' href='https://media.alt-f4.blog/ALTF4/49/Dyworld-04.jpg' %}
