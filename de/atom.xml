@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="https://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom">
 
   <title>Alternative Friday Factorio Fan Facts</title>
-  <link href="https://alt-f4.blog/de/atom.xml" rel="self" />
+  <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-09-24T17:21:29+00:00</updated>
+  <updated>2021-10-13T08:47:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -17,7 +17,7 @@
     <link href="https://alt-f4.blog/de/ALTF4-48/" />
     <id>https://alt-f4.blog/ALTF4-48</id>
     <updated>2021-09-24T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;After a long while, an ancient contributor by the name of &lt;em&gt;Lovely_Santa&lt;/em&gt; is back in his writing pen! We’ve last heard from our hero all the way back in &lt;a href=&quot;https://alt-f4.blog/ALTF4-2/&quot;&gt;Issue #2&lt;/a&gt; where he was experimenting with the modding abilities of the new (at the time) Spidertron. This time, he...</content>
+    <content type="html">&lt;p&gt;Nach langer Zeit meldet sich ein alter Bekannter namens &lt;em&gt;Lovely_Santa&lt;/em&gt; zurück! Zuletzt haben wir von unserem Helden in &lt;a href=&quot;https://alt-f4.blog/de/ALTF4-2//&quot;&gt;Ausgabe #2&lt;/a&gt; gehört, als er mit den Modding-Fähigkeiten des (damals) neuen Spidertron experimentierte. Dieses Mal bleibt er tatsächlich beim Thema Angel’s Mods, auch wenn er über etwas ganz anders schreibt …&lt;/p&gt;...</content>
   </entry>
   
   
@@ -63,11 +63,11 @@
   
   
   <entry>
-    <title>Alt-F4 #43 - The DyWorld Saga</title>
+    <title>Alt-F4 #43 - Die DyWorld Saga</title>
     <link href="https://alt-f4.blog/de/ALTF4-43/" />
     <id>https://alt-f4.blog/ALTF4-43</id>
     <updated>2021-07-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;In issue #43 of Alt-F4, mod-maker extraordinaire &lt;em&gt;Dysoch&lt;/em&gt; talks about his history of modding (which started all the way back in Factorio 0.7!), giving a bit of an overview of how his mods evolved over time. Then, he goes into his latest and greatest project that’s due for release very...</content>
+    <content type="html">&lt;p&gt;In Alt-F4 Ausgabe Nummer #43 erzählt der außerordentliche Modder &lt;em&gt;Dysoch&lt;/em&gt; über seine Geschichte im Moddig, welche bereits mit Version 0.7 begann, und berichtet über die Veränderungen, die seine Mods in dieser Zeit durchgemacht haben. Anschließend wird er etwas über sein neustes und größtes Projekt erzählen, welches bald veröffentlicht wird. Es...</content>
   </entry>
   
   
