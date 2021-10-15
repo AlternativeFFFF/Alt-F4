@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh" class="zh">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #49 - Dyworld 发布派对</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #49 - Dyworld 发布派对">
+<meta name="author" content="Dysoch, Senital2011, Maxi der Zocker">
+<meta property="og:locale" content="zh">
+<meta name="description" content="在非自愿的两周休假之后（请务必加入我们的 Discord，贡献你的精彩文章暗示性的点头），Alt-F4 带着第 49 期回来了！实际上本周是两个回归，因为 Dysoch 也回来谈论 Dyworld，这次是关于发布派对和幕后乐趣。 DyWorld-Dynamics’s 公测 Dysoch 我在上一篇 Alt-F4 文章中谈到了 DyWorld 的 Beta 测试和发布。从那时算起我的测试员完成了相当多的工作。挑出了很多 Bug；太空探索搞砸了一些新玩意儿（之后又修好了），增加了一些新功能，等等。我创建了一个新 Mod，DyCore，用于所有即将到来的 DyWorld Mod 的新核心 Mod。到最后，所有与故事有关的内容都将移到那里，允许其他 Mod 作者来创建他们自己的故事元素。 好了，现在得讲讲那个一直不愿提起的问题。“发布时间？”鉴于创作这个 Mod 所消耗的时间和它目前的状态，我觉得它不应该再处于封闭测试阶段。因此，我决定采用新的路线： Red Circuit 直播活动！ 正如你所看到的，我已决定将最后一个封闭开发版本发送给 Red Circuit 团队成员，他们将从 10 月 16 日起在多人服务器上进行直播。有不少主播和 YouTuber 会参加这个活动，也包括我自己来与他们连麦，解释诸多决定、开发、路线图等。 Boldviking，Haphollas，JD-Plays，LaureenLlama，Leamnji，NIronwolf，Jaruvica，Peps 和 Dysoch 都将参加这次直播活动！向我提问，听我和主播聊天，并一同享受美好的时光！ 活动结束后，我将根据发现的 Bug 或问题进行最后几次修改，然后在 10 月 19 日发布 Mod，真的！ 致谢 以下人士的协助让这个 Mod 得以完成，我想在这里向全世界感谢他们。虽然是由我（Dysoch）独自开发，但也接受了很多人的帮助。请允许我介绍一下！ 我之前和现在的大部分 Mod 都是由一人来做的平衡：Peps。他孜孜不倦地维持我的 Mod 尽可能的平衡，让我受益良多，如若没有他的协助，DyWorld 永远不会成功。 在公开发布前的最后几个月，我有几位测试员来测试这个 Mod，找出大部分的 Bug，等等。他们也值得站在聚光灯下，有了他们这个 Mod 才尽量排除了 Bug。虽然有些人从未玩过它，但也根据我的想法提供了宝贵的反馈： Peps EthereanOne RedKatana Omega AnnaLaura Maxi_der_Zocker Rockman_64 Veare the Great 这个 Mod 也通过一些人获得了很多关注，最值得一提的是 Peps 和 Alt-F4 团队，所以也感谢你们。 翻译和故事校对由以下人士完成： 英语：Conor_ 德语：Maxi_der_Zocker 法语：bev 再次特别感谢 Peps。他让我与 Red Circuit 的成员取得了联系，他们将在接下来的周末进行直播。正因如此才诞生了本篇 Alt-F4 和 RC 团队的试玩。所以 Peps，非常感谢你的帮助！超棒的！ 最后，当然要感谢 RC 团队乐意试玩这个游戏！他们一直是我伟大的支持者，并且乐意向我提供所需的帮助。我很高兴我的 Mod 吸引了有才华的流媒体人和 YouTuber 的关注。 这些信息也将在我 Mod 的（游戏内）Informatron 页面中保持更新。想帮忙吗？也许你也能加入名人堂！ 现在请允许我将话筒交给几位测试员，他们测试过很多内容并在诸多方面提供了帮助。 初见游戏 Senital2011 这是个令人难以置信的故事的；它给你一种目的感，并与现实关联。你必须监控你的食物（你需要收集鱼，它们真的有用因为你不会自动回复）和水，通过医疗包补充你的血量，并从土著手里保卫自己。 用这个定制的 GUI 来跟踪你的生命体征和位置。 这个故事实现了一个故事应该做的事情：让你与角色产生共情。你是这个世界上唯一的人，而你的飞船已经成了残骸。尽管你试图接近当地土著，但显然你的存在并不受欢迎。你很坚定，但也意识到在黑暗的面纱之外徘徊的威胁。你意识到自己只有通过建设和研究离开这块岩石，因为工厂必须发展扩张！ 一个青铜冶金厂。 DyWorld-Dynamics 测试体验 Maxi der Zocker 大家好，我的名字是 Max，网名 Maxi der Zocker，我是 DyWorld-Dynamics 的翻译员和测试员。 背景故事 我对 DyWorld 即现在的 DyWorld-Dynamics 的体验始于 2020 年。我在 Youtube 上看到一位叫 Lumatan 的德国人和他的一个朋友在玩 DyWorld。我想玩玩这个 Modp，但是当我在异星工厂 Mod 门户网站上查看时意识到它已经被废弃了，并转而开发其后继者。所以我加入了 Discord，阅读了规则，并看了眼公告频道。那里写着：“DyWorld-Dynamics 的第一个公开测试版可能会在几个月后推出。” 我高兴地等待着。靠近年底的时候，Dysoch 在他的 Discord 上问是否有人想把这个 Mod 翻译成其他语言。我自告奋勇做德语翻译。几天后，我把我的译文发给他。数个月后，或者说半年后，Dysoch 举办了一次 Beta 测试资格抽奖活动。我参加并幸运地中奖。 两天后，我们收到了最新的开发版本，以测试该 Mod。我还直接询问是否要恢复翻译这个 Mod 以及如何翻译。我被告知应该从头开始，因为发生了太多的变化。我接受了这个挑战，一点一点地翻译。大致每有新开发版本出来时，我就发送一部分新的翻译。最后一大块是故事——整整三天的艰苦翻译工作。完成之后，这个 Mod 就有了完整的德语和法语（在另一位 DyWorld 社区的成员协助下）翻译。 游戏测试 我不仅翻译了这个 Mod，还对它进行了测试。在第一周，新的测试者、赞助者和 Dysoch 都聚集在一起，进行了一次游戏测试。我们有五个人在玩，还有三个人只在语音频道里出席。Dysoch 是其中之一。他几乎一直给我们提示并做一些快速的故障排除，因为我们发现了很多对游戏性影响不大的小 Bug。 第二天，我们先是等来了他的一个快速热修复，接着我们继续进行游戏测试环节。这一次，我们没有遇到 Bug。在游玩的过程中，我们首先建立了小型初始基地，或者是你在游戏开始时建造的东西，以便快速制造物品。基本上，这是一个小型的意大利面条基地，每个人都是这么干的并乐在其中。在游戏的那个时期，我们想重新设计基地，一个大的[数据删除]发生了，[数据删除]我们的[数据删除]。 因此，我们开始重新设计。它的外观和功能都很好，于是我们从研究动手。在游戏的那个阶段，研究工作显然是资源密集型的，但至少是可行的，我们很高兴重新设计了我们的基地。不久，我们发现有些配方不能正常解锁和工作，于是 Dysoch 开始制作另一个热修复。我们接着又愉快地玩了三个小时，没有遇到新 Bug。 敌人扩张进你的城墙之内！用炮塔保卫家园！ 有一次，我修补完外星人在冲破基地一侧防线造成的漏洞，但他们却把基地的另一侧犁了一遍。于是我重建了我的防线，同时也扩大了基地。大约在那个时候，我认为我测试这个 Mod 已经够久了。 经过几个小时的多人游戏测试后建成的一个基地。是个不错的基地但仍处于起步阶段。 到此，我结束了游戏，回到了翻译工作。总而言之，我喜欢这个 Mod。它有个很棒的难度曲线并且非常容易上手。 此外，它不像 Bob 和 Angel 那样复杂，尽管 DyWorld-Dynamics 可能比这两个 Mod 有更多的建筑。此外，在其他 Mod 中，与DyWorld-Dynamics不同你没有一个线性的进展，而这里有故事剧情。综上，我推荐你尝试下这个 Mod。 未来 Dysoch 目前，我正在制定一个庞大的路线图。这个 Mod 还远未完成。第三幕的很大一部分故事都在 Mod 中，还会有更多的内容。第四幕和第五幕最终也会出现，但这需要有更多的内容被添加到 Mod 中。在目前我在 Mod 发布后将向公众提供的路线图上，有 15 个重要的更新计划，还有大约 20 个在我脑海中。一旦这个 Mod 最终达到 1.0 版本，可玩内容将非常丰富，足以让你一次游戏玩上几个月。 但那是未来的事，现在让我们专注于眼前。我将给你留下大量来自我的测试人员的漂亮截图，给你们尝尝鲜。如需进一步更新，请查看 Dyworld Discord 服务器。 一个游戏初期有效的围墙设置。一旦有更大的土著出现将很快被占领。 非常基础的初始矿石冶炼。随着研究的进行，效率会越来越高。 初期弹药生产末端。 一种简单而有效的方法来清除冶金过程中的矿渣。每分钟最高处理 100k 矿渣。 一个适用于游戏初期的高效矿石清理及冶炼。由 Peps 创建。 受虐狂的游戏（最高难度），在这之后就被摧毁了。 点击查看原图 征稿 一如既往的，我们正在召集任何想要为 Alt-F4 做出贡献的人，无论是提交文章还是帮助翻译都可以。如果您有些有趣的想法，并乐于与社区分享，这里就是一个好地方。如果您没有太大把握，我们会很乐意帮助您讨论内容创意和结构问题。如果您有意参与，从加入 Discord 开始吧！">
+<meta property="og:description" content="在非自愿的两周休假之后（请务必加入我们的 Discord，贡献你的精彩文章暗示性的点头），Alt-F4 带着第 49 期回来了！实际上本周是两个回归，因为 Dysoch 也回来谈论 Dyworld，这次是关于发布派对和幕后乐趣。 DyWorld-Dynamics’s 公测 Dysoch 我在上一篇 Alt-F4 文章中谈到了 DyWorld 的 Beta 测试和发布。从那时算起我的测试员完成了相当多的工作。挑出了很多 Bug；太空探索搞砸了一些新玩意儿（之后又修好了），增加了一些新功能，等等。我创建了一个新 Mod，DyCore，用于所有即将到来的 DyWorld Mod 的新核心 Mod。到最后，所有与故事有关的内容都将移到那里，允许其他 Mod 作者来创建他们自己的故事元素。 好了，现在得讲讲那个一直不愿提起的问题。“发布时间？”鉴于创作这个 Mod 所消耗的时间和它目前的状态，我觉得它不应该再处于封闭测试阶段。因此，我决定采用新的路线： Red Circuit 直播活动！ 正如你所看到的，我已决定将最后一个封闭开发版本发送给 Red Circuit 团队成员，他们将从 10 月 16 日起在多人服务器上进行直播。有不少主播和 YouTuber 会参加这个活动，也包括我自己来与他们连麦，解释诸多决定、开发、路线图等。 Boldviking，Haphollas，JD-Plays，LaureenLlama，Leamnji，NIronwolf，Jaruvica，Peps 和 Dysoch 都将参加这次直播活动！向我提问，听我和主播聊天，并一同享受美好的时光！ 活动结束后，我将根据发现的 Bug 或问题进行最后几次修改，然后在 10 月 19 日发布 Mod，真的！ 致谢 以下人士的协助让这个 Mod 得以完成，我想在这里向全世界感谢他们。虽然是由我（Dysoch）独自开发，但也接受了很多人的帮助。请允许我介绍一下！ 我之前和现在的大部分 Mod 都是由一人来做的平衡：Peps。他孜孜不倦地维持我的 Mod 尽可能的平衡，让我受益良多，如若没有他的协助，DyWorld 永远不会成功。 在公开发布前的最后几个月，我有几位测试员来测试这个 Mod，找出大部分的 Bug，等等。他们也值得站在聚光灯下，有了他们这个 Mod 才尽量排除了 Bug。虽然有些人从未玩过它，但也根据我的想法提供了宝贵的反馈： Peps EthereanOne RedKatana Omega AnnaLaura Maxi_der_Zocker Rockman_64 Veare the Great 这个 Mod 也通过一些人获得了很多关注，最值得一提的是 Peps 和 Alt-F4 团队，所以也感谢你们。 翻译和故事校对由以下人士完成： 英语：Conor_ 德语：Maxi_der_Zocker 法语：bev 再次特别感谢 Peps。他让我与 Red Circuit 的成员取得了联系，他们将在接下来的周末进行直播。正因如此才诞生了本篇 Alt-F4 和 RC 团队的试玩。所以 Peps，非常感谢你的帮助！超棒的！ 最后，当然要感谢 RC 团队乐意试玩这个游戏！他们一直是我伟大的支持者，并且乐意向我提供所需的帮助。我很高兴我的 Mod 吸引了有才华的流媒体人和 YouTuber 的关注。 这些信息也将在我 Mod 的（游戏内）Informatron 页面中保持更新。想帮忙吗？也许你也能加入名人堂！ 现在请允许我将话筒交给几位测试员，他们测试过很多内容并在诸多方面提供了帮助。 初见游戏 Senital2011 这是个令人难以置信的故事的；它给你一种目的感，并与现实关联。你必须监控你的食物（你需要收集鱼，它们真的有用因为你不会自动回复）和水，通过医疗包补充你的血量，并从土著手里保卫自己。 用这个定制的 GUI 来跟踪你的生命体征和位置。 这个故事实现了一个故事应该做的事情：让你与角色产生共情。你是这个世界上唯一的人，而你的飞船已经成了残骸。尽管你试图接近当地土著，但显然你的存在并不受欢迎。你很坚定，但也意识到在黑暗的面纱之外徘徊的威胁。你意识到自己只有通过建设和研究离开这块岩石，因为工厂必须发展扩张！ 一个青铜冶金厂。 DyWorld-Dynamics 测试体验 Maxi der Zocker 大家好，我的名字是 Max，网名 Maxi der Zocker，我是 DyWorld-Dynamics 的翻译员和测试员。 背景故事 我对 DyWorld 即现在的 DyWorld-Dynamics 的体验始于 2020 年。我在 Youtube 上看到一位叫 Lumatan 的德国人和他的一个朋友在玩 DyWorld。我想玩玩这个 Modp，但是当我在异星工厂 Mod 门户网站上查看时意识到它已经被废弃了，并转而开发其后继者。所以我加入了 Discord，阅读了规则，并看了眼公告频道。那里写着：“DyWorld-Dynamics 的第一个公开测试版可能会在几个月后推出。” 我高兴地等待着。靠近年底的时候，Dysoch 在他的 Discord 上问是否有人想把这个 Mod 翻译成其他语言。我自告奋勇做德语翻译。几天后，我把我的译文发给他。数个月后，或者说半年后，Dysoch 举办了一次 Beta 测试资格抽奖活动。我参加并幸运地中奖。 两天后，我们收到了最新的开发版本，以测试该 Mod。我还直接询问是否要恢复翻译这个 Mod 以及如何翻译。我被告知应该从头开始，因为发生了太多的变化。我接受了这个挑战，一点一点地翻译。大致每有新开发版本出来时，我就发送一部分新的翻译。最后一大块是故事——整整三天的艰苦翻译工作。完成之后，这个 Mod 就有了完整的德语和法语（在另一位 DyWorld 社区的成员协助下）翻译。 游戏测试 我不仅翻译了这个 Mod，还对它进行了测试。在第一周，新的测试者、赞助者和 Dysoch 都聚集在一起，进行了一次游戏测试。我们有五个人在玩，还有三个人只在语音频道里出席。Dysoch 是其中之一。他几乎一直给我们提示并做一些快速的故障排除，因为我们发现了很多对游戏性影响不大的小 Bug。 第二天，我们先是等来了他的一个快速热修复，接着我们继续进行游戏测试环节。这一次，我们没有遇到 Bug。在游玩的过程中，我们首先建立了小型初始基地，或者是你在游戏开始时建造的东西，以便快速制造物品。基本上，这是一个小型的意大利面条基地，每个人都是这么干的并乐在其中。在游戏的那个时期，我们想重新设计基地，一个大的[数据删除]发生了，[数据删除]我们的[数据删除]。 因此，我们开始重新设计。它的外观和功能都很好，于是我们从研究动手。在游戏的那个阶段，研究工作显然是资源密集型的，但至少是可行的，我们很高兴重新设计了我们的基地。不久，我们发现有些配方不能正常解锁和工作，于是 Dysoch 开始制作另一个热修复。我们接着又愉快地玩了三个小时，没有遇到新 Bug。 敌人扩张进你的城墙之内！用炮塔保卫家园！ 有一次，我修补完外星人在冲破基地一侧防线造成的漏洞，但他们却把基地的另一侧犁了一遍。于是我重建了我的防线，同时也扩大了基地。大约在那个时候，我认为我测试这个 Mod 已经够久了。 经过几个小时的多人游戏测试后建成的一个基地。是个不错的基地但仍处于起步阶段。 到此，我结束了游戏，回到了翻译工作。总而言之，我喜欢这个 Mod。它有个很棒的难度曲线并且非常容易上手。 此外，它不像 Bob 和 Angel 那样复杂，尽管 DyWorld-Dynamics 可能比这两个 Mod 有更多的建筑。此外，在其他 Mod 中，与DyWorld-Dynamics不同你没有一个线性的进展，而这里有故事剧情。综上，我推荐你尝试下这个 Mod。 未来 Dysoch 目前，我正在制定一个庞大的路线图。这个 Mod 还远未完成。第三幕的很大一部分故事都在 Mod 中，还会有更多的内容。第四幕和第五幕最终也会出现，但这需要有更多的内容被添加到 Mod 中。在目前我在 Mod 发布后将向公众提供的路线图上，有 15 个重要的更新计划，还有大约 20 个在我脑海中。一旦这个 Mod 最终达到 1.0 版本，可玩内容将非常丰富，足以让你一次游戏玩上几个月。 但那是未来的事，现在让我们专注于眼前。我将给你留下大量来自我的测试人员的漂亮截图，给你们尝尝鲜。如需进一步更新，请查看 Dyworld Discord 服务器。 一个游戏初期有效的围墙设置。一旦有更大的土著出现将很快被占领。 非常基础的初始矿石冶炼。随着研究的进行，效率会越来越高。 初期弹药生产末端。 一种简单而有效的方法来清除冶金过程中的矿渣。每分钟最高处理 100k 矿渣。 一个适用于游戏初期的高效矿石清理及冶炼。由 Peps 创建。 受虐狂的游戏（最高难度），在这之后就被摧毁了。 点击查看原图 征稿 一如既往的，我们正在召集任何想要为 Alt-F4 做出贡献的人，无论是提交文章还是帮助翻译都可以。如果您有些有趣的想法，并乐于与社区分享，这里就是一个好地方。如果您没有太大把握，我们会很乐意帮助您讨论内容创意和结构问题。如果您有意参与，从加入 Discord 开始吧！">
+<link rel="canonical" href="https://alt-f4.blog/zh/ALTF4-49/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-49/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-15T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-10-15T00:00:00+00:00","author":{"@type":"Person","name":"Dysoch, Senital2011, Maxi der Zocker"},"description":"在非自愿的两周休假之后（请务必加入我们的 Discord，贡献你的精彩文章暗示性的点头），Alt-F4 带着第 49 期回来了！实际上本周是两个回归，因为 Dysoch 也回来谈论 Dyworld，这次是关于发布派对和幕后乐趣。 DyWorld-Dynamics’s 公测 Dysoch 我在上一篇 Alt-F4 文章中谈到了 DyWorld 的 Beta 测试和发布。从那时算起我的测试员完成了相当多的工作。挑出了很多 Bug；太空探索搞砸了一些新玩意儿（之后又修好了），增加了一些新功能，等等。我创建了一个新 Mod，DyCore，用于所有即将到来的 DyWorld Mod 的新核心 Mod。到最后，所有与故事有关的内容都将移到那里，允许其他 Mod 作者来创建他们自己的故事元素。 好了，现在得讲讲那个一直不愿提起的问题。“发布时间？”鉴于创作这个 Mod 所消耗的时间和它目前的状态，我觉得它不应该再处于封闭测试阶段。因此，我决定采用新的路线： Red Circuit 直播活动！ 正如你所看到的，我已决定将最后一个封闭开发版本发送给 Red Circuit 团队成员，他们将从 10 月 16 日起在多人服务器上进行直播。有不少主播和 YouTuber 会参加这个活动，也包括我自己来与他们连麦，解释诸多决定、开发、路线图等。 Boldviking，Haphollas，JD-Plays，LaureenLlama，Leamnji，NIronwolf，Jaruvica，Peps 和 Dysoch 都将参加这次直播活动！向我提问，听我和主播聊天，并一同享受美好的时光！ 活动结束后，我将根据发现的 Bug 或问题进行最后几次修改，然后在 10 月 19 日发布 Mod，真的！ 致谢 以下人士的协助让这个 Mod 得以完成，我想在这里向全世界感谢他们。虽然是由我（Dysoch）独自开发，但也接受了很多人的帮助。请允许我介绍一下！ 我之前和现在的大部分 Mod 都是由一人来做的平衡：Peps。他孜孜不倦地维持我的 Mod 尽可能的平衡，让我受益良多，如若没有他的协助，DyWorld 永远不会成功。 在公开发布前的最后几个月，我有几位测试员来测试这个 Mod，找出大部分的 Bug，等等。他们也值得站在聚光灯下，有了他们这个 Mod 才尽量排除了 Bug。虽然有些人从未玩过它，但也根据我的想法提供了宝贵的反馈： Peps EthereanOne RedKatana Omega AnnaLaura Maxi_der_Zocker Rockman_64 Veare the Great 这个 Mod 也通过一些人获得了很多关注，最值得一提的是 Peps 和 Alt-F4 团队，所以也感谢你们。 翻译和故事校对由以下人士完成： 英语：Conor_ 德语：Maxi_der_Zocker 法语：bev 再次特别感谢 Peps。他让我与 Red Circuit 的成员取得了联系，他们将在接下来的周末进行直播。正因如此才诞生了本篇 Alt-F4 和 RC 团队的试玩。所以 Peps，非常感谢你的帮助！超棒的！ 最后，当然要感谢 RC 团队乐意试玩这个游戏！他们一直是我伟大的支持者，并且乐意向我提供所需的帮助。我很高兴我的 Mod 吸引了有才华的流媒体人和 YouTuber 的关注。 这些信息也将在我 Mod 的（游戏内）Informatron 页面中保持更新。想帮忙吗？也许你也能加入名人堂！ 现在请允许我将话筒交给几位测试员，他们测试过很多内容并在诸多方面提供了帮助。 初见游戏 Senital2011 这是个令人难以置信的故事的；它给你一种目的感，并与现实关联。你必须监控你的食物（你需要收集鱼，它们真的有用因为你不会自动回复）和水，通过医疗包补充你的血量，并从土著手里保卫自己。 用这个定制的 GUI 来跟踪你的生命体征和位置。 这个故事实现了一个故事应该做的事情：让你与角色产生共情。你是这个世界上唯一的人，而你的飞船已经成了残骸。尽管你试图接近当地土著，但显然你的存在并不受欢迎。你很坚定，但也意识到在黑暗的面纱之外徘徊的威胁。你意识到自己只有通过建设和研究离开这块岩石，因为工厂必须发展扩张！ 一个青铜冶金厂。 DyWorld-Dynamics 测试体验 Maxi der Zocker 大家好，我的名字是 Max，网名 Maxi der Zocker，我是 DyWorld-Dynamics 的翻译员和测试员。 背景故事 我对 DyWorld 即现在的 DyWorld-Dynamics 的体验始于 2020 年。我在 Youtube 上看到一位叫 Lumatan 的德国人和他的一个朋友在玩 DyWorld。我想玩玩这个 Modp，但是当我在异星工厂 Mod 门户网站上查看时意识到它已经被废弃了，并转而开发其后继者。所以我加入了 Discord，阅读了规则，并看了眼公告频道。那里写着：“DyWorld-Dynamics 的第一个公开测试版可能会在几个月后推出。” 我高兴地等待着。靠近年底的时候，Dysoch 在他的 Discord 上问是否有人想把这个 Mod 翻译成其他语言。我自告奋勇做德语翻译。几天后，我把我的译文发给他。数个月后，或者说半年后，Dysoch 举办了一次 Beta 测试资格抽奖活动。我参加并幸运地中奖。 两天后，我们收到了最新的开发版本，以测试该 Mod。我还直接询问是否要恢复翻译这个 Mod 以及如何翻译。我被告知应该从头开始，因为发生了太多的变化。我接受了这个挑战，一点一点地翻译。大致每有新开发版本出来时，我就发送一部分新的翻译。最后一大块是故事——整整三天的艰苦翻译工作。完成之后，这个 Mod 就有了完整的德语和法语（在另一位 DyWorld 社区的成员协助下）翻译。 游戏测试 我不仅翻译了这个 Mod，还对它进行了测试。在第一周，新的测试者、赞助者和 Dysoch 都聚集在一起，进行了一次游戏测试。我们有五个人在玩，还有三个人只在语音频道里出席。Dysoch 是其中之一。他几乎一直给我们提示并做一些快速的故障排除，因为我们发现了很多对游戏性影响不大的小 Bug。 第二天，我们先是等来了他的一个快速热修复，接着我们继续进行游戏测试环节。这一次，我们没有遇到 Bug。在游玩的过程中，我们首先建立了小型初始基地，或者是你在游戏开始时建造的东西，以便快速制造物品。基本上，这是一个小型的意大利面条基地，每个人都是这么干的并乐在其中。在游戏的那个时期，我们想重新设计基地，一个大的[数据删除]发生了，[数据删除]我们的[数据删除]。 因此，我们开始重新设计。它的外观和功能都很好，于是我们从研究动手。在游戏的那个阶段，研究工作显然是资源密集型的，但至少是可行的，我们很高兴重新设计了我们的基地。不久，我们发现有些配方不能正常解锁和工作，于是 Dysoch 开始制作另一个热修复。我们接着又愉快地玩了三个小时，没有遇到新 Bug。 敌人扩张进你的城墙之内！用炮塔保卫家园！ 有一次，我修补完外星人在冲破基地一侧防线造成的漏洞，但他们却把基地的另一侧犁了一遍。于是我重建了我的防线，同时也扩大了基地。大约在那个时候，我认为我测试这个 Mod 已经够久了。 经过几个小时的多人游戏测试后建成的一个基地。是个不错的基地但仍处于起步阶段。 到此，我结束了游戏，回到了翻译工作。总而言之，我喜欢这个 Mod。它有个很棒的难度曲线并且非常容易上手。 此外，它不像 Bob 和 Angel 那样复杂，尽管 DyWorld-Dynamics 可能比这两个 Mod 有更多的建筑。此外，在其他 Mod 中，与DyWorld-Dynamics不同你没有一个线性的进展，而这里有故事剧情。综上，我推荐你尝试下这个 Mod。 未来 Dysoch 目前，我正在制定一个庞大的路线图。这个 Mod 还远未完成。第三幕的很大一部分故事都在 Mod 中，还会有更多的内容。第四幕和第五幕最终也会出现，但这需要有更多的内容被添加到 Mod 中。在目前我在 Mod 发布后将向公众提供的路线图上，有 15 个重要的更新计划，还有大约 20 个在我脑海中。一旦这个 Mod 最终达到 1.0 版本，可玩内容将非常丰富，足以让你一次游戏玩上几个月。 但那是未来的事，现在让我们专注于眼前。我将给你留下大量来自我的测试人员的漂亮截图，给你们尝尝鲜。如需进一步更新，请查看 Dyworld Discord 服务器。 一个游戏初期有效的围墙设置。一旦有更大的土著出现将很快被占领。 非常基础的初始矿石冶炼。随着研究的进行，效率会越来越高。 初期弹药生产末端。 一种简单而有效的方法来清除冶金过程中的矿渣。每分钟最高处理 100k 矿渣。 一个适用于游戏初期的高效矿石清理及冶炼。由 Peps 创建。 受虐狂的游戏（最高难度），在这之后就被摧毁了。 点击查看原图 征稿 一如既往的，我们正在召集任何想要为 Alt-F4 做出贡献的人，无论是提交文章还是帮助翻译都可以。如果您有些有趣的想法，并乐于与社区分享，这里就是一个好地方。如果您没有太大把握，我们会很乐意帮助您讨论内容创意和结构问题。如果您有意参与，从加入 Discord 开始吧！","url":"https://alt-f4.blog/ALTF4-49/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-49/"},"headline":"Alt-F4 #49 - Dyworld 发布派对","dateModified":"2021-10-15T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/49/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/49/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/zh/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/zh/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/zh/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/zh/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/zh/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/zh/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/zh/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/zh/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>社区驱动的 Factorio Friday Facts 后续站点</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-49/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-49/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-49/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-49/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-49/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-49/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-49/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-49/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-49/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button button-green lang-button" href="/zh/ALTF4-49/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #49 - Dyworld 发布派对  <author>2021-10-15</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+作者 <em>Dysoch, Senital2011, Maxi der Zocker</em>,
+
+
+
+编辑 <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>翻译 <em>Ph.X</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/49/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>目录</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#dyworld-dynamicss-%E5%85%AC%E6%B5%8B-dysoch">DyWorld-Dynamics’s 公测 <author>Dysoch</author></a>
+    <ul>
+      <li><a href="#%E8%87%B4%E8%B0%A2">致谢</a></li>
+    </ul>
+  </li>
+  <li><a href="#%E5%88%9D%E8%A7%81%E6%B8%B8%E6%88%8F-senital2011">初见游戏 <author>Senital2011</author></a></li>
+  <li>
+<a href="#dyworld-dynamics-%E6%B5%8B%E8%AF%95%E4%BD%93%E9%AA%8C-maxi-der-zocker">DyWorld-Dynamics 测试体验 <author>Maxi der Zocker</author></a>
+    <ul>
+      <li><a href="#%E8%83%8C%E6%99%AF%E6%95%85%E4%BA%8B">背景故事</a></li>
+      <li><a href="#%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95">游戏测试</a></li>
+    </ul>
+  </li>
+  <li><a href="#%E6%9C%AA%E6%9D%A5-dysoch">未来 <author>Dysoch</author></a></li>
+  <li><a href="#%E5%BE%81%E7%A8%BF">征稿</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>在非自愿的两周休假之后（请务必加入我们的 <a href="https://alt-f4.blog/zh/discord">Discord</a>，贡献你的精彩文章<em>暗示性的点头</em>），Alt-F4 带着第 49 期回来了！实际上本周是两个回归，因为 <em>Dysoch</em> 也回来谈论 Dyworld，这次是关于发布派对和幕后乐趣。</p>
+      <h2 id="dyworld-dynamicss-公测-dysoch">
+        
+        
+            <a href="#dyworld-dynamicss-%E5%85%AC%E6%B5%8B-dysoch" class="anchor" style="text-decoration: none;">DyWorld-Dynamics’s 公测 <author>Dysoch</author></a>
+          
+        
+      </h2>
+    
+
+<p>我在上一篇 <a href="https://alt-f4.blog/zh/ALTF4-43/#dyworld-dynamics-%E5%8F%8A%E5%85%B6%E5%8E%86%E5%8F%B2-dysoch">Alt-F4 文章</a>中谈到了 DyWorld 的 Beta 测试和发布。从那时算起我的测试员完成了相当多的工作。挑出了很多 Bug；太空探索搞砸了一些新玩意儿（之后又修好了），增加了一些新功能，等等。我创建了一个新 Mod，DyCore，用于所有即将到来的 DyWorld Mod 的新核心 Mod。到最后，所有与故事有关的内容都将移到那里，允许其他 Mod 作者来创建他们自己的故事元素。</p>
+
+<p>好了，现在得讲讲那个一直不愿提起的问题。“发布时间？”鉴于创作这个 Mod 所消耗的时间和它目前的状态，我觉得它不应该再处于封闭测试阶段。因此，我决定采用新的路线：</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/DyWorld3.jpg" alt="Red Circuit 直播活动！" style="max-width: ; max-height:  ">
+        
+        <figcaption><a href="https://discord.red-circuit.org">Red Circuit 直播活动！</a></figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>正如你所看到的，我已决定将最后一个封闭开发版本发送给 Red Circuit 团队成员，他们将从 10 月 16 日起在多人服务器上进行直播。有不少主播和 YouTuber 会参加这个活动，也包括我自己来与他们连麦，解释诸多决定、开发、路线图等。</p>
+
+<p><a href="https://boldviking.red-circuit.org">Boldviking</a>，<a href="https://haphollas.red-circuit.org">Haphollas</a>，<a href="https://jdplays.red-circuit.org">JD-Plays</a>，<a href="https://laureenLlama.red-circuit.org">LaureenLlama</a>，<a href="https://Leamnji.red-circuit.org">Leamnji</a>，<a href="https://nironwolf.red-circuit.org">NIronwolf</a>，Jaruvica，Peps 和 Dysoch 都将参加这次直播活动！向我提问，听我和主播聊天，并一同享受美好的时光！</p>
+
+<p>活动结束后，我将根据发现的 Bug 或问题进行最后几次修改，然后在 10 月 19 日发布 Mod，真的！</p>
+      <h3 id="致谢">
+        
+        
+            <a href="#%E8%87%B4%E8%B0%A2" class="anchor" style="text-decoration: none;">致谢</a>
+          
+        
+      </h3>
+    
+
+<p>以下人士的协助让这个 Mod 得以完成，我想在这里向全世界感谢他们。虽然是由我（Dysoch）独自开发，但也接受了很多人的帮助。请允许我介绍一下！</p>
+
+<p>我之前和现在的大部分 Mod 都是由一人来做的平衡：<em>Peps</em>。他孜孜不倦地维持我的 Mod 尽可能的平衡，让我受益良多，如若没有他的协助，DyWorld 永远不会成功。</p>
+
+<p>在公开发布前的最后几个月，我有几位测试员来测试这个 Mod，找出大部分的 Bug，等等。他们也值得站在聚光灯下，有了他们这个 Mod 才尽量排除了 Bug。虽然有些人从未玩过它，但也根据我的想法提供了宝贵的反馈：</p>
+
+<ul>
+  <li>Peps</li>
+  <li>EthereanOne</li>
+  <li>RedKatana</li>
+  <li>Omega</li>
+  <li>AnnaLaura</li>
+  <li>Maxi_der_Zocker</li>
+  <li>Rockman_64</li>
+  <li>Veare the Great</li>
+</ul>
+
+<p>这个 Mod 也通过一些人获得了很多关注，最值得一提的是 <em>Peps</em> 和 Alt-F4 团队，所以也感谢你们。</p>
+
+<p>翻译和故事校对由以下人士完成：</p>
+
+<ul>
+  <li>英语：Conor_</li>
+  <li>德语：Maxi_der_Zocker</li>
+  <li>法语：bev</li>
+</ul>
+
+<p>再次特别感谢 Peps。他让我与 Red Circuit 的成员取得了联系，他们将在接下来的周末进行直播。正因如此才诞生了本篇 Alt-F4 和 RC 团队的试玩。所以 Peps，非常感谢你的帮助！超棒的！</p>
+
+<p>最后，当然要感谢 RC 团队乐意试玩这个游戏！他们一直是我伟大的支持者，并且乐意向我提供所需的帮助。我很高兴我的 Mod 吸引了有才华的流媒体人和 YouTuber 的关注。</p>
+
+<p>这些信息也将在我 Mod 的（游戏内）Informatron 页面中保持更新。想帮忙吗？也许你也能加入名人堂！</p>
+
+<p>现在请允许我将话筒交给几位测试员，他们测试过很多内容并在诸多方面提供了帮助。</p>
+      <h2 id="初见游戏-senital2011">
+        
+        
+            <a href="#%E5%88%9D%E8%A7%81%E6%B8%B8%E6%88%8F-senital2011" class="anchor" style="text-decoration: none;">初见游戏 <author>Senital2011</author></a>
+          
+        
+      </h2>
+    
+
+<p>这是个令人难以置信的故事的；它给你一种目的感，并与现实关联。你必须监控你的食物（你需要收集鱼，它们真的有用因为你不会自动回复）和水，通过医疗包补充你的血量，并从土著手里保卫自己。</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-01.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>用这个定制的 GUI 来跟踪你的生命体征和位置。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>这个故事实现了一个故事应该做的事情：让你与角色产生共情。你是这个世界上唯一的人，而你的飞船已经成了残骸。尽管你试图接近当地土著，但显然你的存在并不受欢迎。你很坚定，但也意识到在黑暗的面纱之外徘徊的威胁。你意识到自己只有通过建设和研究离开这块岩石，因为工厂必须发展扩张！</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-09.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>一个青铜冶金厂。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h2 id="dyworld-dynamics-测试体验-maxi-der-zocker">
+        
+        
+            <a href="#dyworld-dynamics-%E6%B5%8B%E8%AF%95%E4%BD%93%E9%AA%8C-maxi-der-zocker" class="anchor" style="text-decoration: none;">DyWorld-Dynamics 测试体验 <author>Maxi der Zocker</author></a>
+          
+        
+      </h2>
+    
+
+<p>大家好，我的名字是 Max，网名 <em>Maxi der Zocker</em>，我是 DyWorld-Dynamics 的翻译员和测试员。</p>
+      <h3 id="背景故事">
+        
+        
+            <a href="#%E8%83%8C%E6%99%AF%E6%95%85%E4%BA%8B" class="anchor" style="text-decoration: none;">背景故事</a>
+          
+        
+      </h3>
+    
+
+<p>我对 DyWorld 即现在的 DyWorld-Dynamics 的体验始于 2020 年。我在 Youtube 上看到一位叫 <a href="https://www.youtube.com/playlist?list=PLEui1S1GUHOMKnVrLjgybKRKzBNMIHTfk">Lumatan</a> 的德国人和他的一个朋友在玩 DyWorld。我想玩玩这个 Modp，但是当我在异星工厂 Mod 门户网站上查看时意识到它已经被废弃了，并转而开发其后继者。所以我加入了 Discord，阅读了规则，并看了眼公告频道。那里写着：“DyWorld-Dynamics 的第一个公开测试版可能会在几个月后推出。”</p>
+
+<p>我高兴地等待着。靠近年底的时候，Dysoch 在他的 Discord 上问是否有人想把这个 Mod 翻译成其他语言。我自告奋勇做德语翻译。几天后，我把我的译文发给他。数个月后，或者说半年后，Dysoch 举办了一次 Beta 测试资格抽奖活动。我参加并幸运地中奖。</p>
+
+<p>两天后，我们收到了最新的开发版本，以测试该 Mod。我还直接询问是否要恢复翻译这个 Mod 以及如何翻译。我被告知应该从头开始，因为发生了太多的变化。我接受了这个挑战，一点一点地翻译。大致每有新开发版本出来时，我就发送一部分新的翻译。最后一大块是故事——整整三天的艰苦翻译工作。完成之后，这个 Mod 就有了完整的德语和法语（在另一位 DyWorld 社区的成员协助下）翻译。</p>
+      <h3 id="游戏测试">
+        
+        
+            <a href="#%E6%B8%B8%E6%88%8F%E6%B5%8B%E8%AF%95" class="anchor" style="text-decoration: none;">游戏测试</a>
+          
+        
+      </h3>
+    
+
+<p>我不仅翻译了这个 Mod，还对它进行了测试。在第一周，新的测试者、赞助者和 Dysoch 都聚集在一起，进行了一次游戏测试。我们有五个人在玩，还有三个人只在语音频道里出席。Dysoch 是其中之一。他几乎一直给我们提示并做一些快速的故障排除，因为我们发现了很多对游戏性影响不大的小 Bug。</p>
+
+<p>第二天，我们先是等来了他的一个快速热修复，接着我们继续进行游戏测试环节。这一次，我们没有遇到 Bug。在游玩的过程中，我们首先建立了小型初始基地，或者是你在游戏开始时建造的东西，以便快速制造物品。基本上，这是一个小型的意大利面条基地，每个人都是这么干的并乐在其中。在游戏的那个时期，我们想重新设计基地，一个大的[数据删除]发生了，[数据删除]我们的[数据删除]。</p>
+
+<p>因此，我们开始重新设计。它的外观和功能都很好，于是我们从研究动手。在游戏的那个阶段，研究工作显然是资源密集型的，但至少是可行的，我们很高兴重新设计了我们的基地。不久，我们发现有些配方不能正常解锁和工作，于是 Dysoch 开始制作另一个热修复。我们接着又愉快地玩了三个小时，没有遇到新 Bug。</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-02.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>敌人扩张进你的城墙之内！用炮塔保卫家园！</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>有一次，我修补完外星人在冲破基地一侧防线造成的漏洞，但他们却把基地的另一侧犁了一遍。于是我重建了我的防线，同时也扩大了基地。大约在那个时候，我认为我测试这个 Mod 已经够久了。</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-03.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>经过几个小时的多人游戏测试后建成的一个基地。是个不错的基地但仍处于起步阶段。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>到此，我结束了游戏，回到了翻译工作。总而言之，我喜欢这个 Mod。它有个很棒的难度曲线并且非常容易上手。</p>
+
+<p>此外，它不像 Bob 和 Angel 那样复杂，尽管 DyWorld-Dynamics 可能比这两个 Mod 有更多的建筑。此外，在其他 Mod 中，与DyWorld-Dynamics不同你没有一个线性的进展，而这里有故事剧情。综上，我推荐你尝试下这个 Mod。</p>
+      <h2 id="未来-dysoch">
+        
+        
+            <a href="#%E6%9C%AA%E6%9D%A5-dysoch" class="anchor" style="text-decoration: none;">未来 <author>Dysoch</author></a>
+          
+        
+      </h2>
+    
+
+<p>目前，我正在制定一个庞大的路线图。这个 Mod 还远未完成。第三幕的很大一部分故事都在 Mod 中，还会有更多的内容。第四幕和第五幕最终也会出现，但这需要有更多的内容被添加到 Mod 中。在目前我在 Mod 发布后将向公众提供的路线图上，有 15 个重要的更新计划，还有大约 20 个在我脑海中。一旦这个 Mod 最终达到 1.0 版本，可玩内容将非常丰富，足以让你一次游戏玩上几个月。</p>
+
+<p>但那是未来的事，现在让我们专注于眼前。我将给你留下大量来自我的测试人员的漂亮截图，给你们尝尝鲜。如需进一步更新，请查看 <a href="https://discord.com/invite/yHJaZrq5Ww">Dyworld Discord 服务器</a>。</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-05.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>一个游戏初期有效的围墙设置。一旦有更大的土著出现将很快被占领。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-06.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>非常基础的初始矿石冶炼。随着研究的进行，效率会越来越高。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-07.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>初期弹药生产末端。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-08.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>一种简单而有效的方法来清除冶金过程中的矿渣。每分钟最高处理 100k 矿渣。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-10.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>一个适用于游戏初期的高效矿石清理及冶炼。由 Peps 创建。</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    <a href="https://media.alt-f4.blog/ALTF4/49/Dyworld-04.jpg" target="_blank">
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/49/Dyworld-04.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>受虐狂的游戏（最高难度），在这之后就被摧毁了。</figcaption>
+      </figure>
+      <i>点击查看原图</i>
+      </a>
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h2 id="征稿">
+        
+        
+            <a href="#%E5%BE%81%E7%A8%BF" class="anchor" style="text-decoration: none;">征稿</a>
+          
+        
+      </h2>
+    
+
+<p>一如既往的，我们正在召集任何想要为 Alt-F4 做出贡献的人，无论是提交文章还是帮助翻译都可以。如果您有些有趣的想法，并乐于与社区分享，这里就是一个好地方。如果您没有太大把握，我们会很乐意帮助您讨论内容创意和结构问题。如果您有意参与，从加入 <a href="https://alt-f4.blog/zh/discord">Discord</a> 开始吧！</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/zh/discord">
+    去 Discord 上讨论
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/zh/ALTF4-48/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/zh/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/zh/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/zh/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/zh/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      这是一个饭制站点，与下列网站没有直接关联 Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
