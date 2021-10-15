@@ -40,30 +40,38 @@ After many hours of mucking about in the Factorio [datastage](https://lua-api.fa
 
 {Insert image of decomposed power distribution}
 
-In essence I converted electricity into a fluid - which I call the power fluid - and then I turned all poles into pipes. This means the power fluid will flow to other poles like a fluid, just like water or any other fluid, and from there power your entities. This fluid has an unit off???
-
-```
-// Power production specifies the assembler power consumption
-power_production = (fluid_fuel_value * units_per_craft) / crafting_time
-
-// Power consumption specifies the generator fluid usage rate
-power_consumption = fluid_fuel_value * fluid_usage_per_tick * 60
-```
+In essence I converted electricity into a fluid - which I call the power fluid - and then I turned all poles into pipes. This means the power fluid will flow to other poles like a fluid, just like water or any other fluid, and from there power your entities. The unit of this power fluid is in Joule (for example `10kJ`), which means it's _energy_ that's distributed through the poles. The unit could likely have been Coulomb (as in [Electric Charge](https://en.wikipedia.org/wiki/Electric_charge)), but using energy integrates easily with Factorio's mechanics. 
 
 To generate the power fluid I simply run an assembler that creates the fluid at the correct pace relative to it's power consumption wiTo turn the fluid back into electricity.
 
 ```
-power_consumption = fluido
+// Power production dictates the assembler power consumption
+power_production = (fluid_fuel_value * units_per_craft) / crafting_time
+
+// Power consumption dictates the generator fluid usage rate
+power_consumption = fluid_fuel_value * fluid_usage_per_tick * 60
 ```
 
-What I really enjoy about this design is how brutally simple the transformers are. All the mods I mentioned had to manually calculate the power transfer over a transformer, whereas I simply had to create an assembling machine that inputs and outputs fluids, with a recipe like:
+Next up is transformers, which should a part to play in a mod like this. In the real world a transformer steps up the voltage for more efficient (read _easier_) power distribution, or more simply. Fluidic Power does not have voltage to step up, but the throughput can be made easier by simply making the fluid energy unit higher. For example, "high voltage" can be emulated with the power fluid's unit being `1MJ` instead of `10kJ`. What I really enjoy about this implimitation is how brutally simple these transformers are to create. All the mods I mentioned had to manually calculate the power transfer over a transformer, whereas I simply had to create an assembling machine. The recipe is then the total input and output fluid energy should be the same, but in different units. The time to craft of this recipe, or how much fluid units it can transform, is then the power input/output of the transformer!
 
 ```
-1 unit of 1000kJ fluid = 1000 units of 1MJ fluid
+// Transformer Step-Up Recipe
+1000 units of 1kJ fluid = 1 unit of 1MJ fluid
+
+// Transformer Power Rating
+power_rating = fluid_output_amount * fluid_output_unit / time_per_craft
 ```
 
-### What obstacles did I face?
+With a little fiddling this resulted in some intuitive and fun gameplay - or well for most of the time. It's designed so that only the lowest voltage can power your machines or accept generated power. Then, once the voltage is increased to aid distribution the high voltage fluid can _only_ flow through big power poles. And these big power poles cannot power any machines or accept any generated power. This is likely my *favourite* part of this implementation. It means that there is an inherent incentive to create a high voltage backbone throughout your base, and everywhere you want to use power you would need transformers.
+
+{Picture of some part of base with transformers}
+
+I was suprised that I found an implemetation that furfilled most of my goals and inherently created the challenges and obstacles that I visioned it to have. However, the Factorio engine isn't designed for this, and I faced quite a few obstacles to get it to work. And some of them are still quite prevalent.
+
+### What obstacles are there?
 
 Is this neccesary?
 
 ### Is the performance playable?
+
+### Should you play it?
