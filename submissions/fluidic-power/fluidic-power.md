@@ -88,20 +88,18 @@ Is this neccesary?
 
 There is a reason why electricity is implemented in Factorio as it is. It allows us to build factories at size scales that still blows my mind. 
 
-Therefore I built a pure Fluidic Power base to benchmark with - with the help of my friend JanKrater. My goal was to think how to build a base in the most performance efficient way, and then do the exact opposite. This resulted in a spaghetti base with way too many power poles and belts which runs at an constant 90 SPM. 
+Therefore I built a pure Fluidic Power base to benchmark with - with the help of my friend JanKrater. My goal was to think how to build a base in the most performance efficient way, and then do the exact opposite. This resulted in a spaghetti base with way too many power poles and belts which runs at an constant 45 SPM, and draws about 600MW.
 
 { 
     Map view to save file 
-    caption: The benchmark map (download here)
+    caption: The benchmark Spaghetti Base running at 45 SPM (download here)
 }
 
-This base still runs at 60 UPS on my old PC (i7-4770k 3.5GHz) and not any faster, even when increasing the [game speed](https://lua-api.factorio.com/latest/LuaGameScript.html#LuaGameScript.speed). The first thing I looked at is the "show-time-usage" debug output, which is shown below. The ~15ms update time shows the reason why the game won't run faster because for faster than 60UPS the update needs to be less than `1/60 = 16.6 ms`. It's also visible that my mod script has a neglible effect on the performance.
+This base still runs at around 70 UPS on my old PC (i7-4770k 3.5GHz).. The first thing I looked at is the "show-time-usage" debug output, which is shown below. It proves that my mod script (`mod-FluidicPower`) has a neglible effect on the performance because it uses the in-game fluid simulation.
 
-// TODO Get better picture with script usage too on black background
+![In-game "show-time-usage" and "show-entity-time-usage" information of the 45 SPM Spaghetti Base](media/show-time-usage.png)
 
-![Ingame "show-time-usage" debug information](media/show-time-usage.png)
-
-However, what confused me from this output where the game spends most of the it's time. My expectation was that the `Fluid Manager` would take be the biggest calculation hit, but instead the output shows that the `Electric Network` is using 73% of the update, and the `Fluid Manager` seems not to be doing anything. This didn't make sense to me if you take into account what Rseding said. I need to consult some expects so I headed to the Technical Factorio community - where squeeze Factorio's performance to it's [absolute limits](https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/).
+However, what confused me from this output where the game spends most of the it's time. My expectation was that the `Fluid Manager` would take be the biggest calculation hit, but instead the output shows that the `Electric Network` (`~10ms`) is using over 70% of the update time (`~13.7ms`), and the `Fluid Manager` (`~0.03ms`) seems not to be doing anything at all. This doesn't make any sense, because the amount of fluid calculations should be taking much longer. I definitely needed to consult some expects so I headed to the Technical Factorio community - where they squeeze Factorio's performance to it's [absolute limits](https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/).
 
 Here the brilliant mathematician SteveTrov explained to me why the in-game time usage can be misleading if don't know how it works behind the scenes.
 
@@ -127,6 +125,14 @@ This means that the Fluid Manager is using much more time than is shown in-game.
 
 This showed something that I did not really expect. The fluid system (`FluidSystem::update`) was one of the main culprits, but the electric network was still taking even more processing power! It turns out the main culprit is `FlowStatistics<ID<...>...>::onFlow`, which is called mostly by the electric network. These [flow statistics](https://lua-api.factorio.com/latest/LuaFlowStatistics.htm) are simply used to store statistics so that you can view it on a graph, eg. for power or production or biter kills. This means that that the game is not mainly slowing down because of all the new fluid calculations, but rather drawing power graphs!
 
-Unfortunately, this does make sense. In this mod each and every power pole is it's own power network.
+Unfortunately, this is probably the fundamental drawback in this mod, and it doesn't currently have a workaround. The Factorio engine is built to have only a handful of electric networks, typically even only one. Then when you click on a power pole it shows you graph of that entire power network. The game then needs to store and update that information for every power network you have, which will be a handful of datasets. On the other hand, Fluidic Power is designed so that _each and every_ power pole is a single electric network. The Factorio engine will then attempt to store and update information each of these electric networks - which in my benchmark is about 2800! This is a known issue in some other mods, for example the [Ruins mod](https://github.com/Bilka2/AbandonedRuins/issues/20), but Fluidic Power takes this to a new extreme. It's almost impossible to say how much faster it would run if the statistics was disabled, but it is definitely the current bottleneck.
+
+![Example build of the very UPS efficient benchmark base running at 90 SPM. It uses a minimal amount of power poles.](media/efficient-benchmark-base.png)
+
+That said, I was suprized that the game didn't slow down even after I continued expanding after an initial rocket launch while building a super spaghetti and inefficient base. It still ran at a smooth 60UPS. And this is a worst case! For a best-case scerario - my first benchmarking save I built in the editor to be as UPS efficient as possible. It could run a 90 SPM base at more than 220 UPS! Funnily enough, in Fluidic Power solar farms are way worse for UPS, and I could only get around 140 UPS on a solar base.
+
+Therefore, I can confidently say that you will be able to easily launch a rocket without having your UPS drop below 60 UPS - assuming you don't have a really-bad-potato PC or you're deliberately trying to break the mod. Megabases are likely not possible, but a normal game will not neccesarily TANK your UPS as Rseding predicted. This is because Factorio is really well optimized, even when not running as it was intended.
 
 ### Should you play it?
+
+Love the feeling that there is actually electricity flowing in those poles
