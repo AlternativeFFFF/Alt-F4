@@ -4,7 +4,7 @@ Ever since my education in Electronic Engineering I've seen the flow of electric
 
 ### Why is it hard?
 
-As you know vanilla Factorio's electricity is perfect. Your electrical grid can transmit infite power over infinite distances indefinitely. It's almost like they strung cryogenically cooled [super-conductors](https://en.wikipedia.org/wiki/Superconductivity) to the small and cheap wooden power poles. This works very well for the purpose and constraints of the game and fits most playstyules perfectly. However, since the start there were always a few players looking for more of a challange who wondered if electricity could be made more realistic.
+Vanilla Factorio's electricity is ideal - there's no resistance in the wires. Your electrical grid can transmit infite power over infinite distances indefinitely. It's almost like they strung cryogenically cooled [super-conductors](https://en.wikipedia.org/wiki/Superconductivity) to the cheap small wooden power poles. This works very well for the constraints of the game and fits most play-styles perfectly. However, there's always been a few players looking for more of a challange who wondered if electricity could be made [more realistic](https://forums.factorio.com/viewtopic.php?t=68761).
 
 Modding capabilities limited
 when connected with copper - power flows
@@ -46,11 +46,17 @@ These mods are all brilliant in their own way and can create amazing gameplay. H
 
 Luckily, Factorio does have a built-in fluid simulation that is very well optimized and runs in C++. This simulation manages the oil in your storage tanks and the steam in your nuclear power plants. It's not perfect, and can cause many headaches, but it works. This simulation is exactly what's required to mimic electricity flow as a fluid - so I set about trying to implement it.
 
-After many hours of mucking about in the Factorio [datastage](https://lua-api.factorio.com/latest/Data-Lifecycle.html) and struggling with fluidboxes for way too long I finally stumbled onto a working solution.
+After many hours of mucking about in the Factorio [datastage](https://lua-api.factorio.com/latest/Data-Lifecycle.html) and struggling with fluidboxes and composite entities for way too long I finally stumbled onto a working solution. 
 
-{Insert image of decomposed power distribution}
+{
+    juxtapose
+    ![](media/fluidic-example.png)
+    ![](media/fluidic-example-decom.png)
 
-In essence I converted electricity into a fluid - which I call the power fluid - and then I turned all poles into pipes. This means the power fluid will flow to other poles like a fluid, just like water or any other fluid, and from there power your entities. The unit of this power fluid is in Joule (for example `10kJ`), which means it's _energy_ that's distributed through the poles. The unit could likely have been Coulomb (as in [Electric Charge](https://en.wikipedia.org/wiki/Electric_charge)), but using energy integrates easily with Factorio's mechanics. 
+    caption: Example power distribution using Fluidic Power (left side of slider) and what is actually built by built (right side of slider). On the image from the left it shows power generation, stepping-up voltage, stepping-down voltage, opower usage.
+}
+
+In essence I converted electricity into a fluid - which I call the power fluid - and then I turn all poles into pipes. This means the power fluid will flow to other poles like a fluid, just like water or any other fluid, and from there power your entities. The unit of this power fluid is in Joule (for example `10kJ`), which means it's _energy_ that's distributed through the poles. The unit could likely have been Coulomb (as in [Electric Charge](https://en.wikipedia.org/wiki/Electric_charge)), but using energy integrates easily with Factorio's mechanics. 
 
 To generate the power fluid I simply run an assembler that creates the fluid at the correct pace relative to it's power consumption wiTo turn the fluid back into electricity.
 
@@ -74,7 +80,7 @@ power_rating = fluid_output_amount * fluid_output_unit / time_per_craft
 
 With a little fiddling this resulted in some intuitive and fun gameplay - or well for most of the time. It's designed so that only the lowest voltage can power your machines or accept generated power. Then, once the voltage is increased to aid distribution the high voltage fluid can _only_ flow through big power poles. And these big power poles cannot power any machines or accept any generated power. This is likely my *favourite* part of this implementation. It means that there is an inherent incentive to create a high voltage backbone throughout your base, and everywhere you want to use power you would need transformers.
 
-{Picture of some part of base with transformers}
+![Example of main high voltage line (solid in-game overlay) with transformers stepping down to machines (dashed in-game overlay). This allows for easy power distribution.](media/transformers.png)
 
 Finally, having a power simulated as a fluid the design for accumulators changed. It's no longer an smart entity that only accepts surplus power, and releases all it's energy when it's requried. No, now it's a simple storage tank which acts like a big capacitor. It's possible to create the same behaviour with fun circuitry, but without circuitry still works fairly well.
 
