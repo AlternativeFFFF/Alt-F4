@@ -4,14 +4,11 @@ Ever since my education in Electronic Engineering I've seen the flow of electric
 
 ### Why is it hard?
 
-Vanilla Factorio's electricity is ideal - there's no resistance in the wires. Your electrical grid can transmit infite power over infinite distances indefinitely. It's almost like they strung cryogenically cooled [super-conductors](https://en.wikipedia.org/wiki/Superconductivity) to the cheap small wooden power poles. This works very well for the constraints of the game and fits most play-styles perfectly. However, there's always been a few players looking for more of a challange who wondered if electricity could be made [more realistic](https://forums.factorio.com/viewtopic.php?t=68761).
+Vanilla Factorio's electricity is ideal - meaning there no resistance in the wires. Your electrical grid can transmit infite power over infinite distances indefinitely. It's almost like they strung cryogenically cooled [super-conductors](https://en.wikipedia.org/wiki/Superconductivity) to the cheap small wooden power poles. This works very well for the goals and constraints of the game and fits most play-styles perfectly. However, there's always been a few players looking for more of a challange who wondered if electricity could be made [more realistic](https://forums.factorio.com/viewtopic.php?t=68761). Players who want use transformers to avoid some kind of voltage drop over distance.
 
-Modding capabilities limited
-when connected with copper - power flows
-can only have three wires
-power can only be manipulated through accus and EEIs, which does not have wire connections - compound entities needed
+Recreating realistic electricity in (arguably) out of scope for vanilla Factorio - so it's up to mods to fill this slightly sadistic niche. Factorio mods can only modify [certain aspects](https://lua-api.factorio.com/next/) of the game and these options on how to mod electricity is very limited. Therefore modders have come up with some interesting workarounds. One of the main problems that once power poles are connected by copper wire the game will automatically transfer electricity internally, and it cannot be changed. The only real access to the power network is to artificially supply or drain electricity by using an [Electric Energy Interface](https://wiki.factorio.com/Prototype/ElectricEnergyInterface) - which is an modding tool.
 
-Realistic electicity would result in magnitudes more calculations required, which is why the Rseding91 had the following to say a few years ago after someone asked for [voltage drop](https://en.wikipedia.org/wiki/Voltage_drop) to be implemented.
+It's possible to manually remove the copper cables from the power poles to manually handle electricity flow, but it will always also remove the visual copper connection which looks odd. And that can still leave you to calculate the the transfer of power yourself in the mod and artifically manage the power network, but calculations done in the mod will always be orders of magnitude slower than the game calculating it itself. Which is why the Factorio developer Rseding91 had the following to say a few years ago after someone asked for [voltage drop](https://en.wikipedia.org/wiki/Voltage_drop) to be implemented.
 
 {
     quote:
@@ -21,9 +18,11 @@ Realistic electicity would result in magnitudes more calculations required, whic
     - link: https://www.reddit.com/r/factorio/comments/6wwkhx/comment/dmcea1c/
 }
 
-### The History
+This does not of course not mean it's impossible. Mods have found beautiful ways over these limitations, or even sometimes created the same gameplay without the requirements of heavy calculations. 
 
-There are a few mods that have attempted this, and all in differnt ways. One of the first ones was probably [Flow Network](https://mods.factorio.com/mods/Simdezimon/flownetwork) - made in the time of Factorio 0.13. How it works in a nutshell is that a custom accumulator is placed on each power pole, and the copper wire is replaced with red circuit wire to stop the vanilla electricity transfer. Energy is then distributed manually between these accumulators with a custom formula - very similar to the vanilla fluid simulation (?? GET FFF). Unfortunately, this is very slow, as _all_ electricity calculations are done in the mod (in Lua), which is way slower than when the game executed the calculations internally (in C++).
+### A Short History of Electricity Overhauls
+
+One of the first ones power overhaul mods was probably [Flow Network](https://mods.factorio.com/mods/Simdezimon/flownetwork) - made in the time of Factorio 0.13. How it works in a nutshell is that a custom accumulator is placed on each power pole, and the copper wire is replaced with red circuit wire to stop the vanilla electricity transfer. Energy is then distributed manually between these accumulators with a custom formula - very similar to the vanilla fluid simulation (?? GET FFF). Unfortunately, this is very slow, as _all_ electricity calculations are done in the mod (in Lua), which is way slower than when the game executed the calculations internally (in C++).
 
 // Download this image and host it on our server
 ![Example of FlowNetwork power distribution](https://mods-data.factorio.com/assets/6d8618acf0c9aac24efd39273298e11c70a5c9f8.png)
@@ -84,6 +83,8 @@ With a little fiddling this resulted in some intuitive and fun gameplay - or wel
 
 Finally, having a power simulated as a fluid the design for accumulators changed. It's no longer an smart entity that only accepts surplus power, and releases all it's energy when it's requried. No, now it's a simple storage tank which acts like a big capacitor. It's possible to create the same behaviour with fun circuitry, but without circuitry still works fairly well.
 
+{PICTURE OF MY OVERLAY?}
+
 All-in-all I was suprised that I found an implemetation that furfilled most of my goals and inherently created the challenges and obstacles that I visioned it to have. However, the Factorio engine isn't designed for this, and I faced quite a few obstacles to get it to work. And some of them are still quite prevalent.
 
 ### What obstacles are there?
@@ -94,23 +95,24 @@ Is this neccesary?
 
 There is a reason why electricity is implemented in Factorio as it is. It allows us to build factories at size scales that still blows my mind. 
 
-Therefore I built a pure Fluidic Power base to benchmark with - with the help of my friend JanKrater. My goal was to think how to build a base in the most performance efficient way, and then do the exact opposite. This resulted in a spaghetti base with way too many power poles and belts which runs at an constant 45 SPM, and draws about 600MW.
+Therefore I built a pure Fluidic Power base to benchmark with - with the help of my friend JanKrater. My goal was to think of the most performance efficient way to build a base, and then do the exact opposite. This resulted in a spaghetti base with way too many power poles, belts and way too many lasers. Importantly, it manages to produce science at an steady 45 SPM, and draws about 600MW.
 
 { 
     Map view to save file 
     caption: The benchmark Spaghetti Base running at 45 SPM (download here)
 }
 
-This base still runs at around 70 UPS on my old PC (i7-4770k 3.5GHz).. The first thing I looked at is the "show-time-usage" debug output, which is shown below. It proves that my mod script (`mod-FluidicPower`) has a neglible effect on the performance because it uses the in-game fluid simulation.
+This base still runs at around 70 UPS on my old PC (i7-4770k 3.5GHz) - which means it takes `~13.7ms` to update the whole base once. This number is also shown below in the "show-time-usage" debug output. Interestingly it also shows that my mod script (`mod-FluidicPower`) has a neglible effect on the performance (`~0.05ms`) because it uses the in-game fluid simulation. This is because the calculations my mod does is minimal, but it does induce many more fluid and power calculations that the game calculates, which has a much larger effect.
 
 ![In-game "show-time-usage" and "show-entity-time-usage" information of the 45 SPM Spaghetti Base](media/show-time-usage.png)
 
-However, what confused me from this output where the game spends most of the it's time. My expectation was that the `Fluid Manager` would take be the biggest calculation hit, but instead the output shows that the `Electric Network` (`~10ms`) is using over 70% of the update time (`~13.7ms`), and the `Fluid Manager` (`~0.03ms`) seems not to be doing anything at all. This doesn't make any sense, because the amount of fluid calculations should be taking much longer. I definitely needed to consult some expects so I headed to the Technical Factorio community - where they squeeze Factorio's performance to it's [absolute limits](https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/).
+However, it initially confused me that game seemingly spends most of the it's time in the `Electric Network`. My expectation was that the `Fluid Manager` would take be the biggest calculation hit, but instead the output shows that the `Electric Network` (`~10ms`) is using over 70% of the update time (`~13.7ms`), and the `Fluid Manager` (`~0.03ms`) seems not to be doing anything at all. This doesn't make any sense, because the amount of fluid calculations should be a massive performance drain. I definitely needed to consult some expects so I headed to the Technical Factorio community - where they squeeze Factorio's performance to it's [absolute limits](https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/).
 
 Here the brilliant mathematician SteveTrov explained to me why the in-game time usage can be misleading if don't know how it works behind the scenes.
 
 {
     quote
+
     "Firstly the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time:
 
     1. The electric network thread is started and the electric network update timer is started. 
@@ -125,13 +127,13 @@ Here the brilliant mathematician SteveTrov explained to me why the in-game time 
     - [source](https://discord.com/channels/579345487371567105/579346716243787782/855875612274851881)
 }
 
-This means that the Fluid Manager is using much more time than is shown in-game. I needed to know what goes on behind the scenes, and this is where [flame_Sla](https://www.reddit.com/user/flame_Sla/posts/) helped me out and said I need to download [Very Sleepy CS](http://www.codersnotes.com/sleepy/) to see detailed information about which C++ function are called most often. Their community uses this tool optimize the worlds most largest and most UPS efficient megabases. The output of this handy tool is shown below where the it shows the C++ functions that take the most time in descending order. flame_Sla did mention not to focus on time usage in this program, but rather see where most processing time is going to.
+This essentially means that the Fluid Manager's time usage is more related to the Electric Network's time usage. It's not possible to decern between the two using only the in-game information. I had to dig further. This is where [flame_Sla](https://www.reddit.com/user/flame_Sla/posts/) helped me out and said I had to download [Very Sleepy CS](http://www.codersnotes.com/sleepy/) to see detailed information about which C++ functions are called most often. Their community often uses this tool optimize the worlds most largest and most UPS efficient megabases. The output of the tool shown below, with the C++ functions that take the most time listed in descending order. flame_Sla did mention not to focus on the absolute time shown, but rather use it as an metric to see the biggest culprits.
 
-![Output of Very Sleep CS](media/sleepy-cs-output.png)
+![Output of the Very Sleepy profiling tool running on my spaghetti benchmarking base](media/sleepy-cs-output.png)
 
-This showed something that I did not really expect. The fluid system (`FluidSystem::update`) was one of the main culprits, but the electric network was still taking even more processing power! It turns out the main culprit is `FlowStatistics<ID<...>...>::onFlow`, which is called mostly by the electric network. These [flow statistics](https://lua-api.factorio.com/latest/LuaFlowStatistics.htm) are simply used to store statistics so that you can view it on a graph, eg. for power or production or biter kills. This means that that the game is not mainly slowing down because of all the new fluid calculations, but rather drawing power graphs!
+This showed something that I did not really expect. The fluid system (`FluidSystem::update`) was one of the main culprits as expected, but the electric network was _still_ taking even more processing time! It turns out the main problem is `FlowStatistics<ID<...>...>::onFlow`, which is called mostly by the electric network. These [flow statistics](https://lua-api.factorio.com/latest/LuaFlowStatistics.htm) are simply used to store statistics so that you can view it on a graph, eg. for power or production or biter kills. This means that that the game is not only slowing down because of all the new fluid calculations, but also because all the new graphs to draw!
 
-Unfortunately, this is probably the fundamental drawback in this mod, and it doesn't currently have a workaround. The Factorio engine is built to have only a handful of electric networks, typically even only one. Then when you click on a power pole it shows you graph of that entire power network. The game then needs to store and update that information for every power network you have, which will be a handful of datasets. On the other hand, Fluidic Power is designed so that _each and every_ power pole is a single electric network. The Factorio engine will then attempt to store and update information each of these electric networks - which in my benchmark is about 2800! This is a known issue in some other mods, for example the [Ruins mod](https://github.com/Bilka2/AbandonedRuins/issues/20), but Fluidic Power takes this to a new extreme. It's almost impossible to say how much faster it would run if the statistics was disabled, but it is definitely the current bottleneck.
+Unfortunately, this is probably the fundamental drawback in this mod, and it doesn't currently have a workaround. The Factorio engine is built to have only a handful of electric networks, typically even only one. The game needs to store and update that information for every power network you have, which will be only a few of datasets. On the other hand, Fluidic Power is designed so that _each and every_ power pole is a single electric network. The Factorio engine will then attempt to store and update information each of these electric networks - which in my benchmark is about 2800! That's at 100 times more graphs to store information on (usually). This has been a known issue for some other mods, for example the [Ruins mod](https://github.com/Bilka2/AbandonedRuins/issues/20), but Fluidic Power takes this to a new extreme. It's almost impossible to say how much faster it would run if the statistics was disabled, but it is definitely the current bottleneck.
 
 ![Example build of the very UPS efficient benchmark base running at 90 SPM. It uses a minimal amount of power poles.](media/efficient-benchmark-base.png)
 
