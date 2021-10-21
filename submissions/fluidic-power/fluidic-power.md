@@ -123,9 +123,15 @@ Here the brilliant mathematician SteveTrov explained to me why the in-game time 
     - [source](https://discord.com/channels/579345487371567105/579346716243787782/855875612274851881)
 }
 
-This essentially means that the Fluid Manager's time usage information is entangled in the Electric Network's time usage. It's not possible to decern between the two using only the in-game information. I had to dig further. This is where [flame_Sla](https://www.reddit.com/r/technicalfactorio/comments/ks2xtk/20k_spm_201000spm_belts_v30/) helped me out and said I had to download the [Very Sleepy Profiler](http://www.codersnotes.com/sleepy/) to see detailed information about which C++ functions are called most often. Their community often use this tool optimize the worlds most largest and most UPS efficient megabases. In the output of the tool below you can see the C++ functions that take the most time listed in descending order. flame_Sla did also mention not to focus on the absolute time shown, but rather use it as an metric to see the biggest culprits.
+This essentially means that the Fluid Manager's time usage information is entangled in the Electric Network's time usage. It's not possible to decern between the two using only the in-game information. I had to dig further. This is where [flame_Sla](https://www.reddit.com/r/technicalfactorio/comments/ks2xtk/20k_spm_201000spm_belts_v30/) helped me out and pointed me to a [post](https://www.reddit.com/r/technicalfactorio/comments/mead38/how_to_turn_off_multithreading_to_get_more_useful/) be SteveTrov on how to force Factorio to run in a single thread, do to the way the code is [likely structured](https://discord.com/channels/579345487371567105/579346716243787782/828489932934086676). This changed the timing information to the following:
+
+![In-game "show-time-usage" nformation of the 45 SPM Spaghetti Base when Factorio is forced to run in one thread](media/show-time-usage-single-thread.png)
+
+He also suggested that I download the [Very Sleepy Profiler](http://www.codersnotes.com/sleepy/) to see detailed information about which C++ functions are called most often. Their community often use this tool optimize the worlds most largest and most UPS efficient megabases. In the output of the tool below you can see the C++ functions that take the most time listed in descending order. flame_Sla did also mention not to focus on the absolute time shown, but rather use it as an metric to see the biggest culprits.
 
 ![Output of the Very Sleepy profiling tool running on my spaghetti benchmarking base](media/sleepy-cs-output.png)
+
+This shows the shown Fluid Manager usage increase from `~0.03ms` to `~0.13ms`, but this is not yet the final number! TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
 This showed something that I did not really expect. The fluid system (`FluidSystem::update`) was one of the main culprits, but the electric network was _still_ taking even more processing time! It turns out the main problem is `FlowStatistics<ID<...>...>::onFlow` which is called mostly by the electric network. These [flow statistics](https://lua-api.factorio.com/latest/LuaFlowStatistics.htm) are simply used to store statistics so that you can view it on a graph, eg. for power production. This means that that the game is not only slowing down because of all the new fluid calculations, but also because all the new graphs to draw!
 
@@ -139,10 +145,6 @@ Therefore, I can confidently say that you will be able to easily launch a rocket
 
 ### Should you play it?
 
-Would be fun challenge
+Personally, I think it's a fun challenge. It's probably not a good fit you're planning on building a megabase. However, if you're looking for an interesting adventure with new challenges then this mod might be fun. It creates all kinds of new challenges, and new problems you face. For example, once you hit a coal death spiral it's much harder to start back up. Or if you defend with laser you need to ensure there's enough transformers to supply power to them. 
 
-
-
-
-
-Love the feeling that there is actually electricity flowing in those poles
+However, my favourite part of this mod by far is knowing that there is actual electricity flowing through the power poles. It's similar to the feeling I get seeing a circuit I designed and knowing it's working because of the fluid-like motion of electrons through the copper and silicon. It builds on the feeling of seeing your complex networks of belts working together to build a rocket. It makes my factory feel more alive, and it's really satisfying.
