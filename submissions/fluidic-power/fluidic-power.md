@@ -103,7 +103,7 @@ Factorio is designed to run at 60 UPS (updates per second), and my benchmark can
 
 ![In-game "show-time-usage" and "show-entity-time-usage" information of the 45 SPM Spaghetti Base](media/show-time-usage.png)
 
-In the output above the game can tell you where most of the updating time is spent, and it initially confused me that game seemingly spends most of the it's time in the `Electric Network`. My expectation was that the `Fluid Manager` would take be the biggest calculation hit, but instead the output shows that the `Electric Network` (`~10ms`) is using over 70% of the update time (`~13.7ms`), and the `Fluid Manager` (`~0.03ms`) seems not to be doing anything at all. This doesn't make any sense, because the amount of fluid calculations should be a massive performance drain. So I headed to the Technical Factorio community who are experts in the field of optimization and where they squeeze Factorio's performance to it's [absolute limits](https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/).
+In the output above the game can tell you where most of the updating time is spent, and it initially confused me that game seemingly spends most of the it's time in the `Electric Network`. My expectation was that the `Fluid Manager` would take be the biggest calculation hit, but instead the output shows that the `Electric Network` (`~10ms`) is using over 70% of the update time (`~13.7ms`), and the `Fluid Manager` (`~0.03ms`) seems not to be doing anything at all. This doesn't make any sense, because the amount of fluid calculations should be a massive performance drain. So I headed to the Technical Factorio community who are experts in the field of optimization and where they squeeze Factorio's performance to it's absolute limits.
 
 Here the brilliant mathematician SteveTrov explained to me why the in-game time usage can be misleading if don't know how it works behind the scenes. He described it as:
 
@@ -124,32 +124,36 @@ Here the brilliant mathematician SteveTrov explained to me why the in-game time 
     - [source](https://discord.com/channels/579345487371567105/579346716243787782/855875612274851881)
 }
 
-This essentially means that the Fluid Manager's time usage information is entangled in the Electric Network's time usage. It's not possible to decern between the two using only the in-game information. I had to dig further. This is where [flame_Sla](https://www.reddit.com/r/technicalfactorio/comments/ks2xtk/20k_spm_201000spm_belts_v30/) helped me out and pointed me to a [post](https://www.reddit.com/r/technicalfactorio/comments/mead38/how_to_turn_off_multithreading_to_get_more_useful/) be SteveTrov on how to force Factorio to run one a single core. This means threads can only run sequentially and not in parallel, which means the time usage will make more sense.
+This essentially means that the Fluid Manager's time usage information is entangled in the Electric Network's and Heat Manager's time usage. It's [not possible](https://discord.com/channels/579345487371567105/579345487837003836/784493971824312340) to calculate an accurate comparison without a changing the Factorio engine itself. I need another approach.
 
-![In-game "show-time-usage" nformation of the 45 SPM Spaghetti Base when Factorio is forced to run one one core](media/show-time-usage-single-thread.png)
-
-This shows the shown Fluid Manager usage increase from `~0.03ms` to `~0.13ms`, but this is still an approximation. Following flame_Sla [methodology](https://www.reddit.com/r/technicalfactorio/comments/qc0npz/comment/hhfkvpm/) the actual time usage can be calculated as follows. It should be noted that this is still the wall clock time, not the actual time spent, since the fluid update always runs in [multiple threads](https://discord.com/channels/579345487371567105/579346716243787782/828489932934086676) so time is "spent" in each thread.
-
-```
-// '_mc' denotes running on multiple cores
-// `_sc` denotes running on a single core
-fluid_time_sc   = (electric_time_mc + heat_time_mc + fluid_time_mc) 
-                    - (electric_time_sc + heat_time_sc)
-                = (10.145 + 0.047 + 0.033) - (9.327 + 0.028)
-                = 0.87 ms
-
-                THIS IS PROBABLY BOGUS
-```
-
-He also suggested that I download the [Very Sleepy Profiler](http://www.codersnotes.com/sleepy/) to see detailed information about which C++ functions are called most often. Their community often use this tool optimize the worlds most largest and most UPS efficient megabases. In the output of the tool below you can see the C++ functions that take the most time listed in descending order. flame_Sla did also mention not to focus on the absolute time shown, but rather use it as an metric to see the biggest culprits.
+An UPS expert called [flame_Sla](https://www.reddit.com/r/technicalfactorio/comments/ks2xtk/20k_spm_201000spm_belts_v30/) then suggested that I download the [Very Sleepy Profiler](http://www.codersnotes.com/sleepy/) to see detailed information about which C++ functions are called most often. Their community often use this tool optimize the worlds most largest and most UPS efficient megabases. In the output of the tool below you can see the C++ functions that take the most time listed in descending order. flame_Sla did also mention not to focus on the absolute time shown, but rather use it as an metric to see the biggest culprits.
 
 ![Output of the Very Sleepy profiling tool running on my spaghetti benchmarking base](media/sleepy-cs-output.png)
 
 This showed something that I did not really expect. The fluid system (`FluidSystem::update`) was one of the main culprits, but the electric network was _still_ taking even more processing time! It turns out the main problem is `FlowStatistics<ID<...>...>::onFlow` which is called mostly by the electric network. These [flow statistics](https://lua-api.factorio.com/latest/LuaFlowStatistics.htm) are simply used to store statistics so that you can view it on a graph, eg. for power production. This means that that the game is not only slowing down because of all the new fluid calculations, but also because all the new graphs to draw!
 
-Unfortunately, this is probably the fundamental drawback in this mod, and it doesn't currently have a workaround. The Factorio engine is only built to have a handful of electric networks, typically even only one. The game needs to store and update that information for every power network you have, which will be only a few of datasets. So instead of having a handful of networks Fluidic Power is designed so that _each and every_ power pole is a single electric network. The Factorio engine will then attempt to store and update information each of these electric networks - which in my benchmark is about 2800! That's at least 100 times more graphs to store information on (usually). This has been a known issue for some other mods, for example the [Ruins mod](https://github.com/Bilka2/AbandonedRuins/issues/20), but Fluidic Power takes this to a new extreme. It's almost impossible to say how much faster it would run if the statistics was disabled, but it is definitely the current bottleneck.
+It's very likely that Electric Network statistics collection could take a significant amount of processing time in Fluidic Power. The Factorio engine is built to only have a handful of electric networks, typically only one. The game needs to store and update that information for every power network you have, which will be only a few of datasets. So instead of having a handful of networks Fluidic Power is designed so that _each and every_ power pole is a single electric network. The Factorio engine will then attempt to collect statistics for each of these electric networks - which in my benchmark save is about 3000! That's at least 100 times more networks to collect statistics on (or usually). This has been a known limitation for some other mods, for example the [Ruins mod](https://github.com/Bilka2/AbandonedRuins/issues/20), but Fluidic Power takes this to a new extreme. However, we still don't know the impact of these calculations _relative_ to the fluid calculations. Does the collecting of statistics really take that more time than fluid calculations?
 
-![Example build of the very UPS efficient benchmark base running at 90 SPM. It uses a minimal amount of power poles.](media/efficient-benchmark-base.png)
+Then flame_Sla mentioned that he once measured the Fluid Manager's time usage accurately on the world's biggest megabase, and saw that it only used `0.4ms` for a [40 KSPM megabase](https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/)! The way he achieved this is by _eliminating_ the Electric Network from the time usage, which he achieved by changing all machines to [run on wood as fuel](https://discord.com/channels/579345487371567105/579346716243787782/825170120162148383). Due to how Fluidic Power works I cannot easily eliminate the effect of the Electric Network without the Fluid Manager's load reducing, but I can do it the other way around! I can remove all the fluid components, and replace them with EEIs to supply or drain the power. This will cleanly elimiate all added fluid computations without removing the strenuous load on the Electric Network - which is very important! I also decided to do this test while forcing Factorio to [run on single core](https://www.reddit.com/r/technicalfactorio/comments/mead38/how_to_turn_off_multithreading_to_get_more_useful/). So I ran I quick script to replace the hidden fluid components in the power poles and the result are as follows:
+
+<center>
+
+caption: Table showing timing results of unmodified baseline benchmark compared to the modified benchmark where all fluid components are removed.
+
+|                  	| Baseline 	| Modified 	| Difference 	|
+|------------------	|:--------:	|:--------: |:-----------:|
+| Electric Network 	| 9.3ms    	| 9.2ms     | 0.1ms      	|
+| Heat Manager     	| 0.03ms   	| 0.03ms    | 0ms        	|
+| Fluid Manager    	| 0.13ms   	| 0.08ms    | 0.05ms     	|
+| **Total**         | **9.46ms**|**9.31ms** | **0.15ms**    |mar
+||
+
+</center>
+
+This shows that the effect that _all_ the extra fluid computations added by Fluidic Power in this benchmark is roughly `~0.15ms`! This number is probably still not very accurate because it's in the noise margins of the spaghetti base, and the test is not ideal, but it gives us a good indication. This proves the Electric Networks impact is bigger than extra fluid calculations by a factor of between `10x` and `100x`! 
+
+
+// TODO Improve the conclusion part
 
 That said, I was suprized that the game didn't slow down even after I continued expanding after an initial rocket launch while building a super spaghetti and inefficient base. It still ran at a smooth 60UPS. And this is a worst case! I also have best-case benchmark - the first benchmarking save I built in the editor to be as UPS efficient as possible. It could run a 90 SPM base at more than 220 UPS! Funnily enough, in Fluidic Power solar farms are way worse for UPS, and I could only get around 140 UPS on a solar base. In Fluidic Power Nuclear Power is king!
 
