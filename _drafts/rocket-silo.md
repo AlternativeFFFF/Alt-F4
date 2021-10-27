@@ -2,13 +2,13 @@
 
 Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it's placed, it has some weird effects on the electric grid, stranger still if modules are in play. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here!
 
-![](alt-f4-silo-pic-1.png "The Rocket Silo")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-1.jpg' alt='The Rocket Silo' %}
 
 ### Power Usage
 
 To start, let's look at its power usage: It claims to use at most 4MW (which is true), but it only uses 250kW when just manufacturing rocket parts, which is a bit more than three assembling machine 1s (225kW). When does it require 4MW, a bit more than 51 assembling machine 1s, then? Well, when the silo doors are moving, or a rocket is being pushed up. Those things must be heavy! Up until 1.1.42, it used an additional 10 kW idly at night, but there were no surface lights to indicate this. Back in 0.16, however, there were lights on the silo, as shown below, which is where this came from.
 
-![](alt-f4-silo-pic-2.png "The Rocket Silo with Lights")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-2.jpg' alt='The Rocket Silo with Lights' %}
 
 ### Power Usage, Continued
 
@@ -18,7 +18,13 @@ Stranger still, when modules are applied they increase the energy usage of the s
 
 You can fit 12 beacons around 3x3 entities, 16 around oil refineries, and 20 around a silo. Two beacons with two speed module 3s each is the same thing throughput-wise as adding a second machine. So one silo can do the work of *thirteen* silos, side-by-side. Modules and beacons are insanely expensiv however, as the following table shows.
 
-![](alt-f4-silo-pic-3.png "The table of costs")
+|           | Beacon | Module, tier 3 | 4 modules and 2 beacons | Silo  | Rocket from Silo |
+|-----------|--------|----------------|-------------------------|-------|------------------|
+| Iron      | 135    | 1083           | 4602                    | 12220 | 41900            |
+| Copper    | 110    | 2000           | 8220                    | 8600  | 92500            |
+| Stone     | 0      | 0              | 0                       | 1000  | 0                |
+| Coal      | 20     | 190            | 800                     | 437   | 9500             |
+| Crude Oil | 411    | 17334          | 70158                   | 11080 | 277778           |
 
 When I mention costs, I mean the relevant ores needed without productivity modules in the crafting chain, while using advanced oil processing to break down crude oil. Each [beacon](https://factoriolab.github.io/list?p=beacon*1&v=1) costs quite a bit for an early-game player, but nothing compared to automated production of tier 3 modules. That's because any [tier 3 module](https://factoriolab.github.io/list?p=speed-module-3*1&v=1) costs roughly 10x more. While the calculator mentions speed modules specifically, the other two modules of the same tier are equivalent.
 
