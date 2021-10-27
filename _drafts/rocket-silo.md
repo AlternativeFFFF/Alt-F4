@@ -1,18 +1,14 @@
 ## The Rocket Silo: Mysteries in Full
 
-Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it's placed, it has some weird effects on the electric grid, stranger still if modules are in play. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here!
+Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it's placed, it has some weird effects on the electric grid. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here!
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-1.jpg' alt='The Rocket Silo' %}
 
 ### Power Usage
 
-To start, let's look at its power usage: It claims to use at most 4MW (which is true), but it only uses 250kW when just manufacturing rocket parts, which is a bit more than three assembling machine 1s (225kW). When does it require 4MW, a bit more than 51 assembling machine 1s, then? Well, when the silo doors are moving, or a rocket is being pushed up. Those things must be heavy! Up until 1.1.42, it used an additional 10 kW idly at night, but there were no surface lights to indicate this. Back in 0.16, however, there were lights on the silo, as shown below, which is where this came from.
+To start, let's look at its power usage: It claims to use at most 4MW (which is true), but it only uses 250kW when just manufacturing rocket parts, which is a bit more than three assembling machine 1s (225kW). When does it require 4MW, a bit more than 53 assembling machine 1s, then? Well, when the silo doors are moving, or a rocket is being pushed up. Those things must be heavy! Up until version 1.1.42, it used an additional 10 kW idly at night, but there were no surface lights to indicate this. Back in 0.16, however, there were lights on the silo, as shown below, which is where this came from.
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-2.jpg' alt='The Rocket Silo with Lights' %}
-
-### Power Usage, Continued
-
-Stranger still, when modules are applied they increase the energy usage of the silo by more than expected. Four speed modules inside a silo should make the total energy usage of rocket part making to about 700kW, at least according to mathematics. If we were doing the math on the full 4MW, four speed module 3s crank up the power requirement by 280% of the original, or 15.2MW. For how long it consumes this much power is limited however, like I mentioned. But that scaling factor of 280% should remain if you factor in its 250kW power requirement. But when observed, it's closer to 960kW instead of the expected 700kW***********. I guess manufacturing a rocket is more power-consuming than you think when sped up. Speaking of modules and beacons...
 
 ### Modules and the Silo
 
@@ -20,7 +16,7 @@ You can fit 12 beacons around 3x3 entities, 16 around oil refineries, and 20 aro
 
 |           | Beacon | Module, tier 3 | 4 modules and 2 beacons | Silo  | Rocket from Silo |
 |-----------|--------|----------------|-------------------------|-------|------------------|
-| Iron      | 135    | 1083           | 4602                    | 12220 | 41900            |
+| Iron      | 135    | 1083           | 4602                    | 12220 | 49100            |
 | Copper    | 110    | 2000           | 8220                    | 8600  | 92500            |
 | Stone     | 0      | 0              | 0                       | 1000  | 0                |
 | Coal      | 20     | 190            | 800                     | 437   | 9500             |
