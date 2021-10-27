@@ -2,11 +2,11 @@
 
 ### What are Biter Battles?
 
-Biter Battles is a scenario created by MewMew from [Comfy's Factorio](https://getcomfy.eu/discord) where two teams fight on separate sides against biters who's goal is to destroy their silo. There is no direct Player vs Player combat, because players are separated on a river in our custom made battle arena.
+Biter Battles is a scenario created by MewMew from [Comfy's Factorio](https://getcomfy.eu/discord) where two teams compete while being attacked by biters who's goal is to destroy their silo. This means there is no direct Player vs Player combat, because players are separated by a river in our custom made battle arena.
 
 ![The Biter Battle Arena showing the isolated areas for the two teams](media/biter-battle-arena.png)
 
-Each team has to defend their silo from groups of biters attacking every other minute. You can also feed opponent's biters with Logistic Science to increase their tier (small, medium, big, behemoth) and how big their swarms are. The Utility Science will yield stronger mutagenic results. This scenario is open 24/7 for anyone to join! All you need to do is search for the public game "Free BiterBattles.org". It is usually the most populated public game, using having between 20 and 50 players online.
+Each team has to defend their silo from groups of biters attacking every other minute. You can also strengthen your opponent's biters with by researching Logistic Science to increase their tier (small, medium, big, behemoth) and how big the biter swarms are. Researching Utility Science will yield stronger mutagenic results. This scenario is open 24/7 for anyone to join! All you need to do is search for the public game "Free BiterBattles.org". It is usually the most populated public game, using having between 20 and 50 players online.
 
 ### Then what are The Biter Battles Championships?
 
@@ -19,7 +19,7 @@ Each team has to defend their silo from groups of biters attacking every other m
 
 After 4 successful tournaments we decided to create a persistent struggle on the Biter Battles scenario: A championship split into two leagues. The Behemoth league which will be for the pros, and the Biter league for everyone else. Matches are then 3 vs 3, with an optional 4th player acting as spy, coach, or substitute. 
 
-It's played as a Double Round Robin: all teams in one division will fight twice against each other team of that division, once “at home”, once “away | visitor”. There are important aspects to the games. The first is four novely starter packs which speeds up the early game, leading to more dynamic matches and many possible strategies. The other important aspect is **Armageddon**. After two hours the evolution of biters speed up so that matches end before 3 hours - to avoiding endless games. Expect Behemoths sooner than later!
+It's played as a Double Round Robin: all teams in one division will fight twice against each other team of that division, once “at home”, once “away | visitor”. There are important twists to these games. The first is four novely starter packs which speeds up the early game which leads to more dynamic matches and many possible strategies. The other important aspect is **Armageddon**. After two hours the evolution of biters speed up so that match usually ends before 3 hours - to avoiding endless games. So expect Behemoths sooner than later!
 
 ![Bitter Battles Logo](media/logo.png) // Constrain me so that I'm not so big
 
