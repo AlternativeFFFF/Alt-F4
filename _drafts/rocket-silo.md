@@ -1,4 +1,4 @@
-## The Rocket Silo: Mysteries in Full
+## The Rocket Silo: Mysteries in Full <author>garr890354839</author>
 
 Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it's placed, it has some weird effects on the electric grid. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here!
 
