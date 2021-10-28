@@ -22,7 +22,7 @@ It's played as a double round-robin: all teams in one division will fight twice 
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/50/behemoth-league.png' alt='Behemoth League' %}
 
-Seven teams will compete in the Behemoth league. It will start tonight (Friday, 29th of October) with the main event being the clash between SteelAxe and GreenScience! You can expect some spectacular gameplay. It is definitely a very different show than regular Factorio. Matches will be streamed by popular streamers, and we will announce all matches and streams on [Twitter](https://twitter.com/BiterBattles).
+Seven teams will compete in the Behemoth league. It will start tomorrow (Saterday, 30th of October) with clash between Baquette and Mysticlutchpipenator at 14:00 UTC, and the main event of next week being the clash between SteelAxe versus GreenScience on Thursday November 4 at 19: 00 UTC! You can expect some spectacular gameplay. It is definitely a very different show than regular Factorio. Matches will be streamed by popular streamers, and we will announce all matches and streams on [Twitter](https://twitter.com/BiterBattles).
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/50/biter-league.png' alt='Biter League' %}
 
@@ -30,4 +30,4 @@ The Biter league on the other hand will start in two weeks. Everyone is very wel
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/50/logo.png' alt='Biter Battles Champions Logo' %}
 
-From the BBChampions team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Supported by the [French Discord Community](https://discord.gg/XKAjTTmu).
+From the BBChampions team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Supported by the [French Discord Community](https://discord.gg/d2ja9wUd).
