@@ -6,7 +6,7 @@ Saturday, the Biter Battles Championships start! Yeah!
 
 Biter Battles is a scenario created by MewMew from [Comfy's Factorio](https://getcomfy.eu/discord) where two teams compete while being attacked by biters whose goal is to destroy their silo. This means there is no direct player vs player combat, because players are separated by a river in our custom made battle arena.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/50/biter-battle-arena.png' alt='' caption='The Biter Battle arena showing the isolated areas for the two teams' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/50/biter-battle-arena.png' alt='Two land masses divided by water.' caption='The Biter Battle arena showing the isolated areas for the two teams' %}
 
 Each team has to defend their silo from waves of biters attacking every other minute. You can also strengthen your opponent's biters by sending science packs to increase their tier (small, medium, big, behemoth) and how big the biter swarms are. Sending higher tiers will yield stronger mutagenic results. This scenario is open 24/7 for anyone to join! All you need to do is search for the public game "Free BiterBattles.org". It is usually the most populated public game, having between 20 and 50 players online most of the time.
 
