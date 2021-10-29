@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="cs" class="cs">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #50 -  Zajímavosti Raketovéhi Sila</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #50 - Zajímavosti Raketovéhi Sila">
+<meta name="author" content="garr890354839, everlord">
+<meta property="og:locale" content="cs">
+<meta name="description" content="Tento týden je zlaté výročí Alt-F4, vzhledem k tomu, že je 50. edice. Žádné speciální festivity ale nejsou, děláme je až moc často. Místo toho, garr890354839 přispívá svým prvním článkem, v kterém mluví o některých podivnostech a trochu matiky ohledně raketových sil. Poté, everLord nám řekne o nové komunitní události od Comfy, pod jménem ‘Biter Battle Championship’! Raketové Silo: Zajímavosti v Plném garr890354839 Á, raketové silo. Je to největší entita ve hře - mimo vesmírnou loď, ve které přistáváte. Je to také jedna z nejdražších vyrobitelných budov. Když je ale postaveno, tak má trochu divné efekty na elektrickou síť. Také víme, že moduly produktivity jsou v něm nejlepší. Co ale kolem sila? To vše najdete zde! Konzumace Elektřiny Abychom někde začali, podívejme se na množství elektřiny, kterou konzumuje: Tvdí, že používá nanejvýše 4MW (což je pravda), ale používý pouhých 250kW když pouze výrábí raketové části, což je trochu více, než tři výrobní stroje mk1 (225kW). Kdy ale používá celých 4MW, což je o trochu více než 53 výrobních strojů mk1? No, když se dveře raketového sila posouvají, nebo je raketa tlačena nahoru. To musí být těžké! Až do verze 1.1.42, používalo ale dalších 10kW v noci, jen tak, ale nebyly žádné další světla, aby toto indikovaly. Zpět ve verzi 0.16, byly ale světla na silu, na obrázku níže, což je odkud těch 10kW přišlo. Silo a Moduly Jste schopni nacpat 12 majáků kolem entit, které mají velikost 3x3, 16 kolem rafinerie ropy, a 20 kolem sila. Dva majáky, každý s dvoumi moduly rychlosti 3 je stejné, jako kdyby jste přidali druhý stroj. Jedno silo tedy dokáže dělat práci třinácti sil. Moduly a majáky jsou ale nesmírně drahé, jak ukazuje tabulka níže:   Maják Modul mk3 4 moduly a 2 majáky Silo Raketa z sila Železo 135 1083 4602 12220 49100 Měď 110 2000 8220 8600 92500 Kámen 0 0 0 1000 0 Uhlí 20 190 800 437 9500 Ropa 411 17334 70158 11080 277778 Když mluvím o cenách, myslím množství relevantních surovin nutných bez modulů produktivity ve výrobní lince, a s používáním pokročilé zpracování ropy. Každý maják má docela dost velkou cenu pro hráče, který není moc daleko, ale to je nic oproti modulům mk3. To je, protože modul mk3 stojí zhruba desetkrát tolik. Kalkulačka zmiňuje specificky moduly rychlosti, ale další dva moduly jsou na tom stejně. Takže, čtyři moduly rychlosti a dva majáky používají hodně surových materiálů. S některými optimalizacemi, jako standardní osm-majákovou řadou a ty ukázané zde, je možné z vašich modulů dostat více, ale cena zůstává. Normálně, cena převyšuje cenu stroje. Existuje ale výjmka pro toto pravidlo. Silo stojí celých 12,220 železa, 8,600 měďi, 437 uhlí, 11,080 ropy a 1,000 kamene. Moduly a majáky jsou mnohem levnější, než stavba nového sila. Moduly Produktivity Pokud jste dlouhodobým čternářem Alt-F4, možná si vzpomínáte na článek č12, který je dedikován produktivitě a jejím efektům. Ale pro prvodobé čtenáře, nebo ty, které potřebují trochu osvěžení, řeknu vám kratší verzi, co je produktivita: V zásadě to je násobič pro výstup pro daný vstuú. Když řeknu výrobní operace, myslím hlavní čáru v UI stroje nebo pece, která se plní do kompletnosti. Způsob, kterým to funguje je, že to vezme 100 vstupů a vynásobí to procentuálním bonusem z modulů v stroji. Takže například, vezměmě si čtyři moduly produktivity v vyribním stroji mk3, který vyrábí měděné kabely. Celkový bonus z modulů je 40%, takže z 10 měděných plátů se stane 20*(1+0.4)=28 měděných drátů. Jsme schopni spočítat nutný vstup na daný výstup když otočíme proces. Takže pokud bychom chtěli 140 měděných kabelů s influencí 4 modulů produktivity, první vydělíme množstvím z výroby jednoho (2) abychom zjistili, že potřebujeme 70 výrobních operací. Poté vydělíme 70 násobičem produktivity, 1.4, což ‘vyfiltruje’ 20 operací zdarma a nechá nás s 50 výrobních operací, které musíme doopravdy provést. Proces Výroby Raket Samotná vesmírná raketa je hlavním důvodem, proč by jste položili silo. Každá raketa stojí 49,100 železa, 92,500 měďi, 9,500 uhlí a 277,778 ropy. Toto je pridáno na cokoliv dáte do slotu nákladu, ale to se může měnit záležící na tom, co tomu dáte. Obecně, pro většinu receptů, moduly produktivity se vrátí extrémně pomalu. Když ale máte recept, který má mnoho surových materiálů, vrátí se vám to docela rychle. Nejvíce, když používáte silo. Poznamenejte, že produktivita se neaplikuje na raketu samotnou. V jiných slovech, nejste schopni dostat dvě rakety najednou. Aplikuje se to ale na součástky do rakety, které se přičítají do celku. Jeden modul produktivity mk3 v silu samotném sníží cenu každé rakety na 10/11 (neboli 90.91%) originální ceny. Toto není z rakety samotné, ale z 100 součástek, které potřebujete, protože jich budete potřebovat zhruba pouhých 90.91 místo 100 na jednu raketu. Snížení i o 9.09% vám ale stejně ušetří zhruba 4,463.6 železa, 8,409.1 měďi, 863.6 uhlí a 25,252.5 ropy. To je trochu přes čtyři moduly v surovinách. Co ale čtyři moduly produktivity? Po minulém kroku, máte dostatek materiálů pro to! Snížilo by to cenu o 28.57%. Stejný proces jako předtím, vezměte vstup a vynásobte násobitelem ceny, a zjistíte, že ušetříte 13 modulů v materiálech. V jiných slovech, čtyři moduly produktivity mk3 doslovně zaplatí za sebe třikrát na každé raketě! Výsledky Raketového Startu Jak všichni víme, odpal rakety s satelitem nám dá 1000 vesmírných vědeckých balíčků v vanille. To ale není jediná věc, kterou můžete odpálit. Jsou taky vesmírné vědecké balíčky, které dávají jednu rybu na balíček. Další fakt: Toto je jediný způsob, kterým můžete doopravdy automatizovat ryby. Cokoliv jiného pouze smaže použitou věc a nic nevrátí. Existuje ale speciální achievement za odpálení jedné specifické věci, ale to zde nebudu spoilovat. Vložení auta, tanku, nebo věci vespod stránky Alt-F4 vám umožní, aby jste doslova jeli v raketě. Když zmáčknete odpálit, počká to na vás, aby jste nastoupili, stejně jako by jste nastoupili do auta, a poté vás odpálí až do vesmíru! Biter Battles Championships everLord Sobota, začínají Biter Battles Championships! Jupí! Co jsou Biter Battles Biter Battles, česky “bitva s kousači”, je scenário od MewMew z Comfy Factorio, kde dva týmy soutěží, mezitím co na ně útočí kousači. Jejich cíl je, zničit vám silo. Toto znamená, že není žádná bitva hráč proti hráčí, protože hráči jsou rozdělěni řekou v naší vlastní aréně. Biter Battle aréna s izolovanými místy pro oba dva týmy Každý tým musí obraňovat své raketové silo od vln kousačů, kteří útoči každou druhou minutu. Take můžete zesilnit kousače soupeře tím, že odešlete vědecké dárkové balíčky do vesmíru, čímž zvýšíte úroveň kousačů (malí, střední, velcí, obří) a jak velké vlny jsou. Když budete posílat vyšší úrovně, docílíte vyšších mutageních výsledků. Scenário je otevřeno 24/7, aby se kdokoli mohl připojit! Vše co musíte udělat je vyheldat si veřejnou hru “Free BiterBattles.org”. Je to větsinou jedna z her s nejvíce hráči, většinou má něco mezi 20 a 50. Co jsou tedy Biter Battles Champoinships? Po čtyřek povedených turnajích, rozhodli jsme se udělat trvalou soutěž na scenáriu Biter Battles: mistrovství rozděleno do dvou lig; Behemoth League pro profesionální hráče, a Biter League pro všechny ostatní. Zápasy jsou poté 3v3, s volitelným 4. hráčem, který se zůčastní jako špión, trenér, nebo bude náhradní. Hraje se to jako dvojitý round-robin: všechny týmy v každé divizi budou hrát dvakrát proti všem ostatním týmům v stejné divizi, jednou “doma” a podruhé jako “hosté”. Jsou důležité změny pro tyto hry. První aspeket je čtyři nové vědecké balíčky ve hře, což vede k více dynamickým soubojům a více možným strategiím. Další důležitý aspekt je Armageddon: Po dvou hodinách, evoluce kousačů se zrychlí, takže zápas větsinou končí před třemi hodinami - abychom neměli nekonečné souboje. Pripravte se na obří kousače dříve než později! Sedm týmů bude soutěžit v Behemoth League. Bude začínat zítra (sobota 30. října) s bitvou mezi týmy Baquette a Mysticlutchpipenator od 14:00 UTC. Hlavní událost příštího týdne, v čtvrtek 4. listopadu od 19:00 UTC, bude souboj mezi SteelAxe a GreenScience! Můžete očekávat spektakulární hru. Je to definitivně dost jiná hra než normální Factorio. Hry budou streamovány populárními streamery, a budeme oznamovat zápasy a streamy na Twitteru. Biter League ale začne až za dva týdny. Všichni jsou vítáni k připojení a ukázání vašich schopností! Registrace bude otevřena do pondělí, 8. listopadu. Každý tým bude povinnen hrát jednou za týden, a změny hráčů jsou povoleny. Více informací ohledně pravidel, hráčů, tréninku a možnosti peněžní výhry najdete na naší stránce: https://bbchampions.org/. Od týmu BBChampions: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Podporováno Francouzkou Discord Komunitou. Přispívání Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na Discord aby jste začali!">
+<meta property="og:description" content="Tento týden je zlaté výročí Alt-F4, vzhledem k tomu, že je 50. edice. Žádné speciální festivity ale nejsou, děláme je až moc často. Místo toho, garr890354839 přispívá svým prvním článkem, v kterém mluví o některých podivnostech a trochu matiky ohledně raketových sil. Poté, everLord nám řekne o nové komunitní události od Comfy, pod jménem ‘Biter Battle Championship’! Raketové Silo: Zajímavosti v Plném garr890354839 Á, raketové silo. Je to největší entita ve hře - mimo vesmírnou loď, ve které přistáváte. Je to také jedna z nejdražších vyrobitelných budov. Když je ale postaveno, tak má trochu divné efekty na elektrickou síť. Také víme, že moduly produktivity jsou v něm nejlepší. Co ale kolem sila? To vše najdete zde! Konzumace Elektřiny Abychom někde začali, podívejme se na množství elektřiny, kterou konzumuje: Tvdí, že používá nanejvýše 4MW (což je pravda), ale používý pouhých 250kW když pouze výrábí raketové části, což je trochu více, než tři výrobní stroje mk1 (225kW). Kdy ale používá celých 4MW, což je o trochu více než 53 výrobních strojů mk1? No, když se dveře raketového sila posouvají, nebo je raketa tlačena nahoru. To musí být těžké! Až do verze 1.1.42, používalo ale dalších 10kW v noci, jen tak, ale nebyly žádné další světla, aby toto indikovaly. Zpět ve verzi 0.16, byly ale světla na silu, na obrázku níže, což je odkud těch 10kW přišlo. Silo a Moduly Jste schopni nacpat 12 majáků kolem entit, které mají velikost 3x3, 16 kolem rafinerie ropy, a 20 kolem sila. Dva majáky, každý s dvoumi moduly rychlosti 3 je stejné, jako kdyby jste přidali druhý stroj. Jedno silo tedy dokáže dělat práci třinácti sil. Moduly a majáky jsou ale nesmírně drahé, jak ukazuje tabulka níže:   Maják Modul mk3 4 moduly a 2 majáky Silo Raketa z sila Železo 135 1083 4602 12220 49100 Měď 110 2000 8220 8600 92500 Kámen 0 0 0 1000 0 Uhlí 20 190 800 437 9500 Ropa 411 17334 70158 11080 277778 Když mluvím o cenách, myslím množství relevantních surovin nutných bez modulů produktivity ve výrobní lince, a s používáním pokročilé zpracování ropy. Každý maják má docela dost velkou cenu pro hráče, který není moc daleko, ale to je nic oproti modulům mk3. To je, protože modul mk3 stojí zhruba desetkrát tolik. Kalkulačka zmiňuje specificky moduly rychlosti, ale další dva moduly jsou na tom stejně. Takže, čtyři moduly rychlosti a dva majáky používají hodně surových materiálů. S některými optimalizacemi, jako standardní osm-majákovou řadou a ty ukázané zde, je možné z vašich modulů dostat více, ale cena zůstává. Normálně, cena převyšuje cenu stroje. Existuje ale výjmka pro toto pravidlo. Silo stojí celých 12,220 železa, 8,600 měďi, 437 uhlí, 11,080 ropy a 1,000 kamene. Moduly a majáky jsou mnohem levnější, než stavba nového sila. Moduly Produktivity Pokud jste dlouhodobým čternářem Alt-F4, možná si vzpomínáte na článek č12, který je dedikován produktivitě a jejím efektům. Ale pro prvodobé čtenáře, nebo ty, které potřebují trochu osvěžení, řeknu vám kratší verzi, co je produktivita: V zásadě to je násobič pro výstup pro daný vstuú. Když řeknu výrobní operace, myslím hlavní čáru v UI stroje nebo pece, která se plní do kompletnosti. Způsob, kterým to funguje je, že to vezme 100 vstupů a vynásobí to procentuálním bonusem z modulů v stroji. Takže například, vezměmě si čtyři moduly produktivity v vyribním stroji mk3, který vyrábí měděné kabely. Celkový bonus z modulů je 40%, takže z 10 měděných plátů se stane 20*(1+0.4)=28 měděných drátů. Jsme schopni spočítat nutný vstup na daný výstup když otočíme proces. Takže pokud bychom chtěli 140 měděných kabelů s influencí 4 modulů produktivity, první vydělíme množstvím z výroby jednoho (2) abychom zjistili, že potřebujeme 70 výrobních operací. Poté vydělíme 70 násobičem produktivity, 1.4, což ‘vyfiltruje’ 20 operací zdarma a nechá nás s 50 výrobních operací, které musíme doopravdy provést. Proces Výroby Raket Samotná vesmírná raketa je hlavním důvodem, proč by jste položili silo. Každá raketa stojí 49,100 železa, 92,500 měďi, 9,500 uhlí a 277,778 ropy. Toto je pridáno na cokoliv dáte do slotu nákladu, ale to se může měnit záležící na tom, co tomu dáte. Obecně, pro většinu receptů, moduly produktivity se vrátí extrémně pomalu. Když ale máte recept, který má mnoho surových materiálů, vrátí se vám to docela rychle. Nejvíce, když používáte silo. Poznamenejte, že produktivita se neaplikuje na raketu samotnou. V jiných slovech, nejste schopni dostat dvě rakety najednou. Aplikuje se to ale na součástky do rakety, které se přičítají do celku. Jeden modul produktivity mk3 v silu samotném sníží cenu každé rakety na 10/11 (neboli 90.91%) originální ceny. Toto není z rakety samotné, ale z 100 součástek, které potřebujete, protože jich budete potřebovat zhruba pouhých 90.91 místo 100 na jednu raketu. Snížení i o 9.09% vám ale stejně ušetří zhruba 4,463.6 železa, 8,409.1 měďi, 863.6 uhlí a 25,252.5 ropy. To je trochu přes čtyři moduly v surovinách. Co ale čtyři moduly produktivity? Po minulém kroku, máte dostatek materiálů pro to! Snížilo by to cenu o 28.57%. Stejný proces jako předtím, vezměte vstup a vynásobte násobitelem ceny, a zjistíte, že ušetříte 13 modulů v materiálech. V jiných slovech, čtyři moduly produktivity mk3 doslovně zaplatí za sebe třikrát na každé raketě! Výsledky Raketového Startu Jak všichni víme, odpal rakety s satelitem nám dá 1000 vesmírných vědeckých balíčků v vanille. To ale není jediná věc, kterou můžete odpálit. Jsou taky vesmírné vědecké balíčky, které dávají jednu rybu na balíček. Další fakt: Toto je jediný způsob, kterým můžete doopravdy automatizovat ryby. Cokoliv jiného pouze smaže použitou věc a nic nevrátí. Existuje ale speciální achievement za odpálení jedné specifické věci, ale to zde nebudu spoilovat. Vložení auta, tanku, nebo věci vespod stránky Alt-F4 vám umožní, aby jste doslova jeli v raketě. Když zmáčknete odpálit, počká to na vás, aby jste nastoupili, stejně jako by jste nastoupili do auta, a poté vás odpálí až do vesmíru! Biter Battles Championships everLord Sobota, začínají Biter Battles Championships! Jupí! Co jsou Biter Battles Biter Battles, česky “bitva s kousači”, je scenário od MewMew z Comfy Factorio, kde dva týmy soutěží, mezitím co na ně útočí kousači. Jejich cíl je, zničit vám silo. Toto znamená, že není žádná bitva hráč proti hráčí, protože hráči jsou rozdělěni řekou v naší vlastní aréně. Biter Battle aréna s izolovanými místy pro oba dva týmy Každý tým musí obraňovat své raketové silo od vln kousačů, kteří útoči každou druhou minutu. Take můžete zesilnit kousače soupeře tím, že odešlete vědecké dárkové balíčky do vesmíru, čímž zvýšíte úroveň kousačů (malí, střední, velcí, obří) a jak velké vlny jsou. Když budete posílat vyšší úrovně, docílíte vyšších mutageních výsledků. Scenário je otevřeno 24/7, aby se kdokoli mohl připojit! Vše co musíte udělat je vyheldat si veřejnou hru “Free BiterBattles.org”. Je to větsinou jedna z her s nejvíce hráči, většinou má něco mezi 20 a 50. Co jsou tedy Biter Battles Champoinships? Po čtyřek povedených turnajích, rozhodli jsme se udělat trvalou soutěž na scenáriu Biter Battles: mistrovství rozděleno do dvou lig; Behemoth League pro profesionální hráče, a Biter League pro všechny ostatní. Zápasy jsou poté 3v3, s volitelným 4. hráčem, který se zůčastní jako špión, trenér, nebo bude náhradní. Hraje se to jako dvojitý round-robin: všechny týmy v každé divizi budou hrát dvakrát proti všem ostatním týmům v stejné divizi, jednou “doma” a podruhé jako “hosté”. Jsou důležité změny pro tyto hry. První aspeket je čtyři nové vědecké balíčky ve hře, což vede k více dynamickým soubojům a více možným strategiím. Další důležitý aspekt je Armageddon: Po dvou hodinách, evoluce kousačů se zrychlí, takže zápas větsinou končí před třemi hodinami - abychom neměli nekonečné souboje. Pripravte se na obří kousače dříve než později! Sedm týmů bude soutěžit v Behemoth League. Bude začínat zítra (sobota 30. října) s bitvou mezi týmy Baquette a Mysticlutchpipenator od 14:00 UTC. Hlavní událost příštího týdne, v čtvrtek 4. listopadu od 19:00 UTC, bude souboj mezi SteelAxe a GreenScience! Můžete očekávat spektakulární hru. Je to definitivně dost jiná hra než normální Factorio. Hry budou streamovány populárními streamery, a budeme oznamovat zápasy a streamy na Twitteru. Biter League ale začne až za dva týdny. Všichni jsou vítáni k připojení a ukázání vašich schopností! Registrace bude otevřena do pondělí, 8. listopadu. Každý tým bude povinnen hrát jednou za týden, a změny hráčů jsou povoleny. Více informací ohledně pravidel, hráčů, tréninku a možnosti peněžní výhry najdete na naší stránce: https://bbchampions.org/. Od týmu BBChampions: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Podporováno Francouzkou Discord Komunitou. Přispívání Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na Discord aby jste začali!">
+<link rel="canonical" href="https://alt-f4.blog/cs/ALTF4-50/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-50/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-29T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-10-29T00:00:00+00:00","author":{"@type":"Person","name":"garr890354839, everlord"},"description":"Tento týden je zlaté výročí Alt-F4, vzhledem k tomu, že je 50. edice. Žádné speciální festivity ale nejsou, děláme je až moc často. Místo toho, garr890354839 přispívá svým prvním článkem, v kterém mluví o některých podivnostech a trochu matiky ohledně raketových sil. Poté, everLord nám řekne o nové komunitní události od Comfy, pod jménem ‘Biter Battle Championship’! Raketové Silo: Zajímavosti v Plném garr890354839 Á, raketové silo. Je to největší entita ve hře - mimo vesmírnou loď, ve které přistáváte. Je to také jedna z nejdražších vyrobitelných budov. Když je ale postaveno, tak má trochu divné efekty na elektrickou síť. Také víme, že moduly produktivity jsou v něm nejlepší. Co ale kolem sila? To vše najdete zde! Konzumace Elektřiny Abychom někde začali, podívejme se na množství elektřiny, kterou konzumuje: Tvdí, že používá nanejvýše 4MW (což je pravda), ale používý pouhých 250kW když pouze výrábí raketové části, což je trochu více, než tři výrobní stroje mk1 (225kW). Kdy ale používá celých 4MW, což je o trochu více než 53 výrobních strojů mk1? No, když se dveře raketového sila posouvají, nebo je raketa tlačena nahoru. To musí být těžké! Až do verze 1.1.42, používalo ale dalších 10kW v noci, jen tak, ale nebyly žádné další světla, aby toto indikovaly. Zpět ve verzi 0.16, byly ale světla na silu, na obrázku níže, což je odkud těch 10kW přišlo. Silo a Moduly Jste schopni nacpat 12 majáků kolem entit, které mají velikost 3x3, 16 kolem rafinerie ropy, a 20 kolem sila. Dva majáky, každý s dvoumi moduly rychlosti 3 je stejné, jako kdyby jste přidali druhý stroj. Jedno silo tedy dokáže dělat práci třinácti sil. Moduly a majáky jsou ale nesmírně drahé, jak ukazuje tabulka níže:   Maják Modul mk3 4 moduly a 2 majáky Silo Raketa z sila Železo 135 1083 4602 12220 49100 Měď 110 2000 8220 8600 92500 Kámen 0 0 0 1000 0 Uhlí 20 190 800 437 9500 Ropa 411 17334 70158 11080 277778 Když mluvím o cenách, myslím množství relevantních surovin nutných bez modulů produktivity ve výrobní lince, a s používáním pokročilé zpracování ropy. Každý maják má docela dost velkou cenu pro hráče, který není moc daleko, ale to je nic oproti modulům mk3. To je, protože modul mk3 stojí zhruba desetkrát tolik. Kalkulačka zmiňuje specificky moduly rychlosti, ale další dva moduly jsou na tom stejně. Takže, čtyři moduly rychlosti a dva majáky používají hodně surových materiálů. S některými optimalizacemi, jako standardní osm-majákovou řadou a ty ukázané zde, je možné z vašich modulů dostat více, ale cena zůstává. Normálně, cena převyšuje cenu stroje. Existuje ale výjmka pro toto pravidlo. Silo stojí celých 12,220 železa, 8,600 měďi, 437 uhlí, 11,080 ropy a 1,000 kamene. Moduly a majáky jsou mnohem levnější, než stavba nového sila. Moduly Produktivity Pokud jste dlouhodobým čternářem Alt-F4, možná si vzpomínáte na článek č12, který je dedikován produktivitě a jejím efektům. Ale pro prvodobé čtenáře, nebo ty, které potřebují trochu osvěžení, řeknu vám kratší verzi, co je produktivita: V zásadě to je násobič pro výstup pro daný vstuú. Když řeknu výrobní operace, myslím hlavní čáru v UI stroje nebo pece, která se plní do kompletnosti. Způsob, kterým to funguje je, že to vezme 100 vstupů a vynásobí to procentuálním bonusem z modulů v stroji. Takže například, vezměmě si čtyři moduly produktivity v vyribním stroji mk3, který vyrábí měděné kabely. Celkový bonus z modulů je 40%, takže z 10 měděných plátů se stane 20*(1+0.4)=28 měděných drátů. Jsme schopni spočítat nutný vstup na daný výstup když otočíme proces. Takže pokud bychom chtěli 140 měděných kabelů s influencí 4 modulů produktivity, první vydělíme množstvím z výroby jednoho (2) abychom zjistili, že potřebujeme 70 výrobních operací. Poté vydělíme 70 násobičem produktivity, 1.4, což ‘vyfiltruje’ 20 operací zdarma a nechá nás s 50 výrobních operací, které musíme doopravdy provést. Proces Výroby Raket Samotná vesmírná raketa je hlavním důvodem, proč by jste položili silo. Každá raketa stojí 49,100 železa, 92,500 měďi, 9,500 uhlí a 277,778 ropy. Toto je pridáno na cokoliv dáte do slotu nákladu, ale to se může měnit záležící na tom, co tomu dáte. Obecně, pro většinu receptů, moduly produktivity se vrátí extrémně pomalu. Když ale máte recept, který má mnoho surových materiálů, vrátí se vám to docela rychle. Nejvíce, když používáte silo. Poznamenejte, že produktivita se neaplikuje na raketu samotnou. V jiných slovech, nejste schopni dostat dvě rakety najednou. Aplikuje se to ale na součástky do rakety, které se přičítají do celku. Jeden modul produktivity mk3 v silu samotném sníží cenu každé rakety na 10/11 (neboli 90.91%) originální ceny. Toto není z rakety samotné, ale z 100 součástek, které potřebujete, protože jich budete potřebovat zhruba pouhých 90.91 místo 100 na jednu raketu. Snížení i o 9.09% vám ale stejně ušetří zhruba 4,463.6 železa, 8,409.1 měďi, 863.6 uhlí a 25,252.5 ropy. To je trochu přes čtyři moduly v surovinách. Co ale čtyři moduly produktivity? Po minulém kroku, máte dostatek materiálů pro to! Snížilo by to cenu o 28.57%. Stejný proces jako předtím, vezměte vstup a vynásobte násobitelem ceny, a zjistíte, že ušetříte 13 modulů v materiálech. V jiných slovech, čtyři moduly produktivity mk3 doslovně zaplatí za sebe třikrát na každé raketě! Výsledky Raketového Startu Jak všichni víme, odpal rakety s satelitem nám dá 1000 vesmírných vědeckých balíčků v vanille. To ale není jediná věc, kterou můžete odpálit. Jsou taky vesmírné vědecké balíčky, které dávají jednu rybu na balíček. Další fakt: Toto je jediný způsob, kterým můžete doopravdy automatizovat ryby. Cokoliv jiného pouze smaže použitou věc a nic nevrátí. Existuje ale speciální achievement za odpálení jedné specifické věci, ale to zde nebudu spoilovat. Vložení auta, tanku, nebo věci vespod stránky Alt-F4 vám umožní, aby jste doslova jeli v raketě. Když zmáčknete odpálit, počká to na vás, aby jste nastoupili, stejně jako by jste nastoupili do auta, a poté vás odpálí až do vesmíru! Biter Battles Championships everLord Sobota, začínají Biter Battles Championships! Jupí! Co jsou Biter Battles Biter Battles, česky “bitva s kousači”, je scenário od MewMew z Comfy Factorio, kde dva týmy soutěží, mezitím co na ně útočí kousači. Jejich cíl je, zničit vám silo. Toto znamená, že není žádná bitva hráč proti hráčí, protože hráči jsou rozdělěni řekou v naší vlastní aréně. Biter Battle aréna s izolovanými místy pro oba dva týmy Každý tým musí obraňovat své raketové silo od vln kousačů, kteří útoči každou druhou minutu. Take můžete zesilnit kousače soupeře tím, že odešlete vědecké dárkové balíčky do vesmíru, čímž zvýšíte úroveň kousačů (malí, střední, velcí, obří) a jak velké vlny jsou. Když budete posílat vyšší úrovně, docílíte vyšších mutageních výsledků. Scenário je otevřeno 24/7, aby se kdokoli mohl připojit! Vše co musíte udělat je vyheldat si veřejnou hru “Free BiterBattles.org”. Je to větsinou jedna z her s nejvíce hráči, většinou má něco mezi 20 a 50. Co jsou tedy Biter Battles Champoinships? Po čtyřek povedených turnajích, rozhodli jsme se udělat trvalou soutěž na scenáriu Biter Battles: mistrovství rozděleno do dvou lig; Behemoth League pro profesionální hráče, a Biter League pro všechny ostatní. Zápasy jsou poté 3v3, s volitelným 4. hráčem, který se zůčastní jako špión, trenér, nebo bude náhradní. Hraje se to jako dvojitý round-robin: všechny týmy v každé divizi budou hrát dvakrát proti všem ostatním týmům v stejné divizi, jednou “doma” a podruhé jako “hosté”. Jsou důležité změny pro tyto hry. První aspeket je čtyři nové vědecké balíčky ve hře, což vede k více dynamickým soubojům a více možným strategiím. Další důležitý aspekt je Armageddon: Po dvou hodinách, evoluce kousačů se zrychlí, takže zápas větsinou končí před třemi hodinami - abychom neměli nekonečné souboje. Pripravte se na obří kousače dříve než později! Sedm týmů bude soutěžit v Behemoth League. Bude začínat zítra (sobota 30. října) s bitvou mezi týmy Baquette a Mysticlutchpipenator od 14:00 UTC. Hlavní událost příštího týdne, v čtvrtek 4. listopadu od 19:00 UTC, bude souboj mezi SteelAxe a GreenScience! Můžete očekávat spektakulární hru. Je to definitivně dost jiná hra než normální Factorio. Hry budou streamovány populárními streamery, a budeme oznamovat zápasy a streamy na Twitteru. Biter League ale začne až za dva týdny. Všichni jsou vítáni k připojení a ukázání vašich schopností! Registrace bude otevřena do pondělí, 8. listopadu. Každý tým bude povinnen hrát jednou za týden, a změny hráčů jsou povoleny. Více informací ohledně pravidel, hráčů, tréninku a možnosti peněžní výhry najdete na naší stránce: https://bbchampions.org/. Od týmu BBChampions: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Podporováno Francouzkou Discord Komunitou. Přispívání Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na Discord aby jste začali!","url":"https://alt-f4.blog/ALTF4-50/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-50/"},"headline":"Alt-F4 #50 - Zajímavosti Raketovéhi Sila","dateModified":"2021-10-29T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/50/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/50/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/cs/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/cs/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/cs/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/cs/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Komunitou tvořené pokračování našich milovaných "Factorio Friday Facts"</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-50/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button button-green lang-button" href="/cs/ALTF4-50/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-50/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-50/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-50/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-50/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-50/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-50/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-50/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-50/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #50 -  Zajímavosti Raketovéhi Sila  <author>29-10-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Napsal <em>garr890354839, everlord</em>,
+
+
+
+upravil <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>přeložil <em>oof2win2</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/50/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Obsah</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#raketov%C3%A9-silo-zaj%C3%ADmavosti-v-pln%C3%A9m-garr890354839">Raketové Silo: Zajímavosti v Plném <author>garr890354839</author></a>
+    <ul>
+      <li><a href="#konzumace-elekt%C5%99iny">Konzumace Elektřiny</a></li>
+      <li><a href="#silo-a-moduly">Silo a Moduly</a></li>
+      <li><a href="#moduly-produktivity">Moduly Produktivity</a></li>
+      <li><a href="#proces-v%C3%BDroby-raket">Proces Výroby Raket</a></li>
+      <li><a href="#v%C3%BDsledky-raketov%C3%A9ho-startu">Výsledky Raketového Startu</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#biter-battles-championships-everlord">Biter Battles Championships <author>everLord</author></a>
+    <ul>
+      <li><a href="#co-jsou-biter-battles">Co jsou Biter Battles</a></li>
+      <li><a href="#co-jsou-tedy-biter-battles-champoinships">Co jsou tedy Biter Battles Champoinships?</a></li>
+    </ul>
+  </li>
+  <li><a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD">Přispívání</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Tento týden je zlaté výročí Alt-F4, vzhledem k tomu, že je 50. edice. Žádné speciální festivity ale nejsou, děláme je až moc často. Místo toho, <em>garr890354839</em> přispívá svým prvním článkem, v kterém mluví o některých podivnostech a trochu matiky ohledně raketových sil. Poté, <em>everLord</em> nám řekne o nové komunitní události od Comfy, pod jménem ‘Biter Battle Championship’!</p>
+      <h2 id="raketové-silo-zajímavosti-v-plném-garr890354839">
+        
+        
+            <a href="#raketov%C3%A9-silo-zaj%C3%ADmavosti-v-pln%C3%A9m-garr890354839" class="anchor" style="text-decoration: none;">Raketové Silo: Zajímavosti v Plném <author>garr890354839</author></a>
+          
+        
+      </h2>
+    
+
+<p>Á, raketové silo. Je to největší entita ve hře - mimo vesmírnou loď, ve které přistáváte. Je to také jedna z nejdražších vyrobitelných budov. Když je ale postaveno, tak má trochu divné efekty na elektrickou síť. Také víme, že moduly produktivity jsou v něm nejlepší. Co ale kolem sila? To vše najdete zde!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-1.jpg" alt="Raketové Silo" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="konzumace-elektřiny">
+        
+        
+            <a href="#konzumace-elekt%C5%99iny" class="anchor" style="text-decoration: none;">Konzumace Elektřiny</a>
+          
+        
+      </h3>
+    
+
+<p>Abychom někde začali, podívejme se na množství elektřiny, kterou konzumuje: Tvdí, že používá nanejvýše 4MW (což je pravda), ale používý pouhých 250kW když pouze výrábí raketové části, což je trochu více, než tři výrobní stroje mk1 (225kW). Kdy ale používá celých 4MW, což je o trochu více než 53 výrobních strojů mk1? No, když se dveře raketového sila posouvají, nebo je raketa tlačena nahoru. To musí být těžké! Až do verze 1.1.42, používalo ale dalších 10kW v noci, jen tak, ale nebyly žádné další světla, aby toto indikovaly. Zpět ve verzi 0.16, byly ale světla na silu, na obrázku níže, což je odkud těch 10kW přišlo.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-2.jpg" alt="Raketové Silo se světly" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="silo-a-moduly">
+        
+        
+            <a href="#silo-a-moduly" class="anchor" style="text-decoration: none;">Silo a Moduly</a>
+          
+        
+      </h3>
+    
+
+<p>Jste schopni nacpat 12 majáků kolem entit, které mají velikost 3x3, 16 kolem rafinerie ropy, a 20 kolem sila. Dva majáky, každý s dvoumi moduly rychlosti 3 je stejné, jako kdyby jste přidali druhý stroj. Jedno silo tedy dokáže dělat práci <em>třinácti</em> sil. Moduly a majáky jsou ale nesmírně drahé, jak ukazuje tabulka níže:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Maják</th>
+      <th>Modul mk3</th>
+      <th>4 moduly a 2 majáky</th>
+      <th>Silo</th>
+      <th>Raketa z sila</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Železo</td>
+      <td>135</td>
+      <td>1083</td>
+      <td>4602</td>
+      <td>12220</td>
+      <td>49100</td>
+    </tr>
+    <tr>
+      <td>Měď</td>
+      <td>110</td>
+      <td>2000</td>
+      <td>8220</td>
+      <td>8600</td>
+      <td>92500</td>
+    </tr>
+    <tr>
+      <td>Kámen</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Uhlí</td>
+      <td>20</td>
+      <td>190</td>
+      <td>800</td>
+      <td>437</td>
+      <td>9500</td>
+    </tr>
+    <tr>
+      <td>Ropa</td>
+      <td>411</td>
+      <td>17334</td>
+      <td>70158</td>
+      <td>11080</td>
+      <td>277778</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Když mluvím o cenách, myslím množství relevantních surovin nutných bez modulů produktivity ve výrobní lince, a s používáním pokročilé zpracování ropy. Každý <a href="https://factoriolab.github.io/list?p=beacon*1&amp;v=1">maják</a> má docela dost velkou cenu pro hráče, který není moc daleko, ale to je nic oproti modulům mk3. To je, protože <a href="https://factoriolab.github.io/list?p=speed-module-3*1&amp;v=1">modul mk3</a> stojí zhruba desetkrát tolik. Kalkulačka zmiňuje specificky moduly rychlosti, ale další dva moduly jsou na tom stejně.</p>
+
+<p>Takže, čtyři moduly rychlosti a dva majáky používají hodně surových materiálů. S některými optimalizacemi, jako standardní osm-majákovou řadou a ty ukázané <a href="https://factorio.com/blog/post/fff-351">zde</a>, je možné z vašich modulů dostat více, ale cena zůstává. Normálně, cena převyšuje cenu stroje. Existuje ale výjmka pro toto pravidlo. <a href="https://factoriolab.github.io/list?p=rocket-silo*1&amp;v=1">Silo</a> stojí celých 12,220 železa, 8,600 měďi, 437 uhlí, 11,080 ropy a 1,000 kamene. Moduly a majáky jsou <em>mnohem</em> levnější, než stavba nového sila.</p>
+      <h3 id="moduly-produktivity">
+        
+        
+            <a href="#moduly-produktivity" class="anchor" style="text-decoration: none;">Moduly Produktivity</a>
+          
+        
+      </h3>
+    
+
+<p>Pokud jste dlouhodobým čternářem Alt-F4, možná si vzpomínáte na <a href="https://alt-f4.blog/cs/ALTF4-12/#complexity-corner-productivity-modules-thekool">článek č12</a>, který je dedikován produktivitě a jejím efektům. Ale pro prvodobé čtenáře, nebo ty, které potřebují trochu osvěžení, řeknu vám kratší verzi, co je produktivita: V zásadě to je násobič pro výstup pro daný vstuú. Když řeknu výrobní operace, myslím hlavní čáru v UI stroje nebo pece, která se plní do kompletnosti. Způsob, kterým to funguje je, že to vezme 100 vstupů a vynásobí to procentuálním bonusem z modulů v stroji.</p>
+
+<p>Takže například, vezměmě si čtyři moduly produktivity v vyribním stroji mk3, který vyrábí měděné kabely. Celkový bonus z modulů je 40%, takže z 10 měděných plátů se stane <code class="language-plaintext highlighter-rouge">20*(1+0.4)=28</code> měděných drátů. Jsme schopni spočítat nutný vstup na daný výstup když otočíme proces. Takže pokud bychom chtěli 140 měděných kabelů s influencí 4 modulů produktivity, první vydělíme množstvím z výroby jednoho (2) abychom zjistili, že potřebujeme 70 výrobních operací. Poté vydělíme 70 násobičem produktivity, 1.4, což ‘vyfiltruje’ 20 operací zdarma a nechá nás s 50 výrobních operací, které musíme doopravdy provést.</p>
+      <h3 id="proces-výroby-raket">
+        
+        
+            <a href="#proces-v%C3%BDroby-raket" class="anchor" style="text-decoration: none;">Proces Výroby Raket</a>
+          
+        
+      </h3>
+    
+
+<p>Samotná vesmírná raketa je hlavním důvodem, proč by jste položili silo. Každá <a href="https://factoriolab.github.io/list?p=rocket-part*100&amp;v=1">raketa</a> stojí 49,100 železa, 92,500 měďi, 9,500 uhlí a 277,778 ropy. Toto je pridáno na cokoliv dáte do slotu nákladu, ale to se může měnit záležící na tom, co tomu dáte.</p>
+
+<p>Obecně, pro většinu receptů, moduly produktivity se vrátí extrémně pomalu. Když ale máte recept, který má mnoho surových materiálů, vrátí se vám to docela rychle. Nejvíce, když používáte silo. Poznamenejte, že produktivita se neaplikuje na raketu samotnou. V jiných slovech, nejste schopni dostat dvě rakety najednou. Aplikuje se to ale na součástky do rakety, které se přičítají do celku.</p>
+
+<p>Jeden modul produktivity mk3 v silu samotném sníží cenu každé rakety na 10/11 (neboli 90.91%) originální ceny. Toto není z rakety samotné, ale z 100 součástek, které potřebujete, protože jich budete potřebovat zhruba pouhých 90.91 místo 100 na jednu raketu. Snížení i o <a href="https://factoriolab.github.io/list?z=eJwrcM7SMjQwUCtyLtDScqvzAkG1MmMAUBsG5Q__">9.09%</a> vám ale stejně ušetří zhruba 4,463.6 železa, 8,409.1 měďi, 863.6 uhlí a 25,252.5 ropy. To je trochu přes čtyři moduly v surovinách.</p>
+
+<p>Co ale čtyři moduly produktivity? Po minulém kroku, máte dostatek materiálů pro to! Snížilo by to cenu o 28.57%. Stejný proces jako předtím, vezměte vstup a vynásobte násobitelem ceny, a zjistíte, že ušetříte <a href="https://factoriolab.github.io/list?z=eJwrcA7UMjQxMLLQ0nJKUStyLtDScqsDQ7UyYwBzOAgo">13 modulů</a> v materiálech. V jiných slovech, čtyři moduly produktivity mk3 doslovně zaplatí za sebe třikrát na každé raketě!</p>
+      <h3 id="výsledky-raketového-startu">
+        
+        
+            <a href="#v%C3%BDsledky-raketov%C3%A9ho-startu" class="anchor" style="text-decoration: none;">Výsledky Raketového Startu</a>
+          
+        
+      </h3>
+    
+
+<p>Jak všichni víme, odpal rakety s satelitem nám dá 1000 vesmírných vědeckých balíčků v vanille. To ale není jediná věc, kterou můžete odpálit. Jsou taky vesmírné vědecké balíčky, které dávají jednu rybu na balíček. Další fakt: Toto je jediný způsob, kterým můžete doopravdy automatizovat ryby. Cokoliv jiného pouze smaže použitou věc a nic nevrátí. Existuje ale speciální achievement za odpálení jedné specifické věci, ale to zde nebudu spoilovat. Vložení auta, tanku, nebo věci vespod stránky Alt-F4 vám umožní, aby jste doslova jeli v raketě. Když zmáčknete odpálit, počká to na vás, aby jste nastoupili, stejně jako by jste nastoupili do auta, a poté vás odpálí až do vesmíru!</p>
+      <h2 id="biter-battles-championships-everlord">
+        
+        
+            <a href="#biter-battles-championships-everlord" class="anchor" style="text-decoration: none;">Biter Battles Championships <author>everLord</author></a>
+          
+        
+      </h2>
+    
+
+<p>Sobota, začínají Biter Battles Championships! Jupí!</p>
+      <h3 id="co-jsou-biter-battles">
+        
+        
+            <a href="#co-jsou-biter-battles" class="anchor" style="text-decoration: none;">Co jsou Biter Battles</a>
+          
+        
+      </h3>
+    
+
+<p>Biter Battles, česky “bitva s kousači”, je scenário od MewMew z <a href="https://getcomfy.eu/discord">Comfy Factorio</a>, kde dva týmy soutěží, mezitím co na ně útočí kousači. Jejich cíl je, zničit vám silo. Toto znamená, že není žádná bitva hráč proti hráčí, protože hráči jsou rozdělěni řekou v naší vlastní aréně.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/50/biter-battle-arena.png" alt="Dvě části pevniny rozděleny vodou" style="max-width: ; max-height:  ">
+        
+        <figcaption>Biter Battle aréna s izolovanými místy pro oba dva týmy</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Každý tým musí obraňovat své raketové silo od vln kousačů, kteří útoči každou druhou minutu. Take můžete zesilnit kousače soupeře tím, že odešlete vědecké dárkové balíčky do vesmíru, čímž zvýšíte úroveň kousačů (malí, střední, velcí, obří) a jak velké vlny jsou. Když budete posílat vyšší úrovně, docílíte vyšších mutageních výsledků. Scenário je otevřeno 24/7, aby se kdokoli mohl připojit! Vše co musíte udělat je vyheldat si veřejnou hru “Free BiterBattles.org”. Je to větsinou jedna z her s nejvíce hráči, většinou má něco mezi 20 a 50.</p>
+      <h3 id="co-jsou-tedy-biter-battles-champoinships">
+        
+        
+            <a href="#co-jsou-tedy-biter-battles-champoinships" class="anchor" style="text-decoration: none;">Co jsou tedy Biter Battles Champoinships?</a>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/header.png" alt="Biter Battles Championships" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<div class="yt">
+	<iframe src="https://www.youtube.com/embed/LoXpHYFT6kI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="youtube"></iframe>
+</div>
+
+<p>Po čtyřek povedených turnajích, rozhodli jsme se udělat trvalou soutěž na scenáriu Biter Battles: mistrovství rozděleno do dvou lig; Behemoth League pro profesionální hráče, a Biter League pro všechny ostatní. Zápasy jsou poté 3v3, s volitelným 4. hráčem, který se zůčastní jako špión, trenér, nebo bude náhradní.</p>
+
+<p>Hraje se to jako dvojitý round-robin: všechny týmy v každé divizi budou hrát dvakrát proti všem ostatním týmům v stejné divizi, jednou “doma” a podruhé jako “hosté”. Jsou důležité změny pro tyto hry. První aspeket je čtyři nové vědecké balíčky ve hře, což vede k více dynamickým soubojům a více možným strategiím. Další důležitý aspekt je <strong>Armageddon</strong>: Po dvou hodinách, evoluce kousačů se zrychlí, takže zápas větsinou končí před třemi hodinami - abychom neměli nekonečné souboje. Pripravte se na obří kousače dříve než později!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/behemoth-league.png" alt="Behemoth League" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Sedm týmů bude soutěžit v Behemoth League. Bude začínat zítra (sobota 30. října) s bitvou mezi týmy Baquette a Mysticlutchpipenator od 14:00 UTC. Hlavní událost příštího týdne, v čtvrtek 4. listopadu od 19:00 UTC, bude souboj mezi SteelAxe a GreenScience! Můžete očekávat spektakulární hru. Je to definitivně dost jiná hra než normální Factorio. Hry budou streamovány populárními streamery, a budeme oznamovat zápasy a streamy na <a href="https://twitter.com/BiterBattles">Twitteru</a>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/biter-league.png" alt="Biter League" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Biter League ale začne až za dva týdny. Všichni jsou vítáni k připojení a ukázání vašich schopností! Registrace bude otevřena do pondělí, 8. listopadu. Každý tým bude povinnen hrát jednou za týden, a změny hráčů jsou povoleny. Více informací ohledně pravidel, hráčů, tréninku a možnosti peněžní výhry najdete na naší stránce: <a href="https://bbchampions.org/">https://bbchampions.org/</a>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/logo.png" alt="Biter Battles Champions Logo" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Od týmu BBChampions: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Podporováno <a href="https://discord.gg/d2ja9wUd">Francouzkou Discord Komunitou</a>.</p>
+      <h2 id="přispívání">
+        
+        
+            <a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD" class="anchor" style="text-decoration: none;">Přispívání</a>
+          
+        
+      </h2>
+    
+
+<p>Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na <a href="https://alt-f4.blog/cs/discord">Discord</a> aby jste začali!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/cs/discord">
+    Diskutujte na Discordu
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/cs/ALTF4-49/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/cs/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/cs/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/cs/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/cs/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Tato webová stránka je čistě projektem fanoušků, není nijak přímo spojena s Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

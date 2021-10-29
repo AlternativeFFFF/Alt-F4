@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-10-15T12:51:13+00:00</updated>
+  <updated>2021-10-29T12:19:26+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,21 @@
   
   
   <entry>
-    <title>Alt-F4 #49 - Dyworld Release Party</title>
+    <title>Alt-F4 #50 - Raketensilogeheimnisse</title>
+    <link href="https://alt-f4.blog/de/ALTF4-50/" />
+    <id>https://alt-f4.blog/ALTF4-50</id>
+    <updated>2021-10-29T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Diese Woche ist das goldene Jubiläum von ALT-F4, wegen Ausgabe #50 und so. Keine besonderen Festivitäten jedoch, das machen wir sonst glaub ich oft genug. Stattdessen erklärt uns &lt;em&gt;garr890354839&lt;/em&gt; in seinem ersten Beitrag über einige Eingenheiten des Raketensilos und einige dahinterstehende Mathematik (keine Angst, so viel ist es nicht). Danach...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 #49 - Dyworld-Veröffentlichungsparty</title>
     <link href="https://alt-f4.blog/de/ALTF4-49/" />
     <id>https://alt-f4.blog/ALTF4-49</id>
-    <updated>2021-10-15T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;After an involuntary two-week break (please join our &lt;a href=&quot;https://alt-f4.blog/discord&quot;&gt;Discord&lt;/a&gt; to contribute your amazing article &lt;em&gt;hint hint nod nod&lt;/em&gt;), Alt-F4 is back with issue #49! There’s two returns in one week actually, as &lt;em&gt;Dysoch&lt;/em&gt; returns to talk about Dyworld once again, this time about the release party and all the...</content>
+    <updated>2021-10-14T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Nach einer einigermaßen unfreiwilligen zweiwöchigen Pause (tretet doch unserem &lt;a href=&quot;https://alt-f4.blog/discord&quot;&gt;Discord&lt;/a&gt; bei, um vielleicht selbst einen Artikel beizusteuern &lt;em&gt;unauffälliger Wink mit dem Zaunspfahl&lt;/em&gt;) sind wir zurück mit Ausgabe Nummer #49! Noch jemand anderes kommt diese Woche zurück, nämlich &lt;em&gt;Dysoch&lt;/em&gt; mit DyWorld, diesmal mit Informationen zur Veröffentlichung und all dem Spaß,...</content>
   </entry>
   
   
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-41</id>
     <updated>2021-07-09T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;This week, for issue #41, &lt;em&gt;oof2win2&lt;/em&gt; returns with a somewhat more technical article about what exactly can go wrong when trying to connect to multiplayer games and how to potentially solve these issues. If you’ve ever wondered why Factorio wouldn’t let you join your friends’ multiplayer game, this article might...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #40 - Mit Warpgeschwindigkeit für den guten Zweck</title>
-    <link href="https://alt-f4.blog/de/ALTF4-40/" />
-    <id>https://alt-f4.blog/ALTF4-40</id>
-    <updated>2021-07-02T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Nach einer teilweise geplanten zweiwöchigen Sommerpause ist ALT-F4 mit der glorreichen Ausgabe #40 zurück. In dieser Ausgabe hat Fanliebling und außerordentlicher Editor von ALT-F4, &lt;em&gt;stringweasel&lt;/em&gt;, ein weiteres Interview geführt, um uns eine neue Perspektive auf ein Thema in Verbindung zu Nauvis zu geben, man könnte sagen, eine nauvisianische Perspektive. Dieses...</content>
   </entry>
   
   

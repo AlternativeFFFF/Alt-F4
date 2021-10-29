@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-10-15T12:51:13+00:00</updated>
+  <updated>2021-10-29T12:19:26+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #50 - 火箭发射井奇闻趣事</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-50/" />
+    <id>https://alt-f4.blog/ALTF4-50</id>
+    <updated>2021-10-29T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;本周是 Alt-F4 的黄金纪念日，整整 50 期，所有。不过没有特别的庆祝活动，感觉我们已经搞太多次了。相对应的，&lt;em&gt;garr890354839&lt;/em&gt; 发布了他们的初次投稿，谈论了一些围绕火箭发射井的诡异数学问题。之后，&lt;em&gt;everLord&lt;/em&gt; 介绍了另一个由 comfy 小队举办的社区活动，名为“斗虫锦标赛”！&lt;/p&gt; &lt;h2 id=&quot;火箭发射井谜团重重-garr890354839&quot;&gt;火箭发射井：谜团重重 &lt;author&gt;garr890354839&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;啊，火箭发射井。它是游戏中除了坠毁的飞船之外最大的实体。它也是最昂贵的可制作实体之一。然而在放置它时，它会对电网产生一些奇怪的影响。我们都知道在其中使用产能插件收益很高。发射井周围又该用什么？所有问题的答案都在下面！&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-1.jpg&quot; alt=&quot;火箭发射井&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;电力使用情况&quot;&gt;电力使用情况&lt;/h3&gt; &lt;p&gt;首先，让我们看一下它的电力使用情况：它声称最多使用 4 MW（确实如此），但它在制造火箭组件时仅仅使用 250 kW，比 3 台组装机 1 型加起来（225 kW）多一点。那么，它什么时候会需要 4MW，比 53 台组装机 1 型还多呢？嗯，当发射井的门在移动，或者火箭被推上去的时候。那玩意儿一定超重的！直到 1.1.42...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-41</id>
     <updated>2021-07-09T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在本周的第 41 期中，&lt;em&gt;oof2win2&lt;/em&gt; 带回了一篇有点技术性的文章，讲述在试图连接到多人游戏时到底会出什么问题以及如何解决这些潜在问题。如果你曾经想知道为什么异星工厂不让你加入你朋友的多人游戏，这篇文章可能会给你一些解释！&lt;/p&gt; &lt;h2 id=&quot;快速性能检测-oof2win2&quot;&gt;快速性能检测 &lt;author&gt;oof2win2&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/41/dropped.jpg&quot; alt=&quot;玩家从游戏中掉线的图像&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;如果你没有一台顶配电脑，那么就很可能曾看到这样的提示，告诉你因网速或电脑跟不上而被从游戏中踢出。那么，这实际上意味着什么？从短期和长期来看，你能做些什么来改善这一状况？&lt;/p&gt; &lt;h3 id=&quot;网速问题&quot;&gt;网速问题&lt;/h3&gt; &lt;p&gt;有时，你的网络也会出问题。这可能是由于许多原因，如你的 ISP 正在维护或你的 DNS 数据中心遭遇停电。不过你可以用一些实用工具来缓解此类问题。&lt;/p&gt; &lt;p&gt;然而，要解释异星工厂网络的工作原理，将是个漫长的篇幅。&lt;em&gt;cube&lt;/em&gt; 在 &lt;a href=&quot;https://factorio.com/blog/post/fff-136&quot;&gt;FFF#136&lt;/a&gt; 中很好地解释了这个过程。他们所做的最重要的事情之一是使用 UDP，但把 TCP 中的功能加了回去。&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE&quot;&gt;UDP&lt;/a&gt; 的优势是比传统的 TCP（用于大多数日常事务）要快得多。UDP 通过去掉“握手”来实现这一速度，“握手”是指两个客户端（计算机）同意他们要通信并建立一个连接，这意味着它不关心数据会发生什么，&lt;em&gt;只管发送&lt;/em&gt;。然而，这也消除了保证数据交付的能力，正确排序数据或删除重复数据（有时会发生这种状况）。&lt;/p&gt; &lt;p&gt;UDP 缺乏可靠的数据传送直接违背了异星工厂必须使用完全确定的锁步算法工作方式，正如我在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-26/&quot;&gt;先前文章&lt;/a&gt;中解释的那样，数据&lt;em&gt;必须&lt;/em&gt;送达，否则你会收到一个解同步。&lt;em&gt;cube&lt;/em&gt; 说...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #40 - 向慈善曲速前进</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-40/" />
-    <id>https://alt-f4.blog/ALTF4-40</id>
-    <updated>2021-07-02T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;经过半故意的两周仲夏休刊，Alt-F4 带着第 40 期中光荣回归。本期中，最受粉丝们喜爱的编辑 &lt;em&gt;stringweasel&lt;/em&gt; 又做了一期 Nauvis 相关的采访，即全新的一期 Nauvis 有约。这一次，他采访了 &lt;em&gt;Franqly&lt;/em&gt;，一位将首次代表异星工厂参加夏季游戏速通大会慈善活动的速通玩家。活动详情参见本期末尾！&lt;/p&gt; &lt;h2 id=&quot;nauvis-有约franqly-stringweasel&quot;&gt;Nauvis 有约：Franqly &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;世界上最快的异星工厂单人速通玩家——截至撰稿时——是一位名叫 Franqly 的新玩家。他是最近才加入异星工厂速通社区的，自去年 10 月于 &lt;a href=&quot;https://www.speedrun.com/user/Franqly&quot;&gt;speedrun.com&lt;/a&gt;上发表了其首个速通成绩算起。然而现在他已经超过了 AntiElitz 和 Nefrums 等传奇人物，并且是唯一一个在 &lt;a href=&quot;https://www.speedrun.com/factorio/run/y2xelq5m&quot;&gt;90 分钟内&lt;/a&gt;单人打通异星工厂的玩家。在你看蜜蜂总动员的时间内，他可以完成从坠落在 Nauvis 到发射火箭的所有工作。&lt;/p&gt; &lt;p&gt;因此，Franqly 最近由&lt;a href=&quot;https://gamesdonequick.com/&quot;&gt;夏季游戏速通大会&lt;/a&gt;简称 SGDQ 录取，将参加于 2021 年 7 月 4 日至 11 日举行的活动。该活动是一场大规模的年度速通马拉松，展示了超过 &lt;a href=&quot;https://gamesdonequick.com/tracker/runs/SGDQ2021&quot;&gt;140 种不同的通关流程&lt;/a&gt;。速通界的各种大人物，如 &lt;a href=&quot;https://www.speedrun.com/user/themexicanrunner&quot;&gt;TheMexicanRunner&lt;/a&gt; 和...</content>
   </entry>
   
   

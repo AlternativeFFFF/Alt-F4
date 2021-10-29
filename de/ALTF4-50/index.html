@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #50 - Raketensilogeheimnisse</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #50 - Raketensilogeheimnisse">
+<meta name="author" content="garr890354839, everlord">
+<meta property="og:locale" content="de">
+<meta name="description" content="Diese Woche ist das goldene Jubiläum von ALT-F4, wegen Ausgabe #50 und so. Keine besonderen Festivitäten jedoch, das machen wir sonst glaub ich oft genug. Stattdessen erklärt uns garr890354839 in seinem ersten Beitrag über einige Eingenheiten des Raketensilos und einige dahinterstehende Mathematik (keine Angst, so viel ist es nicht). Danach stellt everLord ein weiteres Community-Event des Comfy-Squads vor, namens ‘Biter-Battles-Wettkämpfe”! Das Raketensilo: Gefüllt mit Mysterien garr890354839 Ach ja, das Raketensilo. Es ist die größte Entität im Spiel, abgesehen vom abgestürzten Raumschiff. Es ist auch eins der teuersten herstellbaren Gegenstände. Wenn es platziert wird, hat es einigen interessante Effekte auf das Stromnetz. Auch wissen wir, das sich Produktivitätsmodule im Silo lohnen. Was ist aber mit Rundherum? All das jetzt! Stromverbrauch Zu Beginn wollen wir uns einmal den Stromverbrauch anschauen: Das Silo gibt vor, maximal 4MW zu benötigen (was korrekt ist), aber es verbraucht nur 250kW während eine Rakete gebaut wird, was nur geringfügig mehr ist als drei Montagemaschienen (225kW). Wann aber benötigt es 4MW, also etwas mehr als 53 Montagemaschienen? 4MW werden benötigt, wenn die Tore geöffnet werden oder eine Rakete nach oben herausgeschoben wird. Bis zur Version 1.1.42 wurden zusätzliche 10kW in der Nacht verbraucht, aber es gab keine Lampen an der Oberfläche, die dies anzeigten. Seit Version 0.16 gibt es aber Lampen am Silo, die es nun nachts beleuchten. Module und das Silo Es ist möglich, 12 Effektverteiler um eine 3x3 Entität anzuordnen, 16 rund um eine Ölraffinerie und 20 um ein Raketensilo. Zwei Effektverteiler mit jeweils zwei Geschwindigkeitsmodulen Stufe 3 schaffen den selben zusätzlichen Durchsatz wie eine zusätzliche Montagemaschiene. Ein Silo kann also den Durchsatz von dreizehn Silos nebeneinander erzielen. Module und Effektverteiler sind allerdings unglaublich teuer, was die folgende Tabelle zeigt.   Effektverteiler Module, Stufe 3 4 Module und 2 Effektverteiler Silo Raketen vom Silo Eisen 135 1083 4602 12220 49100 Kupfer 110 2000 8220 8600 92500 Stein 0 0 0 1000 0 Kohle 20 190 800 437 9500 Rohöl 411 17334 70158 11080 277778 Wenn ich von Kosten spreche, meine ich die benötigten Erze ohne Produktivitätsmodule in der Herstellungskolonne und fortgeschrittener Ölverarbeitung bei der Verarbeitung von Rohöl. Jeder Effektverteiler kostet ziemlich viel für einen Spieler im Earlygame, aber ist nichts im Vergleich zur automatischen Produktion von Stufe 3 Modulen, denn jedes einzelne Stufe 3 Modul kostet in etwa zehnmal so viel. Der Rechner zeigt nur Geschwindigkeitsmodule an, alle anderen Module sind aber vergleichbar. Vier Stufe 3 Module und zwei Effektverteiler kosten also unglaublich viele Rohstoffe. Mit einigen Optimierungen, wie der Standart 8-Effektverteiler-Matrix, hier zu sehen, ist es möglich, mehr aus euren Modulen rauszuholen, aber die Kosten bleiben stets. Normalerweise sind diese Kosten viel höher als für eine weitere Fertigungsmaschiene. Es gibt allerdings eine Ausnahme dafür: Das Raketensilo. Das Silo kostet unglaubliche 12.220 Eisen, 8.600 Kupfer, 437 Kohle, 11.080 Rohöl und 1.000 Steine. Die Module und Effektverstärker sind also günstiger als ein zweites Silo. Als Bonus gibt es dazu auch noch weniger Spaghetti! Produktivitätsbonus Wenn du ALT-F4 schon lange ließt, kannst du dich vielleicht an Ausgabe #12 erinnern, in welcher Produktivitätsmodule und ihre Effekte erklärt wurden. Aber für Erstleser, oder die, die nochmal eine Erinnerung brauchen, werde ich es nocheinmal kurz zusammenfassen: Im Prinzip ist ein zusätzlicher Faktor für die Ausgabe bei gleicher Eingabe. Für jeden Herstellungsvorgang wird ein zusätzlicher Balken aufgefüllt, der am Ende in zusätzlichen Ausgangsgegenständen endet. Wenn wir beispielsweise vier Produktivitätsmodule Stugfe 3 in eine Montagemaschiene 3 packen, welche Kupferkabel herstellt, haben wir einen Modulbonus von 40%. Aus 10 Kupferplatten werden so 20*(1+0.4)=28 Kupferkabel. Wir können nun die benötigte Menge an Rohstoffen für eine geforderte Ausgabemenge berechnen, indem wir die Gleichung umstellen. Wenn wir also 140 Kupferkabel benötigen, und vier Stufe 3 Produktivitätsmodule haben, bedarf es 70 Herstellungsschritten. Die benötigten 70 teilen wir nun duch unseren Produktivitätsfaktor von 1.4, welches uns die 20 Gratisherstellungen ‘herausfiltert’ und die 50 Herstellungsschritte übrigbleiben, die wir tatsächlich durchführen müssen. Der Raketenbauprozess Die Weltraumrakete ist der Hauptgrund warum man ein Silo platziert. Jede Rakete kostet 49.100 Eisen, 92.500 Kupfer, 9.500 Kohle und 277.778 Rohöl. Das gilt zusätzlich zu dem, was du als Ladung ins Orbit befördern möchtest, welches die Gesamtkosten massiv beeinflussen kann. Generell lohnen sich für die meisten Rezepte Produktivitätsmodule erst nach relativ langer Zeit. Für Rezepte mit einer großen Menge an Ausgangsstoffen lohnt es sich dagegen aber sehr schnell. Insbesondere beim Silo. Zu beachten ist hierbei, das die Produktivität sich nicht auf die gesamte Rakete bezieht, es ist also nicht möglich, zwei Raketen auf einmal fertigzustellen, sondern bezieht sich auf jedes einzelne Raketenteil, schafft also zusätzliche Raketenteile für deine Rakete. Ein Produktivitätsmodul Stufe 3 im Silo senkt die Kosten auf 10/11 (oder 90.91%) vom Originalpreis. Das ist nicht aufgrund der Rakete insgesamt, sondern von den 100 benötigten Einzelteilen, da durchschnittlich nur 90.91 Teile pro Rakete hergestellt werden müssen. Selbst eine Einsparung von 9.09% spart durchschnittlich 4.463,6 Eisen, 8.409,1 Kupfer, 863,6 Kohle und 25.252,5 Rohöl. Das sind etwas mehr als 4 Module in Rohmaterialien. Was aber, wenn alle vier Module Produktivitätsmodule Stufe 3 sind? Nach dem letzten Schritt ist schließlich genug Material dafür übrig! Dies führt zu einer Ersparnis von 28,57%. Die selbe Rechnung wie zuvor zeigt uns, das wir knapp unter 13 Module Material eingespart haben. Anders gesagt, holen vier Produktivitätsmodule Stufe 3 mit nur einer Rakete das dreifache ihres Preises wieder raus! Raketenstartergebnisse Wie wir alle wissen sollten, gibt uns ein Satellitenstart 1000 Weltraumwissenschaftspakete. Aber das ist nicht das einzige was man in einer Rakete starten kann. Man kann Weltraumwissenschaftspakete starten, welche pro Start einen Fisch zurückgeben (dies ist die einzige Möglichkeit Fisch wirklich zu automatisieren). Auch gibt es eine besondere Errungenschaft fürs starten eines bestimmten Gegenstandes, der natürlich geheim ist. Interessant ist, wenn man ein Auto, Panzer oder das Ding am unteren Ende dieser Seite mit der Rakete startet, wartet die RAkete mit dem Start, bis man eingestiegen ist und schiest den Spieler in den Weltraum! Biter-Battles-Wettkämpfe everLord Am Samstag beginnen die Biter-Battles-Wettkämpfe! Juhuu! Was sind die Biter-Battles? Biter Battles sind ein Szenario von MewMew von Comfy’s Factorio, in dem zwei Teams gegeneinander antreten, während sie von Beißern angegriffen werden, deren Ziel es ist, das Silo zu zerstören. Das bedeutet, das es keinen direkten Zweikampf zwischen Spielern gibt, da sie duch einen Wassergraben in der extra dafür geschaffenen Kampfarene voneinander getrennt sind. Die Biter-Battle-Arena zeigt die beiden isolierten Flächen für beide Teams. Jedes Team muss sein Silo gegen Wellen von Beißern verteidigen, welche miütlich angreifen. Man kann auch die Stärke der Beißer auf der Seite des Gegners stärker machen, in dem man Wissenschaftspakete investiert, indem man Stufe und Anzahl verändern kann. Höhere Wissenschaftspakete bringen bessere Mutationschanchen. Das Szenario ist 24/7 für alle geöffnet, die mitmachen wollen. Alles was du tun musst ist, im Multiplayer nach “Free BiterBattles.org” zu suchen und beizutreten. Es ist meist das bestbesuchteste Spiel mit 20 bis 50 aktiven Spielern. Aber was sind nun Biter-Battles-Wettkämpfe? Nach vier erfolgreichen Turnieren entschieden wir uns dazu, einen richtigen Wettkampf im Biter-Battles-Szenario zu schaffen. Es wird zwei Liegen geben. Eine Behemoth-Liga für die Pros und eine Beißer-Liga für alle anderen. Kämpfe werden 3 gegen 3 ausgetragen, mit einem optionalen vierten Spieler als Spion, Trainer oder Ersatzmann. Es wird als double round-robin gespielt: Jedes Team in einer Gruppe spielt zweimal gegen jedes andere Team in dieser Gruppe, einmal “zuhause” und einmal “auswärts”. Die Spiele haben aber besondere Zusatzregeln. Der erste Aspekt sind vier Starterpakete, welche den Anfang beschleunigen und so zu einem dynamischeren Spiel mit mehr möglichen Strategien führen. Der andere wichtige Aspekt ist Armageddon: nach zwei Stunden wird sich die Entwicklung der Beißer drastisch beschleunigen, so das ein Spiel in der Regel nach drei Stunden endet und es nicht zu endlosen Runden kommt. Sieben Teams werden in der Behemoth-Liga antreten. Sie beginnt morgen (Samstag, dem 30.10.2021) mit dem Highlight-Kampf zwischen Baquette und Mysticluthpipenator um 16:00MESZ (14:00UTC) und es folgt nächste Woche direkt das nächste Highlight mit dem Kampf zwischen SteelAxe und GreenScience (Donnerstag, 04.11.2021, 20:00MEZ, 19:00UTC)! DU kannst dich auf spektrakuläres Gameplay freuen. Es wird mit Sicherheit ein anderes Spiel als normales Factorio. Spiele werden bei den meisten bekannten Streamern gestreamt und wir werden jedes Spiel und alle Streams auf Twitter ankündigen. Die Beißerliga auf der anderen Seite wird in zwei Wochen beginnen. Jeder kann sich anmelden und zeigen, was er kann! Anmeldung ist noch bis Montag, dem 08.11.2021, möglich. Jedes Team wird pro Wochenende einmal spielen, es ist erlaubt, Spieler zu tauschen. Es gibt weitere Informationen zu Regeln, Spielern, Übungsmöglichkeiten und möglichen Preisen auf unserer Webseite: https://bbchampions.org/. Vom BBChampions Team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Unterstützt durch die französische Discord Community. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="Diese Woche ist das goldene Jubiläum von ALT-F4, wegen Ausgabe #50 und so. Keine besonderen Festivitäten jedoch, das machen wir sonst glaub ich oft genug. Stattdessen erklärt uns garr890354839 in seinem ersten Beitrag über einige Eingenheiten des Raketensilos und einige dahinterstehende Mathematik (keine Angst, so viel ist es nicht). Danach stellt everLord ein weiteres Community-Event des Comfy-Squads vor, namens ‘Biter-Battles-Wettkämpfe”! Das Raketensilo: Gefüllt mit Mysterien garr890354839 Ach ja, das Raketensilo. Es ist die größte Entität im Spiel, abgesehen vom abgestürzten Raumschiff. Es ist auch eins der teuersten herstellbaren Gegenstände. Wenn es platziert wird, hat es einigen interessante Effekte auf das Stromnetz. Auch wissen wir, das sich Produktivitätsmodule im Silo lohnen. Was ist aber mit Rundherum? All das jetzt! Stromverbrauch Zu Beginn wollen wir uns einmal den Stromverbrauch anschauen: Das Silo gibt vor, maximal 4MW zu benötigen (was korrekt ist), aber es verbraucht nur 250kW während eine Rakete gebaut wird, was nur geringfügig mehr ist als drei Montagemaschienen (225kW). Wann aber benötigt es 4MW, also etwas mehr als 53 Montagemaschienen? 4MW werden benötigt, wenn die Tore geöffnet werden oder eine Rakete nach oben herausgeschoben wird. Bis zur Version 1.1.42 wurden zusätzliche 10kW in der Nacht verbraucht, aber es gab keine Lampen an der Oberfläche, die dies anzeigten. Seit Version 0.16 gibt es aber Lampen am Silo, die es nun nachts beleuchten. Module und das Silo Es ist möglich, 12 Effektverteiler um eine 3x3 Entität anzuordnen, 16 rund um eine Ölraffinerie und 20 um ein Raketensilo. Zwei Effektverteiler mit jeweils zwei Geschwindigkeitsmodulen Stufe 3 schaffen den selben zusätzlichen Durchsatz wie eine zusätzliche Montagemaschiene. Ein Silo kann also den Durchsatz von dreizehn Silos nebeneinander erzielen. Module und Effektverteiler sind allerdings unglaublich teuer, was die folgende Tabelle zeigt.   Effektverteiler Module, Stufe 3 4 Module und 2 Effektverteiler Silo Raketen vom Silo Eisen 135 1083 4602 12220 49100 Kupfer 110 2000 8220 8600 92500 Stein 0 0 0 1000 0 Kohle 20 190 800 437 9500 Rohöl 411 17334 70158 11080 277778 Wenn ich von Kosten spreche, meine ich die benötigten Erze ohne Produktivitätsmodule in der Herstellungskolonne und fortgeschrittener Ölverarbeitung bei der Verarbeitung von Rohöl. Jeder Effektverteiler kostet ziemlich viel für einen Spieler im Earlygame, aber ist nichts im Vergleich zur automatischen Produktion von Stufe 3 Modulen, denn jedes einzelne Stufe 3 Modul kostet in etwa zehnmal so viel. Der Rechner zeigt nur Geschwindigkeitsmodule an, alle anderen Module sind aber vergleichbar. Vier Stufe 3 Module und zwei Effektverteiler kosten also unglaublich viele Rohstoffe. Mit einigen Optimierungen, wie der Standart 8-Effektverteiler-Matrix, hier zu sehen, ist es möglich, mehr aus euren Modulen rauszuholen, aber die Kosten bleiben stets. Normalerweise sind diese Kosten viel höher als für eine weitere Fertigungsmaschiene. Es gibt allerdings eine Ausnahme dafür: Das Raketensilo. Das Silo kostet unglaubliche 12.220 Eisen, 8.600 Kupfer, 437 Kohle, 11.080 Rohöl und 1.000 Steine. Die Module und Effektverstärker sind also günstiger als ein zweites Silo. Als Bonus gibt es dazu auch noch weniger Spaghetti! Produktivitätsbonus Wenn du ALT-F4 schon lange ließt, kannst du dich vielleicht an Ausgabe #12 erinnern, in welcher Produktivitätsmodule und ihre Effekte erklärt wurden. Aber für Erstleser, oder die, die nochmal eine Erinnerung brauchen, werde ich es nocheinmal kurz zusammenfassen: Im Prinzip ist ein zusätzlicher Faktor für die Ausgabe bei gleicher Eingabe. Für jeden Herstellungsvorgang wird ein zusätzlicher Balken aufgefüllt, der am Ende in zusätzlichen Ausgangsgegenständen endet. Wenn wir beispielsweise vier Produktivitätsmodule Stugfe 3 in eine Montagemaschiene 3 packen, welche Kupferkabel herstellt, haben wir einen Modulbonus von 40%. Aus 10 Kupferplatten werden so 20*(1+0.4)=28 Kupferkabel. Wir können nun die benötigte Menge an Rohstoffen für eine geforderte Ausgabemenge berechnen, indem wir die Gleichung umstellen. Wenn wir also 140 Kupferkabel benötigen, und vier Stufe 3 Produktivitätsmodule haben, bedarf es 70 Herstellungsschritten. Die benötigten 70 teilen wir nun duch unseren Produktivitätsfaktor von 1.4, welches uns die 20 Gratisherstellungen ‘herausfiltert’ und die 50 Herstellungsschritte übrigbleiben, die wir tatsächlich durchführen müssen. Der Raketenbauprozess Die Weltraumrakete ist der Hauptgrund warum man ein Silo platziert. Jede Rakete kostet 49.100 Eisen, 92.500 Kupfer, 9.500 Kohle und 277.778 Rohöl. Das gilt zusätzlich zu dem, was du als Ladung ins Orbit befördern möchtest, welches die Gesamtkosten massiv beeinflussen kann. Generell lohnen sich für die meisten Rezepte Produktivitätsmodule erst nach relativ langer Zeit. Für Rezepte mit einer großen Menge an Ausgangsstoffen lohnt es sich dagegen aber sehr schnell. Insbesondere beim Silo. Zu beachten ist hierbei, das die Produktivität sich nicht auf die gesamte Rakete bezieht, es ist also nicht möglich, zwei Raketen auf einmal fertigzustellen, sondern bezieht sich auf jedes einzelne Raketenteil, schafft also zusätzliche Raketenteile für deine Rakete. Ein Produktivitätsmodul Stufe 3 im Silo senkt die Kosten auf 10/11 (oder 90.91%) vom Originalpreis. Das ist nicht aufgrund der Rakete insgesamt, sondern von den 100 benötigten Einzelteilen, da durchschnittlich nur 90.91 Teile pro Rakete hergestellt werden müssen. Selbst eine Einsparung von 9.09% spart durchschnittlich 4.463,6 Eisen, 8.409,1 Kupfer, 863,6 Kohle und 25.252,5 Rohöl. Das sind etwas mehr als 4 Module in Rohmaterialien. Was aber, wenn alle vier Module Produktivitätsmodule Stufe 3 sind? Nach dem letzten Schritt ist schließlich genug Material dafür übrig! Dies führt zu einer Ersparnis von 28,57%. Die selbe Rechnung wie zuvor zeigt uns, das wir knapp unter 13 Module Material eingespart haben. Anders gesagt, holen vier Produktivitätsmodule Stufe 3 mit nur einer Rakete das dreifache ihres Preises wieder raus! Raketenstartergebnisse Wie wir alle wissen sollten, gibt uns ein Satellitenstart 1000 Weltraumwissenschaftspakete. Aber das ist nicht das einzige was man in einer Rakete starten kann. Man kann Weltraumwissenschaftspakete starten, welche pro Start einen Fisch zurückgeben (dies ist die einzige Möglichkeit Fisch wirklich zu automatisieren). Auch gibt es eine besondere Errungenschaft fürs starten eines bestimmten Gegenstandes, der natürlich geheim ist. Interessant ist, wenn man ein Auto, Panzer oder das Ding am unteren Ende dieser Seite mit der Rakete startet, wartet die RAkete mit dem Start, bis man eingestiegen ist und schiest den Spieler in den Weltraum! Biter-Battles-Wettkämpfe everLord Am Samstag beginnen die Biter-Battles-Wettkämpfe! Juhuu! Was sind die Biter-Battles? Biter Battles sind ein Szenario von MewMew von Comfy’s Factorio, in dem zwei Teams gegeneinander antreten, während sie von Beißern angegriffen werden, deren Ziel es ist, das Silo zu zerstören. Das bedeutet, das es keinen direkten Zweikampf zwischen Spielern gibt, da sie duch einen Wassergraben in der extra dafür geschaffenen Kampfarene voneinander getrennt sind. Die Biter-Battle-Arena zeigt die beiden isolierten Flächen für beide Teams. Jedes Team muss sein Silo gegen Wellen von Beißern verteidigen, welche miütlich angreifen. Man kann auch die Stärke der Beißer auf der Seite des Gegners stärker machen, in dem man Wissenschaftspakete investiert, indem man Stufe und Anzahl verändern kann. Höhere Wissenschaftspakete bringen bessere Mutationschanchen. Das Szenario ist 24/7 für alle geöffnet, die mitmachen wollen. Alles was du tun musst ist, im Multiplayer nach “Free BiterBattles.org” zu suchen und beizutreten. Es ist meist das bestbesuchteste Spiel mit 20 bis 50 aktiven Spielern. Aber was sind nun Biter-Battles-Wettkämpfe? Nach vier erfolgreichen Turnieren entschieden wir uns dazu, einen richtigen Wettkampf im Biter-Battles-Szenario zu schaffen. Es wird zwei Liegen geben. Eine Behemoth-Liga für die Pros und eine Beißer-Liga für alle anderen. Kämpfe werden 3 gegen 3 ausgetragen, mit einem optionalen vierten Spieler als Spion, Trainer oder Ersatzmann. Es wird als double round-robin gespielt: Jedes Team in einer Gruppe spielt zweimal gegen jedes andere Team in dieser Gruppe, einmal “zuhause” und einmal “auswärts”. Die Spiele haben aber besondere Zusatzregeln. Der erste Aspekt sind vier Starterpakete, welche den Anfang beschleunigen und so zu einem dynamischeren Spiel mit mehr möglichen Strategien führen. Der andere wichtige Aspekt ist Armageddon: nach zwei Stunden wird sich die Entwicklung der Beißer drastisch beschleunigen, so das ein Spiel in der Regel nach drei Stunden endet und es nicht zu endlosen Runden kommt. Sieben Teams werden in der Behemoth-Liga antreten. Sie beginnt morgen (Samstag, dem 30.10.2021) mit dem Highlight-Kampf zwischen Baquette und Mysticluthpipenator um 16:00MESZ (14:00UTC) und es folgt nächste Woche direkt das nächste Highlight mit dem Kampf zwischen SteelAxe und GreenScience (Donnerstag, 04.11.2021, 20:00MEZ, 19:00UTC)! DU kannst dich auf spektrakuläres Gameplay freuen. Es wird mit Sicherheit ein anderes Spiel als normales Factorio. Spiele werden bei den meisten bekannten Streamern gestreamt und wir werden jedes Spiel und alle Streams auf Twitter ankündigen. Die Beißerliga auf der anderen Seite wird in zwei Wochen beginnen. Jeder kann sich anmelden und zeigen, was er kann! Anmeldung ist noch bis Montag, dem 08.11.2021, möglich. Jedes Team wird pro Wochenende einmal spielen, es ist erlaubt, Spieler zu tauschen. Es gibt weitere Informationen zu Regeln, Spielern, Übungsmöglichkeiten und möglichen Preisen auf unserer Webseite: https://bbchampions.org/. Vom BBChampions Team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Unterstützt durch die französische Discord Community. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-50/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-50/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-29T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-10-29T00:00:00+00:00","author":{"@type":"Person","name":"garr890354839, everlord"},"description":"Diese Woche ist das goldene Jubiläum von ALT-F4, wegen Ausgabe #50 und so. Keine besonderen Festivitäten jedoch, das machen wir sonst glaub ich oft genug. Stattdessen erklärt uns garr890354839 in seinem ersten Beitrag über einige Eingenheiten des Raketensilos und einige dahinterstehende Mathematik (keine Angst, so viel ist es nicht). Danach stellt everLord ein weiteres Community-Event des Comfy-Squads vor, namens ‘Biter-Battles-Wettkämpfe”! Das Raketensilo: Gefüllt mit Mysterien garr890354839 Ach ja, das Raketensilo. Es ist die größte Entität im Spiel, abgesehen vom abgestürzten Raumschiff. Es ist auch eins der teuersten herstellbaren Gegenstände. Wenn es platziert wird, hat es einigen interessante Effekte auf das Stromnetz. Auch wissen wir, das sich Produktivitätsmodule im Silo lohnen. Was ist aber mit Rundherum? All das jetzt! Stromverbrauch Zu Beginn wollen wir uns einmal den Stromverbrauch anschauen: Das Silo gibt vor, maximal 4MW zu benötigen (was korrekt ist), aber es verbraucht nur 250kW während eine Rakete gebaut wird, was nur geringfügig mehr ist als drei Montagemaschienen (225kW). Wann aber benötigt es 4MW, also etwas mehr als 53 Montagemaschienen? 4MW werden benötigt, wenn die Tore geöffnet werden oder eine Rakete nach oben herausgeschoben wird. Bis zur Version 1.1.42 wurden zusätzliche 10kW in der Nacht verbraucht, aber es gab keine Lampen an der Oberfläche, die dies anzeigten. Seit Version 0.16 gibt es aber Lampen am Silo, die es nun nachts beleuchten. Module und das Silo Es ist möglich, 12 Effektverteiler um eine 3x3 Entität anzuordnen, 16 rund um eine Ölraffinerie und 20 um ein Raketensilo. Zwei Effektverteiler mit jeweils zwei Geschwindigkeitsmodulen Stufe 3 schaffen den selben zusätzlichen Durchsatz wie eine zusätzliche Montagemaschiene. Ein Silo kann also den Durchsatz von dreizehn Silos nebeneinander erzielen. Module und Effektverteiler sind allerdings unglaublich teuer, was die folgende Tabelle zeigt.   Effektverteiler Module, Stufe 3 4 Module und 2 Effektverteiler Silo Raketen vom Silo Eisen 135 1083 4602 12220 49100 Kupfer 110 2000 8220 8600 92500 Stein 0 0 0 1000 0 Kohle 20 190 800 437 9500 Rohöl 411 17334 70158 11080 277778 Wenn ich von Kosten spreche, meine ich die benötigten Erze ohne Produktivitätsmodule in der Herstellungskolonne und fortgeschrittener Ölverarbeitung bei der Verarbeitung von Rohöl. Jeder Effektverteiler kostet ziemlich viel für einen Spieler im Earlygame, aber ist nichts im Vergleich zur automatischen Produktion von Stufe 3 Modulen, denn jedes einzelne Stufe 3 Modul kostet in etwa zehnmal so viel. Der Rechner zeigt nur Geschwindigkeitsmodule an, alle anderen Module sind aber vergleichbar. Vier Stufe 3 Module und zwei Effektverteiler kosten also unglaublich viele Rohstoffe. Mit einigen Optimierungen, wie der Standart 8-Effektverteiler-Matrix, hier zu sehen, ist es möglich, mehr aus euren Modulen rauszuholen, aber die Kosten bleiben stets. Normalerweise sind diese Kosten viel höher als für eine weitere Fertigungsmaschiene. Es gibt allerdings eine Ausnahme dafür: Das Raketensilo. Das Silo kostet unglaubliche 12.220 Eisen, 8.600 Kupfer, 437 Kohle, 11.080 Rohöl und 1.000 Steine. Die Module und Effektverstärker sind also günstiger als ein zweites Silo. Als Bonus gibt es dazu auch noch weniger Spaghetti! Produktivitätsbonus Wenn du ALT-F4 schon lange ließt, kannst du dich vielleicht an Ausgabe #12 erinnern, in welcher Produktivitätsmodule und ihre Effekte erklärt wurden. Aber für Erstleser, oder die, die nochmal eine Erinnerung brauchen, werde ich es nocheinmal kurz zusammenfassen: Im Prinzip ist ein zusätzlicher Faktor für die Ausgabe bei gleicher Eingabe. Für jeden Herstellungsvorgang wird ein zusätzlicher Balken aufgefüllt, der am Ende in zusätzlichen Ausgangsgegenständen endet. Wenn wir beispielsweise vier Produktivitätsmodule Stugfe 3 in eine Montagemaschiene 3 packen, welche Kupferkabel herstellt, haben wir einen Modulbonus von 40%. Aus 10 Kupferplatten werden so 20*(1+0.4)=28 Kupferkabel. Wir können nun die benötigte Menge an Rohstoffen für eine geforderte Ausgabemenge berechnen, indem wir die Gleichung umstellen. Wenn wir also 140 Kupferkabel benötigen, und vier Stufe 3 Produktivitätsmodule haben, bedarf es 70 Herstellungsschritten. Die benötigten 70 teilen wir nun duch unseren Produktivitätsfaktor von 1.4, welches uns die 20 Gratisherstellungen ‘herausfiltert’ und die 50 Herstellungsschritte übrigbleiben, die wir tatsächlich durchführen müssen. Der Raketenbauprozess Die Weltraumrakete ist der Hauptgrund warum man ein Silo platziert. Jede Rakete kostet 49.100 Eisen, 92.500 Kupfer, 9.500 Kohle und 277.778 Rohöl. Das gilt zusätzlich zu dem, was du als Ladung ins Orbit befördern möchtest, welches die Gesamtkosten massiv beeinflussen kann. Generell lohnen sich für die meisten Rezepte Produktivitätsmodule erst nach relativ langer Zeit. Für Rezepte mit einer großen Menge an Ausgangsstoffen lohnt es sich dagegen aber sehr schnell. Insbesondere beim Silo. Zu beachten ist hierbei, das die Produktivität sich nicht auf die gesamte Rakete bezieht, es ist also nicht möglich, zwei Raketen auf einmal fertigzustellen, sondern bezieht sich auf jedes einzelne Raketenteil, schafft also zusätzliche Raketenteile für deine Rakete. Ein Produktivitätsmodul Stufe 3 im Silo senkt die Kosten auf 10/11 (oder 90.91%) vom Originalpreis. Das ist nicht aufgrund der Rakete insgesamt, sondern von den 100 benötigten Einzelteilen, da durchschnittlich nur 90.91 Teile pro Rakete hergestellt werden müssen. Selbst eine Einsparung von 9.09% spart durchschnittlich 4.463,6 Eisen, 8.409,1 Kupfer, 863,6 Kohle und 25.252,5 Rohöl. Das sind etwas mehr als 4 Module in Rohmaterialien. Was aber, wenn alle vier Module Produktivitätsmodule Stufe 3 sind? Nach dem letzten Schritt ist schließlich genug Material dafür übrig! Dies führt zu einer Ersparnis von 28,57%. Die selbe Rechnung wie zuvor zeigt uns, das wir knapp unter 13 Module Material eingespart haben. Anders gesagt, holen vier Produktivitätsmodule Stufe 3 mit nur einer Rakete das dreifache ihres Preises wieder raus! Raketenstartergebnisse Wie wir alle wissen sollten, gibt uns ein Satellitenstart 1000 Weltraumwissenschaftspakete. Aber das ist nicht das einzige was man in einer Rakete starten kann. Man kann Weltraumwissenschaftspakete starten, welche pro Start einen Fisch zurückgeben (dies ist die einzige Möglichkeit Fisch wirklich zu automatisieren). Auch gibt es eine besondere Errungenschaft fürs starten eines bestimmten Gegenstandes, der natürlich geheim ist. Interessant ist, wenn man ein Auto, Panzer oder das Ding am unteren Ende dieser Seite mit der Rakete startet, wartet die RAkete mit dem Start, bis man eingestiegen ist und schiest den Spieler in den Weltraum! Biter-Battles-Wettkämpfe everLord Am Samstag beginnen die Biter-Battles-Wettkämpfe! Juhuu! Was sind die Biter-Battles? Biter Battles sind ein Szenario von MewMew von Comfy’s Factorio, in dem zwei Teams gegeneinander antreten, während sie von Beißern angegriffen werden, deren Ziel es ist, das Silo zu zerstören. Das bedeutet, das es keinen direkten Zweikampf zwischen Spielern gibt, da sie duch einen Wassergraben in der extra dafür geschaffenen Kampfarene voneinander getrennt sind. Die Biter-Battle-Arena zeigt die beiden isolierten Flächen für beide Teams. Jedes Team muss sein Silo gegen Wellen von Beißern verteidigen, welche miütlich angreifen. Man kann auch die Stärke der Beißer auf der Seite des Gegners stärker machen, in dem man Wissenschaftspakete investiert, indem man Stufe und Anzahl verändern kann. Höhere Wissenschaftspakete bringen bessere Mutationschanchen. Das Szenario ist 24/7 für alle geöffnet, die mitmachen wollen. Alles was du tun musst ist, im Multiplayer nach “Free BiterBattles.org” zu suchen und beizutreten. Es ist meist das bestbesuchteste Spiel mit 20 bis 50 aktiven Spielern. Aber was sind nun Biter-Battles-Wettkämpfe? Nach vier erfolgreichen Turnieren entschieden wir uns dazu, einen richtigen Wettkampf im Biter-Battles-Szenario zu schaffen. Es wird zwei Liegen geben. Eine Behemoth-Liga für die Pros und eine Beißer-Liga für alle anderen. Kämpfe werden 3 gegen 3 ausgetragen, mit einem optionalen vierten Spieler als Spion, Trainer oder Ersatzmann. Es wird als double round-robin gespielt: Jedes Team in einer Gruppe spielt zweimal gegen jedes andere Team in dieser Gruppe, einmal “zuhause” und einmal “auswärts”. Die Spiele haben aber besondere Zusatzregeln. Der erste Aspekt sind vier Starterpakete, welche den Anfang beschleunigen und so zu einem dynamischeren Spiel mit mehr möglichen Strategien führen. Der andere wichtige Aspekt ist Armageddon: nach zwei Stunden wird sich die Entwicklung der Beißer drastisch beschleunigen, so das ein Spiel in der Regel nach drei Stunden endet und es nicht zu endlosen Runden kommt. Sieben Teams werden in der Behemoth-Liga antreten. Sie beginnt morgen (Samstag, dem 30.10.2021) mit dem Highlight-Kampf zwischen Baquette und Mysticluthpipenator um 16:00MESZ (14:00UTC) und es folgt nächste Woche direkt das nächste Highlight mit dem Kampf zwischen SteelAxe und GreenScience (Donnerstag, 04.11.2021, 20:00MEZ, 19:00UTC)! DU kannst dich auf spektrakuläres Gameplay freuen. Es wird mit Sicherheit ein anderes Spiel als normales Factorio. Spiele werden bei den meisten bekannten Streamern gestreamt und wir werden jedes Spiel und alle Streams auf Twitter ankündigen. Die Beißerliga auf der anderen Seite wird in zwei Wochen beginnen. Jeder kann sich anmelden und zeigen, was er kann! Anmeldung ist noch bis Montag, dem 08.11.2021, möglich. Jedes Team wird pro Wochenende einmal spielen, es ist erlaubt, Spieler zu tauschen. Es gibt weitere Informationen zu Regeln, Spielern, Übungsmöglichkeiten und möglichen Preisen auf unserer Webseite: https://bbchampions.org/. Vom BBChampions Team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Unterstützt durch die französische Discord Community. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","url":"https://alt-f4.blog/ALTF4-50/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-50/"},"headline":"Alt-F4 #50 - Raketensilogeheimnisse","dateModified":"2021-10-29T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/50/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/50/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/de/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-50/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-50/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-50/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-50/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-50/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-50/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-50/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-50/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-50/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-50/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #50 - Raketensilogeheimnisse  <author>29.10.2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>garr890354839, everlord</em>,
+
+
+
+editiert von <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/50/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhaltsverzeichnis</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#das-raketensilo-gef%C3%BCllt-mit-mysterien-garr890354839">Das Raketensilo: Gefüllt mit Mysterien <author>garr890354839</author></a>
+    <ul>
+      <li><a href="#stromverbrauch">Stromverbrauch</a></li>
+      <li><a href="#module-und-das-silo">Module und das Silo</a></li>
+      <li><a href="#produktivit%C3%A4tsbonus">Produktivitätsbonus</a></li>
+      <li><a href="#der-raketenbauprozess">Der Raketenbauprozess</a></li>
+      <li><a href="#raketenstartergebnisse">Raketenstartergebnisse</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#biter-battles-wettk%C3%A4mpfe-everlord">Biter-Battles-Wettkämpfe <author>everLord</author></a>
+    <ul>
+      <li><a href="#was-sind-die-biter-battles">Was sind die Biter-Battles?</a></li>
+      <li><a href="#aber-was-sind-nun-biter-battles-wettk%C3%A4mpfe">Aber was sind nun Biter-Battles-Wettkämpfe?</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Diese Woche ist das goldene Jubiläum von ALT-F4, wegen Ausgabe #50 und so. Keine besonderen Festivitäten jedoch, das machen wir sonst glaub ich oft genug. Stattdessen erklärt uns <em>garr890354839</em> in seinem ersten Beitrag über einige Eingenheiten des Raketensilos und einige dahinterstehende Mathematik (keine Angst, so viel ist es nicht). Danach stellt <em>everLord</em> ein weiteres Community-Event des Comfy-Squads vor, namens ‘Biter-Battles-Wettkämpfe”!</p>
+      <h2 id="das-raketensilo-gefüllt-mit-mysterien-garr890354839">
+        
+        
+            <a href="#das-raketensilo-gef%C3%BCllt-mit-mysterien-garr890354839" class="anchor" style="text-decoration: none;">Das Raketensilo: Gefüllt mit Mysterien <author>garr890354839</author></a>
+          
+        
+      </h2>
+    
+
+<p>Ach ja, das Raketensilo. Es ist die größte Entität im Spiel, abgesehen vom abgestürzten Raumschiff. Es ist auch eins der teuersten herstellbaren Gegenstände. Wenn es platziert wird, hat es einigen interessante Effekte auf das Stromnetz. Auch wissen wir, das sich Produktivitätsmodule im Silo lohnen. Was ist aber mit Rundherum? All das jetzt!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-1.jpg" alt="Das Raketensilo" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="stromverbrauch">
+        
+        
+            <a href="#stromverbrauch" class="anchor" style="text-decoration: none;">Stromverbrauch</a>
+          
+        
+      </h3>
+    
+
+<p>Zu Beginn wollen wir uns einmal den Stromverbrauch anschauen: Das Silo gibt vor, maximal 4MW zu benötigen (was korrekt ist), aber es verbraucht nur 250kW während eine Rakete gebaut wird, was nur geringfügig mehr ist als drei Montagemaschienen (225kW). Wann aber benötigt es 4MW, also etwas mehr als 53 Montagemaschienen? 4MW werden benötigt, wenn die Tore geöffnet werden oder eine Rakete nach oben herausgeschoben wird. Bis zur Version 1.1.42 wurden zusätzliche 10kW in der Nacht verbraucht, aber es gab keine Lampen an der Oberfläche, die dies anzeigten. Seit Version 0.16 gibt es aber Lampen am Silo, die es nun nachts beleuchten.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-2.jpg" alt="Das Raketensilo mit Lampen." style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="module-und-das-silo">
+        
+        
+            <a href="#module-und-das-silo" class="anchor" style="text-decoration: none;">Module und das Silo</a>
+          
+        
+      </h3>
+    
+
+<p>Es ist möglich, 12 Effektverteiler um eine 3x3 Entität anzuordnen, 16 rund um eine Ölraffinerie und 20 um ein Raketensilo. Zwei Effektverteiler mit jeweils zwei Geschwindigkeitsmodulen Stufe 3 schaffen den selben zusätzlichen Durchsatz wie eine zusätzliche Montagemaschiene. Ein Silo kann also den Durchsatz von <em>dreizehn</em> Silos nebeneinander erzielen. Module und Effektverteiler sind allerdings unglaublich teuer, was die folgende Tabelle zeigt.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Effektverteiler</th>
+      <th>Module, Stufe 3</th>
+      <th>4 Module und 2 Effektverteiler</th>
+      <th>Silo</th>
+      <th>Raketen vom Silo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Eisen</td>
+      <td>135</td>
+      <td>1083</td>
+      <td>4602</td>
+      <td>12220</td>
+      <td>49100</td>
+    </tr>
+    <tr>
+      <td>Kupfer</td>
+      <td>110</td>
+      <td>2000</td>
+      <td>8220</td>
+      <td>8600</td>
+      <td>92500</td>
+    </tr>
+    <tr>
+      <td>Stein</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Kohle</td>
+      <td>20</td>
+      <td>190</td>
+      <td>800</td>
+      <td>437</td>
+      <td>9500</td>
+    </tr>
+    <tr>
+      <td>Rohöl</td>
+      <td>411</td>
+      <td>17334</td>
+      <td>70158</td>
+      <td>11080</td>
+      <td>277778</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Wenn ich von Kosten spreche, meine ich die benötigten Erze ohne Produktivitätsmodule in der Herstellungskolonne und fortgeschrittener Ölverarbeitung bei der Verarbeitung von Rohöl. Jeder <a href="https://factoriolab.github.io/list?p=beacon*1&amp;v=1">Effektverteiler</a> kostet ziemlich viel für einen Spieler im Earlygame, aber ist nichts im Vergleich zur automatischen Produktion von Stufe 3 Modulen, denn jedes einzelne <a href="https://factoriolab.github.io/list?p=speed-module-3*1&amp;v=1">Stufe 3 Modul</a> kostet in etwa zehnmal so viel. Der Rechner zeigt nur Geschwindigkeitsmodule an, alle anderen Module sind aber vergleichbar.</p>
+
+<p>Vier Stufe 3 Module und zwei Effektverteiler kosten also unglaublich viele Rohstoffe. Mit einigen Optimierungen, wie der Standart 8-Effektverteiler-Matrix, <a href="https://factorio.com/blog/post/fff-351">hier</a> zu sehen, ist es möglich, mehr aus euren Modulen rauszuholen, aber die Kosten bleiben stets. Normalerweise sind diese Kosten viel höher als für eine weitere Fertigungsmaschiene. Es gibt allerdings eine Ausnahme dafür: Das Raketensilo. Das <a href="https://factoriolab.github.io/list?p=rocket-silo*1&amp;v=1">Silo</a> kostet unglaubliche 12.220 Eisen, 8.600 Kupfer, 437 Kohle, 11.080 Rohöl und 1.000 Steine. Die Module und Effektverstärker sind also günstiger als ein zweites Silo. Als Bonus gibt es dazu auch noch weniger Spaghetti!</p>
+      <h3 id="produktivitätsbonus">
+        
+        
+            <a href="#produktivit%C3%A4tsbonus" class="anchor" style="text-decoration: none;">Produktivitätsbonus</a>
+          
+        
+      </h3>
+    
+
+<p>Wenn du ALT-F4 schon lange ließt, kannst du dich vielleicht an <a href="https://alt-f4.blog/de/ALTF4-12/#komplexit%C3%A4ts-ecke-produktivit%C3%A4tsmodule-thekool">Ausgabe #12</a> erinnern, in welcher Produktivitätsmodule und ihre Effekte erklärt wurden. Aber für Erstleser, oder die, die nochmal eine Erinnerung brauchen, werde ich es nocheinmal kurz zusammenfassen: Im Prinzip ist ein zusätzlicher Faktor für die Ausgabe bei gleicher Eingabe. Für jeden Herstellungsvorgang wird ein zusätzlicher Balken aufgefüllt, der am Ende in zusätzlichen Ausgangsgegenständen endet.</p>
+
+<p>Wenn wir beispielsweise vier Produktivitätsmodule Stugfe 3 in eine Montagemaschiene 3 packen, welche Kupferkabel herstellt, haben wir einen Modulbonus von 40%. Aus 10 Kupferplatten werden so <code class="language-plaintext highlighter-rouge">20*(1+0.4)=28</code> Kupferkabel. Wir können nun die benötigte Menge an Rohstoffen für eine geforderte Ausgabemenge berechnen, indem wir die Gleichung umstellen. Wenn wir also 140 Kupferkabel benötigen, und vier Stufe 3 Produktivitätsmodule haben, bedarf es 70 Herstellungsschritten. Die benötigten 70 teilen wir nun duch unseren Produktivitätsfaktor von 1.4, welches uns die 20 Gratisherstellungen ‘herausfiltert’ und die 50 Herstellungsschritte übrigbleiben, die wir tatsächlich durchführen müssen.</p>
+      <h3 id="der-raketenbauprozess">
+        
+        
+            <a href="#der-raketenbauprozess" class="anchor" style="text-decoration: none;">Der Raketenbauprozess</a>
+          
+        
+      </h3>
+    
+
+<p>Die Weltraumrakete ist der Hauptgrund warum man ein Silo platziert. Jede <a href="https://factoriolab.github.io/list?p=rocket-part*100&amp;v=1">Rakete</a> kostet 49.100 Eisen, 92.500 Kupfer, 9.500 Kohle und 277.778 Rohöl. Das gilt zusätzlich zu dem, was du als Ladung ins Orbit befördern möchtest, welches die Gesamtkosten massiv beeinflussen kann.</p>
+
+<p>Generell lohnen sich für die meisten Rezepte Produktivitätsmodule erst nach relativ langer Zeit. Für Rezepte mit einer großen Menge an Ausgangsstoffen lohnt es sich dagegen aber sehr schnell. Insbesondere beim Silo. Zu beachten ist hierbei, das die Produktivität sich nicht auf die gesamte Rakete bezieht, es ist also nicht möglich, zwei Raketen auf einmal fertigzustellen, sondern bezieht sich auf jedes einzelne Raketenteil, schafft also zusätzliche Raketenteile für deine Rakete.</p>
+
+<p>Ein Produktivitätsmodul Stufe 3 im Silo senkt die Kosten auf 10/11 (oder 90.91%) vom Originalpreis. Das ist nicht aufgrund der Rakete insgesamt, sondern von den 100 benötigten Einzelteilen, da durchschnittlich nur 90.91 Teile pro Rakete hergestellt werden müssen. Selbst eine <a href="https://factoriolab.github.io/list?z=eJwrcM7SMjQwUCtyLtDScqvzAkG1MmMAUBsG5Q__">Einsparung von 9.09%</a> spart durchschnittlich 4.463,6 Eisen, 8.409,1 Kupfer, 863,6 Kohle und 25.252,5 Rohöl. Das sind etwas mehr als 4 Module in Rohmaterialien.</p>
+
+<p>Was aber, wenn alle vier Module Produktivitätsmodule Stufe 3 sind? Nach dem letzten Schritt ist schließlich genug Material dafür übrig! Dies führt zu einer Ersparnis von 28,57%. Die selbe Rechnung wie zuvor zeigt uns, das wir knapp unter <a href="https://factoriolab.github.io/list?z=eJwrcA7UMjQxMLLQ0nJKUStyLtDScqsDQ7UyYwBzOAgo">13 Module</a> Material eingespart haben. Anders gesagt, holen vier Produktivitätsmodule Stufe 3 mit nur einer Rakete das dreifache ihres Preises wieder raus!</p>
+      <h3 id="raketenstartergebnisse">
+        
+        
+            <a href="#raketenstartergebnisse" class="anchor" style="text-decoration: none;">Raketenstartergebnisse</a>
+          
+        
+      </h3>
+    
+
+<p>Wie wir alle wissen sollten, gibt uns ein Satellitenstart 1000 Weltraumwissenschaftspakete. Aber das ist nicht das einzige was man in einer Rakete starten kann. Man kann Weltraumwissenschaftspakete starten, welche pro Start einen Fisch zurückgeben (dies ist die einzige Möglichkeit Fisch wirklich zu automatisieren). Auch gibt es eine besondere Errungenschaft fürs starten eines bestimmten Gegenstandes, der natürlich geheim ist. Interessant ist, wenn man ein Auto, Panzer oder das Ding am unteren Ende dieser Seite mit der Rakete startet, wartet die RAkete mit dem Start, bis man eingestiegen ist und schiest den Spieler in den Weltraum!</p>
+      <h2 id="biter-battles-wettkämpfe-everlord">
+        
+        
+            <a href="#biter-battles-wettk%C3%A4mpfe-everlord" class="anchor" style="text-decoration: none;">Biter-Battles-Wettkämpfe <author>everLord</author></a>
+          
+        
+      </h2>
+    
+
+<p>Am Samstag beginnen die Biter-Battles-Wettkämpfe! Juhuu!</p>
+      <h3 id="was-sind-die-biter-battles">
+        
+        
+            <a href="#was-sind-die-biter-battles" class="anchor" style="text-decoration: none;">Was sind die Biter-Battles?</a>
+          
+        
+      </h3>
+    
+
+<p>Biter Battles sind ein Szenario von MewMew von <a href="https://getcomfy.eu/discord">Comfy’s Factorio</a>, in dem zwei Teams gegeneinander antreten, während sie von Beißern angegriffen werden, deren Ziel es ist, das Silo zu zerstören. Das bedeutet, das es keinen direkten Zweikampf zwischen Spielern gibt, da sie duch einen Wassergraben in der extra dafür geschaffenen Kampfarene voneinander getrennt sind.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/50/biter-battle-arena.png" alt="Zwei Landmassen, welche durch Wasser getrennt sind" style="max-width: ; max-height:  ">
+        
+        <figcaption>Die Biter-Battle-Arena zeigt die beiden isolierten Flächen für beide Teams.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Jedes Team muss sein Silo gegen Wellen von Beißern verteidigen, welche miütlich angreifen. Man kann auch die Stärke der Beißer auf der Seite des Gegners stärker machen, in dem man Wissenschaftspakete investiert, indem man Stufe und Anzahl verändern kann. Höhere Wissenschaftspakete bringen bessere Mutationschanchen. Das Szenario ist 24/7 für alle geöffnet, die mitmachen wollen. Alles was du tun musst ist, im Multiplayer nach “Free BiterBattles.org” zu suchen und beizutreten. Es ist meist das bestbesuchteste Spiel mit 20 bis 50 aktiven Spielern.</p>
+      <h3 id="aber-was-sind-nun-biter-battles-wettkämpfe">
+        
+        
+            <a href="#aber-was-sind-nun-biter-battles-wettk%C3%A4mpfe" class="anchor" style="text-decoration: none;">Aber was sind nun Biter-Battles-Wettkämpfe?</a>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/header.png" alt="Biter-Battles-Wettkämpfe" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<div class="yt">
+	<iframe src="https://www.youtube.com/embed/LoXpHYFT6kI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="youtube"></iframe>
+</div>
+
+<p>Nach vier erfolgreichen Turnieren entschieden wir uns dazu, einen richtigen Wettkampf im Biter-Battles-Szenario zu schaffen. Es wird zwei Liegen geben. Eine Behemoth-Liga für die Pros und eine Beißer-Liga für alle anderen. Kämpfe werden 3 gegen 3 ausgetragen, mit einem optionalen vierten Spieler als Spion, Trainer oder Ersatzmann.</p>
+
+<p>Es wird als double round-robin gespielt: Jedes Team in einer Gruppe spielt zweimal gegen jedes andere Team in dieser Gruppe, einmal “zuhause” und einmal “auswärts”. Die Spiele haben aber besondere Zusatzregeln. Der erste Aspekt sind vier Starterpakete, welche den Anfang beschleunigen und so zu einem dynamischeren Spiel mit mehr möglichen Strategien führen. Der andere wichtige Aspekt ist <strong>Armageddon</strong>: nach zwei Stunden wird sich die Entwicklung der Beißer drastisch beschleunigen, so das ein Spiel in der Regel nach drei Stunden endet und es nicht zu endlosen Runden kommt.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/behemoth-league.png" alt="Behemoth-Liga" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Sieben Teams werden in der Behemoth-Liga antreten. Sie beginnt morgen (Samstag, dem 30.10.2021) mit dem Highlight-Kampf zwischen Baquette und Mysticluthpipenator um 16:00MESZ (14:00UTC) und es folgt nächste Woche direkt das nächste Highlight mit dem Kampf zwischen SteelAxe und GreenScience (Donnerstag, 04.11.2021, 20:00MEZ, 19:00UTC)! DU kannst dich auf spektrakuläres Gameplay freuen. Es wird mit Sicherheit ein anderes Spiel als normales Factorio. Spiele werden bei den meisten bekannten Streamern gestreamt und wir werden jedes Spiel und alle Streams auf <a href="https://twitter.com/BiterBattles">Twitter</a> ankündigen.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/biter-league.png" alt="Beißer-Liga" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Die Beißerliga auf der anderen Seite wird in zwei Wochen beginnen. Jeder kann sich anmelden und zeigen, was er kann! Anmeldung ist noch bis Montag, dem 08.11.2021, möglich. Jedes Team wird pro Wochenende einmal spielen, es ist erlaubt, Spieler zu tauschen. Es gibt weitere Informationen zu Regeln, Spielern, Übungsmöglichkeiten und möglichen Preisen auf unserer Webseite: <a href="https://bbchampions.org/">https://bbchampions.org/</a>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/logo.png" alt="Biter-Battles-Wettkampf-Logo" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Vom BBChampions Team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Unterstützt durch die <a href="https://discord.gg/d2ja9wUd">französische Discord Community</a>.</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://alt-f4.blog/de/discord">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/de/discord">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-49/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/de/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
