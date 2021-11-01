@@ -19,7 +19,7 @@ Another possibly is to manually remove the copper cables from the power poles to
     - link: https://www.reddit.com/r/factorio/comments/6wwkhx/comment/dmcea1c/
 }
 
-This does not of course not mean it's impossible, even if it's not as performant as vanilla Factorio. Mods have found beautiful ways around all kinds of obstacles, including these limitations, and have created all kinds great gameplay mechanics not thought plausable. 
+This does not of course not mean it's impossible, even if it's not as performant as vanilla Factorio. Mods have found beautiful ways around all kinds of obstacles, including these limitations, and have created all kinds great gameplay mechanics once not thought plausable. 
 
 ### A Short History of Electricity Overhauls
 
@@ -84,4 +84,8 @@ With a little fiddling this resulted in some intuitive and fun gameplay. It's de
 
 Finally, having a power simulated as a fluid the design for accumulators changed. It's no longer an smart entity that only accepts surplus power, which only releases all it's energy when it's requried. No, now it's a simple storage tank which acts like a big dumb capacitor. It only accepts the low voltage power which means your battery-banks need plenty of transformers. It's possible to create the same behaviour as vanilla accumulators with fun circuitry, but without circuitry they still function good enough albeit a little inefficiently.
 
-All-in-all I was suprised and excited that I found an implemetation that furfilled most of my goals and inherently created the challenges and obstacles that I visioned it to have. I didn't have to artifically create any limitations to the player, which is a great bonus. I only created the fundamental system and it regulates itself - for better or for worse!
+### In Conclusion
+
+All-in-all I was suprised and excited that I found an implemetation that furfilled most of my goals and inherently created the challenges and obstacles that I envisioned it to have. And I didn't have to create many artifical limitations to the player, which is a great bonus. I only created the fundamental system and it regulates itself! I'm abusing some mechanics, which does introduce some weird quirks like accidentally mixing different voltages or not showing physical copper connections, but it's actually really fun to play.
+
+However, the question is rather: how playable is this mod's performance? This mod required many more fluid calculations than a vanilla game, and abuses some other mechanics. Can the highly optimized Factorio engine keep up? Even though it's been predicted that such a mod will tank your UPS? I will go into more detail about this next week. And to end on a [cliffhanger](https://en.wikipedia.org/wiki/Cliffhanger), what I found out might suprize you. It definitely suprized me.
