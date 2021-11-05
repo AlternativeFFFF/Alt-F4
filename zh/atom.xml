@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-10-29T18:35:01+00:00</updated>
+  <updated>2021-11-05T12:24:22+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #51 - 流体电力实验</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-51/" />
+    <id>https://alt-f4.blog/ALTF4-51</id>
+    <updated>2021-11-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在第 51 期的 Alt-F4 的中，优秀的长期供稿人兼编辑 &lt;em&gt;stringweasel&lt;/em&gt; 带我们深入 Mod 开发史，那些试图让异星工厂的电网管理更加贴近现实的 Mod 历史。这些 Mod 都有他们自己的问题和权衡，这也正是他在这个古老的问题上提出了自己的看法的原因，效果拔群！&lt;/p&gt; &lt;h2 id=&quot;流体电力实验-stringweasel&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/FluidicPower&quot;&gt;流体电力&lt;/a&gt;实验 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;自从我接受电子工程教育以来，我在任何地方都能看到电的流动。在我眼里，在塞车时车辆前进组成的反向波动就是电子的运动。更有趣的是，电的流动与液体的流动是如此的相似。当我冲马桶时，它产生了一个漩涡，我看到一个电感正在由一个电容充电。当我突然关闭水龙头，听到水管中的水锤声时，我看到一个电感的电压峰值，这一特性被用于&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%8D%87%E5%A3%93%E8%AE%8A%E6%8F%9B%E5%99%A8&quot;&gt;升压变换器&lt;/a&gt;。若能在异星工厂中拥有这种真实的电力行为不会很酷么？&lt;/p&gt; &lt;h3 id=&quot;为什么难以实现&quot;&gt;为什么难以实现？&lt;/h3&gt; &lt;p&gt;首先，在原版的异星工厂中，电的行为是理想化的——意思是电线中没有电阻。你的电网可以在无限的距离上传输无限地电力。这几乎就像他们把低温&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%B6%85%E5%AF%BC%E7%8E%B0%E8%B1%A1&quot;&gt;超导体&lt;/a&gt;架在廉价的木杆上。对于游戏的目标和限制来说这个设计非常有效，适合大多数游戏风格。然而，总是有一些玩家在寻找更多的挑战，想知道是否可以将电力变得&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?t=68761&quot;&gt;更真实&lt;/a&gt;。玩家们希望必须使用变压器来避免长距离输电的电压下降。&lt;/p&gt; &lt;p&gt;然而，重建更真实的电力行为（可以说）超出了原版异星工厂的范围，并且&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?p=301132#p301132&quot;&gt;可能永远不会发生&lt;/a&gt;——所以该由 Mod 来填补这个略带虐待的小众需求。在异星工厂中，Mod 只能修改游戏的&lt;a href=&quot;https://lua-api.factorio.com/next/&quot;&gt;预定方面&lt;/a&gt;，而可用于电力的选项非常有限。因此 Mod 作者们想出了一些有趣的变通办法。其中一个主要问题是，一旦电线杆由铜线连接起来后，游戏就会自动在其内部传输电力，这一点无法被 Mod 所操纵。唯一真正进入电力网络的方法是使用&lt;a href=&quot;https://wiki.factorio.com/Prototype/ElectricEnergyInterface&quot;&gt;电能接口&lt;/a&gt;（以下简称为 &lt;em&gt;EEI&lt;/em&gt;）人为地供应或消耗电力，但这并不会改变电力传输的 &lt;em&gt;方式&lt;/em&gt;。&lt;/p&gt; &lt;p&gt;另一个问题是手动移除电线杆上的铜线以管理电力流动，但这也总会移除电缆连接的画面效果，让电网看起来很奇怪。这也会迫使你自己在 Mod 代码中计算电力的传输，并手动地管理电网，就像正常游戏在后台做的那样。问题是，由 Mod 完成的计算总是比游戏引擎做同样的事情要慢好几个数量级。这就是为什么异星工厂的开发者 &lt;em&gt;Rseding91&lt;/em&gt; 在几年前有人要求用 Mod 来实现&lt;a href=&quot;https://en.wikipedia.org/wiki/Voltage_drop&quot;&gt;电压下降&lt;/a&gt;时，有如下的说法。&lt;/p&gt; &lt;div class=&quot;m0 h100...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-42</id>
     <updated>2021-07-16T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在本周的第 42 期 Alt-F4 中，在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-34/&quot;&gt;之前&lt;/a&gt;调查了影响过异星工厂的游戏之后，我们现在将看看异星工厂是如何影响整个自动化类游戏的，如果这也算一种类别的话。也可能不算。经过 750 万年的深思，&lt;em&gt;Nanogamer7&lt;/em&gt; 有了一个可能会让你吃惊答案。&lt;/p&gt; &lt;h2 id=&quot;同类中的佼佼者一款游戏的影响力-nanogamer7&quot;&gt;同类中的佼佼者——一款游戏的影响力 &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我在几个月前（&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-34/&quot;&gt;第 34 期&lt;/a&gt;中）曾试图寻找异星工厂的起源，以及自动化游戏的起源。自从 Wube 于 2013 年开创这一类型以来，已有许多游戏接受了这个想法，如 &lt;a href=&quot;https://store.steampowered.com/app/526870/Satisfactory/&quot;&gt;Satisfactory&lt;/a&gt; 和&lt;a href=&quot;https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/&quot;&gt;戴森球计划&lt;/a&gt;，但也有更注重生存的游戏，如 ASTRONEER，我的世界后期版本及其 Mod。在这篇文章中，我想探讨自动化游戏的发展，以及自动化游戏与有着自动化内容的生存游戏之间的差异。&lt;/p&gt; &lt;h3 id=&quot;第一部分三巨头&quot;&gt;第一部分：三巨头&lt;/h3&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/42/spaghetti.jpg&quot; alt=&quot;自动化类游戏中的意大利面。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;当你要求别人说出异星工厂以外的一些自动化游戏时，你最常得到的回答是 Satisfactory 和戴森球计划。它们与异星工厂一起，甚至&lt;a...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #41 - 标题载入中，请稍后…</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-41/" />
-    <id>https://alt-f4.blog/ALTF4-41</id>
-    <updated>2021-07-09T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在本周的第 41 期中，&lt;em&gt;oof2win2&lt;/em&gt; 带回了一篇有点技术性的文章，讲述在试图连接到多人游戏时到底会出什么问题以及如何解决这些潜在问题。如果你曾经想知道为什么异星工厂不让你加入你朋友的多人游戏，这篇文章可能会给你一些解释！&lt;/p&gt; &lt;h2 id=&quot;快速性能检测-oof2win2&quot;&gt;快速性能检测 &lt;author&gt;oof2win2&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/41/dropped.jpg&quot; alt=&quot;玩家从游戏中掉线的图像&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;如果你没有一台顶配电脑，那么就很可能曾看到这样的提示，告诉你因网速或电脑跟不上而被从游戏中踢出。那么，这实际上意味着什么？从短期和长期来看，你能做些什么来改善这一状况？&lt;/p&gt; &lt;h3 id=&quot;网速问题&quot;&gt;网速问题&lt;/h3&gt; &lt;p&gt;有时，你的网络也会出问题。这可能是由于许多原因，如你的 ISP 正在维护或你的 DNS 数据中心遭遇停电。不过你可以用一些实用工具来缓解此类问题。&lt;/p&gt; &lt;p&gt;然而，要解释异星工厂网络的工作原理，将是个漫长的篇幅。&lt;em&gt;cube&lt;/em&gt; 在 &lt;a href=&quot;https://factorio.com/blog/post/fff-136&quot;&gt;FFF#136&lt;/a&gt; 中很好地解释了这个过程。他们所做的最重要的事情之一是使用 UDP，但把 TCP 中的功能加了回去。&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE&quot;&gt;UDP&lt;/a&gt; 的优势是比传统的 TCP（用于大多数日常事务）要快得多。UDP 通过去掉“握手”来实现这一速度，“握手”是指两个客户端（计算机）同意他们要通信并建立一个连接，这意味着它不关心数据会发生什么，&lt;em&gt;只管发送&lt;/em&gt;。然而，这也消除了保证数据交付的能力，正确排序数据或删除重复数据（有时会发生这种状况）。&lt;/p&gt; &lt;p&gt;UDP 缺乏可靠的数据传送直接违背了异星工厂必须使用完全确定的锁步算法工作方式，正如我在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-26/&quot;&gt;先前文章&lt;/a&gt;中解释的那样，数据&lt;em&gt;必须&lt;/em&gt;送达，否则你会收到一个解同步。&lt;em&gt;cube&lt;/em&gt; 说...</content>
   </entry>
   
   

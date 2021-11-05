@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-10-29T18:35:01+00:00</updated>
+  <updated>2021-11-05T12:24:22+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #51 - The Fluidic Power Experiment</title>
+    <link href="https://alt-f4.blog/ALTF4-51/" />
+    <id>https://alt-f4.blog/ALTF4-51</id>
+    <updated>2021-11-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For issue #51 of Alt-F4, long-time contributor and editor extraordinaire &lt;em&gt;stringweasel&lt;/em&gt; delights us with a deep dive into the history of mods trying to make Factorio power network management more realistic. All of them have their own issues and trade-offs, which is why he then introduces his own take at...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-42</id>
     <updated>2021-07-16T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;In this week’s issue #42 of Alt-F4, after &lt;a href=&quot;https://alt-f4.blog/ALTF4-34/&quot;&gt;previously&lt;/a&gt; investigating the games that influenced Factorio, we’ll now be looking at how Factorio influenced the automation genre as a whole, if that’s even a thing. Maybe it isn’t. After 7.5 million years of contemplation, &lt;em&gt;Nanogamer7&lt;/em&gt; has an answer, and it...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #41 - Title loading, please stand by ...</title>
-    <link href="https://alt-f4.blog/ALTF4-41/" />
-    <id>https://alt-f4.blog/ALTF4-41</id>
-    <updated>2021-07-09T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;This week, for issue #41, &lt;em&gt;oof2win2&lt;/em&gt; returns with a somewhat more technical article about what exactly can go wrong when trying to connect to multiplayer games and how to potentially solve these issues. If you’ve ever wondered why Factorio wouldn’t let you join your friends’ multiplayer game, this article might...</content>
   </entry>
   
   

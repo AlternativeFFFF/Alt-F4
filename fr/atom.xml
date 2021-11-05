@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-10-29T18:35:01+00:00</updated>
+  <updated>2021-11-05T12:24:22+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,21 @@
   
   
   <entry>
-    <title>Alt-F4 n°50 - Les Curiosités du Silo à Fusées</title>
+    <title>Alt-F4 n°51 - L'expérience Fluidic Power</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-51/" />
+    <id>https://alt-f4.blog/ALTF4-51</id>
+    <updated>2021-11-05T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Pour la parution n°51 de Alt-F4, notre ancien contributeur et éditeur extraordinaire &lt;em&gt;stringweasel&lt;/em&gt; nous régale avec la plongée dans l’histoire des mods qui tentent de rendre le réseau électrique de Factorio plus réaliste. Chacun d’entre eux a des avantages et des inconvénients, et c’est pourquoi il nous présente sa propre...</content>
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Alt-F4 n°50 - Les Curiosités du Silo à Fusée</title>
     <link href="https://alt-f4.blog/fr/ALTF4-50/" />
     <id>https://alt-f4.blog/ALTF4-50</id>
     <updated>2021-10-29T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Cette semaine, avec notre 50&lt;sup&gt;e&lt;/sup&gt; parution, c’est l’anniversaire d’or de Alt-F4.Pas de fête spéciale, on a l’impression d’en faire suffisament souvent. A la place, &lt;em&gt;garr890354839&lt;/em&gt; fait sa première contribution en nous présentant des étrangetés et quelques maths qui entourent le silo à fusée. Puis, &lt;em&gt;everLord&lt;/em&gt; introduit un nouvel évênement communautaire,...</content>
+    <content type="html">&lt;p&gt;Cette semaine, avec notre 50&lt;sup&gt;e&lt;/sup&gt; parution, c’est l’anniversaire d’or de Alt-F4. Pas de fête spéciale, on a l’impression d’en faire suffisamment souvent. À la place, &lt;em&gt;garr890354839&lt;/em&gt; fait sa première contribution en nous présentant des étrangetés et quelques maths qui entourent le silo à fusée. Puis, &lt;em&gt;everLord&lt;/em&gt; introduit un nouvel événement...</content>
   </entry>
   
   
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-42</id>
     <updated>2021-07-16T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Dans cette parution n°42 de Alt-F4, après &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-34/&quot;&gt;avoir précédement&lt;/a&gt; recherché les jeux qui ont inspiré Factorio, jetons un œil à comment Factorio a influencé le genre de l’automatisation dans son ensemble, s’il existe. Peut-être qu’il n’existe pas. Après 7,5 millions d’années de contemplation, &lt;em&gt;Nanogamer&lt;/em&gt; a une réponse, et elle...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°41 - Chargement du titre, veuillez patienter...</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-41/" />
-    <id>https://alt-f4.blog/ALTF4-41</id>
-    <updated>2021-07-09T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Cette semaine, pour le numéro 41, &lt;em&gt;oof2win2&lt;/em&gt; est de retour avec un article un peu plus technique sur ce qui peut mal se passer quand on essaie de se connecter à des parties multijoueur et comment il est parfois possible de résoudre ces problèmes. Si vous vous êtes déjà demandé...</content>
   </entry>
   
   
