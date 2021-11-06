@@ -1,5 +1,13 @@
 ## The [Fluidic Power](https://mods.factorio.com/mod/FluidicPower) Experiment: Part 2 <author>stringweasel</author>
 
+### What is it again?
+
+In [last week's article](https://alt-f4.blog/ALTF4-51/) I talked about the history of Power Network overhaul mods and my own take on it called Fluidic Power. It's recommended that you read that article first, but in a nutshel, I made Factorio's power distribution more realistic by simulating it as a fluid - by using the already built-in fluid simulation.
+
+[PICTURE OF SOME FACTORY]
+
+
+
 ### Is the performance playable?
 
 There is a reason why electricity is implemented in Factorio the way it is. It allows us to build gigantic factories so big that that still blows my mind. And adding more realistic power might inhibit performance significantly, especially after Rseding91's quote. So what will Factorio's performance be if there's fluid flowing through each and every power pole. For that I built a pure Fluidic Power base to benchmark with - with the help of my friend JanKrater. 
