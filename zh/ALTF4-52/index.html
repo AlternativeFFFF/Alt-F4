@@ -230,7 +230,7 @@
 <p></p>
 <p><!-- Spacing --></p>
 
-<p>在上面的输出中，游戏会告诉你时间大部分花在哪里了，起初令我感到困惑的是，游戏似乎把大部分时间花在 <code class="language-plaintext highlighter-rouge">Electric Network</code> 上。我本预期 <code class="language-plaintext highlighter-rouge">Fluid Manager</code> 会受到最大的性能冲击，但是输出显示 <code class="language-plaintext highlighter-rouge">Electric Network</code>（<code class="language-plaintext highlighter-rouge">~10ms</code>）使用了 70% 以上的更新时间（<code class="language-plaintext highlighter-rouge">~13.7ms</code>），而 <code class="language-plaintext highlighter-rouge">Fluid Manager</code>（<code class="language-plaintext highlighter-rouge">~0.03ms</code>）似乎根本没有做什么。这没有任何意义，因为我预计流体计算量会大量消耗性能。我去了<a href="reddit.com/r/technicalfactorio">异星工厂技术区</a>社区，在那里他们把异星工厂的性能推到了极限。在这里，杰出的数学家 SteveTrov 向我解释了为什么在你不知道计时计算是如何实际实现时，游戏中的耗时情况会产生误导。他是这样描述的：</p>
+<p>在上面的输出中，游戏会告诉你时间大部分花在哪里了，起初令我感到困惑的是，游戏似乎把大部分时间花在 <code class="language-plaintext highlighter-rouge">Electric Network</code> 上。我本预期 <code class="language-plaintext highlighter-rouge">Fluid Manager</code> 会受到最大的性能冲击，但是输出显示 <code class="language-plaintext highlighter-rouge">Electric Network</code>（<code class="language-plaintext highlighter-rouge">~10ms</code>）使用了 70% 以上的更新时间（<code class="language-plaintext highlighter-rouge">~13.7ms</code>），而 <code class="language-plaintext highlighter-rouge">Fluid Manager</code>（<code class="language-plaintext highlighter-rouge">~0.03ms</code>）似乎根本没有做什么。这没有任何意义，因为我预计流体计算量会大量消耗性能。我去了<a href="https://reddit.com/r/technicalfactorio">异星工厂技术区</a>社区，在那里他们把异星工厂的性能推到了极限。在这里，杰出的数学家 SteveTrov 向我解释了为什么在你不知道计时计算是如何实际实现时，游戏中的耗时情况会产生误导。他是这样描述的：</p>
 
 <div class="m0 h100 quote">
   <blockquote cite="">
