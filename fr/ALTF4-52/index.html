@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 n°52 - Évaluation de Fluidic Power</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 n°52 - Évaluation de Fluidic Power">
+<meta name="author" content="stringweasel">
+<meta property="og:locale" content="fr">
+<meta name="description" content='Pour le numéro 52, stringweasel revient avec la deuxième partie du Projet Fluidic Power où il se penche sur les conséquences plutôt surprenantes de sa création sur les performances du jeu. Si vous avez aimé l’article de la semaine dernière, vous aimerez celui de cette semaine-ci. Quelle surprise ! Le projet Fluidic Power : 2e partie stringweasel C’est quoi déjà ? Dans l’article de la semaine dernière, je vous ai parlé de l’histoire des mods de refonte du réseau électrique de Factorio et de leur fonctionnement, puis j’ai expliqué ma propre version, appelée Fluidic Power. Il est recommandé de lire cet article en premier, mais en résumé, j’ai rendu la distribution de l’énergie de Factorio plus réaliste en la simulant comme un fluide grâce aux mécanismes de simulation des fluides déjà intégrés au jeu. Cela signifie que vous devez utiliser des transformateurs pour réduire les chutes de tension avec la distance. Cela signifie également que, par exemple, il est plus difficile de faire fonctionner vos tourelles laser à 100%, ou de construire des installations équipées de nombreux diffuseurs. &lt;/source&gt; Un exemple de biters attaquant un avant-poste avec l’affichage "show-fluid-box-info" activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence. Un exemple de biters attaquant un avant-poste avec l’affichage "show-fluid-box-info" activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence. Ces nouvelles limitations signifient que Fluidic Power a atteint son objectif de créer un nouveau mécanisme de jeu qui ressemble davantage à un système électrique réaliste. Cependant, il introduit une surcharge de performances significative avec tous les nouveaux calculs de fluides nécessaires. Je ne voulais pas mettre, sur le Portail des mods, un mod qui paralyserait votre PC dès que vous construisez une usine de taille raisonnable. J’ai donc entrepris de faire quelques recherches. Les calculs de fluides supplémentaires ont-ils vraiment un impact significatif ? Le résultat est-il jouable ? Il y a une raison pour laquelle Factorio implémente l’électricité de cette manière. Elle nous permet de construire des usines absolument gigantesques au point que l’on peut s’y perdre. L’ajout d’une énergie plus réaliste pourrait entraver les performances de manière si significative que vous devriez construire des usines plus petites, et ça, personne ne le veut. La question est donc la suivante : quelle seraient les performances de Factorio si un fluide circulait dans chaque poteau électrique ? J’avais besoin d’une carte de référence, j’ai donc entrepris de construire une base complète utilisant uniquement Fluidic Power, avec l’aide de mon ami JanKrater. Mon objectif pour cette base était de penser à la manière la plus efficace de construire une base, et … de faire exactement le contraire (enfin, la plupart du temps). Le résultat est une base spaghetti avec beaucoup trop de poteaux électriques, des convoyeurs très alambiqués, et beaucoup trop de tourelles laser gourmandes en énergie. Mais ce qui est très important, c’est qu’elle parvient à produire une quantité constante de 45 sciences par minute, et qu’elle absorbe environ 600 MW sans le moindre module d’efficacité en vue. La base spaghetti de référence fonctionnant à 45 SPM. Normalement, Factorio tourne à environ 60 mises à jour par seconde (appelées UPS), et j’ai réussi à faire tourner cette carte de référence à 70 UPS sur mon vieux PC (i7-4770k 3,5GHz, RAM DDR3-1600MHz). Cela signifie qu’il faut environ 14ms pour mettre à jour une fois toute la base (la durée d’un tick), alors que pour 60 UPS, la durée maximale par mise à jour peut être de 1/60 = ~16,6ms. Ce nombre est également indiqué ci-dessous dans les données de débogage “show-time-usage”. Il est intéressant de noter que le script de mon mod (mod-FluidicPower) a un effet négligeable sur les performances (~0,05ms). C’est possible parce que mon mod fait très peu de calculs, car il est capable de transférer tous les calculs coûteux des fluides et d’énergie au moteur optimisé du jeu. Les principales informations temporelles à surveiller sont Fluid Manager et Electric Network. Informations “show-time-usage” et “show-entity-time-usage” de la base spaghetti à 45 SPM. Dans les résultats ci-dessus, le jeu vous dit où il dépense le plus de temps, et cela m’a d’abord dérouté que le jeu semble passer la plupart de son temps sur Electric Network. Je m’attendais à ce que Fluid Manager soit le plus sollicité, mais en réalité, on voit que Electric Network (~10ms) utilise plus de 70% du temps de la mise à jour (~13,7ms), et que Fluid Manager (~0,03ms) ne semble rien faire du tout. Cela n’a aucun sens, car je m’attendais à ce que la quantité de calculs de fluides soit une perte massive de performances. Je me suis dirigé vers la communauté technique de Factorio, où l’on pousse les performances de Factorio à leur limite absolue. Ici, le brillant mathématicien SteveTrov m’a expliqué pourquoi l’utilisation du temps dans le jeu peut être trompeuse si vous ne savez pas comment les calculs de temps sont réellement mis en œuvre. Il les a décrits comme suit : Tout d’abord, les statistiques d’utilisation du temps sont confuses parce que la mise à jour des fluides et du réseau électrique sont exécutés dans des processus parallèles. Voilà en gros ce qui se passe la plupart du temps : Le processus du réseau électrique est lancé et le chronomètre de la mise à jour du réseau électrique est activé. Le processus de mise à jour de la chaleur est démarré. Plusieurs processus de mise à jour des fluides sont lancés. Lorsque le processus de mise à jour du réseau électrique se termine, le temps écoulé est enregistré dans la rubrique Mise à jour du réseau électrique. Le chronomètre de la mise à jour des fluides est effectivement lancé à cet instant. Lorsque les processus des fluides sont tous terminés (normalement avant l’étape 4), le chronomètre de la mise à jour des fluides est arrêté. Cela a pour effet que le temps de mise à jour des fluides est presque toujours très faible. Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time: The electric network thread is started and the electric network update timer is started. The heat update thread is stated Multiple fluid update threads are started. When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now. When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped. So the effect of this is that the fluid update time is nearly always very low. — SteveTrov Cela signifie essentiellement que les informations relatives à l’utilisation du temps du gestionnaire des fluides sont mêlées à celles du réseau électrique et du gestionnaire de la chaleur. Il n’est pas possible de déterminer avec précision quelle partie prend le plus de temps de traitement sans modifier le moteur de jeu de Factorio lui-même. Il me faut une autre approche pour savoir si Electric Network prend vraiment plus de temps de traitement que Fluid Manager (et si oui, combien ?). Un expert en UPS appelé flame_Sla m’a alors suggéré de télécharger Very Sleepy Profiler pour obtenir des informations détaillées sur les fonctions C++ du moteur de Factorio qui sont appelées le plus souvent. Sa communauté utilise souvent cet outil pour optimiser les mégabases les plus grandes et les plus efficaces au monde en termes d’UPS. Dans le résultat de l’outil ci-dessous, vous pouvez voir quelles fonctions C++ prennent le plus de temps. Elles sont classées par ordre décroissant. flame_Sla a également mentionné qu’il ne fallait pas se concentrer sur les temps absolus indiqués, mais plutôt les utiliser comme une indication permettant d’identifier les plus grands coupables. Résultats de l’outil de profilage Very Sleepy tournant sur ma base Fluidic Power spaghetti de référence. À droite : une instance de la pile d’appels de la fonction sélectionnée. Ceci a montré quelque chose à laquelle je ne m’attendais pas vraiment. Le système de fluides (FluidSystem::update) n’était que dans le top 10 des fonctions les moins rapides, et Electric Network demandait encore plus de temps de traitement ! Il s’avère que le problème principal était FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow, qui est principalement appelé par le réseau électrique. Ces statistiques de flux collectent les données nécessaires pour afficher des graphiques dans le jeu, par exemple dans la fenêtre de production d’énergie. Cela signifie que le jeu ne ralentit pas seulement à cause de tous les nouveaux calculs de fluides, mais aussi pour collecter les informations permettant de dessiner les graphiques de tous les nouveaux réseaux électriques ! Il est très vraisemblable que la collecte des statistiques pour Electric Network puisse prendre un temps de traitement important avec Fluidic Power. Le moteur de Factorio est conçu pour n’avoir qu’une poignée de réseaux électriques différents, voire un seul. Le jeu doit collecter et mettre à jour les informations pour chaque réseau électrique que vous avez, ce qui ne sera normalement que quelques ensembles de données distincts. Or, au lieu d’avoir une poignée de réseaux, Fluidic Power est conçu de telle sorte que chaque poteau électrique est un réseau électrique distinct. Le moteur de Factorio va alors tenter de collecter des statistiques pour chacun de ces réseaux électriques, ce qui représente environ 3000 réseaux électriques dans ma partie de référence ! C’est au moins 100 fois plus de réseaux sur lesquels collecter des statistiques que ce pour quoi Factorio a été conçu. Il s’agit d’une limitation déjà connue pour d’autres mods, mais Fluidic Power la pousse à un niveau extrême. Cependant, nous ne connaissons toujours pas l’impact de ces traitements par rapport aux calculs des fluides. La collecte des statistiques prend-elle vraiment beaucoup plus de temps que les calculs de fluides eux-mêmes ? flame_Sla a mentionné qu’il avait réussi une fois à mesurer l’utilisation du temps du gestionnaire de fluides sur la plus grande mégabase du monde, et qu’il utilisait seulement ~0,4ms pour une mégabase à 40k SPM avec 60 UPS ! Cela signifie que seulement 2,5 % du temps de mise à jour était consacré aux calculs des fluides ! Il a isolé l’utilisation en temps du gestionnaire de fluides du réseau électrique en éliminant complètement le réseau électrique de la mesure. Il y est parvenu en changeant toutes les machines pour qu’elles fonctionnent avec du bois comme combustible ce qui signifiait que l’on ne consommait plus d’électricité et que Electric Network était inactif. En raison du fonctionnement de Fluidic Power, je ne peux pas facilement éliminer l’effet de Electric Network de la même manière sans réduire également la charge de Fluid Manager, mais je peux le faire dans l’autre sens ! Je peux supprimer tous les composants fluides, et les remplacer par des IEE qui fournissent ou consomment l’énergie. Cela éliminera proprement tous les calculs de fluides ajoutés, sans supprimer la charge importante sur Electric Network en s’assurant que l’usine fonctionne toujours normalement. Afin d’enregistrer une mesure précise et comparable de l’utilisation du temps, j’ai également essayé de forcer Factorio à fonctionner sur un seul cœur. J’ai lancé un petit script pour remplacer les composants fluides cachés des poteaux électriques pour ce test et le résultat est le suivant :   Référence Modifié Différence Electric Network 9,3ms 9,2ms 0,1ms Heat Manager 0,03ms 0,03ms 0ms Fluid Manager 0,13ms 0,08ms 0,05ms Total 9,46ms 9,31ms 0,15ms Tableau montrant les résultats temporels de la référence non modifiée par rapport à la référence modifiée où tous les composants fluides ont été enlevés. Cela montre que tous les calculs de fluides supplémentaires de Fluidic Power pour cette base de référence ne prennent qu’environ ~0,15ms ! Ce chiffre n’est probablement pas encore assez précis car il se situe dans les marges de bruit de la base spaghetti, le test n’est pas idéal, et la mesure du temps avec des processus parallèles est imprécise. Cependant, cela nous donne une bonne indication des endroits où la plupart du temps de traitement est utilisé. Cela prouve que le réseau électrique a de loin le plus grand impact sur les performances, et que les calculs supplémentaires des fluides sont presque négligeables. On peut se demander quelles performances pourraient être atteintes si le réseau électrique ne collectait pas inutilement ces statistiques. Peut-être verrions-nous d’énormes mégabases Fluidic Power avec de gigantesques postes de transformation à côté de réacteurs nucléaires ou d’immenses panneaux solaires. Dans l’ensemble, Fluidic Power fonctionne beaucoup mieux que ce à quoi je m’attendais. Tout ralentissement perçu sera en effet principalement causé par les nombreux réseaux électriques collectant des statistiques, et non par les calculs de fluides eux-mêmes. Vous serez encore probablement en mesure de lancer une fusée sans que vos UPS ne tombent en dessous de 60. Vous pourriez même construire un peu plus grand si vous avez un agencement efficace (j’ai atteint 90 SPM avec 220 UPS !), et le mod ne va pas nécessairement détruire vos UPS comme Rseding1 l’avait prédit. Factorio est heureusement très bien conçu et optimisé, même lorsqu’il ne fonctionne pas comme prévu. Cela prouve que Fluidic Power est définitivement jouable en termes de performances, mais ce n’est pas le seul aspect qui compte. Devriez-vous y jouer ? Personnellement, je pense que Fluidic Power crée un défi vraiment amusant. Il n’est peut-être pas fait pour vous si vous avez l’intention de construire une mégabase à longue durée de vie, mais si vous recherchez une adventure intéressante avec de nouveaux défis, ce mod est peut-être fait pour vous. J’ai vraiment apprécié de surmonter tous les nouveaux obstacles de jeu qu’il crée. Par exemple, les machines les plus éloignées de vos machines à vapeur cesseront de fonctionner en premier, et ce sont généralement les foreuses électriques de votre gisement de charbon qui alimentent vos chaudières. Je n’avais jamais connu une spirale infernale du charbon aussi dangereuse. Ou, si vous défendez vos murs avec des tourelles laser, vous devrez vous assurer qu’il y a suffisamment de transformateurs pour fournir du courant à la bonne tension. Cependant, ce que je préfère de loin dans ce mod, c’est de savoir que de l’électricité circule réellement dans les poteaux électriques. Vous pouvez même voir les vagues de coupures intermittentes sur vos machines lorsque votre base consomme trop d’énergie, comme lorsque plusieurs tourelles laser tirent en même temps. C’est similaire au sentiment que j’éprouve lorsque je regarde un circuit que j’ai conçu, tout en sachant qu’il fonctionne grâce au mouvement fluide des électrons dans le cuivre ou le silicium. Cela renforce le sentiment de voir vos réseaux complexes de convoyeurs travailler ensemble pour construire la fusée. L’usine semble plus vivante. Vous pouvez voir les battements réguliers de son cœur, et c’est vraiment agréable. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !'>
+<meta property="og:description" content='Pour le numéro 52, stringweasel revient avec la deuxième partie du Projet Fluidic Power où il se penche sur les conséquences plutôt surprenantes de sa création sur les performances du jeu. Si vous avez aimé l’article de la semaine dernière, vous aimerez celui de cette semaine-ci. Quelle surprise ! Le projet Fluidic Power : 2e partie stringweasel C’est quoi déjà ? Dans l’article de la semaine dernière, je vous ai parlé de l’histoire des mods de refonte du réseau électrique de Factorio et de leur fonctionnement, puis j’ai expliqué ma propre version, appelée Fluidic Power. Il est recommandé de lire cet article en premier, mais en résumé, j’ai rendu la distribution de l’énergie de Factorio plus réaliste en la simulant comme un fluide grâce aux mécanismes de simulation des fluides déjà intégrés au jeu. Cela signifie que vous devez utiliser des transformateurs pour réduire les chutes de tension avec la distance. Cela signifie également que, par exemple, il est plus difficile de faire fonctionner vos tourelles laser à 100%, ou de construire des installations équipées de nombreux diffuseurs. &lt;/source&gt; Un exemple de biters attaquant un avant-poste avec l’affichage "show-fluid-box-info" activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence. Un exemple de biters attaquant un avant-poste avec l’affichage "show-fluid-box-info" activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence. Ces nouvelles limitations signifient que Fluidic Power a atteint son objectif de créer un nouveau mécanisme de jeu qui ressemble davantage à un système électrique réaliste. Cependant, il introduit une surcharge de performances significative avec tous les nouveaux calculs de fluides nécessaires. Je ne voulais pas mettre, sur le Portail des mods, un mod qui paralyserait votre PC dès que vous construisez une usine de taille raisonnable. J’ai donc entrepris de faire quelques recherches. Les calculs de fluides supplémentaires ont-ils vraiment un impact significatif ? Le résultat est-il jouable ? Il y a une raison pour laquelle Factorio implémente l’électricité de cette manière. Elle nous permet de construire des usines absolument gigantesques au point que l’on peut s’y perdre. L’ajout d’une énergie plus réaliste pourrait entraver les performances de manière si significative que vous devriez construire des usines plus petites, et ça, personne ne le veut. La question est donc la suivante : quelle seraient les performances de Factorio si un fluide circulait dans chaque poteau électrique ? J’avais besoin d’une carte de référence, j’ai donc entrepris de construire une base complète utilisant uniquement Fluidic Power, avec l’aide de mon ami JanKrater. Mon objectif pour cette base était de penser à la manière la plus efficace de construire une base, et … de faire exactement le contraire (enfin, la plupart du temps). Le résultat est une base spaghetti avec beaucoup trop de poteaux électriques, des convoyeurs très alambiqués, et beaucoup trop de tourelles laser gourmandes en énergie. Mais ce qui est très important, c’est qu’elle parvient à produire une quantité constante de 45 sciences par minute, et qu’elle absorbe environ 600 MW sans le moindre module d’efficacité en vue. La base spaghetti de référence fonctionnant à 45 SPM. Normalement, Factorio tourne à environ 60 mises à jour par seconde (appelées UPS), et j’ai réussi à faire tourner cette carte de référence à 70 UPS sur mon vieux PC (i7-4770k 3,5GHz, RAM DDR3-1600MHz). Cela signifie qu’il faut environ 14ms pour mettre à jour une fois toute la base (la durée d’un tick), alors que pour 60 UPS, la durée maximale par mise à jour peut être de 1/60 = ~16,6ms. Ce nombre est également indiqué ci-dessous dans les données de débogage “show-time-usage”. Il est intéressant de noter que le script de mon mod (mod-FluidicPower) a un effet négligeable sur les performances (~0,05ms). C’est possible parce que mon mod fait très peu de calculs, car il est capable de transférer tous les calculs coûteux des fluides et d’énergie au moteur optimisé du jeu. Les principales informations temporelles à surveiller sont Fluid Manager et Electric Network. Informations “show-time-usage” et “show-entity-time-usage” de la base spaghetti à 45 SPM. Dans les résultats ci-dessus, le jeu vous dit où il dépense le plus de temps, et cela m’a d’abord dérouté que le jeu semble passer la plupart de son temps sur Electric Network. Je m’attendais à ce que Fluid Manager soit le plus sollicité, mais en réalité, on voit que Electric Network (~10ms) utilise plus de 70% du temps de la mise à jour (~13,7ms), et que Fluid Manager (~0,03ms) ne semble rien faire du tout. Cela n’a aucun sens, car je m’attendais à ce que la quantité de calculs de fluides soit une perte massive de performances. Je me suis dirigé vers la communauté technique de Factorio, où l’on pousse les performances de Factorio à leur limite absolue. Ici, le brillant mathématicien SteveTrov m’a expliqué pourquoi l’utilisation du temps dans le jeu peut être trompeuse si vous ne savez pas comment les calculs de temps sont réellement mis en œuvre. Il les a décrits comme suit : Tout d’abord, les statistiques d’utilisation du temps sont confuses parce que la mise à jour des fluides et du réseau électrique sont exécutés dans des processus parallèles. Voilà en gros ce qui se passe la plupart du temps : Le processus du réseau électrique est lancé et le chronomètre de la mise à jour du réseau électrique est activé. Le processus de mise à jour de la chaleur est démarré. Plusieurs processus de mise à jour des fluides sont lancés. Lorsque le processus de mise à jour du réseau électrique se termine, le temps écoulé est enregistré dans la rubrique Mise à jour du réseau électrique. Le chronomètre de la mise à jour des fluides est effectivement lancé à cet instant. Lorsque les processus des fluides sont tous terminés (normalement avant l’étape 4), le chronomètre de la mise à jour des fluides est arrêté. Cela a pour effet que le temps de mise à jour des fluides est presque toujours très faible. Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time: The electric network thread is started and the electric network update timer is started. The heat update thread is stated Multiple fluid update threads are started. When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now. When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped. So the effect of this is that the fluid update time is nearly always very low. — SteveTrov Cela signifie essentiellement que les informations relatives à l’utilisation du temps du gestionnaire des fluides sont mêlées à celles du réseau électrique et du gestionnaire de la chaleur. Il n’est pas possible de déterminer avec précision quelle partie prend le plus de temps de traitement sans modifier le moteur de jeu de Factorio lui-même. Il me faut une autre approche pour savoir si Electric Network prend vraiment plus de temps de traitement que Fluid Manager (et si oui, combien ?). Un expert en UPS appelé flame_Sla m’a alors suggéré de télécharger Very Sleepy Profiler pour obtenir des informations détaillées sur les fonctions C++ du moteur de Factorio qui sont appelées le plus souvent. Sa communauté utilise souvent cet outil pour optimiser les mégabases les plus grandes et les plus efficaces au monde en termes d’UPS. Dans le résultat de l’outil ci-dessous, vous pouvez voir quelles fonctions C++ prennent le plus de temps. Elles sont classées par ordre décroissant. flame_Sla a également mentionné qu’il ne fallait pas se concentrer sur les temps absolus indiqués, mais plutôt les utiliser comme une indication permettant d’identifier les plus grands coupables. Résultats de l’outil de profilage Very Sleepy tournant sur ma base Fluidic Power spaghetti de référence. À droite : une instance de la pile d’appels de la fonction sélectionnée. Ceci a montré quelque chose à laquelle je ne m’attendais pas vraiment. Le système de fluides (FluidSystem::update) n’était que dans le top 10 des fonctions les moins rapides, et Electric Network demandait encore plus de temps de traitement ! Il s’avère que le problème principal était FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow, qui est principalement appelé par le réseau électrique. Ces statistiques de flux collectent les données nécessaires pour afficher des graphiques dans le jeu, par exemple dans la fenêtre de production d’énergie. Cela signifie que le jeu ne ralentit pas seulement à cause de tous les nouveaux calculs de fluides, mais aussi pour collecter les informations permettant de dessiner les graphiques de tous les nouveaux réseaux électriques ! Il est très vraisemblable que la collecte des statistiques pour Electric Network puisse prendre un temps de traitement important avec Fluidic Power. Le moteur de Factorio est conçu pour n’avoir qu’une poignée de réseaux électriques différents, voire un seul. Le jeu doit collecter et mettre à jour les informations pour chaque réseau électrique que vous avez, ce qui ne sera normalement que quelques ensembles de données distincts. Or, au lieu d’avoir une poignée de réseaux, Fluidic Power est conçu de telle sorte que chaque poteau électrique est un réseau électrique distinct. Le moteur de Factorio va alors tenter de collecter des statistiques pour chacun de ces réseaux électriques, ce qui représente environ 3000 réseaux électriques dans ma partie de référence ! C’est au moins 100 fois plus de réseaux sur lesquels collecter des statistiques que ce pour quoi Factorio a été conçu. Il s’agit d’une limitation déjà connue pour d’autres mods, mais Fluidic Power la pousse à un niveau extrême. Cependant, nous ne connaissons toujours pas l’impact de ces traitements par rapport aux calculs des fluides. La collecte des statistiques prend-elle vraiment beaucoup plus de temps que les calculs de fluides eux-mêmes ? flame_Sla a mentionné qu’il avait réussi une fois à mesurer l’utilisation du temps du gestionnaire de fluides sur la plus grande mégabase du monde, et qu’il utilisait seulement ~0,4ms pour une mégabase à 40k SPM avec 60 UPS ! Cela signifie que seulement 2,5 % du temps de mise à jour était consacré aux calculs des fluides ! Il a isolé l’utilisation en temps du gestionnaire de fluides du réseau électrique en éliminant complètement le réseau électrique de la mesure. Il y est parvenu en changeant toutes les machines pour qu’elles fonctionnent avec du bois comme combustible ce qui signifiait que l’on ne consommait plus d’électricité et que Electric Network était inactif. En raison du fonctionnement de Fluidic Power, je ne peux pas facilement éliminer l’effet de Electric Network de la même manière sans réduire également la charge de Fluid Manager, mais je peux le faire dans l’autre sens ! Je peux supprimer tous les composants fluides, et les remplacer par des IEE qui fournissent ou consomment l’énergie. Cela éliminera proprement tous les calculs de fluides ajoutés, sans supprimer la charge importante sur Electric Network en s’assurant que l’usine fonctionne toujours normalement. Afin d’enregistrer une mesure précise et comparable de l’utilisation du temps, j’ai également essayé de forcer Factorio à fonctionner sur un seul cœur. J’ai lancé un petit script pour remplacer les composants fluides cachés des poteaux électriques pour ce test et le résultat est le suivant :   Référence Modifié Différence Electric Network 9,3ms 9,2ms 0,1ms Heat Manager 0,03ms 0,03ms 0ms Fluid Manager 0,13ms 0,08ms 0,05ms Total 9,46ms 9,31ms 0,15ms Tableau montrant les résultats temporels de la référence non modifiée par rapport à la référence modifiée où tous les composants fluides ont été enlevés. Cela montre que tous les calculs de fluides supplémentaires de Fluidic Power pour cette base de référence ne prennent qu’environ ~0,15ms ! Ce chiffre n’est probablement pas encore assez précis car il se situe dans les marges de bruit de la base spaghetti, le test n’est pas idéal, et la mesure du temps avec des processus parallèles est imprécise. Cependant, cela nous donne une bonne indication des endroits où la plupart du temps de traitement est utilisé. Cela prouve que le réseau électrique a de loin le plus grand impact sur les performances, et que les calculs supplémentaires des fluides sont presque négligeables. On peut se demander quelles performances pourraient être atteintes si le réseau électrique ne collectait pas inutilement ces statistiques. Peut-être verrions-nous d’énormes mégabases Fluidic Power avec de gigantesques postes de transformation à côté de réacteurs nucléaires ou d’immenses panneaux solaires. Dans l’ensemble, Fluidic Power fonctionne beaucoup mieux que ce à quoi je m’attendais. Tout ralentissement perçu sera en effet principalement causé par les nombreux réseaux électriques collectant des statistiques, et non par les calculs de fluides eux-mêmes. Vous serez encore probablement en mesure de lancer une fusée sans que vos UPS ne tombent en dessous de 60. Vous pourriez même construire un peu plus grand si vous avez un agencement efficace (j’ai atteint 90 SPM avec 220 UPS !), et le mod ne va pas nécessairement détruire vos UPS comme Rseding1 l’avait prédit. Factorio est heureusement très bien conçu et optimisé, même lorsqu’il ne fonctionne pas comme prévu. Cela prouve que Fluidic Power est définitivement jouable en termes de performances, mais ce n’est pas le seul aspect qui compte. Devriez-vous y jouer ? Personnellement, je pense que Fluidic Power crée un défi vraiment amusant. Il n’est peut-être pas fait pour vous si vous avez l’intention de construire une mégabase à longue durée de vie, mais si vous recherchez une adventure intéressante avec de nouveaux défis, ce mod est peut-être fait pour vous. J’ai vraiment apprécié de surmonter tous les nouveaux obstacles de jeu qu’il crée. Par exemple, les machines les plus éloignées de vos machines à vapeur cesseront de fonctionner en premier, et ce sont généralement les foreuses électriques de votre gisement de charbon qui alimentent vos chaudières. Je n’avais jamais connu une spirale infernale du charbon aussi dangereuse. Ou, si vous défendez vos murs avec des tourelles laser, vous devrez vous assurer qu’il y a suffisamment de transformateurs pour fournir du courant à la bonne tension. Cependant, ce que je préfère de loin dans ce mod, c’est de savoir que de l’électricité circule réellement dans les poteaux électriques. Vous pouvez même voir les vagues de coupures intermittentes sur vos machines lorsque votre base consomme trop d’énergie, comme lorsque plusieurs tourelles laser tirent en même temps. C’est similaire au sentiment que j’éprouve lorsque je regarde un circuit que j’ai conçu, tout en sachant qu’il fonctionne grâce au mouvement fluide des électrons dans le cuivre ou le silicium. Cela renforce le sentiment de voir vos réseaux complexes de convoyeurs travailler ensemble pour construire la fusée. L’usine semble plus vivante. Vous pouvez voir les battements réguliers de son cœur, et c’est vraiment agréable. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !'>
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-52/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-52/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-11-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"datePublished":"2021-11-12T00:00:00+00:00","author":{"@type":"Person","name":"stringweasel"},"description":"Pour le numéro 52, stringweasel revient avec la deuxième partie du Projet Fluidic Power où il se penche sur les conséquences plutôt surprenantes de sa création sur les performances du jeu. Si vous avez aimé l’article de la semaine dernière, vous aimerez celui de cette semaine-ci. Quelle surprise ! Le projet Fluidic Power : 2e partie stringweasel C’est quoi déjà ? Dans l’article de la semaine dernière, je vous ai parlé de l’histoire des mods de refonte du réseau électrique de Factorio et de leur fonctionnement, puis j’ai expliqué ma propre version, appelée Fluidic Power. Il est recommandé de lire cet article en premier, mais en résumé, j’ai rendu la distribution de l’énergie de Factorio plus réaliste en la simulant comme un fluide grâce aux mécanismes de simulation des fluides déjà intégrés au jeu. Cela signifie que vous devez utiliser des transformateurs pour réduire les chutes de tension avec la distance. Cela signifie également que, par exemple, il est plus difficile de faire fonctionner vos tourelles laser à 100%, ou de construire des installations équipées de nombreux diffuseurs. &lt;/source&gt; Un exemple de biters attaquant un avant-poste avec l’affichage &quot;show-fluid-box-info&quot; activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence. Un exemple de biters attaquant un avant-poste avec l’affichage &quot;show-fluid-box-info&quot; activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence. Ces nouvelles limitations signifient que Fluidic Power a atteint son objectif de créer un nouveau mécanisme de jeu qui ressemble davantage à un système électrique réaliste. Cependant, il introduit une surcharge de performances significative avec tous les nouveaux calculs de fluides nécessaires. Je ne voulais pas mettre, sur le Portail des mods, un mod qui paralyserait votre PC dès que vous construisez une usine de taille raisonnable. J’ai donc entrepris de faire quelques recherches. Les calculs de fluides supplémentaires ont-ils vraiment un impact significatif ? Le résultat est-il jouable ? Il y a une raison pour laquelle Factorio implémente l’électricité de cette manière. Elle nous permet de construire des usines absolument gigantesques au point que l’on peut s’y perdre. L’ajout d’une énergie plus réaliste pourrait entraver les performances de manière si significative que vous devriez construire des usines plus petites, et ça, personne ne le veut. La question est donc la suivante : quelle seraient les performances de Factorio si un fluide circulait dans chaque poteau électrique ? J’avais besoin d’une carte de référence, j’ai donc entrepris de construire une base complète utilisant uniquement Fluidic Power, avec l’aide de mon ami JanKrater. Mon objectif pour cette base était de penser à la manière la plus efficace de construire une base, et … de faire exactement le contraire (enfin, la plupart du temps). Le résultat est une base spaghetti avec beaucoup trop de poteaux électriques, des convoyeurs très alambiqués, et beaucoup trop de tourelles laser gourmandes en énergie. Mais ce qui est très important, c’est qu’elle parvient à produire une quantité constante de 45 sciences par minute, et qu’elle absorbe environ 600 MW sans le moindre module d’efficacité en vue. La base spaghetti de référence fonctionnant à 45 SPM. Normalement, Factorio tourne à environ 60 mises à jour par seconde (appelées UPS), et j’ai réussi à faire tourner cette carte de référence à 70 UPS sur mon vieux PC (i7-4770k 3,5GHz, RAM DDR3-1600MHz). Cela signifie qu’il faut environ 14ms pour mettre à jour une fois toute la base (la durée d’un tick), alors que pour 60 UPS, la durée maximale par mise à jour peut être de 1/60 = ~16,6ms. Ce nombre est également indiqué ci-dessous dans les données de débogage “show-time-usage”. Il est intéressant de noter que le script de mon mod (mod-FluidicPower) a un effet négligeable sur les performances (~0,05ms). C’est possible parce que mon mod fait très peu de calculs, car il est capable de transférer tous les calculs coûteux des fluides et d’énergie au moteur optimisé du jeu. Les principales informations temporelles à surveiller sont Fluid Manager et Electric Network. Informations “show-time-usage” et “show-entity-time-usage” de la base spaghetti à 45 SPM. Dans les résultats ci-dessus, le jeu vous dit où il dépense le plus de temps, et cela m’a d’abord dérouté que le jeu semble passer la plupart de son temps sur Electric Network. Je m’attendais à ce que Fluid Manager soit le plus sollicité, mais en réalité, on voit que Electric Network (~10ms) utilise plus de 70% du temps de la mise à jour (~13,7ms), et que Fluid Manager (~0,03ms) ne semble rien faire du tout. Cela n’a aucun sens, car je m’attendais à ce que la quantité de calculs de fluides soit une perte massive de performances. Je me suis dirigé vers la communauté technique de Factorio, où l’on pousse les performances de Factorio à leur limite absolue. Ici, le brillant mathématicien SteveTrov m’a expliqué pourquoi l’utilisation du temps dans le jeu peut être trompeuse si vous ne savez pas comment les calculs de temps sont réellement mis en œuvre. Il les a décrits comme suit : Tout d’abord, les statistiques d’utilisation du temps sont confuses parce que la mise à jour des fluides et du réseau électrique sont exécutés dans des processus parallèles. Voilà en gros ce qui se passe la plupart du temps : Le processus du réseau électrique est lancé et le chronomètre de la mise à jour du réseau électrique est activé. Le processus de mise à jour de la chaleur est démarré. Plusieurs processus de mise à jour des fluides sont lancés. Lorsque le processus de mise à jour du réseau électrique se termine, le temps écoulé est enregistré dans la rubrique Mise à jour du réseau électrique. Le chronomètre de la mise à jour des fluides est effectivement lancé à cet instant. Lorsque les processus des fluides sont tous terminés (normalement avant l’étape 4), le chronomètre de la mise à jour des fluides est arrêté. Cela a pour effet que le temps de mise à jour des fluides est presque toujours très faible. Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time: The electric network thread is started and the electric network update timer is started. The heat update thread is stated Multiple fluid update threads are started. When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now. When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped. So the effect of this is that the fluid update time is nearly always very low. — SteveTrov Cela signifie essentiellement que les informations relatives à l’utilisation du temps du gestionnaire des fluides sont mêlées à celles du réseau électrique et du gestionnaire de la chaleur. Il n’est pas possible de déterminer avec précision quelle partie prend le plus de temps de traitement sans modifier le moteur de jeu de Factorio lui-même. Il me faut une autre approche pour savoir si Electric Network prend vraiment plus de temps de traitement que Fluid Manager (et si oui, combien ?). Un expert en UPS appelé flame_Sla m’a alors suggéré de télécharger Very Sleepy Profiler pour obtenir des informations détaillées sur les fonctions C++ du moteur de Factorio qui sont appelées le plus souvent. Sa communauté utilise souvent cet outil pour optimiser les mégabases les plus grandes et les plus efficaces au monde en termes d’UPS. Dans le résultat de l’outil ci-dessous, vous pouvez voir quelles fonctions C++ prennent le plus de temps. Elles sont classées par ordre décroissant. flame_Sla a également mentionné qu’il ne fallait pas se concentrer sur les temps absolus indiqués, mais plutôt les utiliser comme une indication permettant d’identifier les plus grands coupables. Résultats de l’outil de profilage Very Sleepy tournant sur ma base Fluidic Power spaghetti de référence. À droite : une instance de la pile d’appels de la fonction sélectionnée. Ceci a montré quelque chose à laquelle je ne m’attendais pas vraiment. Le système de fluides (FluidSystem::update) n’était que dans le top 10 des fonctions les moins rapides, et Electric Network demandait encore plus de temps de traitement ! Il s’avère que le problème principal était FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow, qui est principalement appelé par le réseau électrique. Ces statistiques de flux collectent les données nécessaires pour afficher des graphiques dans le jeu, par exemple dans la fenêtre de production d’énergie. Cela signifie que le jeu ne ralentit pas seulement à cause de tous les nouveaux calculs de fluides, mais aussi pour collecter les informations permettant de dessiner les graphiques de tous les nouveaux réseaux électriques ! Il est très vraisemblable que la collecte des statistiques pour Electric Network puisse prendre un temps de traitement important avec Fluidic Power. Le moteur de Factorio est conçu pour n’avoir qu’une poignée de réseaux électriques différents, voire un seul. Le jeu doit collecter et mettre à jour les informations pour chaque réseau électrique que vous avez, ce qui ne sera normalement que quelques ensembles de données distincts. Or, au lieu d’avoir une poignée de réseaux, Fluidic Power est conçu de telle sorte que chaque poteau électrique est un réseau électrique distinct. Le moteur de Factorio va alors tenter de collecter des statistiques pour chacun de ces réseaux électriques, ce qui représente environ 3000 réseaux électriques dans ma partie de référence ! C’est au moins 100 fois plus de réseaux sur lesquels collecter des statistiques que ce pour quoi Factorio a été conçu. Il s’agit d’une limitation déjà connue pour d’autres mods, mais Fluidic Power la pousse à un niveau extrême. Cependant, nous ne connaissons toujours pas l’impact de ces traitements par rapport aux calculs des fluides. La collecte des statistiques prend-elle vraiment beaucoup plus de temps que les calculs de fluides eux-mêmes ? flame_Sla a mentionné qu’il avait réussi une fois à mesurer l’utilisation du temps du gestionnaire de fluides sur la plus grande mégabase du monde, et qu’il utilisait seulement ~0,4ms pour une mégabase à 40k SPM avec 60 UPS ! Cela signifie que seulement 2,5 % du temps de mise à jour était consacré aux calculs des fluides ! Il a isolé l’utilisation en temps du gestionnaire de fluides du réseau électrique en éliminant complètement le réseau électrique de la mesure. Il y est parvenu en changeant toutes les machines pour qu’elles fonctionnent avec du bois comme combustible ce qui signifiait que l’on ne consommait plus d’électricité et que Electric Network était inactif. En raison du fonctionnement de Fluidic Power, je ne peux pas facilement éliminer l’effet de Electric Network de la même manière sans réduire également la charge de Fluid Manager, mais je peux le faire dans l’autre sens ! Je peux supprimer tous les composants fluides, et les remplacer par des IEE qui fournissent ou consomment l’énergie. Cela éliminera proprement tous les calculs de fluides ajoutés, sans supprimer la charge importante sur Electric Network en s’assurant que l’usine fonctionne toujours normalement. Afin d’enregistrer une mesure précise et comparable de l’utilisation du temps, j’ai également essayé de forcer Factorio à fonctionner sur un seul cœur. J’ai lancé un petit script pour remplacer les composants fluides cachés des poteaux électriques pour ce test et le résultat est le suivant :   Référence Modifié Différence Electric Network 9,3ms 9,2ms 0,1ms Heat Manager 0,03ms 0,03ms 0ms Fluid Manager 0,13ms 0,08ms 0,05ms Total 9,46ms 9,31ms 0,15ms Tableau montrant les résultats temporels de la référence non modifiée par rapport à la référence modifiée où tous les composants fluides ont été enlevés. Cela montre que tous les calculs de fluides supplémentaires de Fluidic Power pour cette base de référence ne prennent qu’environ ~0,15ms ! Ce chiffre n’est probablement pas encore assez précis car il se situe dans les marges de bruit de la base spaghetti, le test n’est pas idéal, et la mesure du temps avec des processus parallèles est imprécise. Cependant, cela nous donne une bonne indication des endroits où la plupart du temps de traitement est utilisé. Cela prouve que le réseau électrique a de loin le plus grand impact sur les performances, et que les calculs supplémentaires des fluides sont presque négligeables. On peut se demander quelles performances pourraient être atteintes si le réseau électrique ne collectait pas inutilement ces statistiques. Peut-être verrions-nous d’énormes mégabases Fluidic Power avec de gigantesques postes de transformation à côté de réacteurs nucléaires ou d’immenses panneaux solaires. Dans l’ensemble, Fluidic Power fonctionne beaucoup mieux que ce à quoi je m’attendais. Tout ralentissement perçu sera en effet principalement causé par les nombreux réseaux électriques collectant des statistiques, et non par les calculs de fluides eux-mêmes. Vous serez encore probablement en mesure de lancer une fusée sans que vos UPS ne tombent en dessous de 60. Vous pourriez même construire un peu plus grand si vous avez un agencement efficace (j’ai atteint 90 SPM avec 220 UPS !), et le mod ne va pas nécessairement détruire vos UPS comme Rseding1 l’avait prédit. Factorio est heureusement très bien conçu et optimisé, même lorsqu’il ne fonctionne pas comme prévu. Cela prouve que Fluidic Power est définitivement jouable en termes de performances, mais ce n’est pas le seul aspect qui compte. Devriez-vous y jouer ? Personnellement, je pense que Fluidic Power crée un défi vraiment amusant. Il n’est peut-être pas fait pour vous si vous avez l’intention de construire une mégabase à longue durée de vie, mais si vous recherchez une adventure intéressante avec de nouveaux défis, ce mod est peut-être fait pour vous. J’ai vraiment apprécié de surmonter tous les nouveaux obstacles de jeu qu’il crée. Par exemple, les machines les plus éloignées de vos machines à vapeur cesseront de fonctionner en premier, et ce sont généralement les foreuses électriques de votre gisement de charbon qui alimentent vos chaudières. Je n’avais jamais connu une spirale infernale du charbon aussi dangereuse. Ou, si vous défendez vos murs avec des tourelles laser, vous devrez vous assurer qu’il y a suffisamment de transformateurs pour fournir du courant à la bonne tension. Cependant, ce que je préfère de loin dans ce mod, c’est de savoir que de l’électricité circule réellement dans les poteaux électriques. Vous pouvez même voir les vagues de coupures intermittentes sur vos machines lorsque votre base consomme trop d’énergie, comme lorsque plusieurs tourelles laser tirent en même temps. C’est similaire au sentiment que j’éprouve lorsque je regarde un circuit que j’ai conçu, tout en sachant qu’il fonctionne grâce au mouvement fluide des électrons dans le cuivre ou le silicium. Cela renforce le sentiment de voir vos réseaux complexes de convoyeurs travailler ensemble pour construire la fusée. L’usine semble plus vivante. Vous pouvez voir les battements réguliers de son cœur, et c’est vraiment agréable. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","url":"https://alt-f4.blog/ALTF4-52/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-52/"},"headline":"Alt-F4 n°52 - Évaluation de Fluidic Power","dateModified":"2021-11-12T00:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/52/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/52/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/fr/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-52/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-52/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-52/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-52/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-52/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-52/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-52/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-52/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-52/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-52/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°52 - Évaluation de Fluidic Power  <author>12-11-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>stringweasel</em>,
+
+
+
+édité par <em>Nanogamer7, Conor_, Therenas, Firerazer, MyNameIsTrez</em>,
+
+
+
+<br>traduit par <em>bev, Trasdegi</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/52/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Sommaire</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#le-projet-fluidic-power--2e-partie-stringweasel">Le projet Fluidic Power : 2e partie <author>stringweasel</author></a>
+    <ul>
+      <li><a href="#cest-quoi-d%C3%A9j%C3%A0-">C’est quoi déjà ?</a></li>
+      <li><a href="#le-r%C3%A9sultat-est-il-jouable-">Le résultat est-il jouable ?</a></li>
+      <li><a href="#devriez-vous-y-jouer-">Devriez-vous y jouer ?</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Pour le numéro 52, <em>stringweasel</em> revient avec la deuxième partie du <a href="https://alt-f4.blog/fr/ALTF4-51/#le-projet-fluidic-power-stringweasel">Projet Fluidic Power</a> où il se penche sur les conséquences plutôt surprenantes de sa création sur les performances du jeu. Si vous avez aimé l’article de la semaine dernière, vous aimerez celui de cette semaine-ci. Quelle surprise !</p>
+      <h2 id="le-projet-fluidic-power--2e-partie-stringweasel">
+        
+        
+            <a href="#le-projet-fluidic-power--2e-partie-stringweasel" class="anchor" style="text-decoration: none;">Le projet </a><a href="https://mods.factorio.com/mod/FluidicPower">Fluidic Power</a> : 2e partie <author>stringweasel</author>
+          
+        
+      </h2>
+    
+      <h3 id="cest-quoi-déjà-">
+        
+        
+            <a href="#cest-quoi-d%C3%A9j%C3%A0-" class="anchor" style="text-decoration: none;">C’est quoi déjà ?</a>
+          
+        
+      </h3>
+    
+
+<p>Dans <a href="https://alt-f4.blog/fr/ALTF4-51/">l’article de la semaine dernière</a>, je vous ai parlé de l’histoire des mods de refonte du réseau électrique de Factorio et de leur fonctionnement, puis j’ai expliqué ma propre version, appelée Fluidic Power. Il est recommandé de lire cet article en premier, mais en résumé, j’ai rendu la distribution de l’énergie de Factorio plus réaliste en la simulant comme un fluide grâce aux mécanismes de simulation des fluides déjà intégrés au jeu. Cela signifie que vous devez utiliser des transformateurs pour réduire les chutes de tension avec la distance. Cela signifie également que, par exemple, il est plus difficile de faire fonctionner vos tourelles laser à 100%, ou de construire des installations équipées de nombreux diffuseurs.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/52/biters-attack.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Un exemple de biters attaquant un avant-poste avec l’affichage "show-fluid-box-info" activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence.
+    </video>
+    <figcaption>Un exemple de biters attaquant un avant-poste avec l’affichage "show-fluid-box-info" activé. La barre verte montre le niveau de fluide et la bleue sa vitesse. Remarquez les lasers qui s’éteignent par intermittence.</figcaption>
+  </figure>
+</p>
+
+<p>Ces nouvelles limitations signifient que Fluidic Power a atteint son objectif de créer un nouveau mécanisme de jeu qui ressemble davantage à un système électrique réaliste. Cependant, il introduit une surcharge de performances significative avec tous les nouveaux calculs de fluides nécessaires. Je ne voulais pas mettre, sur le Portail des mods, un mod qui paralyserait votre PC dès que vous construisez une usine de taille raisonnable. J’ai donc entrepris de faire quelques recherches. Les calculs de fluides supplémentaires ont-ils vraiment un impact significatif ?</p>
+      <h3 id="le-résultat-est-il-jouable-">
+        
+        
+            <a href="#le-r%C3%A9sultat-est-il-jouable-" class="anchor" style="text-decoration: none;">Le résultat est-il jouable ?</a>
+          
+        
+      </h3>
+    
+
+<p>Il y a une raison pour laquelle Factorio implémente l’électricité de cette manière. Elle nous permet de construire des <a href="https://forums.factorio.com/viewtopic.php?f=204&t=60816">usines absolument gigantesques</a> au point que l’on peut s’y perdre. L’ajout d’une énergie plus réaliste pourrait entraver les performances de manière si significative que vous devriez construire des usines plus petites, et ça, personne ne le veut. La question est donc la suivante : quelle seraient les performances de Factorio si un fluide circulait dans chaque poteau électrique ? J’avais besoin d’une carte de référence, j’ai donc entrepris de construire une base complète utilisant uniquement Fluidic Power, avec l’aide de mon ami JanKrater.</p>
+
+<p>Mon objectif pour cette base était de penser à la manière la plus efficace de construire une base, et … de faire exactement le contraire (enfin, la plupart du temps). Le résultat est une base spaghetti avec beaucoup trop de poteaux électriques, des convoyeurs très alambiqués, et beaucoup trop de tourelles laser gourmandes en énergie. Mais ce qui est très important, c’est qu’elle parvient à produire une quantité constante de 45 sciences par minute, et qu’elle absorbe environ 600 MW sans le moindre module d’efficacité en vue.</p>
+
+<figure>
+		<div class="aspect-ratio">
+			<iframe src="https://media.alt-f4.blog/ALTF4/52/fluidicpower/index.html?x=-5.2&y=-11.4&z=2" frameborder="0"></iframe>
+		</div>
+		<figcaption>La base spaghetti de référence fonctionnant à 45 SPM.</figcaption>
+</figure>
+
+<p>Normalement, Factorio tourne à environ 60 mises à jour par seconde (appelées UPS), et j’ai réussi à faire tourner cette carte de référence à 70 UPS sur mon vieux PC (i7-4770k 3,5GHz, RAM DDR3-1600MHz). Cela signifie qu’il faut environ 14ms pour mettre à jour une fois toute la base (la durée d’un tick), alors que pour 60 UPS, la durée maximale par mise à jour peut être de <code class="language-plaintext highlighter-rouge">1/60 = ~16,6ms</code>. Ce nombre est également indiqué ci-dessous dans les données de débogage “show-time-usage”. Il est intéressant de noter que le script de mon mod (<code class="language-plaintext highlighter-rouge">mod-FluidicPower</code>) a un effet négligeable sur les performances (<code class="language-plaintext highlighter-rouge">~0,05ms</code>). C’est possible parce que mon mod fait très peu de calculs, car il est capable de transférer tous les calculs coûteux des fluides et d’énergie au moteur optimisé du jeu. Les principales informations temporelles à surveiller sont <code class="language-plaintext highlighter-rouge">Fluid Manager</code> et <code class="language-plaintext highlighter-rouge">Electric Network</code>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/52/show-time-usage.jpg" alt="Informations “show-time-usage” et “show-entity-time-usage” de la base spaghetti à 45 SPM." style="max-width: ; max-height:  ">
+        
+        <figcaption>Informations “show-time-usage” et “show-entity-time-usage” de la base spaghetti à 45 SPM.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Dans les résultats ci-dessus, le jeu vous dit où il dépense le plus de temps, et cela m’a d’abord dérouté que le jeu semble passer la plupart de son temps sur <code class="language-plaintext highlighter-rouge">Electric Network</code>. Je m’attendais à ce que <code class="language-plaintext highlighter-rouge">Fluid Manager</code> soit le plus sollicité, mais en réalité, on voit que <code class="language-plaintext highlighter-rouge">Electric Network</code> (<code class="language-plaintext highlighter-rouge">~10ms</code>) utilise plus de 70% du temps de la mise à jour (<code class="language-plaintext highlighter-rouge">~13,7ms</code>), et que <code class="language-plaintext highlighter-rouge">Fluid Manager</code> (<code class="language-plaintext highlighter-rouge">~0,03ms</code>) ne semble rien faire du tout. Cela n’a aucun sens, car je m’attendais à ce que la quantité de calculs de fluides soit une perte massive de performances. Je me suis dirigé vers la <a href="reddit.com/r/technicalfactorio">communauté technique de Factorio</a>, où l’on pousse les performances de Factorio à leur limite absolue. Ici, le brillant mathématicien SteveTrov m’a expliqué pourquoi l’utilisation du temps dans le jeu peut être trompeuse si vous ne savez pas comment les calculs de temps sont réellement mis en œuvre. Il les a décrits comme suit :</p>
+
+<div class="m0 h100 quote">
+  <blockquote cite="">
+    <div class="panel-inset-lighter ">
+    
+      <div class="translation">
+        
+<p>Tout d’abord, les statistiques d’utilisation du temps sont confuses parce que la mise à jour des fluides et du réseau électrique sont exécutés dans des processus parallèles. Voilà en gros ce qui se passe la plupart du temps :</p>
+
+<ol>
+  <li>Le processus du réseau électrique est lancé et le chronomètre de la mise à jour du réseau électrique est activé.</li>
+  <li>Le processus de mise à jour de la chaleur est démarré.</li>
+  <li>Plusieurs processus de mise à jour des fluides sont lancés.</li>
+  <li>Lorsque le processus de mise à jour du réseau électrique se termine, le temps écoulé est enregistré dans la rubrique Mise à jour du réseau électrique. Le chronomètre de la mise à jour des fluides est effectivement lancé à cet instant.</li>
+  <li>Lorsque les processus des fluides sont tous terminés (normalement avant l’étape 4), le chronomètre de la mise à jour des fluides est arrêté.</li>
+</ol>
+
+<p>Cela a pour effet que le temps de mise à jour des fluides est presque toujours très faible.</p>
+
+      </div>
+      <span></span>
+    
+      <div class="original">
+        
+<p>Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time:</p>
+
+<ol>
+  <li>The electric network thread is started and the electric network update timer is started.</li>
+  <li>The heat update thread is stated</li>
+  <li>Multiple fluid update threads are started.</li>
+  <li>When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now.</li>
+  <li>When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped.</li>
+</ol>
+
+<p>So the effect of this is that the fluid update time is nearly always very low.</p>
+
+      </div>
+    </div>
+    <author>
+    — <a href="https://discord.com/channels/579345487371567105/579346716243787782/855875612274851881">SteveTrov</a>
+    </author>
+  </blockquote>
+</div>
+
+<p>Cela signifie essentiellement que les informations relatives à l’utilisation du temps du gestionnaire des fluides sont mêlées à celles du réseau électrique et du gestionnaire de la chaleur. Il <a href="https://discord.com/channels/579345487371567105/579345487837003836/784493971824312340">n’est pas possible</a> de déterminer avec précision quelle partie prend le plus de temps de traitement sans modifier le moteur de jeu de Factorio lui-même. Il me faut une autre approche pour savoir si <code class="language-plaintext highlighter-rouge">Electric Network</code> prend vraiment plus de temps de traitement que <code class="language-plaintext highlighter-rouge">Fluid Manager</code> (et si oui, combien ?).</p>
+
+<p>Un expert en UPS appelé <a href="https://www.reddit.com/r/technicalfactorio/comments/ks2xtk/20k_spm_201000spm_belts_v30/">flame_Sla</a> m’a alors suggéré de télécharger <a href="http://www.codersnotes.com/sleepy/">Very Sleepy Profiler</a> pour obtenir des informations détaillées sur les fonctions C++ du moteur de Factorio qui sont appelées le plus souvent. Sa communauté utilise souvent cet outil pour optimiser les mégabases les plus grandes et les plus efficaces au monde en termes d’UPS. Dans le résultat de l’outil ci-dessous, vous pouvez voir quelles fonctions C++ prennent le plus de temps. Elles sont classées par ordre décroissant. <em>flame_Sla</em> a également mentionné qu’il ne fallait pas se concentrer sur les temps absolus indiqués, mais plutôt les utiliser comme une indication permettant d’identifier les plus grands coupables.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/52/sleepy-cs-output.jpg" alt="Résultats de l’outil de profilage Very Sleepy tournant sur ma base Fluidic Power spaghetti de référence. À droite : une instance de la pile d’appels de la fonction sélectionnée." style="max-width: ; max-height:  ">
+        
+        <figcaption>Résultats de l’outil de profilage Very Sleepy tournant sur ma base Fluidic Power spaghetti de référence. À droite : une instance de la pile d’appels de la fonction sélectionnée.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Ceci a montré quelque chose à laquelle je ne m’attendais pas vraiment. Le système de fluides (<code class="language-plaintext highlighter-rouge">FluidSystem::update</code>) n’était que dans le top 10 des fonctions les moins rapides, et <code class="language-plaintext highlighter-rouge">Electric Network</code> demandait <em>encore</em> plus de temps de traitement ! Il s’avère que le problème principal était <code class="language-plaintext highlighter-rouge">FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow</code>, qui est principalement appelé par le réseau électrique. Ces <a href="https://lua-api.factorio.com/latest/LuaFlowStatistics.html">statistiques de flux</a> collectent les données nécessaires pour afficher des graphiques dans le jeu, par exemple dans la fenêtre de production d’énergie. Cela signifie que le jeu ne ralentit pas seulement à cause de tous les nouveaux calculs de fluides, mais aussi pour collecter les informations permettant de dessiner les graphiques de tous les nouveaux réseaux électriques !</p>
+
+<p>Il est très vraisemblable que la collecte des statistiques pour <code class="language-plaintext highlighter-rouge">Electric Network</code> puisse prendre un temps de traitement important avec Fluidic Power. Le moteur de Factorio est conçu pour n’avoir qu’une poignée de réseaux électriques différents, voire un seul. Le jeu doit collecter et mettre à jour les informations pour chaque réseau électrique que vous avez, ce qui ne sera normalement que quelques ensembles de données distincts. Or, au lieu d’avoir une poignée de réseaux, Fluidic Power est conçu de telle sorte que <em>chaque</em> poteau électrique est un réseau électrique distinct. Le moteur de Factorio va alors tenter de collecter des statistiques pour chacun de ces réseaux électriques, ce qui représente environ 3000 réseaux électriques dans ma partie de référence ! C’est au moins 100 fois plus de réseaux sur lesquels collecter des statistiques que ce pour quoi Factorio a été conçu. Il s’agit d’une limitation déjà connue pour d’autres mods, mais Fluidic Power la pousse à un niveau extrême. Cependant, nous ne connaissons toujours pas l’impact de ces traitements <em>par rapport</em> aux calculs des fluides. La collecte des statistiques prend-elle vraiment beaucoup plus de temps que les calculs de fluides eux-mêmes ?</p>
+
+<p><em>flame_Sla</em> a mentionné qu’il avait réussi une fois à mesurer l’utilisation du temps du gestionnaire de fluides sur la plus grande mégabase du monde, et qu’il utilisait seulement <code class="language-plaintext highlighter-rouge">~0,4ms</code> pour une <a href="https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/">mégabase à 40k SPM avec 60 UPS</a> ! Cela signifie que seulement 2,5 % du temps de mise à jour était consacré aux calculs des fluides ! Il a isolé l’utilisation en temps du gestionnaire de fluides du réseau électrique en <em>éliminant</em> complètement le réseau électrique de la mesure. Il y est parvenu en changeant toutes les machines pour qu’elles <a href="https://discord.com/channels/579345487371567105/579346716243787782/825170120162148383">fonctionnent avec du bois comme combustible</a> ce qui signifiait que l’on ne consommait plus d’électricité et que Electric Network était inactif. En raison du fonctionnement de Fluidic Power, je ne peux pas facilement éliminer l’effet de Electric Network de la même manière sans réduire également la charge de Fluid Manager, mais je peux le faire dans l’autre sens ! Je peux supprimer tous les composants <em>fluides</em>, et les remplacer par des IEE qui fournissent ou consomment l’énergie. Cela éliminera proprement tous les calculs de fluides ajoutés, sans supprimer la charge importante sur Electric Network en s’assurant que l’usine fonctionne toujours normalement. Afin d’enregistrer une mesure précise et comparable de l’utilisation du temps, j’ai également essayé de forcer Factorio à <a href="https://www.reddit.com/r/technicalfactorio/comments/mead38/how_to_turn_off_multithreading_to_get_more_useful/">fonctionner sur un seul cœur</a>. J’ai lancé un petit script pour remplacer les composants fluides cachés des poteaux électriques pour ce test et le résultat est le suivant :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Référence</th>
+      <th>Modifié</th>
+      <th>Différence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Electric Network</td>
+      <td>9,3ms</td>
+      <td>9,2ms</td>
+      <td>0,1ms</td>
+    </tr>
+    <tr>
+      <td>Heat Manager</td>
+      <td>0,03ms</td>
+      <td>0,03ms</td>
+      <td>0ms</td>
+    </tr>
+    <tr>
+      <td>Fluid Manager</td>
+      <td>0,13ms</td>
+      <td>0,08ms</td>
+      <td>0,05ms</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><strong>9,46ms</strong></td>
+      <td><strong>9,31ms</strong></td>
+      <td><strong>0,15ms</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<figcaption>Tableau montrant les résultats temporels de la référence non modifiée par rapport à la référence modifiée où tous les composants fluides ont été enlevés.</figcaption>
+
+<p>Cela montre que <em>tous</em> les calculs de fluides supplémentaires de Fluidic Power pour cette base de référence ne prennent qu’environ <code class="language-plaintext highlighter-rouge">~0,15ms</code> ! Ce chiffre n’est probablement pas encore assez précis car il se situe dans les marges de bruit de la base spaghetti, le test n’est pas idéal, et la mesure du temps avec des processus parallèles est imprécise. Cependant, cela nous donne une bonne indication des endroits où la plupart du temps de traitement est utilisé. Cela prouve que le réseau électrique a de loin le plus grand impact sur les performances, et que les calculs supplémentaires des fluides sont presque négligeables. On peut se demander quelles performances pourraient être atteintes si le réseau électrique ne collectait pas inutilement ces statistiques. Peut-être verrions-nous d’énormes mégabases Fluidic Power avec de gigantesques postes de transformation à côté de réacteurs nucléaires ou d’immenses panneaux solaires.</p>
+
+<p>Dans l’ensemble, Fluidic Power fonctionne beaucoup mieux que ce à quoi je m’attendais. Tout ralentissement perçu sera en effet principalement causé par les nombreux réseaux électriques collectant des statistiques, et non par les calculs de fluides eux-mêmes. Vous serez encore probablement en mesure de lancer une fusée sans que vos UPS ne tombent en dessous de 60. Vous pourriez même construire un peu plus grand si vous avez un agencement efficace (j’ai atteint 90 SPM avec 220 UPS !), et le mod ne va pas nécessairement <em>détruire</em> vos UPS comme <em>Rseding1</em> l’avait prédit. Factorio est heureusement très bien conçu et optimisé, même lorsqu’il ne fonctionne pas comme prévu. Cela prouve que Fluidic Power est définitivement jouable en termes de performances, mais ce n’est pas le seul aspect qui compte.</p>
+      <h3 id="devriez-vous-y-jouer-">
+        
+        
+            <a href="#devriez-vous-y-jouer-" class="anchor" style="text-decoration: none;">Devriez-vous y jouer ?</a>
+          
+        
+      </h3>
+    
+
+<p>Personnellement, je pense que <a href="https://mods.factorio.com/mod/FluidicPower">Fluidic Power</a> crée un défi vraiment amusant. Il n’est peut-être pas fait pour vous si vous avez l’intention de construire une mégabase à longue durée de vie, mais si vous recherchez une <a href="https://www.reddit.com/r/factorio/comments/qna0s7/comment/hjinkhd/">adventure</a> intéressante avec de nouveaux défis, ce mod est peut-être fait pour vous. J’ai vraiment apprécié de surmonter tous les nouveaux obstacles de jeu qu’il crée. Par exemple, les machines les plus éloignées de vos machines à vapeur cesseront de fonctionner en premier, et ce sont généralement les foreuses électriques de votre gisement de charbon qui <em>alimentent vos chaudières</em>. Je n’avais jamais connu une spirale infernale du charbon aussi dangereuse. Ou, si vous défendez vos murs avec des tourelles laser, vous devrez vous assurer qu’il y a suffisamment de transformateurs pour fournir du courant à la bonne tension.</p>
+
+<p>Cependant, ce que je préfère de loin dans ce mod, c’est de savoir que de l’électricité circule réellement dans les poteaux électriques. Vous pouvez même voir les vagues de coupures intermittentes sur vos machines lorsque votre base consomme trop d’énergie, comme lorsque plusieurs tourelles laser tirent en même temps. C’est similaire au sentiment que j’éprouve lorsque je regarde un circuit que j’ai conçu, tout en sachant qu’il fonctionne grâce au mouvement fluide des électrons dans le cuivre ou le silicium. Cela renforce le sentiment de voir vos réseaux complexes de convoyeurs travailler ensemble pour construire la fusée. L’usine semble plus vivante. Vous pouvez voir les battements réguliers de son cœur, et c’est vraiment agréable.</p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://alt-f4.blog/fr/discord">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/fr/discord">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-51/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/fr/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

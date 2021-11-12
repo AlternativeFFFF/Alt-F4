@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-11-06T20:46:00+00:00</updated>
+  <updated>2021-11-12T13:15:20+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #52 - 流体电力基准测试</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-52/" />
+    <id>https://alt-f4.blog/ALTF4-52</id>
+    <updated>2021-11-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;第 52 期，&lt;em&gt;stringweasel&lt;/em&gt; 继续他的&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-51/&quot;&gt;流体电力实验&lt;/a&gt;第二部分，深入研究了他的作品带来的奇妙性能影响。如果你喜欢上周的文章，那你也会喜欢本周的第二部分。想不到吧！&lt;/p&gt; &lt;h2 id=&quot;流体电力实验第二部分-stringweasel&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/FluidicPower&quot;&gt;流体电力&lt;/a&gt;实验：第二部分 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;h3 id=&quot;是什么来着&quot;&gt;是什么来着？&lt;/h3&gt; &lt;p&gt;在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-51/&quot;&gt;上周的文章&lt;/a&gt;中，我谈到了异星工厂电网大改 Mod 的历史及工作机制，并讲解了我自己的实现，名为流体电力。建议先阅读那篇文章，但简而言之，我通过使用内置的流体模拟机制来让异星工厂的配电变得更加真实。这意味着你需要使用变压器来减少长距离输电带来的电压下降。这也意味着，比方说，要维持你的激光炮塔 100% 射速，或者建立大量插件效果分享塔覆盖的设施，都需要进行更多的工作。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: ; max-height: &quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/52/biters-attack.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt; --&gt; 一个在打开“show-fluid-box-info”情况下虫群攻击前哨的例子。绿色的是液位，蓝色的是液速。注意激光炮塔会间歇性地关闭。 &lt;/video&gt; &lt;figcaption&gt;一个在打开“show-fluid-box-info”情况下虫群攻击前哨的例子。绿色的是液位，蓝色的是液速。注意激光炮塔会间歇性地关闭。&lt;/figcaption&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-43</id>
     <updated>2021-07-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在第 43 期的 Alt-F4 中，Mod 制作者 &lt;em&gt;Dysoch&lt;/em&gt; 讲述了他的 Mod 制作史（最早可追溯至异星工厂 0.7 版），概述了他的 Mod 如何与时俱进。之后会谈到他即将发布的最新和最伟大的项目。这将是一个大改 Mod，专注于一个完整的故事，目标是比以前的大 Mod 更具沉浸感。更多详情请见下文！&lt;/p&gt; &lt;h2 id=&quot;dyworld-dynamics-及其历史-dysoch&quot;&gt;DyWorld-Dynamics 及其历史 &lt;author&gt;Dysoch&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;大家好，我叫 Dysoch，是所有 Dy Mod 的制作者。在这篇文章中，我将写一些关于我多年来制作异星工厂 Mod 的历史，以及制作了近一年令人兴奋的最新版。但首先，我要解释一切的开端。&lt;/p&gt; &lt;h3 id=&quot;历史&quot;&gt;历史&lt;/h3&gt; &lt;p&gt;在购买异星工厂之前，我已经玩了它一年，但直到在异星工厂 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.7&lt;/code&gt; 开发期间才正式购买了它。我非常喜欢这个游戏，但觉得它还可以做得更好，所以我开始制作 Mod。我根本不知道自己在干什么，但幸运的得到一位叫 &lt;a href=&quot;https://forums.factorio.com/viewtopic.php?f=190&amp;amp;t=1568&quot;&gt;FreeER&lt;/a&gt; 的好人的帮助，教我如何编程。这些年来，我曾多次在感到厌倦或忙于现实生活时中断 Mod 制作，但总是心痒难耐回来继续开发。&lt;/p&gt; &lt;p&gt;在我刚开始做 Mod 的时候，只有一个叫 F-Mod 的大改 Mod（很遗憾，其旧论坛页面已经无法访问了）。我想要做和那个 Mod 一样的内容，于是开始操刀自己的游戏大改。最初很笨重，但经过多年的努力，DyTech 系列触及了游戏的各个方面。我用一个类似的名字重写了几次，但内容基本保持不变。通过重写，我学会了更好地编程，使它更易阅读和编辑。有几个我感觉遥不可及的想法，自从我开始做...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #42 - 自动化的意义</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-42/" />
-    <id>https://alt-f4.blog/ALTF4-42</id>
-    <updated>2021-07-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在本周的第 42 期 Alt-F4 中，在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-34/&quot;&gt;之前&lt;/a&gt;调查了影响过异星工厂的游戏之后，我们现在将看看异星工厂是如何影响整个自动化类游戏的，如果这也算一种类别的话。也可能不算。经过 750 万年的深思，&lt;em&gt;Nanogamer7&lt;/em&gt; 有了一个可能会让你吃惊答案。&lt;/p&gt; &lt;h2 id=&quot;同类中的佼佼者一款游戏的影响力-nanogamer7&quot;&gt;同类中的佼佼者——一款游戏的影响力 &lt;author&gt;Nanogamer7&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我在几个月前（&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-34/&quot;&gt;第 34 期&lt;/a&gt;中）曾试图寻找异星工厂的起源，以及自动化游戏的起源。自从 Wube 于 2013 年开创这一类型以来，已有许多游戏接受了这个想法，如 &lt;a href=&quot;https://store.steampowered.com/app/526870/Satisfactory/&quot;&gt;Satisfactory&lt;/a&gt; 和&lt;a href=&quot;https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/&quot;&gt;戴森球计划&lt;/a&gt;，但也有更注重生存的游戏，如 ASTRONEER，我的世界后期版本及其 Mod。在这篇文章中，我想探讨自动化游戏的发展，以及自动化游戏与有着自动化内容的生存游戏之间的差异。&lt;/p&gt; &lt;h3 id=&quot;第一部分三巨头&quot;&gt;第一部分：三巨头&lt;/h3&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/42/spaghetti.jpg&quot; alt=&quot;自动化类游戏中的意大利面。&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;p&gt;当你要求别人说出异星工厂以外的一些自动化游戏时，你最常得到的回答是 Satisfactory 和戴森球计划。它们与异星工厂一起，甚至&lt;a...</content>
   </entry>
   
   

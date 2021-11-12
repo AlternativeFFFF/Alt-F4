@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-11-06T20:46:00+00:00</updated>
+  <updated>2021-11-12T13:15:20+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°52 - Évaluation de Fluidic Power</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-52/" />
+    <id>https://alt-f4.blog/ALTF4-52</id>
+    <updated>2021-11-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Pour le numéro 52, &lt;em&gt;stringweasel&lt;/em&gt; revient avec la deuxième partie du &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-51/#le-projet-fluidic-power-stringweasel&quot;&gt;Projet Fluidic Power&lt;/a&gt; où il se penche sur les conséquences plutôt surprenantes de sa création sur les performances du jeu. Si vous avez aimé l’article de la semaine dernière, vous aimerez celui de cette semaine-ci. Quelle surprise !&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-43</id>
     <updated>2021-07-23T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Dans cette parution n°43 d’Alt-F4, l’extraordinaire créateur de mods &lt;em&gt;Dysoch&lt;/em&gt; nous parle de son histoire de modding (qui a commencé tout au début de Factorio, avec la version 0.7), nous donnant un aperçu de l’évolution de ses mods au fil du temps. Maintenant, il est plongé dans son plus grand...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°42 - Le sens de l’automatisation</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-42/" />
-    <id>https://alt-f4.blog/ALTF4-42</id>
-    <updated>2021-07-16T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Dans cette parution n°42 de Alt-F4, après &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-34/&quot;&gt;avoir précédement&lt;/a&gt; recherché les jeux qui ont inspiré Factorio, jetons un œil à comment Factorio a influencé le genre de l’automatisation dans son ensemble, s’il existe. Peut-être qu’il n’existe pas. Après 7,5 millions d’années de contemplation, &lt;em&gt;Nanogamer&lt;/em&gt; a une réponse, et elle...</content>
   </entry>
   
   
