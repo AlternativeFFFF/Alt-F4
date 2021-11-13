@@ -1,4 +1,4 @@
-## Lazyness Through Automation <author>Therenas</author>
+## Laziness Through Automation <author>Therenas</author>
 
 I often struggle to take appropriate screenshots for [my mods](). It's a lot of work to set up a scenario in such a way that it's appealing to look at *and* that it explains a core concept of the mod in a visual way. In my opinion, a lot of mods don't have good screenshots, and it's not because the mod authors don't care, it's because it's really hard to produce good ones. They just need to do a lot of work with a pretty limited 'language', *even if* a picture is worth a thousand words.
 
