@@ -32,11 +32,7 @@ This is forbidden for good reason, as these dimensions are not actually determin
 
 Now, I couldn't solve the issue that reading frame dimensions leads to desyncs, that's just how the game works on a fundamental level. I am however not running the game in multiplayer to take these screenshots, and as it turns out, you can already launch the game in a special mode called [Instrument Mode](https://lua-api.factorio.com/latest/Instrument.html) that disables multiplayer and enables some unsafe functionality. Seems like the perfect place to slip in a super-secret hidden method that gives me access to the forbidden knowledge of frame dimensions. So I went ahead and put it in. Working for Wube does have its perks as it turns out.
 
-After several days of piling on the hacks, the beast finally roared to life, fully* automating the process of taking screenshots for me:
-
-![] Video of the process that I'll have to take at some point
-
-You might have noticed a little asterisk on that previous statement: *fully* automating the process. Turns out, it's still not fully automated. Of course it's not. Why would I get to be *fully* satisfied. There's two steps that I still need to do myself.
+After several days of piling on the hacks, the beast finally roared to life, fully automating the process of taking screenshots for me. Although, *fully* automating the process is not quite correct. Turns out, it's still not fully automated. Of course it's not. Why would I get to be *fully* satisfied. There's two steps that I still need to do myself.
 
 The first is quitting the game after the screenshots are taken, so that the Python script can continue. As it turns out, a mod can not make Factorio quit to desktop. That's entirely reasonable to prevent abuse, even though it would be a nice option to have for Instrument Mode. Either way, hitting Alt-F4 (*ding*) at the right time is something I can manage I think. One intrusive thought I had was to find a way to make the game crash to achieve my goal. I warned you that this is all a pile of hacks. The issue with that plan is that there's very few of these bugs in the game, and once they are found, you can be sure the bug-swatter will squash them immediately.
 
