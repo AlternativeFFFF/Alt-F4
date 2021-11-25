@@ -1,28 +1,46 @@
-{%- comment -%}<!--
+<!--{%- comment -%}
 Inputs:
   - items: comma seppaced list of gallery items.
     gallery item contains URL and alt text for image to be displayed. alt text is [optional]
     sample items="url1;alt1,url2,url3;alt3"
   - caption: string containing caption text [optional]
-{% include gallery.html items="https://www.w3schools.com/howto/img_nature.jpg;Forest,https://www.w3schools.com/howto/img_snow.jpg,https://www.w3schools.com/howto/img_mountains.jpg,https://www.w3schools.com/howto/img_lights.jpg" caption="hello world" %}
--->{%- endcomment -%}
+{% include gallery.html items="img-src;img-alt;caption,https://www.w3schools.com/howto/img_snow.jpg;Image of snow;Cool snow,https://www.w3schools.com/howto/img_mountains.jpg;mounntain,https://www.w3schools.com/howto/img_lights.jpg" caption="hello world" %}
+{%- endcomment -%}-->
 
+<!--{%- comment -%} Convert CSV to list of values that we can work with.{%- endcomment -%}-->
 {% assign images = include.items | split: ',' %}
-{% assign first = images | first %}
-<div class="flex flex-column panel-inset" >
+
+<div class="flex flex-column panel-inset">
   <div class="gallery">
+
+    <!--{%- comment -%} Iterate over list of images, and create Full-width images with number text.{%- endcomment -%}-->
     {% for image in images %}
-      {% assign data = image | split: ';' %}
-      {% if image == first %}
-        <img id="main" data-tooltip="Thinking Cat" src="{{ data[0] }}" alt="{{ data[1] }}" onclick="if (this.id === 'main'){this.id = 'none';}else{try{document.getElementById('main').id = 'none';} catch(e){};this.id = 'main';}" />
-      {% else %}
-        <img src="{{ data[0] }}" alt="{{ data[1] }}" onclick="if (this.id === 'main'){this.id = 'none';}else{try{document.getElementById('main').id = 'none';} catch(e){};this.id = 'main';}" />
-        {% endif %}
-    {% else %}
-      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.tenor.com%2Fimages%2F835b8787f388d7daa2af0d639f19a900%2Ftenor.gif&f=1&nofb=1"/>
+    {% assign data = image | split: ';' %}
+    <div class="galleryItem">
+      <div class="numbertext">{{ forloop.index }} / {{ forloop.length }}</div>
+      <img src="{{ data[0] }}" alt="{{ data[1] }}" style="width:100%">
+      <!--{%- comment -%} Induvidual image caption. {%- endcomment -%}-->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">{{ data[2] }}</p>
+    </div>
     {% endfor %}
+
+    <!--{%- comment -%} Next and previous buttons {%- endcomment -%}-->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!--{%- comment -%} Thumbnail images {%- endcomment -%}-->
+    <div class="row">
+      {% for image in images %}
+      {% assign data = image | split: ';' %}
+      <div class="column">
+        <img class="galleryPreview" src="{{ data[0] }}" alt="{{ data[1] }}" onclick="currentSlide({{ forloop.index }})"
+          style="width:100%; cursor: pointer;">
+      </div>
+      {% endfor %}
+    </div>
   </div>
+  <!--{%- comment -%} Caption for an entire gallery. {%- endcomment -%}-->
   {% if include.caption %}
-    <p style="text-align: center; margin-top:8px">{{ include.caption }}</p>
+  <p style="text-align: center; margin-top:8px">{{ include.caption }}</p>
   {% endif %}
 </div>
