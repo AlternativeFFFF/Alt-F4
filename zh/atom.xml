@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-11-12T17:06:28+00:00</updated>
+  <updated>2021-11-26T13:35:54+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #53 - 自动化偷懒</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-53/" />
+    <id>https://alt-f4.blog/ALTF4-53</id>
+    <updated>2021-11-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在地处黄金地段的第 53 期 Alt-F4 中，&lt;em&gt;Therenas&lt;/em&gt; 大师又回来恩赐予我们一篇新文章。承接他&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-1/&quot;&gt;之前&lt;/a&gt;着重于谈论自己 Mod 的&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-17/&quot;&gt;杰作&lt;/a&gt;，这次是全新的复刻内容大放送。本期探讨了异星工厂中自动截图的话题。虽然实际内容只有 20% 的技术细节，此外加上 40% 的哲学和 50% 的冷笑话。你没看错，合计高达 110 点！&lt;/p&gt; &lt;h2 id=&quot;自动化偷懒-therenas&quot;&gt;自动化偷懒 &lt;author&gt;Therenas&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我经常苦恼于为&lt;a href=&quot;https://mods.factorio.com/user/Therenas&quot;&gt;我的 Mod&lt;/a&gt; 拍摄适当的截图。要把一个场景设置得很吸引人 &lt;em&gt;并且&lt;/em&gt; 以视觉方式解释 Mod 的核心概念，需要做很多工作。在我看来，很多 Mod 缺乏优秀截图，并非由于 Mod 作者不关心，而是因为制作好的截图真的很困难。&lt;em&gt;虽说&lt;/em&gt; 一图胜千言，但截图需要他们用相当有限的“语言”做大量的工作。&lt;/p&gt; &lt;p&gt;尽管这一切听起来像在发牢骚（也确实如此），但实际问题不在于截图本身。在你花了几十个或几百个小时来做出这个 Mod 之后，再花几个小时为这个 Mod 截图是完全可以接受的。实际的问题是保持它们更新。你对 Mod 所做的每一个改动，最好都能在更新的截图内反映出来；如果截图过时了，对我来说就是一种缺乏关注的信号。当然也可能是我太过偏执。&lt;/p&gt; &lt;p&gt;当然更新的频率取决于每个 Mod 自己。如果是&lt;a href=&quot;https://mods.factorio.com/mod/Bottleneck&quot;&gt;瓶颈&lt;/a&gt;这种不常改变的，那你的截图就不会过时。如果你是一个&lt;a href=&quot;https://mods.factorio.com/mod/factoryplanner&quot;&gt;相当复杂的 GUI Mod&lt;/a&gt;，几乎每个版本都会在这里或那里改变你的界面的一些像素。理想情况下，一个耗时 5 分钟的...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-44</id>
     <updated>2021-07-30T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;你还记得今年的愚人节吗？已经过去相当长的一段时间了，但如果你在那一天访问了 subreddit，那很可能看过 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 的视频。如果还没看过，本周的第 44 期 Alt-F4 将帮你补上这一课，然后再来看看这个黑魔法演示到底是如何实现的。&lt;/p&gt; &lt;h2 id=&quot;关于异星工厂列车新视角的新视角-arrow-in-my-gluteus-maximus&quot;&gt;关于“异星工厂列车新视角”的新视角 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;两个月前我发布了一个名为“异星工厂列车新视角”的视频。如果你还没看过，请在继续阅读本文之前观看，否则会无法理解这篇文章的内容。&lt;/p&gt; &lt;p&gt;有些人在观看该视频后声称自己出现了头痛等症状。你已经收到该健康提示了。&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/5nRnnfKMZKQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;（译注：若无法打开上面的视频也可&lt;a href=&quot;https://www.bilibili.com/video/BV1Tb4y1r7fo/&quot;&gt;点击此链接&lt;/a&gt;观看搬运视频。）&lt;/p&gt; &lt;p&gt;那些下载了&lt;a href=&quot;https://mods.factorio.com/mod/train_perspective&quot;&gt;视频描述的 Mod&lt;/a&gt; 的人都知道这是一个愚人节玩笑。对于那些没搞清楚的人：我很抱歉。有不少人问我制作这个视频的细节，所以我决定写一个简介。&lt;del&gt;请勿在家尝试。&lt;/del&gt;&lt;/p&gt; &lt;p&gt;我看到有些人猜测我以某种方式从游戏中提取了 3D 模型。根本不需要，这只是对屏幕上已经显示的东西做个简单旋转。虽然这个想法可能很简单，但执行起来就有点复杂了。你遇到的第一个问题是，屏幕不是圆的。当旋转时，图像的一部分会被截断，而其他部分如 GUI 则会缺失。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #43 - DyWorld 传奇</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-43/" />
-    <id>https://alt-f4.blog/ALTF4-43</id>
-    <updated>2021-07-23T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在第 43 期的 Alt-F4 中，Mod 制作者 &lt;em&gt;Dysoch&lt;/em&gt; 讲述了他的 Mod 制作史（最早可追溯至异星工厂 0.7 版），概述了他的 Mod 如何与时俱进。之后会谈到他即将发布的最新和最伟大的项目。这将是一个大改 Mod，专注于一个完整的故事，目标是比以前的大 Mod 更具沉浸感。更多详情请见下文！&lt;/p&gt; &lt;h2 id=&quot;dyworld-dynamics-及其历史-dysoch&quot;&gt;DyWorld-Dynamics 及其历史 &lt;author&gt;Dysoch&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;大家好，我叫 Dysoch，是所有 Dy Mod 的制作者。在这篇文章中，我将写一些关于我多年来制作异星工厂 Mod 的历史，以及制作了近一年令人兴奋的最新版。但首先，我要解释一切的开端。&lt;/p&gt; &lt;h3 id=&quot;历史&quot;&gt;历史&lt;/h3&gt; &lt;p&gt;在购买异星工厂之前，我已经玩了它一年，但直到在异星工厂 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.7&lt;/code&gt; 开发期间才正式购买了它。我非常喜欢这个游戏，但觉得它还可以做得更好，所以我开始制作 Mod。我根本不知道自己在干什么，但幸运的得到一位叫 &lt;a href=&quot;https://forums.factorio.com/viewtopic.php?f=190&amp;amp;t=1568&quot;&gt;FreeER&lt;/a&gt; 的好人的帮助，教我如何编程。这些年来，我曾多次在感到厌倦或忙于现实生活时中断 Mod 制作，但总是心痒难耐回来继续开发。&lt;/p&gt; &lt;p&gt;在我刚开始做 Mod 的时候，只有一个叫 F-Mod 的大改 Mod（很遗憾，其旧论坛页面已经无法访问了）。我想要做和那个 Mod 一样的内容，于是开始操刀自己的游戏大改。最初很笨重，但经过多年的努力，DyTech 系列触及了游戏的各个方面。我用一个类似的名字重写了几次，但内容基本保持不变。通过重写，我学会了更好地编程，使它更易阅读和编辑。有几个我感觉遥不可及的想法，自从我开始做...</content>
   </entry>
   
   

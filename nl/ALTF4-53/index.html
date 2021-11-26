@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="nl" class="nl">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #53 - Laziness through Automation</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #53 - Laziness through Automation">
+<meta name="author" content="Therenas">
+<meta property="og:locale" content="en">
+<meta name="description" content="For the very prime real estate of issue #53 of Alt-F4, grandmaster Therenas himself returns to grace us with another article. Following up his previous masterpieces that mostly talk about his own mods, here’s more words about exactly those things. Those words explore the topic of automatically taking screenshots in Factorio. Although it’s really only about 20% technical details, with 40% philosophy and 50% bad jokes. You read that right, it goes to 110%! Laziness Through Automation Therenas I often struggle to take appropriate screenshots for my mods. It’s a lot of work to set up a scenario in such a way that it’s appealing to look at and that it explains a core concept of the mod in a visual way. In my opinion, a lot of mods don’t have good screenshots, and it’s not because the mod authors don’t care, it’s because it’s really hard to produce good ones. They just need to do a lot of work with a pretty limited ‘language’, even if a picture is worth a thousand words. Now, even though that all sounds pretty whiny (which it is), the actual issue is not taking the screenshots themselves. It’s fine to spend a couple of hours on them after you spent dozens or hundreds of hours on the mod itself. The actual issue is keeping them updated. Every change you do to the mod should ideally be reflected by updated screenshots; having them be outdated just signals a certain lack of care to me. I might be too much of a stickler though. How often they need to be updated depends on the individual mod of course. If you’re Bottleneck and don’t change very often, your screenshots won’t fall out of date. If you’re a reasonably complex GUI mod though, practically every release changes your interface by some pixel here or there. Ideally, a five minute UI fix should be accompanied by updated screenshots, but that would make you spend much more time taking screenshots than doing actual work. Nobody wants to do that, and thus screenshots get outdated over time. Compounding this effect and creating a bit of a virtuous cycle is human psychology. If you know that your screenshots will need to be updated every second release, you’ll just decide to skip updating them, only this once. The next release will have another change anyways, so why bother updating them now, that would be a waste of time. Only when the next release comes, the same psychology will lead you to procrastinate once more. Just this once. Repeat ad infinitum. Maybe I’m just incredibly lazy and normal people don’t have any issues with this. They’d probably just update their screenshots on a regular schedule, and thus they’ll be pretty up-to-date most of the time. But I find this hard to keep up. In practice, it lead to me updating the screenshots about once every six months, if that. And it bothered me that they were not up-to-date, but the “I’ll just do it next time”-mentality was overpowering in the face of doing work that would be naught a week later. Still though, I wanted a solution. I needed a solution, if only to absolve me of my self-imposed guilt of having outdated screenshots. It couldn’t be difficult to do of course. The idea of working on myself as a person would not pass muster, I’ll do that next week. Automation was the promised land it seemed, as it often does, and as it sometimes is. I automated a few processes related to mod development before, most notably the process of bundling up a new release and all the micro-management that comes with that. In that particular case, it’s not even really because I didn’t want to do the same tedious steps for all of my releases (169 and counting for Factory Planner); it’s more about preventing me from making mistakes during that process, which could lead to broken versions getting to users and so on, which would be bad. Get to the Screenshotting Already! Alright, alright, let’s get to the fun part. My idea was pretty simple: Write a Python script that launches Factorio into a custom scenario, which then takes over the actual screenshotting part (for which Factorio has a dedicated API call, thankfully), after which the script puts the screenshots into the right folder and maybe crops them a bit. The first part of that is rather easy: I just needed to figure out which command line arguments I needed, to string them together, and the scenario would already be up and running. So far, so good. The actual scenario is a bit more complicated, though. To be able to take meaningful screenshots, I need to set up various GUIs in various states to show the functionality I want to highlight. Doing this kind of thing for entities on the map is easier, since you can use all the APIs for interacting with the game world that you’d normally use. For GUIs though, which are a bit of a world on their own, you’ll have to come up with your own system. The biggest issue comes from not being able to just simulate an actual user clicking on your interface. The game does not have any API method for this, since it’s not needed for any actual mod. What it means, though, is that you’ll need to somehow emulate clicks. This is a bit awkward since, unless your mod is set up for this from the start, or just very well-structured, you’ll need to either rewrite your event handler or use rather hacky methods. You might be able to guess which route I took. After getting the hacks sorted, this whole contraption went as far as launching the game, setting up the interface into an interesting scenario, and taking screenshots of various parts of the UI. I have to point out that all of this is very duct-tape-y and will likely break very easily as the mod’s code changes. Since I wasn’t willing to do things properly, I’ll have to put up with it though. It’s much more fun to build a giant pile of spaghetti code than manually taking the same screenshots over and over anyways, so it’s a win either way. I was pretty happy with what I had done so far, but still, maximum automation this was not. See, there was still the matter of cropping the screenshots to a smaller size. A lot of the dialogs in Factory Planner are relatively small, and having the game world in the background would be distracting. I could do the cropping part manually, but I didn’t want to. Something something laziness. I had a potential solution in the back of my mind, but it would require some dirty-work. As the scenario was taking the screenshots, the basic idea was to also record the dimensions of the dialogs whose pictures were being taken. This metadata could then be written to a file as well, and the Python script could use it to crop the screenshots to the right size. This sounds like a great idea in theory, but it runs into a tiny issue in reality: The game doesn’t let you read the dimensions of GUI windows, only write them. This is forbidden for a good reason, as these dimensions are actually not deterministic in all cases; setting the game to a different language might change the sizes of certain elements, for example. Reading and using these non-deterministic values in multiplayer would lead to desyncs, which would make the mod multiplayer-incompatible, and it’d also break replays. This seemed like a dead end. Was I fated to manually crop screenshots forever? Turns out, I was not. Now, I couldn’t solve the issue that reading frame dimensions leads to desyncs, that’s just how the game works on a fundamental level. I am, however, not running the game in multiplayer to take these screenshots, and as it turns out, you can already launch the game in a special mode called Instrument Mode that disables multiplayer and enables some unsafe functionality. This seems like the perfect place to slip in a super-secret hidden method that gives me access to the forbidden knowledge of frame dimensions. So I went ahead and put it in. Working for Wube does have its perks, as it turns out. After several days of piling on the hacks, the beast finally roared to life, fully automating the process of taking screenshots for me. Although fully automating the process is not quite correct. Turns out, it’s still not fully automated. Of course it’s not. Why would I get to be fully satisfied. There’s two steps that I still need to do myself. The first is quitting the game after the screenshots are taken, so that the Python script can continue. As it turns out, a mod can not make Factorio quit to desktop. That’s entirely reasonable to prevent abuse, even though it would be a nice option to have for Instrument Mode. Either way, hitting Alt-F4 (ding) at the right time is something I can manage manually, I think. One intrusive thought I had was finding a way to make the game crash to quit to desktop. I warned you that this is all a pile of hacks. The issue with that plan is that there’s very few of these bugs in the game, and once they are found, you can be sure the bug-swatter will squash them immediately. The second is uploading these hot and steamy new screenshots to the mod portal. There is no proper API for manipulating the mod portal listings at the moment, so I’m out of luck there. For now, I’ll have to manually open a browser, delete my screenshots one-by-one, and upload the new ones one-by-one. Quelle tragédie!. Maybe there is hope for an API like this in the future though, we’ll see. Besides those two things though, I’m pretty happy with how this turned out. I think the juice was worth the squeeze, as I get to harvest the benefits of this script indefinitely. The joys of automation: Infinite gains. At least until the first time it breaks, which is likely very soon. Oh well. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="For the very prime real estate of issue #53 of Alt-F4, grandmaster Therenas himself returns to grace us with another article. Following up his previous masterpieces that mostly talk about his own mods, here’s more words about exactly those things. Those words explore the topic of automatically taking screenshots in Factorio. Although it’s really only about 20% technical details, with 40% philosophy and 50% bad jokes. You read that right, it goes to 110%! Laziness Through Automation Therenas I often struggle to take appropriate screenshots for my mods. It’s a lot of work to set up a scenario in such a way that it’s appealing to look at and that it explains a core concept of the mod in a visual way. In my opinion, a lot of mods don’t have good screenshots, and it’s not because the mod authors don’t care, it’s because it’s really hard to produce good ones. They just need to do a lot of work with a pretty limited ‘language’, even if a picture is worth a thousand words. Now, even though that all sounds pretty whiny (which it is), the actual issue is not taking the screenshots themselves. It’s fine to spend a couple of hours on them after you spent dozens or hundreds of hours on the mod itself. The actual issue is keeping them updated. Every change you do to the mod should ideally be reflected by updated screenshots; having them be outdated just signals a certain lack of care to me. I might be too much of a stickler though. How often they need to be updated depends on the individual mod of course. If you’re Bottleneck and don’t change very often, your screenshots won’t fall out of date. If you’re a reasonably complex GUI mod though, practically every release changes your interface by some pixel here or there. Ideally, a five minute UI fix should be accompanied by updated screenshots, but that would make you spend much more time taking screenshots than doing actual work. Nobody wants to do that, and thus screenshots get outdated over time. Compounding this effect and creating a bit of a virtuous cycle is human psychology. If you know that your screenshots will need to be updated every second release, you’ll just decide to skip updating them, only this once. The next release will have another change anyways, so why bother updating them now, that would be a waste of time. Only when the next release comes, the same psychology will lead you to procrastinate once more. Just this once. Repeat ad infinitum. Maybe I’m just incredibly lazy and normal people don’t have any issues with this. They’d probably just update their screenshots on a regular schedule, and thus they’ll be pretty up-to-date most of the time. But I find this hard to keep up. In practice, it lead to me updating the screenshots about once every six months, if that. And it bothered me that they were not up-to-date, but the “I’ll just do it next time”-mentality was overpowering in the face of doing work that would be naught a week later. Still though, I wanted a solution. I needed a solution, if only to absolve me of my self-imposed guilt of having outdated screenshots. It couldn’t be difficult to do of course. The idea of working on myself as a person would not pass muster, I’ll do that next week. Automation was the promised land it seemed, as it often does, and as it sometimes is. I automated a few processes related to mod development before, most notably the process of bundling up a new release and all the micro-management that comes with that. In that particular case, it’s not even really because I didn’t want to do the same tedious steps for all of my releases (169 and counting for Factory Planner); it’s more about preventing me from making mistakes during that process, which could lead to broken versions getting to users and so on, which would be bad. Get to the Screenshotting Already! Alright, alright, let’s get to the fun part. My idea was pretty simple: Write a Python script that launches Factorio into a custom scenario, which then takes over the actual screenshotting part (for which Factorio has a dedicated API call, thankfully), after which the script puts the screenshots into the right folder and maybe crops them a bit. The first part of that is rather easy: I just needed to figure out which command line arguments I needed, to string them together, and the scenario would already be up and running. So far, so good. The actual scenario is a bit more complicated, though. To be able to take meaningful screenshots, I need to set up various GUIs in various states to show the functionality I want to highlight. Doing this kind of thing for entities on the map is easier, since you can use all the APIs for interacting with the game world that you’d normally use. For GUIs though, which are a bit of a world on their own, you’ll have to come up with your own system. The biggest issue comes from not being able to just simulate an actual user clicking on your interface. The game does not have any API method for this, since it’s not needed for any actual mod. What it means, though, is that you’ll need to somehow emulate clicks. This is a bit awkward since, unless your mod is set up for this from the start, or just very well-structured, you’ll need to either rewrite your event handler or use rather hacky methods. You might be able to guess which route I took. After getting the hacks sorted, this whole contraption went as far as launching the game, setting up the interface into an interesting scenario, and taking screenshots of various parts of the UI. I have to point out that all of this is very duct-tape-y and will likely break very easily as the mod’s code changes. Since I wasn’t willing to do things properly, I’ll have to put up with it though. It’s much more fun to build a giant pile of spaghetti code than manually taking the same screenshots over and over anyways, so it’s a win either way. I was pretty happy with what I had done so far, but still, maximum automation this was not. See, there was still the matter of cropping the screenshots to a smaller size. A lot of the dialogs in Factory Planner are relatively small, and having the game world in the background would be distracting. I could do the cropping part manually, but I didn’t want to. Something something laziness. I had a potential solution in the back of my mind, but it would require some dirty-work. As the scenario was taking the screenshots, the basic idea was to also record the dimensions of the dialogs whose pictures were being taken. This metadata could then be written to a file as well, and the Python script could use it to crop the screenshots to the right size. This sounds like a great idea in theory, but it runs into a tiny issue in reality: The game doesn’t let you read the dimensions of GUI windows, only write them. This is forbidden for a good reason, as these dimensions are actually not deterministic in all cases; setting the game to a different language might change the sizes of certain elements, for example. Reading and using these non-deterministic values in multiplayer would lead to desyncs, which would make the mod multiplayer-incompatible, and it’d also break replays. This seemed like a dead end. Was I fated to manually crop screenshots forever? Turns out, I was not. Now, I couldn’t solve the issue that reading frame dimensions leads to desyncs, that’s just how the game works on a fundamental level. I am, however, not running the game in multiplayer to take these screenshots, and as it turns out, you can already launch the game in a special mode called Instrument Mode that disables multiplayer and enables some unsafe functionality. This seems like the perfect place to slip in a super-secret hidden method that gives me access to the forbidden knowledge of frame dimensions. So I went ahead and put it in. Working for Wube does have its perks, as it turns out. After several days of piling on the hacks, the beast finally roared to life, fully automating the process of taking screenshots for me. Although fully automating the process is not quite correct. Turns out, it’s still not fully automated. Of course it’s not. Why would I get to be fully satisfied. There’s two steps that I still need to do myself. The first is quitting the game after the screenshots are taken, so that the Python script can continue. As it turns out, a mod can not make Factorio quit to desktop. That’s entirely reasonable to prevent abuse, even though it would be a nice option to have for Instrument Mode. Either way, hitting Alt-F4 (ding) at the right time is something I can manage manually, I think. One intrusive thought I had was finding a way to make the game crash to quit to desktop. I warned you that this is all a pile of hacks. The issue with that plan is that there’s very few of these bugs in the game, and once they are found, you can be sure the bug-swatter will squash them immediately. The second is uploading these hot and steamy new screenshots to the mod portal. There is no proper API for manipulating the mod portal listings at the moment, so I’m out of luck there. For now, I’ll have to manually open a browser, delete my screenshots one-by-one, and upload the new ones one-by-one. Quelle tragédie!. Maybe there is hope for an API like this in the future though, we’ll see. Besides those two things though, I’m pretty happy with how this turned out. I think the juice was worth the squeeze, as I get to harvest the benefits of this script indefinitely. The joys of automation: Infinite gains. At least until the first time it breaks, which is likely very soon. Oh well. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/nl/ALTF4-53/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-53/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-11-26T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-11-26T00:00:00+00:00","datePublished":"2021-11-26T00:00:00+00:00","author":{"@type":"Person","name":"Therenas"},"description":"For the very prime real estate of issue #53 of Alt-F4, grandmaster Therenas himself returns to grace us with another article. Following up his previous masterpieces that mostly talk about his own mods, here’s more words about exactly those things. Those words explore the topic of automatically taking screenshots in Factorio. Although it’s really only about 20% technical details, with 40% philosophy and 50% bad jokes. You read that right, it goes to 110%! Laziness Through Automation Therenas I often struggle to take appropriate screenshots for my mods. It’s a lot of work to set up a scenario in such a way that it’s appealing to look at and that it explains a core concept of the mod in a visual way. In my opinion, a lot of mods don’t have good screenshots, and it’s not because the mod authors don’t care, it’s because it’s really hard to produce good ones. They just need to do a lot of work with a pretty limited ‘language’, even if a picture is worth a thousand words. Now, even though that all sounds pretty whiny (which it is), the actual issue is not taking the screenshots themselves. It’s fine to spend a couple of hours on them after you spent dozens or hundreds of hours on the mod itself. The actual issue is keeping them updated. Every change you do to the mod should ideally be reflected by updated screenshots; having them be outdated just signals a certain lack of care to me. I might be too much of a stickler though. How often they need to be updated depends on the individual mod of course. If you’re Bottleneck and don’t change very often, your screenshots won’t fall out of date. If you’re a reasonably complex GUI mod though, practically every release changes your interface by some pixel here or there. Ideally, a five minute UI fix should be accompanied by updated screenshots, but that would make you spend much more time taking screenshots than doing actual work. Nobody wants to do that, and thus screenshots get outdated over time. Compounding this effect and creating a bit of a virtuous cycle is human psychology. If you know that your screenshots will need to be updated every second release, you’ll just decide to skip updating them, only this once. The next release will have another change anyways, so why bother updating them now, that would be a waste of time. Only when the next release comes, the same psychology will lead you to procrastinate once more. Just this once. Repeat ad infinitum. Maybe I’m just incredibly lazy and normal people don’t have any issues with this. They’d probably just update their screenshots on a regular schedule, and thus they’ll be pretty up-to-date most of the time. But I find this hard to keep up. In practice, it lead to me updating the screenshots about once every six months, if that. And it bothered me that they were not up-to-date, but the “I’ll just do it next time”-mentality was overpowering in the face of doing work that would be naught a week later. Still though, I wanted a solution. I needed a solution, if only to absolve me of my self-imposed guilt of having outdated screenshots. It couldn’t be difficult to do of course. The idea of working on myself as a person would not pass muster, I’ll do that next week. Automation was the promised land it seemed, as it often does, and as it sometimes is. I automated a few processes related to mod development before, most notably the process of bundling up a new release and all the micro-management that comes with that. In that particular case, it’s not even really because I didn’t want to do the same tedious steps for all of my releases (169 and counting for Factory Planner); it’s more about preventing me from making mistakes during that process, which could lead to broken versions getting to users and so on, which would be bad. Get to the Screenshotting Already! Alright, alright, let’s get to the fun part. My idea was pretty simple: Write a Python script that launches Factorio into a custom scenario, which then takes over the actual screenshotting part (for which Factorio has a dedicated API call, thankfully), after which the script puts the screenshots into the right folder and maybe crops them a bit. The first part of that is rather easy: I just needed to figure out which command line arguments I needed, to string them together, and the scenario would already be up and running. So far, so good. The actual scenario is a bit more complicated, though. To be able to take meaningful screenshots, I need to set up various GUIs in various states to show the functionality I want to highlight. Doing this kind of thing for entities on the map is easier, since you can use all the APIs for interacting with the game world that you’d normally use. For GUIs though, which are a bit of a world on their own, you’ll have to come up with your own system. The biggest issue comes from not being able to just simulate an actual user clicking on your interface. The game does not have any API method for this, since it’s not needed for any actual mod. What it means, though, is that you’ll need to somehow emulate clicks. This is a bit awkward since, unless your mod is set up for this from the start, or just very well-structured, you’ll need to either rewrite your event handler or use rather hacky methods. You might be able to guess which route I took. After getting the hacks sorted, this whole contraption went as far as launching the game, setting up the interface into an interesting scenario, and taking screenshots of various parts of the UI. I have to point out that all of this is very duct-tape-y and will likely break very easily as the mod’s code changes. Since I wasn’t willing to do things properly, I’ll have to put up with it though. It’s much more fun to build a giant pile of spaghetti code than manually taking the same screenshots over and over anyways, so it’s a win either way. I was pretty happy with what I had done so far, but still, maximum automation this was not. See, there was still the matter of cropping the screenshots to a smaller size. A lot of the dialogs in Factory Planner are relatively small, and having the game world in the background would be distracting. I could do the cropping part manually, but I didn’t want to. Something something laziness. I had a potential solution in the back of my mind, but it would require some dirty-work. As the scenario was taking the screenshots, the basic idea was to also record the dimensions of the dialogs whose pictures were being taken. This metadata could then be written to a file as well, and the Python script could use it to crop the screenshots to the right size. This sounds like a great idea in theory, but it runs into a tiny issue in reality: The game doesn’t let you read the dimensions of GUI windows, only write them. This is forbidden for a good reason, as these dimensions are actually not deterministic in all cases; setting the game to a different language might change the sizes of certain elements, for example. Reading and using these non-deterministic values in multiplayer would lead to desyncs, which would make the mod multiplayer-incompatible, and it’d also break replays. This seemed like a dead end. Was I fated to manually crop screenshots forever? Turns out, I was not. Now, I couldn’t solve the issue that reading frame dimensions leads to desyncs, that’s just how the game works on a fundamental level. I am, however, not running the game in multiplayer to take these screenshots, and as it turns out, you can already launch the game in a special mode called Instrument Mode that disables multiplayer and enables some unsafe functionality. This seems like the perfect place to slip in a super-secret hidden method that gives me access to the forbidden knowledge of frame dimensions. So I went ahead and put it in. Working for Wube does have its perks, as it turns out. After several days of piling on the hacks, the beast finally roared to life, fully automating the process of taking screenshots for me. Although fully automating the process is not quite correct. Turns out, it’s still not fully automated. Of course it’s not. Why would I get to be fully satisfied. There’s two steps that I still need to do myself. The first is quitting the game after the screenshots are taken, so that the Python script can continue. As it turns out, a mod can not make Factorio quit to desktop. That’s entirely reasonable to prevent abuse, even though it would be a nice option to have for Instrument Mode. Either way, hitting Alt-F4 (ding) at the right time is something I can manage manually, I think. One intrusive thought I had was finding a way to make the game crash to quit to desktop. I warned you that this is all a pile of hacks. The issue with that plan is that there’s very few of these bugs in the game, and once they are found, you can be sure the bug-swatter will squash them immediately. The second is uploading these hot and steamy new screenshots to the mod portal. There is no proper API for manipulating the mod portal listings at the moment, so I’m out of luck there. For now, I’ll have to manually open a browser, delete my screenshots one-by-one, and upload the new ones one-by-one. Quelle tragédie!. Maybe there is hope for an API like this in the future though, we’ll see. Besides those two things though, I’m pretty happy with how this turned out. I think the juice was worth the squeeze, as I get to harvest the benefits of this script indefinitely. The joys of automation: Infinite gains. At least until the first time it breaks, which is likely very soon. Oh well. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-53/"},"url":"https://alt-f4.blog/ALTF4-53/","@type":"BlogPosting","headline":"Alt-F4 #53 - Laziness through Automation","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/53/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/53/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/nl/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/nl/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/nl/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/nl/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/nl/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/nl/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/nl/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/nl/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Het gemeenschap gedreven vervolg op de geliefde Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-53/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-53/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-53/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-53/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-53/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-53/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button button-green lang-button" href="/nl/ALTF4-53/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-53/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-53/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-53/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #53 - Laziness through Automation  <author>26-11-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschreven door <em>Therenas</em>,
+
+
+
+bewerkt door <em>stringweasel, Nanogamer7, Conor_, MyNameIsTrez, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/53/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhoudsopgave</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#laziness-through-automation-therenas">Laziness Through Automation <author>Therenas</author></a>
+    <ul>
+      <li><a href="#get-to-the-screenshotting-already">Get to the Screenshotting Already!</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>Jammer genoeg is dit artikel nog niet vertaald naar het Nederlands, daarom zie je het in het Engels. Als je wilt helpen om dit op te lossen kan je je aansluiten op de Alt-F4 <a href="https://alt-f4.blog/nl/discord/">Discord</a> om te beginnen. Bedankt!</p>
+
+</div>
+
+
+
+<p>For the very prime real estate of issue #53 of Alt-F4, grandmaster <em>Therenas</em> himself returns to grace us with another article. Following up his <a href="https://alt-f4.blog/nl/ALTF4-1/">previous</a> <a href="https://alt-f4.blog/nl/ALTF4-17/">masterpieces</a> that mostly talk about his own mods, here’s more words about exactly those things. Those words explore the topic of automatically taking screenshots in Factorio. Although it’s really only about 20% technical details, with 40% philosophy and 50% bad jokes. You read that right, it goes to 110%!</p>
+      <h2 id="laziness-through-automation-therenas">
+        
+        
+            <a href="#laziness-through-automation-therenas" class="anchor" style="text-decoration: none;">Laziness Through Automation <author>Therenas</author></a>
+          
+        
+      </h2>
+    
+
+<p>I often struggle to take appropriate screenshots for <a href="https://mods.factorio.com/user/Therenas">my mods</a>. It’s a lot of work to set up a scenario in such a way that it’s appealing to look at <em>and</em> that it explains a core concept of the mod in a visual way. In my opinion, a lot of mods don’t have good screenshots, and it’s not because the mod authors don’t care, it’s because it’s really hard to produce good ones. They just need to do a lot of work with a pretty limited ‘language’, <em>even if</em> a picture is worth a thousand words.</p>
+
+<p>Now, even though that all sounds pretty whiny (which it is), the actual issue is not taking the screenshots themselves. It’s fine to spend a couple of hours on them after you spent dozens or hundreds of hours on the mod itself. The actual issue is keeping them updated. Every change you do to the mod should ideally be reflected by updated screenshots; having them be outdated just signals a certain lack of care to me. I might be too much of a stickler though.</p>
+
+<p>How often they need to be updated depends on the individual mod of course. If you’re <a href="https://mods.factorio.com/mod/Bottleneck">Bottleneck</a> and don’t change very often, your screenshots won’t fall out of date. If you’re a <a href="https://mods.factorio.com/mod/factoryplanner">reasonably complex GUI mod</a> though, practically every release changes your interface by some pixel here or there. Ideally, a five minute UI fix should be accompanied by updated screenshots, but that would make you spend much more time taking screenshots than doing actual work. Nobody wants to do that, and thus screenshots get outdated over time.</p>
+
+<p>Compounding this effect and creating a bit of a virtuous cycle is human psychology. If you know that your screenshots will need to be updated every second release, you’ll just decide to skip updating them, only this once. The next release will have another change anyways, so why bother updating them now, that would be a waste of time. Only when the next release comes, the same psychology will lead you to procrastinate once more. Just this once. Repeat ad infinitum.</p>
+
+<p>Maybe I’m just incredibly lazy and normal people don’t have any issues with this. They’d probably just update their screenshots on a regular schedule, and thus they’ll be pretty up-to-date most of the time. But I find this hard to keep up. In practice, it lead to me updating the screenshots about once every six months, if that. And it bothered me that they were not up-to-date, but the “I’ll just do it next time”-mentality was overpowering in the face of doing work that would be naught a week later.</p>
+
+<p>Still though, I wanted a solution. I needed a solution, if only to absolve me of my self-imposed guilt of having outdated screenshots. It couldn’t be difficult to do of course. The idea of working on myself as a person would not pass muster, I’ll do that next week. Automation was the promised land it seemed, as it often does, and as it sometimes is.</p>
+
+<p>I automated a few processes related to mod development before, most notably the process of <a href="https://github.com/ClaudeMetz/FactorioScripts/blob/5aab7569acdf86ff65167584638a3dd7323d2d0b/build_release.py">bundling up</a> a new release and all the micro-management that comes with that. In that particular case, it’s not even really because I didn’t want to do the same tedious steps for all of my releases (<a href="https://mods.factorio.com/mod/factoryplanner/downloads">169 and counting</a> for Factory Planner); it’s more about preventing me from making mistakes during that process, which could lead to broken versions getting to users and so on, which would be bad.</p>
+      <h3 id="get-to-the-screenshotting-already">
+        
+        
+            <a href="#get-to-the-screenshotting-already" class="anchor" style="text-decoration: none;">Get to the Screenshotting Already!</a>
+          
+        
+      </h3>
+    
+
+<p>Alright, alright, let’s get to the fun part. My idea was pretty simple: Write a <a href="https://github.com/ClaudeMetz/FactorioScripts/blob/5aab7569acdf86ff65167584638a3dd7323d2d0b/take_screenshots.py">Python script</a> that launches Factorio into a <a href="https://github.com/ClaudeMetz/FactoryPlanner/tree/master/scenarios/screenshotter">custom scenario</a>, which then takes over the actual screenshotting part (for which Factorio has a <a href="https://lua-api.factorio.com/latest/LuaGameScript.html#LuaGameScript.take_screenshot">dedicated API call</a>, thankfully), after which the script puts the screenshots into the right folder and maybe crops them a bit. The first part of that is rather easy: I just needed to figure out which <a href="https://wiki.factorio.com/Command_line_parameters">command line arguments</a> I needed, to string them together, and the scenario would already be up and running. So far, so good.</p>
+
+<p>The actual scenario is a bit more complicated, though. To be able to take meaningful screenshots, I need to set up various GUIs in various states to show the functionality I want to highlight. Doing this kind of thing for entities on the map is easier, since you can use all the APIs for interacting with the game world that you’d normally use. For GUIs though, which are a bit of a world on their own, you’ll have to come up with your own system.</p>
+
+<p>The biggest issue comes from not being able to just simulate an actual user clicking on your interface. The game does not have any API method for this, since it’s not needed for any actual mod. What it means, though, is that you’ll need to somehow emulate clicks. This is a bit awkward since, unless your mod is set up for this from the start, or just very well-structured, you’ll need to either rewrite your event handler or use rather hacky methods. You might be able to guess which route I took.</p>
+
+<p>After getting the <a href="https://github.com/ClaudeMetz/FactoryPlanner/blob/master/modfiles/data/handlers/screenshotter.lua">hacks</a> sorted, this whole contraption went as far as launching the game, setting up the interface into an interesting scenario, and taking screenshots of various parts of the UI. I have to point out that all of this is very duct-tape-y and will likely break very easily as the mod’s code changes. Since I wasn’t willing to do things properly, I’ll have to put up with it though. It’s much more fun to build a giant pile of spaghetti code than manually taking the same screenshots over and over anyways, so it’s a win either way.</p>
+
+<p>I was pretty happy with what I had done so far, but still, maximum automation this was not. See, there was still the matter of cropping the screenshots to a smaller size. A lot of the dialogs in Factory Planner are relatively small, and having the game world in the background would be distracting. I could do the cropping part manually, but I didn’t want to. <em>Something something</em> laziness. I had a potential solution in the back of my mind, but it would require some dirty-work.</p>
+
+<p>As the scenario was taking the screenshots, the basic idea was to also record the dimensions of the dialogs whose pictures were being taken. This metadata could then be written to a file as well, and the Python script could use it to crop the screenshots to the right size. This sounds like a great idea in theory, but it runs into a tiny issue in reality: The game doesn’t let you read the dimensions of GUI windows, only write them.</p>
+
+<p>This is forbidden for a good reason, as these dimensions are actually not deterministic in all cases; setting the game to a different language might change the sizes of certain elements, for example. Reading and using these non-deterministic values in multiplayer would lead to desyncs, which would make the mod multiplayer-incompatible, and it’d also break replays. This seemed like a dead end. Was I fated to manually crop screenshots forever? Turns out, I was not.</p>
+
+<p>Now, I couldn’t solve the issue that reading frame dimensions leads to desyncs, that’s just how the game works on a fundamental level. I am, however, not running the game in multiplayer to take these screenshots, and as it turns out, you can already launch the game in a special mode called <a href="https://lua-api.factorio.com/latest/Instrument.html">Instrument Mode</a> that disables multiplayer and enables some unsafe functionality. This seems like the perfect place to slip in a super-secret hidden method that gives me access to the forbidden knowledge of frame dimensions. So I went ahead and put it in. Working for Wube does have its perks, as it turns out.</p>
+
+<p>After several days of piling on the hacks, the beast finally roared to life, fully automating the process of taking screenshots for me. Although <em>fully</em> automating the process is not quite correct. Turns out, it’s still not fully automated. Of course it’s not. Why would I get to be <em>fully</em> satisfied. There’s two steps that I still need to do myself.</p>
+
+<p>The first is quitting the game after the screenshots are taken, so that the Python script can continue. As it turns out, a mod can not make Factorio quit to desktop. That’s entirely reasonable to prevent abuse, even though it would be a nice option to have for Instrument Mode. Either way, hitting Alt-F4 (<em>ding</em>) at the right time is something I can manage manually, I think. One intrusive thought I had was finding a way to make the game crash to quit to desktop. I warned you that this is all a pile of hacks. The issue with that plan is that there’s very few of these bugs in the game, and once they are found, you can be sure the bug-swatter will squash them immediately.</p>
+
+<p>The second is uploading these hot and steamy new screenshots to the mod portal. There is no proper API for manipulating the mod portal listings at the moment, so I’m out of luck there. For now, I’ll have to manually open a browser, delete my screenshots one-by-one, and upload the new ones one-by-one. <em>Quelle tragédie!</em>. Maybe there is hope for an API like this in the future though, we’ll see.</p>
+
+<p>Besides those two things though, I’m pretty happy with how this turned out. I think the juice was worth the squeeze, as I get to harvest the benefits of this script indefinitely. The joys of automation: <em>Infinite gains</em>. At least until the first time it breaks, which is likely very soon. <a href="https://xkcd.com/1319/">Oh well</a>.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/nl/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/nl/discord">
+    Bespreek op Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/nl/ALTF4-52/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/nl/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/nl/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/nl/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/nl/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Deze website is een fan project en niet direct aangesloten met Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

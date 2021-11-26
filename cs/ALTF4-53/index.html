@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="cs" class="cs">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #53 - Lenost srkz automatizaci</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #53 - Lenost srkz automatizaci">
+<meta name="author" content="Therenas">
+<meta property="og:locale" content="cs">
+<meta name="description" content="Pro exkluzivní 53. vydání Alt-F4, velmistr Therenas se vrací, aby nás poctil s dalším článkem. Pokračující s jeho minulými mistrovskými díly, která mluví hlavně o jeho vlastních módech, zde je více slov o stejných tématech. Tyto slova zkoumají jak automaticky sbírat screenshoty v Factoriu. Musím ale varovat, jsou to 20% technických detailů, 40% filozofických otázek a 50% špatných vtipů. Čtete správně, sčítá se to do 110! Lenost zrkz automatizaci Therenas Často mám problémy děláním screenshotů pro své módy. Je poměrně dost práce sestavit scenário, kde mód vypadá dobře a zárověň to vysvětluje hlavní koncept módu v vizuálním způsobu. Můj názor je, že mnoho módů nemá moc dobrých screenshotů, a není to protože autory módu to nezajímá, ale je prostě moc těžké vytvořit dobré fotky. Musí se do toho dát hodně úsilí s limitovanou možností ‘jazyku’, i když je obrázek hoden tisíc slov. Tak, i když to znělo poměrně fňukavě (což to je), opravdový problém není dělání fotek samotných. Je docela vpohodě nad nimi ztrávit pár hodin, poté co jste na módu samotném strávili pár desítky nebo i stovky hodin. Doopravdový problém je aktualizace fotek. Každý změna v módu by ideálně měla být ukázána v screenshotech, jejich aktualizace mi ukazuje způsob péče o mód. Možná jsem pouze puntičkář. Jak často musí být aktualizované je na samotném módu. Pokud jste Bottleneck a věci se často nemění, screenshoty nebudou staré. Pokud jste ale poměrně komplexní GUI mód, u kterého se každých pár vydání mění GUI, je to docela důležité. Ideálně pět minut ztrávených na UI by mělo být doprovozeno aktualizací screenshotů, ale to by vás nutilo dělat screenshoty déle než práci samotnou. Toto nikdo nechce dělat, a proto jsou screenshoty časem staré. Dále s tímto efektem je docela zlý cyklus lidksé psychologie. Pokud víte, že screenshoty budou muset být aktualizovány každou druhou aktualizaci, řeknete si, že je nebudete aktualizovat, pouze tentokrát. Příští aktualizace stejně bude mít nové změny, tak proč aktualizovat teď, vždýť to je ztráta času. Ale až když nová aktualizace přijde, stejná psychologie vás donutí znovu prokrastinovat. Pouze tentokrát. Toto se poté opakuje do nekonečna. Možná jsem pouze extrémně líný a většina lidí s tímto nemá žádné problémy. Prostě aktualizují jejich screenshoty na regulérní bázi, a proto budou většinu času správně. Ale já ne. V praxi, dovedlo mě to k aktualizaci screenshotů zhruba každých šest měsíců, když už. A vůbec, otravovalo mě, když nebyly aktualizovány, ale tendence říst ‘Udělám to příště’ byla přemohující a mnohem lehčí, než práci doopravdy udělat. Pořád jsem ale chtěl řešení. Potřeboval jsem řešení, pokud jsem chtěl opravit svou nutkavost mít aktualizované screenshoty. Nápad, že bych pracoval na sobě jako člověkovi, nešel dál než mumlání, to budu dělat příští týden. Zdálo se, že automatizace byla slíbená zem, jak se často stává. Již jsem automatizoval procesy týkající se vývoje módů, například proces balíčkování nových vydání a mikromanagement, který se toho týkal. V tomto případě to ani nebylo protože bych nechtěl dělat chyby pro všechny mé vydání (169 a počítající pro Factory Planner), bylo to spíše o prevenci chyb při tomto procesu, který by mohl dovést k rozbitým verzím u uživatelů a tak dále, což by bylo poměrně špatné. Už se dostaň k screenshotování! Jo, jo, dostaňme se k zábavné části. Můj nápad byl napsat Pythonový skript, který by spustil Factorio do mého vlastního scenária, který poté sám dělá screenshoty (pro což Factorio naštěstí má dedikované API), po čemž skript vloží screenshoty do správné složky a možná je trochu ořeže. První část je docela lehká, musím pouze zjistit jaké commandlinové argumenty jsem potřeboval, dostat je dohromady, a scenário již běželo. Zatím docela snadné. Samotné scenário je ale trochu komplikovanější. Abych mohl brát užitečné screenshoty, musel jsem sestavit několik GUI v několika fázích, které by ukazovaly funkcionalitu, kterou jsem chtěl ukázat. Dělání tohoto pro entity na mapě je mnohem jednodušší, protože můžete již využít API, které by jste při modování Factoria stejně užívali. Pro GUI, které jsou světem samotným, musíte ale přijít na kloub jinému systému. Největší problém je, že nejste schopni simulovat doopravdové klikání uživatele na vaše rozhraní. Hra nemá žádné API metody pro toto, protože to není nutné pro žádný mód. Co toto ale znamená, je, že musíte sami simulovat klikání myší. Toto je poměrně nešikovný způsob jak to dělat, protože pokud nedesignujete svůj mód od začátku, aby takto pracoval, nebo není velmi dobře strukturován, budete buďto muset přepsat váš snímač eventů, nebo využít poměrně zajímavé metody. Asi můžete vědět, jakou metodu jsem zvolil. Poté co jsem vyřešil metody, které jsem chtěl využít, celá tato kontrapce šla tak daleko až do zapnutí hry, nastavení interfacu pro zajímavé scenário, a začatí snímání fotek pro různé části UI. Musím poznamenat, že toto je poměrně nevyspělé řešení, a nejspíš se rozbije pokud budete měnit rozložení vašeho módu. V tomto scenáriu ale není moc alternativ, tak toto budu muset vydržet. Je mnohem větší zábava vytvářet hordy špagetykódu než manuální sběr screenshotů znovu a znovu, takže to je výhra jakýmkoli způsobem. Byl jsem docela šťastný s tím co jsem již udělal, stále to ale nebyla maximální automatizace. Pořád byla událost ořezávání screenshotů na menší velikost. Mnoho dialogů z módu Plánovač Továren je relativně malých, a hra v pozadí by byla pouze rozptylem. Mohl bych je ořezávat manuálně, ale nechtěl jsem. Byl jsem trochu líný. Měl jsem v pozadí hlavy potenciální řešení, ale potřebovalo by trochu špinavé práce. Hlavní nápad byl, poté co scénário dodělalo bratí fotek, také snímat velikost dialogů, kde fotky byly brány. Tato metadata poté mohla být také poslána do souboru, a Pythoní skript by je poté mohl využít na ořezání screenshotů na správnou velikost. Toto zní jako skvělý nápad v teorii, ale dostanete se do maličkatého problému v realitě: hra vás nenechá číst dimenze GUI oken, pouze je zapisovat. Toto je zakázáno z dobrého důvodu, protože tyto dimenze nejsou vždy deterministické, protože jiné jazyky hry mohou měnit velikosti různých elementů. Čtení a využití těchto nedetministických hodnot v multiplayer hře by mohlo vést k desynchronizacím, což by nechalo mód nekompatibilní s multiplayerem, a také s znovuhrou. Zní to jako slepá ulice. Byl jsem nucen manuálně ořezávat fotky? Nakonec ne. No, nebyl jsem schopen rozchodit, že čtení dimenzí potenciálně šlo k desynchronizacím, to je prostě jak hra funguje v základech. Nehrál jsem hru ale v multiplayeru abych tyto screenshoty sbíral, a je to tak, že jste schopni spustit hru v speciálním režimu, pojmenovaném Instrumentální Režim, který kompletně vypne multiplayer a zapne nějakou netestovanou funkcionalitu. Zní to jako perfektní místo, kam bych mohl přidat super-tajnou funkcionalitu, která mi dá přístup na zakázanou znalost dimenzí obrazu. Tak jsem se rozhodl, že to přidám. Práce pro Wube ve finále má své výhody. Po několika dnech, co jsem přidával hacky, monstrum nakonec zařvalo, a plně automatický způsob braní screenshotů pro mě byl zrozen. Vypadá to, plně automatizovaný způsob ale není zprávný. Nakonec to není plně automatizováno. Ovšem že není. Proč bych měl být plně šťastný? Jsou dva kroky, které budu muset dělat sám. První krok je vypnutí hry, poté co screenshoty jsou brány, aby Pythoní skripty mohly pořád běžět dále. Je to tak, že Factorio mód není schopen vypnou Factorio na plochu. To je kompletně pochopitelné, aby se zabránilo zneužití, i když by to byla hezká možnost v instrumentálním řežimu. Přesto, zmáčknutím kláves Alt-F4 (ping) v správném čase, je něco co nejspíše jsem schopen sám dát. Jedna z mých nekalých myšlenek byla metoda schození Factoria chybovou hláškou, ale problém je, že tyto chyby jsou velmi rychle opraveny. Druhá věc je upload těchto svěžích fotek na Factorio módový portál. Zatím neexistuje správné API na manipulaci portálu tímto způsobem, tak v tomto mám smůlu. Prozatím budu muset manuálně otevírat browser, smazat staré screenshoty jeden po jednom, a nahrát nové jeden po jednom. Jaká tragedie! Možná ale existuje myšlenka pro API jako takové v budoucnosti, uvidíme. Mimo tyto dvě věci, jsem docela spokojen s tím, jak toto skončilo. Myslím si, že džus stál za moštování, vzhledem k tomu, že jsem schopen hrát si s benefity tohoto skriptu do nekonečna. Výhra automatizace: Nekonečné zisky. Aspoň do té doby co se to poprvé rozbije, což nejspíše bude velmi brzy. No jo no. Přispívání Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na Discord aby jste začali!">
+<meta property="og:description" content="Pro exkluzivní 53. vydání Alt-F4, velmistr Therenas se vrací, aby nás poctil s dalším článkem. Pokračující s jeho minulými mistrovskými díly, která mluví hlavně o jeho vlastních módech, zde je více slov o stejných tématech. Tyto slova zkoumají jak automaticky sbírat screenshoty v Factoriu. Musím ale varovat, jsou to 20% technických detailů, 40% filozofických otázek a 50% špatných vtipů. Čtete správně, sčítá se to do 110! Lenost zrkz automatizaci Therenas Často mám problémy děláním screenshotů pro své módy. Je poměrně dost práce sestavit scenário, kde mód vypadá dobře a zárověň to vysvětluje hlavní koncept módu v vizuálním způsobu. Můj názor je, že mnoho módů nemá moc dobrých screenshotů, a není to protože autory módu to nezajímá, ale je prostě moc těžké vytvořit dobré fotky. Musí se do toho dát hodně úsilí s limitovanou možností ‘jazyku’, i když je obrázek hoden tisíc slov. Tak, i když to znělo poměrně fňukavě (což to je), opravdový problém není dělání fotek samotných. Je docela vpohodě nad nimi ztrávit pár hodin, poté co jste na módu samotném strávili pár desítky nebo i stovky hodin. Doopravdový problém je aktualizace fotek. Každý změna v módu by ideálně měla být ukázána v screenshotech, jejich aktualizace mi ukazuje způsob péče o mód. Možná jsem pouze puntičkář. Jak často musí být aktualizované je na samotném módu. Pokud jste Bottleneck a věci se často nemění, screenshoty nebudou staré. Pokud jste ale poměrně komplexní GUI mód, u kterého se každých pár vydání mění GUI, je to docela důležité. Ideálně pět minut ztrávených na UI by mělo být doprovozeno aktualizací screenshotů, ale to by vás nutilo dělat screenshoty déle než práci samotnou. Toto nikdo nechce dělat, a proto jsou screenshoty časem staré. Dále s tímto efektem je docela zlý cyklus lidksé psychologie. Pokud víte, že screenshoty budou muset být aktualizovány každou druhou aktualizaci, řeknete si, že je nebudete aktualizovat, pouze tentokrát. Příští aktualizace stejně bude mít nové změny, tak proč aktualizovat teď, vždýť to je ztráta času. Ale až když nová aktualizace přijde, stejná psychologie vás donutí znovu prokrastinovat. Pouze tentokrát. Toto se poté opakuje do nekonečna. Možná jsem pouze extrémně líný a většina lidí s tímto nemá žádné problémy. Prostě aktualizují jejich screenshoty na regulérní bázi, a proto budou většinu času správně. Ale já ne. V praxi, dovedlo mě to k aktualizaci screenshotů zhruba každých šest měsíců, když už. A vůbec, otravovalo mě, když nebyly aktualizovány, ale tendence říst ‘Udělám to příště’ byla přemohující a mnohem lehčí, než práci doopravdy udělat. Pořád jsem ale chtěl řešení. Potřeboval jsem řešení, pokud jsem chtěl opravit svou nutkavost mít aktualizované screenshoty. Nápad, že bych pracoval na sobě jako člověkovi, nešel dál než mumlání, to budu dělat příští týden. Zdálo se, že automatizace byla slíbená zem, jak se často stává. Již jsem automatizoval procesy týkající se vývoje módů, například proces balíčkování nových vydání a mikromanagement, který se toho týkal. V tomto případě to ani nebylo protože bych nechtěl dělat chyby pro všechny mé vydání (169 a počítající pro Factory Planner), bylo to spíše o prevenci chyb při tomto procesu, který by mohl dovést k rozbitým verzím u uživatelů a tak dále, což by bylo poměrně špatné. Už se dostaň k screenshotování! Jo, jo, dostaňme se k zábavné části. Můj nápad byl napsat Pythonový skript, který by spustil Factorio do mého vlastního scenária, který poté sám dělá screenshoty (pro což Factorio naštěstí má dedikované API), po čemž skript vloží screenshoty do správné složky a možná je trochu ořeže. První část je docela lehká, musím pouze zjistit jaké commandlinové argumenty jsem potřeboval, dostat je dohromady, a scenário již běželo. Zatím docela snadné. Samotné scenário je ale trochu komplikovanější. Abych mohl brát užitečné screenshoty, musel jsem sestavit několik GUI v několika fázích, které by ukazovaly funkcionalitu, kterou jsem chtěl ukázat. Dělání tohoto pro entity na mapě je mnohem jednodušší, protože můžete již využít API, které by jste při modování Factoria stejně užívali. Pro GUI, které jsou světem samotným, musíte ale přijít na kloub jinému systému. Největší problém je, že nejste schopni simulovat doopravdové klikání uživatele na vaše rozhraní. Hra nemá žádné API metody pro toto, protože to není nutné pro žádný mód. Co toto ale znamená, je, že musíte sami simulovat klikání myší. Toto je poměrně nešikovný způsob jak to dělat, protože pokud nedesignujete svůj mód od začátku, aby takto pracoval, nebo není velmi dobře strukturován, budete buďto muset přepsat váš snímač eventů, nebo využít poměrně zajímavé metody. Asi můžete vědět, jakou metodu jsem zvolil. Poté co jsem vyřešil metody, které jsem chtěl využít, celá tato kontrapce šla tak daleko až do zapnutí hry, nastavení interfacu pro zajímavé scenário, a začatí snímání fotek pro různé části UI. Musím poznamenat, že toto je poměrně nevyspělé řešení, a nejspíš se rozbije pokud budete měnit rozložení vašeho módu. V tomto scenáriu ale není moc alternativ, tak toto budu muset vydržet. Je mnohem větší zábava vytvářet hordy špagetykódu než manuální sběr screenshotů znovu a znovu, takže to je výhra jakýmkoli způsobem. Byl jsem docela šťastný s tím co jsem již udělal, stále to ale nebyla maximální automatizace. Pořád byla událost ořezávání screenshotů na menší velikost. Mnoho dialogů z módu Plánovač Továren je relativně malých, a hra v pozadí by byla pouze rozptylem. Mohl bych je ořezávat manuálně, ale nechtěl jsem. Byl jsem trochu líný. Měl jsem v pozadí hlavy potenciální řešení, ale potřebovalo by trochu špinavé práce. Hlavní nápad byl, poté co scénário dodělalo bratí fotek, také snímat velikost dialogů, kde fotky byly brány. Tato metadata poté mohla být také poslána do souboru, a Pythoní skript by je poté mohl využít na ořezání screenshotů na správnou velikost. Toto zní jako skvělý nápad v teorii, ale dostanete se do maličkatého problému v realitě: hra vás nenechá číst dimenze GUI oken, pouze je zapisovat. Toto je zakázáno z dobrého důvodu, protože tyto dimenze nejsou vždy deterministické, protože jiné jazyky hry mohou měnit velikosti různých elementů. Čtení a využití těchto nedetministických hodnot v multiplayer hře by mohlo vést k desynchronizacím, což by nechalo mód nekompatibilní s multiplayerem, a také s znovuhrou. Zní to jako slepá ulice. Byl jsem nucen manuálně ořezávat fotky? Nakonec ne. No, nebyl jsem schopen rozchodit, že čtení dimenzí potenciálně šlo k desynchronizacím, to je prostě jak hra funguje v základech. Nehrál jsem hru ale v multiplayeru abych tyto screenshoty sbíral, a je to tak, že jste schopni spustit hru v speciálním režimu, pojmenovaném Instrumentální Režim, který kompletně vypne multiplayer a zapne nějakou netestovanou funkcionalitu. Zní to jako perfektní místo, kam bych mohl přidat super-tajnou funkcionalitu, která mi dá přístup na zakázanou znalost dimenzí obrazu. Tak jsem se rozhodl, že to přidám. Práce pro Wube ve finále má své výhody. Po několika dnech, co jsem přidával hacky, monstrum nakonec zařvalo, a plně automatický způsob braní screenshotů pro mě byl zrozen. Vypadá to, plně automatizovaný způsob ale není zprávný. Nakonec to není plně automatizováno. Ovšem že není. Proč bych měl být plně šťastný? Jsou dva kroky, které budu muset dělat sám. První krok je vypnutí hry, poté co screenshoty jsou brány, aby Pythoní skripty mohly pořád běžět dále. Je to tak, že Factorio mód není schopen vypnou Factorio na plochu. To je kompletně pochopitelné, aby se zabránilo zneužití, i když by to byla hezká možnost v instrumentálním řežimu. Přesto, zmáčknutím kláves Alt-F4 (ping) v správném čase, je něco co nejspíše jsem schopen sám dát. Jedna z mých nekalých myšlenek byla metoda schození Factoria chybovou hláškou, ale problém je, že tyto chyby jsou velmi rychle opraveny. Druhá věc je upload těchto svěžích fotek na Factorio módový portál. Zatím neexistuje správné API na manipulaci portálu tímto způsobem, tak v tomto mám smůlu. Prozatím budu muset manuálně otevírat browser, smazat staré screenshoty jeden po jednom, a nahrát nové jeden po jednom. Jaká tragedie! Možná ale existuje myšlenka pro API jako takové v budoucnosti, uvidíme. Mimo tyto dvě věci, jsem docela spokojen s tím, jak toto skončilo. Myslím si, že džus stál za moštování, vzhledem k tomu, že jsem schopen hrát si s benefity tohoto skriptu do nekonečna. Výhra automatizace: Nekonečné zisky. Aspoň do té doby co se to poprvé rozbije, což nejspíše bude velmi brzy. No jo no. Přispívání Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na Discord aby jste začali!">
+<link rel="canonical" href="https://alt-f4.blog/cs/ALTF4-53/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-53/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-11-26T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-11-26T00:00:00+00:00","datePublished":"2021-11-26T00:00:00+00:00","author":{"@type":"Person","name":"Therenas"},"description":"Pro exkluzivní 53. vydání Alt-F4, velmistr Therenas se vrací, aby nás poctil s dalším článkem. Pokračující s jeho minulými mistrovskými díly, která mluví hlavně o jeho vlastních módech, zde je více slov o stejných tématech. Tyto slova zkoumají jak automaticky sbírat screenshoty v Factoriu. Musím ale varovat, jsou to 20% technických detailů, 40% filozofických otázek a 50% špatných vtipů. Čtete správně, sčítá se to do 110! Lenost zrkz automatizaci Therenas Často mám problémy děláním screenshotů pro své módy. Je poměrně dost práce sestavit scenário, kde mód vypadá dobře a zárověň to vysvětluje hlavní koncept módu v vizuálním způsobu. Můj názor je, že mnoho módů nemá moc dobrých screenshotů, a není to protože autory módu to nezajímá, ale je prostě moc těžké vytvořit dobré fotky. Musí se do toho dát hodně úsilí s limitovanou možností ‘jazyku’, i když je obrázek hoden tisíc slov. Tak, i když to znělo poměrně fňukavě (což to je), opravdový problém není dělání fotek samotných. Je docela vpohodě nad nimi ztrávit pár hodin, poté co jste na módu samotném strávili pár desítky nebo i stovky hodin. Doopravdový problém je aktualizace fotek. Každý změna v módu by ideálně měla být ukázána v screenshotech, jejich aktualizace mi ukazuje způsob péče o mód. Možná jsem pouze puntičkář. Jak často musí být aktualizované je na samotném módu. Pokud jste Bottleneck a věci se často nemění, screenshoty nebudou staré. Pokud jste ale poměrně komplexní GUI mód, u kterého se každých pár vydání mění GUI, je to docela důležité. Ideálně pět minut ztrávených na UI by mělo být doprovozeno aktualizací screenshotů, ale to by vás nutilo dělat screenshoty déle než práci samotnou. Toto nikdo nechce dělat, a proto jsou screenshoty časem staré. Dále s tímto efektem je docela zlý cyklus lidksé psychologie. Pokud víte, že screenshoty budou muset být aktualizovány každou druhou aktualizaci, řeknete si, že je nebudete aktualizovat, pouze tentokrát. Příští aktualizace stejně bude mít nové změny, tak proč aktualizovat teď, vždýť to je ztráta času. Ale až když nová aktualizace přijde, stejná psychologie vás donutí znovu prokrastinovat. Pouze tentokrát. Toto se poté opakuje do nekonečna. Možná jsem pouze extrémně líný a většina lidí s tímto nemá žádné problémy. Prostě aktualizují jejich screenshoty na regulérní bázi, a proto budou většinu času správně. Ale já ne. V praxi, dovedlo mě to k aktualizaci screenshotů zhruba každých šest měsíců, když už. A vůbec, otravovalo mě, když nebyly aktualizovány, ale tendence říst ‘Udělám to příště’ byla přemohující a mnohem lehčí, než práci doopravdy udělat. Pořád jsem ale chtěl řešení. Potřeboval jsem řešení, pokud jsem chtěl opravit svou nutkavost mít aktualizované screenshoty. Nápad, že bych pracoval na sobě jako člověkovi, nešel dál než mumlání, to budu dělat příští týden. Zdálo se, že automatizace byla slíbená zem, jak se často stává. Již jsem automatizoval procesy týkající se vývoje módů, například proces balíčkování nových vydání a mikromanagement, který se toho týkal. V tomto případě to ani nebylo protože bych nechtěl dělat chyby pro všechny mé vydání (169 a počítající pro Factory Planner), bylo to spíše o prevenci chyb při tomto procesu, který by mohl dovést k rozbitým verzím u uživatelů a tak dále, což by bylo poměrně špatné. Už se dostaň k screenshotování! Jo, jo, dostaňme se k zábavné části. Můj nápad byl napsat Pythonový skript, který by spustil Factorio do mého vlastního scenária, který poté sám dělá screenshoty (pro což Factorio naštěstí má dedikované API), po čemž skript vloží screenshoty do správné složky a možná je trochu ořeže. První část je docela lehká, musím pouze zjistit jaké commandlinové argumenty jsem potřeboval, dostat je dohromady, a scenário již běželo. Zatím docela snadné. Samotné scenário je ale trochu komplikovanější. Abych mohl brát užitečné screenshoty, musel jsem sestavit několik GUI v několika fázích, které by ukazovaly funkcionalitu, kterou jsem chtěl ukázat. Dělání tohoto pro entity na mapě je mnohem jednodušší, protože můžete již využít API, které by jste při modování Factoria stejně užívali. Pro GUI, které jsou světem samotným, musíte ale přijít na kloub jinému systému. Největší problém je, že nejste schopni simulovat doopravdové klikání uživatele na vaše rozhraní. Hra nemá žádné API metody pro toto, protože to není nutné pro žádný mód. Co toto ale znamená, je, že musíte sami simulovat klikání myší. Toto je poměrně nešikovný způsob jak to dělat, protože pokud nedesignujete svůj mód od začátku, aby takto pracoval, nebo není velmi dobře strukturován, budete buďto muset přepsat váš snímač eventů, nebo využít poměrně zajímavé metody. Asi můžete vědět, jakou metodu jsem zvolil. Poté co jsem vyřešil metody, které jsem chtěl využít, celá tato kontrapce šla tak daleko až do zapnutí hry, nastavení interfacu pro zajímavé scenário, a začatí snímání fotek pro různé části UI. Musím poznamenat, že toto je poměrně nevyspělé řešení, a nejspíš se rozbije pokud budete měnit rozložení vašeho módu. V tomto scenáriu ale není moc alternativ, tak toto budu muset vydržet. Je mnohem větší zábava vytvářet hordy špagetykódu než manuální sběr screenshotů znovu a znovu, takže to je výhra jakýmkoli způsobem. Byl jsem docela šťastný s tím co jsem již udělal, stále to ale nebyla maximální automatizace. Pořád byla událost ořezávání screenshotů na menší velikost. Mnoho dialogů z módu Plánovač Továren je relativně malých, a hra v pozadí by byla pouze rozptylem. Mohl bych je ořezávat manuálně, ale nechtěl jsem. Byl jsem trochu líný. Měl jsem v pozadí hlavy potenciální řešení, ale potřebovalo by trochu špinavé práce. Hlavní nápad byl, poté co scénário dodělalo bratí fotek, také snímat velikost dialogů, kde fotky byly brány. Tato metadata poté mohla být také poslána do souboru, a Pythoní skript by je poté mohl využít na ořezání screenshotů na správnou velikost. Toto zní jako skvělý nápad v teorii, ale dostanete se do maličkatého problému v realitě: hra vás nenechá číst dimenze GUI oken, pouze je zapisovat. Toto je zakázáno z dobrého důvodu, protože tyto dimenze nejsou vždy deterministické, protože jiné jazyky hry mohou měnit velikosti různých elementů. Čtení a využití těchto nedetministických hodnot v multiplayer hře by mohlo vést k desynchronizacím, což by nechalo mód nekompatibilní s multiplayerem, a také s znovuhrou. Zní to jako slepá ulice. Byl jsem nucen manuálně ořezávat fotky? Nakonec ne. No, nebyl jsem schopen rozchodit, že čtení dimenzí potenciálně šlo k desynchronizacím, to je prostě jak hra funguje v základech. Nehrál jsem hru ale v multiplayeru abych tyto screenshoty sbíral, a je to tak, že jste schopni spustit hru v speciálním režimu, pojmenovaném Instrumentální Režim, který kompletně vypne multiplayer a zapne nějakou netestovanou funkcionalitu. Zní to jako perfektní místo, kam bych mohl přidat super-tajnou funkcionalitu, která mi dá přístup na zakázanou znalost dimenzí obrazu. Tak jsem se rozhodl, že to přidám. Práce pro Wube ve finále má své výhody. Po několika dnech, co jsem přidával hacky, monstrum nakonec zařvalo, a plně automatický způsob braní screenshotů pro mě byl zrozen. Vypadá to, plně automatizovaný způsob ale není zprávný. Nakonec to není plně automatizováno. Ovšem že není. Proč bych měl být plně šťastný? Jsou dva kroky, které budu muset dělat sám. První krok je vypnutí hry, poté co screenshoty jsou brány, aby Pythoní skripty mohly pořád běžět dále. Je to tak, že Factorio mód není schopen vypnou Factorio na plochu. To je kompletně pochopitelné, aby se zabránilo zneužití, i když by to byla hezká možnost v instrumentálním řežimu. Přesto, zmáčknutím kláves Alt-F4 (ping) v správném čase, je něco co nejspíše jsem schopen sám dát. Jedna z mých nekalých myšlenek byla metoda schození Factoria chybovou hláškou, ale problém je, že tyto chyby jsou velmi rychle opraveny. Druhá věc je upload těchto svěžích fotek na Factorio módový portál. Zatím neexistuje správné API na manipulaci portálu tímto způsobem, tak v tomto mám smůlu. Prozatím budu muset manuálně otevírat browser, smazat staré screenshoty jeden po jednom, a nahrát nové jeden po jednom. Jaká tragedie! Možná ale existuje myšlenka pro API jako takové v budoucnosti, uvidíme. Mimo tyto dvě věci, jsem docela spokojen s tím, jak toto skončilo. Myslím si, že džus stál za moštování, vzhledem k tomu, že jsem schopen hrát si s benefity tohoto skriptu do nekonečna. Výhra automatizace: Nekonečné zisky. Aspoň do té doby co se to poprvé rozbije, což nejspíše bude velmi brzy. No jo no. Přispívání Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na Discord aby jste začali!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-53/"},"url":"https://alt-f4.blog/ALTF4-53/","@type":"BlogPosting","headline":"Alt-F4 #53 - Lenost srkz automatizaci","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/53/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/53/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/cs/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/cs/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/cs/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/cs/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/cs/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/cs/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Komunitou tvořené pokračování našich milovaných "Factorio Friday Facts"</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-53/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button button-green lang-button" href="/cs/ALTF4-53/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-53/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-53/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-53/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-53/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-53/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-53/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-53/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-53/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #53 - Lenost srkz automatizaci  <author>26-11-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Napsal <em>Therenas</em>,
+
+
+
+upravil <em>stringweasel, Nanogamer7, Conor_, Firerazer, MyNameIsTrez</em>,
+
+
+
+<br>přeložil <em>oof2win2</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/53/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Obsah</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#lenost-zrkz-automatizaci-therenas">Lenost zrkz automatizaci <author>Therenas</author></a>
+    <ul>
+      <li><a href="#u%C5%BE-se-dosta%C5%88-k-screenshotov%C3%A1n%C3%AD">Už se dostaň k screenshotování!</a></li>
+    </ul>
+  </li>
+  <li><a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD">Přispívání</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Pro exkluzivní 53. vydání Alt-F4, velmistr <em>Therenas</em> se vrací, aby nás poctil s dalším článkem. Pokračující s jeho <a href="https://alt-f4.blog/cs/ALTF4-1/">minulými</a> <a href="https://alt-f4.blog/cs/ALTF4-17/">mistrovskými díly</a>, která mluví hlavně o jeho vlastních módech, zde je více slov o stejných tématech. Tyto slova zkoumají jak automaticky sbírat screenshoty v Factoriu. Musím ale varovat, jsou to 20% technických detailů, 40% filozofických otázek a 50% špatných vtipů. Čtete správně, sčítá se to do 110!</p>
+      <h2 id="lenost-zrkz-automatizaci-therenas">
+        
+        
+            <a href="#lenost-zrkz-automatizaci-therenas" class="anchor" style="text-decoration: none;">Lenost zrkz automatizaci <author>Therenas</author></a>
+          
+        
+      </h2>
+    
+
+<p>Často mám problémy děláním screenshotů pro <a href="https://mods.factorio.com/user/Therenas">své módy</a>. Je poměrně dost práce sestavit scenário, kde mód vypadá dobře <em>a zárověň</em> to vysvětluje hlavní koncept módu v vizuálním způsobu. Můj názor je, že mnoho módů nemá moc dobrých screenshotů, a není to protože autory módu to nezajímá, ale je prostě moc těžké vytvořit dobré fotky. Musí se do toho dát hodně úsilí s limitovanou možností ‘jazyku’, i když je obrázek hoden tisíc slov.</p>
+
+<p>Tak, i když to znělo poměrně fňukavě (což to je), opravdový problém není dělání fotek samotných. Je docela vpohodě nad nimi ztrávit pár hodin, poté co jste na módu samotném strávili pár desítky nebo i stovky hodin. Doopravdový problém je aktualizace fotek. Každý změna v módu by ideálně měla být ukázána v screenshotech, jejich aktualizace mi ukazuje způsob péče o mód. Možná jsem pouze puntičkář.</p>
+
+<p>Jak často musí být aktualizované je na samotném módu. Pokud jste <a href="https://mods.factorio.com/mod/Bottleneck">Bottleneck</a> a věci se často nemění, screenshoty nebudou staré. Pokud jste ale <a href="https://mods.factorio.com/mod/factoryplanner">poměrně komplexní GUI mód</a>, u kterého se každých pár vydání mění GUI, je to docela důležité. Ideálně pět minut ztrávených na UI by mělo být doprovozeno aktualizací screenshotů, ale to by vás nutilo dělat screenshoty déle než práci samotnou. Toto nikdo nechce dělat, a proto jsou screenshoty časem staré.</p>
+
+<p>Dále s tímto efektem je docela zlý cyklus lidksé psychologie. Pokud víte, že screenshoty budou muset být aktualizovány každou druhou aktualizaci, řeknete si, že je nebudete aktualizovat, pouze tentokrát. Příští aktualizace stejně bude mít nové změny, tak proč aktualizovat teď, vždýť to je ztráta času. Ale až když nová aktualizace přijde, stejná psychologie vás donutí znovu prokrastinovat. Pouze tentokrát. Toto se poté opakuje do nekonečna.</p>
+
+<p>Možná jsem pouze extrémně líný a většina lidí s tímto nemá žádné problémy. Prostě aktualizují jejich screenshoty na regulérní bázi, a proto budou většinu času správně. Ale já ne. V praxi, dovedlo mě to k aktualizaci screenshotů zhruba každých šest měsíců, když už. A vůbec, otravovalo mě, když nebyly aktualizovány, ale tendence říst ‘Udělám to příště’ byla přemohující a mnohem lehčí, než práci doopravdy udělat.</p>
+
+<p>Pořád jsem ale chtěl řešení. Potřeboval jsem řešení, pokud jsem chtěl opravit svou nutkavost mít aktualizované screenshoty. Nápad, že bych pracoval na sobě jako člověkovi, nešel dál než mumlání, to budu dělat příští týden. Zdálo se, že automatizace byla slíbená zem, jak se často stává.</p>
+
+<p>Již jsem automatizoval procesy týkající se vývoje módů, například proces <a href="https://github.com/ClaudeMetz/FactorioScripts/blob/5aab7569acdf86ff65167584638a3dd7323d2d0b/build_release.py">balíčkování</a> nových vydání a mikromanagement, který se toho týkal. V tomto případě to ani nebylo protože bych nechtěl dělat chyby pro všechny mé vydání (<a href="https://mods.factorio.com/mod/factoryplanner/downloads">169 a počítající</a> pro Factory Planner), bylo to spíše o prevenci chyb při tomto procesu, který by mohl dovést k rozbitým verzím u uživatelů a tak dále, což by bylo poměrně špatné.</p>
+      <h3 id="už-se-dostaň-k-screenshotování">
+        
+        
+            <a href="#u%C5%BE-se-dosta%C5%88-k-screenshotov%C3%A1n%C3%AD" class="anchor" style="text-decoration: none;">Už se dostaň k screenshotování!</a>
+          
+        
+      </h3>
+    
+
+<p>Jo, jo, dostaňme se k zábavné části. Můj nápad byl napsat <a href="https://github.com/ClaudeMetz/FactorioScripts/blob/5aab7569acdf86ff65167584638a3dd7323d2d0b/take_screenshots.py">Pythonový skript</a>, který by spustil Factorio do mého <a href="https://github.com/ClaudeMetz/FactoryPlanner/tree/master/scenarios/screenshotter">vlastního scenária</a>, který poté sám dělá screenshoty (pro což Factorio naštěstí má <a href="https://lua-api.factorio.com/latest/LuaGameScript.html#LuaGameScript.take_screenshot">dedikované API</a>), po čemž skript vloží screenshoty do správné složky a možná je trochu ořeže. První část je docela lehká, musím pouze zjistit jaké <a href="https://wiki.factorio.com/Command_line_parameters">commandlinové argumenty</a> jsem potřeboval, dostat je dohromady, a scenário již běželo. Zatím docela snadné.</p>
+
+<p>Samotné scenário je ale trochu komplikovanější. Abych mohl brát užitečné screenshoty, musel jsem sestavit několik GUI v několika fázích, které by ukazovaly funkcionalitu, kterou jsem chtěl ukázat. Dělání tohoto pro entity na mapě je mnohem jednodušší, protože můžete již využít API, které by jste při modování Factoria stejně užívali. Pro GUI, které jsou světem samotným, musíte ale přijít na kloub jinému systému.</p>
+
+<p>Největší problém je, že nejste schopni simulovat doopravdové klikání uživatele na vaše rozhraní. Hra nemá žádné API metody pro toto, protože to není nutné pro žádný mód. Co toto ale znamená, je, že musíte sami simulovat klikání myší. Toto je poměrně nešikovný způsob jak to dělat, protože pokud nedesignujete svůj mód od začátku, aby takto pracoval, nebo není velmi dobře strukturován, budete buďto muset přepsat váš snímač eventů, nebo využít poměrně zajímavé metody. Asi můžete vědět, jakou metodu jsem zvolil.</p>
+
+<p>Poté co jsem vyřešil <a href="https://github.com/ClaudeMetz/FactoryPlanner/blob/master/modfiles/data/handlers/screenshotter.lua">metody, které jsem chtěl využít</a>, celá tato kontrapce šla tak daleko až do zapnutí hry, nastavení interfacu pro zajímavé scenário, a začatí snímání fotek pro různé části UI. Musím poznamenat, že toto je poměrně nevyspělé řešení, a nejspíš se rozbije pokud budete měnit rozložení vašeho módu. V tomto scenáriu ale není moc alternativ, tak toto budu muset vydržet. Je mnohem větší zábava vytvářet hordy špagetykódu než manuální sběr screenshotů znovu a znovu, takže to je výhra jakýmkoli způsobem.</p>
+
+<p>Byl jsem docela šťastný s tím co jsem již udělal, stále to ale nebyla maximální automatizace. Pořád byla událost ořezávání screenshotů na menší velikost. Mnoho dialogů z módu Plánovač Továren je relativně malých, a hra v pozadí by byla pouze rozptylem. Mohl bych je ořezávat manuálně, ale nechtěl jsem. Byl jsem <em>trochu</em> líný. Měl jsem v pozadí hlavy potenciální řešení, ale potřebovalo by trochu špinavé práce.</p>
+
+<p>Hlavní nápad byl, poté co scénário dodělalo bratí fotek, také snímat velikost dialogů, kde fotky byly brány. Tato metadata poté mohla být také poslána do souboru, a Pythoní skript by je poté mohl využít na ořezání screenshotů na správnou velikost. Toto zní jako skvělý nápad v teorii, ale dostanete se do maličkatého problému v realitě: hra vás nenechá číst dimenze GUI oken, pouze je zapisovat.</p>
+
+<p>Toto je zakázáno z dobrého důvodu, protože tyto dimenze nejsou vždy deterministické, protože jiné jazyky hry mohou měnit velikosti různých elementů. Čtení a využití těchto nedetministických hodnot v multiplayer hře by mohlo vést k desynchronizacím, což by nechalo mód nekompatibilní s multiplayerem, a také s znovuhrou. Zní to jako slepá ulice. Byl jsem nucen manuálně ořezávat fotky? Nakonec ne.</p>
+
+<p>No, nebyl jsem schopen rozchodit, že čtení dimenzí potenciálně šlo k desynchronizacím, to je prostě jak hra funguje v základech. Nehrál jsem hru ale v multiplayeru abych tyto screenshoty sbíral, a je to tak, že jste schopni spustit hru v speciálním režimu, pojmenovaném <a href="https://lua-api.factorio.com/latest/Instrument.html">Instrumentální Režim</a>, který kompletně vypne multiplayer a zapne nějakou netestovanou funkcionalitu. Zní to jako perfektní místo, kam bych mohl přidat super-tajnou funkcionalitu, která mi dá přístup na zakázanou znalost dimenzí obrazu. Tak jsem se rozhodl, že to přidám. Práce pro Wube ve finále má své výhody.</p>
+
+<p>Po několika dnech, co jsem přidával hacky, monstrum nakonec zařvalo, a plně automatický způsob braní screenshotů pro mě byl zrozen. Vypadá to, plně automatizovaný způsob ale není zprávný. Nakonec to není plně automatizováno. Ovšem že není. Proč bych měl být plně šťastný? Jsou dva kroky, které budu muset dělat sám.</p>
+
+<p>První krok je vypnutí hry, poté co screenshoty jsou brány, aby Pythoní skripty mohly pořád běžět dále. Je to tak, že Factorio mód není schopen vypnou Factorio na plochu. To je kompletně pochopitelné, aby se zabránilo zneužití, i když by to byla hezká možnost v instrumentálním řežimu. Přesto, zmáčknutím kláves Alt-F4 (<em>ping</em>) v správném čase, je něco co nejspíše jsem schopen sám dát. Jedna z mých nekalých myšlenek byla metoda schození Factoria chybovou hláškou, ale problém je, že tyto chyby jsou velmi rychle opraveny.</p>
+
+<p>Druhá věc je upload těchto svěžích fotek na Factorio módový portál. Zatím neexistuje správné API na manipulaci portálu tímto způsobem, tak v tomto mám smůlu. Prozatím budu muset manuálně otevírat browser, smazat staré screenshoty jeden po jednom, a nahrát nové jeden po jednom. Jaká tragedie! Možná ale existuje myšlenka pro API jako takové v budoucnosti, uvidíme.</p>
+
+<p>Mimo tyto dvě věci, jsem docela spokojen s tím, jak toto skončilo. Myslím si, že džus stál za moštování, vzhledem k tomu, že jsem schopen hrát si s benefity tohoto skriptu do nekonečna. Výhra automatizace: <em>Nekonečné zisky</em>. Aspoň do té doby co se to poprvé rozbije, což nejspíše bude velmi brzy. No jo no.</p>
+      <h2 id="přispívání">
+        
+        
+            <a href="#p%C5%99isp%C3%ADv%C3%A1n%C3%AD" class="anchor" style="text-decoration: none;">Přispívání</a>
+          
+        
+      </h2>
+    
+
+<p>Jako vždy, hledáme lidi, kteří by chtěli přispět do Alt-F4, ať už příspěvem článku, nebo pomáháním s překlady. Pokud máte něco zajímavého na mysli a chtěli by jste se podělit s komunitou upraveným způsobem, toto je místo, kde můžete učinit. Pokud si nejse úplně jisti o tom, rádi vám pomůžeme diskuzí nápadů a strukturací otázek. Pokud se vám to líbí, přidejte se na <a href="https://alt-f4.blog/cs/discord">Discord</a> aby jste začali!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/cs/discord">
+    Diskutujte na Discordu
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/cs/ALTF4-52/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/cs/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/cs/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/cs/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/cs/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Tato webová stránka je čistě projektem fanoušků, není nijak přímo spojena s Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

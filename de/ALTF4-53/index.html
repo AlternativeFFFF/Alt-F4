@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #53 - Automatisierung und Faulheit</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #53 - Automatisierung und Faulheit">
+<meta name="author" content="Therenas">
+<meta property="og:locale" content="de">
+<meta name="description" content="Für den besten Platz im Haus, Ausgabe #53 von ALT-F4, feiern wir die Rückkehr von Großmeister Therenas mit einem neuen Artikel. Nachfolgend auf seine vorigen Meisterwerke, welche hauptsächlich von seinen eigenen Mods handelten, kommt jetzt noch ein weiterer Artikel über genau dasselbe. Es geht darum, wie automatisch Bildschirmaufnahmen im Spiel gemacht werden können. Bestehend aus nur 20% technischen Details, 40% tiefsinniger Philosophie und 50% schlechten Witzen. Ja, richtig gelesen, wir geben immer 110%. Faulheit durch Automatisierung Therenas Ich tue mich oft schwer damit, angemessene Bildschirmfotos für meine Mods aufzunehmen. Es ist viel Arbeit, ein Szenario aufzubauen, was sowohl gut aussieht, als auch das Kernkonzept der Mod bildlich erklärt. Meiner Meinung nach haben viele Mods keine guten Fotos, nicht weil es die Autoren nicht interessiert, sondern weil es sehr schwer ist, gute Fotos zu machen. Sie müssen viel Informationen in einer sehr limitierten “Sprache” rüberbringen, selbst wenn ein Bild mehr als 1000 Worte sagt. Nun klingt das ganze sehr nach Meckern auf hohem Niveau, was es ohne Zweifel ist. Das tatsächliche Problem ist es nicht, die Bildschirmfotos selber zu machen. Es ist in Ordnung, auf sie einige Stunden zu verwenden, nachdem man bereits Hunderte Stunden in seine Mod gesteckt hat. Das Problem ist es, sie aktuell zu halten. Jede Änderung in einer Mod sollte im Optimalfall auch in den Fotos repräsentiert sein. Veraltete Fotos erwecken für mich den Eindruck, dass die Autoren nicht sorgfältig sind, vielleicht bin ich aber auch nur einfach komisch. Wie oft sie aktualisiert werden müssen, hängt natürlich von der Mod ab. Wenn es um Bottleneck geht, was nicht viele Updates bekommt, werden auch die Fotos nicht so schnell veraltet sein. Wenn es aber um einen visuell komplexen GUI-Mod geht, verändert aber jedes Update das Interface Pixel für Pixel. Idealerweise sollte jede schnelle GUI-Reparatur mit neuen Fotos verbunden sein, aber das würde bedeuten, viel mehr Zeit für die Fotos aufzuwenden, als das tatsächliche Problem zu reparieren. Niemand hat darauf Lust, und die Fotos sind über die Zeit nicht mehr aktuell. Das führt leider dazu, dass es oft verschleppt wird. Wenn du weist, dass du deine Fotos aller paar Updates neu machen musst, denkst du dir, dass du es ja nur dieses eine Mal auslassen kannst, weil sich beim nächsten Mal ja wieder etwas ändert, also warum solltest du sie jetzt ändern. Wenn nun das nächste Update kommt, wird sich dasselbe Denkmuster wiederholen, so das du es noch einmal auslässt. Ein einziges Mal, nicht wieder. Das wiederholt sich nun bis in die Unendlichkeit. Vielleicht bin ich nur unglaublich faul, und andere haben damit kein Problem, sie updaten ihre Fotos einfach in regelmäßigen Abständen und halten sie so aktuell. Aber ich nicht. So ein Plan würde dazu führen, dass ich jedes halbe Jahr neue Bildschirmfotos mache, wenn es hochkommt. Es störte mich, dass sie nicht aktuell sind, aber die “das mache ich nächstes Mal”-Mentalität gewann trotzdem jedes Mal, wenn es darum ging, etwas zu tun, was in der nächsten Woche bereits wieder veraltet wäre. Ich wollte trotzdem eine Lösung. Ich brauchte eine Lösung, und wenn es nur dafür war, mich nicht mehr selbst dafür zu hassen, veraltete Fotos zu haben. Es sollte natürlich auch einfach sein. An mir als Mensch und meiner Person zu arbeiten, fiel raus, das wollte ich nächste Woche machen. Automatisierung schien wie immer wie das goldene Mittel, was es auch manchmal ist. Ich habe vorher bereits einige Schritte der Modentwicklung automatisiert, hauptsächlich den Bündelungsprozess, der zu jeder neuen Version gehört, und all die Kleinigkeiten, die noch dazugehören. In diesem Fall ging es Nichteinmal darum, das ich keine Lust hatte, für jede Version (aktuell 169 Stück für Factory Planner) dieselben Schritte immer wieder zu wiederholen, sondern eher darum, mich daran zu hindern, dabei Fehler zu machen, die dann dazu führen würden, das User am Ende fehlerhafte Versionen verwenden. Komm doch endlich mal zu den Bildschirmfotos! Na gut, na gut, dann kommen wir jetzt zum spaßigen Teil. Meine Idee war relativ simpel: Schreib ein Python-Script, welches Factorio in einem besonderen Szenario startet, welches dann das tatsächliche Aufnehmen der Bilder übernimmt (wofür es in Factorio glücklicherweise eine extra API-Funktion gibt) und danach die Bilder in den richtigen Ordner verschiebt und vielleicht noch etwas zuschneidet. Der erste Teil ist relativ einfach, ich muss nur herausfinden, welche Command Line Argumente ich brauche, sie aneinanderreihen und das Szenario läuft. Bisher nicht so schwer. Das tatsächliche Szenario ist dafür aber etwas schwieriger. Um inhaltsvolle Fotos aufzunehmen, muss ich verschiedene GUIs in verschiedenen Zuständen öffnen, um die Funktionalität zu zeigen, die ich wichtig finde. So etwas für Entitäten auf der Karte zu machen ist einfacher, da man dafür auf die ganzen APIs zurückgreifen kann, welche man normalerweise verwendet, um mit der Welt zu interagieren. GUIs sind aber ihr ganz eigenes Ding, wofür es keine fertigen Systeme gibt, du musst dir also selbst etwas ausdenken. Das größte Problem ist es, das man nicht simulieren kann, das der tatsächliche User irgendwo hinklickt. Das Spiel hat keine API-Funktionen dafür, da es für eine Mod nicht nötig ist. Das bedeutet aber, dass man irgendeinen Weg braucht, um Klicks zu emulieren. Das ist in der Regel schlecht, da entweder deine Mod von Anfang an darauf ausgelegt sein muss oder sehr gut strukturiert sein muss, da du sonst den Event Handler neuschreiben musst oder halt irgendwas zusammenpfuschts. Ihr könnt euch vielleicht denken, welchen Weg ich gewählt habe. Nachdem ich mich in meinen Pfusch reingefuchst habe, konnte die Konstruktion das Spiel starten, die Interfaces in interessanten Szenarien darstellen und Bilder machen. Ich muss an dieser Stelle darauf hinweisen, dass die ganze Sache eher gepfuscht ist und wahrscheinlich bei der nächsten Änderung komplett zerfällt. In diesem Fall gibt es aber nicht wirklich eine Alternative, so das ich mich erst mal damit zufriedengeben muss. Es macht sowieso viel mehr Spaß, einen großen Berg Spaghetti-Code zu produzieren, als jedes Mal die Bilder per Hand aufzunehmen, es ist also eine Win-Win-Situation. Ich war zufrieden mit dem, was ich bisher geschafft habe, aber das war noch nicht die maximale Automatisierungsstufe. Es gab immer noch die Aufgabe, die Bilder zuzuschneiden, da viele Dialoge in Factory Planner sehr klein sind und die Welt im Hintergrund vom wichtigen ablenkt. Ich könnte das zuschneiden von Hand machen, aber war dann irgendwie doch zu faul. Ich hatte schon eine Idee im Hinterkopf, allerdings würde das noch mehr Drecksarbeit bedeuten. Die grundlegende Idee war, während das Szenario Bilder aufnimmt, auch zu speichern, in welcher Größe die Dialoge dargestellt werden. Diese Metadaten könnten auch in eine Datei geschrieben werden und vom Pythonskript verwendet werden, um die Bilder automatisch zuzuschneiden. Das klingt in der Theorie nach einer guten Idee, hat aber in der Realität einen kleinen Haken: Das Spiel verbietet es, die Größe von GUI-Fenstern auszulesen, man darf sie nur schreiben. Das ist auch aus einem guten Grund verboten, da die Dimensionen nicht in jedem Fall deterministisch sind, da beispielsweise eine andere Sprache die Größe bestimmter Elemente verändern würde. Das Auslesen und Verwenden dieser teilweise nichtdeterministischen Werte in Multiplayerspielen würde zu Desyncs führen und die Mod Multiplayerinkompatibel machen. Das schien wie eine Sackgasse. War ich dazu verdammt, die Bilder per Hand zuzuschneiden? Es stellt sich heraus, glücklicherweise nicht. Nun konnte ich nicht das Problem lösen, dass das Auslesen der Dimensionen zu Desyncs führte, das ist einfach das grundlegende Prinzip des Spiels. Ich verwende das Spiel aber nicht im Multiplayermodus, um die Bilder zu machen, und es stellt sich heraus, man kann das Spiel im Instrument Mode starten, welcher den Multiplayer verhindert, dafür aber einige unsichere Funktionalitäten bereitstellt. Das scheint wie der perfekte Ort um eine streng geheime Methode einzuschleusen, die mir das verbotene Wissen über die Fensterdimensionen verrät. Also hab ich sie hinzugefügt. Bei Wube zu arbeiten hat auch seine Vorteile. Nach mehreren Tagen gepfusche erwachte meine Kreation endlich zu leben und nimmt vollautomatisch Bilder für mich auf. Wobei vollständig automatisch nicht ganz richtig ist. Es stellt sich heraus, dass es doch nicht vollständig ist. Natürlich nicht, warum sollte ich auch vollständig zufrieden sein können. Es gibt zwei Schritte, die ich noch selbst machen muss. Der erste ist, das Spiel zu schließen, damit das Pythonskript weitermachen kann. Es stellt sich heraus, eine Mod kann nicht dafür sorgen, dass das Spiel zum Desktop beendet wird. Das ist total verständlich, um Missbrauch zu verhindern, wäre aber trotzdem schön für den Instrument Mode. Allerdings ist zur richtigen Zeit Alt-F4 (ding) zu drücken etwas, was ich mir durchaus zutraue. Ein anderer Weg wäre, das Spiel absichtlich zum Absturz zu bringen. Ich hab euch gewarnt, hier ist nichts ordentlich. Das Problem damit ist, das es im Spiel nur sehr wenige Bugs gibt, und wenn neue gefunden werden, kann man sich darauf verlassen, das der Bug-Swatter sie sofort zerquetscht. Der zweite ist, die neuen Bilder auf Modportal hochzuladen. Es gibt im Moment keine richtige API, um mit dem Modportal zu interagieren, also hab ich da kein Glück. Aktuell muss ich meinen Browser öffnen, meine alten Bilder einzeln löschen und die neuen einzeln hochladen. Tragisch, ich weiß. Vielleicht gibt es Hoffnung für solch eine API in Zukunft, mal schauen. Abgesehen von diesen zwei Dingen bin ich durchaus mit meinem Ergebnis zufrieden. Ich glaube, es war den Aufwand wert, da ich den Nutzen in Zukunft unendlich lange herausziehen kann. Die Freuden der Automatisierung: unendlicher Nutzen. Zumindest bis es das erste Mal kaputt geht, was wahrscheinlich sehr bald sein wird. Na ja. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="Für den besten Platz im Haus, Ausgabe #53 von ALT-F4, feiern wir die Rückkehr von Großmeister Therenas mit einem neuen Artikel. Nachfolgend auf seine vorigen Meisterwerke, welche hauptsächlich von seinen eigenen Mods handelten, kommt jetzt noch ein weiterer Artikel über genau dasselbe. Es geht darum, wie automatisch Bildschirmaufnahmen im Spiel gemacht werden können. Bestehend aus nur 20% technischen Details, 40% tiefsinniger Philosophie und 50% schlechten Witzen. Ja, richtig gelesen, wir geben immer 110%. Faulheit durch Automatisierung Therenas Ich tue mich oft schwer damit, angemessene Bildschirmfotos für meine Mods aufzunehmen. Es ist viel Arbeit, ein Szenario aufzubauen, was sowohl gut aussieht, als auch das Kernkonzept der Mod bildlich erklärt. Meiner Meinung nach haben viele Mods keine guten Fotos, nicht weil es die Autoren nicht interessiert, sondern weil es sehr schwer ist, gute Fotos zu machen. Sie müssen viel Informationen in einer sehr limitierten “Sprache” rüberbringen, selbst wenn ein Bild mehr als 1000 Worte sagt. Nun klingt das ganze sehr nach Meckern auf hohem Niveau, was es ohne Zweifel ist. Das tatsächliche Problem ist es nicht, die Bildschirmfotos selber zu machen. Es ist in Ordnung, auf sie einige Stunden zu verwenden, nachdem man bereits Hunderte Stunden in seine Mod gesteckt hat. Das Problem ist es, sie aktuell zu halten. Jede Änderung in einer Mod sollte im Optimalfall auch in den Fotos repräsentiert sein. Veraltete Fotos erwecken für mich den Eindruck, dass die Autoren nicht sorgfältig sind, vielleicht bin ich aber auch nur einfach komisch. Wie oft sie aktualisiert werden müssen, hängt natürlich von der Mod ab. Wenn es um Bottleneck geht, was nicht viele Updates bekommt, werden auch die Fotos nicht so schnell veraltet sein. Wenn es aber um einen visuell komplexen GUI-Mod geht, verändert aber jedes Update das Interface Pixel für Pixel. Idealerweise sollte jede schnelle GUI-Reparatur mit neuen Fotos verbunden sein, aber das würde bedeuten, viel mehr Zeit für die Fotos aufzuwenden, als das tatsächliche Problem zu reparieren. Niemand hat darauf Lust, und die Fotos sind über die Zeit nicht mehr aktuell. Das führt leider dazu, dass es oft verschleppt wird. Wenn du weist, dass du deine Fotos aller paar Updates neu machen musst, denkst du dir, dass du es ja nur dieses eine Mal auslassen kannst, weil sich beim nächsten Mal ja wieder etwas ändert, also warum solltest du sie jetzt ändern. Wenn nun das nächste Update kommt, wird sich dasselbe Denkmuster wiederholen, so das du es noch einmal auslässt. Ein einziges Mal, nicht wieder. Das wiederholt sich nun bis in die Unendlichkeit. Vielleicht bin ich nur unglaublich faul, und andere haben damit kein Problem, sie updaten ihre Fotos einfach in regelmäßigen Abständen und halten sie so aktuell. Aber ich nicht. So ein Plan würde dazu führen, dass ich jedes halbe Jahr neue Bildschirmfotos mache, wenn es hochkommt. Es störte mich, dass sie nicht aktuell sind, aber die “das mache ich nächstes Mal”-Mentalität gewann trotzdem jedes Mal, wenn es darum ging, etwas zu tun, was in der nächsten Woche bereits wieder veraltet wäre. Ich wollte trotzdem eine Lösung. Ich brauchte eine Lösung, und wenn es nur dafür war, mich nicht mehr selbst dafür zu hassen, veraltete Fotos zu haben. Es sollte natürlich auch einfach sein. An mir als Mensch und meiner Person zu arbeiten, fiel raus, das wollte ich nächste Woche machen. Automatisierung schien wie immer wie das goldene Mittel, was es auch manchmal ist. Ich habe vorher bereits einige Schritte der Modentwicklung automatisiert, hauptsächlich den Bündelungsprozess, der zu jeder neuen Version gehört, und all die Kleinigkeiten, die noch dazugehören. In diesem Fall ging es Nichteinmal darum, das ich keine Lust hatte, für jede Version (aktuell 169 Stück für Factory Planner) dieselben Schritte immer wieder zu wiederholen, sondern eher darum, mich daran zu hindern, dabei Fehler zu machen, die dann dazu führen würden, das User am Ende fehlerhafte Versionen verwenden. Komm doch endlich mal zu den Bildschirmfotos! Na gut, na gut, dann kommen wir jetzt zum spaßigen Teil. Meine Idee war relativ simpel: Schreib ein Python-Script, welches Factorio in einem besonderen Szenario startet, welches dann das tatsächliche Aufnehmen der Bilder übernimmt (wofür es in Factorio glücklicherweise eine extra API-Funktion gibt) und danach die Bilder in den richtigen Ordner verschiebt und vielleicht noch etwas zuschneidet. Der erste Teil ist relativ einfach, ich muss nur herausfinden, welche Command Line Argumente ich brauche, sie aneinanderreihen und das Szenario läuft. Bisher nicht so schwer. Das tatsächliche Szenario ist dafür aber etwas schwieriger. Um inhaltsvolle Fotos aufzunehmen, muss ich verschiedene GUIs in verschiedenen Zuständen öffnen, um die Funktionalität zu zeigen, die ich wichtig finde. So etwas für Entitäten auf der Karte zu machen ist einfacher, da man dafür auf die ganzen APIs zurückgreifen kann, welche man normalerweise verwendet, um mit der Welt zu interagieren. GUIs sind aber ihr ganz eigenes Ding, wofür es keine fertigen Systeme gibt, du musst dir also selbst etwas ausdenken. Das größte Problem ist es, das man nicht simulieren kann, das der tatsächliche User irgendwo hinklickt. Das Spiel hat keine API-Funktionen dafür, da es für eine Mod nicht nötig ist. Das bedeutet aber, dass man irgendeinen Weg braucht, um Klicks zu emulieren. Das ist in der Regel schlecht, da entweder deine Mod von Anfang an darauf ausgelegt sein muss oder sehr gut strukturiert sein muss, da du sonst den Event Handler neuschreiben musst oder halt irgendwas zusammenpfuschts. Ihr könnt euch vielleicht denken, welchen Weg ich gewählt habe. Nachdem ich mich in meinen Pfusch reingefuchst habe, konnte die Konstruktion das Spiel starten, die Interfaces in interessanten Szenarien darstellen und Bilder machen. Ich muss an dieser Stelle darauf hinweisen, dass die ganze Sache eher gepfuscht ist und wahrscheinlich bei der nächsten Änderung komplett zerfällt. In diesem Fall gibt es aber nicht wirklich eine Alternative, so das ich mich erst mal damit zufriedengeben muss. Es macht sowieso viel mehr Spaß, einen großen Berg Spaghetti-Code zu produzieren, als jedes Mal die Bilder per Hand aufzunehmen, es ist also eine Win-Win-Situation. Ich war zufrieden mit dem, was ich bisher geschafft habe, aber das war noch nicht die maximale Automatisierungsstufe. Es gab immer noch die Aufgabe, die Bilder zuzuschneiden, da viele Dialoge in Factory Planner sehr klein sind und die Welt im Hintergrund vom wichtigen ablenkt. Ich könnte das zuschneiden von Hand machen, aber war dann irgendwie doch zu faul. Ich hatte schon eine Idee im Hinterkopf, allerdings würde das noch mehr Drecksarbeit bedeuten. Die grundlegende Idee war, während das Szenario Bilder aufnimmt, auch zu speichern, in welcher Größe die Dialoge dargestellt werden. Diese Metadaten könnten auch in eine Datei geschrieben werden und vom Pythonskript verwendet werden, um die Bilder automatisch zuzuschneiden. Das klingt in der Theorie nach einer guten Idee, hat aber in der Realität einen kleinen Haken: Das Spiel verbietet es, die Größe von GUI-Fenstern auszulesen, man darf sie nur schreiben. Das ist auch aus einem guten Grund verboten, da die Dimensionen nicht in jedem Fall deterministisch sind, da beispielsweise eine andere Sprache die Größe bestimmter Elemente verändern würde. Das Auslesen und Verwenden dieser teilweise nichtdeterministischen Werte in Multiplayerspielen würde zu Desyncs führen und die Mod Multiplayerinkompatibel machen. Das schien wie eine Sackgasse. War ich dazu verdammt, die Bilder per Hand zuzuschneiden? Es stellt sich heraus, glücklicherweise nicht. Nun konnte ich nicht das Problem lösen, dass das Auslesen der Dimensionen zu Desyncs führte, das ist einfach das grundlegende Prinzip des Spiels. Ich verwende das Spiel aber nicht im Multiplayermodus, um die Bilder zu machen, und es stellt sich heraus, man kann das Spiel im Instrument Mode starten, welcher den Multiplayer verhindert, dafür aber einige unsichere Funktionalitäten bereitstellt. Das scheint wie der perfekte Ort um eine streng geheime Methode einzuschleusen, die mir das verbotene Wissen über die Fensterdimensionen verrät. Also hab ich sie hinzugefügt. Bei Wube zu arbeiten hat auch seine Vorteile. Nach mehreren Tagen gepfusche erwachte meine Kreation endlich zu leben und nimmt vollautomatisch Bilder für mich auf. Wobei vollständig automatisch nicht ganz richtig ist. Es stellt sich heraus, dass es doch nicht vollständig ist. Natürlich nicht, warum sollte ich auch vollständig zufrieden sein können. Es gibt zwei Schritte, die ich noch selbst machen muss. Der erste ist, das Spiel zu schließen, damit das Pythonskript weitermachen kann. Es stellt sich heraus, eine Mod kann nicht dafür sorgen, dass das Spiel zum Desktop beendet wird. Das ist total verständlich, um Missbrauch zu verhindern, wäre aber trotzdem schön für den Instrument Mode. Allerdings ist zur richtigen Zeit Alt-F4 (ding) zu drücken etwas, was ich mir durchaus zutraue. Ein anderer Weg wäre, das Spiel absichtlich zum Absturz zu bringen. Ich hab euch gewarnt, hier ist nichts ordentlich. Das Problem damit ist, das es im Spiel nur sehr wenige Bugs gibt, und wenn neue gefunden werden, kann man sich darauf verlassen, das der Bug-Swatter sie sofort zerquetscht. Der zweite ist, die neuen Bilder auf Modportal hochzuladen. Es gibt im Moment keine richtige API, um mit dem Modportal zu interagieren, also hab ich da kein Glück. Aktuell muss ich meinen Browser öffnen, meine alten Bilder einzeln löschen und die neuen einzeln hochladen. Tragisch, ich weiß. Vielleicht gibt es Hoffnung für solch eine API in Zukunft, mal schauen. Abgesehen von diesen zwei Dingen bin ich durchaus mit meinem Ergebnis zufrieden. Ich glaube, es war den Aufwand wert, da ich den Nutzen in Zukunft unendlich lange herausziehen kann. Die Freuden der Automatisierung: unendlicher Nutzen. Zumindest bis es das erste Mal kaputt geht, was wahrscheinlich sehr bald sein wird. Na ja. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-53/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-53/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-11-26T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-11-26T00:00:00+00:00","datePublished":"2021-11-26T00:00:00+00:00","author":{"@type":"Person","name":"Therenas"},"description":"Für den besten Platz im Haus, Ausgabe #53 von ALT-F4, feiern wir die Rückkehr von Großmeister Therenas mit einem neuen Artikel. Nachfolgend auf seine vorigen Meisterwerke, welche hauptsächlich von seinen eigenen Mods handelten, kommt jetzt noch ein weiterer Artikel über genau dasselbe. Es geht darum, wie automatisch Bildschirmaufnahmen im Spiel gemacht werden können. Bestehend aus nur 20% technischen Details, 40% tiefsinniger Philosophie und 50% schlechten Witzen. Ja, richtig gelesen, wir geben immer 110%. Faulheit durch Automatisierung Therenas Ich tue mich oft schwer damit, angemessene Bildschirmfotos für meine Mods aufzunehmen. Es ist viel Arbeit, ein Szenario aufzubauen, was sowohl gut aussieht, als auch das Kernkonzept der Mod bildlich erklärt. Meiner Meinung nach haben viele Mods keine guten Fotos, nicht weil es die Autoren nicht interessiert, sondern weil es sehr schwer ist, gute Fotos zu machen. Sie müssen viel Informationen in einer sehr limitierten “Sprache” rüberbringen, selbst wenn ein Bild mehr als 1000 Worte sagt. Nun klingt das ganze sehr nach Meckern auf hohem Niveau, was es ohne Zweifel ist. Das tatsächliche Problem ist es nicht, die Bildschirmfotos selber zu machen. Es ist in Ordnung, auf sie einige Stunden zu verwenden, nachdem man bereits Hunderte Stunden in seine Mod gesteckt hat. Das Problem ist es, sie aktuell zu halten. Jede Änderung in einer Mod sollte im Optimalfall auch in den Fotos repräsentiert sein. Veraltete Fotos erwecken für mich den Eindruck, dass die Autoren nicht sorgfältig sind, vielleicht bin ich aber auch nur einfach komisch. Wie oft sie aktualisiert werden müssen, hängt natürlich von der Mod ab. Wenn es um Bottleneck geht, was nicht viele Updates bekommt, werden auch die Fotos nicht so schnell veraltet sein. Wenn es aber um einen visuell komplexen GUI-Mod geht, verändert aber jedes Update das Interface Pixel für Pixel. Idealerweise sollte jede schnelle GUI-Reparatur mit neuen Fotos verbunden sein, aber das würde bedeuten, viel mehr Zeit für die Fotos aufzuwenden, als das tatsächliche Problem zu reparieren. Niemand hat darauf Lust, und die Fotos sind über die Zeit nicht mehr aktuell. Das führt leider dazu, dass es oft verschleppt wird. Wenn du weist, dass du deine Fotos aller paar Updates neu machen musst, denkst du dir, dass du es ja nur dieses eine Mal auslassen kannst, weil sich beim nächsten Mal ja wieder etwas ändert, also warum solltest du sie jetzt ändern. Wenn nun das nächste Update kommt, wird sich dasselbe Denkmuster wiederholen, so das du es noch einmal auslässt. Ein einziges Mal, nicht wieder. Das wiederholt sich nun bis in die Unendlichkeit. Vielleicht bin ich nur unglaublich faul, und andere haben damit kein Problem, sie updaten ihre Fotos einfach in regelmäßigen Abständen und halten sie so aktuell. Aber ich nicht. So ein Plan würde dazu führen, dass ich jedes halbe Jahr neue Bildschirmfotos mache, wenn es hochkommt. Es störte mich, dass sie nicht aktuell sind, aber die “das mache ich nächstes Mal”-Mentalität gewann trotzdem jedes Mal, wenn es darum ging, etwas zu tun, was in der nächsten Woche bereits wieder veraltet wäre. Ich wollte trotzdem eine Lösung. Ich brauchte eine Lösung, und wenn es nur dafür war, mich nicht mehr selbst dafür zu hassen, veraltete Fotos zu haben. Es sollte natürlich auch einfach sein. An mir als Mensch und meiner Person zu arbeiten, fiel raus, das wollte ich nächste Woche machen. Automatisierung schien wie immer wie das goldene Mittel, was es auch manchmal ist. Ich habe vorher bereits einige Schritte der Modentwicklung automatisiert, hauptsächlich den Bündelungsprozess, der zu jeder neuen Version gehört, und all die Kleinigkeiten, die noch dazugehören. In diesem Fall ging es Nichteinmal darum, das ich keine Lust hatte, für jede Version (aktuell 169 Stück für Factory Planner) dieselben Schritte immer wieder zu wiederholen, sondern eher darum, mich daran zu hindern, dabei Fehler zu machen, die dann dazu führen würden, das User am Ende fehlerhafte Versionen verwenden. Komm doch endlich mal zu den Bildschirmfotos! Na gut, na gut, dann kommen wir jetzt zum spaßigen Teil. Meine Idee war relativ simpel: Schreib ein Python-Script, welches Factorio in einem besonderen Szenario startet, welches dann das tatsächliche Aufnehmen der Bilder übernimmt (wofür es in Factorio glücklicherweise eine extra API-Funktion gibt) und danach die Bilder in den richtigen Ordner verschiebt und vielleicht noch etwas zuschneidet. Der erste Teil ist relativ einfach, ich muss nur herausfinden, welche Command Line Argumente ich brauche, sie aneinanderreihen und das Szenario läuft. Bisher nicht so schwer. Das tatsächliche Szenario ist dafür aber etwas schwieriger. Um inhaltsvolle Fotos aufzunehmen, muss ich verschiedene GUIs in verschiedenen Zuständen öffnen, um die Funktionalität zu zeigen, die ich wichtig finde. So etwas für Entitäten auf der Karte zu machen ist einfacher, da man dafür auf die ganzen APIs zurückgreifen kann, welche man normalerweise verwendet, um mit der Welt zu interagieren. GUIs sind aber ihr ganz eigenes Ding, wofür es keine fertigen Systeme gibt, du musst dir also selbst etwas ausdenken. Das größte Problem ist es, das man nicht simulieren kann, das der tatsächliche User irgendwo hinklickt. Das Spiel hat keine API-Funktionen dafür, da es für eine Mod nicht nötig ist. Das bedeutet aber, dass man irgendeinen Weg braucht, um Klicks zu emulieren. Das ist in der Regel schlecht, da entweder deine Mod von Anfang an darauf ausgelegt sein muss oder sehr gut strukturiert sein muss, da du sonst den Event Handler neuschreiben musst oder halt irgendwas zusammenpfuschts. Ihr könnt euch vielleicht denken, welchen Weg ich gewählt habe. Nachdem ich mich in meinen Pfusch reingefuchst habe, konnte die Konstruktion das Spiel starten, die Interfaces in interessanten Szenarien darstellen und Bilder machen. Ich muss an dieser Stelle darauf hinweisen, dass die ganze Sache eher gepfuscht ist und wahrscheinlich bei der nächsten Änderung komplett zerfällt. In diesem Fall gibt es aber nicht wirklich eine Alternative, so das ich mich erst mal damit zufriedengeben muss. Es macht sowieso viel mehr Spaß, einen großen Berg Spaghetti-Code zu produzieren, als jedes Mal die Bilder per Hand aufzunehmen, es ist also eine Win-Win-Situation. Ich war zufrieden mit dem, was ich bisher geschafft habe, aber das war noch nicht die maximale Automatisierungsstufe. Es gab immer noch die Aufgabe, die Bilder zuzuschneiden, da viele Dialoge in Factory Planner sehr klein sind und die Welt im Hintergrund vom wichtigen ablenkt. Ich könnte das zuschneiden von Hand machen, aber war dann irgendwie doch zu faul. Ich hatte schon eine Idee im Hinterkopf, allerdings würde das noch mehr Drecksarbeit bedeuten. Die grundlegende Idee war, während das Szenario Bilder aufnimmt, auch zu speichern, in welcher Größe die Dialoge dargestellt werden. Diese Metadaten könnten auch in eine Datei geschrieben werden und vom Pythonskript verwendet werden, um die Bilder automatisch zuzuschneiden. Das klingt in der Theorie nach einer guten Idee, hat aber in der Realität einen kleinen Haken: Das Spiel verbietet es, die Größe von GUI-Fenstern auszulesen, man darf sie nur schreiben. Das ist auch aus einem guten Grund verboten, da die Dimensionen nicht in jedem Fall deterministisch sind, da beispielsweise eine andere Sprache die Größe bestimmter Elemente verändern würde. Das Auslesen und Verwenden dieser teilweise nichtdeterministischen Werte in Multiplayerspielen würde zu Desyncs führen und die Mod Multiplayerinkompatibel machen. Das schien wie eine Sackgasse. War ich dazu verdammt, die Bilder per Hand zuzuschneiden? Es stellt sich heraus, glücklicherweise nicht. Nun konnte ich nicht das Problem lösen, dass das Auslesen der Dimensionen zu Desyncs führte, das ist einfach das grundlegende Prinzip des Spiels. Ich verwende das Spiel aber nicht im Multiplayermodus, um die Bilder zu machen, und es stellt sich heraus, man kann das Spiel im Instrument Mode starten, welcher den Multiplayer verhindert, dafür aber einige unsichere Funktionalitäten bereitstellt. Das scheint wie der perfekte Ort um eine streng geheime Methode einzuschleusen, die mir das verbotene Wissen über die Fensterdimensionen verrät. Also hab ich sie hinzugefügt. Bei Wube zu arbeiten hat auch seine Vorteile. Nach mehreren Tagen gepfusche erwachte meine Kreation endlich zu leben und nimmt vollautomatisch Bilder für mich auf. Wobei vollständig automatisch nicht ganz richtig ist. Es stellt sich heraus, dass es doch nicht vollständig ist. Natürlich nicht, warum sollte ich auch vollständig zufrieden sein können. Es gibt zwei Schritte, die ich noch selbst machen muss. Der erste ist, das Spiel zu schließen, damit das Pythonskript weitermachen kann. Es stellt sich heraus, eine Mod kann nicht dafür sorgen, dass das Spiel zum Desktop beendet wird. Das ist total verständlich, um Missbrauch zu verhindern, wäre aber trotzdem schön für den Instrument Mode. Allerdings ist zur richtigen Zeit Alt-F4 (ding) zu drücken etwas, was ich mir durchaus zutraue. Ein anderer Weg wäre, das Spiel absichtlich zum Absturz zu bringen. Ich hab euch gewarnt, hier ist nichts ordentlich. Das Problem damit ist, das es im Spiel nur sehr wenige Bugs gibt, und wenn neue gefunden werden, kann man sich darauf verlassen, das der Bug-Swatter sie sofort zerquetscht. Der zweite ist, die neuen Bilder auf Modportal hochzuladen. Es gibt im Moment keine richtige API, um mit dem Modportal zu interagieren, also hab ich da kein Glück. Aktuell muss ich meinen Browser öffnen, meine alten Bilder einzeln löschen und die neuen einzeln hochladen. Tragisch, ich weiß. Vielleicht gibt es Hoffnung für solch eine API in Zukunft, mal schauen. Abgesehen von diesen zwei Dingen bin ich durchaus mit meinem Ergebnis zufrieden. Ich glaube, es war den Aufwand wert, da ich den Nutzen in Zukunft unendlich lange herausziehen kann. Die Freuden der Automatisierung: unendlicher Nutzen. Zumindest bis es das erste Mal kaputt geht, was wahrscheinlich sehr bald sein wird. Na ja. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-53/"},"url":"https://alt-f4.blog/ALTF4-53/","@type":"BlogPosting","headline":"Alt-F4 #53 - Automatisierung und Faulheit","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/53/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/53/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/de/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-53/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-53/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-53/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-53/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-53/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-53/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-53/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-53/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-53/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-53/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #53 - Automatisierung und Faulheit  <author>26.11.2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>Therenas</em>,
+
+
+
+editiert von <em>stringweasel, Nanogamer7, Conor_, Firerazer, MyNameIsTrez</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS</em>,
+
+
+
+lektoriert von <em>marceljoint</em>
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/53/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhaltsverzeichnis</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#faulheit-durch-automatisierung-therenas">Faulheit durch Automatisierung <author>Therenas</author></a>
+    <ul>
+      <li><a href="#komm-doch-endlich-mal-zu-den-bildschirmfotos">Komm doch endlich mal zu den Bildschirmfotos!</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Für den besten Platz im Haus, Ausgabe #53 von ALT-F4, feiern wir die Rückkehr von Großmeister <em>Therenas</em> mit einem neuen Artikel. Nachfolgend auf seine <a href="https://alt-f4.blog/de/ALTF4-1/">vorigen</a> <a href="https://alt-f4.blog/de/ALTF4-17/">Meisterwerke</a>, welche hauptsächlich von seinen eigenen Mods handelten, kommt jetzt noch ein weiterer Artikel über genau dasselbe. Es geht darum, wie automatisch Bildschirmaufnahmen im Spiel gemacht werden können. Bestehend aus nur 20% technischen Details, 40% tiefsinniger Philosophie und 50% schlechten Witzen. Ja, richtig gelesen, wir geben immer 110%.</p>
+      <h2 id="faulheit-durch-automatisierung-therenas">
+        
+        
+            <a href="#faulheit-durch-automatisierung-therenas" class="anchor" style="text-decoration: none;">Faulheit durch Automatisierung <author>Therenas</author></a>
+          
+        
+      </h2>
+    
+
+<p>Ich tue mich oft schwer damit, angemessene Bildschirmfotos für meine <a href="https://mods.factorio.com/user/Therenas">Mods</a> aufzunehmen. Es ist viel Arbeit, ein Szenario aufzubauen, was sowohl gut aussieht, als auch das Kernkonzept der Mod bildlich erklärt. Meiner Meinung nach haben viele Mods keine guten Fotos, nicht weil es die Autoren nicht interessiert, sondern weil es sehr schwer ist, gute Fotos zu machen. Sie müssen viel Informationen in einer sehr limitierten “Sprache” rüberbringen, selbst wenn ein Bild mehr als 1000 Worte sagt.</p>
+
+<p>Nun klingt das ganze sehr nach Meckern auf hohem Niveau, was es ohne Zweifel ist. Das tatsächliche Problem ist es nicht, die Bildschirmfotos selber zu machen. Es ist in Ordnung, auf sie einige Stunden zu verwenden, nachdem man bereits Hunderte Stunden in seine Mod gesteckt hat. Das Problem ist es, sie aktuell zu halten. Jede Änderung in einer Mod sollte im Optimalfall auch in den Fotos repräsentiert sein. Veraltete Fotos erwecken für mich den Eindruck, dass die Autoren nicht sorgfältig sind, vielleicht bin ich aber auch nur einfach komisch.</p>
+
+<p>Wie oft sie aktualisiert werden müssen, hängt natürlich von der Mod ab. Wenn es um <a href="https://mods.factorio.com/mod/Bottleneck">Bottleneck</a> geht, was nicht viele Updates bekommt, werden auch die Fotos nicht so schnell veraltet sein. Wenn es aber um einen <a href="https://mods.factorio.com/mod/factoryplanner">visuell komplexen GUI-Mod</a> geht, verändert aber jedes Update das Interface Pixel für Pixel. Idealerweise sollte jede schnelle GUI-Reparatur mit neuen Fotos verbunden sein, aber das würde bedeuten, viel mehr Zeit für die Fotos aufzuwenden, als das tatsächliche Problem zu reparieren. Niemand hat darauf Lust, und die Fotos sind über die Zeit nicht mehr aktuell.</p>
+
+<p>Das führt leider dazu, dass es oft verschleppt wird. Wenn du weist, dass du deine Fotos aller paar Updates neu machen musst, denkst du dir, dass du es ja nur dieses eine Mal auslassen kannst, weil sich beim nächsten Mal ja wieder etwas ändert, also warum solltest du sie jetzt ändern. Wenn nun das nächste Update kommt, wird sich dasselbe Denkmuster wiederholen, so das du es noch einmal auslässt. Ein einziges Mal, nicht wieder. Das wiederholt sich nun bis in die Unendlichkeit.</p>
+
+<p>Vielleicht bin ich nur unglaublich faul, und andere haben damit kein Problem, sie updaten ihre Fotos einfach in regelmäßigen Abständen und halten sie so aktuell. Aber ich nicht. So ein Plan würde dazu führen, dass ich jedes halbe Jahr neue Bildschirmfotos mache, wenn es hochkommt. Es störte mich, dass sie nicht aktuell sind, aber die “das mache ich nächstes Mal”-Mentalität gewann trotzdem jedes Mal, wenn es darum ging, etwas zu tun, was in der nächsten Woche bereits wieder veraltet wäre.</p>
+
+<p>Ich wollte trotzdem eine Lösung. Ich brauchte eine Lösung, und wenn es nur dafür war, mich nicht mehr selbst dafür zu hassen, veraltete Fotos zu haben. Es sollte natürlich auch einfach sein. An mir als Mensch und meiner Person zu arbeiten, fiel raus, das wollte ich nächste Woche machen. Automatisierung schien wie immer wie das goldene Mittel, was es auch manchmal ist.</p>
+
+<p>Ich habe vorher bereits einige Schritte der Modentwicklung automatisiert, hauptsächlich den <a href="https://github.com/ClaudeMetz/FactorioScripts/blob/5aab7569acdf86ff65167584638a3dd7323d2d0b/build_release.py">Bündelungsprozess</a>, der zu jeder neuen Version gehört, und all die Kleinigkeiten, die noch dazugehören. In diesem Fall ging es Nichteinmal darum, das ich keine Lust hatte, für jede Version (aktuell <a href="https://mods.factorio.com/mod/factoryplanner/downloads">169</a> Stück für Factory Planner) dieselben Schritte immer wieder zu wiederholen, sondern eher darum, mich daran zu hindern, dabei Fehler zu machen, die dann dazu führen würden, das User am Ende fehlerhafte Versionen verwenden.</p>
+      <h3 id="komm-doch-endlich-mal-zu-den-bildschirmfotos">
+        
+        
+            <a href="#komm-doch-endlich-mal-zu-den-bildschirmfotos" class="anchor" style="text-decoration: none;">Komm doch endlich mal zu den Bildschirmfotos!</a>
+          
+        
+      </h3>
+    
+
+<p>Na gut, na gut, dann kommen wir jetzt zum spaßigen Teil. Meine Idee war relativ simpel: Schreib ein <a href="https://github.com/ClaudeMetz/FactorioScripts/blob/5aab7569acdf86ff65167584638a3dd7323d2d0b/take_screenshots.py">Python-Script</a>, welches Factorio in einem <a href="https://github.com/ClaudeMetz/FactoryPlanner/tree/master/scenarios/screenshotter">besonderen Szenario</a> startet, welches dann das tatsächliche Aufnehmen der Bilder übernimmt (wofür es in Factorio glücklicherweise eine extra <a href="https://lua-api.factorio.com/latest/LuaGameScript.html#LuaGameScript.take_screenshot">API-Funktion</a> gibt) und danach die Bilder in den richtigen Ordner verschiebt und vielleicht noch etwas zuschneidet. Der erste Teil ist relativ einfach, ich muss nur herausfinden, welche <a href="https://wiki.factorio.com/Command_line_parameters">Command Line Argumente</a> ich brauche, sie aneinanderreihen und das Szenario läuft. Bisher nicht so schwer.</p>
+
+<p>Das tatsächliche Szenario ist dafür aber etwas schwieriger. Um inhaltsvolle Fotos aufzunehmen, muss ich verschiedene GUIs in verschiedenen Zuständen öffnen, um die Funktionalität zu zeigen, die ich wichtig finde. So etwas für Entitäten auf der Karte zu machen ist einfacher, da man dafür auf die ganzen APIs zurückgreifen kann, welche man normalerweise verwendet, um mit der Welt zu interagieren. GUIs sind aber ihr ganz eigenes Ding, wofür es keine fertigen Systeme gibt, du musst dir also selbst etwas ausdenken.</p>
+
+<p>Das größte Problem ist es, das man nicht simulieren kann, das der tatsächliche User irgendwo hinklickt. Das Spiel hat keine API-Funktionen dafür, da es für eine Mod nicht nötig ist. Das bedeutet aber, dass man irgendeinen Weg braucht, um Klicks zu emulieren. Das ist in der Regel schlecht, da entweder deine Mod von Anfang an darauf ausgelegt sein muss oder sehr gut strukturiert sein muss, da du sonst den Event Handler neuschreiben musst oder halt irgendwas zusammenpfuschts. Ihr könnt euch vielleicht denken, welchen Weg ich gewählt habe.</p>
+
+<p>Nachdem ich mich in meinen <a href="https://github.com/ClaudeMetz/FactoryPlanner/blob/master/modfiles/data/handlers/screenshotter.lua">Pfusch</a> reingefuchst habe, konnte die Konstruktion das Spiel starten, die Interfaces in interessanten Szenarien darstellen und Bilder machen. Ich muss an dieser Stelle darauf hinweisen, dass die ganze Sache eher gepfuscht ist und wahrscheinlich bei der nächsten Änderung komplett zerfällt. In diesem Fall gibt es aber nicht wirklich eine Alternative, so das ich mich erst mal damit zufriedengeben muss. Es macht sowieso viel mehr Spaß, einen großen Berg Spaghetti-Code zu produzieren, als jedes Mal die Bilder per Hand aufzunehmen, es ist also eine Win-Win-Situation.</p>
+
+<p>Ich war zufrieden mit dem, was ich bisher geschafft habe, aber das war noch nicht die maximale Automatisierungsstufe. Es gab immer noch die Aufgabe, die Bilder zuzuschneiden, da viele Dialoge in Factory Planner sehr klein sind und die Welt im Hintergrund vom wichtigen ablenkt. Ich könnte das zuschneiden von Hand machen, aber war dann irgendwie doch zu faul. Ich hatte schon eine Idee im Hinterkopf, allerdings würde das noch mehr Drecksarbeit bedeuten.</p>
+
+<p>Die grundlegende Idee war, während das Szenario Bilder aufnimmt, auch zu speichern, in welcher Größe die Dialoge dargestellt werden. Diese Metadaten könnten auch in eine Datei geschrieben werden und vom Pythonskript verwendet werden, um die Bilder automatisch zuzuschneiden. Das klingt in der Theorie nach einer guten Idee, hat aber in der Realität einen kleinen Haken: Das Spiel verbietet es, die Größe von GUI-Fenstern auszulesen, man darf sie nur schreiben.</p>
+
+<p>Das ist auch aus einem guten Grund verboten, da die Dimensionen nicht in jedem Fall deterministisch sind, da beispielsweise eine andere Sprache die Größe bestimmter Elemente verändern würde. Das Auslesen und Verwenden dieser teilweise nichtdeterministischen Werte in Multiplayerspielen würde zu Desyncs führen und die Mod Multiplayerinkompatibel machen. Das schien wie eine Sackgasse. War ich dazu verdammt, die Bilder per Hand zuzuschneiden? Es stellt sich heraus, glücklicherweise nicht.</p>
+
+<p>Nun konnte ich nicht das Problem lösen, dass das Auslesen der Dimensionen zu Desyncs führte, das ist einfach das grundlegende Prinzip des Spiels. Ich verwende das Spiel aber nicht im Multiplayermodus, um die Bilder zu machen, und es stellt sich heraus, man kann das Spiel im <a href="https://lua-api.factorio.com/latest/Instrument.html">Instrument Mode</a> starten, welcher den Multiplayer verhindert, dafür aber einige unsichere Funktionalitäten bereitstellt. Das scheint wie der perfekte Ort um eine streng geheime Methode einzuschleusen, die mir das verbotene Wissen über die Fensterdimensionen verrät. Also hab ich sie hinzugefügt. Bei Wube zu arbeiten hat auch seine Vorteile.</p>
+
+<p>Nach mehreren Tagen gepfusche erwachte meine Kreation endlich zu leben und nimmt vollautomatisch Bilder für mich auf. Wobei <em>vollständig</em> automatisch nicht ganz richtig ist. Es stellt sich heraus, dass es doch nicht vollständig ist. Natürlich nicht, warum sollte ich auch <em>vollständig</em> zufrieden sein können. Es gibt zwei Schritte, die ich noch selbst machen muss.</p>
+
+<p>Der erste ist, das Spiel zu schließen, damit das Pythonskript weitermachen kann. Es stellt sich heraus, eine Mod kann nicht dafür sorgen, dass das Spiel zum Desktop beendet wird. Das ist total verständlich, um Missbrauch zu verhindern, wäre aber trotzdem schön für den Instrument Mode. Allerdings ist zur richtigen Zeit Alt-F4 (<em>ding</em>) zu drücken etwas, was ich mir durchaus zutraue. Ein anderer Weg wäre, das Spiel absichtlich zum Absturz zu bringen. Ich hab euch gewarnt, hier ist nichts ordentlich. Das Problem damit ist, das es im Spiel nur sehr wenige Bugs gibt, und wenn neue gefunden werden, kann man sich darauf verlassen, das der Bug-Swatter sie sofort zerquetscht.</p>
+
+<p>Der zweite ist, die neuen Bilder auf Modportal hochzuladen. Es gibt im Moment keine richtige API, um mit dem Modportal zu interagieren, also hab ich da kein Glück. Aktuell muss ich meinen Browser öffnen, meine alten Bilder einzeln löschen und die neuen einzeln hochladen. Tragisch, ich weiß. Vielleicht gibt es Hoffnung für solch eine API in Zukunft, mal schauen.</p>
+
+<p>Abgesehen von diesen zwei Dingen bin ich durchaus mit meinem Ergebnis zufrieden. Ich glaube, es war den Aufwand wert, da ich den Nutzen in Zukunft unendlich lange herausziehen kann. Die Freuden der Automatisierung: <em>unendlicher Nutzen</em>. Zumindest bis es das erste Mal kaputt geht, was wahrscheinlich sehr bald sein wird. Na ja.</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://alt-f4.blog/de/discord">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/de/discord">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-52/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/de/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
