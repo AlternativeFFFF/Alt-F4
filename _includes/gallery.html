@@ -9,6 +9,7 @@ Inputs:
 
 <!--{%- comment -%} Convert CSV to list of values that we can work with.{%- endcomment -%}-->
 {% assign images = include.items | split: ',' %}
+{% assign offset = include.offset | default: 0 %}
 
 <div class="flex flex-column panel-inset">
   <div class="gallery">
@@ -33,8 +34,8 @@ Inputs:
       {% for image in images %}
       {% assign data = image | split: ';' %}
       <div class="column">
-        <img class="galleryPreview" src="{{ data[0] }}" alt="{{ data[1] }}" onclick="currentSlide({{ forloop.index }})"
-          style="width:100%; cursor: pointer;">
+        <img class="galleryPreview" src="{{ data[0] }}" alt="{{ data[1] }}"
+          onclick="currentSlide({{ forloop.index | plus: offset }})" style="width:100%; cursor: pointer;">
       </div>
       {% endfor %}
     </div>
