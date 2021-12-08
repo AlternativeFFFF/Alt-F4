@@ -2,7 +2,7 @@
 layout: page
 ---
 <div class="post-header">
-  <div class="panel" >
+  <div class="panel">
     <div class="outer">
       <img class="inner" src="{{ page.image.url }}" alt="{{ post.image.transcription }}" style="margin: 1px;">
     </div>
@@ -38,4 +38,33 @@ layout: page
       document.getElementsByClassName('toc')[0].setAttribute('open', '')
     }
   })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
 </script>

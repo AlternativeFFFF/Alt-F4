@@ -40,7 +40,8 @@ article iframe {
 
 iframe.iframe-inset {
   max-width: 100%;
-  box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f, 2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
+  box-shadow: 0 -2px 3px -1px #000, -2px 0 4px -2px #28221f,
+    2px 0 4px -2px #28221f, 0 4px 3px -2px #646261;
   border-bottom: 1px solid #222;
   background-size: cover;
   background-position: center center;
@@ -62,17 +63,76 @@ div.p8 {
 }
 
 .gallery {
-  width: 100%;
-  display: grid;
-  grid-gap: 3px;
-  grid-row-gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-template-rows: 1fr, 1fr;
-  grid-auto-flow: dense;
-  justify-content: center;
-  img#main {
-    grid-row: 1;
-    grid-column: 1/-1;
-    width: 100%;
+  /* Position the image container (needed to position the left and right arrows) */
+  position: relative;
+  /* Hide the images by default */
+  .galleryItem {
+    display: none;
+  }
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  /* Container for image text */
+  .caption {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .row {
+    .column {
+      float: left;
+      width: 16.66%; // we can try to set it as 100/n where n is number of items displayed inn gallery. this will force galery previews to be shown in one linen
+    }
+    /* Add a transparency effect for thumnbail images */
+    img {
+      opacity: 0.6;
+    }
+    .active,
+    img:hover {
+      opacity: 1;
+    }
   }
 }
