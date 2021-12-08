@@ -4,12 +4,7 @@ I want to talk about the Story Missions mod. It's actually hard to decide where 
 
 When I first tried the Factorio editor, I was surprised that it was actually quite limited. I had a lot of experience with editors for StarCraft/Warcraft, in which you would write scripts in-game, using a system based on "triggers". Basically, you have to find a good trigger which matches your requirements as closely as possible, then you have to just add values and that's it. I was sad that in Factorio, all the scripts are not able to be pre-defined in some interface directly in the game, but as pure code instead. The basis of all this are `.lua` files. After discovering this problem, and in fact taking the time to re-learn how to program after 10 years, I shut the game down for good and haven't turned it back on for a few months. (I hope no programmer will blame me here.)
 
-
-{ gallery
-![In Mission 2 bitters attacking on the Hell's Gate Space Port (This is reference on Starship Troopers and Avatar)](media/mission-2-intro.jpg)
-![The text bubbles like in tutorial and Engineer speeches to himself. This is how Story Mission mod is created.](media/game1.jpg)
-![In Mission 2 bitters attacking on the Hell's Gate Space Port (This is reference on Starship Troopers and Avatar)](media/2.png)
-}
+{% include gallery.html items="https://media.alt-f4.blog/ALTF4/53/mission-2-intro.jpg;In Mission 2 bitters attacking on the Hell's Gate Space Port (This is reference on Starship Troopers and Avatar);In Mission 2 bitters attacking on the Hell's Gate Space Port (This is reference on Starship Troopers and Avatar),https://media.alt-f4.blog/ALTF4/53/game1.jpg;The text bubbles like in tutorial and Engineer speeches to himself. This is how Story Mission mod is created.;The text bubbles like in tutorial and Engineer speeches to himself. This is how Story Mission mod is created.,https://media.alt-f4.blog/ALTF4/53/2.jpg;In Mission 2 bitters attacking on the Hell's Gate Space Port (This is reference on Starship Troopers and Avatar);In Mission 2 bitters attacking on the Hell's Gate Space Port (This is reference on Starship Troopers and Avatar)" %}
 
 Yeah, never say never. Suddenly from one day to the next I got insanely bored and I turned Factorio back on in the Spring of 2021. I actually originally wanted to delete the game, but instead I turned it on and looked at old save files from the New Hope scenario. I looked at the map structure again and started digging through the scenario files. I found it strange that after the patch (I think it was 1.1), the mod no longer appeared in the main menu section. Since my professional job is to fix everything, I wanted to find out why it wasn't working. When I found out why and actually looked at the `control.lua` structure of the scenario, I thought: "Why not try that too?", and that's where it all started.
 
@@ -19,14 +14,10 @@ Technically, the whole campaign takes place about two years after the engineer f
 
 Well, I guess we're at the end of the "how the Story Missions mod came to be" story. I could go on and on about the creation of each mission, but you'll find that as an Easter egg at the end of the fifth mission (when you hit continue after completing the game). As far as I can tell, the story so far is not finished and I am currently working on five more missions to continue the adventure. I have to say that if you play mission 9, you will all be very pleasantly surprised (if not cheering with joy), because I am already super excited about it as well. I'll give you a little hand-made teaser here.
 
-{ gallery
-![Mission 6 from upcoming mod update. Yes, you will finally get logistic robots to control!](media/teaser-mission-6.jpg)
-![Scripted atomic bombardment test from upcoming mod update. Checking how game handle multiple explosions at once.](media/teaser-mission-8.jpg)
-![Mission 9 from upcoming mod update. If your are true fan of the Factorio, guess what is this. You can twice!](media/teaser-mission-9.jpg)
-}
+{% include gallery.html offset = 3 items='https://media.alt-f4.blog/ALTF4/53/teaser-mission-6.jpg;Mission 6 from upcoming mod update. Yes﹐ you will finally get logistic robots to control!;Mission 6 from upcoming mod update. Yes﹐ you will finally get logistic robots to control!,https://media.alt-f4.blog/ALTF4/53/teaser-mission-8.jpg;Scripted atomic bombardment test from upcoming mod update. Checking how game handle multiple explosions at once.;Scripted atomic bombardment test from upcoming mod update. Checking how game handle multiple explosions at once.,https://media.alt-f4.blog/ALTF4/53/teaser-mission-9.jpg;Mission 9 from upcoming mod update. If your are true fan of the Factorio﹐ guess what is this. You can twice!;Mission 9 from upcoming mod update. If your are true fan of the Factorio﹐ guess what is this. You can twice!' %}
 
 I say goodbye and thank you all for your support.
 
 P.S. It’s weird to me that Factorio is a Czech game and I’m citizen of Czech Republic. It would be nice to some day meet the autors of the game :D
 
-{ youtube embed of trailer: https://www.youtube.com/watch?v=KEAjcctlJ-8}
+{% include youtube.html id='KEAjcctlJ-8' %}
