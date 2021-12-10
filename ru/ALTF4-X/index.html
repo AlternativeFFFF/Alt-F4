@@ -13,15 +13,15 @@
 <meta property="og:title" content="Alt-F4 #X Title of this post">
 <meta name="author" content="Names of who wrote this post [optional, recommended]">
 <meta property="og:locale" content="en">
-<meta name="description" content="Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](https://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} Where date is the date in year:month:day:hour:minutes:seconds, UTC Обратный отсчёт истёк Using image.html Image only Image embed parameters: src - Link alt - Alt-text caption - Text below the image href - High resolution version on click src-mob - Link for mobile version width - Max width height - Max height Example 1 - Caption + High res % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Example 2 - Simpler mobile % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Example 3 - All the things! % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' width='500px' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here Juxtapose Video Dedecated &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. Generic &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. JOSEF, the self-expanding factory: One cell after another is analyzed and filled. Once all the cells are full, a new ring is built. Images">
-<meta property="og:description" content="Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](https://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} Where date is the date in year:month:day:hour:minutes:seconds, UTC Обратный отсчёт истёк Using image.html Image only Image embed parameters: src - Link alt - Alt-text caption - Text below the image href - High resolution version on click src-mob - Link for mobile version width - Max width height - Max height Example 1 - Caption + High res % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Example 2 - Simpler mobile % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Example 3 - All the things! % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' width='500px' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here Juxtapose Video Dedecated &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. Generic &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. JOSEF, the self-expanding factory: One cell after another is analyzed and filled. Once all the cells are full, a new ring is built. Images">
+<meta name="description" content="Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](https://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} Where date is the date in year:month:day:hour:minutes:seconds, UTC Обратный отсчёт истёк Using image.html Image only Image embed parameters: src - Link alt - Alt-text caption - Text below the image href - High resolution version on click src-mob - Link for mobile version width - Max width height - Max height Example 1 - Caption + High res % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Example 2 - Simpler mobile % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Example 3 - All the things! % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' width='500px' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here Juxtapose Video Dedecated &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. Generic &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. JOSEF, the self-expanding factory: One cell after another is analyzed and filled. Once all the cells are full, a new ring is built. Images gallery 1 / 6 The Woods 2 / 6 Cinque Terre 3 / 6 Mountains and fjords 4 / 6 5 / 6 6 / 6 ❮ ❯ every subsequent gallery MUST have offset parameter set to a sum of all images in previous galleries 1 / 6 The Woods 2 / 6 Cinque Terre 3 / 6 Mountains and fjords 4 / 6 5 / 6 6 / 6 ❮ ❯">
+<meta property="og:description" content="Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](https://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} Where date is the date in year:month:day:hour:minutes:seconds, UTC Обратный отсчёт истёк Using image.html Image only Image embed parameters: src - Link alt - Alt-text caption - Text below the image href - High resolution version on click src-mob - Link for mobile version width - Max width height - Max height Example 1 - Caption + High res % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Example 2 - Simpler mobile % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' %} Map view of rail network, showing just 27 of the 216 outposts. Example 3 - All the things! % include image.html src='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' alt='Map view of rail network, showing only an eighth of the outposts.' caption='Map view of rail network, showing just 27 of the 216 outposts.' href='https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg' src-mob='https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg' width='500px' %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{aligned} $$ Which will look like this [\begin{aligned} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \vdots &amp; \ddots &amp; \vdots \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \vdots y_n \end{array} \right) \end{aligned}] You can preview your formulas here Juxtapose Video Dedecated &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. Generic &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. JOSEF, the self-expanding factory: One cell after another is analyzed and filled. Once all the cells are full, a new ring is built. Images gallery 1 / 6 The Woods 2 / 6 Cinque Terre 3 / 6 Mountains and fjords 4 / 6 5 / 6 6 / 6 ❮ ❯ every subsequent gallery MUST have offset parameter set to a sum of all images in previous galleries 1 / 6 The Woods 2 / 6 Cinque Terre 3 / 6 Mountains and fjords 4 / 6 5 / 6 6 / 6 ❮ ❯">
 <link rel="canonical" href="https://alt-f4.blog/ru/ALTF4-X/">
 <meta property="og:url" content="https://alt-f4.blog/ALTF4-X/">
 <meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-08-20T00:00:00+00:00">
 <script type="application/ld+json">
-{"dateModified":"2020-08-20T00:00:00+00:00","datePublished":"2020-08-20T00:00:00+00:00","author":{"@type":"Person","name":"Names of who wrote this post [optional, recommended]"},"description":"Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](https://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} Where date is the date in year:month:day:hour:minutes:seconds, UTC Обратный отсчёт истёк Using image.html Image only Image embed parameters: src - Link alt - Alt-text caption - Text below the image href - High resolution version on click src-mob - Link for mobile version width - Max width height - Max height Example 1 - Caption + High res % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; href=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Example 2 - Simpler mobile % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; src-mob=&#39;https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Example 3 - All the things! % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; href=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; src-mob=&#39;https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg&#39; width=&#39;500px&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = \\\\ &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\\\ \\vdots &amp; \\ddots &amp; \\vdots \\\\ \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\\\ \\vdots \\\\ y_n \\end{array} \\right) \\end{aligned} $$ Which will look like this [\\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\vdots &amp; \\ddots &amp; \\vdots \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\vdots y_n \\end{array} \\right) \\end{aligned}] You can preview your formulas here Juxtapose Video Dedecated &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. Generic &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. JOSEF, the self-expanding factory: One cell after another is analyzed and filled. Once all the cells are full, a new ring is built. Images","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-X/"},"url":"https://alt-f4.blog/ALTF4-X/","@type":"BlogPosting","headline":"Alt-F4 #X Title of this post","@context":"https://schema.org"}</script>
+{"dateModified":"2020-08-20T00:00:00+00:00","datePublished":"2020-08-20T00:00:00+00:00","author":{"@type":"Person","name":"Names of who wrote this post [optional, recommended]"},"description":"Welcome to this sample post, here we breafly describe how to use some advanced features of out templating configuration. Using Media You can use media by just importing it in a regular markdown fascion Images See using image.html below YouTube % include youtube.html id=&quot;28UzqVz1r24&quot; %} Dailymotion ![](https://www.dailymotion.com/video/x7tfyq3) or ![](https://dai.ly/x7tfyq3) Vimeo ![](https://vimeo.com/263856289) Spotify ![](https://open.spotify.com/track/4Dg5moVCTqxAb7Wr8Dq2T5) SoundCloud ![](https://soundcloud.com/aviciiofficial/preview-avicii-vs-lenny) General Audio ![](//www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3) Embeding a countdown % include countdown.html date=&quot;2021:01:01&quot; %} Where date is the date in year:month:day:hour:minutes:seconds, UTC Обратный отсчёт истёк Using image.html Image only Image embed parameters: src - Link alt - Alt-text caption - Text below the image href - High resolution version on click src-mob - Link for mobile version width - Max width height - Max height Example 1 - Caption + High res % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; href=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Example 2 - Simpler mobile % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; src-mob=&#39;https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Example 3 - All the things! % include image.html src=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; alt=&#39;Map view of rail network, showing only an eighth of the outposts.&#39; caption=&#39;Map view of rail network, showing just 27 of the 216 outposts.&#39; href=&#39;https://media.alt-f4.blog/ALTF4/13/base_new_map.jpg&#39; src-mob=&#39;https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/normal/5034f3-20180309-rick-astley.jpg&#39; width=&#39;500px&#39; %} Map view of rail network, showing just 27 of the 216 outposts. Нажмите для просмотра изображения в полном размере Compare Images JuxtaposeJS Using Math: MathJax Dr.MagPie You can use MathJax to describe mathematical equasions and formulas. You can find full specification in MathJax Documentation but here are come samples This code sample $ a * b = c ^ b $ will transform into thes formula $ a * b = c ^ b $ You can go full in and make some like this $$ \\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = \\\\ &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\\\ \\vdots &amp; \\ddots &amp; \\vdots \\\\ \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\\\ \\vdots \\\\ y_n \\end{array} \\right) \\end{aligned} $$ Which will look like this [\\begin{aligned} &amp; \\phi(x,y) = \\phi \\left(\\sum_{i=1}^n x_ie_i, \\sum_{j=1}^n y_je_j \\right) = \\sum_{i=1}^n \\sum_{j=1}^n x_i y_j \\phi(e_i, e_j) = &amp; (x_1, \\ldots, x_n) \\left( \\begin{array}{ccc} \\phi(e_1, e_1) &amp; \\cdots &amp; \\phi(e_1, e_n) \\vdots &amp; \\ddots &amp; \\vdots \\phi(e_n, e_1) &amp; \\cdots &amp; \\phi(e_n, e_n) \\end{array} \\right) \\left( \\begin{array}{c} y_1 \\vdots y_n \\end{array} \\right) \\end{aligned}] You can preview your formulas here Juxtapose Video Dedecated &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. Generic &lt;/source&gt; Opus Magnum Game &lt;/source&gt; JOSEF self-expanding factory in action. JOSEF, the self-expanding factory: One cell after another is analyzed and filled. Once all the cells are full, a new ring is built. Images gallery 1 / 6 The Woods 2 / 6 Cinque Terre 3 / 6 Mountains and fjords 4 / 6 5 / 6 6 / 6 &#10094; &#10095; every subsequent gallery MUST have offset parameter set to a sum of all images in previous galleries 1 / 6 The Woods 2 / 6 Cinque Terre 3 / 6 Mountains and fjords 4 / 6 5 / 6 6 / 6 &#10094; &#10095;","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-X/"},"url":"https://alt-f4.blog/ALTF4-X/","@type":"BlogPosting","headline":"Alt-F4 #X Title of this post","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 	
 
@@ -165,6 +165,7 @@
         </ul>
       </li>
       <li><a href="#images">Images</a></li>
+      <li><a href="#gallery">gallery</a></li>
     </ul>
   </li>
 </ul>
@@ -635,6 +636,218 @@ $$
 <img src="/assets/ALTF4/2/crawlertron_large.png?raw=true" alt="A large crawlertron with tiny legs." width="500px">
 <img src="/assets/ALTF4/2/SpidertronEngineer.png?raw=true" alt="Spidertron Engineer with the crashed spaceship." width="500px">
 </div>
+      <h3 id="gallery">
+        
+        
+            <a href="#gallery" class="anchor" style="text-decoration: none;">gallery</a>
+          
+        
+      </h3>
+    
+
+<!---->
+
+<!---->
+
+<div class="flex flex-column panel-inset">
+  <div class="gallery">
+
+    <!---->
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">1 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_woods_wide.jpg" alt="The Woods" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">The Woods</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">2 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_5terre_wide.jpg" alt="Cinque Terre" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Cinque Terre</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">3 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Mountains and fjords" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Mountains and fjords</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">4 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" alt="Northern Lights" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">5 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Nature and sunrise" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">6 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snowy Mountains" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+
+    <!---->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <!---->
+    <div class="row">
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_woods_wide.jpg" alt="The Woods" onclick="currentSlide(1)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_5terre_wide.jpg" alt="Cinque Terre" onclick="currentSlide(2)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Mountains and fjords" onclick="currentSlide(3)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_lights_wide.jpg" alt="Northern Lights" onclick="currentSlide(4)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Nature and sunrise" onclick="currentSlide(5)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snowy Mountains" onclick="currentSlide(6)" style="width:100%; cursor: pointer;">
+      </div>
+      
+    </div>
+  </div>
+  <!---->
+  
+</div>
+
+<p>every subsequent gallery <em>MUST</em> have <code class="language-plaintext highlighter-rouge">offset</code> parameter set to a sum of all images in previous galleries</p>
+
+<!---->
+
+<!---->
+
+<div class="flex flex-column panel-inset">
+  <div class="gallery">
+
+    <!---->
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">1 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_woods_wide.jpg" alt="The Woods" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">The Woods</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">2 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_5terre_wide.jpg" alt="Cinque Terre" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Cinque Terre</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">3 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Mountains and fjords" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Mountains and fjords</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">4 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" alt="Northern Lights" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">5 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Nature and sunrise" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">6 / 6</div>
+      <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snowy Mountains" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+
+    <!---->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <!---->
+    <div class="row">
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_woods_wide.jpg" alt="The Woods" onclick="currentSlide(7)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_5terre_wide.jpg" alt="Cinque Terre" onclick="currentSlide(8)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Mountains and fjords" onclick="currentSlide(9)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_lights_wide.jpg" alt="Northern Lights" onclick="currentSlide(10)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Nature and sunrise" onclick="currentSlide(11)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snowy Mountains" onclick="currentSlide(12)" style="width:100%; cursor: pointer;">
+      </div>
+      
+    </div>
+  </div>
+  <!---->
+  
+</div>
 
 
 
@@ -649,6 +862,35 @@ $$
       document.getElementsByClassName('toc')[0].setAttribute('open', '')
     }
   })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
 </script>
 
 		

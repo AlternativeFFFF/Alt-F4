@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-11-26T13:39:53+00:00</updated>
+  <updated>2021-12-10T19:05:00+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #54 - Story Missions: The Story</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-54/" />
+    <id>https://alt-f4.blog/ALTF4-54</id>
+    <updated>2021-12-10T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For the first issue in the last month of the year, first-time contributor &lt;em&gt;GreenFlag&lt;/em&gt; presents their first big modding project that aims to add a proper RTS-style campaign to the game, in the spirit of the game’s tutorial levels. It’s pretty involved, and a lot of fun!&lt;/p&gt; &lt;h3 id=&quot;story-missions-the-story-greenflag&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/Story-Missions&quot;&gt;Story...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-45</id>
     <updated>2021-08-06T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在第 45 期中，Alt-F4 将与大家分享又一个 Mod 聚焦，而且这一期将与 &lt;a href=&quot;https://mods.factorio.com/mod/Satisfactorio&quot;&gt;Mod&lt;/a&gt; 本体一同发布！&lt;em&gt;Niet&lt;/em&gt; 一直在努力将 Satisfactory 的一些机制引入异星工厂，这可比单纯的将配方拷贝过来要复杂得多。下面的文章介绍了用来尽可能地模仿另一个游戏所用到的奇技淫巧。&lt;/p&gt; &lt;h2 id=&quot;欢迎来到-satisfactorio-niet&quot;&gt;欢迎来到 Satisfactorio！ &lt;author&gt;Niet&lt;/author&gt;&lt;/h2&gt; &lt;h3 id=&quot;啥&quot;&gt;啥？&lt;/h3&gt; &lt;p&gt;在过去的一年里，我一直在制作一个名为 &lt;strong&gt;Satisfactorio&lt;/strong&gt; 的 Mod。这是一个大改 Mod，允许你在异星工厂中体验 &lt;a href=&quot;https://www.satisfactorygame.com&quot;&gt;Satisfactory&lt;/a&gt; 的（几乎）全部内容！每个功能，从里程碑到无人机之间的所有内容，都细致的地在异星工厂中获得了重现。&lt;/p&gt; &lt;h3 id=&quot;为啥&quot;&gt;为啥？&lt;/h3&gt; &lt;p&gt;做 Mod 从来都不是因为“为什么”，而是“为什么不”！我很喜欢异星工厂和 Satisfactory，Satisfactory 的 Mod 门户网站上有个 &lt;a href=&quot;https://ficsit.app/mod/5tEqdNJV8zHcxp&quot;&gt;Mod&lt;/a&gt; 在 Satisfactory 中重建了异星工厂，包括机械臂、科技树和发射火箭的目标。这看起来是个很酷的概念，所以我想也许可以把 Satisfactory 的元素引入异星工厂中。这个想法&lt;a href=&quot;https://mods.factorio.com/mod/Satisfactory&quot;&gt;也曾有人尝试过&lt;/a&gt;，然而其开发没进展多少就被放弃了。&lt;/p&gt; &lt;p&gt;在我动手之前，我对一个特别的功能感兴趣，那就是 Satisfactory 的传送带能直接连接到机器上的输入/输出口。这也适用于火车站，列车进站后把货物扔在站台的仓库里，然后再装到传送带上。这比我在异星工厂中看到的一些装/卸货优化装置显然要简单得多！&lt;/p&gt; &lt;h3 id=&quot;谁来&quot;&gt;谁来？&lt;/h3&gt; &lt;p&gt;简单说一下背景，我在 Mod...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #44 - 一个新视角</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-44/" />
-    <id>https://alt-f4.blog/ALTF4-44</id>
-    <updated>2021-07-30T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;你还记得今年的愚人节吗？已经过去相当长的一段时间了，但如果你在那一天访问了 subreddit，那很可能看过 &lt;em&gt;arrow in my gluteus maximus&lt;/em&gt; 的视频。如果还没看过，本周的第 44 期 Alt-F4 将帮你补上这一课，然后再来看看这个黑魔法演示到底是如何实现的。&lt;/p&gt; &lt;h2 id=&quot;关于异星工厂列车新视角的新视角-arrow-in-my-gluteus-maximus&quot;&gt;关于“异星工厂列车新视角”的新视角 &lt;author&gt;arrow in my gluteus maximus&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;两个月前我发布了一个名为“异星工厂列车新视角”的视频。如果你还没看过，请在继续阅读本文之前观看，否则会无法理解这篇文章的内容。&lt;/p&gt; &lt;p&gt;有些人在观看该视频后声称自己出现了头痛等症状。你已经收到该健康提示了。&lt;/p&gt; &lt;div class=&quot;yt&quot;&gt; &lt;iframe src=&quot;https://www.youtube.com/embed/5nRnnfKMZKQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot; class=&quot;youtube&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;p&gt;（译注：若无法打开上面的视频也可&lt;a href=&quot;https://www.bilibili.com/video/BV1Tb4y1r7fo/&quot;&gt;点击此链接&lt;/a&gt;观看搬运视频。）&lt;/p&gt; &lt;p&gt;那些下载了&lt;a href=&quot;https://mods.factorio.com/mod/train_perspective&quot;&gt;视频描述的 Mod&lt;/a&gt; 的人都知道这是一个愚人节玩笑。对于那些没搞清楚的人：我很抱歉。有不少人问我制作这个视频的细节，所以我决定写一个简介。&lt;del&gt;请勿在家尝试。&lt;/del&gt;&lt;/p&gt; &lt;p&gt;我看到有些人猜测我以某种方式从游戏中提取了 3D 模型。根本不需要，这只是对屏幕上已经显示的东西做个简单旋转。虽然这个想法可能很简单，但执行起来就有点复杂了。你遇到的第一个问题是，屏幕不是圆的。当旋转时，图像的一部分会被截断，而其他部分如 GUI 则会缺失。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div...</content>
   </entry>
   
   

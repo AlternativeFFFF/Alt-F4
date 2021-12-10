@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #54 - Story Missions : l’Histoire</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #54 - Story Missions : l’Histoire">
+<meta name="author" content="GreenFlag">
+<meta property="og:locale" content="fr">
+<meta name="description" content="Pour le premier numéro du dernier mois de l’année, le nouveau contributeur GreenFlag présente son premier grand projet de modding. Il vise à ajouter au jeu une véritable campagne de style RTS, dans l’esprit des niveaux tutoriels du jeu. C’est un projet assez complexe, mais très amusant ! Story Missions : l’Histoire GreenFlag Je voudrais parler de mon mod Story Missions. À vrai dire, il m’est difficile de choisir par où commencer, car l’idée d’objectifs supplémentaires pour la Campagne est née dans ma tête il y a plus d’un an. Après 200 heures de Factorio, j’ai commencé à ressentir le style de jeu légèrement répétitif et je commençais à manquer de défis. En même temps, je n’avais pas envie de commencer un nouveau jeu et de tout construire et développer à partir de zéro. J’ai donc eu l’idée de créer mes propres cartes sur le thème du tutoriel, sauf qu’il ne s’agirait plus d’un tutoriel, mais de missions régulières. Lorsque j’ai utilisé l’éditeur de Factorio pour la première fois, j’ai été surpris de constater qu’il était en fait assez limité. J’avais beaucoup d’expérience avec les éditeurs pour StarCraft/Warcraft, dans lesquels vous écrivez des scripts en jeu, en utilisant un système basé sur des “déclencheurs”. En gros, vous devez trouver un bon déclencheur qui correspond le plus possible à vos besoins, puis vous devez ajouter des valeurs et c’est tout. J’étais déçu que dans Factorio, tous les scripts ne puissent pas être prédéfinis dans une interface directement dans le jeu, mais plutôt sous forme de code pur. La base de tout cela, ce sont des fichiers .lua. Après avoir découvert ce problème, et en fait avoir pris le temps de réapprendre à programmer après 10 ans, j’ai arrêté le jeu pour de bon et ne l’ai pas rallumé pendant plusieurs mois. (J’espère qu’aucun programmeur ne m’en voudra ici). 1 / 3 .Écran d'introduction de mission⹁ qui a été ajouté dans la version 1.1 du mod. Il y aura toujours des informations sur la carte et sur les objectifs. Je me suis inspiré des jeux C&amp;C et Doom. 2 / 3 Des bulles de texte comme dans le tutoriel avec l’ingénieur qui se parle à lui-même. C’est ainsi que fonctionne le mod Story Missions. 3 / 3 Dans la mission 2﹐ des biters attaquent le port spatial de Hell’s Gate (référence à Starship Troopers et Avatar). ❮ ❯ Oui, il ne faut jamais dire jamais. Du jour au lendemain, je me suis ennuyé à mourir et j’ai rallumé Factorio au printemps 2021. À l’origine, je voulais supprimer le jeu, mais à la place, je l’ai rallumé et j’ai alors regardé les anciens fichiers de sauvegarde du scénario Nouvel Espoir. J’ai regardé à nouveau la structure de la carte et j’ai commencé à fouiller dans les fichiers du scénario. J’ai trouvé étrange qu’après le correctif (je crois que c’était la 1.1), le mod n’apparaisse plus dans la section du menu principal. Comme mon travail professionnel consiste à tout réparer, j’ai voulu découvrir pourquoi il ne fonctionnait plus. Lorsque j’ai découvert pourquoi et que j’ai réellement examiné la structure du fichier control.lua du scénario, j’ai pensé : “Pourquoi ne pas essayer ça aussi ?”, et c’est ainsi que tout a commencé. J’ai parcouru tous les fichiers de cartes du didacticiel et de la campagne Nouvel Espoir, et c’est ainsi que j’ai appris à créer mes propres missions. Il a suffi d’un peu d’inspiration (Starship Troopers, Star Wars, Star Trek, Star Gate, Avatar), d’un peu d’expérience dans des jeux comme StarCraft 1-2, Warcraft 3, Age of Empires 2, Command &amp; Conquer (Generals, Tiberium Wars, Red Alert 2, Dune 2000) et de pas mal d’autocritique, et voilà (NdT : en français dans le texte original) : en 3 ou 4 mois, une campagne de cinq missions et une histoire improvisée ont été développées, en essayant d’être aussi respectueux que possible de l’histoire du jeu original. La campagne se déroule environ deux ans après l’atterrissage en catastrophe de l’ingénieur sur la planète Nauvis. Tant bien que mal, il a survécu, a envoyé une fusée avec un satellite et a été secouru quelques mois plus tard. Par la suite, la Terre a décidé de coloniser la planète, en prélevant encore plus de ressources que l’ingénieur lui-même en avait prises auparavant ! Ajoutez à cela des voyous de l’espace, c’est-à-dire les “pirates” (j’adore quand on dit “Pirate de l’espace”, je pense toujours à la série animée/au film Captain Harlock), et ça commence à devenir plutôt cool. Je ne vous raconterai pas l’intrigue du mod ici bien sûr, vous devrez y jouer vous-même pour la découvrir. Certes, je ne suis pas J.K. Rowling, et l’intrigue reflète l’humeur dans laquelle je me trouvais à ce moment-là. Je peux dire que je ne suis pas entièrement satisfait de cette histoire, car ce n’est pas la meilleure que j’aie jamais publiée, mais elle remplit son objectif. Je suppose que nous sommes arrivés à la fin de l’histoire intitulée “Comment le mod Story Missions a vu le jour”. Je pourrais continuer à parler de la création de chaque mission, mais sachez qu’il s’agit en fait déjà d’un œuf de Pâques à la fin de la cinquième mission (lorsque vous cliquez sur Continuer après avoir terminé le jeu). À ce jour, l’histoire n’est pas terminée et je travaille actuellement sur cinq autres missions qui poursuivent l’aventure. Vous devriez tous être agréablement surpris par la mission 9 (ou même applaudir de joie). Je vais vous donner un petit aperçu : 1 / 3 Mission 6 de la prochaine mise à jour du mod. Oui﹐ vous aurez enfin des robots logistiques à contrôler ! 2 / 3 Test de bombardement atomique scénarisé pour la prochaine mise à jour du mod. Vérification de la façon dont le jeu gère plusieurs explosions à la fois. 3 / 3 Mission 9 de la prochaine mise à jour du mod. Si vous êtes un vrai fan de Factorio﹐ devinez ce que c’est. Vous pouvez deviner deux fois ! ❮ ❯ Je vous salue et vous remercie tous pour votre soutien. P.S. Je trouve étrange que Factorio soit un jeu tchèque et que je sois citoyen de la République tchèque. Ce serait bien de rencontrer un jour les auteurs du jeu :D Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="Pour le premier numéro du dernier mois de l’année, le nouveau contributeur GreenFlag présente son premier grand projet de modding. Il vise à ajouter au jeu une véritable campagne de style RTS, dans l’esprit des niveaux tutoriels du jeu. C’est un projet assez complexe, mais très amusant ! Story Missions : l’Histoire GreenFlag Je voudrais parler de mon mod Story Missions. À vrai dire, il m’est difficile de choisir par où commencer, car l’idée d’objectifs supplémentaires pour la Campagne est née dans ma tête il y a plus d’un an. Après 200 heures de Factorio, j’ai commencé à ressentir le style de jeu légèrement répétitif et je commençais à manquer de défis. En même temps, je n’avais pas envie de commencer un nouveau jeu et de tout construire et développer à partir de zéro. J’ai donc eu l’idée de créer mes propres cartes sur le thème du tutoriel, sauf qu’il ne s’agirait plus d’un tutoriel, mais de missions régulières. Lorsque j’ai utilisé l’éditeur de Factorio pour la première fois, j’ai été surpris de constater qu’il était en fait assez limité. J’avais beaucoup d’expérience avec les éditeurs pour StarCraft/Warcraft, dans lesquels vous écrivez des scripts en jeu, en utilisant un système basé sur des “déclencheurs”. En gros, vous devez trouver un bon déclencheur qui correspond le plus possible à vos besoins, puis vous devez ajouter des valeurs et c’est tout. J’étais déçu que dans Factorio, tous les scripts ne puissent pas être prédéfinis dans une interface directement dans le jeu, mais plutôt sous forme de code pur. La base de tout cela, ce sont des fichiers .lua. Après avoir découvert ce problème, et en fait avoir pris le temps de réapprendre à programmer après 10 ans, j’ai arrêté le jeu pour de bon et ne l’ai pas rallumé pendant plusieurs mois. (J’espère qu’aucun programmeur ne m’en voudra ici). 1 / 3 .Écran d'introduction de mission⹁ qui a été ajouté dans la version 1.1 du mod. Il y aura toujours des informations sur la carte et sur les objectifs. Je me suis inspiré des jeux C&amp;C et Doom. 2 / 3 Des bulles de texte comme dans le tutoriel avec l’ingénieur qui se parle à lui-même. C’est ainsi que fonctionne le mod Story Missions. 3 / 3 Dans la mission 2﹐ des biters attaquent le port spatial de Hell’s Gate (référence à Starship Troopers et Avatar). ❮ ❯ Oui, il ne faut jamais dire jamais. Du jour au lendemain, je me suis ennuyé à mourir et j’ai rallumé Factorio au printemps 2021. À l’origine, je voulais supprimer le jeu, mais à la place, je l’ai rallumé et j’ai alors regardé les anciens fichiers de sauvegarde du scénario Nouvel Espoir. J’ai regardé à nouveau la structure de la carte et j’ai commencé à fouiller dans les fichiers du scénario. J’ai trouvé étrange qu’après le correctif (je crois que c’était la 1.1), le mod n’apparaisse plus dans la section du menu principal. Comme mon travail professionnel consiste à tout réparer, j’ai voulu découvrir pourquoi il ne fonctionnait plus. Lorsque j’ai découvert pourquoi et que j’ai réellement examiné la structure du fichier control.lua du scénario, j’ai pensé : “Pourquoi ne pas essayer ça aussi ?”, et c’est ainsi que tout a commencé. J’ai parcouru tous les fichiers de cartes du didacticiel et de la campagne Nouvel Espoir, et c’est ainsi que j’ai appris à créer mes propres missions. Il a suffi d’un peu d’inspiration (Starship Troopers, Star Wars, Star Trek, Star Gate, Avatar), d’un peu d’expérience dans des jeux comme StarCraft 1-2, Warcraft 3, Age of Empires 2, Command &amp; Conquer (Generals, Tiberium Wars, Red Alert 2, Dune 2000) et de pas mal d’autocritique, et voilà (NdT : en français dans le texte original) : en 3 ou 4 mois, une campagne de cinq missions et une histoire improvisée ont été développées, en essayant d’être aussi respectueux que possible de l’histoire du jeu original. La campagne se déroule environ deux ans après l’atterrissage en catastrophe de l’ingénieur sur la planète Nauvis. Tant bien que mal, il a survécu, a envoyé une fusée avec un satellite et a été secouru quelques mois plus tard. Par la suite, la Terre a décidé de coloniser la planète, en prélevant encore plus de ressources que l’ingénieur lui-même en avait prises auparavant ! Ajoutez à cela des voyous de l’espace, c’est-à-dire les “pirates” (j’adore quand on dit “Pirate de l’espace”, je pense toujours à la série animée/au film Captain Harlock), et ça commence à devenir plutôt cool. Je ne vous raconterai pas l’intrigue du mod ici bien sûr, vous devrez y jouer vous-même pour la découvrir. Certes, je ne suis pas J.K. Rowling, et l’intrigue reflète l’humeur dans laquelle je me trouvais à ce moment-là. Je peux dire que je ne suis pas entièrement satisfait de cette histoire, car ce n’est pas la meilleure que j’aie jamais publiée, mais elle remplit son objectif. Je suppose que nous sommes arrivés à la fin de l’histoire intitulée “Comment le mod Story Missions a vu le jour”. Je pourrais continuer à parler de la création de chaque mission, mais sachez qu’il s’agit en fait déjà d’un œuf de Pâques à la fin de la cinquième mission (lorsque vous cliquez sur Continuer après avoir terminé le jeu). À ce jour, l’histoire n’est pas terminée et je travaille actuellement sur cinq autres missions qui poursuivent l’aventure. Vous devriez tous être agréablement surpris par la mission 9 (ou même applaudir de joie). Je vais vous donner un petit aperçu : 1 / 3 Mission 6 de la prochaine mise à jour du mod. Oui﹐ vous aurez enfin des robots logistiques à contrôler ! 2 / 3 Test de bombardement atomique scénarisé pour la prochaine mise à jour du mod. Vérification de la façon dont le jeu gère plusieurs explosions à la fois. 3 / 3 Mission 9 de la prochaine mise à jour du mod. Si vous êtes un vrai fan de Factorio﹐ devinez ce que c’est. Vous pouvez deviner deux fois ! ❮ ❯ Je vous salue et vous remercie tous pour votre soutien. P.S. Je trouve étrange que Factorio soit un jeu tchèque et que je sois citoyen de la République tchèque. Ce serait bien de rencontrer un jour les auteurs du jeu :D Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-54/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-54/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-12-10T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-12-10T00:00:00+00:00","datePublished":"2021-12-10T00:00:00+00:00","author":{"@type":"Person","name":"GreenFlag"},"description":"Pour le premier numéro du dernier mois de l’année, le nouveau contributeur GreenFlag présente son premier grand projet de modding. Il vise à ajouter au jeu une véritable campagne de style RTS, dans l’esprit des niveaux tutoriels du jeu. C’est un projet assez complexe, mais très amusant ! Story Missions : l’Histoire GreenFlag Je voudrais parler de mon mod Story Missions. À vrai dire, il m’est difficile de choisir par où commencer, car l’idée d’objectifs supplémentaires pour la Campagne est née dans ma tête il y a plus d’un an. Après 200 heures de Factorio, j’ai commencé à ressentir le style de jeu légèrement répétitif et je commençais à manquer de défis. En même temps, je n’avais pas envie de commencer un nouveau jeu et de tout construire et développer à partir de zéro. J’ai donc eu l’idée de créer mes propres cartes sur le thème du tutoriel, sauf qu’il ne s’agirait plus d’un tutoriel, mais de missions régulières. Lorsque j’ai utilisé l’éditeur de Factorio pour la première fois, j’ai été surpris de constater qu’il était en fait assez limité. J’avais beaucoup d’expérience avec les éditeurs pour StarCraft/Warcraft, dans lesquels vous écrivez des scripts en jeu, en utilisant un système basé sur des “déclencheurs”. En gros, vous devez trouver un bon déclencheur qui correspond le plus possible à vos besoins, puis vous devez ajouter des valeurs et c’est tout. J’étais déçu que dans Factorio, tous les scripts ne puissent pas être prédéfinis dans une interface directement dans le jeu, mais plutôt sous forme de code pur. La base de tout cela, ce sont des fichiers .lua. Après avoir découvert ce problème, et en fait avoir pris le temps de réapprendre à programmer après 10 ans, j’ai arrêté le jeu pour de bon et ne l’ai pas rallumé pendant plusieurs mois. (J’espère qu’aucun programmeur ne m’en voudra ici). 1 / 3 .Écran d&#39;introduction de mission⹁ qui a été ajouté dans la version 1.1 du mod. Il y aura toujours des informations sur la carte et sur les objectifs. Je me suis inspiré des jeux C&amp;C et Doom. 2 / 3 Des bulles de texte comme dans le tutoriel avec l’ingénieur qui se parle à lui-même. C’est ainsi que fonctionne le mod Story Missions. 3 / 3 Dans la mission 2﹐ des biters attaquent le port spatial de Hell’s Gate (référence à Starship Troopers et Avatar). &#10094; &#10095; Oui, il ne faut jamais dire jamais. Du jour au lendemain, je me suis ennuyé à mourir et j’ai rallumé Factorio au printemps 2021. À l’origine, je voulais supprimer le jeu, mais à la place, je l’ai rallumé et j’ai alors regardé les anciens fichiers de sauvegarde du scénario Nouvel Espoir. J’ai regardé à nouveau la structure de la carte et j’ai commencé à fouiller dans les fichiers du scénario. J’ai trouvé étrange qu’après le correctif (je crois que c’était la 1.1), le mod n’apparaisse plus dans la section du menu principal. Comme mon travail professionnel consiste à tout réparer, j’ai voulu découvrir pourquoi il ne fonctionnait plus. Lorsque j’ai découvert pourquoi et que j’ai réellement examiné la structure du fichier control.lua du scénario, j’ai pensé : “Pourquoi ne pas essayer ça aussi ?”, et c’est ainsi que tout a commencé. J’ai parcouru tous les fichiers de cartes du didacticiel et de la campagne Nouvel Espoir, et c’est ainsi que j’ai appris à créer mes propres missions. Il a suffi d’un peu d’inspiration (Starship Troopers, Star Wars, Star Trek, Star Gate, Avatar), d’un peu d’expérience dans des jeux comme StarCraft 1-2, Warcraft 3, Age of Empires 2, Command &amp; Conquer (Generals, Tiberium Wars, Red Alert 2, Dune 2000) et de pas mal d’autocritique, et voilà (NdT : en français dans le texte original) : en 3 ou 4 mois, une campagne de cinq missions et une histoire improvisée ont été développées, en essayant d’être aussi respectueux que possible de l’histoire du jeu original. La campagne se déroule environ deux ans après l’atterrissage en catastrophe de l’ingénieur sur la planète Nauvis. Tant bien que mal, il a survécu, a envoyé une fusée avec un satellite et a été secouru quelques mois plus tard. Par la suite, la Terre a décidé de coloniser la planète, en prélevant encore plus de ressources que l’ingénieur lui-même en avait prises auparavant ! Ajoutez à cela des voyous de l’espace, c’est-à-dire les “pirates” (j’adore quand on dit “Pirate de l’espace”, je pense toujours à la série animée/au film Captain Harlock), et ça commence à devenir plutôt cool. Je ne vous raconterai pas l’intrigue du mod ici bien sûr, vous devrez y jouer vous-même pour la découvrir. Certes, je ne suis pas J.K. Rowling, et l’intrigue reflète l’humeur dans laquelle je me trouvais à ce moment-là. Je peux dire que je ne suis pas entièrement satisfait de cette histoire, car ce n’est pas la meilleure que j’aie jamais publiée, mais elle remplit son objectif. Je suppose que nous sommes arrivés à la fin de l’histoire intitulée “Comment le mod Story Missions a vu le jour”. Je pourrais continuer à parler de la création de chaque mission, mais sachez qu’il s’agit en fait déjà d’un œuf de Pâques à la fin de la cinquième mission (lorsque vous cliquez sur Continuer après avoir terminé le jeu). À ce jour, l’histoire n’est pas terminée et je travaille actuellement sur cinq autres missions qui poursuivent l’aventure. Vous devriez tous être agréablement surpris par la mission 9 (ou même applaudir de joie). Je vais vous donner un petit aperçu : 1 / 3 Mission 6 de la prochaine mise à jour du mod. Oui﹐ vous aurez enfin des robots logistiques à contrôler ! 2 / 3 Test de bombardement atomique scénarisé pour la prochaine mise à jour du mod. Vérification de la façon dont le jeu gère plusieurs explosions à la fois. 3 / 3 Mission 9 de la prochaine mise à jour du mod. Si vous êtes un vrai fan de Factorio﹐ devinez ce que c’est. Vous pouvez deviner deux fois ! &#10094; &#10095; Je vous salue et vous remercie tous pour votre soutien. P.S. Je trouve étrange que Factorio soit un jeu tchèque et que je sois citoyen de la République tchèque. Ce serait bien de rencontrer un jour les auteurs du jeu :D Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-54/"},"url":"https://alt-f4.blog/ALTF4-54/","@type":"BlogPosting","headline":"Alt-F4 #54 - Story Missions : l’Histoire","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/54/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/54/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/fr/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-54/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-54/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-54/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-54/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-54/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-54/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-54/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-54/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-54/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-54/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #54 - Story Missions : l’Histoire  <author>10-12-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>GreenFlag</em>,
+
+
+
+édité par <em>stringweasel, Nanogamer7, Conor_, Therenas, MyNameIsTrez, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev, Trasdegi</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/54/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Sommaire</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li><a href="#story-missions--lhistoire-greenflag">Story Missions : l’Histoire <author>GreenFlag</author></a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Pour le premier numéro du dernier mois de l’année, le nouveau contributeur <em>GreenFlag</em> présente son premier grand projet de modding. Il vise à ajouter au jeu une véritable campagne de style RTS, dans l’esprit des niveaux tutoriels du jeu. C’est un projet assez complexe, mais très amusant !</p>
+      <h3 id="story-missions--lhistoire-greenflag">
+        
+        
+            <a href="#story-missions--lhistoire-greenflag" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/Story-Missions">Story Missions</a> : l’Histoire <author>GreenFlag</author>
+          
+        
+      </h3>
+    
+
+<p>Je voudrais parler de mon mod Story Missions. À vrai dire, il m’est difficile de choisir par où commencer, car l’idée d’objectifs supplémentaires pour la Campagne est née dans ma tête il y a plus d’un an. Après 200 heures de Factorio, j’ai commencé à ressentir le style de jeu légèrement répétitif et je commençais à manquer de défis. En même temps, je n’avais pas envie de commencer un nouveau jeu et de tout construire et développer à partir de zéro. J’ai donc eu l’idée de créer mes propres cartes sur le thème du tutoriel, sauf qu’il ne s’agirait plus d’un tutoriel, mais de missions régulières.</p>
+
+<p>Lorsque j’ai utilisé l’éditeur de Factorio pour la première fois, j’ai été surpris de constater qu’il était en fait assez limité. J’avais beaucoup d’expérience avec les éditeurs pour StarCraft/Warcraft, dans lesquels vous écrivez des scripts en jeu, en utilisant un système basé sur des “déclencheurs”. En gros, vous devez trouver un bon déclencheur qui correspond le plus possible à vos besoins, puis vous devez ajouter des valeurs et c’est tout. J’étais déçu que dans Factorio, tous les scripts ne puissent pas être prédéfinis dans une interface directement dans le jeu, mais plutôt sous forme de code pur. La base de tout cela, ce sont des fichiers <code class="language-plaintext highlighter-rouge">.lua</code>. Après avoir découvert ce problème, et en fait avoir pris le temps de réapprendre à programmer après 10 ans, j’ai arrêté le jeu pour de bon et ne l’ai pas rallumé pendant plusieurs mois. (J’espère qu’aucun programmeur ne m’en voudra ici).</p>
+
+<!---->
+
+<!---->
+
+<div class="flex flex-column panel-inset">
+  <div class="gallery">
+
+    <!---->
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">1 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/53/mission-2-intro.jpg" alt="Écran d'introduction de mission⹁ qui a été ajouté dans la version 1.1 du mod. Il y aura toujours des informations sur la carte et sur les objectifs. Je me suis inspiré des jeux C&amp;C et Doom." style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">.Écran d'introduction de mission⹁ qui a été ajouté dans la version 1.1 du mod. Il y aura toujours des informations sur la carte et sur les objectifs. Je me suis inspiré des jeux C&amp;C et Doom.</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">2 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/53/game1.jpg" alt="Des bulles de texte comme dans le tutoriel avec l’ingénieur qui se parle à lui-même. C’est ainsi que fonctionne le mod Story Missions." style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Des bulles de texte comme dans le tutoriel avec l’ingénieur qui se parle à lui-même. C’est ainsi que fonctionne le mod Story Missions.</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">3 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/53/2.jpg" alt="Dans la mission 2﹐ des biters attaquent le port spatial de Hell’s Gate (référence à Starship Troopers et Avatar)." style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Dans la mission 2﹐ des biters attaquent le port spatial de Hell’s Gate (référence à Starship Troopers et Avatar).</p>
+    </div>
+    
+
+    <!---->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <!---->
+    <div class="row">
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/53/mission-2-intro.jpg" alt="Écran d'introduction de mission⹁ qui a été ajouté dans la version 1.1 du mod. Il y aura toujours des informations sur la carte et sur les objectifs. Je me suis inspiré des jeux C&amp;C et Doom." onclick="currentSlide(1)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/53/game1.jpg" alt="Des bulles de texte comme dans le tutoriel avec l’ingénieur qui se parle à lui-même. C’est ainsi que fonctionne le mod Story Missions." onclick="currentSlide(2)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/53/2.jpg" alt="Dans la mission 2﹐ des biters attaquent le port spatial de Hell’s Gate (référence à Starship Troopers et Avatar)." onclick="currentSlide(3)" style="width:100%; cursor: pointer;">
+      </div>
+      
+    </div>
+  </div>
+  <!---->
+  
+</div>
+
+<p>Oui, il ne faut jamais dire jamais. Du jour au lendemain, je me suis ennuyé à mourir et j’ai rallumé Factorio au printemps 2021. À l’origine, je voulais supprimer le jeu, mais à la place, je l’ai rallumé et j’ai alors regardé les anciens fichiers de sauvegarde du scénario Nouvel Espoir. J’ai regardé à nouveau la structure de la carte et j’ai commencé à fouiller dans les fichiers du scénario. J’ai trouvé étrange qu’après le correctif (je crois que c’était la 1.1), le mod n’apparaisse plus dans la section du menu principal. Comme mon travail professionnel consiste à tout réparer, j’ai voulu découvrir pourquoi il ne fonctionnait plus. Lorsque j’ai découvert pourquoi et que j’ai réellement examiné la structure du fichier <code class="language-plaintext highlighter-rouge">control.lua</code> du scénario, j’ai pensé : “Pourquoi ne pas essayer ça aussi ?”, et c’est ainsi que tout a commencé.</p>
+
+<p>J’ai parcouru tous les fichiers de cartes du didacticiel et de la campagne Nouvel Espoir, et c’est ainsi que j’ai appris à créer mes propres missions. Il a suffi d’un peu d’inspiration (Starship Troopers, Star Wars, Star Trek, Star Gate, Avatar), d’un peu d’expérience dans des jeux comme StarCraft 1-2, Warcraft 3, Age of Empires 2, Command &amp; Conquer (Generals, Tiberium Wars, Red Alert 2, Dune 2000) et de pas mal d’autocritique, <em>et voilà</em> (NdT : en français dans le texte original) : en 3 ou 4 mois, une campagne de cinq missions et une histoire improvisée ont été développées, en essayant d’être aussi respectueux que possible de l’histoire du jeu original.</p>
+
+<p>La campagne se déroule environ deux ans après l’atterrissage en catastrophe de l’ingénieur sur la planète Nauvis. Tant bien que mal, il a survécu, a envoyé une fusée avec un satellite et a été secouru quelques mois plus tard. Par la suite, la Terre a décidé de coloniser la planète, en prélevant encore plus de ressources que l’ingénieur lui-même en avait prises auparavant ! Ajoutez à cela des voyous de l’espace, c’est-à-dire les “pirates” (j’adore quand on dit “Pirate de l’espace”, je pense toujours à la série animée/au film Captain Harlock), et ça commence à devenir plutôt cool. Je ne vous raconterai pas l’intrigue du mod ici bien sûr, vous devrez y jouer vous-même pour la découvrir. Certes, je ne suis pas J.K. Rowling, et l’intrigue reflète l’humeur dans laquelle je me trouvais à ce moment-là. Je peux dire que je ne suis pas entièrement satisfait de cette histoire, car ce n’est pas la meilleure que j’aie jamais publiée, mais elle remplit son objectif.</p>
+
+<p>Je suppose que nous sommes arrivés à la fin de l’histoire intitulée “Comment le mod Story Missions a vu le jour”. Je pourrais continuer à parler de la création de chaque mission, mais sachez qu’il s’agit en fait déjà d’un œuf de Pâques à la fin de la cinquième mission (lorsque vous cliquez sur Continuer après avoir terminé le jeu). À ce jour, l’histoire n’est pas terminée et je travaille actuellement sur cinq autres missions qui poursuivent l’aventure. Vous devriez tous être agréablement surpris par la mission 9 (ou même applaudir de joie). Je vais vous donner un petit aperçu :</p>
+
+<!---->
+
+<!---->
+
+<div class="flex flex-column panel-inset">
+  <div class="gallery">
+
+    <!---->
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">1 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/53/teaser-mission-6.jpg" alt="Mission 6 de la prochaine mise à jour du mod. Oui﹐ vous aurez enfin des robots logistiques à contrôler !" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Mission 6 de la prochaine mise à jour du mod. Oui﹐ vous aurez enfin des robots logistiques à contrôler !</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">2 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/53/teaser-mission-8.jpg" alt="Test de bombardement atomique scénarisé pour la prochaine mise à jour du mod. Vérification de la façon dont le jeu gère plusieurs explosions à la fois." style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Test de bombardement atomique scénarisé pour la prochaine mise à jour du mod. Vérification de la façon dont le jeu gère plusieurs explosions à la fois.</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">3 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/53/teaser-mission-9.jpg" alt="Mission 9 de la prochaine mise à jour du mod. Si vous êtes un vrai fan de Factorio﹐ devinez ce que c’est. Vous pouvez deviner deux fois !" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Mission 9 de la prochaine mise à jour du mod. Si vous êtes un vrai fan de Factorio﹐ devinez ce que c’est. Vous pouvez deviner deux fois !</p>
+    </div>
+    
+
+    <!---->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <!---->
+    <div class="row">
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/53/teaser-mission-6.jpg" alt="Mission 6 de la prochaine mise à jour du mod. Oui﹐ vous aurez enfin des robots logistiques à contrôler !" onclick="currentSlide(4)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/53/teaser-mission-8.jpg" alt="Test de bombardement atomique scénarisé pour la prochaine mise à jour du mod. Vérification de la façon dont le jeu gère plusieurs explosions à la fois." onclick="currentSlide(5)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/53/teaser-mission-9.jpg" alt="Mission 9 de la prochaine mise à jour du mod. Si vous êtes un vrai fan de Factorio﹐ devinez ce que c’est. Vous pouvez deviner deux fois !" onclick="currentSlide(6)" style="width:100%; cursor: pointer;">
+      </div>
+      
+    </div>
+  </div>
+  <!---->
+  
+</div>
+
+<p>Je vous salue et vous remercie tous pour votre soutien.</p>
+
+<p>P.S. Je trouve étrange que Factorio soit un jeu tchèque et que je sois citoyen de la République tchèque. Ce serait bien de rencontrer un jour les auteurs du jeu :D</p>
+
+<div class="yt">
+	<iframe src="https://www.youtube.com/embed/KEAjcctlJ-8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="youtube"></iframe>
+</div>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://alt-f4.blog/fr/discord">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/fr/discord">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-53/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/fr/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

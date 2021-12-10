@@ -285,7 +285,7 @@ function updateSpidertron(spidertron, time) {
                 spidertron.activeLeg = 0;
             }
 
-            spidertron.nextActiveLeg = time + legStepInterval / activeLegCount
+            spidertron.nextActiveLeg = time + legStepInterval / activeLegCount;
             let i = spidertron.activeLeg;
             let N = spidertron.legs[i].index;
 
