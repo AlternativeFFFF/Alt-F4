@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-12-11T09:15:05+00:00</updated>
+  <updated>2021-12-11T09:58:32+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,11 @@
   
   
   <entry>
-    <title>Alt-F4 #54 - Story Missions: The Story</title>
+    <title>Alt-F4 #54 - 故事任务：故事</title>
     <link href="https://alt-f4.blog/zh/ALTF4-54/" />
     <id>https://alt-f4.blog/ALTF4-54</id>
     <updated>2021-12-10T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For the first issue in the last month of the year, first-time contributor &lt;em&gt;GreenFlag&lt;/em&gt; presents their first big modding project that aims to add a proper RTS-style campaign to the game, in the spirit of the game’s tutorial levels. It’s pretty involved, and a lot of fun!&lt;/p&gt; &lt;h3 id=&quot;story-missions-the-story-greenflag&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/Story-Missions&quot;&gt;Story...</content>
+    <content type="html">&lt;p&gt;在本年度最后一个月的第一期，首次供稿人 &lt;em&gt;GreenFlag&lt;/em&gt; 向我们呈现了他们的第一个大型 Mod 项目，旨在为游戏添加一个 RTS 风格的战役，作为原版游戏教程的精神续作。这可是个具有意义也非常有趣的事。&lt;/p&gt; &lt;h3 id=&quot;故事任务故事-greenflag&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/Story-Missions&quot;&gt;故事任务&lt;/a&gt;：故事 &lt;author&gt;GreenFlag&lt;/author&gt;&lt;/h3&gt; &lt;p&gt;我想谈谈我的故事任务 Mod。很难清讲这个想法从何开始，因为为战役增加目标的主意至少一年前就在我脑海中诞生了。在玩了 200 个小时的异星工厂之后，我开始觉得游戏的玩法略显重复缺乏挑战。我也不想重开一盘新的游戏并从头开始建立和开发一切。所以我想到了按照教程的主题制作自己的地图，只是它不再是一个教程，而是常规任务。&lt;/p&gt; &lt;p&gt;当我第一次尝试异星工厂编辑器时，我惊讶地发现它实际上是相当受限的。我有使用星际争霸/魔兽争霸编辑器的丰富经验，在这些编辑器中，你会在游戏中使用基于“触发器”的系统编写脚本。基本上，你必须找到一个好的触发器，尽可能地符合你的要求，然后为其添加数值，就成了。在异星工厂中很遗憾，所有的脚本都不在游戏中的某个界面里直接预先定义，而是需要纯代码。这一切的基础是“.lua”文件。在发现这个问题后，事实上是在 10 年后重新学习编程，我永远关掉了游戏，几个月都没再打开过。(希望没有程序员会在这里责怪我。)&lt;/p&gt; &lt;!----&gt; &lt;!----&gt; &lt;div class=&quot;flex flex-column panel-inset&quot;&gt; &lt;div class=&quot;gallery&quot;&gt; &lt;!----&gt; &lt;div class=&quot;galleryItem&quot;&gt; &lt;div class=&quot;numbertext&quot;&gt;1 / 3&lt;/div&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/53/mission-2-intro.jpg&quot; alt=&quot;任务介绍界面，这是在 Mod 1.1 补丁中添加的。你会得到一些关于地图和目标的信息。灵感源自命令与征服和毁灭战士。&quot; style=&quot;width:100%&quot; /&gt; &lt;!----&gt; &lt;p style=&quot;text-align: center; margin-top:8px; margin-bottom:8px&quot;&gt;任务介绍界面，这是在 Mod 1.1 补丁中添加的。你会得到一些关于地图和目标的信息。灵感源自命令与征服和毁灭战士。&lt;/p&gt;...</content>
   </entry>
   
   
