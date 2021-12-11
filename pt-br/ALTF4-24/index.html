@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="pt-br">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #24 - Criando Memórias</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #24 - Criando Memórias">
+<meta name="author" content="pocarski">
+<meta property="og:locale" content="pt_br">
+<meta name="description" content="Esta semana, estamos dando sequência ao artigo de pocarski da semana passada que era sobre como construir um computador dentro da Factorio usando apenas esteiras. Desta vez, estamos tentando ensiná-lo a lembrar das coisas. Vamos ver no que isso da. Computação somente de esteiras, Parte 2: Nunca esqueçer pocarski Esta semana, continuarei com a sequência do meu artigo sobre computação somente de esteiras. Aconselho fortemente que volte à publicação anterior para uma dar uma recapitulada . Uma nota curta antes de começarmos: durante a semana Discord, o usuário BlueCheetah#7844 fez melhorias significativas no layout do meu circuito somador, ele agora é um pouco mais longo, mas com quatro blocos de largura. Aqui está uma imagem dele fazendo a mesma matemática da semana passada: Agora que tiramos isso do caminho, vamos ao que interessa. Da última vez, exploramos a adição de números usando apenas esteiras e divisores e esta semana veremos algo tão importante quanto quando se trata de computação: a memória. A capacidade de somar números é excelente, mas, em última análise, inútil se não houver formas de se armazenar as instruções ou o resultado. Dentro de uma CPU, os resultados da adição são lembrados e, após alguma manipulação, retornados aos mesmos somadores que acabaram de calculá-los. Isso permite a realização de praticamente todas as operações matemáticas imagináveis. Assim como na semana passada, todos são bem-vindos para experimentar prática com o livro de diagrams que possui todos os circuitos deste artigo. O multiplexador Para começar, nós iremos introduzir um novo circuito: o multiplexador. Um multiplexador tem duas entradas de dados A e B, uma entrada de ponteiro P e uma saída O. Aqui está a tabela verdade deste multiplexador (“-“ significa que a entrada não afeta a saída): A B P O 0 - 0 0 1 - 0 1 - 0 1 0 - 1 1 1 Entrada P efetivamente escolhe qual das entradas de dados deve ser passada para a saída. Se P é 0, nossa saída será igual ao valor de A, e se ela for 1, nossa saída será o valor de B. Agora, para construí-lo faremos uso de portas E. Elas nos permitem uma entrada para ignorar. Nós podemos escolher se queremos passar uma entrada ou não simplesmente ao habilitar ou desabilitar a outra entrada da porta. Com isso em mente, nós podemos reinterpretar o multiplexador como (A E NÃO P) OU (B E P). Todos são elementos dos quais já somos familiares, o que significa que o multiplexador pode ser construído assim: &lt;/source&gt; Multiplexador de esteiras Este é simplesmente um circuito NÃO-duplicador e duas portas AND. Também precisamos de alguns trocadores de itens, para combinar todos os tipos de itens de entrada e saída. Célula básica de memória De início, células de memória soam como algo muito complicado. Um circuito que memoriza uma entrada? Com certeza isso deve ser alguma forma de armazenamento, mas como se gera uma saída sem que o armazém esvazie? É aqui que nosso novo amigo multiplexador entra. O que acontece se colocarmos a saída em loop por volta de todo o circuito e alimentarmos sua própria entrada A? A resposta é: acontece mágica! &lt;/source&gt; Multiplexador em Loop Como podo ver, com está única mudança nós transformamos o multiplexador em uma célula de memória muito básica. O que costumava ser a entrada B agora chama-se entrada de dados da célula de memória e o que costumava ser a entrada P agora é uma entrada de escrita. O circuito não em uma saída, já que esta está em loop, portanto resolvemos isso ao adicionar um duplicador (e também combinando um trocador com uma porta E, assim como fizemos da última vez): &lt;/source&gt; Flip-flop básico O circuito que acabamos de construir é chamado de Flip-flop tipo D. Ele tem duas entradas: D para “Dados” e E para Habilitar. Diferente do que em computadores eletrônicos, temos que manter a entrada E ligada por um bom tempo já que os itens precisam viajar todo o caminho de volta ao começo para que a saída estabilize. Entretanto, o flip-flop tipo D tem um problema significativo de que enquanto a entrada E estiver ligada a saída copia completamente a entrada D, o que efetivamente transforma a coisa toda em um fio enfeitado. Então precisamos garantir a estabilidade da saída e para isso precisamos de algo mais simples que o flip-flop tipo D. Célula de memória mestre-escravo Muitos problemas podem ser resolvidos simplesmente por construir outra cópia e o problema do flip-flop tipo D não é exceção. Podemos duplicar e inverter a entrada E e alimentar sua inversora na entrada habilitar de outro flip-flop tipo D. Então podemos fazer a saída do primeiro flip-flop alimentar a entrada de dados do segundo. A inversão é feita ao introduzir um terceiro tipo de item que é sobrescrito pela entrada habilitar. Assim como na semana passada, os dois lados das esteiras chegam para o resgate e, não precisamos construir uma cópia completa mas sim apenas usar alguns loopings espertos. &lt;/source&gt; Célula de memória mestre-escravo espalhada Esse sistema de flip-flop duplo é como uma escadaria para nosso valor de dados, onde permite o primeiro passo quando entrada E é acionada e permite a sequência apenas depois que ela é desativada. Isso protege a saída de mudar até que o ciclo esteja completo. Agora podemos rearranjar tudo para tornar o módulo compacto: &lt;/source&gt; Célula de memória mestre-escravo compacta Interestingly, it has the exact same dimensions as last week’s adder module (or it used to until BlueCheetah came along). Talk about a satisfying coincidence!Curiosamente, ele tem exatamente as mesmas dimensões do módulo adicionador da semana passada (ou tinha até o BlueCheetah aparecer). Fale sobre uma coincidência satisfatória! Note final Agora que temos um somador e memória estamos prontos para construir uma CPU. Claro, precisamos de clock para fazer tudo funcionar, mas isso é tão simples quanto uma esteira cheia pela metade com um duplicador. A unidade lógica aritmética (ALU) é apenas um monte de somadores retornando a si mesmos por meio de um registrador, que em si é apenas um monte de células de memória. Meu conhecimento de ciência da computação não é extenso o suficiente para explicar tudo, então considere visitar letao12 no YouTube, pois foi sua série que me inspirou para dar uma chance a essa lógica baseada em esteiras. Contribuindo Como sempre, estamos procurando pessoas que queiram contribuir com o Alt-F4, seja enviando um artigo ou ajudando com a tradução. Se você tem algo interessante em mente que deseja compartilhar com a comunidade de uma forma refinada, este é o lugar para fazê-lo. Se você não tiver certeza sobre isso, teremos o prazer de ajudar discutindo ideias de conteúdo e questões estruturais. Se você se identifica com essa situação, junte-se ao nosso servidor no Discord para começar!">
+<meta property="og:description" content="Esta semana, estamos dando sequência ao artigo de pocarski da semana passada que era sobre como construir um computador dentro da Factorio usando apenas esteiras. Desta vez, estamos tentando ensiná-lo a lembrar das coisas. Vamos ver no que isso da. Computação somente de esteiras, Parte 2: Nunca esqueçer pocarski Esta semana, continuarei com a sequência do meu artigo sobre computação somente de esteiras. Aconselho fortemente que volte à publicação anterior para uma dar uma recapitulada . Uma nota curta antes de começarmos: durante a semana Discord, o usuário BlueCheetah#7844 fez melhorias significativas no layout do meu circuito somador, ele agora é um pouco mais longo, mas com quatro blocos de largura. Aqui está uma imagem dele fazendo a mesma matemática da semana passada: Agora que tiramos isso do caminho, vamos ao que interessa. Da última vez, exploramos a adição de números usando apenas esteiras e divisores e esta semana veremos algo tão importante quanto quando se trata de computação: a memória. A capacidade de somar números é excelente, mas, em última análise, inútil se não houver formas de se armazenar as instruções ou o resultado. Dentro de uma CPU, os resultados da adição são lembrados e, após alguma manipulação, retornados aos mesmos somadores que acabaram de calculá-los. Isso permite a realização de praticamente todas as operações matemáticas imagináveis. Assim como na semana passada, todos são bem-vindos para experimentar prática com o livro de diagrams que possui todos os circuitos deste artigo. O multiplexador Para começar, nós iremos introduzir um novo circuito: o multiplexador. Um multiplexador tem duas entradas de dados A e B, uma entrada de ponteiro P e uma saída O. Aqui está a tabela verdade deste multiplexador (“-“ significa que a entrada não afeta a saída): A B P O 0 - 0 0 1 - 0 1 - 0 1 0 - 1 1 1 Entrada P efetivamente escolhe qual das entradas de dados deve ser passada para a saída. Se P é 0, nossa saída será igual ao valor de A, e se ela for 1, nossa saída será o valor de B. Agora, para construí-lo faremos uso de portas E. Elas nos permitem uma entrada para ignorar. Nós podemos escolher se queremos passar uma entrada ou não simplesmente ao habilitar ou desabilitar a outra entrada da porta. Com isso em mente, nós podemos reinterpretar o multiplexador como (A E NÃO P) OU (B E P). Todos são elementos dos quais já somos familiares, o que significa que o multiplexador pode ser construído assim: &lt;/source&gt; Multiplexador de esteiras Este é simplesmente um circuito NÃO-duplicador e duas portas AND. Também precisamos de alguns trocadores de itens, para combinar todos os tipos de itens de entrada e saída. Célula básica de memória De início, células de memória soam como algo muito complicado. Um circuito que memoriza uma entrada? Com certeza isso deve ser alguma forma de armazenamento, mas como se gera uma saída sem que o armazém esvazie? É aqui que nosso novo amigo multiplexador entra. O que acontece se colocarmos a saída em loop por volta de todo o circuito e alimentarmos sua própria entrada A? A resposta é: acontece mágica! &lt;/source&gt; Multiplexador em Loop Como podo ver, com está única mudança nós transformamos o multiplexador em uma célula de memória muito básica. O que costumava ser a entrada B agora chama-se entrada de dados da célula de memória e o que costumava ser a entrada P agora é uma entrada de escrita. O circuito não em uma saída, já que esta está em loop, portanto resolvemos isso ao adicionar um duplicador (e também combinando um trocador com uma porta E, assim como fizemos da última vez): &lt;/source&gt; Flip-flop básico O circuito que acabamos de construir é chamado de Flip-flop tipo D. Ele tem duas entradas: D para “Dados” e E para Habilitar. Diferente do que em computadores eletrônicos, temos que manter a entrada E ligada por um bom tempo já que os itens precisam viajar todo o caminho de volta ao começo para que a saída estabilize. Entretanto, o flip-flop tipo D tem um problema significativo de que enquanto a entrada E estiver ligada a saída copia completamente a entrada D, o que efetivamente transforma a coisa toda em um fio enfeitado. Então precisamos garantir a estabilidade da saída e para isso precisamos de algo mais simples que o flip-flop tipo D. Célula de memória mestre-escravo Muitos problemas podem ser resolvidos simplesmente por construir outra cópia e o problema do flip-flop tipo D não é exceção. Podemos duplicar e inverter a entrada E e alimentar sua inversora na entrada habilitar de outro flip-flop tipo D. Então podemos fazer a saída do primeiro flip-flop alimentar a entrada de dados do segundo. A inversão é feita ao introduzir um terceiro tipo de item que é sobrescrito pela entrada habilitar. Assim como na semana passada, os dois lados das esteiras chegam para o resgate e, não precisamos construir uma cópia completa mas sim apenas usar alguns loopings espertos. &lt;/source&gt; Célula de memória mestre-escravo espalhada Esse sistema de flip-flop duplo é como uma escadaria para nosso valor de dados, onde permite o primeiro passo quando entrada E é acionada e permite a sequência apenas depois que ela é desativada. Isso protege a saída de mudar até que o ciclo esteja completo. Agora podemos rearranjar tudo para tornar o módulo compacto: &lt;/source&gt; Célula de memória mestre-escravo compacta Interestingly, it has the exact same dimensions as last week’s adder module (or it used to until BlueCheetah came along). Talk about a satisfying coincidence!Curiosamente, ele tem exatamente as mesmas dimensões do módulo adicionador da semana passada (ou tinha até o BlueCheetah aparecer). Fale sobre uma coincidência satisfatória! Note final Agora que temos um somador e memória estamos prontos para construir uma CPU. Claro, precisamos de clock para fazer tudo funcionar, mas isso é tão simples quanto uma esteira cheia pela metade com um duplicador. A unidade lógica aritmética (ALU) é apenas um monte de somadores retornando a si mesmos por meio de um registrador, que em si é apenas um monte de células de memória. Meu conhecimento de ciência da computação não é extenso o suficiente para explicar tudo, então considere visitar letao12 no YouTube, pois foi sua série que me inspirou para dar uma chance a essa lógica baseada em esteiras. Contribuindo Como sempre, estamos procurando pessoas que queiram contribuir com o Alt-F4, seja enviando um artigo ou ajudando com a tradução. Se você tem algo interessante em mente que deseja compartilhar com a comunidade de uma forma refinada, este é o lugar para fazê-lo. Se você não tiver certeza sobre isso, teremos o prazer de ajudar discutindo ideias de conteúdo e questões estruturais. Se você se identifica com essa situação, junte-se ao nosso servidor no Discord para começar!">
+<link rel="canonical" href="https://alt-f4.blog/pt-br/ALTF4-24/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-24/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-02-19T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-02-19T00:00:00+00:00","datePublished":"2021-02-19T00:00:00+00:00","author":{"@type":"Person","name":"pocarski"},"description":"Esta semana, estamos dando sequência ao artigo de pocarski da semana passada que era sobre como construir um computador dentro da Factorio usando apenas esteiras. Desta vez, estamos tentando ensiná-lo a lembrar das coisas. Vamos ver no que isso da. Computação somente de esteiras, Parte 2: Nunca esqueçer pocarski Esta semana, continuarei com a sequência do meu artigo sobre computação somente de esteiras. Aconselho fortemente que volte à publicação anterior para uma dar uma recapitulada . Uma nota curta antes de começarmos: durante a semana Discord, o usuário BlueCheetah#7844 fez melhorias significativas no layout do meu circuito somador, ele agora é um pouco mais longo, mas com quatro blocos de largura. Aqui está uma imagem dele fazendo a mesma matemática da semana passada: Agora que tiramos isso do caminho, vamos ao que interessa. Da última vez, exploramos a adição de números usando apenas esteiras e divisores e esta semana veremos algo tão importante quanto quando se trata de computação: a memória. A capacidade de somar números é excelente, mas, em última análise, inútil se não houver formas de se armazenar as instruções ou o resultado. Dentro de uma CPU, os resultados da adição são lembrados e, após alguma manipulação, retornados aos mesmos somadores que acabaram de calculá-los. Isso permite a realização de praticamente todas as operações matemáticas imagináveis. Assim como na semana passada, todos são bem-vindos para experimentar prática com o livro de diagrams que possui todos os circuitos deste artigo. O multiplexador Para começar, nós iremos introduzir um novo circuito: o multiplexador. Um multiplexador tem duas entradas de dados A e B, uma entrada de ponteiro P e uma saída O. Aqui está a tabela verdade deste multiplexador (“-“ significa que a entrada não afeta a saída): A B P O 0 - 0 0 1 - 0 1 - 0 1 0 - 1 1 1 Entrada P efetivamente escolhe qual das entradas de dados deve ser passada para a saída. Se P é 0, nossa saída será igual ao valor de A, e se ela for 1, nossa saída será o valor de B. Agora, para construí-lo faremos uso de portas E. Elas nos permitem uma entrada para ignorar. Nós podemos escolher se queremos passar uma entrada ou não simplesmente ao habilitar ou desabilitar a outra entrada da porta. Com isso em mente, nós podemos reinterpretar o multiplexador como (A E NÃO P) OU (B E P). Todos são elementos dos quais já somos familiares, o que significa que o multiplexador pode ser construído assim: &lt;/source&gt; Multiplexador de esteiras Este é simplesmente um circuito NÃO-duplicador e duas portas AND. Também precisamos de alguns trocadores de itens, para combinar todos os tipos de itens de entrada e saída. Célula básica de memória De início, células de memória soam como algo muito complicado. Um circuito que memoriza uma entrada? Com certeza isso deve ser alguma forma de armazenamento, mas como se gera uma saída sem que o armazém esvazie? É aqui que nosso novo amigo multiplexador entra. O que acontece se colocarmos a saída em loop por volta de todo o circuito e alimentarmos sua própria entrada A? A resposta é: acontece mágica! &lt;/source&gt; Multiplexador em Loop Como podo ver, com está única mudança nós transformamos o multiplexador em uma célula de memória muito básica. O que costumava ser a entrada B agora chama-se entrada de dados da célula de memória e o que costumava ser a entrada P agora é uma entrada de escrita. O circuito não em uma saída, já que esta está em loop, portanto resolvemos isso ao adicionar um duplicador (e também combinando um trocador com uma porta E, assim como fizemos da última vez): &lt;/source&gt; Flip-flop básico O circuito que acabamos de construir é chamado de Flip-flop tipo D. Ele tem duas entradas: D para “Dados” e E para Habilitar. Diferente do que em computadores eletrônicos, temos que manter a entrada E ligada por um bom tempo já que os itens precisam viajar todo o caminho de volta ao começo para que a saída estabilize. Entretanto, o flip-flop tipo D tem um problema significativo de que enquanto a entrada E estiver ligada a saída copia completamente a entrada D, o que efetivamente transforma a coisa toda em um fio enfeitado. Então precisamos garantir a estabilidade da saída e para isso precisamos de algo mais simples que o flip-flop tipo D. Célula de memória mestre-escravo Muitos problemas podem ser resolvidos simplesmente por construir outra cópia e o problema do flip-flop tipo D não é exceção. Podemos duplicar e inverter a entrada E e alimentar sua inversora na entrada habilitar de outro flip-flop tipo D. Então podemos fazer a saída do primeiro flip-flop alimentar a entrada de dados do segundo. A inversão é feita ao introduzir um terceiro tipo de item que é sobrescrito pela entrada habilitar. Assim como na semana passada, os dois lados das esteiras chegam para o resgate e, não precisamos construir uma cópia completa mas sim apenas usar alguns loopings espertos. &lt;/source&gt; Célula de memória mestre-escravo espalhada Esse sistema de flip-flop duplo é como uma escadaria para nosso valor de dados, onde permite o primeiro passo quando entrada E é acionada e permite a sequência apenas depois que ela é desativada. Isso protege a saída de mudar até que o ciclo esteja completo. Agora podemos rearranjar tudo para tornar o módulo compacto: &lt;/source&gt; Célula de memória mestre-escravo compacta Interestingly, it has the exact same dimensions as last week’s adder module (or it used to until BlueCheetah came along). Talk about a satisfying coincidence!Curiosamente, ele tem exatamente as mesmas dimensões do módulo adicionador da semana passada (ou tinha até o BlueCheetah aparecer). Fale sobre uma coincidência satisfatória! Note final Agora que temos um somador e memória estamos prontos para construir uma CPU. Claro, precisamos de clock para fazer tudo funcionar, mas isso é tão simples quanto uma esteira cheia pela metade com um duplicador. A unidade lógica aritmética (ALU) é apenas um monte de somadores retornando a si mesmos por meio de um registrador, que em si é apenas um monte de células de memória. Meu conhecimento de ciência da computação não é extenso o suficiente para explicar tudo, então considere visitar letao12 no YouTube, pois foi sua série que me inspirou para dar uma chance a essa lógica baseada em esteiras. Contribuindo Como sempre, estamos procurando pessoas que queiram contribuir com o Alt-F4, seja enviando um artigo ou ajudando com a tradução. Se você tem algo interessante em mente que deseja compartilhar com a comunidade de uma forma refinada, este é o lugar para fazê-lo. Se você não tiver certeza sobre isso, teremos o prazer de ajudar discutindo ideias de conteúdo e questões estruturais. Se você se identifica com essa situação, junte-se ao nosso servidor no Discord para começar!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-24/"},"url":"https://alt-f4.blog/ALTF4-24/","@type":"BlogPosting","headline":"Alt-F4 #24 - Criando Memórias","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/24/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/24/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/pt-br/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/pt-br/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/pt-br/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/pt-br/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/pt-br/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/pt-br/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/pt-br/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/pt-br/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>A continuação conduzida pela comunidade dos amados Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-24/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-24/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-24/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-24/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-24/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-24/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-24/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button button-green lang-button" href="/pt-br/ALTF4-24/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-24/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-24/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #24 - Criando Memórias  <author>19-02-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Escrito por <em>pocarski</em>,
+
+
+
+editado por <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>,
+
+
+
+<br>traduzido por <em>FeLLPS</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/24/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Índice</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#computa%C3%A7%C3%A3o-somente-de-esteiras-parte-2-nunca-esque%C3%A7er-pocarski">Computação somente de esteiras, Parte 2: Nunca esqueçer <author>pocarski</author></a>
+    <ul>
+      <li><a href="#o-multiplexador">O multiplexador</a></li>
+      <li><a href="#c%C3%A9lula-b%C3%A1sica-de-mem%C3%B3ria">Célula básica de memória</a></li>
+      <li><a href="#c%C3%A9lula-de-mem%C3%B3ria-mestre-escravo">Célula de memória mestre-escravo</a></li>
+      <li><a href="#note-final">Note final</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuindo">Contribuindo</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Esta semana, estamos dando sequência ao artigo de pocarski da semana passada que era sobre como construir um computador dentro da Factorio usando apenas esteiras. Desta vez, estamos tentando ensiná-lo a lembrar das coisas. Vamos ver no que isso da.</p>
+      <h2 id="computação-somente-de-esteiras-parte-2-nunca-esqueçer-pocarski">
+        
+        
+            <a href="#computa%C3%A7%C3%A3o-somente-de-esteiras-parte-2-nunca-esque%C3%A7er-pocarski" class="anchor" style="text-decoration: none;">Computação somente de esteiras, Parte 2: Nunca esqueçer <author>pocarski</author></a>
+          
+        
+      </h2>
+    
+
+<p>Esta semana, continuarei com a sequência do meu artigo sobre computação somente de esteiras. Aconselho fortemente que volte à <a href="https://alt-f4.blog/pt-br/ALTF4-23/#computa%C3%A7%C3%A3o-somente-de-esteiras-parte-1-matem%C3%A1tica-n%C3%A3o-t%C3%A3o-r%C3%A1pida-pocarski">publicação anterior</a> para uma dar uma recapitulada .</p>
+
+<p>Uma nota curta antes de começarmos: durante a semana <a href="https://alt-f4.blog/pt-br/discord">Discord</a>, o usuário <em>BlueCheetah#7844</em> fez melhorias significativas no layout do meu circuito somador, ele agora é um pouco mais longo, mas com quatro blocos de largura. Aqui está uma imagem dele fazendo a mesma matemática da semana passada:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/24/improved-8-bit-adder.jpg" alt="Somador melhorado" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Agora que tiramos isso do caminho, vamos ao que interessa. Da última vez, exploramos a adição de números usando apenas esteiras e divisores e esta semana veremos algo tão importante quanto quando se trata de computação: a memória. A capacidade de somar números é excelente, mas, em última análise, inútil se não houver formas de se armazenar as instruções ou o resultado. Dentro de uma CPU, os resultados da adição são lembrados e, após alguma manipulação, retornados aos mesmos somadores que acabaram de calculá-los. Isso permite a realização de praticamente todas as operações matemáticas imagináveis.</p>
+
+<p>Assim como na semana passada, todos são bem-vindos para experimentar prática com o <a href="https://media.alt-f4.blog/ALTF4/24/belt-computer-blueprint-book-2.txt">livro de diagrams</a> que possui todos os circuitos deste artigo.</p>
+      <h3 id="o-multiplexador">
+        
+        
+            <a href="#o-multiplexador" class="anchor" style="text-decoration: none;">O multiplexador</a>
+          
+        
+      </h3>
+    
+
+<p>Para começar, nós iremos introduzir um novo circuito: o <a href="https://en.wikipedia.org/wiki/Multiplexer">multiplexador</a>. Um multiplexador tem duas entradas de dados <em>A</em> e <em>B</em>, uma entrada de ponteiro <em>P</em> e uma saída <em>O</em>. Aqui está a tabela verdade deste multiplexador (“-“ significa que a entrada não afeta a saída):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>P</th>
+      <th>O</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>-</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>-</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Entrada P</em> efetivamente escolhe qual das entradas de dados deve ser passada para a saída. Se <em>P</em> é <code class="language-plaintext highlighter-rouge">0</code>, nossa saída será igual ao valor de <em>A</em>, e se ela for <code class="language-plaintext highlighter-rouge">1</code>, nossa saída será o valor de <em>B</em>. Agora, para construí-lo faremos uso de portas E. Elas nos permitem uma entrada para ignorar. Nós podemos escolher se queremos passar uma entrada ou não simplesmente ao habilitar ou desabilitar a outra entrada da porta. Com isso em mente, nós podemos reinterpretar o multiplexador como <code class="language-plaintext highlighter-rouge">(A E NÃO P) OU (B E P)</code>. Todos são elementos dos quais já somos familiares, o que significa que o multiplexador pode ser construído assim:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/multiplexer.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Multiplexador de esteiras
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Este é simplesmente um circuito NÃO-duplicador e duas portas AND. Também precisamos de alguns trocadores de itens, para combinar todos os tipos de itens de entrada e saída.</p>
+      <h3 id="célula-básica-de-memória">
+        
+        
+            <a href="#c%C3%A9lula-b%C3%A1sica-de-mem%C3%B3ria" class="anchor" style="text-decoration: none;">Célula básica de memória</a>
+          
+        
+      </h3>
+    
+
+<p>De início, células de memória soam como algo muito complicado. Um circuito que <em>memoriza</em> uma entrada? Com certeza isso deve ser alguma forma de armazenamento, mas como se gera uma saída sem que o armazém esvazie? É aqui que nosso novo amigo multiplexador entra. O que acontece se colocarmos a saída em loop por volta de todo o circuito e alimentarmos sua própria <em>entrada A</em>? A resposta é: <em>acontece mágica!</em></p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/looped_mux.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Multiplexador em Loop
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Como podo ver, com está única mudança nós transformamos o multiplexador em uma célula de memória muito básica. O que costumava ser a <em>entrada B</em> agora chama-se entrada de dados da célula de memória e o que costumava ser a <em>entrada P</em> agora é uma entrada de <em>escrita</em>. O circuito não em uma saída, já que esta está em loop, portanto resolvemos isso ao adicionar um duplicador (e também combinando um trocador com uma porta E, assim como fizemos da última vez):</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/basic_latch.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Flip-flop básico
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>O circuito que acabamos de construir é chamado de <strong>Flip-flop tipo D</strong>. Ele tem duas entradas: <em>D</em> para “Dados” e <em>E</em> para <em>Habilitar</em>. Diferente do que em computadores eletrônicos, temos que manter a entrada <em>E</em> ligada por um bom tempo já que os itens precisam viajar todo o caminho de volta ao começo para que a saída estabilize. Entretanto, o flip-flop tipo D tem um problema significativo de que enquanto a <em>entrada E</em> estiver ligada a saída copia completamente a <em>entrada D</em>, o que efetivamente transforma a coisa toda em um fio enfeitado. Então precisamos garantir a estabilidade da saída e para isso precisamos de algo mais simples que o flip-flop tipo D.</p>
+      <h3 id="célula-de-memória-mestre-escravo">
+        
+        
+            <a href="#c%C3%A9lula-de-mem%C3%B3ria-mestre-escravo" class="anchor" style="text-decoration: none;">Célula de memória mestre-escravo</a>
+          
+        
+      </h3>
+    
+
+<p>Muitos problemas podem ser resolvidos simplesmente por construir outra cópia e o problema do flip-flop tipo D não é exceção. Podemos duplicar e inverter a <em>entrada E</em> e alimentar sua inversora na entrada habilitar de outro flip-flop tipo D. Então podemos fazer a saída do primeiro flip-flop alimentar a entrada de dados do segundo. A inversão é feita ao introduzir um terceiro tipo de item que é sobrescrito pela entrada habilitar. Assim como na semana passada, os dois lados das esteiras chegam para o resgate e, não precisamos construir uma cópia completa mas sim apenas usar alguns loopings espertos.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/spread_out_master-slave.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Célula de memória mestre-escravo espalhada
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Esse sistema de flip-flop duplo é como uma escadaria para nosso valor de dados, onde permite o primeiro passo quando <em>entrada E</em> é acionada e permite a sequência apenas depois que ela é desativada. Isso protege a saída de mudar até que o ciclo esteja completo. Agora podemos rearranjar tudo para tornar o módulo compacto:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/24/compact_memory_cell.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Célula de memória mestre-escravo compacta
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Interestingly, it has the exact same dimensions as last week’s adder module (or it used to until BlueCheetah came along). Talk about a satisfying coincidence!Curiosamente, ele tem exatamente as mesmas dimensões do módulo adicionador da semana passada (ou tinha até o BlueCheetah aparecer). Fale sobre uma coincidência satisfatória!</p>
+      <h3 id="note-final">
+        
+        
+            <a href="#note-final" class="anchor" style="text-decoration: none;">Note final</a>
+          
+        
+      </h3>
+    
+
+<p>Agora que temos um somador e memória estamos prontos para construir uma CPU. Claro, precisamos de clock para fazer tudo funcionar, mas isso é tão simples quanto uma esteira cheia pela metade com um duplicador. A unidade lógica aritmética (ALU) é apenas um monte de somadores retornando a si mesmos por meio de um registrador, que em si é apenas um monte de células de memória. Meu conhecimento de ciência da computação não é extenso o suficiente para explicar tudo, então considere visitar <a href="https://www.youtube.com/channel/UC6BeS4toXnPJe-Kds9E_FEQ">letao12</a> no YouTube, pois foi sua série que me inspirou para dar uma chance a essa lógica baseada em esteiras.</p>
+      <h2 id="contribuindo">
+        
+        
+            <a href="#contribuindo" class="anchor" style="text-decoration: none;">Contribuindo</a>
+          
+        
+      </h2>
+    
+
+<p>Como sempre, estamos procurando pessoas que queiram contribuir com o Alt-F4, seja enviando um artigo ou ajudando com a tradução. Se você tem algo interessante em mente que deseja compartilhar com a comunidade de uma forma refinada, este é o lugar para fazê-lo. Se você não tiver certeza sobre isso, teremos o prazer de ajudar discutindo ideias de conteúdo e questões estruturais. Se você se identifica com essa situação, junte-se ao nosso servidor no <a href="https://alt-f4.blog/pt-br/discord">Discord</a> para começar!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=96311">
+    Discuta nos Fóruns Factorio
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/lneq4q/altf4_24_creating_memories/">
+    Discuta em Reddit
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/pt-br/discord">
+    Discuta no Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/pt-br/ALTF4-23/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/pt-br/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/pt-br/ALTF4-25/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/pt-br/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/pt-br/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/pt-br/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Este site é um projeto de fãs e não está diretamente relacionado com Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

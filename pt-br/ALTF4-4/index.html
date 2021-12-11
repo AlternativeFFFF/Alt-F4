@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="pt-br">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #4 - Designing Blueprints</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #4 - Designing Blueprints">
+<meta name="author" content="gamebuster800, Landmine752, Romner">
+<meta property="og:locale" content="en">
+<meta name="description" content="Welcome to the fourth issue of Alt-F4, rounding out the very first month of posts! This week, gamebuster800 describes their process for designing blueprints, Landmine752 shares some of their favourite fan art, and Romner gives us some insight into their Realistic Fusion Power mod (in the first part of a two-part series). Also, Alt-F4 is now available in five languages (English, Russian, Ukrainian, Italian and French) thanks to the effort of many dedicated translators who have jumped in to help. Use the language button at the top of the website to change language. You guys are great, thank you. If you, dear reader, want to help translate into even more languages, take a look at the Contributing section below. Designing Blueprints with Creative Mod and KirkMcDonald’s Calculator gamebuster800 I like to design my factory in isolation. When I need a certain resource in my game, like some science pack, I stop my “survival” save and open another save with Creative Mod loaded in order to create a blueprint which meets my needs. Creative Mod adds infinite sources for liquids and raw materials, easily configurable cheats like time speed-up, biter disabling, infinite reach, and unlocking all technologies. It’s the inspiration for Editor Extensions, featured on Alt-F4 last week by Raiguard. Before I start designing, I’ll determine my goal. In this case, I just finished Chemical (blue) Science Pack production and recently introduced construction and logistic bots to my base. To finish unlocking the non-infinite tech tree, I’ll need Production (purple) and Utility (yellow) Science Packs, so that’s what I’ll be designing. Back in my survival save I still have mostly first-tier machinery available: yellow belts, yellow inserters and assembling machine 1’s. I have set up production for the higher tier ones, but these are just starting and I still have a pool of these basic ones, so I’ll limit my blueprint to using these first-tier machines. KirkMcDonald’s Calculator I’ll be using KirkMcDonald’s calculator to create a diagram of all the required resources and the machines required to produce them. I’ll tell the calculator not to include furnaces for raw metal ore and raw copper ore, since I’m the kind of person to do smelting at the ore deposits. This is because ores stack up to 50, while plates stack up to 100. Therefore, when smelting before loading into trains or chests, you can double the amount of plates per storage container. Small gameplay tip for you right there, if you didn’t already know. Designing the blueprint Because the diagram is pretty large, I’ll first design the individual components of the blueprint, feeding it with infinite resources and consuming all resources. I do this for all of the production chains like advanced circuit production, electronic circuit production and steel production. I measure the performance of each one by speeding up the game (Creative Mode &gt; Cheats &gt; Game Settings &gt; Game Speed &gt; 100) and looking at the production window (opened by pressing P). I usually let it run for 10 in-game minutes to an in-game hour. The production should match the numbers from the calculator. If it doesn’t, check the assembly machines and see which resource is lacking. Follow the lacking resources until you find your problem. Usually the belt is not capable of transporting the amount of materials required, or the inserters aren’t fast enough. Once all the individual production chains seem to be functioning well, I’ll connect them together and measure their overall performance. I’ll remove all extra infinite sources and no longer consume the outputs other than the science production. This way, I can determine whether there are any bottlenecks between the production chains. Again, I usually let it run for 10 in-game minutes to an in-game hour, fixing all the bottlenecks or other issues. I’ll make sure the system produces the expected level of resources for at least an hour, without any spikes or dips. If you want to be extra thorough you can disable an input for a minute and restart it again, to see whether production recovers properly. Especially with oil production, sometimes one resource backing up can permanently cripple another one, breaking the factory. You must make sure that any excess liquid production is consumed properly and doesn’t back up. Packing the blueprint Now that I have a factory capable of producing my desired material, I have to pack the blueprint into the smallest area possible. I like to have the inputs and outputs all as close as possible together and all at one side. To achieve that I copy/paste the individual production chains so that I’ll end up with something that resembles a rectangle with minimal wasted space, while also connecting them all together. Once I’m satisfied with my production-chain tetris skills I’ll measure the blueprint again, to avoid any last-minute mistakes slipping in. Releasing the blueprint Finally, I mark all the inputs with constant combinators. I’ll use a constant combinator for each input and set a signal with the amount of resources per minute that should be provided on the belt and the belts right of it. I blueprint the whole thing (including the constant combinators), write a description, version number, describe the inputs and outputs in the description, and save it. A selection of fan art Landmine752 I selected some great fan art this week for us all to enjoy. @HrusaArt @limelier Boaris Mod Spotlight: Realistic Fusion Power Romner It always bothered me that we can somehow make small, portable fusion reactors, but we can’t make any factory-sized ones. So I made this mod. Now, I know a lot of you will be asking why. Why do we need fusion when we already have nuclear fission? In the end game, you will need a lot of power. A lot of power. At the lowest UPS cost possible. A single fusion power plant can produce a bit over 40 GW. That’s equivalent to about 500,000 solar panels. Fission needs uranium which has to be mined with sulfuric acid, and when depleted you need to find another ore patch. Fusion uses deuterium which is (relatively) abundant in water. Solar needs a lot of space. Steam… well, you probably already know why steam isn’t really an option in the endgame. Technologies Fusion isn’t easy to achieve of course, because otherwise us humans would be using it as our primary power source. To get the full 20 GW/power plant you’ll need a bit over one million science packs of each type (except military). At first, fusion will be very impractical and use more energy than it produces, but at the end you’ll feel like you have unlimited energy (which you practicaly will). With chemical science, the only thing you can unlock is deuterium extraction by boiling water to separate heavy water from normal water (heavy water has a boiling point ~1 °C higher than normal water) and then electrolysing the heavy water. The first fusion reaction you can unlock is D-D (Deuterium-Deuterium) with production science, which can not even sustain itself. After a few efficiency upgrades it becomes possible to use as a power source, but still pretty impractical compared to fission (150 MW/power plant at most). You can also unlock the Girdler sulfide (GS) process, which can concentrate heavy water to ~5% (and then 10% with a second research) before boiling it. This is much more space and energy efficient than directly boiling water. With utility science you can unlock tritium breeding from the D-D reactions and D-T fusion, which at first produces ~1 GW (with efficiency upgrades the most you can get is ~1.6 GW) — at this point fusion becomes more practical than fission. After that, you can also research helium-3 breeding from D-D and unlock basic aneutronic fusion (He3-He3) which can convert the energy generated directly to electricity (no need for heat exchangers/turbines). He3-He3 cannot sustain itself at first, but can produce up to 3.5 GW with efficiency upgrades. You can also concentrate heavy water to 20% before boiling it, increasing efficiency even more. If RTG is installed you can also unlock a portable fusion reactor that can produce a lot of power but needs fuel. You also unlock He3-He3 fuel cells which can last 12.5 minutes each at the max 20 MW output. (Of course you’ll never be able to use the full 20 MW, much less for 12.5 minutes straight, so they will last a lot longer.) With space science you can unlock more efficiency upgrades to D-T and He3-He3, allowing them to produce 1.9 GW and 10 GW respectively. You can also unlock D-He3 aneutronic fusion, which doesn’t need as much energy to heat as He3-He3 and produces more heat — 5 GW without upgrades, 18.5 GW with. After that you can unlock tritium decay to helium-3. (This was originally meant for the weaponry addon, but it can also boost power production to ~41 GW/power plant, and it can be disabled with a setting.) You can also unlock D-He3 fuel cells for the portable reactor if RTG is installed. These can last ~17 minutes each at 20 MW. If that still isn’t enough for you, there’s another recently added (currently beta; can be disabled in mod settings) power source: antimatter. First, you research hydrogen extraction+ionization after all of the fusion-related tech is researched. That allows you to split hydrogen atoms into protons and electrons. Next, you can research particle acceleration and antimatter science packs which don’t need a lot of resources except power — a single particle accelerator can use 10 GW to produce 100/s. After a bunch of other research, the least you can expect of an antimatter power plant can be ~1.3 TW (~1,300 GW). The most is ~1.5 TW. Either way, it’s way more energy than anyone could ever use without giant UPS drops. If this seems to be too easy, keep in mind that just basic deuterium extraction needs more science that fission power. There’s also a multiplier to change the science cost if you’d like some extra challenge. Fusion - How it works 20 GW example power plant (no tritium decay): First, you get a lot of water and, using the GS process, enrich it to 20% heavy water (which has deuterium instead of ordinary hydrogen). In the process you generate a lot of deuterium-depleted water which can either be boiled into steam or dumped back into wherever the water came from. Discharging water back into a lake or whatever isn’t possible without some workarounds. What I did is make the discharge pump internally an assembling machine that can only be built on water. Its recipe needs 1,200 depleted water and produces 0 depleted water — that way it’s possible to “discharge” the depleted water.) After you have the pure heavy water, you have to electrolyze it to get the deuterium needed for fusion. After you get the deuterium, you have to heat it to the temperature fusion occurs at (which is pretty damn high, by the way). The interesting thing about the heater is that it isn’t your regular boiler, nonono. Internally, it’s actually a furnace. A furnace is effectively an assembling machine which chooses its own recipe based on the ingredients. I did this so that I can make technologies that can improve the heating efficiency. (If there’s more than one recipe with the same ingredients, the heater chooses alphabetically using the internal name, so for example I can make a recipe-1 and then unlock recipe-0 with a technology and the heater will use recipe-0 if it’s unlocked). Now that you have the plasma, you have to somehow get it into the reactor. Iron pipes won’t do: The orange pipes on the left are magnetic containment pipes. With these, you can transport plasma at temperatures of millions of degrees. Any other pipe will explode. This is achieved by a script that checks 16 pipes every tick (about 1,000 pipes per second). “But wouldn’t that kill my UPS?” Nope: The performance is about the same regardless of how many pipes are placed down because it goes through a set amount (16 by default; customizable with a mod setting) of pipes per tick. If you do have performance problems, you can simply turn it down in the mod settings, or disable it completely by setting it to 0. Back to the reactor. It works similarly to the heater (it’s a furnace internally, recipes get unlocked by techs, etc.), except that instead of plasma it produces a “fluid” called GJ. It can’t be transported by any pipes, pumps, undergrounds or storage tanks. It simply disappears. The heat exchanger is internally a reactor that consumes said GJ. 1 GJ (the “fluid”) = 1 GJ of heat energy. Then you just get some heat exchangers and turbines to convert the heat to electricity like with fission. I also added high capacity versions of both that consume and produce ten times more for UPS and space reasons. (D-T can make up to 2 GW = 200 heat exchangers and 343 turbines or 20 HC exchangers and 35 HC turbines.) D-D produces tritium and helium-3, which can be mixed with deuterium. The aneutronic reactor works exactly the same as the normal reactor, and the direct energy converter is internally a generator (like the steam turbine). You’ll also need a lot of energy to kickstart the process, since you first need to heat whatever you’re fusing to get it to actually fuse and produce energy. Without efficiency upgrades D-D needs 400 MW to kickstart, D-T needs 200 MW, He3-He3 needs 7 GW, and D-He3 needs 5 GW. Antimatter - How it works The first thing you do is electrolyze normal water to get hydrogen, and then ionize it to separate the electrons from protons. Then you need to accelerate and collide protons to get high-energy (read as very-speedy) antiprotons and collide electrons to get high-energy positrons in the particle accelerator. Accelerators consume 10 GW each, and you will need four of them. Decelerators consume half of that, but you’ll need twice as many. After that you have to slow the high-energy particles with the particle decelerator to get (non-speedy) antiprotons and positrons. You then combine those to get antihydrogen, which can be used to make matter-antimatter fuel cells which can be used in the reactor to produce energy. Do not use normal pipes to route antimatter. Unless you like big explosions and are too lazy to make actual weapons with the antimatter you waste by doing that. This uses the same script as the plasma, so no noticeable performance impact. This part is work in progress at the time of writing (it can be disabled in settings), so there isn’t a lot of content for antimatter yet (and I’m not sure about the balance), but that should change with updates in the future. Also, some of the textures are modified from Krastorio 2. If you haven’t tried it yet, then do — it’s between vanilla and angelbobs in terms of difficulty and the graphics look awesome. If you’re one of the people that made Krastorio and don’t want me to use the textures, please contact me (see below) and I’ll replace them with something else. Outro So, you made it to the end. That probably means you’re interested in the mod. If that’s the case, go ahead and download it! If not, then tell me what I could improve though the forums or on Discord (Romner#5341). Or don’t. Up to you. Also, don’t worry about not being ‘professional’ enough or whatever when contacting me. We mod makers aren’t all that different from other people. :) There will also be a part two in the next Alt-F4 where I’ll talk about the weaponry addon, which will contain lots and lots of big explosions. Contributing Same story as every week: We’d love it if you contributed to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a more polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. Join the Discord to get started. We also got translation going last week and it was great to see the enthusiastic support of the many of you who jumped in to help immediately. If you want to translate Alt-F4 into your language, or help with a language that is already being translated, feel free to join the Discord and read the #translation-instructions. Let’s get this translated into even more languages, so everyone can enjoy it equally!">
+<meta property="og:description" content="Welcome to the fourth issue of Alt-F4, rounding out the very first month of posts! This week, gamebuster800 describes their process for designing blueprints, Landmine752 shares some of their favourite fan art, and Romner gives us some insight into their Realistic Fusion Power mod (in the first part of a two-part series). Also, Alt-F4 is now available in five languages (English, Russian, Ukrainian, Italian and French) thanks to the effort of many dedicated translators who have jumped in to help. Use the language button at the top of the website to change language. You guys are great, thank you. If you, dear reader, want to help translate into even more languages, take a look at the Contributing section below. Designing Blueprints with Creative Mod and KirkMcDonald’s Calculator gamebuster800 I like to design my factory in isolation. When I need a certain resource in my game, like some science pack, I stop my “survival” save and open another save with Creative Mod loaded in order to create a blueprint which meets my needs. Creative Mod adds infinite sources for liquids and raw materials, easily configurable cheats like time speed-up, biter disabling, infinite reach, and unlocking all technologies. It’s the inspiration for Editor Extensions, featured on Alt-F4 last week by Raiguard. Before I start designing, I’ll determine my goal. In this case, I just finished Chemical (blue) Science Pack production and recently introduced construction and logistic bots to my base. To finish unlocking the non-infinite tech tree, I’ll need Production (purple) and Utility (yellow) Science Packs, so that’s what I’ll be designing. Back in my survival save I still have mostly first-tier machinery available: yellow belts, yellow inserters and assembling machine 1’s. I have set up production for the higher tier ones, but these are just starting and I still have a pool of these basic ones, so I’ll limit my blueprint to using these first-tier machines. KirkMcDonald’s Calculator I’ll be using KirkMcDonald’s calculator to create a diagram of all the required resources and the machines required to produce them. I’ll tell the calculator not to include furnaces for raw metal ore and raw copper ore, since I’m the kind of person to do smelting at the ore deposits. This is because ores stack up to 50, while plates stack up to 100. Therefore, when smelting before loading into trains or chests, you can double the amount of plates per storage container. Small gameplay tip for you right there, if you didn’t already know. Designing the blueprint Because the diagram is pretty large, I’ll first design the individual components of the blueprint, feeding it with infinite resources and consuming all resources. I do this for all of the production chains like advanced circuit production, electronic circuit production and steel production. I measure the performance of each one by speeding up the game (Creative Mode &gt; Cheats &gt; Game Settings &gt; Game Speed &gt; 100) and looking at the production window (opened by pressing P). I usually let it run for 10 in-game minutes to an in-game hour. The production should match the numbers from the calculator. If it doesn’t, check the assembly machines and see which resource is lacking. Follow the lacking resources until you find your problem. Usually the belt is not capable of transporting the amount of materials required, or the inserters aren’t fast enough. Once all the individual production chains seem to be functioning well, I’ll connect them together and measure their overall performance. I’ll remove all extra infinite sources and no longer consume the outputs other than the science production. This way, I can determine whether there are any bottlenecks between the production chains. Again, I usually let it run for 10 in-game minutes to an in-game hour, fixing all the bottlenecks or other issues. I’ll make sure the system produces the expected level of resources for at least an hour, without any spikes or dips. If you want to be extra thorough you can disable an input for a minute and restart it again, to see whether production recovers properly. Especially with oil production, sometimes one resource backing up can permanently cripple another one, breaking the factory. You must make sure that any excess liquid production is consumed properly and doesn’t back up. Packing the blueprint Now that I have a factory capable of producing my desired material, I have to pack the blueprint into the smallest area possible. I like to have the inputs and outputs all as close as possible together and all at one side. To achieve that I copy/paste the individual production chains so that I’ll end up with something that resembles a rectangle with minimal wasted space, while also connecting them all together. Once I’m satisfied with my production-chain tetris skills I’ll measure the blueprint again, to avoid any last-minute mistakes slipping in. Releasing the blueprint Finally, I mark all the inputs with constant combinators. I’ll use a constant combinator for each input and set a signal with the amount of resources per minute that should be provided on the belt and the belts right of it. I blueprint the whole thing (including the constant combinators), write a description, version number, describe the inputs and outputs in the description, and save it. A selection of fan art Landmine752 I selected some great fan art this week for us all to enjoy. @HrusaArt @limelier Boaris Mod Spotlight: Realistic Fusion Power Romner It always bothered me that we can somehow make small, portable fusion reactors, but we can’t make any factory-sized ones. So I made this mod. Now, I know a lot of you will be asking why. Why do we need fusion when we already have nuclear fission? In the end game, you will need a lot of power. A lot of power. At the lowest UPS cost possible. A single fusion power plant can produce a bit over 40 GW. That’s equivalent to about 500,000 solar panels. Fission needs uranium which has to be mined with sulfuric acid, and when depleted you need to find another ore patch. Fusion uses deuterium which is (relatively) abundant in water. Solar needs a lot of space. Steam… well, you probably already know why steam isn’t really an option in the endgame. Technologies Fusion isn’t easy to achieve of course, because otherwise us humans would be using it as our primary power source. To get the full 20 GW/power plant you’ll need a bit over one million science packs of each type (except military). At first, fusion will be very impractical and use more energy than it produces, but at the end you’ll feel like you have unlimited energy (which you practicaly will). With chemical science, the only thing you can unlock is deuterium extraction by boiling water to separate heavy water from normal water (heavy water has a boiling point ~1 °C higher than normal water) and then electrolysing the heavy water. The first fusion reaction you can unlock is D-D (Deuterium-Deuterium) with production science, which can not even sustain itself. After a few efficiency upgrades it becomes possible to use as a power source, but still pretty impractical compared to fission (150 MW/power plant at most). You can also unlock the Girdler sulfide (GS) process, which can concentrate heavy water to ~5% (and then 10% with a second research) before boiling it. This is much more space and energy efficient than directly boiling water. With utility science you can unlock tritium breeding from the D-D reactions and D-T fusion, which at first produces ~1 GW (with efficiency upgrades the most you can get is ~1.6 GW) — at this point fusion becomes more practical than fission. After that, you can also research helium-3 breeding from D-D and unlock basic aneutronic fusion (He3-He3) which can convert the energy generated directly to electricity (no need for heat exchangers/turbines). He3-He3 cannot sustain itself at first, but can produce up to 3.5 GW with efficiency upgrades. You can also concentrate heavy water to 20% before boiling it, increasing efficiency even more. If RTG is installed you can also unlock a portable fusion reactor that can produce a lot of power but needs fuel. You also unlock He3-He3 fuel cells which can last 12.5 minutes each at the max 20 MW output. (Of course you’ll never be able to use the full 20 MW, much less for 12.5 minutes straight, so they will last a lot longer.) With space science you can unlock more efficiency upgrades to D-T and He3-He3, allowing them to produce 1.9 GW and 10 GW respectively. You can also unlock D-He3 aneutronic fusion, which doesn’t need as much energy to heat as He3-He3 and produces more heat — 5 GW without upgrades, 18.5 GW with. After that you can unlock tritium decay to helium-3. (This was originally meant for the weaponry addon, but it can also boost power production to ~41 GW/power plant, and it can be disabled with a setting.) You can also unlock D-He3 fuel cells for the portable reactor if RTG is installed. These can last ~17 minutes each at 20 MW. If that still isn’t enough for you, there’s another recently added (currently beta; can be disabled in mod settings) power source: antimatter. First, you research hydrogen extraction+ionization after all of the fusion-related tech is researched. That allows you to split hydrogen atoms into protons and electrons. Next, you can research particle acceleration and antimatter science packs which don’t need a lot of resources except power — a single particle accelerator can use 10 GW to produce 100/s. After a bunch of other research, the least you can expect of an antimatter power plant can be ~1.3 TW (~1,300 GW). The most is ~1.5 TW. Either way, it’s way more energy than anyone could ever use without giant UPS drops. If this seems to be too easy, keep in mind that just basic deuterium extraction needs more science that fission power. There’s also a multiplier to change the science cost if you’d like some extra challenge. Fusion - How it works 20 GW example power plant (no tritium decay): First, you get a lot of water and, using the GS process, enrich it to 20% heavy water (which has deuterium instead of ordinary hydrogen). In the process you generate a lot of deuterium-depleted water which can either be boiled into steam or dumped back into wherever the water came from. Discharging water back into a lake or whatever isn’t possible without some workarounds. What I did is make the discharge pump internally an assembling machine that can only be built on water. Its recipe needs 1,200 depleted water and produces 0 depleted water — that way it’s possible to “discharge” the depleted water.) After you have the pure heavy water, you have to electrolyze it to get the deuterium needed for fusion. After you get the deuterium, you have to heat it to the temperature fusion occurs at (which is pretty damn high, by the way). The interesting thing about the heater is that it isn’t your regular boiler, nonono. Internally, it’s actually a furnace. A furnace is effectively an assembling machine which chooses its own recipe based on the ingredients. I did this so that I can make technologies that can improve the heating efficiency. (If there’s more than one recipe with the same ingredients, the heater chooses alphabetically using the internal name, so for example I can make a recipe-1 and then unlock recipe-0 with a technology and the heater will use recipe-0 if it’s unlocked). Now that you have the plasma, you have to somehow get it into the reactor. Iron pipes won’t do: The orange pipes on the left are magnetic containment pipes. With these, you can transport plasma at temperatures of millions of degrees. Any other pipe will explode. This is achieved by a script that checks 16 pipes every tick (about 1,000 pipes per second). “But wouldn’t that kill my UPS?” Nope: The performance is about the same regardless of how many pipes are placed down because it goes through a set amount (16 by default; customizable with a mod setting) of pipes per tick. If you do have performance problems, you can simply turn it down in the mod settings, or disable it completely by setting it to 0. Back to the reactor. It works similarly to the heater (it’s a furnace internally, recipes get unlocked by techs, etc.), except that instead of plasma it produces a “fluid” called GJ. It can’t be transported by any pipes, pumps, undergrounds or storage tanks. It simply disappears. The heat exchanger is internally a reactor that consumes said GJ. 1 GJ (the “fluid”) = 1 GJ of heat energy. Then you just get some heat exchangers and turbines to convert the heat to electricity like with fission. I also added high capacity versions of both that consume and produce ten times more for UPS and space reasons. (D-T can make up to 2 GW = 200 heat exchangers and 343 turbines or 20 HC exchangers and 35 HC turbines.) D-D produces tritium and helium-3, which can be mixed with deuterium. The aneutronic reactor works exactly the same as the normal reactor, and the direct energy converter is internally a generator (like the steam turbine). You’ll also need a lot of energy to kickstart the process, since you first need to heat whatever you’re fusing to get it to actually fuse and produce energy. Without efficiency upgrades D-D needs 400 MW to kickstart, D-T needs 200 MW, He3-He3 needs 7 GW, and D-He3 needs 5 GW. Antimatter - How it works The first thing you do is electrolyze normal water to get hydrogen, and then ionize it to separate the electrons from protons. Then you need to accelerate and collide protons to get high-energy (read as very-speedy) antiprotons and collide electrons to get high-energy positrons in the particle accelerator. Accelerators consume 10 GW each, and you will need four of them. Decelerators consume half of that, but you’ll need twice as many. After that you have to slow the high-energy particles with the particle decelerator to get (non-speedy) antiprotons and positrons. You then combine those to get antihydrogen, which can be used to make matter-antimatter fuel cells which can be used in the reactor to produce energy. Do not use normal pipes to route antimatter. Unless you like big explosions and are too lazy to make actual weapons with the antimatter you waste by doing that. This uses the same script as the plasma, so no noticeable performance impact. This part is work in progress at the time of writing (it can be disabled in settings), so there isn’t a lot of content for antimatter yet (and I’m not sure about the balance), but that should change with updates in the future. Also, some of the textures are modified from Krastorio 2. If you haven’t tried it yet, then do — it’s between vanilla and angelbobs in terms of difficulty and the graphics look awesome. If you’re one of the people that made Krastorio and don’t want me to use the textures, please contact me (see below) and I’ll replace them with something else. Outro So, you made it to the end. That probably means you’re interested in the mod. If that’s the case, go ahead and download it! If not, then tell me what I could improve though the forums or on Discord (Romner#5341). Or don’t. Up to you. Also, don’t worry about not being ‘professional’ enough or whatever when contacting me. We mod makers aren’t all that different from other people. :) There will also be a part two in the next Alt-F4 where I’ll talk about the weaponry addon, which will contain lots and lots of big explosions. Contributing Same story as every week: We’d love it if you contributed to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a more polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. Join the Discord to get started. We also got translation going last week and it was great to see the enthusiastic support of the many of you who jumped in to help immediately. If you want to translate Alt-F4 into your language, or help with a language that is already being translated, feel free to join the Discord and read the #translation-instructions. Let’s get this translated into even more languages, so everyone can enjoy it equally!">
+<link rel="canonical" href="https://alt-f4.blog/pt-br/ALTF4-4/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-4/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-09-11T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2020-09-11T00:00:00+00:00","datePublished":"2020-09-11T00:00:00+00:00","author":{"@type":"Person","name":"gamebuster800, Landmine752, Romner"},"description":"Welcome to the fourth issue of Alt-F4, rounding out the very first month of posts! This week, gamebuster800 describes their process for designing blueprints, Landmine752 shares some of their favourite fan art, and Romner gives us some insight into their Realistic Fusion Power mod (in the first part of a two-part series). Also, Alt-F4 is now available in five languages (English, Russian, Ukrainian, Italian and French) thanks to the effort of many dedicated translators who have jumped in to help. Use the language button at the top of the website to change language. You guys are great, thank you. If you, dear reader, want to help translate into even more languages, take a look at the Contributing section below. Designing Blueprints with Creative Mod and KirkMcDonald’s Calculator gamebuster800 I like to design my factory in isolation. When I need a certain resource in my game, like some science pack, I stop my “survival” save and open another save with Creative Mod loaded in order to create a blueprint which meets my needs. Creative Mod adds infinite sources for liquids and raw materials, easily configurable cheats like time speed-up, biter disabling, infinite reach, and unlocking all technologies. It’s the inspiration for Editor Extensions, featured on Alt-F4 last week by Raiguard. Before I start designing, I’ll determine my goal. In this case, I just finished Chemical (blue) Science Pack production and recently introduced construction and logistic bots to my base. To finish unlocking the non-infinite tech tree, I’ll need Production (purple) and Utility (yellow) Science Packs, so that’s what I’ll be designing. Back in my survival save I still have mostly first-tier machinery available: yellow belts, yellow inserters and assembling machine 1’s. I have set up production for the higher tier ones, but these are just starting and I still have a pool of these basic ones, so I’ll limit my blueprint to using these first-tier machines. KirkMcDonald’s Calculator I’ll be using KirkMcDonald’s calculator to create a diagram of all the required resources and the machines required to produce them. I’ll tell the calculator not to include furnaces for raw metal ore and raw copper ore, since I’m the kind of person to do smelting at the ore deposits. This is because ores stack up to 50, while plates stack up to 100. Therefore, when smelting before loading into trains or chests, you can double the amount of plates per storage container. Small gameplay tip for you right there, if you didn’t already know. Designing the blueprint Because the diagram is pretty large, I’ll first design the individual components of the blueprint, feeding it with infinite resources and consuming all resources. I do this for all of the production chains like advanced circuit production, electronic circuit production and steel production. I measure the performance of each one by speeding up the game (Creative Mode &gt; Cheats &gt; Game Settings &gt; Game Speed &gt; 100) and looking at the production window (opened by pressing P). I usually let it run for 10 in-game minutes to an in-game hour. The production should match the numbers from the calculator. If it doesn’t, check the assembly machines and see which resource is lacking. Follow the lacking resources until you find your problem. Usually the belt is not capable of transporting the amount of materials required, or the inserters aren’t fast enough. Once all the individual production chains seem to be functioning well, I’ll connect them together and measure their overall performance. I’ll remove all extra infinite sources and no longer consume the outputs other than the science production. This way, I can determine whether there are any bottlenecks between the production chains. Again, I usually let it run for 10 in-game minutes to an in-game hour, fixing all the bottlenecks or other issues. I’ll make sure the system produces the expected level of resources for at least an hour, without any spikes or dips. If you want to be extra thorough you can disable an input for a minute and restart it again, to see whether production recovers properly. Especially with oil production, sometimes one resource backing up can permanently cripple another one, breaking the factory. You must make sure that any excess liquid production is consumed properly and doesn’t back up. Packing the blueprint Now that I have a factory capable of producing my desired material, I have to pack the blueprint into the smallest area possible. I like to have the inputs and outputs all as close as possible together and all at one side. To achieve that I copy/paste the individual production chains so that I’ll end up with something that resembles a rectangle with minimal wasted space, while also connecting them all together. Once I’m satisfied with my production-chain tetris skills I’ll measure the blueprint again, to avoid any last-minute mistakes slipping in. Releasing the blueprint Finally, I mark all the inputs with constant combinators. I’ll use a constant combinator for each input and set a signal with the amount of resources per minute that should be provided on the belt and the belts right of it. I blueprint the whole thing (including the constant combinators), write a description, version number, describe the inputs and outputs in the description, and save it. A selection of fan art Landmine752 I selected some great fan art this week for us all to enjoy. @HrusaArt @limelier Boaris Mod Spotlight: Realistic Fusion Power Romner It always bothered me that we can somehow make small, portable fusion reactors, but we can’t make any factory-sized ones. So I made this mod. Now, I know a lot of you will be asking why. Why do we need fusion when we already have nuclear fission? In the end game, you will need a lot of power. A lot of power. At the lowest UPS cost possible. A single fusion power plant can produce a bit over 40 GW. That’s equivalent to about 500,000 solar panels. Fission needs uranium which has to be mined with sulfuric acid, and when depleted you need to find another ore patch. Fusion uses deuterium which is (relatively) abundant in water. Solar needs a lot of space. Steam… well, you probably already know why steam isn’t really an option in the endgame. Technologies Fusion isn’t easy to achieve of course, because otherwise us humans would be using it as our primary power source. To get the full 20 GW/power plant you’ll need a bit over one million science packs of each type (except military). At first, fusion will be very impractical and use more energy than it produces, but at the end you’ll feel like you have unlimited energy (which you practicaly will). With chemical science, the only thing you can unlock is deuterium extraction by boiling water to separate heavy water from normal water (heavy water has a boiling point ~1 °C higher than normal water) and then electrolysing the heavy water. The first fusion reaction you can unlock is D-D (Deuterium-Deuterium) with production science, which can not even sustain itself. After a few efficiency upgrades it becomes possible to use as a power source, but still pretty impractical compared to fission (150 MW/power plant at most). You can also unlock the Girdler sulfide (GS) process, which can concentrate heavy water to ~5% (and then 10% with a second research) before boiling it. This is much more space and energy efficient than directly boiling water. With utility science you can unlock tritium breeding from the D-D reactions and D-T fusion, which at first produces ~1 GW (with efficiency upgrades the most you can get is ~1.6 GW) — at this point fusion becomes more practical than fission. After that, you can also research helium-3 breeding from D-D and unlock basic aneutronic fusion (He3-He3) which can convert the energy generated directly to electricity (no need for heat exchangers/turbines). He3-He3 cannot sustain itself at first, but can produce up to 3.5 GW with efficiency upgrades. You can also concentrate heavy water to 20% before boiling it, increasing efficiency even more. If RTG is installed you can also unlock a portable fusion reactor that can produce a lot of power but needs fuel. You also unlock He3-He3 fuel cells which can last 12.5 minutes each at the max 20 MW output. (Of course you’ll never be able to use the full 20 MW, much less for 12.5 minutes straight, so they will last a lot longer.) With space science you can unlock more efficiency upgrades to D-T and He3-He3, allowing them to produce 1.9 GW and 10 GW respectively. You can also unlock D-He3 aneutronic fusion, which doesn’t need as much energy to heat as He3-He3 and produces more heat — 5 GW without upgrades, 18.5 GW with. After that you can unlock tritium decay to helium-3. (This was originally meant for the weaponry addon, but it can also boost power production to ~41 GW/power plant, and it can be disabled with a setting.) You can also unlock D-He3 fuel cells for the portable reactor if RTG is installed. These can last ~17 minutes each at 20 MW. If that still isn’t enough for you, there’s another recently added (currently beta; can be disabled in mod settings) power source: antimatter. First, you research hydrogen extraction+ionization after all of the fusion-related tech is researched. That allows you to split hydrogen atoms into protons and electrons. Next, you can research particle acceleration and antimatter science packs which don’t need a lot of resources except power — a single particle accelerator can use 10 GW to produce 100/s. After a bunch of other research, the least you can expect of an antimatter power plant can be ~1.3 TW (~1,300 GW). The most is ~1.5 TW. Either way, it’s way more energy than anyone could ever use without giant UPS drops. If this seems to be too easy, keep in mind that just basic deuterium extraction needs more science that fission power. There’s also a multiplier to change the science cost if you’d like some extra challenge. Fusion - How it works 20 GW example power plant (no tritium decay): First, you get a lot of water and, using the GS process, enrich it to 20% heavy water (which has deuterium instead of ordinary hydrogen). In the process you generate a lot of deuterium-depleted water which can either be boiled into steam or dumped back into wherever the water came from. Discharging water back into a lake or whatever isn’t possible without some workarounds. What I did is make the discharge pump internally an assembling machine that can only be built on water. Its recipe needs 1,200 depleted water and produces 0 depleted water — that way it’s possible to “discharge” the depleted water.) After you have the pure heavy water, you have to electrolyze it to get the deuterium needed for fusion. After you get the deuterium, you have to heat it to the temperature fusion occurs at (which is pretty damn high, by the way). The interesting thing about the heater is that it isn’t your regular boiler, nonono. Internally, it’s actually a furnace. A furnace is effectively an assembling machine which chooses its own recipe based on the ingredients. I did this so that I can make technologies that can improve the heating efficiency. (If there’s more than one recipe with the same ingredients, the heater chooses alphabetically using the internal name, so for example I can make a recipe-1 and then unlock recipe-0 with a technology and the heater will use recipe-0 if it’s unlocked). Now that you have the plasma, you have to somehow get it into the reactor. Iron pipes won’t do: The orange pipes on the left are magnetic containment pipes. With these, you can transport plasma at temperatures of millions of degrees. Any other pipe will explode. This is achieved by a script that checks 16 pipes every tick (about 1,000 pipes per second). “But wouldn’t that kill my UPS?” Nope: The performance is about the same regardless of how many pipes are placed down because it goes through a set amount (16 by default; customizable with a mod setting) of pipes per tick. If you do have performance problems, you can simply turn it down in the mod settings, or disable it completely by setting it to 0. Back to the reactor. It works similarly to the heater (it’s a furnace internally, recipes get unlocked by techs, etc.), except that instead of plasma it produces a “fluid” called GJ. It can’t be transported by any pipes, pumps, undergrounds or storage tanks. It simply disappears. The heat exchanger is internally a reactor that consumes said GJ. 1 GJ (the “fluid”) = 1 GJ of heat energy. Then you just get some heat exchangers and turbines to convert the heat to electricity like with fission. I also added high capacity versions of both that consume and produce ten times more for UPS and space reasons. (D-T can make up to 2 GW = 200 heat exchangers and 343 turbines or 20 HC exchangers and 35 HC turbines.) D-D produces tritium and helium-3, which can be mixed with deuterium. The aneutronic reactor works exactly the same as the normal reactor, and the direct energy converter is internally a generator (like the steam turbine). You’ll also need a lot of energy to kickstart the process, since you first need to heat whatever you’re fusing to get it to actually fuse and produce energy. Without efficiency upgrades D-D needs 400 MW to kickstart, D-T needs 200 MW, He3-He3 needs 7 GW, and D-He3 needs 5 GW. Antimatter - How it works The first thing you do is electrolyze normal water to get hydrogen, and then ionize it to separate the electrons from protons. Then you need to accelerate and collide protons to get high-energy (read as very-speedy) antiprotons and collide electrons to get high-energy positrons in the particle accelerator. Accelerators consume 10 GW each, and you will need four of them. Decelerators consume half of that, but you’ll need twice as many. After that you have to slow the high-energy particles with the particle decelerator to get (non-speedy) antiprotons and positrons. You then combine those to get antihydrogen, which can be used to make matter-antimatter fuel cells which can be used in the reactor to produce energy. Do not use normal pipes to route antimatter. Unless you like big explosions and are too lazy to make actual weapons with the antimatter you waste by doing that. This uses the same script as the plasma, so no noticeable performance impact. This part is work in progress at the time of writing (it can be disabled in settings), so there isn’t a lot of content for antimatter yet (and I’m not sure about the balance), but that should change with updates in the future. Also, some of the textures are modified from Krastorio 2. If you haven’t tried it yet, then do — it’s between vanilla and angelbobs in terms of difficulty and the graphics look awesome. If you’re one of the people that made Krastorio and don’t want me to use the textures, please contact me (see below) and I’ll replace them with something else. Outro So, you made it to the end. That probably means you’re interested in the mod. If that’s the case, go ahead and download it! If not, then tell me what I could improve though the forums or on Discord (Romner#5341). Or don’t. Up to you. Also, don’t worry about not being ‘professional’ enough or whatever when contacting me. We mod makers aren’t all that different from other people. :) There will also be a part two in the next Alt-F4 where I’ll talk about the weaponry addon, which will contain lots and lots of big explosions. Contributing Same story as every week: We’d love it if you contributed to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a more polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. Join the Discord to get started. We also got translation going last week and it was great to see the enthusiastic support of the many of you who jumped in to help immediately. If you want to translate Alt-F4 into your language, or help with a language that is already being translated, feel free to join the Discord and read the #translation-instructions. Let’s get this translated into even more languages, so everyone can enjoy it equally!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-4/"},"url":"https://alt-f4.blog/ALTF4-4/","@type":"BlogPosting","headline":"Alt-F4 #4 - Designing Blueprints","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/4/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/4/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/pt-br/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/pt-br/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/pt-br/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/pt-br/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/pt-br/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/pt-br/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/pt-br/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/pt-br/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>A continuação conduzida pela comunidade dos amados Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-4/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-4/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-4/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-4/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-4/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-4/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-4/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button button-green lang-button" href="/pt-br/ALTF4-4/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-4/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-4/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #4 - Designing Blueprints  <author>11-09-2020</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Escrito por <em>gamebuster800, Landmine752, Romner</em>,
+
+
+
+editado por <em>Therenas, nicgarner</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/4/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Índice</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#designing-blueprints-with-creative-mod-and-kirkmcdonalds-calculator-gamebuster800">Designing Blueprints with Creative Mod and KirkMcDonald’s Calculator <author>gamebuster800</author></a>
+    <ul>
+      <li><a href="#kirkmcdonalds-calculator">KirkMcDonald’s Calculator</a></li>
+      <li><a href="#designing-the-blueprint">Designing the blueprint</a></li>
+      <li><a href="#packing-the-blueprint">Packing the blueprint</a></li>
+      <li><a href="#releasing-the-blueprint">Releasing the blueprint</a></li>
+    </ul>
+  </li>
+  <li><a href="#a-selection-of-fan-art-landmine752">A selection of fan art <author>Landmine752</author></a></li>
+  <li>
+<a href="#mod-spotlight-realistic-fusion-power-romner">Mod Spotlight: Realistic Fusion Power <author>Romner</author></a>
+    <ul>
+      <li><a href="#technologies">Technologies</a></li>
+      <li><a href="#fusion---how-it-works">Fusion - How it works</a></li>
+      <li><a href="#antimatter---how-it-works">Antimatter - How it works</a></li>
+      <li><a href="#outro">Outro</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>Infelizmente, este artigo ainda não foi traduzido para o português, então você o está lendo em inglês. Se você quiser ajudar no reparo, por favor entre no servidor do <a href="https://alt-f4.blog/pt-br/discord">Alt-F4 no Discord</a> para começar. Obrigado!</p>
+
+</div>
+
+
+
+<p>Welcome to the fourth issue of Alt-F4, rounding out the very first month of posts! This week, gamebuster800 describes their process for designing blueprints, Landmine752 shares some of their favourite fan art, and Romner gives us some insight into their Realistic Fusion Power mod (in the first part of a two-part series).</p>
+
+<p>Also, Alt-F4 is now available in five languages (English, Russian, Ukrainian, Italian and French) thanks to the effort of many dedicated translators who have jumped in to help. Use the language button at the top of the website to change language. You guys are great, thank you. If you, dear reader, want to help translate into even more languages, take a look at the Contributing section below.</p>
+      <h2 id="designing-blueprints-with-creative-mod-and-kirkmcdonalds-calculator-gamebuster800">
+        
+        
+            <a href="#designing-blueprints-with-creative-mod-and-kirkmcdonalds-calculator-gamebuster800" class="anchor" style="text-decoration: none;">Designing Blueprints with Creative Mod and KirkMcDonald’s Calculator <author>gamebuster800</author></a>
+          
+        
+      </h2>
+    
+
+<p>I like to design my factory in isolation. When I need a certain resource in my game, like some science pack, I stop my “survival” save and open another save with <a href="https://mods.factorio.com/mod/creative-mod">Creative Mod</a> loaded in order to create a blueprint which meets my needs. Creative Mod adds infinite sources for liquids and raw materials, easily configurable cheats like time speed-up, biter disabling, infinite reach, and unlocking all technologies. It’s the inspiration for <a href="https://mods.factorio.com/mod/EditorExtensions">Editor Extensions</a>, featured on Alt-F4 <a href="https://alt-f4.blog/pt-br/ALTF4-3/#mod-spotlight-editor-extensions-raiguard">last week</a> by Raiguard.</p>
+
+<p>Before I start designing, I’ll determine my goal. In this case, I just finished Chemical (blue) Science Pack production and recently introduced construction and logistic bots to my base. To finish unlocking the non-infinite tech tree, I’ll need Production (purple) and Utility (yellow) Science Packs, so that’s what I’ll be designing.</p>
+
+<p>Back in my survival save I still have mostly first-tier machinery available: yellow belts, yellow inserters and assembling machine 1’s. I have set up production for the higher tier ones, but these are just starting and I still have a pool of these basic ones, so I’ll limit my blueprint to using these first-tier machines.</p>
+      <h3 id="kirkmcdonalds-calculator">
+        
+        
+            <a href="#kirkmcdonalds-calculator" class="anchor" style="text-decoration: none;">KirkMcDonald’s Calculator</a>
+          
+        
+      </h3>
+    
+
+<p>I’ll be using <a href="https://kirkmcdonald.github.io/calc.html#data=1-0-0&amp;items=production-science-pack:r:60,utility-science-pack:r:60&amp;ignore=iron-plate,copper-plate">KirkMcDonald’s calculator</a> to create a diagram of all the required resources and the machines required to produce them. I’ll tell the calculator not to include furnaces for raw metal ore and raw copper ore, since I’m the kind of person to do smelting at the ore deposits. This is because ores stack up to 50, while plates stack up to 100. Therefore, when smelting before loading into trains or chests, you can double the amount of plates per storage container. Small gameplay tip for you right there, if you didn’t already know.</p>
+      <h3 id="designing-the-blueprint">
+        
+        
+            <a href="#designing-the-blueprint" class="anchor" style="text-decoration: none;">Designing the blueprint</a>
+          
+        
+      </h3>
+    
+
+<p>Because the diagram is pretty large, I’ll first design the individual components of the blueprint, feeding it with infinite resources and consuming all resources. I do this for all of the production chains like advanced circuit production, electronic circuit production and steel production. I measure the performance of each one by speeding up the game (Creative Mode &gt; Cheats &gt; Game Settings &gt; Game Speed &gt; <strong>100</strong>) and looking at the production window (opened by pressing <strong>P</strong>). I usually let it run for 10 in-game minutes to an in-game hour.</p>
+
+<p>The production should match the numbers from the calculator. If it doesn’t, check the assembly machines and see which resource is lacking. Follow the lacking resources until you find your problem. Usually the belt is not capable of transporting the amount of materials required, or the inserters aren’t fast enough.</p>
+
+<p>Once all the individual production chains seem to be functioning well, I’ll connect them together and measure their overall performance. I’ll remove all extra infinite sources and no longer consume the outputs other than the science production. This way, I can determine whether there are any bottlenecks between the production chains. Again, I usually let it run for 10 in-game minutes to an in-game hour, fixing all the bottlenecks or other issues. I’ll make sure the system produces the expected level of resources for at least an hour, without any spikes or dips.</p>
+
+<p>If you want to be extra thorough you can disable an input for a minute and restart it again, to see whether production recovers properly. Especially with oil production, sometimes one resource backing up can permanently cripple another one, breaking the factory. You must make sure that any excess liquid production is consumed properly and doesn’t back up.</p>
+      <h3 id="packing-the-blueprint">
+        
+        
+            <a href="#packing-the-blueprint" class="anchor" style="text-decoration: none;">Packing the blueprint</a>
+          
+        
+      </h3>
+    
+
+<p>Now that I have a factory capable of producing my desired material, I have to pack the blueprint into the smallest area possible. I like to have the inputs and outputs all as close as possible together and all at one side. To achieve that I copy/paste the individual production chains so that I’ll end up with something that resembles a rectangle with minimal wasted space, while also connecting them all together.</p>
+
+<p>Once I’m satisfied with my production-chain tetris skills I’ll measure the blueprint again, to avoid any last-minute mistakes slipping in.</p>
+      <h3 id="releasing-the-blueprint">
+        
+        
+            <a href="#releasing-the-blueprint" class="anchor" style="text-decoration: none;">Releasing the blueprint</a>
+          
+        
+      </h3>
+    
+
+<p>Finally, I mark all the inputs with constant combinators. I’ll use a constant combinator for each input and set a signal with the amount of resources per minute that should be provided on the belt and the belts right of it. I blueprint the whole thing (including the constant combinators), write a description, version number, describe the inputs and outputs in the description, and save it.</p>
+      <h2 id="a-selection-of-fan-art-landmine752">
+        
+        
+            <a href="#a-selection-of-fan-art-landmine752" class="anchor" style="text-decoration: none;">A selection of fan art <author>Landmine752</author></a>
+          
+        
+      </h2>
+    
+
+<p>I selected some great fan art this week for us all to enjoy.</p>
+
+<p><img id="image-element" class="post" src="//i.imgur.com/CqcQNl0.gif"></p>
+
+<p><a href="https://twitter.com/HrusaArt">@HrusaArt</a></p>
+
+<p><img id="image-element" class="post" src="//i.imgur.com/d1UsGVE.gif"></p>
+
+<p><a href="https://www.instagram.com/limelier/">@limelier</a></p>
+
+<p><img id="image-element" class="post" src="//i.imgur.com/rl2wyDk.gif"></p>
+
+<p><a href="https://www.reddit.com/user/HideBoar/">Boaris</a></p>
+      <h2 id="mod-spotlight-realistic-fusion-power-romner">
+        
+        
+            <a href="#mod-spotlight-realistic-fusion-power-romner" class="anchor" style="text-decoration: none;">Mod Spotlight: </a><a href="https://mods.factorio.com/mod/RealisticFusionPower">Realistic Fusion Power</a> <author>Romner</author>
+          
+        
+      </h2>
+    
+
+<p>It always bothered me that we can <em>somehow</em> make small, portable fusion reactors, but we can’t make any factory-sized ones. So I made this mod. Now, I know a lot of you will be asking why. Why do we need fusion when we already have nuclear fission?</p>
+
+<ul>
+  <li>In the end game, you will need a lot of power. A <strong>lot</strong> of power. At the lowest UPS cost possible. A single fusion power plant can produce a bit over 40 GW. That’s equivalent to about 500,000 solar panels.</li>
+  <li>Fission needs uranium which has to be mined with sulfuric acid, and when depleted you need to find another ore patch. Fusion uses deuterium which is (relatively) abundant in water. Solar needs a lot of space. Steam… well, you probably already know why steam isn’t really an option in the endgame.</li>
+</ul>
+      <h3 id="technologies">
+        
+        
+            <a href="#technologies" class="anchor" style="text-decoration: none;">Technologies</a>
+          
+        
+      </h3>
+    
+
+<p>Fusion isn’t easy to achieve of course, because otherwise us humans would be using it as our primary power source. To get the full 20 GW/power plant you’ll need a bit over <em>one million</em> science packs of each type (except military). At first, fusion will be very impractical and use more energy than it produces, but at the end you’ll feel like you have unlimited energy (which you practicaly will).</p>
+
+<p>With chemical science, the only thing you can unlock is deuterium extraction by boiling water to separate heavy water from normal water (heavy water has a boiling point ~1 °C higher than normal water) and then electrolysing the heavy water.</p>
+
+<p>The first fusion reaction you can unlock is D-D (Deuterium-Deuterium) with production science, which can not even sustain itself. After a few efficiency upgrades it becomes possible to use as a power source, but still pretty impractical compared to fission (150 MW/power plant at most). You can also unlock the Girdler sulfide (GS) process, which can concentrate heavy water to ~5% (and then 10% with a second research) before boiling it. This is much more space and energy efficient than directly boiling water.</p>
+
+<p>With utility science you can unlock tritium breeding from the D-D reactions and D-T fusion, which at first produces ~1 GW (with efficiency upgrades the most you can get is ~1.6 GW) — at this point fusion becomes more practical than fission. After that, you can also research helium-3 breeding from D-D and unlock basic aneutronic fusion (He3-He3) which can convert the energy generated directly to electricity (no need for heat exchangers/turbines). He3-He3 cannot sustain itself at first, but can produce up to 3.5 GW with efficiency upgrades. You can also concentrate heavy water to 20% before boiling it, increasing efficiency even more.</p>
+
+<p>If <a href="https://mods.factorio.com/mod/RTG">RTG</a> is installed you can also unlock a portable fusion reactor that can produce a lot of power but needs fuel. You also unlock He3-He3 fuel cells which can last 12.5 minutes each at the max 20 MW output. (Of course you’ll never be able to use the full 20 MW, much less for 12.5 minutes straight, so they will last a lot longer.)</p>
+
+<p>With space science you can unlock more efficiency upgrades to D-T and He3-He3, allowing them to produce 1.9 GW and 10 GW respectively. You can also unlock D-He3 aneutronic fusion, which doesn’t need as much energy to heat as He3-He3 and produces more heat — 5 GW without upgrades, 18.5 GW with. After that you can unlock tritium decay to helium-3. (This was originally meant for the <a href="https://mods.factorio.com/mod/RealisticFusionWeaponry">weaponry addon</a>, but it can also boost power production to ~41 GW/power plant, and it can be disabled with a setting.) You can also unlock D-He3 fuel cells for the portable reactor if <a href="https://mods.factorio.com/mod/RTG">RTG</a> is installed. These can last ~17 minutes each at 20 MW.</p>
+
+<p>If that still isn’t enough for you, there’s another recently added (currently beta; can be disabled in mod settings) power source: antimatter. First, you research hydrogen extraction+ionization after all of the fusion-related tech is researched. That allows you to split hydrogen atoms into protons and electrons. Next, you can research particle acceleration and antimatter science packs which don’t need a lot of resources except power — a single particle accelerator can use 10 GW to produce 100/s. After a bunch of other research, the least you can expect of an antimatter power plant can be ~1.3 TW (~1,300 GW). The most is ~1.5 TW. Either way, it’s way more energy than anyone could ever use without giant UPS drops.</p>
+
+<p>If this seems to be too easy, keep in mind that just basic deuterium extraction needs more science that fission power. There’s also a multiplier to change the science cost if you’d like some extra challenge.</p>
+      <h3 id="fusion---how-it-works">
+        
+        
+            <a href="#fusion---how-it-works" class="anchor" style="text-decoration: none;">Fusion - How it works</a>
+          
+        
+      </h3>
+    
+
+<p>20 GW example power plant (no tritium decay):</p>
+
+<p><img id="image-element" class="post" src="//i.imgur.com/P8EY3TD.gif"></p>
+
+<p>First, you get a lot of water and, using the GS process, enrich it to 20% heavy water (which has deuterium instead of ordinary hydrogen). In the process you generate a lot of deuterium-depleted water which can either be boiled into steam or dumped back into wherever the water came from. Discharging water back into a lake or whatever isn’t possible without some workarounds. What I did is make the discharge pump internally an assembling machine that can only be built on water. Its recipe needs 1,200 depleted water and produces 0 depleted water — that way it’s possible to “discharge” the depleted water.) After you have the pure heavy water, you have to electrolyze it to get the deuterium needed for fusion.</p>
+
+<p>After you get the deuterium, you have to heat it to the temperature fusion occurs at (which is pretty damn high, by the way). The interesting thing about the heater is that it isn’t your regular boiler, nonono. Internally, it’s actually a furnace. A furnace is effectively an assembling machine which chooses its own recipe based on the ingredients. I did this so that I can make technologies that can improve the heating efficiency. (If there’s more than one recipe with the same ingredients, the heater chooses alphabetically using the internal name, so for example I can make a <code class="language-plaintext highlighter-rouge">recipe-1</code> and then unlock <code class="language-plaintext highlighter-rouge">recipe-0</code> with a technology and the heater will use <code class="language-plaintext highlighter-rouge">recipe-0</code> if it’s unlocked).</p>
+
+<p>Now that you have the plasma, you have to somehow get it into the reactor. Iron pipes won’t do:</p>
+
+<p><img id="image-element" class="post" src="//i.imgur.com/XCW5W7T.gif"></p>
+
+<p>The orange pipes on the left are magnetic containment pipes. With these, you can transport plasma at temperatures of millions of degrees. Any other pipe will explode. This is achieved by a script that checks 16 pipes every tick (about 1,000 pipes per second).</p>
+
+<p>“But wouldn’t that kill my UPS?” Nope:</p>
+
+<p><img id="image-element" class="post" src="//i.imgur.com/CsPrDkv.gif"></p>
+
+<p>The performance is about the same regardless of how many pipes are placed down because it goes through a set amount (16 by default; customizable with a mod setting) of pipes per tick. If you do have performance problems, you can simply turn it down in the mod settings, or disable it completely by setting it to 0.</p>
+
+<p>Back to the reactor. It works similarly to the heater (it’s a furnace internally, recipes get unlocked by techs, etc.), except that instead of plasma it produces a “fluid” called GJ. It can’t be transported by <em>any</em> pipes, pumps, undergrounds or storage tanks. It simply disappears. The heat exchanger is internally a reactor that consumes said GJ. 1 GJ (the “fluid”) = 1 GJ of heat energy. Then you just get some heat exchangers and turbines to convert the heat to electricity like with fission. I also added high capacity versions of both that consume and produce ten times more for UPS and space reasons. (D-T can make up to 2 GW = 200 heat exchangers and 343 turbines or 20 HC exchangers and 35 HC turbines.) D-D produces tritium and helium-3, which can be mixed with deuterium. The aneutronic reactor works exactly the same as the normal reactor, and the direct energy converter is internally a generator (like the steam turbine).</p>
+
+<p>You’ll also need a lot of energy to kickstart the process, since you first need to heat whatever you’re fusing to get it to actually fuse and produce energy. Without efficiency upgrades D-D needs 400 MW to kickstart, D-T needs 200 MW, He3-He3 needs 7 GW, and D-He3 needs 5 GW.</p>
+      <h3 id="antimatter---how-it-works">
+        
+        
+            <a href="#antimatter---how-it-works" class="anchor" style="text-decoration: none;">Antimatter - How it works</a>
+          
+        
+      </h3>
+    
+
+<p>The first thing you do is electrolyze normal water to get hydrogen, and then ionize it to separate the electrons from protons. Then you need to accelerate and collide protons to get high-energy (read as very-speedy) antiprotons and collide electrons to get high-energy positrons in the particle accelerator. Accelerators consume 10 GW each, and you will need four of them. Decelerators consume half of that, but you’ll need twice as many. After that you have to slow the high-energy particles with the particle decelerator to get (non-speedy) antiprotons and positrons. You then combine those to get antihydrogen, which can be used to make matter-antimatter fuel cells which can be used in the reactor to produce energy.</p>
+
+<p>Do <em>not</em> use normal pipes to route antimatter. Unless you like big explosions and are too lazy to make <a href="https://mods.factorio.com/mod/RealisticFusionWeaponry">actual weapons</a> with the antimatter you waste by doing that. This uses the same script as the plasma, so no noticeable performance impact.</p>
+
+<p><img id="image-element" class="post" src="//i.imgur.com/LrNZuGL.gif"></p>
+
+<p>This part is work in progress at the time of writing (it can be disabled in settings), so there isn’t a lot of content for antimatter yet (and I’m not sure about the balance), but that should change with updates in the future.</p>
+
+<p>Also, some of the textures are modified from <a href="https://mods.factorio.com/mod/Krastorio2">Krastorio 2</a>. If you haven’t tried it yet, then do — it’s between vanilla and angelbobs in terms of difficulty and the graphics look awesome. If you’re one of the people that made Krastorio and don’t want me to use the textures, please contact me (see below) and I’ll replace them with something else.</p>
+      <h3 id="outro">
+        
+        
+            <a href="#outro" class="anchor" style="text-decoration: none;">Outro</a>
+          
+        
+      </h3>
+    
+
+<p>So, you made it to the end. That probably means you’re interested in the mod. If that’s the case, go ahead and <a href="https://mods.factorio.com/mod/RealisticFusionPower">download it</a>! If not, then tell me what I could improve though the <a href="https://forums.factorio.com/memberlist.php?mode=viewprofile&u=63064">forums</a> or on Discord (Romner#5341). Or don’t. Up to you. Also, don’t worry about not being ‘professional’ enough or whatever when contacting me. We mod makers aren’t all that different from other people. :)</p>
+
+<p>There will also be a part two in the next Alt-F4 where I’ll talk about the <a href="https://mods.factorio.com/mod/RealisticFusionWeaponry">weaponry addon</a>, which will contain lots and lots of big explosions.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>Same story as every week: We’d love it if you contributed to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a more polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. Join the <a href="https://alt-f4.blog/pt-br/discord">Discord</a> to get started.</p>
+
+<p>We also got translation going last week and it was great to see the enthusiastic support of the many of you who jumped in to help immediately. If you want to translate Alt-F4 into your language, or help with a language that is already being translated, feel free to join the <a href="https://alt-f4.blog/pt-br/discord">Discord</a> and read the #translation-instructions. Let’s get this translated into even more languages, so everyone can enjoy it equally!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/iqoy2q/altf4_4_designing_blueprints/">
+    Discuta em Reddit
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/pt-br/discord">
+    Discuta no Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/pt-br/ALTF4-3/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/pt-br/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/pt-br/ALTF4-5/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/pt-br/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/pt-br/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/pt-br/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Este site é um projeto de fãs e não está diretamente relacionado com Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

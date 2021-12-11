@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="nl" class="nl">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #16 - Modulating Pure Speed</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #16 - Modulating Pure Speed">
+<meta name="author" content="TheKool, DedlySpyder">
+<meta property="og:locale" content="en">
+<meta name="description" content="Another week, another issue of Alt-F4! The sixteenth week of this merry series of words to be precise. To celebrate, TheKool continues his Complexity Corner series by asking the five Ws about speed modules. Afterwards, DedlySpyder pontificates on how modding inspiration sometimes comes from unexpected places. Complexity Corner: Speed Modules TheKool Welcome back to Complexity Corner! This is a series of articles that spotlight seemingly complex aspects of the game in an attempt to shed enough light on them to let even beginners feel like they can start using them. To this end, we will ask three questions: What is it?, What results can it give?, and Where should it be used? While these articles are aimed at beginners, even veterans of the game may be beginners on a specific topic, so come along for the ride! Last time, I talked about productivity modules, which I’ll follow up on today by talking about speed modules. In addition to talking about them by themselves, I will also go over what makes them different from productivity modules and how to decide which you want to use depending on the situation. What are speed modules? Speed modules, like productivity modules, are items that can be placed into a building to modify how the building works. Unlike productivity modules, they provide a very simple trade-off: The building uses more power but works faster. More on consuming more power later. Speed modules can also be put into beacons, but I’ll cover that in a later article focused on beacons and their use. Speed modules make machines work faster. That means the machines will produce more per minute. Building more assemblers can get the same result for cheaper, but sometimes that’s not a viable an option. Sometimes, the logistics of supporting those extra buildings is too much, or you don’t have the room to expand. Sometimes your base is just too big for your computer and you need to make the game itself run more efficiently. Sometimes you’re trying to fit into a complex build, or trying to change the speed of one building to match a certain recipe. &lt;/source&gt; Video of two circuit makers, one working faster because of speed modules. On the left, the assembler producing green circuits is idle sometimes. On the right, it runs continuously. What results can they give? The speed increase granted by a speed module ranges from +20% to +50%, and these bonuses stack. This means that filling an assembling machine 3 with four speed 3 modules (4x +50%) makes it work three times faster! One of my most common use cases for speed modules is to upgrade my existing factory to meet higher demand, such as when I need to desperately feed more ammo to hungry gun turrets. Throw in a few speed modules, get more ammo per second. In this case, you can drop two speed 1 modules in every assembler and get 40% more output. Speaking of ratios, carefully selecting which module goes where can make a complex ratio much simpler. In the green circuit build shown above, you can see how the mismatched speeds of the wire and circuit assemblers are perfectly balanced by adding a few speed modules to only the wire assembler (it just needs a +50% bonus). Deploying speed modules tactically, in the right spots, can have a big effect on overall output. In the image below, you can see how just a handful of speed modules can make a small science build work in sync. As long as you fill up all the buildings evenly, it doesn’t change the overall ratio of your factory. Have you noticed yet that I don’t do these calculations by hand? Klik om volledige resolutie te bekijken Remember I said we’d come back to using more power? Now’s a good time to do that. If power or pollution is a concern, you will use less power and produce less pollution by making more assemblers instead of using speed modules (remember, pollution is matched to power usage). By making your machine work at 120% speed, it uses 150% power! The trade-off gets better as you use higher tiers of modules, but it will always take less energy and produce less pollution to have more buildings instead of using speed modules. Where should they be used? Last time, the answer was simple. Want free stuff, spam productivity modules. Now we have a choice between two different modules, and they both seem similar at first glance. Both types of module give us more, so how do we know which to use where? Well, here’s the thing. Productivity modules will slow your base down to give free stuff; speed modules will speed your base up. If you need more items per second, productivity modules will work against you and fill up slots you could be using for speed modules. In general, you’ll get more out of your raw resources if you build a lot of machines and fill them up with productivity modules because they literally give you free stuff. Speed modules are useful though when the number of machines is limited for some reason (or when used in beacons, which we’ll get to in a future article). There are also a few special scenarios where speed modules fulfil an especially useful role: Mining drills: The ore you gain per second is limited by how many mining drills you can place. Adding speed modules can make that small patch feed a bigger base, but beware of it running out faster. Pumpjacks: Once your pumpjack has reduced its oil patch down to its minimum value, load it up with speed modules to get more out of it. Unlike mining drills, it’s not ever going to run out at this point. Complex ratios: A few carefully placed speed modules can turn a mess of spaghetti into neat lines. Consult your favourite calculator and play around with configurations to see what fits! Before I go, I do need to address something you’ll hear talked about. Some people will tell you that you actually get faster output by using a mix of productivity and speed modules as opposed to only speed modules. This… is actually true, but only if you are using beacons. We’ll go over that when we get to talking about beacons, but before that, we’ll need to address the third and final module: the efficiency module. Until then, I’ll see you on the factory floor! Modding Inspiration DedlySpyder Sometimes inspiration for new features is found in the oddest places. Last month, a comment was left on my Generic Logistic Chest mod from a German YouTube channel linking to their spotlight of the mod. Not speaking any German myself, I watched some of it anyway to see how the reviewer was showcasing the mod. Before I explain what I saw in the video that prompted a change, let me give some background on the Generic Logistic Chest mod. It started out as an idea to simplify the player’s inventory/quickbar for setting up logistics. Instead of needing a stack of requester, storage, and each type of provider chest (this was in the days before buffer chests), the player could just keep a single stack of generic logistic chests. When they place one, a UI opens giving them a choice of the different types of logistic chest. The player then selects one and the generic chest morphs into that type. Mining the chest turns it back into a generic one. This simple concept has grown with Factorio over the years; blueprint support was quickly added and more recently copy/paste-compatibility. All use of the mod still starts with manual chest placement and the selection UI though. &lt;/source&gt; Main selection UI for Generic Logistic Chest At one point in the video the reviewer placed several chests at once, leaving the UI open the entire time. I believe they were showing a minor bug with the UI (placing a chest then removing it makes the dialog effectively useless), but I interpreted it as trying to place several chests and change them all at once, like so: &lt;/source&gt; Placing multiple chests, unable to change them all at once At the time of the video it only changed the first chest placed by the player. That was just how it always worked; it wasn’t a conscious decision, it just never occurred to me to let the player place several and then change all of them with one click. There are plenty of times when the player will put down a row of chests, so why shouldn’t the mod support that in a nice way? So I added that feature. &lt;/source&gt; Placing multiple chests, now changing them all at once This wasn’t a revolutionary feature, but it’s useful any time the player is placing multiple chests. Before this change, if the player wanted to place a row of requester chests, they would either have to place them one at a time or keep a blueprint on hand. Both of these defeated the purpose of the mod: to simplify logistic chest setup. It wasn’t a request and I’m not even sure it was mentioned in the video. It was just something I observed when watching someone else interact with my mod. In retrospect though, I can’t believe it wasn’t in the mod from the beginning. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started! Something new this week is to announce that we started an Alt-F4 community Factorio server, playing Space Exploration as our main content mod. We have a special channel in the Discord (#server-information) that tells you how to get started, should that interest you.">
+<meta property="og:description" content="Another week, another issue of Alt-F4! The sixteenth week of this merry series of words to be precise. To celebrate, TheKool continues his Complexity Corner series by asking the five Ws about speed modules. Afterwards, DedlySpyder pontificates on how modding inspiration sometimes comes from unexpected places. Complexity Corner: Speed Modules TheKool Welcome back to Complexity Corner! This is a series of articles that spotlight seemingly complex aspects of the game in an attempt to shed enough light on them to let even beginners feel like they can start using them. To this end, we will ask three questions: What is it?, What results can it give?, and Where should it be used? While these articles are aimed at beginners, even veterans of the game may be beginners on a specific topic, so come along for the ride! Last time, I talked about productivity modules, which I’ll follow up on today by talking about speed modules. In addition to talking about them by themselves, I will also go over what makes them different from productivity modules and how to decide which you want to use depending on the situation. What are speed modules? Speed modules, like productivity modules, are items that can be placed into a building to modify how the building works. Unlike productivity modules, they provide a very simple trade-off: The building uses more power but works faster. More on consuming more power later. Speed modules can also be put into beacons, but I’ll cover that in a later article focused on beacons and their use. Speed modules make machines work faster. That means the machines will produce more per minute. Building more assemblers can get the same result for cheaper, but sometimes that’s not a viable an option. Sometimes, the logistics of supporting those extra buildings is too much, or you don’t have the room to expand. Sometimes your base is just too big for your computer and you need to make the game itself run more efficiently. Sometimes you’re trying to fit into a complex build, or trying to change the speed of one building to match a certain recipe. &lt;/source&gt; Video of two circuit makers, one working faster because of speed modules. On the left, the assembler producing green circuits is idle sometimes. On the right, it runs continuously. What results can they give? The speed increase granted by a speed module ranges from +20% to +50%, and these bonuses stack. This means that filling an assembling machine 3 with four speed 3 modules (4x +50%) makes it work three times faster! One of my most common use cases for speed modules is to upgrade my existing factory to meet higher demand, such as when I need to desperately feed more ammo to hungry gun turrets. Throw in a few speed modules, get more ammo per second. In this case, you can drop two speed 1 modules in every assembler and get 40% more output. Speaking of ratios, carefully selecting which module goes where can make a complex ratio much simpler. In the green circuit build shown above, you can see how the mismatched speeds of the wire and circuit assemblers are perfectly balanced by adding a few speed modules to only the wire assembler (it just needs a +50% bonus). Deploying speed modules tactically, in the right spots, can have a big effect on overall output. In the image below, you can see how just a handful of speed modules can make a small science build work in sync. As long as you fill up all the buildings evenly, it doesn’t change the overall ratio of your factory. Have you noticed yet that I don’t do these calculations by hand? Klik om volledige resolutie te bekijken Remember I said we’d come back to using more power? Now’s a good time to do that. If power or pollution is a concern, you will use less power and produce less pollution by making more assemblers instead of using speed modules (remember, pollution is matched to power usage). By making your machine work at 120% speed, it uses 150% power! The trade-off gets better as you use higher tiers of modules, but it will always take less energy and produce less pollution to have more buildings instead of using speed modules. Where should they be used? Last time, the answer was simple. Want free stuff, spam productivity modules. Now we have a choice between two different modules, and they both seem similar at first glance. Both types of module give us more, so how do we know which to use where? Well, here’s the thing. Productivity modules will slow your base down to give free stuff; speed modules will speed your base up. If you need more items per second, productivity modules will work against you and fill up slots you could be using for speed modules. In general, you’ll get more out of your raw resources if you build a lot of machines and fill them up with productivity modules because they literally give you free stuff. Speed modules are useful though when the number of machines is limited for some reason (or when used in beacons, which we’ll get to in a future article). There are also a few special scenarios where speed modules fulfil an especially useful role: Mining drills: The ore you gain per second is limited by how many mining drills you can place. Adding speed modules can make that small patch feed a bigger base, but beware of it running out faster. Pumpjacks: Once your pumpjack has reduced its oil patch down to its minimum value, load it up with speed modules to get more out of it. Unlike mining drills, it’s not ever going to run out at this point. Complex ratios: A few carefully placed speed modules can turn a mess of spaghetti into neat lines. Consult your favourite calculator and play around with configurations to see what fits! Before I go, I do need to address something you’ll hear talked about. Some people will tell you that you actually get faster output by using a mix of productivity and speed modules as opposed to only speed modules. This… is actually true, but only if you are using beacons. We’ll go over that when we get to talking about beacons, but before that, we’ll need to address the third and final module: the efficiency module. Until then, I’ll see you on the factory floor! Modding Inspiration DedlySpyder Sometimes inspiration for new features is found in the oddest places. Last month, a comment was left on my Generic Logistic Chest mod from a German YouTube channel linking to their spotlight of the mod. Not speaking any German myself, I watched some of it anyway to see how the reviewer was showcasing the mod. Before I explain what I saw in the video that prompted a change, let me give some background on the Generic Logistic Chest mod. It started out as an idea to simplify the player’s inventory/quickbar for setting up logistics. Instead of needing a stack of requester, storage, and each type of provider chest (this was in the days before buffer chests), the player could just keep a single stack of generic logistic chests. When they place one, a UI opens giving them a choice of the different types of logistic chest. The player then selects one and the generic chest morphs into that type. Mining the chest turns it back into a generic one. This simple concept has grown with Factorio over the years; blueprint support was quickly added and more recently copy/paste-compatibility. All use of the mod still starts with manual chest placement and the selection UI though. &lt;/source&gt; Main selection UI for Generic Logistic Chest At one point in the video the reviewer placed several chests at once, leaving the UI open the entire time. I believe they were showing a minor bug with the UI (placing a chest then removing it makes the dialog effectively useless), but I interpreted it as trying to place several chests and change them all at once, like so: &lt;/source&gt; Placing multiple chests, unable to change them all at once At the time of the video it only changed the first chest placed by the player. That was just how it always worked; it wasn’t a conscious decision, it just never occurred to me to let the player place several and then change all of them with one click. There are plenty of times when the player will put down a row of chests, so why shouldn’t the mod support that in a nice way? So I added that feature. &lt;/source&gt; Placing multiple chests, now changing them all at once This wasn’t a revolutionary feature, but it’s useful any time the player is placing multiple chests. Before this change, if the player wanted to place a row of requester chests, they would either have to place them one at a time or keep a blueprint on hand. Both of these defeated the purpose of the mod: to simplify logistic chest setup. It wasn’t a request and I’m not even sure it was mentioned in the video. It was just something I observed when watching someone else interact with my mod. In retrospect though, I can’t believe it wasn’t in the mod from the beginning. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started! Something new this week is to announce that we started an Alt-F4 community Factorio server, playing Space Exploration as our main content mod. We have a special channel in the Discord (#server-information) that tells you how to get started, should that interest you.">
+<link rel="canonical" href="https://alt-f4.blog/nl/ALTF4-16/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-16/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-12-04T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2020-12-04T00:00:00+00:00","datePublished":"2020-12-04T00:00:00+00:00","author":{"@type":"Person","name":"TheKool, DedlySpyder"},"description":"Another week, another issue of Alt-F4! The sixteenth week of this merry series of words to be precise. To celebrate, TheKool continues his Complexity Corner series by asking the five Ws about speed modules. Afterwards, DedlySpyder pontificates on how modding inspiration sometimes comes from unexpected places. Complexity Corner: Speed Modules TheKool Welcome back to Complexity Corner! This is a series of articles that spotlight seemingly complex aspects of the game in an attempt to shed enough light on them to let even beginners feel like they can start using them. To this end, we will ask three questions: What is it?, What results can it give?, and Where should it be used? While these articles are aimed at beginners, even veterans of the game may be beginners on a specific topic, so come along for the ride! Last time, I talked about productivity modules, which I’ll follow up on today by talking about speed modules. In addition to talking about them by themselves, I will also go over what makes them different from productivity modules and how to decide which you want to use depending on the situation. What are speed modules? Speed modules, like productivity modules, are items that can be placed into a building to modify how the building works. Unlike productivity modules, they provide a very simple trade-off: The building uses more power but works faster. More on consuming more power later. Speed modules can also be put into beacons, but I’ll cover that in a later article focused on beacons and their use. Speed modules make machines work faster. That means the machines will produce more per minute. Building more assemblers can get the same result for cheaper, but sometimes that’s not a viable an option. Sometimes, the logistics of supporting those extra buildings is too much, or you don’t have the room to expand. Sometimes your base is just too big for your computer and you need to make the game itself run more efficiently. Sometimes you’re trying to fit into a complex build, or trying to change the speed of one building to match a certain recipe. &lt;/source&gt; Video of two circuit makers, one working faster because of speed modules. On the left, the assembler producing green circuits is idle sometimes. On the right, it runs continuously. What results can they give? The speed increase granted by a speed module ranges from +20% to +50%, and these bonuses stack. This means that filling an assembling machine 3 with four speed 3 modules (4x +50%) makes it work three times faster! One of my most common use cases for speed modules is to upgrade my existing factory to meet higher demand, such as when I need to desperately feed more ammo to hungry gun turrets. Throw in a few speed modules, get more ammo per second. In this case, you can drop two speed 1 modules in every assembler and get 40% more output. Speaking of ratios, carefully selecting which module goes where can make a complex ratio much simpler. In the green circuit build shown above, you can see how the mismatched speeds of the wire and circuit assemblers are perfectly balanced by adding a few speed modules to only the wire assembler (it just needs a +50% bonus). Deploying speed modules tactically, in the right spots, can have a big effect on overall output. In the image below, you can see how just a handful of speed modules can make a small science build work in sync. As long as you fill up all the buildings evenly, it doesn’t change the overall ratio of your factory. Have you noticed yet that I don’t do these calculations by hand? Klik om volledige resolutie te bekijken Remember I said we’d come back to using more power? Now’s a good time to do that. If power or pollution is a concern, you will use less power and produce less pollution by making more assemblers instead of using speed modules (remember, pollution is matched to power usage). By making your machine work at 120% speed, it uses 150% power! The trade-off gets better as you use higher tiers of modules, but it will always take less energy and produce less pollution to have more buildings instead of using speed modules. Where should they be used? Last time, the answer was simple. Want free stuff, spam productivity modules. Now we have a choice between two different modules, and they both seem similar at first glance. Both types of module give us more, so how do we know which to use where? Well, here’s the thing. Productivity modules will slow your base down to give free stuff; speed modules will speed your base up. If you need more items per second, productivity modules will work against you and fill up slots you could be using for speed modules. In general, you’ll get more out of your raw resources if you build a lot of machines and fill them up with productivity modules because they literally give you free stuff. Speed modules are useful though when the number of machines is limited for some reason (or when used in beacons, which we’ll get to in a future article). There are also a few special scenarios where speed modules fulfil an especially useful role: Mining drills: The ore you gain per second is limited by how many mining drills you can place. Adding speed modules can make that small patch feed a bigger base, but beware of it running out faster. Pumpjacks: Once your pumpjack has reduced its oil patch down to its minimum value, load it up with speed modules to get more out of it. Unlike mining drills, it’s not ever going to run out at this point. Complex ratios: A few carefully placed speed modules can turn a mess of spaghetti into neat lines. Consult your favourite calculator and play around with configurations to see what fits! Before I go, I do need to address something you’ll hear talked about. Some people will tell you that you actually get faster output by using a mix of productivity and speed modules as opposed to only speed modules. This… is actually true, but only if you are using beacons. We’ll go over that when we get to talking about beacons, but before that, we’ll need to address the third and final module: the efficiency module. Until then, I’ll see you on the factory floor! Modding Inspiration DedlySpyder Sometimes inspiration for new features is found in the oddest places. Last month, a comment was left on my Generic Logistic Chest mod from a German YouTube channel linking to their spotlight of the mod. Not speaking any German myself, I watched some of it anyway to see how the reviewer was showcasing the mod. Before I explain what I saw in the video that prompted a change, let me give some background on the Generic Logistic Chest mod. It started out as an idea to simplify the player’s inventory/quickbar for setting up logistics. Instead of needing a stack of requester, storage, and each type of provider chest (this was in the days before buffer chests), the player could just keep a single stack of generic logistic chests. When they place one, a UI opens giving them a choice of the different types of logistic chest. The player then selects one and the generic chest morphs into that type. Mining the chest turns it back into a generic one. This simple concept has grown with Factorio over the years; blueprint support was quickly added and more recently copy/paste-compatibility. All use of the mod still starts with manual chest placement and the selection UI though. &lt;/source&gt; Main selection UI for Generic Logistic Chest At one point in the video the reviewer placed several chests at once, leaving the UI open the entire time. I believe they were showing a minor bug with the UI (placing a chest then removing it makes the dialog effectively useless), but I interpreted it as trying to place several chests and change them all at once, like so: &lt;/source&gt; Placing multiple chests, unable to change them all at once At the time of the video it only changed the first chest placed by the player. That was just how it always worked; it wasn’t a conscious decision, it just never occurred to me to let the player place several and then change all of them with one click. There are plenty of times when the player will put down a row of chests, so why shouldn’t the mod support that in a nice way? So I added that feature. &lt;/source&gt; Placing multiple chests, now changing them all at once This wasn’t a revolutionary feature, but it’s useful any time the player is placing multiple chests. Before this change, if the player wanted to place a row of requester chests, they would either have to place them one at a time or keep a blueprint on hand. Both of these defeated the purpose of the mod: to simplify logistic chest setup. It wasn’t a request and I’m not even sure it was mentioned in the video. It was just something I observed when watching someone else interact with my mod. In retrospect though, I can’t believe it wasn’t in the mod from the beginning. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started! Something new this week is to announce that we started an Alt-F4 community Factorio server, playing Space Exploration as our main content mod. We have a special channel in the Discord (#server-information) that tells you how to get started, should that interest you.","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-16/"},"url":"https://alt-f4.blog/ALTF4-16/","@type":"BlogPosting","headline":"Alt-F4 #16 - Modulating Pure Speed","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/16/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/16/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/nl/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/nl/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/nl/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/nl/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/nl/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/nl/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/nl/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/nl/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Het gemeenschap gedreven vervolg op de geliefde Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-16/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-16/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-16/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-16/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-16/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-16/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button button-green lang-button" href="/nl/ALTF4-16/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-16/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-16/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-16/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #16 - Modulating Pure Speed  <author>04-12-2020</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschreven door <em>TheKool, DedlySpyder</em>,
+
+
+
+bewerkt door <em>stringweasel, Nanogamer7, Conor_, Therenas, nicgarner, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/16/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhoudsopgave</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#complexity-corner-speed-modules-thekool">Complexity Corner: Speed Modules <author>TheKool</author></a>
+    <ul>
+      <li><a href="#what-are-speed-modules">What are speed modules?</a></li>
+      <li><a href="#what-results-can-they-give">What results can they give?</a></li>
+      <li><a href="#where-should-they-be-used">Where should they be used?</a></li>
+    </ul>
+  </li>
+  <li><a href="#modding-inspiration-dedlyspyder">Modding Inspiration <author>DedlySpyder</author></a></li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>Jammer genoeg is dit artikel nog niet vertaald naar het Nederlands, daarom zie je het in het Engels. Als je wilt helpen om dit op te lossen kan je je aansluiten op de Alt-F4 <a href="https://alt-f4.blog/nl/discord/">Discord</a> om te beginnen. Bedankt!</p>
+
+</div>
+
+
+
+<p>Another week, another issue of Alt-F4! The sixteenth week of this merry series of words to be precise. To celebrate, TheKool continues his Complexity Corner series by asking the <a href="https://en.wikipedia.org/wiki/Five_Ws">five Ws</a> about speed modules. Afterwards, DedlySpyder pontificates on how modding inspiration sometimes comes from unexpected places.</p>
+      <h2 id="complexity-corner-speed-modules-thekool">
+        
+        
+            <a href="#complexity-corner-speed-modules-thekool" class="anchor" style="text-decoration: none;">Complexity Corner: Speed Modules <author>TheKool</author></a>
+          
+        
+      </h2>
+    
+
+<p>Welcome back to Complexity Corner! This is a series of articles that spotlight seemingly complex aspects of the game in an attempt to shed enough light on them to let even beginners feel like they can start using them. To this end, we will ask three questions: <em>What is it?</em>, <em>What results can it give?</em>, and <em>Where should it be used?</em> While these articles are aimed at beginners, even veterans of the game may be beginners on a specific topic, so come along for the ride! <a href="https://alt-f4.blog/nl/ALTF4-12/#complexity-corner-productivity-modules-thekool">Last time</a>, I talked about productivity modules, which I’ll follow up on today by talking about speed modules. In addition to talking about them by themselves, I will also go over what makes them different from productivity modules and how to decide which you want to use depending on the situation.</p>
+      <h3 id="what-are-speed-modules">
+        
+        
+            <a href="#what-are-speed-modules" class="anchor" style="text-decoration: none;">What are speed modules?</a>
+          
+        
+      </h3>
+    
+
+<p><a href="https://wiki.factorio.com/Module#Speed_module">Speed modules</a>, like <a href="https://wiki.factorio.com/Module#Productivity_module">productivity modules</a>, are items that can be placed into a building to modify how the building works. Unlike productivity modules, they provide a very simple trade-off: The building uses more power but works faster. More on consuming more power later. Speed modules can also be put into <a href="https://wiki.factorio.com/Beacon">beacons</a>, but I’ll cover that in a later article focused on beacons and their use.</p>
+
+<p>Speed modules make machines work faster. That means the machines will produce more per minute. Building more assemblers can get the same result for cheaper, but sometimes that’s not a viable an option. Sometimes, the logistics of supporting those extra buildings is too much, or you don’t have the room to expand. Sometimes your base is just too big for your computer and you need to make the game itself run more efficiently. Sometimes you’re trying to fit into a complex build, or trying to change the speed of one building to match a certain recipe.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1280px; max-height: 720px" playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/16/GC-speed-comparison.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Video of two circuit makers, one working faster because of speed modules.
+    </video>
+    <figcaption>On the left, the assembler producing green circuits is idle sometimes. On the right, it runs continuously.</figcaption>
+  </figure>
+</p>
+      <h3 id="what-results-can-they-give">
+        
+        
+            <a href="#what-results-can-they-give" class="anchor" style="text-decoration: none;">What results can they give?</a>
+          
+        
+      </h3>
+    
+
+<p>The speed increase granted by a speed module ranges from +20% to +50%, and these bonuses stack. This means that filling an assembling machine 3 with four speed 3 modules (4x +50%) makes it work three times faster! One of my most common use cases for speed modules is to upgrade my existing factory to meet higher demand, such as when I need to desperately feed more ammo to hungry gun turrets. Throw in a few speed modules, get more ammo per second. In this case, you can drop two speed 1 modules in every assembler and get 40% more output.</p>
+
+<p>Speaking of ratios, carefully selecting which module goes where can make a complex ratio much simpler. In the green circuit build shown above, you can see how the mismatched speeds of the wire and circuit assemblers are perfectly balanced by adding a few speed modules to only the wire assembler (it just needs a +50% bonus). Deploying speed modules tactically, in the right spots, can have a big effect on overall output. In the image below, you can see how just a handful of speed modules can make a small science build work in sync. As long as you fill up all the buildings evenly, it doesn’t change the overall ratio of your factory.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    <a href="https://kirkmcdonald.github.io/calc.html#zip=dZA7DoQwDAVvk4pIQImUw1jGsBb5oMQp9vZLtiROZ2ms53neQcAtdrazCRzdao5K3uWEF4lts2GhUBxUSQGEU7QFmSKSvQGv7diWyaeTizD2JLBngfztCX4oMIJ/k3W6c9or6peqtMA+zvAZU6aRpW6o2+lmIyvVyIRn11NxeslCg489YFS+UKNq/T/6AQ==" target="_blank">
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/16/9spm-calculator.jpg" alt="" style="max-width: ; max-height:  ">
+        
+        <figcaption>Have you noticed yet that I don’t do these calculations by hand?</figcaption>
+      </figure>
+      <i>Klik om volledige resolutie te bekijken</i>
+      </a>
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Remember I said we’d come back to using more power? Now’s a good time to do that. If power or pollution is a concern, you will use less power and produce less pollution by making more assemblers instead of using speed modules (remember, pollution is matched to power usage). By making your machine work at 120% speed, it uses 150% power! The trade-off gets better as you use higher tiers of modules, but it will always take less energy and produce less pollution to have more buildings instead of using speed modules.</p>
+      <h3 id="where-should-they-be-used">
+        
+        
+            <a href="#where-should-they-be-used" class="anchor" style="text-decoration: none;">Where should they be used?</a>
+          
+        
+      </h3>
+    
+
+<p>Last time, the answer was simple. Want free stuff, spam productivity modules. Now we have a choice between two different modules, and they both seem similar at first glance. Both types of module give us more, so how do we know which to use where? Well, here’s the thing. Productivity modules will slow your base down to give free stuff; speed modules will speed your base up. If you need more items per second, productivity modules will work against you and fill up slots you could be using for speed modules.</p>
+
+<p>In general, you’ll get more out of your raw resources if you build a lot of machines and fill them up with productivity modules because they literally give you free stuff. Speed modules are useful though when the number of machines is limited for some reason (or when used in beacons, which we’ll get to in a future article). There are also a few special scenarios where speed modules fulfil an especially useful role:</p>
+
+<ul>
+  <li>Mining drills: The ore you gain per second is limited by how many mining drills you can place. Adding speed modules can make that small patch feed a bigger base, but beware of it running out faster.</li>
+  <li>Pumpjacks: Once your pumpjack has reduced its oil patch down to its minimum value, load it up with speed modules to get more out of it. Unlike mining drills, it’s not ever going to run out at this point.</li>
+  <li>Complex ratios: A few carefully placed speed modules can turn a mess of spaghetti into neat lines. Consult your favourite calculator and play around with configurations to see what fits!</li>
+</ul>
+
+<p>Before I go, I do need to address something you’ll hear talked about. Some people will tell you that you actually get faster output by using a mix of productivity and speed modules as opposed to only speed modules. This… is actually true, but <em>only</em> if you are using beacons. We’ll go over that when we get to talking about beacons, but before that, we’ll need to address the third and final module: the efficiency module. Until then, I’ll see you on the factory floor!</p>
+      <h2 id="modding-inspiration-dedlyspyder">
+        
+        
+            <a href="#modding-inspiration-dedlyspyder" class="anchor" style="text-decoration: none;">Modding Inspiration <author>DedlySpyder</author></a>
+          
+        
+      </h2>
+    
+
+<p>Sometimes inspiration for new features is found in the oddest places. Last month, a comment was left on my <a href="https://mods.factorio.com/mod/Generic_Logistic_Chest">Generic Logistic Chest</a> mod from a German YouTube channel linking to their <a href="https://youtu.be/cZf56r62WE8">spotlight</a> of the mod. Not speaking any German myself, I watched some of it anyway to see how the reviewer was showcasing the mod.</p>
+
+<div class="yt">
+	<iframe src="https://www.youtube.com/embed/cZf56r62WE8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="youtube"></iframe>
+</div>
+
+<p>Before I explain what I saw in the video that prompted a change, let me give some background on the Generic Logistic Chest mod. It started out as an idea to simplify the player’s inventory/quickbar for setting up logistics. Instead of needing a stack of requester, storage, and each type of provider chest (this was in the days before buffer chests), the player could just keep a single stack of generic logistic chests. When they place one, a UI opens giving them a choice of the different types of logistic chest. The player then selects one and the generic chest morphs into that type. Mining the chest turns it back into a generic one. This simple concept has grown with Factorio over the years; blueprint support was quickly added and more recently copy/paste-compatibility. All use of the mod still starts with manual chest placement and the selection UI though.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 896px; max-height: 504px" playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/16/basic_selection.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Main selection UI for Generic Logistic Chest
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p><a href="https://youtu.be/cZf56r62WE8?t=575">At one point in the video</a> the reviewer placed several chests at once, leaving the UI open the entire time. I believe they were showing a minor bug with the UI (placing a chest then removing it makes the dialog effectively useless), but I interpreted it as trying to place several chests and change them all at once, like so:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 896px; max-height: 504px" playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/16/old_multi_selection.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Placing multiple chests, unable to change them all at once
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>At the time of the video it only changed the first chest placed by the player. That was just how it always worked; it wasn’t a conscious decision, it just never occurred to me to let the player place several and then change all of them with one click. There are plenty of times when the player will put down a row of chests, so why shouldn’t the mod support that in a nice way? So I added that feature.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 896px; max-height: 504px" playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/16/new_multi_selection.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Placing multiple chests, now changing them all at once
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>This wasn’t a revolutionary feature, but it’s useful any time the player is placing multiple chests. Before this change, if the player wanted to place a row of requester chests, they would either have to place them one at a time or keep a blueprint on hand. Both of these defeated the purpose of the mod: to simplify logistic chest setup.</p>
+
+<p>It wasn’t a request and I’m not even sure it was mentioned in the video. It was just something I observed when watching someone else interact with my mod. In retrospect though, I can’t believe it wasn’t in the mod from the beginning.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/nl/discord">Discord</a> to get started!</p>
+
+<p>Something new this week is to announce that we started an Alt-F4 community Factorio server, playing <a href="https://mods.factorio.com/mod/space-exploration">Space Exploration</a> as our main content mod. We have a special channel in the <a href="https://discord.gg/aqFGWDWHjJ">Discord</a> (#server-information) that tells you how to get started, should that interest you.</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=92551">
+    Bespreek op Factorio Forums
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/k6k5db/altf4_16_modulating_pure_speed/">
+    Bespreek op Reddit
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/nl/discord">
+    Bespreek op Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/nl/ALTF4-15/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/nl/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/nl/ALTF4-17/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/nl/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/nl/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/nl/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Deze website is een fan project en niet direct aangesloten met Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

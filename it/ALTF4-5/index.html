@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="it" class="it">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #5 - Migliorare la perfezione</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #5 - Migliorare la perfezione">
+<meta name="author" content="pocarski, Romner, Dr.MagPie">
+<meta property="og:locale" content="it">
+<meta name="description" content="Benvenuti nella quinta edizione di Alt-F4, e stiamo finalmente ingranando! Molti collaboratori, traduttori e appassionati di informatica stanno svolgendo il loro ruolo di api laboriose per aiutare ancora di più questo progetto, il che è semplicemente magnifico. Se volete prendere parte al divertimento, date un’occhiata alla sezione ‘Come contribuire’, in coda all’articolo. In quanto alle notizie di questa settimana, pocarski apre un dibattito sulla reintroduzione della possibilità di scavare la terra piazzata, Romner continua la sua serie della scorsa settimana parlandoci di come obliterare un po’ di biters grazie ai nuovi poteri ora acquisiti, per finire Dr.MagPie ci porterà nella Factorio Zone! Un piccolo sfogo riguardo i terrapieni pocarski “I propri errori non hanno nessun prezzo se non il tuo tempo”, per citare u/talrich dal subreddit di Factorio. E sì, per quasi tutte le azioni compiute in questo gioco, c’è sempre la possibilità di ritornare sui propri passi. Questo è vero per tutto, tranne che per una cosa: i terrapieni. Mentre piazzare erroneamente qualsiasi altra entità o pavimentazione costerà solo un secondo del tuo tempo, fare ciò con un terrapieno non solo te lo farà irreversibilemente perdere, ma ti lascierà anche con un’imbarazzante escrescenza geologica che non volevi avere ma che ora non puoi rimuovere. In questo articolo, presenterò quali sono i principali problemi che sorgono dall’irreversibilità di piazzare un terrapieno, e, almeno spero, riuscirò a farti capire l’importanza di poterli rimuovere, caro lettore. Meccanica obsoleta Mentre nell’epoca pre-0.17 aveva senso non poter rimuovere pezzi di terra in quanto erano letteralmente riconosciuti come tile grass-1, nella 0.17.10 fu introdotta la distinzione fra i due oggetti. Grazie alla possibilità dei terrapieni di venire piazzati dai robot e di essere inclusi nelle blueprint a partire dalla 0.17.0, si era creata la situazione perfetta per far sì che potessero anche essere rimossi, o se non altro, che potesse avvenire un interazione esclusiva di questi tile. Errore costoso Fabbricare ciascun terrapieno costa un esorbitante 20 pezzi di pietra, ciò significa che un intero deposito da 800mila pezzi di pietra basta solo per riempire un’area di 200x200, che non è affatto tanto considerando le dimensioni di tante fabbriche. Molto tempo fa progettai il design di un reattore a fusione che necessitava di un colossale 2700 terrapieni, e produceva solo 480 MW! Non ci sono parole per descrivere l’atroce agonia di piazzare una blueprint spostata di 1 tile e avere una cinquantina di terrapieni piazzati lì ed inutilizzabili (sono letteralmente 1000 stone butatti al vento!). Scombussola il piazzamento delle pompe off-shore Siccome ho menzionato i reattori a fusione, è di dovere parlare di ciò che permette alla maggior parte dei grandi reattori di funzionare: pompe off-shore interne. Esse altro non sono che pompe off-shore incluse nella blueprint che necessitano di una specifica forma dei terrapieni per funzionare correttamente. E basta anche solo trascinare per sbaglio la blueprint mentre la si piazza per rovinare completamente tutto. Nel migliore dei casi basta spostare leggermente le pompe e funzioneranno ancora. Se ti dice zella, hai sprecato l’intera isola di terrapieni che ora rimarrà lì, brutta come un pugno in un occhio. Per dirne un’altra ancora più assurda: puoi piazzare i terrapieni attorno ad una pompa già piazzata e questo continuerà a funzionare, ma nel caso in cui venisse rimossa, sei fregato! non la puoi più riposizionare dov’era prima! Ciò significa che se volessi mai piazzare qualcosa direttamente accanto ad una pompa, siccome sei costretto ad utilizzare i terrapieni, poi dovrai rassegnarti al fatto che quella pompa debba rimanere lì, perché nel caso in cui la rimuovessi dovresti risolvere il rompicapo di come portare dell’acqua in quella posizione tramite un’altra pompa. Conclusioni Il piazzamento irreversibile dei terrapieni è una meccanica obsoleta che può e deve essere rivista Piazzare un terrapieno nel posto sbagliato è estremamente costoso, siccome non può essere riciclato una volta lì Sbagliare il posizionamento di una blueprint che comprende dei terrapieni può rovinare completamente interi progetti I terrapieni sono l’unico oggetto piazzabile che necessita della piena attenzione da parte del giocatore. E da persona con disturbi dell’attenzione quale sono, evito categoricamente di piazzare i terrapieni in partita, anche se credo che onestamente una meccanica di gioco non debba affatto funzionare così. Darci la possibilità di spalare via i terrapieni migliorerebbe incredibilmente il gioco (e nei rari casi in cui i giocatore rimuovesse la terra da sotto i propri piedi e morisse, se lo sarebbe decisamente meritato). Ovviamente c’è sempre la variabile “se vuoi che si possano rimuovere i terrapieni installa qualche mod”, ma credo che vada decisamente contro la politica di Wube di creare un gioco raffinato. Mod Spotlight: Armi a Fusione Realistiche Romner Dopo aver creato la power mod, discussa nell’edizione della scorsa settimana di Alt-F4, ho iniziato ad ipotizzare un utilizzo della fusione alternativo rispetto alla produzione di energia. Beh, le testate termonucleari esistono già. E sebbene le bombe a fusione pura sono solo state teorizzate, le ho introdotte comunque. Lascio parlare le gif: &lt;/source&gt; Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni vanilla &lt;/source&gt; Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni della MIRV L’ordine è: testata nucleare vanilla &gt; bomba termonucleare &gt; bomba a fusione pura. La prima gif mostra delle esplosioni simil-vanilla, mentre per la seconda, ho creato una mix fra lo stile della MIRV e quello del vanilla 1.0. Personalmente preferisco uno stile più simil-MIVR, ma c’è un impostazione per ogni bomba. C’è anche un impostazione per modificare l’intensità dello screen-burn, se vi sembra eccessivo. Ho recentemente aggiunto l’anti-materia alla Realistic Fusion Power. Essa è ottima per la produizone di tanta elettricità, ma anche tanta distruzione se usata nelle armi. Armi molto potenti. (La gif è velocizzata per compensare l’abbassamento degli UPS) &lt;/source&gt; Esplosione gigantesca causata dalla bomba ad anti-materia La bomba ad anti-materia può essere scagliata solo in forma di proiettile dell’artiglieria poiché in nessun modo potresti sopravvivere lanciandola da un lanciarazzi manuale. Le armi ad anti-materia e a fusione pura non hanno neanche una massa critica, quindi sono scalabili a tutti i livelli. Questi includono: Piccoli razzi (e palle di cannone che creano la stessa esplosione): &lt;/source&gt; Esplosione di un razzo di piccole dimensioni Proiettili per fucili a pompa: &lt;/source&gt; Fucile a pompa a fusione che spara, creando esploioni &lt;/source&gt; Fucile a pompa ad anti-materia che spara, creando esploioni E persino normali proiettili! &lt;/source&gt; Orda di biter disintegrata da proiettili a fusione &lt;/source&gt; Orda più grande di biter disintegrata da proiettili ad anti-materia La gif dell’esplosione di un razzo/proiettile per cannoni non è presente siccome provocano ambedue un’esplosione analoga a quella di una bomba a pura fusione. E ho menzionato il fatto che tutte le bombe nucleari hanno una controparte per l’artiglieria? Sì, anche quelle vanilla. Ah, hai presente i lanciafiamme, no? Beh, perché lanciare fiamme a centinaia di gradi, quando puoi sputare plasma a milioni o miliardi di gradi? &lt;/source&gt; orda di biter letteralmente sciolta da un lancia-plasma E, sì, c’è anche una torretta lancia-plasma. Può usare sia il plasma di deuterio sia quello di He-3 (quest’ultimo fa più danni grazie alla temperatura 4 volte più elevata). (Sì, lo so, nella realtà il plasma si raffredderebbe in un istante rendendo la torretta una spara-scorreggie, ma grazie al potere della Scienza™, tutto è possibile, quindi non lamentiamoci.) Ovviamente tutto ciò non costa poco - servono molte ricerche che costano molto, 10 mila (lancia-plasma), 20 mila (bombe termonucleari), 50 mila (bombe a fusione pura), 100 mila (armi a fusione di piccola taglia), 500 mil (armi ad anti-materia di piccola taglia) ed 1 milione (bombe ad anti-materia) di science pack. Per farvi capire, la bomba nucleare in vanilla costa 5 mila. Per fabbricarle servono anche molte risorse: una singola bomba a fusione termonucleare ha bisogno di 10 mila unità del mix di deuterio-trizio + 25 U-235. Un totale di 2TJ di energia a fusione e 2TJ di fissione. La bomba a fusione pura costa 20 mila unità del mix di deuterio-He-3, un totale di 20TJ di carburante per fusione. La bomba ad antimateria usa 500 anti-idrogeni. Un equivalente di ~386TJ. La nuke vanilla ha solo 2.4TJ di carburante per fissione. La RFW è pensata per l’utilizzo contro potenti nemici moddati (come ne sono presenti nella Rampant), ma funziona perfettamente anche contro i biter vanilla (dando per scontato che anche la Realistic Fusion Power sia installata, è un suo add-on dopotutto). Scaricala qui. Auguro a tutti un buon genocidio alieno! Servizio: Factorio Zone Dr.MagPie Hai sempre voluto giocare su un server di Factorio con i tuoi amici,ma non avete i soldi per permettervene uno? Bene, c’è un’opzione disponibile per voi: Factorio Zone! Ti permette di hostare un server tutto tuo gratuitamente. Il servizio è hostato da AWS e WhiteFang, lo sviluppatore del servizio, ha ottimizzato le macchine abbasando i prezzi, perciò al momento non gli interessa coprirne il costo di funzionamento come contributo alla comunity di Factorio. Usarlo è abbastanza semplice. Basta andare su factorio.zone, dove puoi caricare il tuo salvataggio e le mod. Factorio zone non aggiorna le mod per te, perciò lo dovrai fare manualmente. Non vi preoccupate di chiudere la pagina del browser con il server aperto in quanto verrà creato uno User ID Originale aka. un token che viene immagazzinato nella memoria del browser. Quando aprirai Factorio Zone la prossima volta, si ricorderà il tuo salvataggio e le tue mod. Siccome è un servizio gratuito, sono imposti alcuni limiti. Se un server non ospita giocatori per un’ora di fila, esso verrà chiuso ed il file salvato. Se un player rimane inattivo per 30 min verrà cacciato dal server. Quando non è presente nessun player su un server, il gioco verrà messo in pausa per evitare un eventuale assalto incontrollato da parte dei biter. vale la pena dire che Factorio Zone stima la dimensione del server da allocare ad una partita in base alla mappa e alle mod presenti. Perciò dovrebbe ingrandirsi con la tua progressione (fra i vari restart del server) e dovrebbe funzionare con la quasi totalità dei salvataggi, quasi sempre. Ci sono dei casi in cui la stima non avviene correttamente ma non ne ho incontrato nessuno per ora. In più, ci sono alcuni metodi da smanettoni per condividere una sessione sessione con i tuoi amici. Per permettere a ciascuno di voi di far partire o buttare giù lo stesso server in ogni momento. Per fare ciò basterà estrarre e condividere il token di cui prima. Puoi usare questo tool. C’è anche un ottimo programma che ti aiuterà a preparare le mod da mettere sul server. Ottimizza leggermente le dimensioni dei file rimuovendo ad esempio delle istruzioni che il server comunque non utilizzerebbe. Perciò se ti sembra interessante, dagli un’occhio, e tieni in considerazione di ringraziare/suportare lo sviluppatore WhiteFang per fornire questo servizio gratuitamente alla comunity. Come contribuire Come sempre, siamo in cerca di persone volenterose di contribuire ad Alt-F4, che sia scrivendo articoli o aiutando con la traduzione. Se hai qualcosa di interessante in mente che vorresti condividere con la comunity in maniera più ordinata, questo è il posto giusto. Se non sei molto sicuro, ti daremo con piacere una mano a comporre le tue idee e strutturare la sintassi. Entra nel server Discord per iniziare.">
+<meta property="og:description" content="Benvenuti nella quinta edizione di Alt-F4, e stiamo finalmente ingranando! Molti collaboratori, traduttori e appassionati di informatica stanno svolgendo il loro ruolo di api laboriose per aiutare ancora di più questo progetto, il che è semplicemente magnifico. Se volete prendere parte al divertimento, date un’occhiata alla sezione ‘Come contribuire’, in coda all’articolo. In quanto alle notizie di questa settimana, pocarski apre un dibattito sulla reintroduzione della possibilità di scavare la terra piazzata, Romner continua la sua serie della scorsa settimana parlandoci di come obliterare un po’ di biters grazie ai nuovi poteri ora acquisiti, per finire Dr.MagPie ci porterà nella Factorio Zone! Un piccolo sfogo riguardo i terrapieni pocarski “I propri errori non hanno nessun prezzo se non il tuo tempo”, per citare u/talrich dal subreddit di Factorio. E sì, per quasi tutte le azioni compiute in questo gioco, c’è sempre la possibilità di ritornare sui propri passi. Questo è vero per tutto, tranne che per una cosa: i terrapieni. Mentre piazzare erroneamente qualsiasi altra entità o pavimentazione costerà solo un secondo del tuo tempo, fare ciò con un terrapieno non solo te lo farà irreversibilemente perdere, ma ti lascierà anche con un’imbarazzante escrescenza geologica che non volevi avere ma che ora non puoi rimuovere. In questo articolo, presenterò quali sono i principali problemi che sorgono dall’irreversibilità di piazzare un terrapieno, e, almeno spero, riuscirò a farti capire l’importanza di poterli rimuovere, caro lettore. Meccanica obsoleta Mentre nell’epoca pre-0.17 aveva senso non poter rimuovere pezzi di terra in quanto erano letteralmente riconosciuti come tile grass-1, nella 0.17.10 fu introdotta la distinzione fra i due oggetti. Grazie alla possibilità dei terrapieni di venire piazzati dai robot e di essere inclusi nelle blueprint a partire dalla 0.17.0, si era creata la situazione perfetta per far sì che potessero anche essere rimossi, o se non altro, che potesse avvenire un interazione esclusiva di questi tile. Errore costoso Fabbricare ciascun terrapieno costa un esorbitante 20 pezzi di pietra, ciò significa che un intero deposito da 800mila pezzi di pietra basta solo per riempire un’area di 200x200, che non è affatto tanto considerando le dimensioni di tante fabbriche. Molto tempo fa progettai il design di un reattore a fusione che necessitava di un colossale 2700 terrapieni, e produceva solo 480 MW! Non ci sono parole per descrivere l’atroce agonia di piazzare una blueprint spostata di 1 tile e avere una cinquantina di terrapieni piazzati lì ed inutilizzabili (sono letteralmente 1000 stone butatti al vento!). Scombussola il piazzamento delle pompe off-shore Siccome ho menzionato i reattori a fusione, è di dovere parlare di ciò che permette alla maggior parte dei grandi reattori di funzionare: pompe off-shore interne. Esse altro non sono che pompe off-shore incluse nella blueprint che necessitano di una specifica forma dei terrapieni per funzionare correttamente. E basta anche solo trascinare per sbaglio la blueprint mentre la si piazza per rovinare completamente tutto. Nel migliore dei casi basta spostare leggermente le pompe e funzioneranno ancora. Se ti dice zella, hai sprecato l’intera isola di terrapieni che ora rimarrà lì, brutta come un pugno in un occhio. Per dirne un’altra ancora più assurda: puoi piazzare i terrapieni attorno ad una pompa già piazzata e questo continuerà a funzionare, ma nel caso in cui venisse rimossa, sei fregato! non la puoi più riposizionare dov’era prima! Ciò significa che se volessi mai piazzare qualcosa direttamente accanto ad una pompa, siccome sei costretto ad utilizzare i terrapieni, poi dovrai rassegnarti al fatto che quella pompa debba rimanere lì, perché nel caso in cui la rimuovessi dovresti risolvere il rompicapo di come portare dell’acqua in quella posizione tramite un’altra pompa. Conclusioni Il piazzamento irreversibile dei terrapieni è una meccanica obsoleta che può e deve essere rivista Piazzare un terrapieno nel posto sbagliato è estremamente costoso, siccome non può essere riciclato una volta lì Sbagliare il posizionamento di una blueprint che comprende dei terrapieni può rovinare completamente interi progetti I terrapieni sono l’unico oggetto piazzabile che necessita della piena attenzione da parte del giocatore. E da persona con disturbi dell’attenzione quale sono, evito categoricamente di piazzare i terrapieni in partita, anche se credo che onestamente una meccanica di gioco non debba affatto funzionare così. Darci la possibilità di spalare via i terrapieni migliorerebbe incredibilmente il gioco (e nei rari casi in cui i giocatore rimuovesse la terra da sotto i propri piedi e morisse, se lo sarebbe decisamente meritato). Ovviamente c’è sempre la variabile “se vuoi che si possano rimuovere i terrapieni installa qualche mod”, ma credo che vada decisamente contro la politica di Wube di creare un gioco raffinato. Mod Spotlight: Armi a Fusione Realistiche Romner Dopo aver creato la power mod, discussa nell’edizione della scorsa settimana di Alt-F4, ho iniziato ad ipotizzare un utilizzo della fusione alternativo rispetto alla produzione di energia. Beh, le testate termonucleari esistono già. E sebbene le bombe a fusione pura sono solo state teorizzate, le ho introdotte comunque. Lascio parlare le gif: &lt;/source&gt; Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni vanilla &lt;/source&gt; Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni della MIRV L’ordine è: testata nucleare vanilla &gt; bomba termonucleare &gt; bomba a fusione pura. La prima gif mostra delle esplosioni simil-vanilla, mentre per la seconda, ho creato una mix fra lo stile della MIRV e quello del vanilla 1.0. Personalmente preferisco uno stile più simil-MIVR, ma c’è un impostazione per ogni bomba. C’è anche un impostazione per modificare l’intensità dello screen-burn, se vi sembra eccessivo. Ho recentemente aggiunto l’anti-materia alla Realistic Fusion Power. Essa è ottima per la produizone di tanta elettricità, ma anche tanta distruzione se usata nelle armi. Armi molto potenti. (La gif è velocizzata per compensare l’abbassamento degli UPS) &lt;/source&gt; Esplosione gigantesca causata dalla bomba ad anti-materia La bomba ad anti-materia può essere scagliata solo in forma di proiettile dell’artiglieria poiché in nessun modo potresti sopravvivere lanciandola da un lanciarazzi manuale. Le armi ad anti-materia e a fusione pura non hanno neanche una massa critica, quindi sono scalabili a tutti i livelli. Questi includono: Piccoli razzi (e palle di cannone che creano la stessa esplosione): &lt;/source&gt; Esplosione di un razzo di piccole dimensioni Proiettili per fucili a pompa: &lt;/source&gt; Fucile a pompa a fusione che spara, creando esploioni &lt;/source&gt; Fucile a pompa ad anti-materia che spara, creando esploioni E persino normali proiettili! &lt;/source&gt; Orda di biter disintegrata da proiettili a fusione &lt;/source&gt; Orda più grande di biter disintegrata da proiettili ad anti-materia La gif dell’esplosione di un razzo/proiettile per cannoni non è presente siccome provocano ambedue un’esplosione analoga a quella di una bomba a pura fusione. E ho menzionato il fatto che tutte le bombe nucleari hanno una controparte per l’artiglieria? Sì, anche quelle vanilla. Ah, hai presente i lanciafiamme, no? Beh, perché lanciare fiamme a centinaia di gradi, quando puoi sputare plasma a milioni o miliardi di gradi? &lt;/source&gt; orda di biter letteralmente sciolta da un lancia-plasma E, sì, c’è anche una torretta lancia-plasma. Può usare sia il plasma di deuterio sia quello di He-3 (quest’ultimo fa più danni grazie alla temperatura 4 volte più elevata). (Sì, lo so, nella realtà il plasma si raffredderebbe in un istante rendendo la torretta una spara-scorreggie, ma grazie al potere della Scienza™, tutto è possibile, quindi non lamentiamoci.) Ovviamente tutto ciò non costa poco - servono molte ricerche che costano molto, 10 mila (lancia-plasma), 20 mila (bombe termonucleari), 50 mila (bombe a fusione pura), 100 mila (armi a fusione di piccola taglia), 500 mil (armi ad anti-materia di piccola taglia) ed 1 milione (bombe ad anti-materia) di science pack. Per farvi capire, la bomba nucleare in vanilla costa 5 mila. Per fabbricarle servono anche molte risorse: una singola bomba a fusione termonucleare ha bisogno di 10 mila unità del mix di deuterio-trizio + 25 U-235. Un totale di 2TJ di energia a fusione e 2TJ di fissione. La bomba a fusione pura costa 20 mila unità del mix di deuterio-He-3, un totale di 20TJ di carburante per fusione. La bomba ad antimateria usa 500 anti-idrogeni. Un equivalente di ~386TJ. La nuke vanilla ha solo 2.4TJ di carburante per fissione. La RFW è pensata per l’utilizzo contro potenti nemici moddati (come ne sono presenti nella Rampant), ma funziona perfettamente anche contro i biter vanilla (dando per scontato che anche la Realistic Fusion Power sia installata, è un suo add-on dopotutto). Scaricala qui. Auguro a tutti un buon genocidio alieno! Servizio: Factorio Zone Dr.MagPie Hai sempre voluto giocare su un server di Factorio con i tuoi amici,ma non avete i soldi per permettervene uno? Bene, c’è un’opzione disponibile per voi: Factorio Zone! Ti permette di hostare un server tutto tuo gratuitamente. Il servizio è hostato da AWS e WhiteFang, lo sviluppatore del servizio, ha ottimizzato le macchine abbasando i prezzi, perciò al momento non gli interessa coprirne il costo di funzionamento come contributo alla comunity di Factorio. Usarlo è abbastanza semplice. Basta andare su factorio.zone, dove puoi caricare il tuo salvataggio e le mod. Factorio zone non aggiorna le mod per te, perciò lo dovrai fare manualmente. Non vi preoccupate di chiudere la pagina del browser con il server aperto in quanto verrà creato uno User ID Originale aka. un token che viene immagazzinato nella memoria del browser. Quando aprirai Factorio Zone la prossima volta, si ricorderà il tuo salvataggio e le tue mod. Siccome è un servizio gratuito, sono imposti alcuni limiti. Se un server non ospita giocatori per un’ora di fila, esso verrà chiuso ed il file salvato. Se un player rimane inattivo per 30 min verrà cacciato dal server. Quando non è presente nessun player su un server, il gioco verrà messo in pausa per evitare un eventuale assalto incontrollato da parte dei biter. vale la pena dire che Factorio Zone stima la dimensione del server da allocare ad una partita in base alla mappa e alle mod presenti. Perciò dovrebbe ingrandirsi con la tua progressione (fra i vari restart del server) e dovrebbe funzionare con la quasi totalità dei salvataggi, quasi sempre. Ci sono dei casi in cui la stima non avviene correttamente ma non ne ho incontrato nessuno per ora. In più, ci sono alcuni metodi da smanettoni per condividere una sessione sessione con i tuoi amici. Per permettere a ciascuno di voi di far partire o buttare giù lo stesso server in ogni momento. Per fare ciò basterà estrarre e condividere il token di cui prima. Puoi usare questo tool. C’è anche un ottimo programma che ti aiuterà a preparare le mod da mettere sul server. Ottimizza leggermente le dimensioni dei file rimuovendo ad esempio delle istruzioni che il server comunque non utilizzerebbe. Perciò se ti sembra interessante, dagli un’occhio, e tieni in considerazione di ringraziare/suportare lo sviluppatore WhiteFang per fornire questo servizio gratuitamente alla comunity. Come contribuire Come sempre, siamo in cerca di persone volenterose di contribuire ad Alt-F4, che sia scrivendo articoli o aiutando con la traduzione. Se hai qualcosa di interessante in mente che vorresti condividere con la comunity in maniera più ordinata, questo è il posto giusto. Se non sei molto sicuro, ti daremo con piacere una mano a comporre le tue idee e strutturare la sintassi. Entra nel server Discord per iniziare.">
+<link rel="canonical" href="https://alt-f4.blog/it/ALTF4-5/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-5/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-09-18T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2020-09-18T00:00:00+00:00","datePublished":"2020-09-18T00:00:00+00:00","author":{"@type":"Person","name":"pocarski, Romner, Dr.MagPie"},"description":"Benvenuti nella quinta edizione di Alt-F4, e stiamo finalmente ingranando! Molti collaboratori, traduttori e appassionati di informatica stanno svolgendo il loro ruolo di api laboriose per aiutare ancora di più questo progetto, il che è semplicemente magnifico. Se volete prendere parte al divertimento, date un’occhiata alla sezione ‘Come contribuire’, in coda all’articolo. In quanto alle notizie di questa settimana, pocarski apre un dibattito sulla reintroduzione della possibilità di scavare la terra piazzata, Romner continua la sua serie della scorsa settimana parlandoci di come obliterare un po’ di biters grazie ai nuovi poteri ora acquisiti, per finire Dr.MagPie ci porterà nella Factorio Zone! Un piccolo sfogo riguardo i terrapieni pocarski “I propri errori non hanno nessun prezzo se non il tuo tempo”, per citare u/talrich dal subreddit di Factorio. E sì, per quasi tutte le azioni compiute in questo gioco, c’è sempre la possibilità di ritornare sui propri passi. Questo è vero per tutto, tranne che per una cosa: i terrapieni. Mentre piazzare erroneamente qualsiasi altra entità o pavimentazione costerà solo un secondo del tuo tempo, fare ciò con un terrapieno non solo te lo farà irreversibilemente perdere, ma ti lascierà anche con un’imbarazzante escrescenza geologica che non volevi avere ma che ora non puoi rimuovere. In questo articolo, presenterò quali sono i principali problemi che sorgono dall’irreversibilità di piazzare un terrapieno, e, almeno spero, riuscirò a farti capire l’importanza di poterli rimuovere, caro lettore. Meccanica obsoleta Mentre nell’epoca pre-0.17 aveva senso non poter rimuovere pezzi di terra in quanto erano letteralmente riconosciuti come tile grass-1, nella 0.17.10 fu introdotta la distinzione fra i due oggetti. Grazie alla possibilità dei terrapieni di venire piazzati dai robot e di essere inclusi nelle blueprint a partire dalla 0.17.0, si era creata la situazione perfetta per far sì che potessero anche essere rimossi, o se non altro, che potesse avvenire un interazione esclusiva di questi tile. Errore costoso Fabbricare ciascun terrapieno costa un esorbitante 20 pezzi di pietra, ciò significa che un intero deposito da 800mila pezzi di pietra basta solo per riempire un’area di 200x200, che non è affatto tanto considerando le dimensioni di tante fabbriche. Molto tempo fa progettai il design di un reattore a fusione che necessitava di un colossale 2700 terrapieni, e produceva solo 480 MW! Non ci sono parole per descrivere l’atroce agonia di piazzare una blueprint spostata di 1 tile e avere una cinquantina di terrapieni piazzati lì ed inutilizzabili (sono letteralmente 1000 stone butatti al vento!). Scombussola il piazzamento delle pompe off-shore Siccome ho menzionato i reattori a fusione, è di dovere parlare di ciò che permette alla maggior parte dei grandi reattori di funzionare: pompe off-shore interne. Esse altro non sono che pompe off-shore incluse nella blueprint che necessitano di una specifica forma dei terrapieni per funzionare correttamente. E basta anche solo trascinare per sbaglio la blueprint mentre la si piazza per rovinare completamente tutto. Nel migliore dei casi basta spostare leggermente le pompe e funzioneranno ancora. Se ti dice zella, hai sprecato l’intera isola di terrapieni che ora rimarrà lì, brutta come un pugno in un occhio. Per dirne un’altra ancora più assurda: puoi piazzare i terrapieni attorno ad una pompa già piazzata e questo continuerà a funzionare, ma nel caso in cui venisse rimossa, sei fregato! non la puoi più riposizionare dov’era prima! Ciò significa che se volessi mai piazzare qualcosa direttamente accanto ad una pompa, siccome sei costretto ad utilizzare i terrapieni, poi dovrai rassegnarti al fatto che quella pompa debba rimanere lì, perché nel caso in cui la rimuovessi dovresti risolvere il rompicapo di come portare dell’acqua in quella posizione tramite un’altra pompa. Conclusioni Il piazzamento irreversibile dei terrapieni è una meccanica obsoleta che può e deve essere rivista Piazzare un terrapieno nel posto sbagliato è estremamente costoso, siccome non può essere riciclato una volta lì Sbagliare il posizionamento di una blueprint che comprende dei terrapieni può rovinare completamente interi progetti I terrapieni sono l’unico oggetto piazzabile che necessita della piena attenzione da parte del giocatore. E da persona con disturbi dell’attenzione quale sono, evito categoricamente di piazzare i terrapieni in partita, anche se credo che onestamente una meccanica di gioco non debba affatto funzionare così. Darci la possibilità di spalare via i terrapieni migliorerebbe incredibilmente il gioco (e nei rari casi in cui i giocatore rimuovesse la terra da sotto i propri piedi e morisse, se lo sarebbe decisamente meritato). Ovviamente c’è sempre la variabile “se vuoi che si possano rimuovere i terrapieni installa qualche mod”, ma credo che vada decisamente contro la politica di Wube di creare un gioco raffinato. Mod Spotlight: Armi a Fusione Realistiche Romner Dopo aver creato la power mod, discussa nell’edizione della scorsa settimana di Alt-F4, ho iniziato ad ipotizzare un utilizzo della fusione alternativo rispetto alla produzione di energia. Beh, le testate termonucleari esistono già. E sebbene le bombe a fusione pura sono solo state teorizzate, le ho introdotte comunque. Lascio parlare le gif: &lt;/source&gt; Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni vanilla &lt;/source&gt; Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni della MIRV L’ordine è: testata nucleare vanilla &gt; bomba termonucleare &gt; bomba a fusione pura. La prima gif mostra delle esplosioni simil-vanilla, mentre per la seconda, ho creato una mix fra lo stile della MIRV e quello del vanilla 1.0. Personalmente preferisco uno stile più simil-MIVR, ma c’è un impostazione per ogni bomba. C’è anche un impostazione per modificare l’intensità dello screen-burn, se vi sembra eccessivo. Ho recentemente aggiunto l’anti-materia alla Realistic Fusion Power. Essa è ottima per la produizone di tanta elettricità, ma anche tanta distruzione se usata nelle armi. Armi molto potenti. (La gif è velocizzata per compensare l’abbassamento degli UPS) &lt;/source&gt; Esplosione gigantesca causata dalla bomba ad anti-materia La bomba ad anti-materia può essere scagliata solo in forma di proiettile dell’artiglieria poiché in nessun modo potresti sopravvivere lanciandola da un lanciarazzi manuale. Le armi ad anti-materia e a fusione pura non hanno neanche una massa critica, quindi sono scalabili a tutti i livelli. Questi includono: Piccoli razzi (e palle di cannone che creano la stessa esplosione): &lt;/source&gt; Esplosione di un razzo di piccole dimensioni Proiettili per fucili a pompa: &lt;/source&gt; Fucile a pompa a fusione che spara, creando esploioni &lt;/source&gt; Fucile a pompa ad anti-materia che spara, creando esploioni E persino normali proiettili! &lt;/source&gt; Orda di biter disintegrata da proiettili a fusione &lt;/source&gt; Orda più grande di biter disintegrata da proiettili ad anti-materia La gif dell’esplosione di un razzo/proiettile per cannoni non è presente siccome provocano ambedue un’esplosione analoga a quella di una bomba a pura fusione. E ho menzionato il fatto che tutte le bombe nucleari hanno una controparte per l’artiglieria? Sì, anche quelle vanilla. Ah, hai presente i lanciafiamme, no? Beh, perché lanciare fiamme a centinaia di gradi, quando puoi sputare plasma a milioni o miliardi di gradi? &lt;/source&gt; orda di biter letteralmente sciolta da un lancia-plasma E, sì, c’è anche una torretta lancia-plasma. Può usare sia il plasma di deuterio sia quello di He-3 (quest’ultimo fa più danni grazie alla temperatura 4 volte più elevata). (Sì, lo so, nella realtà il plasma si raffredderebbe in un istante rendendo la torretta una spara-scorreggie, ma grazie al potere della Scienza™, tutto è possibile, quindi non lamentiamoci.) Ovviamente tutto ciò non costa poco - servono molte ricerche che costano molto, 10 mila (lancia-plasma), 20 mila (bombe termonucleari), 50 mila (bombe a fusione pura), 100 mila (armi a fusione di piccola taglia), 500 mil (armi ad anti-materia di piccola taglia) ed 1 milione (bombe ad anti-materia) di science pack. Per farvi capire, la bomba nucleare in vanilla costa 5 mila. Per fabbricarle servono anche molte risorse: una singola bomba a fusione termonucleare ha bisogno di 10 mila unità del mix di deuterio-trizio + 25 U-235. Un totale di 2TJ di energia a fusione e 2TJ di fissione. La bomba a fusione pura costa 20 mila unità del mix di deuterio-He-3, un totale di 20TJ di carburante per fusione. La bomba ad antimateria usa 500 anti-idrogeni. Un equivalente di ~386TJ. La nuke vanilla ha solo 2.4TJ di carburante per fissione. La RFW è pensata per l’utilizzo contro potenti nemici moddati (come ne sono presenti nella Rampant), ma funziona perfettamente anche contro i biter vanilla (dando per scontato che anche la Realistic Fusion Power sia installata, è un suo add-on dopotutto). Scaricala qui. Auguro a tutti un buon genocidio alieno! Servizio: Factorio Zone Dr.MagPie Hai sempre voluto giocare su un server di Factorio con i tuoi amici,ma non avete i soldi per permettervene uno? Bene, c’è un’opzione disponibile per voi: Factorio Zone! Ti permette di hostare un server tutto tuo gratuitamente. Il servizio è hostato da AWS e WhiteFang, lo sviluppatore del servizio, ha ottimizzato le macchine abbasando i prezzi, perciò al momento non gli interessa coprirne il costo di funzionamento come contributo alla comunity di Factorio. Usarlo è abbastanza semplice. Basta andare su factorio.zone, dove puoi caricare il tuo salvataggio e le mod. Factorio zone non aggiorna le mod per te, perciò lo dovrai fare manualmente. Non vi preoccupate di chiudere la pagina del browser con il server aperto in quanto verrà creato uno User ID Originale aka. un token che viene immagazzinato nella memoria del browser. Quando aprirai Factorio Zone la prossima volta, si ricorderà il tuo salvataggio e le tue mod. Siccome è un servizio gratuito, sono imposti alcuni limiti. Se un server non ospita giocatori per un’ora di fila, esso verrà chiuso ed il file salvato. Se un player rimane inattivo per 30 min verrà cacciato dal server. Quando non è presente nessun player su un server, il gioco verrà messo in pausa per evitare un eventuale assalto incontrollato da parte dei biter. vale la pena dire che Factorio Zone stima la dimensione del server da allocare ad una partita in base alla mappa e alle mod presenti. Perciò dovrebbe ingrandirsi con la tua progressione (fra i vari restart del server) e dovrebbe funzionare con la quasi totalità dei salvataggi, quasi sempre. Ci sono dei casi in cui la stima non avviene correttamente ma non ne ho incontrato nessuno per ora. In più, ci sono alcuni metodi da smanettoni per condividere una sessione sessione con i tuoi amici. Per permettere a ciascuno di voi di far partire o buttare giù lo stesso server in ogni momento. Per fare ciò basterà estrarre e condividere il token di cui prima. Puoi usare questo tool. C’è anche un ottimo programma che ti aiuterà a preparare le mod da mettere sul server. Ottimizza leggermente le dimensioni dei file rimuovendo ad esempio delle istruzioni che il server comunque non utilizzerebbe. Perciò se ti sembra interessante, dagli un’occhio, e tieni in considerazione di ringraziare/suportare lo sviluppatore WhiteFang per fornire questo servizio gratuitamente alla comunity. Come contribuire Come sempre, siamo in cerca di persone volenterose di contribuire ad Alt-F4, che sia scrivendo articoli o aiutando con la traduzione. Se hai qualcosa di interessante in mente che vorresti condividere con la comunity in maniera più ordinata, questo è il posto giusto. Se non sei molto sicuro, ti daremo con piacere una mano a comporre le tue idee e strutturare la sintassi. Entra nel server Discord per iniziare.","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-5/"},"url":"https://alt-f4.blog/ALTF4-5/","@type":"BlogPosting","headline":"Alt-F4 #5 - Migliorare la perfezione","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/5/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/5/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/it/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/it/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/it/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/it/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/it/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/it/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/it/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/it/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Il seguito degli amati Factorio Friday Facts gestito dalla community</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-5/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-5/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-5/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-5/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-5/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button button-green lang-button" href="/it/ALTF4-5/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-5/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-5/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-5/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-5/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #5 - Migliorare la perfezione  <author>18-09-2020</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Scritto da <em>pocarski, Romner, Dr.MagPie</em>,
+
+
+
+editato da <em>Therenas, nicgarner</em>,
+
+
+
+<br>tradotto da <em>Frank_si_narra</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/5/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Tabella dei Contenuti</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#un-piccolo-sfogo-riguardo-i-terrapieni-pocarski">Un piccolo sfogo riguardo i terrapieni <author>pocarski</author></a>
+    <ul>
+      <li><a href="#meccanica-obsoleta">Meccanica obsoleta</a></li>
+      <li><a href="#errore-costoso">Errore costoso</a></li>
+      <li><a href="#scombussola-il-piazzamento-delle-pompe-off-shore">Scombussola il piazzamento delle pompe off-shore</a></li>
+      <li><a href="#conclusioni">Conclusioni</a></li>
+    </ul>
+  </li>
+  <li><a href="#mod-spotlight-armi-a-fusione-realistiche-romner">Mod Spotlight: Armi a Fusione Realistiche <author>Romner</author></a></li>
+  <li><a href="#servizio-factorio-zone-drmagpie">Servizio: Factorio Zone <author>Dr.MagPie</author></a></li>
+  <li><a href="#come-contribuire">Come contribuire</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Benvenuti nella quinta edizione di Alt-F4, e stiamo finalmente ingranando! Molti collaboratori, traduttori e appassionati di informatica stanno svolgendo il loro ruolo di api laboriose per aiutare ancora di più questo progetto, il che è semplicemente magnifico. Se volete prendere parte al divertimento, date un’occhiata alla sezione ‘Come contribuire’, in coda all’articolo. In quanto alle notizie di questa settimana, pocarski apre un dibattito sulla reintroduzione della possibilità di scavare la terra piazzata, Romner continua la sua serie della <a href="https://alt-f4.blog/it/ALTF4-4/#mod-spotlight-realistic-fusion-power-romner">scorsa settimana</a> parlandoci di come obliterare un po’ di biters grazie ai nuovi poteri ora acquisiti, per finire Dr.MagPie ci porterà nella Factorio Zone!</p>
+      <h2 id="un-piccolo-sfogo-riguardo-i-terrapieni-pocarski">
+        
+        
+            <a href="#un-piccolo-sfogo-riguardo-i-terrapieni-pocarski" class="anchor" style="text-decoration: none;">Un piccolo sfogo riguardo i terrapieni <author>pocarski</author></a>
+          
+        
+      </h2>
+    
+
+<p>“I propri errori non hanno nessun prezzo se non il tuo tempo”, per citare <a href="https://www.reddit.com/user/talrich">u/talrich</a> dal <a href="https://www.reddit.com/r/factorio/">subreddit di Factorio</a>. E sì, per quasi tutte le azioni compiute in questo gioco, c’è sempre la possibilità di ritornare sui propri passi. Questo è vero per tutto, tranne che per una cosa: i terrapieni. Mentre piazzare erroneamente qualsiasi altra entità o pavimentazione costerà solo un secondo del tuo tempo, fare ciò con un terrapieno non solo te lo farà irreversibilemente perdere, ma ti lascierà anche con un’imbarazzante escrescenza geologica che non volevi avere ma che ora non puoi rimuovere. In questo articolo, presenterò quali sono i principali problemi che sorgono dall’irreversibilità di piazzare un terrapieno, e, almeno spero, riuscirò a farti capire l’importanza di poterli rimuovere, caro lettore.</p>
+      <h3 id="meccanica-obsoleta">
+        
+        
+            <a href="#meccanica-obsoleta" class="anchor" style="text-decoration: none;">Meccanica obsoleta</a>
+          
+        
+      </h3>
+    
+
+<p>Mentre nell’epoca pre-0.17 aveva senso non poter rimuovere pezzi di terra in quanto erano letteralmente riconosciuti come tile <code class="language-plaintext highlighter-rouge">grass-1</code>, nella 0.17.10 fu introdotta la distinzione fra i due oggetti. Grazie alla possibilità dei terrapieni di venire piazzati dai robot e di essere inclusi nelle blueprint a partire dalla 0.17.0, si era creata la situazione perfetta per far sì che potessero anche essere rimossi, o se non altro, che potesse avvenire un interazione esclusiva di questi tile.</p>
+      <h3 id="errore-costoso">
+        
+        
+            <a href="#errore-costoso" class="anchor" style="text-decoration: none;">Errore costoso</a>
+          
+        
+      </h3>
+    
+
+<p>Fabbricare ciascun terrapieno costa un esorbitante 20 pezzi di pietra, ciò significa che un intero deposito da 800mila pezzi di pietra basta solo per riempire un’area di 200x200, che non è affatto tanto considerando le dimensioni di tante fabbriche. Molto tempo fa progettai il design di un reattore a fusione che necessitava di un colossale <em>2700 terrapieni</em>, e produceva solo 480 MW! Non ci sono parole per descrivere l’atroce agonia di piazzare una blueprint spostata di 1 tile e avere una cinquantina di terrapieni piazzati lì ed inutilizzabili (sono letteralmente <strong>1000 stone</strong> butatti al vento!).</p>
+      <h3 id="scombussola-il-piazzamento-delle-pompe-off-shore">
+        
+        
+            <a href="#scombussola-il-piazzamento-delle-pompe-off-shore" class="anchor" style="text-decoration: none;">Scombussola il piazzamento delle pompe off-shore</a>
+          
+        
+      </h3>
+    
+
+<p>Siccome ho menzionato i reattori a fusione, è di dovere parlare di ciò che permette alla maggior parte dei grandi reattori di funzionare: pompe off-shore interne. Esse altro non sono che pompe off-shore incluse nella blueprint che necessitano di una specifica forma dei terrapieni per funzionare correttamente. E basta anche solo trascinare per sbaglio la blueprint mentre la si piazza per rovinare completamente tutto. Nel migliore dei casi basta spostare leggermente le pompe e funzioneranno ancora. Se ti dice zella, hai sprecato l’intera isola di terrapieni che ora rimarrà lì, brutta come un pugno in un occhio.</p>
+
+<p>Per dirne un’altra ancora più assurda: puoi piazzare i terrapieni attorno ad una pompa già piazzata e questo continuerà a funzionare, ma nel caso in cui venisse rimossa, sei fregato! non la puoi più riposizionare dov’era prima! Ciò significa che se volessi mai piazzare qualcosa direttamente accanto ad una pompa, siccome sei costretto ad utilizzare i terrapieni, poi dovrai rassegnarti al fatto che quella pompa debba rimanere lì, perché nel caso in cui la rimuovessi dovresti risolvere il rompicapo di come portare dell’acqua in quella posizione tramite un’altra pompa.</p>
+      <h3 id="conclusioni">
+        
+        
+            <a href="#conclusioni" class="anchor" style="text-decoration: none;">Conclusioni</a>
+          
+        
+      </h3>
+    
+
+<ul>
+  <li>Il piazzamento irreversibile dei terrapieni è una meccanica obsoleta che può e deve essere rivista</li>
+  <li>Piazzare un terrapieno nel posto sbagliato è estremamente costoso, siccome non può essere riciclato una volta lì</li>
+  <li>Sbagliare il posizionamento di una blueprint che comprende dei terrapieni può rovinare completamente interi progetti</li>
+</ul>
+
+<p>I terrapieni sono l’unico oggetto piazzabile che necessita della piena attenzione da parte del giocatore. E da persona con disturbi dell’attenzione quale sono, evito categoricamente di piazzare i terrapieni in partita, anche se credo che onestamente una meccanica di gioco non debba affatto funzionare così. Darci la possibilità di spalare via i terrapieni migliorerebbe incredibilmente il gioco (e nei rari casi in cui i giocatore rimuovesse la terra da sotto i propri piedi e morisse, se lo sarebbe decisamente meritato). Ovviamente c’è sempre la variabile “se vuoi che si possano rimuovere i terrapieni installa qualche mod”, ma credo che vada decisamente contro la politica di Wube di creare un gioco raffinato.</p>
+      <h2 id="mod-spotlight-armi-a-fusione-realistiche-romner">
+        
+        
+            <a href="#mod-spotlight-armi-a-fusione-realistiche-romner" class="anchor" style="text-decoration: none;">Mod Spotlight: </a><a href="https://mods.factorio.com/mod/RealisticFusionWeaponry">Armi a Fusione Realistiche</a> <author>Romner</author>
+          
+        
+      </h2>
+    
+
+<p>Dopo aver creato la <a href="https://mods.factorio.com/mod/RealisticFusionPower">power mod</a>, discussa nell’edizione della <a href="https://alt-f4.blog/it/ALTF4-4/#mod-spotlight-realistic-fusion-power-romner">scorsa settimana</a> di Alt-F4, ho iniziato ad ipotizzare un utilizzo della fusione alternativo rispetto alla produzione di energia. Beh, le testate termonucleari esistono già. E sebbene le bombe a fusione pura sono solo state teorizzate, le ho introdotte comunque. Lascio parlare le gif:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/9IMNykX.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni vanilla
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/W8jOoei.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Distruzione causata dalle bombe atomiche in ordine di potenza crescente - esplosioni della MIRV
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>L’ordine è: testata nucleare vanilla &gt; bomba termonucleare &gt; bomba a fusione pura. La prima gif mostra delle esplosioni simil-vanilla, mentre per la seconda, ho creato una mix fra lo stile della <a href="https://mods.factorio.com/mods/Klonan/MIRV">MIRV</a> e quello del vanilla 1.0. Personalmente preferisco uno stile più simil-MIVR, ma c’è un impostazione per ogni bomba. C’è anche un impostazione per modificare l’intensità dello screen-burn, se vi sembra eccessivo.</p>
+
+<p>Ho recentemente aggiunto l’anti-materia alla <a href="https://mods.factorio.com/mod/RealisticFusionPower">Realistic Fusion Power</a>. Essa è ottima per la produizone di tanta elettricità, ma anche tanta distruzione se usata nelle armi. Armi <em>molto</em> potenti. (La gif è velocizzata per compensare l’abbassamento degli UPS)</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/TbiBz5D.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Esplosione gigantesca causata dalla bomba ad anti-materia
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>La bomba ad anti-materia può essere scagliata solo in forma di proiettile dell’artiglieria poiché in nessun modo potresti sopravvivere lanciandola da un lanciarazzi manuale. Le armi ad anti-materia e a fusione pura non hanno neanche una massa critica, quindi sono scalabili a tutti i livelli. Questi includono:</p>
+
+<ul>
+  <li>Piccoli razzi (e palle di cannone che creano la stessa esplosione):</li>
+</ul>
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/RZRNDMX.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Esplosione di un razzo di piccole dimensioni
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<ul>
+  <li>Proiettili per fucili a pompa:</li>
+</ul>
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/pyqKbQ2.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Fucile a pompa a fusione che spara, creando esploioni
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/PTlmcDQ.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Fucile a pompa ad anti-materia che spara, creando esploioni
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<ul>
+  <li>E persino normali proiettili!</li>
+</ul>
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/ECRGiVS.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Orda di biter disintegrata da proiettili a fusione
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/VTqO7fs.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Orda più grande di biter disintegrata da proiettili ad anti-materia
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>La gif dell’esplosione di un razzo/proiettile per cannoni non è presente siccome provocano ambedue un’esplosione analoga a quella di una bomba a pura fusione.</p>
+
+<p>E ho menzionato il fatto che tutte le bombe nucleari hanno una controparte per l’artiglieria? Sì, anche quelle vanilla.</p>
+
+<p>Ah, hai presente i lanciafiamme, no? Beh, perché lanciare fiamme a centinaia di gradi, quando puoi sputare plasma a milioni o miliardi di gradi?</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://i.imgur.com/O23ggIX.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      orda di biter letteralmente sciolta da un lancia-plasma
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>E, sì, c’è anche una torretta lancia-plasma. Può usare sia il plasma di deuterio sia quello di He-3 (quest’ultimo fa più danni grazie alla temperatura 4 volte più elevata). (Sì, lo so, nella realtà il plasma si raffredderebbe in un istante rendendo la torretta una spara-scorreggie, ma grazie al potere della Scienza™, tutto è possibile, quindi non lamentiamoci.)</p>
+
+<p>Ovviamente tutto ciò non costa poco - servono molte ricerche che costano molto, 10 mila (lancia-plasma), 20 mila (bombe termonucleari), 50 mila (bombe a fusione pura), 100 mila (armi a fusione di piccola taglia), 500 mil (armi ad anti-materia di piccola taglia) ed 1 milione (bombe ad anti-materia) di science pack. Per farvi capire, la bomba nucleare in vanilla costa 5 mila. Per fabbricarle servono anche molte risorse: una singola bomba a fusione termonucleare ha bisogno di 10 mila unità del mix di deuterio-trizio + 25 U-235. Un totale di 2TJ di energia a fusione e 2TJ di fissione. La bomba a fusione pura costa 20 mila unità del mix di deuterio-He-3, un totale di 20TJ di carburante per fusione. La bomba ad antimateria usa 500 anti-idrogeni. Un equivalente di ~386TJ. La nuke vanilla ha solo 2.4TJ di carburante per fissione.</p>
+
+<p>La RFW è pensata per l’utilizzo contro potenti nemici moddati (come ne sono presenti nella <a href="https://mods.factorio.com/mod/Rampant">Rampant</a>), ma funziona perfettamente anche contro i biter vanilla (dando per scontato che anche la <a href="https://mods.factorio.com/mod/RealisticFusionPower">Realistic Fusion Power</a> sia installata, è un suo add-on dopotutto).</p>
+
+<p>Scaricala <a href="https://mods.factorio.com/mod/RealisticFusionWeaponry">qui</a>. Auguro a tutti un buon genocidio alieno!</p>
+      <h2 id="servizio-factorio-zone-drmagpie">
+        
+        
+            <a href="#servizio-factorio-zone-drmagpie" class="anchor" style="text-decoration: none;">Servizio: </a><a href="https://factorio.zone">Factorio Zone</a> <author>Dr.MagPie</author>
+          
+        
+      </h2>
+    
+
+<p>Hai sempre voluto giocare su un server di Factorio con i tuoi amici,ma non avete i soldi per permettervene uno? Bene, c’è un’opzione disponibile per voi: Factorio Zone! Ti permette di hostare un server tutto tuo gratuitamente.</p>
+
+<p>Il servizio è hostato da <a href="https://aws.amazon.com">AWS</a> e WhiteFang, lo sviluppatore del servizio, ha ottimizzato le macchine abbasando i prezzi, perciò al momento non gli interessa coprirne il costo di funzionamento come contributo alla comunity di Factorio.</p>
+
+<p>Usarlo è abbastanza semplice. Basta andare su <a href="https://factorio.zone">factorio.zone</a>, dove puoi caricare il tuo salvataggio e le mod. Factorio zone non aggiorna le mod per te, perciò lo dovrai fare manualmente. Non vi preoccupate di chiudere la pagina del browser con il server aperto in quanto verrà creato uno User ID Originale aka. un token che viene immagazzinato nella memoria del browser. Quando aprirai Factorio Zone la prossima volta, si ricorderà il tuo salvataggio e le tue mod.</p>
+
+<p>Siccome è un servizio gratuito, sono imposti alcuni limiti. Se un server non ospita giocatori per un’ora di fila, esso verrà chiuso ed il file salvato. Se un player rimane inattivo per 30 min verrà cacciato dal server. Quando non è presente nessun player su un server, il gioco verrà messo in pausa per evitare un eventuale assalto incontrollato da parte dei biter.</p>
+
+<p>vale la pena dire che Factorio Zone stima la dimensione del server da allocare ad una partita in base alla mappa e alle mod presenti. Perciò dovrebbe ingrandirsi con la tua progressione (fra i vari restart del server) e dovrebbe funzionare con la quasi totalità dei salvataggi, quasi sempre. Ci sono dei casi in cui la stima non avviene correttamente ma non ne ho incontrato nessuno per ora.</p>
+
+<p>In più, ci sono alcuni metodi da smanettoni per condividere una sessione sessione con i tuoi amici. Per permettere a ciascuno di voi di far partire o buttare giù lo stesso server in ogni momento. Per fare ciò basterà estrarre e condividere il token di cui prima. Puoi usare <a href="https://github.com/Rubydesic/factorio-zone-change-token">questo tool</a>. C’è anche un <a href="https://gist.github.com/leonard84/b31b3b9fb70fb737bb250bbf893a04d2">ottimo programma</a> che ti aiuterà a preparare le mod da mettere sul server. Ottimizza leggermente le dimensioni dei file rimuovendo ad esempio delle istruzioni che il server comunque non utilizzerebbe.</p>
+
+<p>Perciò se ti sembra interessante, dagli un’occhio, e tieni in considerazione di ringraziare/suportare lo sviluppatore WhiteFang per fornire questo servizio gratuitamente alla comunity.</p>
+      <h2 id="come-contribuire">
+        
+        
+            <a href="#come-contribuire" class="anchor" style="text-decoration: none;">Come contribuire</a>
+          
+        
+      </h2>
+    
+
+<p>Come sempre, siamo in cerca di persone volenterose di contribuire ad Alt-F4, che sia scrivendo articoli o aiutando con la traduzione. Se hai qualcosa di interessante in mente che vorresti condividere con la comunity in maniera più ordinata, questo è il posto giusto. Se non sei molto sicuro, ti daremo con piacere una mano a comporre le tue idee e strutturare la sintassi. Entra nel server <a href="https://alt-f4.blog/it/discord">Discord</a> per iniziare.</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/iv5116/altf4_5_improving_on_perfection/">
+    Discutine su Reddit
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/it/discord">
+    Discutine su Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/it/ALTF4-4/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/it/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/it/ALTF4-6/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/it/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/it/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/it/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Questo è un progetto gestito dai fan e non direttamente dagli sviluppatori Wube Software Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

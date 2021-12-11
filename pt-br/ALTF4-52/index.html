@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="pt-br">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #52 - Fluidic Power Benchmarking</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #52 - Fluidic Power Benchmarking">
+<meta name="author" content="stringweasel">
+<meta property="og:locale" content="en">
+<meta name="description" content="For issue #52, stringweasel returns with part two of the Fluidic Power Experiment where he dives into the rather surprising performance implications of his creation. If you liked last week’s article, you’ll like the second part this week. What a surprise! The Fluidic Power Experiment: Part 2 stringweasel What is it again? In last week’s article I talked about the history of Factorio power network overhaul mods and how they worked, and then explained my own take on it called Fluidic Power. It’s recommended that you read that article first, but in a nutshell, I made Factorio’s power distribution more realistic by simulating it as a fluid - using the already built-in fluid simulation mechanics. This means you need to use transformers to minimize voltage drop over distance. It also means that, for example, it is more work to keep your laser turrets firing at 100%, or to build highly beaconed setups. &lt;/source&gt; An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off. An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off. These new limitations mean that Fluidic Power achieved its goal of creating a new game mechanic that more closely resembles realistic electricity. However, it does introduce significantly more performance overhead with all the new fluid calculations required. I didn’t want to put a mod on the mod portal that will bring your PC to a halt if you built a decently sized factory. So therefore I set out to do some research. Do the extra fluid calculations really have a significant impact? Is the performance playable? There is a reason why Factorio implements electricity the way it does. It allows us to build absolutely gigantic factories at such a scale that you can get lost in them. Adding more realistic power might inhibit performance so significantly that you’d have to build smaller factories, and nobody wants to do that. So the question is: What would Factorio’s performance actually be like if there was fluid flowing through each and every power pole. I needed a benchmark map, so I set out to build a pure Fluidic Power base with the help of my friend JanKrater. My goal for this base was to think of the most performance efficient way to build a base, and to then do the exact opposite (well, mostly). This resulted in a spaghetti base with way too many power poles, very convoluted belts, and way too many power-hungry laser turrets. Very importantly though, it manages to produce a steady 45 science per minute, and it draws about 600 MW with not a single efficiency module in sight. The benchmark Spaghetti Base running at 45 SPM. Normally, Factorio runs at about 60 updates per second (referred to as UPS), and I managed to push this benchmark map to run at 70 UPS on my old-ish PC (i7-4770k 3.5GHz CPU, DDR3-1600MHz RAM). This means that it takes about ~14ms to update the whole base once, called one tick, where for 60 UPS the maximum amount of time per update can be 1/60 = ~16.6ms. This number is also shown below in the “show-time-usage” debug output. Interestingly, it also shows that my mod script (mod-FluidicPower) has a neglible effect on the performance (~0.05ms). This is possible because my mod makes very few calculations, as it’s able to offload all the expensive fluid and power calculations to the optimized game engine. The main timing information to look at is Fluid Manager and Electric Network. In-game “show-time-usage” and “show-entity-time-usage” information of the 45 SPM Spaghetti Base. In the output above the game tells you where most of the time is spent, and it initially confused me that game seemingly spends most of its time in the Electric Network. My expectation was that the Fluid Manager would take the biggest performance hit, but instead the output shows that the Electric Network (~10ms) is using over 70% of the update time (~13.7ms), and that the Fluid Manager (~0.03ms) doesn’t seem to be doing anything at all. This doesn’t make any sense, because I expected the amount of fluid calculations to be a massive performance drain. I headed to the Technical Factorio community, where they push Factorio’s performance to its absolute limit. Here, the brilliant mathematician SteveTrov explained to me why the in-game time usage can be misleading if you don’t know how the timing calculations are actually implemented. He described it as such: Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time: The electric network thread is started and the electric network update timer is started. The heat update thread is stated Multiple fluid update threads are started. When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped. So the effect of this is that the fluid update time is nearly always very low. — SteveTrov This essentially means that the Fluid Manager’s time usage information is entangled in the Electric Network’s and Heat Manager’s time usage. It’s not possible to calculate an accurate metric as to which part takes the most processing time without changing the Factorio game engine itself. I need another approach to know if the Electric Network really is taking more processing time than the Fluid Manager, and if so, by how much? An UPS expert called flame_Sla then suggested that I download the Very Sleepy Profiler to see detailed information about which of the Factorio engine’s C++ functions are called most often. Their community often use this tool to optimize the world’s largest and most UPS efficient megabases. In the output of the tool below you can see which C++ functions take the most time, listed in descending order. flame_Sla did also mention not to focus on the absolute times shown, but to rather use it as a metric which the biggest culprits can be identified with. Output of the Very Sleepy profiling tool running on my spaghetti Fluidic Power benchmarking base. On the right is one instance of the call stack of the selected function. This showed something that I didn’t really expect. The fluid system (FluidSystem::update) was only in the top 10 worst timed functions, and the Electric Network was still taking more processing time! It turns out the main problem was FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow, which is mostly called by the electric network. These flow statistics collect the data necessary to view the game’s graphs, eg. the power production window. This means that the game is not only slowing down because of all the new fluid calculations, but also to collect information to draw the graphs for all the new power networks! It’s very likely that the collection of Electric Network statistics could take a significant amount of processing time with Fluidic Power. The Factorio engine is designed to only have a handful of electric networks, or even just a single one. The game needs to collect and update information for every power network you have, which will normally only be a few distinct datasets. So instead of having a handful of networks, Fluidic Power is designed so that each and every power pole is a single electric network. The Factorio engine will then attempt to collect statistics for each of these electric networks - which is about 3000 electric networks in my benchmark save! That’s at least 100 times more networks to collect statistics on than Factorio is designed for. This has been a known limitation for some other mods, but Fluidic Power takes this to a new extreme. However, we still don’t know the impact of these calculations relative to the fluid calculations. Does the collecting of statistics really take that much more time than the fluid calculations themselves? flame_Sla mentioned that he once managed to measure the Fluid Manager’s time usage on the world’s biggest megabase, and that it only used ~0.4ms for a 40KSPM 60UPS megabase! That means only 2.5% of the update time was spent on fluid calculations! The way he isolated the Fluid Manager’s time usage from the Electric Network is by completely eliminating the Electric Network from the measurement. He achieved this by changing all machines to run on wood as fuel which meant no more electricity was used and the Electric Network was idle. Due to how Fluidic Power works, I cannot easily eliminate the effect of the Electric Network the same way without also reducing the Fluid Manager’s load, but I can do it the other way around! I can remove all the fluid components, and replace them with EEIs that supply or drain the power. This will cleanly eliminate all added fluid computations without removing the strenuous load on the Electric Network by making sure the factory is still running normally. In order to record an accurate and comparable time usage metric I also attempted to force Factorio to run on a single core. I ran a quick script to replace the power poles’ hidden fluid components for this test and the result are as follows:   Baseline Modified Difference Electric Network 9.3ms 9.2ms 0.1ms Heat Manager 0.03ms 0.03ms 0ms Fluid Manager 0.13ms 0.08ms 0.05ms Total 9.46ms 9.31ms 0.15ms Table showing timing results of unmodified baseline benchmark compared to the modified benchmark where all fluid components are removed. This shows that all the extra fluid computations from Fluidic Power in this benchmark only take roughly ~0.15ms! This number is probably still not very accurate as it’s within the noise margins of the spaghetti base, the test is not ideal, and measuring time in parallel threads is inaccurate. However, it does give us a good indication of where most processing time is going. This proves that the electric network does have the biggest impact on performance by far, and that the extra fluid calculations are almost negligible. It makes one wonder what performance could be achieved if the electric network didn’t unnecessarily collect statistics - perhaps we’d see enormous Fluidic Power megabases with gigantic transformer substations next to nuclear reactors and massive solar panel arrays. All in all, Fluidic Power performs much better than I had expected. Any perceived slowdowns will mainly be caused by the many electric networks collecting statistics, and not the fluid computations themselves. You will still likely be able to launch a rocket without having your UPS drop below 60 UPS. You could probably even build quite a bit bigger if you have an efficient layout (I’ve achieved 90SPM at 220UPS!), and the mod won’t neccesarily tank your UPS as Rseding1 predicted. Factorio is luckily really well designed and optimized, even when not running as intended. This proves that Fluidic Power is definitely playable performance-wise, but that’s not the only aspect that counts. Should you play it? Personally, I think Fluidic Power creates a really fun challenge. It’s maybe not for you if you’re planning on building a long-lived megabase, but if you’re looking for an interesting adventure playthrough with new challenges then this mod might just be for you. I really enjoyed overcoming all the new gameplay obstacles it creates. For example, the machines furthest away from your steam engines shut down first, which are usually the electric mining drills on your coal patch that feed your boilers. I hadn’t ever experienced such a dangerous coal death spiral before. Or, if you defend your walls with laser turrets, you’ll need to ensure there are enough transformers to supply power at the correct voltage. However, my favourite part of this mod by far is knowing that there is actual electricity flowing through the power poles. You can even see the waves of intermittent brownouts over your machines when your base is pulling too much power, like when many laser turrets fire at once. It’s similar to the feeling I get when I look at a circuit I designed, while knowing it’s working because of the fluid-like motion of electrons through the copper and silicon. It builds on the feeling of seeing your complex networks of belts working together to build a rocket. It makes the factory feel more alive. You can basically see its steady heartbeat, and it’s really satisfying. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="For issue #52, stringweasel returns with part two of the Fluidic Power Experiment where he dives into the rather surprising performance implications of his creation. If you liked last week’s article, you’ll like the second part this week. What a surprise! The Fluidic Power Experiment: Part 2 stringweasel What is it again? In last week’s article I talked about the history of Factorio power network overhaul mods and how they worked, and then explained my own take on it called Fluidic Power. It’s recommended that you read that article first, but in a nutshell, I made Factorio’s power distribution more realistic by simulating it as a fluid - using the already built-in fluid simulation mechanics. This means you need to use transformers to minimize voltage drop over distance. It also means that, for example, it is more work to keep your laser turrets firing at 100%, or to build highly beaconed setups. &lt;/source&gt; An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off. An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off. These new limitations mean that Fluidic Power achieved its goal of creating a new game mechanic that more closely resembles realistic electricity. However, it does introduce significantly more performance overhead with all the new fluid calculations required. I didn’t want to put a mod on the mod portal that will bring your PC to a halt if you built a decently sized factory. So therefore I set out to do some research. Do the extra fluid calculations really have a significant impact? Is the performance playable? There is a reason why Factorio implements electricity the way it does. It allows us to build absolutely gigantic factories at such a scale that you can get lost in them. Adding more realistic power might inhibit performance so significantly that you’d have to build smaller factories, and nobody wants to do that. So the question is: What would Factorio’s performance actually be like if there was fluid flowing through each and every power pole. I needed a benchmark map, so I set out to build a pure Fluidic Power base with the help of my friend JanKrater. My goal for this base was to think of the most performance efficient way to build a base, and to then do the exact opposite (well, mostly). This resulted in a spaghetti base with way too many power poles, very convoluted belts, and way too many power-hungry laser turrets. Very importantly though, it manages to produce a steady 45 science per minute, and it draws about 600 MW with not a single efficiency module in sight. The benchmark Spaghetti Base running at 45 SPM. Normally, Factorio runs at about 60 updates per second (referred to as UPS), and I managed to push this benchmark map to run at 70 UPS on my old-ish PC (i7-4770k 3.5GHz CPU, DDR3-1600MHz RAM). This means that it takes about ~14ms to update the whole base once, called one tick, where for 60 UPS the maximum amount of time per update can be 1/60 = ~16.6ms. This number is also shown below in the “show-time-usage” debug output. Interestingly, it also shows that my mod script (mod-FluidicPower) has a neglible effect on the performance (~0.05ms). This is possible because my mod makes very few calculations, as it’s able to offload all the expensive fluid and power calculations to the optimized game engine. The main timing information to look at is Fluid Manager and Electric Network. In-game “show-time-usage” and “show-entity-time-usage” information of the 45 SPM Spaghetti Base. In the output above the game tells you where most of the time is spent, and it initially confused me that game seemingly spends most of its time in the Electric Network. My expectation was that the Fluid Manager would take the biggest performance hit, but instead the output shows that the Electric Network (~10ms) is using over 70% of the update time (~13.7ms), and that the Fluid Manager (~0.03ms) doesn’t seem to be doing anything at all. This doesn’t make any sense, because I expected the amount of fluid calculations to be a massive performance drain. I headed to the Technical Factorio community, where they push Factorio’s performance to its absolute limit. Here, the brilliant mathematician SteveTrov explained to me why the in-game time usage can be misleading if you don’t know how the timing calculations are actually implemented. He described it as such: Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time: The electric network thread is started and the electric network update timer is started. The heat update thread is stated Multiple fluid update threads are started. When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped. So the effect of this is that the fluid update time is nearly always very low. — SteveTrov This essentially means that the Fluid Manager’s time usage information is entangled in the Electric Network’s and Heat Manager’s time usage. It’s not possible to calculate an accurate metric as to which part takes the most processing time without changing the Factorio game engine itself. I need another approach to know if the Electric Network really is taking more processing time than the Fluid Manager, and if so, by how much? An UPS expert called flame_Sla then suggested that I download the Very Sleepy Profiler to see detailed information about which of the Factorio engine’s C++ functions are called most often. Their community often use this tool to optimize the world’s largest and most UPS efficient megabases. In the output of the tool below you can see which C++ functions take the most time, listed in descending order. flame_Sla did also mention not to focus on the absolute times shown, but to rather use it as a metric which the biggest culprits can be identified with. Output of the Very Sleepy profiling tool running on my spaghetti Fluidic Power benchmarking base. On the right is one instance of the call stack of the selected function. This showed something that I didn’t really expect. The fluid system (FluidSystem::update) was only in the top 10 worst timed functions, and the Electric Network was still taking more processing time! It turns out the main problem was FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow, which is mostly called by the electric network. These flow statistics collect the data necessary to view the game’s graphs, eg. the power production window. This means that the game is not only slowing down because of all the new fluid calculations, but also to collect information to draw the graphs for all the new power networks! It’s very likely that the collection of Electric Network statistics could take a significant amount of processing time with Fluidic Power. The Factorio engine is designed to only have a handful of electric networks, or even just a single one. The game needs to collect and update information for every power network you have, which will normally only be a few distinct datasets. So instead of having a handful of networks, Fluidic Power is designed so that each and every power pole is a single electric network. The Factorio engine will then attempt to collect statistics for each of these electric networks - which is about 3000 electric networks in my benchmark save! That’s at least 100 times more networks to collect statistics on than Factorio is designed for. This has been a known limitation for some other mods, but Fluidic Power takes this to a new extreme. However, we still don’t know the impact of these calculations relative to the fluid calculations. Does the collecting of statistics really take that much more time than the fluid calculations themselves? flame_Sla mentioned that he once managed to measure the Fluid Manager’s time usage on the world’s biggest megabase, and that it only used ~0.4ms for a 40KSPM 60UPS megabase! That means only 2.5% of the update time was spent on fluid calculations! The way he isolated the Fluid Manager’s time usage from the Electric Network is by completely eliminating the Electric Network from the measurement. He achieved this by changing all machines to run on wood as fuel which meant no more electricity was used and the Electric Network was idle. Due to how Fluidic Power works, I cannot easily eliminate the effect of the Electric Network the same way without also reducing the Fluid Manager’s load, but I can do it the other way around! I can remove all the fluid components, and replace them with EEIs that supply or drain the power. This will cleanly eliminate all added fluid computations without removing the strenuous load on the Electric Network by making sure the factory is still running normally. In order to record an accurate and comparable time usage metric I also attempted to force Factorio to run on a single core. I ran a quick script to replace the power poles’ hidden fluid components for this test and the result are as follows:   Baseline Modified Difference Electric Network 9.3ms 9.2ms 0.1ms Heat Manager 0.03ms 0.03ms 0ms Fluid Manager 0.13ms 0.08ms 0.05ms Total 9.46ms 9.31ms 0.15ms Table showing timing results of unmodified baseline benchmark compared to the modified benchmark where all fluid components are removed. This shows that all the extra fluid computations from Fluidic Power in this benchmark only take roughly ~0.15ms! This number is probably still not very accurate as it’s within the noise margins of the spaghetti base, the test is not ideal, and measuring time in parallel threads is inaccurate. However, it does give us a good indication of where most processing time is going. This proves that the electric network does have the biggest impact on performance by far, and that the extra fluid calculations are almost negligible. It makes one wonder what performance could be achieved if the electric network didn’t unnecessarily collect statistics - perhaps we’d see enormous Fluidic Power megabases with gigantic transformer substations next to nuclear reactors and massive solar panel arrays. All in all, Fluidic Power performs much better than I had expected. Any perceived slowdowns will mainly be caused by the many electric networks collecting statistics, and not the fluid computations themselves. You will still likely be able to launch a rocket without having your UPS drop below 60 UPS. You could probably even build quite a bit bigger if you have an efficient layout (I’ve achieved 90SPM at 220UPS!), and the mod won’t neccesarily tank your UPS as Rseding1 predicted. Factorio is luckily really well designed and optimized, even when not running as intended. This proves that Fluidic Power is definitely playable performance-wise, but that’s not the only aspect that counts. Should you play it? Personally, I think Fluidic Power creates a really fun challenge. It’s maybe not for you if you’re planning on building a long-lived megabase, but if you’re looking for an interesting adventure playthrough with new challenges then this mod might just be for you. I really enjoyed overcoming all the new gameplay obstacles it creates. For example, the machines furthest away from your steam engines shut down first, which are usually the electric mining drills on your coal patch that feed your boilers. I hadn’t ever experienced such a dangerous coal death spiral before. Or, if you defend your walls with laser turrets, you’ll need to ensure there are enough transformers to supply power at the correct voltage. However, my favourite part of this mod by far is knowing that there is actual electricity flowing through the power poles. You can even see the waves of intermittent brownouts over your machines when your base is pulling too much power, like when many laser turrets fire at once. It’s similar to the feeling I get when I look at a circuit I designed, while knowing it’s working because of the fluid-like motion of electrons through the copper and silicon. It builds on the feeling of seeing your complex networks of belts working together to build a rocket. It makes the factory feel more alive. You can basically see its steady heartbeat, and it’s really satisfying. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/pt-br/ALTF4-52/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-52/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-11-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-11-12T00:00:00+00:00","datePublished":"2021-11-12T00:00:00+00:00","author":{"@type":"Person","name":"stringweasel"},"description":"For issue #52, stringweasel returns with part two of the Fluidic Power Experiment where he dives into the rather surprising performance implications of his creation. If you liked last week’s article, you’ll like the second part this week. What a surprise! The Fluidic Power Experiment: Part 2 stringweasel What is it again? In last week’s article I talked about the history of Factorio power network overhaul mods and how they worked, and then explained my own take on it called Fluidic Power. It’s recommended that you read that article first, but in a nutshell, I made Factorio’s power distribution more realistic by simulating it as a fluid - using the already built-in fluid simulation mechanics. This means you need to use transformers to minimize voltage drop over distance. It also means that, for example, it is more work to keep your laser turrets firing at 100%, or to build highly beaconed setups. &lt;/source&gt; An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off. An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off. These new limitations mean that Fluidic Power achieved its goal of creating a new game mechanic that more closely resembles realistic electricity. However, it does introduce significantly more performance overhead with all the new fluid calculations required. I didn’t want to put a mod on the mod portal that will bring your PC to a halt if you built a decently sized factory. So therefore I set out to do some research. Do the extra fluid calculations really have a significant impact? Is the performance playable? There is a reason why Factorio implements electricity the way it does. It allows us to build absolutely gigantic factories at such a scale that you can get lost in them. Adding more realistic power might inhibit performance so significantly that you’d have to build smaller factories, and nobody wants to do that. So the question is: What would Factorio’s performance actually be like if there was fluid flowing through each and every power pole. I needed a benchmark map, so I set out to build a pure Fluidic Power base with the help of my friend JanKrater. My goal for this base was to think of the most performance efficient way to build a base, and to then do the exact opposite (well, mostly). This resulted in a spaghetti base with way too many power poles, very convoluted belts, and way too many power-hungry laser turrets. Very importantly though, it manages to produce a steady 45 science per minute, and it draws about 600 MW with not a single efficiency module in sight. The benchmark Spaghetti Base running at 45 SPM. Normally, Factorio runs at about 60 updates per second (referred to as UPS), and I managed to push this benchmark map to run at 70 UPS on my old-ish PC (i7-4770k 3.5GHz CPU, DDR3-1600MHz RAM). This means that it takes about ~14ms to update the whole base once, called one tick, where for 60 UPS the maximum amount of time per update can be 1/60 = ~16.6ms. This number is also shown below in the “show-time-usage” debug output. Interestingly, it also shows that my mod script (mod-FluidicPower) has a neglible effect on the performance (~0.05ms). This is possible because my mod makes very few calculations, as it’s able to offload all the expensive fluid and power calculations to the optimized game engine. The main timing information to look at is Fluid Manager and Electric Network. In-game “show-time-usage” and “show-entity-time-usage” information of the 45 SPM Spaghetti Base. In the output above the game tells you where most of the time is spent, and it initially confused me that game seemingly spends most of its time in the Electric Network. My expectation was that the Fluid Manager would take the biggest performance hit, but instead the output shows that the Electric Network (~10ms) is using over 70% of the update time (~13.7ms), and that the Fluid Manager (~0.03ms) doesn’t seem to be doing anything at all. This doesn’t make any sense, because I expected the amount of fluid calculations to be a massive performance drain. I headed to the Technical Factorio community, where they push Factorio’s performance to its absolute limit. Here, the brilliant mathematician SteveTrov explained to me why the in-game time usage can be misleading if you don’t know how the timing calculations are actually implemented. He described it as such: Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time: The electric network thread is started and the electric network update timer is started. The heat update thread is stated Multiple fluid update threads are started. When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped. So the effect of this is that the fluid update time is nearly always very low. — SteveTrov This essentially means that the Fluid Manager’s time usage information is entangled in the Electric Network’s and Heat Manager’s time usage. It’s not possible to calculate an accurate metric as to which part takes the most processing time without changing the Factorio game engine itself. I need another approach to know if the Electric Network really is taking more processing time than the Fluid Manager, and if so, by how much? An UPS expert called flame_Sla then suggested that I download the Very Sleepy Profiler to see detailed information about which of the Factorio engine’s C++ functions are called most often. Their community often use this tool to optimize the world’s largest and most UPS efficient megabases. In the output of the tool below you can see which C++ functions take the most time, listed in descending order. flame_Sla did also mention not to focus on the absolute times shown, but to rather use it as a metric which the biggest culprits can be identified with. Output of the Very Sleepy profiling tool running on my spaghetti Fluidic Power benchmarking base. On the right is one instance of the call stack of the selected function. This showed something that I didn’t really expect. The fluid system (FluidSystem::update) was only in the top 10 worst timed functions, and the Electric Network was still taking more processing time! It turns out the main problem was FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow, which is mostly called by the electric network. These flow statistics collect the data necessary to view the game’s graphs, eg. the power production window. This means that the game is not only slowing down because of all the new fluid calculations, but also to collect information to draw the graphs for all the new power networks! It’s very likely that the collection of Electric Network statistics could take a significant amount of processing time with Fluidic Power. The Factorio engine is designed to only have a handful of electric networks, or even just a single one. The game needs to collect and update information for every power network you have, which will normally only be a few distinct datasets. So instead of having a handful of networks, Fluidic Power is designed so that each and every power pole is a single electric network. The Factorio engine will then attempt to collect statistics for each of these electric networks - which is about 3000 electric networks in my benchmark save! That’s at least 100 times more networks to collect statistics on than Factorio is designed for. This has been a known limitation for some other mods, but Fluidic Power takes this to a new extreme. However, we still don’t know the impact of these calculations relative to the fluid calculations. Does the collecting of statistics really take that much more time than the fluid calculations themselves? flame_Sla mentioned that he once managed to measure the Fluid Manager’s time usage on the world’s biggest megabase, and that it only used ~0.4ms for a 40KSPM 60UPS megabase! That means only 2.5% of the update time was spent on fluid calculations! The way he isolated the Fluid Manager’s time usage from the Electric Network is by completely eliminating the Electric Network from the measurement. He achieved this by changing all machines to run on wood as fuel which meant no more electricity was used and the Electric Network was idle. Due to how Fluidic Power works, I cannot easily eliminate the effect of the Electric Network the same way without also reducing the Fluid Manager’s load, but I can do it the other way around! I can remove all the fluid components, and replace them with EEIs that supply or drain the power. This will cleanly eliminate all added fluid computations without removing the strenuous load on the Electric Network by making sure the factory is still running normally. In order to record an accurate and comparable time usage metric I also attempted to force Factorio to run on a single core. I ran a quick script to replace the power poles’ hidden fluid components for this test and the result are as follows:   Baseline Modified Difference Electric Network 9.3ms 9.2ms 0.1ms Heat Manager 0.03ms 0.03ms 0ms Fluid Manager 0.13ms 0.08ms 0.05ms Total 9.46ms 9.31ms 0.15ms Table showing timing results of unmodified baseline benchmark compared to the modified benchmark where all fluid components are removed. This shows that all the extra fluid computations from Fluidic Power in this benchmark only take roughly ~0.15ms! This number is probably still not very accurate as it’s within the noise margins of the spaghetti base, the test is not ideal, and measuring time in parallel threads is inaccurate. However, it does give us a good indication of where most processing time is going. This proves that the electric network does have the biggest impact on performance by far, and that the extra fluid calculations are almost negligible. It makes one wonder what performance could be achieved if the electric network didn’t unnecessarily collect statistics - perhaps we’d see enormous Fluidic Power megabases with gigantic transformer substations next to nuclear reactors and massive solar panel arrays. All in all, Fluidic Power performs much better than I had expected. Any perceived slowdowns will mainly be caused by the many electric networks collecting statistics, and not the fluid computations themselves. You will still likely be able to launch a rocket without having your UPS drop below 60 UPS. You could probably even build quite a bit bigger if you have an efficient layout (I’ve achieved 90SPM at 220UPS!), and the mod won’t neccesarily tank your UPS as Rseding1 predicted. Factorio is luckily really well designed and optimized, even when not running as intended. This proves that Fluidic Power is definitely playable performance-wise, but that’s not the only aspect that counts. Should you play it? Personally, I think Fluidic Power creates a really fun challenge. It’s maybe not for you if you’re planning on building a long-lived megabase, but if you’re looking for an interesting adventure playthrough with new challenges then this mod might just be for you. I really enjoyed overcoming all the new gameplay obstacles it creates. For example, the machines furthest away from your steam engines shut down first, which are usually the electric mining drills on your coal patch that feed your boilers. I hadn’t ever experienced such a dangerous coal death spiral before. Or, if you defend your walls with laser turrets, you’ll need to ensure there are enough transformers to supply power at the correct voltage. However, my favourite part of this mod by far is knowing that there is actual electricity flowing through the power poles. You can even see the waves of intermittent brownouts over your machines when your base is pulling too much power, like when many laser turrets fire at once. It’s similar to the feeling I get when I look at a circuit I designed, while knowing it’s working because of the fluid-like motion of electrons through the copper and silicon. It builds on the feeling of seeing your complex networks of belts working together to build a rocket. It makes the factory feel more alive. You can basically see its steady heartbeat, and it’s really satisfying. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-52/"},"url":"https://alt-f4.blog/ALTF4-52/","@type":"BlogPosting","headline":"Alt-F4 #52 - Fluidic Power Benchmarking","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/52/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/52/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/pt-br/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/pt-br/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/pt-br/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/pt-br/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/pt-br/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/pt-br/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/pt-br/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/pt-br/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>A continuação conduzida pela comunidade dos amados Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-52/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-52/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-52/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-52/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-52/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-52/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-52/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button button-green lang-button" href="/pt-br/ALTF4-52/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-52/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-52/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #52 - Fluidic Power Benchmarking  <author>12-11-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Escrito por <em>stringweasel</em>,
+
+
+
+editado por <em>Nanogamer7, Conor_, Therenas, Firerazer, MyNameIsTrez</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/52/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Índice</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#the-fluidic-power-experiment-part-2-stringweasel">The Fluidic Power Experiment: Part 2 <author>stringweasel</author></a>
+    <ul>
+      <li><a href="#what-is-it-again">What is it again?</a></li>
+      <li><a href="#is-the-performance-playable">Is the performance playable?</a></li>
+      <li><a href="#should-you-play-it">Should you play it?</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>Infelizmente, este artigo ainda não foi traduzido para o português, então você o está lendo em inglês. Se você quiser ajudar no reparo, por favor entre no servidor do <a href="https://alt-f4.blog/pt-br/discord">Alt-F4 no Discord</a> para começar. Obrigado!</p>
+
+</div>
+
+
+
+<p>For issue #52, <em>stringweasel</em> returns with part two of the <a href="https://alt-f4.blog/pt-br/ALTF4-51/">Fluidic Power Experiment</a> where he dives into the rather surprising performance implications of his creation. If you liked last week’s article, you’ll like the second part this week. What a surprise!</p>
+      <h2 id="the-fluidic-power-experiment-part-2-stringweasel">
+        
+        
+            <a href="#the-fluidic-power-experiment-part-2-stringweasel" class="anchor" style="text-decoration: none;">The </a><a href="https://mods.factorio.com/mod/FluidicPower">Fluidic Power</a> Experiment: Part 2 <author>stringweasel</author>
+          
+        
+      </h2>
+    
+      <h3 id="what-is-it-again">
+        
+        
+            <a href="#what-is-it-again" class="anchor" style="text-decoration: none;">What is it again?</a>
+          
+        
+      </h3>
+    
+
+<p>In <a href="https://alt-f4.blog/pt-br/ALTF4-51/">last week’s article</a> I talked about the history of Factorio power network overhaul mods and how they worked, and then explained my own take on it called Fluidic Power. It’s recommended that you read that article first, but in a nutshell, I made Factorio’s power distribution more realistic by simulating it as a fluid - using the already built-in fluid simulation mechanics. This means you need to use transformers to minimize voltage drop over distance. It also means that, for example, it is more work to keep your laser turrets firing at 100%, or to build highly beaconed setups.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/52/biters-attack.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off.
+    </video>
+    <figcaption>An example of biters attacking an outpost with “show-fluid-box-info” turned on. The green bar shows the fluid level and blue shows the fluid speed. Notice the lasers intermittently turning off.</figcaption>
+  </figure>
+</p>
+
+<p>These new limitations mean that Fluidic Power achieved its goal of creating a new game mechanic that more closely resembles realistic electricity. However, it does introduce significantly more performance overhead with all the new fluid calculations required. I didn’t want to put a mod on the mod portal that will bring your PC to a halt if you built a decently sized factory. So therefore I set out to do some research. Do the extra fluid calculations really have a significant impact?</p>
+      <h3 id="is-the-performance-playable">
+        
+        
+            <a href="#is-the-performance-playable" class="anchor" style="text-decoration: none;">Is the performance playable?</a>
+          
+        
+      </h3>
+    
+
+<p>There is a reason why Factorio implements electricity the way it does. It allows us to build <a href="https://forums.factorio.com/viewtopic.php?f=204&t=60816">absolutely gigantic factories</a> at such a scale that you can get lost in them. Adding more realistic power might inhibit performance so significantly that you’d have to build smaller factories, and nobody wants to do that. So the question is: What would Factorio’s performance actually be like if there was fluid flowing through each and every power pole. I needed a benchmark map, so I set out to build a pure Fluidic Power base with the help of my friend JanKrater.</p>
+
+<p>My goal for this base was to think of the most performance efficient way to build a base, and to then do the exact opposite (well, mostly). This resulted in a spaghetti base with way too many power poles, very convoluted belts, and way too many power-hungry laser turrets. Very importantly though, it manages to produce a steady 45 science per minute, and it draws about 600 MW with not a single efficiency module in sight.</p>
+
+<figure>
+		<div class="aspect-ratio">
+			<iframe src="https://media.alt-f4.blog/ALTF4/52/fluidicpower/index.html?x=-5.2&y=-11.4&z=2" frameborder="0"></iframe>
+		</div>
+		<figcaption>The benchmark Spaghetti Base running at 45 SPM.</figcaption>
+</figure>
+
+<p>Normally, Factorio runs at about 60 updates per second (referred to as UPS), and I managed to push this benchmark map to run at 70 UPS on my old-ish PC (i7-4770k 3.5GHz CPU, DDR3-1600MHz RAM). This means that it takes about <code class="language-plaintext highlighter-rouge">~14ms</code> to update the whole base once, called one tick, where for 60 UPS the maximum amount of time per update can be <code class="language-plaintext highlighter-rouge">1/60 = ~16.6ms</code>. This number is also shown below in the “show-time-usage” debug output. Interestingly, it also shows that my mod script (<code class="language-plaintext highlighter-rouge">mod-FluidicPower</code>) has a neglible effect on the performance (<code class="language-plaintext highlighter-rouge">~0.05ms</code>). This is possible because my mod makes very few calculations, as it’s able to offload all the expensive fluid and power calculations to the optimized game engine. The main timing information to look at is <code class="language-plaintext highlighter-rouge">Fluid Manager</code> and <code class="language-plaintext highlighter-rouge">Electric Network</code>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/52/show-time-usage.jpg" alt="In-game “show-time-usage” and “show-entity-time-usage” information of the 45 SPM Spaghetti Base." style="max-width: ; max-height:  ">
+        
+        <figcaption>In-game “show-time-usage” and “show-entity-time-usage” information of the 45 SPM Spaghetti Base.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>In the output above the game tells you where most of the time is spent, and it initially confused me that game seemingly spends most of its time in the <code class="language-plaintext highlighter-rouge">Electric Network</code>. My expectation was that the <code class="language-plaintext highlighter-rouge">Fluid Manager</code> would take the biggest performance hit, but instead the output shows that the <code class="language-plaintext highlighter-rouge">Electric Network</code> (<code class="language-plaintext highlighter-rouge">~10ms</code>) is using over 70% of the update time (<code class="language-plaintext highlighter-rouge">~13.7ms</code>), and that the <code class="language-plaintext highlighter-rouge">Fluid Manager</code> (<code class="language-plaintext highlighter-rouge">~0.03ms</code>) doesn’t seem to be doing anything at all. This doesn’t make any sense, because I expected the amount of fluid calculations to be a massive performance drain. I headed to the <a href="https://reddit.com/r/technicalfactorio">Technical Factorio</a> community, where they push Factorio’s performance to its absolute limit. Here, the brilliant mathematician SteveTrov explained to me why the in-game time usage can be misleading if you don’t know how the timing calculations are actually implemented. He described it as such:</p>
+
+<div class="m0 h100 quote">
+  <blockquote cite="">
+    <div class="panel-inset-lighter ">
+    
+      <div class="original">
+        
+<p>Firstly, the time usage stats are confusing because the fluid and electric network update are run in parallel threads. This is roughly what happens most of the time:</p>
+
+<ol>
+  <li>The electric network thread is started and the electric network update timer is started.</li>
+  <li>The heat update thread is stated</li>
+  <li>Multiple fluid update threads are started.</li>
+  <li>When the electric update thread finishes the time used is recorded under electric network update. The fluid update timer is effectively started now</li>
+  <li>When the fluid threads have all finished (they normally do before step 4) the fluid update timer is stopped.</li>
+</ol>
+
+<p>So the effect of this is that the fluid update time is nearly always very low.</p>
+
+      </div>
+    </div>
+    <author>
+    — <a href="https://discord.com/channels/579345487371567105/579346716243787782/855875612274851881">SteveTrov</a>
+    </author>
+  </blockquote>
+</div>
+
+<p>This essentially means that the Fluid Manager’s time usage information is entangled in the Electric Network’s and Heat Manager’s time usage. It’s <a href="https://discord.com/channels/579345487371567105/579345487837003836/784493971824312340">not possible</a> to calculate an accurate metric as to which part takes the most processing time without changing the Factorio game engine itself. I need another approach to know if the <code class="language-plaintext highlighter-rouge">Electric Network</code> really is taking more processing time than the <code class="language-plaintext highlighter-rouge">Fluid Manager</code>, and if so, by how much?</p>
+
+<p>An UPS expert called <a href="https://www.reddit.com/r/technicalfactorio/comments/ks2xtk/20k_spm_201000spm_belts_v30/">flame_Sla</a> then suggested that I download the <a href="http://www.codersnotes.com/sleepy/">Very Sleepy Profiler</a> to see detailed information about which of the Factorio engine’s C++ functions are called most often. Their community often use this tool to optimize the world’s largest and most UPS efficient megabases. In the output of the tool below you can see which C++ functions take the most time, listed in descending order. <em>flame_Sla</em> did also mention not to focus on the absolute times shown, but to rather use it as a metric which the biggest culprits can be identified with.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/52/sleepy-cs-output.jpg" alt="Output of the Very Sleepy profiling tool running on my spaghetti Fluidic Power benchmarking base. On the right is one instance of the call stack of the selected function." style="max-width: ; max-height:  ">
+        
+        <figcaption>Output of the Very Sleepy profiling tool running on my spaghetti Fluidic Power benchmarking base. On the right is one instance of the call stack of the selected function.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>This showed something that I didn’t really expect. The fluid system (<code class="language-plaintext highlighter-rouge">FluidSystem::update</code>) was only in the top 10 worst timed functions, and the Electric Network was <em>still</em> taking more processing time! It turns out the main problem was <code class="language-plaintext highlighter-rouge">FlowStatistics&lt;ID&lt;...&gt;...&gt;::onFlow</code>, which is mostly called by the electric network. These <a href="https://lua-api.factorio.com/latest/LuaFlowStatistics.html">flow statistics</a> collect the data necessary to view the game’s graphs, eg. the power production window. This means that the game is not only slowing down because of all the new fluid calculations, but also to collect information to draw the graphs for all the new power networks!</p>
+
+<p>It’s very likely that the collection of <code class="language-plaintext highlighter-rouge">Electric Network</code> statistics could take a significant amount of processing time with Fluidic Power. The Factorio engine is designed to only have a handful of electric networks, or even just a single one. The game needs to collect and update information for every power network you have, which will normally only be a few distinct datasets. So instead of having a handful of networks, Fluidic Power is designed so that <em>each and every</em> power pole is a single electric network. The Factorio engine will then attempt to collect statistics for each of these electric networks - which is about 3000 electric networks in my benchmark save! That’s at least 100 times more networks to collect statistics on than Factorio is designed for. This has been a known limitation for some other mods, but Fluidic Power takes this to a new extreme. However, we still don’t know the impact of these calculations <em>relative</em> to the fluid calculations. Does the collecting of statistics really take that much more time than the fluid calculations themselves?</p>
+
+<p><em>flame_Sla</em> mentioned that he once managed to measure the Fluid Manager’s time usage on the world’s biggest megabase, and that it only used <code class="language-plaintext highlighter-rouge">~0.4ms</code> for a <a href="https://www.reddit.com/r/factorio/comments/nmxayx/new_ups_record_40k_spm_60_ups_no_mods_details_in/">40KSPM 60UPS megabase</a>! That means only 2.5% of the update time was spent on fluid calculations! The way he isolated the Fluid Manager’s time usage from the Electric Network is by completely <em>eliminating</em> the Electric Network from the measurement. He achieved this by changing all machines to <a href="https://discord.com/channels/579345487371567105/579346716243787782/825170120162148383">run on wood as fuel</a> which meant no more electricity was used and the Electric Network was idle. Due to how Fluidic Power works, I cannot easily eliminate the effect of the Electric Network the same way without also reducing the Fluid Manager’s load, but I can do it the other way around! I can remove all the <em>fluid</em> components, and replace them with EEIs that supply or drain the power. This will cleanly eliminate all added fluid computations without removing the strenuous load on the Electric Network by making sure the factory is still running normally. In order to record an accurate and comparable time usage metric I also attempted to force Factorio to <a href="https://www.reddit.com/r/technicalfactorio/comments/mead38/how_to_turn_off_multithreading_to_get_more_useful/">run on a single core</a>. I ran a quick script to replace the power poles’ hidden fluid components for this test and the result are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Baseline</th>
+      <th>Modified</th>
+      <th>Difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Electric Network</td>
+      <td>9.3ms</td>
+      <td>9.2ms</td>
+      <td>0.1ms</td>
+    </tr>
+    <tr>
+      <td>Heat Manager</td>
+      <td>0.03ms</td>
+      <td>0.03ms</td>
+      <td>0ms</td>
+    </tr>
+    <tr>
+      <td>Fluid Manager</td>
+      <td>0.13ms</td>
+      <td>0.08ms</td>
+      <td>0.05ms</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td><strong>9.46ms</strong></td>
+      <td><strong>9.31ms</strong></td>
+      <td><strong>0.15ms</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<figcaption>Table showing timing results of unmodified baseline benchmark compared to the modified benchmark where all fluid components are removed.</figcaption>
+
+<p>This shows that <em>all</em> the extra fluid computations from Fluidic Power in this benchmark only take roughly <code class="language-plaintext highlighter-rouge">~0.15ms</code>! This number is probably still not very accurate as it’s within the noise margins of the spaghetti base, the test is not ideal, and measuring time in parallel threads is inaccurate. However, it does give us a good indication of where most processing time is going. This proves that the electric network does have the biggest impact on performance by far, and that the extra fluid calculations are almost negligible. It makes one wonder what performance could be achieved if the electric network didn’t unnecessarily collect statistics - perhaps we’d see enormous Fluidic Power megabases with gigantic transformer substations next to nuclear reactors and massive solar panel arrays.</p>
+
+<p>All in all, Fluidic Power performs much better than I had expected. Any perceived slowdowns will mainly be caused by the many electric networks collecting statistics, and not the fluid computations themselves. You will still likely be able to launch a rocket without having your UPS drop below 60 UPS. You could probably even build quite a bit bigger if you have an efficient layout (I’ve achieved 90SPM at 220UPS!), and the mod won’t neccesarily <em>tank</em> your UPS as <em>Rseding1</em> predicted. Factorio is luckily really well designed and optimized, even when not running as intended. This proves that Fluidic Power is definitely playable performance-wise, but that’s not the only aspect that counts.</p>
+      <h3 id="should-you-play-it">
+        
+        
+            <a href="#should-you-play-it" class="anchor" style="text-decoration: none;">Should you play it?</a>
+          
+        
+      </h3>
+    
+
+<p>Personally, I think <a href="https://mods.factorio.com/mod/FluidicPower">Fluidic Power</a> creates a really fun challenge. It’s maybe not for you if you’re planning on building a long-lived megabase, but if you’re looking for an interesting <a href="https://www.reddit.com/r/factorio/comments/qna0s7/comment/hjinkhd/">adventure playthrough</a> with new challenges then this mod might just be for you. I really enjoyed overcoming all the new gameplay obstacles it creates. For example, the machines furthest away from your steam engines shut down first, which are usually the electric mining drills on your coal patch that <em>feed your boilers</em>. I hadn’t ever experienced such a dangerous coal death spiral before. Or, if you defend your walls with laser turrets, you’ll need to ensure there are enough transformers to supply power at the correct voltage.</p>
+
+<p>However, my favourite part of this mod by far is knowing that there is actual electricity flowing through the power poles. You can even see the waves of intermittent brownouts over your machines when your base is pulling too much power, like when many laser turrets fire at once. It’s similar to the feeling I get when I look at a circuit I designed, while knowing it’s working because of the fluid-like motion of electrons through the copper and silicon. It builds on the feeling of seeing your complex networks of belts working together to build a rocket. It makes the factory feel more alive. You can basically see its steady heartbeat, and it’s really satisfying.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/pt-br/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=100594">
+    Discuta nos Fóruns Factorio
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/qsaza3/altf4_52_fluidic_power_benchmarking/">
+    Discuta em Reddit
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/pt-br/discord">
+    Discuta no Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/pt-br/ALTF4-51/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/pt-br/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/pt-br/ALTF4-53/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/pt-br/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/pt-br/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/pt-br/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Este site é um projeto de fãs e não está diretamente relacionado com Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
