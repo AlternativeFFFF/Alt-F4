@@ -1,12 +1,12 @@
 ## Modding Behind The Scenes <author>stringweasel</author>
 
-It's [worth repeating](https://alt-f4.blog/ALTF4-21/) that Factorio really has amazing modding community. Mods revamp the game we love in various different and new ways which keeps the game fun and exciting. I also mentioned that Wube, the Factorio developers, cultivates this culture and encourages mod developers. Modders even often make [requests](https://forums.factorio.com/viewforum.php?f=28) to the developers for more functionality to create even more extensive and exciting mods. However, there are always still limitations to what they can achieve with mods. Occationally modders need to bend the game engine, and sometimes outright abuse it, to create their vision.
+It's [worth repeating](https://alt-f4.blog/ALTF4-21/) that Factorio has an amazing modding community. However, it's easy to forget what it someties takes to create these mods so that we as players can enjoy them. The developers [try to help](https://forums.factorio.com/viewforum.php?f=28) modders by giving them to access more aspects of the game, but it's impossible (in Factorio) to give modders access to _everything_. Therefore, when modders are left with no other way to realize their vision, they have to create some creative ~~hacks~~ workarounds to achieve their goal. I reached out to a few modders to hear about their favourite workarounds, and compiled a few them together for you here.
 
 ### Factorissimo: Distinguish your picked-up factories <author>MagmaMcFry</author>
 
 Back in 0.13, Factorio didn't support item metadata as well as it does now, so the only way I saw it possible to store data in items, and read this data upon placing the item as a machine, was using their damage value. So in [Factorissimo1](https://mods.factorio.com/mod/Factorissimo), the moment you pick up a factory building, the entity's damage value instantly gets changed to a unique number that is associated to the building interior. When you place the building back, the damage value is read to figure out which interior to connect to it, then the entity's damage value is reset back to before you picked it up.
 
-![An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health.](media/factorissimo-old.png)
+![An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health. Note the old Factorissimo building in the background.](media/factorissimo-old.png)
 
 When I was writing [Factorissimo2](https://mods.factorio.com/mod/Factorissimo2), the Factorio devs were hinting at making damaged items stackable (this wasn't the case before, and it would break my system), and item metadata handling in the API was still not fleshed out enough in 0.14, so in Factorissimo2 the mechanism used is even more hacky: Instead of storing a building's data in the damage value, it's stored in the item type. That's right: whenever you pick up a factory building, you actually pick up an item with a new unique internal type that just happens to have the same name and sprite as a regular factory building. Because of a different, related lack of API features, the type of a factory building entity is also changed as soon as you mark a factory building for deconstruction, not just once a robot actually deconstructs it. Since you can't generate new item types on the fly, there's a fixed number of item prototypes per factory size (which I arbitrarily chose to be 90), so if you're very inconsistent at reusing factory buildings, or worse, delete old buildings in item form (which isn't trackable), you might have run into an error message saying "Can't pick up more than 90 factory buildings of one size at once". This is also the reason the factory building requester chest exists: as the special entities are hidden from logistics filters, you have no other way to request your used factory buildings from a logistics system.
 
@@ -38,7 +38,7 @@ Nullius wind turbines are intended to be spaced 32 tiles apart.  They are low te
 
 ![Example of the wind turbine's invisible collision boxes colliding with the placement of another windturbine.](media/nullius.jpg)
 
-### [Satisfactorio](https://mods.factorio.com/mod/Satisfactorio): Awesome Sink <author>PFQNiet</author>
+### [Satisfactorio](https://mods.factorio.com/mod/Satisfactorio): Awesome Sink Consumption Speed <author>PFQNiet</author>
 
 Plenty of overhaul mods have some kind of "void machine" to automatically delete items that you may not want. Angel's/Bob's has the Flare Stack to get rid of unwanted gases, Krastorio has the Crusher, and Industrial Revolution uses an Incinerator to get rid of unwanted items.
 
@@ -74,4 +74,6 @@ After a long time, I had an idea: what if I used a selection tool, but placed en
 
 I did a test by simply assigning a selection tool a place result, and by some miracle, it just worked! The mod is 100% usable in multiplayer now, and it even works on the map view. There are still a few kinks here and there - for instance, shift+dragging assaults your ears with the ghost placement noise - but using a selection tool allowed me to completely eliminate the mod's GUI and make using the mod a lot more intuitive. I am constantly impressed at how much you can do with the Factorio engine, even when the engine did not intend for said thing to be possible.
 
+### Share your story!
 
+What you read above is only a handful of the stories I heard, and we will soon release another article with even more scary modding stories from other modders. If you're a modder with an interesting ~~hacking~~ workaround story, or anything to do with Factorio, then let us know! We would love to tell the world about it. And it's important to talk about such traumatic events, because keeping it all inside is never good. It back might slow down the growth of your factories.
