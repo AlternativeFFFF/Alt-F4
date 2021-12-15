@@ -18,7 +18,7 @@ By now, most of these hacks are no longer necessary, since the API supports the 
 
 ### [Tapeline](https://mods.factorio.com/mod/Tapeline): Dragging Functionality <author>raiguard</author>
 
-![An example of a normal tapeline created by a player](media/tapeline-1.png)
+![An example of a normal tapeline created by a player.](media/tapeline-1.png)
 
 The original version of Tapeline was pretty simple: you select an area with a selection tool, and it draws a ruler the size of what you just selected on the ground. However, I wanted to be able to draw tapes as soon you dragged your mouse. There are no straightforward ways to do this, so I had to get creative.
 
