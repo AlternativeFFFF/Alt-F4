@@ -28,7 +28,7 @@ However, this had problems. First, you couldn't use it in the map view at all, w
 
 After a long time, I had an idea: what if I used a selection tool, but placed entities along the way to tell me where the mouse currently is? This would let me update the tape as you drag, and detect when you finish dragging by reading for the regular selection tool event. This would also allow me to tell whether you were holding shift while dragging.
 
-![An visualization of hidden entities being placed behind the scenes when you drag a tapeline](media/tapeline-2.png)
+![A visualization of hidden entities being placed behind the scenes when you drag a tapeline.](media/tapeline-2.png)
 
 I did a test by simply assigning a selection tool a place result, and by some miracle, it just worked! The mod is 100% usable in multiplayer now, and it even works on the map view. There are still a few kinks here and there - for instance, shift-dragging assaults your ears with the ghost placement noise - but using a selection tool allowed me to completely eliminate the mod's GUI and make using the mod a lot more intuitive. I am constantly impressed at how much you can do with the Factorio engine, even when the engine did not intend for said thing to be possible.
 
