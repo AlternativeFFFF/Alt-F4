@@ -24,7 +24,7 @@ The original version of Tapeline was pretty simple: you select an area with a se
 
 The first implementation of this used invisible grenades with a two-tick cooldown. Holding your mouse down would continually throw these grenades, and the mod would pick up that event to update the position. The mod would detect a finished drag when you stopped throwing these grenades at two-tick intervals.
 
-However, this had problems. First, you couldn't use it in the map view at all, which severely limited the utility of the mod. It also had issues with multiplayer latency, where the timing between throws of the grenade wouldn't be 100% consistent like in singleplayer. You also couldn't use the mod at all when time was paused in the map editor. In essence, it was a half-baked implementation.
+However, this had problems. First, you couldn't use it in the map view at all, which severely limited the utility of the mod. It also had issues with multiplayer latency, where the timing between throws of the grenade wouldn't be 100% consistent like in singleplayer. You also couldn't use the mod at all when the time was paused in the map editor. In essence, it was a half-baked implementation.
 
 After a long time, I had an idea: what if I used a selection tool, but placed entities along the way to tell me where the mouse currently is? This would let me update the tape as you drag, and detect when you finish dragging by reading for the regular selection tool event. This would also allow me to tell whether you were holding shift while dragging.
 
