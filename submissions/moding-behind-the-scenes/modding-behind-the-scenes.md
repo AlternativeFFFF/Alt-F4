@@ -14,7 +14,7 @@ When I was writing [Factorissimo 2](https://mods.factorio.com/mod/Factorissimo2)
 
 Some other honorable mentions for current and previous hacks: Detecting fluid connections to factory buildings via dummy pipe entities, transporting signals across surfaces by populating constant combinators, transporting energy across surfaces by moving it between accumulators (this is why energy connections are one-way), auxiliary entities you could interact with by literally rotating them, placing invisible mining drills to provide connection indicator arrows in alt-mode, invisible chests with actual items in them for the item icon overlay, and more.
 
-By now, most of these hacks are no longer necessary, since the API supports the desired features properly (or it at least provides cleaner hacks). Some of them have been successfully removed, others are deeply entangled with the old code. Maybe I'll clean it all up and write Factorissimo 3 one day.
+By now, most of these hacks are no longer necessary, since the API supports the desired features properly (or it at least provides cleaner hacks). Some of them have been successfully removed, others are deeply entangled within the old code. Maybe I'll clean it all up and write Factorissimo 3 one day.
 
 ### [Tapeline](https://mods.factorio.com/mod/Tapeline): Dragging Functionality <author>raiguard</author>
 
