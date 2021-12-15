@@ -4,7 +4,7 @@ It's [worth repeating](https://alt-f4.blog/ALTF4-21/) that Factorio has an absol
 
 ### Factorissimo: Distinguish your picked-up factories <author>MagmaMcFry</author>
 
-Back in 0.13, Factorio didn't support item metadata as well as it does now, so the only way I saw it possible to store data in items (and read this data upon placing the item as a machine) was by using their damage value. So in [Factorissimo 1](https://mods.factorio.com/mod/Factorissimo), the moment you pick up a factory building, the entity's damage value instantly gets changed to a unique number that is associated to the building's interior. When you place the building back down, the damage value is read to figure out which interior to connect to it, then the entity's damage value is reset back to what it was before you picked it up.
+Back in 0.13, Factorio didn't support item metadata as well as it does now, so the only way I saw it being possible to store data in items (and read this data upon placing the item as a machine) was by using their damage value. So in [Factorissimo 1](https://mods.factorio.com/mod/Factorissimo), the moment you pick up a factory building, the entity's damage value instantly gets changed to a unique number that is associated to the building's interior. When you place the building back down, the damage value is read to figure out which interior it should connect to, and finally the entity's damage value is reset back to what it was before you picked it up.
 
 ![An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health. Also note the old Factorissimo building in the background.](media/factorissimo-old.png)
 
