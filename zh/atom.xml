@@ -4,7 +4,7 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-12-17T11:18:21+00:00</updated>
+  <updated>2021-12-17T17:03:39+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
@@ -13,11 +13,11 @@
   
   
   <entry>
-    <title>Alt-F4 #55 - The Dark Alleys of Modding</title>
+    <title>Alt-F4 #55 - Mod 的黑暗小巷</title>
     <link href="https://alt-f4.blog/zh/ALTF4-55/" />
     <id>https://alt-f4.blog/ALTF4-55</id>
     <updated>2021-12-17T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For issue #55 of Alt-F4, &lt;em&gt;stringweasel&lt;/em&gt; prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins!&lt;/p&gt; &lt;h2 id=&quot;modding-behind-the-scenes-stringweasel&quot;&gt;Modding Behind The Scenes...</content>
+    <content type="html">&lt;p&gt;在第55期Alt-F4中，&lt;em&gt;stringweasel&lt;/em&gt; 为大家准备了一个非常特别的节目，让多位 Mod 作者谈论他们制作 Mod 时想出的最深层、最阴暗的黑科技。我们有MagmaMcFry、raiguard、Deadlock989、Anachrony、PFQNiet 和 Earendel 都在忏悔自己的罪过！&lt;/p&gt; &lt;h2 id=&quot;mod-幕后-stringweasel&quot;&gt;Mod 幕后 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-21/&quot;&gt;重申一遍&lt;/a&gt;异星工厂有着一个惊人的 Mod 社区。这就是说，你可能没有意识到一些 Mod 作者付出了多大的努力来创造他们的杰作，特别是当他们遇到引擎限制时。异星工厂的开发者确实&lt;a href=&quot;https://forums.factorio.com/viewforum.php?f=28&quot;&gt;尝试并扩展&lt;/a&gt;引擎以给 Mod 作者们提供更多的灵活性，但满足 Mod 作者的 &lt;em&gt;一切需求&lt;/em&gt; 是不切实际的。所以，当 Mod 作者们遇到异星工厂所提供的极限时，他们需要发挥创造力来实现他们的愿景。通常他们想出的是有趣而疯狂的&lt;del&gt;黑科技&lt;/del&gt;变通方法，但玩家却没有注意到。我总是觉得这些变通方法很吸引人，所以我联系了一些 Mod 作者，采访他们最喜欢的故事，即如何让异星工厂服从他们的意志。&lt;/p&gt; &lt;h3 id=&quot;厂房区分你拾取的工厂-magmamcfry&quot;&gt;厂房：区分你拾取的工厂 &lt;author&gt;MagmaMcFry&lt;/author&gt;&lt;/h3&gt; &lt;p&gt;在 0.13 版本中，异星工厂并不支持像现在这样的物品元数据，所以我认为唯一有可能在物品中存储数据（并在将物品作为机器放置时读取这些数据）的方法是使用它们的伤害值。因此，在 &lt;a href=&quot;https://mods.factorio.com/mod/Factorissimo&quot;&gt;Factorissimo 1&lt;/a&gt; 中，当你拿起一个厂房时，该实体的伤害值会立即被改变为一个与建筑内部相关的唯一数字。当你把建筑放回原处时，伤害值被读取以计算出它应该连接到哪个内部，最后实体的伤害值被重置为你拿起它之前的样子。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/55/factorissimo-old.jpg&quot; alt=&quot;在异星工厂...</content>
   </entry>
   
   
