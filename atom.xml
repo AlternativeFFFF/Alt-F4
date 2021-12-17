@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-12-11T16:37:19+00:00</updated>
+  <updated>2021-12-17T11:13:51+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #55 - The Dark Alleys of Modding</title>
+    <link href="https://alt-f4.blog/ALTF4-55/" />
+    <id>https://alt-f4.blog/ALTF4-55</id>
+    <updated>2021-12-17T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For issue #55 of Alt-F4, &lt;em&gt;stringweasel&lt;/em&gt; prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins!&lt;/p&gt; &lt;h2 id=&quot;modding-behind-the-scenes-stringweasel&quot;&gt;Modding Behind The Scenes...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-46</id>
     <updated>2021-08-20T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Oh man. It really has been a year since I started this project. Can’t quite believe it’s already been a year, while also not quite believing the project carried on for a whole year. In the beginning, it was just a silly idea that I wanted to try out and...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #45 - Satisfactorio</title>
-    <link href="https://alt-f4.blog/ALTF4-45/" />
-    <id>https://alt-f4.blog/ALTF4-45</id>
-    <updated>2021-08-06T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For issue #45, Alt-F4 has another mod spotlight to share, with the twist that the issue will be released alongisde the &lt;a href=&quot;https://mods.factorio.com/mod/Satisfactorio&quot;&gt;mod&lt;/a&gt; itself! &lt;em&gt;Niet&lt;/em&gt; has been plugging away at bringing some of Satisfactory’s mechanics to Factorio, and it’s way more involved than just bringing over the recipes and calling...</content>
   </entry>
   
   

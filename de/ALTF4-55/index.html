@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #55 - Die dunklen Nebengassen im Modding</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #55 - Die dunklen Nebengassen im Modding">
+<meta name="author" content="stringweasel, MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, Earendel">
+<meta property="og:locale" content="de">
+<meta name="description" content="Für Ausgabe #55 hat stringweasel etwas ganz besonderes für uns alle vorbereitet. Verschiedene Modder erzählen von ihren finstersten, frechsten und komischsten Hacks, auf die sie zurückgegriffen haben, um ihre Mods zum laufen zu bekommen. Wir haben MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet und Earendel, welche heute ihre dunkelsten Geheimnisse lüften werden! Hinter den Kulissen des Moddings stringweasel Es ist wichtig, erneut zu betonen, das Factorio eine unglaubliche Moddingcommunity hat. Du kannst dir aber vielleicht nicht vorstellen, wie unglaublich viel Arbeit manche Modder in ihre Meisterwerke stecken, insbesondere wenn sie an den Punkt kommen, wo sie von der Engine limitiert werden. Die Factorioentwickler versuchen bereits, die Engine zu erweitern um Moddern mehr Möglichkeiten zu geben, aber es ist unpraktisch, Moddern alles zu erlauben. Wenn Modder diese Grenzen erreichen, müssen sie Kreativ werden, um ihre Vision in die Realität umzusetzten. Die Wege dahin sind meistens interessante Hacks, welche dem Spieler nicht auffallen. Ich finde diese Wege immer faszinierend, und habe deshalb einige Modder angeschrieben und sie nach ihren Lieblingsgeschichten gefragt, wie sie Factorio ihren Willen aufgezwungen haben. Factorissimo: Unterscheide deine eingesammelten Fabriken MagmaMcFry Früher, in Version 0.13, unterstützte Factorio Metadaten noch nicht so gut wie heute, so das der einzige Weg, der mir einfiel, um Daten in Items zu speichern (und bei Platzierung zu lesen), ihre Haltbarkeit war. In Factorissimo 1 wird deshalb dem Fabrikgebäude in dem Moment des Aufnehmens eine Haltbarkeit zugeordnet, welche für jedes Gebäude individuell ist und vom Inhalt des Gebäudes abhängt. Wenn das Gebäude platziert wird, wird dieser Wert ausgelesen, um herauszufinden, was sich im Gebäude befindet, und anschließend auf den Wert zurückgesetzt, den das Gebäude hatte, befor es aufgenommen wurde. Ein Beispiel für ein Factorissimo 1 Gebäude im Inventar in Version 0.14. Jedes Gebäude hat eine kleine Haltbarkeit. Auch ist im Hintergrund das alte Factorissimogebäude zu sehen. Als ich Factorissimo 2 schrieb, deuteten die Entwickler an, das in Zukunft teilweise zerstörte Items gestackt werden können, was mein System zerstören würde. Auch war das Metadatensystem noch nicht so weit, so das mein Weg zum Ziel noch gepfuschter war: Anstatt die Informationen in der Haltbarkeit zu speichern, speicher ich die Daten im Itentyp. Immer wenn du also ein FAbrikgebäude aufnimmst, nimmst du in Wahrheit ein völlig neues Item auf, was nur zufällig den selben Namen und das selbe Icon hat, allerdings mit jeweils anderer interner Struktur. Aufgrund eines anderen, damit zusammenhängenden Problems in der API ändert sich auch der Typ der Entität, sobald sie zum Abriss markiert wurde, und nicht erst, wenn ein Roboter sie tatsächlich abgerissen hat. Da man neue Items nicht nebenbei generieren kann, gibt es eine festgelegte Anzahl an Prototypen für jede Fabrikgrößen (welche ich einfach auf 90 gesetzt habe). Wenn du also nicht sehr konsequent deine alten Gebäude wiederverwendest, oder noch schlimmer, alte Gebäude in Itemform zerstörst (was eine Mod nicht tracken kann), kannst du mit einer Fehlermeldung konfrontiert werden, welche sagt:”Can’t pick up more than 90 factory buildings of one size at once” (de: Du kannst nicht mehr als 90 Fabrikgebäude gleichen Typs auf einmal aufnehmen). Das ist auch der Grund, warum die Fabrikanforderungskiste existiert: da die spezielen Entitäten vom Logistiknetz versteckt werden, gibt es keine andere Möglichkeit, benutzte Fabrikgebäude aus dem Logistiknetz anzufordern. Dieser Umweg ist im Editor klar zu erkennen, da rechts alle Gebäude einzeln aufgelistet werden. Einige andere erwähneneswerte Hacks: Erkennen von Flüssigkeitsverbindungen zu FAbrikgebäuden über Dummy-Rohre, Transport von Signalen zwischen Oberflächen mit Kombinatoren für Konstanten, Energieübertragung über das Umladen von Akkumulatoren (deswegen funktioniert Energie in jeweils nur eine Richtung), zusätzliche Entitäten, mit denen nur durch Rotation interagiert werden kann, unsichtbare Erzförderer, welche Pfeile im Alt-Nodus bereitstellen, unsichtbare Kisten mit Items, welche die Symbole fürs Overlay bereitstellen, und vieles mehr. Heute sind viele dieser Hacks nicht mehr nötig, da die API die nötigen Features nativ unterstützt (oder einfachere Wege für Hacks bereitstellt). Einige wurden erfolgreich gestrichen, andere hängen tief im alten Code fest. Vielleicht werde ich sie einmal beheben, falls ich einmal Factorissimo 3 schreiben sollte. Tapeline: Dragging-Funktionalität raiguard Ein Beispiel für ein normales, spielergeneriertes Maßband Die originale Version von Tapeline war sehr einfach: du wählst eine Fläche mit einem Auswahltool aus und es zeichnet ein Maßband in der Größe des ausgewählten Bereichs auf den Boden. Ich wollte allerdings auch die Möglichkeit, Markierungen via Dragging zu zeichnen. Es gibt keine einfachen Wege, das zu tun, also musste ich kreativ werden. Die erste Implementierung benutzte unsichtbare Granaten mit einem 2 Tickcs langen Cooldown. Hält man die Maustaste gedrückt werden kontinuierlich diese Granaten geworfen, was die Mod erkennen würde und die Position entsprechend anpasst. Das Ende des Markiervorgangs würde erkannt werden, wenn der Spieler nicht mehr aller 2-Ticks eine Granate schmeißt. Dieser Weg hatte allerdings einige Probleme. Erstens war es nicht möglich, die Kartenansicht zu verwenden, was die sinnvolle ANwendung der Mod einschränkte. Es gab auch Probleme mit Multiplayerlatenz, wo das Timing zwischen den einzelnen Granaten nicht 100% gleich wie im Singleplayer war. Man konnte die Mod auch nicht verwenden, wenn die Zeit im Karteneditor pausiert war. Ingesamt war es eher eine halbe Implementation. Nach langer Zeit hatte ich eine Idee: Was wäre, wenn ich ein Auswahlwerkzeug verwende, aber währenddessen Entitäten platzieren, um zu markieren, wo die Maus aktuell ist? Das würde mir ermöglichen, das Maßband währenddessen zu updaten, und zzu erkennen, wann der Vorgang beendet ist, durch das reguläre Auswahltoolevent. Auch würde ich erkennen können, ob währenddessen Shift gedrückt wurde. Eine Visualisierung der versteckten Entitäten, welche platziert werden, während du das Band ziehst. Ich habe einen Test gemacht, indem ich einfach einem Selection-Tool ein Place-Result zugeordnet habe, und auf wundersame Weise hat es einfach funktioniert! Die Mod ist jetzt auch im Multiplayer nutzbar und funktioniert auch auf der Kartenansicht. Es gibt hier und da noch einige kleine Probleme, zum Beispiel tötet Shift-Dragging deine Ohren mit dem Ghost-Placement-Sound, aber die Verwendung eines Selectiontools erlaubte mir, komplett auf eine Mod-GUI zu verzichten und die Mod insgesamt intuitiver zu machen. Ich bin immer wieder überrascht davon, wie viel man mit der Factorio-Engine machen kann, auch wenn sie dafür überhaupt nicht gemacht wurde. Industrial Revolution 2: Das Transmat Deadlock989 Ich muss den Spieler während der Teleportation in der Transmat-Sequenz verstecken und das bedarf aktuell jeder Menge Tricksereien mit unsichtbaren und unzerstörbaren Autos welche verfolgt und am Ende wieder vernichtet werden müssen. Das ist der Fall, da Spieler (und die dazugehörigen Charaktere) zwischen Oberflächen teleportiert werden können, Fahrzeuge zwischen Oberflächen teleportiert werden können, aber Charaktere ohne dazugehörige Spieler können nicht teleportiert werden, und während einer Cutscene ist der Spieler nicht mit dem Charakter verbunden. IN der Sequenz, die ich erzeugen wollte, musste der Charakter manchmal, aber nicht immer unsichtbar sein. Der einfachste Weg dazu war es, ein unsichtbares, nicht kollidierendes Auto zu erschaffen und dann den Charakter im Auto auf eine temporäre Halteoberfläche zu teleportieren, während die Cutscene-POV sich von einer zur anderen Seite bewegt. Es gibt einige andere Möglichkeiten, welche kein besonders Fahrzeug beinhalten, aber die meisten hatten sehr nervige Nebeneffekte (z.B. wenn ein Charakter zu einer weit entfernten Stelle auf der selben Oberfläche teleportiert wird, während er von Beißern angegriffen wird, zerschießt die Beißer-KI das gesamte Betriebssystem). Es musste auch ein Weg sein, der robust damit klar kommt, wenn ein Spieler im Multiplayer während der Cutscene disconnected, was destruktives Klonen zu kompliziert gemacht hätte (man kann keinen einzelnen Charakter teleportieren, allerdings kann man ihn auf eine andere Oberfläche klonen und dann das Original zerstören, was philosophisch interessant wird). Es stellte sich einfach heraus, das es sehr viel aufwand ist, die Reste aufzuräumen, falls die Cutscene von einem Disconnect oder einer anderen Mod unterbrochen wurde. Es gibt mit Sicherheit bessere Wege, das Problem zu lösen, aber wie oft im Factorio-Modding ist es ein langes Suchen in der Dunkelheit, bis man einmal etwas fidnet, was funktioniert. &lt;/source&gt; Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert. Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert. Nullius: Verteilte Windkraftwerke Anachrony Es ist vorgesehen, das Nullius Windkraftwerke mit 32 Feldern Abstand verwendet werden. Sie sind Low-Tech, günstig und effektiv, aber ihre Ausgangsleistung verändert sich unvorhersehbar und sie benötigen viel Fläche aufgrund der Abstandsbedingung. Es ist aber nicht verboten, innerhalb der 32 Felder etwas anderes zu bauen, nur weitere Windturbinen sind verboten. Die Spiel-Engine macht es einem nicht leicht, solche differentierten Regeln zu implementieren. In einer älteren Version der Mod fügte ein Skript jeder Turbine ein großes, unsichtbares Quadrat zu, welches verhinderte, das weitere Turbinen in der Nähe gebaut wurden, aber nichts anderes. Ein großes Problem an dieser Lösung war aber, das dieses unsichtbare Quadrat auch mit der eigentlichen Turbine in der Mitte kollidierte, so das es unmöglich war, sie schnell gegen eine Turbine höheren Levels auszutauschen. Im Gegensatz zu anderen vergleichbaren Strukturen musstest du die Turbine erst abreißen und dann die Neue setzten, was den gesamten Prozess nicht intuitiv und nervig aufwändig macht. Die Lösung war es, das große Quadrat in vier REchtecke aufzuteilen, welche durch ihre Überlagerung ein Feld erzeugten, in dem die einzig gültigen Positionen entweder 32 Felder weit weg oder genau über der eigentlichen Turbine waren, was das schnelle Ersetzen von Turbinen ermöglicht. Das Bild zeigt im Folgenden die Kollisionsrechtecke, welche eine zu nahe Platzierung verhidern. Beispiel für die Kollision der unsichtbaren Kollisionsbox einer Turbine und der Platzierung einer anderen Turbine. Satisfactorio: Awesome-Sink-Verbauchsgeschwindigkeit PFQNiet Viele Mods haben ein System, welches ungewollte Gegenstände automatisch löscht. Angel’s/Bob’s hat den Flare Stack für ungewollte Gase, Krastorio den Crusher und Industrial Revolution den Incinerator, um ungewollte Items loszuwerden. Satisfactory hat die Awesome-Sink, welche ich natürlich für meine Satisfactoro-Mod nachbauen musste. Die Sink nimmt (fast) jedes Item als Input an und produziert Punkte, mit denen man Coupons bekommt, welche dann im Awesome-Shop ausgegeben werden können. Sie verbraucht Items so schnell wie ihr sie reinbekommt und bedarf 30MW an elektrischer Leistung. Alle “void machines” in Factorio funktionieren nach dem selben Prinzip: baue eine Ofen-Entität und erstelle ein Rezept für jedes Item im Spiel, welches das entsprechende Item verbraucht und nichts produziert. Den Rest übernimmt sie Engine. In meinem Fall habe ich das Rezept schnell genug gemacht, damit Items von einem Mk.5 Fließband verbraucht werden können. Das führte aber dazu, das die Maschine die meiste Zeit inaktiv war, wenn ein langsameres Fließband angeschlossen war, wodurch der Stromverbrauch stark ungewollt schwankte. Es dauerte eine Weile, bis ich zu einer Lösung kam, aber eventuell kam ich darauf, das Rezept gerade so schnell genug für ein Mk.1 Fließband (das langsamste!) zu machen und dann einen unsichtbaren Effektverteiler zu nutzen. Dieser besondere Effektverteiler hat 100% Effizienz (Vanilla-Effektverteiler transportieren nur 50% ihres Effektes) und akzeptiert ein besonderes Geschwindigkeitsmodul, welches +100% Geschwindigkeit mit keinen zusätzlichen Kosten gibt. Dann überprüft das Skript, welche Fließbandgeschwindigkeit angeschlossen ist und fügt oder entfernt eine entsprechende Anzahl an Modulen hinzu. Mk.2 Fließbänder transportieren doppelt so viel wie Mk.1 Fließbänder, also wird ein Modul verwendet. Das gilt für jedes Fließband, außer Mk.5, welches 7mal so viel transportiert, so das 6 Module verwendet weden. Dieses Setup sorgt dafür, dass, egal welches Fließband angeschlossen ist, die Geschwindigkeit angepasst wird und die Items in genau der richtigen Geschwindigkeit verarbeitet werden und es nicht zu unvorhergesehenen Leistungsspitzen und Stromausfällen kommt! AAI Programmable Vehicles: Beißer-Fahrer Earendel Meine Fahrzeuge müssen von A nach B kommen, können aber nicht immer in einer geraden Linie fahren sondern müssen einen Weg um Hindernisse herum finden. Einen Pfadfinderalgorithmus zu schreiben ist an sich nicht schwer, benötigt aber eine korrekte Karte, welche man nicht in einer Factorio-Mod bekommt. Die Karte in sinnvoller Art und Weise zu analysieren wäre unglaublich langsam und Zugriff auf Factorios C++ -Pfadfinder war nicht möglich (zu dieser Zeit), also musste ich etwas kreativer werden. Das Spiel hat einen eingebauten “Einheiten”-Typ für Beißer, dem gesagt werden kann, das er eine bestimmte Position mit dem Pfadfinder aufsuchen soll. Das Problem ist, das Einheiten keine Fahrzeuge sind: sie können keine Passagiere aufnehmen, haben kein Inventar und können keine Munition verwenden. &lt;/source&gt; Earendel’s Warden findet automatisch den Weg um eine Klippe herum Earendel’s Warden findet automatisch den Weg um eine Klippe herum Mein etwas verrückter Weg ist es, eine unsichtbare Einheit vor das Fahrzeug zu spannen, genannt “Der Navigator”, welche die selben EInstellungen für Größe und Kollisionen hat. Ich gebe ihm ein Ziel, verfolge die Bewegung und nutze den Pfad für mein Fahrzeug. Man könnte also sagen, dass das Fahrzeug von einem unsichtbaren Beißer gesteuert wird. Dies funktionierte relativ gut, hatte aber eine Menge an komischen Nebenwirkungen. Beispielsweise würde der Navigator manchmal Feuer fangen und der Spieler, welcher nichts von der Existenz des Navigators weis, sieht dann einfach ein einzelnes Feuer, welches sich scheinbar grundlos über die Karte ausbreitet. Manchmal würde der Navigator auch nicht den richtigen Pfad finden oder von irgendetwas abgelenkt werden und dann immer im Kreis fahren, aber es war nicht möglich zu sagen, ob es sich um einen ordentlichen Pfad handelt oder der Navigator nur wieder glitchte, das Fahrzeug musste dem Pfad erstmal für eine Weile folgen, bevor es erkannte, das es im Kreis fuhr. Irgentwann öffnete Wube auf mein Drängen hin den Zugang zum C++ -Pfadfinder für Modder und die ganze “Beißer-Fahrer”-Geschichte ist vorbei, stellt aber für mich immernoch den schrägsten Workaround dar. Teile deine Geschichte! Was du gerade gelesen hast ist nur eine kleine Anzahl der Geschichten, welche ich gehört habe, und wir werden in Zukunft einen weiteren Artikel mit solchen Geschichten veröffentlichen. Wenn die also ein Modder mit einer interessanten Workaround-Geschichte bist, dann meld dich gerne bei uns! Wir würden uns freuen, davon zu hören und der Welt davon zu erzählen! Es ist auch wichtig, eimal über solche traumatischen Ereignisse zu reden, man kann das nicht immer nur einfach in sich reinfrassen. Soetwas könnte das Wachstum der Fabrik verhindern, und das muss umbedingt verhindet werden. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="Für Ausgabe #55 hat stringweasel etwas ganz besonderes für uns alle vorbereitet. Verschiedene Modder erzählen von ihren finstersten, frechsten und komischsten Hacks, auf die sie zurückgegriffen haben, um ihre Mods zum laufen zu bekommen. Wir haben MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet und Earendel, welche heute ihre dunkelsten Geheimnisse lüften werden! Hinter den Kulissen des Moddings stringweasel Es ist wichtig, erneut zu betonen, das Factorio eine unglaubliche Moddingcommunity hat. Du kannst dir aber vielleicht nicht vorstellen, wie unglaublich viel Arbeit manche Modder in ihre Meisterwerke stecken, insbesondere wenn sie an den Punkt kommen, wo sie von der Engine limitiert werden. Die Factorioentwickler versuchen bereits, die Engine zu erweitern um Moddern mehr Möglichkeiten zu geben, aber es ist unpraktisch, Moddern alles zu erlauben. Wenn Modder diese Grenzen erreichen, müssen sie Kreativ werden, um ihre Vision in die Realität umzusetzten. Die Wege dahin sind meistens interessante Hacks, welche dem Spieler nicht auffallen. Ich finde diese Wege immer faszinierend, und habe deshalb einige Modder angeschrieben und sie nach ihren Lieblingsgeschichten gefragt, wie sie Factorio ihren Willen aufgezwungen haben. Factorissimo: Unterscheide deine eingesammelten Fabriken MagmaMcFry Früher, in Version 0.13, unterstützte Factorio Metadaten noch nicht so gut wie heute, so das der einzige Weg, der mir einfiel, um Daten in Items zu speichern (und bei Platzierung zu lesen), ihre Haltbarkeit war. In Factorissimo 1 wird deshalb dem Fabrikgebäude in dem Moment des Aufnehmens eine Haltbarkeit zugeordnet, welche für jedes Gebäude individuell ist und vom Inhalt des Gebäudes abhängt. Wenn das Gebäude platziert wird, wird dieser Wert ausgelesen, um herauszufinden, was sich im Gebäude befindet, und anschließend auf den Wert zurückgesetzt, den das Gebäude hatte, befor es aufgenommen wurde. Ein Beispiel für ein Factorissimo 1 Gebäude im Inventar in Version 0.14. Jedes Gebäude hat eine kleine Haltbarkeit. Auch ist im Hintergrund das alte Factorissimogebäude zu sehen. Als ich Factorissimo 2 schrieb, deuteten die Entwickler an, das in Zukunft teilweise zerstörte Items gestackt werden können, was mein System zerstören würde. Auch war das Metadatensystem noch nicht so weit, so das mein Weg zum Ziel noch gepfuschter war: Anstatt die Informationen in der Haltbarkeit zu speichern, speicher ich die Daten im Itentyp. Immer wenn du also ein FAbrikgebäude aufnimmst, nimmst du in Wahrheit ein völlig neues Item auf, was nur zufällig den selben Namen und das selbe Icon hat, allerdings mit jeweils anderer interner Struktur. Aufgrund eines anderen, damit zusammenhängenden Problems in der API ändert sich auch der Typ der Entität, sobald sie zum Abriss markiert wurde, und nicht erst, wenn ein Roboter sie tatsächlich abgerissen hat. Da man neue Items nicht nebenbei generieren kann, gibt es eine festgelegte Anzahl an Prototypen für jede Fabrikgrößen (welche ich einfach auf 90 gesetzt habe). Wenn du also nicht sehr konsequent deine alten Gebäude wiederverwendest, oder noch schlimmer, alte Gebäude in Itemform zerstörst (was eine Mod nicht tracken kann), kannst du mit einer Fehlermeldung konfrontiert werden, welche sagt:”Can’t pick up more than 90 factory buildings of one size at once” (de: Du kannst nicht mehr als 90 Fabrikgebäude gleichen Typs auf einmal aufnehmen). Das ist auch der Grund, warum die Fabrikanforderungskiste existiert: da die spezielen Entitäten vom Logistiknetz versteckt werden, gibt es keine andere Möglichkeit, benutzte Fabrikgebäude aus dem Logistiknetz anzufordern. Dieser Umweg ist im Editor klar zu erkennen, da rechts alle Gebäude einzeln aufgelistet werden. Einige andere erwähneneswerte Hacks: Erkennen von Flüssigkeitsverbindungen zu FAbrikgebäuden über Dummy-Rohre, Transport von Signalen zwischen Oberflächen mit Kombinatoren für Konstanten, Energieübertragung über das Umladen von Akkumulatoren (deswegen funktioniert Energie in jeweils nur eine Richtung), zusätzliche Entitäten, mit denen nur durch Rotation interagiert werden kann, unsichtbare Erzförderer, welche Pfeile im Alt-Nodus bereitstellen, unsichtbare Kisten mit Items, welche die Symbole fürs Overlay bereitstellen, und vieles mehr. Heute sind viele dieser Hacks nicht mehr nötig, da die API die nötigen Features nativ unterstützt (oder einfachere Wege für Hacks bereitstellt). Einige wurden erfolgreich gestrichen, andere hängen tief im alten Code fest. Vielleicht werde ich sie einmal beheben, falls ich einmal Factorissimo 3 schreiben sollte. Tapeline: Dragging-Funktionalität raiguard Ein Beispiel für ein normales, spielergeneriertes Maßband Die originale Version von Tapeline war sehr einfach: du wählst eine Fläche mit einem Auswahltool aus und es zeichnet ein Maßband in der Größe des ausgewählten Bereichs auf den Boden. Ich wollte allerdings auch die Möglichkeit, Markierungen via Dragging zu zeichnen. Es gibt keine einfachen Wege, das zu tun, also musste ich kreativ werden. Die erste Implementierung benutzte unsichtbare Granaten mit einem 2 Tickcs langen Cooldown. Hält man die Maustaste gedrückt werden kontinuierlich diese Granaten geworfen, was die Mod erkennen würde und die Position entsprechend anpasst. Das Ende des Markiervorgangs würde erkannt werden, wenn der Spieler nicht mehr aller 2-Ticks eine Granate schmeißt. Dieser Weg hatte allerdings einige Probleme. Erstens war es nicht möglich, die Kartenansicht zu verwenden, was die sinnvolle ANwendung der Mod einschränkte. Es gab auch Probleme mit Multiplayerlatenz, wo das Timing zwischen den einzelnen Granaten nicht 100% gleich wie im Singleplayer war. Man konnte die Mod auch nicht verwenden, wenn die Zeit im Karteneditor pausiert war. Ingesamt war es eher eine halbe Implementation. Nach langer Zeit hatte ich eine Idee: Was wäre, wenn ich ein Auswahlwerkzeug verwende, aber währenddessen Entitäten platzieren, um zu markieren, wo die Maus aktuell ist? Das würde mir ermöglichen, das Maßband währenddessen zu updaten, und zzu erkennen, wann der Vorgang beendet ist, durch das reguläre Auswahltoolevent. Auch würde ich erkennen können, ob währenddessen Shift gedrückt wurde. Eine Visualisierung der versteckten Entitäten, welche platziert werden, während du das Band ziehst. Ich habe einen Test gemacht, indem ich einfach einem Selection-Tool ein Place-Result zugeordnet habe, und auf wundersame Weise hat es einfach funktioniert! Die Mod ist jetzt auch im Multiplayer nutzbar und funktioniert auch auf der Kartenansicht. Es gibt hier und da noch einige kleine Probleme, zum Beispiel tötet Shift-Dragging deine Ohren mit dem Ghost-Placement-Sound, aber die Verwendung eines Selectiontools erlaubte mir, komplett auf eine Mod-GUI zu verzichten und die Mod insgesamt intuitiver zu machen. Ich bin immer wieder überrascht davon, wie viel man mit der Factorio-Engine machen kann, auch wenn sie dafür überhaupt nicht gemacht wurde. Industrial Revolution 2: Das Transmat Deadlock989 Ich muss den Spieler während der Teleportation in der Transmat-Sequenz verstecken und das bedarf aktuell jeder Menge Tricksereien mit unsichtbaren und unzerstörbaren Autos welche verfolgt und am Ende wieder vernichtet werden müssen. Das ist der Fall, da Spieler (und die dazugehörigen Charaktere) zwischen Oberflächen teleportiert werden können, Fahrzeuge zwischen Oberflächen teleportiert werden können, aber Charaktere ohne dazugehörige Spieler können nicht teleportiert werden, und während einer Cutscene ist der Spieler nicht mit dem Charakter verbunden. IN der Sequenz, die ich erzeugen wollte, musste der Charakter manchmal, aber nicht immer unsichtbar sein. Der einfachste Weg dazu war es, ein unsichtbares, nicht kollidierendes Auto zu erschaffen und dann den Charakter im Auto auf eine temporäre Halteoberfläche zu teleportieren, während die Cutscene-POV sich von einer zur anderen Seite bewegt. Es gibt einige andere Möglichkeiten, welche kein besonders Fahrzeug beinhalten, aber die meisten hatten sehr nervige Nebeneffekte (z.B. wenn ein Charakter zu einer weit entfernten Stelle auf der selben Oberfläche teleportiert wird, während er von Beißern angegriffen wird, zerschießt die Beißer-KI das gesamte Betriebssystem). Es musste auch ein Weg sein, der robust damit klar kommt, wenn ein Spieler im Multiplayer während der Cutscene disconnected, was destruktives Klonen zu kompliziert gemacht hätte (man kann keinen einzelnen Charakter teleportieren, allerdings kann man ihn auf eine andere Oberfläche klonen und dann das Original zerstören, was philosophisch interessant wird). Es stellte sich einfach heraus, das es sehr viel aufwand ist, die Reste aufzuräumen, falls die Cutscene von einem Disconnect oder einer anderen Mod unterbrochen wurde. Es gibt mit Sicherheit bessere Wege, das Problem zu lösen, aber wie oft im Factorio-Modding ist es ein langes Suchen in der Dunkelheit, bis man einmal etwas fidnet, was funktioniert. &lt;/source&gt; Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert. Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert. Nullius: Verteilte Windkraftwerke Anachrony Es ist vorgesehen, das Nullius Windkraftwerke mit 32 Feldern Abstand verwendet werden. Sie sind Low-Tech, günstig und effektiv, aber ihre Ausgangsleistung verändert sich unvorhersehbar und sie benötigen viel Fläche aufgrund der Abstandsbedingung. Es ist aber nicht verboten, innerhalb der 32 Felder etwas anderes zu bauen, nur weitere Windturbinen sind verboten. Die Spiel-Engine macht es einem nicht leicht, solche differentierten Regeln zu implementieren. In einer älteren Version der Mod fügte ein Skript jeder Turbine ein großes, unsichtbares Quadrat zu, welches verhinderte, das weitere Turbinen in der Nähe gebaut wurden, aber nichts anderes. Ein großes Problem an dieser Lösung war aber, das dieses unsichtbare Quadrat auch mit der eigentlichen Turbine in der Mitte kollidierte, so das es unmöglich war, sie schnell gegen eine Turbine höheren Levels auszutauschen. Im Gegensatz zu anderen vergleichbaren Strukturen musstest du die Turbine erst abreißen und dann die Neue setzten, was den gesamten Prozess nicht intuitiv und nervig aufwändig macht. Die Lösung war es, das große Quadrat in vier REchtecke aufzuteilen, welche durch ihre Überlagerung ein Feld erzeugten, in dem die einzig gültigen Positionen entweder 32 Felder weit weg oder genau über der eigentlichen Turbine waren, was das schnelle Ersetzen von Turbinen ermöglicht. Das Bild zeigt im Folgenden die Kollisionsrechtecke, welche eine zu nahe Platzierung verhidern. Beispiel für die Kollision der unsichtbaren Kollisionsbox einer Turbine und der Platzierung einer anderen Turbine. Satisfactorio: Awesome-Sink-Verbauchsgeschwindigkeit PFQNiet Viele Mods haben ein System, welches ungewollte Gegenstände automatisch löscht. Angel’s/Bob’s hat den Flare Stack für ungewollte Gase, Krastorio den Crusher und Industrial Revolution den Incinerator, um ungewollte Items loszuwerden. Satisfactory hat die Awesome-Sink, welche ich natürlich für meine Satisfactoro-Mod nachbauen musste. Die Sink nimmt (fast) jedes Item als Input an und produziert Punkte, mit denen man Coupons bekommt, welche dann im Awesome-Shop ausgegeben werden können. Sie verbraucht Items so schnell wie ihr sie reinbekommt und bedarf 30MW an elektrischer Leistung. Alle “void machines” in Factorio funktionieren nach dem selben Prinzip: baue eine Ofen-Entität und erstelle ein Rezept für jedes Item im Spiel, welches das entsprechende Item verbraucht und nichts produziert. Den Rest übernimmt sie Engine. In meinem Fall habe ich das Rezept schnell genug gemacht, damit Items von einem Mk.5 Fließband verbraucht werden können. Das führte aber dazu, das die Maschine die meiste Zeit inaktiv war, wenn ein langsameres Fließband angeschlossen war, wodurch der Stromverbrauch stark ungewollt schwankte. Es dauerte eine Weile, bis ich zu einer Lösung kam, aber eventuell kam ich darauf, das Rezept gerade so schnell genug für ein Mk.1 Fließband (das langsamste!) zu machen und dann einen unsichtbaren Effektverteiler zu nutzen. Dieser besondere Effektverteiler hat 100% Effizienz (Vanilla-Effektverteiler transportieren nur 50% ihres Effektes) und akzeptiert ein besonderes Geschwindigkeitsmodul, welches +100% Geschwindigkeit mit keinen zusätzlichen Kosten gibt. Dann überprüft das Skript, welche Fließbandgeschwindigkeit angeschlossen ist und fügt oder entfernt eine entsprechende Anzahl an Modulen hinzu. Mk.2 Fließbänder transportieren doppelt so viel wie Mk.1 Fließbänder, also wird ein Modul verwendet. Das gilt für jedes Fließband, außer Mk.5, welches 7mal so viel transportiert, so das 6 Module verwendet weden. Dieses Setup sorgt dafür, dass, egal welches Fließband angeschlossen ist, die Geschwindigkeit angepasst wird und die Items in genau der richtigen Geschwindigkeit verarbeitet werden und es nicht zu unvorhergesehenen Leistungsspitzen und Stromausfällen kommt! AAI Programmable Vehicles: Beißer-Fahrer Earendel Meine Fahrzeuge müssen von A nach B kommen, können aber nicht immer in einer geraden Linie fahren sondern müssen einen Weg um Hindernisse herum finden. Einen Pfadfinderalgorithmus zu schreiben ist an sich nicht schwer, benötigt aber eine korrekte Karte, welche man nicht in einer Factorio-Mod bekommt. Die Karte in sinnvoller Art und Weise zu analysieren wäre unglaublich langsam und Zugriff auf Factorios C++ -Pfadfinder war nicht möglich (zu dieser Zeit), also musste ich etwas kreativer werden. Das Spiel hat einen eingebauten “Einheiten”-Typ für Beißer, dem gesagt werden kann, das er eine bestimmte Position mit dem Pfadfinder aufsuchen soll. Das Problem ist, das Einheiten keine Fahrzeuge sind: sie können keine Passagiere aufnehmen, haben kein Inventar und können keine Munition verwenden. &lt;/source&gt; Earendel’s Warden findet automatisch den Weg um eine Klippe herum Earendel’s Warden findet automatisch den Weg um eine Klippe herum Mein etwas verrückter Weg ist es, eine unsichtbare Einheit vor das Fahrzeug zu spannen, genannt “Der Navigator”, welche die selben EInstellungen für Größe und Kollisionen hat. Ich gebe ihm ein Ziel, verfolge die Bewegung und nutze den Pfad für mein Fahrzeug. Man könnte also sagen, dass das Fahrzeug von einem unsichtbaren Beißer gesteuert wird. Dies funktionierte relativ gut, hatte aber eine Menge an komischen Nebenwirkungen. Beispielsweise würde der Navigator manchmal Feuer fangen und der Spieler, welcher nichts von der Existenz des Navigators weis, sieht dann einfach ein einzelnes Feuer, welches sich scheinbar grundlos über die Karte ausbreitet. Manchmal würde der Navigator auch nicht den richtigen Pfad finden oder von irgendetwas abgelenkt werden und dann immer im Kreis fahren, aber es war nicht möglich zu sagen, ob es sich um einen ordentlichen Pfad handelt oder der Navigator nur wieder glitchte, das Fahrzeug musste dem Pfad erstmal für eine Weile folgen, bevor es erkannte, das es im Kreis fuhr. Irgentwann öffnete Wube auf mein Drängen hin den Zugang zum C++ -Pfadfinder für Modder und die ganze “Beißer-Fahrer”-Geschichte ist vorbei, stellt aber für mich immernoch den schrägsten Workaround dar. Teile deine Geschichte! Was du gerade gelesen hast ist nur eine kleine Anzahl der Geschichten, welche ich gehört habe, und wir werden in Zukunft einen weiteren Artikel mit solchen Geschichten veröffentlichen. Wenn die also ein Modder mit einer interessanten Workaround-Geschichte bist, dann meld dich gerne bei uns! Wir würden uns freuen, davon zu hören und der Welt davon zu erzählen! Es ist auch wichtig, eimal über solche traumatischen Ereignisse zu reden, man kann das nicht immer nur einfach in sich reinfrassen. Soetwas könnte das Wachstum der Fabrik verhindern, und das muss umbedingt verhindet werden. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-55/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-55/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-12-17T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-12-17T00:00:00+00:00","datePublished":"2021-12-17T00:00:00+00:00","author":{"@type":"Person","name":"stringweasel, MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, Earendel"},"description":"Für Ausgabe #55 hat stringweasel etwas ganz besonderes für uns alle vorbereitet. Verschiedene Modder erzählen von ihren finstersten, frechsten und komischsten Hacks, auf die sie zurückgegriffen haben, um ihre Mods zum laufen zu bekommen. Wir haben MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet und Earendel, welche heute ihre dunkelsten Geheimnisse lüften werden! Hinter den Kulissen des Moddings stringweasel Es ist wichtig, erneut zu betonen, das Factorio eine unglaubliche Moddingcommunity hat. Du kannst dir aber vielleicht nicht vorstellen, wie unglaublich viel Arbeit manche Modder in ihre Meisterwerke stecken, insbesondere wenn sie an den Punkt kommen, wo sie von der Engine limitiert werden. Die Factorioentwickler versuchen bereits, die Engine zu erweitern um Moddern mehr Möglichkeiten zu geben, aber es ist unpraktisch, Moddern alles zu erlauben. Wenn Modder diese Grenzen erreichen, müssen sie Kreativ werden, um ihre Vision in die Realität umzusetzten. Die Wege dahin sind meistens interessante Hacks, welche dem Spieler nicht auffallen. Ich finde diese Wege immer faszinierend, und habe deshalb einige Modder angeschrieben und sie nach ihren Lieblingsgeschichten gefragt, wie sie Factorio ihren Willen aufgezwungen haben. Factorissimo: Unterscheide deine eingesammelten Fabriken MagmaMcFry Früher, in Version 0.13, unterstützte Factorio Metadaten noch nicht so gut wie heute, so das der einzige Weg, der mir einfiel, um Daten in Items zu speichern (und bei Platzierung zu lesen), ihre Haltbarkeit war. In Factorissimo 1 wird deshalb dem Fabrikgebäude in dem Moment des Aufnehmens eine Haltbarkeit zugeordnet, welche für jedes Gebäude individuell ist und vom Inhalt des Gebäudes abhängt. Wenn das Gebäude platziert wird, wird dieser Wert ausgelesen, um herauszufinden, was sich im Gebäude befindet, und anschließend auf den Wert zurückgesetzt, den das Gebäude hatte, befor es aufgenommen wurde. Ein Beispiel für ein Factorissimo 1 Gebäude im Inventar in Version 0.14. Jedes Gebäude hat eine kleine Haltbarkeit. Auch ist im Hintergrund das alte Factorissimogebäude zu sehen. Als ich Factorissimo 2 schrieb, deuteten die Entwickler an, das in Zukunft teilweise zerstörte Items gestackt werden können, was mein System zerstören würde. Auch war das Metadatensystem noch nicht so weit, so das mein Weg zum Ziel noch gepfuschter war: Anstatt die Informationen in der Haltbarkeit zu speichern, speicher ich die Daten im Itentyp. Immer wenn du also ein FAbrikgebäude aufnimmst, nimmst du in Wahrheit ein völlig neues Item auf, was nur zufällig den selben Namen und das selbe Icon hat, allerdings mit jeweils anderer interner Struktur. Aufgrund eines anderen, damit zusammenhängenden Problems in der API ändert sich auch der Typ der Entität, sobald sie zum Abriss markiert wurde, und nicht erst, wenn ein Roboter sie tatsächlich abgerissen hat. Da man neue Items nicht nebenbei generieren kann, gibt es eine festgelegte Anzahl an Prototypen für jede Fabrikgrößen (welche ich einfach auf 90 gesetzt habe). Wenn du also nicht sehr konsequent deine alten Gebäude wiederverwendest, oder noch schlimmer, alte Gebäude in Itemform zerstörst (was eine Mod nicht tracken kann), kannst du mit einer Fehlermeldung konfrontiert werden, welche sagt:”Can’t pick up more than 90 factory buildings of one size at once” (de: Du kannst nicht mehr als 90 Fabrikgebäude gleichen Typs auf einmal aufnehmen). Das ist auch der Grund, warum die Fabrikanforderungskiste existiert: da die spezielen Entitäten vom Logistiknetz versteckt werden, gibt es keine andere Möglichkeit, benutzte Fabrikgebäude aus dem Logistiknetz anzufordern. Dieser Umweg ist im Editor klar zu erkennen, da rechts alle Gebäude einzeln aufgelistet werden. Einige andere erwähneneswerte Hacks: Erkennen von Flüssigkeitsverbindungen zu FAbrikgebäuden über Dummy-Rohre, Transport von Signalen zwischen Oberflächen mit Kombinatoren für Konstanten, Energieübertragung über das Umladen von Akkumulatoren (deswegen funktioniert Energie in jeweils nur eine Richtung), zusätzliche Entitäten, mit denen nur durch Rotation interagiert werden kann, unsichtbare Erzförderer, welche Pfeile im Alt-Nodus bereitstellen, unsichtbare Kisten mit Items, welche die Symbole fürs Overlay bereitstellen, und vieles mehr. Heute sind viele dieser Hacks nicht mehr nötig, da die API die nötigen Features nativ unterstützt (oder einfachere Wege für Hacks bereitstellt). Einige wurden erfolgreich gestrichen, andere hängen tief im alten Code fest. Vielleicht werde ich sie einmal beheben, falls ich einmal Factorissimo 3 schreiben sollte. Tapeline: Dragging-Funktionalität raiguard Ein Beispiel für ein normales, spielergeneriertes Maßband Die originale Version von Tapeline war sehr einfach: du wählst eine Fläche mit einem Auswahltool aus und es zeichnet ein Maßband in der Größe des ausgewählten Bereichs auf den Boden. Ich wollte allerdings auch die Möglichkeit, Markierungen via Dragging zu zeichnen. Es gibt keine einfachen Wege, das zu tun, also musste ich kreativ werden. Die erste Implementierung benutzte unsichtbare Granaten mit einem 2 Tickcs langen Cooldown. Hält man die Maustaste gedrückt werden kontinuierlich diese Granaten geworfen, was die Mod erkennen würde und die Position entsprechend anpasst. Das Ende des Markiervorgangs würde erkannt werden, wenn der Spieler nicht mehr aller 2-Ticks eine Granate schmeißt. Dieser Weg hatte allerdings einige Probleme. Erstens war es nicht möglich, die Kartenansicht zu verwenden, was die sinnvolle ANwendung der Mod einschränkte. Es gab auch Probleme mit Multiplayerlatenz, wo das Timing zwischen den einzelnen Granaten nicht 100% gleich wie im Singleplayer war. Man konnte die Mod auch nicht verwenden, wenn die Zeit im Karteneditor pausiert war. Ingesamt war es eher eine halbe Implementation. Nach langer Zeit hatte ich eine Idee: Was wäre, wenn ich ein Auswahlwerkzeug verwende, aber währenddessen Entitäten platzieren, um zu markieren, wo die Maus aktuell ist? Das würde mir ermöglichen, das Maßband währenddessen zu updaten, und zzu erkennen, wann der Vorgang beendet ist, durch das reguläre Auswahltoolevent. Auch würde ich erkennen können, ob währenddessen Shift gedrückt wurde. Eine Visualisierung der versteckten Entitäten, welche platziert werden, während du das Band ziehst. Ich habe einen Test gemacht, indem ich einfach einem Selection-Tool ein Place-Result zugeordnet habe, und auf wundersame Weise hat es einfach funktioniert! Die Mod ist jetzt auch im Multiplayer nutzbar und funktioniert auch auf der Kartenansicht. Es gibt hier und da noch einige kleine Probleme, zum Beispiel tötet Shift-Dragging deine Ohren mit dem Ghost-Placement-Sound, aber die Verwendung eines Selectiontools erlaubte mir, komplett auf eine Mod-GUI zu verzichten und die Mod insgesamt intuitiver zu machen. Ich bin immer wieder überrascht davon, wie viel man mit der Factorio-Engine machen kann, auch wenn sie dafür überhaupt nicht gemacht wurde. Industrial Revolution 2: Das Transmat Deadlock989 Ich muss den Spieler während der Teleportation in der Transmat-Sequenz verstecken und das bedarf aktuell jeder Menge Tricksereien mit unsichtbaren und unzerstörbaren Autos welche verfolgt und am Ende wieder vernichtet werden müssen. Das ist der Fall, da Spieler (und die dazugehörigen Charaktere) zwischen Oberflächen teleportiert werden können, Fahrzeuge zwischen Oberflächen teleportiert werden können, aber Charaktere ohne dazugehörige Spieler können nicht teleportiert werden, und während einer Cutscene ist der Spieler nicht mit dem Charakter verbunden. IN der Sequenz, die ich erzeugen wollte, musste der Charakter manchmal, aber nicht immer unsichtbar sein. Der einfachste Weg dazu war es, ein unsichtbares, nicht kollidierendes Auto zu erschaffen und dann den Charakter im Auto auf eine temporäre Halteoberfläche zu teleportieren, während die Cutscene-POV sich von einer zur anderen Seite bewegt. Es gibt einige andere Möglichkeiten, welche kein besonders Fahrzeug beinhalten, aber die meisten hatten sehr nervige Nebeneffekte (z.B. wenn ein Charakter zu einer weit entfernten Stelle auf der selben Oberfläche teleportiert wird, während er von Beißern angegriffen wird, zerschießt die Beißer-KI das gesamte Betriebssystem). Es musste auch ein Weg sein, der robust damit klar kommt, wenn ein Spieler im Multiplayer während der Cutscene disconnected, was destruktives Klonen zu kompliziert gemacht hätte (man kann keinen einzelnen Charakter teleportieren, allerdings kann man ihn auf eine andere Oberfläche klonen und dann das Original zerstören, was philosophisch interessant wird). Es stellte sich einfach heraus, das es sehr viel aufwand ist, die Reste aufzuräumen, falls die Cutscene von einem Disconnect oder einer anderen Mod unterbrochen wurde. Es gibt mit Sicherheit bessere Wege, das Problem zu lösen, aber wie oft im Factorio-Modding ist es ein langes Suchen in der Dunkelheit, bis man einmal etwas fidnet, was funktioniert. &lt;/source&gt; Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert. Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert. Nullius: Verteilte Windkraftwerke Anachrony Es ist vorgesehen, das Nullius Windkraftwerke mit 32 Feldern Abstand verwendet werden. Sie sind Low-Tech, günstig und effektiv, aber ihre Ausgangsleistung verändert sich unvorhersehbar und sie benötigen viel Fläche aufgrund der Abstandsbedingung. Es ist aber nicht verboten, innerhalb der 32 Felder etwas anderes zu bauen, nur weitere Windturbinen sind verboten. Die Spiel-Engine macht es einem nicht leicht, solche differentierten Regeln zu implementieren. In einer älteren Version der Mod fügte ein Skript jeder Turbine ein großes, unsichtbares Quadrat zu, welches verhinderte, das weitere Turbinen in der Nähe gebaut wurden, aber nichts anderes. Ein großes Problem an dieser Lösung war aber, das dieses unsichtbare Quadrat auch mit der eigentlichen Turbine in der Mitte kollidierte, so das es unmöglich war, sie schnell gegen eine Turbine höheren Levels auszutauschen. Im Gegensatz zu anderen vergleichbaren Strukturen musstest du die Turbine erst abreißen und dann die Neue setzten, was den gesamten Prozess nicht intuitiv und nervig aufwändig macht. Die Lösung war es, das große Quadrat in vier REchtecke aufzuteilen, welche durch ihre Überlagerung ein Feld erzeugten, in dem die einzig gültigen Positionen entweder 32 Felder weit weg oder genau über der eigentlichen Turbine waren, was das schnelle Ersetzen von Turbinen ermöglicht. Das Bild zeigt im Folgenden die Kollisionsrechtecke, welche eine zu nahe Platzierung verhidern. Beispiel für die Kollision der unsichtbaren Kollisionsbox einer Turbine und der Platzierung einer anderen Turbine. Satisfactorio: Awesome-Sink-Verbauchsgeschwindigkeit PFQNiet Viele Mods haben ein System, welches ungewollte Gegenstände automatisch löscht. Angel’s/Bob’s hat den Flare Stack für ungewollte Gase, Krastorio den Crusher und Industrial Revolution den Incinerator, um ungewollte Items loszuwerden. Satisfactory hat die Awesome-Sink, welche ich natürlich für meine Satisfactoro-Mod nachbauen musste. Die Sink nimmt (fast) jedes Item als Input an und produziert Punkte, mit denen man Coupons bekommt, welche dann im Awesome-Shop ausgegeben werden können. Sie verbraucht Items so schnell wie ihr sie reinbekommt und bedarf 30MW an elektrischer Leistung. Alle “void machines” in Factorio funktionieren nach dem selben Prinzip: baue eine Ofen-Entität und erstelle ein Rezept für jedes Item im Spiel, welches das entsprechende Item verbraucht und nichts produziert. Den Rest übernimmt sie Engine. In meinem Fall habe ich das Rezept schnell genug gemacht, damit Items von einem Mk.5 Fließband verbraucht werden können. Das führte aber dazu, das die Maschine die meiste Zeit inaktiv war, wenn ein langsameres Fließband angeschlossen war, wodurch der Stromverbrauch stark ungewollt schwankte. Es dauerte eine Weile, bis ich zu einer Lösung kam, aber eventuell kam ich darauf, das Rezept gerade so schnell genug für ein Mk.1 Fließband (das langsamste!) zu machen und dann einen unsichtbaren Effektverteiler zu nutzen. Dieser besondere Effektverteiler hat 100% Effizienz (Vanilla-Effektverteiler transportieren nur 50% ihres Effektes) und akzeptiert ein besonderes Geschwindigkeitsmodul, welches +100% Geschwindigkeit mit keinen zusätzlichen Kosten gibt. Dann überprüft das Skript, welche Fließbandgeschwindigkeit angeschlossen ist und fügt oder entfernt eine entsprechende Anzahl an Modulen hinzu. Mk.2 Fließbänder transportieren doppelt so viel wie Mk.1 Fließbänder, also wird ein Modul verwendet. Das gilt für jedes Fließband, außer Mk.5, welches 7mal so viel transportiert, so das 6 Module verwendet weden. Dieses Setup sorgt dafür, dass, egal welches Fließband angeschlossen ist, die Geschwindigkeit angepasst wird und die Items in genau der richtigen Geschwindigkeit verarbeitet werden und es nicht zu unvorhergesehenen Leistungsspitzen und Stromausfällen kommt! AAI Programmable Vehicles: Beißer-Fahrer Earendel Meine Fahrzeuge müssen von A nach B kommen, können aber nicht immer in einer geraden Linie fahren sondern müssen einen Weg um Hindernisse herum finden. Einen Pfadfinderalgorithmus zu schreiben ist an sich nicht schwer, benötigt aber eine korrekte Karte, welche man nicht in einer Factorio-Mod bekommt. Die Karte in sinnvoller Art und Weise zu analysieren wäre unglaublich langsam und Zugriff auf Factorios C++ -Pfadfinder war nicht möglich (zu dieser Zeit), also musste ich etwas kreativer werden. Das Spiel hat einen eingebauten “Einheiten”-Typ für Beißer, dem gesagt werden kann, das er eine bestimmte Position mit dem Pfadfinder aufsuchen soll. Das Problem ist, das Einheiten keine Fahrzeuge sind: sie können keine Passagiere aufnehmen, haben kein Inventar und können keine Munition verwenden. &lt;/source&gt; Earendel’s Warden findet automatisch den Weg um eine Klippe herum Earendel’s Warden findet automatisch den Weg um eine Klippe herum Mein etwas verrückter Weg ist es, eine unsichtbare Einheit vor das Fahrzeug zu spannen, genannt “Der Navigator”, welche die selben EInstellungen für Größe und Kollisionen hat. Ich gebe ihm ein Ziel, verfolge die Bewegung und nutze den Pfad für mein Fahrzeug. Man könnte also sagen, dass das Fahrzeug von einem unsichtbaren Beißer gesteuert wird. Dies funktionierte relativ gut, hatte aber eine Menge an komischen Nebenwirkungen. Beispielsweise würde der Navigator manchmal Feuer fangen und der Spieler, welcher nichts von der Existenz des Navigators weis, sieht dann einfach ein einzelnes Feuer, welches sich scheinbar grundlos über die Karte ausbreitet. Manchmal würde der Navigator auch nicht den richtigen Pfad finden oder von irgendetwas abgelenkt werden und dann immer im Kreis fahren, aber es war nicht möglich zu sagen, ob es sich um einen ordentlichen Pfad handelt oder der Navigator nur wieder glitchte, das Fahrzeug musste dem Pfad erstmal für eine Weile folgen, bevor es erkannte, das es im Kreis fuhr. Irgentwann öffnete Wube auf mein Drängen hin den Zugang zum C++ -Pfadfinder für Modder und die ganze “Beißer-Fahrer”-Geschichte ist vorbei, stellt aber für mich immernoch den schrägsten Workaround dar. Teile deine Geschichte! Was du gerade gelesen hast ist nur eine kleine Anzahl der Geschichten, welche ich gehört habe, und wir werden in Zukunft einen weiteren Artikel mit solchen Geschichten veröffentlichen. Wenn die also ein Modder mit einer interessanten Workaround-Geschichte bist, dann meld dich gerne bei uns! Wir würden uns freuen, davon zu hören und der Welt davon zu erzählen! Es ist auch wichtig, eimal über solche traumatischen Ereignisse zu reden, man kann das nicht immer nur einfach in sich reinfrassen. Soetwas könnte das Wachstum der Fabrik verhindern, und das muss umbedingt verhindet werden. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-55/"},"url":"https://alt-f4.blog/ALTF4-55/","@type":"BlogPosting","headline":"Alt-F4 #55 - Die dunklen Nebengassen im Modding","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/55/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/55/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/de/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-55/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-55/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-55/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-55/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-55/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-55/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-55/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-55/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-55/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-55/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #55 - Die dunklen Nebengassen im Modding  <author>17.12.2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>stringweasel, MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, Earendel</em>,
+
+
+
+editiert von <em>Nanogamer7, Conor_, Therenas, MyNameIsTrez, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/55/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhaltsverzeichnis</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#hinter-den-kulissen-des-moddings-stringweasel">Hinter den Kulissen des Moddings <author>stringweasel</author></a>
+    <ul>
+      <li><a href="#factorissimo-unterscheide-deine-eingesammelten-fabriken-magmamcfry">Factorissimo: Unterscheide deine eingesammelten Fabriken <author>MagmaMcFry</author></a></li>
+      <li><a href="#tapeline-dragging-funktionalit%C3%A4t-raiguard">Tapeline: Dragging-Funktionalität <author>raiguard</author></a></li>
+      <li><a href="#industrial-revolution-2-das-transmat-deadlock989">Industrial Revolution 2: Das Transmat <author>Deadlock989</author></a></li>
+      <li><a href="#nullius-verteilte-windkraftwerke-anachrony">Nullius: Verteilte Windkraftwerke <author>Anachrony</author></a></li>
+      <li><a href="#satisfactorio-awesome-sink-verbauchsgeschwindigkeit-pfqniet">Satisfactorio: Awesome-Sink-Verbauchsgeschwindigkeit <author>PFQNiet</author></a></li>
+      <li><a href="#aai-programmable-vehicles-bei%C3%9Fer-fahrer-earendel">AAI Programmable Vehicles: Beißer-Fahrer <author>Earendel</author></a></li>
+      <li><a href="#teile-deine-geschichte">Teile deine Geschichte!</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Für Ausgabe #55 hat <em>stringweasel</em> etwas ganz besonderes für uns alle vorbereitet. Verschiedene Modder erzählen von ihren finstersten, frechsten und komischsten Hacks, auf die sie zurückgegriffen haben, um ihre Mods zum laufen zu bekommen. Wir haben MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet und Earendel, welche heute ihre dunkelsten Geheimnisse lüften werden!</p>
+      <h2 id="hinter-den-kulissen-des-moddings-stringweasel">
+        
+        
+            <a href="#hinter-den-kulissen-des-moddings-stringweasel" class="anchor" style="text-decoration: none;">Hinter den Kulissen des Moddings <author>stringweasel</author></a>
+          
+        
+      </h2>
+    
+
+<p>Es ist wichtig, <a href="https://alt-f4.blog/de/ALTF4-21/">erneut</a> zu betonen, das Factorio eine unglaubliche Moddingcommunity hat. Du kannst dir aber vielleicht nicht vorstellen, wie unglaublich viel Arbeit manche Modder in ihre Meisterwerke stecken, insbesondere wenn sie an den Punkt kommen, wo sie von der Engine limitiert werden. Die Factorioentwickler <a href="https://forums.factorio.com/viewforum.php?f=28">versuchen bereits, die Engine zu erweitern</a> um Moddern mehr Möglichkeiten zu geben, aber es ist unpraktisch, Moddern <em>alles</em> zu erlauben. Wenn Modder diese Grenzen erreichen, müssen sie Kreativ werden, um ihre Vision in die Realität umzusetzten. Die Wege dahin sind meistens interessante Hacks, welche dem Spieler nicht auffallen. Ich finde diese Wege immer faszinierend, und habe deshalb einige Modder angeschrieben und sie nach ihren Lieblingsgeschichten gefragt, wie sie Factorio ihren Willen aufgezwungen haben.</p>
+      <h3 id="factorissimo-unterscheide-deine-eingesammelten-fabriken-magmamcfry">
+        
+        
+            <a href="#factorissimo-unterscheide-deine-eingesammelten-fabriken-magmamcfry" class="anchor" style="text-decoration: none;">Factorissimo: Unterscheide deine eingesammelten Fabriken <author>MagmaMcFry</author></a>
+          
+        
+      </h3>
+    
+
+<p>Früher, in Version 0.13, unterstützte Factorio Metadaten noch nicht so gut wie heute, so das der einzige Weg, der mir einfiel, um Daten in Items zu speichern (und bei Platzierung zu lesen), ihre Haltbarkeit war. In <a href="https://mods.factorio.com/mod/Factorissimo">Factorissimo 1</a> wird deshalb dem Fabrikgebäude in dem Moment des Aufnehmens eine Haltbarkeit zugeordnet, welche für jedes Gebäude individuell ist und vom Inhalt des Gebäudes abhängt. Wenn das Gebäude platziert wird, wird dieser Wert ausgelesen, um herauszufinden, was sich im Gebäude befindet, und anschließend auf den Wert zurückgesetzt, den das Gebäude hatte, befor es aufgenommen wurde.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/factorissimo-old.jpg" alt="Ein Beispiel für ein Factorissimo 1 Gebäude im Inventar in Version 0.14. Jedes Gebäude hat eine kleine Haltbarkeit. Auch ist im Hintergrund das alte Factorissimogebäude zu sehen." style="max-width: ; max-height:  ">
+        
+        <figcaption>Ein Beispiel für ein Factorissimo 1 Gebäude im Inventar in Version 0.14. Jedes Gebäude hat eine kleine Haltbarkeit. Auch ist im Hintergrund das alte Factorissimogebäude zu sehen.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Als ich <a href="https://mods.factorio.com/mod/Factorissimo2">Factorissimo 2</a> schrieb, deuteten die Entwickler an, das in Zukunft teilweise zerstörte Items gestackt werden können, was mein System zerstören würde. Auch war das Metadatensystem noch nicht so weit, so das mein Weg zum Ziel noch gepfuschter war: Anstatt die Informationen in der Haltbarkeit zu speichern, speicher ich die Daten im Itentyp. Immer wenn du also ein FAbrikgebäude aufnimmst, nimmst du in Wahrheit ein völlig neues Item auf, was nur zufällig den selben Namen und das selbe Icon hat, allerdings mit jeweils anderer interner Struktur. Aufgrund eines anderen, damit zusammenhängenden Problems in der API ändert sich auch der Typ der Entität, sobald sie zum Abriss markiert wurde, und nicht erst, wenn ein Roboter sie tatsächlich abgerissen hat. Da man neue Items nicht nebenbei generieren kann, gibt es eine festgelegte Anzahl an Prototypen für jede Fabrikgrößen (welche ich einfach auf 90 gesetzt habe). Wenn du also nicht sehr konsequent deine alten Gebäude wiederverwendest, oder noch schlimmer, alte Gebäude in Itemform zerstörst (was eine Mod nicht tracken kann), kannst du mit einer Fehlermeldung konfrontiert werden, welche sagt:”Can’t pick up more than 90 factory buildings of one size at once” (de: Du kannst nicht mehr als 90 Fabrikgebäude gleichen Typs auf einmal aufnehmen). Das ist auch der Grund, warum die Fabrikanforderungskiste existiert: da die spezielen Entitäten vom Logistiknetz versteckt werden, gibt es keine andere Möglichkeit, benutzte Fabrikgebäude aus dem Logistiknetz anzufordern.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/factorissimo-new.jpg" alt="Dieser Umweg ist im Editor klar zu erkennen, da rechts alle Gebäude einzeln aufgelistet werden." style="max-width: ; max-height:  ">
+        
+        <figcaption>Dieser Umweg ist im Editor klar zu erkennen, da rechts alle Gebäude einzeln aufgelistet werden.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Einige andere erwähneneswerte Hacks: Erkennen von Flüssigkeitsverbindungen zu FAbrikgebäuden über Dummy-Rohre, Transport von Signalen zwischen Oberflächen mit Kombinatoren für Konstanten, Energieübertragung über das Umladen von Akkumulatoren (deswegen funktioniert Energie in jeweils nur eine Richtung), zusätzliche Entitäten, mit denen nur durch Rotation interagiert werden kann, unsichtbare Erzförderer, welche Pfeile im Alt-Nodus bereitstellen, unsichtbare Kisten mit Items, welche die Symbole fürs Overlay bereitstellen, und vieles mehr.</p>
+
+<p>Heute sind viele dieser Hacks nicht mehr nötig, da die API die nötigen Features nativ unterstützt (oder einfachere Wege für Hacks bereitstellt). Einige wurden erfolgreich gestrichen, andere hängen tief im alten Code fest. Vielleicht werde ich sie einmal beheben, falls ich einmal Factorissimo 3 schreiben sollte.</p>
+      <h3 id="tapeline-dragging-funktionalität-raiguard">
+        
+        
+            <a href="#tapeline-dragging-funktionalit%C3%A4t-raiguard" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/Tapeline">Tapeline</a>: Dragging-Funktionalität <author>raiguard</author>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/tapeline-1.jpg" alt="Ein Beispiel für ein normales, spielergeneriertes Maßband" style="max-width: ; max-height:  ">
+        
+        <figcaption>Ein Beispiel für ein normales, spielergeneriertes Maßband</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Die originale Version von Tapeline war sehr einfach: du wählst eine Fläche mit einem Auswahltool aus und es zeichnet ein Maßband in der Größe des ausgewählten Bereichs auf den Boden. Ich wollte allerdings auch die Möglichkeit, Markierungen via Dragging zu zeichnen. Es gibt keine einfachen Wege, das zu tun, also musste ich kreativ werden.</p>
+
+<p>Die erste Implementierung benutzte unsichtbare Granaten mit einem 2 Tickcs langen Cooldown. Hält man die Maustaste gedrückt werden kontinuierlich diese Granaten geworfen, was die Mod erkennen würde und die Position entsprechend anpasst. Das Ende des Markiervorgangs würde erkannt werden, wenn der Spieler nicht mehr aller 2-Ticks eine Granate schmeißt.</p>
+
+<p>Dieser Weg hatte allerdings einige Probleme. Erstens war es nicht möglich, die Kartenansicht zu verwenden, was die sinnvolle ANwendung der Mod einschränkte. Es gab auch Probleme mit Multiplayerlatenz, wo das Timing zwischen den einzelnen Granaten nicht 100% gleich wie im Singleplayer war. Man konnte die Mod auch nicht verwenden, wenn die Zeit im Karteneditor pausiert war. Ingesamt war es eher eine halbe Implementation.</p>
+
+<p>Nach langer Zeit hatte ich eine Idee: Was wäre, wenn ich ein Auswahlwerkzeug verwende, aber währenddessen Entitäten platzieren, um zu markieren, wo die Maus aktuell ist? Das würde mir ermöglichen, das Maßband währenddessen zu updaten, und zzu erkennen, wann der Vorgang beendet ist, durch das reguläre Auswahltoolevent. Auch würde ich erkennen können, ob währenddessen Shift gedrückt wurde.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/tapeline-2.jpg" alt="Eine Visualisierung der versteckten Entitäten, welche platziert werden, während du das Band ziehst." style="max-width: ; max-height:  ">
+        
+        <figcaption>Eine Visualisierung der versteckten Entitäten, welche platziert werden, während du das Band ziehst.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Ich habe einen Test gemacht, indem ich einfach einem Selection-Tool ein Place-Result zugeordnet habe, und auf wundersame Weise hat es einfach funktioniert! Die Mod ist jetzt auch im Multiplayer nutzbar und funktioniert auch auf der Kartenansicht. Es gibt hier und da noch einige kleine Probleme, zum Beispiel tötet Shift-Dragging deine Ohren mit dem Ghost-Placement-Sound, aber die Verwendung eines Selectiontools erlaubte mir, komplett auf eine Mod-GUI zu verzichten und die Mod insgesamt intuitiver zu machen. Ich bin immer wieder überrascht davon, wie viel man mit der Factorio-Engine machen kann, auch wenn sie dafür überhaupt nicht gemacht wurde.</p>
+      <h3 id="industrial-revolution-2-das-transmat-deadlock989">
+        
+        
+            <a href="#industrial-revolution-2-das-transmat-deadlock989" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/IndustrialRevolution">Industrial Revolution 2</a>: Das Transmat <author>Deadlock989</author>
+          
+        
+      </h3>
+    
+
+<p>Ich muss den Spieler während der Teleportation in der Transmat-Sequenz verstecken und das bedarf aktuell jeder Menge Tricksereien mit unsichtbaren und unzerstörbaren Autos welche verfolgt und am Ende wieder vernichtet werden müssen. <a href="https://forums.factorio.com/viewtopic.php?t=92112">Das</a> ist der Fall, da Spieler (und die dazugehörigen Charaktere) zwischen Oberflächen teleportiert werden können, Fahrzeuge zwischen Oberflächen teleportiert werden können, aber Charaktere ohne dazugehörige Spieler können nicht teleportiert werden, und während einer Cutscene ist der Spieler nicht mit dem Charakter verbunden. IN der Sequenz, die ich erzeugen wollte, musste der Charakter manchmal, aber nicht immer unsichtbar sein. Der einfachste Weg dazu war es, ein unsichtbares, nicht kollidierendes Auto zu erschaffen und dann den Charakter im Auto auf eine temporäre Halteoberfläche zu teleportieren, während die Cutscene-POV sich von einer zur anderen Seite bewegt.</p>
+
+<p>Es gibt einige andere Möglichkeiten, welche kein besonders Fahrzeug beinhalten, aber die meisten hatten sehr nervige Nebeneffekte (z.B. wenn ein Charakter zu einer weit entfernten Stelle auf der selben Oberfläche teleportiert wird, während er von Beißern angegriffen wird, zerschießt die Beißer-KI das gesamte Betriebssystem). Es musste auch ein Weg sein, der robust damit klar kommt, wenn ein Spieler im Multiplayer während der Cutscene disconnected, was destruktives Klonen zu kompliziert gemacht hätte (man kann keinen einzelnen Charakter teleportieren, allerdings kann man ihn auf eine andere Oberfläche klonen und dann das Original zerstören, was <a href="https://en.wikipedia.org/wiki/Teletransportation_paradox">philosophisch interessant</a> wird). Es stellte sich einfach heraus, das es sehr viel aufwand ist, die Reste aufzuräumen, falls die Cutscene von einem Disconnect oder einer anderen Mod unterbrochen wurde. Es gibt mit Sicherheit bessere Wege, das Problem zu lösen, aber wie oft im Factorio-Modding ist es ein langes Suchen in der Dunkelheit, bis man einmal etwas fidnet, was funktioniert.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 384px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/55/deadlock-ir2-transmat.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert.
+    </video>
+    <figcaption>Der Spieler wird mit Hilfe der schönen Transmats von Industrial Revolution 2 teleportiert.</figcaption>
+  </figure>
+</p>
+      <h3 id="nullius-verteilte-windkraftwerke-anachrony">
+        
+        
+            <a href="#nullius-verteilte-windkraftwerke-anachrony" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/nullius">Nullius</a>: Verteilte Windkraftwerke <author>Anachrony</author>
+          
+        
+      </h3>
+    
+
+<p>Es ist vorgesehen, das Nullius Windkraftwerke mit 32 Feldern Abstand verwendet werden. Sie sind Low-Tech, günstig und effektiv, aber ihre Ausgangsleistung verändert sich unvorhersehbar und sie benötigen viel Fläche aufgrund der Abstandsbedingung. Es ist aber nicht verboten, innerhalb der 32 Felder etwas anderes zu bauen, nur weitere Windturbinen sind verboten. Die Spiel-Engine macht es einem nicht leicht, solche differentierten Regeln zu implementieren. In einer älteren Version der Mod fügte ein Skript jeder Turbine ein großes, unsichtbares Quadrat zu, welches verhinderte, das weitere Turbinen in der Nähe gebaut wurden, aber nichts anderes. Ein großes Problem an dieser Lösung war aber, das dieses unsichtbare Quadrat auch mit der eigentlichen Turbine in der Mitte kollidierte, so das es unmöglich war, sie schnell gegen eine Turbine höheren Levels auszutauschen. Im Gegensatz zu anderen vergleichbaren Strukturen musstest du die Turbine erst abreißen und dann die Neue setzten, was den gesamten Prozess nicht intuitiv und nervig aufwändig macht. Die Lösung war es, das große Quadrat in vier REchtecke aufzuteilen, welche durch ihre Überlagerung ein Feld erzeugten, in dem die einzig gültigen Positionen entweder 32 Felder weit weg oder genau über der eigentlichen Turbine waren, was das schnelle Ersetzen von Turbinen ermöglicht. Das Bild zeigt im Folgenden die Kollisionsrechtecke, welche eine zu nahe Platzierung verhidern.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/nullius.jpg" alt="Beispiel für die Kollision der unsichtbaren Kollisionsbox einer Turbine und der Platzierung einer anderen Turbine." style="max-width: ; max-height:  ">
+        
+        <figcaption>Beispiel für die Kollision der unsichtbaren Kollisionsbox einer Turbine und der Platzierung einer anderen Turbine.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="satisfactorio-awesome-sink-verbauchsgeschwindigkeit-pfqniet">
+        
+        
+            <a href="#satisfactorio-awesome-sink-verbauchsgeschwindigkeit-pfqniet" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/Satisfactorio">Satisfactorio</a>: Awesome-Sink-Verbauchsgeschwindigkeit <author>PFQNiet</author>
+          
+        
+      </h3>
+    
+
+<p>Viele Mods haben ein System, welches ungewollte Gegenstände automatisch löscht. Angel’s/Bob’s hat den Flare Stack für ungewollte Gase, Krastorio den Crusher und Industrial Revolution den Incinerator, um ungewollte Items loszuwerden.</p>
+
+<p>Satisfactory hat die Awesome-Sink, welche ich natürlich für meine Satisfactoro-Mod nachbauen musste. Die Sink nimmt (fast) jedes Item als Input an und produziert Punkte, mit denen man Coupons bekommt, welche dann im Awesome-Shop ausgegeben werden können. Sie verbraucht Items so schnell wie ihr sie reinbekommt und bedarf 30MW an elektrischer Leistung.</p>
+
+<p>Alle “void machines” in Factorio funktionieren nach dem selben Prinzip: baue eine Ofen-Entität und erstelle ein Rezept für jedes Item im Spiel, welches das entsprechende Item verbraucht und nichts produziert. Den Rest übernimmt sie Engine. In meinem Fall habe ich das Rezept schnell genug gemacht, damit Items von einem Mk.5 Fließband verbraucht werden können. Das führte aber dazu, das die Maschine die meiste Zeit inaktiv war, wenn ein langsameres Fließband angeschlossen war, wodurch der Stromverbrauch stark ungewollt schwankte.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/55/satisfactorio-broken.jpg" alt="Bild der zackigen Leistungsaufnahme" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Es dauerte eine Weile, bis ich zu einer Lösung kam, aber eventuell kam ich darauf, das Rezept gerade so schnell genug für ein Mk.1 Fließband (das langsamste!) zu machen und dann einen unsichtbaren Effektverteiler zu nutzen. Dieser besondere Effektverteiler hat 100% Effizienz (Vanilla-Effektverteiler transportieren nur 50% ihres Effektes) und akzeptiert ein besonderes Geschwindigkeitsmodul, welches +100% Geschwindigkeit mit keinen zusätzlichen Kosten gibt. Dann überprüft das Skript, welche Fließbandgeschwindigkeit angeschlossen ist und fügt oder entfernt eine entsprechende Anzahl an Modulen hinzu. Mk.2 Fließbänder transportieren doppelt so viel wie Mk.1 Fließbänder, also wird ein Modul verwendet. Das gilt für jedes Fließband, außer Mk.5, welches 7mal so viel transportiert, so das 6 Module verwendet weden.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/55/satisfactorio-beacon.jpg" alt="Bild des unsichtbaren Effektverteilers mit zwei Modulen" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Dieses Setup sorgt dafür, dass, egal welches Fließband angeschlossen ist, die Geschwindigkeit angepasst wird und die Items in genau der richtigen Geschwindigkeit verarbeitet werden und es nicht zu unvorhergesehenen Leistungsspitzen und Stromausfällen kommt!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/55/satisfactorio-fixed.jpg" alt="Bild des korrigierten Leistungsbedarfs" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="aai-programmable-vehicles-beißer-fahrer-earendel">
+        
+        
+            <a href="#aai-programmable-vehicles-bei%C3%9Fer-fahrer-earendel" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/aai-programmable-vehicles">AAI Programmable Vehicles</a>: Beißer-Fahrer <author>Earendel</author>
+          
+        
+      </h3>
+    
+
+<p>Meine Fahrzeuge müssen von A nach B kommen, können aber nicht immer in einer geraden Linie fahren sondern müssen einen Weg um Hindernisse herum finden. Einen Pfadfinderalgorithmus zu schreiben ist an sich nicht schwer, benötigt aber eine korrekte Karte, welche man nicht in einer Factorio-Mod bekommt. Die Karte in sinnvoller Art und Weise zu analysieren wäre unglaublich langsam und Zugriff auf Factorios C++ -Pfadfinder war nicht möglich (zu dieser Zeit), also musste ich etwas kreativer werden. Das Spiel hat einen eingebauten “Einheiten”-Typ für Beißer, dem gesagt werden kann, das er eine bestimmte Position mit dem Pfadfinder aufsuchen soll. Das Problem ist, das Einheiten keine Fahrzeuge sind: sie können keine Passagiere aufnehmen, haben kein Inventar und können keine Munition verwenden.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1280px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/55/aai-vehicles.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Earendel’s Warden findet automatisch den Weg um eine Klippe herum
+    </video>
+    <figcaption><a href="https://mods.factorio.com/mods/Earendel/aai-vehicles-warden">Earendel’s Warden</a>  findet automatisch den Weg um eine Klippe herum</figcaption>
+  </figure>
+</p>
+
+<p>Mein etwas verrückter Weg ist es, eine unsichtbare Einheit vor das Fahrzeug zu spannen, genannt “Der Navigator”, welche die selben EInstellungen für Größe und Kollisionen hat. Ich gebe ihm ein Ziel, verfolge die Bewegung und nutze den Pfad für mein Fahrzeug. Man könnte also sagen, dass das Fahrzeug von einem unsichtbaren Beißer gesteuert wird. Dies funktionierte relativ gut, hatte aber eine Menge an komischen Nebenwirkungen. Beispielsweise würde der Navigator manchmal Feuer fangen und der Spieler, welcher nichts von der Existenz des Navigators weis, sieht dann einfach ein einzelnes Feuer, welches sich scheinbar grundlos über die Karte ausbreitet. Manchmal würde der Navigator auch nicht den richtigen Pfad finden oder von irgendetwas abgelenkt werden und dann immer im Kreis fahren, aber es war nicht möglich zu sagen, ob es sich um einen ordentlichen Pfad handelt oder der Navigator nur wieder glitchte, das Fahrzeug musste dem Pfad erstmal für eine Weile folgen, bevor es erkannte, das es im Kreis fuhr.</p>
+
+<p>Irgentwann öffnete Wube auf mein Drängen hin den Zugang zum C++ -Pfadfinder für Modder und die ganze “Beißer-Fahrer”-Geschichte ist vorbei, stellt aber für mich immernoch den schrägsten Workaround dar.</p>
+      <h3 id="teile-deine-geschichte">
+        
+        
+            <a href="#teile-deine-geschichte" class="anchor" style="text-decoration: none;">Teile deine Geschichte!</a>
+          
+        
+      </h3>
+    
+
+<p>Was du gerade gelesen hast ist nur eine kleine Anzahl der Geschichten, welche ich gehört habe, und wir werden in Zukunft einen weiteren Artikel mit solchen Geschichten veröffentlichen. Wenn die also ein Modder mit einer interessanten Workaround-Geschichte bist, dann meld dich gerne bei uns! Wir würden uns freuen, davon zu hören und der Welt davon zu erzählen! Es ist auch wichtig, eimal über solche traumatischen Ereignisse zu reden, man kann das nicht immer nur einfach in sich reinfrassen. Soetwas könnte das Wachstum der Fabrik verhindern, und das muss umbedingt verhindet werden.</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://discord.gg/nxnCFkb">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/de/discord">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-54/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/de/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

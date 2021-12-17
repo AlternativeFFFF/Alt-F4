@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru" class="ru">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #55 - The Dark Alleys of Modding</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #55 - The Dark Alleys of Modding">
+<meta name="author" content="stringweasel, MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, Earendel">
+<meta property="og:locale" content="en">
+<meta name="description" content="For issue #55 of Alt-F4, stringweasel prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins! Modding Behind The Scenes stringweasel It’s worth repeating that Factorio has an absolutely amazing modding community. That said, you might not realize just how much effort some modders need to go through to create their masterpieces. Especially when they start running into engine limitations. The Factorio developers do try and expand the engine to give modders more flexibility, but it’s impractical to allow modders to do everything they want. So, when modders reach a limit of what Factorio allows them to do, they need to get creative to achieve their vision. What they come up with are usually interesting and crazy hacks workarounds which the player often doesn’t even notice. I always find these workarounds fascinating, so I reached out to a few modders and asked them about their favourite stories of how they bent Factorio to their will. Factorissimo: Distinguish your picked-up factories MagmaMcFry Back in 0.13, Factorio didn’t support item metadata as well as it does now, so the only way I saw it being possible to store data in items (and read this data upon placing the item as a machine) was by using their damage value. So in Factorissimo 1, the moment you pick up a factory building, the entity’s damage value instantly gets changed to a unique number that is associated to the building’s interior. When you place the building back down, the damage value is read to figure out which interior it should connect to, and finally the entity’s damage value is reset back to what it was before you picked it up. An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health. Also, note the old Factorissimo building in the background. When I was writing Factorissimo 2, the Factorio devs were hinting at making damaged items stackable (this wasn’t the case before, and would break my system), and item metadata handling in the API was still not fleshed out enough in 0.14, so in Factorissimo 2, the mechanism used is even more hacky: Instead of storing a building’s data in the damage value, it’s stored in the item type. That’s right: whenever you pick up a factory building, you actually pick up an item with a new unique internal type that just happens to have the same name and sprite as a regular factory building. Because of a different, related lack of API features, the type of a factory building entity is also changed as soon as you mark a factory building for deconstruction, not just once a robot actually deconstructs it. Since you can’t generate new item types on the fly, there’s a fixed number of item prototypes per factory size (which I arbitrarily chose to be 90), so if you’re very inconsistent at reusing factory buildings, or worse, delete old buildings in item form (which isn’t trackable), you might run into an error message saying “Can’t pick up more than 90 factory buildings of one size at once”. This is also the reason the factory building requester chest exists: as the special entities are hidden from logistics filters, you have no other way to request your used factory buildings from a logistics system. This workaround is clearly visible on the right when opening the Factorio editor, where each of these items are shown individually. Some other honorable mentions for current and previous hacks: Detecting fluid connections to factory buildings via dummy pipe entities, transporting signals across surfaces by populating constant combinators, transporting energy across surfaces by moving it between accumulators (this is why energy connections are one-way), auxiliary entities you could interact with by literally rotating them, placing invisible mining drills to provide connection indicator arrows in alt-mode, invisible chests with actual items in them for the item icon overlay, and more. By now, most of these hacks are no longer necessary, since the API supports the desired features properly (or it at least provides cleaner hacks). Some of them have been successfully removed, others are deeply entangled within the old code. Maybe I’ll clean it all up and write Factorissimo 3 one day. Tapeline: Dragging Functionality raiguard An example of a normal tapeline created by a player. The original version of Tapeline was pretty simple: you select an area with a selection tool, and it draws a ruler the size of what you just selected on the ground. However, I wanted to be able to draw tapes as soon you dragged your mouse. There are no straightforward ways to do this, so I had to get creative. The first implementation of this used invisible grenades with a two-tick cooldown. Holding your mouse down would continually throw these grenades, and the mod would pick up that event to update the position. The mod would detect a finished drag when you stopped throwing these grenades at two-tick intervals. However, this had problems. First, you couldn’t use it in the map view at all, which severely limited the utility of the mod. It also had issues with multiplayer latency, where the timing between throws of the grenade wouldn’t be 100% consistent like in singleplayer. You also couldn’t use the mod at all when the time was paused in the map editor. In essence, it was a half-baked implementation. After a long time, I had an idea: what if I used a selection tool, but placed entities along the way to tell me where the mouse currently is? This would let me update the tape as you drag, and detect when you finish dragging by reading for the regular selection tool event. This would also allow me to tell whether you were holding shift while dragging. A visualization of hidden entities being placed behind the scenes when you drag a tapeline. I did a test by simply assigning a selection tool a place result, and by some miracle, it just worked! The mod is 100% usable in multiplayer now, and it even works on the map view. There are still a few kinks here and there - for instance, shift-dragging assaults your ears with the ghost placement noise - but using a selection tool allowed me to completely eliminate the mod’s GUI and make using the mod a lot more intuitive. I am constantly impressed at how much you can do with the Factorio engine, even when the engine did not intend for said thing to be possible. Industrial Revolution 2: The Transmat Deadlock989 I have to hide players during the teleportation in the transmat sequence, which currently requires wild shenanigans involving invisible indestructible cars and having to track and clean them up again under multiple contingencies. This is because players (and their attached character) can be teleported between surfaces, and vehicles can be teleported between surfaces, but characters without an attached player cannot be teleported between surfaces, and during a cutscene the player isn’t attached to a character. The sequence I wanted to create needed the character to be invisible some, but not all of the time, and the least troublesome way of achieving it turned out to be making an invisible non-colliding car and putting them inside it and then teleporting that to a “limbo” surface temporarily while the cutscene POV is moving from site to site. There are various other hacky options that don’t involve a custom spriteless vehicle, but some of them had very nasty side effects (e.g. temporarily teleporting the character to a very distant location on the same surface can play absolute OS-killing havoc with the biter pathfinder if the teleported character happens to be under attack). It also had to be robust against people disconnecting during the sequence in multiplayer, which made destructive cloning too much of a puzzle (you can’t teleport a disconnected character to another surface, but you can clone the character to another surface and then destroy the original, which is philosophically interesting, but it turned out to be very annoying to “clean up” if the cutscene sequence was interrupted by a disconnection or interfered with by some other mod. There are probably better ways of tackling it, but like a lot of Factorio modding it’s a case of fumbling in the dark until you find something that works. &lt;/source&gt; The player being teleported using Industrial Revolution 2’s beautiful looking Transmats. The player being teleported using Industrial Revolution 2’s beautiful looking Transmats. Nullius: Spaced Out Wind Turbines Anachrony Nullius wind turbines are intended to be spaced 32 tiles apart. They are low-tech, cheap, and effective, but the downsides are that their output swings unpredictably and that they require a lot of land due to this spacing requirement. Crucially, they don’t prevent building anything else nearby, except other wind turbines. The game engine doesn’t make this type of nuanced placement rule easy to implement. In an older version of the mod, when the turbine was built, a script added a large, invisible square centered on the turbine, which prevented the building of other turbines close-by, but didn’t collide with anything else. However, a major flaw with this was that this invisible air space square also collided with the location of the original turbine, preventing it from being fast replaced or upgraded with a higher-tech turbine. Unlike upgrading other structures, you would have to first tear down the original turbine before rebuilding it as a separate step, which was awkward and confusing. The solution was to break up the large single square into four rectangles, two horizontal and two vertical ones, which interlock to create a pattern where the only valid places to build a new turbine are 32 tiles away OR directly on top of the old turbine, allowing it to be fast replaced/upgraded. The following picture shows the the collision rectangles that prevent a second turbine from being placed too close. Example of the wind turbine’s invisible collision boxes colliding with the placement of another wind turbine. Satisfactorio: Awesome Sink Consumption Speed PFQNiet Plenty of overhaul mods have some kind of “void machine” to automatically delete items that you may not want. Angel’s/Bob’s has the Flare Stack to get rid of unwanted gases, Krastorio has the Crusher, and Industrial Revolution uses an Incinerator to get rid of undesirable items. Satisfactory has the Awesome Sink, which I needed to re-create in my Satisfactorio mod. The Sink takes (almost) any item as input, and produces points to earn Coupons, which can then be spent in the Awesome Shop. It consumes items as quickly as you can feed it, and consumes 30MW of power. All “void machines” follow the same principle in Factorio: make a furnace entity and create a “recipe” for every existing item that consumes the item and produces nothing. The game engine handles the rest. In my case, I set the recipe to be fast enough that it could consume items from a Mk.5 Conveyor Belt (the fastest in the mod). However, this led to the machine spending most of its time idle if a slower belt was used, making its power consumption much less than it should have been. It took a while to find a solution, but what I eventually came up with was to make the recipe just fast enough for a Mk.1 Conveyor Belt (the slowest!) and then make use of a hidden, invisible beacon. This special beacon has 100% efficiency (vanilla Beacons only transmit 50% of their effect) and accepts a special type of module that provides +100% speed at no cost. Then, the script checks what speed of belt is connected to the machine, and adds or removes modules as necessary to/from the hidden beacon. Mk.2 belts carry twice as much as Mk.1, so they get a single module for +100% sink speed. This applies for each belt. Mk.5 carries seven times as many items, so six modules are added to the beacon. This setup means that no matter what tier of belt you feed into the Awesome Sink, it will adjust its speed to consume the items at exactly that rate, resulting in a perfectly smooth power graph with no spikes, and no nasty blackout surprises! AAI Programmable Vehicles: Biter Drivers Earendel I needed my vehicles to go from A to B, but they couldn’t always go in a straight line. They needed to find a path around obstacles. Writing a pathfinding algorithm is not that hard, but for Factorio modding the problem for a pathfinder is having an accurate representation of the map. Querying the map state in a way that would be useful would be unrealistically slow, and access to Factorio’s C++ pathfinder wasn’t available (at that time), so I needed something a bit more… creative. The game does have a built-in “unit” type that is used for biters, and they can be told to go to a destination using the built-in pathfinder. The problem is that units are not vehicles: they can’t hold passengers, they don’t have an inventory, and they can’t use ammo. &lt;/source&gt; Earendel’s Warden vehicle pathfinding automatically around a cliff. Earendel’s Warden vehicle pathfinding automatically around a cliff. My slightly crazy workaround is to put an invisible unit in front of the vehicle, which I call “the navigator”, which has the same size and collision settings as the vehicle. I’d tell it to go somewhere, track the movement, and use its path as the path for the vehicle. So, you could say that the vehicle was driven by an invisible biter. It worked pretty well, but had a lot of weird side-effects. For example, sometimes the navigator would catch on fire, so as the player that’s not aware of the navigator’s existence, you’d suddenly see detached fire speeding around the map for no apparent reason. Sometimes the navigator would not find a path or get distracted and start walking in circles, but as it wasn’t possible to tell if that was a proper path or just the navigator being glitchy, the vehicle just had to follow it for a while until it detected it had gone in a circle. Eventually, Wube implemented my request to expose the C++ pathfinder to modders, so the whole “biter driver” thing is in the past, but to me it stands out as the wackiest and funniest mod hack. Share your story! What you read above is only a handful of the stories I heard, and we will release another article with even more scary modding stories from other modders in the future. If you’re a modder with an interesting hacking workaround story, or anything to do with Factorio, then let us know! We would love to tell the world about it. And it’s important to talk about such traumatic events, because keeping it all inside is never good. It might slow down the growth of your factory, after all. Wouldn’t want that. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="For issue #55 of Alt-F4, stringweasel prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins! Modding Behind The Scenes stringweasel It’s worth repeating that Factorio has an absolutely amazing modding community. That said, you might not realize just how much effort some modders need to go through to create their masterpieces. Especially when they start running into engine limitations. The Factorio developers do try and expand the engine to give modders more flexibility, but it’s impractical to allow modders to do everything they want. So, when modders reach a limit of what Factorio allows them to do, they need to get creative to achieve their vision. What they come up with are usually interesting and crazy hacks workarounds which the player often doesn’t even notice. I always find these workarounds fascinating, so I reached out to a few modders and asked them about their favourite stories of how they bent Factorio to their will. Factorissimo: Distinguish your picked-up factories MagmaMcFry Back in 0.13, Factorio didn’t support item metadata as well as it does now, so the only way I saw it being possible to store data in items (and read this data upon placing the item as a machine) was by using their damage value. So in Factorissimo 1, the moment you pick up a factory building, the entity’s damage value instantly gets changed to a unique number that is associated to the building’s interior. When you place the building back down, the damage value is read to figure out which interior it should connect to, and finally the entity’s damage value is reset back to what it was before you picked it up. An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health. Also, note the old Factorissimo building in the background. When I was writing Factorissimo 2, the Factorio devs were hinting at making damaged items stackable (this wasn’t the case before, and would break my system), and item metadata handling in the API was still not fleshed out enough in 0.14, so in Factorissimo 2, the mechanism used is even more hacky: Instead of storing a building’s data in the damage value, it’s stored in the item type. That’s right: whenever you pick up a factory building, you actually pick up an item with a new unique internal type that just happens to have the same name and sprite as a regular factory building. Because of a different, related lack of API features, the type of a factory building entity is also changed as soon as you mark a factory building for deconstruction, not just once a robot actually deconstructs it. Since you can’t generate new item types on the fly, there’s a fixed number of item prototypes per factory size (which I arbitrarily chose to be 90), so if you’re very inconsistent at reusing factory buildings, or worse, delete old buildings in item form (which isn’t trackable), you might run into an error message saying “Can’t pick up more than 90 factory buildings of one size at once”. This is also the reason the factory building requester chest exists: as the special entities are hidden from logistics filters, you have no other way to request your used factory buildings from a logistics system. This workaround is clearly visible on the right when opening the Factorio editor, where each of these items are shown individually. Some other honorable mentions for current and previous hacks: Detecting fluid connections to factory buildings via dummy pipe entities, transporting signals across surfaces by populating constant combinators, transporting energy across surfaces by moving it between accumulators (this is why energy connections are one-way), auxiliary entities you could interact with by literally rotating them, placing invisible mining drills to provide connection indicator arrows in alt-mode, invisible chests with actual items in them for the item icon overlay, and more. By now, most of these hacks are no longer necessary, since the API supports the desired features properly (or it at least provides cleaner hacks). Some of them have been successfully removed, others are deeply entangled within the old code. Maybe I’ll clean it all up and write Factorissimo 3 one day. Tapeline: Dragging Functionality raiguard An example of a normal tapeline created by a player. The original version of Tapeline was pretty simple: you select an area with a selection tool, and it draws a ruler the size of what you just selected on the ground. However, I wanted to be able to draw tapes as soon you dragged your mouse. There are no straightforward ways to do this, so I had to get creative. The first implementation of this used invisible grenades with a two-tick cooldown. Holding your mouse down would continually throw these grenades, and the mod would pick up that event to update the position. The mod would detect a finished drag when you stopped throwing these grenades at two-tick intervals. However, this had problems. First, you couldn’t use it in the map view at all, which severely limited the utility of the mod. It also had issues with multiplayer latency, where the timing between throws of the grenade wouldn’t be 100% consistent like in singleplayer. You also couldn’t use the mod at all when the time was paused in the map editor. In essence, it was a half-baked implementation. After a long time, I had an idea: what if I used a selection tool, but placed entities along the way to tell me where the mouse currently is? This would let me update the tape as you drag, and detect when you finish dragging by reading for the regular selection tool event. This would also allow me to tell whether you were holding shift while dragging. A visualization of hidden entities being placed behind the scenes when you drag a tapeline. I did a test by simply assigning a selection tool a place result, and by some miracle, it just worked! The mod is 100% usable in multiplayer now, and it even works on the map view. There are still a few kinks here and there - for instance, shift-dragging assaults your ears with the ghost placement noise - but using a selection tool allowed me to completely eliminate the mod’s GUI and make using the mod a lot more intuitive. I am constantly impressed at how much you can do with the Factorio engine, even when the engine did not intend for said thing to be possible. Industrial Revolution 2: The Transmat Deadlock989 I have to hide players during the teleportation in the transmat sequence, which currently requires wild shenanigans involving invisible indestructible cars and having to track and clean them up again under multiple contingencies. This is because players (and their attached character) can be teleported between surfaces, and vehicles can be teleported between surfaces, but characters without an attached player cannot be teleported between surfaces, and during a cutscene the player isn’t attached to a character. The sequence I wanted to create needed the character to be invisible some, but not all of the time, and the least troublesome way of achieving it turned out to be making an invisible non-colliding car and putting them inside it and then teleporting that to a “limbo” surface temporarily while the cutscene POV is moving from site to site. There are various other hacky options that don’t involve a custom spriteless vehicle, but some of them had very nasty side effects (e.g. temporarily teleporting the character to a very distant location on the same surface can play absolute OS-killing havoc with the biter pathfinder if the teleported character happens to be under attack). It also had to be robust against people disconnecting during the sequence in multiplayer, which made destructive cloning too much of a puzzle (you can’t teleport a disconnected character to another surface, but you can clone the character to another surface and then destroy the original, which is philosophically interesting, but it turned out to be very annoying to “clean up” if the cutscene sequence was interrupted by a disconnection or interfered with by some other mod. There are probably better ways of tackling it, but like a lot of Factorio modding it’s a case of fumbling in the dark until you find something that works. &lt;/source&gt; The player being teleported using Industrial Revolution 2’s beautiful looking Transmats. The player being teleported using Industrial Revolution 2’s beautiful looking Transmats. Nullius: Spaced Out Wind Turbines Anachrony Nullius wind turbines are intended to be spaced 32 tiles apart. They are low-tech, cheap, and effective, but the downsides are that their output swings unpredictably and that they require a lot of land due to this spacing requirement. Crucially, they don’t prevent building anything else nearby, except other wind turbines. The game engine doesn’t make this type of nuanced placement rule easy to implement. In an older version of the mod, when the turbine was built, a script added a large, invisible square centered on the turbine, which prevented the building of other turbines close-by, but didn’t collide with anything else. However, a major flaw with this was that this invisible air space square also collided with the location of the original turbine, preventing it from being fast replaced or upgraded with a higher-tech turbine. Unlike upgrading other structures, you would have to first tear down the original turbine before rebuilding it as a separate step, which was awkward and confusing. The solution was to break up the large single square into four rectangles, two horizontal and two vertical ones, which interlock to create a pattern where the only valid places to build a new turbine are 32 tiles away OR directly on top of the old turbine, allowing it to be fast replaced/upgraded. The following picture shows the the collision rectangles that prevent a second turbine from being placed too close. Example of the wind turbine’s invisible collision boxes colliding with the placement of another wind turbine. Satisfactorio: Awesome Sink Consumption Speed PFQNiet Plenty of overhaul mods have some kind of “void machine” to automatically delete items that you may not want. Angel’s/Bob’s has the Flare Stack to get rid of unwanted gases, Krastorio has the Crusher, and Industrial Revolution uses an Incinerator to get rid of undesirable items. Satisfactory has the Awesome Sink, which I needed to re-create in my Satisfactorio mod. The Sink takes (almost) any item as input, and produces points to earn Coupons, which can then be spent in the Awesome Shop. It consumes items as quickly as you can feed it, and consumes 30MW of power. All “void machines” follow the same principle in Factorio: make a furnace entity and create a “recipe” for every existing item that consumes the item and produces nothing. The game engine handles the rest. In my case, I set the recipe to be fast enough that it could consume items from a Mk.5 Conveyor Belt (the fastest in the mod). However, this led to the machine spending most of its time idle if a slower belt was used, making its power consumption much less than it should have been. It took a while to find a solution, but what I eventually came up with was to make the recipe just fast enough for a Mk.1 Conveyor Belt (the slowest!) and then make use of a hidden, invisible beacon. This special beacon has 100% efficiency (vanilla Beacons only transmit 50% of their effect) and accepts a special type of module that provides +100% speed at no cost. Then, the script checks what speed of belt is connected to the machine, and adds or removes modules as necessary to/from the hidden beacon. Mk.2 belts carry twice as much as Mk.1, so they get a single module for +100% sink speed. This applies for each belt. Mk.5 carries seven times as many items, so six modules are added to the beacon. This setup means that no matter what tier of belt you feed into the Awesome Sink, it will adjust its speed to consume the items at exactly that rate, resulting in a perfectly smooth power graph with no spikes, and no nasty blackout surprises! AAI Programmable Vehicles: Biter Drivers Earendel I needed my vehicles to go from A to B, but they couldn’t always go in a straight line. They needed to find a path around obstacles. Writing a pathfinding algorithm is not that hard, but for Factorio modding the problem for a pathfinder is having an accurate representation of the map. Querying the map state in a way that would be useful would be unrealistically slow, and access to Factorio’s C++ pathfinder wasn’t available (at that time), so I needed something a bit more… creative. The game does have a built-in “unit” type that is used for biters, and they can be told to go to a destination using the built-in pathfinder. The problem is that units are not vehicles: they can’t hold passengers, they don’t have an inventory, and they can’t use ammo. &lt;/source&gt; Earendel’s Warden vehicle pathfinding automatically around a cliff. Earendel’s Warden vehicle pathfinding automatically around a cliff. My slightly crazy workaround is to put an invisible unit in front of the vehicle, which I call “the navigator”, which has the same size and collision settings as the vehicle. I’d tell it to go somewhere, track the movement, and use its path as the path for the vehicle. So, you could say that the vehicle was driven by an invisible biter. It worked pretty well, but had a lot of weird side-effects. For example, sometimes the navigator would catch on fire, so as the player that’s not aware of the navigator’s existence, you’d suddenly see detached fire speeding around the map for no apparent reason. Sometimes the navigator would not find a path or get distracted and start walking in circles, but as it wasn’t possible to tell if that was a proper path or just the navigator being glitchy, the vehicle just had to follow it for a while until it detected it had gone in a circle. Eventually, Wube implemented my request to expose the C++ pathfinder to modders, so the whole “biter driver” thing is in the past, but to me it stands out as the wackiest and funniest mod hack. Share your story! What you read above is only a handful of the stories I heard, and we will release another article with even more scary modding stories from other modders in the future. If you’re a modder with an interesting hacking workaround story, or anything to do with Factorio, then let us know! We would love to tell the world about it. And it’s important to talk about such traumatic events, because keeping it all inside is never good. It might slow down the growth of your factory, after all. Wouldn’t want that. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/ru/ALTF4-55/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-55/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-12-17T00:00:00+00:00">
+<script type="application/ld+json">
+{"dateModified":"2021-12-17T00:00:00+00:00","datePublished":"2021-12-17T00:00:00+00:00","author":{"@type":"Person","name":"stringweasel, MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, Earendel"},"description":"For issue #55 of Alt-F4, stringweasel prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins! Modding Behind The Scenes stringweasel It’s worth repeating that Factorio has an absolutely amazing modding community. That said, you might not realize just how much effort some modders need to go through to create their masterpieces. Especially when they start running into engine limitations. The Factorio developers do try and expand the engine to give modders more flexibility, but it’s impractical to allow modders to do everything they want. So, when modders reach a limit of what Factorio allows them to do, they need to get creative to achieve their vision. What they come up with are usually interesting and crazy hacks workarounds which the player often doesn’t even notice. I always find these workarounds fascinating, so I reached out to a few modders and asked them about their favourite stories of how they bent Factorio to their will. Factorissimo: Distinguish your picked-up factories MagmaMcFry Back in 0.13, Factorio didn’t support item metadata as well as it does now, so the only way I saw it being possible to store data in items (and read this data upon placing the item as a machine) was by using their damage value. So in Factorissimo 1, the moment you pick up a factory building, the entity’s damage value instantly gets changed to a unique number that is associated to the building’s interior. When you place the building back down, the damage value is read to figure out which interior it should connect to, and finally the entity’s damage value is reset back to what it was before you picked it up. An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health. Also, note the old Factorissimo building in the background. When I was writing Factorissimo 2, the Factorio devs were hinting at making damaged items stackable (this wasn’t the case before, and would break my system), and item metadata handling in the API was still not fleshed out enough in 0.14, so in Factorissimo 2, the mechanism used is even more hacky: Instead of storing a building’s data in the damage value, it’s stored in the item type. That’s right: whenever you pick up a factory building, you actually pick up an item with a new unique internal type that just happens to have the same name and sprite as a regular factory building. Because of a different, related lack of API features, the type of a factory building entity is also changed as soon as you mark a factory building for deconstruction, not just once a robot actually deconstructs it. Since you can’t generate new item types on the fly, there’s a fixed number of item prototypes per factory size (which I arbitrarily chose to be 90), so if you’re very inconsistent at reusing factory buildings, or worse, delete old buildings in item form (which isn’t trackable), you might run into an error message saying “Can’t pick up more than 90 factory buildings of one size at once”. This is also the reason the factory building requester chest exists: as the special entities are hidden from logistics filters, you have no other way to request your used factory buildings from a logistics system. This workaround is clearly visible on the right when opening the Factorio editor, where each of these items are shown individually. Some other honorable mentions for current and previous hacks: Detecting fluid connections to factory buildings via dummy pipe entities, transporting signals across surfaces by populating constant combinators, transporting energy across surfaces by moving it between accumulators (this is why energy connections are one-way), auxiliary entities you could interact with by literally rotating them, placing invisible mining drills to provide connection indicator arrows in alt-mode, invisible chests with actual items in them for the item icon overlay, and more. By now, most of these hacks are no longer necessary, since the API supports the desired features properly (or it at least provides cleaner hacks). Some of them have been successfully removed, others are deeply entangled within the old code. Maybe I’ll clean it all up and write Factorissimo 3 one day. Tapeline: Dragging Functionality raiguard An example of a normal tapeline created by a player. The original version of Tapeline was pretty simple: you select an area with a selection tool, and it draws a ruler the size of what you just selected on the ground. However, I wanted to be able to draw tapes as soon you dragged your mouse. There are no straightforward ways to do this, so I had to get creative. The first implementation of this used invisible grenades with a two-tick cooldown. Holding your mouse down would continually throw these grenades, and the mod would pick up that event to update the position. The mod would detect a finished drag when you stopped throwing these grenades at two-tick intervals. However, this had problems. First, you couldn’t use it in the map view at all, which severely limited the utility of the mod. It also had issues with multiplayer latency, where the timing between throws of the grenade wouldn’t be 100% consistent like in singleplayer. You also couldn’t use the mod at all when the time was paused in the map editor. In essence, it was a half-baked implementation. After a long time, I had an idea: what if I used a selection tool, but placed entities along the way to tell me where the mouse currently is? This would let me update the tape as you drag, and detect when you finish dragging by reading for the regular selection tool event. This would also allow me to tell whether you were holding shift while dragging. A visualization of hidden entities being placed behind the scenes when you drag a tapeline. I did a test by simply assigning a selection tool a place result, and by some miracle, it just worked! The mod is 100% usable in multiplayer now, and it even works on the map view. There are still a few kinks here and there - for instance, shift-dragging assaults your ears with the ghost placement noise - but using a selection tool allowed me to completely eliminate the mod’s GUI and make using the mod a lot more intuitive. I am constantly impressed at how much you can do with the Factorio engine, even when the engine did not intend for said thing to be possible. Industrial Revolution 2: The Transmat Deadlock989 I have to hide players during the teleportation in the transmat sequence, which currently requires wild shenanigans involving invisible indestructible cars and having to track and clean them up again under multiple contingencies. This is because players (and their attached character) can be teleported between surfaces, and vehicles can be teleported between surfaces, but characters without an attached player cannot be teleported between surfaces, and during a cutscene the player isn’t attached to a character. The sequence I wanted to create needed the character to be invisible some, but not all of the time, and the least troublesome way of achieving it turned out to be making an invisible non-colliding car and putting them inside it and then teleporting that to a “limbo” surface temporarily while the cutscene POV is moving from site to site. There are various other hacky options that don’t involve a custom spriteless vehicle, but some of them had very nasty side effects (e.g. temporarily teleporting the character to a very distant location on the same surface can play absolute OS-killing havoc with the biter pathfinder if the teleported character happens to be under attack). It also had to be robust against people disconnecting during the sequence in multiplayer, which made destructive cloning too much of a puzzle (you can’t teleport a disconnected character to another surface, but you can clone the character to another surface and then destroy the original, which is philosophically interesting, but it turned out to be very annoying to “clean up” if the cutscene sequence was interrupted by a disconnection or interfered with by some other mod. There are probably better ways of tackling it, but like a lot of Factorio modding it’s a case of fumbling in the dark until you find something that works. &lt;/source&gt; The player being teleported using Industrial Revolution 2’s beautiful looking Transmats. The player being teleported using Industrial Revolution 2’s beautiful looking Transmats. Nullius: Spaced Out Wind Turbines Anachrony Nullius wind turbines are intended to be spaced 32 tiles apart. They are low-tech, cheap, and effective, but the downsides are that their output swings unpredictably and that they require a lot of land due to this spacing requirement. Crucially, they don’t prevent building anything else nearby, except other wind turbines. The game engine doesn’t make this type of nuanced placement rule easy to implement. In an older version of the mod, when the turbine was built, a script added a large, invisible square centered on the turbine, which prevented the building of other turbines close-by, but didn’t collide with anything else. However, a major flaw with this was that this invisible air space square also collided with the location of the original turbine, preventing it from being fast replaced or upgraded with a higher-tech turbine. Unlike upgrading other structures, you would have to first tear down the original turbine before rebuilding it as a separate step, which was awkward and confusing. The solution was to break up the large single square into four rectangles, two horizontal and two vertical ones, which interlock to create a pattern where the only valid places to build a new turbine are 32 tiles away OR directly on top of the old turbine, allowing it to be fast replaced/upgraded. The following picture shows the the collision rectangles that prevent a second turbine from being placed too close. Example of the wind turbine’s invisible collision boxes colliding with the placement of another wind turbine. Satisfactorio: Awesome Sink Consumption Speed PFQNiet Plenty of overhaul mods have some kind of “void machine” to automatically delete items that you may not want. Angel’s/Bob’s has the Flare Stack to get rid of unwanted gases, Krastorio has the Crusher, and Industrial Revolution uses an Incinerator to get rid of undesirable items. Satisfactory has the Awesome Sink, which I needed to re-create in my Satisfactorio mod. The Sink takes (almost) any item as input, and produces points to earn Coupons, which can then be spent in the Awesome Shop. It consumes items as quickly as you can feed it, and consumes 30MW of power. All “void machines” follow the same principle in Factorio: make a furnace entity and create a “recipe” for every existing item that consumes the item and produces nothing. The game engine handles the rest. In my case, I set the recipe to be fast enough that it could consume items from a Mk.5 Conveyor Belt (the fastest in the mod). However, this led to the machine spending most of its time idle if a slower belt was used, making its power consumption much less than it should have been. It took a while to find a solution, but what I eventually came up with was to make the recipe just fast enough for a Mk.1 Conveyor Belt (the slowest!) and then make use of a hidden, invisible beacon. This special beacon has 100% efficiency (vanilla Beacons only transmit 50% of their effect) and accepts a special type of module that provides +100% speed at no cost. Then, the script checks what speed of belt is connected to the machine, and adds or removes modules as necessary to/from the hidden beacon. Mk.2 belts carry twice as much as Mk.1, so they get a single module for +100% sink speed. This applies for each belt. Mk.5 carries seven times as many items, so six modules are added to the beacon. This setup means that no matter what tier of belt you feed into the Awesome Sink, it will adjust its speed to consume the items at exactly that rate, resulting in a perfectly smooth power graph with no spikes, and no nasty blackout surprises! AAI Programmable Vehicles: Biter Drivers Earendel I needed my vehicles to go from A to B, but they couldn’t always go in a straight line. They needed to find a path around obstacles. Writing a pathfinding algorithm is not that hard, but for Factorio modding the problem for a pathfinder is having an accurate representation of the map. Querying the map state in a way that would be useful would be unrealistically slow, and access to Factorio’s C++ pathfinder wasn’t available (at that time), so I needed something a bit more… creative. The game does have a built-in “unit” type that is used for biters, and they can be told to go to a destination using the built-in pathfinder. The problem is that units are not vehicles: they can’t hold passengers, they don’t have an inventory, and they can’t use ammo. &lt;/source&gt; Earendel’s Warden vehicle pathfinding automatically around a cliff. Earendel’s Warden vehicle pathfinding automatically around a cliff. My slightly crazy workaround is to put an invisible unit in front of the vehicle, which I call “the navigator”, which has the same size and collision settings as the vehicle. I’d tell it to go somewhere, track the movement, and use its path as the path for the vehicle. So, you could say that the vehicle was driven by an invisible biter. It worked pretty well, but had a lot of weird side-effects. For example, sometimes the navigator would catch on fire, so as the player that’s not aware of the navigator’s existence, you’d suddenly see detached fire speeding around the map for no apparent reason. Sometimes the navigator would not find a path or get distracted and start walking in circles, but as it wasn’t possible to tell if that was a proper path or just the navigator being glitchy, the vehicle just had to follow it for a while until it detected it had gone in a circle. Eventually, Wube implemented my request to expose the C++ pathfinder to modders, so the whole “biter driver” thing is in the past, but to me it stands out as the wackiest and funniest mod hack. Share your story! What you read above is only a handful of the stories I heard, and we will release another article with even more scary modding stories from other modders in the future. If you’re a modder with an interesting hacking workaround story, or anything to do with Factorio, then let us know! We would love to tell the world about it. And it’s important to talk about such traumatic events, because keeping it all inside is never good. It might slow down the growth of your factory, after all. Wouldn’t want that. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-55/"},"url":"https://alt-f4.blog/ALTF4-55/","@type":"BlogPosting","headline":"Alt-F4 #55 - The Dark Alleys of Modding","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/55/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/55/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/ru/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/ru/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/ru/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/ru/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Общественный наследник возлюбленным Пятничным Фактам Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-55/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-55/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-55/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-55/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-55/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-55/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-55/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-55/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button button-green lang-button" href="/ru/ALTF4-55/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-55/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #55 - The Dark Alleys of Modding  <author>17-12-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Написали <em>stringweasel, MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, Earendel</em>,
+
+
+
+отредактировали <em>Nanogamer7, Conor_, Therenas, MyNameIsTrez, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/55/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Содержание</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#modding-behind-the-scenes-stringweasel">Modding Behind The Scenes <author>stringweasel</author></a>
+    <ul>
+      <li><a href="#factorissimo-distinguish-your-picked-up-factories-magmamcfry">Factorissimo: Distinguish your picked-up factories <author>MagmaMcFry</author></a></li>
+      <li><a href="#tapeline-dragging-functionality-raiguard">Tapeline: Dragging Functionality <author>raiguard</author></a></li>
+      <li><a href="#industrial-revolution-2-the-transmat-deadlock989">Industrial Revolution 2: The Transmat <author>Deadlock989</author></a></li>
+      <li><a href="#nullius-spaced-out-wind-turbines-anachrony">Nullius: Spaced Out Wind Turbines <author>Anachrony</author></a></li>
+      <li><a href="#satisfactorio-awesome-sink-consumption-speed-pfqniet">Satisfactorio: Awesome Sink Consumption Speed <author>PFQNiet</author></a></li>
+      <li><a href="#aai-programmable-vehicles-biter-drivers-earendel">AAI Programmable Vehicles: Biter Drivers <author>Earendel</author></a></li>
+      <li><a href="#share-your-story">Share your story!</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>К сожалению, эта статья ещё не переведена на русский, поэтому она отображается на английском. Если хотите помочь это исправить, присоединяйтесь к <a href="https://alt-f4.blog/ru/discord">нашему Дискорду</a>, чтобы начать. Спасибо!</p>
+
+</div>
+
+
+
+<p>For issue #55 of Alt-F4, <em>stringweasel</em> prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins!</p>
+      <h2 id="modding-behind-the-scenes-stringweasel">
+        
+        
+            <a href="#modding-behind-the-scenes-stringweasel" class="anchor" style="text-decoration: none;">Modding Behind The Scenes <author>stringweasel</author></a>
+          
+        
+      </h2>
+    
+
+<p>It’s <a href="https://alt-f4.blog/ru/ALTF4-21/">worth repeating</a> that Factorio has an absolutely amazing modding community. That said, you might not realize just how much effort some modders need to go through to create their masterpieces. Especially when they start running into engine limitations. The Factorio developers do <a href="https://forums.factorio.com/viewforum.php?f=28">try and expand</a> the engine to give modders more flexibility, but it’s impractical to allow modders to do <em>everything</em> they want. So, when modders reach a limit of what Factorio allows them to do, they need to get creative to achieve their vision. What they come up with are usually interesting and crazy <del>hacks</del> workarounds which the player often doesn’t even notice. I always find these workarounds fascinating, so I reached out to a few modders and asked them about their favourite stories of how they bent Factorio to their will.</p>
+      <h3 id="factorissimo-distinguish-your-picked-up-factories-magmamcfry">
+        
+        
+            <a href="#factorissimo-distinguish-your-picked-up-factories-magmamcfry" class="anchor" style="text-decoration: none;">Factorissimo: Distinguish your picked-up factories <author>MagmaMcFry</author></a>
+          
+        
+      </h3>
+    
+
+<p>Back in 0.13, Factorio didn’t support item metadata as well as it does now, so the only way I saw it being possible to store data in items (and read this data upon placing the item as a machine) was by using their damage value. So in <a href="https://mods.factorio.com/mod/Factorissimo">Factorissimo 1</a>, the moment you pick up a factory building, the entity’s damage value instantly gets changed to a unique number that is associated to the building’s interior. When you place the building back down, the damage value is read to figure out which interior it should connect to, and finally the entity’s damage value is reset back to what it was before you picked it up.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/factorissimo-old.jpg" alt="An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health. Also, note the old Factorissimo building in the background." style="max-width: ; max-height:  ">
+        
+        <figcaption>An example of Factorissimo 1 buildings in your inventory in Factorio 0.14. Notice how all the buildings have a tiny bit of health. Also, note the old Factorissimo building in the background.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>When I was writing <a href="https://mods.factorio.com/mod/Factorissimo2">Factorissimo 2</a>, the Factorio devs were hinting at making damaged items stackable (this wasn’t the case before, and would break my system), and item metadata handling in the API was still not fleshed out enough in 0.14, so in Factorissimo 2, the mechanism used is even more hacky: Instead of storing a building’s data in the damage value, it’s stored in the item type. That’s right: whenever you pick up a factory building, you actually pick up an item with a new unique internal type that just happens to have the same name and sprite as a regular factory building. Because of a different, related lack of API features, the type of a factory building entity is also changed as soon as you mark a factory building for deconstruction, not just once a robot actually deconstructs it. Since you can’t generate new item types on the fly, there’s a fixed number of item prototypes per factory size (which I arbitrarily chose to be 90), so if you’re very inconsistent at reusing factory buildings, or worse, delete old buildings in item form (which isn’t trackable), you might run into an error message saying “Can’t pick up more than 90 factory buildings of one size at once”. This is also the reason the factory building requester chest exists: as the special entities are hidden from logistics filters, you have no other way to request your used factory buildings from a logistics system.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/factorissimo-new.jpg" alt="This workaround is clearly visible on the right when opening the Factorio editor, where each of these items are shown individually." style="max-width: ; max-height:  ">
+        
+        <figcaption>This workaround is clearly visible on the right when opening the Factorio editor, where each of these items are shown individually.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Some other honorable mentions for current and previous hacks: Detecting fluid connections to factory buildings via dummy pipe entities, transporting signals across surfaces by populating constant combinators, transporting energy across surfaces by moving it between accumulators (this is why energy connections are one-way), auxiliary entities you could interact with by literally rotating them, placing invisible mining drills to provide connection indicator arrows in alt-mode, invisible chests with actual items in them for the item icon overlay, and more.</p>
+
+<p>By now, most of these hacks are no longer necessary, since the API supports the desired features properly (or it at least provides cleaner hacks). Some of them have been successfully removed, others are deeply entangled within the old code. Maybe I’ll clean it all up and write Factorissimo 3 one day.</p>
+      <h3 id="tapeline-dragging-functionality-raiguard">
+        
+        
+            <a href="#tapeline-dragging-functionality-raiguard" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/Tapeline">Tapeline</a>: Dragging Functionality <author>raiguard</author>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/tapeline-1.jpg" alt="An example of a normal tapeline created by a player." style="max-width: ; max-height:  ">
+        
+        <figcaption>An example of a normal tapeline created by a player.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>The original version of Tapeline was pretty simple: you select an area with a selection tool, and it draws a ruler the size of what you just selected on the ground. However, I wanted to be able to draw tapes as soon you dragged your mouse. There are no straightforward ways to do this, so I had to get creative.</p>
+
+<p>The first implementation of this used invisible grenades with a two-tick cooldown. Holding your mouse down would continually throw these grenades, and the mod would pick up that event to update the position. The mod would detect a finished drag when you stopped throwing these grenades at two-tick intervals.</p>
+
+<p>However, this had problems. First, you couldn’t use it in the map view at all, which severely limited the utility of the mod. It also had issues with multiplayer latency, where the timing between throws of the grenade wouldn’t be 100% consistent like in singleplayer. You also couldn’t use the mod at all when the time was paused in the map editor. In essence, it was a half-baked implementation.</p>
+
+<p>After a long time, I had an idea: what if I used a selection tool, but placed entities along the way to tell me where the mouse currently is? This would let me update the tape as you drag, and detect when you finish dragging by reading for the regular selection tool event. This would also allow me to tell whether you were holding shift while dragging.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/tapeline-2.jpg" alt="A visualization of hidden entities being placed behind the scenes when you drag a tapeline." style="max-width: ; max-height:  ">
+        
+        <figcaption>A visualization of hidden entities being placed behind the scenes when you drag a tapeline.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>I did a test by simply assigning a selection tool a place result, and by some miracle, it just worked! The mod is 100% usable in multiplayer now, and it even works on the map view. There are still a few kinks here and there - for instance, shift-dragging assaults your ears with the ghost placement noise - but using a selection tool allowed me to completely eliminate the mod’s GUI and make using the mod a lot more intuitive. I am constantly impressed at how much you can do with the Factorio engine, even when the engine did not intend for said thing to be possible.</p>
+      <h3 id="industrial-revolution-2-the-transmat-deadlock989">
+        
+        
+            <a href="#industrial-revolution-2-the-transmat-deadlock989" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/IndustrialRevolution">Industrial Revolution 2</a>: The Transmat <author>Deadlock989</author>
+          
+        
+      </h3>
+    
+
+<p>I have to hide players during the teleportation in the transmat sequence, which currently requires wild shenanigans involving invisible indestructible cars and having to track and clean them up again under multiple contingencies.  <a href="https://forums.factorio.com/viewtopic.php?t=92112">This</a> is because players (and their attached character) can be teleported between surfaces, and vehicles can be teleported between surfaces, but characters without an attached player cannot be teleported between surfaces, and during a cutscene the player isn’t attached to a character. The sequence I wanted to create needed the character to be invisible some, but not all of the time, and the least troublesome way of achieving it turned out to be making an invisible non-colliding car and putting them inside it and then teleporting that to a “limbo” surface temporarily while the cutscene POV is moving from site to site.</p>
+
+<p>There are various other hacky options that don’t involve a custom spriteless vehicle, but some of them had very nasty side effects (e.g. temporarily teleporting the character to a very distant location on the same surface can play absolute OS-killing havoc with the biter pathfinder if the teleported character happens to be under attack). It also had to be robust against people disconnecting during the sequence in multiplayer, which made destructive cloning too much of a puzzle (you can’t teleport a disconnected character to another surface, but you <em>can</em> clone the character to another surface and then destroy the original, which is <a href="https://en.wikipedia.org/wiki/Teletransportation_paradox">philosophically interesting</a>, but it turned out to be very annoying to “clean up” if the cutscene sequence was interrupted by a disconnection or interfered with by some other mod. There are probably better ways of tackling it, but like a lot of Factorio modding it’s a case of fumbling in the dark until you find something that works.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 384px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/55/deadlock-ir2-transmat.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      The player being teleported using Industrial Revolution 2’s beautiful looking Transmats.
+    </video>
+    <figcaption>The player being teleported using Industrial Revolution 2’s beautiful looking Transmats.</figcaption>
+  </figure>
+</p>
+      <h3 id="nullius-spaced-out-wind-turbines-anachrony">
+        
+        
+            <a href="#nullius-spaced-out-wind-turbines-anachrony" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/nullius">Nullius</a>: Spaced Out Wind Turbines <author>Anachrony</author>
+          
+        
+      </h3>
+    
+
+<p>Nullius wind turbines are intended to be spaced 32 tiles apart. They are low-tech, cheap, and effective, but the downsides are that their output swings unpredictably and that they require a lot of land due to this spacing requirement. Crucially, they don’t prevent building anything else nearby, except other wind turbines. The game engine doesn’t make this type of nuanced placement rule easy to implement. In an older version of the mod, when the turbine was built, a script added a large, invisible square centered on the turbine, which prevented the building of other turbines close-by, but didn’t collide with anything else. However, a major flaw with this was that this invisible air space square also collided with the location of the original turbine, preventing it from being fast replaced or upgraded with a higher-tech turbine.  Unlike upgrading other structures, you would have to first tear down the original turbine before rebuilding it as a separate step, which was awkward and confusing. The solution was to break up the large single square into four rectangles, two horizontal and two vertical ones, which interlock to create a pattern where the only valid places to build a new turbine are 32 tiles away OR directly on top of the old turbine, allowing it to be fast replaced/upgraded. The following picture shows the the collision rectangles that prevent a second turbine from being placed too close.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/55/nullius.jpg" alt="Example of the wind turbine’s invisible collision boxes colliding with the placement of another wind turbine." style="max-width: ; max-height:  ">
+        
+        <figcaption>Example of the wind turbine’s invisible collision boxes colliding with the placement of another wind turbine.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="satisfactorio-awesome-sink-consumption-speed-pfqniet">
+        
+        
+            <a href="#satisfactorio-awesome-sink-consumption-speed-pfqniet" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/Satisfactorio">Satisfactorio</a>: Awesome Sink Consumption Speed <author>PFQNiet</author>
+          
+        
+      </h3>
+    
+
+<p>Plenty of overhaul mods have some kind of “void machine” to automatically delete items that you may not want. Angel’s/Bob’s has the Flare Stack to get rid of unwanted gases, Krastorio has the Crusher, and Industrial Revolution uses an Incinerator to get rid of undesirable items.</p>
+
+<p>Satisfactory has the Awesome Sink, which I needed to re-create in my Satisfactorio mod. The Sink takes (almost) any item as input, and produces points to earn Coupons, which can then be spent in the Awesome Shop. It consumes items as quickly as you can feed it, and consumes 30MW of power.</p>
+
+<p>All “void machines” follow the same principle in Factorio: make a furnace entity and create a “recipe” for every existing item that consumes the item and produces nothing. The game engine handles the rest. In my case, I set the recipe to be fast enough that it could consume items from a Mk.5 Conveyor Belt (the fastest in the mod). However, this led to the machine spending most of its time idle if a slower belt was used, making its power consumption much less than it should have been.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/55/satisfactorio-broken.jpg" alt="image of spiky power graph" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>It took a while to find a solution, but what I eventually came up with was to make the recipe just fast enough for a Mk.1 Conveyor Belt (the slowest!) and then make use of a hidden, invisible beacon. This special beacon has 100% efficiency (vanilla Beacons only transmit 50% of their effect) and accepts a special type of module that provides +100% speed at no cost. Then, the script checks what speed of belt is connected to the machine, and adds or removes modules as necessary to/from the hidden beacon. Mk.2 belts carry twice as much as Mk.1, so they get a single module for +100% sink speed. This applies for each belt. Mk.5 carries seven times as many items, so six modules are added to the beacon.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/55/satisfactorio-beacon.jpg" alt="image of invisible beacon with 2 modules" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>This setup means that no matter what tier of belt you feed into the Awesome Sink, it will adjust its speed to consume the items at exactly that rate, resulting in a perfectly smooth power graph with no spikes, and no nasty blackout surprises!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/55/satisfactorio-fixed.jpg" alt="image of fixed power graph" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="aai-programmable-vehicles-biter-drivers-earendel">
+        
+        
+            <a href="#aai-programmable-vehicles-biter-drivers-earendel" class="anchor" style="text-decoration: none;"></a><a href="https://mods.factorio.com/mod/aai-programmable-vehicles">AAI Programmable Vehicles</a>: Biter Drivers <author>Earendel</author>
+          
+        
+      </h3>
+    
+
+<p>I needed my vehicles to go from A to B, but they couldn’t always go in a straight line. They needed to find a path around obstacles. Writing a pathfinding algorithm is not that hard, but for Factorio modding the problem for a pathfinder is having an accurate representation of the map. Querying the map state in a way that would be useful would be unrealistically slow, and access to Factorio’s C++ pathfinder wasn’t available (at that time), so I needed something a bit more… creative. The game does have a built-in “unit” type that is used for biters, and they can be told to go to a destination using the built-in pathfinder. The problem is that units are not vehicles: they can’t hold passengers, they don’t have an inventory, and they can’t use ammo.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1280px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/55/aai-vehicles.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Earendel’s Warden vehicle pathfinding automatically around a cliff.
+    </video>
+    <figcaption><a href="https://mods.factorio.com/mods/Earendel/aai-vehicles-warden">Earendel’s Warden</a> vehicle pathfinding automatically around a cliff.</figcaption>
+  </figure>
+</p>
+
+<p>My slightly crazy workaround is to put an invisible unit in front of the vehicle, which I call “the navigator”, which has the same size and collision settings as the vehicle. I’d tell it to go somewhere, track the movement, and use its path as the path for the vehicle. So, you could say that the vehicle was driven by an invisible biter. It worked pretty well, but had a lot of weird side-effects. For example, sometimes the navigator would catch on fire, so as the player that’s not aware of the navigator’s existence, you’d suddenly see detached fire speeding around the map for no apparent reason. Sometimes the navigator would not find a path or get distracted and start walking in circles, but as it wasn’t possible to tell if that was a proper path or just the navigator being glitchy, the vehicle just had to follow it for a while until it detected it had gone in a circle.</p>
+
+<p>Eventually, Wube implemented my request to expose the C++ pathfinder to modders, so the whole “biter driver” thing is in the past, but to me it stands out as the wackiest and funniest mod hack.</p>
+      <h3 id="share-your-story">
+        
+        
+            <a href="#share-your-story" class="anchor" style="text-decoration: none;">Share your story!</a>
+          
+        
+      </h3>
+    
+
+<p>What you read above is only a handful of the stories I heard, and we will release another article with even more scary modding stories from other modders in the future. If you’re a modder with an interesting <del>hacking</del> workaround story, or anything to do with Factorio, then let us know! We would love to tell the world about it. And it’s important to talk about such traumatic events, because keeping it all inside is never good. It might slow down the growth of your factory, after all. Wouldn’t want that.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/ru/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/ru/discord">
+    Обсудить на Дискорде
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/ru/ALTF4-54/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/ru/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/ru/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/ru/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/ru/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Этот сайт - фан-проект и не имеет прямого отношения к Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
