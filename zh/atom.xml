@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-12-17T17:03:39+00:00</updated>
+  <updated>2021-12-31T13:49:09+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #56 - 异星工厂的早期时代</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-56/" />
+    <id>https://alt-f4.blog/ALTF4-56</id>
+    <updated>2021-12-31T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;在今年的最后一期 Alt-F4 中，我们想回顾一下异星工厂的&lt;em&gt;旧时代&lt;/em&gt;。彼时它还是一块璞玉，颇具潜力但也存在问题和烦恼。我们采访了社区中的不同人士，了解他们对早期异星工厂的看法，回忆他们进入游戏的时间，以及游戏是如何变得更好的。&lt;/p&gt; &lt;h2 id=&quot;回望异星工厂的早期时代多人&quot;&gt;回望异星工厂的早期时代&lt;author&gt;多人&lt;/author&gt;&lt;/h2&gt; &lt;h3 id=&quot;旧版异星工厂-jd-playshttpswwwyoutubecomjdplays&quot;&gt;旧版异星工厂 &lt;author&gt;[JD-Plays](https://www.youtube.com/jdplays)&lt;/author&gt;&lt;/h3&gt; &lt;p&gt;嘿，我是 JD！一名 YouTuber 和 Twitch 主播，在异星工厂中浸泡了几千个小时，现已经超过了一万小时大关，但并生来如此。我是在第 13 版左右进入异星工厂的，在试玩了早期的版本后发现这个游戏并不适合我。&lt;/p&gt; &lt;p&gt;所以我们来谈谈古早的异星工厂。我认为我们可以把异星工厂的时间线分成几个时代或世代。首先是现代的异星工厂，我认定包括 0.15 及以后的版本。在这个版本中，军备、生产、效能和太空科技包首次被添加到游戏中，此时基地开始以“每分钟科学”来衡量，而不是之前的标准——每分钟火箭。0.15 版到 1.1 版并没有太多的变化。当然，配方和战斗有一些小的调整，还有一两个图形更新，但是如果你给一个在 1.1 版本之前从未见过异星工厂的人一个 0.15 版本的旧拷贝，他们的主要问题是为什么没有复制和粘贴！&lt;/p&gt; &lt;p&gt;异星工厂 0.12 - 0.14 这通常被称为老旧版异星工厂。有点像异星工厂还没有完全出炉的感觉。你知道正在发生什么，它看起来也很熟悉，但有些地方不对劲。首先，吸管工具。你知道，那个 Q 按键……嗯，这还不存在！锅炉是 1x1 的大小，发电的比例是 1 个泵对应 14 个锅炉对应 20 个蒸汽机。科研以紫色科学结束，但被称为外星科学包，需要外星核心来创造，你只能通过杀死虫巢来获得这些核心！这些核心也用在 3 级模块，还有动力装甲之中。 不要误会我的意思，它仍然感觉像异星工厂，有着强大的核心游戏机制，即使它欠缺一些打磨。一切功能都和现在一样。好吧，除了蓝图，因为你必须研究它们，然后制作它们，而且要花费一个红色电路板来清除蓝图！我有没有提到过，要想获得蓝图，就必须先研究它们。哦，我有没有说过，当时要分享蓝图，我们必须以截图的形式来分享它们？是的，那时候还没有蓝图字符串的说法。&lt;/p&gt; &lt;p&gt;0.11 版本也是首次加入多人游戏的时候。这远不是一个愉快的经历，因为没有像现在这样的延迟隐藏。这大约也是玩家群扩大的时期：首先是 0.11 版本带来了多人游戏，然后在 0.12 版本中再次增加了延迟隐藏。现在你可以和任何人一起玩，在世界的任何地方。好吧，只要你不参加对战就行。&lt;/p&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-47</id>
     <updated>2021-09-17T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Alt-F4 经过三周的休整现已复工，而且比以往任何时候都更有动力! 复刊第一炮由 &lt;em&gt;ilbJanissary&lt;/em&gt; 来为我们深入介绍 &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; 背后的计算引擎是如何运转的。虽然看起来很复杂，但这个过程被分解成细小的部分，并辅以实例加以说明。阅读这篇文章时，不会有眼睛发花的情况（希望如此！）。&lt;/p&gt; &lt;h2 id=&quot;优化解决方案-ilbjanissary&quot;&gt;优化解决方案 &lt;author&gt;ilbJanissary&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;嗨！作为 Angular 的开发者和&lt;a href=&quot;https://kirkmcdonald.github.io&quot;&gt;柯克·麦克唐纳的计算器（KirkMcDonald’s Calculator）&lt;/a&gt;的长期用户，我在 2020 年决定为这个工厂游戏建立自己的计算器网站，名为 &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt;。Kirk McDonald 发布了一篇关于他所用方法的&lt;a href=&quot;http://kirkmcdonald.github.io/posts/calculation.html&quot;&gt;短文&lt;/a&gt;，帮助我入门，但并没有解释它用来求解的算法。在数学的汪洋中挣扎了一段时间，并在 &lt;strong&gt;FactorioLab&lt;/strong&gt; 中建立了两个迭代的非单项式求解器后，我希望与社区分享我在实现真正的单项式算法求解器时学到的东西。太长不看版可以在文章的末尾找到。&lt;/p&gt; &lt;h3 id=&quot;为什么要用计算器&quot;&gt;为什么要用计算器？&lt;/h3&gt; &lt;p&gt;让我们从头开始。在&lt;a href=&quot;https://factorio.com/&quot;&gt;异星工厂&lt;/a&gt;、&lt;a href=&quot;https://store.steampowered.com/app/1366540/Dyson_Sphere_Program/&quot;&gt;戴森球计划&lt;/a&gt;和&lt;a href=&quot;https://www.satisfactorygame.com/&quot;&gt;Satisfactory&lt;/a&gt;等工厂游戏中，游戏目标是开采原始资源，使用这些资源按照配方制造物品，并使用这些物品来发现更高级的物品和配方。在这些游戏的初期，所涉及的配方和物品很简单，不需要大量的计划，但随着更多的物品和配方的解锁，生产链会变得非常复杂。像 &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; 和&lt;a href=&quot;https://kirkmcdonald.github.io&quot;&gt;柯克·麦克唐纳的计算器&lt;/a&gt;这样的工厂计算器旨在帮助计算以一定速度持续生产某物品时需要多少原始资源和加工设施。&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/47/calculator.png&quot; alt=&quot;FactorioLab 计算器&quot; style=&quot;max-width: ; max-height: &quot; /&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #46 - 越过一周年</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-46/" />
-    <id>https://alt-f4.blog/ALTF4-46</id>
-    <updated>2021-08-20T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;好家伙，从我开始这个项目算起都过了一整年了。难以想象的一年，同时不敢相信这个项目能坚持一年。起初我只是想尝试这个愚蠢的主意，看看它会发展到什么程度，并没有指望它能成为一个有数十人定期作出贡献的真正项目。没有这么多人站出来贡献，它很可能几周后就消失了。但是（至少在这个现实中）它没有，我对此感到非常高兴和感激。&lt;/p&gt; &lt;p&gt;Conor_ 将在下文中感谢核心团队，但我想感谢所有为该项目做出贡献的人。和你们一起工作是如此的快乐。感谢那些提供文章的人，感谢提出你们热情的项目，并乐于接受反馈。没有你们，就没有这个项目。还要感谢翻译人员，他们孜孜不倦地进行多语种翻译，让更多的人能够享受这个项目，并且时常忍受混乱的发行时间表。最后，感谢技术人员（特别是 MagPie）实现了我们关于网站的每一个需求。&lt;/p&gt; &lt;h2 id=&quot;alt-f4-一周年-conor_&quot;&gt;Alt-F4 一周年 &lt;author&gt;Conor_&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;牛逼，Alt-F4 一周年达成！在过去的 52 周中合计发行了 45 期间，期期都是围绕异星工厂社区的庆典。从&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-2/&quot;&gt;蜘蛛机甲!!!&lt;/a&gt;到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-14/#mod-%E8%81%9A%E7%84%A6%E5%A4%AA%E7%A9%BA%E6%8E%A2%E7%B4%A2space-exploration-ironic-toblerone&quot;&gt;太空探索&lt;/a&gt;，从&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-23/&quot;&gt;混乱的传送带&lt;/a&gt;到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-24/&quot;&gt;更多混乱的传送带&lt;/a&gt;。所有的供稿人加起来，我们已经书写了超过 100,000 字，在我看来能算个伟业了。&lt;/p&gt; &lt;h3 id=&quot;一些谢意&quot;&gt;一些谢意&lt;/h3&gt; &lt;p&gt;如果没有 Alt-F4 背后的强大团队，这一切都不可能实现。特别感谢 &lt;em&gt;stringweasel&lt;/em&gt;，他为 Alt-F4 寻找有趣的人，并指导他们写出精炼的文章。另外感谢 &lt;em&gt;Nano&lt;/em&gt;，他每周都会对我们的文章进行事实核查，以确保每一个晦涩的链接和愚蠢的笑话都指向正确的地方，当然他也为 Alt-F4 的编辑方向提供了指导。最后感谢 &lt;em&gt;Firerazer&lt;/em&gt; 为 Alt-F4 的翻译管理所做出的努力。&lt;/p&gt; &lt;h3 id=&quot;哇哦这个缩略图看起来有点怪&quot;&gt;哇哦，这个缩略图看起来有点怪&lt;/h3&gt; &lt;p&gt;对我而言，每周最有趣的部分之一是在星期四，此时我们需要为本周的更新选择标题和缩略图。这正是编辑团队发挥创意之时，围绕该周的文章做点好玩的东西。标题和缩略图是人们第一页就会看到的东西，能够吸引他们阅读投稿人精心准备的作品，所以我们很重视它们。&lt;em&gt;Nano&lt;/em&gt; 和 &lt;em&gt;stringweasel&lt;/em&gt; 通常会带头设计缩略图，在创作中倾注段子和梦想。下面，我制作了一个迄今为止所有缩略图的拼贴画，以展示它们的荣耀。如果你对其中任何一个感兴趣，欢迎点击进入该周的文章，我保证这一篇贼好！&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;div id=&quot;grid&quot; class=&quot;center flex flex-wrap flex-center&quot;&gt; &lt;script&gt; var...</content>
   </entry>
   
   

@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2021-12-17T17:03:39+00:00</updated>
+  <updated>2021-12-31T13:49:09+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #56 - Factorio's Early Days</title>
+    <link href="https://alt-f4.blog/ru/ALTF4-56/" />
+    <id>https://alt-f4.blog/ALTF4-56</id>
+    <updated>2021-12-31T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For the last Alt-F4 of the year, on the very last day of the year, we wanted to take a look back at &lt;em&gt;ye olden&lt;/em&gt; days of Factorio. Back when it was still a diamond in the rough, with definite potential, but concrete issues and annoyances as well. We hit...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-47</id>
     <updated>2021-09-17T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;After a three-week hiatus, Alt-F4 is back, more motivated than ever! We start off with a bang as &lt;em&gt;ilbJanissary&lt;/em&gt; goes into depth about how the calculation engine behind &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt; does its magic. It might seem complicated at the surface, but the process is broken down into granular parts that...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #46 - One Year And Counting</title>
-    <link href="https://alt-f4.blog/ru/ALTF4-46/" />
-    <id>https://alt-f4.blog/ALTF4-46</id>
-    <updated>2021-08-20T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Oh man. It really has been a year since I started this project. Can’t quite believe it’s already been a year, while also not quite believing the project carried on for a whole year. In the beginning, it was just a silly idea that I wanted to try out and...</content>
   </entry>
   
   
