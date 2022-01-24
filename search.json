@@ -1,0 +1,18 @@
+---
+layout: none
+---
+[
+{% for post in site.posts %}
+    {
+      "content"    : "{{ post.content | first_paragraph | strip_html}}",
+      "image_alt"      : "{{ post.image.transcription }}",
+      "url"        : "{{ site.baseurl }}{{ post.url }}",
+      "title"      : "{{ post.title | escape }}",
+      "image_src"      : "{{ post.image.url }}",
+      "proofreader": "{{post.proofreader}}",
+      "translator" : "{{post.translator}}",
+      "author"     : "{{post.author}}",
+      "editor"     : "{{post.editor}}",
+      "date"       : "{{ post.date }}"
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+]
