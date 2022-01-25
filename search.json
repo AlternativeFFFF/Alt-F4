@@ -13,6 +13,6 @@ layout: none
       "translator" : "{{post.translator}}",
       "author"     : "{{post.author}}",
       "editor"     : "{{post.editor}}",
-      "date"       : "{{ post.date }}"
+      "date"       : "{{ post.date | date: site.data.locale.date-format }}"
     }{% unless forloop.last %},{% endunless %}{% endfor %}
 ]
