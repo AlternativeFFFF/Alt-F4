@@ -8,10 +8,10 @@
 .tooltip .tooltiptext {
   position: absolute;
   visibility: hidden;
-  background-color: #555;
-  color: #fff;
+  color: #e39827;
   text-align: center;
   border-radius: 6px;
+  font-weight: 600;
 
   /* Fade in tooltip */
   opacity: 0;
@@ -24,7 +24,7 @@
   position: relative;
   opacity: 1;
 }
-.tooltip:hover i {
+.tooltip:hover button {
   visibility: hidden;
   position: absolute;
   opacity: 0;
