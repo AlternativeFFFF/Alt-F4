@@ -53,30 +53,51 @@ When starting out, it makes sense to start with a single reactor, or perhaps a 1
 1) Draw a copy of your reactor arrangement and to each reactor assign a value of 1. Any empty spaces receive 0:
 
 $$
-[1][1][1]\\
-[1][1][1]\\
-[1][0][1]\\
+[1][1][1]
+$$
+
+$$
+[1][1][1]
+$$
+
+$$
+[1][0][1]
 $$
 
 2) For each reactor, count the number of neighbors it has (they must be aligned exactly side by side) and add it to the 1:
 
 $$
-[1+2][1+3][1+2] \rightarrow [3][4][3]\\
-[1+3][1+3][1+3] \rightarrow [4][4][4]\\
-[1+1][0+0][1+1] \rightarrow [2][0][2]\\
+[1+2][1+3][1+2] \rightarrow [3][4][3]
+$$
+
+$$
+[1+3][1+3][1+3] \rightarrow [4][4][4]
+$$
+
+$$
+[1+1][0+0][1+1] \rightarrow [2][0][2]
 $$
 
 3) Sum all the numbers to get the total number of single reactor equivalents. Multiply this total by 40 to get your heat output in MW:
 
 $$
-(3+4+3) = 10\\
-(4+4+4) = 12\\
-(2+0+2) = 4\\
+(3+4+3) = 10
 $$
 
 $$
-10 + 12 + 4 = 26 \text{ single reactor equivalents for this setup.}\\
-26 \cdot 40 MW = 1040 MW \text{ power output}\\
+(4+4+4) = 12
+$$
+
+$$
+(2+0+2) = 4
+$$
+
+$$
+10 + 12 + 4 = 26 \text{ single reactor equivalents for this setup.}
+$$
+
+$$
+26 \cdot 40 MW = 1040 MW \text{ power output.}
 $$
 
 After determining your total power output, you can decide whether you have enough reactors or a sufficiently optimal arrangement of them. However, this is only the beginning of the design process. Next, we have to turn reactor heat into steam using heat exchangers, which we will need to supply with water from offshore pumps. Then, the steam needs to be consumed by steam turbines.
@@ -115,12 +136,12 @@ Having covered the scientific aspects of nuclear plant design, we can now consid
 
 As for other components, you can make many little groups of heat exchangers and turbines attached directly without pipes, or you can have all the exchangers in a big cluster and turbines in another, bigger cluster. There are also a few ways you can arrange heat pipes around your reactor array. Here are some examples for arranging a 2x2 plant:
 
-{% include gallery.html items='https://media.alt-f4.blog/ALTF4/57/vis4a.jpg;480 MW reactor setup,https://media.alt-f4.blog/ALTF4/57/vis4b.jpg;480 MW reactor setup,https://media.alt-f4.blog/ALTF4/57/vis4c.jpg;480 MW reactor setup' %}
+{% include gallery.html items='https://media.alt-f4.blog/ALTF4/57/vis4A.jpg;480 MW reactor setup,https://media.alt-f4.blog/ALTF4/57/vis4B.jpg;480 MW reactor setup,https://media.alt-f4.blog/ALTF4/57/vis4C.jpg;480 MW reactor setup' %}
 <figcaption>All of these setups produce 480 MW of heat while they have different arrangements. Note that differences in heat exchanger grouping can lead to overall steam turbine counts changing slightly.</figcaption>
 
 Another aspect of nuclear plant design is planning for scaling from the start. You can do this by creating overlapping blueprints for a progressively upgraded nuclear plant. For example, you can reserve a big space for a 2x3 plant, but at first only build a 2x1 starter plant, as shown in the images below. When designing such blueprints, it is easier to first build the biggest plant and then selectively delete parts to scale it down.
 
-{% include gallery.html offset='3' items='https://media.alt-f4.blog/ALTF4/57/vis5a.jpg;The first blueprint is a 2x1 plant.;The first blueprint is a 2x1 plant.,https://media.alt-f4.blog/ALTF4/57/vis5b.jpg;The second blueprint makes it a 2x2 plant and adds steam storage.;The second blueprint makes it a 2x2 plant and adds steam storage.,https://media.alt-f4.blog/ALTF4/57/vis5c.jpg;The third blueprint expands the reactor setup to 2x3 and adds more than enough steam turbines to allow using the steam buffer to temporarily produce more power than usual.;The third blueprint expands the reactor setup to 2x3 and adds more than enough steam turbines to allow using the steam buffer to temporarily produce more power than usual.' %}
+{% include gallery.html offset='3' items='https://media.alt-f4.blog/ALTF4/57/vis5A.jpg;The first blueprint is a 2x1 plant.;The first blueprint is a 2x1 plant.,https://media.alt-f4.blog/ALTF4/57/vis5B.jpg;The second blueprint makes it a 2x2 plant and adds steam storage.;The second blueprint makes it a 2x2 plant and adds steam storage.,https://media.alt-f4.blog/ALTF4/57/vis5C.jpg;The third blueprint expands the reactor setup to 2x3 and adds more than enough steam turbines to allow using the steam buffer to temporarily produce more power than usual.;The third blueprint expands the reactor setup to 2x3 and adds more than enough steam turbines to allow using the steam buffer to temporarily produce more power than usual.' %}
 
 Overlapping upgrades is just one way to plan for large reactor designs. You can also create blueprints of heat exchanger and turbine sets to just place down every time you add a new reactor to your plant. The most scalable version of this concept is to design fully tileable slices of 2xN plants, which become incredibly wide because of all the exchangers and turbines you need to fit side by side.
 
@@ -146,7 +167,7 @@ Nevertheless, some designs are certainly better for performance than others. In 
 
 Given these guidelines, you'll notice that the designs featured in earlier images are not the most UPS friendly. They don't have to be, unless you are going to build several copies of them. Nevertheless, lets see how the design changes when we apply these guidelines to an example.
 
-{% include compare.html id="0" width="3200px" height="1800px" old="https://media.alt-f4.blog/ALTF4/57/vis6a.jpg" new="https://media.alt-f4.blog/ALTF4/57/vis6b.jpg" caption='To optimize for UPS we have removed non-essential heat pipes and steam storage. We also reduced the steam turbine count to fit the 1.718 ratio with heat exchangers.' %}
+{% include compare.html id="0" width="3200px" height="1800px" old="https://media.alt-f4.blog/ALTF4/57/vis6A.jpg" new="https://media.alt-f4.blog/ALTF4/57/vis6B.jpg" caption='To optimize for UPS we have removed non-essential heat pipes and steam storage. We also reduced the steam turbine count to fit the 1.718 ratio with heat exchangers.' %}
 
 ### Conclusion
 
