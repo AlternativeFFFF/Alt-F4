@@ -1,0 +1,26 @@
+---
+layout: default
+permalink: search/
+---
+
+<div id="search" class="panel">
+  <h1>Search</h1>
+  <input class="panel-inset text-right mb0 p4 flex flex-center flex-wrap" type="search" id="search-input"
+    placeholder="search..." style="color: #ffe6c0; width: 100%; font-size: 25px; font-weight: bold;">
+  <div id="results-container"></div>
+</div>
+
+
+<script src="/assets/GLOBAL/js/simple-jekyll-search.min.js"></script>
+<script>
+  window.simpleJekyllSearch = new SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '{{ site.baseurl }}/search.json',
+    searchResultTemplate: '<a href="{url}" class="panel-inset-lighter blog-card"><div class="blog-card-thumbnail"><img src="{image_src}" alt="{image_alt}"><div class="shadow-overlay"></div></div><div class="blog-card-text"><h3>{title}</h3><div class="posted-by">{{ site.data.locale.author.writtenby }} <em>{author}</em> {{ site.data.locale.author.date }} {date}</div><hr><div class="snippet"><p>{content}</p></div></div></a>',
+    noResultsText: 'No results found',
+    limit: 10,
+    fuzzy: false,
+    exclude: []
+  })
+</script>
