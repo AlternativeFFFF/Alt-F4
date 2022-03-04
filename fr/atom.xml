@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-01-03T10:35:11+00:00</updated>
+  <updated>2022-03-04T13:59:50+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°57 - L’énergie nucléaire et vous</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-57/" />
+    <id>https://alt-f4.blog/ALTF4-57</id>
+    <updated>2022-03-04T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Une autre semaine, un autre Alt-F4… ? J’imagine qu’on a été absent pendant un long moment. C’est totalement parce qu’on ne voulait pas voler la vedette au &lt;a href=&quot;https://factorio.com/blog/&quot;&gt;FFF&lt;/a&gt;, qui est de retour cette année ! Mais bref, cessons d’être distrait et concentrons-nous sur l’excellent papier que nous &lt;em&gt;avons&lt;/em&gt; cette...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-48</id>
     <updated>2021-09-24T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Après une longue pause, un ancien contrinuteur du nom de &lt;em&gt;Lovely_Santa&lt;/em&gt; est de retour à la tâche ! La dernière fois que nous avions entendu parler de notre héros, c’était avec notre &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-2/&quot;&gt;parution n°2&lt;/a&gt; où il expérimentait les possibilités de modding du nouveau (en ce temps là) spidertron. Cette...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°47 - Optimiser la solution</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-47/" />
-    <id>https://alt-f4.blog/ALTF4-47</id>
-    <updated>2021-09-17T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Après trois semaines de coupure, Alt-F4 est de retour, plus motivé que jamais ! On commence par un gros boom avec &lt;em&gt;ilbJanissary&lt;/em&gt; qui nous emmène dans les profondeurs des méthodes de calculs qui se cachent derrière &lt;a href=&quot;https://factoriolab.github.io&quot;&gt;FactorioLab&lt;/a&gt;, là où se trouve sa magie. Cela peut sembler complexe à première...</content>
   </entry>
   
   
