@@ -1,5 +1,13 @@
 # **Burning Questions**
 
+*by Sir Fendi*
+
+*version 1*
+
+*Diagrams are included in a separate powerpoint file, conclusion will be added, calculations will be double-checked.*
+
+*All feedback is welcome!*
+
 Factorio has a variety of fuels that can go into your burner devices, ranging from good old hand-collected wood up to nuclear fuel, which borders on sci-fi. The most popular burner fuel is coal, which is the backbone of early game automation and it runs the boilers, furnaces, vehicles, and other machines reliably until it inevitably runs low. 
 
 In the mid game, solid fuel is introduced as the first processed fuel, made from oil. Interestingly, solid fuel is used to later make rocket fuel, which is in turn used to make nuclear fuel. These processed fuels offer noticeable advantages like having greater energy density than coal both per unit and per stack, and they also offer an acceleration bonus when used inside vehicles. More curiously, however, the late game also brings the technology to liquify good old coal and convert it into solid fuel. This raised for me the question: If you liquify 10 units of coal and burn the solid fuel you get from it, does it provide more energy than the directly burning the coal? And what if you further processed it into rocket fuel? Similar questions followed and lead into this general look at the energy contents of different burner fuels and the energy costs of converting them. The investigation involved  solving many equations but it was much easier to convert them into diagrams, which now summarize everything nicely.
