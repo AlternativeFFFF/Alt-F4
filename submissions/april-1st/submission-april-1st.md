@@ -1,6 +1,6 @@
 # April 1st Mod Feature
 
-(v 1.1)
+(v 1.2)
 
 
 
@@ -62,6 +62,16 @@ If you ever thought about your bots doing everything for you as your little work
 
 
 
+**Sushi Mod**
+
+by [Xaetral](https://mods.factorio.com/user/Xaetral)
+
+Sushi belt fans, [this mod](https://mods.factorio.com/mod/sushi) gives you the means to truly flex your skills! It also helps if you are tired of eating only raw fish! The menu has 6 sushi and 6 maki types, each crafted from one fish. Bon appetit!
+
+(gif from mod / image from mod page)
+
+
+
 **1000 Sounds to die for**
 
 by [vralfy](https://mods.factorio.com/user/vralfy)
@@ -82,7 +92,7 @@ Did your car/tank just crash into rock? Yeah it sucks. [This sound mod](https://
 
 
 
-**Other sound mods**
+**More sound mods**
 
 There are many more little sound mods out there that are specific references. For example, Command & Conquer fans might like this pack of [Red Alert sounds](https://mods.factorio.com/mod/Command_and_Conquer_RedAlert_Sounds) for programmable speakers and viewers of Trupen might enjoy a custom [rock mining](https://mods.factorio.com/mod/TrupenRocks) sound.
 
@@ -114,19 +124,19 @@ Alright, perhaps you are more interested in a weapon that is more... Factorio-st
 
 
 
-### Wonka Level Logistics: Renai Transport
+### Wonka Level Logistics: Renai Transportation
 
 by [Kiplacon](https://mods.factorio.com/user/Kiplacon)
 
 
 
-And for last on this mod list we have saved the largest and most imaginative. This [amazing mod](https://mods.factorio.com/mod/RenaiTransportation) introduces a whole **world** of new transport options that can liven up your factory with so much air time.
+And for last on this mod list we have saved the largest and most imaginative. This [amazing mod](https://mods.factorio.com/mod/RenaiTransportation) introduces a whole **world** of new transportation options that can liven up your factory with so much air time.
 
 
 
 **Flying items!**
 
-Renai Transport makes you ask: Why deal with bots or belts when you can just let the inserters throw the items where they need to go? It introduces thrower inserters that can toss items with precion into open chests that are ready to receive them. You can also ""~~blow~~ install openings onto things" via hatches so that you have direct insertion to machines from a distance!
+Renai Transportation makes you ask: Why deal with bots or belts when you can just let the inserters throw the items where they need to go? It introduces thrower inserters that can toss items with precion into open chests that are ready to receive them. You can also ""~~blow~~ install openings onto things" via hatches so that you have direct insertion to machines from a distance!
 
 (1 gif: throw to open chests: easy)
 
@@ -134,7 +144,7 @@ Renai Transport makes you ask: Why deal with bots or belts when you can just let
 
 **Flying you!**
 
-The mod doesn't stop at items, featuring also player launchers, as a new means of fast transport. Watch where you land, though!
+The mod doesn't stop at items, featuring also player launchers, as a new means of fast travel. Watch where you land, though!
 
 (1 gif: player launched over cliff: easy)
 
@@ -158,7 +168,7 @@ If flying isn't your thing, you can instead take a cable car that you can run on
 
 **Flying trains!**
 
-I joke you not, the mod even has ramps to get your trains airborn and bouncepads for them too! Admitedly, it is a little hard to set up but the electrically powered magnetic ramps assist a lot! Factorio doesn't need bridges or trains after all!
+I joke you not, the mod even has ramps to get your trains airborn and bouncepads for them too! Admitedly, it is a little hard to set up but the electrically powered magnetic ramps assist a lot! Factorio doesn't need bridges or train tunnels after all!
 
 
 
@@ -178,9 +188,15 @@ The mod has also found the trick to emptying your trains the fastest: Slam them 
 
 
 
-### Conclusion & Contributing
+### And more!
 
-Many thanks to our modding community who have (and continue to) come up with such fun additions to Factorio! If you have a mod that you want to share, feel free to reach out!
+Today we provided an overview of many of the humorous mods on the mod portal, but there more out there and new ones emerging as time goes on. You may ask "how did these come to be?" but we barely scratched the surface. There possibilities with modding are truly endless, as demonstrated by the aptly named modpack [Whyyy](https://mods.factorio.com/mod/Whyyy-modpack/downloads), which puts many such mods together to give you a Factorio like never before!
+
+Many thanks to our modding community who have (and continue to) come up with such fun additions to Factorio! 
+
+
+
+### Contributing
 
 As always, we’re looking for people that want to contribute to Alt-F4. be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the [Discord](https://alt-f4.blog/discord) to get started!
 
