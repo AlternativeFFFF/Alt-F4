@@ -1,6 +1,6 @@
 # April 1st Mod Feature
 
-(v 1.3)
+(v 1.4)
 
 
 
@@ -18,31 +18,25 @@ The mod portal features quite a few mods small and large that offer changes to v
 
 
 
-**Emotes and Speech Bubbles** 
+**[Emotes and Speech Bubbles](https://mods.factorio.com/mod/EmotesAndSpeechBubbles)** 	*Kiplacon*
 
-by [Kiplacon](https://mods.factorio.com/user/Kiplacon)
-
-[This handy mod](https://mods.factorio.com/mod/EmotesAndSpeechBubbles) makes multiplayer interactions a lot livelier, especially when you can't use a mic. Your text in chat also appears over your head. This is already more immersive but the best part is the emotes it provides. The emote menu is opened by clicking the middle mouse button (and customized by right-clicking them). The mod helps enhance your fun and funny moments: There are emotes for partying, coordinating, and of course pressing "F" or declaring "rekt!" when your friend gets hit by a train. 
+This handy mod makes multiplayer interactions a lot livelier, especially when you can't use a mic. Your text in chat also appears over your head. This is already more immersive but the best part is the emotes it provides. The emote menu is opened by clicking the middle mouse button (and customized by right-clicking them). The mod helps enhance your fun and funny moments: There are emotes for partying, coordinating, and of course pressing "F" or declaring "rekt!" when your friend gets hit by a train. 
 
 *<Video: Kiplacon: Emotes.mp4>*
 
 
 
-**Disco Science**
+[**Disco Science**](https://mods.factorio.com/mod/DiscoScience) 	*danielbrauer*
 
-by [danielbrauer](https://mods.factorio.com/user/danielbrauer)
-
-Science is the heart of progress, but [this little mod](https://mods.factorio.com/mod/DiscoScience) also makes it the life of the party! It makes research labs light up with the colors of whichever science packs they are consuming. Excellent for sprucing up your [AFK Zone Discos](https://www.reddit.com/r/factorio/comments/sl4z1v/time_honored_tradition_when_a_player_is_afk_you/)! If you want to go further and add faint music to your disco domes, there is [this other mod](https://mods.factorio.com/mod/LabDansen/metrics).
+Science is the heart of progress, but via this little mod, it is also the life of the party! It makes research labs light up with the colors of whichever science packs they are consuming. Excellent for sprucing up your [AFK Zone Discos](https://www.reddit.com/r/factorio/comments/sl4z1v/time_honored_tradition_when_a_player_is_afk_you/)! If you want to go further and add faint music to your disco domes, there is [this other mod](https://mods.factorio.com/mod/LabDansen/metrics).
 
 *<Video: disco science>  (not done)*
 
 
 
-**Shrek**
+[**Shrek**](https://mods.factorio.com/mod/shrek) 	*jerzygorski*
 
-by [jerzygorski](https://mods.factorio.com/user/jerzygorski)
-
-He's back and he means business! [This mod](https://mods.factorio.com/mod/shrek) retextures your character as Shrek, and proves that he can do rocket science just like how he can rescue the princess! He mines with his fists and has his own armor and weapon texture too, perfect for getting those pesky bugs out of your swamp planet!
+He's back and he means business! This mod retextures your character as Shrek, and proves that he can do rocket science just like how he can rescue the princess! He mines with his fists and has his own armor and weapon texture too, perfect for getting those pesky bugs out of your swamp planet!
 
 *<video: shrek mining (not done> (not done)*
 
@@ -50,11 +44,9 @@ He's back and he means business! [This mod](https://mods.factorio.com/mod/shrek)
 
 
 
-**Bumble Bots**
+[**Bumble Bots**](https://mods.factorio.com/mod/bumble-bots) 	*Maxreader*
 
-by [Maxreader](https://mods.factorio.com/user/Maxreader)
-
-If you ever thought about your bots doing everything for you as your little worker bees, [here is a mod](https://mods.factorio.com/mod/bumble-bots) that makes it literal! The mod retextures and resounds combat robots, construction and logistic robots, roboports and logistic chests. The organic structures (especially flowers) among the machines makes an interesing mix.
+If you ever thought about your bots doing everything for you as your little worker bees, here is the mod that makes it literal! The mod retextures and resounds combat robots, construction and logistic robots, roboports and logistic chests. The organic structures (especially flowers) among the machines makes an interesing mix.
 
 *<video: logistic bees> (we can reuse part of an older video)*
 
@@ -62,11 +54,9 @@ If you ever thought about your bots doing everything for you as your little work
 
 
 
-**Sushi Mod**
+[**Sushi Mod**](https://mods.factorio.com/mod/sushi) 	*Xaetral*
 
-by [Xaetral](https://mods.factorio.com/user/Xaetral)
-
-Sushi belt fans, [this mod](https://mods.factorio.com/mod/sushi) gives you the means to truly flex your skills! It also helps if you are tired of eating only raw fish! The menu has 6 sushi and 6 maki types, each crafted from one fish. Bon appetit!
+Sushi belt fans, this mod gives you the means to truly flex your skills! It also helps if you are tired of eating only raw fish! The menu has 6 sushi and 6 maki types, each crafted from one fish. Bon appetit!
 
 *<video: sushi on a belt> (not done)*
 
@@ -76,21 +66,17 @@ Sushi belt fans, [this mod](https://mods.factorio.com/mod/sushi) gives you the m
 
 
 
-**1000 Sounds to die for**
+[**1000 Sounds to die for**](https://mods.factorio.com/mod/1000sounds) 	*vralfy*
 
-by [vralfy](https://mods.factorio.com/user/vralfy)
-
-[This sound mod](https://mods.factorio.com/mod/1000sounds) allows you to customize a number of sounds, in particular character deaths. Yes, death in Factorio is usually a tragedy, but you can make it more comedic! Got hit by a train? Hear it honk! Killed by another player? Why not set that to the classic [Wilhelm Scream](https://www.youtube.com/watch?v=r6JK-gRELI0&ab_channel=GamingSoundFX)? You can also customize sounds for a few other events like starting/completing a research, launching a rocket, or players entering/exiting a game. The sound library of this mod borrows from Doom and Quake among some other places. If you like this mod, along the same lines is one for [pain sounds](https://mods.factorio.com/mod/pain), from Doom or custom sources.
+This sound mod allows you to customize a number of sounds, in particular character deaths. Yes, death in Factorio is usually a tragedy, but you can make it more comedic! Got hit by a train? Hear it honk! Killed by another player? Why not set that to the classic [Wilhelm Scream](https://www.youtube.com/watch?v=r6JK-gRELI0&ab_channel=GamingSoundFX)? You can also customize sounds for a few other events like starting/completing a research, launching a rocket, or players entering/exiting a game. The sound library of this mod borrows from Doom and Quake among some other places. If you like this mod, along the same lines is one for [pain sounds](https://mods.factorio.com/mod/pain), from Doom or custom sources.
 
 *<image: screenshot of mod options in 1.1> (not done)*
 
 
 
-**Choleric cars**
+[**Choleric cars**](https://mods.factorio.com/mod/cholericcars) 	*Therenas*
 
-by [Therenas](https://mods.factorio.com/user/Therenas)
-
-Did your car/tank just crash into rock? Yeah it sucks. [This sound mod](https://mods.factorio.com/mod/cholericcars) lets the engineer express his opinion about it very clearly (sometimes with expletives). It definitely captures the feeling of the moment, often comedically well!
+Did your car/tank just crash into rock? Yeah it sucks. This sound mod lets the engineer express his opinion about it very clearly (sometimes with expletives). It definitely captures the feeling of the moment, often comedically well!
 
 *<image: crashed car ? > (not done)*
 
@@ -108,33 +94,27 @@ There are many more little sound mods out there that are specific references. Fo
 
 
 
-**MLG FactOreo**
+[**MLG FactOreo**](https://mods.factorio.com/mod/MLG_FactOreo) 	*Kiplacon*
 
-by [Kiplacon](https://mods.factorio.com/user/Kiplacon)
-
-If combat in Factorio is too bland for you these days and you want to summon the essence of Major League Gaming montages, with all their dubstep-rich glory and dank memes (and some expletives) look no further. [This mod delivers](https://mods.factorio.com/mod/MLG_FactOreo). You can craft a sniper rifle for your no-scope pwnage and also craft meme magazines to deal some aptly named "dank damage" with any bullet-firing weapon, including turrets and cars. 
+If combat in Factorio is too bland for you these days and you want to summon the essence of Major League Gaming montages, with all their dubstep-rich glory and dank memes (and some expletives) look no further. This mod delivers. You can craft a sniper rifle for your no-scope pwnage and also craft meme magazines to deal some aptly named "dank damage" with any bullet-firing weapon, including turrets and cars. 
 
 *<video: Kiplacon: MLG.mp4>*
 
 
 
-**Train Gun**
+[**Train Gun**](https://mods.factorio.com/mod/traingun) 	*Twu.4.25*
 
-by [Twu.4.25](https://mods.factorio.com/user/Twu.4.25)
-
-Alright, perhaps you are more interested in a weapon that is more... Factorio-style. We all know that the ultimate killer in the game is no mere biter, but the mighty train! Armed with this knowledge, [this mod](https://mods.factorio.com/mod/traingun) delivers the crazy lategame superweapon that is the train gun. Unlocked after nuclear missiles, this powerful gun launches nuclear-fueled locomotives that furiously spin and tear through hoardes of enemies and rocks alike, before exploding magnificently! 
+Alright, perhaps you are more interested in a weapon that is more... Factorio-style. We all know that the ultimate killer in the game is no mere biter, but the mighty train! Armed with this knowledge, this mod delivers the crazy lategame superweapon that is the train gun. Unlocked after nuclear missiles, this powerful gun launches nuclear-fueled locomotives that furiously spin and tear through hoardes of enemies and rocks alike, before exploding magnificently! 
 
 *<video: Firing the gun on enemies> (not done)*
 
 
 
-### Wonka Level Logistics: Renai Transportation
-
-by [Kiplacon](https://mods.factorio.com/user/Kiplacon)
+### Wonka Level Logistics:  [**Renai Transportation**](https://mods.factorio.com/mod/RenaiTransportation) 	*Kiplacon*
 
 
 
-And for last on this mod list we have saved the largest and most imaginative. This [amazing mod](https://mods.factorio.com/mod/RenaiTransportation) introduces a whole **world** of new transportation options that can liven up your factory with so much air time.
+And for last on this mod list we have saved the largest and most imaginative. This amazing mod introduces a whole **world** of new transportation options that can liven up your factory with so much air time.
 
 
 
