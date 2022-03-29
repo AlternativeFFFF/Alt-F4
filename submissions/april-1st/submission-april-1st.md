@@ -14,7 +14,7 @@ On the special occasion of Friday April 1st, we are proud to present some humoro
 
 ### Sights and Sounds
 
-The mod portal features quite a few mods small and large that offer changes to visuals and/or audio. Here is a fun selection:
+The mod portal features quite a few mods, small and large, that offer visual and/or auditory changes. Here is a fun selection:
 
 
 
