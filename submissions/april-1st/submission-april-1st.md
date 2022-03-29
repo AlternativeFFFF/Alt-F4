@@ -1,6 +1,6 @@
 # April 1st Mod Feature
 
-(v 1.4)
+(v 1.5)
 
 
 
@@ -20,7 +20,7 @@ The mod portal features quite a few mods small and large that offer changes to v
 
 **[Emotes and Speech Bubbles](https://mods.factorio.com/mod/EmotesAndSpeechBubbles)** 	*Kiplacon*
 
-This handy mod makes multiplayer interactions a lot livelier, especially when you can't use a mic. Your text in chat also appears over your head. This is already more immersive but the best part is the emotes it provides. The emote menu is opened by clicking the middle mouse button (and customized by right-clicking them). The mod helps enhance your fun and funny moments: There are emotes for partying, coordinating, and of course pressing "F" or declaring "rekt!" when your friend gets hit by a train. 
+This handy mod makes multiplayer interactions a lot livelier, especially when you can't use a mic. Your text in chat also appears over your head. This is already more immersive than following the console output but the even better feature is the ability to use emotes. The emotes are selected by clicking the middle mouse button to open the emote hotbar and left-clicking to show. Right-clicking an emote on the hotbar lets you switch it with another from the full library. The mod helps enhance your fun and funny moments: You can point left/right at directions or places of interest. You can vibe with emotes for partying. You can boast or praise big-brain moments with the matching emote or display that you are thinking. And of course, you can "press F" or declare "rekt!" when your friend gets hit by a train! 
 
 *<Video: Kiplacon: Emotes.mp4>*
 
@@ -46,7 +46,7 @@ He's back and he means business! This mod retextures your character as Shrek, an
 
 [**Bumble Bots**](https://mods.factorio.com/mod/bumble-bots) 	*Maxreader*
 
-If you ever thought about your bots doing everything for you as your little worker bees, here is the mod that makes it literal! The mod retextures and resounds combat robots, construction and logistic robots, roboports and logistic chests. The organic structures (especially flowers) among the machines makes an interesing mix.
+If you ever thought about your bots doing everything for you as your little worker bees, here is the mod that makes it literal! The mod retextures and resounds combat robots, construction and logistic robots, roboports and logistic chests. The organic structures (especially flowers) among the machines makes an interesing environment for your busy bees to buzz.
 
 *<video: logistic bees> (we can reuse part of an older video)*
 
@@ -84,7 +84,7 @@ Did your car/tank just crash into rock? Yeah it sucks. This sound mod lets the e
 
 **More sound mods**
 
-There are many more little sound mods out there that are specific references. For example, Command & Conquer fans might like this pack of [Red Alert sounds](https://mods.factorio.com/mod/Command_and_Conquer_RedAlert_Sounds) for programmable speakers and viewers of Trupen might enjoy a custom [rock mining](https://mods.factorio.com/mod/TrupenRocks) sound.
+There are many more little sound mods out there. For example, Command & Conquer fans might like this pack of [Red Alert sounds](https://mods.factorio.com/mod/Command_and_Conquer_RedAlert_Sounds) for programmable speakers, while [another mod](https://mods.factorio.com/mod/Rick_Roll_mod) lets you [do this](https://youtu.be/dQw4w9WgXcQ) with speakers. Among the more specific mods, there is one [playing the Thomas the Tank Engine theme](https://mods.factorio.com/mod/thomas-the-tank-engine) when you get hit by a train, while viewers of Trupen might enjoy a custom [rock mining sound](https://mods.factorio.com/mod/TrupenRocks).
 
 
 
@@ -96,7 +96,7 @@ There are many more little sound mods out there that are specific references. Fo
 
 [**MLG FactOreo**](https://mods.factorio.com/mod/MLG_FactOreo) 	*Kiplacon*
 
-If combat in Factorio is too bland for you these days and you want to summon the essence of Major League Gaming montages, with all their dubstep-rich glory and dank memes (and some expletives) look no further. This mod delivers. You can craft a sniper rifle for your no-scope pwnage and also craft meme magazines to deal some aptly named "dank damage" with any bullet-firing weapon, including turrets and cars. 
+If combat in Factorio is too bland for you these days and you want to summon the essence of Major League Gaming montages, with all their dubstep-rich glory and dank memes (and some expletives) look no further. This mod delivers. You can craft a sniper rifle for your 360-no-scopepwnage of them noobs. And don't forget to craft meme magazines to deal some aptly named "[dank damage](https://youtu.be/dQw4w9WgXcQ)" with any bullet-firing weapon, including turrets and cars. 
 
 *<video: Kiplacon: MLG.mp4>*
 
@@ -104,17 +104,19 @@ If combat in Factorio is too bland for you these days and you want to summon the
 
 [**Train Gun**](https://mods.factorio.com/mod/traingun) 	*Twu.4.25*
 
-Alright, perhaps you are more interested in a weapon that is more... Factorio-style. We all know that the ultimate killer in the game is no mere biter, but the mighty train! Armed with this knowledge, this mod delivers the crazy lategame superweapon that is the train gun. Unlocked after nuclear missiles, this powerful gun launches nuclear-fueled locomotives that furiously spin and tear through hoardes of enemies and rocks alike, before exploding magnificently! 
+Alright, perhaps you are more interested in a weapon that is more... Factorio-style. We all know that the ultimate killer in the game is no mere biter, but the mighty train! Armed with this knowledge, this mod delivers the crazy lategame superweapon that is the train gun. Unlocked after nuclear missiles, this powerful gun launches nuclear-fueled locomotives that furiously spin and tear through hoardes of enemies and rocks alike, before exploding magnificently! Choo choo!
 
 *<video: Firing the gun on enemies> (not done)*
 
 
 
-### Wonka Level Logistics:  [**Renai Transportation**](https://mods.factorio.com/mod/RenaiTransportation) 	*Kiplacon*
+### Wonka Level Logistics: 
 
+####  [**Renai Transportation**](https://mods.factorio.com/mod/RenaiTransportation) 	*Kiplacon*
 
+And for last on this mod list we have saved the largest and most imaginative. This amazing mod introduces a whole **world** of new transportation options that can liven up your factory by making just about everything fly through the air! While the mod is chaotic, the additions are also highly practical and you can make cool bases with them, like '[The Dolphin base](https://www.reddit.com/r/factorio/comments/mhrj7v/the_dolphin_base_renai_transportation_one_rail/)' made by famed creator of [JOSEF](https://alt-f4.blog/ALTF4-39/), or this smelting setup that is described by its designer as "[Air speghetti](https://www.youtube.com/watch?v=vZOnYDQOXKU&ab_channel=Shrimp%26EelCo-OpGaming)".
 
-And for last on this mod list we have saved the largest and most imaginative. This amazing mod introduces a whole **world** of new transportation options that can liven up your factory with so much air time.
+Let's look at the mod's features individually:
 
 
 
