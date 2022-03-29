@@ -156,7 +156,7 @@ If flying isn't your thing, you can instead take a cable car that you can run on
 
 **Flying trains!**
 
-The mod gets even your trains airborn using ramps and has bouncepads for them too! Admitedly, it is a little hard to precisely set up the ramps but the electrically powered magnetic ramps offer a stable alternative. Factorio doesn't need bridges or train tunnels after all!
+The mod even gets your trains airborne using ramps and bounce pads! Admittedly it is a little hard to precisely set up the ramps, but the electrically powered magnetic ramps offer a stable alternative. Factorio doesn't need bridges or train tunnels after all!
 
 
 
