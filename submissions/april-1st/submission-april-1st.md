@@ -38,7 +38,7 @@ Science is the heart of progress, but via this little mod, it is also the life o
 
 [**Shrek**](https://mods.factorio.com/mod/shrek) 	*jerzygorski*
 
-He's back and he means business! This mod retextures your character as Shrek, and proves that he can do rocket science just like how he can rescue the princess! He mines with his fists and he has his own armor and weapon texture too, perfect for getting those pesky bugs out of your swamp planet!
+This mod retextures your character as Shrek, and shows that against all norms and expectations he can do rocket science, just like how he could rescue the princess! He mines with his fists and has his own armor and weapon texture too, perfect for getting those pesky bugs out of your swamp!
 
 *<video: shrek mining (not done> (not done)*
 
