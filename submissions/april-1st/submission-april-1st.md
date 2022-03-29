@@ -8,7 +8,7 @@
 
 
 
-On the special occasion of Friday April 1st, we are proud to present some humorous picks from Factorio's vast modding scene. We will start with mods that only change visuals or audio to add some unique flavors to your eningeering experiences. Afterwards, we look at some crazy new weapons that spice up combat. Finally, we feature a mod with a level of transportation pizzaz that Willy Wonka himself would be proud of.
+On the special occasion of Friday April 1st, we are proud to present some humorous picks from Factorio's vast modding scene. We will start with mods that only change visuals or audio to add some unique flavors to your eningeering experiences. Afterwards, we look at some crazy new weapons that spice up combat. Finally, we feature a mod with a level of transportation pizzazz that Willy Wonka himself would be proud of.
 
 
 
