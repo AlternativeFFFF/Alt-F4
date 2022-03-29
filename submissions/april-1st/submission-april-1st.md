@@ -22,7 +22,7 @@ The mod portal features quite a few mods, small and large, that offer visual and
 
 This handy mod makes multiplayer interactions a lot livelier, especially when you can't use a microphone. Messages you send in chat and emotes you use will appear over your head and will be visible to other players! 
 
-The emotes are displayed by clicking the middle mouse button to open the emote hotbar and left-clicking one to show it. Right-clicking an emote on the hotbar lets you switch it with another from the full library. The mod helps enhance your fun and funny moments: You can point left/right at directions to explore or places of interest. You can vibe with emotes for partying. You can display when you are thinking and boast or praise big-brain moments with the matching emote. And of course, you can "press F" or declare "rekt!" when your friend gets hit by a train! 
+The emotes are displayed by clicking the middle mouse button to open the emote hotbar and left-clicking one to show it. Right-clicking an emote on the hotbar lets you switch it with another from the full library. The mod helps enhance your fun and funny moments: You can point left/right at directions to explore or places of interest. You can vibe with emotes for partying. You can display when you are thinking and boast or praise big-brain moments with the matching emote. And, of course, you can "press F" or declare "rekt!" when your friend gets hit by a train! 
 
 *<Video: Kiplacon: Emotes.mp4>*
 
