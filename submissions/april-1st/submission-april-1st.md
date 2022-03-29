@@ -178,7 +178,7 @@ The mod has also found the trick to the fastest way of emptying your trains: Sla
 
 ### And more mods!
 
-Today we provided an overview of many of the humorous mods on the mod portal, but there more out there and new ones emerging as time goes on. You may ask "how did these come to be?" but we barely scratched the surface. The possibilities are endless when it comes to modding, offering you both the coolest ideas, and the weirdest, as demonstrated by the aptly named modpack [Whyyy](https://mods.factorio.com/mod/Whyyy-modpack/downloads). Many thanks to our modding community who have (and continue to) come up with such colorful additions to Factorio! 
+Today we provided an overview of many of the humorous mods on the mod portal, but there are more out there and new ones are emerging as time goes on. You may ask "How did these come to be?", but we barely scratched the surface. The possibilities are endless when it comes to modding, offering you both the coolest ideas, and the weirdest, as demonstrated by the aptly named modpack [Whyyy](https://mods.factorio.com/mod/Whyyy-modpack/downloads). Many thanks to our modding community who have (and continue to) come up with such colorful additions to Factorio! 
 
 
 
