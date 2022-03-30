@@ -1,6 +1,6 @@
 # April 1st Mod Feature
 
-(v 1.5)
+(v 1.6)
 
 
 
@@ -24,7 +24,7 @@ This handy mod makes multiplayer interactions a lot livelier, especially when yo
 
 The emotes are displayed by clicking the middle mouse button to open the emote hotbar and left-clicking one to show it. Right-clicking an emote on the hotbar lets you switch it with another from the full library. The mod helps enhance your fun and funny moments: You can point left/right at directions to explore or places of interest. You can vibe with emotes for partying. You can display when you are thinking and boast or praise big-brain moments with the matching emote. And, of course, you can "press F" or declare "rekt!" when your friend gets hit by a train! 
 
-*<Video: Kiplacon: Emotes.mp4>*
+*<Video: Emotes.mp4>*
 
 
 
@@ -32,7 +32,7 @@ The emotes are displayed by clicking the middle mouse button to open the emote h
 
 Science is the heart of progress, but via this little mod, it is also the life of the party! It makes research labs light up with the colors of whichever science packs they are consuming. Excellent for sprucing up your [AFK Zone Discos](https://www.reddit.com/r/factorio/comments/sl4z1v/time_honored_tradition_when_a_player_is_afk_you/)! If you want to go further and add faint music to your disco domes, there is [this other mod](https://mods.factorio.com/mod/LabDansen/metrics).
 
-*<Video: disco science>  (not done)*
+*<Video: disco-science.mp4>*
 
 
 
@@ -40,9 +40,11 @@ Science is the heart of progress, but via this little mod, it is also the life o
 
 This mod retextures your character as Shrek, and shows that against all norms and expectations he can do rocket science, just like how he could rescue the princess! He mines with his fists and has his own armor and weapon texture too, perfect for getting those pesky bugs out of your swamp!
 
-*<video: shrek mining (not done> (not done)*
+*<video: shrek drones.mp4>*
 
-*<video: shrek in armor + shooting> (not done)*
+*<Caption: Shrek mod + [Mining Drones](https://mods.factorio.com/mod/Mining_Drones) mod = this magnificent scene>*
+
+*<video: shrek-battle.mp4>*
 
 
 
@@ -50,9 +52,9 @@ This mod retextures your character as Shrek, and shows that against all norms an
 
 If you ever thought of your bots as your little worker bees, here is a mod making that literal! The mod replaces the textures and sounds of combat robots, construction and logistic robots, roboports, and logistic chests. The organic structures (especially flowers) among the machines make for an interesting environment for your busy bees to buzz in.
 
-*<video: logistic bees> (we can reuse part of an older video)*
+*<video: https://alt-f4.blog/ALTF4-35/#mod-spotlight-hall-of-fame-conor_ >*
 
-*<video: defender wasps> (not done, maybe skip)*
+*<Note: We need to crop the video and keep only the first 5 seconds!>*
 
 
 
@@ -60,11 +62,9 @@ If you ever thought of your bots as your little worker bees, here is a mod makin
 
 Sushi belt fans, this mod gives you the means to truly flex your skills! It also refreshing for those tired of eating only raw fish! The menu has 6 sushi and 6 maki types. Each can be crafted from one raw fish and has the same properties as it, apart from the enhanced taste. Bon appetit!
 
-*<video: sushi on a belt> (not done)*
+*<Image: sushi-mod-page-image.png>*
 
-*OR*
-
-*<image: from mod page>*
+*<Caption: Now **that** is a sushi belt! Image credit: [Sushi Mod page](https://mods.factorio.com/mod/sushi)>*
 
 
 
@@ -72,7 +72,7 @@ Sushi belt fans, this mod gives you the means to truly flex your skills! It also
 
 This sound mod allows you to customize a number of sounds, in particular character deaths. Yes, death in Factorio is usually a tragedy, but you can make it more comedic! Got hit by a train? Hear it honk! Killed by another player? Why not set that to the classic [Wilhelm Scream](https://www.youtube.com/watch?v=r6JK-gRELI0&ab_channel=GamingSoundFX)? You can also customize sounds for a few other events like starting/completing research, launching a rocket, or players entering/exiting a game. The sound library of this mod borrows from Doom and Quake, among some other places. If you like this mod, along the same lines is one for [pain sounds](https://mods.factorio.com/mod/pain) which are selected from Doom or your custom sound pack.
 
-*<image: screenshot of mod options in 1.1> (not done)*
+*<Image: 1000-sounds-options.png>*
 
 
 
@@ -80,9 +80,9 @@ This sound mod allows you to customize a number of sounds, in particular charact
 
 Did your car/tank just crash into a rock again? Yeah, that sucks. This sound mod lets the engineer express his opinion about it very clearly (sometimes with expletives). It definitely captures the feeling of the moment, often comedically well!
 
-*<image: crashed car ? > (not done)*
+*<image: choleric-cars-angry-emote.png>*
 
-
+*<Caption: We've all been there, eh? The emote is from Emotes and Speech Bubbles (listed above).>*
 
 **More sound mods**
 
@@ -100,7 +100,7 @@ You have many options for combat in vanilla Factorio, but there are also many mo
 
 If combat in Factorio is too bland for you these days and you want to summon the essence of Major League Gaming montages, with all their dubstep-rich glory and dank memes (and some expletives), look no further. This mod delivers. You can craft a sniper rifle for your 360 no-scope pwnage of them noobs. And don't forget to craft meme magazines to deal some aptly named "[dank damage](https://youtu.be/dQw4w9WgXcQ)" with any bullet-firing weapon, including turrets and cars. 
 
-*<video: Kiplacon: MLG.mp4>*
+*<video: MLG.mp4>*
 
 
 
@@ -108,7 +108,7 @@ If combat in Factorio is too bland for you these days and you want to summon the
 
 Alright, perhaps you are more interested in a weapon that is more... Factorio-style. We all know that the ultimate killer in the game is no mere biter, but the mighty train! Armed with this knowledge, this mod delivers the formidable late-game superweapon that is the train gun. Unlocked after nuclear missiles, this powerful gun launches nuclear-fueled locomotives that furiously spin and tear through hoards of enemies and rows of machines alike, before exploding magnificently! Choo choo!
 
-*<video: Firing the gun on enemies> (not done)*
+*<video: "train - biters.mp4">*
 
 
 
@@ -126,7 +126,7 @@ Let's look at the mod's features individually:
 
 Renai Transportation makes you ask: Why deal with bots or belts when you can just let the inserters throw the items where they need to go? It introduces thrower inserters that can toss items with precion into open chests that are ready to receive them. You can also "~~blow~~ install openings onto things" via hatches so that you have direct insertion to machines from a distance!
 
-*<video: Kiplacon: Throwing.mp4>*
+*<video: Throwing.mp4>*
 
 
 
@@ -134,7 +134,7 @@ Renai Transportation makes you ask: Why deal with bots or belts when you can jus
 
 The mod doesn't stop at items, also featuring player launchers as a new means of fast travel. Watch where you land, though!
 
-*<video: Kiplacon: player jump.mp4>*
+*<video: player jump.mp4>*
 
 
 
@@ -142,7 +142,7 @@ The mod doesn't stop at items, also featuring player launchers as a new means of
 
 The flight doesn't have to end with one toss, as the mod has all kinds of bounce pads: For both players and items they can extend jumps or change the bounce direction. Some bounce pads can send circuit signals or be set to distribute items across areas. Some items can also be primed on a special bounce pad, allowing things like inserter-thrown grenades or defender capsules!
 
-*<video: Kiplacon: bounces.mp4>*
+*<video: bounces.mp4>*
 
 
 
@@ -150,7 +150,7 @@ The flight doesn't have to end with one toss, as the mod has all kinds of bounce
 
 If being flung across your factory isn't your thing, you can instead take a zipline trolley that runs along your power lines, zooming above your factory!
 
-*<video: Kiplacon: zipline.mp4>*
+*<video: zipline.mp4>*
 
 
 
@@ -160,7 +160,7 @@ The mod even gets your trains airborne using ramps and bounce pads! Admittedly i
 
 
 
-*<video: Kiplacon: train.mp4>*
+*<video: train.mp4>*
 
 
 
@@ -170,7 +170,7 @@ The mod has also found the fastest way of emptying your trains: Slam them straig
 
 
 
-*<video: Kiplacon: impact.mp4>*
+*<video: impact.mp4>*
 
 
 
