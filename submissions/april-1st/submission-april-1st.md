@@ -1,10 +1,20 @@
 # April 1st Mod Feature
 
-(v 1.6)
+(v 1.6, Written by *Sir Fendi*, assisted by *Kiplacon*, *pocarski*, edited by *stringweasel, MyNameIsTrez, Conor_*)
 
 
 
-## Working title: Funny Factorio Fan Formulations
+(Visuals set 1:  https://drive.google.com/drive/folders/12WWaokZtGPC8nMt1KRvjMNctMvs6EUxj?usp=sharing )
+
+(Visuals set 2: https://drive.google.com/drive/folders/1_Kzmk_mp7NBOlCp3QNmkrs3CSf4yjdhh?usp=sharing )
+
+(Other visual location: https://alt-f4.blog/ALTF4-35/#mod-spotlight-hall-of-fame-conor_)
+
+(Visuals sets are a little mixed due to different authors)
+
+(Working title below)
+
+## Funny Factorio Fan Formulations
 
 
 
@@ -54,7 +64,7 @@ If you ever thought of your bots as your little worker bees, here is a mod makin
 
 *<video: https://alt-f4.blog/ALTF4-35/#mod-spotlight-hall-of-fame-conor_ >*
 
-*<Note: We need to crop the video and keep only the first 5 seconds!>*
+*<Note: We need to crop the video and keep only the first 5 seconds with the bees!>*
 
 
 
