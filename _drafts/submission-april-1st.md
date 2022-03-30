@@ -14,21 +14,21 @@ This handy mod makes multiplayer interactions a lot livelier, especially when yo
 
 The emotes are displayed by clicking the middle mouse button to open the emote hotbar and left-clicking one to show it. Right-clicking an emote on the hotbar lets you switch it with another from the full library. The mod helps enhance your fun and funny moments: You can point left/right at directions to explore or places of interest. You can vibe with emotes for partying. You can display when you are thinking and boast or praise big-brain moments with the matching emote. And, of course, you can "press F" or declare "rekt!" when your friend gets hit by a train! 
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/emotes.mp4' alt='Emotes and Speech Bubbles mod demo' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/emotes.mp4' alt='Emotes and Speech Bubbles mod demo' width='1000px' %}
 
 ### [Disco Science](https://mods.factorio.com/mod/DiscoScience) 	*danielbrauer*
 
 Science is the heart of progress, but via this little mod, it is also the life of the party! It makes research labs light up with the colors of whichever science packs they are consuming. Excellent for sprucing up your [AFK Zone Discos](https://www.reddit.com/r/factorio/comments/sl4z1v/time_honored_tradition_when_a_player_is_afk_you/)! If you want to go further and add faint music to your disco domes, there is [this other mod](https://mods.factorio.com/mod/LabDansen/metrics).
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/disco-science.mp4' alt='Make your own disco using labs!' width='1920px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/disco-science.mp4' alt='Make your own disco using labs!' width='1000px' %}
 
 ### [Shrek](https://mods.factorio.com/mod/shrek) 	*jerzygorski*
 
 This mod retextures your character as Shrek, and shows that against all norms and expectations he can do rocket science, just like how he could rescue the princess! He mines with his fists and has his own armor and weapon texture too, perfect for getting those pesky bugs out of your swamp!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/shrek-drones.mp4' alt='Shrek mod + Mining Drones mod demo' width='1394px' caption='Shrek mod + <a href="https://mods.factorio.com/mod/Mining_Drones">Mining Drones</a> mod = this magnificent scene.' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/shrek-drones.mp4' alt='Shrek mod + Mining Drones mod demo' width='1000px' caption='Shrek mod + <a href="https://mods.factorio.com/mod/Mining_Drones">Mining Drones</a> mod = this magnificent scene.' %}
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/shrek-battle.mp4' alt='Shrek mod combat demo' width='1394px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/shrek-battle.mp4' alt='Shrek mod combat demo' width='1000px' %}
 
 ### [Bumble Bots](https://mods.factorio.com/mod/bumble-bots) 	*Maxreader*
 
@@ -64,13 +64,13 @@ You have many options for combat in vanilla Factorio, but there are also many mo
 
 If combat in Factorio is too bland for you these days and you want to summon the essence of Major League Gaming montages, with all their dubstep-rich glory and dank memes (and some expletives), look no further. This mod delivers. You can craft a sniper rifle for your 360 no-scope pwnage of them noobs. And don't forget to craft meme magazines to deal some aptly named "[dank damage](https://youtu.be/dQw4w9WgXcQ)" with any bullet-firing weapon, including turrets and cars. 
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/MLG.mp4' alt='MLG FactOreo mod demo' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/MLG.mp4' alt='MLG FactOreo mod demo' width='1000px' %}
 
 ### [Train Gun](https://mods.factorio.com/mod/traingun) 	*Twu.4.25*
 
 Alright, perhaps you are more interested in a weapon that is more... Factorio-style. We all know that the ultimate killer in the game is no mere biter, but the mighty train! Armed with this knowledge, this mod delivers the formidable late-game superweapon that is the train gun. Unlocked after nuclear missiles, this powerful gun launches nuclear-fueled locomotives that furiously spin and tear through hoards of enemies and rows of machines alike, before exploding magnificently! Choo choo!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/train-biters.mp4' alt='Train gun mod demo' width='1058px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/train-biters.mp4' alt='Train gun mod demo' width='1000px' %}
 
 ## Wonka Level Logistics: 
 
@@ -84,37 +84,37 @@ Let's look at the mod's features individually:
 
 Renai Transportation makes you ask: Why deal with bots or belts when you can just let the inserters throw the items where they need to go? It introduces thrower inserters that can toss items with precion into open chests that are ready to receive them. You can also "~~blow~~ install openings onto things" via hatches so that you have direct insertion to machines from a distance!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/throwing.mp4' alt='Renai transportation mod demo - throwing items' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/throwing.mp4' alt='Renai transportation mod demo - throwing items' width='1000px' %}
 
 **Flying you!**
 
 The mod doesn't stop at items, also featuring player launchers as a new means of fast travel. Watch where you land, though!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/player-jump.mp4' alt='Renai transportation mod demo - player jumps' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/player-jump.mp4' alt='Renai transportation mod demo - player jumps' width='1000px' %}
 
 **Bouncing too!**
 
 The flight doesn't have to end with one toss, as the mod has all kinds of bounce pads: For both players and items they can extend jumps or change the bounce direction. Some bounce pads can send circuit signals or be set to distribute items across areas. Some items can also be primed on a special bounce pad, allowing things like inserter-thrown grenades or defender capsules!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/bounces.mp4' alt='Renai transportation mod demo - bounce pads' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/bounces.mp4' alt='Renai transportation mod demo - bounce pads' width='1000px' %}
 
 **Ride the lightning!**
 
 If being flung across your factory isn't your thing, you can instead take a zipline trolley that runs along your power lines, zooming above your factory!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/zipline.mp4' alt='Renai transportation mod demo - ziplining' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/zipline.mp4' alt='Renai transportation mod demo - ziplining' width='1000px' %}
 
 **Flying trains!**
 
 The mod even gets your trains airborne using ramps and bounce pads! Admittedly it is a little hard to precisely set up the ramps, but the electrically powered magnetic ramps offer a stable alternative. Factorio doesn't need bridges or train tunnels after all!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/train.mp4' alt='Renai transportation mod demo - train ramps' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/train.mp4' alt='Renai transportation mod demo - train ramps' width='1000px' %}
 
 **Instant train unloading!**
 
 The mod has also found the fastest way of emptying your trains: Slam them straight into a concrete "unloader" block and let the items fly directly onto the belts... genius!
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/impact.mp4' alt='Renai transportation mod demo - impactor unloading' width='1280px' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/impact.mp4' alt='Renai transportation mod demo - impactor unloading' width='1000px' %}
 
 ## And more mods!
 
