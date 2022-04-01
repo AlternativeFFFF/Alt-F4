@@ -18,7 +18,7 @@ The emotes are displayed by clicking the middle mouse button to open the emote h
 
 ### [Disco Science](https://mods.factorio.com/mod/DiscoScience) 	*danielbrauer*
 
-Science is the heart of progress, but via this little mod, it is also the life of the party! It makes research labs light up with the colors of whichever science packs they are consuming. Excellent for sprucing up your [AFK Zone Discos](https://www.reddit.com/r/factorio/comments/sl4z1v/time_honored_tradition_when_a_player_is_afk_you/)! If you want to go further and add faint music to your disco domes, there is [this other mod](https://mods.factorio.com/mod/LabDansen/metrics).
+Science is the heart of progress, but via this little mod, it is also the life of the party! It makes research labs light up with the colors of whichever science packs they are consuming. Excellent for sprucing up your [AFK Zone Discos](https://www.reddit.com/r/factorio/comments/sl4z1v/time_honored_tradition_when_a_player_is_afk_you/)! If you want to go further and add faint music to your disco domes, there is [this other mod](https://mods.factorio.com/mod/LabDansen).
 
 {% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/disco-science.mp4' alt='Make your own disco using labs!' width='1000px' %}
 
