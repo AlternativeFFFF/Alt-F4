@@ -82,7 +82,7 @@ Let's look at the mod's features individually:
 
 **Flying items!**
 
-Renai Transportation makes you ask: Why deal with bots or belts when you can just let the inserters throw the items where they need to go? It introduces thrower inserters that can toss items with precion into open chests that are ready to receive them. You can also "~~blow~~ install openings onto things" via hatches so that you have direct insertion to machines from a distance!
+Renai Transportation makes you ask: Why deal with bots or belts when you can just let the inserters throw the items where they need to go? It introduces thrower inserters that can toss items with precision into open chests that are ready to receive them. You can also "~~blow~~ install openings onto things" via hatches so that you have direct insertion to machines from a distance!
 
 {% include video.html mp4='https://media.alt-f4.blog/ALTF4/58/throwing.mp4' alt='Renai transportation mod demo - throwing items' width='1000px' %}
 
