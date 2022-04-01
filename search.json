@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "For no special reason, on this particular Friday, Sir Fendi took it upon himself to highlight up a few humorous mods that might not be useful, but sure are fun. We’ll will start with mods that only change visuals or audio to add some unique flavors to your eningeering experiences. Afterwards, we’ll look at some crazy new weapons that spice up the way you do combat. Finally, there’s a mod with a level of transportation pizzazz that Willy Wonka himself would be proud of. Silliness is guaranteed!",
+      "image_alt"      : "Shrek on a train",
+      "url"        : "/ALTF4-58/",
+      "title"      : "Alt-F4 #58 - Mods for Your Swamp",
+      "image_src"      : "/assets/ALTF4/58/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "",
+      "author"     : "Sir Fendi, Kiplacon, pocarski",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "2022-04-01"
+    },
+    {
       "content"    : "Another week, another Alt-F4 …? I guess we’ve been away for a while. It’s totally because we didn’t want to steal the spotlight from the FFF, which returned this year! Either way, let’s stop distracting from the great piece we do have this week: First-time contributor Sir Fendi wrote a very detailed piece on nuclear power in Factorio. It sometimes seems like the red-headed stepchild of power generation, but as Sir Fendi explains, there’s a lot of fun and efficiency to be had with it!",
       "image_alt"      : "The engineer looking at blueprints for a nuclear reactor",
       "url"        : "/ALTF4-57/",

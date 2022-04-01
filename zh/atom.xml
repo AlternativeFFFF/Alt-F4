@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-03-05T14:06:44+00:00</updated>
+  <updated>2022-04-01T10:21:54+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #58 - Mods for Your Swamp</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-58/" />
+    <id>https://alt-f4.blog/ALTF4-58</id>
+    <updated>2022-04-01T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For no special reason, on this particular Friday, &lt;em&gt;Sir Fendi&lt;/em&gt; took it upon himself to highlight up a few humorous mods that might not be useful, but sure are fun. We’ll will start with mods that only change visuals or audio to add some unique flavors to your eningeering experiences....</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-49</id>
     <updated>2021-10-15T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在非自愿的两周休假之后（请务必加入我们的 &lt;a href=&quot;https://alt-f4.blog/discord&quot;&gt;Discord&lt;/a&gt;，贡献你的精彩文章&lt;em&gt;暗示性的点头&lt;/em&gt;），Alt-F4 带着第 49 期回来了！实际上本周是两个回归，因为 &lt;em&gt;Dysoch&lt;/em&gt; 也回来谈论 Dyworld，这次是关于发布派对和幕后乐趣。&lt;/p&gt; &lt;h2 id=&quot;dyworld-dynamicss-公测-dysoch&quot;&gt;DyWorld-Dynamics’s 公测 &lt;author&gt;Dysoch&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我在上一篇 &lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-43/#dyworld-dynamics-%E5%8F%8A%E5%85%B6%E5%8E%86%E5%8F%B2-dysoch&quot;&gt;Alt-F4 文章&lt;/a&gt;中谈到了 DyWorld 的 Beta 测试和发布。从那时算起我的测试员完成了相当多的工作。挑出了很多 Bug；太空探索搞砸了一些新玩意儿（之后又修好了），增加了一些新功能，等等。我创建了一个新 Mod，DyCore，用于所有即将到来的 DyWorld Mod 的新核心 Mod。到最后，所有与故事有关的内容都将移到那里，允许其他 Mod 作者来创建他们自己的故事元素。&lt;/p&gt; &lt;p&gt;好了，现在得讲讲那个一直不愿提起的问题。“发布时间？”鉴于创作这个 Mod 所消耗的时间和它目前的状态，我觉得它不应该再处于封闭测试阶段。因此，我决定采用新的路线：&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/49/DyWorld3.jpg&quot; alt=&quot;Red Circuit 直播活动！&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;&lt;a...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #48 - Angel 的自动化单元测试</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-48/" />
-    <id>https://alt-f4.blog/ALTF4-48</id>
-    <updated>2021-09-24T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;时隔很久，一位名叫 &lt;em&gt;Lovely_Santa&lt;/em&gt; 的远古撰稿人又回到了他的笔下！上一次听到这位主人公的消息要追溯到&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-2/&quot;&gt;第 2 期&lt;/a&gt;，当时他正在试验（彼时）最新的蜘蛛机甲的 Mod 能力。而这一次，他真的继续了 Angel Mod 的主题，同时写了一些完全不同的东西……&lt;/p&gt; &lt;h2 id=&quot;自动化-mod-测试的一次成功尝试--lovely_santa&quot;&gt;自动化 Mod 测试的一次成功尝试 &lt;author&gt;Lovely_Santa&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;在给你讲一个如何自动化创建异星工厂 Mod 中无聊部分的故事之前，我必须先回到起点……很久很久以前——不对，我得从 2019 年年底的某个时候开始。我指的不是众所周知的 COVID-19 开始传播的故事，而是 &lt;em&gt;Arch666Angel&lt;/em&gt; 退出他那知名的 &lt;a href=&quot;https://mods.factorio.com/user/Arch666Angel&quot;&gt;Angel’s mod&lt;/a&gt; 工作的悲伤故事。这是由于他现实生活中变化造成的。我不想费力解释所有的细节，但这导致了一些 Mod 作者产生了接管他的项目和遗产的兴趣。&lt;/p&gt; &lt;p&gt;直到 2020 年 1 月 27 日 Arch666Angel 才同意由社区为他的作品作贡献。在商定了所有细则后，他选择了几个人来延续他的 Mod 的愿景，然后我们才向公众通报此事。当时的主要互动是在异星工厂论坛进行的，你仍然可以在那里看到&lt;a href=&quot;https://forums.factorio.com/viewtopic.php?p=475786#p475786&quot;&gt;公告信息&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;在 2020 年 1 月，我们开始迫不及待地将 Mod 从...</content>
   </entry>
   
   
