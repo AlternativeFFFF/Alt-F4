@@ -1,10 +1,10 @@
-# Factorio's Journey r/place
+# r/place: A Factorio lapse of time
 
-The annouce
+Over the past weekend most avid redditors had a momentary lapse of time as the world was caught up in r/place. Hundreds of thousands of people were avidly sitting behind their screen. Masses and masses were excitely waiting for their 5 minute timer to run out so that they could place their next little pixel. They weren't neccesarily excited about the pixel itself though. No, it was about being part of the bigger image. Contributing to the common goal of your community. It was about together achieving something great, and leaving something beautiful behind on the r/place canvas.
 
 ## What is r/place?
 
-Here is a [nice visualization](https://draemm.li/various/place-atlas/) about all the different artworks placed in the first event.
+The annoucement was at ??.  Here is a [nice visualization](https://draemm.li/various/place-atlas/) about all the different artworks placed in the first event.
 
 And here is what we created now!
 
@@ -24,4 +24,18 @@ The time of the great belt-controversy was luckily also the time of new friends.
 
 ![Good relations with r/3Dprinting by adopting Benchy into our blueprint](media/first-blueprint-with-benchy.png)
 
-Soon Benchy was on the belt, and our belt was making it's way around the bottom of our logo... TODO had to replace two gears with circuits where Nano really helped!
+Soon Benchy was on the belt, and our belt was making it's way around the bottom of our logo... 
+
+TODO had to replace two gears with circuits where Nano really helped! This method was used a lot...
+
+## Double or Nothing!
+
+At ?? the canvas unexpectedly doubled. In our community there were suddenly many voices with where to build our next design, and what that design must be.
+
+Mr_George built an aliance with Romania, etc.
+
+DNA attacked our right stronghold from below. The Romanian flag agreed to the DNA being drawn on it, but nobody expected the DNA to reach through our belts.
+
+## Final Thoughts
+
+The Factorio community performed valiantly during the r/place insident. There were many foes around that threatened our well-established area. Trolls, rainbows, hordes of amungus, and even a deady void. But the community stood strong, and importantly built strong alliances with our neighbours by incorporating them into our master blueprint. This allowed us to withstand the test of time, and thus have our monument carved into the halls of time, never to be forgotten. Or at least, until the next r/place or amungos inevitably take over.
