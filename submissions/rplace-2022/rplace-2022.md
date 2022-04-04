@@ -24,7 +24,7 @@ The time of the great belt-controversy was luckily also the time of new friends.
 
 ![Good relations with r/3Dprinting by adopting Benchy into our blueprint](media/first-blueprint-with-benchy.png)
 
-Soon Benchy was on the belt, and our belt was making it's way around the bottom of our logo... 
+Soon Benchy was on the belt, and our belt was making it's way around the bottom of our logo. By this time there was three gears ("Factoriooo"?) and it was decided that two of these gears should be replaced by circuit. Yet again, the unamed reddit troops were veciously defendending the gears, making it impossible to draw ivanjermakov's beautiful circuits over it. Here is were our own Nano stepped in and created a Google Sheet, where everybody chose a pixel (or few) they could place at the signal. As one voice he and SpeckledFleebeedoo screamed charge, and we all placed our loaded pixels simultaniously. And suddenly a fresh green circuit materialized. Success! This method was used quite often from that point forward, for inserters, science packs, even nukes.
 
 TODO had to replace two gears with circuits where Nano really helped! This method was used a lot...
 
@@ -34,7 +34,10 @@ At ?? the canvas unexpectedly doubled. In our community there were suddenly many
 
 Mr_George built an aliance with Romania, etc.
 
-DNA attacked our right stronghold from below. The Romanian flag agreed to the DNA being drawn on it, but nobody expected the DNA to reach through our belts.
+DNA attacked our right stronghold from below. The Romanian flag agreed to the DNA being drawn on it, but nobody expected the DNA to reach through our belts. [The Nut](). There were numerous times when Ecuador our ground, as we became the "[Those with the Nut](https://www.reddit.com/r/ecuador/comments/tw2iam/conquistemos_esa_parte_de_ah%C3%AD_hagan_una_nueva/".
+
+As most of you know, this was not the last time the canvas got bigger. On Sunday, it doubled yet again! Meaning now there were 4 times as much space as there were on Friday. And this time the community was ready with plans. ..... This time around we did end up temporary having quite a salacious neighbour, but it was luckily later replaced by Apex Legends and Mindustry.
+
 
 ## Final Thoughts
 
