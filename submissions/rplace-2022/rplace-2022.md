@@ -64,6 +64,11 @@ Then a Polish streamer (who?) came and decimated the entire area.
 
 ![A mural made by our friends, #100Devs, who was close to us when the Polish flag invaded. It shows ??, ??, ??.... Made by *Trainer_Brendan*](media/100devs-mural.png)
 
+## Thought Mural of Friends and Allies
+
+// Conor, these are all quotes :P
+
+> One of the most interesting things was fighting against our own hivemind for the belts! Several time I tried to change the colors of the belts to dark blue but the hivemind was in protection-mode and kept reverting it back to cyan! - Telokis
 
 ## The Finality of the Anti-Void
 
