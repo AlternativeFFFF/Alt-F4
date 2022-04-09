@@ -91,12 +91,59 @@ the canvas - agenteightysix
 
 > I still think we should have covered the canvas in as many belts as possible - SevenAndAHalf, r/3Dprinting
 
+> Risk of Rain wants to give a MASSIVE thank you to the r/place Factorio community for helping us out tremendously as our allies! We really couldn't have done it without you! - Jaco, Risk of Rain Official r/place Server Owner
+
 ## The Finality of the Anti-Void
 
-In the last moments came the Anti-Void. Nobody expected it..... 
+In the last moments of r/place the Anti-Void came. The colour pallette changed so that only white pixels could be placed.
 
+![Timelapse of final moments]()
 
-the r/place Risk of Rain wants to give a MASSIVE thank you to the r/place Factorio community for helping us out tremendously as our allies! We really couldn't have done it without you!
--Jaco (Server owner of Official Risk of Rain r/place discord server link provided below)
 
 The Factorio community performed valiantly during the r/place insident. There were many foes around that threatened our well-established area. Trolls, rainbows, hordes of amungus, and even a deady void. But the community stood strong, and importantly built strong alliances with our neighbours by incorporating them into our master blueprint. This allowed us to withstand the test of time, and thus have our monument carved into the halls of time, never to be forgotten. Or at least, until the next r/place or amungos inevitably take over.
+
+
+## Appendix - Our Allies
+
+Here follows a list of all our allies and their respective ambassadors. We thank all of these people for working with us, building with us, and battling with us. It was an honour!
+
+| Community         | Ambassador(s) |
+|------------------ |------------|
+| Belgium | redbart, BelgianPixel, AquaBoy |
+| 3D Printing | SevenAndAHalf |
+| Rotchester Institute of Technology | |
+| CSH | HG |
+| PlaceEu | Fabi, Jonah, Treehearth |
+| One Piece | Cameroon |
+| Colombia | Lockrick, Mr_George, Leridon |
+| Mindustry | Valoneu, yaryuya, Meep of faith, BasedUser |
+| Besiege | milk, Titoino |
+| Dwarf fortress | brine909 |
+| Montenegro | spiritthefox |
+| United Art Factions | envy2000 |
+| Peru | Adrian HV |
+| Trackmania | Filegzeug, FalameHorus |
+| #100devs | 54m4n, Crafty |
+| Karlson | cZar Void |
+| Pikmin | jfryk, jame, DreamsFox, Mistophant |
+| Neptune | BistreeYaSpatHochy |
+| Norway | |
+| Romania | Mr_George, Ironic_Onion, Toma |
+| LOTR | Njorsky |
+| Popheads | SevenAndAHalf, mxdanger, Ghostly |
+| Red Devils | robbie |
+| Chara | Ghostly |
+| ACS | EpicExplosivesGuy, OffAndSphere |
+| Dyson Sphere Program | Ludus Machinae, Appw |
+| DuckFace | Brandino |
+| Shapez.io | Burák |
+| Satisfactory | AnnO, KronaSamu |
+| Furry_irl | dowotdashdotdot |
+| Risk of rain | Mr_George, mxdanger, cbhv4321 |
+| Unturned | mathyou, P9nda |
+| r/196 | SevenAndAHalf |
+| Void Spy | hornhonker1, mxdanger, iHouqLF |
+| Ecuador | Mr_George |
+| RIT | Mr_George, CoderMason |
+| DaniDev | CoderMason |    
+| Hytaleinfo | BlitzStrike_ | 
