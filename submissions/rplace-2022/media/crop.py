@@ -1,6 +1,8 @@
 from PIL import Image
 import os.path, sys
 
+# Data from https://place.thatguyalex.com/  
+
 src_path = "C:\\Users\\Rachel\\Downloads\\images_single"
 dst_path = "C:\\Users\\Rachel\\Downloads\\Cropped"
 dirs = os.listdir(src_path)

@@ -4,13 +4,23 @@ Over the past weekend most avid redditors had a momentary lapse of time as the w
 
 ## What is r/place?
 
-The annoucement was at ??.  Here is a [nice visualization](https://draemm.li/various/place-atlas/) about all the different artworks placed in the first event.
+r/place was first seen as a Reddit social experiment for [April Fools](https://www.reddit.com/r/announcements/comments/62mesr/place/) in 2017. It was created by the creator of [Wordle](https://www.nytimes.com/games/wordle/index.html), [Josh Wardle](https://www.powerlanguage.co.uk/). It's consisted of a single 1000x1000 global canvas which users can the individuak change pixel colours off, but only once every 5 to 20 minutes. It was a massive hit, with over 1 million users interacting with it and about 16 million tiles placed! Communities worked together to create beautiful artwork, and sending the most of Reddit into a frenzy. After three days the canvas was frozen, solidifying all the art created.
 
-And here is what we created now!
+![The final product of the first r/place in 2017](media/rplace-2017.jpg)
+
+As most communities, the [r/Factorio](https://www.reddit.com/r/factorio/) community also fought for space on the canvas to show our passion. And our community was strong, even though the game would only be officially released three years later! In the end, one that single canvas, we managed to secure not one, but two locations! One of which was above one of the most famous areas of [The Tragedy of Darth Plagueis The Wise](https://starwars.fandom.com/wiki/The_Tragedy_of_Darth_Plagueis_the_Wise). Most Factorians massively enjoyed this event. Here is a [nice visualization](https://draemm.li/various/place-atlas/) about all the different artworks placed in the first event.
+
+// Conor, this should be a two-piece gallery
+![The first artwork on r/place 2017 with our signature belt and science packs, and an odd looking gear](media/rplace-2017-first.jpg)
+![Our second artwork, which was a more detailed interpretation of the official Factorio logo](media/rplace-2017-second.jpg)
+
+On 28 March 2022, a reboot of r/place was [announced](https://www.reddit.com/r/reddit/comments/tqbf9w/bringing_back_rplace/) for April Fools. What follows is an epic period of excitement, dread, coorporation and defeat. This article is an attempt to capture most of what happened. It was quite a adventure!
 
 ## The Journey
 
-It started with a [thread](https://discord.com/channels/139677590393716737/959132842787487814) in the Factorio Discord on 31 March in preperation for r/place to start. However, nothing happened initially, except showing what Factorio did at the previous event. It was only after a brief discussion in our own Alt-F4 Discord server that the first pixel was placed at `{271,555}` by *stringweasel*. This was then forwarded to the main Discord, and it all started! The reference image was simply the picture of what was used in 2017, but soon *ivanjermakov* stepped up became our dedicated blueprint designer by creating the first blueprint seen below:
+![Timelapse of the our first artwork in r/place 2022](...)
+
+It started with a [thread](https://discord.com/channels/139677590393716737/959132842787487814) by the moderator *SpeckledFleebeedoo* in the Factorio Discord on 31 March in preperation for r/place to start the next day. It was rather quiet, except showing what Factorio did at the previous event. The next, just like 2017, it started with a 1000x1000 canvas and 16 colours. It was time for Factorio to show what it's capable of again! After a brief discussion in our own Alt-F4 Discord server that the first pixel was placed at `{271,555}` by yours truley (*stringweasel* - hi!). The location was forwarded to the Official Discord, and then it all started! There was no official plan yet, so it was decided to write "r/FACTORIO", just like in 2017, except we (I) accidentally inverted the colours. It started to grow steadily as word was spread to start placing pixels, but our reference image was simply a screenshot of 2017. Luckily *ivanjermakov* stepped up became our first blueprint designer by creating the first blueprint.
 
 The canvas was still empty when the initial spot was chosen, but of course, there were always threats for a community to draw over us. The first such threat was the only real other art in the vicinity, the Belgium flag coming up from the South. So peace treaties were sent by (??). It was in this time that the next blueprints were being created to include belts. However, there was a problem with getting the last `O` in Factorio to be a _gear_, because misguided troops were trying to create a normal `O`. This led to some very [strange looking](https://media.discordapp.net/attachments/959132842787487814/959481710414815232/unknown.png) hoops. It was only after some time that the gear was redesigned and successfully drawn. As soon as the basic idea for the gear was visible (and many DMs sent) the troops finished and defended the gear. Work began on the Northen belt. It started fairly sparked controversy: should the belt have alternating grey-black pixels (similar to 2017) at the bottom or a solid grey line? However, the bigger issue was again that misguided Factorians removed any attempt to bring in the line below the arrows. It was only much later that the belt finally became vertically symmetrical - well after the decision to do a solid-grey line because it's easier.
 
@@ -73,6 +83,8 @@ As you know though, there is no real peace in the War of the Nut. The Ecuadorian
 
 > Those with a keen eye may have noticed something not Factorio related in between the rest of the builds - a little purple flower. This addition was a personal request from me to the Factorio community. My wife is currently pregnant with our first child and when she arrives in a few months we want to name her Violet. Thank you to everyone who helped keep the violet safe on
 the canvas - agenteightysix
+
+> It's surprising how easy it was to completely construct our designs from scratch, yet how hard it was to maintain them. Pretty on-brand for factorio I'd say - yauz
 
 ## The Finality of the Anti-Void
 
