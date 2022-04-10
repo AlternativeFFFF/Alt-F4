@@ -93,19 +93,17 @@ the canvas - agenteightysix
 
 > Risk of Rain wants to give a MASSIVE thank you to the r/place Factorio community for helping us out tremendously as our allies! We really couldn't have done it without you! - Jaco, Risk of Rain Official r/place Server Owner
 
-## The Finality of the Anti-Void
+## The Finality of the White-Void
 
-In the last moments of r/place the Anti-Void came. The colour pallette changed so that only white pixels could be placed.
+In the last moments of r/place the White-Void came. This was Reddit changing the canvas' colour pallette so that only white pixels could be placed. Slowly we started erasing the the art we spent 3 days building, defending and fighting for. We were undoing every single pixel that we spent sweat and tears agonising over, waiting for the timer to reach zero. In a beautiful twist of fate we were cleansed of all the battles - the obsession - that held us for 83 hours, and left behind only the memories. It allowed us to release the stress of *who ended up with the perfect art* and rather it shifted the focus on the journey that we - over 6 million people - experienced together. Maybe it even shows us that it's not what we leave behind that's important, but rather the relationships we build on our journey. 
 
-![Timelapse of final moments]()
+![Timelapse of the final moments as the White-Void came and cleansed the canvas](...)
 
-
-The Factorio community performed valiantly during the r/place insident. There were many foes around that threatened our well-established area. Trolls, rainbows, hordes of amungus, and even a deady void. But the community stood strong, and importantly built strong alliances with our neighbours by incorporating them into our master blueprint. This allowed us to withstand the test of time, and thus have our monument carved into the halls of time, never to be forgotten. Or at least, until the next r/place or amungos inevitably take over.
-
+Or maybe Reddit simply wanted to do something different than they did in 2017. The are many communities now reconstructing the canvas as it was in its final state before the White-Void came (like [here](https://www.reddit.com/r/place/comments/txvk2d/rplace_datasets_april_fools_2022/) or [here](https://www.reddit.com/r/thefinalclean/)). What is however significant is how valiantly the Factorio community performed during the r/place adventure. There were many foes around that threatened our well-established area - trolls, rainbows, hordes of amungus, and multiple deady voids. But the community always stood strong and built strong alliances with our neighbours by incorporating them into our master blueprint. We prefered peace negotiations over inciting wars, kept our areas secure rather than performing dangerous retaliations, and always preferred belts over bots. All in all, it was an epic journey with you all! And we can all be proud of what we achieved - it was quite an adventure! 
 
 ## Appendix - Our Allies
 
-Here follows a list of all our allies and their respective ambassadors. We thank all of these people for working with us, building with us, and battling with us. It was an honour!
+As a last note we would like to thank all the ambassadors of other communities who build alliances with us. It would not have been possible with you all. It was great working with you, building with you, and battling with you. It was an honour!
 
 | Community         | Ambassador(s) |
 |------------------ |------------|
