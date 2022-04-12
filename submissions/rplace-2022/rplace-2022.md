@@ -92,6 +92,8 @@ As you know though, there is no real peace in the War of the Nut. The Ecuadorian
 
 > I still think we should have covered the canvas in as many belts as possible. - SevenAndAHalf, r/3Dprinting
 
+> I'm happy I could help my favorite game in such an historical event, it worth every pixel I give and every hour I didn't sleep - Mr_George
+
 > Risk of Rain wants to give a MASSIVE thank you to the r/place Factorio community for helping us out tremendously as our allies! We really couldn't have done it without you! - Jaco, Risk of Rain Official r/place Server Owner
 
 ## The Finality of the White-Void
