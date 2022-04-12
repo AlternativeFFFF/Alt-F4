@@ -74,8 +74,6 @@ As you know though, there is no real peace in the War of the Nut. The Ecuadorian
 
 ## Thought Mural of Friends and Allies
 
-// Conor, these are all quotes :P
-
 {% include quote.html text='One of the most interesting things was fighting against our own hivemind for the belts! Several times I tried to change the colors of the belts to dark blue, but the hivemind was in protection-mode and kept reverting it back to cyan!' author='Telokis' %}
 
 {% include quote.html text='I missed r/place event in 2017, but really wanted to participate. So I did this year. Factorio is by far my favorite game so without hesitation I checked its Discord for community plans on r/place. Across four days I worked on multiple designs, coordinated the work and even coded the basic tool to overlay coordinates over images. It was an incredible experience.' author='ivanjermakov' %}
