@@ -18,7 +18,7 @@ On 28 March 2022, a reboot of r/place was [announced](https://www.reddit.com/r/r
 
 ## The Journey
 
-![Timelapse of the our first artwork in r/place 2022](...)
+![Timelapse of the our first artwork in r/place 2022 ([Source](https://place.thatguyalex.com/)).](media/train.mp4)
 
 It all started with a [thread](https://discord.com/channels/139677590393716737/959132842787487814) by the moderator *SpeckledFleebeedoo* in the Factorio Discord server in preparation for r/place starting the next day. It was rather quiet in there, mostly showcasing what the Factorio community had created in 2017. The next day, just like 2017, r/place started with a 1000x1000 canvas and 16 colors. It was time for Factorio to show what its community was capable of again! After a brief discussion in our own Alt-F4 Discord server where the first pixel was placed at `{271,555}` by *stringweasel*, the location was forwarded to the official Factorio Discord server, and that's where it got going. There was no official plan yet, so it was decided to write "r/FACTORIO", just like in 2017, except we (or I, really) accidentally inverted the colors. It started to grow steadily as word spread to start placing pixels, but our reference image was hard-to-use screenshot from 2017. Luckily *ivanjermakov* stepped up and became our first blueprint designer.
 
@@ -48,7 +48,7 @@ As you might know, the area was secured successfully. Allies were made, battles 
 
 This time, as the canvas doubled again, we were much quicker in securing a location around `{500, 1200}` (which was again recommended by *Stuckey*). The problem was that, so was everyone else! Were quickly ran out of room and were tucked in tightly - next to big flags and quite a salacious neighbor. There was also a potential collision with the Risk of Rain community who was constructing a figure over the nose of our locomotive. They were contacted and in a successful peace deal, it was agreed that they would move their figure a few pixels lower, and in turn they get a dedicated wagon. That allowed us to finish the locomotive and first wagon, occupied by our friends Mindustry. We tried to build more wagons for more allies, but there was no space. We even contacted the Portal community to build a portal for the train to drive through, which would allow us to build more wagons. They were too busy though, because the were already doing three big projects at the time. This forced the r/furry_irl, Unturned and Risk of Rain communities to unfortunately give up on the wagon project, and progression stagnated.
 
-![Timelapse showing the lifetime of The Train.](...)
+![Timelapse showing the lifetime of The Train ([Source](https://place.thatguyalex.com/)).](media/train.mp4)
 
 Finally, as you might have noticed in the timelapse above, the train lost its nose at some point. This was much closer to a stampede than a battle after unfortunate event. On the right there was a beautiful Mexican flag, which wasn't threatening our train at the time. This flag was likely kept from expanding further left by our tantalizing Southern neighbor. However, this Southern neighbor was being vandalized, which at some point triggered a vigilante community to completely destroy it. The problem is that this provided the oppertunity for the Mexican streamer to expand West to its full size. And in the blink of an eye, the locomotive's nose was cut off by the Mexican Flag. There were attempts by us (and even the Mexican Discord who were one of our allies) to keep the train, but this was ultimately unsuccessful.
 
@@ -58,7 +58,7 @@ However, this might have been a blessing in disguise, because all focus was then
 
 Here is told the story of the War of the Nut. Not a lonely battle, but war, since it involved endless battles around the Factorio Gear on the first canvas expansion. Our gear, or as our enemies mistakenly knew it as: [The Nut](https://www.reddit.com/r/ecuador/comments/tw2iam/conquistemos_esa_parte_de_ah%C3%AD_hagan_una_nueva/).
 
-![Timelapse showing the lifetime of our monument, our beacon of hope, our Gear.](...)
+![Timelapse showing the lifetime of our monument, our beacon of hope, our Gear. ([Source](https://place.thatguyalex.com/)).](media/gear.mp4)
 
 As mentioned earlier, the area was originally secured using belts. This was a good strategy because space was very quickly being claimed by other communities. The improved gear logo was also well liked by the community, and construction started soon after the space was secure. However, construction was only about half-way before the first attack - The Void. It already heavily damaged our neighbor - #100Devs. Luckily, we sent spies into The Void's Discord, who discreetly relayed the information to us, so we knew their plan. This is where good allies and deep friendships were created, because as a combined effort between Pikmin, Danidev, #100Devs and even Norway, we were able to fight of The Void! They seemed to have accepted defeat, and preferred to redirect their attacks to the North. With the help of our new friends, we defended our belts, and soon our gear was completed.
 
@@ -96,27 +96,15 @@ As you know though, there is no real peace in the War of the Nut. The Ecuadorian
 
 ## The Finality of the White-Void
 
-<<<<<<< HEAD
-In the last moments of r/place the White-Void came. This was Reddit changing the canvas' colour pallette so that only white pixels could be placed. Slowly we started erasing the the art we spent 3 days building, defending and fighting for. We were undoing every single pixel that we spent sweat and tears agonising over, waiting for the timer to reach zero. In a beautiful twist of fate we were cleansed of all the battles - the obsession - that held us for 83 hours, and left behind only the memories. It allowed us to release the stress of *who ended up with the perfect art* and rather it shifted the focus on the journey that we - over 6 million people - experienced together. Maybe it even shows us that it's not what we leave behind that's important, but rather the relationships we build on our journey. 
+In the last moments of r/place, the White-Void came. This was Reddit changing the canvas' color palette so that only white pixels could be placed. Slowly we started erasing the art we had spent three days creating, defending and fighting for. We were undoing every single pixel that we spent sweat and tears agonising over, waiting for the timer to reach zero. In a beautiful twist of fate, we cleansed all the battles, stress, and obsession than held us for 83 hours, and left behind only the memories. It allowed us to release the stress of *who ended up with the perfect art*. Rather it shifted the focus on the journey we - over six million people - experienced together. Maybe it even shows us that it's not what we leave behind that's important, but rather the relationships we build on our journey.
 
 ![Timelapse of the final moments as the White-Void came and cleansed the canvas](...)
 
-Or maybe Reddit simply wanted to do something different than they did in 2017. The are many communities now reconstructing the canvas as it was in its final state before the White-Void came (like [here](https://www.reddit.com/r/place/comments/txvk2d/rplace_datasets_april_fools_2022/) or [here](https://www.reddit.com/r/thefinalclean/)). What is however significant is how valiantly the Factorio community performed during the r/place adventure. There were many foes around that threatened our well-established area - trolls, rainbows, hordes of amungus, and multiple deady voids. But the community always stood strong and built strong alliances with our neighbours by incorporating them into our master blueprint. We prefered peace negotiations over inciting wars, kept our areas secure rather than performing dangerous retaliations, and always preferred belts over bots. All in all, it was an epic journey with you all! And we can all be proud of what we achieved - it was quite an adventure! 
+Or maybe Reddit simply wanted to do something different than they did in 2017. The are many communities now reconstructing the canvas as it was in its final state before the White-Void came (like [here](https://www.reddit.com/r/place/comments/txvk2d/rplace_datasets_april_fools_2022/) or [here](https://www.reddit.com/r/thefinalclean/)).  What is however significant is how valiantly the Factorio community performed during the r/place saga. There were many foes around that threatened our well-established area. Trolls, rainbows, hordes of *Amongi*, and multiple deadly voids. But the community always stood strong, and importantly built strong alliances with our neighbours by incorporating them into our master blueprint. We prefered peace negotiations over inciting wars, kept our areas secure rather than performing dangerous retaliations, and always preferred belts over bots. This allowed us to withstand the test of time, and thus have our monument carved into the halls of time, never to be forgotten. Or at least, until the next r/place or *Amongi* inevitably take over.
 
 ## Appendix - Our Allies
 
 As a last note we would like to thank all the ambassadors of other communities who build alliances with us. It would not have been possible with you all. It was great working with you, building with you, and battling with you. It was an honour!
-=======
-In the last moments of r/place, the Anti-Void came. This was Reddit changing the canvas' color palette so that only white pixels could be placed. Slowly we started erasing the art we had spent three days creating, defending and fighting for. We were undoing every single pixel that we spent hours agonizing over, waiting for the timer to reach zero. In a beautiful twist of fate, we cleansed all the battles, stress, and obsession than held us for 83 hours, and left only the memories. It allowed us to release the stress of *who ended up with the perfect art*. Rather it shifted the focus on the journey we - over six million people - went on together. Maybe it even shows us that it's not what we leave behind that's important, but rather the relationships we build on our journey.
-
-![Timelapse of final moments]()
-
-Or maybe Reddit simply wanted to do something different than last time, because we can always see the final artwork everywhere anyway. Either way, the Factorio community performed valiantly during the r/place saga. There were many foes around that threatened our well-established area. Trolls, rainbows, hordes of *Amongi*, and even a deadly void. But the community stood strong, and importantly built strong alliances with our neighbours by incorporating them into our master blueprint. This allowed us to withstand the test of time, and thus have our monument carved into the halls of time, never to be forgotten. Or at least, until the next r/place or *Amongi* inevitably take over.
-
-## Appendix - Our Allies
-
-Here follows a list of all our allies and their respective ambassadors. We thank all of these people for working with us, building with us, and battling with us. It has been an honor!
->>>>>>> 9ae5d696c512a3b4d827cbac7a5345643e718251
 
 | Community         | Ambassador(s) |
 |------------------ |------------|
