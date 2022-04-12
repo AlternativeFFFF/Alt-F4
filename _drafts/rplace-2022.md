@@ -1,8 +1,8 @@
-# r/place: A Monetary Lapse of Time <author>stringweasel, Mr_George</author>
+## r/place: A Momentary Lapse of Time <author>stringweasel, Mr_George</author>
 
 Two weeks ago, most avid Redditors had a momentary lapse of time as they were caught up in r/place. Millions of people were avidly sitting behind their screen. Masses and masses were excitedly waiting for their five minute timer to run out so that they could place their next pixel. They weren't necessarily excited about the pixel itself, though. No, it was about being part of the bigger picture. Contributing to the common goal of your community. It was about achieving something great together, and leaving something beautiful behind on the r/place canvas.
 
-## What is r/place?
+### What is r/place?
 
 r/place was a social experiment on Reddit for [April Fools' Day](https://www.reddit.com/r/announcements/comments/62mesr/place/) in 2017. It was dreamt up by the creator of [Wordle](https://www.nytimes.com/games/wordle/index.html), [Josh Wardle](https://www.powerlanguage.co.uk/). It was a white 1000x1000 pixel canvas on which users could place one colored pixel every five to twenty minutes. With over a million users who placed a pixel on it and about 16 million pixels placed in total, it was a massive hit! Communities worked together to create beautiful works of art, and sent most of Reddit into a frenzy. After three days, the canvas was frozen, solidifying all the art that was created.
 
@@ -14,9 +14,9 @@ Like most communities in 2017, [r/Factorio](https://www.reddit.com/r/factorio/) 
 
 On 28 March 2022, a reboot of r/place was [announced](https://www.reddit.com/r/reddit/comments/tqbf9w/bringing_back_rplace/) for April Fools'. What followed was an epic period of excitement, dread, cooperation and defeat. This article is an attempt to capture most of what transpired. It was quite the adventure.
 
-## The Journey
+### The Journey
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/59/train.mp4' alt='Timelapse of the our first artwork in r/place 2022' caption='Timelapse of the our first artwork in r/place 2022 (<a href="https://place.thatguyalex.com/">Source</a>).' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/59/benchy.mp4' alt='Timelapse of the our first artwork in r/place 2022' caption='Timelapse of the our first artwork in r/place 2022 (<a href="https://place.thatguyalex.com/">Source</a>).'  width='1200px' %}
 
 It all started with a [thread](https://discord.com/channels/139677590393716737/959132842787487814) by the moderator *SpeckledFleebeedoo* in the Factorio Discord server in preparation for r/place starting the next day. It was rather quiet in there, mostly showcasing what the Factorio community had created in 2017. The next day, just like 2017, r/place started with a 1000x1000 canvas and 16 colors. It was time for Factorio to show what its community was capable of again! After a brief discussion in our own Alt-F4 Discord server where the first pixel was placed at `{271,555}` by *stringweasel*, the location was forwarded to the official Factorio Discord server, and that's where it got going. There was no official plan yet, so it was decided to write "r/FACTORIO", just like in 2017, except we (or I, really) accidentally inverted the colors. It started to grow steadily as word spread to start placing pixels, but our reference image was hard-to-use screenshot from 2017. Luckily *ivanjermakov* stepped up and became our first blueprint designer.
 
@@ -28,11 +28,11 @@ The time of the great belt-controversy was luckily also the time of new friends.
 
 Soon Benchy was on the belt, and our belt was making its way around the bottom of our logo. By this time, there were three gears ("Factoriooo"?), and it was decided that two of these gears should be replaced by circuits. Yet again, the unnamed Reddit troops were viciously defending the gears, making it impossible to draw *ivanjermakov*'s beautiful circuits over it. Here is were our very own *Nano* stepped in and created a Google Sheet showing the proposed image along with the designated coordinates. Everybody chose a pixel (or few), and then place them all simultaniously. As a unified voice, *Nano* and *SpeckledFleebeedoo* screamed charge, and we all placed our loaded pixels simultaneously. Thus suddenly, a fresh green circuit materialized. Success! This method was used quite often from that point forward for inserters, science packs, and even fish. However, everything wasn't sunshine and roses as you might expect.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/59/xqc-threat.jpg' alt='xqc looking at r/place.' caption='Some streamer decided to execute an unsolicited attack which almost hit us (Image captured by aptly named user <a href="https://knowyourmeme.com/photos/2089903-ralph-in-danger">mxdanger</a>)' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/59/xqc-threat.jpg' alt='xqc looking at r/place.' caption='Some streamer decided to execute an unsolicited attack which almost hit us (Image captured by aptly named user <a href="https://knowyourmeme.com/photos/2089903-ralph-in-danger">mxdanger</a>' %}
 
 At around 38 hours in, the streamer *xQcOW* unleashed a powerful Purple Void. Big streamers caused a lot of trouble and controversy over the course of r/place, because with tens of thousands (sometimes hundreds of thousands!) of viewers under their control, it was too easy for them to completely obliterate smaller communities. This wouldn't be the last time we'd be under threat from a streamer. Luckily, this time the void didn't reach us, as we were luckily being defended by strong neighbors like r/onepiece. It was forming strong alliances with our neighbors that made our artworks last for so long. We were also lucky that the streamers were often distracted by the stronger communities, like Osu, Star Wars, and France, to name a few. Otherwise this location was fairly safe, except for the continual attacks on the US Flag North of us, with Chile ultimately defeating them. There were many concerns that over-zealous attackers would barge through our neighbors Besiege and RIT (Rochester Institute of Technology) and attack our belts, but this luckily never materialized.
 
-## Doubling Down
+### Doubling Down
 
 At around the 27 hour mark, the canvas size unexpectedly doubled, as did the number of colors, as did the tension. Many communities were scrambling for space while trying to determine what to draw after the initial rush of trolls and flags. Even in our community tensions were high because there were suddenly many excited voices with design ideas and attack plans on what to do with this new space. After some floundering, we ended up securing the area around `{1600,550}`, because as *Stuckey* suggested, this would allow the possibility of connecting an underground belt to our Western location which is at the same y-level. Thus, a plan was put into action. We would secure the area with belts initially, as laid out by *pg*'s blueprints, while we wait for *ivanjermakov* pixelated interpretation of the Factorio gear. This gear blueprint was later improved on by *apatton*, which used only five colors, making it look nicer and easier to defend.
 
@@ -44,17 +44,17 @@ As you might know, the area was secured successfully. Allies were made, battles 
 
 This time, as the canvas doubled again, we were much quicker in securing a location around `{500, 1200}` (which was again recommended by *Stuckey*). The problem was that, so was everyone else! Were quickly ran out of room and were tucked in tightly - next to big flags and quite a salacious neighbor. There was also a potential collision with the Risk of Rain community who was constructing a figure over the nose of our locomotive. They were contacted and in a successful peace deal, it was agreed that they would move their figure a few pixels lower, and in turn they get a dedicated wagon. That allowed us to finish the locomotive and first wagon, occupied by our friends Mindustry. We tried to build more wagons for more allies, but there was no space. We even contacted the Portal community to build a portal for the train to drive through, which would allow us to build more wagons. They were too busy though, because the were already doing three big projects at the time. This forced the r/furry_irl, Unturned and Risk of Rain communities to unfortunately give up on the wagon project, and progression stagnated.
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/59/train.mp4' alt='Timelapse showing the lifetime of The Train.' caption='Timelapse showing the lifetime of The Train (<a href="https://place.thatguyalex.com/">Source</a>).' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/59/train.mp4' alt='Timelapse showing the lifetime of The Train.' caption='Timelapse showing the lifetime of The Train (<a href="https://place.thatguyalex.com/">Source</a>).' width='1228px' %}
 
 Finally, as you might have noticed in the timelapse above, the train lost its nose at some point. This was much closer to a stampede than a battle after unfortunate event. On the right there was a beautiful Mexican flag, which wasn't threatening our train at the time. This flag was likely kept from expanding further left by our tantalizing Southern neighbor. However, this Southern neighbor was being vandalized, which at some point triggered a vigilante community to completely destroy it. The problem is that this provided the oppertunity for the Mexican streamer to expand West to its full size. And in the blink of an eye, the locomotive's nose was cut off by the Mexican Flag. There were attempts by us (and even the Mexican Discord who were one of our allies) to keep the train, but this was ultimately unsuccessful.
 
 However, this might have been a blessing in disguise, because all focus was then required at the gear. It was mayhem.
 
-## The War of The Nut
+### The War of The Nut
 
 Here is told the story of the War of the Nut. Not a lonely battle, but war, since it involved endless battles around the Factorio Gear on the first canvas expansion. Our gear, or as our enemies mistakenly knew it as: [The Nut](https://www.reddit.com/r/ecuador/comments/tw2iam/conquistemos_esa_parte_de_ah%C3%AD_hagan_una_nueva/).
 
-{% include video.html mp4='https://media.alt-f4.blog/ALTF4/59/gear.mp4' alt='Timelapse showing the lifetime of our monument, our beacon of hope, our Gear.' caption='Timelapse showing the lifetime of our monument, our beacon of hope, our Gear. (<a href="https://place.thatguyalex.com/">Source</a>).' %}
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/59/gear.mp4' alt='Timelapse showing the lifetime of our monument, our beacon of hope, our Gear.' caption='Timelapse showing the lifetime of our monument, our beacon of hope, our Gear. (<a href="https://place.thatguyalex.com/">Source</a>).' width='1200px' %}
 
 As mentioned earlier, the area was originally secured using belts. This was a good strategy because space was very quickly being claimed by other communities. The improved gear logo was also well liked by the community, and construction started soon after the space was secure. However, construction was only about half-way before the first attack - The Void. It already heavily damaged our neighbor - #100Devs. Luckily, we sent spies into The Void's Discord, who discreetly relayed the information to us, so we knew their plan. This is where good allies and deep friendships were created, because as a combined effort between Pikmin, Danidev, #100Devs and even Norway, we were able to fight of The Void! They seemed to have accepted defeat, and preferred to redirect their attacks to the North. With the help of our new friends, we defended our belts, and soon our gear was completed.
 
@@ -72,7 +72,7 @@ As you know though, there is no real peace in the War of the Nut. The Ecuadorian
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/59/100devs-mural.jpg' alt='A mural made by our friends from #100Devs.' caption='A mural made by our friends from #100Devs picturing some of the unsung heroes that played a part, directly or indirectly, in the The War of the Nut. It shows, from the left, a blue heart by Celeste, Dogoo from Neptune Hyperdimension, Leon Noel from #100Devs, a yellow Pikmin, Neptunia from Neptune Hyperdimension, Arceus by Pokémon, a duck with a knife by digital-duck.com, and a jaguar. Made by *Trainer_Brendan* from #100Devs' %}
 
-## Thought Mural of Friends and Allies
+### Thought Mural of Friends and Allies
 
 {% include quote.html text='One of the most interesting things was fighting against our own hivemind for the belts! Several times I tried to change the colors of the belts to dark blue, but the hivemind was in protection-mode and kept reverting it back to cyan!' author='Telokis' %}
 
@@ -90,7 +90,7 @@ As you know though, there is no real peace in the War of the Nut. The Ecuadorian
 
 {% include quote.html text='Risk of Rain wants to give a MASSIVE thank you to the r/place Factorio community for helping us out tremendously as our allies! We really couldn’t have done it without you!' author='Jaco, Risk of Rain Official r/place Server Owner' %}
 
-## The Finality of the White-Void
+### The Finality of the White-Void
 
 In the last moments of r/place, the White-Void came. This was Reddit changing the canvas' color palette so that only white pixels could be placed. Slowly we started erasing the art we had spent three days creating, defending and fighting for. We were undoing every single pixel that we spent sweat and tears agonising over, waiting for the timer to reach zero. In a beautiful twist of fate, we cleansed all the battles, stress, and obsession than held us for 83 hours, and left behind only the memories. It allowed us to release the stress of *who ended up with the perfect art*. Rather it shifted the focus on the journey we - over six million people - experienced together. Maybe it even shows us that it's not what we leave behind that's important, but rather the relationships we build on our journey.
 
@@ -98,7 +98,7 @@ In the last moments of r/place, the White-Void came. This was Reddit changing th
 
 Or maybe Reddit simply wanted to do something different than they did in 2017. The are many communities now reconstructing the canvas as it was in its final state before the White-Void came (like [here](https://www.reddit.com/r/place/comments/txvk2d/rplace_datasets_april_fools_2022/) or [here](https://www.reddit.com/r/thefinalclean/)).  What is however significant is how valiantly the Factorio community performed during the r/place saga. There were many foes around that threatened our well-established area. Trolls, rainbows, hordes of *Amongi*, and multiple deadly voids. But the community always stood strong, and importantly built strong alliances with our neighbours by incorporating them into our master blueprint. We prefered peace negotiations over inciting wars, kept our areas secure rather than performing dangerous retaliations, and always preferred belts over bots. This allowed us to withstand the test of time, and thus have our monument carved into the halls of time, never to be forgotten. Or at least, until the next r/place or *Amongi* inevitably take over.
 
-## Appendix - Our Allies
+### Appendix - Our Allies
 
 As a last note we would like to thank all the ambassadors of other communities who build alliances with us. It would not have been possible with you all. It was great working with you, building with you, and battling with you. It was an honour!
 
