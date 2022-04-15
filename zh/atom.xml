@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-04-01T10:25:02+00:00</updated>
+  <updated>2022-04-15T14:38:55+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #59 - r/place 2022: A Pixelated Tale</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-59/" />
+    <id>https://alt-f4.blog/ALTF4-59</id>
+    <updated>2022-04-15T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;A couple of weeks after the chaos that was r/place, resident historian &lt;em&gt;stringweasel&lt;/em&gt; took it upon himself to go through the chronology of how the Factorio community tried to leave its mark on the canvas. Battles were fought, alliances were forged, and a lot of fun was had! If the...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-50</id>
     <updated>2021-10-29T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;本周是 Alt-F4 的黄金纪念日，整整 50 期，所有。不过没有特别的庆祝活动，感觉我们已经搞太多次了。相对应的，&lt;em&gt;garr890354839&lt;/em&gt; 发布了他们的初次投稿，谈论了一些围绕火箭发射井的诡异数学问题。之后，&lt;em&gt;everLord&lt;/em&gt; 介绍了另一个由 comfy 小队举办的社区活动，名为“斗虫锦标赛”！&lt;/p&gt; &lt;h2 id=&quot;火箭发射井谜团重重-garr890354839&quot;&gt;火箭发射井：谜团重重 &lt;author&gt;garr890354839&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;啊，火箭发射井。它是游戏中除了坠毁的飞船之外最大的实体。它也是最昂贵的可制作实体之一。然而在放置它时，它会对电网产生一些奇怪的影响。我们都知道在其中使用产能插件收益很高。发射井周围又该用什么？所有问题的答案都在下面！&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-1.jpg&quot; alt=&quot;火箭发射井&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;/div&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;h3 id=&quot;电力使用情况&quot;&gt;电力使用情况&lt;/h3&gt; &lt;p&gt;首先，让我们看一下它的电力使用情况：它声称最多使用 4 MW（确实如此），但它在制造火箭组件时仅仅使用 250 kW，比 3 台组装机 1 型加起来（225 kW）多一点。那么，它什么时候会需要 4MW，比 53 台组装机 1 型还多呢？嗯，当发射井的门在移动，或者火箭被推上去的时候。那玩意儿一定超重的！直到 1.1.42...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #49 - Dyworld 发布派对</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-49/" />
-    <id>https://alt-f4.blog/ALTF4-49</id>
-    <updated>2021-10-15T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;在非自愿的两周休假之后（请务必加入我们的 &lt;a href=&quot;https://alt-f4.blog/discord&quot;&gt;Discord&lt;/a&gt;，贡献你的精彩文章&lt;em&gt;暗示性的点头&lt;/em&gt;），Alt-F4 带着第 49 期回来了！实际上本周是两个回归，因为 &lt;em&gt;Dysoch&lt;/em&gt; 也回来谈论 Dyworld，这次是关于发布派对和幕后乐趣。&lt;/p&gt; &lt;h2 id=&quot;dyworld-dynamicss-公测-dysoch&quot;&gt;DyWorld-Dynamics’s 公测 &lt;author&gt;Dysoch&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我在上一篇 &lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-43/#dyworld-dynamics-%E5%8F%8A%E5%85%B6%E5%8E%86%E5%8F%B2-dysoch&quot;&gt;Alt-F4 文章&lt;/a&gt;中谈到了 DyWorld 的 Beta 测试和发布。从那时算起我的测试员完成了相当多的工作。挑出了很多 Bug；太空探索搞砸了一些新玩意儿（之后又修好了），增加了一些新功能，等等。我创建了一个新 Mod，DyCore，用于所有即将到来的 DyWorld Mod 的新核心 Mod。到最后，所有与故事有关的内容都将移到那里，允许其他 Mod 作者来创建他们自己的故事元素。&lt;/p&gt; &lt;p&gt;好了，现在得讲讲那个一直不愿提起的问题。“发布时间？”鉴于创作这个 Mod 所消耗的时间和它目前的状态，我觉得它不应该再处于封闭测试阶段。因此，我决定采用新的路线：&lt;/p&gt; &lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;!-- Spacing --&gt;&lt;/p&gt; &lt;div class=&quot;image&quot;&gt; &lt;figure&gt; &lt;img src=&quot;https://media.alt-f4.blog/ALTF4/49/DyWorld3.jpg&quot; alt=&quot;Red Circuit 直播活动！&quot; style=&quot;max-width: ; max-height: &quot; /&gt; &lt;figcaption&gt;&lt;a...</content>
   </entry>
   
   
