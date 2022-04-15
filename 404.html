@@ -4,26 +4,7 @@ title: 404 - Page not found
 permalink: "404"
 ---
 
-{% for language in site.languages %}
-  <div id="{{ language }}" {% if language != site.default_lang %} class="hide" {% endif %}>
-    {{ site.data[language].locale.not-found.msg | markdownify }}
-    <h3><a href="{% if language == site.default_lang %}{{site.url}}{% else %}{{site.url}}/{{language}}{% endif %}">{{ site.data[language].locale.not-found.btn }}</a></h3>
-  </div>
-{% endfor %}
-
-
-<script>
-  (() => {
-    const langs = {
-    {% for language in site.languages %}
-      '{{language}}':'{{ site.data[language].locale.not-found.title }}',
-    {% endfor %}
-    }
-    const language = getLanguage();
-    if (language !== 'en') {
-      document.getElementById(language).setAttribute('class', '');
-      document.getElementById('en').setAttribute('class', 'hide');
-      document.getElementsByClassName('page-title-headder')[0].innerHTML = langs[language]
-    }
-  })()
-</script>
+{{ site.data.locale.not-found.msg | markdownify }}
+<h3>
+  <a href="/">{{ site.data.locale.not-found.btn }}</a>
+</h3>
