@@ -59,7 +59,13 @@ Once we have the crafting recipes, fuel energy values, and the processing energy
 
 The simple way to process coal is to just liquify it and immediately convert the outputs into solid fuel as below:
 
-(DIAG 1: coal -> solid fuel, simple) 
+{% include image.html 
+
+src= 'src'
+ alt='Processing coal into solid fuel directly'
+ caption='Processing coal into solid fuel directly' 
+
+%}
 
 We find that 10 coal yields 5.75 solid fuel this way. Meanwhile, the processing requires energy for heating steam and running machines. We can calculate the energy gain by subtracting all the input energy and processing energy from the output energy. Meanwhile, the percent gain is the energy gain divided by the energy obtained from directly burning the input fuel.
 
@@ -77,7 +83,13 @@ However, the same cannot be said about cracking light oil. Cracking light oil pr
 
 Now to look at the process with cracking:
 
-(DIAG 2: coal -> solid fuel, with heavy oil cracking)
+{% include image.html
+
+src= 'src'
+ alt='Processing coal into solid fuel with heavy oil cracking'
+ caption='Processing coal into solid fuel with heavy oil cracking'
+
+%}
 
 We see that we now get 7.375 solid fuel from the same 10 coal instead of 5.75. That seems great but the cracking also consumes additional energy. So, let's look at total energy gain in total:
 
@@ -93,15 +105,33 @@ Moving on, let us consider the other way that solid fuel is made:
 
 Since solid fuel can also be made out of oil, lets see how energy rich oil is compared to coal. The simplest approach is basic oil processing, which yields petroleum gas that is converted directly into solid fuel:
 
-(DIAG 3: oil -> solid fuel, basic processing)
+{% include image.html
+
+src= 'src'
+ alt='Processing oil into solid fuel with basic oil processing'
+ caption='Processing oil into solid fuel with basic oil processing'
+
+%}
 
 We see that 100 oil produces 2.25 solid fuel. However, we know from its recipe that advanced oil processing yields more petroleum gas for the same 100 oil. On top of that, it also yields heavy oil and light oil. Hence it would better definitely use the oil more efficiently:
 
-(DIAG 4: oil -> solid fuel, advanced processing)
+{% include image.html
+
+src= 'src'
+ alt='Processing oil into solid fuel with advanced oil processing'
+ caption='Processing oil into solid fuel with advanced oil processing'
+
+%}
 
 We see that advanced oil processing yields 8.5 solid fuel from the same 100 oil. That's nearly 4 times the yield for basic oil processing! However once again, cracking the heavy oil would offer us some more energy:
 
-(DIAG 5: oil -> solid fuel, basic processing with heavy oil cracking)
+{% include image.html
+
+src= 'src'
+ alt='Processing oil into solid fuel with advanced oil processing and heavy oil cracking'
+ caption='Processing oil into solid fuel with advanced oil processing and heavy oil cracking'
+
+%}
 
 Now we see that we can get a maximum of 9.125 solid fuel per 100 oil. We can compare it with the 7.375 solid fuel from 10 coal. If we crunch these numbers, we find that 1 unit of coal produces about 8.08 times as much solid fuel as 1 unit of oil. 
 
@@ -122,7 +152,13 @@ Meanwhile, there are other factors to consider when comparing coal and oil: rela
 
 Having seen that converting coal into solid fuel offers a significant energy yield, what can we say about rocket fuel? Instead of starting from coal/oil, it is enough to just look at the recipe for rocket fuel:
 
-(DIAG 7: solid fuel -> rocket fuel)
+{% include image.html
+
+src= 'src'
+ alt='Processing solid fuel into rocket fuel'
+ caption='Processing solid fuel into rocket fuel'
+
+%}
 
 We see that a single unit rocket fuel contains 100MJ of energy while the raw material of 10 solid fuel already holds 120MJ, and the 10 light oil can be made into an 11th solid fuel, providing almost 12MJ more. Hence we see that there is a significant energy loss if one chooses to burn rocket fuel in furnaces or boilers. However, its higher energy density per stack and acceleration bonus makes rocket fuel great for vehicles and it is also is a necessary ingredient if we want to make nuclear fuel.
 
@@ -130,13 +166,25 @@ We see that a single unit rocket fuel contains 100MJ of energy while the raw mat
 
 Nuclear fuel is still pretty experimental in the real world, but Factorio offers a standardized variant that is made from regular rocket fuel and uranium-235. Like with our examination of rocket fuel, the recipe itself says enough:
 
-(DIAG 8: rocket fuel -> nuclear fuel)
+{% include image.html
+
+src= 'src'
+ alt='Processing rocket fuel into nuclear fuel'
+ caption='Processing rocket fuel into nuclear fuel'
+
+%}
 
 We see that nuclear fuel offers an impressive energy output of 1.21GJ, which is [a reference](https://wiki.factorio.com/Nuclear_fuel), but also around 10 times as much energy as the solid fuel first used to make the rocket fuel. This means that if you were to switch from burning coal directly to making it into nuclear fuel to burn instead, your coal demand would drop to a tiny fraction, to as little as 1/20 as before. 
 
 Despite its massive energy gains in terms of coal and oil savings, nuclear fuel is not perfect. The uranium-235 that it uses could instead be used to make uranium fuel cells, which provide a different energy situation:
 
-(DIAG 9: uranium-235 -> uranium fuel cells)
+{% include image.html
+
+src= 'src'
+ alt='Processing uranium-235 into uranium fuel cells'
+ caption='Processing uranium-235 into uranium fuel cells'
+
+%}
 
 While uranium fuel cells can only be used inside nuclear reactors, we see that they produce energy on the level of GJ instead of MJ, and the production increases multiplicatively via the reactor neighbor bonus. Hence, up to hundreds of times more energy is gained from the same piece of uranium-235 if used in a nuclear reactor instead of nuclear fuel. This would suggest that if one has a uranium-235 supply already, they should just switch to nuclear power and electric furnaces instead of burner devices. 
 
@@ -171,7 +219,7 @@ These findings help us answer the final question of how useful fuel processing i
 * **Availability of more coal/oil to just use instead:** Since these resources are technically infinite on most maps, you may prefer to skip the energy gains and brute force your fuel problem by setting up more resource extraction buildings and infrastructure instead of more fuel processing buildings. This factor simply depends on your surroundings.
 
 * **Usefulness of burner technology:** Fuel processing is not a good investment of your time and resources if burner the burner devices you are feeding have better alternatives. This factor depends on ...
-
+  
       * * *
 
 concs:
