@@ -4,7 +4,7 @@
 
 *version 1.1*
 
-*Diagrams are included in a separate powerpoint file, conclusion will be added, calculations will be double-checked.*
+*Diagrams are included in a separate powerpoint file, calculations will be double-checked.*
 
 *All feedback is welcome!*
 
@@ -16,21 +16,35 @@ As I set off to answer these questions, a great info source was the [the wiki pa
 
 ## The Questions
 
-We begin with the question that started it all: **(1) Does processing coal into solid fuel get more energy out of it?**
+We begin with the question that started it all: 
 
-We can convert the coal liquification outputs directly, but we also have cracking available, so: **(2) How much of a difference does cracking make when making solid fuel?**
+**(1) Does processing coal into solid fuel get more energy out of it?**
 
-Then we check how processing coal stands against the conventional way of making solid fuel: **(3) How does oil processing compare to coal liquification when producing solid fuel?**
+We can convert the coal liquification outputs directly, but we also have cracking available, so: 
 
-But then we note that we don't have to stop the processing at solid fuel: **(4) Does further processing solid fuel into rocket fuel get more energy out of it?**
+**(2) How much of a difference does cracking make when making solid fuel?**
 
-And then we consider going further and adding uranium: **(5) Does further processing rocket fuel into nuclear fuel get more energy out of it?**
+Then we check how processing coal stands against the conventional way of making solid fuel: 
 
-Then we consider that uranium is already being used for a different fuel type and we consider the energy efficiency for that as well: **(6) How does burning nuclear fuel for power compare with making uranium fuel cells to "burn" in reactors instead?**
+**(3) How does oil processing compare with coal liquification when producing solid fuel?**
 
-Finally, we look at the big picture and ask: **(7) How useful is fuel processing in general?**
+But then we note that we don't have to stop the processing at solid fuel: 
 
-With all the conversion options in the vanilla game, this list of questions actually covers all of the burner fuels except for wood, which is not converted into anything unless you use a [charcoal mod]([Charcoal Burner - Factorio Mods](https://mods.factorio.com/mod/CharcoalBurner)). Hence, a quick note about wood as a fuel: You may end up with a lot of it as a by product of clearing space using an axe or robots. However, it runs out quickly because of how little energy it provides. Instead of cutting trees for fuel, you would probably benefit more from using the wood to make power poles or chests, or from keeping the trees around for pollution absorption. As for other fuels, since we use conversion diagrams to answer the questions, first let's look at how they were made.
+**(4) Does further processing solid fuel into rocket fuel get more energy out of it?**
+
+And then we consider going further and adding uranium: 
+
+**(5) Does further processing rocket fuel into nuclear fuel get more energy out of it?**
+
+Then we consider that uranium is already being used for a different fuel type and we consider how that compares: 
+
+**(6) How does burning nuclear fuel for power compare with making uranium fuel cells to "burn" in reactors instead?**
+
+Finally, we take a step back and look at the big picture to ask: 
+
+**(7) How useful is fuel processing in general?**
+
+With all the conversion options in the vanilla game, this list of questions actually covers all of the burner fuels except for wood, which is not converted into anything unless you use a [charcoal mod]([Charcoal Burner - Factorio Mods](https://mods.factorio.com/mod/CharcoalBurner)). Hence, a quick note about wood as a fuel: You may end up with a lot of it as a by product of clearing space using an axe or robots. However, it runs out quickly because of how little energy it provides. Instead of cutting trees for extra fuel, you would probably benefit more from using the wood to make power poles or chests, or from keeping the trees around for pollution absorption. As for other fuels, since we use conversion diagrams to answer the questions, first let's look at how they were made.
 
 ## Making Conversion Diagrams
 
@@ -146,7 +160,17 @@ Meanwhile, lets look at the total energy outputs for the best cases for each inp
 
 We find that for energy, 1 unit of coal holds about 7.85 times the energy as 1 unit of oil. This ratio lets you get an idea of how much one resource can substitute for the other when your aim is to produce solid fuel at a large scale. 
 
-Meanwhile, there are other factors to consider when comparing coal and oil: relative abundances, transport options, and exclusive uses. Abundance simply depends on the map, so not much can be said there. As for transport options, 1 cargo wagon of 2000 coal holds about 16.2GJ of energy if converted to solid fuel. The same cargo wagon holds 400 crude oil barrels, or 20 000 oil, which gives about 20.6GJ of energy (27% more). If you use a fluid wagon instead, you can hold 25 000 oil or 25.8GJ (nearly 60% more), meaning that oil wagons transport more energy assuming you don't have to worry about transporting water/steam. Oil also has the transport option of pipelines, which may be preferable to trains in some cases. Meanwhile, exclusive uses for coal (plastic, explosives, capsules) greatly outweigh exclusive uses for crude oil (flamethrower ammo), while both can be used to make oil products. Considering all these factors together, it seems to generally be better to save most of your coal for plastic/explosive production and mostly use oil for solid fuel production, unless coal/oil abundances encourage otherwise. However, solid fuel is not the end of the fuel discussion, as we can make into rocket fuel.
+Meanwhile, I identified a more comprehensive list of factors to consider when comparing coal and oil for solid fuel production: 
+
+* **Energy per unit:** As we just found out, that coal holds about 8 times as much energy per unit.
+
+* **Transportation efficiency:** 1 cargo wagon of 2000 coal holds about 16.2GJ of energy if converted to solid fuel. The same cargo wagon holds 400 crude oil barrels, or 20 000 oil, which gives about 20.6GJ of energy (27% more). If you use a fluid wagon instead, you can hold 25 000 oil or 25.8GJ (nearly 60% more), meaning that oil wagons transport more energy assuming you don't have to worry about transporting water/steam. Oil also has the transport option of pipelines, which may be preferable to trains in some cases. 
+
+* **Relative abundances**: It simply depends on the map, so not much can be said there.
+
+* **Exclusive uses:** While both coal and oil can be used to make oil products, the recipes that use coal exclusively (plastic, explosives, capsules) greatly outweigh those for crude oil (flamethrower ammo). 
+
+Considering all these factors together, it seems to generally be better to save most of your coal for plastic/explosive production and mostly use oil for solid fuel production, unless coal/oil abundances encourage otherwise. However, solid fuel is not the end of the fuel discussion, as we can make into rocket fuel.
 
 ## Solid fuel vs. rocket fuel
 
@@ -162,7 +186,7 @@ src= 'src'
 
 We see that a single unit rocket fuel contains 100MJ of energy while the raw material of 10 solid fuel already holds 120MJ, and the 10 light oil can be made into an 11th solid fuel, providing almost 12MJ more. Hence we see that there is a significant energy loss if one chooses to burn rocket fuel in furnaces or boilers. However, its higher energy density per stack and acceleration bonus makes rocket fuel great for vehicles and it is also is a necessary ingredient if we want to make nuclear fuel.
 
-## Adding uranium
+## Going nuclear
 
 Nuclear fuel is still pretty experimental in the real world, but Factorio offers a standardized variant that is made from regular rocket fuel and uranium-235. Like with our examination of rocket fuel, the recipe itself says enough:
 
@@ -176,6 +200,8 @@ src= 'src'
 
 We see that nuclear fuel offers an impressive energy output of 1.21GJ, which is [a reference](https://wiki.factorio.com/Nuclear_fuel), but also around 10 times as much energy as the solid fuel first used to make the rocket fuel. This means that if you were to switch from burning coal directly to making it into nuclear fuel to burn instead, your coal demand would drop to a tiny fraction, to as little as 1/20 as before. 
 
+## Making the most of your uranium
+
 Despite its massive energy gains in terms of coal and oil savings, nuclear fuel is not perfect. The uranium-235 that it uses could instead be used to make uranium fuel cells, which provide a different energy situation:
 
 {% include image.html
@@ -188,70 +214,48 @@ src= 'src'
 
 While uranium fuel cells can only be used inside nuclear reactors, we see that they produce energy on the level of GJ instead of MJ, and the production increases multiplicatively via the reactor neighbor bonus. Hence, up to hundreds of times more energy is gained from the same piece of uranium-235 if used in a nuclear reactor instead of nuclear fuel. This would suggest that if one has a uranium-235 supply already, they should just switch to nuclear power and electric furnaces instead of burner devices. 
 
-However, nuclear fuel is still the best option for vehicles. It is also worth noting that nuclear fuel is unlocked alongside Kovarex enrichment, meaning that there is no shortage of uranium-235 upon unlocking it, meaning that using uranium efficiently is not critical any more.
+However, nuclear fuel is still very effective for vehicles. It is also worth noting that nuclear fuel is unlocked alongside Kovarex Enrichment, meaning that there is no shortage of uranium-235 upon unlocking it, meaning that using uranium efficiently is not critical any more.
+
+
 
 ## So how useful is fuel processing in general?
 
-Looking back at our original questions we found out that:
+Our findings so far about energy gains help us answer the final question of how useful fuel processing is in general. While our main focus so far has been the energy gains from processing, I've identified a more comprehensive list of factors to decide whether fuel processing is worthwhile.
 
-(1) Coal vs. coal liquification: Liquifying coal and directly turning it into solid fuel yields 1.57 times as much energy.
+To decide whether to (further) process your burner fuel, consider…
 
-(2) Coal liquification with cracking: If we also crack the heavy oil before making solid fuel, it yields 2.03 times as much energy.
+* **Gains in energy:** If you get more energy out of processed fuel, then your demand for the unprocessed fuel decreases and so your resource patches run out more slowly. We determined above that processing cost into solid fuel offers great gains, while rocket fuel.
+- **Gains in vehicle acceleration bonus and top speed bonus:** Greater bonuses mean that your vehicles can go faster. More processed fuels offer greater bonuses.
+- **Gains in energy density (per unit and per stack):** More energy per stack means more vehicle range per stack of fuel, which makes a big difference for trains because of their limited fuel slots. Meanwhile, more energy per unit means less logistics are required to move a fixed amount of energy. Needing fewer bots, belts, and/or trains to move fuels simplifies things and it also makes the logistics themselves cost less energy. More processed fuels have greater energy density in both regards, hence having these benefits.
+- **Cost of processing setup:** This is in terms of materials and space needed to make enough buildings for the processing, as well as the unlock cost of the required technology. Each tier of processing adds to these costs.
+- **Availability of more coal/oil to just use instead:** Since these resources are technically infinite on most maps, you may prefer to skip the energy gains and brute force your fuel problem by setting up more resource extraction buildings and infrastructure instead of more fuel processing infrastructure. This factor simply depends on your surroundings.
+- **How long you will keep using the burner devices:** If you are going to switch to electrical machines and alternate power sources soon, it may not be worth the effort of setting up a fuel processing system.
 
-(3) Coal vs. oil for solid fuel: Coal produces about 8 times as much solid fuel or energy as crude oil per unit. However, you can transport about 60% more energy in a fluid wagon of oil than a cargo wagon of coal. Meanwhile, coal has many exclusive uses it may be needed for instead of liquification while crude oil has next to none.
+Since these factors depend on your map and your plans, the conclusion varies on whether fuel processing is useful. Based on my experiences, I can offer the following advice about processing fuels:
 
-(4) Solid fuel vs. rocket fuel: Converting solid fuel into rocket fuel causes energy loss, but rocket fuel offers several advantages within vehicles.
+- **Processed fuels are excellent for trains and tanks.** The speed gains from rocket fuel is quite satisfying and nuclear fuel is on another level…
+- **You already need to mass produce solid fuel and rocket fuel to make rocket parts,** so it is not too difficult to produce a little more for your vehicle or other burner device needs.
+- **If you are burning coal for power, processing it into solid fuel will cut down its demand significantly.** For example, doubling the energy per coal means that you need to mine only half as much as before. However, unlocking coal liquification requires production science, which means you can unlock solar and nuclear power much sooner and [their advantages](https://www.reddit.com/r/technicalfactorio/comments/srosza/coal_vs_solar_vs_nuclear_setup_costs_and_running/) may make it worthwhile to switch to them before upgrading your coal setup. Nuclear power is [easier to do than it may seem]([Alt-F4 #57 - Nuclear Energy and You](https://alt-f4.blog/ALTF4-57/#)), especially without Kovarex enrichment!
+- **Use modules in your fuel processing to increase energy gains.** Filling all the fuel processing machines with efficiency 1 modules is quick and offers some energy savings. More complex module combinations may offer better gains, as presented in [this guide]([Tutorial:Producing power from oil - Factorio Wiki](https://wiki.factorio.com/Tutorial:Producing_power_from_oil)) on the official wiki.
 
-(5) Rocket fuel vs. nuclear fuel: Converting rocket fuel into nuclear fuel yields around 10x as much energy as the initial solid fuel that went in, which makes it the best way to get the most energy out of your initial coal or oil. However, it is not the best way to generate power from uranium.
 
-(6) Nuclear fuel vs. Uranium fuel cells: Using uranium-235 for nuclear reactor fuel cells yields up to hundreds of times more energy from it compared to using it for nuclear fuel but you unlock nuclear fuel alongside Kovarex enrichment, meaning that uranium-235 is not rare while nuclear fuel is available.
 
-These findings help us answer the final question of how useful fuel processing is in general. While our main focus so far has been the energy gains from processing, I've identified a more comprehensive list of factors to decide whether fuel processing is worthwhile:
+## Summary
 
-* **Gains in energy:** If you get more energy out of processed fuel, then your demand for the unprocessed fuel decreases and so your resource patches run out more slowly. We determined how each fuel stands using the diagrams above.
+This article started with a little question that snowballed into an exploration of all of Factorio's fuels. We uncovered the following:
 
-* **Gains in vehicle acceleration bonus and top speed bonus:** The more processed the fuel, the greater the bonuses and so the faster your vehicles can go.
+**(1) Coal vs. coal liquification:** Liquifying coal and directly turning it into solid fuel yields 1.57 times as much energy per coal.
 
-* **Gains in energy density (per unit and per stack):** More energy per stack means more vehicle range per stack of fuel, which makes a big difference for trains. Meanwhile, more energy per unit means less logistics required to move fuels (fewer bots, belts, and/or trains), which simplifies things but also saves the energy that would have gone into bigger logistics. More processed fuels have greater energy density in both regards.
+**(2) Coal liquification with cracking:** If we also crack the heavy oil before making solid fuel, it yields 2.03 times as much energy per coal.
 
-* **Cost of processing setup:** In terms of materials and space needed to make enough buildings for the processing, as well as the unlock cost of the required technology. Each tier of fuel requires an additional technology step.
+**(3) Coal vs. oil for solid fuel production:** Coal produces about 8 times as much solid fuel or energy as crude oil per unit. However, you can transport about 60% more energy in a fluid wagon of oil than a cargo wagon of coal. Meanwhile, coal has many exclusive uses it may be needed for instead of liquification while crude oil has next to none. Therefore using oil for solid fuel production may be more practical, but it ultimately depends on the abundances of coal and oil around you at the moment.
 
-* **Availability of more coal/oil to just use instead:** Since these resources are technically infinite on most maps, you may prefer to skip the energy gains and brute force your fuel problem by setting up more resource extraction buildings and infrastructure instead of more fuel processing buildings. This factor simply depends on your surroundings.
+**(4) Solid fuel vs. rocket fuel:** Converting solid fuel into rocket fuel causes energy loss, but rocket fuel offers several advantages within vehicles.
 
-* **Usefulness of burner technology:** Fuel processing is not a good investment of your time and resources if burner the burner devices you are feeding have better alternatives. This factor depends on ...
-  
-      * * *
+**(5) Rocket fuel vs. nuclear fuel:** Converting rocket fuel into nuclear fuel yields around 10x as much energy as the initial solid fuel that went in, which makes it the best way to get the most energy out of your initial coal or oil. However, it is not the best way to generate power from uranium.
 
-concs:
+**(6) Nuclear fuel vs. Uranium fuel cells:** Using uranium-235 for nuclear reactor fuel cells yields up to hundreds of times more energy from it compared to using it for nuclear fuel but you unlock nuclear fuel alongside Kovarex enrichment, meaning that uranium-235 is no longer rare when nuclear fuel is available.
 
-* **Use in vehicles:** Processed fuels fit more energy into a limited number of fuel inventory slots on trains, and they provide significant acceleration and top speed bonuses to all burner vehicles. These properties make it very worthwhile to process fuels to use in vehicles.
+**(7) Usefulness of processing fuels:** todo*
 
-* **Use in other burner devices:** Since acceleration and top speed bonuses apply only for vehicles, they are not part of the fuel comparison for other burner devices. The remaining factors to consider are energy gains from processing (more gains from the same fuel means less fuel needed), the energy stored per unit or stack (using more energy-dense fuels means simpler logistic requirements like belt, bot, and wagon counts), the setup and space cost for processing (the benefits need to be worth the effort), and the availability of more raw fuel resources (which may be easier to harness than building more processing setups). Given these factors, coal liquification 
-
-* **Use in power production**: Boilers consume tons of fuel. If you are burning through thousands of coal per hour, liquifying some of the coal or using oil to make solid fuel to burn instead is a reasonable alternative to looking for more coal. However, if you have advanced far enough to unlock coal liquification (with production science), you may want to consider switching to solar and/or nuclear power instead (as they are both unlocked far earlier). According to [my comparison of power plants](https://www.reddit.com/r/technicalfactorio/comments/srosza/coal_vs_solar_vs_nuclear_setup_costs_and_running/), burner power is cheap to build but it pollutes quite a lot, which causes many biter attacks. On the other hand, solar power is expensive to set up but has no fuel requirements nor any pollution. Meanwhile, nuclear power costs only a little more than coal power when built at large scales, and it pollutes only 2-10% as much as coal power, while requiring tiny amounts of uranium compared to the coal demand of an equivalent burner power plant. As explained in [my article about nuclear power](https://www.reddit.com/r/factorio/comments/t6jn29/altf4_57_nuclear_energy_and_you/), it does not require Kovarex enrichment and you can get plenty of energy from a small number of reactors and centrifuges. 
-
-* **Use in other burner devices:** For all other burner devices, 
-
-* **Use in furnaces**: A steel furnace consumes 90kW in burner fuel energy while an electric furnace consumes 180kW in electric energy for the same smelting speed. With that in mind, it is more energy efficient to use steel furnaces, and in that case you would benefit from producing solid fuel. However, adding 2 efficiency 1 modules to an electric furnace drops its power consumption to 72kW, making it more energy efficient to go electric. In this case, fuel processing is useful only if using burner power.
-
-* **Use in other burner devices:** Burner mining drills consume 150kW in burner fuel energy while electric mining drills consume only 90kW in electricity. Burner inserters consume 94kW in burner fuel energy while electric inserters consume only 13kW in electricity. This makes the electric devices more energy efficient. Hence, once again, fuel processing is useful only if using burner power.
-
-## Other notes
-
-In particular, let us focus on converting coal into solid fuel. Getting **double the energy from your coal via liquification** is great because it cuts your coal demand in half. However, there are other factors to consider before declaring that it is better to liquify coal in general.
-
-* **After checking production rates, setup costs may or may not suit you** - We did not look at actual production rates up until now but here is the quick version: We know that 1 refinery processes 10 coal in 5 seconds, which translates to 2 coal per second. One boiler consumes 1.8MW. In terms of coal, that is `1.8MW / 4MJ/coal = 0.45 coal per second`. In comparison, one refinery consumes enough coal for about `2 / 0.45 = 4.44` boilers. If we use heavy oil cracking after coal liquification, we know that the energy yield is doubled (2.03x). Hence, 1 refinery produces enough materials to make solid fuel for about  `4.44 * 2.03 = 9` boilers. As for processing the materials, I made a test setup (****) and (my testing suggests 5-6 because you need multiple plants to convert light oil into solid fuel fast enough***TEST) . These numbers would help you estimate if you want to invest space and resources in building all these petrochemical facilities.
-
-* **Modules can increase energy yield** - Filling efficiency 1 modules into all the chemical plants and refineries would increase the overall energy yield by 5-10%. Meanwhile, a mixture of two or three different module types can offer the optimal energy yield per coal. Exploring the module options would maybe lead to better production rates.
-
-* **Alternative 1: You can just use oil instead** - As previously discussed, crude oil no other uses than flamethrower ammo while coal is needed for materials like plastic or explosives, meaning that you can just get your solid fuel from oil (and burn it instead of coal).
-
-* **Alternative 2: You can always just go and find more coal to burn instead** - Coal is generally not a rare resource after all and so you can just find more and burn more instead of processing it.
-
-**Conclusion**
-
-**Using modules**
-
--fuel page already lists "fuel value per raw total" but ...****
-
--tutorial...****
+Wrap up paragraph: todo* Do you have any other questions about Factorio’s fuels? ...
