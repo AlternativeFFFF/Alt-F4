@@ -4,9 +4,27 @@
 
 *version 1.1*
 
-*Diagrams are included in a separate powerpoint file, calculations will be double-checked.*
+(Calculations will be double-checked)
 
-*All feedback is welcome!*
+Media:
+
+* Diagrams are included in a separate PowerPoint file. 
+
+* There is a preview image of the table as a PNG.
+
+All feedback is welcome! I am wondering:
+
+- Maybe more images can be added?
+
+- Do you think think the responses cover the questions sufficiently or maybe I have missed some factors to consider?
+
+- Are there any more questions to add?
+
+- Are there any other posts/explorations you have seen in the past that would be cool to mention here?
+
+. . . . . . . .
+
+
 
 Factorio has a variety of fuels that can go into your burner devices, ranging from classic and modest wood, up to sci-fi level nuclear fuel. The most popular burner fuel is coal, which is the backbone of early game automation and it runs all the boilers, furnaces, vehicles, and other machines reliably until it inevitably runs low. 
 
@@ -66,6 +84,8 @@ As for the electricity consumption during the fuel processing, it depends on the
 The total processing energy ("E") needed for a conversion can be calculated using the machine power use ("P") multiplied by the total crafting time for all of the input ("T"). This total crafting time is the duration of one crafting cycle ("d") divided by the machine crafting speed ("s"), multiplied by the number of crafting cycles ("c") to cover the entire input quantity. Hence we summarize processing energy consumption as:
 
 `E = P * T = P * d * c / s`
+
+While we calculate these values without modules to see the "default" situation, I would highly recommend to fill these machines with at least efficiency 1 modules in practice, as it would reduce E by 60%-80%. Other module combinations can offer even better results, like extra yield from speed-productivity synergy. [This guide]([Tutorial:Producing power from oil - Factorio Wiki](https://wiki.factorio.com/Tutorial:Producing_power_from_oil)) on the official wiki looks into these in detail.
 
 Once we have the crafting recipes, fuel energy values, and the processing energy equation, we have all we need to make the conversion diagrams. Now let's look at them:
 
@@ -216,8 +236,6 @@ While uranium fuel cells can only be used inside nuclear reactors, we see that t
 
 However, nuclear fuel is still very effective for vehicles. It is also worth noting that nuclear fuel is unlocked alongside Kovarex Enrichment, meaning that there is no shortage of uranium-235 upon unlocking it, meaning that using uranium efficiently is not critical any more.
 
-
-
 ## So how useful is fuel processing in general?
 
 Our findings so far about energy gains help us answer the final question of how useful fuel processing is in general. While our main focus so far has been the energy gains from processing, I've identified a more comprehensive list of factors to decide whether fuel processing is worthwhile.
@@ -235,10 +253,8 @@ Since these factors depend on your map and your plans, the conclusion varies on 
 
 - **Processed fuels are excellent for trains and tanks.** The speed gains from rocket fuel is quite satisfying and nuclear fuel is on another level…
 - **You already need to mass produce solid fuel and rocket fuel to make rocket parts,** so it is not too difficult to produce a little more for your vehicle or other burner device needs.
-- **If you are burning coal for power, processing it into solid fuel will cut down its demand significantly.** For example, doubling the energy per coal means that you need to mine only half as much as before. However, unlocking coal liquification requires production science, which means you can unlock solar and nuclear power much sooner and [their advantages](https://www.reddit.com/r/technicalfactorio/comments/srosza/coal_vs_solar_vs_nuclear_setup_costs_and_running/) may make it worthwhile to switch to them before upgrading your coal setup. Nuclear power is [easier to do than it may seem]([Alt-F4 #57 - Nuclear Energy and You](https://alt-f4.blog/ALTF4-57/#)), especially without Kovarex enrichment!
-- **Use modules in your fuel processing to increase energy gains.** Filling all the fuel processing machines with efficiency 1 modules is quick and offers some energy savings. More complex module combinations may offer better gains, as presented in [this guide]([Tutorial:Producing power from oil - Factorio Wiki](https://wiki.factorio.com/Tutorial:Producing_power_from_oil)) on the official wiki.
-
-
+- **If you are burning coal for power, processing it into solid fuel will cut down its demand significantly.** For example, doubling the energy per coal means that you need to mine only half as much as before. However, unlocking coal liquification requires production science, which means you can unlock solar and nuclear power much sooner and [their advantages](https://www.reddit.com/r/technicalfactorio/comments/srosza/coal_vs_solar_vs_nuclear_setup_costs_and_running/) may make it worthwhile to switch to them before upgrading your coal setup. Nuclear power is [easier to do than it may seem]([Alt-F4 #57 - Nuclear Energy and You](https://alt-f4.blog/ALTF4-57/#)), especially without Kovarex Enrichment!
+- **Use modules in your fuel processing to increase energy gains.** As previously touched upon, filling all the fuel processing machines with efficiency 1 modules is quick and offers some energy savings. More complex module combinations may offer better gains, as presented in [this guide]([Tutorial:Producing power from oil - Factorio Wiki](https://wiki.factorio.com/Tutorial:Producing_power_from_oil)) on the official wiki.
 
 ## Summary
 
@@ -256,6 +272,6 @@ This article started with a little question that snowballed into an exploration 
 
 **(6) Nuclear fuel vs. Uranium fuel cells:** Using uranium-235 for nuclear reactor fuel cells yields up to hundreds of times more energy from it compared to using it for nuclear fuel but you unlock nuclear fuel alongside Kovarex enrichment, meaning that uranium-235 is no longer rare when nuclear fuel is available.
 
-**(7) Usefulness of processing fuels:** todo*
+**(7) Usefulness of processing fuels:** It depends on a number of factors but ultimately you do it anyway in order to make rocket parts and it is really useful for vehicles at least.
 
-Wrap up paragraph: todo* Do you have any other questions about Factorio’s fuels? ...
+These questions have been pretty fun for me to explore and I hope they were interesting to you too! Do you have any additions or similar questions about fuels or other game mechanics? Feel free to get in touch on Reddit or Discord via the links below!
