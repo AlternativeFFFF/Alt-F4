@@ -8,7 +8,7 @@
 
 Media:
 
-* Diagrams are included in a separate PowerPoint file. 
+* Images are the slides in a separate PowerPoint file. They are in order.
 
 * There is a preview image of the table as a PNG.
 
@@ -62,7 +62,7 @@ Then we consider that uranium is already being used for a different fuel type an
 
 After considering all the energy equations under default conditions, we next look at how things change upon introducing modules:
 
-**(7) What are the effects of modules on fuel processing?**
+**(7) What are the effects of modules on energy gains?**
 
 Finally, we take a step back and look at the big picture, noting other factors like costs and alternate technologies, and we ask: 
 
@@ -87,7 +87,7 @@ As for the electricity consumption during the fuel processing, it depends on the
 
 *We could also use assembling machine 3's for these processes, but they would consume more energy despite the speed gain.
 
-The total processing energy ("E") needed for a conversion can be calculated using the machine power usage ("P") multiplied by the total crafting time for all of the input ("t"). This total crafting time is the duration of one crafting cycle ("t_c") divided by the machine crafting speed ("C"), multiplied by the number of crafting cycles ("n") to cover the entire input quantity. Hence we summarize processing energy consumption as:
+The total processing energy ("E") needed for a conversion can be calculated using the machine power usage ("P") multiplied by the total crafting time for all of the input ("t"). This total crafting time is the time taken for one crafting cycle ("t_c") multiplied by the number of crafting cycles ("n") to cover the entire input quantity, divided by the machine crafting speed ("C"). Hence we summarize processing energy consumption as:
 
 `E = P * t = P * t_c * n / C`
 
@@ -183,7 +183,7 @@ Meanwhile, lets look at the total energy outputs for the best cases for each inp
 
 `oil energy output = 1.03305MJ / oil`
 
-We find that 1 unit of coal holds about 7.85 times the energy as 1 unit of oil. This ratio lets you get an idea of how much one resource can substitute for the other when your aim is to produce solid fuel at a large scale. 
+We find that 1 unit of coal holds roughly 8 times the energy as 1 unit of oil. This ratio lets you get an idea of how much one resource can substitute for the other when your aim is to produce solid fuel at a large scale. 
 
 However, energy yield per unit is not the only factor when comparing coal and oil for solid fuel production. I've identified these factors: 
 
@@ -243,7 +243,7 @@ Hence, we see that we can get up to hundreds of times more energy from the same 
 
 So far we have done our calculations without using any modules for the sake of keeping things simple and understanding the default conditions. Now let's look at them again with modules and see if our results change significantly. Modules primarily affect the power usage of the fuel processing machines. Let's first review the equation:
 
-`Total processing energy (E) = Machine power usage (P) * duration of 1 crafting cycle (t_c) * numnber of crafting cycles (n) / crafting speed (C)`
+`Total processing energy (E) = Machine power usage (P) * time of 1 crafting cycle (t_c) * numnber of crafting cycles (n) / crafting speed (C)`
 
 `E = P * t_c * n / C`
 
@@ -255,6 +255,16 @@ Here is what the modules do:
 
 - **Productivity modules:** They have the most interesting effects. They increase power usage ("P") and decrease crafting speed ("C"), both of which lead to an increase in E, which decreases the overall energy gains. However, productivity modules also increase the amount of processed fuel produced. Furthermore, if we keep using them in every step of the processing, we can get more and more fuel across the system! The energy gains from the extra fuel might outweigh all the extra power consumption.
 
+
+
+{% include image.html
+
+src= 'src'
+ alt='Module effects on power consumption'
+ caption='Module effects on power consumption'
+
+%}
+
 Now let's demonstrate the use of modules. First, let's look at the case of efficiency in coal liquification with heavy oil cracking. Refineries and chemical plants have 3 module slots, so we can place 3 efficiency 1 modules to reduce power consumptions by 80% for each: 
 
 {% include image.html
@@ -265,7 +275,7 @@ src= 'src'
 
 %}
 
-The total power consumption drops from 3.28125MJ to 0.65625MJ, which translates to the energy gains increasing from 103% to 116%. This increase is nice but it is not that large because processing energy was already relatively small. Now let us look at the same example with 3 productivity 3 modules instead to see the effects of maximum productivity:
+The total power consumption drops from about 3.28MJ to about 0.66MJ, which translates to the energy gains of 116%, compared to the default case of 103%. This increase is nice but it is not that large because processing energy was already relatively small. Now let us look at the same example with 3 productivity 3 modules instead to see the effects of maximum productivity:
 
 {% include image.html
 
@@ -275,9 +285,9 @@ src= 'src'
 
 %}
 
-We see that with the cumulative effects of 30% extra product across the process results in more than double the amount of solid fuel as before! This adds up to an extra energy gain of nearly 100MJ. However, we also see that total power consumption has greatly increased to about 50.6MJ. Nevertheless, our overall energy gains have become `185.6 - 50.6 - 40 - 1.5 = 93.5MJ`, which is about 134% of energy gains instead of the default case of 103%. Meanwhile, our machines are working at half the speed as before, which makes power get consumed for twice as long.
+We see that with the cumulative effects of 30% extra product output across the process results in more than double the amount of solid fuel as before! This adds up to an extra energy gain of nearly 100MJ! However, we also see that total power consumption has greatly increased to about 50.6MJ. Nevertheless, our overall energy gains have become `185.6 - 50.6 - 40 - 1.5 = 93.5MJ`, which is about 134% of energy gains instead of the default case of 103%. Meanwhile, our machines are working at half the speed as before, which makes power get consumed for twice as long.
 
-Finally, let's try out the compensating effects of speed modules by switching to 2 productivity 3 modules and 1 speed 3 module each:
+Hence finally, let's try out the compensating effects of speed modules by switching to 2 productivity 3 modules and 1 speed 3 module each:
 
 {% include image.html
 
@@ -311,7 +321,9 @@ src= 'src'
 
 %}
 
-Alright, so I tried 4 productivity 3 modules in an assembling machine 3 but this slowed down the machine so much that the processing energy was almost more than the fuel energy it put out! So next I tried to remove a productivity module and dampen some of the inflated power consumption with an efficiency 3 module. This was helpful but insufficient. Afterwards I changed strategy and used a speed module to restore the speed of the machine and cut down the processing time. While this performed better than the efficiency module, it still did not make enough of a difference. I tried more combinations after that and even tried adding various beacon combinations too (no diagrams for those) but no matter what I only managed to get close to a breakeven. Hence, it seems that while modules do offer some significant energy gain boosts, they do not necessarily make every single fuel processing step better (it depends on the recipe crafting time vs. the energy gains).
+Alright, so I tried 4 productivity 3 modules in an assembling machine 3 but this slowed down the machine so much that the processing energy was almost more than the fuel energy it put out! So next I tried to remove a productivity module and dampen some of the inflated power consumption with an efficiency 3 module. This was helpful but insufficient. Afterwards I changed strategy and used a speed module to restore the speed of the machine and cut down the processing time. While this performed better than the efficiency module, it still did not make enough of a difference. I tried more combinations after that and even tried adding various beacon combinations too (no diagrams for those) but no matter what I only managed to get close to a breakeven. 
+
+Based on these examples, it seems that while modules do offer some significant energy gain boosts, they do not necessarily make every single fuel processing step better (it depends on the recipe crafting time vs. the energy gains).
 
 ## So how useful is fuel processing in general?
 
