@@ -2,7 +2,7 @@
 
 *by Sir Fendi*
 
-*version 1.1*
+*version 1.2*
 
 (Calculations will be double-checked)
 
@@ -16,15 +16,19 @@ All feedback is welcome! I am wondering:
 
 - Maybe more images can be added?
 
-- Do you think think the responses cover the questions sufficiently or maybe I have missed some factors to consider?
-
-- Are there any more questions to add?
-
 - Are there any other posts/explorations you have seen in the past that would be cool to mention here?
 
 . . . . . . . .
 
-Factorio has a variety of fuels that can go into your burner devices, ranging from classic and modest wood, up to sci-fi level nuclear fuel. The most popular burner fuel is coal, which is the backbone of early game automation and it runs all the boilers, furnaces, vehicles, and other machines reliably until it inevitably runs low. 
+Factorio has a variety of fuels that can go into your burner devices, ranging from classic and modest wood, up to experimental and extreme nuclear rocket fuel. The most popular burner fuel is coal, which is the backbone of early game automation and it runs all the boilers, furnaces, vehicles, and other machines reliably until it inevitably runs low. 
+
+{% include image.html
+
+src= 'src'
+ alt='Factorio's burner fuels'
+ caption='Factorio's burner fuels.'
+
+%}
 
 In the mid game, solid fuel is introduced as the first processed fuel, made initially from crude oil. Conveniently, solid fuel is used to later make rocket fuel, which is in turn used to make nuclear fuel. These processed fuels offer noticeable advantages over coal, like having greater energy density both per unit and per stack, and an acceleration bonus when used in vehicles. More curiously, however, the late game also brings the technology to liquify good old coal and convert it into solid fuel. This raised for me the question: Does processing coal into solid fuel get more energy out of it? In other words, if you liquify 10 units of coal, make solid fuel out of the oils and gas that it yields, and then burn the solid fuel, does it provide more energy than the directly burning the coal, even with all that processing? And what if you further processed it into rocket fuel? Similar burning questions followed and snowballed into this general exploration of the energy contents of different burner fuels as well as the energy costs of converting them. 
 
@@ -56,9 +60,13 @@ Then we consider that uranium is already being used for a different fuel type an
 
 **(6) How does burning nuclear fuel for power compare with making uranium fuel cells to "burn" in reactors instead?**
 
-Finally, we take a step back and look at the big picture to ask: 
+After considering all the energy equations under default conditions, we next look at how things change upon introducing modules:
 
-**(7) How useful is fuel processing in general?**
+**(7) What are the effects of modules on fuel processing?**
+
+Finally, we take a step back and look at the big picture, noting other factors like costs and alternate technologies, and we ask: 
+
+**(8) How useful is fuel processing in general?**
 
 With all the conversion options in the vanilla game, this list of questions actually covers all of the burner fuels except for wood, which is not converted into anything unless you use a [charcoal mod]([Charcoal Burner - Factorio Mods](https://mods.factorio.com/mod/CharcoalBurner)). Hence, here is a quick note about wood as a fuel: You may end up with a lot of it as a byproduct of clearing space using an axe or robots. However, it runs out quickly because of how little energy it provides. Instead of cutting trees for extra fuel, you would probably benefit more from using the wood to make power poles or chests, or from keeping the trees around for pollution absorption. As for other fuels, since we use conversion diagrams to answer the questions, first let's look at how they were made.
 
@@ -70,20 +78,18 @@ As for the electricity consumption during the fuel processing, it depends on the
 
 <!-- See table.PNG for a clean preview -->
 
-| Power consuming machine                                                                                                                         | Power Use without Modules (MW) | Included Processes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Crafting Speed |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-| ![Oil refinery.png](https://wiki.factorio.com/images/thumb/Oil_refinery.png/32px-Oil_refinery.png) Oil refinery                                 | 0.420                          | ![Basic oil processing.png](https://wiki.factorio.com/images/thumb/Basic_oil_processing.png/32px-Basic_oil_processing.png) ![Advanced oil processing.png](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) ![Coal liquefaction.png](https://wiki.factorio.com/images/thumb/Coal_liquefaction.png/32px-Coal_liquefaction.png)                                                                                                                                                                             | 1              |
-| ![Chemical plant.png](https://wiki.factorio.com/images/thumb/Chemical_plant.png/32px-Chemical_plant.png) Chemical plant                         | 0.210                          | ![Heavy oil cracking.png](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) ![Solid fuel from heavy oil.png](https://wiki.factorio.com/images/thumb/Solid_fuel_from_heavy_oil.png/32px-Solid_fuel_from_heavy_oil.png)![Solid fuel from light oil.png](https://wiki.factorio.com/images/thumb/Solid_fuel_from_light_oil.png/32px-Solid_fuel_from_light_oil.png)![Solid fuel from petroleum gas.png](https://wiki.factorio.com/images/thumb/Solid_fuel_from_petroleum_gas.png/32px-Solid_fuel_from_petroleum_gas.png) | 1              |
-| ![Assembling machine 2.png](https://wiki.factorio.com/images/thumb/Assembling_machine_2.png/32px-Assembling_machine_2.png) Assembling machine 2 | 0.150*                         | ![Rocket fuel.png](https://wiki.factorio.com/images/thumb/Rocket_fuel.png/32px-Rocket_fuel.png)![Uranium fuel cell.png](https://wiki.factorio.com/images/thumb/Uranium_fuel_cell.png/32px-Uranium_fuel_cell.png)                                                                                                                                                                                                                                                                                                                                             | 0.75*          |
-| ![Centrifuge.png](https://wiki.factorio.com/images/thumb/Centrifuge.png/32px-Centrifuge.png) Centrifuge                                         | 0.350                          | ![Nuclear fuel.png](https://wiki.factorio.com/images/thumb/Nuclear_fuel.png/32px-Nuclear_fuel.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 1              |
+| Power consuming machine                                                                                                                          | Power Use without Modules (MW) | Included Processes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Crafting Speed |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
+| ![Oil refinery.png](https://wiki.factorio.com/images/thumb/Oil_refinery.png/32px-Oil_refinery.png) Oil refinery                                  | 0.420                          | ![Basic oil processing.png](https://wiki.factorio.com/images/thumb/Basic_oil_processing.png/32px-Basic_oil_processing.png) ![Advanced oil processing.png](https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png) ![Coal liquefaction.png](https://wiki.factorio.com/images/thumb/Coal_liquefaction.png/32px-Coal_liquefaction.png)                                                                                                                                                                             | 1              |
+| ![Chemical plant.png](https://wiki.factorio.com/images/thumb/Chemical_plant.png/32px-Chemical_plant.png) Chemical plant                          | 0.210                          | ![Heavy oil cracking.png](https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png) ![Solid fuel from heavy oil.png](https://wiki.factorio.com/images/thumb/Solid_fuel_from_heavy_oil.png/32px-Solid_fuel_from_heavy_oil.png)![Solid fuel from light oil.png](https://wiki.factorio.com/images/thumb/Solid_fuel_from_light_oil.png/32px-Solid_fuel_from_light_oil.png)![Solid fuel from petroleum gas.png](https://wiki.factorio.com/images/thumb/Solid_fuel_from_petroleum_gas.png/32px-Solid_fuel_from_petroleum_gas.png) | 1              |
+| ![Assembling machine 2.png](https://wiki.factorio.com/images/thumb/Assembling_machine_2.png/32px-Assembling_machine_2.png) Assembling machine 2* | 0.150                          | ![Rocket fuel.png](https://wiki.factorio.com/images/thumb/Rocket_fuel.png/32px-Rocket_fuel.png)![Uranium fuel cell.png](https://wiki.factorio.com/images/thumb/Uranium_fuel_cell.png/32px-Uranium_fuel_cell.png)                                                                                                                                                                                                                                                                                                                                             | 0.75           |
+| ![Centrifuge.png](https://wiki.factorio.com/images/thumb/Centrifuge.png/32px-Centrifuge.png) Centrifuge                                          | 0.350                          | ![Nuclear fuel.png](https://wiki.factorio.com/images/thumb/Nuclear_fuel.png/32px-Nuclear_fuel.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 1              |
 
-*If we use assembling machine 3 instead, the power use would be 0.375MW and crafting speed 1.25.
+*We could also use assembling machine 3's for these processes, but they would consume more energy despite the speed gain.
 
-The total processing energy ("E") needed for a conversion can be calculated using the machine power use ("P") multiplied by the total crafting time for all of the input ("T"). This total crafting time is the duration of one crafting cycle ("d") divided by the machine crafting speed ("s"), multiplied by the number of crafting cycles ("c") to cover the entire input quantity. Hence we summarize processing energy consumption as:
+The total processing energy ("E") needed for a conversion can be calculated using the machine power usage ("P") multiplied by the total crafting time for all of the input ("t"). This total crafting time is the duration of one crafting cycle ("t_c") divided by the machine crafting speed ("C"), multiplied by the number of crafting cycles ("n") to cover the entire input quantity. Hence we summarize processing energy consumption as:
 
-`E = P * T = P * d * c / s`
-
-While we calculate these values without modules to see the "default" situation, I would highly recommend to fill these machines with at least efficiency 1 modules in practice, as it would reduce E by 60%-80%. Other module combinations can offer even better results, like extra yield from speed-productivity synergy. [This guide]([Tutorial:Producing power from oil - Factorio Wiki](https://wiki.factorio.com/Tutorial:Producing_power_from_oil)) on the official wiki looks into these in detail.
+`E = P * t = P * t_c * n / C`
 
 Once we have the crafting recipes, fuel energy values, and the processing energy equation, we have all we need to make the conversion diagrams. Now let's look at them:
 
@@ -129,7 +135,7 @@ We see that we now get 7.375 solid fuel from the same 10 coal instead of 5.75. T
 
 `Percent gain = 41.12MJ / 40MJ = 102.8% `
 
-We find that liquifying coal and including cracking leads getting about **twice its original energy**. In other words, if you liquify coal before burning it, you only need half as much as you did before! While this suggests that liquifying coal on a large scale is a great idea, other factors like production rates need to be considered, as discussed later. 
+We find that liquifying coal and including cracking leads getting about **twice its original energy**. In other words, if you liquify coal before burning it, you only need half as much as you did before! While this suggests that liquifying coal on a large scale is a great idea, other factors like setup costs need to be considered before jumping into it, as discussed later. 
 
 Moving on, let's consider the other way that solid fuel is made:
 
@@ -207,7 +213,7 @@ We see that a single unit rocket fuel contains 100MJ of energy while the require
 
 ## Going nuclear
 
-Nuclear fuel is still pretty experimental in the real world, but Factorio offers a standardized variant that is made from regular rocket fuel and uranium-235. Like with our examination of rocket fuel, the recipe itself is enough to determine energy gains:
+Nuclear fuel is still pretty experimental in the real world, but Factorio offers a standardized variant that is made from regular rocket fuel and uranium-235 and it presents itself as the ultimate burner fuel. Like with our examination of rocket fuel, the recipe itself is enough to determine energy gains:
 
 {% include image.html
 
@@ -221,7 +227,7 @@ We see that nuclear fuel offers an impressive energy output of 1.21GJ, which is 
 
 ## Making the most of your uranium
 
-Despite its massive energy gains and the resulting coal and oil savings, nuclear fuel might not be perfect. The uranium-235 that it uses could instead be used to make uranium fuel cells, which provide a different energy situation:
+Despite its massive energy gains and the resulting coal and oil savings, nuclear fuel might not be perfect. The uranium-235 that it uses could instead be used to make uranium fuel cells, which provide a different energy situation: They can only be used inside nuclear reactors. One fuel cell provides one reactor a constant supply of 40MW of heat for exactly 200 seconds, which adds up to a total energy of `40MW * 200s = 8000MJ = 8GJ`. If the reactor has any neighbors, the neighbor bonus kicks in, and the bonus from each neighbor leads to an additional 40MW of heat being supplied by the same fuel cell. Since the reactor can up to 4 neighbors, the fuel cell can provide up to 5 times its original yield, which is `8GJ * 5 = 40GJ`. We already dealing with GJ instead of MJ when discussing a single fuel cell but the recipe for them yields 10 per piece of uranium-235:
 
 {% include image.html
 
@@ -231,42 +237,119 @@ src= 'src'
 
 %}
 
-We see that while uranium fuel cells can only be used inside nuclear reactors, they produce energy on the order of GJ instead of MJ, and the energy yield is not simply boosted but multiplied via the reactor neighbor bonus. Hence, up to hundreds of times more energy is gained from the same piece of uranium-235 if used in a nuclear reactor instead of nuclear fuel. This would suggest that if one has a uranium-235 supply already, they should just switch to nuclear power and electric machines instead of burner devices. However, it is also worth noting that nuclear fuel is unlocked alongside Kovarex Enrichment, which allows for easy production of uranium-235. This means that using uranium efficiently stops being an issue around the time you unlock nuclear fuel.
+Hence, we see that we can get up to hundreds of times more energy from the same piece of uranium-235 if it is used in a nuclear reactor instead of nuclear fuel. This would suggest that if one has a uranium-235 supply already, they should just switch to nuclear power and electric machines instead of burner devices. However, it is also worth noting that nuclear fuel is unlocked alongside Kovarex Enrichment, which allows for the easy production of uranium-235. This means that using uranium efficiently stops being an issue around the time you unlock nuclear fuel.
+
+## Module effects on energy gains
+
+So far we have done our calculations without using any modules for the sake of keeping things simple and understanding the default conditions. Now let's look at them again with modules and see if our results change significantly. Modules primarily affect the power usage of the fuel processing machines. Let's first review the equation:
+
+`Total processing energy (E) = Machine power usage (P) * duration of 1 crafting cycle (t_c) * numnber of crafting cycles (n) / crafting speed (C)`
+
+`E = P * t_c * n / C`
+
+Here is what the modules do:
+
+- **Efficiency modules:** They reduce the power usage of the fuel processing machines ("P"). Their overall effects on energy gains are small but noteworthy for most recipes. I would definitely recommend using efficiency 1 modules in all of the fuel processing machines if you don't use any other modules because they are quite cheap to make and they cut down power usage by 60% or even 80% (the efficiency limit), depending on how many module slots the machines have.
+
+- **Speed modules:** One effect of speed modules is increasing power usage ("P") just like efficiency modules, but in the opposite direction, hence reducing our energy gains. The other effect of speed modules is increasing the crafting speeds of machines ("C"), which as seen from the equation, reduces the power usage. For every speed module, the increase in P is greater than the increase in C, which means that the overall effect of any speed module is an increase in E, which results in decreased energy gains overall. However, speed modules can be used to mitigate the slowdown from productivity modules, which might provide energy gains overall.
+
+- **Productivity modules:** They have the most interesting effects. They increase power usage ("P") and decrease crafting speed ("C"), both of which lead to an increase in E, which decreases the overall energy gains. However, productivity modules also increase the amount of processed fuel produced. Furthermore, if we keep using them in every step of the processing, we can get more and more fuel across the system! The energy gains from the extra fuel might outweigh all the extra power consumption.
+
+Now let's demonstrate the use of modules. First, let's look at the case of efficiency in coal liquification with heavy oil cracking. Refineries and chemical plants have 3 module slots, so we can place 3 efficiency 1 modules to reduce power consumptions by 80% for each: 
+
+{% include image.html
+
+src= 'src'
+ alt='Processing coal into solid fuel with heavy oil cracking, at minimum power consumption'
+ caption='Processing coal into solid fuel with heavy oil cracking, at minimum power consumption'
+
+%}
+
+The total power consumption drops from 3.28125MJ to 0.65625MJ, which translates to the energy gains increasing from 103% to 116%. This increase is nice but it is not that large because processing energy was already relatively small. Now let us look at the same example with 3 productivity 3 modules instead to see the effects of maximum productivity:
+
+{% include image.html
+
+src= 'src'
+ alt='Processing coal into solid fuel with heavy oil cracking, at maximum productivity'
+ caption='Processing coal into solid fuel with heavy oil cracking, at maximum productivity'
+
+%}
+
+We see that with the cumulative effects of 30% extra product across the process results in more than double the amount of solid fuel as before! This adds up to an extra energy gain of nearly 100MJ. However, we also see that total power consumption has greatly increased to about 50.6MJ. Nevertheless, our overall energy gains have become `185.6 - 50.6 - 40 - 1.5 = 93.5MJ`, which is about 134% of energy gains instead of the default case of 103%. Meanwhile, our machines are working at half the speed as before, which makes power get consumed for twice as long.
+
+Finally, let's try out the compensating effects of speed modules by switching to 2 productivity 3 modules and 1 speed 3 module each:
+
+{% include image.html
+
+src= 'src'
+ alt='Processing coal into solid fuel with heavy oil cracking, at high productivity + speed'
+ caption='Processing coal into solid fuel with heavy oil cracking, , at high productivity + speed'
+
+%}
+
+We now find numbers somewhere in the middle of the previous two cases. We have about 12.2 solid fuel now, which is a good gain and it gives about 146.4MJ. We see that the total power consumption is now about 20.3MJ. Now, our overall energy gains have become `146.4 - 20.3 - 40 - 1.5 = 84.6MJ`, which is about 112% of energy gains instead of the default case of 103%. We discover that full productivity performs better in this case despite the machines slowing down so much.
+
+Seeing the strong effects of productivity modules, I wonder if we can make rocket fuel production yield net energy gains too, so let's fill the assembling machine 2 productivity 3 modules:
+
+{% include image.html
+
+src= 'src'
+ alt='Processing solid fuel into rocket fuel at maximum productivity AM2'
+ caption='Processing solid fuel into rocket fuel at maximum productivity AM2'
+
+%}
+
+Well, the input and output have the same energy now, but the processing energy has grown big enough to wipe all the fuel energy gains. Looking at the cause of this high power cost, we see that it is because this recipe takes 30 seconds to craft while before we were working with 2 or 5 seconds. This difference means that a higher power consumption will has a much greater impact overall.
+
+However, we have other options for making rocket fuel: We can use assembling machine 3s instead and take advantage of their 4 module slots. Here is how some different combinations perform:
+
+{% include image.html
+
+src= 'src'
+ alt='Processing solid fuel into rocket fuel at high productivity AM3'
+ caption='Processing solid fuel into rocket fuel at high productivity AM3'
+
+%}
+
+Alright, so I tried 4 productivity 3 modules in an assembling machine 3 but this slowed down the machine so much that the processing energy was almost more than the fuel energy it put out! So next I tried to remove a productivity module and dampen some of the inflated power consumption with an efficiency 3 module. This was helpful but insufficient. Afterwards I changed strategy and used a speed module to restore the speed of the machine and cut down the processing time. While this performed better than the efficiency module, it still did not make enough of a difference. I tried more combinations after that and even tried adding various beacon combinations too (no diagrams for those) but no matter what I only managed to get close to a breakeven. Hence, it seems that while modules do offer some significant energy gain boosts, they do not necessarily make every single fuel processing step better (it depends on the recipe crafting time vs. the energy gains).
 
 ## So how useful is fuel processing in general?
 
 Our findings so far about energy gains only partially help us answer this question. I have identified a more comprehensive list of factors that you should consider when deciding whether to (further) process your burner fuels:
 
 * **Gains in energy:** If you get more energy out of the processed fuel, then your demand for the unprocessed fuel decreases and so your resource patches run out more slowly. We determined the energy gains for different fuels earlier.
-- **Gains in vehicle acceleration bonus and top speed bonus:** Greater bonuses mean that your vehicles can go faster. More processed fuels offer greater bonuses.
-- **Gains in energy density (per stack and per unit):** More energy per stack means more vehicle range per slot of fuel, which makes a big difference for trains because of their limited fuel slots. Meanwhile, more energy per unit/stack can be interpreted as fewer units/stacks per energy, which means less logistics are required to move the same amount of energy. Needing fewer bots, belts, and/or trains to move fuels simplifies things and it also makes the logistic system itself cost less energy. More processed fuels have greater energy density in both regards, hence having these benefits.
+- **Gains in vehicle acceleration bonus and top speed bonus:** Greater bonuses mean that your vehicles can go faster. More processed fuels offer greater bonuses. 
+- **Gains in energy density (per unit and per stack):**  More energy per stack means the same inventory slot can hold more energy, which makes a significant difference for how much energy you can fit into each cargo wagon or chest. Meanwhile, more energy per unit means more energy can be carried by robots, belts, and inserters, which can only hold a few units at a time. If your energy consumption is fixed, using a more energy-dense fuel means needing less logistics infrastructure to move fuels, which means simpler designs and less energy consumed by the logistic system itself. More processed fuels have greater energy density in both regards, hence having these benefits.
 - **Cost of processing setup:** This is in terms of materials and space needed to make enough buildings and logistics for the processing, as well as the unlock cost of the required technology. Each tier of processing adds to these costs.
 - **Availability of more coal/oil to just use instead:** Since these resources are technically infinite on most maps, you may prefer to skip the energy gains and brute force your fuel shortages by setting up more resource extraction infrastructure instead of more fuel processing infrastructure. This factor simply depends on your surroundings.
 - **How long you will keep using the burner devices:** If you are going to switch to electrical machines and alternate power sources soon, it may not be worth the effort of setting up a large fuel processing system.
 
 Since the above factors depend on your map and your plans, the conclusion varies on whether fuel processing is useful. Based on my experiences, I can offer the following advice about processing fuels:
 
-- **Processed fuels are excellent for trains and tanks.** The speed gains from rocket fuel is quite satisfying and nuclear fuel is on another level…
+- **Processed fuels are excellent for trains and tanks.** The acceleration gains from rocket fuel is quite satisfying (+80%) and nuclear fuel is on another level... (+150%)
 - **You already need to mass produce solid fuel and rocket fuel to make rocket parts,** so it is not too difficult to produce a little more for your vehicle or other burner device needs.
 - **If you are burning coal for power, processing it into solid fuel will cut the coal demand by half.** And of course, you can go all out and run your boilers with nuclear fuel to reduce the demand to about 1/20th. However, unlocking coal liquification or nuclear fuel requires production science, which means you can unlock solar and (regular) nuclear power much sooner and [their advantages](https://www.reddit.com/r/technicalfactorio/comments/srosza/coal_vs_solar_vs_nuclear_setup_costs_and_running/) may make it worthwhile to switch to them before upgrading your coal setup. Nuclear power is [easier to do than it may seem]([Alt-F4 #57 - Nuclear Energy and You](https://alt-f4.blog/ALTF4-57/#)), as it provides massive energy yields for very few reactors and centrifuges, without needing Kovarex Enrichment!
-- **Use modules in your fuel processing to increase energy gains.** As previously touched upon, filling all the fuel processing machines with efficiency 1 modules is quick and offers some energy savings. More complex module combinations may offer better gains, as presented in [this guide]([Tutorial:Producing power from oil - Factorio Wiki](https://wiki.factorio.com/Tutorial:Producing_power_from_oil)) on the official wiki.
 
 ## Summary
 
 This article started with a little burning question that brought more burning questions and evolved into an exploration of all of Factorio's fuels. We uncovered the following:
 
-**(1) Coal vs. coal liquification:** Liquifying coal and directly converting it into solid fuel yields 1.57 times as much energy per coal.
+**(1) Coal vs. coal liquification:** Liquifying coal and directly converting it into solid fuel yields 57% extra energy per coal, when no modules are used.
 
-**(2) Coal liquification with cracking:** If we also crack the heavy oil before making the solid fuel, it yields 2.03 times as much energy per coal.
+**(2) Coal liquification with cracking:** If we also crack the heavy oil before making the solid fuel, it yields 103% extra energy per coal, when no modules are used.
 
-**(3) Coal vs. oil for solid fuel production:** Coal produces about 8 times as much solid fuel or energy as crude oil per unit. However, you can transport about 60% more energy in a fluid wagon of oil than a cargo wagon of coal. Meanwhile, coal has many exclusive uses it may be needed for instead of making oil products, while crude oil has only one such exclusive use. Therefore using oil for your solid fuel production may be more practical, but it ultimately depends on the abundances of coal and oil on your map.
+**(3) Coal vs. oil for solid fuel production:** Coal produces about 8 times as much solid fuel or energy as crude oil per unit, when no modules are used. However, you can transport about 60% more energy in a fluid wagon of oil than a cargo wagon of coal. Meanwhile, coal has many exclusive uses it may be needed for instead of making oil products, while crude oil has only one such exclusive use. Therefore using oil for your solid fuel production may be more practical, but it ultimately depends on the abundances of coal and oil on your map.
 
-**(4) Solid fuel vs. rocket fuel:** Converting solid fuel into rocket fuel causes energy loss, but rocket fuel offers other advantages, like within vehicles.
+**(4) Solid fuel vs. rocket fuel:** Converting solid fuel into rocket fuel causes energy loss, when no modules are used. However, rocket fuel offers other advantages, such as its higher bonuses in vehicles.
 
-**(5) Rocket fuel vs. nuclear fuel:** Converting rocket fuel into nuclear fuel yields around 10x as much energy as the initial solid fuel that went in, which makes it the best way to get the most energy out of your initial coal or oil. However, it is not the most efficient way to generate power from uranium.
+**(5) Rocket fuel vs. nuclear fuel:** Converting rocket fuel into nuclear fuel yields around 10x as much energy as the initial solid fuel that went in, when no modules are used. This makes it the best way to get the most energy out of your initial coal or oil. However, it is not the most efficient way to generate power from uranium.
 
 **(6) Nuclear fuel vs. Uranium fuel cells:** Using uranium-235 for nuclear reactor fuel cells yields up to hundreds of times more energy from it compared to using it for nuclear fuel but you unlock nuclear fuel alongside Kovarex enrichment, meaning that uranium-235 stops being rare when nuclear fuel is available.
 
-**(7) Usefulness of processing fuels:** It depends on a number of factors but ultimately you do it anyway in order to make rocket parts and it is really useful for vehicles at least.
+**(7) Adding modules for energy gains:** Efficiency modules offer energy gains by reducing the processing power usage. Productivity modules offer energy gains by creating more processed fuel. Speed modules might enhance productivity module effects by compensating for speed losses. Modules in general are more effective in boosting the gains for recipes with shorter crafting times and higher energy gains.
 
-These questions have been pretty fun for me to explore and I hope they were interesting to you too! Do you have any additions or similar questions about fuels or other game mechanics? Feel free to get in touch on Reddit or Discord via the links below!
+**(8) Usefulness of processing fuels:** It depends on a number of factors but ultimately you do it anyway in order to make rocket parts and it is really useful for vehicles at least.
+
+These questions have been pretty fun for me to explore and I hope they were interesting to you too! Do you have any additions or similar questions about fuels or other game mechanics? Feel free to get in touch on Reddit or Discord via the links at the bottom of the article!
+
+# 
