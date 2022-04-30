@@ -313,7 +313,7 @@ Compared to no modules offering 103% gain, this setup offers an excellent gain o
 
 Instead of replacing the third productivity module with a speed module, we can introduce speed beacons. This would allow us to both keep the maximum productivity and cut down machine power consumptions, although the beacons themselves would introduce additional power consumption that would have to be accounted for. I predict that another energy gain is possible by having each beacon affect multiple machines. However, since calculations involving beacons would introduce additional factors that would have to be considered, such as machine counts and the physical layout of the fuel processing area, I'll leave that rabbit hole as an exercise for the reader.
 
-Meanwhile, seeing the strong effects of productivity modules, I wonder if we can use them to make rocket fuel production yield net energy gains. So, let's fill the assembling machine 2 with productivity 3 modules:
+Meanwhile, seeing the strong effects of productivity modules, I wonder if we can use them to make rocket fuel production yield a net energy gain as well. So, let's fill the assembling machine 2 with productivity 3 modules:
 
 {% include image.html
 
