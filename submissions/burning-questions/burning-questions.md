@@ -235,7 +235,9 @@ Hence, we see that we can get up to hundreds of times more energy from the same 
 
 ## Module effects on energy gains
 
-So far we have done our calculations without using any modules for the sake of keeping things simple and understanding the default conditions. Now let's look at them again with modules and see if our results change significantly. Modules primarily affect the power usage of the fuel processing machines. Let's first review the equation:
+So far we have done our calculations without using any modules for the sake of keeping things simple and understanding the default conditions. Now let's look at them again with modules and see if our results change significantly. If you would like some quick refreshers on modules, our Complexity Corner articles offer introductions for [productivity modules]([Alt-F4 #12 - Reverse Engineering the Spider](https://alt-f4.blog/ALTF4-12/#complexity-corner-productivity-modules-thekool)), [speed modules]([Alt-F4 #16 - Modulating Pure Speed](https://alt-f4.blog/ALTF4-16/)), [efficiency modules]([Alt-F4 #25 - Efficiency, Efficiency, Efficiency!](https://alt-f4.blog/ALTF4-25/)), and [beacons]([Alt-F4 #29 - Beacons and Not Belts](https://alt-f4.blog/ALTF4-29/)).
+
+When looking at modules from the perspective of fuel conversions, they primarily affect the power usage of the fuel processing machines. Let's first review the equation:
 
 `Total processing energy (E) = Machine power usage (P) * time of one crafting cycle (t_c) * numnber of crafting cycles (n) / crafting speed (C)`
 
