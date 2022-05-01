@@ -18,7 +18,7 @@ Factorio has a variety of fuels that can go into your burner devices, ranging fr
 
 {% include image.html
 
-src= 'src'
+src= '1-burner-fuels.png'
  alt='Factorio's burner fuels'
  caption='Factorio's burner fuels.'
 
@@ -93,7 +93,7 @@ The simple way to process coal is to just liquify it and immediately convert the
 
 {% include image.html 
 
-src= 'src'
+src= '2-coal-liq-direct.png'
  alt='Processing coal into solid fuel directly'
  caption='Processing coal into solid fuel directly' 
 
@@ -117,7 +117,7 @@ Now to look at the process with heavy oil cracking:
 
 {% include image.html
 
-src= 'src'
+src= '3-coal-liq-cracking.png'
  alt='Processing coal into solid fuel with heavy oil cracking'
  caption='Processing coal into solid fuel with heavy oil cracking'
 
@@ -139,7 +139,7 @@ Since solid fuel can also be made out of oil, let's see how energy-rich oil is c
 
 {% include image.html
 
-src= 'src'
+src= '4-basic-oil.png'
  alt='Processing oil into solid fuel with basic oil processing'
  caption='Processing oil into solid fuel with basic oil processing'
 
@@ -149,7 +149,7 @@ We see that 100 oil produces 2.25 solid fuel this way. However, we know from the
 
 {% include image.html
 
-src= 'src'
+src= '5-adv-oil-direct.png'
  alt='Processing oil into solid fuel with advanced oil processing'
  caption='Processing oil into solid fuel with advanced oil processing'
 
@@ -159,7 +159,7 @@ We see that advanced oil processing yields 8.5 solid fuel from the same 100 oil.
 
 {% include image.html
 
-src= 'src'
+src= '6-adv-oil-cracking.png'
  alt='Processing oil into solid fuel with advanced oil processing and heavy oil cracking'
  caption='Processing oil into solid fuel with advanced oil processing and heavy oil cracking'
 
@@ -197,7 +197,7 @@ Having seen that converting coal into solid fuel offers a significant energy yie
 
 {% include image.html
 
-src= 'src'
+src= '7-rocket-fuel.png'
  alt='Processing solid fuel into rocket fuel'
  caption='Processing solid fuel into rocket fuel'
 
@@ -211,7 +211,7 @@ Nuclear fuel is still pretty experimental in the real world, but Factorio offers
 
 {% include image.html
 
-src= 'src'
+src= '8-nuclear-fuel.png'
  alt='Processing rocket fuel into nuclear fuel'
  caption='Processing rocket fuel into nuclear fuel'
 
@@ -225,7 +225,7 @@ Despite its massive energy gains and the resulting coal and oil savings, nuclear
 
 {% include image.html
 
-src= 'src'
+src= '9-uranium-fuel-cell.png'
  alt='Processing uranium-235 into uranium fuel cells'
  caption='Processing uranium-235 into uranium fuel cells'
 
@@ -253,7 +253,7 @@ Here is what the modules do:
 
 {% include image.html
 
-src= 'src'
+src= '10-modules-overview.png'
  alt='Module effects on power consumption'
  caption='Module effects on power consumption'
 
@@ -263,7 +263,7 @@ Now let's demonstrate the use of modules. First, let's look at the case of effic
 
 {% include image.html
 
-src= 'src'
+src= '11-coal-liq-eff.png'
  alt='Processing coal into solid fuel with heavy oil cracking, at minimum power consumption'
  caption='Processing coal into solid fuel with heavy oil cracking, at minimum power consumption'
 
@@ -281,7 +281,7 @@ Now, let us look at the same example with three productivity 3 modules in every 
 
 {% include image.html
 
-src= 'src'
+src= '12-coal-liq-prod-1.png'
  alt='Processing coal into solid fuel with heavy oil cracking, at maximum productivity'
  caption='Processing coal into solid fuel with heavy oil cracking, at maximum productivity'
 
@@ -299,7 +299,7 @@ On the other hand, our machines are working at about half the speed as before, w
 
 {% include image.html
 
-src= 'src'
+src= '13-coal-liq-prod-2.png'
  alt='Processing coal into solid fuel with heavy oil cracking, at high productivity & speed'
  caption='Processing coal into solid fuel with heavy oil cracking, at high productivity & speed'
 
@@ -319,7 +319,7 @@ Meanwhile, seeing the strong effects of productivity modules, I wonder if we can
 
 {% include image.html
 
-src= 'src'
+src= '14-rocket-fuel-prod-1.png'
  alt='Processing solid fuel into rocket fuel in an assembling machine 2 at maximum productivity'
  caption='Processing solid fuel into rocket fuel in an assembling machine 2 at maximum productivity'
 
@@ -331,7 +331,7 @@ However, we have other options for making rocket fuel: We can use assembling mac
 
 {% include image.html
 
-src= 'src'
+src= '15-rocket-fuel-prod-2.png'
  alt='Processing solid fuel into rocket fuel in an assembling machine 3 with various module combinations'
  caption='Processing solid fuel into rocket fuel in an assembling machine 3 with various module combinations''
 
