@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #60 - Brennende Fragen</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #60 - Brennende Fragen">
+<meta name="author" content="Sir Fendi">
+<meta property="og:locale" content="de">
+<meta name="description" content="Zum Diamantenen Jubiläum von ALt-F4 liefert unser verrückter Sir Fendi ein neuen Crashkurs in Factorio’s Thermodynamik. Andersgesagt will er herausfinden, wie du das meiste aus deiner Kohle bekommst, durch Verarbeitung in verschiedene Brennstoffe. Ist das nicht nett von ihm? Module werden natürlich auch eine Rolle spielen, wir machen ja keine halben Sachen. Brennende Fragen Sir Fendi Factorio besitzt eine große Vielfalt an Brennstoffen, welche in befeuerten Anlagen verbrannt werden können. Vom klassischen Holz bis hin zu extremen Raketentreibstoff. Der beliebteste Brennstoff ist Kohle, welche das Rückgrat der frühen Automation darstellt. Sie befeuert alle Boiler, Öfen, Fahrzeuge und andere Maschinen, bis sie irgendwann unweigerlich knapp wird. Factorio’s Brennstoffe. Im Midgame wird Festbrennstoff als erster raffinierter Brennstoff eingeführt, ursprünglich hergestellt aus Rohöl. Festbrennstoff kann im weiteren Spielverlauf dazu verwendet werden, Raketentreibstoff und noch später dann Kernbrennstoff herzustellen. Diese raffinierten Brennstoffe haben gegenüber Kohle einigen Vorteile, wie eine höhere Energiedichte pro Einheit und pro Stapel und einen Beschleunigungsbonus bei der Verwendung in Fahrzeugen. Das Lategame bringt aber auch die interessante Technologie, Kohle zu Öl zu verflüssigen und dann in Festbrennstoff umzuwandeln. Daraufhin stellte ich mir die Frage: schafft die Verarbeitung von Kohle zu Festbrennstoff mehr Energie? Andersgesagt, wenn ich 10 Einheiten Kohle verflüssige und aus den entstehenden Ölen und Gasen Festbrennstoff herstelle und ihn verbrenne, setzt dies mehr Energie frei als die Kohle wenn ich sie direkt verbrenne? Was wäre, wenn ich sie weiter zu Raketenbrennstoff verarbeite? Diese und ähnliche Fragen führten zu dieser allgemeinen Betrachtung von Brennstoffen und den Energiekosten ihrer Umwandlung. Auf meiner Reise, diese Fragen zu beantworten war die Factoriowiki-Seite zu Brennstoffen sehr hilfreich. Ich betrachte die Umwandlungen mit der jeweiligen verbrauchten und produzierten Energiemenge anstelle der Produktionsraten pro Gebäude. Ich begann damit, viele Gleichungen mit immer mehr Eingangsgrößen zu lösen, doch war es deutlich einfacher, die Prozesse in Diagrammen darzustellen, welche nun den Sachverhalt anschaulich darstellen. In diesem Artikel werde ich mit Hilfe dieser Diagramme die Sachverhalte darstellen und einige interessante Details vorstellen, die dir hoffentlich helfen, die Rohstoffe deiner Fabrik besser zu managen und dein Wissen über Brennstoffe vervollständigt. Die Fragen Wir beginnen mit der Frage, mit der die ganze Sache begann: (1) Bekommt man durch die Verarbeitung von Kohle zu Festbrennstoff mehr Energie? Wir können die entstehenden Flüssigkeiten direkt zu Festbrennstoff verarbeiten, oder vorher cracken: (2) Wie groß ist der Unterschied durch Cracking bei der Herstellung von Festbrennstoff? Welche Vor- oder Nachteile liefert die Kohleverarbeitung im Gegensatz zur herkömmlichen Herstellung von Festbrennstoff: (3) Wie verhält sich die Kohleverflüssigung im Vergleich zur Herstellung von Festbrennstoff aus Öl? Allerdings müssen wir nicht bei Festbrennstoff aufhören: (4) Bekommen wir durch die Weiterverarbeitung von Festbrennstoff zu Raketentreibstoff mehr Energie heraus? Vielleicht gehen wir auch noch weiter und fügen Uran hinzu: (5) Bekommen wir durch die Weiterverarbeitung von Raketentreibstoff zu Kernbrennstoff mehr Energie heraus? Dann schauen wir uns an, dass Uran bereits für anderen Treibstoff verwendet wird, und wie der sich im Vergleich schlägt: (6) Wie verhält sich die Verbrennung von Kernbrennstoff für die Stromerzeugung im Vergleich zu Uran-Brennelementen, welche in einem Reaktor “verbrannt” werden? Nachdem wir uns alle Umwandlungen angeschaut haben, betrachten wir den Einfluss, welche Module auf den Prozess haben: (7) Was sind die Effekte von Modulen auf die Energiegewinne bei der Brennstoffverarbeitung? Schlussendlich betrachten wir das Gesamtbild mit Faktoren wie Anlagenkosten und alternativen Technologien und fragen uns: (8) Wie sinnvoll ist die Brennstoffverarbeitung überhaupt? Mit allen Umwandlungsmöglichkeiten im Grundspiel bearbeitet diese Liste an Fragen alle Brennstoffe außer Holz, welches nicht in einen anderen Brennstoff umgewandelt wird (außer man verwendet eine Holzkohlemod. Deshalb hier ein kurzer Blick auf Holz als Brennstoff: Es kann sein, dass du irgendwann eine große Menge an Holz übrig hast, als Folge der Erweiterung mit der Axt oder Robotern. Allerdings ist dieser Vorrat schnell aufgebraucht, da es nur sehr wenig Energie liefert. Anstatt extra Bäume zum Verfeuern zu fällen, lohnt es sich in der Regel mehr, das Holz in Kisten oder zu Strommästen zu verarbeiten, oder die Bäume zum Abbau der Umweltverschmutzung stehen zu lassen. Um diese Fragen für andere Brennstoffe zu beantworten, brauchen wir Umwandlungsdiagramme. Schauen wir uns also zunächt an, wie diese erstellt werden: Umwandlungsdiagramme erstellen In den Diagrammen werden die Rezepte für die verschiedenen Brennstoffherstellungsprozesse angewendet. Die Input und Output-Verhältnisse bleiben gleich, allerdings werden einige Prozesse nur teilweise durchgeführt, um die Eingangsgrößen anzugleichen, anstatt immer alle Rezepte komplett durchlaufen zu lassen. Die meisten Rezepte in den Diagrammen kann man der Wikiseite für Ölverarbeitung entnehmen. Die Energiewerte sind Spielkonstanten aus dem Wikiteil für Brennstoffe. Die Energie um Dampf auf 165°C zu erwärmen ist ebenfalls aus dem Wiki. Der Stromverbrauch der Maschinen während der Brennstoffherstellung hängt vom verwendeten Maschinentyp und den benötigten Herstellungszyklen ab. Die Berechnungen sind stark vereinfacht, da die Maschinen rezeptunabhängig die gleiche Energiemenge pro Sekunde benötigen. Der jeweilige Energiebedarf ist in der nachfolgenden Tabelle dargestellt: Maschine, die Strom verbraucht Stromverbrauch ohne Module (MW) Prozesse Herstellungsgeschwindigkeit Ölraffinerie 0,420 1 Chemiefabrik 0,210 1 Montagemaschine 2* 0,150 0,75 Zentrifuge 0,350 1 *Wir könnten auch Montagemaschinen Stufe 3 verwenden, allerdings verbrauchen sie trotz ihrer höheren Herstellungsgeschwindigkeit mehr Energie. Die gesamte Prozessenergie (“E”), welche für die Umwandlung benötigt wird kann man aus dem Energiebedarf der Maschine (“P”) multipliziert mit der Herstellungsdauer für die gesamten Ausgangsstoffe (“t”) berechnen. Die gesamte Herstellungsdauer ergibt sich aus der Zeit, welche für einen Herstellungszyklus benötigt wird (“t_c”) multipliziert mit der Anzahl der benötigten Herstellungszyklen (“n”), dividiert durch die Herstellungsgeschwindigkeit der Maschine (“C”). So vereinfachen wir die Prozessenergie zu: [E = P * t = P * t_c * n / C] Wenn wir nun die Rezepte, Energiewerte und Prozessenergiegleichung haben, fehlt nur noch das eigentliche Diagramm, welches wir daraus erstellen können. Schauen wir uns nun genau das an: Kohle vs. verflüssigte Kohle Der einfachste Weg, Kohle zu verarbeiten ist es, sie einfach nur zu verflüssigen und dann die Ausgangsstoffe direkt in Festbrennstoff umzuwandeln, wie unten gezeigt: Kohle wird direkt zu Festbrennstoff verarbeitet. Wir sehen, dass 10 Kohle 5,75 Einheiten Festbrennstoff ergeben. Währenddessen benötigt die Kohleverarbeitung Energie zum Heizen und zum Betreiben der Maschinen. Wir können den Gesamtenergiegewinn errechnen, indem wir die gesamte Eingangsenergie und Prozessenergie von der Ausgangsenergie anziehen. Der prozentuale Gewinn ist nun der Gesamtenergiegewinn dividiert durch die Energie, die man durch direkte Verbrennung der Ausgangsstoffe erhalten würde. [\text{Energiegewinn} = 69 - 40 - 1,5 - 2,1 - 1,365 - 0,84 - 0.21 = 22,985 MJ] [\text{Prozentualer Gewinn} = 22,985 MJ / 40 MJ = 57,4625\%] Wir sehen, dass nur das Verflüssigen der Kohle uns etwa 57% mehr Energie liefert. Wieviel Energie können wir jetzt noch zusätzlich herausbekommen, wenn wir Cracking verwenden? Kohleverflüssigung mit Cracking Cracking fügt dem Prozess einen zusätzlichen Schritt hinzu, ergibt aber, wenn wir uns einmal die Rezepte anschauen, mehr Festbrennstoff: Schwerölcracking liefert 30/40 oder 75% so viel Leichtöl. Allerdings sind bereits 10 Leichtöl genug, um ein Element Festbrennstoff herzustellen, in Gegensatz zu 20 Schweröl für ein Element, es ist also doppelt so effektiv. Wenn wir nun diese beiden FAkten verbinden, erhalten wir durch Cracking 75% * 200% = 150% soviel Festbrennstoff wie zuvor. Über Leichtöl lässt sich das selbe allerdings nicht sagen. Es liefert im Cracking 20/30 oder etwa 66,7% so viel Flüssiggas. Außerdem benötigt das Rezept für Festbrennstoff 20 Einheiten Flüssiggas anstatt 10 Einheiten Leichtöl, also nur 50% Effizient. Kombinieren wir wieder diese beiden Dinge, ergibt sich 66,7% * 50% = 33,4% so viel Festbrennstoff wie zuvor. Leichtölcracking sollte also vermieden werden. Schauen wir uns nun also den Prozess mit Schwerölcracking an: Kohle wird zu Festbrennstoff mittels Schwerölcracking verarbeitet. Wir sehen nun, dass wir aus den selben 10 Einheiten Kohle 7,375 Einheiten Festbrennstoff erhalten. Das scheint profitabel, allerdings verbraucht der zusätzliche Herstellungsschritt auch zusätzliche Energie. Betrachten wir nun also den Gesamtprozess, bevor wir ein Urteil fällen: [\text{Energiegewinn} = 88,5 - 40 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21 = 41,12 MJ] [\text{Prozentualer Gewinn} = 41,12 MJ / 40 MJ = 102,8%] Wir erkennen, dass Kohleverflüssigung mit Cracking zu einem Energiegewinn von 103% führt, was bedeutet, das wir etwa doppelt so viel Energie herausbekommen. Wenn wir also Kohle vor dem Verbrennen verflüssigen, müssen wir nur halb so viel Kohle abbauen! Obwohl es jetzt nach einer fabelhaften Idee klingt, groß in die Kohleverflüssigung einzusteigen, müssen noch andere Faktoren wie Anlagenkosten betrachtet werden, aber dazu später mehr. Schauen wir uns jetzt aber den anderen Weg an, wie wir Festbrennstoff herstellen können: Kohle vs. Öl für Festbrennstoff Da Festbrennstoff auch aus Öl hergestellt werden kann, betrachten wir nun, wie viel Energie im Öl im Gegensatz zur Kohle steckt. Der einfachste Weg ist grundlegende Ölverarbeitung, welche Flüssiggas liefert, welches direkt in Festbrennstoff umgewandelt wird: Verarbeitung von Öl zu Festbrennstoff mit grundlegender Ölverarbeitung. Wir sehen, dass 100 Einheiten Öl 2,25 Einheiten Festbrennstoff ergeben. Wir wissen bereits, dass die fortschrittliche Ölverarbeitung mehr Flüssiggas und zusätzlich Schwer- &amp; Leichtöl liefert. Wir können also definitiv eine höhere Effektivität erreichen: Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung. Wir erkennen, dass wir mit fortgeschrittener Ölverarbeitung aus 100 Einheiten Öl 8,5 Einheiten Festbrennstoff bekommen. Das ist fast viermal so viel wie mit grundlegender Ölverarbeitung! Wir können das aber noch besser: Wir wir wissen, liefert uns das Cracken von Schweröl mehr Energie: Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung und Schwerölcracking. Wir können so aus 100 Einheiten Öl maximal 9,125 Einheiten Festbrennstpff erhalten. Vergleichen wir das nun mit dem Maximum von 7,375 Einheiten Festbrennstoff aus 10 Einheiten Kohle, finden wir heraus, das in einer Einheit Kohle etwa 8,08 mal so viel Energie wie in einer Einheit Öl steckt. Vergleichen wir nun die Energien für die Optimalfälle der beiden Inputs: [\text{Kohleenergieoutput} = (88,5 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21) MJ / 10 \text{Kohle}] [\text{Kohleenergieoutput} = 8,112 MJ / \text{Kohle}] [\text{Ölenergieoutput} = (109,5 - 2,1 - 0,2625 - 2,6775 - 1,155) MJ / 100 \text{Öl}] [\text{Ölenergieoutput} = 1,03305 MJ / \text{Öl}] Wir erkennen, dass eine Einheit Kohle etwa achtmal so viel Energie wie eine Einheit Öl besitzt. Dieses Verhältnis schafft eine Vorstellung davon, welche Mengen einer Ressource nötig sind, um die andere in der Festbrennstoffherstellung zu ersetzten. Allerdings ist der Energiegehalt pro Einheit nicht der einzige Vergleichsfaktor zwischen Kohle und Öl für die Festbrennstoffherstellung. Ich habe diese anderen Faktoren identifiziert: Energiegehalt pro Einheit: Wie wir gerade besprochen haben, besitzt Kohle etwa die achtfache Energie pro Einheit. Transporteffizienz: Ein Güterwaggon transportiert 2000 Kohle, was umgewandelt zu Festbrennstoff etwa 16.2 GJ Energie entspricht. Der selbe Waggon hält aöternativ 400 Ölfässer, was 20.000 Öl entspricht. Umgewandelt zu Festbrennstoff liefert das etwa 20,6 GJ Energie (27% mehr). Wenn du stattdessen einen Tankwaggon verwendest, kannst du 25.000 Einheiten Öl oder 25,8 GJ Energie transportieren (fast 60% mehr). Ölwaggons transportieren also mehr Energie als Kohlewaggons, solange du kein Wasser oder Dampf transportieren musst. Öl kann auch über Pipelines transportiert werden, was je anch Anwendungsfall vielleicht besser ist. Vorkommen: Hängt stark von der gewählten Karte ab, es kann also kein Urteil gefällt werden. andere Verwendungen: Sowohl Kohle als auch Öl können verwendet werden, um Ölprodukte herzustellen. Die Anzahl der Rezepte, welche Kohle verwenden (Plastik, Sprengstoff, Granaten, Kapseln) sind weiter verbreitet als die für Öl (Flammenwerfermunition). Unter Betrachtung all dieser Faktoren scheint es allgemein besser, die vorhandene Kohle für die Plastik und Sprengstoffproduktion zu verwenden und auf Öl für die Festbrennstoffproduktion zurückzugreifen. Wenn die Vorkommen von Öl und Kohle es anbieten, kann es aber auch andersherum sein. Die Betrachtungen zur Herstellung von Festbrennstoff sind damit nun abgeschlossen, allerdings können wir es noch zu Raketentreibstoff weiterverarbeiten. Festbrennstoff vs. Raketenbrennstoff Wir sahen, dass die Umwandlung von Kohle zu Festbrennstoff mehr Energie freisetzt, vielleicht verhält es sich bei Raketenbrennstoff genauso? Um das zu ergründen reicht es, wenn wir uns nur das Rezept für Raketenbrennstoff anschauen, wir müssen nicht wieder bei Kohle/Öl anfangen: Verarbeitung von Festbrennstoff zu Raketenbrennstoff. Wir erkennen, dass eine einzelne Einheit Raketenbrennstoff 100 MJ Energie enthält, während die benötigten 10 Einheiten Festbrennstoff bereits 120 MJ enthalten und das zusätzliche Leichtöl zu einer 11ten Einheit Festbrennstoff verarbeitet werden kann, was nocheinmal 12 MJ liefert. Die Umwandlung von Festbrennstoff zu Raketenbrennstoff ist also ein Verlustgeschäft, noch bevor wir die benötigte Prozessenergie betrachten. Raketenbrennstoff hat aber gegenüber Festbrennstoff einige Vorteile, welche vielleicht wichtiger sind als der Energieverlust, welche wir später betrachten werden. Außerdem ist es ein notwendiger Bestandteil von Kernbrennstoff, welcher vielleicht insgesamt mehr Energie liefert, trotz der Verluste in diesem Schritt. Kernbrennstoffe Kernbrennstoff ist in der echten Welt noch etwas experimentell, allerdings stellt Factorio eine Standartvariante bereit, welche aus normalen Raketenbrennstoff und Uran-235 hergestellt wird und den ultimativen Brennstoff darstellt. Wie bei Raketentreibstoff ist das Rezept der einzig zu betrachtende Schritt, wenn es darum geht, mögliche Energiegewinne zu bewerten: Verarbeitung von Raketenbrennstoff zu Kernbrennstoff. Wir sehen das Kernbrennstoff unglaubliche 1,21 GJ Energie liefert (ein Verweis auf Zurück in die Zukunft), etwa zehnmal so viel wie als Energie im ursprünglichen Festbrennstoff steckt. Wenn du also deine Anlage vond er Verbrennung von Kohle auf Kernbrennstoff umstellt, wird dein Kohleverbrauch auf bis zu 1/20tel des ursprünglichen Verbrauchs an Kohle einbrechen. maximale Urannutzung Trotz der unglaublichen Energiegewinne und daraus resultierenden Öl und Kohleeinsparung ist Kernbrennstoff nicht perfekt. Man könnte das benötigte Uran-235 auch für die Herstellung von Uran-Brennelementen verwenden, welche auf anderem Weg Energie liefern: sie können nur in Kernreaktoren verwendet werden. Ein Brennelement liefert für einen Reaktor 40 MW für exakt 200 Sekunden, was zu einer Gesamtenergie von $ 40 MW * 200s = 8000 MJ = 8 GJ $ führt. Besitzt der Reaktor nun benachbarte Reaktoren, findet der Nachbarschatbonus anwendung. Es werden zusätzliche 40 MW für jeden Nachbarn vom selben Brennelement geliefert. Da jeder Reaktor maximal 4 Nachbarn haben kann, liefert jedes Brennelement bis zu die fünffache Energie, also $ 8 GJ * 5 = 40 GJ $. Wir verwenden bereits hier GJ anstelle von MJ, wenn es um ein einzelnes Brennelement geht, zusätzlich zu der Tatsache, dass das Rezept 10 Stück pro Uran-235 Einheit liefert: Verarbeitung von Uran-235 zu Uran-Brennelementen. Wir können so hunderte Mal so viel Energie aus dem selben Stück Uran-235 bekommen, wenn wir es zu Brennelementen anstatt Kernbrennstoff verarbeiten. Dies scheint zu zeigen, dass wenn eine Uranversorgung aufgebaut ist, umgestellt werden sollte auf Strom aus Kernenergie und elektrische Maschinen. Allerdings wird Kernbrennstoff zur selben Zeit wie der Kovarex-Prozess freigeschaltet, so das eine Versorgung mit Uran-235 zu diesem Zeitpunkt kein Problem mehr darstellen sollte. Einfluss von Modulen auf die Energiegewinne Bisher haben wir all unsere Berechnungen ohne Module durchgeführt, um den Rechenweg einfach zu halten und die Grundbedingungen zu verstehen. Betrachten wir sie nun nocheinmal mit Modulen um herauszufinden, ob sie signifikant das Ergenis verändern. Falls du kurze Wiederholungen der Module möchtest, können wir unsere Artikel zu Produktivitätsmodulen, Geschwindigkeitsmodulen, Effizienzmodulen und Effektverteilern nur empfehlen. Schauen wir uns nun unter dem Gesichtspunkt von Modulen die Brennstoffverarbeitung an, fällt auf, dass sie primär den Energieverbrauch der Herstellungsmaschinen beeinflussen. Schauen wir uns also zunächst folgende Gleichung an: [\text{gesamte Prozessenergie} (E) = \text{Leistungsaufnahme der Maschine} (P) * \text{Dauer eines Herstellungszyklus} (t_c) * \text{Anzahl der Herstellungszyklen} (n) / \text{Herstellungsgeschwindigkeit} (C)] [E = P * t_c * n / C] Die Module tun nun folgendes: Effiziensmodule: Sie verringern den Leistungsbedarf der Herstellungsmaschinen (“P”). Ihr Einfluss auf die Energiegewinne der meisten Rezepte sind klein, aber nicht zu vernachlässigen. Ich würde definitiv empfehlen, Effizientmodule 1 in allen Brennstoffherstellungsmaschinen zu verwenden, wenn du keine anderen Module verwendest, da sie relativ günstig zu produzieren sind und den Stromverbrauch um 60% oder sogar 80% verringern, je nachdem wie viele Modulplätze die Maschinen haben. Geschwindigkeitsmodule: Ein Effekt von Geschwindigkeitsmodulen ist die Veränderung des Leistungsbedarfs der Herstellungsmaschinen (“P”), nur in die entgegengesetzte Richtung zu Effizienzmodulen. Sie verringern also unsere Energiegewinne. Der andere Effekt ist die Erhöhung der Herstellungsgeschwindigkeit der Maschinen (“C”), was in unserer Gleichung die Energieverluste verringert, da die Maschinen für jeden Herstellungszyklus weniger Zeit benötigen. Für jedes Geschwindigkietsmodul ist die Vergrößerung des P-Wertes größer als die des C-Wertes, was dazu führt, dass der Effekt jedes Geschwindigkeitsmodules eine Vergrößerung von E ist, was den gesamten Energiegewinn verringert. Allerdings können Geschwindigkeitsmodule in Verbindung mit Peoduktivitätsmodulen verwendet werden, um die Verluste der Herstellungsgeschwindigkeit zu kompensieren, und können so vielleicht positiv zum Energiegewinn beitragen. Produktivitätsmodule: Diese habe die interessantesten Effekte. Sie vergrößern den Leistungsbedarf (“P”) und verringern die Herstellungsgeschwindigkeit (“C”), was beides zu einer Vergrößerung der Gesamtprozessenergie beiträgt, was die gesamten Energiegewinne verringert. Auf der anderen Seite vergrößern Produktivitätsmodule die Menge an verarbeiteten Brennstoff, die hergestellt wird. Zusätzlich pflanzt sich dieser Effekt über die Herstellungsschritte fort, was zu exponentiellen Wachstum der insgesamt Hergestellten Brennstoffmenge führt! Die Energiegewinne dieses zusätzlich hergestellten Brennstoffen kompensieren vielleicht den zusätzlichen Leistungsbedarf. Effekte von Modulen auf die Leistungsaufnahme Jetzt demonstrieren wir die Verwendung von Modulen. Zuerst schauen wir uns den Effekt von Effizienzmodulen in der Kohleverflüssigung mit Schwerölcracking an. Raffinerien und Chemiefabriken bestitzen jeweils 3 Modulplätze, also können wir drei Effizienz 1 Module verwenden, um den Stromverbrauch pro Maschine um 80% zu reduzieren: Verarbeitung von Kohle zu Festbrennstoff mit Schwerölcracking und minimalem Stromverbrauch. Nun können wir den neuen Energiegewinn mit verringertem Stromverbrauch berechnen: [\text{Energiegewinn} = 88,5 - 40 - 1,5 - 0,42 - 0,1365 - 0,5775 - 0,042 = 45,824 MJ] [\text{Prozentualer Gewinn} = 45,824 MJ / 40 MJ = 114,56\% ≈ 115\%] Der Ernergiegewinn ohne Module betrug 103%. Wir erkennen , dass Effizienzmodule den Energiegewinn von 103% auf 115% anheben. Diese Verbesserung ist schön zu haben, aber nicht sehr signifikant, da die Prozessenergie vorher bereits relativ gering war. Trotzdem ist dies aufgrund der geringen Herstellungskosten für Produktivitätsmodule 1 eine praktische Alternative. Betrachten wir nun das selbe Beispiel mit Produktivitätsmodulen 3 in jeder Maschine, anstelle der 3 Effizienzmodule 1. Trotz der erhöhten Leistungsaufnahme vergrößert auch jedes Modul die Menge an hergestellten Brennstoff um 10%: Verarbeitung von Kohle zu Festbrennstoff bei maximaler Produktivität. Wir sehen das mit den additiven Effekten von 30% mehr Produkt bei jedem Herstellungsschritt die Menge an Festbrennstoff verdoppelt wird! Das bedeutet einen zusätzlichen Energiegewinn von fast 100MJ! Allerdings sehen wir auch, das der gesamte Strombedarf stark gestiegen ist auf ungefähr 50,6 MJ. Wie wirken sich nun all diese Effekte auf den Energiegewinn aus: [\text{Energiegewinn} = 185,562 - 40 - 1,5 - 12,982 - 5,9716 - 30,040 - 1,688 = 93,3804 MJ] [\text{Prozentualer Gewinn} = 93,3804 MJ / 40 MJ = 233,451\% ≈ 233\%] Wir erkennen das Produktivitätsmodule den Energiegewinn von 103% auf 233% anheben, was bedeutet, dass der in diesem System hergestellte Festbrennstoff über dreimal so viel Energie liefert, wie die benötigte Kohle direkt liefern würde! Auf der anderen Seite arbeiten unsere Maschinen nur noch mit halber Geschwindigkeit, was bedeutet das für die doppelte Zeit Strom verbraucht wird. Vielleicht können wir Geschwindigkeitsmodule verwenden, um dem entgegenzuwirken. Versuchen wir nun zwei Produktivitätsmodule 3 und ein Geschwindigkeitsmodul 3 für jede Maschine: Verarbeitung von Kohle zu Festbrennstoff mit SChwerölcracking bei hoher Geschwindigkeit und Produktivität. Im Vergleich zu unserer letzen Anlage bekommen wir nun weniger als die doppelte Menge Festbrennstoff, aber der Stromverbrauch ist beinahe halbiert. Betrachten wir nun, wie sich dies auf den Energiegewinn auswirkt: [\text{Energiegewinn} = 146,448 - 40 - 1,5 - 5,775 - 2,3966 - 11,400 - 0,693 = 84,6834 MJ] [\text{Prozentualer Gewinn} = 84,6834 MJ / 40 MJ = 211,7085\% ≈ 212\%] Im Vergleich zu den 103% Gewinn ohne Module liefert diese Anlage einen exzellenten Gewinn von 212%, bleibt damit aber hinter den 233% der Anlage mit je 3 Produktivitätsmodulen 3 zurück, da die kulmulativen Brennstoffgewinne mehr ins Gewicht fallen als der reduzierte Stromverbrauch. Anstatt ein weiteres Produktivitätsmodul gegen ein Geschwindigkeitsmodul zu tauschen, können wir mit Geschwindigkeits-Effektverteilern arbeiten. Das würde uns erlauben, weiterhin maximale Produktivität zu verwenden und zeitgleich den Stromverbrauch zu verringern, obwohl die Effektverteiler selber Strom benötigen. Ich vermute, das weitere Energiegewinne damit erzielt werden können, das jeder Effektverteiler mehrere Maschinen abdeckt. Da aber die Berechnungen mit Effektverteilern deutlich komplizierter werden und die genaue Maschinenzahl und Aufstellung der Anlage eine wichtige Rolle spielen, überlasse ich dies als eine Aufgabe für den gewillten Leser. Nachdem wir die gewaltigen Effekte der Produktivitätsmodule gesehen haben, wunderte ich mich, ob wir es mit ihnen schaffen, die Produktion von Raketenbrennstoff zu einem Energiegewinn zu bringen. Füllen wir nun also die Montagemaschine 2 mit Produktivitätsmodulen 3: Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 2 mit maximaler Produktivität. Die Eingangsenergie und die Ausgangsenergie sind jetzt gleich, allerdings hat sich die Prozessenergie fast vervierfacht und ist somit viel zu hoch, so dass der Prozess immernoch mehr Energie benötigt als er liefert. Allerdings können wir Raketentreibstoff noch auf andere Weise herstellen: Wir können Montagemaschinen 3 mit je 4 Modulplätzen nutzen. Hier sind einige Modulkombinationen gezeigt: Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 3 mit verschiedenen Modulkombinationen. Ich habe vier Produktivitätsmodule 3 in einer Montagemaschine 3 ausprobiert, allerdings wurde die Maschine so langsam und die Prozessenergie so hoch, das sie fast so hoch war wie die gesamte Outputenergie! Danach habe ich versucht, den vergrößerten Leistungsbedarf und verringerte Herstellungsgeschwindigkeit mit einem Effizienzmodul 3 anstatt eines Produktivitätsmoduls 3 auszugleichen. Das hat zwar geholfen, aber nocht genug. Ich habe auch versucht mit einem Geschwindigkeitsmodul 3 anstatt des Effizienzmoduls 3 die Herstellungszeit auszugleichen. Dies spart zwar mehr Energie als das Effizienzmodul 3, aber nicht genug, um einen wirklichen Unterschied zu machen. Ich habe viele andere Modulkombinationen und sogar Designs mit Effektverteilern versucht (dafür gibt es allerdings keine Diagramme), aber egal was ich versucht habe, schaffte ich es nie, ±0 zu erreichen. Basierend auf diesen Erkenntnissen kann man nun sagen, das Module zwar bei einigen Schritten signifikante Verbesserungen liefern, dies allerdings nicht bei allen Schritten der Fall ist. Wie sinnvoll ist nun die Brennstoffverarbeitung? Unsere bisherigen Erkenntnisse helfen uns nur teilweise, diese Frage zu beantworten. Ich habe eine vollständigere Liste an Faktoren zusammengestellt, die du bei deiner Entscheidung beachten solltest: Energiegewinn: Wenn du mehr Energie aus verarbeiteten Brennstoff herausbekommst, verringert sich der Bedarf für Basisrohstoffe, so das die vorhandenen Vorkommen länger ausreichen. Wir haben den Energiegewinn für die verschiedenen Prozesse oben berechnet. Gewinne bei der Fahrzeugbeschleunigung und Geschwindigkeitsboni: Größere Boni bedeuten, das deine Fahrzeuge schneller fahren können. Hochraffinerierte Brennstoffe liefern größere Boni, wie der Wikiseite für Brennstoffe zu entnehmen ist. Gewinne in der Energiedichte (pro Einheit und pro Stapel): Mehr Energie pro Stapel bedeutet, das das selbe Inventar mehr Energie halten kann, was einen großen Einfluss darauf hat, wieviel Energie in einem Waggon oder einer Kiste gespeichert werden können. Mehr Energie pro Einheit bedeutet wiederum, das mehr Energie von Robotern, Förderbändern oder Greifarmen transportiert werden kann. Bei gleichem Energiebedarf bedeuten Brennstoffe mit höherer Energiedichte, das weniger Logistikinfrastruktur benötigt wird, was einfachere Design und weniger Energieverbrauch des Logistiksystems bedeutet. Hochraffinerierte Brennstoffe habe in beiden Aspekten eine höhere Energiedichte. Anlagenkosten: Die Anlagenkosten beziehen sich sowohl auf die benötigten Materialien als auch auf den benötigten Platz, der für die Gebäude und die Logistik benötigt wird. Auch die zusätzlichen Kosten für die benötigten Technologien sind zu beachten. Jede weitere Verarbeitungsstufe trägt zu diesen Kosten bei. Verfügbarkeit von alternativen Kohle/Ölvorkommen: Auf den meisten Karten sind Kohle und Öl in praktisch unendlichen Mengen vorhanden, allerdings vielleicht nicht in deiner Nähe. Abhängig von deinem Spielstil ist es vielleicht einfacher zu expandieren und mehr Ressurcen abzubauen anstatt eine große Verarbeitungsanlage zu errichten. Nutzungsdauer von befeuerten Geräten: Wenn du dein System in naher Zukunft auf elektrische Maschinen und alternative Energiequellen umstellst, macht es vielleicht wenig sinn, eine große Verarbeitungsanlage zu errichten. Da die obigen Faktoren von dir, deiner Karte und deinem Spielstil abhängen, ist die Antwort unterschiedlich. ICh kann nur aufgrund meiner Erfahrung folgende Erkenntnisse weitergeben: Raffinierte Brennstoffe sind exzellent für Züge und Panzer. Die Beschleunigungsboni von Raketenbrennstoff (+80%) sind ganz nett, und die von Kernbrennstoff auf einem ganz anderen level (+150%). Du brauchst sowieso große Massen an Festbrennstoff und Raketenbrennstoff für Raketenteile, also ist es nicht so schwer, etwas mehr für deine Fahrzeuge und befeuerten Anlagen deiner Wahl zu produzieren. Wenn du Kohle zur Verstromung verbrennst, kann durch Verarbeitung dein Kohleverbrauch sich halberien (oder nochmehr, wenn du Module verwendest). Und natürlich kannst du übertreiben und deine Boiler mit Kernbrennstoff betreiben, um die Menge an benötigter Kohle um den Faktor 20 zu verringern. Du kannst Solarenergie und normale Kernenergie deutlich früher als Kohleverflüssigung und Kernbrennstoff freischalten, da diese beiden Technologien Wissenschaftspakete für Produktion (lila) benötigen. Die Vorteile von Solar- und Kernenergie sind vielleicht so gewichtig, das es sich lohnt zu wechseln. Kernenergie ist einfacher als vielleicht gedacht und liefert auch ohne Kovarex bereits mit wenigen Reaktoren und Zentrifugen große Energiemengen. Zusammenfassung Dieser Artikel begann mit einer kleinen Frage, die mir unter den Nägeln brannte, welche zu vielen anderen Fragen führte und sich zu einer Reise durch die Welt der BRennstoffe in Factorio entwickelte. Wir haben dabei folgendes gelernt: (1) Kohle vs. verflüssigte Kohle: Verflüssigung von Kohle und direkte Verarbeitung zu Festbrennstoff liefert 57% extra Energie pro Einheit Kohle, wenn keine Module verwendet weden. (2) Kohleverflüssigung mit Cracking: Wenn wir zusätzlich das Schweröl cracken, bevor wir es zu Festbrennstoff verarbeiten, leifert der Prozess 103% zusätzliche Energie pro Einheit Kohle, wenn keine Module verwendet weden. Wir bekommen also etwa doppelt so viel Energie heraus wie ohne Verarbeitung. (3) Kohle vs. Öl für Festbrennstoff: Kohle produziert etwa achtmal so viel Festbrennstoff oder Energie wie die gleiche Anzahl an Einheiten Öl, wenn keine Module verwendet werden. Allerdings kannst du etwa 60% mehr Energie in einem Tankwaggon voll Öl als in einem Waggon voll Kohle transportieren. Kohle hat aber auch noch viele andere Verwendungszwecke, für die sie verwendet werden kann, wobei Öl nur einen weiteren Zweck hat. Öl für die Herstellungs von Festbrennstoff zu verwenden kann also je nach den vorhandenen Rohstoffen auf deiner Karte praktischer sein. (4) Festbrennstoff vs. Raketenbrennstoff: Die Verarbeitung von Festbrennstoff zu Raketenbrennstoff ist verlustbehaftet, auch wenn du Module verwendest. Raketentreibstoff hat allerdings andere Vorteile, beispielsweise höhere Boni in Fahrzeugen. (5) Raketenbrennstoff vs. Kernbrennstoff: Die Umwandlung von Raketenbrennstoff zu Kernbrennstoff ohne Module liefert etwa 10x so viel Energie wie in dem ursprünglichen Festbrennstoff steck. Er stellt somit die meiste Enrgie dar, die du aus den ursprünglichen Rohstoffen herstellen kannst. Allerdings ist dies nicht der effizienteste Weg, Energie aus Uran zu nutzen. (6) Kernbrennstoff vs. Uran-Brennelemente: Uran-235 für Reaktorbrennelemente zu verwenden liefert bis zu mehrere hundert mal die Energiemenge im Vergleich zur Verwendung für Kernbrennstoff, allerdings wird Kernbrennstof zusammen mit dem Kovarex-Anreicherungsprozess freigeschaltet, so dass zu diesem Zeitpunkt Uran-235 in großen Mengen vorhanden ist. (7) Module FÜr zusätzliche Energiegewinne: Effizienzmodule liefern Energiegewinne indem sie die Prozessenergie in jedem Schritt verringern. Effizienzmodule 1 liefern bereits einen großen Effekt und sind dazu noch relativ preisgünstig. Produktivitätsmodule liefern Energiegewinne, indem durch ihre Verwendung mehr Brennstoff hergestellt wird. Dieser Effekt überlagert sich bei mehreren Schritten. Geschwindigkeitsmodule können zu Energiegewinnen in Verbindung mit Produktivitätsmodulen führen, indem sie die erhöhte Herstellungsdauer ausgleichen. (8) Nutzen von raffinierten Brennstoffen: Es höngt am Ende von vielen verschiedenen Faktoren ab, aber am Ende musst du sowieso Raketenbrennstoff herstellen, um Raketenteile herstellen zu können. Auch davor können raffinierte Brennstoffe bereits nützlich sein. Es war ein großer Spaß für mich, diese Frage zu beantworten und ich hoffe es war für dich interessant zu lesen! Hast du noch weitere Informationen oder ähnliche Fragen zu Brennstoffen oder anderen Spielmechaniken? Trete gerne via Reddit oder Discord in Kontakt (Die Links findest du am Ende des Artikels). Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="Zum Diamantenen Jubiläum von ALt-F4 liefert unser verrückter Sir Fendi ein neuen Crashkurs in Factorio’s Thermodynamik. Andersgesagt will er herausfinden, wie du das meiste aus deiner Kohle bekommst, durch Verarbeitung in verschiedene Brennstoffe. Ist das nicht nett von ihm? Module werden natürlich auch eine Rolle spielen, wir machen ja keine halben Sachen. Brennende Fragen Sir Fendi Factorio besitzt eine große Vielfalt an Brennstoffen, welche in befeuerten Anlagen verbrannt werden können. Vom klassischen Holz bis hin zu extremen Raketentreibstoff. Der beliebteste Brennstoff ist Kohle, welche das Rückgrat der frühen Automation darstellt. Sie befeuert alle Boiler, Öfen, Fahrzeuge und andere Maschinen, bis sie irgendwann unweigerlich knapp wird. Factorio’s Brennstoffe. Im Midgame wird Festbrennstoff als erster raffinierter Brennstoff eingeführt, ursprünglich hergestellt aus Rohöl. Festbrennstoff kann im weiteren Spielverlauf dazu verwendet werden, Raketentreibstoff und noch später dann Kernbrennstoff herzustellen. Diese raffinierten Brennstoffe haben gegenüber Kohle einigen Vorteile, wie eine höhere Energiedichte pro Einheit und pro Stapel und einen Beschleunigungsbonus bei der Verwendung in Fahrzeugen. Das Lategame bringt aber auch die interessante Technologie, Kohle zu Öl zu verflüssigen und dann in Festbrennstoff umzuwandeln. Daraufhin stellte ich mir die Frage: schafft die Verarbeitung von Kohle zu Festbrennstoff mehr Energie? Andersgesagt, wenn ich 10 Einheiten Kohle verflüssige und aus den entstehenden Ölen und Gasen Festbrennstoff herstelle und ihn verbrenne, setzt dies mehr Energie frei als die Kohle wenn ich sie direkt verbrenne? Was wäre, wenn ich sie weiter zu Raketenbrennstoff verarbeite? Diese und ähnliche Fragen führten zu dieser allgemeinen Betrachtung von Brennstoffen und den Energiekosten ihrer Umwandlung. Auf meiner Reise, diese Fragen zu beantworten war die Factoriowiki-Seite zu Brennstoffen sehr hilfreich. Ich betrachte die Umwandlungen mit der jeweiligen verbrauchten und produzierten Energiemenge anstelle der Produktionsraten pro Gebäude. Ich begann damit, viele Gleichungen mit immer mehr Eingangsgrößen zu lösen, doch war es deutlich einfacher, die Prozesse in Diagrammen darzustellen, welche nun den Sachverhalt anschaulich darstellen. In diesem Artikel werde ich mit Hilfe dieser Diagramme die Sachverhalte darstellen und einige interessante Details vorstellen, die dir hoffentlich helfen, die Rohstoffe deiner Fabrik besser zu managen und dein Wissen über Brennstoffe vervollständigt. Die Fragen Wir beginnen mit der Frage, mit der die ganze Sache begann: (1) Bekommt man durch die Verarbeitung von Kohle zu Festbrennstoff mehr Energie? Wir können die entstehenden Flüssigkeiten direkt zu Festbrennstoff verarbeiten, oder vorher cracken: (2) Wie groß ist der Unterschied durch Cracking bei der Herstellung von Festbrennstoff? Welche Vor- oder Nachteile liefert die Kohleverarbeitung im Gegensatz zur herkömmlichen Herstellung von Festbrennstoff: (3) Wie verhält sich die Kohleverflüssigung im Vergleich zur Herstellung von Festbrennstoff aus Öl? Allerdings müssen wir nicht bei Festbrennstoff aufhören: (4) Bekommen wir durch die Weiterverarbeitung von Festbrennstoff zu Raketentreibstoff mehr Energie heraus? Vielleicht gehen wir auch noch weiter und fügen Uran hinzu: (5) Bekommen wir durch die Weiterverarbeitung von Raketentreibstoff zu Kernbrennstoff mehr Energie heraus? Dann schauen wir uns an, dass Uran bereits für anderen Treibstoff verwendet wird, und wie der sich im Vergleich schlägt: (6) Wie verhält sich die Verbrennung von Kernbrennstoff für die Stromerzeugung im Vergleich zu Uran-Brennelementen, welche in einem Reaktor “verbrannt” werden? Nachdem wir uns alle Umwandlungen angeschaut haben, betrachten wir den Einfluss, welche Module auf den Prozess haben: (7) Was sind die Effekte von Modulen auf die Energiegewinne bei der Brennstoffverarbeitung? Schlussendlich betrachten wir das Gesamtbild mit Faktoren wie Anlagenkosten und alternativen Technologien und fragen uns: (8) Wie sinnvoll ist die Brennstoffverarbeitung überhaupt? Mit allen Umwandlungsmöglichkeiten im Grundspiel bearbeitet diese Liste an Fragen alle Brennstoffe außer Holz, welches nicht in einen anderen Brennstoff umgewandelt wird (außer man verwendet eine Holzkohlemod. Deshalb hier ein kurzer Blick auf Holz als Brennstoff: Es kann sein, dass du irgendwann eine große Menge an Holz übrig hast, als Folge der Erweiterung mit der Axt oder Robotern. Allerdings ist dieser Vorrat schnell aufgebraucht, da es nur sehr wenig Energie liefert. Anstatt extra Bäume zum Verfeuern zu fällen, lohnt es sich in der Regel mehr, das Holz in Kisten oder zu Strommästen zu verarbeiten, oder die Bäume zum Abbau der Umweltverschmutzung stehen zu lassen. Um diese Fragen für andere Brennstoffe zu beantworten, brauchen wir Umwandlungsdiagramme. Schauen wir uns also zunächt an, wie diese erstellt werden: Umwandlungsdiagramme erstellen In den Diagrammen werden die Rezepte für die verschiedenen Brennstoffherstellungsprozesse angewendet. Die Input und Output-Verhältnisse bleiben gleich, allerdings werden einige Prozesse nur teilweise durchgeführt, um die Eingangsgrößen anzugleichen, anstatt immer alle Rezepte komplett durchlaufen zu lassen. Die meisten Rezepte in den Diagrammen kann man der Wikiseite für Ölverarbeitung entnehmen. Die Energiewerte sind Spielkonstanten aus dem Wikiteil für Brennstoffe. Die Energie um Dampf auf 165°C zu erwärmen ist ebenfalls aus dem Wiki. Der Stromverbrauch der Maschinen während der Brennstoffherstellung hängt vom verwendeten Maschinentyp und den benötigten Herstellungszyklen ab. Die Berechnungen sind stark vereinfacht, da die Maschinen rezeptunabhängig die gleiche Energiemenge pro Sekunde benötigen. Der jeweilige Energiebedarf ist in der nachfolgenden Tabelle dargestellt: Maschine, die Strom verbraucht Stromverbrauch ohne Module (MW) Prozesse Herstellungsgeschwindigkeit Ölraffinerie 0,420 1 Chemiefabrik 0,210 1 Montagemaschine 2* 0,150 0,75 Zentrifuge 0,350 1 *Wir könnten auch Montagemaschinen Stufe 3 verwenden, allerdings verbrauchen sie trotz ihrer höheren Herstellungsgeschwindigkeit mehr Energie. Die gesamte Prozessenergie (“E”), welche für die Umwandlung benötigt wird kann man aus dem Energiebedarf der Maschine (“P”) multipliziert mit der Herstellungsdauer für die gesamten Ausgangsstoffe (“t”) berechnen. Die gesamte Herstellungsdauer ergibt sich aus der Zeit, welche für einen Herstellungszyklus benötigt wird (“t_c”) multipliziert mit der Anzahl der benötigten Herstellungszyklen (“n”), dividiert durch die Herstellungsgeschwindigkeit der Maschine (“C”). So vereinfachen wir die Prozessenergie zu: [E = P * t = P * t_c * n / C] Wenn wir nun die Rezepte, Energiewerte und Prozessenergiegleichung haben, fehlt nur noch das eigentliche Diagramm, welches wir daraus erstellen können. Schauen wir uns nun genau das an: Kohle vs. verflüssigte Kohle Der einfachste Weg, Kohle zu verarbeiten ist es, sie einfach nur zu verflüssigen und dann die Ausgangsstoffe direkt in Festbrennstoff umzuwandeln, wie unten gezeigt: Kohle wird direkt zu Festbrennstoff verarbeitet. Wir sehen, dass 10 Kohle 5,75 Einheiten Festbrennstoff ergeben. Währenddessen benötigt die Kohleverarbeitung Energie zum Heizen und zum Betreiben der Maschinen. Wir können den Gesamtenergiegewinn errechnen, indem wir die gesamte Eingangsenergie und Prozessenergie von der Ausgangsenergie anziehen. Der prozentuale Gewinn ist nun der Gesamtenergiegewinn dividiert durch die Energie, die man durch direkte Verbrennung der Ausgangsstoffe erhalten würde. [\text{Energiegewinn} = 69 - 40 - 1,5 - 2,1 - 1,365 - 0,84 - 0.21 = 22,985 MJ] [\text{Prozentualer Gewinn} = 22,985 MJ / 40 MJ = 57,4625\%] Wir sehen, dass nur das Verflüssigen der Kohle uns etwa 57% mehr Energie liefert. Wieviel Energie können wir jetzt noch zusätzlich herausbekommen, wenn wir Cracking verwenden? Kohleverflüssigung mit Cracking Cracking fügt dem Prozess einen zusätzlichen Schritt hinzu, ergibt aber, wenn wir uns einmal die Rezepte anschauen, mehr Festbrennstoff: Schwerölcracking liefert 30/40 oder 75% so viel Leichtöl. Allerdings sind bereits 10 Leichtöl genug, um ein Element Festbrennstoff herzustellen, in Gegensatz zu 20 Schweröl für ein Element, es ist also doppelt so effektiv. Wenn wir nun diese beiden FAkten verbinden, erhalten wir durch Cracking 75% * 200% = 150% soviel Festbrennstoff wie zuvor. Über Leichtöl lässt sich das selbe allerdings nicht sagen. Es liefert im Cracking 20/30 oder etwa 66,7% so viel Flüssiggas. Außerdem benötigt das Rezept für Festbrennstoff 20 Einheiten Flüssiggas anstatt 10 Einheiten Leichtöl, also nur 50% Effizient. Kombinieren wir wieder diese beiden Dinge, ergibt sich 66,7% * 50% = 33,4% so viel Festbrennstoff wie zuvor. Leichtölcracking sollte also vermieden werden. Schauen wir uns nun also den Prozess mit Schwerölcracking an: Kohle wird zu Festbrennstoff mittels Schwerölcracking verarbeitet. Wir sehen nun, dass wir aus den selben 10 Einheiten Kohle 7,375 Einheiten Festbrennstoff erhalten. Das scheint profitabel, allerdings verbraucht der zusätzliche Herstellungsschritt auch zusätzliche Energie. Betrachten wir nun also den Gesamtprozess, bevor wir ein Urteil fällen: [\text{Energiegewinn} = 88,5 - 40 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21 = 41,12 MJ] [\text{Prozentualer Gewinn} = 41,12 MJ / 40 MJ = 102,8%] Wir erkennen, dass Kohleverflüssigung mit Cracking zu einem Energiegewinn von 103% führt, was bedeutet, das wir etwa doppelt so viel Energie herausbekommen. Wenn wir also Kohle vor dem Verbrennen verflüssigen, müssen wir nur halb so viel Kohle abbauen! Obwohl es jetzt nach einer fabelhaften Idee klingt, groß in die Kohleverflüssigung einzusteigen, müssen noch andere Faktoren wie Anlagenkosten betrachtet werden, aber dazu später mehr. Schauen wir uns jetzt aber den anderen Weg an, wie wir Festbrennstoff herstellen können: Kohle vs. Öl für Festbrennstoff Da Festbrennstoff auch aus Öl hergestellt werden kann, betrachten wir nun, wie viel Energie im Öl im Gegensatz zur Kohle steckt. Der einfachste Weg ist grundlegende Ölverarbeitung, welche Flüssiggas liefert, welches direkt in Festbrennstoff umgewandelt wird: Verarbeitung von Öl zu Festbrennstoff mit grundlegender Ölverarbeitung. Wir sehen, dass 100 Einheiten Öl 2,25 Einheiten Festbrennstoff ergeben. Wir wissen bereits, dass die fortschrittliche Ölverarbeitung mehr Flüssiggas und zusätzlich Schwer- &amp; Leichtöl liefert. Wir können also definitiv eine höhere Effektivität erreichen: Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung. Wir erkennen, dass wir mit fortgeschrittener Ölverarbeitung aus 100 Einheiten Öl 8,5 Einheiten Festbrennstoff bekommen. Das ist fast viermal so viel wie mit grundlegender Ölverarbeitung! Wir können das aber noch besser: Wir wir wissen, liefert uns das Cracken von Schweröl mehr Energie: Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung und Schwerölcracking. Wir können so aus 100 Einheiten Öl maximal 9,125 Einheiten Festbrennstpff erhalten. Vergleichen wir das nun mit dem Maximum von 7,375 Einheiten Festbrennstoff aus 10 Einheiten Kohle, finden wir heraus, das in einer Einheit Kohle etwa 8,08 mal so viel Energie wie in einer Einheit Öl steckt. Vergleichen wir nun die Energien für die Optimalfälle der beiden Inputs: [\text{Kohleenergieoutput} = (88,5 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21) MJ / 10 \text{Kohle}] [\text{Kohleenergieoutput} = 8,112 MJ / \text{Kohle}] [\text{Ölenergieoutput} = (109,5 - 2,1 - 0,2625 - 2,6775 - 1,155) MJ / 100 \text{Öl}] [\text{Ölenergieoutput} = 1,03305 MJ / \text{Öl}] Wir erkennen, dass eine Einheit Kohle etwa achtmal so viel Energie wie eine Einheit Öl besitzt. Dieses Verhältnis schafft eine Vorstellung davon, welche Mengen einer Ressource nötig sind, um die andere in der Festbrennstoffherstellung zu ersetzten. Allerdings ist der Energiegehalt pro Einheit nicht der einzige Vergleichsfaktor zwischen Kohle und Öl für die Festbrennstoffherstellung. Ich habe diese anderen Faktoren identifiziert: Energiegehalt pro Einheit: Wie wir gerade besprochen haben, besitzt Kohle etwa die achtfache Energie pro Einheit. Transporteffizienz: Ein Güterwaggon transportiert 2000 Kohle, was umgewandelt zu Festbrennstoff etwa 16.2 GJ Energie entspricht. Der selbe Waggon hält aöternativ 400 Ölfässer, was 20.000 Öl entspricht. Umgewandelt zu Festbrennstoff liefert das etwa 20,6 GJ Energie (27% mehr). Wenn du stattdessen einen Tankwaggon verwendest, kannst du 25.000 Einheiten Öl oder 25,8 GJ Energie transportieren (fast 60% mehr). Ölwaggons transportieren also mehr Energie als Kohlewaggons, solange du kein Wasser oder Dampf transportieren musst. Öl kann auch über Pipelines transportiert werden, was je anch Anwendungsfall vielleicht besser ist. Vorkommen: Hängt stark von der gewählten Karte ab, es kann also kein Urteil gefällt werden. andere Verwendungen: Sowohl Kohle als auch Öl können verwendet werden, um Ölprodukte herzustellen. Die Anzahl der Rezepte, welche Kohle verwenden (Plastik, Sprengstoff, Granaten, Kapseln) sind weiter verbreitet als die für Öl (Flammenwerfermunition). Unter Betrachtung all dieser Faktoren scheint es allgemein besser, die vorhandene Kohle für die Plastik und Sprengstoffproduktion zu verwenden und auf Öl für die Festbrennstoffproduktion zurückzugreifen. Wenn die Vorkommen von Öl und Kohle es anbieten, kann es aber auch andersherum sein. Die Betrachtungen zur Herstellung von Festbrennstoff sind damit nun abgeschlossen, allerdings können wir es noch zu Raketentreibstoff weiterverarbeiten. Festbrennstoff vs. Raketenbrennstoff Wir sahen, dass die Umwandlung von Kohle zu Festbrennstoff mehr Energie freisetzt, vielleicht verhält es sich bei Raketenbrennstoff genauso? Um das zu ergründen reicht es, wenn wir uns nur das Rezept für Raketenbrennstoff anschauen, wir müssen nicht wieder bei Kohle/Öl anfangen: Verarbeitung von Festbrennstoff zu Raketenbrennstoff. Wir erkennen, dass eine einzelne Einheit Raketenbrennstoff 100 MJ Energie enthält, während die benötigten 10 Einheiten Festbrennstoff bereits 120 MJ enthalten und das zusätzliche Leichtöl zu einer 11ten Einheit Festbrennstoff verarbeitet werden kann, was nocheinmal 12 MJ liefert. Die Umwandlung von Festbrennstoff zu Raketenbrennstoff ist also ein Verlustgeschäft, noch bevor wir die benötigte Prozessenergie betrachten. Raketenbrennstoff hat aber gegenüber Festbrennstoff einige Vorteile, welche vielleicht wichtiger sind als der Energieverlust, welche wir später betrachten werden. Außerdem ist es ein notwendiger Bestandteil von Kernbrennstoff, welcher vielleicht insgesamt mehr Energie liefert, trotz der Verluste in diesem Schritt. Kernbrennstoffe Kernbrennstoff ist in der echten Welt noch etwas experimentell, allerdings stellt Factorio eine Standartvariante bereit, welche aus normalen Raketenbrennstoff und Uran-235 hergestellt wird und den ultimativen Brennstoff darstellt. Wie bei Raketentreibstoff ist das Rezept der einzig zu betrachtende Schritt, wenn es darum geht, mögliche Energiegewinne zu bewerten: Verarbeitung von Raketenbrennstoff zu Kernbrennstoff. Wir sehen das Kernbrennstoff unglaubliche 1,21 GJ Energie liefert (ein Verweis auf Zurück in die Zukunft), etwa zehnmal so viel wie als Energie im ursprünglichen Festbrennstoff steckt. Wenn du also deine Anlage vond er Verbrennung von Kohle auf Kernbrennstoff umstellt, wird dein Kohleverbrauch auf bis zu 1/20tel des ursprünglichen Verbrauchs an Kohle einbrechen. maximale Urannutzung Trotz der unglaublichen Energiegewinne und daraus resultierenden Öl und Kohleeinsparung ist Kernbrennstoff nicht perfekt. Man könnte das benötigte Uran-235 auch für die Herstellung von Uran-Brennelementen verwenden, welche auf anderem Weg Energie liefern: sie können nur in Kernreaktoren verwendet werden. Ein Brennelement liefert für einen Reaktor 40 MW für exakt 200 Sekunden, was zu einer Gesamtenergie von $ 40 MW * 200s = 8000 MJ = 8 GJ $ führt. Besitzt der Reaktor nun benachbarte Reaktoren, findet der Nachbarschatbonus anwendung. Es werden zusätzliche 40 MW für jeden Nachbarn vom selben Brennelement geliefert. Da jeder Reaktor maximal 4 Nachbarn haben kann, liefert jedes Brennelement bis zu die fünffache Energie, also $ 8 GJ * 5 = 40 GJ $. Wir verwenden bereits hier GJ anstelle von MJ, wenn es um ein einzelnes Brennelement geht, zusätzlich zu der Tatsache, dass das Rezept 10 Stück pro Uran-235 Einheit liefert: Verarbeitung von Uran-235 zu Uran-Brennelementen. Wir können so hunderte Mal so viel Energie aus dem selben Stück Uran-235 bekommen, wenn wir es zu Brennelementen anstatt Kernbrennstoff verarbeiten. Dies scheint zu zeigen, dass wenn eine Uranversorgung aufgebaut ist, umgestellt werden sollte auf Strom aus Kernenergie und elektrische Maschinen. Allerdings wird Kernbrennstoff zur selben Zeit wie der Kovarex-Prozess freigeschaltet, so das eine Versorgung mit Uran-235 zu diesem Zeitpunkt kein Problem mehr darstellen sollte. Einfluss von Modulen auf die Energiegewinne Bisher haben wir all unsere Berechnungen ohne Module durchgeführt, um den Rechenweg einfach zu halten und die Grundbedingungen zu verstehen. Betrachten wir sie nun nocheinmal mit Modulen um herauszufinden, ob sie signifikant das Ergenis verändern. Falls du kurze Wiederholungen der Module möchtest, können wir unsere Artikel zu Produktivitätsmodulen, Geschwindigkeitsmodulen, Effizienzmodulen und Effektverteilern nur empfehlen. Schauen wir uns nun unter dem Gesichtspunkt von Modulen die Brennstoffverarbeitung an, fällt auf, dass sie primär den Energieverbrauch der Herstellungsmaschinen beeinflussen. Schauen wir uns also zunächst folgende Gleichung an: [\text{gesamte Prozessenergie} (E) = \text{Leistungsaufnahme der Maschine} (P) * \text{Dauer eines Herstellungszyklus} (t_c) * \text{Anzahl der Herstellungszyklen} (n) / \text{Herstellungsgeschwindigkeit} (C)] [E = P * t_c * n / C] Die Module tun nun folgendes: Effiziensmodule: Sie verringern den Leistungsbedarf der Herstellungsmaschinen (“P”). Ihr Einfluss auf die Energiegewinne der meisten Rezepte sind klein, aber nicht zu vernachlässigen. Ich würde definitiv empfehlen, Effizientmodule 1 in allen Brennstoffherstellungsmaschinen zu verwenden, wenn du keine anderen Module verwendest, da sie relativ günstig zu produzieren sind und den Stromverbrauch um 60% oder sogar 80% verringern, je nachdem wie viele Modulplätze die Maschinen haben. Geschwindigkeitsmodule: Ein Effekt von Geschwindigkeitsmodulen ist die Veränderung des Leistungsbedarfs der Herstellungsmaschinen (“P”), nur in die entgegengesetzte Richtung zu Effizienzmodulen. Sie verringern also unsere Energiegewinne. Der andere Effekt ist die Erhöhung der Herstellungsgeschwindigkeit der Maschinen (“C”), was in unserer Gleichung die Energieverluste verringert, da die Maschinen für jeden Herstellungszyklus weniger Zeit benötigen. Für jedes Geschwindigkietsmodul ist die Vergrößerung des P-Wertes größer als die des C-Wertes, was dazu führt, dass der Effekt jedes Geschwindigkeitsmodules eine Vergrößerung von E ist, was den gesamten Energiegewinn verringert. Allerdings können Geschwindigkeitsmodule in Verbindung mit Peoduktivitätsmodulen verwendet werden, um die Verluste der Herstellungsgeschwindigkeit zu kompensieren, und können so vielleicht positiv zum Energiegewinn beitragen. Produktivitätsmodule: Diese habe die interessantesten Effekte. Sie vergrößern den Leistungsbedarf (“P”) und verringern die Herstellungsgeschwindigkeit (“C”), was beides zu einer Vergrößerung der Gesamtprozessenergie beiträgt, was die gesamten Energiegewinne verringert. Auf der anderen Seite vergrößern Produktivitätsmodule die Menge an verarbeiteten Brennstoff, die hergestellt wird. Zusätzlich pflanzt sich dieser Effekt über die Herstellungsschritte fort, was zu exponentiellen Wachstum der insgesamt Hergestellten Brennstoffmenge führt! Die Energiegewinne dieses zusätzlich hergestellten Brennstoffen kompensieren vielleicht den zusätzlichen Leistungsbedarf. Effekte von Modulen auf die Leistungsaufnahme Jetzt demonstrieren wir die Verwendung von Modulen. Zuerst schauen wir uns den Effekt von Effizienzmodulen in der Kohleverflüssigung mit Schwerölcracking an. Raffinerien und Chemiefabriken bestitzen jeweils 3 Modulplätze, also können wir drei Effizienz 1 Module verwenden, um den Stromverbrauch pro Maschine um 80% zu reduzieren: Verarbeitung von Kohle zu Festbrennstoff mit Schwerölcracking und minimalem Stromverbrauch. Nun können wir den neuen Energiegewinn mit verringertem Stromverbrauch berechnen: [\text{Energiegewinn} = 88,5 - 40 - 1,5 - 0,42 - 0,1365 - 0,5775 - 0,042 = 45,824 MJ] [\text{Prozentualer Gewinn} = 45,824 MJ / 40 MJ = 114,56\% ≈ 115\%] Der Ernergiegewinn ohne Module betrug 103%. Wir erkennen , dass Effizienzmodule den Energiegewinn von 103% auf 115% anheben. Diese Verbesserung ist schön zu haben, aber nicht sehr signifikant, da die Prozessenergie vorher bereits relativ gering war. Trotzdem ist dies aufgrund der geringen Herstellungskosten für Produktivitätsmodule 1 eine praktische Alternative. Betrachten wir nun das selbe Beispiel mit Produktivitätsmodulen 3 in jeder Maschine, anstelle der 3 Effizienzmodule 1. Trotz der erhöhten Leistungsaufnahme vergrößert auch jedes Modul die Menge an hergestellten Brennstoff um 10%: Verarbeitung von Kohle zu Festbrennstoff bei maximaler Produktivität. Wir sehen das mit den additiven Effekten von 30% mehr Produkt bei jedem Herstellungsschritt die Menge an Festbrennstoff verdoppelt wird! Das bedeutet einen zusätzlichen Energiegewinn von fast 100MJ! Allerdings sehen wir auch, das der gesamte Strombedarf stark gestiegen ist auf ungefähr 50,6 MJ. Wie wirken sich nun all diese Effekte auf den Energiegewinn aus: [\text{Energiegewinn} = 185,562 - 40 - 1,5 - 12,982 - 5,9716 - 30,040 - 1,688 = 93,3804 MJ] [\text{Prozentualer Gewinn} = 93,3804 MJ / 40 MJ = 233,451\% ≈ 233\%] Wir erkennen das Produktivitätsmodule den Energiegewinn von 103% auf 233% anheben, was bedeutet, dass der in diesem System hergestellte Festbrennstoff über dreimal so viel Energie liefert, wie die benötigte Kohle direkt liefern würde! Auf der anderen Seite arbeiten unsere Maschinen nur noch mit halber Geschwindigkeit, was bedeutet das für die doppelte Zeit Strom verbraucht wird. Vielleicht können wir Geschwindigkeitsmodule verwenden, um dem entgegenzuwirken. Versuchen wir nun zwei Produktivitätsmodule 3 und ein Geschwindigkeitsmodul 3 für jede Maschine: Verarbeitung von Kohle zu Festbrennstoff mit SChwerölcracking bei hoher Geschwindigkeit und Produktivität. Im Vergleich zu unserer letzen Anlage bekommen wir nun weniger als die doppelte Menge Festbrennstoff, aber der Stromverbrauch ist beinahe halbiert. Betrachten wir nun, wie sich dies auf den Energiegewinn auswirkt: [\text{Energiegewinn} = 146,448 - 40 - 1,5 - 5,775 - 2,3966 - 11,400 - 0,693 = 84,6834 MJ] [\text{Prozentualer Gewinn} = 84,6834 MJ / 40 MJ = 211,7085\% ≈ 212\%] Im Vergleich zu den 103% Gewinn ohne Module liefert diese Anlage einen exzellenten Gewinn von 212%, bleibt damit aber hinter den 233% der Anlage mit je 3 Produktivitätsmodulen 3 zurück, da die kulmulativen Brennstoffgewinne mehr ins Gewicht fallen als der reduzierte Stromverbrauch. Anstatt ein weiteres Produktivitätsmodul gegen ein Geschwindigkeitsmodul zu tauschen, können wir mit Geschwindigkeits-Effektverteilern arbeiten. Das würde uns erlauben, weiterhin maximale Produktivität zu verwenden und zeitgleich den Stromverbrauch zu verringern, obwohl die Effektverteiler selber Strom benötigen. Ich vermute, das weitere Energiegewinne damit erzielt werden können, das jeder Effektverteiler mehrere Maschinen abdeckt. Da aber die Berechnungen mit Effektverteilern deutlich komplizierter werden und die genaue Maschinenzahl und Aufstellung der Anlage eine wichtige Rolle spielen, überlasse ich dies als eine Aufgabe für den gewillten Leser. Nachdem wir die gewaltigen Effekte der Produktivitätsmodule gesehen haben, wunderte ich mich, ob wir es mit ihnen schaffen, die Produktion von Raketenbrennstoff zu einem Energiegewinn zu bringen. Füllen wir nun also die Montagemaschine 2 mit Produktivitätsmodulen 3: Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 2 mit maximaler Produktivität. Die Eingangsenergie und die Ausgangsenergie sind jetzt gleich, allerdings hat sich die Prozessenergie fast vervierfacht und ist somit viel zu hoch, so dass der Prozess immernoch mehr Energie benötigt als er liefert. Allerdings können wir Raketentreibstoff noch auf andere Weise herstellen: Wir können Montagemaschinen 3 mit je 4 Modulplätzen nutzen. Hier sind einige Modulkombinationen gezeigt: Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 3 mit verschiedenen Modulkombinationen. Ich habe vier Produktivitätsmodule 3 in einer Montagemaschine 3 ausprobiert, allerdings wurde die Maschine so langsam und die Prozessenergie so hoch, das sie fast so hoch war wie die gesamte Outputenergie! Danach habe ich versucht, den vergrößerten Leistungsbedarf und verringerte Herstellungsgeschwindigkeit mit einem Effizienzmodul 3 anstatt eines Produktivitätsmoduls 3 auszugleichen. Das hat zwar geholfen, aber nocht genug. Ich habe auch versucht mit einem Geschwindigkeitsmodul 3 anstatt des Effizienzmoduls 3 die Herstellungszeit auszugleichen. Dies spart zwar mehr Energie als das Effizienzmodul 3, aber nicht genug, um einen wirklichen Unterschied zu machen. Ich habe viele andere Modulkombinationen und sogar Designs mit Effektverteilern versucht (dafür gibt es allerdings keine Diagramme), aber egal was ich versucht habe, schaffte ich es nie, ±0 zu erreichen. Basierend auf diesen Erkenntnissen kann man nun sagen, das Module zwar bei einigen Schritten signifikante Verbesserungen liefern, dies allerdings nicht bei allen Schritten der Fall ist. Wie sinnvoll ist nun die Brennstoffverarbeitung? Unsere bisherigen Erkenntnisse helfen uns nur teilweise, diese Frage zu beantworten. Ich habe eine vollständigere Liste an Faktoren zusammengestellt, die du bei deiner Entscheidung beachten solltest: Energiegewinn: Wenn du mehr Energie aus verarbeiteten Brennstoff herausbekommst, verringert sich der Bedarf für Basisrohstoffe, so das die vorhandenen Vorkommen länger ausreichen. Wir haben den Energiegewinn für die verschiedenen Prozesse oben berechnet. Gewinne bei der Fahrzeugbeschleunigung und Geschwindigkeitsboni: Größere Boni bedeuten, das deine Fahrzeuge schneller fahren können. Hochraffinerierte Brennstoffe liefern größere Boni, wie der Wikiseite für Brennstoffe zu entnehmen ist. Gewinne in der Energiedichte (pro Einheit und pro Stapel): Mehr Energie pro Stapel bedeutet, das das selbe Inventar mehr Energie halten kann, was einen großen Einfluss darauf hat, wieviel Energie in einem Waggon oder einer Kiste gespeichert werden können. Mehr Energie pro Einheit bedeutet wiederum, das mehr Energie von Robotern, Förderbändern oder Greifarmen transportiert werden kann. Bei gleichem Energiebedarf bedeuten Brennstoffe mit höherer Energiedichte, das weniger Logistikinfrastruktur benötigt wird, was einfachere Design und weniger Energieverbrauch des Logistiksystems bedeutet. Hochraffinerierte Brennstoffe habe in beiden Aspekten eine höhere Energiedichte. Anlagenkosten: Die Anlagenkosten beziehen sich sowohl auf die benötigten Materialien als auch auf den benötigten Platz, der für die Gebäude und die Logistik benötigt wird. Auch die zusätzlichen Kosten für die benötigten Technologien sind zu beachten. Jede weitere Verarbeitungsstufe trägt zu diesen Kosten bei. Verfügbarkeit von alternativen Kohle/Ölvorkommen: Auf den meisten Karten sind Kohle und Öl in praktisch unendlichen Mengen vorhanden, allerdings vielleicht nicht in deiner Nähe. Abhängig von deinem Spielstil ist es vielleicht einfacher zu expandieren und mehr Ressurcen abzubauen anstatt eine große Verarbeitungsanlage zu errichten. Nutzungsdauer von befeuerten Geräten: Wenn du dein System in naher Zukunft auf elektrische Maschinen und alternative Energiequellen umstellst, macht es vielleicht wenig sinn, eine große Verarbeitungsanlage zu errichten. Da die obigen Faktoren von dir, deiner Karte und deinem Spielstil abhängen, ist die Antwort unterschiedlich. ICh kann nur aufgrund meiner Erfahrung folgende Erkenntnisse weitergeben: Raffinierte Brennstoffe sind exzellent für Züge und Panzer. Die Beschleunigungsboni von Raketenbrennstoff (+80%) sind ganz nett, und die von Kernbrennstoff auf einem ganz anderen level (+150%). Du brauchst sowieso große Massen an Festbrennstoff und Raketenbrennstoff für Raketenteile, also ist es nicht so schwer, etwas mehr für deine Fahrzeuge und befeuerten Anlagen deiner Wahl zu produzieren. Wenn du Kohle zur Verstromung verbrennst, kann durch Verarbeitung dein Kohleverbrauch sich halberien (oder nochmehr, wenn du Module verwendest). Und natürlich kannst du übertreiben und deine Boiler mit Kernbrennstoff betreiben, um die Menge an benötigter Kohle um den Faktor 20 zu verringern. Du kannst Solarenergie und normale Kernenergie deutlich früher als Kohleverflüssigung und Kernbrennstoff freischalten, da diese beiden Technologien Wissenschaftspakete für Produktion (lila) benötigen. Die Vorteile von Solar- und Kernenergie sind vielleicht so gewichtig, das es sich lohnt zu wechseln. Kernenergie ist einfacher als vielleicht gedacht und liefert auch ohne Kovarex bereits mit wenigen Reaktoren und Zentrifugen große Energiemengen. Zusammenfassung Dieser Artikel begann mit einer kleinen Frage, die mir unter den Nägeln brannte, welche zu vielen anderen Fragen führte und sich zu einer Reise durch die Welt der BRennstoffe in Factorio entwickelte. Wir haben dabei folgendes gelernt: (1) Kohle vs. verflüssigte Kohle: Verflüssigung von Kohle und direkte Verarbeitung zu Festbrennstoff liefert 57% extra Energie pro Einheit Kohle, wenn keine Module verwendet weden. (2) Kohleverflüssigung mit Cracking: Wenn wir zusätzlich das Schweröl cracken, bevor wir es zu Festbrennstoff verarbeiten, leifert der Prozess 103% zusätzliche Energie pro Einheit Kohle, wenn keine Module verwendet weden. Wir bekommen also etwa doppelt so viel Energie heraus wie ohne Verarbeitung. (3) Kohle vs. Öl für Festbrennstoff: Kohle produziert etwa achtmal so viel Festbrennstoff oder Energie wie die gleiche Anzahl an Einheiten Öl, wenn keine Module verwendet werden. Allerdings kannst du etwa 60% mehr Energie in einem Tankwaggon voll Öl als in einem Waggon voll Kohle transportieren. Kohle hat aber auch noch viele andere Verwendungszwecke, für die sie verwendet werden kann, wobei Öl nur einen weiteren Zweck hat. Öl für die Herstellungs von Festbrennstoff zu verwenden kann also je nach den vorhandenen Rohstoffen auf deiner Karte praktischer sein. (4) Festbrennstoff vs. Raketenbrennstoff: Die Verarbeitung von Festbrennstoff zu Raketenbrennstoff ist verlustbehaftet, auch wenn du Module verwendest. Raketentreibstoff hat allerdings andere Vorteile, beispielsweise höhere Boni in Fahrzeugen. (5) Raketenbrennstoff vs. Kernbrennstoff: Die Umwandlung von Raketenbrennstoff zu Kernbrennstoff ohne Module liefert etwa 10x so viel Energie wie in dem ursprünglichen Festbrennstoff steck. Er stellt somit die meiste Enrgie dar, die du aus den ursprünglichen Rohstoffen herstellen kannst. Allerdings ist dies nicht der effizienteste Weg, Energie aus Uran zu nutzen. (6) Kernbrennstoff vs. Uran-Brennelemente: Uran-235 für Reaktorbrennelemente zu verwenden liefert bis zu mehrere hundert mal die Energiemenge im Vergleich zur Verwendung für Kernbrennstoff, allerdings wird Kernbrennstof zusammen mit dem Kovarex-Anreicherungsprozess freigeschaltet, so dass zu diesem Zeitpunkt Uran-235 in großen Mengen vorhanden ist. (7) Module FÜr zusätzliche Energiegewinne: Effizienzmodule liefern Energiegewinne indem sie die Prozessenergie in jedem Schritt verringern. Effizienzmodule 1 liefern bereits einen großen Effekt und sind dazu noch relativ preisgünstig. Produktivitätsmodule liefern Energiegewinne, indem durch ihre Verwendung mehr Brennstoff hergestellt wird. Dieser Effekt überlagert sich bei mehreren Schritten. Geschwindigkeitsmodule können zu Energiegewinnen in Verbindung mit Produktivitätsmodulen führen, indem sie die erhöhte Herstellungsdauer ausgleichen. (8) Nutzen von raffinierten Brennstoffen: Es höngt am Ende von vielen verschiedenen Faktoren ab, aber am Ende musst du sowieso Raketenbrennstoff herstellen, um Raketenteile herstellen zu können. Auch davor können raffinierte Brennstoffe bereits nützlich sein. Es war ein großer Spaß für mich, diese Frage zu beantworten und ich hoffe es war für dich interessant zu lesen! Hast du noch weitere Informationen oder ähnliche Fragen zu Brennstoffen oder anderen Spielmechaniken? Trete gerne via Reddit oder Discord in Kontakt (Die Links findest du am Ende des Artikels). Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-60/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-60/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-05-06T00:00:00+00:00">
+<script type="application/ld+json">
+{"headline":"Alt-F4 #60 - Brennende Fragen","dateModified":"2022-05-06T00:00:00+00:00","datePublished":"2022-05-06T00:00:00+00:00","description":"Zum Diamantenen Jubiläum von ALt-F4 liefert unser verrückter Sir Fendi ein neuen Crashkurs in Factorio’s Thermodynamik. Andersgesagt will er herausfinden, wie du das meiste aus deiner Kohle bekommst, durch Verarbeitung in verschiedene Brennstoffe. Ist das nicht nett von ihm? Module werden natürlich auch eine Rolle spielen, wir machen ja keine halben Sachen. Brennende Fragen Sir Fendi Factorio besitzt eine große Vielfalt an Brennstoffen, welche in befeuerten Anlagen verbrannt werden können. Vom klassischen Holz bis hin zu extremen Raketentreibstoff. Der beliebteste Brennstoff ist Kohle, welche das Rückgrat der frühen Automation darstellt. Sie befeuert alle Boiler, Öfen, Fahrzeuge und andere Maschinen, bis sie irgendwann unweigerlich knapp wird. Factorio’s Brennstoffe. Im Midgame wird Festbrennstoff als erster raffinierter Brennstoff eingeführt, ursprünglich hergestellt aus Rohöl. Festbrennstoff kann im weiteren Spielverlauf dazu verwendet werden, Raketentreibstoff und noch später dann Kernbrennstoff herzustellen. Diese raffinierten Brennstoffe haben gegenüber Kohle einigen Vorteile, wie eine höhere Energiedichte pro Einheit und pro Stapel und einen Beschleunigungsbonus bei der Verwendung in Fahrzeugen. Das Lategame bringt aber auch die interessante Technologie, Kohle zu Öl zu verflüssigen und dann in Festbrennstoff umzuwandeln. Daraufhin stellte ich mir die Frage: schafft die Verarbeitung von Kohle zu Festbrennstoff mehr Energie? Andersgesagt, wenn ich 10 Einheiten Kohle verflüssige und aus den entstehenden Ölen und Gasen Festbrennstoff herstelle und ihn verbrenne, setzt dies mehr Energie frei als die Kohle wenn ich sie direkt verbrenne? Was wäre, wenn ich sie weiter zu Raketenbrennstoff verarbeite? Diese und ähnliche Fragen führten zu dieser allgemeinen Betrachtung von Brennstoffen und den Energiekosten ihrer Umwandlung. Auf meiner Reise, diese Fragen zu beantworten war die Factoriowiki-Seite zu Brennstoffen sehr hilfreich. Ich betrachte die Umwandlungen mit der jeweiligen verbrauchten und produzierten Energiemenge anstelle der Produktionsraten pro Gebäude. Ich begann damit, viele Gleichungen mit immer mehr Eingangsgrößen zu lösen, doch war es deutlich einfacher, die Prozesse in Diagrammen darzustellen, welche nun den Sachverhalt anschaulich darstellen. In diesem Artikel werde ich mit Hilfe dieser Diagramme die Sachverhalte darstellen und einige interessante Details vorstellen, die dir hoffentlich helfen, die Rohstoffe deiner Fabrik besser zu managen und dein Wissen über Brennstoffe vervollständigt. Die Fragen Wir beginnen mit der Frage, mit der die ganze Sache begann: (1) Bekommt man durch die Verarbeitung von Kohle zu Festbrennstoff mehr Energie? Wir können die entstehenden Flüssigkeiten direkt zu Festbrennstoff verarbeiten, oder vorher cracken: (2) Wie groß ist der Unterschied durch Cracking bei der Herstellung von Festbrennstoff? Welche Vor- oder Nachteile liefert die Kohleverarbeitung im Gegensatz zur herkömmlichen Herstellung von Festbrennstoff: (3) Wie verhält sich die Kohleverflüssigung im Vergleich zur Herstellung von Festbrennstoff aus Öl? Allerdings müssen wir nicht bei Festbrennstoff aufhören: (4) Bekommen wir durch die Weiterverarbeitung von Festbrennstoff zu Raketentreibstoff mehr Energie heraus? Vielleicht gehen wir auch noch weiter und fügen Uran hinzu: (5) Bekommen wir durch die Weiterverarbeitung von Raketentreibstoff zu Kernbrennstoff mehr Energie heraus? Dann schauen wir uns an, dass Uran bereits für anderen Treibstoff verwendet wird, und wie der sich im Vergleich schlägt: (6) Wie verhält sich die Verbrennung von Kernbrennstoff für die Stromerzeugung im Vergleich zu Uran-Brennelementen, welche in einem Reaktor “verbrannt” werden? Nachdem wir uns alle Umwandlungen angeschaut haben, betrachten wir den Einfluss, welche Module auf den Prozess haben: (7) Was sind die Effekte von Modulen auf die Energiegewinne bei der Brennstoffverarbeitung? Schlussendlich betrachten wir das Gesamtbild mit Faktoren wie Anlagenkosten und alternativen Technologien und fragen uns: (8) Wie sinnvoll ist die Brennstoffverarbeitung überhaupt? Mit allen Umwandlungsmöglichkeiten im Grundspiel bearbeitet diese Liste an Fragen alle Brennstoffe außer Holz, welches nicht in einen anderen Brennstoff umgewandelt wird (außer man verwendet eine Holzkohlemod. Deshalb hier ein kurzer Blick auf Holz als Brennstoff: Es kann sein, dass du irgendwann eine große Menge an Holz übrig hast, als Folge der Erweiterung mit der Axt oder Robotern. Allerdings ist dieser Vorrat schnell aufgebraucht, da es nur sehr wenig Energie liefert. Anstatt extra Bäume zum Verfeuern zu fällen, lohnt es sich in der Regel mehr, das Holz in Kisten oder zu Strommästen zu verarbeiten, oder die Bäume zum Abbau der Umweltverschmutzung stehen zu lassen. Um diese Fragen für andere Brennstoffe zu beantworten, brauchen wir Umwandlungsdiagramme. Schauen wir uns also zunächt an, wie diese erstellt werden: Umwandlungsdiagramme erstellen In den Diagrammen werden die Rezepte für die verschiedenen Brennstoffherstellungsprozesse angewendet. Die Input und Output-Verhältnisse bleiben gleich, allerdings werden einige Prozesse nur teilweise durchgeführt, um die Eingangsgrößen anzugleichen, anstatt immer alle Rezepte komplett durchlaufen zu lassen. Die meisten Rezepte in den Diagrammen kann man der Wikiseite für Ölverarbeitung entnehmen. Die Energiewerte sind Spielkonstanten aus dem Wikiteil für Brennstoffe. Die Energie um Dampf auf 165°C zu erwärmen ist ebenfalls aus dem Wiki. Der Stromverbrauch der Maschinen während der Brennstoffherstellung hängt vom verwendeten Maschinentyp und den benötigten Herstellungszyklen ab. Die Berechnungen sind stark vereinfacht, da die Maschinen rezeptunabhängig die gleiche Energiemenge pro Sekunde benötigen. Der jeweilige Energiebedarf ist in der nachfolgenden Tabelle dargestellt: Maschine, die Strom verbraucht Stromverbrauch ohne Module (MW) Prozesse Herstellungsgeschwindigkeit Ölraffinerie 0,420 1 Chemiefabrik 0,210 1 Montagemaschine 2* 0,150 0,75 Zentrifuge 0,350 1 *Wir könnten auch Montagemaschinen Stufe 3 verwenden, allerdings verbrauchen sie trotz ihrer höheren Herstellungsgeschwindigkeit mehr Energie. Die gesamte Prozessenergie (“E”), welche für die Umwandlung benötigt wird kann man aus dem Energiebedarf der Maschine (“P”) multipliziert mit der Herstellungsdauer für die gesamten Ausgangsstoffe (“t”) berechnen. Die gesamte Herstellungsdauer ergibt sich aus der Zeit, welche für einen Herstellungszyklus benötigt wird (“t_c”) multipliziert mit der Anzahl der benötigten Herstellungszyklen (“n”), dividiert durch die Herstellungsgeschwindigkeit der Maschine (“C”). So vereinfachen wir die Prozessenergie zu: [E = P * t = P * t_c * n / C] Wenn wir nun die Rezepte, Energiewerte und Prozessenergiegleichung haben, fehlt nur noch das eigentliche Diagramm, welches wir daraus erstellen können. Schauen wir uns nun genau das an: Kohle vs. verflüssigte Kohle Der einfachste Weg, Kohle zu verarbeiten ist es, sie einfach nur zu verflüssigen und dann die Ausgangsstoffe direkt in Festbrennstoff umzuwandeln, wie unten gezeigt: Kohle wird direkt zu Festbrennstoff verarbeitet. Wir sehen, dass 10 Kohle 5,75 Einheiten Festbrennstoff ergeben. Währenddessen benötigt die Kohleverarbeitung Energie zum Heizen und zum Betreiben der Maschinen. Wir können den Gesamtenergiegewinn errechnen, indem wir die gesamte Eingangsenergie und Prozessenergie von der Ausgangsenergie anziehen. Der prozentuale Gewinn ist nun der Gesamtenergiegewinn dividiert durch die Energie, die man durch direkte Verbrennung der Ausgangsstoffe erhalten würde. [\\text{Energiegewinn} = 69 - 40 - 1,5 - 2,1 - 1,365 - 0,84 - 0.21 = 22,985 MJ] [\\text{Prozentualer Gewinn} = 22,985 MJ / 40 MJ = 57,4625\\%] Wir sehen, dass nur das Verflüssigen der Kohle uns etwa 57% mehr Energie liefert. Wieviel Energie können wir jetzt noch zusätzlich herausbekommen, wenn wir Cracking verwenden? Kohleverflüssigung mit Cracking Cracking fügt dem Prozess einen zusätzlichen Schritt hinzu, ergibt aber, wenn wir uns einmal die Rezepte anschauen, mehr Festbrennstoff: Schwerölcracking liefert 30/40 oder 75% so viel Leichtöl. Allerdings sind bereits 10 Leichtöl genug, um ein Element Festbrennstoff herzustellen, in Gegensatz zu 20 Schweröl für ein Element, es ist also doppelt so effektiv. Wenn wir nun diese beiden FAkten verbinden, erhalten wir durch Cracking 75% * 200% = 150% soviel Festbrennstoff wie zuvor. Über Leichtöl lässt sich das selbe allerdings nicht sagen. Es liefert im Cracking 20/30 oder etwa 66,7% so viel Flüssiggas. Außerdem benötigt das Rezept für Festbrennstoff 20 Einheiten Flüssiggas anstatt 10 Einheiten Leichtöl, also nur 50% Effizient. Kombinieren wir wieder diese beiden Dinge, ergibt sich 66,7% * 50% = 33,4% so viel Festbrennstoff wie zuvor. Leichtölcracking sollte also vermieden werden. Schauen wir uns nun also den Prozess mit Schwerölcracking an: Kohle wird zu Festbrennstoff mittels Schwerölcracking verarbeitet. Wir sehen nun, dass wir aus den selben 10 Einheiten Kohle 7,375 Einheiten Festbrennstoff erhalten. Das scheint profitabel, allerdings verbraucht der zusätzliche Herstellungsschritt auch zusätzliche Energie. Betrachten wir nun also den Gesamtprozess, bevor wir ein Urteil fällen: [\\text{Energiegewinn} = 88,5 - 40 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21 = 41,12 MJ] [\\text{Prozentualer Gewinn} = 41,12 MJ / 40 MJ = 102,8%] Wir erkennen, dass Kohleverflüssigung mit Cracking zu einem Energiegewinn von 103% führt, was bedeutet, das wir etwa doppelt so viel Energie herausbekommen. Wenn wir also Kohle vor dem Verbrennen verflüssigen, müssen wir nur halb so viel Kohle abbauen! Obwohl es jetzt nach einer fabelhaften Idee klingt, groß in die Kohleverflüssigung einzusteigen, müssen noch andere Faktoren wie Anlagenkosten betrachtet werden, aber dazu später mehr. Schauen wir uns jetzt aber den anderen Weg an, wie wir Festbrennstoff herstellen können: Kohle vs. Öl für Festbrennstoff Da Festbrennstoff auch aus Öl hergestellt werden kann, betrachten wir nun, wie viel Energie im Öl im Gegensatz zur Kohle steckt. Der einfachste Weg ist grundlegende Ölverarbeitung, welche Flüssiggas liefert, welches direkt in Festbrennstoff umgewandelt wird: Verarbeitung von Öl zu Festbrennstoff mit grundlegender Ölverarbeitung. Wir sehen, dass 100 Einheiten Öl 2,25 Einheiten Festbrennstoff ergeben. Wir wissen bereits, dass die fortschrittliche Ölverarbeitung mehr Flüssiggas und zusätzlich Schwer- &amp; Leichtöl liefert. Wir können also definitiv eine höhere Effektivität erreichen: Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung. Wir erkennen, dass wir mit fortgeschrittener Ölverarbeitung aus 100 Einheiten Öl 8,5 Einheiten Festbrennstoff bekommen. Das ist fast viermal so viel wie mit grundlegender Ölverarbeitung! Wir können das aber noch besser: Wir wir wissen, liefert uns das Cracken von Schweröl mehr Energie: Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung und Schwerölcracking. Wir können so aus 100 Einheiten Öl maximal 9,125 Einheiten Festbrennstpff erhalten. Vergleichen wir das nun mit dem Maximum von 7,375 Einheiten Festbrennstoff aus 10 Einheiten Kohle, finden wir heraus, das in einer Einheit Kohle etwa 8,08 mal so viel Energie wie in einer Einheit Öl steckt. Vergleichen wir nun die Energien für die Optimalfälle der beiden Inputs: [\\text{Kohleenergieoutput} = (88,5 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21) MJ / 10 \\text{Kohle}] [\\text{Kohleenergieoutput} = 8,112 MJ / \\text{Kohle}] [\\text{Ölenergieoutput} = (109,5 - 2,1 - 0,2625 - 2,6775 - 1,155) MJ / 100 \\text{Öl}] [\\text{Ölenergieoutput} = 1,03305 MJ / \\text{Öl}] Wir erkennen, dass eine Einheit Kohle etwa achtmal so viel Energie wie eine Einheit Öl besitzt. Dieses Verhältnis schafft eine Vorstellung davon, welche Mengen einer Ressource nötig sind, um die andere in der Festbrennstoffherstellung zu ersetzten. Allerdings ist der Energiegehalt pro Einheit nicht der einzige Vergleichsfaktor zwischen Kohle und Öl für die Festbrennstoffherstellung. Ich habe diese anderen Faktoren identifiziert: Energiegehalt pro Einheit: Wie wir gerade besprochen haben, besitzt Kohle etwa die achtfache Energie pro Einheit. Transporteffizienz: Ein Güterwaggon transportiert 2000 Kohle, was umgewandelt zu Festbrennstoff etwa 16.2 GJ Energie entspricht. Der selbe Waggon hält aöternativ 400 Ölfässer, was 20.000 Öl entspricht. Umgewandelt zu Festbrennstoff liefert das etwa 20,6 GJ Energie (27% mehr). Wenn du stattdessen einen Tankwaggon verwendest, kannst du 25.000 Einheiten Öl oder 25,8 GJ Energie transportieren (fast 60% mehr). Ölwaggons transportieren also mehr Energie als Kohlewaggons, solange du kein Wasser oder Dampf transportieren musst. Öl kann auch über Pipelines transportiert werden, was je anch Anwendungsfall vielleicht besser ist. Vorkommen: Hängt stark von der gewählten Karte ab, es kann also kein Urteil gefällt werden. andere Verwendungen: Sowohl Kohle als auch Öl können verwendet werden, um Ölprodukte herzustellen. Die Anzahl der Rezepte, welche Kohle verwenden (Plastik, Sprengstoff, Granaten, Kapseln) sind weiter verbreitet als die für Öl (Flammenwerfermunition). Unter Betrachtung all dieser Faktoren scheint es allgemein besser, die vorhandene Kohle für die Plastik und Sprengstoffproduktion zu verwenden und auf Öl für die Festbrennstoffproduktion zurückzugreifen. Wenn die Vorkommen von Öl und Kohle es anbieten, kann es aber auch andersherum sein. Die Betrachtungen zur Herstellung von Festbrennstoff sind damit nun abgeschlossen, allerdings können wir es noch zu Raketentreibstoff weiterverarbeiten. Festbrennstoff vs. Raketenbrennstoff Wir sahen, dass die Umwandlung von Kohle zu Festbrennstoff mehr Energie freisetzt, vielleicht verhält es sich bei Raketenbrennstoff genauso? Um das zu ergründen reicht es, wenn wir uns nur das Rezept für Raketenbrennstoff anschauen, wir müssen nicht wieder bei Kohle/Öl anfangen: Verarbeitung von Festbrennstoff zu Raketenbrennstoff. Wir erkennen, dass eine einzelne Einheit Raketenbrennstoff 100 MJ Energie enthält, während die benötigten 10 Einheiten Festbrennstoff bereits 120 MJ enthalten und das zusätzliche Leichtöl zu einer 11ten Einheit Festbrennstoff verarbeitet werden kann, was nocheinmal 12 MJ liefert. Die Umwandlung von Festbrennstoff zu Raketenbrennstoff ist also ein Verlustgeschäft, noch bevor wir die benötigte Prozessenergie betrachten. Raketenbrennstoff hat aber gegenüber Festbrennstoff einige Vorteile, welche vielleicht wichtiger sind als der Energieverlust, welche wir später betrachten werden. Außerdem ist es ein notwendiger Bestandteil von Kernbrennstoff, welcher vielleicht insgesamt mehr Energie liefert, trotz der Verluste in diesem Schritt. Kernbrennstoffe Kernbrennstoff ist in der echten Welt noch etwas experimentell, allerdings stellt Factorio eine Standartvariante bereit, welche aus normalen Raketenbrennstoff und Uran-235 hergestellt wird und den ultimativen Brennstoff darstellt. Wie bei Raketentreibstoff ist das Rezept der einzig zu betrachtende Schritt, wenn es darum geht, mögliche Energiegewinne zu bewerten: Verarbeitung von Raketenbrennstoff zu Kernbrennstoff. Wir sehen das Kernbrennstoff unglaubliche 1,21 GJ Energie liefert (ein Verweis auf Zurück in die Zukunft), etwa zehnmal so viel wie als Energie im ursprünglichen Festbrennstoff steckt. Wenn du also deine Anlage vond er Verbrennung von Kohle auf Kernbrennstoff umstellt, wird dein Kohleverbrauch auf bis zu 1/20tel des ursprünglichen Verbrauchs an Kohle einbrechen. maximale Urannutzung Trotz der unglaublichen Energiegewinne und daraus resultierenden Öl und Kohleeinsparung ist Kernbrennstoff nicht perfekt. Man könnte das benötigte Uran-235 auch für die Herstellung von Uran-Brennelementen verwenden, welche auf anderem Weg Energie liefern: sie können nur in Kernreaktoren verwendet werden. Ein Brennelement liefert für einen Reaktor 40 MW für exakt 200 Sekunden, was zu einer Gesamtenergie von $ 40 MW * 200s = 8000 MJ = 8 GJ $ führt. Besitzt der Reaktor nun benachbarte Reaktoren, findet der Nachbarschatbonus anwendung. Es werden zusätzliche 40 MW für jeden Nachbarn vom selben Brennelement geliefert. Da jeder Reaktor maximal 4 Nachbarn haben kann, liefert jedes Brennelement bis zu die fünffache Energie, also $ 8 GJ * 5 = 40 GJ $. Wir verwenden bereits hier GJ anstelle von MJ, wenn es um ein einzelnes Brennelement geht, zusätzlich zu der Tatsache, dass das Rezept 10 Stück pro Uran-235 Einheit liefert: Verarbeitung von Uran-235 zu Uran-Brennelementen. Wir können so hunderte Mal so viel Energie aus dem selben Stück Uran-235 bekommen, wenn wir es zu Brennelementen anstatt Kernbrennstoff verarbeiten. Dies scheint zu zeigen, dass wenn eine Uranversorgung aufgebaut ist, umgestellt werden sollte auf Strom aus Kernenergie und elektrische Maschinen. Allerdings wird Kernbrennstoff zur selben Zeit wie der Kovarex-Prozess freigeschaltet, so das eine Versorgung mit Uran-235 zu diesem Zeitpunkt kein Problem mehr darstellen sollte. Einfluss von Modulen auf die Energiegewinne Bisher haben wir all unsere Berechnungen ohne Module durchgeführt, um den Rechenweg einfach zu halten und die Grundbedingungen zu verstehen. Betrachten wir sie nun nocheinmal mit Modulen um herauszufinden, ob sie signifikant das Ergenis verändern. Falls du kurze Wiederholungen der Module möchtest, können wir unsere Artikel zu Produktivitätsmodulen, Geschwindigkeitsmodulen, Effizienzmodulen und Effektverteilern nur empfehlen. Schauen wir uns nun unter dem Gesichtspunkt von Modulen die Brennstoffverarbeitung an, fällt auf, dass sie primär den Energieverbrauch der Herstellungsmaschinen beeinflussen. Schauen wir uns also zunächst folgende Gleichung an: [\\text{gesamte Prozessenergie} (E) = \\text{Leistungsaufnahme der Maschine} (P) * \\text{Dauer eines Herstellungszyklus} (t_c) * \\text{Anzahl der Herstellungszyklen} (n) / \\text{Herstellungsgeschwindigkeit} (C)] [E = P * t_c * n / C] Die Module tun nun folgendes: Effiziensmodule: Sie verringern den Leistungsbedarf der Herstellungsmaschinen (“P”). Ihr Einfluss auf die Energiegewinne der meisten Rezepte sind klein, aber nicht zu vernachlässigen. Ich würde definitiv empfehlen, Effizientmodule 1 in allen Brennstoffherstellungsmaschinen zu verwenden, wenn du keine anderen Module verwendest, da sie relativ günstig zu produzieren sind und den Stromverbrauch um 60% oder sogar 80% verringern, je nachdem wie viele Modulplätze die Maschinen haben. Geschwindigkeitsmodule: Ein Effekt von Geschwindigkeitsmodulen ist die Veränderung des Leistungsbedarfs der Herstellungsmaschinen (“P”), nur in die entgegengesetzte Richtung zu Effizienzmodulen. Sie verringern also unsere Energiegewinne. Der andere Effekt ist die Erhöhung der Herstellungsgeschwindigkeit der Maschinen (“C”), was in unserer Gleichung die Energieverluste verringert, da die Maschinen für jeden Herstellungszyklus weniger Zeit benötigen. Für jedes Geschwindigkietsmodul ist die Vergrößerung des P-Wertes größer als die des C-Wertes, was dazu führt, dass der Effekt jedes Geschwindigkeitsmodules eine Vergrößerung von E ist, was den gesamten Energiegewinn verringert. Allerdings können Geschwindigkeitsmodule in Verbindung mit Peoduktivitätsmodulen verwendet werden, um die Verluste der Herstellungsgeschwindigkeit zu kompensieren, und können so vielleicht positiv zum Energiegewinn beitragen. Produktivitätsmodule: Diese habe die interessantesten Effekte. Sie vergrößern den Leistungsbedarf (“P”) und verringern die Herstellungsgeschwindigkeit (“C”), was beides zu einer Vergrößerung der Gesamtprozessenergie beiträgt, was die gesamten Energiegewinne verringert. Auf der anderen Seite vergrößern Produktivitätsmodule die Menge an verarbeiteten Brennstoff, die hergestellt wird. Zusätzlich pflanzt sich dieser Effekt über die Herstellungsschritte fort, was zu exponentiellen Wachstum der insgesamt Hergestellten Brennstoffmenge führt! Die Energiegewinne dieses zusätzlich hergestellten Brennstoffen kompensieren vielleicht den zusätzlichen Leistungsbedarf. Effekte von Modulen auf die Leistungsaufnahme Jetzt demonstrieren wir die Verwendung von Modulen. Zuerst schauen wir uns den Effekt von Effizienzmodulen in der Kohleverflüssigung mit Schwerölcracking an. Raffinerien und Chemiefabriken bestitzen jeweils 3 Modulplätze, also können wir drei Effizienz 1 Module verwenden, um den Stromverbrauch pro Maschine um 80% zu reduzieren: Verarbeitung von Kohle zu Festbrennstoff mit Schwerölcracking und minimalem Stromverbrauch. Nun können wir den neuen Energiegewinn mit verringertem Stromverbrauch berechnen: [\\text{Energiegewinn} = 88,5 - 40 - 1,5 - 0,42 - 0,1365 - 0,5775 - 0,042 = 45,824 MJ] [\\text{Prozentualer Gewinn} = 45,824 MJ / 40 MJ = 114,56\\% ≈ 115\\%] Der Ernergiegewinn ohne Module betrug 103%. Wir erkennen , dass Effizienzmodule den Energiegewinn von 103% auf 115% anheben. Diese Verbesserung ist schön zu haben, aber nicht sehr signifikant, da die Prozessenergie vorher bereits relativ gering war. Trotzdem ist dies aufgrund der geringen Herstellungskosten für Produktivitätsmodule 1 eine praktische Alternative. Betrachten wir nun das selbe Beispiel mit Produktivitätsmodulen 3 in jeder Maschine, anstelle der 3 Effizienzmodule 1. Trotz der erhöhten Leistungsaufnahme vergrößert auch jedes Modul die Menge an hergestellten Brennstoff um 10%: Verarbeitung von Kohle zu Festbrennstoff bei maximaler Produktivität. Wir sehen das mit den additiven Effekten von 30% mehr Produkt bei jedem Herstellungsschritt die Menge an Festbrennstoff verdoppelt wird! Das bedeutet einen zusätzlichen Energiegewinn von fast 100MJ! Allerdings sehen wir auch, das der gesamte Strombedarf stark gestiegen ist auf ungefähr 50,6 MJ. Wie wirken sich nun all diese Effekte auf den Energiegewinn aus: [\\text{Energiegewinn} = 185,562 - 40 - 1,5 - 12,982 - 5,9716 - 30,040 - 1,688 = 93,3804 MJ] [\\text{Prozentualer Gewinn} = 93,3804 MJ / 40 MJ = 233,451\\% ≈ 233\\%] Wir erkennen das Produktivitätsmodule den Energiegewinn von 103% auf 233% anheben, was bedeutet, dass der in diesem System hergestellte Festbrennstoff über dreimal so viel Energie liefert, wie die benötigte Kohle direkt liefern würde! Auf der anderen Seite arbeiten unsere Maschinen nur noch mit halber Geschwindigkeit, was bedeutet das für die doppelte Zeit Strom verbraucht wird. Vielleicht können wir Geschwindigkeitsmodule verwenden, um dem entgegenzuwirken. Versuchen wir nun zwei Produktivitätsmodule 3 und ein Geschwindigkeitsmodul 3 für jede Maschine: Verarbeitung von Kohle zu Festbrennstoff mit SChwerölcracking bei hoher Geschwindigkeit und Produktivität. Im Vergleich zu unserer letzen Anlage bekommen wir nun weniger als die doppelte Menge Festbrennstoff, aber der Stromverbrauch ist beinahe halbiert. Betrachten wir nun, wie sich dies auf den Energiegewinn auswirkt: [\\text{Energiegewinn} = 146,448 - 40 - 1,5 - 5,775 - 2,3966 - 11,400 - 0,693 = 84,6834 MJ] [\\text{Prozentualer Gewinn} = 84,6834 MJ / 40 MJ = 211,7085\\% ≈ 212\\%] Im Vergleich zu den 103% Gewinn ohne Module liefert diese Anlage einen exzellenten Gewinn von 212%, bleibt damit aber hinter den 233% der Anlage mit je 3 Produktivitätsmodulen 3 zurück, da die kulmulativen Brennstoffgewinne mehr ins Gewicht fallen als der reduzierte Stromverbrauch. Anstatt ein weiteres Produktivitätsmodul gegen ein Geschwindigkeitsmodul zu tauschen, können wir mit Geschwindigkeits-Effektverteilern arbeiten. Das würde uns erlauben, weiterhin maximale Produktivität zu verwenden und zeitgleich den Stromverbrauch zu verringern, obwohl die Effektverteiler selber Strom benötigen. Ich vermute, das weitere Energiegewinne damit erzielt werden können, das jeder Effektverteiler mehrere Maschinen abdeckt. Da aber die Berechnungen mit Effektverteilern deutlich komplizierter werden und die genaue Maschinenzahl und Aufstellung der Anlage eine wichtige Rolle spielen, überlasse ich dies als eine Aufgabe für den gewillten Leser. Nachdem wir die gewaltigen Effekte der Produktivitätsmodule gesehen haben, wunderte ich mich, ob wir es mit ihnen schaffen, die Produktion von Raketenbrennstoff zu einem Energiegewinn zu bringen. Füllen wir nun also die Montagemaschine 2 mit Produktivitätsmodulen 3: Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 2 mit maximaler Produktivität. Die Eingangsenergie und die Ausgangsenergie sind jetzt gleich, allerdings hat sich die Prozessenergie fast vervierfacht und ist somit viel zu hoch, so dass der Prozess immernoch mehr Energie benötigt als er liefert. Allerdings können wir Raketentreibstoff noch auf andere Weise herstellen: Wir können Montagemaschinen 3 mit je 4 Modulplätzen nutzen. Hier sind einige Modulkombinationen gezeigt: Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 3 mit verschiedenen Modulkombinationen. Ich habe vier Produktivitätsmodule 3 in einer Montagemaschine 3 ausprobiert, allerdings wurde die Maschine so langsam und die Prozessenergie so hoch, das sie fast so hoch war wie die gesamte Outputenergie! Danach habe ich versucht, den vergrößerten Leistungsbedarf und verringerte Herstellungsgeschwindigkeit mit einem Effizienzmodul 3 anstatt eines Produktivitätsmoduls 3 auszugleichen. Das hat zwar geholfen, aber nocht genug. Ich habe auch versucht mit einem Geschwindigkeitsmodul 3 anstatt des Effizienzmoduls 3 die Herstellungszeit auszugleichen. Dies spart zwar mehr Energie als das Effizienzmodul 3, aber nicht genug, um einen wirklichen Unterschied zu machen. Ich habe viele andere Modulkombinationen und sogar Designs mit Effektverteilern versucht (dafür gibt es allerdings keine Diagramme), aber egal was ich versucht habe, schaffte ich es nie, ±0 zu erreichen. Basierend auf diesen Erkenntnissen kann man nun sagen, das Module zwar bei einigen Schritten signifikante Verbesserungen liefern, dies allerdings nicht bei allen Schritten der Fall ist. Wie sinnvoll ist nun die Brennstoffverarbeitung? Unsere bisherigen Erkenntnisse helfen uns nur teilweise, diese Frage zu beantworten. Ich habe eine vollständigere Liste an Faktoren zusammengestellt, die du bei deiner Entscheidung beachten solltest: Energiegewinn: Wenn du mehr Energie aus verarbeiteten Brennstoff herausbekommst, verringert sich der Bedarf für Basisrohstoffe, so das die vorhandenen Vorkommen länger ausreichen. Wir haben den Energiegewinn für die verschiedenen Prozesse oben berechnet. Gewinne bei der Fahrzeugbeschleunigung und Geschwindigkeitsboni: Größere Boni bedeuten, das deine Fahrzeuge schneller fahren können. Hochraffinerierte Brennstoffe liefern größere Boni, wie der Wikiseite für Brennstoffe zu entnehmen ist. Gewinne in der Energiedichte (pro Einheit und pro Stapel): Mehr Energie pro Stapel bedeutet, das das selbe Inventar mehr Energie halten kann, was einen großen Einfluss darauf hat, wieviel Energie in einem Waggon oder einer Kiste gespeichert werden können. Mehr Energie pro Einheit bedeutet wiederum, das mehr Energie von Robotern, Förderbändern oder Greifarmen transportiert werden kann. Bei gleichem Energiebedarf bedeuten Brennstoffe mit höherer Energiedichte, das weniger Logistikinfrastruktur benötigt wird, was einfachere Design und weniger Energieverbrauch des Logistiksystems bedeutet. Hochraffinerierte Brennstoffe habe in beiden Aspekten eine höhere Energiedichte. Anlagenkosten: Die Anlagenkosten beziehen sich sowohl auf die benötigten Materialien als auch auf den benötigten Platz, der für die Gebäude und die Logistik benötigt wird. Auch die zusätzlichen Kosten für die benötigten Technologien sind zu beachten. Jede weitere Verarbeitungsstufe trägt zu diesen Kosten bei. Verfügbarkeit von alternativen Kohle/Ölvorkommen: Auf den meisten Karten sind Kohle und Öl in praktisch unendlichen Mengen vorhanden, allerdings vielleicht nicht in deiner Nähe. Abhängig von deinem Spielstil ist es vielleicht einfacher zu expandieren und mehr Ressurcen abzubauen anstatt eine große Verarbeitungsanlage zu errichten. Nutzungsdauer von befeuerten Geräten: Wenn du dein System in naher Zukunft auf elektrische Maschinen und alternative Energiequellen umstellst, macht es vielleicht wenig sinn, eine große Verarbeitungsanlage zu errichten. Da die obigen Faktoren von dir, deiner Karte und deinem Spielstil abhängen, ist die Antwort unterschiedlich. ICh kann nur aufgrund meiner Erfahrung folgende Erkenntnisse weitergeben: Raffinierte Brennstoffe sind exzellent für Züge und Panzer. Die Beschleunigungsboni von Raketenbrennstoff (+80%) sind ganz nett, und die von Kernbrennstoff auf einem ganz anderen level (+150%). Du brauchst sowieso große Massen an Festbrennstoff und Raketenbrennstoff für Raketenteile, also ist es nicht so schwer, etwas mehr für deine Fahrzeuge und befeuerten Anlagen deiner Wahl zu produzieren. Wenn du Kohle zur Verstromung verbrennst, kann durch Verarbeitung dein Kohleverbrauch sich halberien (oder nochmehr, wenn du Module verwendest). Und natürlich kannst du übertreiben und deine Boiler mit Kernbrennstoff betreiben, um die Menge an benötigter Kohle um den Faktor 20 zu verringern. Du kannst Solarenergie und normale Kernenergie deutlich früher als Kohleverflüssigung und Kernbrennstoff freischalten, da diese beiden Technologien Wissenschaftspakete für Produktion (lila) benötigen. Die Vorteile von Solar- und Kernenergie sind vielleicht so gewichtig, das es sich lohnt zu wechseln. Kernenergie ist einfacher als vielleicht gedacht und liefert auch ohne Kovarex bereits mit wenigen Reaktoren und Zentrifugen große Energiemengen. Zusammenfassung Dieser Artikel begann mit einer kleinen Frage, die mir unter den Nägeln brannte, welche zu vielen anderen Fragen führte und sich zu einer Reise durch die Welt der BRennstoffe in Factorio entwickelte. Wir haben dabei folgendes gelernt: (1) Kohle vs. verflüssigte Kohle: Verflüssigung von Kohle und direkte Verarbeitung zu Festbrennstoff liefert 57% extra Energie pro Einheit Kohle, wenn keine Module verwendet weden. (2) Kohleverflüssigung mit Cracking: Wenn wir zusätzlich das Schweröl cracken, bevor wir es zu Festbrennstoff verarbeiten, leifert der Prozess 103% zusätzliche Energie pro Einheit Kohle, wenn keine Module verwendet weden. Wir bekommen also etwa doppelt so viel Energie heraus wie ohne Verarbeitung. (3) Kohle vs. Öl für Festbrennstoff: Kohle produziert etwa achtmal so viel Festbrennstoff oder Energie wie die gleiche Anzahl an Einheiten Öl, wenn keine Module verwendet werden. Allerdings kannst du etwa 60% mehr Energie in einem Tankwaggon voll Öl als in einem Waggon voll Kohle transportieren. Kohle hat aber auch noch viele andere Verwendungszwecke, für die sie verwendet werden kann, wobei Öl nur einen weiteren Zweck hat. Öl für die Herstellungs von Festbrennstoff zu verwenden kann also je nach den vorhandenen Rohstoffen auf deiner Karte praktischer sein. (4) Festbrennstoff vs. Raketenbrennstoff: Die Verarbeitung von Festbrennstoff zu Raketenbrennstoff ist verlustbehaftet, auch wenn du Module verwendest. Raketentreibstoff hat allerdings andere Vorteile, beispielsweise höhere Boni in Fahrzeugen. (5) Raketenbrennstoff vs. Kernbrennstoff: Die Umwandlung von Raketenbrennstoff zu Kernbrennstoff ohne Module liefert etwa 10x so viel Energie wie in dem ursprünglichen Festbrennstoff steck. Er stellt somit die meiste Enrgie dar, die du aus den ursprünglichen Rohstoffen herstellen kannst. Allerdings ist dies nicht der effizienteste Weg, Energie aus Uran zu nutzen. (6) Kernbrennstoff vs. Uran-Brennelemente: Uran-235 für Reaktorbrennelemente zu verwenden liefert bis zu mehrere hundert mal die Energiemenge im Vergleich zur Verwendung für Kernbrennstoff, allerdings wird Kernbrennstof zusammen mit dem Kovarex-Anreicherungsprozess freigeschaltet, so dass zu diesem Zeitpunkt Uran-235 in großen Mengen vorhanden ist. (7) Module FÜr zusätzliche Energiegewinne: Effizienzmodule liefern Energiegewinne indem sie die Prozessenergie in jedem Schritt verringern. Effizienzmodule 1 liefern bereits einen großen Effekt und sind dazu noch relativ preisgünstig. Produktivitätsmodule liefern Energiegewinne, indem durch ihre Verwendung mehr Brennstoff hergestellt wird. Dieser Effekt überlagert sich bei mehreren Schritten. Geschwindigkeitsmodule können zu Energiegewinnen in Verbindung mit Produktivitätsmodulen führen, indem sie die erhöhte Herstellungsdauer ausgleichen. (8) Nutzen von raffinierten Brennstoffen: Es höngt am Ende von vielen verschiedenen Faktoren ab, aber am Ende musst du sowieso Raketenbrennstoff herstellen, um Raketenteile herstellen zu können. Auch davor können raffinierte Brennstoffe bereits nützlich sein. Es war ein großer Spaß für mich, diese Frage zu beantworten und ich hoffe es war für dich interessant zu lesen! Hast du noch weitere Informationen oder ähnliche Fragen zu Brennstoffen oder anderen Spielmechaniken? Trete gerne via Reddit oder Discord in Kontakt (Die Links findest du am Ende des Artikels). Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","url":"https://alt-f4.blog/ALTF4-60/","@type":"BlogPosting","author":{"@type":"Person","name":"Sir Fendi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-60/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/60/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/60/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/de/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-60/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-60/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-60/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-60/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-60/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-60/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-60/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-60/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-60/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-60/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #60 - Brennende Fragen  <author>06.05.2022</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>Sir Fendi</em>,
+
+
+
+editiert von <em>Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/60/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhaltsverzeichnis</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#brennende-fragen-sir-fendi">Brennende Fragen <author>Sir Fendi</author></a>
+    <ul>
+      <li><a href="#die-fragen">Die Fragen</a></li>
+      <li><a href="#umwandlungsdiagramme-erstellen">Umwandlungsdiagramme erstellen</a></li>
+      <li><a href="#kohle-vs-verfl%C3%BCssigte-kohle">Kohle vs. verflüssigte Kohle</a></li>
+      <li><a href="#kohleverfl%C3%BCssigung-mit-cracking">Kohleverflüssigung mit Cracking</a></li>
+      <li><a href="#kohle-vs-%C3%B6l-f%C3%BCr-festbrennstoff">Kohle vs. Öl für Festbrennstoff</a></li>
+      <li><a href="#festbrennstoff-vs-raketenbrennstoff">Festbrennstoff vs. Raketenbrennstoff</a></li>
+      <li><a href="#kernbrennstoffe">Kernbrennstoffe</a></li>
+      <li><a href="#maximale-urannutzung">maximale Urannutzung</a></li>
+      <li><a href="#einfluss-von-modulen-auf-die-energiegewinne">Einfluss von Modulen auf die Energiegewinne</a></li>
+      <li><a href="#wie-sinnvoll-ist-nun-die-brennstoffverarbeitung">Wie sinnvoll ist nun die Brennstoffverarbeitung?</a></li>
+      <li><a href="#zusammenfassung">Zusammenfassung</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Zum Diamantenen Jubiläum von ALt-F4 liefert unser verrückter <em>Sir Fendi</em> ein neuen Crashkurs in Factorio’s Thermodynamik. Andersgesagt will er herausfinden, wie <em>du</em> das meiste aus deiner Kohle bekommst, durch Verarbeitung in verschiedene Brennstoffe. Ist das nicht nett von ihm? Module werden natürlich auch eine Rolle spielen, wir machen ja keine halben Sachen.</p>
+      <h2 id="brennende-fragen-sir-fendi">
+        
+        
+            <a href="#brennende-fragen-sir-fendi" class="anchor" style="text-decoration: none;">Brennende Fragen <author>Sir Fendi</author></a>
+          
+        
+      </h2>
+    
+
+<p>Factorio besitzt eine große Vielfalt an Brennstoffen, welche in befeuerten Anlagen verbrannt werden können. Vom klassischen Holz bis hin zu extremen Raketentreibstoff. Der beliebteste Brennstoff ist Kohle, welche das Rückgrat der frühen Automation darstellt. Sie befeuert alle Boiler, Öfen, Fahrzeuge und andere Maschinen, bis sie irgendwann unweigerlich knapp wird.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/1-burner-fuels.png" alt="Factorio’s Brennstoffe." style="max-width: ; max-height:  ">
+        
+        <figcaption>Factorio’s Brennstoffe.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Im Midgame wird Festbrennstoff als erster raffinierter Brennstoff eingeführt, ursprünglich hergestellt aus Rohöl. Festbrennstoff kann im weiteren Spielverlauf dazu verwendet werden, Raketentreibstoff und noch später dann Kernbrennstoff herzustellen. Diese raffinierten Brennstoffe haben gegenüber Kohle einigen Vorteile, wie eine höhere Energiedichte pro Einheit und pro Stapel und einen Beschleunigungsbonus bei der Verwendung in Fahrzeugen. Das Lategame bringt aber auch die interessante Technologie, Kohle zu Öl zu verflüssigen und dann in Festbrennstoff umzuwandeln. Daraufhin stellte ich mir die Frage: schafft die Verarbeitung von Kohle zu Festbrennstoff mehr Energie? Andersgesagt, wenn ich 10 Einheiten Kohle verflüssige und aus den entstehenden Ölen und Gasen Festbrennstoff herstelle und ihn verbrenne, setzt dies mehr Energie frei als die Kohle wenn ich sie direkt verbrenne? Was wäre, wenn ich sie weiter zu Raketenbrennstoff verarbeite? Diese und ähnliche Fragen führten zu dieser allgemeinen Betrachtung von Brennstoffen und den Energiekosten ihrer Umwandlung.</p>
+
+<p>Auf meiner Reise, diese Fragen zu beantworten war die <a href="https://wiki.factorio.com/Fuel/de">Factoriowiki-Seite zu Brennstoffen</a> sehr hilfreich. Ich betrachte die Umwandlungen mit der jeweiligen verbrauchten und produzierten Energiemenge anstelle der Produktionsraten pro Gebäude. Ich begann damit, viele Gleichungen mit immer mehr Eingangsgrößen zu lösen, doch war es deutlich einfacher, die Prozesse in Diagrammen darzustellen, welche nun den Sachverhalt anschaulich darstellen. In diesem Artikel werde ich mit Hilfe dieser Diagramme die Sachverhalte darstellen und einige interessante Details vorstellen, die dir hoffentlich helfen, die Rohstoffe deiner Fabrik besser zu managen und dein Wissen über Brennstoffe vervollständigt.</p>
+      <h3 id="die-fragen">
+        
+        
+            <a href="#die-fragen" class="anchor" style="text-decoration: none;">Die Fragen</a>
+          
+        
+      </h3>
+    
+
+<p>Wir beginnen mit der Frage, mit der die ganze Sache begann:</p>
+
+<p><strong>(1) Bekommt man durch die Verarbeitung von Kohle zu Festbrennstoff mehr Energie?</strong></p>
+
+<p>Wir können die entstehenden Flüssigkeiten direkt zu Festbrennstoff verarbeiten, oder vorher cracken:</p>
+
+<p><strong>(2) Wie groß ist der Unterschied durch Cracking bei der Herstellung von Festbrennstoff?</strong></p>
+
+<p>Welche Vor- oder Nachteile liefert die Kohleverarbeitung im Gegensatz zur herkömmlichen Herstellung von Festbrennstoff:</p>
+
+<p><strong>(3) Wie verhält sich die Kohleverflüssigung im Vergleich zur Herstellung von Festbrennstoff aus Öl?</strong></p>
+
+<p>Allerdings müssen wir nicht bei Festbrennstoff aufhören:</p>
+
+<p><strong>(4) Bekommen wir durch die Weiterverarbeitung von Festbrennstoff zu Raketentreibstoff mehr Energie heraus?</strong></p>
+
+<p>Vielleicht gehen wir auch noch weiter und fügen Uran hinzu:</p>
+
+<p><strong>(5) Bekommen wir durch die Weiterverarbeitung von Raketentreibstoff zu Kernbrennstoff mehr Energie heraus?</strong></p>
+
+<p>Dann schauen wir uns an, dass Uran bereits für anderen Treibstoff verwendet wird, und wie der sich im Vergleich schlägt:</p>
+
+<p><strong>(6) Wie verhält sich die Verbrennung von Kernbrennstoff für die Stromerzeugung im Vergleich zu Uran-Brennelementen, welche in einem Reaktor “verbrannt” werden?</strong></p>
+
+<p>Nachdem wir uns alle Umwandlungen angeschaut haben, betrachten wir den Einfluss, welche Module auf den Prozess haben:</p>
+
+<p><strong>(7) Was sind die Effekte von Modulen auf die Energiegewinne bei der Brennstoffverarbeitung?</strong></p>
+
+<p>Schlussendlich betrachten wir das Gesamtbild mit Faktoren wie Anlagenkosten und alternativen Technologien und fragen uns:</p>
+
+<p><strong>(8) Wie sinnvoll ist die Brennstoffverarbeitung überhaupt?</strong></p>
+
+<p>Mit allen Umwandlungsmöglichkeiten im Grundspiel bearbeitet diese Liste an Fragen alle Brennstoffe außer Holz, welches nicht in einen anderen Brennstoff umgewandelt wird (außer man verwendet eine <a href="%5BCharcoal%20Burner%20-%20Factorio%20Mods%5D(https://mods.factorio.com/mod/CharcoalBurner)">Holzkohlemod</a>. Deshalb hier ein kurzer Blick auf Holz als Brennstoff: Es kann sein, dass du irgendwann eine große Menge an Holz übrig hast, als Folge der Erweiterung mit der Axt oder Robotern. Allerdings ist dieser Vorrat schnell aufgebraucht, da es nur sehr wenig Energie liefert. Anstatt extra Bäume zum Verfeuern zu fällen, lohnt es sich in der Regel mehr, das Holz in Kisten oder zu Strommästen zu verarbeiten, oder die Bäume zum Abbau der Umweltverschmutzung stehen zu lassen. Um diese Fragen für andere Brennstoffe zu beantworten, brauchen wir Umwandlungsdiagramme. Schauen wir uns also zunächt an, wie diese erstellt werden:</p>
+      <h3 id="umwandlungsdiagramme-erstellen">
+        
+        
+            <a href="#umwandlungsdiagramme-erstellen" class="anchor" style="text-decoration: none;">Umwandlungsdiagramme erstellen</a>
+          
+        
+      </h3>
+    
+
+<p>In den Diagrammen werden die Rezepte für die verschiedenen Brennstoffherstellungsprozesse angewendet. Die Input und Output-Verhältnisse bleiben gleich, allerdings werden einige Prozesse nur teilweise durchgeführt, um die Eingangsgrößen anzugleichen, anstatt immer alle Rezepte komplett durchlaufen zu lassen. Die meisten Rezepte in den Diagrammen kann man der <a href="https://wiki.factorio.com/Oil_processing/de">Wikiseite für Ölverarbeitung</a> entnehmen. Die Energiewerte sind Spielkonstanten aus dem <a href="https://wiki.factorio.com/Fuel/de">Wikiteil für Brennstoffe</a>. Die Energie um Dampf auf 165°C zu erwärmen ist ebenfalls aus dem <a href="https://wiki.factorio.com/Steam/de">Wiki</a>.</p>
+
+<p>Der Stromverbrauch der Maschinen während der Brennstoffherstellung hängt vom verwendeten Maschinentyp und den benötigten Herstellungszyklen ab. Die Berechnungen sind stark vereinfacht, da die Maschinen rezeptunabhängig die gleiche Energiemenge pro Sekunde benötigen. Der jeweilige Energiebedarf ist in der nachfolgenden Tabelle dargestellt:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Maschine, die Strom verbraucht</th>
+      <th>Stromverbrauch ohne Module (MW)</th>
+      <th>Prozesse</th>
+      <th>Herstellungsgeschwindigkeit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+<img src="https://wiki.factorio.com/images/thumb/Oil_refinery.png/32px-Oil_refinery.png" alt="Oil refinery.png"> Ölraffinerie</td>
+      <td>0,420</td>
+      <td>
+<img src="https://wiki.factorio.com/images/thumb/Basic_oil_processing.png/32px-Basic_oil_processing.png" alt="Basic oil processing.png"> <img src="https://wiki.factorio.com/images/thumb/Advanced_oil_processing.png/32px-Advanced_oil_processing.png" alt="Advanced oil processing.png"> <img src="https://wiki.factorio.com/images/thumb/Coal_liquefaction.png/32px-Coal_liquefaction.png" alt="Coal liquefaction.png">
+</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>
+<img src="https://wiki.factorio.com/images/thumb/Chemical_plant.png/32px-Chemical_plant.png" alt="Chemical plant.png"> Chemiefabrik</td>
+      <td>0,210</td>
+      <td>
+<img src="https://wiki.factorio.com/images/thumb/Heavy_oil_cracking.png/32px-Heavy_oil_cracking.png" alt="Heavy oil cracking.png"> <img src="https://wiki.factorio.com/images/thumb/Solid_fuel_from_heavy_oil.png/32px-Solid_fuel_from_heavy_oil.png" alt="Solid fuel from heavy oil.png"><img src="https://wiki.factorio.com/images/thumb/Solid_fuel_from_light_oil.png/32px-Solid_fuel_from_light_oil.png" alt="Solid fuel from light oil.png"><img src="https://wiki.factorio.com/images/thumb/Solid_fuel_from_petroleum_gas.png/32px-Solid_fuel_from_petroleum_gas.png" alt="Solid fuel from petroleum gas.png">
+</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>
+<img src="https://wiki.factorio.com/images/thumb/Assembling_machine_2.png/32px-Assembling_machine_2.png" alt="Assembling machine 2.png"> Montagemaschine 2*</td>
+      <td>0,150</td>
+      <td>
+<img src="https://wiki.factorio.com/images/thumb/Rocket_fuel.png/32px-Rocket_fuel.png" alt="Rocket fuel.png"><img src="https://wiki.factorio.com/images/thumb/Uranium_fuel_cell.png/32px-Uranium_fuel_cell.png" alt="Uranium fuel cell.png">
+</td>
+      <td>0,75</td>
+    </tr>
+    <tr>
+      <td>
+<img src="https://wiki.factorio.com/images/thumb/Centrifuge.png/32px-Centrifuge.png" alt="Centrifuge.png"> Zentrifuge</td>
+      <td>0,350</td>
+      <td><img src="https://wiki.factorio.com/images/thumb/Nuclear_fuel.png/32px-Nuclear_fuel.png" alt="Nuclear fuel.png"></td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>*Wir könnten auch Montagemaschinen Stufe 3 verwenden, allerdings verbrauchen sie trotz ihrer höheren Herstellungsgeschwindigkeit mehr Energie.</p>
+
+<p>Die gesamte Prozessenergie (“E”), welche für die Umwandlung benötigt wird kann man aus dem Energiebedarf der Maschine (“P”) multipliziert mit der Herstellungsdauer für die gesamten Ausgangsstoffe (“t”) berechnen. Die gesamte Herstellungsdauer ergibt sich aus der Zeit, welche für einen  Herstellungszyklus benötigt wird (“t_c”) multipliziert mit der Anzahl der benötigten Herstellungszyklen (“n”), dividiert durch die Herstellungsgeschwindigkeit der Maschine (“C”). So vereinfachen wir die Prozessenergie zu:</p>
+
+\[E = P * t = P * t_c * n / C\]
+
+<p>Wenn wir nun die Rezepte, Energiewerte und Prozessenergiegleichung haben, fehlt nur noch das eigentliche Diagramm, welches wir daraus erstellen können. Schauen wir uns nun genau das an:</p>
+      <h3 id="kohle-vs-verflüssigte-kohle">
+        
+        
+            <a href="#kohle-vs-verfl%C3%BCssigte-kohle" class="anchor" style="text-decoration: none;">Kohle vs. verflüssigte Kohle</a>
+          
+        
+      </h3>
+    
+
+<p>Der einfachste Weg, Kohle zu verarbeiten ist es, sie einfach nur zu verflüssigen und dann die Ausgangsstoffe direkt in Festbrennstoff umzuwandeln, wie unten gezeigt:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/2-coal-liq-direct.png" alt="Kohle wird direkt zu Festbrennstoff verarbeitet." style="max-width: ; max-height:  ">
+        
+        <figcaption>Kohle wird direkt zu Festbrennstoff verarbeitet.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir sehen, dass 10 Kohle 5,75 Einheiten Festbrennstoff ergeben. Währenddessen benötigt die Kohleverarbeitung Energie zum Heizen und zum Betreiben der Maschinen. Wir können den Gesamtenergiegewinn errechnen, indem wir die gesamte Eingangsenergie und Prozessenergie von der Ausgangsenergie anziehen. Der prozentuale Gewinn ist nun der Gesamtenergiegewinn dividiert durch die Energie, die man durch direkte Verbrennung der Ausgangsstoffe erhalten würde.</p>
+
+\[\text{Energiegewinn} = 69 - 40 - 1,5 - 2,1 - 1,365 - 0,84 - 0.21 = 22,985 MJ\]
+
+\[\text{Prozentualer Gewinn} = 22,985 MJ / 40 MJ = 57,4625\%\]
+
+<p>Wir sehen, dass nur das Verflüssigen der Kohle uns etwa 57% mehr Energie liefert. Wieviel Energie können wir jetzt noch zusätzlich herausbekommen, wenn wir Cracking verwenden?</p>
+      <h3 id="kohleverflüssigung-mit-cracking">
+        
+        
+            <a href="#kohleverfl%C3%BCssigung-mit-cracking" class="anchor" style="text-decoration: none;">Kohleverflüssigung mit Cracking</a>
+          
+        
+      </h3>
+    
+
+<p>Cracking fügt dem Prozess einen zusätzlichen Schritt hinzu, ergibt aber, wenn wir uns einmal die Rezepte anschauen, mehr Festbrennstoff: Schwerölcracking liefert 30/40 oder 75% so viel Leichtöl. Allerdings sind bereits 10 Leichtöl genug, um ein Element Festbrennstoff herzustellen, in Gegensatz zu 20 Schweröl für ein Element, es ist also doppelt so effektiv. Wenn wir nun diese beiden FAkten verbinden, erhalten wir durch Cracking 75% * 200% = 150% soviel Festbrennstoff wie zuvor.</p>
+
+<p>Über Leichtöl lässt sich das selbe allerdings nicht sagen. Es liefert im Cracking 20/30 oder etwa 66,7% so viel Flüssiggas. Außerdem benötigt das Rezept für Festbrennstoff 20 Einheiten Flüssiggas anstatt 10 Einheiten Leichtöl, also nur 50% Effizient. Kombinieren wir wieder diese beiden Dinge, ergibt sich 66,7% * 50% = 33,4% so viel Festbrennstoff wie zuvor. Leichtölcracking sollte also vermieden werden.</p>
+
+<p>Schauen wir uns nun also den Prozess mit Schwerölcracking an:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/3-coal-liq-cracking.png" alt="Kohle wird zu Festbrennstoff mittels Schwerölcracking verarbeitet." style="max-width: ; max-height:  ">
+        
+        <figcaption>Kohle wird zu Festbrennstoff mittels Schwerölcracking verarbeitet.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir sehen nun, dass wir aus den selben 10 Einheiten Kohle 7,375 Einheiten Festbrennstoff erhalten. Das scheint profitabel, allerdings verbraucht der zusätzliche Herstellungsschritt auch zusätzliche Energie. Betrachten wir nun also den Gesamtprozess, bevor wir ein Urteil fällen:</p>
+
+\[\text{Energiegewinn} = 88,5 - 40 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21 = 41,12 MJ\]
+
+\[\text{Prozentualer Gewinn} = 41,12 MJ / 40 MJ = 102,8%\]
+
+<p>Wir erkennen, dass Kohleverflüssigung mit Cracking zu einem Energiegewinn von 103% führt, was bedeutet, das wir etwa <strong>doppelt</strong> so viel Energie herausbekommen. Wenn wir also Kohle vor dem Verbrennen verflüssigen, müssen wir nur halb so viel Kohle abbauen! Obwohl es jetzt nach einer fabelhaften Idee klingt, groß in die Kohleverflüssigung einzusteigen, müssen noch andere Faktoren wie Anlagenkosten betrachtet werden, aber dazu später mehr.</p>
+
+<p>Schauen wir uns jetzt aber den anderen Weg an, wie wir Festbrennstoff herstellen können:</p>
+      <h3 id="kohle-vs-öl-für-festbrennstoff">
+        
+        
+            <a href="#kohle-vs-%C3%B6l-f%C3%BCr-festbrennstoff" class="anchor" style="text-decoration: none;">Kohle vs. Öl für Festbrennstoff</a>
+          
+        
+      </h3>
+    
+
+<p>Da Festbrennstoff auch aus Öl hergestellt werden kann, betrachten wir nun, wie viel Energie im Öl im Gegensatz zur Kohle steckt. Der einfachste Weg ist grundlegende Ölverarbeitung, welche Flüssiggas liefert, welches direkt in Festbrennstoff umgewandelt wird:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/4-basic-oil.png" alt="Verarbeitung von Öl zu Festbrennstoff mit grundlegender Ölverarbeitung." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Öl zu Festbrennstoff mit grundlegender Ölverarbeitung.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir sehen, dass 100 Einheiten Öl 2,25 Einheiten Festbrennstoff ergeben. Wir wissen bereits, dass die fortschrittliche Ölverarbeitung mehr Flüssiggas und zusätzlich Schwer- &amp; Leichtöl liefert. Wir können also definitiv eine höhere Effektivität erreichen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/5-adv-oil-direct.png" alt="Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir erkennen, dass wir mit fortgeschrittener Ölverarbeitung aus 100 Einheiten Öl 8,5 Einheiten Festbrennstoff bekommen. Das ist fast viermal so viel wie mit grundlegender Ölverarbeitung! Wir können das aber noch besser: Wir wir wissen, liefert uns das Cracken von Schweröl mehr Energie:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/6-adv-oil-cracking.png" alt="Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung und Schwerölcracking." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Öl zu Festbrennstoff mit fortgeschrittener Ölverarbeitung und Schwerölcracking.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir können so aus 100 Einheiten Öl maximal 9,125 Einheiten Festbrennstpff erhalten. Vergleichen wir das nun mit dem Maximum von 7,375 Einheiten Festbrennstoff aus 10 Einheiten Kohle, finden wir heraus, das in einer Einheit Kohle etwa 8,08 mal so viel Energie wie in einer Einheit Öl steckt.</p>
+
+<p>Vergleichen wir nun die Energien für die Optimalfälle der beiden Inputs:</p>
+
+\[\text{Kohleenergieoutput} = (88,5 - 1,5 - 2,1 - 0,6825 - 2,8875 - 0,21) MJ / 10 \text{Kohle}\]
+
+\[\text{Kohleenergieoutput} = 8,112 MJ / \text{Kohle}\]
+
+\[\text{Ölenergieoutput} = (109,5 - 2,1 - 0,2625 - 2,6775 - 1,155) MJ / 100 \text{Öl}\]
+
+\[\text{Ölenergieoutput} = 1,03305 MJ / \text{Öl}\]
+
+<p>Wir erkennen, dass eine Einheit Kohle etwa achtmal so viel Energie wie eine Einheit Öl besitzt. Dieses Verhältnis schafft eine Vorstellung davon, welche Mengen einer Ressource nötig sind, um die andere in der Festbrennstoffherstellung zu ersetzten.</p>
+
+<p>Allerdings ist der Energiegehalt pro Einheit nicht der einzige Vergleichsfaktor zwischen Kohle und Öl für die Festbrennstoffherstellung. Ich habe diese anderen Faktoren identifiziert:</p>
+
+<ul>
+  <li>
+    <p><strong>Energiegehalt pro Einheit:</strong> Wie wir gerade besprochen haben, besitzt Kohle etwa die achtfache Energie pro Einheit.</p>
+  </li>
+  <li>
+    <p><strong>Transporteffizienz:</strong> Ein Güterwaggon transportiert 2000 Kohle, was umgewandelt zu Festbrennstoff etwa 16.2 GJ Energie entspricht. Der selbe Waggon hält aöternativ 400 Ölfässer, was 20.000 Öl entspricht. Umgewandelt zu Festbrennstoff liefert das etwa 20,6 GJ Energie (27% mehr). Wenn du stattdessen einen Tankwaggon verwendest, kannst du 25.000 Einheiten Öl oder 25,8 GJ Energie transportieren (fast 60% mehr). Ölwaggons transportieren also mehr Energie als Kohlewaggons, solange du kein Wasser oder Dampf transportieren musst. Öl kann auch über Pipelines transportiert werden, was je anch Anwendungsfall vielleicht besser ist.</p>
+  </li>
+  <li>
+    <p><strong>Vorkommen:</strong> Hängt stark von der gewählten Karte ab, es kann also kein Urteil gefällt werden.</p>
+  </li>
+  <li>
+    <p><strong>andere Verwendungen:</strong> Sowohl Kohle als auch Öl können verwendet werden, um Ölprodukte herzustellen. Die Anzahl der Rezepte, welche Kohle verwenden (Plastik, Sprengstoff, Granaten, Kapseln) sind weiter verbreitet als die für Öl (Flammenwerfermunition).</p>
+  </li>
+</ul>
+
+<p>Unter Betrachtung all dieser Faktoren scheint es allgemein besser, die vorhandene Kohle für die Plastik und Sprengstoffproduktion zu verwenden und auf Öl für die Festbrennstoffproduktion zurückzugreifen. Wenn die Vorkommen von Öl und Kohle es anbieten, kann es aber auch andersherum sein. Die Betrachtungen zur Herstellung von Festbrennstoff sind damit nun abgeschlossen, allerdings können wir es noch zu Raketentreibstoff weiterverarbeiten.</p>
+      <h3 id="festbrennstoff-vs-raketenbrennstoff">
+        
+        
+            <a href="#festbrennstoff-vs-raketenbrennstoff" class="anchor" style="text-decoration: none;">Festbrennstoff vs. Raketenbrennstoff</a>
+          
+        
+      </h3>
+    
+
+<p>Wir sahen, dass die Umwandlung von Kohle zu Festbrennstoff mehr Energie freisetzt, vielleicht verhält es sich bei Raketenbrennstoff genauso? Um das zu ergründen reicht es, wenn wir uns nur das Rezept für Raketenbrennstoff anschauen, wir müssen nicht wieder bei Kohle/Öl anfangen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/7-rocket-fuel.png" alt="Verarbeitung von Festbrennstoff zu Raketenbrennstoff." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Festbrennstoff zu Raketenbrennstoff.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir erkennen, dass eine einzelne Einheit Raketenbrennstoff 100 MJ Energie enthält, während die benötigten 10 Einheiten Festbrennstoff bereits 120 MJ enthalten und das zusätzliche Leichtöl zu einer 11ten Einheit Festbrennstoff verarbeitet werden kann, was nocheinmal 12 MJ liefert. Die Umwandlung von Festbrennstoff zu Raketenbrennstoff ist also ein Verlustgeschäft, noch bevor wir die benötigte Prozessenergie betrachten. Raketenbrennstoff hat aber gegenüber Festbrennstoff einige Vorteile, welche vielleicht wichtiger sind als der Energieverlust, welche wir später betrachten werden. Außerdem ist es ein notwendiger Bestandteil von Kernbrennstoff, welcher vielleicht insgesamt mehr Energie liefert, trotz der Verluste in diesem Schritt.</p>
+      <h3 id="kernbrennstoffe">
+        
+        
+            <a href="#kernbrennstoffe" class="anchor" style="text-decoration: none;">Kernbrennstoffe</a>
+          
+        
+      </h3>
+    
+
+<p>Kernbrennstoff ist in der echten Welt noch etwas experimentell, allerdings stellt Factorio eine Standartvariante bereit, welche aus normalen Raketenbrennstoff und Uran-235 hergestellt wird und den ultimativen Brennstoff darstellt. Wie bei Raketentreibstoff ist das Rezept der einzig zu betrachtende Schritt, wenn es darum geht, mögliche Energiegewinne zu bewerten:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/8-nuclear-fuel.png" alt="Verarbeitung von Raketenbrennstoff zu Kernbrennstoff." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Raketenbrennstoff zu Kernbrennstoff.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir sehen das Kernbrennstoff unglaubliche 1,21 GJ Energie liefert (ein <a href="https://wiki.factorio.com/Nuclear_fuel/de">Verweis</a> auf Zurück in die Zukunft), etwa zehnmal so viel wie als Energie im ursprünglichen Festbrennstoff steckt. Wenn du also deine Anlage vond er Verbrennung von Kohle auf Kernbrennstoff umstellt, wird dein Kohleverbrauch auf bis zu 1/20tel des ursprünglichen Verbrauchs an Kohle einbrechen.</p>
+      <h3 id="maximale-urannutzung">
+        
+        
+            <a href="#maximale-urannutzung" class="anchor" style="text-decoration: none;">maximale Urannutzung</a>
+          
+        
+      </h3>
+    
+
+<p>Trotz der unglaublichen Energiegewinne und daraus resultierenden Öl und Kohleeinsparung ist Kernbrennstoff nicht perfekt. Man könnte das benötigte Uran-235 auch für die Herstellung von Uran-Brennelementen verwenden, welche auf anderem Weg Energie liefern: sie können nur in Kernreaktoren verwendet werden. Ein Brennelement liefert für einen Reaktor 40 MW für exakt 200 Sekunden, was zu einer Gesamtenergie von $ 40 MW * 200s = 8000 MJ = 8 GJ $ führt. Besitzt der Reaktor nun benachbarte Reaktoren, findet der Nachbarschatbonus anwendung. Es werden zusätzliche 40 MW für jeden Nachbarn vom selben Brennelement geliefert. Da jeder Reaktor maximal 4 Nachbarn haben kann, liefert jedes Brennelement bis zu die fünffache Energie, also $ 8 GJ * 5 = 40 GJ $. Wir verwenden bereits hier GJ anstelle von MJ, wenn es um ein einzelnes Brennelement geht, zusätzlich zu der Tatsache, dass das Rezept 10 Stück pro Uran-235 Einheit liefert:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/9-uranium-fuel-cell.png" alt="Verarbeitung von Uran-235 zu Uran-Brennelementen." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Uran-235 zu Uran-Brennelementen.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir können so hunderte Mal so viel Energie aus dem selben Stück Uran-235 bekommen, wenn wir es zu Brennelementen anstatt Kernbrennstoff verarbeiten. Dies scheint zu zeigen, dass wenn eine Uranversorgung aufgebaut ist, umgestellt werden sollte auf Strom aus Kernenergie und elektrische Maschinen. Allerdings wird Kernbrennstoff zur selben Zeit wie der Kovarex-Prozess freigeschaltet, so das eine Versorgung mit Uran-235 zu diesem Zeitpunkt kein Problem mehr darstellen sollte.</p>
+      <h3 id="einfluss-von-modulen-auf-die-energiegewinne">
+        
+        
+            <a href="#einfluss-von-modulen-auf-die-energiegewinne" class="anchor" style="text-decoration: none;">Einfluss von Modulen auf die Energiegewinne</a>
+          
+        
+      </h3>
+    
+
+<p>Bisher haben wir all unsere Berechnungen ohne Module durchgeführt, um den Rechenweg einfach zu halten und die Grundbedingungen zu verstehen. Betrachten wir sie nun nocheinmal mit Modulen um herauszufinden, ob sie signifikant das Ergenis verändern. Falls du kurze Wiederholungen der Module möchtest, können wir unsere Artikel zu <a href="%5BAlt-F4%20#12%20%E2%80%93%20Nachkonstruktion%20der%20Spinne%5D(https://alt-f4.blog/de/ALTF4-12/#komplexit%C3%A4ts-ecke-produktivit%C3%A4tsmodule-thekool)">Produktivitätsmodulen</a>, <a href="%5BAlt-F4%20#16%20%E2%80%93%20Pure%20Geschwindigkeit%20modulieren%5D(https://alt-f4.blog/de/ALTF4-16/)">Geschwindigkeitsmodulen</a>, <a href="%5BAlt-F4%20#25%20%E2%80%93%20Effizienz,%20Effizienz,%20Effizienz!%5D(https://alt-f4.blog/de/ALTF4-25/)">Effizienzmodulen</a> und <a href="%5BAlt-F4%20#29%20%E2%80%93%20Effektverteiler%20und%20keine%20Flie%C3%9Fb%C3%A4nder%5D(https://alt-f4.blog/de/ALTF4-29/)">Effektverteilern</a> nur empfehlen.</p>
+
+<p>Schauen wir uns nun unter dem Gesichtspunkt von Modulen die Brennstoffverarbeitung an, fällt auf, dass sie primär den Energieverbrauch der Herstellungsmaschinen beeinflussen. Schauen wir uns also zunächst folgende Gleichung an:</p>
+
+\[\text{gesamte Prozessenergie} (E) = \text{Leistungsaufnahme der Maschine} (P) * \text{Dauer eines Herstellungszyklus} (t_c) * \text{Anzahl der Herstellungszyklen} (n) / \text{Herstellungsgeschwindigkeit} (C)\]
+
+\[E = P * t_c * n / C\]
+
+<p>Die Module tun nun folgendes:</p>
+
+<ul>
+  <li>
+    <p><strong>Effiziensmodule:</strong> Sie verringern den Leistungsbedarf der Herstellungsmaschinen (“P”). Ihr Einfluss auf die Energiegewinne der meisten Rezepte sind klein, aber nicht zu vernachlässigen. Ich würde definitiv empfehlen, Effizientmodule 1 in allen Brennstoffherstellungsmaschinen zu verwenden, wenn du keine anderen Module verwendest, da sie relativ günstig zu produzieren sind und den Stromverbrauch um 60% oder sogar 80% verringern, je nachdem wie viele Modulplätze die Maschinen haben.</p>
+  </li>
+  <li>
+    <p><strong>Geschwindigkeitsmodule:</strong> Ein Effekt von Geschwindigkeitsmodulen ist die Veränderung des Leistungsbedarfs der Herstellungsmaschinen (“P”), nur in die entgegengesetzte Richtung zu Effizienzmodulen. Sie verringern also unsere Energiegewinne. Der andere Effekt ist die Erhöhung der Herstellungsgeschwindigkeit der Maschinen (“C”), was in unserer Gleichung die Energieverluste verringert, da die Maschinen für jeden Herstellungszyklus weniger Zeit benötigen. Für jedes Geschwindigkietsmodul ist die Vergrößerung des P-Wertes größer als die des C-Wertes, was dazu führt, dass der Effekt jedes Geschwindigkeitsmodules eine Vergrößerung von E ist, was den gesamten Energiegewinn verringert. Allerdings können Geschwindigkeitsmodule in Verbindung mit Peoduktivitätsmodulen verwendet werden, um die Verluste der Herstellungsgeschwindigkeit zu kompensieren, und können so vielleicht positiv zum Energiegewinn beitragen.</p>
+  </li>
+  <li>
+    <p><strong>Produktivitätsmodule:</strong> Diese habe die interessantesten Effekte. Sie vergrößern den Leistungsbedarf (“P”) und verringern die Herstellungsgeschwindigkeit (“C”), was beides zu einer Vergrößerung der Gesamtprozessenergie beiträgt, was die gesamten Energiegewinne verringert. Auf der anderen Seite vergrößern Produktivitätsmodule die Menge an verarbeiteten Brennstoff, die hergestellt wird. Zusätzlich pflanzt sich dieser Effekt über die Herstellungsschritte fort, was zu exponentiellen Wachstum der insgesamt Hergestellten Brennstoffmenge führt! Die Energiegewinne dieses zusätzlich hergestellten Brennstoffen kompensieren vielleicht den zusätzlichen Leistungsbedarf.</p>
+  </li>
+</ul>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/10-modules-overview.png" alt="Effekte von Modulen auf die Leistungsaufnahme" style="max-width: ; max-height:  ">
+        
+        <figcaption>Effekte von Modulen auf die Leistungsaufnahme</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Jetzt demonstrieren wir die Verwendung von Modulen. Zuerst schauen wir uns den Effekt von Effizienzmodulen in der Kohleverflüssigung mit Schwerölcracking an. Raffinerien und Chemiefabriken bestitzen jeweils 3 Modulplätze, also können wir drei Effizienz 1 Module verwenden, um den Stromverbrauch pro Maschine um 80% zu reduzieren:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/11-coal-liq-eff.png" alt="Verarbeitung von Kohle zu Festbrennstoff mit Schwerölcracking und minimalem Stromverbrauch." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Kohle zu Festbrennstoff mit Schwerölcracking und minimalem Stromverbrauch.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Nun können wir den neuen Energiegewinn mit verringertem Stromverbrauch berechnen:</p>
+
+\[\text{Energiegewinn} = 88,5 - 40 - 1,5 - 0,42 - 0,1365 - 0,5775 - 0,042 = 45,824 MJ\]
+
+\[\text{Prozentualer Gewinn} = 45,824 MJ / 40 MJ = 114,56\% ≈ 115\%\]
+
+<p>Der Ernergiegewinn ohne Module betrug 103%. Wir erkennen , dass Effizienzmodule den Energiegewinn von 103% auf 115% anheben. Diese Verbesserung ist schön zu haben, aber nicht sehr signifikant, da die Prozessenergie vorher bereits relativ gering war. Trotzdem ist dies aufgrund der geringen Herstellungskosten für Produktivitätsmodule 1 eine praktische Alternative.</p>
+
+<p>Betrachten wir nun das selbe Beispiel mit Produktivitätsmodulen 3 in jeder Maschine, anstelle der 3 Effizienzmodule 1. Trotz der erhöhten Leistungsaufnahme vergrößert auch jedes Modul die Menge an hergestellten Brennstoff um 10%:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/12-coal-liq-prod-1.png" alt="Verarbeitung von Kohle zu Festbrennstoff bei maximaler Produktivität." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Kohle zu Festbrennstoff bei maximaler Produktivität.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Wir sehen das mit den additiven Effekten von 30% mehr Produkt bei jedem Herstellungsschritt die Menge an Festbrennstoff verdoppelt wird! Das bedeutet einen zusätzlichen Energiegewinn von fast 100MJ! Allerdings sehen wir auch, das der gesamte Strombedarf stark gestiegen ist auf ungefähr 50,6 MJ. Wie wirken sich nun all diese Effekte auf den Energiegewinn aus:</p>
+
+\[\text{Energiegewinn} = 185,562 - 40 - 1,5 - 12,982 - 5,9716 - 30,040 - 1,688 = 93,3804 MJ\]
+
+\[\text{Prozentualer Gewinn} = 93,3804 MJ / 40 MJ = 233,451\% ≈ 233\%\]
+
+<p>Wir erkennen das Produktivitätsmodule den Energiegewinn von 103% auf 233% anheben, was bedeutet, dass der in diesem System hergestellte Festbrennstoff <strong>über dreimal</strong> so viel Energie liefert, wie die benötigte Kohle direkt liefern würde!</p>
+
+<p>Auf der anderen Seite arbeiten unsere Maschinen nur noch mit halber Geschwindigkeit, was bedeutet das für die doppelte Zeit Strom verbraucht wird. Vielleicht können wir Geschwindigkeitsmodule verwenden, um dem entgegenzuwirken. Versuchen wir nun zwei Produktivitätsmodule 3 und ein Geschwindigkeitsmodul 3 für jede Maschine:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/13-coal-liq-prod-2.png" alt="Verarbeitung von Kohle zu Festbrennstoff mit SChwerölcracking bei hoher Geschwindigkeit und Produktivität." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Kohle zu Festbrennstoff mit SChwerölcracking bei hoher Geschwindigkeit und Produktivität.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Im Vergleich zu unserer letzen Anlage bekommen wir nun weniger als die doppelte Menge Festbrennstoff, aber der Stromverbrauch ist beinahe halbiert. Betrachten wir nun, wie sich dies auf den Energiegewinn auswirkt:</p>
+
+\[\text{Energiegewinn} = 146,448 - 40 - 1,5 - 5,775 - 2,3966 - 11,400 - 0,693 = 84,6834 MJ\]
+
+\[\text{Prozentualer Gewinn} = 84,6834 MJ / 40 MJ = 211,7085\% ≈ 212\%\]
+
+<p>Im Vergleich zu den 103% Gewinn ohne Module liefert diese Anlage einen exzellenten Gewinn von 212%, bleibt damit aber hinter den 233% der Anlage mit je 3 Produktivitätsmodulen 3 zurück, da die kulmulativen Brennstoffgewinne mehr ins Gewicht fallen als der reduzierte Stromverbrauch.</p>
+
+<p>Anstatt ein weiteres Produktivitätsmodul gegen ein Geschwindigkeitsmodul zu tauschen, können wir mit Geschwindigkeits-Effektverteilern arbeiten. Das würde uns erlauben, weiterhin maximale Produktivität zu verwenden und zeitgleich den Stromverbrauch zu verringern, obwohl die Effektverteiler selber Strom benötigen. Ich vermute, das weitere Energiegewinne damit erzielt werden können, das jeder Effektverteiler mehrere Maschinen abdeckt. Da aber die Berechnungen mit Effektverteilern deutlich komplizierter werden und die genaue Maschinenzahl und Aufstellung der Anlage eine wichtige Rolle spielen, überlasse ich dies als eine Aufgabe für den gewillten Leser.</p>
+
+<p>Nachdem wir die gewaltigen Effekte der Produktivitätsmodule gesehen haben, wunderte ich mich, ob wir es mit ihnen schaffen, die Produktion von Raketenbrennstoff zu einem Energiegewinn zu bringen. Füllen wir nun also die Montagemaschine 2 mit Produktivitätsmodulen 3:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/14-rocket-fuel-prod-1.png" alt="Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 2 mit maximaler Produktivität." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 2 mit maximaler Produktivität.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Die Eingangsenergie und die Ausgangsenergie sind jetzt gleich, allerdings hat sich die Prozessenergie fast vervierfacht und ist somit viel zu hoch, so dass der Prozess immernoch mehr Energie benötigt als er liefert.</p>
+
+<p>Allerdings können wir Raketentreibstoff noch auf andere Weise herstellen: Wir können Montagemaschinen 3 mit je 4 Modulplätzen nutzen. Hier sind einige Modulkombinationen gezeigt:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/60/15-rocket-fuel-prod-2.png" alt="Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 3 mit verschiedenen Modulkombinationen." style="max-width: ; max-height:  ">
+        
+        <figcaption>Verarbeitung von Festbrennstoff zu Raketenbrennstoff in einer Montagemaschine 3 mit verschiedenen Modulkombinationen.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Ich habe vier Produktivitätsmodule 3 in einer Montagemaschine 3 ausprobiert, allerdings wurde die Maschine so langsam und die Prozessenergie so hoch, das sie fast so hoch war wie die gesamte Outputenergie! Danach habe ich versucht, den vergrößerten Leistungsbedarf und verringerte Herstellungsgeschwindigkeit mit einem Effizienzmodul 3 anstatt eines Produktivitätsmoduls 3 auszugleichen. Das hat zwar geholfen, aber nocht genug. Ich habe auch versucht mit einem Geschwindigkeitsmodul 3 anstatt des Effizienzmoduls 3 die Herstellungszeit auszugleichen. Dies spart zwar mehr Energie als das Effizienzmodul 3, aber nicht genug, um einen wirklichen Unterschied zu machen. Ich habe viele andere Modulkombinationen und sogar Designs mit Effektverteilern versucht (dafür gibt es allerdings keine Diagramme), aber egal was ich versucht habe, schaffte ich es nie, ±0 zu erreichen.</p>
+
+<p>Basierend auf diesen Erkenntnissen kann man nun sagen, das Module zwar bei einigen Schritten signifikante Verbesserungen liefern, dies allerdings nicht bei allen Schritten der Fall ist.</p>
+      <h3 id="wie-sinnvoll-ist-nun-die-brennstoffverarbeitung">
+        
+        
+            <a href="#wie-sinnvoll-ist-nun-die-brennstoffverarbeitung" class="anchor" style="text-decoration: none;">Wie sinnvoll ist nun die Brennstoffverarbeitung?</a>
+          
+        
+      </h3>
+    
+
+<p>Unsere bisherigen Erkenntnisse helfen uns nur teilweise, diese Frage zu beantworten. Ich habe eine vollständigere Liste an Faktoren zusammengestellt, die du bei deiner Entscheidung beachten solltest:</p>
+
+<ul>
+  <li>
+<strong>Energiegewinn:</strong> Wenn du mehr Energie aus verarbeiteten Brennstoff herausbekommst, verringert sich der Bedarf für Basisrohstoffe, so das die vorhandenen Vorkommen länger ausreichen. Wir haben den Energiegewinn für die verschiedenen Prozesse oben berechnet.</li>
+  <li>
+<strong>Gewinne bei der Fahrzeugbeschleunigung und Geschwindigkeitsboni:</strong> Größere Boni bedeuten, das deine Fahrzeuge schneller fahren können. Hochraffinerierte Brennstoffe liefern größere Boni, wie der <a href="https://wiki.factorio.com/Fuel/de">Wikiseite für Brennstoffe</a> zu entnehmen ist.</li>
+  <li>
+<strong>Gewinne in der Energiedichte (pro Einheit und pro Stapel):</strong>  Mehr Energie pro Stapel bedeutet, das das selbe Inventar mehr Energie halten kann, was einen großen Einfluss darauf hat, wieviel Energie in einem Waggon oder einer Kiste gespeichert werden können. Mehr Energie pro Einheit bedeutet wiederum, das mehr Energie von Robotern, Förderbändern oder Greifarmen transportiert werden kann. Bei gleichem Energiebedarf bedeuten Brennstoffe mit höherer Energiedichte, das weniger Logistikinfrastruktur benötigt wird, was einfachere Design und weniger Energieverbrauch des Logistiksystems bedeutet. Hochraffinerierte Brennstoffe habe in beiden Aspekten eine höhere Energiedichte.</li>
+  <li>
+<strong>Anlagenkosten:</strong> Die Anlagenkosten beziehen sich sowohl auf die benötigten Materialien als auch auf den benötigten Platz, der für die Gebäude und die Logistik benötigt wird. Auch die zusätzlichen Kosten für die benötigten Technologien sind zu beachten. Jede weitere Verarbeitungsstufe trägt zu diesen Kosten bei.</li>
+  <li>
+<strong>Verfügbarkeit von alternativen Kohle/Ölvorkommen:</strong> Auf den meisten Karten sind Kohle und Öl in praktisch unendlichen Mengen vorhanden, allerdings vielleicht nicht in deiner Nähe. Abhängig von deinem Spielstil ist es vielleicht einfacher zu expandieren und mehr Ressurcen abzubauen anstatt eine große Verarbeitungsanlage zu errichten.</li>
+  <li>
+<strong>Nutzungsdauer von befeuerten Geräten:</strong> Wenn du dein System in naher Zukunft auf elektrische Maschinen und alternative Energiequellen umstellst, macht es vielleicht wenig sinn, eine große Verarbeitungsanlage zu errichten.</li>
+</ul>
+
+<p>Da die obigen Faktoren von dir, deiner Karte und deinem Spielstil abhängen, ist die Antwort unterschiedlich. ICh kann nur aufgrund meiner Erfahrung folgende Erkenntnisse weitergeben:</p>
+
+<ul>
+  <li>
+<strong>Raffinierte Brennstoffe sind exzellent für Züge und Panzer.</strong> Die Beschleunigungsboni von Raketenbrennstoff (+80%) sind ganz nett, und die von Kernbrennstoff auf einem ganz anderen level (+150%).</li>
+  <li>
+<strong>Du brauchst sowieso große Massen an Festbrennstoff und Raketenbrennstoff für Raketenteile</strong>, also ist es nicht so schwer, etwas mehr für deine Fahrzeuge und befeuerten Anlagen deiner Wahl zu produzieren.</li>
+  <li>
+<strong>Wenn du Kohle zur Verstromung verbrennst, kann durch Verarbeitung dein Kohleverbrauch sich halberien</strong> (oder nochmehr, wenn du Module verwendest). Und natürlich kannst du übertreiben und deine Boiler mit Kernbrennstoff betreiben, um die Menge an benötigter Kohle um den Faktor 20 zu verringern.</li>
+  <li>
+<strong>Du kannst Solarenergie und normale Kernenergie deutlich früher als Kohleverflüssigung und Kernbrennstoff freischalten</strong>, da diese beiden Technologien Wissenschaftspakete für Produktion (lila) benötigen. Die <a href="https://www.reddit.com/r/technicalfactorio/comments/srosza/coal_vs_solar_vs_nuclear_setup_costs_and_running/">Vorteile von Solar- und Kernenergie</a> sind vielleicht so gewichtig, das es sich lohnt zu wechseln. Kernenergie ist <a href="%5BAlt-F4%20#57%20-%20Ich,%20Du%20und%20die%20Atomkraft%5D(https://alt-f4.blog/de/ALTF4-57/)">einfacher als vielleicht gedacht</a> und liefert auch ohne Kovarex bereits mit wenigen Reaktoren und Zentrifugen große Energiemengen.</li>
+</ul>
+      <h3 id="zusammenfassung">
+        
+        
+            <a href="#zusammenfassung" class="anchor" style="text-decoration: none;">Zusammenfassung</a>
+          
+        
+      </h3>
+    
+
+<p>Dieser Artikel begann mit einer kleinen Frage, die mir unter den Nägeln brannte, welche zu vielen anderen Fragen führte und sich zu einer Reise durch die Welt der BRennstoffe in Factorio entwickelte. Wir haben dabei folgendes gelernt:</p>
+
+<p><strong>(1) Kohle vs. verflüssigte Kohle:</strong> Verflüssigung von Kohle und direkte Verarbeitung zu Festbrennstoff liefert 57% extra Energie pro Einheit Kohle, wenn keine Module verwendet weden.</p>
+
+<p><strong>(2) Kohleverflüssigung mit Cracking:</strong> Wenn wir zusätzlich das Schweröl cracken, bevor wir es zu Festbrennstoff verarbeiten, leifert der Prozess 103% zusätzliche Energie pro Einheit Kohle, wenn keine Module verwendet weden. Wir bekommen also etwa doppelt so viel Energie heraus wie ohne Verarbeitung.</p>
+
+<p><strong>(3) Kohle vs. Öl für Festbrennstoff:</strong> Kohle produziert etwa achtmal so viel Festbrennstoff oder Energie wie die gleiche Anzahl an Einheiten Öl, wenn keine Module verwendet werden. Allerdings kannst du etwa 60% mehr Energie in einem Tankwaggon voll Öl als in einem Waggon voll Kohle transportieren. Kohle hat aber auch noch viele andere Verwendungszwecke, für die sie verwendet werden kann, wobei Öl nur einen weiteren Zweck hat. Öl für die Herstellungs von Festbrennstoff zu verwenden kann also je nach den vorhandenen Rohstoffen auf deiner Karte praktischer sein.</p>
+
+<p><strong>(4) Festbrennstoff vs. Raketenbrennstoff:</strong> Die Verarbeitung von Festbrennstoff zu Raketenbrennstoff ist verlustbehaftet, auch wenn du Module verwendest. Raketentreibstoff hat allerdings andere Vorteile, beispielsweise höhere Boni in Fahrzeugen.</p>
+
+<p><strong>(5) Raketenbrennstoff vs. Kernbrennstoff:</strong> Die Umwandlung von Raketenbrennstoff zu Kernbrennstoff ohne Module liefert etwa 10x so viel Energie wie in dem ursprünglichen Festbrennstoff steck. Er stellt somit die meiste Enrgie dar, die du aus den ursprünglichen Rohstoffen herstellen kannst. Allerdings ist dies nicht der effizienteste Weg, Energie aus Uran zu nutzen.</p>
+
+<p><strong>(6) Kernbrennstoff vs. Uran-Brennelemente:</strong> Uran-235 für Reaktorbrennelemente zu verwenden liefert bis zu mehrere hundert mal die Energiemenge im Vergleich zur Verwendung für Kernbrennstoff, allerdings wird Kernbrennstof zusammen mit dem Kovarex-Anreicherungsprozess freigeschaltet, so dass zu diesem Zeitpunkt Uran-235 in großen Mengen vorhanden ist.</p>
+
+<p><strong>(7) Module FÜr zusätzliche Energiegewinne:</strong> Effizienzmodule liefern Energiegewinne indem sie die Prozessenergie in jedem Schritt verringern. Effizienzmodule 1 liefern bereits einen großen Effekt und sind dazu noch relativ preisgünstig. Produktivitätsmodule liefern Energiegewinne, indem durch ihre Verwendung mehr Brennstoff hergestellt wird. Dieser Effekt überlagert sich bei mehreren Schritten. Geschwindigkeitsmodule können zu Energiegewinnen in Verbindung mit Produktivitätsmodulen führen, indem sie die erhöhte Herstellungsdauer ausgleichen.</p>
+
+<p><strong>(8) Nutzen von raffinierten Brennstoffen:</strong> Es höngt am Ende von vielen verschiedenen Faktoren ab, aber am Ende musst du sowieso Raketenbrennstoff herstellen, um Raketenteile herstellen zu können. Auch davor können raffinierte Brennstoffe bereits nützlich sein.</p>
+
+<p>Es war ein großer Spaß für mich, diese Frage zu beantworten und ich hoffe es war für dich interessant zu lesen! Hast du noch weitere Informationen oder ähnliche Fragen zu Brennstoffen oder anderen Spielmechaniken? Trete gerne via Reddit oder Discord in Kontakt (Die Links findest du am Ende des Artikels).</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://discord.gg/nxnCFkb">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/de/discord">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-59/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/de/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

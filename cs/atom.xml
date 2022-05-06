@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-04-25T08:17:46+00:00</updated>
+  <updated>2022-05-06T16:55:00+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #60 - Burning Questions</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-60/" />
+    <id>https://alt-f4.blog/ALTF4-60</id>
+    <updated>2022-05-06T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;On the diamond anniversary of Alt-F4, local madman &lt;em&gt;Sir Fendi&lt;/em&gt; returns once again with a deep dive into Factorio’s thermodynamics. Or, said another way, he wants to find out how &lt;em&gt;you&lt;/em&gt; can get the most out of your coal by further processing it into different fuels. Isn’t that nice of...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-51</id>
     <updated>2021-11-05T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Pro 51. vydání Alt-F4, dlouhodobý příspěvce a mág &lt;em&gt;stringweasel&lt;/em&gt; nás potěší s historií módů, které se snažily udělat elektřinu v Factoriu více realistickou. Všechny z nich mají vlastní problémy a kompromisy, což je důvod proč vytvořil svou vlastní implementaci řešení k tomuto problému, se skvělými výsledky!&lt;/p&gt; &lt;h2 id=&quot;experiment-tekuté-elektřiny-stringweasel&quot;&gt;Experiment &lt;a href=&quot;https://mods.factorio.com/mod/FluidicPower&quot;&gt;Tekuté...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #50 -  Zajímavosti Raketovéhi Sila</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-50/" />
-    <id>https://alt-f4.blog/ALTF4-50</id>
-    <updated>2021-10-29T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Tento týden je zlaté výročí Alt-F4, vzhledem k tomu, že je 50. edice. Žádné speciální festivity ale nejsou, děláme je až moc často. Místo toho, &lt;em&gt;garr890354839&lt;/em&gt; přispívá svým prvním článkem, v kterém mluví o některých podivnostech a trochu matiky ohledně raketových sil. Poté, &lt;em&gt;everLord&lt;/em&gt; nám řekne o nové komunitní události...</content>
   </entry>
   
   
