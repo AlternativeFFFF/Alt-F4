@@ -4,6 +4,7 @@ A couple months ago, I decided that I wanted to try my hand at making a **Self-e
 
 That's no problem though, we just create a scrap world, switch to the editor and start playing around!
 
+// Conor, these three images should be a gallery
 ![death](./img/map_view_of_madness.png)
 
 ![additional death](./img/madness.png "Any attempt to understand the meaningless scribbles of a madman will only result in disappointment and despair.")
