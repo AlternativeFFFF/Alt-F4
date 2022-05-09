@@ -1,6 +1,6 @@
 # Introduction
 
-A couple months ago, I decided that I wanted to try my hand at making a **Self-expanding factory** in Factorio. After seeing an number of [impressive](https://www.youtube.com/watch?v=xF--1XdcOeM) [examples](https://www.youtube.com/watch?v=KNSBerFe_H8), I was inspired to have a go at the problem. I already had an outline of the logic, and how the factory would keep track of itself, as well as lofty ideas on impressive things that I could make it do. The only trouble was that I had actually never used combinators before, and I was planning on using them for the actual decision-making.
+A couple months ago, I decided that I wanted to try my hand at making a **Self-expanding factory** in Factorio. After seeing an number of [impressive](https://www.youtube.com/watch?v=xF--1XdcOeM) [examples](https://alt-f4.blog/ALTF4-39/), I was inspired to have a go at the problem. I already had an outline of the logic, and how the factory would keep track of itself, as well as lofty ideas on impressive things that I could make it do. The only trouble was that I had actually never used combinators before, and I was planning on using them for the actual decision-making.
 
 That's no problem though, we just create a scrap world, switch to the editor and start playing around!
 
@@ -23,7 +23,7 @@ I was starting the second revision of the computer and I wanted a more compact R
 
 ![Depiction of my ROM](./img/ROM_design.png "Everything starts somewhere.")
 
-The ROM is very dense and can store 4 *KiB* of data per row, but it functions on a system where each value is split into and stored as two 16-bit numbers, which are then recombined on output. ROMs are usually tedious to create, manually encoding what data you want by hand, one signal at a time, but this one also had the added complexity of the split data. I now had to split, bitwise AND, bitwise right-shift, and populate not one signal, but two, in two different specific locations, making sure that they both had the correct value and signal type. Needless to say, it was going to be painful to set tens of values, let alone hundreds, or the *thoudsands* the machine was capable of storing.
+The ROM is very dense and can store 4 *KiB* of data per row, but it functions on a system where each value is split into and stored as two 16-bit numbers, which are then recombined on output. ROMs are usually tedious to create, manually encoding what data you want by hand, one signal at a time, but this one also had the added complexity of the split data. I now had to split, bitwise AND, bitwise right-shift, and populate not one signal, but two, in two different specific locations, making sure that they both had the correct value and signal type. Needless to say, it was going to be painful to set tens of values, let alone hundreds, or the *thousands* the machine was capable of storing.
 
 The solution? Get a computer to do it for me. They can stomach this task far better than I ever could, and can do it way faster as well. Factorio's blueprint string import function can take any correctly formatted string; all I had to do was create this text string to my specification with the data I wanted and I could just paste it where I needed it.
 
@@ -63,9 +63,9 @@ Anyway, here's a Python module I made.
 
 Draftsman has custom classes designed around each individual entity and prototype, and is designed to work as seamlessly as possible with blueprint strings and other software. You can import a blueprint string from Factorio and it will be automatically converted into a Draftsman `Blueprint` object with all it's functionality, make any change you can think of to it, and then export that `Blueprint` object back into a string to be re-imported into Factorio. Or, you can just make an entirely new `Blueprint` from scratch; Draftsman is designed to work around you, not for you to work around it.
 
-Draftsman also has support for custom `"EntityLike"` objects, most notably `Group` objects, that allow you to create custom constructs that can be inserted into blueprints for aid in clarity and compartmentalization. Again, *MAYBE* I got a little carried away.
+Draftsman also has support for custom `"EntityLike"` objects, most notably `Group` objects, that allow you to create custom constructs that can be inserted into blueprints for aid in clarity and compartmentalization. For example, you can make a design for a smelting block in a Group, and then you can place that block as many times as you want, where ever you want, rotated or flipped, essentially acting as a copy-paste tool within Draftsman.
 
-In an effort to keep this document brief, I'm not going to go too far into the nitty-gritty about the module or how exactly it works; I've spent a lot of time writing documentation for that purpose instead. Rather, I'm going to show off a couple of things that I've made with it so far, as well as potential things that could be made in the future, to try to illustrate exactly why I spent all this time in the first place. 
+In an effort to keep this article brief, I'm not going to go too far into the nitty-gritty about the module or how exactly it works; I've spent a lot of time writing documentation for that purpose instead. Rather, I'm going to show off a couple of things that I've made with it so far, as well as potential things that could be made in the future, to try to illustrate exactly why I spent all this time in the first place. 
 
 ## Automatic Item Stack Sizes
 
@@ -79,13 +79,14 @@ from draftsman.constants import Direction
 from draftsman.data import items
 from draftsman.entity import ConstantCombinator
 
+COMBINATOR_HEIGHT = 5
 
 def main():
     blueprint = Blueprint()
 
-    count = 0  # Total number of signals
-    index = 0  # Signal index in the current combinator
-    i = 0  # How many combinators we've added
+    signal_count = 0
+    signal_index = 0
+    combinators_added = 0
     x = 0
     y = 0
     combinator = ConstantCombinator(direction=Direction.SOUTH)
@@ -97,23 +98,23 @@ def main():
             if "hidden" in items.raw[item]["flags"]:
                 continue
         # Keep track of how many signals we've gone through
-        count += 1
+        signal_count += 1
         # Write the stack size signal
         stack_size = items.raw[item]["stack_size"]
-        combinator.set_signal(index, item, stack_size)
-        index += 1
-        # Once we exceed the current combinator, place it and reset
-        if index == 20:
+        combinator.set_signal(signal_index, item, stack_size)
+        signal_index += 1
+        # Once we exceed the number of signals a combinator can hold, place it and reset
+        if signal_index == combinator.item_slot_count:
             # Add the combinator to the blueprint
             combinator.id = "{}_{}".format(x, y)
             blueprint.entities.append(combinator)
             # Reset the combinator
-            i += 1
-            y = i % 5
-            x = int(i / 5)
+            combinators_added += 1
+            y = combinators_added % COMBINATOR_HEIGHT
+            x = int(combinators_added / COMBINATOR_HEIGHT)
             combinator.set_signals(None)  # Clear signals
             combinator.tile_position = (x, y)
-            index = 0
+            signal_index = 0
 
     # Add the last combinator if partially full
     combinator.id = "{}_{}".format(x, y)
@@ -121,7 +122,7 @@ def main():
 
     # Add connections to each neighbour
     for cx in range(x):
-        for cy in range(5):
+        for cy in range(COMBINATOR_HEIGHT):
             here = "{}_{}".format(cx, cy)
             right = "{}_{}".format(cx + 1, cy)
             below = "{}_{}".format(cx, cy + 1)
@@ -134,7 +135,7 @@ def main():
             except KeyError:
                 pass
 
-    print("Number of items:", count)
+    print("Number of items added:", signal_count)
     print(blueprint.to_string())
 
 
@@ -152,7 +153,7 @@ This not only applies to items as well. All entities, instruments, signals, reci
 
 [This was something I made on a whim.](https://github.com/redruin1/factorio-draftsman/blob/main/examples/image_converter.py) It uses Pillow to load an image and converts it to a blueprint intended to be visible from the map view, all in less than 150 lines of code:
 
-![Portrait of Mike](./img/mike_stoklasa.png "A drunk bum with comically large flask, colorized.")
+![Portrait of Mike](./img/mike_stoklasa.png "A peculiar man with a comically large flask, colorized.")
 
 Many improvements could be made to this:
 
