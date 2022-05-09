@@ -22,9 +22,9 @@ I was starting the second revision of the computer and I wanted a more compact R
 
 ![Depiction of my ROM](./img/ROM_design.png "Everything starts somewhere.")
 
-The problem is that this is *very* tedious to populate by hand, as you have to split, bitwise AND, bitwise right-shift, and populate the two values that must have the same signal in two entirely different places, for *every* signal, on potentially *kilobytes* of data. A single misplaced signal could make the sector unreadable.
+The ROM is very dense and can store 4 *KiB* of data per row, but it functions on a system where each value is split into and stored as two 16-bit numbers, which are then recombined on output. ROMs are usually tedious to create, manually encoding what data you want by hand, one signal at a time, but this one also had the added complexity of the split data. I now had to split, bitwise AND, bitwise right-shift, and populate not one signal, but two, in two different specific locations, making sure that they both had the correct value and signal type. Needless to say, it was going to be painful to set tens of values, let alone hundreds, or the *thoudsands* the machine was capable of storing.
 
-The solution? Get a computer to do it for me. Factorio's blueprint string import function can take any correctly formatted string; all I had to do was create this text string to my specification with the data I wanted and I could just paste it where I needed it.
+The solution? Get a computer to do it for me. They can stomach this task far better than I ever could, and can do it way faster as well. Factorio's blueprint string import function can take any correctly formatted string; all I had to do was create this text string to my specification with the data I wanted and I could just paste it where I needed it.
 
 This concept is not new, at all. Even a cursory search will turn up numerous examples of this used in practice: [`factorio-blueprint` NPM module by demipixel](https://github.com/demipixel/factorio-blueprint), [justarandomgeek's compiler for his massive combinator computer](https://github.com/justarandomgeek/factorio-computer), [a generic combinator instruction language by Jobarion](https://github.com/Jobarion/factoriogen/), [image-to-blueprint converters](https://github.com/EFLFE/Artorio)... The list is extensive.
 
@@ -49,7 +49,7 @@ Anyway, here's a Python module I made.
 
 ![Draftsman logo, represented in-game, generated via script.](./img/draftsman_logo.png "I went through dozens of different combinations of tile orders before settling on this one.")
 
-[Draftsman](https://github.com/redruin1/factorio-draftsman) is a Python module for creating, modifying, importing, and exporting all manner of Factorio blueprint strings. Draftsman attempts to solve all of the shortcomings of the existing Factorio blueprint implementations:
+[Draftsman](https://github.com/redruin1/factorio-draftsman) is a Python module for creating, modifying, importing, and exporting all manner of Factorio blueprint strings. The package allows you to create and design blueprints programmatically, to aide in the development of tedious and repetitive blueprints that would be untenable to create by hand, much like the problem I ran into described above. Draftsman attempts to solve all of the shortcomings of the existing Factorio blueprint implementations:
 
 * **Draftsman does it all.** All types of entities are supported, from splitters to stack-inserters. If you can do it in game, you can do it with Draftsman; allowing you to focus on the one problem you're actually trying to solve.
 * **Draftsman is uni-language.** Written in Python, this makes it exceptionally easy to install, simple to use, and gives the user access to the entirety of Python's vast packaging index. Chances are, you can do it in Python with Draftsman, regardless of *what* Factorio-related thing you're actually doing.
@@ -60,9 +60,11 @@ Anyway, here's a Python module I made.
 * **Draftsman is close-to-source.** Draftsman bases all of its data off of [Wube's `factorio-data` repository](https://github.com/wube/factorio-data), which means that all entities are exactly as you would expect in game with no inconsistencies. This makes Draftsman up-to-date, makes updating Draftsman for future Factorio versions a breeze, and allows versioning control to monitor changes between Draftsman and Factorio if any future breakage occurs.
 * **Draftsman supports mods.** Draftsman emulates the [Factorio data lifecycle](https://lua-api.factorio.com/latest/Data-Lifecycle.html) directly, meaning that the same loading process that happens when you launch the game is mimicked with a single Draftsman function. In addition to ensuring absolute accuracy to Factorio, this also makes it compatible with custom mod prototypes that can be accessed in script as if they were any other vanilla entity.
 
+Draftsman has custom classes designed around each individual entity and prototype, and is designed to work as seamlessly as possible with blueprint strings and other software. You can import a blueprint string from Factorio and it will be automatically converted into a Draftsman `Blueprint` object with all it's functionality, make any change you can think of to it, and then export that `Blueprint` object back into a string to be re-imported into Factorio. Or, you can just make an entirely new `Blueprint` from scratch; Draftsman is designed to work around you, not for you to work around it.
+
 Draftsman also has support for custom `"EntityLike"` objects, most notably `Group` objects, that allow you to create custom constructs that can be inserted into blueprints for aid in clarity and compartmentalization. Again, *MAYBE* I got a little carried away.
 
-In an effort to keep this document brief, I'm not going to go into the nitty-gritty about the module or how exactly it works; I've spent a lot of time writing documentation for that purpose instead. Rather, I'm going to show off a couple of things that I've made with it so far, as well as potential things that could be made in the future, to try to illustrate exactly why I spent all this time in the first place. 
+In an effort to keep this document brief, I'm not going to go too far into the nitty-gritty about the module or how exactly it works; I've spent a lot of time writing documentation for that purpose instead. Rather, I'm going to show off a couple of things that I've made with it so far, as well as potential things that could be made in the future, to try to illustrate exactly why I spent all this time in the first place. 
 
 ## Automatic Item Stack Sizes
 
@@ -143,6 +145,8 @@ This script is concise and easy to follow, but the really amazing thing about Dr
 
 ![Results](./img/item_stack_size_output.png)
 
+This not only applies to items as well. All entities, instruments, signals, recipes, modules, and tiles are pulled from the emulated load process and then stored as pickle files in Draftsman for later use. Any script can be designed to be completely flexible across these categories; extra instruments in a new programmmable speaker, new module types only in certain machines, complete signal lists for signal mappings... all are interpreted correctly by Draftsman. By saving the data of the current mod configuration internally for later, this also means that you only have to update the data once, each time you change what mods you're using.
+
 ## Image to Blueprint Converter
 
 [This was something I made on a whim.](https://github.com/redruin1/factorio-draftsman/blob/main/examples/image_converter.py) It uses Pillow to load an image and converts it to a blueprint intended to be visible from the map view, all in less than 150 lines of code:
@@ -162,7 +166,7 @@ Despite these shortcomings, the output actually ends up pretty good for it's qui
 
 ## Factorio Movie Player Resurrection
 
-A little while ago, while trawling for projects to use as examples for this very document, I came across the classic [Factorio Sandstorm](https://www.youtube.com/watch?v=mgfwwqwxdxY). A perfect project to adapt; or, it would have been, if I could actually load the map in game! The original map version was still dated to the tender version 0.14.20. In addition, a lot of the migrations that took place over such a long span of time broke the functionality of the original script as well as the map, so just downloading an old version of Factorio and coercing it along wasn't going to be enough to revive the old map.
+A little while ago, while trawling for projects to use as examples for this very document, I came across the classic [Factorio Sandstorm](https://www.youtube.com/watch?v=mgfwwqwxdxY). A perfect project to adapt; or, it would have been, if I could actually load the map in game! The original map version was still dated to the tender version 0.14.20. In addition, a lot of the migrations that took place over such a long span of time broke the functionality of the original build script to convert the image frames into combinator data, as well as some function of the map itself, so just downloading an old version of Factorio and coercing it along wasn't going to be enough to revive the old map. For example, the `build.lua` script in charge of encoding still called the `logistic-science-pack` and `automation-science-pack` items `science-pack-1` and `science-pack-2`. That should give you some indication of how old the map was!
 
 It troubled me, seeing such an iconic piece of Factorio history fall into disrepair. So took the time to fix the issues and migrate it all the way to 1.1.57:
 
@@ -170,7 +174,9 @@ It troubled me, seeing such an iconic piece of Factorio history fall into disrep
 | ------------------------ |
 | Pictured is part of [Feel the Beat](https://youtu.be/aLZQ-0dHbiU?t=38), keeping the tradition of Darude music videos. |
 
-Changing the build script was done by hand, but the map updating was done with a script running Draftsman code. I also added a number of other scripts for extracting the images from the source, as well as taking screenshots of the result and stitching them into an output video, which pretty easy in Python. I was also playing around with the idea of making a blueprint-based version of the builder script instead of the console-based original method, but this would have required quite a bit of effort, even for *me*. 
+Changing the build script could be done by hand, but the signal `raw-wood` that the machine internally used no longer exists in modern Factorio. In order to fix it, I replaced all occurrences of the signal with it in the map with `artillery-wagon` (since I knew it would be unique), and that map updating was done with a script running Draftsman code. I also added a number of other scripts for extracting the images from the source, as well as taking screenshots of the result and stitching them into an output video, which pretty easy in Python. I used said scripts to make the output above. 
+
+I was also playing around with the idea of using Draftsman to make a blueprint-based version of the builder script instead of the console-based original method; this would allow you to see exactly what parts of the memory you are modifying by placing a grid aligned blueprint on top of them, and would also allow you to extend the memory of the machine by simply adding more blocks (the memory provided on the map is only enough for 4800 frames). I figured this was less important than updating what was there originally, especially when the code that *was* already there I knew worked. There could be other considerations as well; the amount of data encoded is pretty hefty, especially for blueprint strings which I suspect may be less dense than the console scripts, which are so large they are dumped in text files when built. Determining whether a blueprint method was actually feasible I figured could wait until I had some spare time further down the line.
 
 For more information on what's changed/new, as well as the updated world file, [you can check out my fork here](https://github.com/redruin1/factorio-movie-maker).
 
@@ -180,7 +186,7 @@ While I've done a bunch of things with this module, the whole point of it was to
 
 * Many combinator computer compilers are written via script. Perhaps someone could devise a LLVM equivalent; a generic compiler, where you can tell it what instructions your CPU can perform and have it compile high level, established languages like C. Perhaps you could even use LLVM itself?
 
-* Take advantage of edge case behavior for specific optimization problems. Did you know that you can set an assembling machine to request *any* item, including ingredients for it's recipe? With something like the [Recursive Blueprints](https://mods.factorio.com/mod/recursive-blueprints) mod, theoretically you can build a fully automated factory without inserters. Perhaps the [Micro Factory](https://www.youtube.com/watch?v=9dzQge6pe2o) can be further optimized? Or a new goal, fewest total number of entities to beat the game without user input?
+* Take advantage of edge case behavior for specific optimization problems. Did you know that you can set an assembling machine to request *any* item, not just modules? You can only request items for it when it is originally constructed, which limits its usefulness somewhat, but robots will fulfill the request, allowing you to "kickstart" production in some cases. And, if you wait until the machine has finished crafting, and then deconstruct it, you get it with all the resources it just made back into the logistic network. With something like the [Recursive Blueprints mod](https://mods.factorio.com/mod/recursive-blueprints), by placing these assembling machines with item requests, waiting until they finish crafting their inputs, and then deconstructing them, theoretically you can build a fully automated factory without inserters or any other logistics. Perhaps the [Micro Factory](https://www.youtube.com/watch?v=9dzQge6pe2o) can be further optimized? Or a new goal, fewest total number of entities to beat the game without user input?
 
 * Routing problems; pass in a set of outpost points and use an algorithm to automatically connect them to minimize distance, number of crossings, etc. Perhaps you could have it read from save files themselves?
 
