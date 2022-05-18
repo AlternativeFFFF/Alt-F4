@@ -142,7 +142,7 @@ This script is concise and easy to follow, but the really amazing thing about Dr
 
 ![Results](https://media.alt-f4.blog/ALTF4/61/item_stack_size_output.jpg)
 
-This doesn't only applies to items either. All entities, instruments, signals, recipes, modules, and tiles are pulled from the emulated load process and then stored as *pickle* files in Draftsman for later use. Any script can be designed to be completely flexible across these categories; extra instruments in a new programmmable speaker, new module types only in certain machines, complete virtual signal lists for signal mappings, etc., all are interpreted correctly by Draftsman. By saving the data of the current mod configuration internally for later, this also means that you only have to update the data once, each time you change what mods you're using.
+This doesn't only applies to items either. All entities, instruments, signals, recipes, modules, and tiles are pulled from the emulated load process and then stored in Draftsman for later use. Any script can be designed to be completely flexible across these categories; extra instruments in a new programmmable speaker, new module types only in certain machines, complete virtual signal lists for signal mappings, etc., all are interpreted correctly by Draftsman. By saving the data of the current mod configuration internally for later, this also means that you only have to update the data once, each time you change what mods you're using.
 
 ### Image to Blueprint Converter
 
