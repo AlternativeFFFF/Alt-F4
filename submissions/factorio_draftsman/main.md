@@ -4,24 +4,19 @@ A couple months ago, I decided that I wanted to try my hand at making a **self-e
 
 That's no problem though, we just create a scrap world, switch to the editor and start playing around!
 
-// Conor, these three images should be a gallery
-![death](./img/map_view_of_madness.png)
-
-![additional death](./img/madness.png "Any attempt to understand the meaningless scribbles of a madman will only result in disappointment and despair.")
-
-![too much playtime](./img/play_time.png "ROOKIE NUMBERS")
+{% include gallery.html items='https://media.alt-f4.blog/ALTF4/61/map_view_of_madness.jpg;death,https://media.alt-f4.blog/ALTF4/61/madness.jpg;additional death;Any attempt to understand the meaningless scribbles of a madman will only result in disappointment and despair.,https://media.alt-f4.blog/ALTF4/61/play_time.jpg;too much playtime;ROOKIE NUMBERS' %}
 
 I may have gotten carried away a little.
 
 Here's a CPU I made. This is the seventh (I think?) revision. It has a ROM, RAM, a stack, 256 registers, over 40 instructions, breakpoints and code stepping, hardware and software interrupts, as well as a generalized circuit interface to interact with other machines.
 
-![Picture of my first CPU design](./img/mk1_computer.png "Ah, Factorio. One of the only games where you literally get smarter on repeated playthroughs.")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/61/mk1_computer.jpg' alt='Picture of my first CPU design' caption='Ah, Factorio. One of the only games where you literally get smarter on repeated playthroughs.' %}
 
 Ironically, I'm not actually here to talk about *any* of this. This is all just foreshadowing.
 
 I was starting the second revision of the computer and I wanted a more compact ROM. I came up with the design below, which has the capability of storing true 32-bit numbers and can store 4 KiB of data per row:
 
-![Depiction of my ROM](./img/ROM_design.png "Everything starts somewhere.")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/61/ROM_design.jpg' alt='Depiction of my ROM' caption='Everything starts somewhere.' %}
 
 The ROM is *very* dense, but it functions on a system where each value is split into and stored as two 16-bit numbers, which are then recombined on output. ROMs are normally tedious to create, manually encoding each signal you want by hand, one at a time, but this design was even more involved. I now had to split, bitwise AND, bitwise right-shift, and populate not one signal, but two, in two different specific locations, making sure that they both had the correct value *and* signal type. Needless to say, it was going to be painful to set tens of values, let alone hundreds, or the *thousands* the machine was capable of storing.
 
@@ -40,7 +35,7 @@ Fundamentally unsatisfied with the options, I resigned myself to my fate. I was 
 
 I made a prototype script in an afternoon that did exactly what I needed and it worked perfectly. It used a template system and it took less than a week to completely finish.
 
-![Finished result](./img/populated_ROM.png "I'm not exaggerating: If I was a stronger man, I would have left it at that and done something else with my life.")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/61/populated_ROM.jpg' alt='Finished result' caption='I’m not exaggerating: If I was a stronger man, I would have left it at that and done something else with my life.' %}
 
 But then I started to wonder. It wouldn't be that difficult to update a module like `factorio-blueprint` to modern Factorio, and I bet I could figure out some way to automatically extract the data from Factorio itself, so you would never have to manually update source files every version. Then I started getting lofty ideas about how I could write documentation for the complex and largely undocumented `control_behavior` key in entities, or adding custom entity types to create and manipulate groups of entities, or even, god forbid, adding *mod support* into the mix. That was three or four months ago.
 
@@ -48,7 +43,7 @@ Anyway, here's a Python module I made.
 
 ### Introducing: `factorio-draftsman`
 
-![Draftsman logo, represented in-game, generated via script.](./img/draftsman_logo.png "I went through dozens of different combinations of tile orders before settling on this one.")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/61/draftsman_logo.jpg' alt='Draftsman logo, represented in-game, generated via script.' caption='I went through dozens of different combinations of tile orders before settling on this one.' %}
 
 [Draftsman](https://github.com/redruin1/factorio-draftsman) is a Python module for creating, modifying, importing, and exporting all manner of Factorio blueprint strings. The package allows you to create and design blueprints programmatically, to aide in the development of tedious and repetitive blueprints that would be untenable to create by hand, much like the problem I ran into described above. Draftsman attempts to solve all of the shortcomings of existing Factorio blueprint implementations:
 
@@ -145,7 +140,7 @@ if __name__ == "__main__":
 
 This script is concise and easy to follow, but the really amazing thing about Draftsman is that this script is completely dynamic and can adjust to whatever version of Factorio that you're playing. New items, removed items, or changed stack sizes, regardless of the author of the change, are resolved automatically with the exact same code. For illustration, pictured top-left is what's generated by running the script for a vanilla game, top-right a game with the medium-sized overhaul modpack [Space Exploration](https://mods.factorio.com/mod/space-exploration), and at the bottom a [Bobs](https://mods.factorio.com/user/Bobingabout) + [Pyanodon](https://mods.factorio.com/user/pyanodon) mega-modpack:
 
-![Results](./img/item_stack_size_output.png)
+![Results](https://media.alt-f4.blog/ALTF4/61/item_stack_size_output.jpg)
 
 This doesn't only applies to items either. All entities, instruments, signals, recipes, modules, and tiles are pulled from the emulated load process and then stored as *pickle* files in Draftsman for later use. Any script can be designed to be completely flexible across these categories; extra instruments in a new programmmable speaker, new module types only in certain machines, complete virtual signal lists for signal mappings, etc., all are interpreted correctly by Draftsman. By saving the data of the current mod configuration internally for later, this also means that you only have to update the data once, each time you change what mods you're using.
 
@@ -153,7 +148,7 @@ This doesn't only applies to items either. All entities, instruments, signals, r
 
 [This was something I made on a whim.](https://github.com/redruin1/factorio-draftsman/blob/main/examples/image_converter.py) It uses `Pillow` to load an image and converts it to a blueprint intended to be visible from the map view, all in less than 150 lines of code:
 
-![Portrait of Mike](./img/mike_stoklasa.png "A peculiar man with a comically large flask, colorized.")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/61/mike_stoklasa.jpg' alt='Portrait of Mike' caption='A peculiar man with a comically large flask, colorized.' %}
 
 Many improvements could be made to this:
 
@@ -164,7 +159,7 @@ Many improvements could be made to this:
 
 Despite these shortcomings, the output actually ends up pretty good for it's quick and dirty implementation. This shows that Draftsman is versatile enough for some rather eclectic purposes.
 
-![Portrait of Jay](./img/jay_bauman.png "Jay Bauman, notorious hack fraud, criminal at large. Armed and dangerous.")
+{% include image.html src='https://media.alt-f4.blog/ALTF4/61/jay_bauman.jpg' alt='Portrait of Jay' caption='Jay Bauman, notorious hack fraud, criminal at large. Armed and dangerous.' %}
 
 ### Factorio Movie Player Resurrection
 
@@ -172,9 +167,7 @@ A little while ago, while trawling for projects to use as examples for this very
 
 It troubled me, seeing such an iconic piece of Factorio history fall into disrepair. So took the time to fix the issues and migrate it all the way to 1.1.57:
 
-| ![video of feel the beat](./img/cut_and_shrunk.gif) |
-| ------------------------ |
-| Pictured is part of [Feel the Beat](https://youtu.be/aLZQ-0dHbiU?t=38), keeping the tradition of Darude music videos. |
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/61/cut_and_shrunk.mp4' alt='video of feel the beat' caption='Pictured is part of <a href="https://youtu.be/aLZQ-0dHbiU?t=38">Feel the Beat</a>, keeping the tradition of Darude music videos.' %}
 
 Changing the build script could be done by hand, but the signal `raw-wood` that the machine internally used no longer exists in modern Factorio. In order to fix it, I replaced all occurrences of the signal with it in the map with `artillery-wagon` (since I knew it would be unique), and that map updating was done with a script running Draftsman code. I also added a number of other scripts for extracting the images from the source, as well as taking screenshots of the result and stitching them into an output video, which pretty easy in Python. I used said scripts to make the output above.
 
@@ -192,7 +185,7 @@ While I've done a bunch of things with this module, the whole point of it was to
 
 A perhaps more generally applicable use case is [this blueprint](https://factoriobin.com/post/p38zvEAP), a single gun turret that automatically requests 200 red ammo from the logistics network when placed. This is particularly useful in offensive efforts on large biter nests, as you can spam turrets around you and the bots in your inventory will create the turrets and deliver the ammo automatically, allowing you to focus on not dissolving in spitter goo.
 
-![An illustration of the turret blueprint in action](./img/preloaded_turret_short.gif)
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/61/preloaded_turret_short.mp4' alt='An illustration of the turret blueprint in action' %}
 
 * Routing problems; pass in a set of outpost points and use an algorithm to automatically connect them to minimize distance, number of crossings, etc. Perhaps you could have it read from save files themselves?
 
@@ -206,6 +199,6 @@ Hopefully that should give the creative ones among you some interesting ideas. A
 
 Eh, it was still pretty fun to make. Educational, too.
 
-![It works!](./img/it_works.gif "Thank heavens.")
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/61/it_works.mp4' alt='It works!' caption='Thank heavens.' %}
 
 Ah, finally. Back to *real* work.
