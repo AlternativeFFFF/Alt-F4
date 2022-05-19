@@ -111,8 +111,8 @@ def main():
             combinator.tile_position = (x, y)
             signal_index = 0
 
+    # Add the last combinator if partially full
     if len(combinator.signals) > 0:
-        # Add the last combinator if partially full
         combinator.id = "{}_{}".format(x, y)
         blueprint.entities.append(combinator)
 
