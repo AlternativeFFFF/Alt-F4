@@ -67,7 +67,7 @@ In an effort to keep this article brief, I'm not going to go too far into the ni
 Oftentimes, for you want to figure out how much storage you need for a specific amount of an item. However, storage in Factorio is based on slots, not amounts, so the amount of storage is actually dependent on not only the amount you're trying to store, but also the stack size of that item. [You can design a circuit contraption](https://factorioprints.com/view/-LwH68dlvOEIKWkU5JqR) to determine the number of slots that you need for any input item, but you'd need a big cell of combinators documenting the item sizes. This is *boring* to make, and easily broken if a new item is added or the stack size is changed. Clearly, for such a simple and repetitive task, a script is better suited:
 
 ```python
-# Create a N x 5 grid of connected constant combinators, with every item and their stack size
+# Create an N x 5 grid of connected constant combinators, with every item and their stack size
 
 from draftsman.blueprintable import Blueprint
 from draftsman.constants import Direction
