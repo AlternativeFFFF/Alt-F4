@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru" class="ru">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #50 - Rocket Silo Curiosities</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #50 - Rocket Silo Curiosities">
+<meta name="author" content="garr890354839, everLord">
+<meta property="og:locale" content="en">
+<meta name="description" content="This week is the golden anniversary of Alt-F4, it being issue #50 and all. No special festivities though, feels like we are doing that often enough. Instead, garr890354839 makes their first contribution by talking about some of the weirdnesses and some of the math surrounding rocket silos. Then, everLord introduces another community event by the comfy squad called ‘Biter Battle Championship’! The Rocket Silo: Mysteries in Full garr890354839 Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it’s placed, it has some weird effects on the electric grid. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here! Power Usage To start, let’s look at its power usage: It claims to use at most 4MW (which is true), but it only uses 250kW when just manufacturing rocket parts, which is a bit more than three assembling machine 1s (225kW). When does it require 4MW, a bit more than 53 assembling machine 1s, then? Well, when the silo doors are moving, or a rocket is being pushed up. Those things must be heavy! Up until version 1.1.42, it used an additional 10 kW idly at night, but there were no surface lights to indicate this. Back in 0.16, however, there were lights on the silo, as shown below, which is where this came from. Modules and the Silo You can fit 12 beacons around 3x3 entities, 16 around oil refineries, and 20 around a silo. Two beacons with two speed module 3s each is the same thing throughput-wise as adding a second machine. So one silo can do the work of thirteen silos, side-by-side. Modules and beacons are insanely expensiv however, as the following table shows.   Beacon Module, tier 3 4 modules and 2 beacons Silo Rocket from Silo Iron 135 1083 4602 12220 49100 Copper 110 2000 8220 8600 92500 Stone 0 0 0 1000 0 Coal 20 190 800 437 9500 Crude Oil 411 17334 70158 11080 277778 When I mention costs, I mean the relevant ores needed without productivity modules in the crafting chain, while using advanced oil processing to break down crude oil. Each beacon costs quite a bit for an early-game player, but nothing compared to automated production of tier 3 modules. That’s because any tier 3 module costs roughly 10x more. While the calculator mentions speed modules specifically, the other two modules of the same tier are equivalent. So four tier 3 modules and two beacons use a lot of raw materials. With certain optimizations, like the standard 8-beacon array and those shown here, it’s possible to get more out of your module, but the cost still stands. Normally, this cost greatly outmatches the machine. However, there is one exception to this rule, and that’s the silo. The silo costs a whopping 12,220 iron, 8,600 copper, 437 coal, 11,080 crude oil, and 1,000 stone. The modules and beacons are cheaper than placing down another silo. Less spaghetti involved, too! Productivity Bonus Interlude If you’re a long-time reader of Alt-F4, you might remember issue #12, which is dedicated to productivity and its effects. But for first-time readers or for those needing a refresher, I’ll offer an abridged version of what productivity is: Basically, it’s a multiplier on your output for your given input. When I say crafting operation, I refer to the main bar within the assembling-machine or furnace UI filling up to completion. The way this works is by taking 100 inputs and multiplying that by the percentage bonus from the modules within the machine. So, for example, take four productivity module 3s inside some copper cable assembling machine 3. The total bonus from the modules is 40%, so 10 copper plates become 20*(1+0.4)=28 copper cables. We can calculate the required input for a given output by the reverse of the process. So if we wanted 140 copper cables made with the influence of 4 productivity module 3s, we first divide by the amount per craft (2) to find out we need 70 crafting operations, including those from productivity. Then we divide 70 by the productivity multiplier of 1.4, which will ‘filter out’ the 20 free operations and leave us with the 50 crafting operations that we need to actually execute. The Rocket-Making Process The space rocket itself is the main reason why you’d place down a silo. Each rocket costs 49,100 iron, 92,500 copper, 9,500 coal, and 277,778 crude oil. This is added onto whatever you throw into the payload slot, but that can vary greatly depending on what you feed it. In general, for most recipes, productivity modules pay off extremely slowly. For recipes involving a lot of raw materials, it pays off fast however. Especially when used with the silo. Note that productivity doesn’t apply to the rocket itself. In other words, you can’t get two rockets simultaneously. It applies to each rocket part, giving you free parts which count towards your total. One productivity module 3 in the silo itself drops the cost of each rocket to 10/11 (or 90.91%) of its original cost. This is not from the rocket itself, but rather of the 100 parts you need, since you only need 90.91 on average instead of 100 per rocket. Even a 9.09% cost drop saves you 4,463.6 iron, 8,409.1 copper, 863.6 coal, and 25,252.5 crude oil on average. That’s a bit over four modules’ worth of raw materials. What about all four modules being productivity module 3s? After that last step, you have enough leftover material for it after all! It would yield a 28.57% cost drop. Same routine as before, take the input and multiply it by the drop of input factor gives us that we save just under 13 modules’ worth of material. In other words, four productivity module 3s literally pay for themselves three times over per rocket! Rocket Launch Results As we all should know, launching a satellite gets us 1000 space science packs in vanilla. But that’s not the only thing you can launch. There’s space science packs, which yield one fish per pack. Another fact: This is the only way to truly automate fish. Anything else just deletes the items used and does not return anything. However, there is a special achievement for launching some specific thing, but which I’ll not spoil here. Inserting a car, tank, or the thing at the bottom of the Alt-F4 website into it lets you literally ride the rocket. When you press launch, it will wait for you to enter the silo as you would a car, then launch you up into space! Biter Battles Championships everLord Saturday, the Biter Battles Championships start! Yeah! What are Biter Battles? Biter Battles is a scenario created by MewMew from Comfy’s Factorio where two teams compete while being attacked by biters whose goal is to destroy their silo. This means there is no direct player vs player combat, because players are separated by a river in our custom made battle arena. The Biter Battle arena showing the isolated areas for the two teams Each team has to defend their silo from waves of biters attacking every other minute. You can also strengthen your opponent’s biters by sending science packs to increase their tier (small, medium, big, behemoth) and how big the biter swarms are. Sending higher tiers will yield stronger mutagenic results. This scenario is open 24/7 for anyone to join! All you need to do is search for the public game “Free BiterBattles.org”. It is usually the most populated public game, having between 20 and 50 players online most of the time. Then what are The Biter Battles Championships? After four successful tournaments we decided to create a persistent competition on the Biter Battles scenario: A championship split into two leagues. The Behemoth league which will be for the pros, and the Biter league for everyone else. Matches are then 3v3, with an optional fourth player acting as spy, coach, or substitute. It’s played as a double round-robin: all teams in one division will fight twice against every other team of that division, once “at home”, once “away/visitor”. There are important twists to these games. The first aspect is four novelty starter packs which speed up the early game which leads to more dynamic matches and many possible strategies. The other important aspect is Armageddon: After two hours, the evolution of biters speeds up so that the match usually ends before three hours - to avoid endless games. So expect behemoths sooner than later! Seven teams will compete in the Behemoth league. It will start tomorrow (Saterday, 30th of October) with clash between Baquette and Mysticlutchpipenator at 14:00 UTC, and the main event of next week being the clash between SteelAxe versus GreenScience on Thursday November 4 at 19: 00 UTC! You can expect some spectacular gameplay. It is definitely a very different show than regular Factorio. Matches will be streamed by popular streamers, and we will announce all matches and streams on Twitter. The Biter league on the other hand will start in two weeks. Everyone is very welcome to join and show their skills! Registration is still open until Monday, 8th of November. Each team will be required to play once per weekend, and player substitutions are allowed. There are more information about rules, players, practice, and a possible prize at our website: https://bbchampions.org/. From the BBChampions team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Supported by the French Discord Community. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="This week is the golden anniversary of Alt-F4, it being issue #50 and all. No special festivities though, feels like we are doing that often enough. Instead, garr890354839 makes their first contribution by talking about some of the weirdnesses and some of the math surrounding rocket silos. Then, everLord introduces another community event by the comfy squad called ‘Biter Battle Championship’! The Rocket Silo: Mysteries in Full garr890354839 Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it’s placed, it has some weird effects on the electric grid. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here! Power Usage To start, let’s look at its power usage: It claims to use at most 4MW (which is true), but it only uses 250kW when just manufacturing rocket parts, which is a bit more than three assembling machine 1s (225kW). When does it require 4MW, a bit more than 53 assembling machine 1s, then? Well, when the silo doors are moving, or a rocket is being pushed up. Those things must be heavy! Up until version 1.1.42, it used an additional 10 kW idly at night, but there were no surface lights to indicate this. Back in 0.16, however, there were lights on the silo, as shown below, which is where this came from. Modules and the Silo You can fit 12 beacons around 3x3 entities, 16 around oil refineries, and 20 around a silo. Two beacons with two speed module 3s each is the same thing throughput-wise as adding a second machine. So one silo can do the work of thirteen silos, side-by-side. Modules and beacons are insanely expensiv however, as the following table shows.   Beacon Module, tier 3 4 modules and 2 beacons Silo Rocket from Silo Iron 135 1083 4602 12220 49100 Copper 110 2000 8220 8600 92500 Stone 0 0 0 1000 0 Coal 20 190 800 437 9500 Crude Oil 411 17334 70158 11080 277778 When I mention costs, I mean the relevant ores needed without productivity modules in the crafting chain, while using advanced oil processing to break down crude oil. Each beacon costs quite a bit for an early-game player, but nothing compared to automated production of tier 3 modules. That’s because any tier 3 module costs roughly 10x more. While the calculator mentions speed modules specifically, the other two modules of the same tier are equivalent. So four tier 3 modules and two beacons use a lot of raw materials. With certain optimizations, like the standard 8-beacon array and those shown here, it’s possible to get more out of your module, but the cost still stands. Normally, this cost greatly outmatches the machine. However, there is one exception to this rule, and that’s the silo. The silo costs a whopping 12,220 iron, 8,600 copper, 437 coal, 11,080 crude oil, and 1,000 stone. The modules and beacons are cheaper than placing down another silo. Less spaghetti involved, too! Productivity Bonus Interlude If you’re a long-time reader of Alt-F4, you might remember issue #12, which is dedicated to productivity and its effects. But for first-time readers or for those needing a refresher, I’ll offer an abridged version of what productivity is: Basically, it’s a multiplier on your output for your given input. When I say crafting operation, I refer to the main bar within the assembling-machine or furnace UI filling up to completion. The way this works is by taking 100 inputs and multiplying that by the percentage bonus from the modules within the machine. So, for example, take four productivity module 3s inside some copper cable assembling machine 3. The total bonus from the modules is 40%, so 10 copper plates become 20*(1+0.4)=28 copper cables. We can calculate the required input for a given output by the reverse of the process. So if we wanted 140 copper cables made with the influence of 4 productivity module 3s, we first divide by the amount per craft (2) to find out we need 70 crafting operations, including those from productivity. Then we divide 70 by the productivity multiplier of 1.4, which will ‘filter out’ the 20 free operations and leave us with the 50 crafting operations that we need to actually execute. The Rocket-Making Process The space rocket itself is the main reason why you’d place down a silo. Each rocket costs 49,100 iron, 92,500 copper, 9,500 coal, and 277,778 crude oil. This is added onto whatever you throw into the payload slot, but that can vary greatly depending on what you feed it. In general, for most recipes, productivity modules pay off extremely slowly. For recipes involving a lot of raw materials, it pays off fast however. Especially when used with the silo. Note that productivity doesn’t apply to the rocket itself. In other words, you can’t get two rockets simultaneously. It applies to each rocket part, giving you free parts which count towards your total. One productivity module 3 in the silo itself drops the cost of each rocket to 10/11 (or 90.91%) of its original cost. This is not from the rocket itself, but rather of the 100 parts you need, since you only need 90.91 on average instead of 100 per rocket. Even a 9.09% cost drop saves you 4,463.6 iron, 8,409.1 copper, 863.6 coal, and 25,252.5 crude oil on average. That’s a bit over four modules’ worth of raw materials. What about all four modules being productivity module 3s? After that last step, you have enough leftover material for it after all! It would yield a 28.57% cost drop. Same routine as before, take the input and multiply it by the drop of input factor gives us that we save just under 13 modules’ worth of material. In other words, four productivity module 3s literally pay for themselves three times over per rocket! Rocket Launch Results As we all should know, launching a satellite gets us 1000 space science packs in vanilla. But that’s not the only thing you can launch. There’s space science packs, which yield one fish per pack. Another fact: This is the only way to truly automate fish. Anything else just deletes the items used and does not return anything. However, there is a special achievement for launching some specific thing, but which I’ll not spoil here. Inserting a car, tank, or the thing at the bottom of the Alt-F4 website into it lets you literally ride the rocket. When you press launch, it will wait for you to enter the silo as you would a car, then launch you up into space! Biter Battles Championships everLord Saturday, the Biter Battles Championships start! Yeah! What are Biter Battles? Biter Battles is a scenario created by MewMew from Comfy’s Factorio where two teams compete while being attacked by biters whose goal is to destroy their silo. This means there is no direct player vs player combat, because players are separated by a river in our custom made battle arena. The Biter Battle arena showing the isolated areas for the two teams Each team has to defend their silo from waves of biters attacking every other minute. You can also strengthen your opponent’s biters by sending science packs to increase their tier (small, medium, big, behemoth) and how big the biter swarms are. Sending higher tiers will yield stronger mutagenic results. This scenario is open 24/7 for anyone to join! All you need to do is search for the public game “Free BiterBattles.org”. It is usually the most populated public game, having between 20 and 50 players online most of the time. Then what are The Biter Battles Championships? After four successful tournaments we decided to create a persistent competition on the Biter Battles scenario: A championship split into two leagues. The Behemoth league which will be for the pros, and the Biter league for everyone else. Matches are then 3v3, with an optional fourth player acting as spy, coach, or substitute. It’s played as a double round-robin: all teams in one division will fight twice against every other team of that division, once “at home”, once “away/visitor”. There are important twists to these games. The first aspect is four novelty starter packs which speed up the early game which leads to more dynamic matches and many possible strategies. The other important aspect is Armageddon: After two hours, the evolution of biters speeds up so that the match usually ends before three hours - to avoid endless games. So expect behemoths sooner than later! Seven teams will compete in the Behemoth league. It will start tomorrow (Saterday, 30th of October) with clash between Baquette and Mysticlutchpipenator at 14:00 UTC, and the main event of next week being the clash between SteelAxe versus GreenScience on Thursday November 4 at 19: 00 UTC! You can expect some spectacular gameplay. It is definitely a very different show than regular Factorio. Matches will be streamed by popular streamers, and we will announce all matches and streams on Twitter. The Biter league on the other hand will start in two weeks. Everyone is very welcome to join and show their skills! Registration is still open until Monday, 8th of November. Each team will be required to play once per weekend, and player substitutions are allowed. There are more information about rules, players, practice, and a possible prize at our website: https://bbchampions.org/. From the BBChampions team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Supported by the French Discord Community. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/ru/ALTF4-50/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-50/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-10-29T00:00:00+00:00">
+<script type="application/ld+json">
+{"headline":"Alt-F4 #50 - Rocket Silo Curiosities","dateModified":"2021-10-29T00:00:00+00:00","datePublished":"2021-10-29T00:00:00+00:00","description":"This week is the golden anniversary of Alt-F4, it being issue #50 and all. No special festivities though, feels like we are doing that often enough. Instead, garr890354839 makes their first contribution by talking about some of the weirdnesses and some of the math surrounding rocket silos. Then, everLord introduces another community event by the comfy squad called ‘Biter Battle Championship’! The Rocket Silo: Mysteries in Full garr890354839 Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it’s placed, it has some weird effects on the electric grid. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here! Power Usage To start, let’s look at its power usage: It claims to use at most 4MW (which is true), but it only uses 250kW when just manufacturing rocket parts, which is a bit more than three assembling machine 1s (225kW). When does it require 4MW, a bit more than 53 assembling machine 1s, then? Well, when the silo doors are moving, or a rocket is being pushed up. Those things must be heavy! Up until version 1.1.42, it used an additional 10 kW idly at night, but there were no surface lights to indicate this. Back in 0.16, however, there were lights on the silo, as shown below, which is where this came from. Modules and the Silo You can fit 12 beacons around 3x3 entities, 16 around oil refineries, and 20 around a silo. Two beacons with two speed module 3s each is the same thing throughput-wise as adding a second machine. So one silo can do the work of thirteen silos, side-by-side. Modules and beacons are insanely expensiv however, as the following table shows.   Beacon Module, tier 3 4 modules and 2 beacons Silo Rocket from Silo Iron 135 1083 4602 12220 49100 Copper 110 2000 8220 8600 92500 Stone 0 0 0 1000 0 Coal 20 190 800 437 9500 Crude Oil 411 17334 70158 11080 277778 When I mention costs, I mean the relevant ores needed without productivity modules in the crafting chain, while using advanced oil processing to break down crude oil. Each beacon costs quite a bit for an early-game player, but nothing compared to automated production of tier 3 modules. That’s because any tier 3 module costs roughly 10x more. While the calculator mentions speed modules specifically, the other two modules of the same tier are equivalent. So four tier 3 modules and two beacons use a lot of raw materials. With certain optimizations, like the standard 8-beacon array and those shown here, it’s possible to get more out of your module, but the cost still stands. Normally, this cost greatly outmatches the machine. However, there is one exception to this rule, and that’s the silo. The silo costs a whopping 12,220 iron, 8,600 copper, 437 coal, 11,080 crude oil, and 1,000 stone. The modules and beacons are cheaper than placing down another silo. Less spaghetti involved, too! Productivity Bonus Interlude If you’re a long-time reader of Alt-F4, you might remember issue #12, which is dedicated to productivity and its effects. But for first-time readers or for those needing a refresher, I’ll offer an abridged version of what productivity is: Basically, it’s a multiplier on your output for your given input. When I say crafting operation, I refer to the main bar within the assembling-machine or furnace UI filling up to completion. The way this works is by taking 100 inputs and multiplying that by the percentage bonus from the modules within the machine. So, for example, take four productivity module 3s inside some copper cable assembling machine 3. The total bonus from the modules is 40%, so 10 copper plates become 20*(1+0.4)=28 copper cables. We can calculate the required input for a given output by the reverse of the process. So if we wanted 140 copper cables made with the influence of 4 productivity module 3s, we first divide by the amount per craft (2) to find out we need 70 crafting operations, including those from productivity. Then we divide 70 by the productivity multiplier of 1.4, which will ‘filter out’ the 20 free operations and leave us with the 50 crafting operations that we need to actually execute. The Rocket-Making Process The space rocket itself is the main reason why you’d place down a silo. Each rocket costs 49,100 iron, 92,500 copper, 9,500 coal, and 277,778 crude oil. This is added onto whatever you throw into the payload slot, but that can vary greatly depending on what you feed it. In general, for most recipes, productivity modules pay off extremely slowly. For recipes involving a lot of raw materials, it pays off fast however. Especially when used with the silo. Note that productivity doesn’t apply to the rocket itself. In other words, you can’t get two rockets simultaneously. It applies to each rocket part, giving you free parts which count towards your total. One productivity module 3 in the silo itself drops the cost of each rocket to 10/11 (or 90.91%) of its original cost. This is not from the rocket itself, but rather of the 100 parts you need, since you only need 90.91 on average instead of 100 per rocket. Even a 9.09% cost drop saves you 4,463.6 iron, 8,409.1 copper, 863.6 coal, and 25,252.5 crude oil on average. That’s a bit over four modules’ worth of raw materials. What about all four modules being productivity module 3s? After that last step, you have enough leftover material for it after all! It would yield a 28.57% cost drop. Same routine as before, take the input and multiply it by the drop of input factor gives us that we save just under 13 modules’ worth of material. In other words, four productivity module 3s literally pay for themselves three times over per rocket! Rocket Launch Results As we all should know, launching a satellite gets us 1000 space science packs in vanilla. But that’s not the only thing you can launch. There’s space science packs, which yield one fish per pack. Another fact: This is the only way to truly automate fish. Anything else just deletes the items used and does not return anything. However, there is a special achievement for launching some specific thing, but which I’ll not spoil here. Inserting a car, tank, or the thing at the bottom of the Alt-F4 website into it lets you literally ride the rocket. When you press launch, it will wait for you to enter the silo as you would a car, then launch you up into space! Biter Battles Championships everLord Saturday, the Biter Battles Championships start! Yeah! What are Biter Battles? Biter Battles is a scenario created by MewMew from Comfy’s Factorio where two teams compete while being attacked by biters whose goal is to destroy their silo. This means there is no direct player vs player combat, because players are separated by a river in our custom made battle arena. The Biter Battle arena showing the isolated areas for the two teams Each team has to defend their silo from waves of biters attacking every other minute. You can also strengthen your opponent’s biters by sending science packs to increase their tier (small, medium, big, behemoth) and how big the biter swarms are. Sending higher tiers will yield stronger mutagenic results. This scenario is open 24/7 for anyone to join! All you need to do is search for the public game “Free BiterBattles.org”. It is usually the most populated public game, having between 20 and 50 players online most of the time. Then what are The Biter Battles Championships? After four successful tournaments we decided to create a persistent competition on the Biter Battles scenario: A championship split into two leagues. The Behemoth league which will be for the pros, and the Biter league for everyone else. Matches are then 3v3, with an optional fourth player acting as spy, coach, or substitute. It’s played as a double round-robin: all teams in one division will fight twice against every other team of that division, once “at home”, once “away/visitor”. There are important twists to these games. The first aspect is four novelty starter packs which speed up the early game which leads to more dynamic matches and many possible strategies. The other important aspect is Armageddon: After two hours, the evolution of biters speeds up so that the match usually ends before three hours - to avoid endless games. So expect behemoths sooner than later! Seven teams will compete in the Behemoth league. It will start tomorrow (Saterday, 30th of October) with clash between Baquette and Mysticlutchpipenator at 14:00 UTC, and the main event of next week being the clash between SteelAxe versus GreenScience on Thursday November 4 at 19: 00 UTC! You can expect some spectacular gameplay. It is definitely a very different show than regular Factorio. Matches will be streamed by popular streamers, and we will announce all matches and streams on Twitter. The Biter league on the other hand will start in two weeks. Everyone is very welcome to join and show their skills! Registration is still open until Monday, 8th of November. Each team will be required to play once per weekend, and player substitutions are allowed. There are more information about rules, players, practice, and a possible prize at our website: https://bbchampions.org/. From the BBChampions team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Supported by the French Discord Community. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","url":"https://alt-f4.blog/ALTF4-50/","@type":"BlogPosting","author":{"@type":"Person","name":"garr890354839, everLord"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-50/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/50/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/50/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/ru/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/ru/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/ru/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/ru/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Общественный наследник возлюбленным Пятничным Фактам Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-50/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-50/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-50/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-50/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-50/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-50/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-50/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-50/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button button-green lang-button" href="/ru/ALTF4-50/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-50/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #50 - Rocket Silo Curiosities  <author>29-10-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Написали <em>garr890354839, everLord</em>,
+
+
+
+отредактировали <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/50/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Содержание</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#the-rocket-silo-mysteries-in-full-garr890354839">The Rocket Silo: Mysteries in Full <author>garr890354839</author></a>
+    <ul>
+      <li><a href="#power-usage">Power Usage</a></li>
+      <li><a href="#modules-and-the-silo">Modules and the Silo</a></li>
+      <li><a href="#productivity-bonus-interlude">Productivity Bonus Interlude</a></li>
+      <li><a href="#the-rocket-making-process">The Rocket-Making Process</a></li>
+      <li><a href="#rocket-launch-results">Rocket Launch Results</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#biter-battles-championships-everlord">Biter Battles Championships <author>everLord</author></a>
+    <ul>
+      <li><a href="#what-are-biter-battles">What are Biter Battles?</a></li>
+      <li><a href="#then-what-are-the-biter-battles-championships">Then what are The Biter Battles Championships?</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>К сожалению, эта статья ещё не переведена на русский, поэтому она отображается на английском. Если хотите помочь это исправить, присоединяйтесь к <a href="https://alt-f4.blog/ru/discord">нашему Дискорду</a>, чтобы начать. Спасибо!</p>
+
+</div>
+
+
+
+<p>This week is the golden anniversary of Alt-F4, it being issue #50 and all. No special festivities though, feels like we are doing that often enough. Instead, <em>garr890354839</em> makes their first contribution by talking about some of the weirdnesses and some of the math surrounding rocket silos. Then, <em>everLord</em> introduces another community event by the comfy squad called ‘Biter Battle Championship’!</p>
+      <h2 id="the-rocket-silo-mysteries-in-full-garr890354839">
+        
+        
+            <a href="#the-rocket-silo-mysteries-in-full-garr890354839" class="anchor" style="text-decoration: none;">The Rocket Silo: Mysteries in Full <author>garr890354839</author></a>
+          
+        
+      </h2>
+    
+
+<p>Ah, the rocket silo. It is the largest in-game entity outside of the crashed spaceship. It is also one of the most expensive craftable entities. However, when it’s placed, it has some weird effects on the electric grid. We also mostly know that using productivity modules inside of it pays off. What about around the silo? All of that right here!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-1.jpg" alt="The Rocket Silo" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="power-usage">
+        
+        
+            <a href="#power-usage" class="anchor" style="text-decoration: none;">Power Usage</a>
+          
+        
+      </h3>
+    
+
+<p>To start, let’s look at its power usage: It claims to use at most 4MW (which is true), but it only uses 250kW when just manufacturing rocket parts, which is a bit more than three assembling machine 1s (225kW). When does it require 4MW, a bit more than 53 assembling machine 1s, then? Well, when the silo doors are moving, or a rocket is being pushed up. Those things must be heavy! Up until version 1.1.42, it used an additional 10 kW idly at night, but there were no surface lights to indicate this. Back in 0.16, however, there were lights on the silo, as shown below, which is where this came from.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/alt-f4-silo-pic-2.jpg" alt="The Rocket Silo with Lights" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="modules-and-the-silo">
+        
+        
+            <a href="#modules-and-the-silo" class="anchor" style="text-decoration: none;">Modules and the Silo</a>
+          
+        
+      </h3>
+    
+
+<p>You can fit 12 beacons around 3x3 entities, 16 around oil refineries, and 20 around a silo. Two beacons with two speed module 3s each is the same thing throughput-wise as adding a second machine. So one silo can do the work of <em>thirteen</em> silos, side-by-side. Modules and beacons are insanely expensiv however, as the following table shows.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Beacon</th>
+      <th>Module, tier 3</th>
+      <th>4 modules and 2 beacons</th>
+      <th>Silo</th>
+      <th>Rocket from Silo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Iron</td>
+      <td>135</td>
+      <td>1083</td>
+      <td>4602</td>
+      <td>12220</td>
+      <td>49100</td>
+    </tr>
+    <tr>
+      <td>Copper</td>
+      <td>110</td>
+      <td>2000</td>
+      <td>8220</td>
+      <td>8600</td>
+      <td>92500</td>
+    </tr>
+    <tr>
+      <td>Stone</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Coal</td>
+      <td>20</td>
+      <td>190</td>
+      <td>800</td>
+      <td>437</td>
+      <td>9500</td>
+    </tr>
+    <tr>
+      <td>Crude Oil</td>
+      <td>411</td>
+      <td>17334</td>
+      <td>70158</td>
+      <td>11080</td>
+      <td>277778</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When I mention costs, I mean the relevant ores needed without productivity modules in the crafting chain, while using advanced oil processing to break down crude oil. Each <a href="https://factoriolab.github.io/list?p=beacon*1&amp;v=1">beacon</a> costs quite a bit for an early-game player, but nothing compared to automated production of tier 3 modules. That’s because any <a href="https://factoriolab.github.io/list?p=speed-module-3*1&amp;v=1">tier 3 module</a> costs roughly 10x more. While the calculator mentions speed modules specifically, the other two modules of the same tier are equivalent.</p>
+
+<p>So four tier 3 modules and two beacons use a lot of raw materials. With certain optimizations, like the standard 8-beacon array and those shown <a href="https://factorio.com/blog/post/fff-351">here</a>, it’s possible to get more out of your module, but the cost still stands. Normally, this cost greatly outmatches the machine. However, there is one exception to this rule, and that’s the silo. The <a href="https://factoriolab.github.io/list?p=rocket-silo*1&amp;v=1">silo</a> costs a whopping 12,220 iron, 8,600 copper, 437 coal, 11,080 crude oil, and 1,000 stone. The modules and beacons are cheaper than placing down another silo. Less spaghetti involved, too!</p>
+      <h3 id="productivity-bonus-interlude">
+        
+        
+            <a href="#productivity-bonus-interlude" class="anchor" style="text-decoration: none;">Productivity Bonus Interlude</a>
+          
+        
+      </h3>
+    
+
+<p>If you’re a long-time reader of Alt-F4, you might remember <a href="https://alt-f4.blog/ru/ALTF4-12/#complexity-corner-productivity-modules-thekool">issue #12</a>, which is dedicated to productivity and its effects. But for first-time readers or for those needing a refresher, I’ll offer an abridged version of what productivity is: Basically, it’s a multiplier on your output for your given input. When I say crafting operation, I refer to the main bar within the assembling-machine or furnace UI filling up to completion. The way this works is by taking 100 inputs and multiplying that by the percentage bonus from the modules within the machine.</p>
+
+<p>So, for example, take four productivity module 3s inside some copper cable assembling machine 3. The total bonus from the modules is 40%, so 10 copper plates become <code class="language-plaintext highlighter-rouge">20*(1+0.4)=28</code> copper cables. We can calculate the required input for a given output by the reverse of the process. So if we wanted 140 copper cables made with the influence of 4 productivity module 3s, we first divide by the amount per craft (2) to find out we need 70 crafting operations, including those from productivity. Then we divide 70 by the productivity multiplier of 1.4, which will ‘filter out’ the 20 free operations and leave us with the 50 crafting operations that we need to actually execute.</p>
+      <h3 id="the-rocket-making-process">
+        
+        
+            <a href="#the-rocket-making-process" class="anchor" style="text-decoration: none;">The Rocket-Making Process</a>
+          
+        
+      </h3>
+    
+
+<p>The space rocket itself is the main reason why you’d place down a silo. Each <a href="https://factoriolab.github.io/list?p=rocket-part*100&amp;v=1">rocket</a> costs 49,100 iron, 92,500 copper, 9,500 coal, and 277,778 crude oil. This is added onto whatever you throw into the payload slot, but that can vary greatly depending on what you feed it.</p>
+
+<p>In general, for most recipes, productivity modules pay off extremely slowly. For recipes involving a lot of raw materials, it pays off fast however. Especially when used with the silo. Note that productivity doesn’t apply to the rocket itself. In other words, you can’t get two rockets simultaneously. It applies to each rocket part, giving you free parts which count towards your total.</p>
+
+<p>One productivity module 3 in the silo itself drops the cost of each rocket to 10/11 (or 90.91%) of its original cost. This is not from the rocket itself, but rather of the 100 parts you need, since you only need 90.91 on average instead of 100 per rocket. Even a <a href="https://factoriolab.github.io/list?z=eJwrcM7SMjQwUCtyLtDScqvzAkG1MmMAUBsG5Q__">9.09% cost drop</a> saves you 4,463.6 iron, 8,409.1 copper, 863.6 coal, and 25,252.5 crude oil on average. That’s a bit over four modules’ worth of raw materials.</p>
+
+<p>What about all four modules being productivity module 3s? After that last step, you have enough leftover material for it after all! It would yield a 28.57% cost drop. Same routine as before, take the input and multiply it by the drop of input factor gives us that we save just under <a href="https://factoriolab.github.io/list?z=eJwrcA7UMjQxMLLQ0nJKUStyLtDScqsDQ7UyYwBzOAgo">13 modules’ worth</a> of material. In other words, four productivity module 3s literally pay for themselves three times over per rocket!</p>
+      <h3 id="rocket-launch-results">
+        
+        
+            <a href="#rocket-launch-results" class="anchor" style="text-decoration: none;">Rocket Launch Results</a>
+          
+        
+      </h3>
+    
+
+<p>As we all should know, launching a satellite gets us 1000 space science packs in vanilla. But that’s not the only thing you can launch. There’s space science packs, which yield one fish per pack. Another fact: This is the only way to truly automate fish. Anything else just deletes the items used and does not return anything. However, there is a special achievement for launching some specific thing, but which I’ll not spoil here. Inserting a car, tank, or the thing at the bottom of the Alt-F4 website into it lets you literally ride the rocket. When you press launch, it will wait for you to enter the silo as you would a car, then launch you up into space!</p>
+      <h2 id="biter-battles-championships-everlord">
+        
+        
+            <a href="#biter-battles-championships-everlord" class="anchor" style="text-decoration: none;">Biter Battles Championships <author>everLord</author></a>
+          
+        
+      </h2>
+    
+
+<p>Saturday, the Biter Battles Championships start! Yeah!</p>
+      <h3 id="what-are-biter-battles">
+        
+        
+            <a href="#what-are-biter-battles" class="anchor" style="text-decoration: none;">What are Biter Battles?</a>
+          
+        
+      </h3>
+    
+
+<p>Biter Battles is a scenario created by MewMew from <a href="https://getcomfy.eu/discord">Comfy’s Factorio</a> where two teams compete while being attacked by biters whose goal is to destroy their silo. This means there is no direct player vs player combat, because players are separated by a river in our custom made battle arena.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/50/biter-battle-arena.png" alt="Two land masses divided by water." style="max-width: ; max-height:  ">
+        
+        <figcaption>The Biter Battle arena showing the isolated areas for the two teams</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Each team has to defend their silo from waves of biters attacking every other minute. You can also strengthen your opponent’s biters by sending science packs to increase their tier (small, medium, big, behemoth) and how big the biter swarms are. Sending higher tiers will yield stronger mutagenic results. This scenario is open 24/7 for anyone to join! All you need to do is search for the public game “Free BiterBattles.org”. It is usually the most populated public game, having between 20 and 50 players online most of the time.</p>
+      <h3 id="then-what-are-the-biter-battles-championships">
+        
+        
+            <a href="#then-what-are-the-biter-battles-championships" class="anchor" style="text-decoration: none;">Then what are The Biter Battles Championships?</a>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/header.png" alt="Biter Battles Championships" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<div class="yt">
+	<iframe src="https://www.youtube.com/embed/LoXpHYFT6kI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="youtube"></iframe>
+</div>
+
+<p>After four successful tournaments we decided to create a persistent competition on the Biter Battles scenario: A championship split into two leagues. The Behemoth league which will be for the pros, and the Biter league for everyone else. Matches are then 3v3, with an optional fourth player acting as spy, coach, or substitute.</p>
+
+<p>It’s played as a double round-robin: all teams in one division will fight twice against every other team of that division, once “at home”, once “away/visitor”. There are important twists to these games. The first aspect is four novelty starter packs which speed up the early game which leads to more dynamic matches and many possible strategies. The other important aspect is <strong>Armageddon</strong>: After two hours, the evolution of biters speeds up so that the match usually ends before three hours - to avoid endless games. So expect behemoths sooner than later!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/behemoth-league.png" alt="Behemoth League" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Seven teams will compete in the Behemoth league. It will start tomorrow (Saterday, 30th of October) with clash between Baquette and Mysticlutchpipenator at 14:00 UTC, and the main event of next week being the clash between SteelAxe versus GreenScience on Thursday November 4 at 19: 00 UTC! You can expect some spectacular gameplay. It is definitely a very different show than regular Factorio. Matches will be streamed by popular streamers, and we will announce all matches and streams on <a href="https://twitter.com/BiterBattles">Twitter</a>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/biter-league.png" alt="Biter League" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>The Biter league on the other hand will start in two weeks. Everyone is very welcome to join and show their skills! Registration is still open until Monday, 8th of November. Each team will be required to play once per weekend, and player substitutions are allowed. There are more information about rules, players, practice, and a possible prize at our website: <a href="https://bbchampions.org/">https://bbchampions.org/</a>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/50/logo.png" alt="Biter Battles Champions Logo" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>From the BBChampions team: @everLord#4340 @Firerazer#1561 @Antoine#7049 @Macou#5037. Supported by the <a href="https://discord.gg/d2ja9wUd">French Discord Community</a>.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/ru/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=100431">
+    Обсудить на форумах Factorio
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/qibkmo/altf4_50_rocket_silo_curiosities/">
+    Обсудить на Реддите
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/ru/discord">
+    Обсудить на Дискорде
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/ru/ALTF4-49/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/ru/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/ru/ALTF4-51/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/ru/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/ru/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/ru/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Этот сайт - фан-проект и не имеет прямого отношения к Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

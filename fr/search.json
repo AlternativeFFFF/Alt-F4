@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "Pour le numéro d’Alt-F4 de cette semaine, nous retournons à nos racines en tant que successeur spirituel des FFF en nous plongeant dans un sujet technique. Pour cela, redruin1 nous présente sa toute dernière invention : Factorio Draftsman. Bien sûr, il y a déjà eu bien d’autres projets visant à construire une bibliothèque pour générer des plans pour le jeu, mais celui-ci essaie d’être le nouveau standard absolu. Motivations, détails techniques, et quelques projets amusants réalisés avec lui. Tout cela, et plus encore, c’est cette semaine !",
+      "image_alt"      : "Capture d’écran d’un plan de l’Engrenage généré automatiquement avec du béton.",
+      "url"        : "/ALTF4-61/",
+      "title"      : "Alt-F4 #61 - Draftsman : Un module Python pour la création de plans.",
+      "image_src"      : "/assets/ALTF4/61/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "bev, Firerazer",
+      "author"     : "redruin1",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "27-05-2022"
+    },
+    {
       "content"    : "À l’occasion de l’anniversaire de diamant d’Alt-F4, notre fanatique Sir Fendi est de retour une fois de plus avec une plongée en profondeur dans la thermodynamique de Factorio. En d’autres termes, il veut savoir comment vous pouvez tirer le meilleur parti de votre charbon en le transformant en différents combustibles. N’est-ce pas gentil de sa part ? Les modules sont naturellement aussi pris en considération. Pas de demi-mesure.",
       "image_alt"      : "",
       "url"        : "/ALTF4-60/",

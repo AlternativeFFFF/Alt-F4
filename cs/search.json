@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "For this week’s issue of Alt-F4, we return to the roots of being a spiritual successor to the FFF by going deep on a technical topic. To that end, redruin1 presents his newest invention: Factorio Draftsman. Sure, there have been other projects trying to build a library for generating blueprints for the game, but this one tries to be the new gold standard. Motivations, technical details, and a few fun projects realized with it - all that, and more, this week!",
+      "image_alt"      : "A screenshot of an automatically generated gear blueprint using concrete",
+      "url"        : "/ALTF4-61/",
+      "title"      : "Alt-F4 #61 - Draftsman: A Python module for creating blueprints",
+      "image_src"      : "/assets/ALTF4/61/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "",
+      "author"     : "redruin1",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "27-05-2022"
+    },
+    {
       "content"    : "On the diamond anniversary of Alt-F4, local madman Sir Fendi returns once again with a deep dive into Factorio’s thermodynamics. Or, said another way, he wants to find out how you can get the most out of your coal by further processing it into different fuels. Isn’t that nice of him? Modules are naturally also taken into consideration. No half measures.",
       "image_alt"      : "",
       "url"        : "/ALTF4-60/",

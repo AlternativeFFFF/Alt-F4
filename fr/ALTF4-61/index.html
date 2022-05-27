@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #61 - Draftsman : Un module Python pour la création de plans.</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #61 - Draftsman : Un module Python pour la création de plans.">
+<meta name="author" content="redruin1">
+<meta property="og:locale" content="fr">
+<meta name="description" content='Pour le numéro d’Alt-F4 de cette semaine, nous retournons à nos racines en tant que successeur spirituel des FFF en nous plongeant dans un sujet technique. Pour cela, redruin1 nous présente sa toute dernière invention : Factorio Draftsman. Bien sûr, il y a déjà eu bien d’autres projets visant à construire une bibliothèque pour générer des plans pour le jeu, mais celui-ci essaie d’être le nouveau standard absolu. Motivations, détails techniques, et quelques projets amusants réalisés avec lui. Tout cela, et plus encore, c’est cette semaine ! Draftsman redruin1 Il y a quelques mois, j’ai décidé de m’essayer à la création d’une usine qui se développe automatiquement dans Factorio. Après avoir vu un certain nombre d’exemples impressionnants, j’ai eu envie de m’attaquer à ce problème. J’avais déjà eu un aperçu de la logique et de la façon dont l’usine devait se contrôler elle-même, ainsi que de grandes idées sur les choses impressionnantes que je pouvais lui faire faire. Le seul problème était que je n’avais jamais utilisé les circuits logiques auparavant, et que j’avais l’intention de les utiliser pour la prise de décision. Ce n’est pas un problème, il suffit de créer un monde brouillon, de passer en éditeur et de commencer à jouer ! 1 / 3 2 / 3 Toute tentative de comprendre les gribouillages dénués de sens d’un fou n’aboutira qu’à la déception et au désespoir. 3 / 3 QUOI ? SEULEMENT ? ❮ ❯ Je me suis peut-être un peu emporté. Voici une unité centrale que j’ai faite. C’est la septième révision (il me semble). Elle possède une ROM, une RAM, une pile, 256 registres, plus de 40 instructions, des points d’arrêt et des étapes de code, des interruptions matérielles et logicielles, ainsi qu’une interface de circuit généralisée pour interagir avec d’autres machines. Ah, Factorio. L’un des seuls jeux où vous devenez littéralement plus intelligent en y jouant plusieurs fois. Ironiquement, je ne suis pas vraiment ici pour parler de tout ça. C’est juste une introduction. Je commençais la deuxième révision de l’ordinateur et je voulais une ROM plus compacte. J’ai conçu le modèle ci-dessous, qui permet de stocker de vrais nombres de 32 bits et peut conserver 4 KiB de données par ligne : Tout commence quelque part. La ROM est très dense, mais elle fonctionne sur un système où chaque valeur est scindée et stockée en deux nombres de 16 bits, qui sont ensuite recombinés à la sortie. Les ROMs sont normalement fastidieuses à créer, en encodant manuellement chaque signal que vous voulez, un par un, mais cette conception était encore plus complexe. Je devais maintenant diviser, faire un ET bit à bit, faire un décalage à droite bit à bit, et remplir non pas un signal, mais deux, à deux endroits spécifiques différents, en m’assurant qu’ils avaient tous les deux la bonne valeur et le bon type de signal. Inutile de dire qu’il allait être pénible de définir des dizaines de valeurs, sans parler des centaines, ou des milliers de valeurs que la machine était capable de stocker. La solution ? Prendre un ordinateur pour le faire à ma place. Il peut digérer cette tâche bien mieux que je ne le pourrai jamais, et il peut aussi le faire bien plus rapidement. La fonction d’importation de chaîne de caractères de plan de Factorio peut prendre n’importe quelle chaîne correctement formatée. Tout ce que j’avais à faire était de créer cette chaîne de caractères selon mes spécifications avec les données que je voulais et je pouvais simplement la coller là où c’était nécessaire. Ce concept n’est pas nouveau, loin de là. Même une recherche rapide permet de trouver de nombreux exemples d’utilisation pratique : le module NPM factorio-blueprint de demipixel, le compilateur de justarandomgeek pour son ordinateur massif en circuits logiques, un langage d’instruction générique en circuits logiques de Jobarion, des convertisseurs d’images en plans, etc. La liste est longue. Avec tous ces exemples, j’espérais pouvoir trouver des similitudes avec l’un d’entre eux et m’en servir comme base de référence pour ma solution afin d’éviter de “refaire” le même parcours. Mais quelque chose me préoccupait dans les solutions proposées : elles avaient toutes des problèmes ! De nombreuses implémentations étaient hautement spécifiques au domaine pour lequel elles avaient été écrites. Un script de compilateur d’ordinateur en circuits logiques n’allait pas être portable pour de nombreuses autres utilisations que la compilation de code pour un ordinateur spécifique. Il leur manquait un langage unifié. Beaucoup étaient écrites en Lua, certaines en Python, une autre en JavaScript, une autre en C++, etc. Cela signifie que chacun devait écrire ses propres implémentations pour les mêmes opérations, au lieu de simplement avoir quelqu’un qui écrive l’implémentation dont il a besoin et la mette à la disposition des autres. Beaucoup d’entre elles ont été écrites pour des versions de Factorio qui sont maintenant largement dépassées. La documentation pour un grand nombre de ces modules était éparse et sporadique, ce qui rebute les utilisateurs comme moi qui veulent savoir ce dont le module est capable avant d’investir du temps pour apprendre à l’utiliser. Fondamentalement insatisfait des options proposées, je me suis résigné à mon sort. J’allais devoir suivre les traces de tous ceux qui m’avaient précédé et développer ma propre mise en œuvre en partant de zéro. Quelle tâche ardue ! En un après-midi, j’ai créé un prototype de script qui faisait exactement ce dont j’avais besoin et qui fonctionnait parfaitement. Il utilisait un système de modèles et il a fallu moins d’une semaine pour le terminer complètement. Je n’exagère pas : si j’avais été un homme plus déterminé, j’en serais resté là et j’aurais fait autre chose de ma vie. Mais ensuite, j’ai commencé à me poser des questions. Il ne serait pas si difficile de mettre à jour un module comme factorio-blueprint pour un Factorio plus récent, et je parie que je pourrais trouver un moyen d’extraire automatiquement les données de Factorio lui-même, de sorte que vous n’auriez jamais à mettre à jour manuellement les fichiers sources à chaque version. Puis j’ai commencé à avoir des idées ambitieuses sur la façon dont je pourrais écrire de la documentation pour la clé complexe et largement non documentée control_behavior dans les entités, ou ajouter des types d’entités personnalisés pour créer et manipuler des groupes d’entités, ou même, Dieu m’en garde, ajouter un support pour mods dans le mélange. C’était il y a trois ou quatre mois. Bref, voici un module Python que j’ai réalisé. Je vous présente : factorio-draftsman J’ai passé en revue des dizaines de combinaisons différentes de commandes de tuiles avant de me décider pour celle-ci. Draftsman est un module Python pour créer, modifier, importer et exporter toutes sortes de chaînes de plans de Factorio. Le module vous permet de créer et de concevoir des plans par le biais d’un programme, afin d’aider au développement de plans fastidieux et répétitifs qui seraient insoutenables à créer à la main, un peu comme le problème que j’ai rencontré décrit ci-dessus. Draftsman tente de résoudre tous les défauts des implémentations existantes de plans dans Factorio : Draftsman fait tout. Tous les types d’entités sont reconnus, des répartiteurs aux bras haute capacité. Si vous pouvez le faire dans le jeu, vous pouvez le faire avec Draftsman. Il vous permet ainsi de vous concentrer sur le seul problème que vous essayez réellement de résoudre. Draftsman est uni-langage. Ecrit en Python, cela le rend exceptionnellement facile à installer, simple à utiliser, et donne à l’utilisateur l’accès à l’intégralité du vaste index de la bibliothèque Python. Il y a de fortes chances que vous puissiez le faire en Python avec Draftsman, quelle que soit la chose, liée à Factorio, que vous êtes en train de faire. Draftsman est facile à utiliser. Conçu dès le départ pour être simple et (le plus important) auto-documenté, Draftsman vous permet de manipuler des plans et des entités par des attributs et des méthodes qui se complètent automatiquement. Draftsman est bien documenté. Chaque fonction, méthode, attribut, et classe est documentée et reliée à son site Readthedocs. De plus, des tutoriels et du matériel supplémentaire sont fournis, ainsi qu’un grand nombre d’exemples de programmes pour aider à illustrer le fonctionnement de Draftsman. Draftsman est stable. Une suite rigoureuse de tests assure que Draftsman se comporte de manière prévisible et correcte (ou au moins suffisamment correcte), avec une couverture de code de 100%. Draftsman a été testé pour fonctionner sur les dernières versions de Python 2 et 3, et est compatible avec toutes les versions de Factorio supérieures à 1.0, avec les métriques pour le prouver. Draftsman est descriptif. Draftsman applique la philosophie de “Factorio-sécurité”, ce qui signifie que si un plan entraîne une erreur à l’importation, celle-ci est signalée. Draftsman essaye également de faire respecter la “Factorio- exactitude”, ce qui signifie que les valeurs qui ne sont pas cassées, mais qui sont autrement absurdes, feront apparaître des avertissements. Les erreurs et les avertissements sont explicites, de sorte que tout problème avec votre script peut être compris et résolu en quelques secondes. Draftsman est proche de la source. Draftsman base toutes ses données sur le référentiel factorio-data de Wube, ce qui signifie que toutes les entités sont exactement comme vous vous y attendez dans le jeu, sans aucune incohérence. Cela maintient Draftsman à jour, facilite la mise à jour de Draftsman pour les futures versions de Factorio, et permet au contrôle de version de suivre les changements entre Draftsman et Factorio, si une rupture devait se produire. Draftsman supporte les mods. Draftsman émule directement le cycle de vie des données dans Factorio, ce qui signifie que le même processus de chargement qui se produit lorsque vous lancez le jeu est reproduit grâce à une seule fonction dans Draftsman. En plus d’assurer une fidélité absolue à Factorio, cela veut aussi dire que les prototypes personnalisés issus de mods sont accessibles depuis Draftsman, comme s’il s’agissait de toute autre entité classique. Draftsman a des classes personnalisées conçues spécialement autour de chaque entité et prototype, et est conçu pour fonctionner de manière aussi transparente que possible avec les chaînes de plans et autres logiciels. Draftsman convertit ces prototypes quand vous importez et exportez des chaînes de plans automatiquement, sans aucune étape supplémentaire. Vous pouvez importer une chaîne de plans de Factorio en tant qu’objet Blueprint, faire tous les changements que vous voulez, et ensuite exporter cet objet Blueprint en tant que chaîne. Ou bien, vous pouvez simplement créer un tout nouveau Blueprint à partir de zéro. Draftsman est conçu pour travailler autour de vous, pas pour que vous travailliez autour de lui. Draftsman a aussi une aide pour les objets personnalisés “EntityLike”, plus particulièrement les objets “Group”, qui vous permettent de créer des constructions personnalisées qui peuvent être insérées dans les plans pour aider à la clarté et au compartimentage. Par exemple, vous pouvez faire une conception pour un bloc de fonderie dans un Groupe, et ensuite vous pouvez placer ce bloc autant de fois que vous le voulez, où vous le voulez, tourné ou inversé, agissant en fait comme un outil copier-coller dans Draftsman. Dans un souci de brièveté, je ne vais pas entrer dans les détails du module ou de son fonctionnement. J’ai passé beaucoup de temps à rédiger une documentation à cet effet. Je vais plutôt montrer quelques objets que j’ai réalisés jusqu’à présent, ainsi que des objets susceptibles d’être réalisés à l’avenir, pour essayer d’illustrer exactement pourquoi j’ai passé tout ce temps à le fabriquer au départ. Taille automatique des piles d’objets Souvent, vous voulez déterminer le stockage dont vous avez besoin pour une quantité spécifique d’un objet. Cependant, le stockage dans Factorio est basé sur des emplacements, et non sur des quantités, de sorte que la quantité de stockage dépend en fait non seulement de la quantité que vous essayez de stocker, mais aussi de la taille de la pile de cet objet. Vous pouvez concevoir un mécanisme en circuits logiques pour déterminer le nombre d’emplacements dont vous avez besoin pour n’importe quel objet en entrée, mais vous auriez besoin d’un grand tableau d’émetteurs de constantes documentant les tailles des objets. C’est ennuyeux à faire, et facilement brisé si un nouvel objet est ajouté ou si la taille de la pile est modifiée. Il est clair que pour une tâche aussi simple et répétitive, un script est mieux adapté : # Créez une grille N x 5 cellule d’émetteurs de constantes connectés, avec chaque objet et sa taille d’empilement. from draftsman.blueprintable import Blueprint from draftsman.constants import Direction from draftsman.data import items from draftsman.entity import ConstantCombinator COMBINATOR_HEIGHT = 5 def main(): blueprint = Blueprint() signals_added = 0 signal_index = 0 combinators_added = 0 x = 0 y = 0 combinator = ConstantCombinator(direction=Direction.SOUTH) # Itérer sur chaque objet dans l’ordre : for item in items.raw: # Ignorer les objets/entités cachés if "flags" in items.raw[item]: if "hidden" in items.raw[item]["flags"]: continue # Garder la trace du nombre de signaux que nous avons traversés. signals_added += 1 # Écrire le signal de la taille de la pile stack_size = items.raw[item]["stack_size"] combinator.set_signal(signal_index, item, stack_size) signal_index += 1 # Une fois qu’on a dépassé le nombre de signaux qu’un émetteur de constantes peut contenir, on le place et on remet à zéro. if signal_index == combinator.item_slot_count: # Ajoutez l’émetteur de constantes au plan combinator.id = "{}_{}".format(x, y) blueprint.entities.append(combinator) # Réinitialiser l’émetteur de constantes combinators_added += 1 y = combinators_added % COMBINATOR_HEIGHT x = int(combinators_added / COMBINATOR_HEIGHT) combinator.set_signals(None) # Réinitialiser les signaux combinator.tile_position = (x, y) signal_index = 0 # Ajouter le dernier émetteur de constantes s’il est partiellement plein if len(combinator.signals) &gt; 0: combinator.id = "{}_{}".format(x, y) blueprint.entities.append(combinator) # Ajouter des connexions vers chaque voisin for cx in range(x): for cy in range(COMBINATOR_HEIGHT): here = "{}_{}".format(cx, cy) right = "{}_{}".format(cx + 1, cy) below = "{}_{}".format(cx, cy + 1) try: blueprint.add_circuit_connection("red", here, right) except KeyError: pass try: blueprint.add_circuit_connection("red", here, below) except KeyError: pass print("Total number of item signals added:", signals_added) print(blueprint.to_string()) if __name__ == "__main__": main() Ce script est concis et facile à suivre, mais la chose vraiment étonnante au sujet de Draftsman est que ce script est complètement dynamique et peut s’adapter à n’importe quelle version de Factorio que vous jouez. Les nouveaux objets, les objets supprimés, ou les changements de taille de pile, quel que soit l’auteur du changement, sont corrigés automatiquement avec exactement le même code. À titre d’illustration, la photo en haut à gauche montre ce qui est généré par l’exécution du script pour un jeu classique, en haut à droite un jeu avec le modpack de révision de taille moyenne Space Exploration, et en bas un méga-modpack Bob + Pyanodon : Ceci ne s’applique pas seulement aux objets. Toutes les entités, instruments, signaux, recettes, modules, et tuiles sont extraits du processus de chargement émulé et ensuite stockés dans Draftsman pour une utilisation ultérieure. N’importe quel script peut être conçu pour être complètement flexible à travers ces catégories : des instruments supplémentaires dans un nouveau haut-parleur programmable, de nouveaux types de modules seulement dans certaines machines, des listes complètes de signaux virtuels pour les affectations de signaux, etc…, tous sont interprétés correctement par Draftsman. Sauvegarder les données de la configuration actuelle des mods en interne pour plus tard, cela signifie également que vous ne devez mettre à jour les données qu’une seule fois, chaque fois que vous changez les mods que vous utilisez. Convertisseur d’images en plans C’est quelque chose que j’ai fait sur un coup de tête. Il utilise la librairie d’images Pillow pour charger une image et la convertir en un plan destiné à être visible depuis la vue de la carte, le tout en moins de 150 lignes de code : Un homme particulier avec une bouteille de taille inhabituelle, colorisé. De nombreuses améliorations pourraient y être apportées : Le tramage n’est implémenté que sur les tuiles 1x1. J’ai eu du mal à ajuster l’algorithme aux entités multi-tuiles. Les entités multi-tuiles ne parviennent pas non plus à ajuster la propriété de la métrique d’erreur. La mise en place de la mise en couleur ne fonctionne pas aussi bien lorsque certains pixels sont de tailles différentes. Certaines entités multi-tuiles ont des rotations différentes. Une meilleure implémentation vérifierait quelle orientation produit le moins d’erreur avant de les placer, au lieu de les placer uniquement avec l’orientation par défaut. Les couleurs elles-mêmes sont codées en dur. Ce serait bien de pouvoir les charger dynamiquement à partir du jeu, surtout avec les couleurs de cartes modifiées… Malgré ces défauts, le résultat est assez bon pour une implémentation rapide et simple. Cela montre que Draftsman est assez polyvalent pour des buts plutôt diversifiés. Jay Bauman, pirate informatique notoire, criminel en liberté. Armé et dangereux. Résurrection du lecteur vidéo de Factorio Il y a quelques temps, en cherchant des projets à utiliser comme exemples pour cet article, je suis tombé sur le classique Factorio - Sandstorm. Un projet parfait à adapter. Ou, il l’aurait été, si j’avais pu charger la carte dans le jeu ! La version originale de la carte était encore datée de la tendre version 0.14.20. De plus, un grand nombre des migrations qui ont eu lieu sur une si longue période ont cassé la fonctionnalité du script permettant de convertir les images en données cartographiques, ainsi que certaines fonctionnalités de la carte elle-même, de sorte qu’il ne suffisait pas de télécharger une ancienne version de Factorio et de la contraindre pour faire revivre l’ancienne sauvegarde. Par exemple, le script build.lua en charge de l’encodage appelait encore les objets automation-science-pack et logistic-science-pack, science-pack-1 et science-pack-2. Cela devrait vous donner une idée de l’ancienneté de la carte ! Cela m’a troublé, de voir une telle pièce emblématique de l’histoire de Factorio tomber en désuétude. J’ai donc pris le temps de corriger les problèmes et de le migrer jusqu’à la version 1.1.57 : &lt;/source&gt; Clip musical de Feel The Beat On voit ici un extrait de Feel the Beat, qui perpétue la tradition des clips musicaux de Darude. Changer le script de construction pouvait être fait à la main, mais le signal raw-wood que la machine utilisait en interne n’existe plus dans le Factorio moderne. Afin de le corriger, j’ai remplacé toutes les occurrences du signal dans la carte par artillery-wagon (puisque je savais qu’il serait unique), et cette mise à jour de la carte a été faite avec un script exécutant du code de Draftsman. J’ai également ajouté un certain nombre d’autres scripts pour extraire les images de la source, ainsi que pour prendre des captures d’écran du résultat et les assembler dans une vidéo de sortie, ce qui est assez facile en Python. J’ai utilisé ces scripts pour produire le résultat ci-dessus. Je me suis également penché sur l’idée d’utiliser Draftsman pour créer une version du script de construction basée sur un plan, au lieu de la méthode originale basée sur la console. Cela vous permettrait de voir exactement quelles parties de la mémoire vous modifiez en plaçant un plan aligné sur une grille au-dessus d’elles, et vous permettrait également d’étendre la mémoire de la machine en ajoutant simplement plus de blocs (la mémoire fournie sur la carte est seulement suffisante pour 4800 images). Je me suis dit que c’était moins important que de mettre à jour ce qui était là à l’origine, surtout quand je savais que le code qui était déjà là fonctionnait. Il pourrait y avoir d’autres préoccupations : la quantité de données encodées est assez importante, surtout pour les chaînes de caractères du plan qui, je pense, sont moins denses que les scripts de la console, qui sont si volumineux qu’ils sont transférés dans des fichiers texte lors de la construction. J’ai pensé que la détermination de la faisabilité d’une méthode de plan était possible jusqu’à ce que j’aie un peu plus de temps libre. Pour plus d’informations sur ce qui a été modifié ou ajouté, ainsi que sur la sauvegarde mise à jour, vous pouvez consulter ma fourche Github ici. Et ensuite ? Bien que j’aie fait un certain nombre de choses avec ce module, le but de celui-ci était de permettre à quiconque de faire facilement tout un tas d’autres choses également. Certaines idées que j’aimerais faire, mais que je n’ai pas encore faites, je les reporterai ici pour alimenter la réflexion : De nombreux compilateurs d’ordinateurs en logique sont écrits via un script. Peut-être que quelqu’un pourrait concevoir un équivalent de LLVM, un compilateur générique, où vous pouvez lui dire quelles instructions votre CPU peut exécuter et lui faire compiler des langages établis de haut niveau comme le C. Peut-être que vous pourriez même utiliser LLVM lui-même ? Tirer parti du comportement des cas limites pour des problèmes d’optimisation spécifiques. Saviez-vous que vous pouvez configurer les entités pour demander n’importe quel objet, et pas seulement des modules ? Vous ne pouvez demander des objets qu’au moment de leur construction initiale, ce qui limite quelque peu leur utilité, mais les robots répondront à la demande, ce qui vous permettra de “relancer” la production dans certains cas. Avec quelque chose comme le mod Recursive Blueprints, en plaçant des machines d’assemblage avec des demandes d’objets, puis en les déconstruisant lorsqu’elles ont fini de consommer leurs ingrédients, vous pouvez théoriquement construire une usine entièrement automatisée avec seulement des robots de construction. Peut-être que la Micro Factory peut être optimisée davantage ? Ou un nouvel objectif pourrait être d’avoir le plus petit nombre total d’entités pour lancer une fusée sans intervention de l’utilisateur ? Un cas d’utilisation peut-être plus généralement applicable est ce plan, une tourelle à un seul canon qui demande automatiquement 200 munitions rouges au réseau logistique lorsqu’elle est placée. C’est particulièrement utile dans les efforts offensifs sur les grands nids. Vous pouvez spammer les tourelles autour de vous et les robots de votre inventaire créeront les tourelles et livreront les munitions automatiquement, ce qui vous permet de vous concentrer sur le fait de ne pas vous dissoudre dans la bave de cracheurs. &lt;/source&gt; Une illustration du plan de la tourelle en action. Problèmes d’acheminement : passer par un ensemble d’avant-poste et utiliser un algorithme pour les relier automatiquement afin de minimiser la distance, le nombre de traversées, etc. Peut-être pourriez-vous le faire lire à partir des fichiers de sauvegarde eux-mêmes ? Les dispositifs de circuits logiques sont généralement très complexes et peu intuitifs à décoder pour le profane, comme je l’ai constaté lors de mon exploration approfondie dans l’introduction. Cela est dû à la densité des circuits, aux opérations cachées de chaque entité, au fouillis de fils généré sans possibilité de les connecter proprement dans de petites zones, et à l’impossibilité de donner des étiquettes aux circuits logiques ou aux fils qui les connectent. Ce serait bien d’avoir un logiciel capable de prendre un plan en entrée et de permettre à l’utilisateur de faire tout ce qui précède pour créer une documentation facilement décodable et compréhensible pour des montages de circuits complexes. J’adorerais utiliser une telle chose pour créer des schémas de circuit vectorisés pour mon ordinateur. Quand je l’aurai terminé. Éventuellement. Utiliser la satisfaction de contraintes pour concevoir des plans. J’ai expérimenté cela dans le passé, et cela devrait être possible, en supposant que vous puissiez réduire la complexité temporelle de O(MFG). Si je décide d’écrire un autre article pour Alt-F4, ce sera peut-être sur ce sujet. Vous pouvez également utiliser les réseaux neuronaux pour l’objectif précédent. C’est Python après tout ! Je me demande si vous pourriez vraiment obtenir des plans utilisables de cette façon. Peut-être que si vous les formiez sur l’ensemble de Factorio Prints… Avec un peu de chance, cela devrait donner aux plus créatifs d’entre vous quelques idées intéressantes. Et peut-être, juste peut-être, lorsque quelqu’un aura besoin d’écrire un script pour un problème spécifique afin de gagner du temps, il pourra effectivement gagner du temps au lieu de passer trois à quatre mois à écrire un module Python à partir de rien. Eh, c’était quand même assez amusant à faire. Éducatif, aussi. &lt;/source&gt; Ça marche ! Ça marche ! Dieu merci. Ah, enfin. Retour au vrai travail. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !'>
+<meta property="og:description" content='Pour le numéro d’Alt-F4 de cette semaine, nous retournons à nos racines en tant que successeur spirituel des FFF en nous plongeant dans un sujet technique. Pour cela, redruin1 nous présente sa toute dernière invention : Factorio Draftsman. Bien sûr, il y a déjà eu bien d’autres projets visant à construire une bibliothèque pour générer des plans pour le jeu, mais celui-ci essaie d’être le nouveau standard absolu. Motivations, détails techniques, et quelques projets amusants réalisés avec lui. Tout cela, et plus encore, c’est cette semaine ! Draftsman redruin1 Il y a quelques mois, j’ai décidé de m’essayer à la création d’une usine qui se développe automatiquement dans Factorio. Après avoir vu un certain nombre d’exemples impressionnants, j’ai eu envie de m’attaquer à ce problème. J’avais déjà eu un aperçu de la logique et de la façon dont l’usine devait se contrôler elle-même, ainsi que de grandes idées sur les choses impressionnantes que je pouvais lui faire faire. Le seul problème était que je n’avais jamais utilisé les circuits logiques auparavant, et que j’avais l’intention de les utiliser pour la prise de décision. Ce n’est pas un problème, il suffit de créer un monde brouillon, de passer en éditeur et de commencer à jouer ! 1 / 3 2 / 3 Toute tentative de comprendre les gribouillages dénués de sens d’un fou n’aboutira qu’à la déception et au désespoir. 3 / 3 QUOI ? SEULEMENT ? ❮ ❯ Je me suis peut-être un peu emporté. Voici une unité centrale que j’ai faite. C’est la septième révision (il me semble). Elle possède une ROM, une RAM, une pile, 256 registres, plus de 40 instructions, des points d’arrêt et des étapes de code, des interruptions matérielles et logicielles, ainsi qu’une interface de circuit généralisée pour interagir avec d’autres machines. Ah, Factorio. L’un des seuls jeux où vous devenez littéralement plus intelligent en y jouant plusieurs fois. Ironiquement, je ne suis pas vraiment ici pour parler de tout ça. C’est juste une introduction. Je commençais la deuxième révision de l’ordinateur et je voulais une ROM plus compacte. J’ai conçu le modèle ci-dessous, qui permet de stocker de vrais nombres de 32 bits et peut conserver 4 KiB de données par ligne : Tout commence quelque part. La ROM est très dense, mais elle fonctionne sur un système où chaque valeur est scindée et stockée en deux nombres de 16 bits, qui sont ensuite recombinés à la sortie. Les ROMs sont normalement fastidieuses à créer, en encodant manuellement chaque signal que vous voulez, un par un, mais cette conception était encore plus complexe. Je devais maintenant diviser, faire un ET bit à bit, faire un décalage à droite bit à bit, et remplir non pas un signal, mais deux, à deux endroits spécifiques différents, en m’assurant qu’ils avaient tous les deux la bonne valeur et le bon type de signal. Inutile de dire qu’il allait être pénible de définir des dizaines de valeurs, sans parler des centaines, ou des milliers de valeurs que la machine était capable de stocker. La solution ? Prendre un ordinateur pour le faire à ma place. Il peut digérer cette tâche bien mieux que je ne le pourrai jamais, et il peut aussi le faire bien plus rapidement. La fonction d’importation de chaîne de caractères de plan de Factorio peut prendre n’importe quelle chaîne correctement formatée. Tout ce que j’avais à faire était de créer cette chaîne de caractères selon mes spécifications avec les données que je voulais et je pouvais simplement la coller là où c’était nécessaire. Ce concept n’est pas nouveau, loin de là. Même une recherche rapide permet de trouver de nombreux exemples d’utilisation pratique : le module NPM factorio-blueprint de demipixel, le compilateur de justarandomgeek pour son ordinateur massif en circuits logiques, un langage d’instruction générique en circuits logiques de Jobarion, des convertisseurs d’images en plans, etc. La liste est longue. Avec tous ces exemples, j’espérais pouvoir trouver des similitudes avec l’un d’entre eux et m’en servir comme base de référence pour ma solution afin d’éviter de “refaire” le même parcours. Mais quelque chose me préoccupait dans les solutions proposées : elles avaient toutes des problèmes ! De nombreuses implémentations étaient hautement spécifiques au domaine pour lequel elles avaient été écrites. Un script de compilateur d’ordinateur en circuits logiques n’allait pas être portable pour de nombreuses autres utilisations que la compilation de code pour un ordinateur spécifique. Il leur manquait un langage unifié. Beaucoup étaient écrites en Lua, certaines en Python, une autre en JavaScript, une autre en C++, etc. Cela signifie que chacun devait écrire ses propres implémentations pour les mêmes opérations, au lieu de simplement avoir quelqu’un qui écrive l’implémentation dont il a besoin et la mette à la disposition des autres. Beaucoup d’entre elles ont été écrites pour des versions de Factorio qui sont maintenant largement dépassées. La documentation pour un grand nombre de ces modules était éparse et sporadique, ce qui rebute les utilisateurs comme moi qui veulent savoir ce dont le module est capable avant d’investir du temps pour apprendre à l’utiliser. Fondamentalement insatisfait des options proposées, je me suis résigné à mon sort. J’allais devoir suivre les traces de tous ceux qui m’avaient précédé et développer ma propre mise en œuvre en partant de zéro. Quelle tâche ardue ! En un après-midi, j’ai créé un prototype de script qui faisait exactement ce dont j’avais besoin et qui fonctionnait parfaitement. Il utilisait un système de modèles et il a fallu moins d’une semaine pour le terminer complètement. Je n’exagère pas : si j’avais été un homme plus déterminé, j’en serais resté là et j’aurais fait autre chose de ma vie. Mais ensuite, j’ai commencé à me poser des questions. Il ne serait pas si difficile de mettre à jour un module comme factorio-blueprint pour un Factorio plus récent, et je parie que je pourrais trouver un moyen d’extraire automatiquement les données de Factorio lui-même, de sorte que vous n’auriez jamais à mettre à jour manuellement les fichiers sources à chaque version. Puis j’ai commencé à avoir des idées ambitieuses sur la façon dont je pourrais écrire de la documentation pour la clé complexe et largement non documentée control_behavior dans les entités, ou ajouter des types d’entités personnalisés pour créer et manipuler des groupes d’entités, ou même, Dieu m’en garde, ajouter un support pour mods dans le mélange. C’était il y a trois ou quatre mois. Bref, voici un module Python que j’ai réalisé. Je vous présente : factorio-draftsman J’ai passé en revue des dizaines de combinaisons différentes de commandes de tuiles avant de me décider pour celle-ci. Draftsman est un module Python pour créer, modifier, importer et exporter toutes sortes de chaînes de plans de Factorio. Le module vous permet de créer et de concevoir des plans par le biais d’un programme, afin d’aider au développement de plans fastidieux et répétitifs qui seraient insoutenables à créer à la main, un peu comme le problème que j’ai rencontré décrit ci-dessus. Draftsman tente de résoudre tous les défauts des implémentations existantes de plans dans Factorio : Draftsman fait tout. Tous les types d’entités sont reconnus, des répartiteurs aux bras haute capacité. Si vous pouvez le faire dans le jeu, vous pouvez le faire avec Draftsman. Il vous permet ainsi de vous concentrer sur le seul problème que vous essayez réellement de résoudre. Draftsman est uni-langage. Ecrit en Python, cela le rend exceptionnellement facile à installer, simple à utiliser, et donne à l’utilisateur l’accès à l’intégralité du vaste index de la bibliothèque Python. Il y a de fortes chances que vous puissiez le faire en Python avec Draftsman, quelle que soit la chose, liée à Factorio, que vous êtes en train de faire. Draftsman est facile à utiliser. Conçu dès le départ pour être simple et (le plus important) auto-documenté, Draftsman vous permet de manipuler des plans et des entités par des attributs et des méthodes qui se complètent automatiquement. Draftsman est bien documenté. Chaque fonction, méthode, attribut, et classe est documentée et reliée à son site Readthedocs. De plus, des tutoriels et du matériel supplémentaire sont fournis, ainsi qu’un grand nombre d’exemples de programmes pour aider à illustrer le fonctionnement de Draftsman. Draftsman est stable. Une suite rigoureuse de tests assure que Draftsman se comporte de manière prévisible et correcte (ou au moins suffisamment correcte), avec une couverture de code de 100%. Draftsman a été testé pour fonctionner sur les dernières versions de Python 2 et 3, et est compatible avec toutes les versions de Factorio supérieures à 1.0, avec les métriques pour le prouver. Draftsman est descriptif. Draftsman applique la philosophie de “Factorio-sécurité”, ce qui signifie que si un plan entraîne une erreur à l’importation, celle-ci est signalée. Draftsman essaye également de faire respecter la “Factorio- exactitude”, ce qui signifie que les valeurs qui ne sont pas cassées, mais qui sont autrement absurdes, feront apparaître des avertissements. Les erreurs et les avertissements sont explicites, de sorte que tout problème avec votre script peut être compris et résolu en quelques secondes. Draftsman est proche de la source. Draftsman base toutes ses données sur le référentiel factorio-data de Wube, ce qui signifie que toutes les entités sont exactement comme vous vous y attendez dans le jeu, sans aucune incohérence. Cela maintient Draftsman à jour, facilite la mise à jour de Draftsman pour les futures versions de Factorio, et permet au contrôle de version de suivre les changements entre Draftsman et Factorio, si une rupture devait se produire. Draftsman supporte les mods. Draftsman émule directement le cycle de vie des données dans Factorio, ce qui signifie que le même processus de chargement qui se produit lorsque vous lancez le jeu est reproduit grâce à une seule fonction dans Draftsman. En plus d’assurer une fidélité absolue à Factorio, cela veut aussi dire que les prototypes personnalisés issus de mods sont accessibles depuis Draftsman, comme s’il s’agissait de toute autre entité classique. Draftsman a des classes personnalisées conçues spécialement autour de chaque entité et prototype, et est conçu pour fonctionner de manière aussi transparente que possible avec les chaînes de plans et autres logiciels. Draftsman convertit ces prototypes quand vous importez et exportez des chaînes de plans automatiquement, sans aucune étape supplémentaire. Vous pouvez importer une chaîne de plans de Factorio en tant qu’objet Blueprint, faire tous les changements que vous voulez, et ensuite exporter cet objet Blueprint en tant que chaîne. Ou bien, vous pouvez simplement créer un tout nouveau Blueprint à partir de zéro. Draftsman est conçu pour travailler autour de vous, pas pour que vous travailliez autour de lui. Draftsman a aussi une aide pour les objets personnalisés “EntityLike”, plus particulièrement les objets “Group”, qui vous permettent de créer des constructions personnalisées qui peuvent être insérées dans les plans pour aider à la clarté et au compartimentage. Par exemple, vous pouvez faire une conception pour un bloc de fonderie dans un Groupe, et ensuite vous pouvez placer ce bloc autant de fois que vous le voulez, où vous le voulez, tourné ou inversé, agissant en fait comme un outil copier-coller dans Draftsman. Dans un souci de brièveté, je ne vais pas entrer dans les détails du module ou de son fonctionnement. J’ai passé beaucoup de temps à rédiger une documentation à cet effet. Je vais plutôt montrer quelques objets que j’ai réalisés jusqu’à présent, ainsi que des objets susceptibles d’être réalisés à l’avenir, pour essayer d’illustrer exactement pourquoi j’ai passé tout ce temps à le fabriquer au départ. Taille automatique des piles d’objets Souvent, vous voulez déterminer le stockage dont vous avez besoin pour une quantité spécifique d’un objet. Cependant, le stockage dans Factorio est basé sur des emplacements, et non sur des quantités, de sorte que la quantité de stockage dépend en fait non seulement de la quantité que vous essayez de stocker, mais aussi de la taille de la pile de cet objet. Vous pouvez concevoir un mécanisme en circuits logiques pour déterminer le nombre d’emplacements dont vous avez besoin pour n’importe quel objet en entrée, mais vous auriez besoin d’un grand tableau d’émetteurs de constantes documentant les tailles des objets. C’est ennuyeux à faire, et facilement brisé si un nouvel objet est ajouté ou si la taille de la pile est modifiée. Il est clair que pour une tâche aussi simple et répétitive, un script est mieux adapté : # Créez une grille N x 5 cellule d’émetteurs de constantes connectés, avec chaque objet et sa taille d’empilement. from draftsman.blueprintable import Blueprint from draftsman.constants import Direction from draftsman.data import items from draftsman.entity import ConstantCombinator COMBINATOR_HEIGHT = 5 def main(): blueprint = Blueprint() signals_added = 0 signal_index = 0 combinators_added = 0 x = 0 y = 0 combinator = ConstantCombinator(direction=Direction.SOUTH) # Itérer sur chaque objet dans l’ordre : for item in items.raw: # Ignorer les objets/entités cachés if "flags" in items.raw[item]: if "hidden" in items.raw[item]["flags"]: continue # Garder la trace du nombre de signaux que nous avons traversés. signals_added += 1 # Écrire le signal de la taille de la pile stack_size = items.raw[item]["stack_size"] combinator.set_signal(signal_index, item, stack_size) signal_index += 1 # Une fois qu’on a dépassé le nombre de signaux qu’un émetteur de constantes peut contenir, on le place et on remet à zéro. if signal_index == combinator.item_slot_count: # Ajoutez l’émetteur de constantes au plan combinator.id = "{}_{}".format(x, y) blueprint.entities.append(combinator) # Réinitialiser l’émetteur de constantes combinators_added += 1 y = combinators_added % COMBINATOR_HEIGHT x = int(combinators_added / COMBINATOR_HEIGHT) combinator.set_signals(None) # Réinitialiser les signaux combinator.tile_position = (x, y) signal_index = 0 # Ajouter le dernier émetteur de constantes s’il est partiellement plein if len(combinator.signals) &gt; 0: combinator.id = "{}_{}".format(x, y) blueprint.entities.append(combinator) # Ajouter des connexions vers chaque voisin for cx in range(x): for cy in range(COMBINATOR_HEIGHT): here = "{}_{}".format(cx, cy) right = "{}_{}".format(cx + 1, cy) below = "{}_{}".format(cx, cy + 1) try: blueprint.add_circuit_connection("red", here, right) except KeyError: pass try: blueprint.add_circuit_connection("red", here, below) except KeyError: pass print("Total number of item signals added:", signals_added) print(blueprint.to_string()) if __name__ == "__main__": main() Ce script est concis et facile à suivre, mais la chose vraiment étonnante au sujet de Draftsman est que ce script est complètement dynamique et peut s’adapter à n’importe quelle version de Factorio que vous jouez. Les nouveaux objets, les objets supprimés, ou les changements de taille de pile, quel que soit l’auteur du changement, sont corrigés automatiquement avec exactement le même code. À titre d’illustration, la photo en haut à gauche montre ce qui est généré par l’exécution du script pour un jeu classique, en haut à droite un jeu avec le modpack de révision de taille moyenne Space Exploration, et en bas un méga-modpack Bob + Pyanodon : Ceci ne s’applique pas seulement aux objets. Toutes les entités, instruments, signaux, recettes, modules, et tuiles sont extraits du processus de chargement émulé et ensuite stockés dans Draftsman pour une utilisation ultérieure. N’importe quel script peut être conçu pour être complètement flexible à travers ces catégories : des instruments supplémentaires dans un nouveau haut-parleur programmable, de nouveaux types de modules seulement dans certaines machines, des listes complètes de signaux virtuels pour les affectations de signaux, etc…, tous sont interprétés correctement par Draftsman. Sauvegarder les données de la configuration actuelle des mods en interne pour plus tard, cela signifie également que vous ne devez mettre à jour les données qu’une seule fois, chaque fois que vous changez les mods que vous utilisez. Convertisseur d’images en plans C’est quelque chose que j’ai fait sur un coup de tête. Il utilise la librairie d’images Pillow pour charger une image et la convertir en un plan destiné à être visible depuis la vue de la carte, le tout en moins de 150 lignes de code : Un homme particulier avec une bouteille de taille inhabituelle, colorisé. De nombreuses améliorations pourraient y être apportées : Le tramage n’est implémenté que sur les tuiles 1x1. J’ai eu du mal à ajuster l’algorithme aux entités multi-tuiles. Les entités multi-tuiles ne parviennent pas non plus à ajuster la propriété de la métrique d’erreur. La mise en place de la mise en couleur ne fonctionne pas aussi bien lorsque certains pixels sont de tailles différentes. Certaines entités multi-tuiles ont des rotations différentes. Une meilleure implémentation vérifierait quelle orientation produit le moins d’erreur avant de les placer, au lieu de les placer uniquement avec l’orientation par défaut. Les couleurs elles-mêmes sont codées en dur. Ce serait bien de pouvoir les charger dynamiquement à partir du jeu, surtout avec les couleurs de cartes modifiées… Malgré ces défauts, le résultat est assez bon pour une implémentation rapide et simple. Cela montre que Draftsman est assez polyvalent pour des buts plutôt diversifiés. Jay Bauman, pirate informatique notoire, criminel en liberté. Armé et dangereux. Résurrection du lecteur vidéo de Factorio Il y a quelques temps, en cherchant des projets à utiliser comme exemples pour cet article, je suis tombé sur le classique Factorio - Sandstorm. Un projet parfait à adapter. Ou, il l’aurait été, si j’avais pu charger la carte dans le jeu ! La version originale de la carte était encore datée de la tendre version 0.14.20. De plus, un grand nombre des migrations qui ont eu lieu sur une si longue période ont cassé la fonctionnalité du script permettant de convertir les images en données cartographiques, ainsi que certaines fonctionnalités de la carte elle-même, de sorte qu’il ne suffisait pas de télécharger une ancienne version de Factorio et de la contraindre pour faire revivre l’ancienne sauvegarde. Par exemple, le script build.lua en charge de l’encodage appelait encore les objets automation-science-pack et logistic-science-pack, science-pack-1 et science-pack-2. Cela devrait vous donner une idée de l’ancienneté de la carte ! Cela m’a troublé, de voir une telle pièce emblématique de l’histoire de Factorio tomber en désuétude. J’ai donc pris le temps de corriger les problèmes et de le migrer jusqu’à la version 1.1.57 : &lt;/source&gt; Clip musical de Feel The Beat On voit ici un extrait de Feel the Beat, qui perpétue la tradition des clips musicaux de Darude. Changer le script de construction pouvait être fait à la main, mais le signal raw-wood que la machine utilisait en interne n’existe plus dans le Factorio moderne. Afin de le corriger, j’ai remplacé toutes les occurrences du signal dans la carte par artillery-wagon (puisque je savais qu’il serait unique), et cette mise à jour de la carte a été faite avec un script exécutant du code de Draftsman. J’ai également ajouté un certain nombre d’autres scripts pour extraire les images de la source, ainsi que pour prendre des captures d’écran du résultat et les assembler dans une vidéo de sortie, ce qui est assez facile en Python. J’ai utilisé ces scripts pour produire le résultat ci-dessus. Je me suis également penché sur l’idée d’utiliser Draftsman pour créer une version du script de construction basée sur un plan, au lieu de la méthode originale basée sur la console. Cela vous permettrait de voir exactement quelles parties de la mémoire vous modifiez en plaçant un plan aligné sur une grille au-dessus d’elles, et vous permettrait également d’étendre la mémoire de la machine en ajoutant simplement plus de blocs (la mémoire fournie sur la carte est seulement suffisante pour 4800 images). Je me suis dit que c’était moins important que de mettre à jour ce qui était là à l’origine, surtout quand je savais que le code qui était déjà là fonctionnait. Il pourrait y avoir d’autres préoccupations : la quantité de données encodées est assez importante, surtout pour les chaînes de caractères du plan qui, je pense, sont moins denses que les scripts de la console, qui sont si volumineux qu’ils sont transférés dans des fichiers texte lors de la construction. J’ai pensé que la détermination de la faisabilité d’une méthode de plan était possible jusqu’à ce que j’aie un peu plus de temps libre. Pour plus d’informations sur ce qui a été modifié ou ajouté, ainsi que sur la sauvegarde mise à jour, vous pouvez consulter ma fourche Github ici. Et ensuite ? Bien que j’aie fait un certain nombre de choses avec ce module, le but de celui-ci était de permettre à quiconque de faire facilement tout un tas d’autres choses également. Certaines idées que j’aimerais faire, mais que je n’ai pas encore faites, je les reporterai ici pour alimenter la réflexion : De nombreux compilateurs d’ordinateurs en logique sont écrits via un script. Peut-être que quelqu’un pourrait concevoir un équivalent de LLVM, un compilateur générique, où vous pouvez lui dire quelles instructions votre CPU peut exécuter et lui faire compiler des langages établis de haut niveau comme le C. Peut-être que vous pourriez même utiliser LLVM lui-même ? Tirer parti du comportement des cas limites pour des problèmes d’optimisation spécifiques. Saviez-vous que vous pouvez configurer les entités pour demander n’importe quel objet, et pas seulement des modules ? Vous ne pouvez demander des objets qu’au moment de leur construction initiale, ce qui limite quelque peu leur utilité, mais les robots répondront à la demande, ce qui vous permettra de “relancer” la production dans certains cas. Avec quelque chose comme le mod Recursive Blueprints, en plaçant des machines d’assemblage avec des demandes d’objets, puis en les déconstruisant lorsqu’elles ont fini de consommer leurs ingrédients, vous pouvez théoriquement construire une usine entièrement automatisée avec seulement des robots de construction. Peut-être que la Micro Factory peut être optimisée davantage ? Ou un nouvel objectif pourrait être d’avoir le plus petit nombre total d’entités pour lancer une fusée sans intervention de l’utilisateur ? Un cas d’utilisation peut-être plus généralement applicable est ce plan, une tourelle à un seul canon qui demande automatiquement 200 munitions rouges au réseau logistique lorsqu’elle est placée. C’est particulièrement utile dans les efforts offensifs sur les grands nids. Vous pouvez spammer les tourelles autour de vous et les robots de votre inventaire créeront les tourelles et livreront les munitions automatiquement, ce qui vous permet de vous concentrer sur le fait de ne pas vous dissoudre dans la bave de cracheurs. &lt;/source&gt; Une illustration du plan de la tourelle en action. Problèmes d’acheminement : passer par un ensemble d’avant-poste et utiliser un algorithme pour les relier automatiquement afin de minimiser la distance, le nombre de traversées, etc. Peut-être pourriez-vous le faire lire à partir des fichiers de sauvegarde eux-mêmes ? Les dispositifs de circuits logiques sont généralement très complexes et peu intuitifs à décoder pour le profane, comme je l’ai constaté lors de mon exploration approfondie dans l’introduction. Cela est dû à la densité des circuits, aux opérations cachées de chaque entité, au fouillis de fils généré sans possibilité de les connecter proprement dans de petites zones, et à l’impossibilité de donner des étiquettes aux circuits logiques ou aux fils qui les connectent. Ce serait bien d’avoir un logiciel capable de prendre un plan en entrée et de permettre à l’utilisateur de faire tout ce qui précède pour créer une documentation facilement décodable et compréhensible pour des montages de circuits complexes. J’adorerais utiliser une telle chose pour créer des schémas de circuit vectorisés pour mon ordinateur. Quand je l’aurai terminé. Éventuellement. Utiliser la satisfaction de contraintes pour concevoir des plans. J’ai expérimenté cela dans le passé, et cela devrait être possible, en supposant que vous puissiez réduire la complexité temporelle de O(MFG). Si je décide d’écrire un autre article pour Alt-F4, ce sera peut-être sur ce sujet. Vous pouvez également utiliser les réseaux neuronaux pour l’objectif précédent. C’est Python après tout ! Je me demande si vous pourriez vraiment obtenir des plans utilisables de cette façon. Peut-être que si vous les formiez sur l’ensemble de Factorio Prints… Avec un peu de chance, cela devrait donner aux plus créatifs d’entre vous quelques idées intéressantes. Et peut-être, juste peut-être, lorsque quelqu’un aura besoin d’écrire un script pour un problème spécifique afin de gagner du temps, il pourra effectivement gagner du temps au lieu de passer trois à quatre mois à écrire un module Python à partir de rien. Eh, c’était quand même assez amusant à faire. Éducatif, aussi. &lt;/source&gt; Ça marche ! Ça marche ! Dieu merci. Ah, enfin. Retour au vrai travail. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !'>
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-61/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-61/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-05-27T00:00:00+00:00">
+<script type="application/ld+json">
+{"headline":"Alt-F4 #61 - Draftsman : Un module Python pour la création de plans.","dateModified":"2022-05-27T00:00:00+00:00","datePublished":"2022-05-27T00:00:00+00:00","description":"Pour le numéro d’Alt-F4 de cette semaine, nous retournons à nos racines en tant que successeur spirituel des FFF en nous plongeant dans un sujet technique. Pour cela, redruin1 nous présente sa toute dernière invention : Factorio Draftsman. Bien sûr, il y a déjà eu bien d’autres projets visant à construire une bibliothèque pour générer des plans pour le jeu, mais celui-ci essaie d’être le nouveau standard absolu. Motivations, détails techniques, et quelques projets amusants réalisés avec lui. Tout cela, et plus encore, c’est cette semaine ! Draftsman redruin1 Il y a quelques mois, j’ai décidé de m’essayer à la création d’une usine qui se développe automatiquement dans Factorio. Après avoir vu un certain nombre d’exemples impressionnants, j’ai eu envie de m’attaquer à ce problème. J’avais déjà eu un aperçu de la logique et de la façon dont l’usine devait se contrôler elle-même, ainsi que de grandes idées sur les choses impressionnantes que je pouvais lui faire faire. Le seul problème était que je n’avais jamais utilisé les circuits logiques auparavant, et que j’avais l’intention de les utiliser pour la prise de décision. Ce n’est pas un problème, il suffit de créer un monde brouillon, de passer en éditeur et de commencer à jouer ! 1 / 3 2 / 3 Toute tentative de comprendre les gribouillages dénués de sens d’un fou n’aboutira qu’à la déception et au désespoir. 3 / 3 QUOI ? SEULEMENT ? &#10094; &#10095; Je me suis peut-être un peu emporté. Voici une unité centrale que j’ai faite. C’est la septième révision (il me semble). Elle possède une ROM, une RAM, une pile, 256 registres, plus de 40 instructions, des points d’arrêt et des étapes de code, des interruptions matérielles et logicielles, ainsi qu’une interface de circuit généralisée pour interagir avec d’autres machines. Ah, Factorio. L’un des seuls jeux où vous devenez littéralement plus intelligent en y jouant plusieurs fois. Ironiquement, je ne suis pas vraiment ici pour parler de tout ça. C’est juste une introduction. Je commençais la deuxième révision de l’ordinateur et je voulais une ROM plus compacte. J’ai conçu le modèle ci-dessous, qui permet de stocker de vrais nombres de 32 bits et peut conserver 4 KiB de données par ligne : Tout commence quelque part. La ROM est très dense, mais elle fonctionne sur un système où chaque valeur est scindée et stockée en deux nombres de 16 bits, qui sont ensuite recombinés à la sortie. Les ROMs sont normalement fastidieuses à créer, en encodant manuellement chaque signal que vous voulez, un par un, mais cette conception était encore plus complexe. Je devais maintenant diviser, faire un ET bit à bit, faire un décalage à droite bit à bit, et remplir non pas un signal, mais deux, à deux endroits spécifiques différents, en m’assurant qu’ils avaient tous les deux la bonne valeur et le bon type de signal. Inutile de dire qu’il allait être pénible de définir des dizaines de valeurs, sans parler des centaines, ou des milliers de valeurs que la machine était capable de stocker. La solution ? Prendre un ordinateur pour le faire à ma place. Il peut digérer cette tâche bien mieux que je ne le pourrai jamais, et il peut aussi le faire bien plus rapidement. La fonction d’importation de chaîne de caractères de plan de Factorio peut prendre n’importe quelle chaîne correctement formatée. Tout ce que j’avais à faire était de créer cette chaîne de caractères selon mes spécifications avec les données que je voulais et je pouvais simplement la coller là où c’était nécessaire. Ce concept n’est pas nouveau, loin de là. Même une recherche rapide permet de trouver de nombreux exemples d’utilisation pratique : le module NPM factorio-blueprint de demipixel, le compilateur de justarandomgeek pour son ordinateur massif en circuits logiques, un langage d’instruction générique en circuits logiques de Jobarion, des convertisseurs d’images en plans, etc. La liste est longue. Avec tous ces exemples, j’espérais pouvoir trouver des similitudes avec l’un d’entre eux et m’en servir comme base de référence pour ma solution afin d’éviter de “refaire” le même parcours. Mais quelque chose me préoccupait dans les solutions proposées : elles avaient toutes des problèmes ! De nombreuses implémentations étaient hautement spécifiques au domaine pour lequel elles avaient été écrites. Un script de compilateur d’ordinateur en circuits logiques n’allait pas être portable pour de nombreuses autres utilisations que la compilation de code pour un ordinateur spécifique. Il leur manquait un langage unifié. Beaucoup étaient écrites en Lua, certaines en Python, une autre en JavaScript, une autre en C++, etc. Cela signifie que chacun devait écrire ses propres implémentations pour les mêmes opérations, au lieu de simplement avoir quelqu’un qui écrive l’implémentation dont il a besoin et la mette à la disposition des autres. Beaucoup d’entre elles ont été écrites pour des versions de Factorio qui sont maintenant largement dépassées. La documentation pour un grand nombre de ces modules était éparse et sporadique, ce qui rebute les utilisateurs comme moi qui veulent savoir ce dont le module est capable avant d’investir du temps pour apprendre à l’utiliser. Fondamentalement insatisfait des options proposées, je me suis résigné à mon sort. J’allais devoir suivre les traces de tous ceux qui m’avaient précédé et développer ma propre mise en œuvre en partant de zéro. Quelle tâche ardue ! En un après-midi, j’ai créé un prototype de script qui faisait exactement ce dont j’avais besoin et qui fonctionnait parfaitement. Il utilisait un système de modèles et il a fallu moins d’une semaine pour le terminer complètement. Je n’exagère pas : si j’avais été un homme plus déterminé, j’en serais resté là et j’aurais fait autre chose de ma vie. Mais ensuite, j’ai commencé à me poser des questions. Il ne serait pas si difficile de mettre à jour un module comme factorio-blueprint pour un Factorio plus récent, et je parie que je pourrais trouver un moyen d’extraire automatiquement les données de Factorio lui-même, de sorte que vous n’auriez jamais à mettre à jour manuellement les fichiers sources à chaque version. Puis j’ai commencé à avoir des idées ambitieuses sur la façon dont je pourrais écrire de la documentation pour la clé complexe et largement non documentée control_behavior dans les entités, ou ajouter des types d’entités personnalisés pour créer et manipuler des groupes d’entités, ou même, Dieu m’en garde, ajouter un support pour mods dans le mélange. C’était il y a trois ou quatre mois. Bref, voici un module Python que j’ai réalisé. Je vous présente : factorio-draftsman J’ai passé en revue des dizaines de combinaisons différentes de commandes de tuiles avant de me décider pour celle-ci. Draftsman est un module Python pour créer, modifier, importer et exporter toutes sortes de chaînes de plans de Factorio. Le module vous permet de créer et de concevoir des plans par le biais d’un programme, afin d’aider au développement de plans fastidieux et répétitifs qui seraient insoutenables à créer à la main, un peu comme le problème que j’ai rencontré décrit ci-dessus. Draftsman tente de résoudre tous les défauts des implémentations existantes de plans dans Factorio : Draftsman fait tout. Tous les types d’entités sont reconnus, des répartiteurs aux bras haute capacité. Si vous pouvez le faire dans le jeu, vous pouvez le faire avec Draftsman. Il vous permet ainsi de vous concentrer sur le seul problème que vous essayez réellement de résoudre. Draftsman est uni-langage. Ecrit en Python, cela le rend exceptionnellement facile à installer, simple à utiliser, et donne à l’utilisateur l’accès à l’intégralité du vaste index de la bibliothèque Python. Il y a de fortes chances que vous puissiez le faire en Python avec Draftsman, quelle que soit la chose, liée à Factorio, que vous êtes en train de faire. Draftsman est facile à utiliser. Conçu dès le départ pour être simple et (le plus important) auto-documenté, Draftsman vous permet de manipuler des plans et des entités par des attributs et des méthodes qui se complètent automatiquement. Draftsman est bien documenté. Chaque fonction, méthode, attribut, et classe est documentée et reliée à son site Readthedocs. De plus, des tutoriels et du matériel supplémentaire sont fournis, ainsi qu’un grand nombre d’exemples de programmes pour aider à illustrer le fonctionnement de Draftsman. Draftsman est stable. Une suite rigoureuse de tests assure que Draftsman se comporte de manière prévisible et correcte (ou au moins suffisamment correcte), avec une couverture de code de 100%. Draftsman a été testé pour fonctionner sur les dernières versions de Python 2 et 3, et est compatible avec toutes les versions de Factorio supérieures à 1.0, avec les métriques pour le prouver. Draftsman est descriptif. Draftsman applique la philosophie de “Factorio-sécurité”, ce qui signifie que si un plan entraîne une erreur à l’importation, celle-ci est signalée. Draftsman essaye également de faire respecter la “Factorio- exactitude”, ce qui signifie que les valeurs qui ne sont pas cassées, mais qui sont autrement absurdes, feront apparaître des avertissements. Les erreurs et les avertissements sont explicites, de sorte que tout problème avec votre script peut être compris et résolu en quelques secondes. Draftsman est proche de la source. Draftsman base toutes ses données sur le référentiel factorio-data de Wube, ce qui signifie que toutes les entités sont exactement comme vous vous y attendez dans le jeu, sans aucune incohérence. Cela maintient Draftsman à jour, facilite la mise à jour de Draftsman pour les futures versions de Factorio, et permet au contrôle de version de suivre les changements entre Draftsman et Factorio, si une rupture devait se produire. Draftsman supporte les mods. Draftsman émule directement le cycle de vie des données dans Factorio, ce qui signifie que le même processus de chargement qui se produit lorsque vous lancez le jeu est reproduit grâce à une seule fonction dans Draftsman. En plus d’assurer une fidélité absolue à Factorio, cela veut aussi dire que les prototypes personnalisés issus de mods sont accessibles depuis Draftsman, comme s’il s’agissait de toute autre entité classique. Draftsman a des classes personnalisées conçues spécialement autour de chaque entité et prototype, et est conçu pour fonctionner de manière aussi transparente que possible avec les chaînes de plans et autres logiciels. Draftsman convertit ces prototypes quand vous importez et exportez des chaînes de plans automatiquement, sans aucune étape supplémentaire. Vous pouvez importer une chaîne de plans de Factorio en tant qu’objet Blueprint, faire tous les changements que vous voulez, et ensuite exporter cet objet Blueprint en tant que chaîne. Ou bien, vous pouvez simplement créer un tout nouveau Blueprint à partir de zéro. Draftsman est conçu pour travailler autour de vous, pas pour que vous travailliez autour de lui. Draftsman a aussi une aide pour les objets personnalisés “EntityLike”, plus particulièrement les objets “Group”, qui vous permettent de créer des constructions personnalisées qui peuvent être insérées dans les plans pour aider à la clarté et au compartimentage. Par exemple, vous pouvez faire une conception pour un bloc de fonderie dans un Groupe, et ensuite vous pouvez placer ce bloc autant de fois que vous le voulez, où vous le voulez, tourné ou inversé, agissant en fait comme un outil copier-coller dans Draftsman. Dans un souci de brièveté, je ne vais pas entrer dans les détails du module ou de son fonctionnement. J’ai passé beaucoup de temps à rédiger une documentation à cet effet. Je vais plutôt montrer quelques objets que j’ai réalisés jusqu’à présent, ainsi que des objets susceptibles d’être réalisés à l’avenir, pour essayer d’illustrer exactement pourquoi j’ai passé tout ce temps à le fabriquer au départ. Taille automatique des piles d’objets Souvent, vous voulez déterminer le stockage dont vous avez besoin pour une quantité spécifique d’un objet. Cependant, le stockage dans Factorio est basé sur des emplacements, et non sur des quantités, de sorte que la quantité de stockage dépend en fait non seulement de la quantité que vous essayez de stocker, mais aussi de la taille de la pile de cet objet. Vous pouvez concevoir un mécanisme en circuits logiques pour déterminer le nombre d’emplacements dont vous avez besoin pour n’importe quel objet en entrée, mais vous auriez besoin d’un grand tableau d’émetteurs de constantes documentant les tailles des objets. C’est ennuyeux à faire, et facilement brisé si un nouvel objet est ajouté ou si la taille de la pile est modifiée. Il est clair que pour une tâche aussi simple et répétitive, un script est mieux adapté : # Créez une grille N x 5 cellule d’émetteurs de constantes connectés, avec chaque objet et sa taille d’empilement. from draftsman.blueprintable import Blueprint from draftsman.constants import Direction from draftsman.data import items from draftsman.entity import ConstantCombinator COMBINATOR_HEIGHT = 5 def main(): blueprint = Blueprint() signals_added = 0 signal_index = 0 combinators_added = 0 x = 0 y = 0 combinator = ConstantCombinator(direction=Direction.SOUTH) # Itérer sur chaque objet dans l’ordre : for item in items.raw: # Ignorer les objets/entités cachés if &quot;flags&quot; in items.raw[item]: if &quot;hidden&quot; in items.raw[item][&quot;flags&quot;]: continue # Garder la trace du nombre de signaux que nous avons traversés. signals_added += 1 # Écrire le signal de la taille de la pile stack_size = items.raw[item][&quot;stack_size&quot;] combinator.set_signal(signal_index, item, stack_size) signal_index += 1 # Une fois qu’on a dépassé le nombre de signaux qu’un émetteur de constantes peut contenir, on le place et on remet à zéro. if signal_index == combinator.item_slot_count: # Ajoutez l’émetteur de constantes au plan combinator.id = &quot;{}_{}&quot;.format(x, y) blueprint.entities.append(combinator) # Réinitialiser l’émetteur de constantes combinators_added += 1 y = combinators_added % COMBINATOR_HEIGHT x = int(combinators_added / COMBINATOR_HEIGHT) combinator.set_signals(None) # Réinitialiser les signaux combinator.tile_position = (x, y) signal_index = 0 # Ajouter le dernier émetteur de constantes s’il est partiellement plein if len(combinator.signals) &gt; 0: combinator.id = &quot;{}_{}&quot;.format(x, y) blueprint.entities.append(combinator) # Ajouter des connexions vers chaque voisin for cx in range(x): for cy in range(COMBINATOR_HEIGHT): here = &quot;{}_{}&quot;.format(cx, cy) right = &quot;{}_{}&quot;.format(cx + 1, cy) below = &quot;{}_{}&quot;.format(cx, cy + 1) try: blueprint.add_circuit_connection(&quot;red&quot;, here, right) except KeyError: pass try: blueprint.add_circuit_connection(&quot;red&quot;, here, below) except KeyError: pass print(&quot;Total number of item signals added:&quot;, signals_added) print(blueprint.to_string()) if __name__ == &quot;__main__&quot;: main() Ce script est concis et facile à suivre, mais la chose vraiment étonnante au sujet de Draftsman est que ce script est complètement dynamique et peut s’adapter à n’importe quelle version de Factorio que vous jouez. Les nouveaux objets, les objets supprimés, ou les changements de taille de pile, quel que soit l’auteur du changement, sont corrigés automatiquement avec exactement le même code. À titre d’illustration, la photo en haut à gauche montre ce qui est généré par l’exécution du script pour un jeu classique, en haut à droite un jeu avec le modpack de révision de taille moyenne Space Exploration, et en bas un méga-modpack Bob + Pyanodon : Ceci ne s’applique pas seulement aux objets. Toutes les entités, instruments, signaux, recettes, modules, et tuiles sont extraits du processus de chargement émulé et ensuite stockés dans Draftsman pour une utilisation ultérieure. N’importe quel script peut être conçu pour être complètement flexible à travers ces catégories : des instruments supplémentaires dans un nouveau haut-parleur programmable, de nouveaux types de modules seulement dans certaines machines, des listes complètes de signaux virtuels pour les affectations de signaux, etc…, tous sont interprétés correctement par Draftsman. Sauvegarder les données de la configuration actuelle des mods en interne pour plus tard, cela signifie également que vous ne devez mettre à jour les données qu’une seule fois, chaque fois que vous changez les mods que vous utilisez. Convertisseur d’images en plans C’est quelque chose que j’ai fait sur un coup de tête. Il utilise la librairie d’images Pillow pour charger une image et la convertir en un plan destiné à être visible depuis la vue de la carte, le tout en moins de 150 lignes de code : Un homme particulier avec une bouteille de taille inhabituelle, colorisé. De nombreuses améliorations pourraient y être apportées : Le tramage n’est implémenté que sur les tuiles 1x1. J’ai eu du mal à ajuster l’algorithme aux entités multi-tuiles. Les entités multi-tuiles ne parviennent pas non plus à ajuster la propriété de la métrique d’erreur. La mise en place de la mise en couleur ne fonctionne pas aussi bien lorsque certains pixels sont de tailles différentes. Certaines entités multi-tuiles ont des rotations différentes. Une meilleure implémentation vérifierait quelle orientation produit le moins d’erreur avant de les placer, au lieu de les placer uniquement avec l’orientation par défaut. Les couleurs elles-mêmes sont codées en dur. Ce serait bien de pouvoir les charger dynamiquement à partir du jeu, surtout avec les couleurs de cartes modifiées… Malgré ces défauts, le résultat est assez bon pour une implémentation rapide et simple. Cela montre que Draftsman est assez polyvalent pour des buts plutôt diversifiés. Jay Bauman, pirate informatique notoire, criminel en liberté. Armé et dangereux. Résurrection du lecteur vidéo de Factorio Il y a quelques temps, en cherchant des projets à utiliser comme exemples pour cet article, je suis tombé sur le classique Factorio - Sandstorm. Un projet parfait à adapter. Ou, il l’aurait été, si j’avais pu charger la carte dans le jeu ! La version originale de la carte était encore datée de la tendre version 0.14.20. De plus, un grand nombre des migrations qui ont eu lieu sur une si longue période ont cassé la fonctionnalité du script permettant de convertir les images en données cartographiques, ainsi que certaines fonctionnalités de la carte elle-même, de sorte qu’il ne suffisait pas de télécharger une ancienne version de Factorio et de la contraindre pour faire revivre l’ancienne sauvegarde. Par exemple, le script build.lua en charge de l’encodage appelait encore les objets automation-science-pack et logistic-science-pack, science-pack-1 et science-pack-2. Cela devrait vous donner une idée de l’ancienneté de la carte ! Cela m’a troublé, de voir une telle pièce emblématique de l’histoire de Factorio tomber en désuétude. J’ai donc pris le temps de corriger les problèmes et de le migrer jusqu’à la version 1.1.57 : &lt;/source&gt; Clip musical de Feel The Beat On voit ici un extrait de Feel the Beat, qui perpétue la tradition des clips musicaux de Darude. Changer le script de construction pouvait être fait à la main, mais le signal raw-wood que la machine utilisait en interne n’existe plus dans le Factorio moderne. Afin de le corriger, j’ai remplacé toutes les occurrences du signal dans la carte par artillery-wagon (puisque je savais qu’il serait unique), et cette mise à jour de la carte a été faite avec un script exécutant du code de Draftsman. J’ai également ajouté un certain nombre d’autres scripts pour extraire les images de la source, ainsi que pour prendre des captures d’écran du résultat et les assembler dans une vidéo de sortie, ce qui est assez facile en Python. J’ai utilisé ces scripts pour produire le résultat ci-dessus. Je me suis également penché sur l’idée d’utiliser Draftsman pour créer une version du script de construction basée sur un plan, au lieu de la méthode originale basée sur la console. Cela vous permettrait de voir exactement quelles parties de la mémoire vous modifiez en plaçant un plan aligné sur une grille au-dessus d’elles, et vous permettrait également d’étendre la mémoire de la machine en ajoutant simplement plus de blocs (la mémoire fournie sur la carte est seulement suffisante pour 4800 images). Je me suis dit que c’était moins important que de mettre à jour ce qui était là à l’origine, surtout quand je savais que le code qui était déjà là fonctionnait. Il pourrait y avoir d’autres préoccupations : la quantité de données encodées est assez importante, surtout pour les chaînes de caractères du plan qui, je pense, sont moins denses que les scripts de la console, qui sont si volumineux qu’ils sont transférés dans des fichiers texte lors de la construction. J’ai pensé que la détermination de la faisabilité d’une méthode de plan était possible jusqu’à ce que j’aie un peu plus de temps libre. Pour plus d’informations sur ce qui a été modifié ou ajouté, ainsi que sur la sauvegarde mise à jour, vous pouvez consulter ma fourche Github ici. Et ensuite ? Bien que j’aie fait un certain nombre de choses avec ce module, le but de celui-ci était de permettre à quiconque de faire facilement tout un tas d’autres choses également. Certaines idées que j’aimerais faire, mais que je n’ai pas encore faites, je les reporterai ici pour alimenter la réflexion : De nombreux compilateurs d’ordinateurs en logique sont écrits via un script. Peut-être que quelqu’un pourrait concevoir un équivalent de LLVM, un compilateur générique, où vous pouvez lui dire quelles instructions votre CPU peut exécuter et lui faire compiler des langages établis de haut niveau comme le C. Peut-être que vous pourriez même utiliser LLVM lui-même ? Tirer parti du comportement des cas limites pour des problèmes d’optimisation spécifiques. Saviez-vous que vous pouvez configurer les entités pour demander n’importe quel objet, et pas seulement des modules ? Vous ne pouvez demander des objets qu’au moment de leur construction initiale, ce qui limite quelque peu leur utilité, mais les robots répondront à la demande, ce qui vous permettra de “relancer” la production dans certains cas. Avec quelque chose comme le mod Recursive Blueprints, en plaçant des machines d’assemblage avec des demandes d’objets, puis en les déconstruisant lorsqu’elles ont fini de consommer leurs ingrédients, vous pouvez théoriquement construire une usine entièrement automatisée avec seulement des robots de construction. Peut-être que la Micro Factory peut être optimisée davantage ? Ou un nouvel objectif pourrait être d’avoir le plus petit nombre total d’entités pour lancer une fusée sans intervention de l’utilisateur ? Un cas d’utilisation peut-être plus généralement applicable est ce plan, une tourelle à un seul canon qui demande automatiquement 200 munitions rouges au réseau logistique lorsqu’elle est placée. C’est particulièrement utile dans les efforts offensifs sur les grands nids. Vous pouvez spammer les tourelles autour de vous et les robots de votre inventaire créeront les tourelles et livreront les munitions automatiquement, ce qui vous permet de vous concentrer sur le fait de ne pas vous dissoudre dans la bave de cracheurs. &lt;/source&gt; Une illustration du plan de la tourelle en action. Problèmes d’acheminement : passer par un ensemble d’avant-poste et utiliser un algorithme pour les relier automatiquement afin de minimiser la distance, le nombre de traversées, etc. Peut-être pourriez-vous le faire lire à partir des fichiers de sauvegarde eux-mêmes ? Les dispositifs de circuits logiques sont généralement très complexes et peu intuitifs à décoder pour le profane, comme je l’ai constaté lors de mon exploration approfondie dans l’introduction. Cela est dû à la densité des circuits, aux opérations cachées de chaque entité, au fouillis de fils généré sans possibilité de les connecter proprement dans de petites zones, et à l’impossibilité de donner des étiquettes aux circuits logiques ou aux fils qui les connectent. Ce serait bien d’avoir un logiciel capable de prendre un plan en entrée et de permettre à l’utilisateur de faire tout ce qui précède pour créer une documentation facilement décodable et compréhensible pour des montages de circuits complexes. J’adorerais utiliser une telle chose pour créer des schémas de circuit vectorisés pour mon ordinateur. Quand je l’aurai terminé. Éventuellement. Utiliser la satisfaction de contraintes pour concevoir des plans. J’ai expérimenté cela dans le passé, et cela devrait être possible, en supposant que vous puissiez réduire la complexité temporelle de O(MFG). Si je décide d’écrire un autre article pour Alt-F4, ce sera peut-être sur ce sujet. Vous pouvez également utiliser les réseaux neuronaux pour l’objectif précédent. C’est Python après tout ! Je me demande si vous pourriez vraiment obtenir des plans utilisables de cette façon. Peut-être que si vous les formiez sur l’ensemble de Factorio Prints… Avec un peu de chance, cela devrait donner aux plus créatifs d’entre vous quelques idées intéressantes. Et peut-être, juste peut-être, lorsque quelqu’un aura besoin d’écrire un script pour un problème spécifique afin de gagner du temps, il pourra effectivement gagner du temps au lieu de passer trois à quatre mois à écrire un module Python à partir de rien. Eh, c’était quand même assez amusant à faire. Éducatif, aussi. &lt;/source&gt; Ça marche ! Ça marche ! Dieu merci. Ah, enfin. Retour au vrai travail. Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","url":"https://alt-f4.blog/ALTF4-61/","@type":"BlogPosting","author":{"@type":"Person","name":"redruin1"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-61/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/61/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/61/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/fr/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-61/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-61/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-61/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-61/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-61/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-61/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-61/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-61/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-61/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-61/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #61 - Draftsman : Un module Python pour la création de plans.  <author>27-05-2022</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>redruin1</em>,
+
+
+
+édité par <em>Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev, Firerazer</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/61/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Sommaire</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#draftsman-redruin1">Draftsman <author>redruin1</author></a>
+    <ul>
+      <li><a href="#je-vous-pr%C3%A9sente--factorio-draftsman">Je vous présente : <code class="language-plaintext highlighter-rouge">factorio-draftsman</code></a></li>
+      <li><a href="#taille-automatique-des-piles-dobjets">Taille automatique des piles d’objets</a></li>
+      <li><a href="#convertisseur-dimages-en-plans">Convertisseur d’images en plans</a></li>
+      <li><a href="#r%C3%A9surrection-du-lecteur-vid%C3%A9o-de-factorio">Résurrection du lecteur vidéo de Factorio</a></li>
+      <li><a href="#et-ensuite-">Et ensuite ?</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Pour le numéro d’Alt-F4 de cette semaine, nous retournons à nos racines en tant que successeur spirituel des <em>FFF</em> en nous plongeant dans un sujet technique. Pour cela, <em>redruin1</em> nous présente sa toute dernière invention : Factorio Draftsman. Bien sûr, il y a déjà eu bien d’autres projets visant à construire une bibliothèque pour générer des plans pour le jeu, mais celui-ci essaie d’être le nouveau standard absolu. Motivations, détails techniques, et quelques projets amusants réalisés avec lui. Tout cela, et plus encore, c’est cette semaine !</p>
+      <h2 id="draftsman-redruin1">
+        
+        
+            <a href="#draftsman-redruin1" class="anchor" style="text-decoration: none;">Draftsman <author>redruin1</author></a>
+          
+        
+      </h2>
+    
+
+<p>Il y a quelques mois, j’ai décidé de m’essayer à la création d’une <strong>usine qui se développe automatiquement</strong> dans Factorio. Après avoir vu un certain nombre d’<a href="https://alt-f4.blog/fr/ALTF4-39/">exemples</a> <a href="https://www.youtube.com/watch?v=xF--1XdcOeM">impressionnants</a>, j’ai eu envie de m’attaquer à ce problème. J’avais déjà eu un aperçu de la logique et de la façon dont l’usine devait se contrôler elle-même, ainsi que de grandes idées sur les choses impressionnantes que je pouvais lui faire faire. Le seul problème était que je n’avais jamais utilisé les circuits logiques auparavant, et que j’avais l’intention de les utiliser pour la prise de décision.</p>
+
+<p>Ce n’est pas un problème, il suffit de créer un monde brouillon, de passer en éditeur et de commencer à jouer !</p>
+
+<!---->
+
+<!---->
+
+<div class="flex flex-column panel-inset">
+  <div class="gallery">
+
+    <!---->
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">1 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/61/map_view_of_madness.jpg" alt="La mort" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">2 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/61/madness.jpg" alt="Encore la mort" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">Toute tentative de comprendre les gribouillages dénués de sens d’un fou n’aboutira qu’à la déception et au désespoir.</p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">3 / 3</div>
+      <img src="https://media.alt-f4.blog/ALTF4/61/play_time.jpg" alt="trop de temps de jeu" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px">QUOI ? SEULEMENT ?</p>
+    </div>
+    
+
+    <!---->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <!---->
+    <div class="row">
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/61/map_view_of_madness.jpg" alt="La mort" onclick="currentSlide(1)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/61/madness.jpg" alt="Encore la mort" onclick="currentSlide(2)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/61/play_time.jpg" alt="trop de temps de jeu" onclick="currentSlide(3)" style="width:100%; cursor: pointer;">
+      </div>
+      
+    </div>
+  </div>
+  <!---->
+  
+</div>
+
+<p>Je me suis peut-être un peu emporté.</p>
+
+<p>Voici une unité centrale que j’ai faite. C’est la septième révision (il me semble). Elle possède une ROM, une RAM, une pile, 256 registres, plus de 40 instructions, des points d’arrêt et des étapes de code, des interruptions matérielles et logicielles, ainsi qu’une interface de circuit généralisée pour interagir avec d’autres machines.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/61/mk1_computer.jpg" alt="Photo de ma première conception d’un processeur" style="max-width: ; max-height:  ">
+        
+        <figcaption>Ah, Factorio. L’un des seuls jeux où vous devenez littéralement plus intelligent en y jouant plusieurs fois.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Ironiquement, je ne suis pas vraiment ici pour parler de <em>tout ça</em>. C’est juste une introduction.</p>
+
+<p>Je commençais la deuxième révision de l’ordinateur et je voulais une ROM plus compacte. J’ai conçu le modèle ci-dessous, qui permet de stocker de vrais nombres de 32 bits et peut conserver 4 KiB de données par ligne :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/61/ROM_design.jpg" alt="Représentation de ma ROM" style="max-width: ; max-height:  ">
+        
+        <figcaption>Tout commence quelque part.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>La ROM est <em>très</em> dense, mais elle fonctionne sur un système où chaque valeur est scindée et stockée en deux nombres de 16 bits, qui sont ensuite recombinés à la sortie. Les ROMs sont normalement fastidieuses à créer, en encodant manuellement chaque signal que vous voulez, un par un, mais cette conception était encore plus complexe. Je devais maintenant diviser, faire un ET bit à bit, faire un décalage à droite bit à bit, et remplir non pas un signal, mais deux, à deux endroits spécifiques différents, en m’assurant qu’ils avaient tous les deux la bonne valeur <em>et</em> le bon type de signal. Inutile de dire qu’il allait être pénible de définir des dizaines de valeurs, sans parler des centaines, ou des <em>milliers</em> de valeurs que la machine était capable de stocker.</p>
+
+<p>La solution ? Prendre un ordinateur pour le faire à ma place. Il peut digérer cette tâche bien mieux que je ne le pourrai jamais, et il peut aussi le faire bien plus rapidement. La fonction d’importation de chaîne de caractères de plan de Factorio peut prendre n’importe quelle chaîne correctement formatée. Tout ce que j’avais à faire était de créer cette chaîne de caractères selon mes spécifications avec les données que je voulais et je pouvais simplement la coller là où c’était nécessaire.</p>
+
+<p>Ce concept n’est pas nouveau, loin de là. Même une recherche rapide permet de trouver de nombreux exemples d’utilisation pratique : <a href="https://github.com/demipixel/factorio-blueprint">le module NPM <code class="language-plaintext highlighter-rouge">factorio-blueprint</code> de demipixel</a>, <a href="https://github.com/justarandomgeek/factorio-computer">le compilateur de justarandomgeek pour son ordinateur massif en circuits logiques</a>, <a href="https://github.com/Jobarion/factoriogen/">un langage d’instruction générique en circuits logiques de Jobarion</a>, <a href="https://github.com/EFLFE/Artorio">des convertisseurs d’images en plans</a>, etc. La liste est longue.</p>
+
+<p>Avec tous ces exemples, j’espérais pouvoir trouver des similitudes avec l’un d’entre eux et m’en servir comme base de référence pour ma solution afin d’éviter de “refaire” le même parcours. Mais quelque chose me préoccupait dans les solutions proposées : elles avaient toutes des problèmes !</p>
+
+<ul>
+  <li>De nombreuses implémentations étaient hautement spécifiques au domaine pour lequel elles avaient été écrites. Un script de compilateur d’ordinateur en circuits logiques n’allait pas être portable pour de nombreuses autres utilisations que la compilation de code pour un ordinateur spécifique.</li>
+  <li>Il leur manquait un langage unifié. Beaucoup étaient écrites en Lua, certaines en Python, une autre en JavaScript, une autre en C++, etc. Cela signifie que chacun devait écrire ses propres implémentations pour les mêmes opérations, au lieu de simplement avoir quelqu’un qui écrive l’implémentation dont il a besoin et la mette à la disposition des autres.</li>
+  <li>Beaucoup d’entre elles ont été écrites pour des versions de Factorio qui sont maintenant largement dépassées.</li>
+  <li>La documentation pour un grand nombre de ces modules était éparse et sporadique, ce qui rebute les utilisateurs comme moi qui veulent savoir ce dont le module est capable avant d’investir du temps pour apprendre à l’utiliser.</li>
+</ul>
+
+<p>Fondamentalement insatisfait des options proposées, je me suis résigné à mon sort. J’allais devoir suivre les traces de tous ceux qui m’avaient précédé et développer ma propre mise en œuvre en partant de zéro. Quelle tâche ardue !</p>
+
+<p>En un après-midi, j’ai créé un prototype de script qui faisait exactement ce dont j’avais besoin et qui fonctionnait parfaitement. Il utilisait un système de modèles et il a fallu moins d’une semaine pour le terminer complètement.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/61/populated_ROM.jpg" alt="Résultat final" style="max-width: ; max-height:  ">
+        
+        <figcaption>Je n’exagère pas : si j’avais été un homme plus déterminé, j’en serais resté là et j’aurais fait autre chose de ma vie.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Mais ensuite, j’ai commencé à me poser des questions. Il ne serait pas si difficile de mettre à jour un module comme <code class="language-plaintext highlighter-rouge">factorio-blueprint</code> pour un Factorio plus récent, et je parie que je pourrais trouver un moyen d’extraire automatiquement les données de Factorio lui-même, de sorte que vous n’auriez jamais à mettre à jour manuellement les fichiers sources à chaque version. Puis j’ai commencé à avoir des idées ambitieuses sur la façon dont je pourrais écrire de la documentation pour la clé complexe et largement non documentée <code class="language-plaintext highlighter-rouge">control_behavior</code> dans les entités, ou ajouter des types d’entités personnalisés pour créer et manipuler des groupes d’entités, ou même, Dieu m’en garde, ajouter un <em>support pour mods</em> dans le mélange. C’était il y a trois ou quatre mois.</p>
+
+<p>Bref, voici un module Python que j’ai réalisé.</p>
+      <h3 id="je-vous-présente--factorio-draftsman">
+        
+        
+            <a href="#je-vous-pr%C3%A9sente--factorio-draftsman" class="anchor" style="text-decoration: none;">Je vous présente : <code class="language-plaintext highlighter-rouge">factorio-draftsman</code></a>
+          
+        
+      </h3>
+    
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/61/draftsman_logo.jpg" alt="Logo Draftsman, représenté dans le jeu, généré par un script." style="max-width: ; max-height:  ">
+        
+        <figcaption>J’ai passé en revue des dizaines de combinaisons différentes de commandes de tuiles avant de me décider pour celle-ci.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p><a href="https://github.com/redruin1/factorio-draftsman">Draftsman</a> est un module Python pour créer, modifier, importer et exporter toutes sortes de chaînes de plans de Factorio. Le module vous permet de créer et de concevoir des plans par le biais d’un programme, afin d’aider au développement de plans fastidieux et répétitifs qui seraient insoutenables à créer à la main, un peu comme le problème que j’ai rencontré décrit ci-dessus. Draftsman tente de résoudre tous les défauts des implémentations existantes de plans dans Factorio :</p>
+
+<ul>
+  <li>
+<strong>Draftsman fait tout.</strong> Tous les types d’entités sont reconnus, des répartiteurs aux bras haute capacité. Si vous pouvez le faire dans le jeu, vous pouvez le faire avec Draftsman. Il vous permet ainsi de vous concentrer sur le seul problème que vous essayez <em>réellement</em> de résoudre.</li>
+  <li>
+<strong>Draftsman est uni-langage.</strong> Ecrit en Python, cela le rend exceptionnellement facile à installer, simple à utiliser, et donne à l’utilisateur l’accès à l’intégralité du vaste index de la bibliothèque Python. Il y a de fortes chances que vous puissiez le faire en Python avec Draftsman, <em>quelle que soit</em> la chose, liée à Factorio, que vous êtes en train de faire.</li>
+  <li>
+<strong>Draftsman est facile à utiliser.</strong> Conçu dès le départ pour être simple et (le plus important) auto-documenté, Draftsman vous permet de manipuler des plans et des entités par des attributs et des méthodes qui se complètent automatiquement.</li>
+  <li>
+<strong>Draftsman est bien documenté.</strong> Chaque fonction, méthode, attribut, et classe est documentée et reliée à son <a href="https://factorio-draftsman.readthedocs.io/en/latest/?badge=latest">site Readthedocs</a>. De plus, des tutoriels et du matériel supplémentaire sont fournis, ainsi qu’un grand nombre d’<a href="https://github.com/redruin1/factorio-draftsman/tree/main/examples">exemples de programmes</a> pour aider à illustrer le fonctionnement de Draftsman.</li>
+  <li>
+<strong>Draftsman est stable.</strong> Une suite rigoureuse de tests assure que Draftsman se comporte de manière prévisible et correcte (ou au moins suffisamment correcte), avec une couverture de code de 100%. Draftsman a été testé pour fonctionner sur les dernières versions de Python 2 et 3, et est compatible avec toutes les versions de Factorio supérieures à 1.0, avec les métriques pour le prouver.</li>
+  <li>
+<strong>Draftsman est descriptif.</strong> Draftsman applique la philosophie de “Factorio-sécurité”, ce qui signifie que si un plan entraîne une erreur à l’importation, celle-ci est signalée. Draftsman essaye également de faire respecter la “Factorio- exactitude”, ce qui signifie que les valeurs qui ne sont pas cassées, mais qui sont autrement absurdes, feront apparaître des avertissements. Les erreurs et les avertissements sont explicites, de sorte que tout problème avec votre script peut être compris et résolu en quelques secondes.</li>
+  <li>
+<strong>Draftsman est proche de la source.</strong> Draftsman base toutes ses données sur le <a href="https://github.com/wube/factorio-data">référentiel <code class="language-plaintext highlighter-rouge">factorio-data</code> de Wube</a>, ce qui signifie que toutes les entités sont exactement comme vous vous y attendez dans le jeu, sans aucune incohérence. Cela maintient Draftsman à jour, facilite la mise à jour de Draftsman pour les futures versions de Factorio, et permet au contrôle de version de suivre les changements entre Draftsman et Factorio, si une rupture devait se produire.</li>
+  <li>
+<strong>Draftsman supporte les mods.</strong> Draftsman émule directement le cycle de vie des données dans Factorio, ce qui signifie que le même processus de chargement qui se produit lorsque vous lancez le jeu est reproduit grâce à une seule fonction dans Draftsman. En plus d’assurer une fidélité absolue à Factorio, cela veut aussi dire que les prototypes personnalisés issus de mods sont accessibles depuis Draftsman, comme s’il s’agissait de toute autre entité classique.</li>
+</ul>
+
+<p>Draftsman a des classes personnalisées conçues spécialement autour de chaque entité et prototype, et est conçu pour fonctionner de manière aussi transparente que possible avec les chaînes de plans et autres logiciels. Draftsman convertit ces prototypes quand vous importez et exportez des chaînes de plans automatiquement, sans aucune étape supplémentaire. Vous pouvez importer une chaîne de plans de Factorio en tant qu’objet <code class="language-plaintext highlighter-rouge">Blueprint</code>, faire tous les changements que vous voulez, et ensuite exporter cet objet <code class="language-plaintext highlighter-rouge">Blueprint</code> en tant que chaîne. Ou bien, vous pouvez simplement créer un tout nouveau <code class="language-plaintext highlighter-rouge">Blueprint</code> à partir de zéro. Draftsman est conçu pour travailler autour de vous, pas pour que vous travailliez autour de lui.</p>
+
+<p>Draftsman a aussi une aide pour les objets personnalisés “EntityLike”, plus particulièrement les objets “Group”, qui vous permettent de créer des constructions personnalisées qui peuvent être insérées dans les plans pour aider à la clarté et au compartimentage. Par exemple, vous pouvez faire une conception pour un bloc de fonderie dans un <code class="language-plaintext highlighter-rouge">Groupe</code>, et ensuite vous pouvez placer ce bloc autant de fois que vous le voulez, où vous le voulez, tourné ou inversé, agissant en fait comme un outil copier-coller dans Draftsman.</p>
+
+<p>Dans un souci de brièveté, je ne vais pas entrer dans les détails du module ou de son fonctionnement. J’ai passé beaucoup de temps à rédiger une documentation à cet effet. Je vais plutôt montrer quelques objets que j’ai réalisés jusqu’à présent, ainsi que des objets susceptibles d’être réalisés à l’avenir, pour essayer d’illustrer exactement pourquoi j’ai passé tout ce temps à le fabriquer au départ.</p>
+      <h3 id="taille-automatique-des-piles-dobjets">
+        
+        
+            <a href="#taille-automatique-des-piles-dobjets" class="anchor" style="text-decoration: none;">Taille automatique des piles d’objets</a>
+          
+        
+      </h3>
+    
+
+<p>Souvent, vous voulez déterminer le stockage dont vous avez besoin pour une quantité spécifique d’un objet. Cependant, le stockage dans Factorio est basé sur des emplacements, et non sur des quantités, de sorte que la quantité de stockage dépend en fait non seulement de la quantité que vous essayez de stocker, mais aussi de la taille de la pile de cet objet. <a href="https://factorioprints.com/view/-LwH68dlvOEIKWkU5JqR">Vous pouvez concevoir un mécanisme en circuits logiques</a> pour déterminer le nombre d’emplacements dont vous avez besoin pour n’importe quel objet en entrée, mais vous auriez besoin d’un grand tableau d’émetteurs de constantes documentant les tailles des objets. C’est <em>ennuyeux</em> à faire, et facilement brisé si un nouvel objet est ajouté ou si la taille de la pile est modifiée. Il est clair que pour une tâche aussi simple et répétitive, un script est mieux adapté :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Créez une grille N x 5 cellule d’émetteurs de constantes connectés, avec chaque objet et sa taille d’empilement.
+</span>
+<span class="kn">from</span> <span class="nn">draftsman.blueprintable</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+<span class="kn">from</span> <span class="nn">draftsman.constants</span> <span class="kn">import</span> <span class="n">Direction</span>
+<span class="kn">from</span> <span class="nn">draftsman.data</span> <span class="kn">import</span> <span class="n">items</span>
+<span class="kn">from</span> <span class="nn">draftsman.entity</span> <span class="kn">import</span> <span class="n">ConstantCombinator</span>
+
+<span class="n">COMBINATOR_HEIGHT</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">blueprint</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">()</span>
+
+    <span class="n">signals_added</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">signal_index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">combinators_added</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">combinator</span> <span class="o">=</span> <span class="n">ConstantCombinator</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="n">Direction</span><span class="p">.</span><span class="n">SOUTH</span><span class="p">)</span>
+
+    <span class="c1"># Itérer sur chaque objet dans l’ordre :
+</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">.</span><span class="n">raw</span><span class="p">:</span>
+        <span class="c1"># Ignorer les objets/entités cachés
+</span>        <span class="k">if</span> <span class="s">"flags"</span> <span class="ow">in</span> <span class="n">items</span><span class="p">.</span><span class="n">raw</span><span class="p">[</span><span class="n">item</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="s">"hidden"</span> <span class="ow">in</span> <span class="n">items</span><span class="p">.</span><span class="n">raw</span><span class="p">[</span><span class="n">item</span><span class="p">][</span><span class="s">"flags"</span><span class="p">]:</span>
+                <span class="k">continue</span>
+        <span class="c1"># Garder la trace du nombre de signaux que nous avons traversés.
+</span>        <span class="n">signals_added</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># Écrire le signal de la taille de la pile
+</span>        <span class="n">stack_size</span> <span class="o">=</span> <span class="n">items</span><span class="p">.</span><span class="n">raw</span><span class="p">[</span><span class="n">item</span><span class="p">][</span><span class="s">"stack_size"</span><span class="p">]</span>
+        <span class="n">combinator</span><span class="p">.</span><span class="n">set_signal</span><span class="p">(</span><span class="n">signal_index</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">stack_size</span><span class="p">)</span>
+        <span class="n">signal_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># Une fois qu’on a dépassé le nombre de signaux qu’un émetteur de constantes peut contenir, on le place et on remet à zéro.
+</span>        <span class="k">if</span> <span class="n">signal_index</span> <span class="o">==</span> <span class="n">combinator</span><span class="p">.</span><span class="n">item_slot_count</span><span class="p">:</span>
+            <span class="c1"># Ajoutez l’émetteur de constantes au plan
+</span>            <span class="n">combinator</span><span class="p">.</span><span class="nb">id</span> <span class="o">=</span> <span class="s">"{}_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">blueprint</span><span class="p">.</span><span class="n">entities</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">combinator</span><span class="p">)</span>
+            <span class="c1"># Réinitialiser l’émetteur de constantes
+</span>            <span class="n">combinators_added</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">combinators_added</span> <span class="o">%</span> <span class="n">COMBINATOR_HEIGHT</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">combinators_added</span> <span class="o">/</span> <span class="n">COMBINATOR_HEIGHT</span><span class="p">)</span>
+            <span class="n">combinator</span><span class="p">.</span><span class="n">set_signals</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span> <span class="c1"># Réinitialiser les signaux
+</span>            <span class="n">combinator</span><span class="p">.</span><span class="n">tile_position</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+            <span class="n">signal_index</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Ajouter le dernier émetteur de constantes s’il est partiellement plein
+</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">combinator</span><span class="p">.</span><span class="n">signals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">combinator</span><span class="p">.</span><span class="nb">id</span> <span class="o">=</span> <span class="s">"{}_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">blueprint</span><span class="p">.</span><span class="n">entities</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">combinator</span><span class="p">)</span>
+
+    <span class="c1"># Ajouter des connexions vers chaque voisin
+</span>    <span class="k">for</span> <span class="n">cx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">cy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">COMBINATOR_HEIGHT</span><span class="p">):</span>
+            <span class="n">here</span> <span class="o">=</span> <span class="s">"{}_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">)</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="s">"{}_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">cx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cy</span><span class="p">)</span>
+            <span class="n">below</span> <span class="o">=</span> <span class="s">"{}_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">blueprint</span><span class="p">.</span><span class="n">add_circuit_connection</span><span class="p">(</span><span class="s">"red"</span><span class="p">,</span> <span class="n">here</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+            <span class="k">except</span> <span class="nb">KeyError</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">blueprint</span><span class="p">.</span><span class="n">add_circuit_connection</span><span class="p">(</span><span class="s">"red"</span><span class="p">,</span> <span class="n">here</span><span class="p">,</span> <span class="n">below</span><span class="p">)</span>
+            <span class="k">except</span> <span class="nb">KeyError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">"Total number of item signals added:"</span><span class="p">,</span> <span class="n">signals_added</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">blueprint</span><span class="p">.</span><span class="n">to_string</span><span class="p">())</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Ce script est concis et facile à suivre, mais la chose vraiment étonnante au sujet de Draftsman est que ce script est complètement dynamique et peut s’adapter à n’importe quelle version de Factorio que vous jouez. Les nouveaux objets, les objets supprimés, ou les changements de taille de pile, quel que soit l’auteur du changement, sont corrigés automatiquement avec exactement le même code. À titre d’illustration, la photo en haut à gauche montre ce qui est généré par l’exécution du script pour un jeu classique, en haut à droite un jeu avec le modpack de révision de taille moyenne <a href="https://mods.factorio.com/mod/space-exploration">Space Exploration</a>, et en bas un méga-modpack <a href="https://mods.factorio.com/user/Bobingabout">Bob</a> + <a href="https://mods.factorio.com/user/pyanodon">Pyanodon</a> :</p>
+
+<p><img src="https://media.alt-f4.blog/ALTF4/61/item_stack_size_output.jpg" alt="Résultats"></p>
+
+<p>Ceci ne s’applique pas seulement aux objets. Toutes les entités, instruments, signaux, recettes, modules, et tuiles sont extraits du processus de chargement émulé et ensuite stockés dans Draftsman pour une utilisation ultérieure. N’importe quel script peut être conçu pour être complètement flexible à travers ces catégories : des instruments supplémentaires dans un nouveau haut-parleur programmable, de nouveaux types de modules seulement dans certaines machines, des listes complètes de signaux virtuels pour les affectations de signaux, etc…, tous sont interprétés correctement par Draftsman. Sauvegarder les données de la configuration actuelle des mods en interne pour plus tard, cela signifie également que vous ne devez mettre à jour les données qu’une seule fois, chaque fois que vous changez les mods que vous utilisez.</p>
+      <h3 id="convertisseur-dimages-en-plans">
+        
+        
+            <a href="#convertisseur-dimages-en-plans" class="anchor" style="text-decoration: none;">Convertisseur d’images en plans</a>
+          
+        
+      </h3>
+    
+
+<p><a href="https://github.com/redruin1/factorio-draftsman/blob/main/examples/image_converter.py">C’est quelque chose que j’ai fait sur un coup de tête.</a> Il utilise la librairie d’images <code class="language-plaintext highlighter-rouge">Pillow</code> pour charger une image et la convertir en un plan destiné à être visible depuis la vue de la carte, le tout en moins de 150 lignes de code :</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/61/mike_stoklasa.jpg" alt="Portrait de Mike" style="max-width: ; max-height:  ">
+        
+        <figcaption>Un homme particulier avec une bouteille de taille inhabituelle, colorisé.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>De nombreuses améliorations pourraient y être apportées :</p>
+
+<ul>
+  <li>Le tramage n’est implémenté que sur les tuiles 1x1. J’ai eu du mal à ajuster l’algorithme aux entités multi-tuiles.</li>
+  <li>Les entités multi-tuiles ne parviennent pas non plus à ajuster la propriété de la métrique d’erreur. La mise en place de la mise en couleur ne fonctionne pas aussi bien lorsque certains pixels sont de tailles différentes.</li>
+  <li>Certaines entités multi-tuiles ont des rotations différentes. Une meilleure implémentation vérifierait quelle orientation produit le moins d’erreur avant de les placer, au lieu de les placer uniquement avec l’orientation par défaut.</li>
+  <li>Les couleurs elles-mêmes sont codées en dur. Ce serait bien de pouvoir les charger dynamiquement à partir du jeu, surtout avec les couleurs de cartes modifiées…</li>
+</ul>
+
+<p>Malgré ces défauts, le résultat est assez bon pour une implémentation rapide et simple. Cela montre que Draftsman est assez polyvalent pour des buts plutôt diversifiés.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/61/jay_bauman.jpg" alt="Portrait de Jay" style="max-width: ; max-height:  ">
+        
+        <figcaption>Jay Bauman, pirate informatique notoire, criminel en liberté. Armé et dangereux.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="résurrection-du-lecteur-vidéo-de-factorio">
+        
+        
+            <a href="#r%C3%A9surrection-du-lecteur-vid%C3%A9o-de-factorio" class="anchor" style="text-decoration: none;">Résurrection du lecteur vidéo de Factorio</a>
+          
+        
+      </h3>
+    
+
+<p>Il y a quelques temps, en cherchant des projets à utiliser comme exemples pour cet article, je suis tombé sur le classique <a href="https://www.youtube.com/watch?v=mgfwwqwxdxY">Factorio - Sandstorm</a>. Un projet parfait à adapter. Ou, il l’aurait été, si j’avais pu charger la carte dans le jeu ! La version originale de la carte était encore datée de la tendre version <code class="language-plaintext highlighter-rouge">0.14.20</code>. De plus, un grand nombre des migrations qui ont eu lieu sur une si longue période ont cassé la fonctionnalité du script permettant de convertir les images en données cartographiques, ainsi que certaines fonctionnalités de la carte elle-même, de sorte qu’il ne suffisait pas de télécharger une ancienne version de Factorio et de la contraindre pour faire revivre l’ancienne sauvegarde. Par exemple, le script <code class="language-plaintext highlighter-rouge">build.lua</code> en charge de l’encodage appelait encore les objets <code class="language-plaintext highlighter-rouge">automation-science-pack</code> et <code class="language-plaintext highlighter-rouge">logistic-science-pack</code>, <code class="language-plaintext highlighter-rouge">science-pack-1</code> et <code class="language-plaintext highlighter-rouge">science-pack-2</code>. Cela devrait vous donner une idée de l’ancienneté de la carte !</p>
+
+<p>Cela m’a troublé, de voir une telle pièce emblématique de l’histoire de Factorio tomber en désuétude. J’ai donc pris le temps de corriger les problèmes et de le migrer jusqu’à la version 1.1.57 :</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1200px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/61/cut_and_shrunk.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Clip musical de Feel The Beat
+    </video>
+    <figcaption>On voit ici un extrait de <a href="https://youtu.be/aLZQ-0dHbiU?t=38">Feel the Beat</a>, qui perpétue la tradition des clips musicaux de Darude.</figcaption>
+  </figure>
+</p>
+
+<p>Changer le script de construction pouvait être fait à la main, mais le signal <code class="language-plaintext highlighter-rouge">raw-wood</code> que la machine utilisait en interne n’existe plus dans le Factorio moderne. Afin de le corriger, j’ai remplacé toutes les occurrences du signal dans la carte par <code class="language-plaintext highlighter-rouge">artillery-wagon</code> (puisque je savais qu’il serait unique), et cette mise à jour de la carte a été faite avec un script exécutant du code de Draftsman. J’ai également ajouté un certain nombre d’autres scripts pour extraire les images de la source, ainsi que pour prendre des captures d’écran du résultat et les assembler dans une vidéo de sortie, ce qui est assez facile en Python. J’ai utilisé ces scripts pour produire le résultat ci-dessus.</p>
+
+<p>Je me suis également penché sur l’idée d’utiliser Draftsman pour créer une version du script de construction basée sur un plan, au lieu de la méthode originale basée sur la console. Cela vous permettrait de voir exactement quelles parties de la mémoire vous modifiez en plaçant un plan aligné sur une grille au-dessus d’elles, et vous permettrait également d’étendre la mémoire de la machine en ajoutant simplement plus de blocs (la mémoire fournie sur la carte est seulement suffisante pour 4800 images). Je me suis dit que c’était moins important que de mettre à jour ce qui était là à l’origine, surtout quand je savais que le code qui <em>était</em> déjà là fonctionnait. Il pourrait y avoir d’autres préoccupations : la quantité de données encodées est assez importante, surtout pour les chaînes de caractères du plan qui, je pense, sont moins denses que les scripts de la console, qui sont si volumineux qu’ils sont transférés dans des fichiers texte lors de la construction. J’ai pensé que la détermination de la faisabilité d’une méthode de plan était possible jusqu’à ce que j’aie un peu plus de temps libre.</p>
+
+<p>Pour plus d’informations sur ce qui a été modifié ou ajouté, ainsi que sur la sauvegarde mise à jour, <a href="https://github.com/redruin1/factorio-movie-maker">vous pouvez consulter ma fourche Github ici</a>.</p>
+      <h3 id="et-ensuite-">
+        
+        
+            <a href="#et-ensuite-" class="anchor" style="text-decoration: none;">Et ensuite ?</a>
+          
+        
+      </h3>
+    
+
+<p>Bien que j’aie fait un certain nombre de choses avec ce module, le but de celui-ci était de permettre à <em>quiconque</em> de faire facilement tout un tas d’autres choses également. Certaines idées que j’aimerais faire, mais que je n’ai pas encore faites, je les reporterai ici pour alimenter la réflexion :</p>
+
+<ul>
+  <li>
+    <p>De nombreux compilateurs d’ordinateurs en logique sont écrits via un script. Peut-être que quelqu’un pourrait concevoir un équivalent de LLVM, un compilateur générique, où vous pouvez lui dire quelles instructions votre CPU peut exécuter et lui faire compiler des langages établis de haut niveau comme le C. Peut-être que vous pourriez même utiliser LLVM lui-même ?</p>
+  </li>
+  <li>
+    <p>Tirer parti du comportement des cas limites pour des problèmes d’optimisation spécifiques. Saviez-vous que vous pouvez configurer les entités pour demander <em>n’importe quel</em> objet, et pas seulement des modules ? Vous ne pouvez demander des objets qu’au moment de leur construction initiale, ce qui limite quelque peu leur utilité, mais les robots répondront à la demande, ce qui vous permettra de “relancer” la production dans certains cas. Avec quelque chose comme le mod Recursive Blueprints, en plaçant des machines d’assemblage avec des demandes d’objets, puis en les déconstruisant lorsqu’elles ont fini de consommer leurs ingrédients, vous pouvez théoriquement construire une usine entièrement automatisée avec seulement des robots de construction. Peut-être que la <a href="https://www.youtube.com/watch?v=9dzQge6pe2o">Micro Factory</a> peut être optimisée davantage ? Ou un nouvel objectif pourrait être d’avoir le plus petit nombre total d’entités pour lancer une fusée sans intervention de l’utilisateur ?</p>
+  </li>
+</ul>
+
+<p>Un cas d’utilisation peut-être plus généralement applicable est <a href="https://factoriobin.com/post/p38zvEAP">ce plan</a>, une tourelle à un seul canon qui demande automatiquement 200 munitions rouges au réseau logistique lorsqu’elle est placée. C’est particulièrement utile dans les efforts offensifs sur les grands nids. Vous pouvez spammer les tourelles autour de vous et les robots de votre inventaire créeront les tourelles et livreront les munitions automatiquement, ce qui vous permet de vous concentrer sur le fait de ne pas vous dissoudre dans la bave de cracheurs.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 800px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/61/preloaded_turret_short.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Une illustration du plan de la tourelle en action.
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<ul>
+  <li>
+    <p>Problèmes d’acheminement : passer par un ensemble d’avant-poste et utiliser un algorithme pour les relier automatiquement afin de minimiser la distance, le nombre de traversées, etc. Peut-être pourriez-vous le faire lire à partir des fichiers de sauvegarde eux-mêmes ?</p>
+  </li>
+  <li>
+    <p>Les dispositifs de circuits logiques sont généralement très complexes et peu intuitifs à décoder pour le profane, comme je l’ai constaté lors de mon exploration approfondie dans l’introduction. Cela est dû à la densité des circuits, aux opérations cachées de chaque entité, au fouillis de fils généré sans possibilité de les connecter proprement dans de petites zones, et à l’impossibilité de donner des étiquettes aux circuits logiques ou aux fils qui les connectent. Ce serait bien d’avoir un logiciel capable de prendre un plan en entrée et de permettre à l’utilisateur de faire tout ce qui précède pour créer une documentation facilement décodable et compréhensible pour des montages de circuits complexes. J’adorerais utiliser une telle chose pour créer des schémas de circuit vectorisés pour mon ordinateur. Quand je l’aurai terminé. Éventuellement.</p>
+  </li>
+  <li>
+    <p>Utiliser la <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_satisfaction_de_contraintes">satisfaction de contraintes</a> pour concevoir des plans. J’ai expérimenté cela dans le passé, et cela devrait être possible, en supposant que vous puissiez réduire la complexité temporelle de <code class="language-plaintext highlighter-rouge">O(MFG)</code>. Si je décide d’écrire un autre article pour Alt-F4, ce sera peut-être sur ce sujet.</p>
+  </li>
+  <li>
+    <p>Vous pouvez également utiliser les réseaux neuronaux pour l’objectif précédent. C’est Python après tout ! Je me demande si vous pourriez vraiment obtenir des plans utilisables de cette façon. Peut-être que si vous les formiez sur l’ensemble de <a href="https://www.factorio.school/">Factorio Prints</a>…</p>
+  </li>
+</ul>
+
+<p>Avec un peu de chance, cela devrait donner aux plus créatifs d’entre vous quelques idées intéressantes. Et peut-être, <em>juste peut-être</em>, lorsque quelqu’un aura besoin d’écrire un script pour un problème spécifique afin de gagner du temps, il pourra effectivement gagner du temps au lieu de passer trois à quatre mois à écrire un module Python à partir de rien.</p>
+
+<p>Eh, c’était quand même assez amusant à faire. Éducatif, aussi.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1276px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/61/it_works.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Ça marche !
+    </video>
+    <figcaption>Ça marche ! Dieu merci.</figcaption>
+  </figure>
+</p>
+
+<p>Ah, enfin. Retour au <em>vrai</em> travail.</p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://alt-f4.blog/fr/discord">Discord</a> pour ne rien rater !</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/fr/discord">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-60/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/fr/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

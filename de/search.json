@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "Für die dieswöchige Ausgabe von ALT-F4 besinnen wir uns auf unsere Wurzeln als FFF-Nachfolger im Geiste zurück und vertiefen uns in ein techisches Nischenthema. redruin1 präsentiert seine neueste Erfindung: Factorio Draftsman. Natürlich gab es bereits andere Projekte, welche versuchten eine Bibliothek für Factorio-Blaupausen-Generation zu bilden, aber Draftsman versucht, der neue Standart zu werden. Motivation, technische Details und einige spaßige Projekte, all das und vieles mehr in dieser Ausgabe von ALT-F4!",
+      "image_alt"      : "Ein Foto eines automatisch aus einer Blaupause erstellten Zahnrades aus Beton",
+      "url"        : "/ALTF4-61/",
+      "title"      : "Alt-F4 #61 - Draftsman: Ein Python-Modul um Blaupausen zu erstellen",
+      "image_src"      : "/assets/ALTF4/61/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "EDLEXUS",
+      "author"     : "redruin1",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "27.05.2022"
+    },
+    {
       "content"    : "Zum Diamantenen Jubiläum von ALt-F4 liefert unser verrückter Sir Fendi ein neuen Crashkurs in Factorio’s Thermodynamik. Andersgesagt will er herausfinden, wie du das meiste aus deiner Kohle bekommst, durch Verarbeitung in verschiedene Brennstoffe. Ist das nicht nett von ihm? Module werden natürlich auch eine Rolle spielen, wir machen ja keine halben Sachen.",
       "image_alt"      : "",
       "url"        : "/ALTF4-60/",

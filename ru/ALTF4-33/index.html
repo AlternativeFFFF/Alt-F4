@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru" class="ru">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #33 - Vanilla: Shaken, not Stirred</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #33 - Vanilla: Shaken, not Stirred">
+<meta name="author" content="Villfuk02, redlabel">
+<meta property="og:locale" content="en">
+<meta name="description" content="In this delightful issue #33 of Alt-F4, Villfuk02 presents their most recent mod creation: The Recipe Randomizer! A spotlight is put on all the design problems that needed to be overcome to make a recipe randomizer that is actually good. After that, redlabel announces the most recent COMFY event, which will likely be pretty explodey. Vanilla: Shaken, not Stirred Villfuk02 Vill’s Recipe Randomizer does exactly what the name suggests - it randomises recipes. On first sight, this might seem like a very stupid, but very simple idea. However, once you try to make it less stupid, it gets very complicated pretty quickly. Example factory making production science packs from distractor capsules, power switches and flamethrower ammo. How it started I first started working on this project in September 2020. At that time I was trying to make a mod that’s both simple and unique. It wasn’t supposed to be playable, or even good, just something fun to make. After running into some issues, knowing full well that I’m making a mod nobody would play anyway, I gave up and never touched programming again. After two other failed projects I came back to Factorio, this time, as a player. I played vanilla, then Industrial Revolution 2, and then I tried Space Exploration. I love playing overhaul mods because it lets me learn new recipes, discover new factory layouts and solve new logistic problems. But most overhaul mods are very grindy and I get bored quickly. That’s when I realised that a randomiser mod has in fact a purpose: It’s like an unlimited supply of overhaul mods while keeping the vanilla feel! The biggest bonus for me was that I don’t have to make any new machines or graphics as it’s just messing with numbers and letters. Not as simple as it seems The mod could simply take each recipe and make it take random items as ingredients. This would be pretty useless because, for example, red science might take nuclear fuel as an ingredient, but you won’t have it researched yet. So I decided to make it crawl through the tech tree, and for each recipe that’s being unlocked, take only the items unlocked before it as potential ingredients. There are of course exceptions in some mods, where you can unlock a recipe before you can even craft it, so I have to be a bit more careful. You probably wouldn’t want to make an underground belt from steam engines and labs. That would be way too expensive. I needed a way to make the recipes more balanced. So I decided to implement an algorithm that calculates the value of each item based on the resources you need to make it. We can easily calculate that one electronic circuit takes 1 iron ore and 1.5 copper ore: 1.5 copper ore plus 1 iron ore makes one electronic circuit. Let’s say that both copper ore and iron ore have a value of 1, this means electronic circuits would have a value of 2.5. Now the randomiser knows it can use for example one transport belt (value 1.5) and one copper ore (value of 1) as a new recipe for electronic circuits. There is some variance in the final value. It makes the recipes a bit more unique, but most importantly, it’s easier to find a valid combination, speeding up the randomisation process. At this point, I published the mod and from feedback and some testing, it became very apparent there were many bugs (of course) and two “big” issues. The word big is in quotes because the mod was still more playable than you’d expect even from a randomiser. I however wanted the players to enjoy it, not just experience it. The first few issues The first issue was wood. The default settings made sure wood was not randomised, but many recipes used wooden power poles as an ingredient! As you can imagine, the fix should have been was pretty simple and boring. I added a flag for non-randomizable resources, like wood, and any item that strictly needs an item with this flag as it’s ingredient inherits it. The second one was that even though recipes needed the right amount of resources, they often were too complex and felt unfair. The mod did not account for the number of crafting steps or crafting time. A great example is the automation (red) science pack. It is very cheap, having a value of only 3, but it takes 5 seconds to craft. It was used in many recipes, like a basic component, similarly to iron gears. Its long crafting time means you could need a lot of assemblers making red science just for something simple like underground belts. Another problematic example is that simple items like iron gears could require many steps like making them from stone bricks, which could be made from iron sticks, which could be made from pipes, etc. So I made the mod calculate a second value, called complexity, for each item. Complexity takes into account the amount of crafting steps required, the amount of various ingredients (and results) and also the crafting times. Balancing raw resources It seemed that I’ve arrived at the perfect randomiser, but again, some issues (and bugs) revealed themselves. Often, many recipes used primarily one resource (often iron or stone) which was kind of bland and you had to scout for far away ore patches because you needed just so much of the chosen resource. Also, oil was often not needed for launching the rocket. For a given recipe, all valid items were equally likely to be picked, so the items without oil massively outnumbered the few oil products. I tried some strategies to push the algorithm in the right direction but none of them really worked. I could just tell it to use more plastic or solid fuel and such, but what if you want to play with mods and there are even more items to be prioritised? I wanted a universal solution. I already knew one approach that could solve it, but I was afraid to implement it because it would make everything way more complicated. This means more development time, more bugs and potentially way slower loading times. After unsuccessfully trying to come up with some simpler way to achieve a similar result, I finally decided to go with this complicated solution. The main idea was to use the amounts of raw resources instead of just the total value. This means the mod can make sure that each randomised recipe needs the right amount of raw resources, ensuring that all raw resources are used. Similarly to the total value, the raw resource amounts for each recipe may vary a bit, or they can be completely random based on the mod settings. Pretty simple, right? Well, now instead of doing maths with one number I have to do maths with several and the logic is a lot more complicated. Fortunately, with some optimisations and rigorous testing, the mod works fine and is still pretty fast. And that’s the whole history of Vill’s Recipe Randomizer! We need to go deeper Except I did not talk about some BIG issues (notice the missing quotes and the capital letters) which were present from the start. One of them is recipe loops. The algorithm could get stuck when trying to evaluate the value of one of the recipes or it could calculate it improperly. Loops contained within one recipe are simple to deal with. For evaluating the recipe, the algorithm cuts out the items that appear both as an ingredient and as a result, removing the loop. It can then add back the cut items because their values are now known, making the recipe ready for randomising. In vanilla, this applies to Kovarex enrichment process and coal liquefaction: 40 U-235 and 2 U-238 can be removed from Kovarex and 25 heavy oil can be removed from coal liquefaction. Loops with more than one recipe are somewhat problematic. There are no loops in vanilla with more than one recipe (except for barreling and unbarrelling, which is not randomised by default anyway), so they’re pretty easy to miss, but in mods, they are everywhere! The randomiser might also accidentally create a loop in certain conditions. To illustrate the problem we’ll need an example. Let’s take synthetic sapphires in Industrial Revolution 2. You need pure nickel mineral, silica and sapphire dust to make a sapphire, however, sapphire dust is made by crushing sapphires, forming a loop: The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used for the calculation instead of the one the straightened loop ended with. Here, the two recipes are merged by removing the three sapphire dust in the middle, then we can remove the two sapphires that are both an ingredient and a result: We end up with a recipe to make sapphires while leaving out the problematic details! But what happens when there are branching loops or loops within loops? This is not based on any specific recipes, but I’m sure something at least as complicated as this diagram exists in some mod. Let’s just say that things get loopy. I think I somewhat solved it in the mod, but I won’t go into details here, this is not a graph theory course, and I’m not even sure the solution works reliably. My nemesis And now, time for the biggest issue of them all: recipes with multiple outputs. Let’s take a look at advanced oil processing as an example. By default, crude oil has a value of 0.4 (we’ll ignore water for now). That means the recipe has a total value of 40. So we know that 25 heavy oil + 45 light oil + 55 petroleum gas should have a value of 40 in total, but how much of that value is contained within each product? There are many ways to approach this and tackling this issue took most of my time and caused many headaches. Let’s go through the two most different options. The simplest: Just make each of the results worth an equal part of the total value. This is mostly reasonable, but it breaks when you introduce waste products. For example, the Kovarex enrichment process makes 41 U-235 and 2 U-238, the algorithm would assume they both have the same value, but you probably know that U-235 is much more valuable. So this approach is not really usable. The “best”: Just make each part worth the full value, but keep track of the byproducts which you can subtract later. For example, heavy oil has light oil and petroleum gas as its byproducts in advanced oil processing. That means lubricant has them as byproducts too because it’s made from heavy oil only. If we want to make an express splitter, we need, among some other ingredients, lubricant and advanced circuits. Advanced circuits need petroleum, but we have some as a byproduct of the lubricant so we can subtract it. The only byproduct that’s left is light oil. What do we do with the light oil? We can of course crack it to save even more petroleum. But that takes some water. Is it cheaper to use more water or more petroleum? Well, let’s calculate both options just in case. As you can tell, this approach is insanely complicated. There are many edge cases and questions to be answered. Like what do I do with excess byproducts when other recipe’s ingredients don’t want them? I tried to implement a version of this approach and I must say, I was pretty successful. It took me only about 100 hours and I had to fix about a million bugs. And what was the reward? Well, this solution is still not perfect, although it comes very close. I also could no longer make sense of my own code. Everything broke every time I tried to adjust something. And most importantly, loading the mod with vanilla Factorio took anywhere from 10 seconds to 10 minutes. Since I want the mod to be compatible with as many other mods (and it working with vanilla Factorio would be nice too), I decided this is not the way to go. Finally, after much more thinking, I arrived at the algorithm I use now. It is basically a compromise between the two approaches described above. It works well enough and is pretty simple. Though not simple enough for me to explain because I’d need to explain the many other quirks of the evaluation algorithm. It does not evaluate all multiple-output recipes incredibly well in all cases, but it also does not break in edge cases (I hope). Final thoughts That concludes our peek into the inner workings of the Recipe Randomizer. If you have any questions or suggestions, you can message me on my Discord server. Speaking of which, I’d like to thank all the people who joined it and posted bugs, ideas, tested things or otherwise supported me during the development. The mod wouldn’t have come this far without you! COMFY Minesweeper! redlabel To celebrate a new map design by legendary map maker mewmew and a shiny new Ryzen 9 5950X powered by Gerkiz, COMFY Factorio is organizing a special event on May 1st @ 5PM UTC. Everyone and their families are invited, no need to RSVP. If anyone is wondering what Minesweeper is about, well, it is a new map where base expansion happens by solving a minesweeper puzzle. To clear a mine, a furnace must be placed over it. Placing it over a clear spot will trigger an explosion, and stepping on it without clearing first will yield the same result. Mistakes cost dearly, as they release evil biters and cause nuclear explosions. Players can also earn (or lose) points depending on how good they are, and can compare themselves to others through a scoreboard that keeps a track of valuable internet points. COMFY is one of the leading multiplayer Factorio communities and some of our creations are Mountain Fortress, Biter Battles, Fish Defense, Chronotrain and Cave Miner. And very, very soon it will include a map about pirates and sailing ships! Stay tuned for that one. You can join the COMFY community with nearly 3500 members on our Discord. Обратный отсчёт истёк Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="In this delightful issue #33 of Alt-F4, Villfuk02 presents their most recent mod creation: The Recipe Randomizer! A spotlight is put on all the design problems that needed to be overcome to make a recipe randomizer that is actually good. After that, redlabel announces the most recent COMFY event, which will likely be pretty explodey. Vanilla: Shaken, not Stirred Villfuk02 Vill’s Recipe Randomizer does exactly what the name suggests - it randomises recipes. On first sight, this might seem like a very stupid, but very simple idea. However, once you try to make it less stupid, it gets very complicated pretty quickly. Example factory making production science packs from distractor capsules, power switches and flamethrower ammo. How it started I first started working on this project in September 2020. At that time I was trying to make a mod that’s both simple and unique. It wasn’t supposed to be playable, or even good, just something fun to make. After running into some issues, knowing full well that I’m making a mod nobody would play anyway, I gave up and never touched programming again. After two other failed projects I came back to Factorio, this time, as a player. I played vanilla, then Industrial Revolution 2, and then I tried Space Exploration. I love playing overhaul mods because it lets me learn new recipes, discover new factory layouts and solve new logistic problems. But most overhaul mods are very grindy and I get bored quickly. That’s when I realised that a randomiser mod has in fact a purpose: It’s like an unlimited supply of overhaul mods while keeping the vanilla feel! The biggest bonus for me was that I don’t have to make any new machines or graphics as it’s just messing with numbers and letters. Not as simple as it seems The mod could simply take each recipe and make it take random items as ingredients. This would be pretty useless because, for example, red science might take nuclear fuel as an ingredient, but you won’t have it researched yet. So I decided to make it crawl through the tech tree, and for each recipe that’s being unlocked, take only the items unlocked before it as potential ingredients. There are of course exceptions in some mods, where you can unlock a recipe before you can even craft it, so I have to be a bit more careful. You probably wouldn’t want to make an underground belt from steam engines and labs. That would be way too expensive. I needed a way to make the recipes more balanced. So I decided to implement an algorithm that calculates the value of each item based on the resources you need to make it. We can easily calculate that one electronic circuit takes 1 iron ore and 1.5 copper ore: 1.5 copper ore plus 1 iron ore makes one electronic circuit. Let’s say that both copper ore and iron ore have a value of 1, this means electronic circuits would have a value of 2.5. Now the randomiser knows it can use for example one transport belt (value 1.5) and one copper ore (value of 1) as a new recipe for electronic circuits. There is some variance in the final value. It makes the recipes a bit more unique, but most importantly, it’s easier to find a valid combination, speeding up the randomisation process. At this point, I published the mod and from feedback and some testing, it became very apparent there were many bugs (of course) and two “big” issues. The word big is in quotes because the mod was still more playable than you’d expect even from a randomiser. I however wanted the players to enjoy it, not just experience it. The first few issues The first issue was wood. The default settings made sure wood was not randomised, but many recipes used wooden power poles as an ingredient! As you can imagine, the fix should have been was pretty simple and boring. I added a flag for non-randomizable resources, like wood, and any item that strictly needs an item with this flag as it’s ingredient inherits it. The second one was that even though recipes needed the right amount of resources, they often were too complex and felt unfair. The mod did not account for the number of crafting steps or crafting time. A great example is the automation (red) science pack. It is very cheap, having a value of only 3, but it takes 5 seconds to craft. It was used in many recipes, like a basic component, similarly to iron gears. Its long crafting time means you could need a lot of assemblers making red science just for something simple like underground belts. Another problematic example is that simple items like iron gears could require many steps like making them from stone bricks, which could be made from iron sticks, which could be made from pipes, etc. So I made the mod calculate a second value, called complexity, for each item. Complexity takes into account the amount of crafting steps required, the amount of various ingredients (and results) and also the crafting times. Balancing raw resources It seemed that I’ve arrived at the perfect randomiser, but again, some issues (and bugs) revealed themselves. Often, many recipes used primarily one resource (often iron or stone) which was kind of bland and you had to scout for far away ore patches because you needed just so much of the chosen resource. Also, oil was often not needed for launching the rocket. For a given recipe, all valid items were equally likely to be picked, so the items without oil massively outnumbered the few oil products. I tried some strategies to push the algorithm in the right direction but none of them really worked. I could just tell it to use more plastic or solid fuel and such, but what if you want to play with mods and there are even more items to be prioritised? I wanted a universal solution. I already knew one approach that could solve it, but I was afraid to implement it because it would make everything way more complicated. This means more development time, more bugs and potentially way slower loading times. After unsuccessfully trying to come up with some simpler way to achieve a similar result, I finally decided to go with this complicated solution. The main idea was to use the amounts of raw resources instead of just the total value. This means the mod can make sure that each randomised recipe needs the right amount of raw resources, ensuring that all raw resources are used. Similarly to the total value, the raw resource amounts for each recipe may vary a bit, or they can be completely random based on the mod settings. Pretty simple, right? Well, now instead of doing maths with one number I have to do maths with several and the logic is a lot more complicated. Fortunately, with some optimisations and rigorous testing, the mod works fine and is still pretty fast. And that’s the whole history of Vill’s Recipe Randomizer! We need to go deeper Except I did not talk about some BIG issues (notice the missing quotes and the capital letters) which were present from the start. One of them is recipe loops. The algorithm could get stuck when trying to evaluate the value of one of the recipes or it could calculate it improperly. Loops contained within one recipe are simple to deal with. For evaluating the recipe, the algorithm cuts out the items that appear both as an ingredient and as a result, removing the loop. It can then add back the cut items because their values are now known, making the recipe ready for randomising. In vanilla, this applies to Kovarex enrichment process and coal liquefaction: 40 U-235 and 2 U-238 can be removed from Kovarex and 25 heavy oil can be removed from coal liquefaction. Loops with more than one recipe are somewhat problematic. There are no loops in vanilla with more than one recipe (except for barreling and unbarrelling, which is not randomised by default anyway), so they’re pretty easy to miss, but in mods, they are everywhere! The randomiser might also accidentally create a loop in certain conditions. To illustrate the problem we’ll need an example. Let’s take synthetic sapphires in Industrial Revolution 2. You need pure nickel mineral, silica and sapphire dust to make a sapphire, however, sapphire dust is made by crushing sapphires, forming a loop: The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used for the calculation instead of the one the straightened loop ended with. Here, the two recipes are merged by removing the three sapphire dust in the middle, then we can remove the two sapphires that are both an ingredient and a result: We end up with a recipe to make sapphires while leaving out the problematic details! But what happens when there are branching loops or loops within loops? This is not based on any specific recipes, but I’m sure something at least as complicated as this diagram exists in some mod. Let’s just say that things get loopy. I think I somewhat solved it in the mod, but I won’t go into details here, this is not a graph theory course, and I’m not even sure the solution works reliably. My nemesis And now, time for the biggest issue of them all: recipes with multiple outputs. Let’s take a look at advanced oil processing as an example. By default, crude oil has a value of 0.4 (we’ll ignore water for now). That means the recipe has a total value of 40. So we know that 25 heavy oil + 45 light oil + 55 petroleum gas should have a value of 40 in total, but how much of that value is contained within each product? There are many ways to approach this and tackling this issue took most of my time and caused many headaches. Let’s go through the two most different options. The simplest: Just make each of the results worth an equal part of the total value. This is mostly reasonable, but it breaks when you introduce waste products. For example, the Kovarex enrichment process makes 41 U-235 and 2 U-238, the algorithm would assume they both have the same value, but you probably know that U-235 is much more valuable. So this approach is not really usable. The “best”: Just make each part worth the full value, but keep track of the byproducts which you can subtract later. For example, heavy oil has light oil and petroleum gas as its byproducts in advanced oil processing. That means lubricant has them as byproducts too because it’s made from heavy oil only. If we want to make an express splitter, we need, among some other ingredients, lubricant and advanced circuits. Advanced circuits need petroleum, but we have some as a byproduct of the lubricant so we can subtract it. The only byproduct that’s left is light oil. What do we do with the light oil? We can of course crack it to save even more petroleum. But that takes some water. Is it cheaper to use more water or more petroleum? Well, let’s calculate both options just in case. As you can tell, this approach is insanely complicated. There are many edge cases and questions to be answered. Like what do I do with excess byproducts when other recipe’s ingredients don’t want them? I tried to implement a version of this approach and I must say, I was pretty successful. It took me only about 100 hours and I had to fix about a million bugs. And what was the reward? Well, this solution is still not perfect, although it comes very close. I also could no longer make sense of my own code. Everything broke every time I tried to adjust something. And most importantly, loading the mod with vanilla Factorio took anywhere from 10 seconds to 10 minutes. Since I want the mod to be compatible with as many other mods (and it working with vanilla Factorio would be nice too), I decided this is not the way to go. Finally, after much more thinking, I arrived at the algorithm I use now. It is basically a compromise between the two approaches described above. It works well enough and is pretty simple. Though not simple enough for me to explain because I’d need to explain the many other quirks of the evaluation algorithm. It does not evaluate all multiple-output recipes incredibly well in all cases, but it also does not break in edge cases (I hope). Final thoughts That concludes our peek into the inner workings of the Recipe Randomizer. If you have any questions or suggestions, you can message me on my Discord server. Speaking of which, I’d like to thank all the people who joined it and posted bugs, ideas, tested things or otherwise supported me during the development. The mod wouldn’t have come this far without you! COMFY Minesweeper! redlabel To celebrate a new map design by legendary map maker mewmew and a shiny new Ryzen 9 5950X powered by Gerkiz, COMFY Factorio is organizing a special event on May 1st @ 5PM UTC. Everyone and their families are invited, no need to RSVP. If anyone is wondering what Minesweeper is about, well, it is a new map where base expansion happens by solving a minesweeper puzzle. To clear a mine, a furnace must be placed over it. Placing it over a clear spot will trigger an explosion, and stepping on it without clearing first will yield the same result. Mistakes cost dearly, as they release evil biters and cause nuclear explosions. Players can also earn (or lose) points depending on how good they are, and can compare themselves to others through a scoreboard that keeps a track of valuable internet points. COMFY is one of the leading multiplayer Factorio communities and some of our creations are Mountain Fortress, Biter Battles, Fish Defense, Chronotrain and Cave Miner. And very, very soon it will include a map about pirates and sailing ships! Stay tuned for that one. You can join the COMFY community with nearly 3500 members on our Discord. Обратный отсчёт истёк Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/ru/ALTF4-33/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-33/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-04-30T00:00:00+00:00">
+<script type="application/ld+json">
+{"headline":"Alt-F4 #33 - Vanilla: Shaken, not Stirred","dateModified":"2021-04-30T00:00:00+00:00","datePublished":"2021-04-30T00:00:00+00:00","description":"In this delightful issue #33 of Alt-F4, Villfuk02 presents their most recent mod creation: The Recipe Randomizer! A spotlight is put on all the design problems that needed to be overcome to make a recipe randomizer that is actually good. After that, redlabel announces the most recent COMFY event, which will likely be pretty explodey. Vanilla: Shaken, not Stirred Villfuk02 Vill’s Recipe Randomizer does exactly what the name suggests - it randomises recipes. On first sight, this might seem like a very stupid, but very simple idea. However, once you try to make it less stupid, it gets very complicated pretty quickly. Example factory making production science packs from distractor capsules, power switches and flamethrower ammo. How it started I first started working on this project in September 2020. At that time I was trying to make a mod that’s both simple and unique. It wasn’t supposed to be playable, or even good, just something fun to make. After running into some issues, knowing full well that I’m making a mod nobody would play anyway, I gave up and never touched programming again. After two other failed projects I came back to Factorio, this time, as a player. I played vanilla, then Industrial Revolution 2, and then I tried Space Exploration. I love playing overhaul mods because it lets me learn new recipes, discover new factory layouts and solve new logistic problems. But most overhaul mods are very grindy and I get bored quickly. That’s when I realised that a randomiser mod has in fact a purpose: It’s like an unlimited supply of overhaul mods while keeping the vanilla feel! The biggest bonus for me was that I don’t have to make any new machines or graphics as it’s just messing with numbers and letters. Not as simple as it seems The mod could simply take each recipe and make it take random items as ingredients. This would be pretty useless because, for example, red science might take nuclear fuel as an ingredient, but you won’t have it researched yet. So I decided to make it crawl through the tech tree, and for each recipe that’s being unlocked, take only the items unlocked before it as potential ingredients. There are of course exceptions in some mods, where you can unlock a recipe before you can even craft it, so I have to be a bit more careful. You probably wouldn’t want to make an underground belt from steam engines and labs. That would be way too expensive. I needed a way to make the recipes more balanced. So I decided to implement an algorithm that calculates the value of each item based on the resources you need to make it. We can easily calculate that one electronic circuit takes 1 iron ore and 1.5 copper ore: 1.5 copper ore plus 1 iron ore makes one electronic circuit. Let’s say that both copper ore and iron ore have a value of 1, this means electronic circuits would have a value of 2.5. Now the randomiser knows it can use for example one transport belt (value 1.5) and one copper ore (value of 1) as a new recipe for electronic circuits. There is some variance in the final value. It makes the recipes a bit more unique, but most importantly, it’s easier to find a valid combination, speeding up the randomisation process. At this point, I published the mod and from feedback and some testing, it became very apparent there were many bugs (of course) and two “big” issues. The word big is in quotes because the mod was still more playable than you’d expect even from a randomiser. I however wanted the players to enjoy it, not just experience it. The first few issues The first issue was wood. The default settings made sure wood was not randomised, but many recipes used wooden power poles as an ingredient! As you can imagine, the fix should have been was pretty simple and boring. I added a flag for non-randomizable resources, like wood, and any item that strictly needs an item with this flag as it’s ingredient inherits it. The second one was that even though recipes needed the right amount of resources, they often were too complex and felt unfair. The mod did not account for the number of crafting steps or crafting time. A great example is the automation (red) science pack. It is very cheap, having a value of only 3, but it takes 5 seconds to craft. It was used in many recipes, like a basic component, similarly to iron gears. Its long crafting time means you could need a lot of assemblers making red science just for something simple like underground belts. Another problematic example is that simple items like iron gears could require many steps like making them from stone bricks, which could be made from iron sticks, which could be made from pipes, etc. So I made the mod calculate a second value, called complexity, for each item. Complexity takes into account the amount of crafting steps required, the amount of various ingredients (and results) and also the crafting times. Balancing raw resources It seemed that I’ve arrived at the perfect randomiser, but again, some issues (and bugs) revealed themselves. Often, many recipes used primarily one resource (often iron or stone) which was kind of bland and you had to scout for far away ore patches because you needed just so much of the chosen resource. Also, oil was often not needed for launching the rocket. For a given recipe, all valid items were equally likely to be picked, so the items without oil massively outnumbered the few oil products. I tried some strategies to push the algorithm in the right direction but none of them really worked. I could just tell it to use more plastic or solid fuel and such, but what if you want to play with mods and there are even more items to be prioritised? I wanted a universal solution. I already knew one approach that could solve it, but I was afraid to implement it because it would make everything way more complicated. This means more development time, more bugs and potentially way slower loading times. After unsuccessfully trying to come up with some simpler way to achieve a similar result, I finally decided to go with this complicated solution. The main idea was to use the amounts of raw resources instead of just the total value. This means the mod can make sure that each randomised recipe needs the right amount of raw resources, ensuring that all raw resources are used. Similarly to the total value, the raw resource amounts for each recipe may vary a bit, or they can be completely random based on the mod settings. Pretty simple, right? Well, now instead of doing maths with one number I have to do maths with several and the logic is a lot more complicated. Fortunately, with some optimisations and rigorous testing, the mod works fine and is still pretty fast. And that’s the whole history of Vill’s Recipe Randomizer! We need to go deeper Except I did not talk about some BIG issues (notice the missing quotes and the capital letters) which were present from the start. One of them is recipe loops. The algorithm could get stuck when trying to evaluate the value of one of the recipes or it could calculate it improperly. Loops contained within one recipe are simple to deal with. For evaluating the recipe, the algorithm cuts out the items that appear both as an ingredient and as a result, removing the loop. It can then add back the cut items because their values are now known, making the recipe ready for randomising. In vanilla, this applies to Kovarex enrichment process and coal liquefaction: 40 U-235 and 2 U-238 can be removed from Kovarex and 25 heavy oil can be removed from coal liquefaction. Loops with more than one recipe are somewhat problematic. There are no loops in vanilla with more than one recipe (except for barreling and unbarrelling, which is not randomised by default anyway), so they’re pretty easy to miss, but in mods, they are everywhere! The randomiser might also accidentally create a loop in certain conditions. To illustrate the problem we’ll need an example. Let’s take synthetic sapphires in Industrial Revolution 2. You need pure nickel mineral, silica and sapphire dust to make a sapphire, however, sapphire dust is made by crushing sapphires, forming a loop: The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used for the calculation instead of the one the straightened loop ended with. Here, the two recipes are merged by removing the three sapphire dust in the middle, then we can remove the two sapphires that are both an ingredient and a result: We end up with a recipe to make sapphires while leaving out the problematic details! But what happens when there are branching loops or loops within loops? This is not based on any specific recipes, but I’m sure something at least as complicated as this diagram exists in some mod. Let’s just say that things get loopy. I think I somewhat solved it in the mod, but I won’t go into details here, this is not a graph theory course, and I’m not even sure the solution works reliably. My nemesis And now, time for the biggest issue of them all: recipes with multiple outputs. Let’s take a look at advanced oil processing as an example. By default, crude oil has a value of 0.4 (we’ll ignore water for now). That means the recipe has a total value of 40. So we know that 25 heavy oil + 45 light oil + 55 petroleum gas should have a value of 40 in total, but how much of that value is contained within each product? There are many ways to approach this and tackling this issue took most of my time and caused many headaches. Let’s go through the two most different options. The simplest: Just make each of the results worth an equal part of the total value. This is mostly reasonable, but it breaks when you introduce waste products. For example, the Kovarex enrichment process makes 41 U-235 and 2 U-238, the algorithm would assume they both have the same value, but you probably know that U-235 is much more valuable. So this approach is not really usable. The “best”: Just make each part worth the full value, but keep track of the byproducts which you can subtract later. For example, heavy oil has light oil and petroleum gas as its byproducts in advanced oil processing. That means lubricant has them as byproducts too because it’s made from heavy oil only. If we want to make an express splitter, we need, among some other ingredients, lubricant and advanced circuits. Advanced circuits need petroleum, but we have some as a byproduct of the lubricant so we can subtract it. The only byproduct that’s left is light oil. What do we do with the light oil? We can of course crack it to save even more petroleum. But that takes some water. Is it cheaper to use more water or more petroleum? Well, let’s calculate both options just in case. As you can tell, this approach is insanely complicated. There are many edge cases and questions to be answered. Like what do I do with excess byproducts when other recipe’s ingredients don’t want them? I tried to implement a version of this approach and I must say, I was pretty successful. It took me only about 100 hours and I had to fix about a million bugs. And what was the reward? Well, this solution is still not perfect, although it comes very close. I also could no longer make sense of my own code. Everything broke every time I tried to adjust something. And most importantly, loading the mod with vanilla Factorio took anywhere from 10 seconds to 10 minutes. Since I want the mod to be compatible with as many other mods (and it working with vanilla Factorio would be nice too), I decided this is not the way to go. Finally, after much more thinking, I arrived at the algorithm I use now. It is basically a compromise between the two approaches described above. It works well enough and is pretty simple. Though not simple enough for me to explain because I’d need to explain the many other quirks of the evaluation algorithm. It does not evaluate all multiple-output recipes incredibly well in all cases, but it also does not break in edge cases (I hope). Final thoughts That concludes our peek into the inner workings of the Recipe Randomizer. If you have any questions or suggestions, you can message me on my Discord server. Speaking of which, I’d like to thank all the people who joined it and posted bugs, ideas, tested things or otherwise supported me during the development. The mod wouldn’t have come this far without you! COMFY Minesweeper! redlabel To celebrate a new map design by legendary map maker mewmew and a shiny new Ryzen 9 5950X powered by Gerkiz, COMFY Factorio is organizing a special event on May 1st @ 5PM UTC. Everyone and their families are invited, no need to RSVP. If anyone is wondering what Minesweeper is about, well, it is a new map where base expansion happens by solving a minesweeper puzzle. To clear a mine, a furnace must be placed over it. Placing it over a clear spot will trigger an explosion, and stepping on it without clearing first will yield the same result. Mistakes cost dearly, as they release evil biters and cause nuclear explosions. Players can also earn (or lose) points depending on how good they are, and can compare themselves to others through a scoreboard that keeps a track of valuable internet points. COMFY is one of the leading multiplayer Factorio communities and some of our creations are Mountain Fortress, Biter Battles, Fish Defense, Chronotrain and Cave Miner. And very, very soon it will include a map about pirates and sailing ships! Stay tuned for that one. You can join the COMFY community with nearly 3500 members on our Discord. Обратный отсчёт истёк Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","url":"https://alt-f4.blog/ALTF4-33/","@type":"BlogPosting","author":{"@type":"Person","name":"Villfuk02, redlabel"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-33/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/33/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/33/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/ru/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/ru/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/ru/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/ru/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Общественный наследник возлюбленным Пятничным Фактам Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-33/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-33/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-33/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-33/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-33/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-33/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-33/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-33/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button button-green lang-button" href="/ru/ALTF4-33/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-33/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #33 - Vanilla: Shaken, not Stirred  <author>30-04-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Написали <em>Villfuk02, redlabel</em>,
+
+
+
+отредактировали <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/33/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Содержание</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#vanilla-shaken-not-stirred-villfuk02">Vanilla: Shaken, not Stirred <author>Villfuk02</author></a>
+    <ul>
+      <li><a href="#how-it-started">How it started</a></li>
+      <li><a href="#not-as-simple-as-it-seems">Not as simple as it seems</a></li>
+      <li><a href="#the-first-few-issues">The first few issues</a></li>
+      <li><a href="#balancing-raw-resources">Balancing raw resources</a></li>
+      <li><a href="#we-need-to-go-deeper">We need to go deeper</a></li>
+      <li><a href="#my-nemesis">My nemesis</a></li>
+      <li><a href="#final-thoughts">Final thoughts</a></li>
+    </ul>
+  </li>
+  <li><a href="#comfy-minesweeper-redlabel">COMFY Minesweeper! <author>redlabel</author></a></li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>К сожалению, эта статья ещё не переведена на русский, поэтому она отображается на английском. Если хотите помочь это исправить, присоединяйтесь к <a href="https://alt-f4.blog/ru/discord">нашему Дискорду</a>, чтобы начать. Спасибо!</p>
+
+</div>
+
+
+
+<p>In this delightful issue #33 of Alt-F4, <em>Villfuk02</em> presents their most recent mod creation: The Recipe Randomizer! A spotlight is put on all the design problems that needed to be overcome to make a recipe randomizer that is actually good. After that, <em>redlabel</em> announces the most recent COMFY event, which will likely be pretty <em>explodey</em>.</p>
+      <h2 id="vanilla-shaken-not-stirred-villfuk02">
+        
+        
+            <a href="#vanilla-shaken-not-stirred-villfuk02" class="anchor" style="text-decoration: none;">Vanilla: Shaken, not Stirred <author>Villfuk02</author></a>
+          
+        
+      </h2>
+    
+
+<p><a href="https://mods.factorio.com/mod/ZRecipeRandomizer"><em>Vill’s Recipe Randomizer</em></a> does exactly what the name suggests - it randomises recipes. On first sight, this might seem like a very stupid, but very simple idea. However, once you try to make it less stupid, it gets very complicated pretty quickly.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/33/spaghetti-sample.jpg" alt="Free spaghetti sample" style="max-width: ; max-height:  ">
+        
+        <figcaption>Example factory making production science packs from distractor capsules, power switches and flamethrower ammo.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="how-it-started">
+        
+        
+            <a href="#how-it-started" class="anchor" style="text-decoration: none;">How it started</a>
+          
+        
+      </h3>
+    
+
+<p>I first started working on this project in September 2020. At that time I was trying to make a mod that’s both simple and unique. It wasn’t supposed to be playable, or even good, just something fun to make. After running into some issues, knowing full well that I’m making a mod nobody would play anyway, I gave up <del>and never touched programming again</del>.</p>
+
+<p>After two other failed projects I came back to Factorio, this time, as a player. I played vanilla, then Industrial Revolution 2, and then I tried Space Exploration. I love playing overhaul mods because it lets me learn new recipes, discover new factory layouts and solve new logistic problems. But most overhaul mods are very grindy and I get bored quickly. That’s when I realised that a randomiser mod has in fact a purpose: It’s like an unlimited supply of overhaul mods while keeping the vanilla feel! The biggest bonus for me was that I don’t have to make any new machines or graphics as it’s just messing with numbers and letters.</p>
+      <h3 id="not-as-simple-as-it-seems">
+        
+        
+            <a href="#not-as-simple-as-it-seems" class="anchor" style="text-decoration: none;">Not as simple as it seems</a>
+          
+        
+      </h3>
+    
+
+<p>The mod could simply take each recipe and make it take random items as ingredients. This would be pretty useless because, for example, red science might take nuclear fuel as an ingredient, but you won’t have it researched yet. So I decided to make it crawl through the tech tree, and for each recipe that’s being unlocked, take only the items unlocked before it as potential ingredients. There are of course exceptions in some mods, where you can unlock a recipe before you can even craft it, so I have to be a bit more careful.</p>
+
+<p>You probably wouldn’t want to make an underground belt from steam engines and labs. That would be way too expensive. I needed a way to make the recipes more balanced. So I decided to implement an algorithm that calculates the value of each item based on the resources you need to make it. We can easily calculate that one electronic circuit takes 1 iron ore and 1.5 copper ore:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/33/electronic-circuit.jpg" alt="How it’s made: Electonic circuit" style="max-width: ; max-height:  ">
+        
+        <figcaption>1.5 copper ore plus 1 iron ore makes one electronic circuit.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Let’s say that both copper ore and iron ore have a value of 1, this means electronic circuits would have a value of 2.5. Now the randomiser knows it can use for example one transport belt (value 1.5) and one copper ore (value of 1) as a new recipe for electronic circuits. There is some variance in the final value. It makes the recipes a bit more unique, but most importantly, it’s easier to find a valid combination, speeding up the randomisation process.</p>
+
+<p>At this point, I published the mod and from feedback and some testing, it became very apparent there were many bugs (of course) and two “big” issues. The word <em>big</em> is in quotes because the mod was still more playable than you’d expect even from a randomiser. I however wanted the players to enjoy it, not just experience it.</p>
+      <h3 id="the-first-few-issues">
+        
+        
+            <a href="#the-first-few-issues" class="anchor" style="text-decoration: none;">The first few issues</a>
+          
+        
+      </h3>
+    
+
+<p>The first issue was wood. The default settings made sure wood was not randomised, but many recipes used wooden power poles as an ingredient! As you can imagine, the fix <del>should have been</del> was pretty simple and boring. I added a flag for non-randomizable resources, like wood, and any item that strictly needs an item with this flag as it’s ingredient inherits it.</p>
+
+<p>The second one was that even though recipes needed the right amount of resources, they often were too complex and felt unfair. The mod did not account for the number of crafting steps or crafting time. A great example is the automation (red) science pack. It is very cheap, having a value of only 3, but it takes 5 seconds to craft. It was used in many recipes, like a basic component, similarly to iron gears. Its long crafting time means you could need a lot of assemblers making red science just for something simple like underground belts. Another problematic example is that simple items like iron gears could require many steps like making them from stone bricks, which could be made from iron sticks, which could be made from pipes, etc. So I made the mod calculate a second value, called complexity, for each item. Complexity takes into account the amount of crafting steps required, the amount of various ingredients (and results) and also the crafting times.</p>
+      <h3 id="balancing-raw-resources">
+        
+        
+            <a href="#balancing-raw-resources" class="anchor" style="text-decoration: none;">Balancing raw resources</a>
+          
+        
+      </h3>
+    
+
+<p>It seemed that I’ve arrived at the perfect randomiser, but again, some issues (and bugs) revealed themselves. Often, many recipes used primarily one resource (often iron or stone) which was kind of bland and you had to scout for far away ore patches because you needed just so much of the chosen resource. Also, oil was often not needed for launching the rocket. For a given recipe, all valid items were equally likely to be picked, so the items without oil massively outnumbered the few oil products. I tried some strategies to push the algorithm in the right direction but none of them really worked. I could just tell it to use more plastic or solid fuel and such, but what if you want to play with mods and there are even more items to be prioritised? I wanted a universal solution.</p>
+
+<p>I already knew one approach that could solve it, but I was afraid to implement it because it would make everything way more complicated. This means more development time, more bugs and potentially way slower loading times. After unsuccessfully trying to come up with some simpler way to achieve a similar result, I finally decided to go with this complicated solution.</p>
+
+<p>The main idea was to use the amounts of raw resources instead of just the total value. This means the mod can make sure that each randomised recipe needs the right amount of raw resources, ensuring that all raw resources are used. Similarly to the total value, the raw resource amounts for each recipe may vary a bit, or they can be completely random based on the mod settings. Pretty simple, right? Well, now instead of doing maths with one number I have to do maths with several and the logic is a lot more complicated. Fortunately, with some optimisations and rigorous testing, the mod works fine and is still pretty fast.</p>
+
+<p>And that’s the whole history of <em>Vill’s Recipe Randomizer</em>!</p>
+      <h3 id="we-need-to-go-deeper">
+        
+        
+            <a href="#we-need-to-go-deeper" class="anchor" style="text-decoration: none;">We need to go deeper</a>
+          
+        
+      </h3>
+    
+
+<p>Except I did not talk about some BIG issues (notice the missing quotes and the capital letters) which were present from the start. One of them is recipe loops. The algorithm could get stuck when trying to evaluate the value of one of the recipes or it could calculate it improperly. Loops contained within one recipe are simple to deal with. For evaluating the recipe, the algorithm cuts out the items that appear both as an ingredient and as a result, removing the loop. It can then add back the cut items because their values are now known, making the recipe ready for randomising. In vanilla, this applies to Kovarex enrichment process and coal liquefaction:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/33/kovarex-and-liquefaction.jpg" alt="Clean it up!" style="max-width: ; max-height:  ">
+        
+        <figcaption>40 U-235 and 2 U-238 can be removed from Kovarex and 25 heavy oil can be removed from coal liquefaction.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Loops with more than one recipe are somewhat problematic. There are no loops in vanilla with more than one recipe (except for barreling and unbarrelling, which is not randomised by default anyway), so they’re pretty easy to miss, but in mods, they are everywhere! The randomiser might also accidentally create a loop in certain conditions. To illustrate the problem we’ll need an example. Let’s take synthetic sapphires in Industrial Revolution 2. You need pure nickel mineral, silica and sapphire dust to make a sapphire, however, sapphire dust is made by crushing sapphires, forming a loop:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/33/sapphire-loop.jpg" alt="Sapphire loop" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>The way I resolved this issue is that when a loop is detected, it gets cut open in one point and then the recipes are merged into one. The new recipe is then used for the calculation instead of the one the straightened loop ended with. Here, the two recipes are merged by removing the three sapphire dust in the middle, then we can remove the two sapphires that are both an ingredient and a result:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/33/sapphire-unlooped.jpg" alt="Sapphire unlooped" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>We end up with a recipe to make sapphires while leaving out the problematic details! But what happens when there are branching loops or loops within loops?</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/33/loopy.jpg" alt="Loopy diagram" style="max-width: ; max-height:  ">
+        
+        <figcaption>This is not based on any specific recipes, but I’m sure something at least as complicated as this diagram exists in some mod.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Let’s just say that things get <em>loopy</em>. I think I somewhat solved it in the mod, but I won’t go into details here, this is not a graph theory course, and I’m not even sure the solution works reliably.</p>
+      <h3 id="my-nemesis">
+        
+        
+            <a href="#my-nemesis" class="anchor" style="text-decoration: none;">My nemesis</a>
+          
+        
+      </h3>
+    
+
+<p>And now, time for the biggest issue of them all: recipes with multiple outputs. Let’s take a look at advanced oil processing as an example.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/33/advanced-oil-processing.jpg" alt="Advanced oil processing" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>By default, crude oil has a value of 0.4 (we’ll ignore water for now). That means the recipe has a total value of 40. So we know that 25 heavy oil + 45 light oil + 55 petroleum gas should have a value of 40 in total, but how much of that value is contained within each product? There are many ways to approach this and tackling this issue took most of my time and caused many headaches. Let’s go through the two most different options.</p>
+
+<p>The simplest: Just make each of the results worth an equal part of the total value. This is mostly reasonable, but it breaks when you introduce waste products. For example, the Kovarex enrichment process makes 41 U-235 and 2 U-238, the algorithm would assume they both have the same value, but you probably know that U-235 is much more valuable. So this approach is not really usable.</p>
+
+<p>The “best”: Just make each part worth the full value, but keep track of the byproducts which you can subtract later. For example, heavy oil has light oil and petroleum gas as its byproducts in advanced oil processing. That means lubricant has them as byproducts too because it’s made from heavy oil only. If we want to make an express splitter, we need, among some other ingredients, lubricant and advanced circuits. Advanced circuits need petroleum, but we have some as a byproduct of the lubricant so we can subtract it. The only byproduct that’s left is light oil. What do we do with the light oil? We can of course crack it to save even more petroleum. But that takes some water. Is it cheaper to use more water or more petroleum? Well, let’s calculate both options just in case.</p>
+
+<p>As you can tell, this approach is insanely complicated. There are many edge cases and questions to be answered. Like what do I do with excess byproducts when other recipe’s ingredients don’t want them? I tried to implement a version of this approach and I must say, I was pretty successful. It took me only about 100 hours and I had to fix about a million bugs. And what was the reward? Well, this solution is still not perfect, although it comes very close. I also could no longer make sense of my own code. Everything broke every time I tried to adjust something. And most importantly, loading the mod with vanilla Factorio took anywhere from 10 seconds to 10 minutes. Since I want the mod to be compatible with as many other mods (and it working with vanilla Factorio would be nice too), I decided this is not the way to go.</p>
+
+<p>Finally, after much more thinking, I arrived at the algorithm I use now. It is basically a compromise between the two approaches described above. It works well enough and is pretty simple. Though not simple enough for me to explain because I’d need to explain the many other quirks of the evaluation algorithm. It does not evaluate all multiple-output recipes incredibly well in all cases, but it also does not break in edge cases (I hope).</p>
+      <h3 id="final-thoughts">
+        
+        
+            <a href="#final-thoughts" class="anchor" style="text-decoration: none;">Final thoughts</a>
+          
+        
+      </h3>
+    
+
+<p>That concludes our peek into the inner workings of the <em>Recipe Randomizer</em>. If you have any questions or suggestions, you can message me on <a href="https://discord.gg/jn4nRrrB6d">my Discord server</a>. Speaking of which, I’d like to thank all the people who joined it and posted bugs, ideas, tested things or otherwise supported me during the development. The mod wouldn’t have come this far without you!</p>
+      <h2 id="comfy-minesweeper-redlabel">
+        
+        
+            <a href="#comfy-minesweeper-redlabel" class="anchor" style="text-decoration: none;">COMFY Minesweeper! <author>redlabel</author></a>
+          
+        
+      </h2>
+    
+
+<p>To celebrate a new map design by legendary map maker <a href="https://github.com/M3wM3w">mewmew</a> and a shiny new Ryzen 9 5950X powered by <a href="https://github.com/Gerkiz">Gerkiz</a>, <a href="https://getcomfy.eu/">COMFY</a> Factorio is organizing a special event on May 1st @ 5PM UTC. Everyone and their families are invited, no need to RSVP.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/33/comfyimage.jpg" alt="Minesweeper in Factorio" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>If anyone is wondering what Minesweeper is about, well, it is a new map where base expansion happens by solving a <em>minesweeper</em> puzzle. To clear a mine, a furnace must be placed over it. Placing it over a clear spot will trigger an explosion, and stepping on it without clearing first will yield the same result. Mistakes cost dearly, as they release evil biters and cause nuclear explosions. Players can also earn <em>(or lose)</em> points depending on how good they are, and can compare themselves to others through a scoreboard that keeps a track of valuable internet points.</p>
+
+<p>COMFY is one of the leading multiplayer Factorio communities and some of our <a href="https://github.com/M3wM3w/ComfyFactorio">creations</a> are Mountain Fortress, Biter Battles, Fish Defense, Chronotrain and Cave Miner. And very, very soon it will include a map about pirates and sailing ships! Stay tuned for that one.</p>
+
+<p>You can join the COMFY community with nearly 3500 members on our <a href="https://getcomfy.eu/discord">Discord</a>.</p>
+
+<p></p>
+<!-- Use include.data in the ID as it makes it unique -->
+<p class="center">
+  <span class="countdown" id="countdown-2021-5-1-17-00-00">
+    <span id="past-text">Обратный отсчёт истёк</span>
+
+    <span id="days"></span>
+    <span id="hours"></span>
+    <span id="minutes"></span>
+    <span id="seconds"></span>
+  </span>
+
+  <script>
+    const second = 1000
+    const minute = second * 60
+    const hour = minute * 60
+    const day = hour * 24
+
+    const countdownEl = document.getElementById('countdown-2021-5-1-17-00-00');
+
+    const daysEl = document.querySelector('#countdown-2021-5-1-17-00-00 #days');
+    const hoursEl = document.querySelector('#countdown-2021-5-1-17-00-00 #hours');
+    const minutesEl = document.querySelector('#countdown-2021-5-1-17-00-00 #minutes');
+    const secondsEl = document.querySelector('#countdown-2021-5-1-17-00-00 #seconds');
+
+    const countdownDate = new Date(Date.UTC(...('2021:5:1:17:00:00'.split(':').map((x, i) => parseInt(x) + (i === 1 ? -1 : 0)))));
+
+    const interval = setInterval(updateCountdown, second);
+
+    function updateCountdown() {
+      const distance = countdownDate - Date.now();
+
+      if (distance < 0) {
+        countdownEl.classList.add('past');
+
+        clearInterval(interval);
+
+        return;
+      }
+
+      daysEl.textContent = Math.floor(distance / day).toString().padStart(2, '0');
+      hoursEl.textContent = Math.floor((distance % day) / hour).toString().padStart(2, '0');
+      minutesEl.textContent = Math.floor((distance % hour) / minute).toString().padStart(2, '0');
+      secondsEl.textContent = Math.floor((distance % minute) / second).toString().padStart(2, '0');
+    }
+
+    updateCountdown();
+  </script>
+</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/ru/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=98132">
+    Обсудить на форумах Factorio
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/n1ssvv/altf4_33_vanilla_shaken_not_stirred/">
+    Обсудить на Реддите
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/ru/discord">
+    Обсудить на Дискорде
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/ru/ALTF4-32/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/ru/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/ru/ALTF4-34/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/ru/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/ru/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/ru/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Этот сайт - фан-проект и не имеет прямого отношения к Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

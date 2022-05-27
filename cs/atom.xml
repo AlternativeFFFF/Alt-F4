@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-05-21T10:52:54+00:00</updated>
+  <updated>2022-05-27T13:46:14+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #61 - Draftsman: A Python module for creating blueprints</title>
+    <link href="https://alt-f4.blog/cs/ALTF4-61/" />
+    <id>https://alt-f4.blog/ALTF4-61</id>
+    <updated>2022-05-27T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;For this week’s issue of Alt-F4, we return to the roots of being a spiritual successor to the &lt;em&gt;FFF&lt;/em&gt; by going deep on a technical topic. To that end, &lt;em&gt;redruin1&lt;/em&gt; presents his newest invention: Factorio Draftsman. Sure, there have been other projects trying to build a library for generating blueprints...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-52</id>
     <updated>2021-11-12T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Pro naše 52. vydání, &lt;em&gt;stringweasel&lt;/em&gt; se vrácí pro druhou část &lt;a href=&quot;https://alt-f4.blog/cs/ALTF4-51/&quot;&gt;Experimentu Tekutá Elektřina&lt;/a&gt;, ve které ukáže docela překvapující rychlostní dopady jeho výtvoru! Pokud se vám líbíl článek minulý týden, bude se vám líbit i druhá část tento týden. Jak milé překvapení!&lt;/p&gt; &lt;h2 id=&quot;experiment-tekuté-elektřiny-část-druhá-stringweasel&quot;&gt;Experiment &lt;a href=&quot;https://mods.factorio.com/mod/FluidicPower&quot;&gt;Tekuté Elektřiny&lt;/a&gt;: Část Druhá &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt;...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #51 - Experiment Tekuté Elektřiny</title>
-    <link href="https://alt-f4.blog/cs/ALTF4-51/" />
-    <id>https://alt-f4.blog/ALTF4-51</id>
-    <updated>2021-11-05T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Pro 51. vydání Alt-F4, dlouhodobý příspěvce a mág &lt;em&gt;stringweasel&lt;/em&gt; nás potěší s historií módů, které se snažily udělat elektřinu v Factoriu více realistickou. Všechny z nich mají vlastní problémy a kompromisy, což je důvod proč vytvořil svou vlastní implementaci řešení k tomuto problému, se skvělými výsledky!&lt;/p&gt; &lt;h2 id=&quot;experiment-tekuté-elektřiny-stringweasel&quot;&gt;Experiment &lt;a href=&quot;https://mods.factorio.com/mod/FluidicPower&quot;&gt;Tekuté...</content>
   </entry>
   
   

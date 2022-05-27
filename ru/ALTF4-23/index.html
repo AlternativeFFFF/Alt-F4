@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ru" class="ru">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #23 - Beltravaganza</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #23 - Beltravaganza">
+<meta name="author" content="Recon419A, pocarski">
+<meta property="og:locale" content="en">
+<meta name="description" content="After a hiatus of two weeks due to a couple of FFF’s hot off the presses, we’re back this week with two articles all about belts. In the first one, Recon419A explores an interesting concept that has belts deliver items in a just-in-time fashion. Then, things get truly nerdy as pocarski takes a deep dive into building a turing machine only using belts. Computer Science degree recommended! Logistics Belts Recon419A Factorio has three main methods of moving items: belts, bots, and trains. Belts are good for single- or double-item throughput, trains for massive quantities of a single item, and bots for complicated crafting tasks. Sometimes, however, you need a combination of these approaches, which is where techniques like sushi belts can come into play. In this article, I want to talk about another approach I call “logistics belts”. Like sushi belts, logistics belts can be used with or without mods and are not a mod themselves; rather, they are a way to control what resources go where using belts and very simple circuits. Like the vanilla logistics network and certain train-based mods like LTN, they aim to be a way to deliver resources that’s smarter than simply running basic belts. Description of a Logistics Belt Logistics belts are a somewhat complicated concept, but it’s much simpler to understand when you see one in action. In this example, pay attention to how several items are sent along the same belt, each being loaded onto the belt only when requested. If iron and copper is all that is needed, no steel will be sent; likewise, if nothing is needed, the belt will remain empty. &lt;/source&gt; Video demonstration of logistics belt concept. A demonstration of logistics belts using circuit conditions, filter splitters, and loaders. Inserters can be used in lieu of loaders but may need to be doubled or tripled depending on the belt speed. You can see in the example that the circuit condition is set to send materials when the destination has less than one hundred. In reality, the length of the belt will affect how many materials are sent; if the belt is long, one hundred will be buffered with hundreds still on the belt. There is a theoretical limit to how long the belt can be without overflowing the receiver chest, but in practice, you won’t hit it if you’re using steel chests; at very large distances, you’ll be using trains instead anyways. If you would like to have a play with this logistics belt setup, the blueprint string is available here, though it should be noted the blueprints utilizes loaders from the Loader Redux mod. An example circuit condition for a logistics belt. Note that setting a limit of one hundred will actually send approximately 270 plates over this distance, due to plates remaining on the belt at the time of cutoff. Use Cases for Logistics belts Logistics belts are useful when you need a lot of an item all at once, and then none of it for a very long time. Anyone who has ever automated belts with bots will be familiar with the phenomenon known as the “charging cloud” that comes about when your logistics network asks for no less than ten thousand gears and fifteen hundred electronic circuits. Likewise, when you ask for something like the materials to make a nuclear reactor or a rocket silo, bots will tend to swarm around an assembler in an area that was never designed for that degree of throughput. When you need a lot of an item, it’s much easier to get it in by belt: sending ten thousand gears takes less than four minutes and barely damages your UPS; with bots it would take 2500 separate trips and likely make that many bots go airborne, swamping charging capacity that may never have been designed for that and taking forever to return to equilibrium. Running dedicated belts for every item, however, creates its own set of problems; often, the belts will be sitting idle and taking up space within your factory, and you may not even have room to run an eight-bus in the first place. For something like your belt mall, sending a large load of gears intermixed with a large load of electronic circuits is trivial for a logistics belt; once they arrive in that location, using bots internally is much less strain on your logistics network. Limitation: Multiple Destinations The problem of sending one item to multiple destinations is non-trivial, and it’s something I personally haven’t been able to solve. Because filter splitters pull all of an item off, sending that item past a filter splitter some of the time only requires complicated splitter arrangements and several circuit conditions originating from different destinations. I’ve given the problem a good deal of thought, and while I’ve come up with several prototypes, they’ve mostly been prone to behaviours like jamming or sending too many of an item to the wrong destination, potentially causing an overflow if left unattended. With the Factorio community being what it is, I wouldn’t be surprised if this is solved within a week or two, and in several different ways; maybe we’ll even hear about your solution in a future Alt-F4. For now, though, I leave it as a challenge to the community. Be sure to let me know what you come up with! A Note on Sushi Belts Players who have been around the game a while may have already encountered a similar concept: sushi belts. Like logistics belts, sushi belts place more than two resources on a belt, but they generally do so as a loop designed for complicated crafting. A circuit condition at the entrance or around the entire belt helps to control the amount of every resource present, even leading to such complicated examples as the “bloodbus” - a circulatory system for your factory. While the concept of a logistics belt is similar, it has a few important differences, and the key one is related to their function: while sushi belts go around, and tend to service multiple assemblers in no particular order, logistics belts go to and tend to direct resources from one location to another. In fact, a logistics belt can be used to feed a sushi belt in place of an ordinary bus - when resources are needed, they can be sent, with carefully limited rate control preventing over-population of the belt loop. Other concepts like clocked belts or inserter limiting can be applied here, and can even be combined with logistics belts to achieve monumental feats of engineering. In my mind, logistics belts themselves are just one part of the player’s toolkit. &lt;/source&gt; Video of sushi city block base. A crazy example of sushi belts in action in a massive city block base. Source: u/dentoid’s reddit post Belt-only Computing, Part 1: Not-so-quick Maths pocarski In Factorio, we can use the circuit network to build systems, starting with some simple boolean logic, up to a fully functional computer and then, someone insane enough might even run DOOM on it. What is less obvious, however, is the fact that the circuit network is not the only Turing complete (have a look at the linked page if you’re unfamiliar) system in the game. Indeed, you can build a computer out of something very basic, something which you get almost as soon as you start a new game: belts. In this two-part series, I will be walking through the process of designing two systems used in real-life computers with nothing but belts and splitters. I will be using loaders and infinity chests, however at any time there are exactly as many items entering as there are items leaving, so all belts could also be looped through a buffer. I chose not to do that for the sake of compactness and avoiding spaghetti. I have to give credit to letao12 who made a series of videos around creating a belt-only CPU, which is what inspired me to come back to his idea with my own take on it. For any system to be Turing complete, it must be possible to create something known as logic gates. Logic gates are simple elements that perform basic operations of Boolean algebra by giving an output based only on the current inputs. There are only 2 numbers in Boolean algebra: 1 and 0. In electronics, they correspond to high voltage and low voltage but, in our case, we will say that a belt with items is a 1, and an empty belt is 0. There are 3 basic logic gates: OR gate - outputs 1 if at least one input is 1 AND gate - outputs 1 if all inputs are 1 NOT gate - outputs 1 only if the input is 0 The truth table below shows their respective outputs based on the range of possible inputs. A B NOT A A OR B A AND B 0 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 1 0 1 1 It is a known fact that by chaining these logic gates in specific ways (and sometimes looping some wires), it is possible to construct a Turing machine. All three of the basic gate types can be created entirely with belts and splitters. Here a link to a blueprint book with everything from this article, for anyone who would like to experiment with the circuits themselves. I will refer to different items as “item type 1/2/3/…”, for convenience and generality, and priority/non-priority inputs and outputs as “primary/secondary”, mostly just for convenience. I will also be using different colours in the images, to differentiate between item types. The basic gates The AND and OR gates are as simple as a single splitter with a set priority: &lt;/source&gt; A single splitter acting both as an AND and an OR gate The primary output acts as an OR gate, whilst the secondary output acts as an AND gate. The NOT gate is a bit trickier to make, but it can be done by using more than one item type and some clever filtering and prioritizing: &lt;/source&gt; A combined NOT gate, and signal duplicator Whilst input A is 0, the first splitter is only receiving one input, and so item type 2 is going onto the primary output, meaning only the NOT A output is 1. When input A is on, the first splitter is now getting 2 inputs; item type 1 is going into the primary input, therefore it gets put on the primary output, replacing item type 2 which is now coming out of the secondary output. The secondary output is effectively a copy of A, but with a different item type. The primary output of the first splitter is always 1 but switches item type depending on the input. Using a filter splitter, we can split this variable item type signal into 2 wires: one will just be signal A coming straight through with the same item type as the original input, type 1, the other will be NOT A, with item type 2. This second circuit is exceptionally useful because it combines a NOT gate, a signal duplicator, and an item swapper. We need signal duplicators because branching a belt with a splitter makes the item flow unsaturated, which causes it to interact with other splitters incorrectly as it is neither 0 or 1. We also need item swappers as there is often a mismatch between one circuit’s output type and another’s input type. The half-adder Now that we have our 3 basic components, let’s build a half-adder. Why would we need a half-adder? Well, as the name might suggest, a half-adder is one half of a full adder, which is a circuit with the ability to add binary numbers together. This will allow us to do addition, and creative uses of addition allow us to implement literally every other mathematical operation imaginable. A half-adder is a circuit that sums two single-digit binary numbers. This may sound like a daunting task, but in reality, it’s very simple. Both inputs A and B are single-digit binary numbers, meaning the maximum possible output is 2 (1+1), which, unfortunately, will not fit into a single-digit output. Instead, we will use a two-digit binary number where the first digit has a place value of 2 (21) and the second a place value of 1 (20). Taking this into account, here is the half adder’s truth table: A B First digit of A + B Second digit of A + B 0 0 0 0 0 1 0 1 1 0 0 1 1 1 1 0 We can see that the first digit is simply A AND B. However, for the second digit, we need something called an XOR gate (XOR stands for “exclusive OR”). An XOR gate outputs 1 if exactly one input is 1, which is precisely what we need for the second digit. An XOR gate’s logic is, “A or B, but not both”, and therefore an XOR gate is just (A OR B) AND NOT (A AND B). Here is how to do this with the basic gates discussed earlier: &lt;/source&gt; A half-adder Notice that we also get the AND gate output for free thanks to the combined duplicator-NOT circuit, giving us a complete half-adder. It just so happens that we can combine the first item swapper with the second AND gate, which allows us to get rid of a splitter: &lt;/source&gt; A slightly simpler half-adder The final product Now, to convert our half-adder to a full adder, we need to connect 2 of them in sequence (hence the name “half-adder”): As you can see, a full adder is just 2 half-adders chained in a specific way. Now, we could just copy and paste the circuit, but thanks to the properties of belts, there is a much better and smaller way. The 2 lanes of a belt are processed by splitters independently from each other, meaning that instead of chaining two half-adders, we can instead run everything through a single half-adder twice. This is usually impossible with traditional logic circuits, but in this brave new world of Factorio computers, anything goes. Here is how: &lt;/source&gt; A full adder Here, the first half-adder uses the right-hand side of the belt, and the second half-adder uses the left-hand side of the belt. First, the inputs make it through the first half-adder as normal on the right-hand side of the belt. Next, the half adder’s XOR output is looped all the way back and is now put on the left side of the belt. It goes through the same mechanisms again, but since it’s on the left side, it doesn’t interact with the right side at all. The second half-adder still has a free input, though, so we have to connect a third input belt, this time on the left side to act as the carry in bit. The AND outputs of both half-adders are sideloaded onto a belt, automatically creating an OR. Internal delays might cause both half-adders’ carries to output at the same time, causing it to attempt to unload a full belt onto half of a belt. Therefore, we also need an overflow protection splitter so that the carry bit doesn’t back up and break the entire circuit. After some rearranging of the components, we get this: &lt;/source&gt; A compact full adder This is exactly the same circuit as in the previous image, and I leave it as an exercise to the reader to verify that. The only thing left to do is to stack a bunch of these together and feed them numbers, so here is a belt-only adder calculating 01001101 (77) + 10001011 (139) = 011011000 (216): &lt;/source&gt; An array of adders calculating 01001101 (77) + 10001011 (139) = 011011000 (216) Adding numbers is cool and all, but it’s nothing without some kind of memory, which is exactly what we will be exploring in the next issue. Stay tuned! Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="After a hiatus of two weeks due to a couple of FFF’s hot off the presses, we’re back this week with two articles all about belts. In the first one, Recon419A explores an interesting concept that has belts deliver items in a just-in-time fashion. Then, things get truly nerdy as pocarski takes a deep dive into building a turing machine only using belts. Computer Science degree recommended! Logistics Belts Recon419A Factorio has three main methods of moving items: belts, bots, and trains. Belts are good for single- or double-item throughput, trains for massive quantities of a single item, and bots for complicated crafting tasks. Sometimes, however, you need a combination of these approaches, which is where techniques like sushi belts can come into play. In this article, I want to talk about another approach I call “logistics belts”. Like sushi belts, logistics belts can be used with or without mods and are not a mod themselves; rather, they are a way to control what resources go where using belts and very simple circuits. Like the vanilla logistics network and certain train-based mods like LTN, they aim to be a way to deliver resources that’s smarter than simply running basic belts. Description of a Logistics Belt Logistics belts are a somewhat complicated concept, but it’s much simpler to understand when you see one in action. In this example, pay attention to how several items are sent along the same belt, each being loaded onto the belt only when requested. If iron and copper is all that is needed, no steel will be sent; likewise, if nothing is needed, the belt will remain empty. &lt;/source&gt; Video demonstration of logistics belt concept. A demonstration of logistics belts using circuit conditions, filter splitters, and loaders. Inserters can be used in lieu of loaders but may need to be doubled or tripled depending on the belt speed. You can see in the example that the circuit condition is set to send materials when the destination has less than one hundred. In reality, the length of the belt will affect how many materials are sent; if the belt is long, one hundred will be buffered with hundreds still on the belt. There is a theoretical limit to how long the belt can be without overflowing the receiver chest, but in practice, you won’t hit it if you’re using steel chests; at very large distances, you’ll be using trains instead anyways. If you would like to have a play with this logistics belt setup, the blueprint string is available here, though it should be noted the blueprints utilizes loaders from the Loader Redux mod. An example circuit condition for a logistics belt. Note that setting a limit of one hundred will actually send approximately 270 plates over this distance, due to plates remaining on the belt at the time of cutoff. Use Cases for Logistics belts Logistics belts are useful when you need a lot of an item all at once, and then none of it for a very long time. Anyone who has ever automated belts with bots will be familiar with the phenomenon known as the “charging cloud” that comes about when your logistics network asks for no less than ten thousand gears and fifteen hundred electronic circuits. Likewise, when you ask for something like the materials to make a nuclear reactor or a rocket silo, bots will tend to swarm around an assembler in an area that was never designed for that degree of throughput. When you need a lot of an item, it’s much easier to get it in by belt: sending ten thousand gears takes less than four minutes and barely damages your UPS; with bots it would take 2500 separate trips and likely make that many bots go airborne, swamping charging capacity that may never have been designed for that and taking forever to return to equilibrium. Running dedicated belts for every item, however, creates its own set of problems; often, the belts will be sitting idle and taking up space within your factory, and you may not even have room to run an eight-bus in the first place. For something like your belt mall, sending a large load of gears intermixed with a large load of electronic circuits is trivial for a logistics belt; once they arrive in that location, using bots internally is much less strain on your logistics network. Limitation: Multiple Destinations The problem of sending one item to multiple destinations is non-trivial, and it’s something I personally haven’t been able to solve. Because filter splitters pull all of an item off, sending that item past a filter splitter some of the time only requires complicated splitter arrangements and several circuit conditions originating from different destinations. I’ve given the problem a good deal of thought, and while I’ve come up with several prototypes, they’ve mostly been prone to behaviours like jamming or sending too many of an item to the wrong destination, potentially causing an overflow if left unattended. With the Factorio community being what it is, I wouldn’t be surprised if this is solved within a week or two, and in several different ways; maybe we’ll even hear about your solution in a future Alt-F4. For now, though, I leave it as a challenge to the community. Be sure to let me know what you come up with! A Note on Sushi Belts Players who have been around the game a while may have already encountered a similar concept: sushi belts. Like logistics belts, sushi belts place more than two resources on a belt, but they generally do so as a loop designed for complicated crafting. A circuit condition at the entrance or around the entire belt helps to control the amount of every resource present, even leading to such complicated examples as the “bloodbus” - a circulatory system for your factory. While the concept of a logistics belt is similar, it has a few important differences, and the key one is related to their function: while sushi belts go around, and tend to service multiple assemblers in no particular order, logistics belts go to and tend to direct resources from one location to another. In fact, a logistics belt can be used to feed a sushi belt in place of an ordinary bus - when resources are needed, they can be sent, with carefully limited rate control preventing over-population of the belt loop. Other concepts like clocked belts or inserter limiting can be applied here, and can even be combined with logistics belts to achieve monumental feats of engineering. In my mind, logistics belts themselves are just one part of the player’s toolkit. &lt;/source&gt; Video of sushi city block base. A crazy example of sushi belts in action in a massive city block base. Source: u/dentoid’s reddit post Belt-only Computing, Part 1: Not-so-quick Maths pocarski In Factorio, we can use the circuit network to build systems, starting with some simple boolean logic, up to a fully functional computer and then, someone insane enough might even run DOOM on it. What is less obvious, however, is the fact that the circuit network is not the only Turing complete (have a look at the linked page if you’re unfamiliar) system in the game. Indeed, you can build a computer out of something very basic, something which you get almost as soon as you start a new game: belts. In this two-part series, I will be walking through the process of designing two systems used in real-life computers with nothing but belts and splitters. I will be using loaders and infinity chests, however at any time there are exactly as many items entering as there are items leaving, so all belts could also be looped through a buffer. I chose not to do that for the sake of compactness and avoiding spaghetti. I have to give credit to letao12 who made a series of videos around creating a belt-only CPU, which is what inspired me to come back to his idea with my own take on it. For any system to be Turing complete, it must be possible to create something known as logic gates. Logic gates are simple elements that perform basic operations of Boolean algebra by giving an output based only on the current inputs. There are only 2 numbers in Boolean algebra: 1 and 0. In electronics, they correspond to high voltage and low voltage but, in our case, we will say that a belt with items is a 1, and an empty belt is 0. There are 3 basic logic gates: OR gate - outputs 1 if at least one input is 1 AND gate - outputs 1 if all inputs are 1 NOT gate - outputs 1 only if the input is 0 The truth table below shows their respective outputs based on the range of possible inputs. A B NOT A A OR B A AND B 0 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 1 0 1 1 It is a known fact that by chaining these logic gates in specific ways (and sometimes looping some wires), it is possible to construct a Turing machine. All three of the basic gate types can be created entirely with belts and splitters. Here a link to a blueprint book with everything from this article, for anyone who would like to experiment with the circuits themselves. I will refer to different items as “item type 1/2/3/…”, for convenience and generality, and priority/non-priority inputs and outputs as “primary/secondary”, mostly just for convenience. I will also be using different colours in the images, to differentiate between item types. The basic gates The AND and OR gates are as simple as a single splitter with a set priority: &lt;/source&gt; A single splitter acting both as an AND and an OR gate The primary output acts as an OR gate, whilst the secondary output acts as an AND gate. The NOT gate is a bit trickier to make, but it can be done by using more than one item type and some clever filtering and prioritizing: &lt;/source&gt; A combined NOT gate, and signal duplicator Whilst input A is 0, the first splitter is only receiving one input, and so item type 2 is going onto the primary output, meaning only the NOT A output is 1. When input A is on, the first splitter is now getting 2 inputs; item type 1 is going into the primary input, therefore it gets put on the primary output, replacing item type 2 which is now coming out of the secondary output. The secondary output is effectively a copy of A, but with a different item type. The primary output of the first splitter is always 1 but switches item type depending on the input. Using a filter splitter, we can split this variable item type signal into 2 wires: one will just be signal A coming straight through with the same item type as the original input, type 1, the other will be NOT A, with item type 2. This second circuit is exceptionally useful because it combines a NOT gate, a signal duplicator, and an item swapper. We need signal duplicators because branching a belt with a splitter makes the item flow unsaturated, which causes it to interact with other splitters incorrectly as it is neither 0 or 1. We also need item swappers as there is often a mismatch between one circuit’s output type and another’s input type. The half-adder Now that we have our 3 basic components, let’s build a half-adder. Why would we need a half-adder? Well, as the name might suggest, a half-adder is one half of a full adder, which is a circuit with the ability to add binary numbers together. This will allow us to do addition, and creative uses of addition allow us to implement literally every other mathematical operation imaginable. A half-adder is a circuit that sums two single-digit binary numbers. This may sound like a daunting task, but in reality, it’s very simple. Both inputs A and B are single-digit binary numbers, meaning the maximum possible output is 2 (1+1), which, unfortunately, will not fit into a single-digit output. Instead, we will use a two-digit binary number where the first digit has a place value of 2 (21) and the second a place value of 1 (20). Taking this into account, here is the half adder’s truth table: A B First digit of A + B Second digit of A + B 0 0 0 0 0 1 0 1 1 0 0 1 1 1 1 0 We can see that the first digit is simply A AND B. However, for the second digit, we need something called an XOR gate (XOR stands for “exclusive OR”). An XOR gate outputs 1 if exactly one input is 1, which is precisely what we need for the second digit. An XOR gate’s logic is, “A or B, but not both”, and therefore an XOR gate is just (A OR B) AND NOT (A AND B). Here is how to do this with the basic gates discussed earlier: &lt;/source&gt; A half-adder Notice that we also get the AND gate output for free thanks to the combined duplicator-NOT circuit, giving us a complete half-adder. It just so happens that we can combine the first item swapper with the second AND gate, which allows us to get rid of a splitter: &lt;/source&gt; A slightly simpler half-adder The final product Now, to convert our half-adder to a full adder, we need to connect 2 of them in sequence (hence the name “half-adder”): As you can see, a full adder is just 2 half-adders chained in a specific way. Now, we could just copy and paste the circuit, but thanks to the properties of belts, there is a much better and smaller way. The 2 lanes of a belt are processed by splitters independently from each other, meaning that instead of chaining two half-adders, we can instead run everything through a single half-adder twice. This is usually impossible with traditional logic circuits, but in this brave new world of Factorio computers, anything goes. Here is how: &lt;/source&gt; A full adder Here, the first half-adder uses the right-hand side of the belt, and the second half-adder uses the left-hand side of the belt. First, the inputs make it through the first half-adder as normal on the right-hand side of the belt. Next, the half adder’s XOR output is looped all the way back and is now put on the left side of the belt. It goes through the same mechanisms again, but since it’s on the left side, it doesn’t interact with the right side at all. The second half-adder still has a free input, though, so we have to connect a third input belt, this time on the left side to act as the carry in bit. The AND outputs of both half-adders are sideloaded onto a belt, automatically creating an OR. Internal delays might cause both half-adders’ carries to output at the same time, causing it to attempt to unload a full belt onto half of a belt. Therefore, we also need an overflow protection splitter so that the carry bit doesn’t back up and break the entire circuit. After some rearranging of the components, we get this: &lt;/source&gt; A compact full adder This is exactly the same circuit as in the previous image, and I leave it as an exercise to the reader to verify that. The only thing left to do is to stack a bunch of these together and feed them numbers, so here is a belt-only adder calculating 01001101 (77) + 10001011 (139) = 011011000 (216): &lt;/source&gt; An array of adders calculating 01001101 (77) + 10001011 (139) = 011011000 (216) Adding numbers is cool and all, but it’s nothing without some kind of memory, which is exactly what we will be exploring in the next issue. Stay tuned! Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/ru/ALTF4-23/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-23/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2021-02-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"headline":"Alt-F4 #23 - Beltravaganza","dateModified":"2021-02-12T00:00:00+00:00","datePublished":"2021-02-12T00:00:00+00:00","description":"After a hiatus of two weeks due to a couple of FFF’s hot off the presses, we’re back this week with two articles all about belts. In the first one, Recon419A explores an interesting concept that has belts deliver items in a just-in-time fashion. Then, things get truly nerdy as pocarski takes a deep dive into building a turing machine only using belts. Computer Science degree recommended! Logistics Belts Recon419A Factorio has three main methods of moving items: belts, bots, and trains. Belts are good for single- or double-item throughput, trains for massive quantities of a single item, and bots for complicated crafting tasks. Sometimes, however, you need a combination of these approaches, which is where techniques like sushi belts can come into play. In this article, I want to talk about another approach I call “logistics belts”. Like sushi belts, logistics belts can be used with or without mods and are not a mod themselves; rather, they are a way to control what resources go where using belts and very simple circuits. Like the vanilla logistics network and certain train-based mods like LTN, they aim to be a way to deliver resources that’s smarter than simply running basic belts. Description of a Logistics Belt Logistics belts are a somewhat complicated concept, but it’s much simpler to understand when you see one in action. In this example, pay attention to how several items are sent along the same belt, each being loaded onto the belt only when requested. If iron and copper is all that is needed, no steel will be sent; likewise, if nothing is needed, the belt will remain empty. &lt;/source&gt; Video demonstration of logistics belt concept. A demonstration of logistics belts using circuit conditions, filter splitters, and loaders. Inserters can be used in lieu of loaders but may need to be doubled or tripled depending on the belt speed. You can see in the example that the circuit condition is set to send materials when the destination has less than one hundred. In reality, the length of the belt will affect how many materials are sent; if the belt is long, one hundred will be buffered with hundreds still on the belt. There is a theoretical limit to how long the belt can be without overflowing the receiver chest, but in practice, you won’t hit it if you’re using steel chests; at very large distances, you’ll be using trains instead anyways. If you would like to have a play with this logistics belt setup, the blueprint string is available here, though it should be noted the blueprints utilizes loaders from the Loader Redux mod. An example circuit condition for a logistics belt. Note that setting a limit of one hundred will actually send approximately 270 plates over this distance, due to plates remaining on the belt at the time of cutoff. Use Cases for Logistics belts Logistics belts are useful when you need a lot of an item all at once, and then none of it for a very long time. Anyone who has ever automated belts with bots will be familiar with the phenomenon known as the “charging cloud” that comes about when your logistics network asks for no less than ten thousand gears and fifteen hundred electronic circuits. Likewise, when you ask for something like the materials to make a nuclear reactor or a rocket silo, bots will tend to swarm around an assembler in an area that was never designed for that degree of throughput. When you need a lot of an item, it’s much easier to get it in by belt: sending ten thousand gears takes less than four minutes and barely damages your UPS; with bots it would take 2500 separate trips and likely make that many bots go airborne, swamping charging capacity that may never have been designed for that and taking forever to return to equilibrium. Running dedicated belts for every item, however, creates its own set of problems; often, the belts will be sitting idle and taking up space within your factory, and you may not even have room to run an eight-bus in the first place. For something like your belt mall, sending a large load of gears intermixed with a large load of electronic circuits is trivial for a logistics belt; once they arrive in that location, using bots internally is much less strain on your logistics network. Limitation: Multiple Destinations The problem of sending one item to multiple destinations is non-trivial, and it’s something I personally haven’t been able to solve. Because filter splitters pull all of an item off, sending that item past a filter splitter some of the time only requires complicated splitter arrangements and several circuit conditions originating from different destinations. I’ve given the problem a good deal of thought, and while I’ve come up with several prototypes, they’ve mostly been prone to behaviours like jamming or sending too many of an item to the wrong destination, potentially causing an overflow if left unattended. With the Factorio community being what it is, I wouldn’t be surprised if this is solved within a week or two, and in several different ways; maybe we’ll even hear about your solution in a future Alt-F4. For now, though, I leave it as a challenge to the community. Be sure to let me know what you come up with! A Note on Sushi Belts Players who have been around the game a while may have already encountered a similar concept: sushi belts. Like logistics belts, sushi belts place more than two resources on a belt, but they generally do so as a loop designed for complicated crafting. A circuit condition at the entrance or around the entire belt helps to control the amount of every resource present, even leading to such complicated examples as the “bloodbus” - a circulatory system for your factory. While the concept of a logistics belt is similar, it has a few important differences, and the key one is related to their function: while sushi belts go around, and tend to service multiple assemblers in no particular order, logistics belts go to and tend to direct resources from one location to another. In fact, a logistics belt can be used to feed a sushi belt in place of an ordinary bus - when resources are needed, they can be sent, with carefully limited rate control preventing over-population of the belt loop. Other concepts like clocked belts or inserter limiting can be applied here, and can even be combined with logistics belts to achieve monumental feats of engineering. In my mind, logistics belts themselves are just one part of the player’s toolkit. &lt;/source&gt; Video of sushi city block base. A crazy example of sushi belts in action in a massive city block base. Source: u/dentoid’s reddit post Belt-only Computing, Part 1: Not-so-quick Maths pocarski In Factorio, we can use the circuit network to build systems, starting with some simple boolean logic, up to a fully functional computer and then, someone insane enough might even run DOOM on it. What is less obvious, however, is the fact that the circuit network is not the only Turing complete (have a look at the linked page if you’re unfamiliar) system in the game. Indeed, you can build a computer out of something very basic, something which you get almost as soon as you start a new game: belts. In this two-part series, I will be walking through the process of designing two systems used in real-life computers with nothing but belts and splitters. I will be using loaders and infinity chests, however at any time there are exactly as many items entering as there are items leaving, so all belts could also be looped through a buffer. I chose not to do that for the sake of compactness and avoiding spaghetti. I have to give credit to letao12 who made a series of videos around creating a belt-only CPU, which is what inspired me to come back to his idea with my own take on it. For any system to be Turing complete, it must be possible to create something known as logic gates. Logic gates are simple elements that perform basic operations of Boolean algebra by giving an output based only on the current inputs. There are only 2 numbers in Boolean algebra: 1 and 0. In electronics, they correspond to high voltage and low voltage but, in our case, we will say that a belt with items is a 1, and an empty belt is 0. There are 3 basic logic gates: OR gate - outputs 1 if at least one input is 1 AND gate - outputs 1 if all inputs are 1 NOT gate - outputs 1 only if the input is 0 The truth table below shows their respective outputs based on the range of possible inputs. A B NOT A A OR B A AND B 0 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 1 0 1 1 It is a known fact that by chaining these logic gates in specific ways (and sometimes looping some wires), it is possible to construct a Turing machine. All three of the basic gate types can be created entirely with belts and splitters. Here a link to a blueprint book with everything from this article, for anyone who would like to experiment with the circuits themselves. I will refer to different items as “item type 1/2/3/…”, for convenience and generality, and priority/non-priority inputs and outputs as “primary/secondary”, mostly just for convenience. I will also be using different colours in the images, to differentiate between item types. The basic gates The AND and OR gates are as simple as a single splitter with a set priority: &lt;/source&gt; A single splitter acting both as an AND and an OR gate The primary output acts as an OR gate, whilst the secondary output acts as an AND gate. The NOT gate is a bit trickier to make, but it can be done by using more than one item type and some clever filtering and prioritizing: &lt;/source&gt; A combined NOT gate, and signal duplicator Whilst input A is 0, the first splitter is only receiving one input, and so item type 2 is going onto the primary output, meaning only the NOT A output is 1. When input A is on, the first splitter is now getting 2 inputs; item type 1 is going into the primary input, therefore it gets put on the primary output, replacing item type 2 which is now coming out of the secondary output. The secondary output is effectively a copy of A, but with a different item type. The primary output of the first splitter is always 1 but switches item type depending on the input. Using a filter splitter, we can split this variable item type signal into 2 wires: one will just be signal A coming straight through with the same item type as the original input, type 1, the other will be NOT A, with item type 2. This second circuit is exceptionally useful because it combines a NOT gate, a signal duplicator, and an item swapper. We need signal duplicators because branching a belt with a splitter makes the item flow unsaturated, which causes it to interact with other splitters incorrectly as it is neither 0 or 1. We also need item swappers as there is often a mismatch between one circuit’s output type and another’s input type. The half-adder Now that we have our 3 basic components, let’s build a half-adder. Why would we need a half-adder? Well, as the name might suggest, a half-adder is one half of a full adder, which is a circuit with the ability to add binary numbers together. This will allow us to do addition, and creative uses of addition allow us to implement literally every other mathematical operation imaginable. A half-adder is a circuit that sums two single-digit binary numbers. This may sound like a daunting task, but in reality, it’s very simple. Both inputs A and B are single-digit binary numbers, meaning the maximum possible output is 2 (1+1), which, unfortunately, will not fit into a single-digit output. Instead, we will use a two-digit binary number where the first digit has a place value of 2 (21) and the second a place value of 1 (20). Taking this into account, here is the half adder’s truth table: A B First digit of A + B Second digit of A + B 0 0 0 0 0 1 0 1 1 0 0 1 1 1 1 0 We can see that the first digit is simply A AND B. However, for the second digit, we need something called an XOR gate (XOR stands for “exclusive OR”). An XOR gate outputs 1 if exactly one input is 1, which is precisely what we need for the second digit. An XOR gate’s logic is, “A or B, but not both”, and therefore an XOR gate is just (A OR B) AND NOT (A AND B). Here is how to do this with the basic gates discussed earlier: &lt;/source&gt; A half-adder Notice that we also get the AND gate output for free thanks to the combined duplicator-NOT circuit, giving us a complete half-adder. It just so happens that we can combine the first item swapper with the second AND gate, which allows us to get rid of a splitter: &lt;/source&gt; A slightly simpler half-adder The final product Now, to convert our half-adder to a full adder, we need to connect 2 of them in sequence (hence the name “half-adder”): As you can see, a full adder is just 2 half-adders chained in a specific way. Now, we could just copy and paste the circuit, but thanks to the properties of belts, there is a much better and smaller way. The 2 lanes of a belt are processed by splitters independently from each other, meaning that instead of chaining two half-adders, we can instead run everything through a single half-adder twice. This is usually impossible with traditional logic circuits, but in this brave new world of Factorio computers, anything goes. Here is how: &lt;/source&gt; A full adder Here, the first half-adder uses the right-hand side of the belt, and the second half-adder uses the left-hand side of the belt. First, the inputs make it through the first half-adder as normal on the right-hand side of the belt. Next, the half adder’s XOR output is looped all the way back and is now put on the left side of the belt. It goes through the same mechanisms again, but since it’s on the left side, it doesn’t interact with the right side at all. The second half-adder still has a free input, though, so we have to connect a third input belt, this time on the left side to act as the carry in bit. The AND outputs of both half-adders are sideloaded onto a belt, automatically creating an OR. Internal delays might cause both half-adders’ carries to output at the same time, causing it to attempt to unload a full belt onto half of a belt. Therefore, we also need an overflow protection splitter so that the carry bit doesn’t back up and break the entire circuit. After some rearranging of the components, we get this: &lt;/source&gt; A compact full adder This is exactly the same circuit as in the previous image, and I leave it as an exercise to the reader to verify that. The only thing left to do is to stack a bunch of these together and feed them numbers, so here is a belt-only adder calculating 01001101 (77) + 10001011 (139) = 011011000 (216): &lt;/source&gt; An array of adders calculating 01001101 (77) + 10001011 (139) = 011011000 (216) Adding numbers is cool and all, but it’s nothing without some kind of memory, which is exactly what we will be exploring in the next issue. Stay tuned! Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","url":"https://alt-f4.blog/ALTF4-23/","@type":"BlogPosting","author":{"@type":"Person","name":"Recon419A, pocarski"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-23/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/23/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/23/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/ru/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/ru/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/ru/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/ru/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/ru/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/ru/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Общественный наследник возлюбленным Пятничным Фактам Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-23/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-23/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-23/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-23/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-23/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-23/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-23/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-23/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button button-green lang-button" href="/ru/ALTF4-23/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-23/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #23 - Beltravaganza  <author>12-02-2021</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Написали <em>Recon419A, pocarski</em>,
+
+
+
+отредактировали <em>stringweasel, Nanogamer7, Conor_, Therenas, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/23/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Содержание</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#logistics-belts-recon419a">Logistics Belts <author>Recon419A</author></a>
+    <ul>
+      <li><a href="#description-of-a-logistics-belt">Description of a Logistics Belt</a></li>
+      <li><a href="#use-cases-for-logistics-belts">Use Cases for Logistics belts</a></li>
+      <li><a href="#limitation-multiple-destinations">Limitation: Multiple Destinations</a></li>
+      <li><a href="#a-note-on-sushi-belts">A Note on Sushi Belts</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#belt-only-computing-part-1-not-so-quick-maths-pocarski">Belt-only Computing, Part 1: Not-so-quick Maths <author>pocarski</author></a>
+    <ul>
+      <li><a href="#the-basic-gates">The basic gates</a></li>
+      <li><a href="#the-half-adder">The half-adder</a></li>
+      <li><a href="#the-final-product">The final product</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>К сожалению, эта статья ещё не переведена на русский, поэтому она отображается на английском. Если хотите помочь это исправить, присоединяйтесь к <a href="https://alt-f4.blog/ru/discord">нашему Дискорду</a>, чтобы начать. Спасибо!</p>
+
+</div>
+
+
+
+<p>After a hiatus of two weeks due to a couple of FFF’s hot off the presses, we’re back this week with two articles all about belts. In the first one, Recon419A explores an interesting concept that has belts deliver items in a just-in-time fashion. Then, things get truly nerdy as pocarski takes a deep dive into building a turing machine only using belts. Computer Science degree recommended!</p>
+      <h2 id="logistics-belts-recon419a">
+        
+        
+            <a href="#logistics-belts-recon419a" class="anchor" style="text-decoration: none;">Logistics Belts <author>Recon419A</author></a>
+          
+        
+      </h2>
+    
+
+<p>Factorio has three main methods of moving items: belts, bots, and trains. Belts are good for single- or double-item throughput, trains for massive quantities of a single item, and bots for complicated crafting tasks. Sometimes, however, you need a combination of these approaches, which is where techniques like sushi belts can come into play. In this article, I want to talk about another approach I call “logistics belts”. Like sushi belts, logistics belts can be used with or without mods and are not a mod themselves; rather, they are a way to control what resources go where using belts and very simple circuits. Like the vanilla logistics network and certain train-based mods like LTN, they aim to be a way to deliver resources that’s smarter than simply running basic belts.</p>
+      <h3 id="description-of-a-logistics-belt">
+        
+        
+            <a href="#description-of-a-logistics-belt" class="anchor" style="text-decoration: none;">Description of a Logistics Belt</a>
+          
+        
+      </h3>
+    
+
+<p>Logistics belts are a somewhat complicated concept, but it’s much simpler to understand when you see one in action. In this example, pay attention to how several items are sent along the same belt, each being loaded onto the belt only when requested. If iron and copper is all that is needed, no steel will be sent; likewise, if nothing is needed, the belt will remain empty.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 1280px; max-height: 720px" playsinline="" muted="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/logistics-belts-demo.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      Video demonstration of logistics belt concept.
+    </video>
+    <figcaption>A demonstration of logistics belts using circuit conditions, filter splitters, and loaders. Inserters can be used in lieu of loaders but may need to be doubled or tripled depending on the belt speed.</figcaption>
+  </figure>
+  </p>
+
+<p>You can see in the example that the circuit condition is set to send materials when the destination has less than one hundred. In reality, the length of the belt will affect how many materials are sent; if the belt is long, one hundred will be buffered with hundreds still on the belt. There <em>is</em> a theoretical limit to how long the belt can be without overflowing the receiver chest, but in practice, you won’t hit it if you’re using steel chests; at very large distances, you’ll be using trains instead anyways. If you would like to have a play with this logistics belt setup, the blueprint string is available <a href="https://media.alt-f4.blog/ALTF4/23/logistics-belt-blueprint.txt">here</a>, though it should be noted the blueprints utilizes loaders from the <a href="https://mods.factorio.com/mods/Optera/LoaderRedux">Loader Redux</a> mod.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/23/logistics-belt-circuit-condition.jpg" alt="An example circuit condition for a logistics belt." style="max-width: ; max-height:  ">
+        
+        <figcaption>An example circuit condition for a logistics belt. Note that setting a limit of one hundred will actually send approximately 270 plates over this distance, due to plates remaining on the belt at the time of cutoff.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="use-cases-for-logistics-belts">
+        
+        
+            <a href="#use-cases-for-logistics-belts" class="anchor" style="text-decoration: none;">Use Cases for Logistics belts</a>
+          
+        
+      </h3>
+    
+
+<p>Logistics belts are useful when you need a lot of an item all at once, and then none of it for a very long time. Anyone who has ever automated belts with bots will be familiar with the phenomenon known as the “charging cloud” that comes about when your logistics network asks for no less than ten thousand gears and fifteen hundred electronic circuits. Likewise, when you ask for something like the materials to make a nuclear reactor or a rocket silo, bots will tend to swarm around an assembler in an area that was never designed for that degree of throughput. When you need a lot of an item, it’s much easier to get it in by belt: sending ten thousand gears takes less than four minutes and barely damages your UPS; with bots it would take 2500 separate trips and likely make that many bots go airborne, swamping charging capacity that may never have been designed for that and taking forever to return to equilibrium. Running dedicated belts for every item, however, creates its own set of problems; often, the belts will be sitting idle and taking up space within your factory, and you may not even have room to run an eight-bus in the first place. For something like your belt mall, sending a large load of gears intermixed with a large load of electronic circuits is trivial for a logistics belt; once they arrive in that location, using bots internally is much less strain on your logistics network.</p>
+      <h3 id="limitation-multiple-destinations">
+        
+        
+            <a href="#limitation-multiple-destinations" class="anchor" style="text-decoration: none;">Limitation: Multiple Destinations</a>
+          
+        
+      </h3>
+    
+
+<p>The problem of sending one item to multiple destinations is non-trivial, and it’s something I personally haven’t been able to solve. Because filter splitters pull all of an item off, sending that item past a filter splitter <em>some of the time only</em> requires complicated splitter arrangements and several circuit conditions originating from different destinations. I’ve given the problem a good deal of thought, and while I’ve come up with several prototypes, they’ve mostly been prone to behaviours like jamming or sending too many of an item to the wrong destination, potentially causing an overflow if left unattended. With the Factorio community being what it is, I wouldn’t be surprised if this is solved within a week or two, and in several different ways; maybe we’ll even hear about <em>your</em> solution in a future Alt-F4. For now, though, I leave it as a challenge to the community. Be sure to let me know what you come up with!</p>
+      <h3 id="a-note-on-sushi-belts">
+        
+        
+            <a href="#a-note-on-sushi-belts" class="anchor" style="text-decoration: none;">A Note on Sushi Belts</a>
+          
+        
+      </h3>
+    
+
+<p>Players who have been around the game a while may have already encountered a similar concept: sushi belts. Like logistics belts, sushi belts place more than two resources on a belt, but they generally do so as a loop designed for complicated crafting. A circuit condition at the entrance or around the entire belt helps to control the amount of every resource present, even leading to such complicated examples as the <a href="https://imgur.com/gallery/Q4oR0#Jiwed0Q">“bloodbus”</a> - a circulatory system for your factory. While the concept of a logistics belt is similar, it has a few important differences, and the key one is related to their function: while sushi belts go <em>around</em>, and tend to service multiple assemblers in no particular order, logistics belts go <em>to</em> and tend to direct resources from one location to another. In fact, a logistics belt can be used to feed a sushi belt in place of an ordinary bus - when resources are needed, they can be sent, with carefully limited rate control preventing over-population of the belt loop. Other concepts like clocked belts or inserter limiting can be applied here, and can even be combined with logistics belts to achieve monumental feats of engineering. In my mind, logistics belts themselves are just one part of the player’s toolkit.</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 800px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/sushi_belts_chaos.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Video of sushi city block base.
+    </video>
+    <figcaption>A crazy example of sushi belts in action in a massive city block base. Source: <a href="https://www.reddit.com/r/factorio/comments/kv53ym/you_have_heard_of_sushi_belts_and_you_have_heard/">u/dentoid’s reddit post</a></figcaption>
+  </figure>
+</p>
+      <h2 id="belt-only-computing-part-1-not-so-quick-maths-pocarski">
+        
+        
+            <a href="#belt-only-computing-part-1-not-so-quick-maths-pocarski" class="anchor" style="text-decoration: none;">Belt-only Computing, Part 1: Not-so-quick Maths <author>pocarski</author></a>
+          
+        
+      </h2>
+    
+
+<p>In Factorio, we can use the circuit network to build systems, starting with some simple boolean logic, up to a fully functional computer and then, someone insane enough might even <a href="https://www.youtube.com/playlist?list=PLdkxm81SV4uVs7EHAxeGcaPLe9xX_7tjb">run DOOM on it</a>. What is less obvious, however, is the fact that the circuit network is not the only <a href="https://en.wikipedia.org/wiki/Turing_completeness">Turing complete</a> (have a look at the linked page if you’re unfamiliar) system in the game. Indeed, you can build a computer out of something very basic, something which you get almost as soon as you start a new game: belts.</p>
+
+<p>In this two-part series, I will be walking through the process of designing two systems used in real-life computers with nothing but belts and splitters. I will be using loaders and infinity chests, however at any time there are exactly as many items entering as there are items leaving, so all belts could also be looped through a buffer. I chose not to do that for the sake of compactness and avoiding spaghetti. I have to give credit to <a href="https://www.youtube.com/channel/UC6BeS4toXnPJe-Kds9E_FEQ">letao12</a> who made a series of videos around creating a belt-only CPU, which is what inspired me to come back to his idea with my own take on it.</p>
+
+<p>For any system to be Turing complete, it must be possible to create something known as logic gates. Logic gates are simple elements that perform basic operations of <a href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean algebra</a> by giving an output based only on the current inputs. There are only 2 numbers in Boolean algebra: 1 and 0. In electronics, they correspond to high voltage and low voltage but, in our case, we will say that a belt with items is a 1, and an empty belt is 0. There are 3 basic logic gates:</p>
+
+<ul>
+  <li>OR gate - outputs 1 <strong>if at least one</strong> input is 1</li>
+  <li>AND gate - outputs 1 <strong>if all</strong> inputs are 1</li>
+  <li>NOT gate - outputs 1 <strong>only if</strong> the input is 0</li>
+</ul>
+
+<p>The truth table below shows their respective outputs based on the range of possible inputs.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>NOT A</th>
+      <th>A OR B</th>
+      <th>A AND B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It is a known fact that by chaining these logic gates in specific ways (and sometimes looping some wires), it is possible to construct a <a href="https://en.wikipedia.org/wiki/Turing_machine">Turing machine</a>. All three of the basic gate types can be created entirely with belts and splitters. Here a link to a <a href="https://media.alt-f4.blog/ALTF4/23/belt-computer-blueprint-book.txt">blueprint book</a> with everything from this article, for anyone who would like to experiment with the circuits themselves. I will refer to different items as “item type 1/2/3/…”, for convenience and generality, and priority/non-priority inputs and outputs as “primary/secondary”, mostly just for convenience. I will also be using different colours in the images, to differentiate between item types.</p>
+      <h3 id="the-basic-gates">
+        
+        
+            <a href="#the-basic-gates" class="anchor" style="text-decoration: none;">The basic gates</a>
+          
+        
+      </h3>
+    
+
+<p>The AND and OR gates are as simple as a single splitter with a set priority:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/and_and_or.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      A single splitter acting both as an AND and an OR gate
+    </video>
+    <figcaption>The primary output acts as an OR gate, whilst the secondary output acts as an AND gate.</figcaption>
+  </figure>
+</p>
+
+<p>The NOT gate is a bit trickier to make, but it can be done by using more than one item type and some clever filtering and prioritizing:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/very_useful_circuit.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      A combined NOT gate, and signal duplicator
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Whilst <em>input A</em> is 0, the first splitter is only receiving one input, and so item type 2 is going onto the primary output, meaning only the <em>NOT A output</em> is 1. When input A is on, the first splitter is now getting 2 inputs; item type 1 is going into the primary input, therefore it gets put on the primary output, replacing item type 2 which is now coming out of the secondary output. The secondary output is effectively a copy of A, but with a different item type.</p>
+
+<p>The primary output of the first splitter is always 1 but switches item type depending on the input. Using a filter splitter, we can split this variable item type signal into 2 wires: one will just be signal A coming straight through with the same item type as the original input, type 1, the other will be <em>NOT A</em>, with item type 2.</p>
+
+<p>This second circuit is exceptionally useful because it combines a NOT gate, a signal duplicator, and an item swapper. We need signal duplicators because branching a belt with a splitter makes the item flow unsaturated, which causes it to interact with other splitters incorrectly as it is neither 0 or 1. We also need item swappers as there is often a mismatch between one circuit’s output type and another’s input type.</p>
+      <h3 id="the-half-adder">
+        
+        
+            <a href="#the-half-adder" class="anchor" style="text-decoration: none;">The half-adder</a>
+          
+        
+      </h3>
+    
+
+<p>Now that we have our 3 basic components, let’s build a half-adder. <em>Why would we need a half-adder?</em> Well, as the name might suggest, a half-adder is one half of a full adder, which is a circuit with the ability to add binary numbers together. This will allow us to do addition, and creative uses of addition allow us to implement <em>literally</em> every other mathematical operation imaginable.</p>
+
+<p>A half-adder is a circuit that sums two single-digit binary numbers. This may sound like a daunting task, but in reality, it’s very simple. Both inputs A and B are single-digit binary numbers, meaning the maximum possible output is 2 (1+1), which, unfortunately, will not fit into a single-digit output. Instead, we will use a two-digit binary number where the first digit has a place value of 2 (2<sup>1</sup>) and the second a place value of 1 (2<sup>0</sup>). Taking this into account, here is the half adder’s truth table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>First digit of A + B</th>
+      <th>Second digit of A + B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We can see that the first digit is simply <em>A AND B</em>. However, for the second digit, we need something called an XOR gate (XOR stands for “exclusive OR”). An XOR gate outputs 1 if <strong>exactly one</strong> input is 1, which is precisely what we need for the second digit.</p>
+
+<p>An XOR gate’s logic is, “A or B, but not both”, and therefore an XOR gate is just <em>(A OR B) AND NOT (A AND B)</em>. Here is how to do this with the basic gates discussed earlier:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/half_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      A half-adder
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Notice that we also get the AND gate output for free thanks to the combined duplicator-NOT circuit, giving us a complete half-adder. It just so happens that we can combine the first item swapper with the second AND gate, which allows us to get rid of a splitter:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/simpler_half_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      A slightly simpler half-adder
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+      <h3 id="the-final-product">
+        
+        
+            <a href="#the-final-product" class="anchor" style="text-decoration: none;">The final product</a>
+          
+        
+      </h3>
+    
+
+<p>Now, to convert our half-adder to a full adder, we need to connect 2 of them in sequence (hence the name “half-adder”):</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/23/full-adder-diagram.jpg" alt="A diagram of a full adder" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>As you can see, a full adder is just 2 half-adders chained in a specific way. Now, we could just copy and paste the circuit, but thanks to the properties of belts, there is a much better and smaller way. The 2 lanes of a belt are processed by splitters independently from each other, meaning that instead of chaining two half-adders, we can instead <strong>run everything through a single half-adder twice</strong>. This is usually impossible with traditional logic circuits, but in this brave new world of Factorio computers, anything goes. Here is how:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/spread_out_full_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      A full adder
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Here, the first half-adder uses the right-hand side of the belt, and the second half-adder uses the left-hand side of the belt. First, the inputs make it through the first half-adder as normal on the right-hand side of the belt. Next, the half adder’s XOR output is looped all the way back and is now put on the left side of the belt. It goes through the same mechanisms again, but since it’s on the left side, it doesn’t interact with the right side at all. The second half-adder still has a free input, though, so we have to connect a third input belt, this time on the left side to act as the <em>carry in</em> bit. The AND outputs of both half-adders are sideloaded onto a belt, automatically creating an OR. Internal delays might cause both half-adders’ carries to output at the same time, causing it to attempt to unload a full belt onto half of a belt. Therefore, we also need an overflow protection splitter so that the carry bit doesn’t back up and break the entire circuit. After some rearranging of the components, we get this:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/compacted_full_adder.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      A compact full adder
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>This is <em>exactly</em> the same circuit as in the previous image, and I leave it as an exercise to the reader to verify that. The only thing left to do is to stack a bunch of these together and feed them numbers, so here is a belt-only adder calculating 01001101 (77) + 10001011 (139) = 011011000 (216):</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: 960px; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/23/adder_stack.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      An array of adders calculating 01001101 (77) + 10001011 (139) = 011011000 (216)
+    </video>
+    <figcaption></figcaption>
+  </figure>
+</p>
+
+<p>Adding numbers is cool and all, but it’s nothing without some kind of memory, which is exactly what we will be exploring in the next issue. Stay tuned!</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/ru/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://forums.factorio.com/viewtopic.php?f=5&t=96076">
+    Обсудить на форумах Factorio
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://www.reddit.com/r/factorio/comments/li9wxy/altf4_23_beltravaganza/">
+    Обсудить на Реддите
+  </a>
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/ru/discord">
+    Обсудить на Дискорде
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/ru/ALTF4-22/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/ru/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a href="/ru/ALTF4-24/" class="button square-sm">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/ru/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/ru/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/ru/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Этот сайт - фан-проект и не имеет прямого отношения к Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
