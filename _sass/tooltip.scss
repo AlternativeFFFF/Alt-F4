@@ -1,0 +1,23 @@
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  .info {
+    position: absolute;
+    visibility: hidden;
+    color: #e39827;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 600;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+}
+
+.tooltip.active .info {
+  visibility: visible;
+  position: relative;
+  opacity: 1;
+}
