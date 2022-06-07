@@ -18,15 +18,15 @@ Each of the different ways of playing will have its own feel, challenges and sta
 
 AngelBob keeps the same basic goal of launching a rocket, however all of the recipes leading up to it are changed significantly, making it much more complicated. For example, in the early game, ores need to be crushed before they can be smelted. Then later on, you discover that if you sort them or wash them, you can get multiple different metal ores out, and if you then process those through further steps you can at least double the number of plates you produce for each unit of ore, and then even more if you start to use modules.
 
-![Iron ore processing](ironoreprocessing.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/ironoreprocessing.jpg' alt='Iron ore processing' %}
 
 Space Exploration provides a continuation of the base game. When you launch a rocket, you don't get the "Congratulations, you won!" message; instead, you realise that you've just scratched the surface and that there's far more science to be done. The different types of space science all have different feels and all require different resources - resources which you have to find on other planets. The early game is very similar to vanilla, but it gives you a solar system and deep space to explore once you've got rocketry going.
 
-![Explore the galaxy](SEplanets.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/SEplanets.jpg' alt='Explore the galaxy' %}
 
 Industrial Revolution also keeps the goal of launching the rocket, but adds in extra early game content with different eras of machines. You begin with steam power, using it to directly power inserters, assembly machines and so on, until you finally research electricity and can start using more conventional machines. It also adds in some extra processing steps for ores and new recipes for circuits, but not to the same extent or complexity as AngelBob.
 
-![Steam powered assembly machines](IRsteam.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/IRsteam.jpg' alt='Steam powered assembly machines' %}
 
 ### Difficulty Curve
 
@@ -34,31 +34,31 @@ The difficulty with a vanilla megabase lies largely with designing at a scale yo
 
 AngelBob has a reputation for being one of the hardest modpacks out there, probably second only to Pyanodons (which I haven't played). A lot of this complexity comes from recipes which involve byproducts. A lot of the mid-game ore refining methods will produce multiple different types of ore, for example saphirite gives you mostly iron, but also some copper. Then if you wash it, you can also get silicon and nickel. Or if you process it again with acid, you get titanium as well. This is much like the Industrial Revolution example I'll describe below, but taken to a much higher level! Having your titanium production relying on your iron production means that it’s a careful balancing act to produce the right amount of the ores that you want, without producing far too much of the ores that you don’t need. Now sure, you can store the overflow in warehouses – the mod is kind enough to give you massive buildings to store your products – but they will fill up eventually and cause you problems.
 
-![Ore sorting](orerefining.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/orerefining.jpg' alt='Ore sorting' %}
 
 Speaking of byproducts, Angel's Petrochem has a very well-deserved reputation for complexity. Even finding a chain of recipes that will allow you to make plastic from the resources you have is a challenge, but then you realise that you’ve followed the chain through, but you have about ten different tanks filling up with random gasses. And whilst you can vent gasses to atmosphere, because you’re throwing so much of it away, it takes enormous amounts of crude oil or natural gas input to make a very slow trickle of plastic. Oh, but if you put in another massive processing system, then you can take a couple of those byproducts and squeeze a bit more useful stuff out of them, except that makes yet more byproducts! It's a never ending puzzle, but one which can feel very rewarding whenever you make a bit more progress and increase your plastic production by 10%.
 
-![Making plastic](plastic.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/plastic.jpg' alt='Making plastic' %}
 
 It often feels like Angel's mods add extra complexity to the game - I've described Angel's Ores and Angel's Petrochem above - whereas Bob's mods give you the more powerful tools you need to deal with them. This isn't entirely true (Bob's Enemies definitely doesn't make things easier), but it's a nice first approximation. This means that you get things like faster belts or trains with larger inventories and higher top speeds. There are also higher tier modules with unique ingredients and more powerful exoskeletons to help you get round your surprisingly large factory. Each tier of a building or mechanism will use the previous tier as a component, plus some more exotic materials. This means that upgrades always use up the materials you're dismantling, which prevents you from ending up with enormous piles of outdated technology.
 
-![All belt tiers](allbelts.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/allbelts.jpg' alt='All belt tiers' %}
 
 I finished my AngelBob run with [Space Extension](https://mods.factorio.com/mod/SpaceMod), which is technically a different modpack, but is fully compatible. This mod requires you to research various types of space technology, however none of them give you any extra toys to play with; they simply act as a massive research sink to test the speed and effectiveness of your factory. Technically, this doesn't add any extra difficulty, however having research projects which take literally millions of research packs does encourage you to ensure that your factory is running as quickly and efficiently as possible, and gives you an incentive to tweak and improve things, rather than doing just the bare minimum to get to space.
 
 Space Exploration takes the existing difficulty curve of a vanilla game and extends it far beyond the original game. In vanilla you start off with red science, which takes four steps to produce, followed by green science, which is a bit more complicated. Blue science tends to be a bit of a filter where a lot of players will get stuck, and I remember yellow science causing me to struggle in my first few games, mostly because I was struggling to make blue circuits fast enough. Space Exploration continues this with the first space-based science, which is itself fairly straightforward, but made significantly trickier because it has to be made in space, so you'll need to work out the logistics to get all the components where they need to go, and learn to build in space! It then gives you four paths to follow with different flavours of science: Astronomic, Energy, Material and Biological. These can be tackled in any order and each one will get you different new types of technology. They also all have very different challenges and atmosphere. Material requires making and destroying test packs, then dealing with the scrap, Energy requires lots of very power hungry particle accelerators and Biological involves circulating various different types of ooze. A lot of this sounds like it's just flavour text and everything will boil down to “put ingredient A and B in machine C to get output D”, and whilst that is true to an extent, the various sciences definitely feel distinct and make you approach them in different ways.
 
-![Material science](materialscience.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/materialscience.jpg' alt='Material science' %}
 
 Being spread out across a solar system provides additional logistical challenges in the form of rockets and spaceships. These allow you to move resources between planets at the cost of fuel, but require a lot of infrastructure to keep them loaded and to ensure they go where they are needed. One of the most fun mid to late game challenges is building and programming spaceships - these can be extremely flexible and powerful, but also require a lot of thought to make them do exactly what you want them to.
 
-![Spaceship](spaceship.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/spaceship.jpg' alt='Spaceship' %}
 
 Industrial Revolution introduces new systems to work with from the very start, however in general the designs you're building aren't too difficult. Later on, a lot of the difficulty and complexity is provided through a larger number of intermediate steps and intermediate products. This is true in AngelBob as well, however I feel like it blends in more cleanly in AngelBob - it felt like there was a good reason to be making all the intermediate products, whereas Industrial Revolution unfortunately often makes it feel like a bit of a chore. The mod introduces a lot of different states for a metal to be in, ingots, plates, rods, rivets, gears, pistons and so on, and different parts are required for different machines. This is then multiplied by the number of different metals you need to work with as well. Whilst this all felt quite realistic, it makes the logistics much harder if you want to have a central system for producing resources. I ended up shipping ingots around by train as this was the lowest common denominator of all the parts, and then dealing with having to run the ingots through several stages to get the pistons or gears that I actually needed.
 
 Industrial Revolution also includes washing of ores, which allows you to create a second type of metal from each ore. This puts in an interesting byproducts puzzle where you need to balance both the main metal and the byproduct one (e.g. turning gold ore into gold ingots and tellurium) to ensure that you don't run out of either, but also that you don't end up with too much of any. I quite enjoyed this step, even if we hadn't quite got it perfect by the time we finished the run.
 
-![Sorting gold ore](IRgoldsorting.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/IRgoldsorting.jpg' alt='Sorting gold ore' %}
 
 It's hard to summarise all these changes down to a direct comparison. I think overall, Industrial Revolution is the easiest of the modpacks - it's certainly the one I finished most quickly, even taking the extra players into account. Space Exploration starts out at vanilla levels of difficulty, but just keeps ramping up and up over time, slowly raising the temperature, but rarely causing you to feel too overwhelmed. AngelBob is much harder almost from the beginning and there were quite a few times when I had to step away to collect my thoughts, however it did keep my interest and I definitely enjoyed the playthrough.
 
@@ -68,15 +68,15 @@ All three modpacks introduce lots of new buildings and, as such, need new graphi
 
 AngelBob is probably the weakest of the three. The new buildings certainly aren't ugly - it's generally clear what they do and they're mostly distinctive, however they don't fit in quite as well with the general Factorio diesel punk aesthetic as the others do. I also feel that sometimes they look pasted on, like a bad Photoshop - I think this is probably down to detail level, or lighting. Generally, different tiers are distinguished by a palette swap - you go from grey belts to yellow, red, blue, purple and green, which is similar to vanilla. There's some variety in the quality of the icons for the different materials, with some icons being very high resolution and others being very low. I suspect this comes from the graphics being gradually added over time or from different sources. Most of the time this doesn't matter, but sometimes you zoom in and the varied resolutions can really stick out. Some of the machines tiers are very difficult to tell apart - one of the crushers (I think) replaces a grey plate on the roof with a dark blue one and unfortunately the two look very similar. That said, I have seen mods with much, much worse artwork than this and I certainly wasn't bothered by the quality of it while I was playing.
 
-![A smelting area](angelbobs.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/angelbobs.jpg' alt='A smelting area' %}
 
 Space Exploration uses a lot of very large machines - especially in space - and these are all excellently rendered. I feel like they fit in very nicely with the general aesthetic, being a higher tech version but still feeling like they've come from the same family of machines. They're all nicely animated too, which makes it easy to tell how busy an area of the factory is. The consistent feel, style and resolution really helps everything come together nicely. That said, there is definitely some artwork reuse in there with a number of machines being recoloured versions of other ones. This doesn't matter as much - they're easy to tell apart and it's not confusing - however it is a minor downside. I've never struggled to tell buildings or resources apart, and only ever struggled to find them due to the sheer quantity of content.
 
-![Making ion stream](ionstream.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/ionstream.jpg' alt='Making ion stream' %}
 
 I think that Industrial Revolution is the winner in the graphics area. It doesn't beat out Space Exploration by much, but the visual interest offered by the three stages of technology - burner, electrical, and laser - really comes across in the artwork. Whilst the different tiers are distinguished by colour, there's much more to it than that. The assembly machines move from showing big cutting wheels to arc welding to visible laser beams. The furnaces are all completely different shapes. It feels like the machines are all completely distinct, rather than being repainted versions of the tier below. In short, it feels like a lot of care and attention has gone into the artwork in this mod, and the mod looks very good because of it.
 
-![Steam and electrical](IRgenerations.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/IRgenerations.jpg' alt='Steam and electrical' %}
 
 ### Combat
 
@@ -84,15 +84,15 @@ Combat has never been the main focus of Factorio - past a certain point, the bit
 
 AngelBob (or more specifically, Bob's) made the most changes to combat. There are new tiers of biters, with five extra sizes beyond the behemoth, plus enemies with different attack types, such as fire, poison cloud, electric, and so on. That said, whilst the bigger biters had a lot more health, the different attacks didn't really make a lot of difference - they all just cause damage. In order to help with these stronger enemies, better turrets are available. In the early game, you get the sniper turret which (as you'd expect!) has a slower rate of fire, but high damage and longer range. When you first unlock it, it's capable of one-shotting a lot of the enemies that come running in. I struggled with combat in the mid-game here as well, at least until I realised I'd researched the plasma cannon. This weapon can devastate a biter attack with huge damage levels and splash damage, however you have to be very careful to avoid friendly fire - it can knock a hole through your entire defensive line and kill even a heavily armoured player. It also draws a lot of power!
 
-![Defending the home front](ABcombat.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/ABcombat.jpg' alt='Defending the home front' %}
 
 Space Exploration doesn't do a huge amount with combat. There are no new types of biters or spitters to worry about and the standard wall with bullet and flame turrets has done well for me. You do get some interesting new personal weapons gated behind the space sciences which help to make the player a bit more dangerous. These include the lightning gun, which chains attacks together allowing you to attack an army all at once, a biogun which I think is supposed to do more damage the more biters there are around and a railgun which is a powerful, long range, single shot weapon. You also get some industrial scale weapons including an interplanetary railgun, a plague rocket which can wipe out all life on a planet and a solar-powered energy beam that can burn a trail of destruction over the landscape. Despite all these new toys, I haven't done much with them. The vanilla style wall is keeping my base on my home planet of Nauvis safe and you can generally find peaceful planets to gather your resources. I think there's potential in the more advanced weapons, but the game hasn't pushed me into having to use them much. You do need to worry about defending against meteor strikes and the occasional coronal mass ejection, and much like the biters, this gets easier as you advance through the game.
 
-![Deadly energy beam](SEglaive.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/SEglaive.jpg' alt='Deadly energy beam' %}
 
 Industrial Revolution also keeps the vanilla enemies, but it replaces the turrets with a scattergun turret and a modified machinegun turret. There are also new types of ammunition, both shotgun and bullet, for the player to work through. I found that the bullets didn't feel as powerful as in vanilla, which made combat harder, however the shotgun and scattergun turret really packed a punch at short range. This was interesting as it encourages the player to build out their defenses with a mix of different weapons in order to provide a thorough and complete defense. We definitely struggled with combat in the mid-game and I'm not sure whether this was due to releasing more pollution due to having multiple players, or due to the mod making it harder. Either way, it's a good thing we had multiple players, as it allowed us to support each other and to have one player working on defense while another made sure the ammo supply could keep up!
 
-![Industrial Revolution's turrets](IRturrets.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/62/IRturrets.jpg' alt='Industrial Revolution’s turrets' %}
 
 ### Final Thoughts
 
