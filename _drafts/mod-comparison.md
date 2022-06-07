@@ -10,7 +10,7 @@ My next modpack was [Space Exploration](https://www.youtube.com/watch?v=oOHkLsSk
 
 Finally, in parallel to Space Exploration, I played through [Industrial Revolution 2](https://www.youtube.com/watch?v=LWrAZkapDTU&list=PLALTzJaRcgW8HveofZ0iPpg0u3g6llmNc) with some friends during the second half of 2021. [Industrial Revolution 2](https://mods.factorio.com/mod/IndustrialRevolution) was written by Deadlock989, who is known for their excellent artwork - this really shines through in IR2, but more on that later.
 
-So, now I’ve given you a quick rundown of my Factorio experience, I can start on the main topic of this article – comparing the three modpacks, as well as the vanilla late-game experience, talking about what they give you and how they differ in feel. I have also made a video version of this article, which you can watch [here](link to follow).
+So, now I’ve given you a quick rundown of my Factorio experience, I can start on the main topic of this article – comparing the three modpacks, as well as the vanilla late-game experience, talking about what they give you and how they differ in feel. I have also made a video version of this article, which you can watch [here](https://youtu.be/V_6fF9KgbnA).
 
 ### The feel
 
