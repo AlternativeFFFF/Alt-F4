@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "Le numéro 62 de cette semaine est passionnant, car le tout nouveau collaborateur Laurence fait son premier article en s’attaquant à une question que beaucoup d’entre vous se sont probablement posée à un moment ou à un autre : Quelle est la différence entre certains de ces gros modpacks, déjà ? Et pourquoi pourrais-je en préférer un plutôt qu’un autre ? Laurence a joué avec quelques-uns des plus gros modpacks, et vous offre une réponse complète à ces questions.",
+      "image_alt"      : "Un collage de machines de BobAngel, Space Exploration et Industrial Revolution",
+      "url"        : "/ALTF4-62/",
+      "title"      : "Alt-F4 n°62 - BobAngel vs Space Exploration vs Industrial Revolution",
+      "image_src"      : "/assets/ALTF4/62/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "bev, Firerazer",
+      "author"     : "Laurence",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "10-06-2022"
+    },
+    {
       "content"    : "Pour le numéro d’Alt-F4 de cette semaine, nous retournons à nos racines en tant que successeur spirituel des FFF en nous plongeant dans un sujet technique. Pour cela, redruin1 nous présente sa toute dernière invention : Factorio Draftsman. Bien sûr, il y a déjà eu bien d’autres projets visant à construire une bibliothèque pour générer des plans pour le jeu, mais celui-ci essaie d’être le nouveau standard absolu. Motivations, détails techniques, et quelques projets amusants réalisés avec lui. Tout cela, et plus encore, c’est cette semaine !",
       "image_alt"      : "Capture d’écran d’un plan de l’Engrenage généré automatiquement avec du béton.",
       "url"        : "/ALTF4-61/",

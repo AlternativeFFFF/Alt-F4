@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "This week’s issue #62 is an exciting one, as first-time contributor Laurence makes their debut by tackling a question that a lot of you probably asked yourselves at some point: What’s the difference between some of these big modpacks again? And why might I enjoy one over the other? Laurence played through a few of the big ones, and offers a comprehensive answer to those questions.",
+      "image_alt"      : "A collage of AngelBob, Space Exploration, and Industrial Revolution machines",
+      "url"        : "/ALTF4-62/",
+      "title"      : "Alt-F4 #62 - AngelBob vs. Space Exploration vs Industrial Revolution",
+      "image_src"      : "/assets/ALTF4/62/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "",
+      "author"     : "Laurence",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "2022-06-10"
+    },
+    {
       "content"    : "For this week’s issue of Alt-F4, we return to the roots of being a spiritual successor to the FFF by going deep on a technical topic. To that end, redruin1 presents his newest invention: Factorio Draftsman. Sure, there have been other projects trying to build a library for generating blueprints for the game, but this one tries to be the new gold standard. Motivations, technical details, and a few fun projects realized with it - all that, and more, this week!",
       "image_alt"      : "A screenshot of an automatically generated gear blueprint using concrete",
       "url"        : "/ALTF4-61/",

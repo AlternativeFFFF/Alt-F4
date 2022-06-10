@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-06-03T08:25:46+00:00</updated>
+  <updated>2022-06-10T12:54:35+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #62 - AngelBob vs. Space Exploration vs Industrial Revolution</title>
+    <link href="https://alt-f4.blog/zh/ALTF4-62/" />
+    <id>https://alt-f4.blog/ALTF4-62</id>
+    <updated>2022-06-10T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;This week’s issue #62 is an exciting one, as first-time contributor &lt;em&gt;Laurence&lt;/em&gt; makes their debut by tackling a question that a lot of you probably asked yourselves at some point: What’s the difference between some of these big modpacks again? And why might I enjoy one over the other? &lt;em&gt;Laurence&lt;/em&gt;...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-53</id>
     <updated>2021-11-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;在地处黄金地段的第 53 期 Alt-F4 中，&lt;em&gt;Therenas&lt;/em&gt; 大师又回来恩赐予我们一篇新文章。承接他&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-1/&quot;&gt;之前&lt;/a&gt;着重于谈论自己 Mod 的&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-17/&quot;&gt;杰作&lt;/a&gt;，这次是全新的复刻内容大放送。本期探讨了异星工厂中自动截图的话题。虽然实际内容只有 20% 的技术细节，此外加上 40% 的哲学和 50% 的冷笑话。你没看错，合计高达 110 点！&lt;/p&gt; &lt;h2 id=&quot;自动化偷懒-therenas&quot;&gt;自动化偷懒 &lt;author&gt;Therenas&lt;/author&gt;&lt;/h2&gt; &lt;p&gt;我经常苦恼于为&lt;a href=&quot;https://mods.factorio.com/user/Therenas&quot;&gt;我的 Mod&lt;/a&gt; 拍摄适当的截图。要把一个场景设置得很吸引人 &lt;em&gt;并且&lt;/em&gt; 以视觉方式解释 Mod 的核心概念，需要做很多工作。在我看来，很多 Mod 缺乏优秀截图，并非由于 Mod 作者不关心，而是因为制作好的截图真的很困难。&lt;em&gt;虽说&lt;/em&gt; 一图胜千言，但截图需要他们用相当有限的“语言”做大量的工作。&lt;/p&gt; &lt;p&gt;尽管这一切听起来像在发牢骚（也确实如此），但实际问题不在于截图本身。在你花了几十个或几百个小时来做出这个 Mod 之后，再花几个小时为这个 Mod 截图是完全可以接受的。实际的问题是保持它们更新。你对 Mod 所做的每一个改动，最好都能在更新的截图内反映出来；如果截图过时了，对我来说就是一种缺乏关注的信号。当然也可能是我太过偏执。&lt;/p&gt; &lt;p&gt;当然更新的频率取决于每个 Mod 自己。如果是&lt;a href=&quot;https://mods.factorio.com/mod/Bottleneck&quot;&gt;瓶颈&lt;/a&gt;这种不常改变的，那你的截图就不会过时。如果你是一个&lt;a href=&quot;https://mods.factorio.com/mod/factoryplanner&quot;&gt;相当复杂的 GUI Mod&lt;/a&gt;，几乎每个版本都会在这里或那里改变你的界面的一些像素。理想情况下，一个耗时 5 分钟的...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #52 - 流体电力基准测试</title>
-    <link href="https://alt-f4.blog/zh/ALTF4-52/" />
-    <id>https://alt-f4.blog/ALTF4-52</id>
-    <updated>2021-11-12T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;第 52 期，&lt;em&gt;stringweasel&lt;/em&gt; 继续他的&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-51/&quot;&gt;流体电力实验&lt;/a&gt;第二部分，深入研究了他的作品带来的奇妙性能影响。如果你喜欢上周的文章，那你也会喜欢本周的第二部分。想不到吧！&lt;/p&gt; &lt;h2 id=&quot;流体电力实验第二部分-stringweasel&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/FluidicPower&quot;&gt;流体电力&lt;/a&gt;实验：第二部分 &lt;author&gt;stringweasel&lt;/author&gt;&lt;/h2&gt; &lt;h3 id=&quot;是什么来着&quot;&gt;是什么来着？&lt;/h3&gt; &lt;p&gt;在&lt;a href=&quot;https://alt-f4.blog/zh/ALTF4-51/&quot;&gt;上周的文章&lt;/a&gt;中，我谈到了异星工厂电网大改 Mod 的历史及工作机制，并讲解了我自己的实现，名为流体电力。建议先阅读那篇文章，但简而言之，我通过使用内置的流体模拟机制来让异星工厂的配电变得更加真实。这意味着你需要使用变压器来减少长距离输电带来的电压下降。这也意味着，比方说，要维持你的激光炮塔 100% 射速，或者建立大量插件效果分享塔覆盖的设施，都需要进行更多的工作。&lt;/p&gt; &lt;p&gt; &lt;figure&gt; &lt;video class=&quot;media&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;max-width: ; max-height: &quot; playsinline=&quot;&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;https://media.alt-f4.blog/ALTF4/52/biters-attack.mp4&quot; type=&quot;video/mp4&quot; /&gt; &amp;lt;/source&amp;gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/webm&quot;&gt; --&gt; &lt;!-- &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt; --&gt; 一个在打开“show-fluid-box-info”情况下虫群攻击前哨的例子。绿色的是液位，蓝色的是液速。注意激光炮塔会间歇性地关闭。 &lt;/video&gt; &lt;figcaption&gt;一个在打开“show-fluid-box-info”情况下虫群攻击前哨的例子。绿色的是液位，蓝色的是液速。注意激光炮塔会间歇性地关闭。&lt;/figcaption&gt;...</content>
   </entry>
   
   

@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "Die dieswöchige Ausgabe Nummer #62 ist eine ganz besondere: Erstautor Laurence macht seinen ersten Auftritt und beantwortet Fragen, die ihr euch wahrscheinlich alle schonmal gestellt habt: Was ist der Unterschied zwischen den verschiedenen großen Modpacks? Und welches könnte mir am ehesten gefallen? Laurence hat einige ausprobiert und liefert verständliche Antworten auf diese Fragen.",
+      "image_alt"      : "Eine Zusammenstellung von Maschinen aus AngelBob, Space Exploration und Industrial Revolution",
+      "url"        : "/ALTF4-62/",
+      "title"      : "Alt-F4 #62 - AngelBob vs Space Exploration vs Industrial Revolution",
+      "image_src"      : "/assets/ALTF4/62/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "EDLEXUS",
+      "author"     : "Laurence",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "10.06.2022"
+    },
+    {
       "content"    : "Für die dieswöchige Ausgabe von ALT-F4 besinnen wir uns auf unsere Wurzeln als FFF-Nachfolger im Geiste zurück und vertiefen uns in ein techisches Nischenthema. redruin1 präsentiert seine neueste Erfindung: Factorio Draftsman. Natürlich gab es bereits andere Projekte, welche versuchten eine Bibliothek für Factorio-Blaupausen-Generation zu bilden, aber Draftsman versucht, der neue Standart zu werden. Motivation, technische Details und einige spaßige Projekte, all das und vieles mehr in dieser Ausgabe von ALT-F4!",
       "image_alt"      : "Ein Foto eines automatisch aus einer Blaupause erstellten Zahnrades aus Beton",
       "url"        : "/ALTF4-61/",
