@@ -1,19 +1,37 @@
 ## Dana dev's blog: about the spaghetti in recipe graphs
 
-For those who don't know, [Dana](https://mods.factorio.com/mod/dana) is mod attempting to display the recipe graphs of items directly in game:
+### Dana ... what is that ?
 
-![How to make uranium: query](uranium-fuel-query.png)
+[Dana](https://mods.factorio.com/mod/dana) is a mod that aims at answering a simple common question in Factorio: "how can I make *(something)* ?".
 
-![How to make uranium: graph](uranium-fuel-graph.png)
+There are already quite a few mods doing this: [FNEI](https://mods.factorio.com/mod/FNEI), [Recipe Book](https://mods.factorio.com/mod/RecipeBook), [What is it really used for](https://mods.factorio.com/mod/what-is-it-really-used-for)... These mods have a common approach: let's say a new player want to know how to craft the Chemical science pack (the cyan one). This player looks for this item with these mods (or Factorio's recipe list), and see there is a single recipe, taking red circuits, sulfur, and engine units. So now the new player wonders "how do I make red circuits ?", looks for it, and sees a single recipe, requiring: plastic bars, copper wires, green circuits. Next step: "how do I make plastic bars ?", 1 recipe requiring petroleum gas. "How do I make petroleum gas ?", 4 recipes, have to inspect them one by one... That's time consuming, tedious, and the player is likely to forget some steps (like the sulfur, or steel).
 
-Today's post will present some (hopefully interesting) technical details about how these graphs are generated. The full layout algorithm (the piece of code taking a bunch of recipes/items and placing them somewhere on screen) is way too big for an Alt-F4 post, so today I'll focus on a specific step.
+Dana is born out of frustration of having to apply this process for hours on complex mod overhauls. And it takes a *slightly* different approach to answer:
 
-Given 2 rows of nodes, trace **links** between whatever needs to be connected together, in order to get a **nice™ and understandable™** graph:
+![dana-demo](dana-demo.mp4)
+("Dana, how to make *Chemical science packs* ?")
 
-![Intro: problem description](intro-problem-description.png) (Input data of the problem)
-![Intro: possible solution](intro-problem-solution.png) (Possible result)
+Dana is about depth: when asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does it directly in-game, by drawing you a *nice™ and understandable™* recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, select nodes or links for additional info. It's also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or an "usage" graph (what are all the items that can be crafted from *X*).
 
-Note that this is more or less a variant of kindergarten exercises:
+Dana is designed to work out of the box with any combination of mods adding/modifying/removing recipes or items. There is no hard-coded configuration provided by the player, the modders, or shipped directly in Dana. In this video, placing the "Copper block" between the "Iron block" and the "Refinery block", the "Heavy oil" above the "Light oil", how lines should be drawn/merged/bended, each X-Y coordinates... All that Dana had to work with was the full list of items, recipes, and what are the available natural resources. This is done by a graph layout algorithm (the piece of code that takes a bunch of recipes/items and decides where to place them on screen and how to link them) specifically designed for Factorio, which will be the subject of this article.
+
+### Dev's blog: drawing the graph's spaghetti
+
+Today's post will present some (hopefully interesting) details about the inner working of Dana's *nice™ and understandable™* graph generator. To give a general introduction, Dana's graph is a variant of [layered graph](https://en.wikipedia.org/wiki/Layered_graph_drawing). Which means items & recipse are placed *node layers*, separated by *link layers*.
+
+![Layered graph](layers-illustration.png)
+(Layered graph structure: node layers (blue background), link layers (green background))
+
+The first thing Dana does is deciding how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide horizontal coordinate of each item/recipe. The third step is building the link layers. The final step is to assign vertical coordinate to each element in the graph, now the number of layers and their length is known.
+
+The full layout algorithm is way too big and technical for an Alt-F4 post, so the rest of this article will focus on the third step. Here's the problem: given 2 consecutive *node layers*, trace the required links in the *link layer*, in order to get a *nice™ and understandable™* graph:
+
+![Intro: problem description](intro-problem-description.png)
+(Input data of the problem)
+![Intro: possible solution](intro-problem-solution.png)
+(Possible result)
+
+Conveniently, this is more or less a variant of kindergarten exercises:
 
 ![Kindergarten version](problem-kindergarten-version.png)
 
