@@ -97,11 +97,13 @@ Before looking at solution, the first things Dana got from that is a proper way 
 
 Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are a simple projections from the nodes to the horizontal lines.
 
-![Channels and trunks](dana-channels-and-trunks.png)  (here the router decided to make 6 channels in cyan, then choose a channel for each red horizontal segments).
+![Channels and trunks](dana-channels-and-trunks.png)
+(here the router decided to make 6 channels in cyan, then choose a channel for each red horizontal segments).
 
 So maybe Dana could also just copy/paste the solution ! Let's just place the links like tracks were placed on PCBs in the 80s !
 
-![Dana PCB channel router](PCB-router.png) (Dana with a classic PCB router)
+![Dana PCB channel router](PCB-router.png)
+(Dana with a classic PCB router)
 
 Well that's not exactly satisfying. These algorithms were designed with constraints of the PCB industry in mind, where link crossings are usually not a problem: only making the final PCB as small as possible really matters. But when it comes to nice™ graphs, all these tangled spaghettis are really bad. In order to fix that, Dana has to provide the router with a **partial order** on the horizontal lines: something telling that line `A` must be placed over line `B` to minimise crossings.
 
@@ -109,11 +111,13 @@ Well that's not exactly satisfying. These algorithms were designed with constrai
 
 To find a good vertical order, let's start from a simple idea. For each pair (`A`,`B`) of horizontal lines, we compute the number of crossings if we place `A` over `B`, same with `B` over `A`. We can deduce that placing `A` over `B` will save (or cost) a certain amount of crossings, or possibly that it doesn't change anything.
 
-![Example of crossing scores](crossings-score-example.png) (here placing `A` above `B` saves 2 crossings)
+![Example of crossing scores](crossings-score-example.png)
+(here placing `A` above `B` saves 2 crossings)
 
 Sadly the above trick may result in contradictions: `A` must be placed above `B`, `B` must be placed above `C`, and `C` must be placed above `A`. To get a proper order, Dana has to sacrifice some of the generated constraints, but in a way that adds as few crossings as possible.
 
-![Example of crossing score contradictions](crossings-score-contradiction.png) (`C` over `A` saves 1 crossing, `A` over `B` saves 2 crossings, `B` over `C` saves 1 crossing)
+![Example of crossing score contradictions](crossings-score-contradiction.png)
+(`C` over `A` saves 1 crossing, `A` over `B` saves 2 crossings, `B` over `C` saves 1 crossing)
 
 And now is the perfect time to start randomly talking about sports. Let's rephrase the previous paragraph, but using sports terms instead. `A` has won against `B`, `B` has won against `C`, and `C` has won against `A`. To get a proper ranking, Dana has to ignore some of the matches' results, but in a way that ignores as few score differences as possible.
 
@@ -126,7 +130,8 @@ A generic way to solve the issue is to use graph theory, where our sport problem
 
 Dana uses the heuristic from [Eades, P., Lin, X. and Smyth, W.F. (1993)](https://researchrepository.murdoch.edu.au/id/eprint/27510/1/effective_heuristic.pdf), with trivial modifications for weighted graphs. This is an extremely fast & hopefully "not too bad" algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It's enough to get a much more satisfying result on the last crafting graph:
 
-![Dana tuned channel router](improved-router.png) (same graph as the end of the PCB section, with the improved router)
+![Dana tuned channel router](improved-router.png)
+(same graph as the end of the PCB section, with the improved router)
 
 ### Conclusion
 
