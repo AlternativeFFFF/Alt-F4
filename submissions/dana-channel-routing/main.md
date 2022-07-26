@@ -80,8 +80,8 @@ Much more compact, less clutter, definitely nice™ and understandable™. This 
 ### Coding part
 
 So that's all for the drawing board, time to throw some code at the problem to get the job done ! But here comes new problems:
-* Factorio Mods are made in a language called Lua, and Lua has an ridiculously barren ecosystem: zero success of finding a library that can do this kind of link routing.
-* Porting from other languages ? Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That's not a graph anymore, but an hypergraph. While the word sounds definitely cooler, there isn't much software libraries to draw them, and in general much less scientific litterature on the topic. Zero success in finding clues to do routing the Dana way.
+* Factorio Mods are made in a language called Lua, and Lua has an ridiculously barren ecosystem. No success in finding a library that can do this kind of link routing.
+* Porting from other languages ? Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That's not a graph anymore, but an hypergraph. While the word sounds definitely cooler, there isn't many software libraries to draw them, and in general much less scientific litterature on the topic. No success in finding clues to do routing the Dana way.
 
 So Dana has a router "almost" made from scratch. "Almost" because there was a lot of inspiration to be found elsewhere, it just required looking into some unexpected places...
 
