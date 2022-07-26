@@ -124,7 +124,7 @@ A generic way to solve the issue is to use graph theory, where our sport problem
 * it's a [NP-hard](https://en.wikipedia.org/wiki/NP-hardness) optimisation problem (in layman's terms: finding an optimal solution can be **ridiculously** time consuming even with just a few dozen of players)
 * there is a nice pile of research articles proposing *heuristics* (in layman's terms: fast algorithms giving a "good enough" solution)
 
-Dana uses an "extremely fast & hopefully not horrible" heuristic to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It's enough to get a much more satisfying result on the last graph:
+Dana uses the heuristic from [Eades, P., Lin, X. and Smyth, W.F. (1993)](https://researchrepository.murdoch.edu.au/id/eprint/27510/1/effective_heuristic.pdf), with trivial modifications for weighted graphs. This is an extremely fast & hopefully "not too bad" algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It's enough to get a much more satisfying result on the last crafting graph:
 
 ![Dana tuned channel router](improved-router.png) (same graph as the end of the PCB section, with the improved router)
 
