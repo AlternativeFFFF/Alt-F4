@@ -17,12 +17,12 @@ Dana is designed to work out of the box with any combination of mods adding/modi
 
 ### Dev's blog: drawing the graph's spaghetti
 
-Today's post will present some (hopefully interesting) details about the inner working of Dana's *nice™ and understandable™* graph generator. To give a general introduction, Dana's graph is a variant of [layered graph](https://en.wikipedia.org/wiki/Layered_graph_drawing). Which means items & recipse are placed *node layers*, separated by *link layers*.
+Today's post will present some (hopefully interesting) details about the inner working of Dana's *nice™ and understandable™* graph generator. To give a general introduction, Dana's graphs are a variant of [layered graphs](https://en.wikipedia.org/wiki/Layered_graph_drawing). This means that items & recipes are placed in *node layers*, separated by *link layers*.
 
 ![Layered graph](layers-illustration.png)
 (Layered graph structure: node layers (blue background), link layers (green background))
 
-The first thing Dana does is deciding how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide horizontal coordinate of each item/recipe. The third step is building the link layers. The final step is to assign vertical coordinate to each element in the graph, now the number of layers and their length is known.
+The first thing Dana does is deciding how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is building the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known.
 
 The full layout algorithm is way too big and technical for an Alt-F4 post, so the rest of this article will focus on the third step. Here's the problem: given 2 consecutive *node layers*, trace the required links in the *link layer*, in order to get a *nice™ and understandable™* graph:
 
@@ -73,7 +73,7 @@ To minimise this cost, there's a simple yet huge optimisation: what if lines did
 
 ![Factorio tech tree dana link types](factorio-tech-tree-dana-link-types.png)
 
-Much more compact, less clutter, definitely nice™ and understandable™. This gives a "main bus" vibe to these graph sections that'll hopefully feel natural to a Factorio player, while hitting a good compromise between the general guidelines. This is also technically possible with Factorio's in-game rendering API, as links are just a bunch of lines, triangles and spheres. This almost gets Dana to fit Factorio's full crafting graph on a single screen:
+Much more compact, less clutter, definitely nice™ and understandable™. This gives a "main bus" vibe to these graph sections that'll hopefully feel natural to a Factorio player, while hitting a good compromise between the general guidelines. This is also technically possible with Factorio's in-game rendering API, as links are just a bunch of lines, triangles and circles. This almost gets Dana to fit Factorio's full crafting graph on a single screen:
 
 ![Dana: Factorio full graph](dana-full-graph.png)
 
@@ -95,7 +95,7 @@ Before looking at solution, the first things Dana got from that is a proper way 
 * determine a number of *channels* between the rows of nodes.
 * assign a *channel* for each horizontal segment of the links.
 
-Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are a simple projections from the nodes to the horizontal lines.
+Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines.
 
 ![Channels and trunks](dana-channels-and-trunks.png)
 (here the router decided to make 6 channels in cyan, then choose a channel for each red horizontal segments).
@@ -123,10 +123,7 @@ And now is the perfect time to start randomly talking about sports. Let's rephra
 
 The fundamental problem is the same. But luckily the sports version is as old as round-robin tournaments. And the good thing about old mainstream problems like that: there are a lot of smart people who have done research on it !
 
-A generic way to solve the issue is to use graph theory, where our sport problem is equivalent to the [Minimum feedback arc set](https://en.wikipedia.org/wiki/Feedback_arc_set) problem. The most relevant things to know about this problem:
-
-* it's a [NP-hard](https://en.wikipedia.org/wiki/NP-hardness) optimisation problem (in layman's terms: finding an optimal solution can be **ridiculously** time consuming even with just a few dozen of players)
-* there is a nice pile of research articles proposing *heuristics* (in layman's terms: fast algorithms giving a "good enough" solution)
+A generic way to solve the issue is to use graph theory, where our sport problem is equivalent to the [Minimum feedback arc set](https://en.wikipedia.org/wiki/Feedback_arc_set) problem. The bad news: it's a [NP-hard](https://en.wikipedia.org/wiki/NP-hardness) optimisation problem. In layman's terms: finding the best solution can be **ridiculously** time consuming even with just a few dozen of players. The good news: there is a nice pile of research articles proposing *heuristics*. Those algorithms solutions that might not be optimal, but "close enough" to optimal in a "good enough" time. Various heuristics exists depending on how much computation time one is willing to pay in order to get stronger guarantees of optimality, or can be tailored to specific types of graphs.
 
 Dana uses the heuristic from [Eades, P., Lin, X. and Smyth, W.F. (1993)](https://researchrepository.murdoch.edu.au/id/eprint/27510/1/effective_heuristic.pdf), with trivial modifications for weighted graphs. This is an extremely fast & hopefully "not too bad" algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It's enough to get a much more satisfying result on the last crafting graph:
 
