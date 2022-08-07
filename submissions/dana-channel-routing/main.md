@@ -11,20 +11,20 @@ Dana is born out of frustration of having to apply this process for hours on com
 ![dana-demo](dana-demo.mp4)
 ("How to make *Chemical science packs*?")
 
-Dana is about depth: When asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does so directly in-game, by drawing you a *nice™ and understandable™* recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, and select nodes or links for additional info. It's also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or an "usage" graph (ie. what are all the items that can be crafted from *X*).
+Dana is about depth: When asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does so directly in-game, by drawing you a *nice™ and understandable™* recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, and select nodes or links for additional info. It's also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or a "usage" graph (i.e., what are all the items that can be crafted from *X*).
 
-Dana is designed to work out of the box with any combination of mods adding/modifying/removing recipes or items. There is no hardcoded configuration provided by the player, the modders, or shipped directly with Dana. In this video, it placed the "Copper block" between the "Iron block" and the "Refinery block", the "Heavy oil" above the "Light oil", decided how the lines should be drawn/merged/bended, what each block's X-Y coordinates are, and more. All that Dana had to work with was the full list of items, recipes, and what are the available natural resources. This is done by a *graph layout algorithm* (the piece of code that takes a bunch of recipes/items and decides where to place them on screen and how to link them) specifically designed for Factorio, which will be the subject of this article.
+Dana is designed to work out of the box with any combination of mods adding/modifying/removing recipes or items. There is no hardcoded configuration provided by the player, the modders, or shipped directly with Dana. In this video, it placed the "Copper block" between the "Iron block" and the "Refinery block", the "Heavy oil" above the "Light oil", decided how the lines should be drawn/merged/bended, what each block's X-Y coordinates were, and more. All that Dana had to work with was the full list of items, recipes, and what the available natural resources were. This is done by a *graph layout algorithm* (the piece of code that takes a bunch of recipes/items and decides where to place them on the screen and how to link them) specifically designed for Factorio, which will be the subject of this article.
 
 ### Dev Blog: Drawing the Graph's Spaghetti
 
-Today's post will present some (hopefully interesting) details about the inner working of Dana's *nice™ and understandable™* graph generator. To give a general introduction, Dana's graphs are a variant of [layered graphs](https://en.wikipedia.org/wiki/Layered_graph_drawing). This means that items and recipes are placed in *node layers*, separated by *link layers*.
+Today's post will present some (hopefully interesting) details about the inner workings of Dana's *nice™ and understandable™* graph generator. To give a general introduction, Dana's graphs are a variant of [layered graphs](https://en.wikipedia.org/wiki/Layered_graph_drawing). This means that items and recipes are placed in *node layers*, separated by *link layers*.
 
 ![Layered graph](layers-illustration.png)
-(Layered graph structure: node layers  with the blue background, link layers with the green background.)
+(Layered graph structure: node layers with the blue background, link layers with the green background.)
 
-The first thing Dana does is decide how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is building the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known.
+The first thing Dana does is to decide how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is to build the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known.
 
-The full layout algorithm is way too big and technical for an Alt-F4 article, so the rest of this will focus on the third step. Here's the problem: given two consecutive *node layers*, trace the required links in the *link layer*, in order to get a *nice™ and understandable™* graph:
+The full layout algorithm is way too big and technical for an Alt-F4 article, so the rest of this will focus on the third step, which is building the link layers. Here's the problem: given two consecutive *node layers*, trace the required links in the *link layer*, in order to get a *nice™ and understandable™* graph:
 
 ![Intro: problem description](intro-problem-description.png)
 (Input data of the problem)
@@ -35,7 +35,7 @@ Conveniently, this is more or less a variant of kindergarten exercises:
 
 ![Kindergarten version](problem-kindergarten-version.png)
 
-Since five years old kids do that, it shouldn't be hard to program, right?
+Since 5-year-olds do that, it shouldn't be hard to program, right?
 
 ### The Design: "Nice™" and "understandable™" Graph?
 
@@ -59,16 +59,16 @@ On top of that, there are general UI design rules:
 * The user experience plummets if they have to scroll horizontally/vertically to cross-check information from different parts of the interface. To avoid that, the graphs must be as compact as possible.
 * Less is more: if the same amount of information can be conveyed with four lines instead of twenty, that's probably a good thing to do.
 
-So now, it's time to *search* for better ideas. And the best way to research for anything, as we all know, is ~~google~~ by pressing "T" in Factorio:
+So now, it's time to *search* for better ideas. And the best way to research for anything, as we all know, is by ~~googling~~ pressing "T" in Factorio:
 
 ![Factorio tech tree](factorio-tech-tree.png)
 
-Factorio's graph renderer has a more subtle way of rendering links. Each link is decomposed into three segments: two verticals, one horizontal. This approach scales much better with wider graphs, because:
+Factorio's graph renderer has a more subtle way of rendering links. Each link is decomposed into three segments: two vertical, one horizontal. This approach scales much better with wider graphs, because:
 
 * There's never a crossing of nearly parallel lines. All crossings are at right angle, which is optimal to prevent users from following the wrong line.
 * The density of links is kept under control: there's always enough gap between parallel lines to distinguish them from each other.
 
-The price for this readability is vertical space: there need to be enough room between the two rows of technologies to add all the horizontal segments without collisions:
+The price for this readability is vertical space: there needs to be enough room between two rows of technologies to be able to add all the horizontal segments without getting any collisions:
 
 ![Factorio tech tree](factorio-tech-tree-spacing.png)
 
@@ -84,13 +84,13 @@ Much more compact, less clutter, definitely *nice™ and understandable™*. Thi
 
 So that's all for the drawing board, time to throw some code at the problem to get the job done! But with that come some other problems. First, Factorio Mods are made in a language called Lua, and Lua has an ridiculously barren ecosystem. No success in finding a library that can do this kind of link routing.
 
-Another solution would be porting a library from other languages. Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That's not a graph anymore, but an hypergraph. While the word sounds definitely cooler, there aren't many software libraries to draw them, and in general there's much less scientific literature on the topic. No success in finding clues to do routing the Dana way.
+Another solution would be porting a library from other languages. Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That's not a graph anymore, but a hypergraph. While the word definitely sounds cooler, there aren't many software libraries to draw them, and in general there's much less scientific literature on the topic. No success in finding clues to do routing the Dana way.
 
-So, Dana has a router made "almost" from scratch. "Almost" because there was a lot of inspiration to be found elsewhere, it just required looking into some unexpected places...
+So, Dana has a router made "almost" from scratch. "Almost", because there was a lot of inspiration to be found elsewhere, it just required looking into some unexpected places...
 
 #### Inspiration from PCB Design
 
-It happens that there are some people whose daily job requires to link points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana's link routing, they have a decade-old family of well documented algorithms: [channel routers](https://en.wikipedia.org/wiki/Channel_router).
+There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana's link routing, they have a decade-old family of well-documented algorithms: [channel routers](https://en.wikipedia.org/wiki/Channel_router).
 
 ![Picture of two channels](https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/ChannelRouteSolution.png/800px-ChannelRouteSolution.png)
 
@@ -99,7 +99,7 @@ Before looking at the solution, the first things Dana got from that is a proper 
 Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines.
 
 ![Channels and trunks](dana-channels-and-trunks.png)
-(Here, the router decided to make six channels in cyan, then choose a channel for each red horizontal segments.)
+(Here, the router decided to make six channels in cyan, then choosing a channel for each red, horizontal segment.)
 
 So maybe Dana could just copy/paste this solution. Let's just place the links like tracks were placed on PCBs in the 80s!
 
@@ -124,7 +124,7 @@ Now is the perfect time to randomly start talking about sports. Let's rephrase t
 
 The fundamental problem is the same. Luckily for us, the sports version is as old as round-robin tournaments, and the good thing about old mainstream problems is that there are a lot of smart people who have done research on it!
 
-A generic way to solve the issue is to use graph theory, where our sports problem would be equivalent to the [Minimum feedback arc set](https://en.wikipedia.org/wiki/Feedback_arc_set) problem. The bad news: it's a [NP-hard](https://en.wikipedia.org/wiki/NP-hardness) optimisation problem. In layman's terms: finding the best solution can be **ridiculously** time consuming even with just a few dozen of players. The good news: there is a nice pile of research articles proposing *heuristics*. Those algorithms' solutions might not be optimal, but "close enough" to optimal in "good enough" time. Various heuristics exist depending on how much computation time one is willing to pay in order to get stronger guarantees of optimality, or which can be tailored to specific types of graphs.
+A generic way to solve the issue is to use graph theory, where our sports problem would be equivalent to the [Minimum feedback arc set](https://en.wikipedia.org/wiki/Feedback_arc_set) problem. The bad news: it's an [NP-hard](https://en.wikipedia.org/wiki/NP-hardness) optimisation problem. In layman's terms: finding the best solution can be **ridiculously** time consuming even with just a few dozen players. The good news: there is a nice pile of research articles proposing *heuristics*. Those algorithms' solutions might not be optimal, but "close enough" to optimal in "good enough" time. Various heuristics exist depending on how much computation time one is willing to pay in order to get stronger guarantees of optimality, or which can be tailored to specific types of graphs.
 
 Dana uses the heuristic from [Eades, P., Lin, X. and Smyth, W.F. (1993)](https://researchrepository.murdoch.edu.au/id/eprint/27510/1/effective_heuristic.pdf), with trivial modifications for weighted graphs. This is an extremely fast and hopefully "not too bad" algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It's enough to get a much more satisfying result on the last crafting graph:
 
