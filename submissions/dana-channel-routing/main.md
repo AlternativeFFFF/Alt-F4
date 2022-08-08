@@ -8,8 +8,7 @@ There are already quite a few mods doing this: [FNEI](https://mods.factorio.com/
 
 Dana is born out of frustration of having to apply this process for hours on complex mod overhauls, and it takes a *slightly* different approach to answer these questions:
 
-![dana-demo](dana-demo.mp4)
-("How to make *Chemical science packs*?")
+{% include video.html mp4='https://media.alt-f4.blog/ALTF4/63/dana-demo.mp4' alt='dana-demo' caption='“How to make *Chemical science packs*?”' %}
 
 Dana is about depth: When asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does so directly in-game, by drawing you a *nice™ and understandable™* recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, and select nodes or links for additional info. It's also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or a "usage" graph (i.e., what are all the items that can be crafted from *X*).
 
@@ -19,21 +18,19 @@ Dana is designed to work out of the box with any combination of mods adding/modi
 
 Today's post will present some (hopefully interesting) details about the inner workings of Dana's *nice™ and understandable™* graph generator. To give a general introduction, Dana's graphs are a variant of [layered graphs](https://en.wikipedia.org/wiki/Layered_graph_drawing). This means that items and recipes are placed in *node layers*, separated by *link layers*.
 
-![Layered graph](layers-illustration.png)
-(Layered graph structure: node layers with the blue background, link layers with the green background.)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/layers-illustration.jpg' alt='Layered graph' caption='Layered graph structure: node layers with the blue background, link layers with the green background.' %}
 
 The first thing Dana does is to decide how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is to build the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known.
 
 The full layout algorithm is way too big and technical for an Alt-F4 article, so the rest of this will focus on the third step, which is building the link layers. Here's the problem: given two consecutive *node layers*, trace the required links in the *link layer*, in order to get a *nice™ and understandable™* graph:
 
-![Intro: problem description](intro-problem-description.png)
-(Input data of the problem)
-![Intro: possible solution](intro-problem-solution.png)
-(Possible result)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/intro-problem-description.jpg' alt='Intro: problem description' caption='Input data of the problem' %}
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/intro-problem-solution.jpg' alt='Intro: possible solution' caption='Possible result' %}
 
 Conveniently, this is more or less a variant of kindergarten exercises:
 
-![Kindergarten version](problem-kindergarten-version.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/problem-kindergarten-version.jpg' alt='Kindergarten version' %}
 
 Since 5-year-olds do that, it shouldn't be hard to program, right?
 
@@ -43,8 +40,9 @@ First, let's take a paper and a pencil (or your favorite image editor) and answe
 
 Maybe simple straight lines, like most graph renderers?
 
-![Straight lines: small example](alternative-solution-1.png)
-![Straight lines: bigger example](alternative-solution-2.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/alternative-solution-1.jpg' alt='Straight lines: small example' %}
+
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/alternative-solution-2.jpg' alt='Straight lines: bigger example' %}
 
 This might get the job done on small graphs, but fails to be *nice™ and understandable™* with wide graphs. Nearly parallel lines crossing each other are hard to follow, and areas with a high line density become a block of white. The good old straight line isn't even enough for Vanilla Factorio crafting graphs, let alone modded ones!
 
@@ -61,7 +59,7 @@ On top of that, there are general UI design rules:
 
 So now, it's time to *search* for better ideas. And the best way to research for anything, as we all know, is by ~~googling~~ pressing "T" in Factorio:
 
-![Factorio tech tree](factorio-tech-tree.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree.jpg' alt='Factorio tech tree' %}
 
 Factorio's graph renderer has a more subtle way of rendering links. Each link is decomposed into three segments: two vertical, one horizontal. This approach scales much better with wider graphs, because:
 
@@ -70,15 +68,15 @@ Factorio's graph renderer has a more subtle way of rendering links. Each link is
 
 The price for this readability is vertical space: there needs to be enough room between two rows of technologies to be able to add all the horizontal segments without getting any collisions:
 
-![Factorio tech tree](factorio-tech-tree-spacing.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree-spacing.jpg' alt='Factorio tech tree' %}
 
 To minimize this cost, there's a simple yet huge optimisation: What if lines didn't link just two elements, but any number of elements? Just draw a single wide horizontal line for each item/technology, then add as many vertical lines as necessary to connect to the nodes.
 
-![Factorio tech tree dana link types](factorio-tech-tree-dana-link-types.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree-dana-link-types.jpg' alt='Factorio tech tree dana link types' %}
 
 Much more compact, less clutter, definitely *nice™ and understandable™*. This gives a "main bus" vibe to these graph sections that'll hopefully feel natural to a Factorio player, while hitting a good compromise between the general guidelines. This is also technically possible with Factorio's in-game rendering API, as links are just a bunch of lines, triangles and circles. This almost allows Dana to fit Factorio's full crafting graph on a single screen:
 
-![Dana: Factorio full graph](dana-full-graph.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/dana-full-graph.jpg' alt='Dana: Factorio full graph' %}
 
 ### The Coding Part
 
@@ -92,19 +90,17 @@ So, Dana has a router made "almost" from scratch. "Almost", because there was a 
 
 There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana's link routing, they have a decade-old family of well-documented algorithms: [channel routers](https://en.wikipedia.org/wiki/Channel_router).
 
-![Picture of two channels](https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/ChannelRouteSolution.png/800px-ChannelRouteSolution.png)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/ChannelRouteSolution.jpg' alt='Picture of two channels' caption='<a href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/ChannelRouteSolution.png/800px-ChannelRouteSolution.png">Source</a>' %}
 
 Before looking at the solution, the first things Dana got from that is a proper way to modelize the problem. The goal of our link router is twofold: Determine the number of *channels* between the rows of nodes, and assign a *channel* to each horizontal segment of the links.
 
 Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines.
 
-![Channels and trunks](dana-channels-and-trunks.png)
-(Here, the router decided to make six channels in cyan, then choosing a channel for each red, horizontal segment.)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/dana-channels-and-trunks.jpg' alt='Channels and trunks' caption='Here, the router decided to make six channels in cyan, then choosing a channel for each red, horizontal segment.' %}
 
 So maybe Dana could just copy/paste this solution. Let's just place the links like tracks were placed on PCBs in the 80s!
 
-![Dana PCB channel router](PCB-router.png)
-(Dana with a classic PCB router.)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/PCB-router.jpg' alt='Dana PCB channel router' caption='Dana with a classic PCB router.' %}
 
 Well that's not exactly satisfying. These algorithms were designed with the constraints of the PCB industry in mind, where link crossings are usually not a problem: only making the final PCB as small as possible really matters. But when it comes to *nice™* graphs, all this tangled spaghetti is really bad. In order to fix it, Dana has to provide the router with a **partial order** on the horizontal lines: something telling that line `A` must be placed over line `B` to minimize crossings.
 
@@ -112,13 +108,11 @@ Well that's not exactly satisfying. These algorithms were designed with the cons
 
 To find a good vertical order, let's start with a simple idea: For each pair (`A`,`B`) of horizontal lines, we compute the number of crossings if we place `A` over `B`, same with `B` over `A`. We can deduce that placing `A` over `B` will save (or cost) a certain amount of crossings, or possibly that it doesn't change anything.
 
-![Example of crossing scores](crossings-score-example.png)
-(Here, placing `A` above `B` saves two crossings)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/crossings-score-example.jpg' alt='Example of crossing scores' caption='Here, placing `A` above `B` saves two crossings' %}
 
 Sadly the above trick may result in contradictions, à la: `A` must be placed above `B`, `B` must be placed above `C`, and `C` must be placed above `A`. To get a proper order, Dana has to sacrifice some of the generated constraints, but in a way that re-adds as few crossings as possible.
 
-![Example of crossing score contradictions](crossings-score-contradiction.png)
-(`C` over `A` saves one crossing, `A` over `B` saves two crossings, `B` over `C` saves one crossing)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/crossings-score-contradiction.jpg' alt='Example of crossing score contradictions' caption='`C` over `A` saves one crossing, `A` over `B` saves two crossings, `B` over `C` saves one crossing' %}
 
 Now is the perfect time to randomly start talking about sports. Let's rephrase the previous paragraph, but using sports terms instead. `A` has won against `B`, `B` has won against `C`, and `C` has won against `A`. To get a proper ranking, Dana has to ignore some of the matches' results, but in a way that ignores as few score differences as possible.
 
@@ -128,8 +122,7 @@ A generic way to solve the issue is to use graph theory, where our sports proble
 
 Dana uses the heuristic from [Eades, P., Lin, X. and Smyth, W.F. (1993)](https://researchrepository.murdoch.edu.au/id/eprint/27510/1/effective_heuristic.pdf), with trivial modifications for weighted graphs. This is an extremely fast and hopefully "not too bad" algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It's enough to get a much more satisfying result on the last crafting graph:
 
-![Dana tuned channel router](improved-router.png)
-(Same graph as the end of the PCB section, with the improved router.)
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/improved-router.jpg' alt='Dana tuned channel router' caption='Same graph as the end of the PCB section, with the improved router.' %}
 
 ### Conclusion
 
