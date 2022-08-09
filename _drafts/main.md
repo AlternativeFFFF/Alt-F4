@@ -96,7 +96,7 @@ Before looking at the solution, the first things Dana got from that is a proper 
 
 Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/63/dana-channels-and-trunks.jpg' alt='Channels and trunks' caption='Here, the router decided to make six channels in cyan, then choosing a channel for each red, horizontal segment.' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/63/dana-channels-and-trunks.jpg' alt='Channels and trunks' caption='Here, the router decided to make six channels in cyan, then choose a channel for each red, horizontal segment.' %}
 
 So maybe Dana could just copy/paste this solution. Let's just place the links like tracks were placed on PCBs in the 80s!
 
