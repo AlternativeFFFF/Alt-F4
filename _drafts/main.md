@@ -88,7 +88,7 @@ So, Dana has a router made "almost" from scratch. "Almost", because there was a 
 
 #### Inspiration from PCB Design
 
-There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana's link routing, they have a decade-old family of well-documented algorithms: [channel routers](https://en.wikipedia.org/wiki/Channel_router).
+There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana's link routing, they have a decades-old family of well-documented algorithms: [channel routers](https://en.wikipedia.org/wiki/Channel_router).
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/63/ChannelRouteSolution.jpg' alt='Picture of two channels' caption='<a href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/ChannelRouteSolution.png/800px-ChannelRouteSolution.png">Source</a>' %}
 
