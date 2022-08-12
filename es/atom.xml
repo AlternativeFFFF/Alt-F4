@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-06-10T13:03:23+00:00</updated>
+  <updated>2022-08-12T15:11:03+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #63 - Dana Dev Blog: Spaghetti Recipe Graphs</title>
+    <link href="https://alt-f4.blog/es/ALTF4-63/" />
+    <id>https://alt-f4.blog/ALTF4-63</id>
+    <updated>2022-08-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;After a somewhat lengthy pause, Alt-F4 returns with an issue reminiscent of the good ol’ FFF: A dev blog! Only here, it’s not about the game itself, but a very unique and slightly crazy mod. &lt;em&gt;Credne&lt;/em&gt; brought &lt;strong&gt;Dana&lt;/strong&gt; into this world, and it took quite a bit of doing to...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-54</id>
     <updated>2021-12-10T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;For the first issue in the last month of the year, first-time contributor &lt;em&gt;GreenFlag&lt;/em&gt; presents their first big modding project that aims to add a proper RTS-style campaign to the game, in the spirit of the game’s tutorial levels. It’s pretty involved, and a lot of fun!&lt;/p&gt; &lt;h3 id=&quot;story-missions-the-story-greenflag&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/Story-Missions&quot;&gt;Story...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #53 - Laziness through Automation</title>
-    <link href="https://alt-f4.blog/es/ALTF4-53/" />
-    <id>https://alt-f4.blog/ALTF4-53</id>
-    <updated>2021-11-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For the very prime real estate of issue #53 of Alt-F4, grandmaster &lt;em&gt;Therenas&lt;/em&gt; himself returns to grace us with another article. Following up his &lt;a href=&quot;https://alt-f4.blog/ALTF4-1/&quot;&gt;previous&lt;/a&gt; &lt;a href=&quot;https://alt-f4.blog/ALTF4-17/&quot;&gt;masterpieces&lt;/a&gt; that mostly talk about his own mods, here’s more words about exactly those things. Those words explore the topic of automatically taking...</content>
   </entry>
   
   

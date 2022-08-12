@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "Nach einer etwas längeren Pause kommt Alt-F4 zurück mit einer Ausgabe, die an die guten alten FFF erinnert: einem Dev-Blog! Hier geht es allerdings nicht um das Spiel an sich, sondern um eine sehr eigene und besondere Mod. Credne hat Dana in diese Welt gesetzt, und es hat einiges benötigt, um dahin zu kommen. Viele technische Details und verrückte Fußballideen werden folgen, also viel Spaß damit!",
+      "image_alt"      : "Ein Graph mit einem Fußball, einer Leiterplatte und dem Factorio-Logo",
+      "url"        : "/ALTF4-63/",
+      "title"      : "Alt-F4 #63 - Dana Dev-Blog: Spaghettirezeptgraphen",
+      "image_src"      : "/assets/ALTF4/63/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "EDLEXUS",
+      "author"     : "Credne",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "12.08.2022"
+    },
+    {
       "content"    : "Die dieswöchige Ausgabe Nummer #62 ist eine ganz besondere: Erstautor Laurence macht seinen ersten Auftritt und beantwortet Fragen, die ihr euch wahrscheinlich alle schonmal gestellt habt: Was ist der Unterschied zwischen den verschiedenen großen Modpacks? Und welches könnte mir am ehesten gefallen? Laurence hat einige ausprobiert und liefert verständliche Antworten auf diese Fragen.",
       "image_alt"      : "Eine Zusammenstellung von Maschinen aus AngelBob, Space Exploration und Industrial Revolution",
       "url"        : "/ALTF4-62/",

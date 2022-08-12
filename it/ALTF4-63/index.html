@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="it" class="it">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #63 - Dana Dev Blog: Spaghetti Recipe Graphs</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #63 - Dana Dev Blog: Spaghetti Recipe Graphs">
+<meta name="author" content="Credne">
+<meta property="og:locale" content="en">
+<meta name="description" content="After a somewhat lengthy pause, Alt-F4 returns with an issue reminiscent of the good ol’ FFF: A dev blog! Only here, it’s not about the game itself, but a very unique and slightly crazy mod. Credne brought Dana into this world, and it took quite a bit of doing to get there. Lots of technical detail and cribbing ideas from Football ahead, so dive in! Dana dev’s blog: about the spaghetti in recipe graphs Credne Dana … What is That? Dana is a mod that aims at answering a simple common question in Factorio: “How can I make item X?”. There are already quite a few mods doing this: FNEI, Recipe Book, What is it really used for, etc. These mods have a common approach: Let’s say a new player want to know how to craft the Chemical science pack (the cyan one). This player looks for it with one these mods (or Factorio’s recipe list), and sees there is a single recipe, taking red circuits, sulfur, and engine units. So now the new player wonders “How do I make red circuits?”, looks for it, and sees a single recipe that requires plastic bars, copper wires, and green circuits. Next thought: “How do I make plastic bars?”: One recipe requiring petroleum gas. “How do I make petroleum gas?”: Four recipes, having to inspect them one by one, and so on. That’s time consuming, tedious, and the player is likely to forget some steps (like the sulfur, or steel). Dana is born out of frustration of having to apply this process for hours on complex mod overhauls, and it takes a slightly different approach to answer these questions: &lt;/source&gt; dana-demo “How to make *Chemical science packs*?” Dana is about depth: When asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does so directly in-game, by drawing you a nice™ and understandable™ recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, and select nodes or links for additional info. It’s also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or a “usage” graph (i.e., what are all the items that can be crafted from X). Dana is designed to work out of the box with any combination of mods adding/modifying/removing recipes or items. There is no hardcoded configuration provided by the player, the modders, or shipped directly with Dana. In this video, it placed the “Copper block” between the “Iron block” and the “Refinery block”, the “Heavy oil” above the “Light oil”, decided how the lines should be drawn/merged/bended, what each block’s X-Y coordinates were, and more. All that Dana had to work with was the full list of items, recipes, and what the available natural resources were. This is done by a graph layout algorithm (the piece of code that takes a bunch of recipes/items and decides where to place them on the screen and how to link them) specifically designed for Factorio, which will be the subject of this article. Dev Blog: Drawing the Graph’s Spaghetti Today’s post will present some (hopefully interesting) details about the inner workings of Dana’s nice™ and understandable™ graph generator. To give a general introduction, Dana’s graphs are a variant of layered graphs. This means that items and recipes are placed in node layers, separated by link layers. Layered graph structure: node layers with the blue background, link layers with the green background. The first thing Dana does is to decide how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is to build the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known. The full layout algorithm is way too big and technical for an Alt-F4 article, so the rest of this will focus on the third step, which is building the link layers. Here’s the problem: given two consecutive node layers, trace the required links in the link layer, in order to get a nice™ and understandable™ graph: Input data of the problem Possible result Conveniently, this is more or less a variant of kindergarten exercises: Since 5-year-olds do that, it shouldn’t be hard to program, right? The Design: “Nice™” and “understandable™” Graph? First, let’s take a paper and a pencil (or your favorite image editor) and answer an important question: what should the links look like? As one can imagine, what makes a graph nice™ and understandable™ is pretty hard to define. Maybe simple straight lines, like most graph renderers? This might get the job done on small graphs, but fails to be nice™ and understandable™ with wide graphs. Nearly parallel lines crossing each other are hard to follow, and areas with a high line density become a block of white. The good old straight line isn’t even enough for Vanilla Factorio crafting graphs, let alone modded ones! So, back to the drawing board for a nicer™ and more understandable™ solution. Let’s remind ourselves of the general guidelines for user friendliness of graph links: Minimise line crossings, especially between almost parallel lines. Minimise the bends on a link. Minimise the length of links. On top of that, there are general UI design rules: The user experience plummets if they have to scroll horizontally/vertically to cross-check information from different parts of the interface. To avoid that, the graphs must be as compact as possible. Less is more: if the same amount of information can be conveyed with four lines instead of twenty, that’s probably a good thing to do. So now, it’s time to search for better ideas. And the best way to research for anything, as we all know, is by googling pressing “T” in Factorio: Factorio’s graph renderer has a more subtle way of rendering links. Each link is decomposed into three segments: two vertical, one horizontal. This approach scales much better with wider graphs, because: There’s never a crossing of nearly parallel lines. All crossings are at right angle, which is optimal to prevent users from following the wrong line. The density of links is kept under control: there’s always enough gap between parallel lines to distinguish them from each other. The price for this readability is vertical space: there needs to be enough room between two rows of technologies to be able to add all the horizontal segments without getting any collisions: To minimize this cost, there’s a simple yet huge optimisation: What if lines didn’t link just two elements, but any number of elements? Just draw a single wide horizontal line for each item/technology, then add as many vertical lines as necessary to connect to the nodes. Much more compact, less clutter, definitely nice™ and understandable™. This gives a “main bus” vibe to these graph sections that’ll hopefully feel natural to a Factorio player, while hitting a good compromise between the general guidelines. This is also technically possible with Factorio’s in-game rendering API, as links are just a bunch of lines, triangles and circles. This almost allows Dana to fit Factorio’s full crafting graph on a single screen: The Coding Part So that’s all for the drawing board, time to throw some code at the problem to get the job done! But with that come some other problems. First, Factorio Mods are made in a language called Lua, and Lua has an ridiculously barren ecosystem. No success in finding a library that can do this kind of link routing. Another solution would be porting a library from other languages. Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That’s not a graph anymore, but a hypergraph. While the word definitely sounds cooler, there aren’t many software libraries to draw them, and in general there’s much less scientific literature on the topic. No success in finding clues to do routing the Dana way. So, Dana has a router made “almost” from scratch. “Almost”, because there was a lot of inspiration to be found elsewhere, it just required looking into some unexpected places… Inspiration from PCB Design There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana’s link routing, they have a decades-old family of well-documented algorithms: channel routers. Source Before looking at the solution, the first things Dana got from that is a proper way to modelize the problem. The goal of our link router is twofold: Determine the number of channels between the rows of nodes, and assign a channel to each horizontal segment of the links. Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines. Here, the router decided to make six channels in cyan, then chose a channel for each red, horizontal segment. So maybe Dana could just copy/paste this solution. Let’s just place the links like tracks were placed on PCBs in the 80s! Dana with a classic PCB router. Well that’s not exactly satisfying. These algorithms were designed with the constraints of the PCB industry in mind, where link crossings are usually not a problem: only making the final PCB as small as possible really matters. But when it comes to nice™ graphs, all this tangled spaghetti is really bad. In order to fix it, Dana has to provide the router with a partial order on the horizontal lines: something telling that line A must be placed over line B to minimize crossings. Inspiration from Sports Tournaments To find a good vertical order, let’s start with a simple idea: For each pair (A,B) of horizontal lines, we compute the number of crossings if we place A over B, same with B over A. We can deduce that placing A over B will save (or cost) a certain amount of crossings, or possibly that it doesn’t change anything. Here, placing `A` above `B` saves two crossings Sadly the above trick may result in contradictions, à la: A must be placed above B, B must be placed above C, and C must be placed above A. To get a proper order, Dana has to sacrifice some of the generated constraints, but in a way that re-adds as few crossings as possible. `C` over `A` saves one crossing, `A` over `B` saves two crossings, `B` over `C` saves one crossing Now is the perfect time to randomly start talking about sports. Let’s rephrase the previous paragraph, but using sports terms instead. A has won against B, B has won against C, and C has won against A. To get a proper ranking, Dana has to ignore some of the matches’ results, but in a way that ignores as few score differences as possible. The fundamental problem is the same. Luckily for us, the sports version is as old as round-robin tournaments, and the good thing about old mainstream problems is that there are a lot of smart people who have done research on it! A generic way to solve the issue is to use graph theory, where our sports problem would be equivalent to the Minimum feedback arc set problem. The bad news: it’s an NP-hard optimisation problem. In layman’s terms: finding the best solution can be ridiculously time consuming even with just a few dozen players. The good news: there is a nice pile of research articles proposing heuristics. Those algorithms’ solutions might not be optimal, but “close enough” to optimal in “good enough” time. Various heuristics exist depending on how much computation time one is willing to pay in order to get stronger guarantees of optimality, or which can be tailored to specific types of graphs. Dana uses the heuristic from Eades, P., Lin, X. and Smyth, W.F. (1993), with trivial modifications for weighted graphs. This is an extremely fast and hopefully “not too bad” algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It’s enough to get a much more satisfying result on the last crafting graph: Same graph as the end of the PCB section, with the improved router. Conclusion So that’s the short version: Dana runs a sports competition between Factorio items. Their rankings are then used to connect some resistors, capacitors and coils on an imaginary PCB in a fashionable manner. This enables Dana to generate nice™ and understandable™ crafting graphs. Trust me, I’m an engineer. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<meta property="og:description" content="After a somewhat lengthy pause, Alt-F4 returns with an issue reminiscent of the good ol’ FFF: A dev blog! Only here, it’s not about the game itself, but a very unique and slightly crazy mod. Credne brought Dana into this world, and it took quite a bit of doing to get there. Lots of technical detail and cribbing ideas from Football ahead, so dive in! Dana dev’s blog: about the spaghetti in recipe graphs Credne Dana … What is That? Dana is a mod that aims at answering a simple common question in Factorio: “How can I make item X?”. There are already quite a few mods doing this: FNEI, Recipe Book, What is it really used for, etc. These mods have a common approach: Let’s say a new player want to know how to craft the Chemical science pack (the cyan one). This player looks for it with one these mods (or Factorio’s recipe list), and sees there is a single recipe, taking red circuits, sulfur, and engine units. So now the new player wonders “How do I make red circuits?”, looks for it, and sees a single recipe that requires plastic bars, copper wires, and green circuits. Next thought: “How do I make plastic bars?”: One recipe requiring petroleum gas. “How do I make petroleum gas?”: Four recipes, having to inspect them one by one, and so on. That’s time consuming, tedious, and the player is likely to forget some steps (like the sulfur, or steel). Dana is born out of frustration of having to apply this process for hours on complex mod overhauls, and it takes a slightly different approach to answer these questions: &lt;/source&gt; dana-demo “How to make *Chemical science packs*?” Dana is about depth: When asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does so directly in-game, by drawing you a nice™ and understandable™ recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, and select nodes or links for additional info. It’s also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or a “usage” graph (i.e., what are all the items that can be crafted from X). Dana is designed to work out of the box with any combination of mods adding/modifying/removing recipes or items. There is no hardcoded configuration provided by the player, the modders, or shipped directly with Dana. In this video, it placed the “Copper block” between the “Iron block” and the “Refinery block”, the “Heavy oil” above the “Light oil”, decided how the lines should be drawn/merged/bended, what each block’s X-Y coordinates were, and more. All that Dana had to work with was the full list of items, recipes, and what the available natural resources were. This is done by a graph layout algorithm (the piece of code that takes a bunch of recipes/items and decides where to place them on the screen and how to link them) specifically designed for Factorio, which will be the subject of this article. Dev Blog: Drawing the Graph’s Spaghetti Today’s post will present some (hopefully interesting) details about the inner workings of Dana’s nice™ and understandable™ graph generator. To give a general introduction, Dana’s graphs are a variant of layered graphs. This means that items and recipes are placed in node layers, separated by link layers. Layered graph structure: node layers with the blue background, link layers with the green background. The first thing Dana does is to decide how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is to build the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known. The full layout algorithm is way too big and technical for an Alt-F4 article, so the rest of this will focus on the third step, which is building the link layers. Here’s the problem: given two consecutive node layers, trace the required links in the link layer, in order to get a nice™ and understandable™ graph: Input data of the problem Possible result Conveniently, this is more or less a variant of kindergarten exercises: Since 5-year-olds do that, it shouldn’t be hard to program, right? The Design: “Nice™” and “understandable™” Graph? First, let’s take a paper and a pencil (or your favorite image editor) and answer an important question: what should the links look like? As one can imagine, what makes a graph nice™ and understandable™ is pretty hard to define. Maybe simple straight lines, like most graph renderers? This might get the job done on small graphs, but fails to be nice™ and understandable™ with wide graphs. Nearly parallel lines crossing each other are hard to follow, and areas with a high line density become a block of white. The good old straight line isn’t even enough for Vanilla Factorio crafting graphs, let alone modded ones! So, back to the drawing board for a nicer™ and more understandable™ solution. Let’s remind ourselves of the general guidelines for user friendliness of graph links: Minimise line crossings, especially between almost parallel lines. Minimise the bends on a link. Minimise the length of links. On top of that, there are general UI design rules: The user experience plummets if they have to scroll horizontally/vertically to cross-check information from different parts of the interface. To avoid that, the graphs must be as compact as possible. Less is more: if the same amount of information can be conveyed with four lines instead of twenty, that’s probably a good thing to do. So now, it’s time to search for better ideas. And the best way to research for anything, as we all know, is by googling pressing “T” in Factorio: Factorio’s graph renderer has a more subtle way of rendering links. Each link is decomposed into three segments: two vertical, one horizontal. This approach scales much better with wider graphs, because: There’s never a crossing of nearly parallel lines. All crossings are at right angle, which is optimal to prevent users from following the wrong line. The density of links is kept under control: there’s always enough gap between parallel lines to distinguish them from each other. The price for this readability is vertical space: there needs to be enough room between two rows of technologies to be able to add all the horizontal segments without getting any collisions: To minimize this cost, there’s a simple yet huge optimisation: What if lines didn’t link just two elements, but any number of elements? Just draw a single wide horizontal line for each item/technology, then add as many vertical lines as necessary to connect to the nodes. Much more compact, less clutter, definitely nice™ and understandable™. This gives a “main bus” vibe to these graph sections that’ll hopefully feel natural to a Factorio player, while hitting a good compromise between the general guidelines. This is also technically possible with Factorio’s in-game rendering API, as links are just a bunch of lines, triangles and circles. This almost allows Dana to fit Factorio’s full crafting graph on a single screen: The Coding Part So that’s all for the drawing board, time to throw some code at the problem to get the job done! But with that come some other problems. First, Factorio Mods are made in a language called Lua, and Lua has an ridiculously barren ecosystem. No success in finding a library that can do this kind of link routing. Another solution would be porting a library from other languages. Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That’s not a graph anymore, but a hypergraph. While the word definitely sounds cooler, there aren’t many software libraries to draw them, and in general there’s much less scientific literature on the topic. No success in finding clues to do routing the Dana way. So, Dana has a router made “almost” from scratch. “Almost”, because there was a lot of inspiration to be found elsewhere, it just required looking into some unexpected places… Inspiration from PCB Design There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana’s link routing, they have a decades-old family of well-documented algorithms: channel routers. Source Before looking at the solution, the first things Dana got from that is a proper way to modelize the problem. The goal of our link router is twofold: Determine the number of channels between the rows of nodes, and assign a channel to each horizontal segment of the links. Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines. Here, the router decided to make six channels in cyan, then chose a channel for each red, horizontal segment. So maybe Dana could just copy/paste this solution. Let’s just place the links like tracks were placed on PCBs in the 80s! Dana with a classic PCB router. Well that’s not exactly satisfying. These algorithms were designed with the constraints of the PCB industry in mind, where link crossings are usually not a problem: only making the final PCB as small as possible really matters. But when it comes to nice™ graphs, all this tangled spaghetti is really bad. In order to fix it, Dana has to provide the router with a partial order on the horizontal lines: something telling that line A must be placed over line B to minimize crossings. Inspiration from Sports Tournaments To find a good vertical order, let’s start with a simple idea: For each pair (A,B) of horizontal lines, we compute the number of crossings if we place A over B, same with B over A. We can deduce that placing A over B will save (or cost) a certain amount of crossings, or possibly that it doesn’t change anything. Here, placing `A` above `B` saves two crossings Sadly the above trick may result in contradictions, à la: A must be placed above B, B must be placed above C, and C must be placed above A. To get a proper order, Dana has to sacrifice some of the generated constraints, but in a way that re-adds as few crossings as possible. `C` over `A` saves one crossing, `A` over `B` saves two crossings, `B` over `C` saves one crossing Now is the perfect time to randomly start talking about sports. Let’s rephrase the previous paragraph, but using sports terms instead. A has won against B, B has won against C, and C has won against A. To get a proper ranking, Dana has to ignore some of the matches’ results, but in a way that ignores as few score differences as possible. The fundamental problem is the same. Luckily for us, the sports version is as old as round-robin tournaments, and the good thing about old mainstream problems is that there are a lot of smart people who have done research on it! A generic way to solve the issue is to use graph theory, where our sports problem would be equivalent to the Minimum feedback arc set problem. The bad news: it’s an NP-hard optimisation problem. In layman’s terms: finding the best solution can be ridiculously time consuming even with just a few dozen players. The good news: there is a nice pile of research articles proposing heuristics. Those algorithms’ solutions might not be optimal, but “close enough” to optimal in “good enough” time. Various heuristics exist depending on how much computation time one is willing to pay in order to get stronger guarantees of optimality, or which can be tailored to specific types of graphs. Dana uses the heuristic from Eades, P., Lin, X. and Smyth, W.F. (1993), with trivial modifications for weighted graphs. This is an extremely fast and hopefully “not too bad” algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It’s enough to get a much more satisfying result on the last crafting graph: Same graph as the end of the PCB section, with the improved router. Conclusion So that’s the short version: Dana runs a sports competition between Factorio items. Their rankings are then used to connect some resistors, capacitors and coils on an imaginary PCB in a fashionable manner. This enables Dana to generate nice™ and understandable™ crafting graphs. Trust me, I’m an engineer. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!">
+<link rel="canonical" href="https://alt-f4.blog/it/ALTF4-63/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-63/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-08-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"headline":"Alt-F4 #63 - Dana Dev Blog: Spaghetti Recipe Graphs","dateModified":"2022-08-12T00:00:00+00:00","datePublished":"2022-08-12T00:00:00+00:00","description":"After a somewhat lengthy pause, Alt-F4 returns with an issue reminiscent of the good ol’ FFF: A dev blog! Only here, it’s not about the game itself, but a very unique and slightly crazy mod. Credne brought Dana into this world, and it took quite a bit of doing to get there. Lots of technical detail and cribbing ideas from Football ahead, so dive in! Dana dev’s blog: about the spaghetti in recipe graphs Credne Dana … What is That? Dana is a mod that aims at answering a simple common question in Factorio: “How can I make item X?”. There are already quite a few mods doing this: FNEI, Recipe Book, What is it really used for, etc. These mods have a common approach: Let’s say a new player want to know how to craft the Chemical science pack (the cyan one). This player looks for it with one these mods (or Factorio’s recipe list), and sees there is a single recipe, taking red circuits, sulfur, and engine units. So now the new player wonders “How do I make red circuits?”, looks for it, and sees a single recipe that requires plastic bars, copper wires, and green circuits. Next thought: “How do I make plastic bars?”: One recipe requiring petroleum gas. “How do I make petroleum gas?”: Four recipes, having to inspect them one by one, and so on. That’s time consuming, tedious, and the player is likely to forget some steps (like the sulfur, or steel). Dana is born out of frustration of having to apply this process for hours on complex mod overhauls, and it takes a slightly different approach to answer these questions: &lt;/source&gt; dana-demo “How to make *Chemical science packs*?” Dana is about depth: When asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does so directly in-game, by drawing you a nice™ and understandable™ recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, and select nodes or links for additional info. It’s also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or a “usage” graph (i.e., what are all the items that can be crafted from X). Dana is designed to work out of the box with any combination of mods adding/modifying/removing recipes or items. There is no hardcoded configuration provided by the player, the modders, or shipped directly with Dana. In this video, it placed the “Copper block” between the “Iron block” and the “Refinery block”, the “Heavy oil” above the “Light oil”, decided how the lines should be drawn/merged/bended, what each block’s X-Y coordinates were, and more. All that Dana had to work with was the full list of items, recipes, and what the available natural resources were. This is done by a graph layout algorithm (the piece of code that takes a bunch of recipes/items and decides where to place them on the screen and how to link them) specifically designed for Factorio, which will be the subject of this article. Dev Blog: Drawing the Graph’s Spaghetti Today’s post will present some (hopefully interesting) details about the inner workings of Dana’s nice™ and understandable™ graph generator. To give a general introduction, Dana’s graphs are a variant of layered graphs. This means that items and recipes are placed in node layers, separated by link layers. Layered graph structure: node layers with the blue background, link layers with the green background. The first thing Dana does is to decide how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is to build the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known. The full layout algorithm is way too big and technical for an Alt-F4 article, so the rest of this will focus on the third step, which is building the link layers. Here’s the problem: given two consecutive node layers, trace the required links in the link layer, in order to get a nice™ and understandable™ graph: Input data of the problem Possible result Conveniently, this is more or less a variant of kindergarten exercises: Since 5-year-olds do that, it shouldn’t be hard to program, right? The Design: “Nice™” and “understandable™” Graph? First, let’s take a paper and a pencil (or your favorite image editor) and answer an important question: what should the links look like? As one can imagine, what makes a graph nice™ and understandable™ is pretty hard to define. Maybe simple straight lines, like most graph renderers? This might get the job done on small graphs, but fails to be nice™ and understandable™ with wide graphs. Nearly parallel lines crossing each other are hard to follow, and areas with a high line density become a block of white. The good old straight line isn’t even enough for Vanilla Factorio crafting graphs, let alone modded ones! So, back to the drawing board for a nicer™ and more understandable™ solution. Let’s remind ourselves of the general guidelines for user friendliness of graph links: Minimise line crossings, especially between almost parallel lines. Minimise the bends on a link. Minimise the length of links. On top of that, there are general UI design rules: The user experience plummets if they have to scroll horizontally/vertically to cross-check information from different parts of the interface. To avoid that, the graphs must be as compact as possible. Less is more: if the same amount of information can be conveyed with four lines instead of twenty, that’s probably a good thing to do. So now, it’s time to search for better ideas. And the best way to research for anything, as we all know, is by googling pressing “T” in Factorio: Factorio’s graph renderer has a more subtle way of rendering links. Each link is decomposed into three segments: two vertical, one horizontal. This approach scales much better with wider graphs, because: There’s never a crossing of nearly parallel lines. All crossings are at right angle, which is optimal to prevent users from following the wrong line. The density of links is kept under control: there’s always enough gap between parallel lines to distinguish them from each other. The price for this readability is vertical space: there needs to be enough room between two rows of technologies to be able to add all the horizontal segments without getting any collisions: To minimize this cost, there’s a simple yet huge optimisation: What if lines didn’t link just two elements, but any number of elements? Just draw a single wide horizontal line for each item/technology, then add as many vertical lines as necessary to connect to the nodes. Much more compact, less clutter, definitely nice™ and understandable™. This gives a “main bus” vibe to these graph sections that’ll hopefully feel natural to a Factorio player, while hitting a good compromise between the general guidelines. This is also technically possible with Factorio’s in-game rendering API, as links are just a bunch of lines, triangles and circles. This almost allows Dana to fit Factorio’s full crafting graph on a single screen: The Coding Part So that’s all for the drawing board, time to throw some code at the problem to get the job done! But with that come some other problems. First, Factorio Mods are made in a language called Lua, and Lua has an ridiculously barren ecosystem. No success in finding a library that can do this kind of link routing. Another solution would be porting a library from other languages. Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That’s not a graph anymore, but a hypergraph. While the word definitely sounds cooler, there aren’t many software libraries to draw them, and in general there’s much less scientific literature on the topic. No success in finding clues to do routing the Dana way. So, Dana has a router made “almost” from scratch. “Almost”, because there was a lot of inspiration to be found elsewhere, it just required looking into some unexpected places… Inspiration from PCB Design There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana’s link routing, they have a decades-old family of well-documented algorithms: channel routers. Source Before looking at the solution, the first things Dana got from that is a proper way to modelize the problem. The goal of our link router is twofold: Determine the number of channels between the rows of nodes, and assign a channel to each horizontal segment of the links. Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines. Here, the router decided to make six channels in cyan, then chose a channel for each red, horizontal segment. So maybe Dana could just copy/paste this solution. Let’s just place the links like tracks were placed on PCBs in the 80s! Dana with a classic PCB router. Well that’s not exactly satisfying. These algorithms were designed with the constraints of the PCB industry in mind, where link crossings are usually not a problem: only making the final PCB as small as possible really matters. But when it comes to nice™ graphs, all this tangled spaghetti is really bad. In order to fix it, Dana has to provide the router with a partial order on the horizontal lines: something telling that line A must be placed over line B to minimize crossings. Inspiration from Sports Tournaments To find a good vertical order, let’s start with a simple idea: For each pair (A,B) of horizontal lines, we compute the number of crossings if we place A over B, same with B over A. We can deduce that placing A over B will save (or cost) a certain amount of crossings, or possibly that it doesn’t change anything. Here, placing `A` above `B` saves two crossings Sadly the above trick may result in contradictions, à la: A must be placed above B, B must be placed above C, and C must be placed above A. To get a proper order, Dana has to sacrifice some of the generated constraints, but in a way that re-adds as few crossings as possible. `C` over `A` saves one crossing, `A` over `B` saves two crossings, `B` over `C` saves one crossing Now is the perfect time to randomly start talking about sports. Let’s rephrase the previous paragraph, but using sports terms instead. A has won against B, B has won against C, and C has won against A. To get a proper ranking, Dana has to ignore some of the matches’ results, but in a way that ignores as few score differences as possible. The fundamental problem is the same. Luckily for us, the sports version is as old as round-robin tournaments, and the good thing about old mainstream problems is that there are a lot of smart people who have done research on it! A generic way to solve the issue is to use graph theory, where our sports problem would be equivalent to the Minimum feedback arc set problem. The bad news: it’s an NP-hard optimisation problem. In layman’s terms: finding the best solution can be ridiculously time consuming even with just a few dozen players. The good news: there is a nice pile of research articles proposing heuristics. Those algorithms’ solutions might not be optimal, but “close enough” to optimal in “good enough” time. Various heuristics exist depending on how much computation time one is willing to pay in order to get stronger guarantees of optimality, or which can be tailored to specific types of graphs. Dana uses the heuristic from Eades, P., Lin, X. and Smyth, W.F. (1993), with trivial modifications for weighted graphs. This is an extremely fast and hopefully “not too bad” algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It’s enough to get a much more satisfying result on the last crafting graph: Same graph as the end of the PCB section, with the improved router. Conclusion So that’s the short version: Dana runs a sports competition between Factorio items. Their rankings are then used to connect some resistors, capacitors and coils on an imaginary PCB in a fashionable manner. This enables Dana to generate nice™ and understandable™ crafting graphs. Trust me, I’m an engineer. Contributing As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the Discord to get started!","url":"https://alt-f4.blog/ALTF4-63/","@type":"BlogPosting","author":{"@type":"Person","name":"Credne"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-63/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/63/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/63/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/it/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/it/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/it/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/it/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/it/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/it/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/it/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/it/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Il seguito degli amati Factorio Friday Facts gestito dalla community</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-63/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-63/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-63/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-63/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-63/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button button-green lang-button" href="/it/ALTF4-63/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-63/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-63/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-63/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-63/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #63 - Dana Dev Blog: Spaghetti Recipe Graphs  <author>12-08-2022</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Scritto da <em>Credne</em>,
+
+
+
+editato da <em>Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer</em>
+
+
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/63/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Tabella dei Contenuti</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#dana-devs-blog-about-the-spaghetti-in-recipe-graphs-credne">Dana dev’s blog: about the spaghetti in recipe graphs <author>Credne</author></a>
+    <ul>
+      <li><a href="#dana--what-is-that">Dana … What is That?</a></li>
+      <li><a href="#dev-blog-drawing-the-graphs-spaghetti">Dev Blog: Drawing the Graph’s Spaghetti</a></li>
+      <li><a href="#the-design-nice-and-understandable-graph">The Design: “Nice™” and “understandable™” Graph?</a></li>
+      <li>
+<a href="#the-coding-part">The Coding Part</a>
+        <ul>
+          <li><a href="#inspiration-from-pcb-design">Inspiration from PCB Design</a></li>
+          <li><a href="#inspiration-from-sports-tournaments">Inspiration from Sports Tournaments</a></li>
+        </ul>
+      </li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+<div class="center banner">
+  <p>Siamo spiacenti, ma questo articolo non è ancora stato tradotto in Italiano, perciò lo state vedendo in Inglese. Se volete darci una mano a rimediare, vi invitiamo ad entrare nel server <a href="https://alt-f4.blog/it/discord">Discord</a> di Alt-F4. Grazie per la pazienza!</p>
+
+</div>
+
+
+
+<p>After a somewhat lengthy pause, Alt-F4 returns with an issue reminiscent of the good ol’ FFF: A dev blog! Only here, it’s not about the game itself, but a very unique and slightly crazy mod. <em>Credne</em> brought <strong>Dana</strong> into this world, and it took quite a bit of doing to get there. Lots of technical detail and cribbing ideas from Football ahead, so dive in!</p>
+      <h2 id="dana-devs-blog-about-the-spaghetti-in-recipe-graphs-credne">
+        
+        
+            <a href="#dana-devs-blog-about-the-spaghetti-in-recipe-graphs-credne" class="anchor" style="text-decoration: none;">Dana dev’s blog: about the spaghetti in recipe graphs <author>Credne</author></a>
+          
+        
+      </h2>
+    
+      <h3 id="dana--what-is-that">
+        
+        
+            <a href="#dana--what-is-that" class="anchor" style="text-decoration: none;">Dana … What is That?</a>
+          
+        
+      </h3>
+    
+
+<p><a href="https://mods.factorio.com/mod/dana">Dana</a> is a mod that aims at answering a simple common question in Factorio: “How can I make item <em>X</em>?”.</p>
+
+<p>There are already quite a few mods doing this: <a href="https://mods.factorio.com/mod/FNEI">FNEI</a>, <a href="https://mods.factorio.com/mod/RecipeBook">Recipe Book</a>, <a href="https://mods.factorio.com/mod/what-is-it-really-used-for">What is it really used for</a>, etc. These mods have a common approach: Let’s say a new player want to know how to craft the Chemical science pack (the cyan one). This player looks for it with one these mods (or Factorio’s recipe list), and sees there is a single recipe, taking red circuits, sulfur, and engine units. So now the new player wonders “How do I make red circuits?”, looks for it, and sees a single recipe that requires plastic bars, copper wires, and green circuits. Next thought: “How do I make plastic bars?”: One recipe requiring petroleum gas. “How do I make petroleum gas?”: Four recipes, having to inspect them one by one, and so on. That’s time consuming, tedious, and the player is likely to forget some steps (like the sulfur, or steel).</p>
+
+<p>Dana is born out of frustration of having to apply this process for hours on complex mod overhauls, and it takes a <em>slightly</em> different approach to answer these questions:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/63/dana-demo.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      dana-demo
+    </video>
+    <figcaption>“How to make *Chemical science packs*?”</figcaption>
+  </figure>
+</p>
+
+<p>Dana is about depth: When asked how to make a Chemical science pack, it will show you all the chained steps required from the raw materials. And it does so directly in-game, by drawing you a <em>nice™ and understandable™</em> recipe graph. Players can navigate the graph with WASD, zoom in/out with mouse wheel, and select nodes or links for additional info. It’s also possible to draw the full crafting graph of the current game (the vanilla one will be shown further in this article), or a “usage” graph (i.e., what are all the items that can be crafted from <em>X</em>).</p>
+
+<p>Dana is designed to work out of the box with any combination of mods adding/modifying/removing recipes or items. There is no hardcoded configuration provided by the player, the modders, or shipped directly with Dana. In this video, it placed the “Copper block” between the “Iron block” and the “Refinery block”, the “Heavy oil” above the “Light oil”, decided how the lines should be drawn/merged/bended, what each block’s X-Y coordinates were, and more. All that Dana had to work with was the full list of items, recipes, and what the available natural resources were. This is done by a <em>graph layout algorithm</em> (the piece of code that takes a bunch of recipes/items and decides where to place them on the screen and how to link them) specifically designed for Factorio, which will be the subject of this article.</p>
+      <h3 id="dev-blog-drawing-the-graphs-spaghetti">
+        
+        
+            <a href="#dev-blog-drawing-the-graphs-spaghetti" class="anchor" style="text-decoration: none;">Dev Blog: Drawing the Graph’s Spaghetti</a>
+          
+        
+      </h3>
+    
+
+<p>Today’s post will present some (hopefully interesting) details about the inner workings of Dana’s <em>nice™ and understandable™</em> graph generator. To give a general introduction, Dana’s graphs are a variant of <a href="https://en.wikipedia.org/wiki/Layered_graph_drawing">layered graphs</a>. This means that items and recipes are placed in <em>node layers</em>, separated by <em>link layers</em>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/layers-illustration.jpg" alt="Layered graph" style="max-width: ; max-height:  ">
+        
+        <figcaption>Layered graph structure: node layers with the blue background, link layers with the green background.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>The first thing Dana does is to decide how many node layers are needed, and in which layer each item/recipe will be placed. The second step is to decide the horizontal coordinate of each item/recipe. The third step is to build the link layers. The final step is to assign a vertical coordinate to each element in the graph, now that the number of layers and their height is known.</p>
+
+<p>The full layout algorithm is way too big and technical for an Alt-F4 article, so the rest of this will focus on the third step, which is building the link layers. Here’s the problem: given two consecutive <em>node layers</em>, trace the required links in the <em>link layer</em>, in order to get a <em>nice™ and understandable™</em> graph:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/intro-problem-description.jpg" alt="Intro: problem description" style="max-width: ; max-height:  ">
+        
+        <figcaption>Input data of the problem</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/intro-problem-solution.jpg" alt="Intro: possible solution" style="max-width: ; max-height:  ">
+        
+        <figcaption>Possible result</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Conveniently, this is more or less a variant of kindergarten exercises:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/problem-kindergarten-version.jpg" alt="Kindergarten version" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Since 5-year-olds do that, it shouldn’t be hard to program, right?</p>
+      <h3 id="the-design-nice-and-understandable-graph">
+        
+        
+            <a href="#the-design-nice-and-understandable-graph" class="anchor" style="text-decoration: none;">The Design: “Nice™” and “understandable™” Graph?</a>
+          
+        
+      </h3>
+    
+
+<p>First, let’s take a paper and a pencil (or your favorite image editor) and answer an important question: what should the links look like? As one can imagine, what makes a graph <em>nice™ and understandable™</em> is pretty hard to define.</p>
+
+<p>Maybe simple straight lines, like most graph renderers?</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/alternative-solution-1.jpg" alt="Straight lines: small example" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/alternative-solution-2.jpg" alt="Straight lines: bigger example" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>This might get the job done on small graphs, but fails to be <em>nice™ and understandable™</em> with wide graphs. Nearly parallel lines crossing each other are hard to follow, and areas with a high line density become a block of white. The good old straight line isn’t even enough for Vanilla Factorio crafting graphs, let alone modded ones!</p>
+
+<p>So, back to the drawing board for a <em>nicer™ and more understandable™</em> solution. Let’s remind ourselves of the general guidelines for user friendliness of graph links:</p>
+
+<ul>
+  <li>Minimise line crossings, especially between almost parallel lines.</li>
+  <li>Minimise the bends on a link.</li>
+  <li>Minimise the length of links.</li>
+</ul>
+
+<p>On top of that, there are general UI design rules:</p>
+
+<ul>
+  <li>The user experience plummets if they have to scroll horizontally/vertically to cross-check information from different parts of the interface. To avoid that, the graphs must be as compact as possible.</li>
+  <li>Less is more: if the same amount of information can be conveyed with four lines instead of twenty, that’s probably a good thing to do.</li>
+</ul>
+
+<p>So now, it’s time to <em>search</em> for better ideas. And the best way to research for anything, as we all know, is by <del>googling</del> pressing “T” in Factorio:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree.jpg" alt="Factorio tech tree" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Factorio’s graph renderer has a more subtle way of rendering links. Each link is decomposed into three segments: two vertical, one horizontal. This approach scales much better with wider graphs, because:</p>
+
+<ul>
+  <li>There’s never a crossing of nearly parallel lines. All crossings are at right angle, which is optimal to prevent users from following the wrong line.</li>
+  <li>The density of links is kept under control: there’s always enough gap between parallel lines to distinguish them from each other.</li>
+</ul>
+
+<p>The price for this readability is vertical space: there needs to be enough room between two rows of technologies to be able to add all the horizontal segments without getting any collisions:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree-spacing.jpg" alt="Factorio tech tree" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>To minimize this cost, there’s a simple yet huge optimisation: What if lines didn’t link just two elements, but any number of elements? Just draw a single wide horizontal line for each item/technology, then add as many vertical lines as necessary to connect to the nodes.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree-dana-link-types.jpg" alt="Factorio tech tree dana link types" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Much more compact, less clutter, definitely <em>nice™ and understandable™</em>. This gives a “main bus” vibe to these graph sections that’ll hopefully feel natural to a Factorio player, while hitting a good compromise between the general guidelines. This is also technically possible with Factorio’s in-game rendering API, as links are just a bunch of lines, triangles and circles. This almost allows Dana to fit Factorio’s full crafting graph on a single screen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/dana-full-graph.jpg" alt="Dana: Factorio full graph" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="the-coding-part">
+        
+        
+            <a href="#the-coding-part" class="anchor" style="text-decoration: none;">The Coding Part</a>
+          
+        
+      </h3>
+    
+
+<p>So that’s all for the drawing board, time to throw some code at the problem to get the job done! But with that come some other problems. First, Factorio Mods are made in a language called Lua, and Lua has an ridiculously barren ecosystem. No success in finding a library that can do this kind of link routing.</p>
+
+<p>Another solution would be porting a library from other languages. Sadly there are plenty of libraries to draw conventional graphs, but Dana is now dealing with links between any number of nodes. That’s not a graph anymore, but a hypergraph. While the word definitely sounds cooler, there aren’t many software libraries to draw them, and in general there’s much less scientific literature on the topic. No success in finding clues to do routing the Dana way.</p>
+
+<p>So, Dana has a router made “almost” from scratch. “Almost”, because there was a lot of inspiration to be found elsewhere, it just required looking into some unexpected places…</p>
+      <h4 id="inspiration-from-pcb-design">
+        
+        
+            <a href="#inspiration-from-pcb-design" class="anchor" style="text-decoration: none;">Inspiration from PCB Design</a>
+          
+        
+      </h4>
+    
+
+<p>There happen to be some people whose daily job requires linking points on a 2D plane: printed circuit board (PCB) designers. And for problems almost identical to Dana’s link routing, they have a decades-old family of well-documented algorithms: <a href="https://en.wikipedia.org/wiki/Channel_router">channel routers</a>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/ChannelRouteSolution.jpg" alt="Picture of two channels" style="max-width: ; max-height:  ">
+        
+        <figcaption><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/ChannelRouteSolution.png/800px-ChannelRouteSolution.png">Source</a></figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Before looking at the solution, the first things Dana got from that is a proper way to modelize the problem. The goal of our link router is twofold: Determine the number of <em>channels</em> between the rows of nodes, and assign a <em>channel</em> to each horizontal segment of the links.</p>
+
+<p>Where each horizontal line starts and ends is simply determined by which nodes they must be linked to, and the vertical segments are simple projections from the nodes to the horizontal lines.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/dana-channels-and-trunks.jpg" alt="Channels and trunks" style="max-width: ; max-height:  ">
+        
+        <figcaption>Here, the router decided to make six channels in cyan, then chose a channel for each red, horizontal segment.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>So maybe Dana could just copy/paste this solution. Let’s just place the links like tracks were placed on PCBs in the 80s!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/PCB-router.jpg" alt="Dana PCB channel router" style="max-width: ; max-height:  ">
+        
+        <figcaption>Dana with a classic PCB router.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Well that’s not exactly satisfying. These algorithms were designed with the constraints of the PCB industry in mind, where link crossings are usually not a problem: only making the final PCB as small as possible really matters. But when it comes to <em>nice™</em> graphs, all this tangled spaghetti is really bad. In order to fix it, Dana has to provide the router with a <strong>partial order</strong> on the horizontal lines: something telling that line <code class="language-plaintext highlighter-rouge">A</code> must be placed over line <code class="language-plaintext highlighter-rouge">B</code> to minimize crossings.</p>
+      <h4 id="inspiration-from-sports-tournaments">
+        
+        
+            <a href="#inspiration-from-sports-tournaments" class="anchor" style="text-decoration: none;">Inspiration from Sports Tournaments</a>
+          
+        
+      </h4>
+    
+
+<p>To find a good vertical order, let’s start with a simple idea: For each pair (<code class="language-plaintext highlighter-rouge">A</code>,<code class="language-plaintext highlighter-rouge">B</code>) of horizontal lines, we compute the number of crossings if we place <code class="language-plaintext highlighter-rouge">A</code> over <code class="language-plaintext highlighter-rouge">B</code>, same with <code class="language-plaintext highlighter-rouge">B</code> over <code class="language-plaintext highlighter-rouge">A</code>. We can deduce that placing <code class="language-plaintext highlighter-rouge">A</code> over <code class="language-plaintext highlighter-rouge">B</code> will save (or cost) a certain amount of crossings, or possibly that it doesn’t change anything.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/crossings-score-example.jpg" alt="Example of crossing scores" style="max-width: ; max-height:  ">
+        
+        <figcaption>Here, placing `A` above `B` saves two crossings</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Sadly the above trick may result in contradictions, à la: <code class="language-plaintext highlighter-rouge">A</code> must be placed above <code class="language-plaintext highlighter-rouge">B</code>, <code class="language-plaintext highlighter-rouge">B</code> must be placed above <code class="language-plaintext highlighter-rouge">C</code>, and <code class="language-plaintext highlighter-rouge">C</code> must be placed above <code class="language-plaintext highlighter-rouge">A</code>. To get a proper order, Dana has to sacrifice some of the generated constraints, but in a way that re-adds as few crossings as possible.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/crossings-score-contradiction.jpg" alt="Example of crossing score contradictions" style="max-width: ; max-height:  ">
+        
+        <figcaption>`C` over `A` saves one crossing, `A` over `B` saves two crossings, `B` over `C` saves one crossing</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Now is the perfect time to randomly start talking about sports. Let’s rephrase the previous paragraph, but using sports terms instead. <code class="language-plaintext highlighter-rouge">A</code> has won against <code class="language-plaintext highlighter-rouge">B</code>, <code class="language-plaintext highlighter-rouge">B</code> has won against <code class="language-plaintext highlighter-rouge">C</code>, and <code class="language-plaintext highlighter-rouge">C</code> has won against <code class="language-plaintext highlighter-rouge">A</code>. To get a proper ranking, Dana has to ignore some of the matches’ results, but in a way that ignores as few score differences as possible.</p>
+
+<p>The fundamental problem is the same. Luckily for us, the sports version is as old as round-robin tournaments, and the good thing about old mainstream problems is that there are a lot of smart people who have done research on it!</p>
+
+<p>A generic way to solve the issue is to use graph theory, where our sports problem would be equivalent to the <a href="https://en.wikipedia.org/wiki/Feedback_arc_set">Minimum feedback arc set</a> problem. The bad news: it’s an <a href="https://en.wikipedia.org/wiki/NP-hardness">NP-hard</a> optimisation problem. In layman’s terms: finding the best solution can be <strong>ridiculously</strong> time consuming even with just a few dozen players. The good news: there is a nice pile of research articles proposing <em>heuristics</em>. Those algorithms’ solutions might not be optimal, but “close enough” to optimal in “good enough” time. Various heuristics exist depending on how much computation time one is willing to pay in order to get stronger guarantees of optimality, or which can be tailored to specific types of graphs.</p>
+
+<p>Dana uses the heuristic from <a href="https://researchrepository.murdoch.edu.au/id/eprint/27510/1/effective_heuristic.pdf">Eades, P., Lin, X. and Smyth, W.F. (1993)</a>, with trivial modifications for weighted graphs. This is an extremely fast and hopefully “not too bad” algorithm to compute a partial order (these full Pyanodon graphs have to come out before the end of time, after all). It’s enough to get a much more satisfying result on the last crafting graph:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/improved-router.jpg" alt="Dana tuned channel router" style="max-width: ; max-height:  ">
+        
+        <figcaption>Same graph as the end of the PCB section, with the improved router.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="conclusion">
+        
+        
+            <a href="#conclusion" class="anchor" style="text-decoration: none;">Conclusion</a>
+          
+        
+      </h3>
+    
+
+<p>So that’s the short version: Dana runs a sports competition between Factorio items. Their rankings are then used to connect some resistors, capacitors and coils on an imaginary PCB in a fashionable manner. This enables Dana to generate <em>nice™ and understandable™</em> crafting graphs.</p>
+
+<p>Trust me, I’m an engineer.</p>
+      <h2 id="contributing">
+        
+        
+            <a href="#contributing" class="anchor" style="text-decoration: none;">Contributing</a>
+          
+        
+      </h2>
+    
+
+<p>As always, we’re looking for people that want to contribute to Alt-F4, be it by submitting an article or by helping with translation. If you have something interesting in mind that you want to share with the community in a polished way, this is the place to do it. If you’re not too sure about it we’ll gladly help by discussing content ideas and structure questions. If that sounds like something that’s up your alley, join the <a href="https://alt-f4.blog/it/discord">Discord</a> to get started!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/it/discord">
+    Discutine su Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/it/ALTF4-62/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/it/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/it/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/it/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/it/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Questo è un progetto gestito dai fan e non direttamente dagli sviluppatori Wube Software Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

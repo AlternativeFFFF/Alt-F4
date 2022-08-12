@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "Après une pause plutôt longue, Alt-F4 vous revient avec un article rappelant les bons vieux FFF : un journal de développeur ! Seulement ici, ce n’est pas à propos du jeu en lui-même, mais d’un mod unique et un peu fou. Credne a mis Dana au monde, et cela a nécessité pas mal de boulot pour y arriver. Beaucoup de détails techniques et même des concepts issus du football sont au menu, il est temps d’y aller !",
+      "image_alt"      : "Un graphique représentant le logo de Factorio, un circuit imprimé et un ballon de foot.",
+      "url"        : "/ALTF4-63/",
+      "title"      : "Alt-F4 n°63 - Dana Dev Blog : Spaghettis dans les schémas de recettes",
+      "image_src"      : "/assets/ALTF4/63/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "bev, Credne, Firerazer",
+      "author"     : "Credne",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "12-08-2022"
+    },
+    {
       "content"    : "Le numéro 62 de cette semaine est passionnant, car le tout nouveau collaborateur Laurence fait son premier article en s’attaquant à une question que beaucoup d’entre vous se sont probablement posée à un moment ou à un autre : Quelle est la différence entre certains de ces gros modpacks, déjà ? Et pourquoi pourrais-je en préférer un plutôt qu’un autre ? Laurence a joué avec quelques-uns des plus gros modpacks, et vous offre une réponse complète à ces questions.",
       "image_alt"      : "Un collage de machines de BobAngel, Space Exploration et Industrial Revolution",
       "url"        : "/ALTF4-62/",

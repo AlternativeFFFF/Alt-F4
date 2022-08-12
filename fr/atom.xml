@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2022-06-10T13:03:23+00:00</updated>
+  <updated>2022-08-12T15:11:03+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°63 - Dana Dev Blog : Spaghettis dans les schémas de recettes</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-63/" />
+    <id>https://alt-f4.blog/ALTF4-63</id>
+    <updated>2022-08-12T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Après une pause plutôt longue, Alt-F4 vous revient avec un article rappelant les bons vieux FFF : un journal de développeur ! Seulement ici, ce n’est pas à propos du jeu en lui-même, mais d’un mod unique et un peu fou. &lt;em&gt;Credne&lt;/em&gt; a mis &lt;strong&gt;Dana&lt;/strong&gt; au monde, et cela a...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-54</id>
     <updated>2021-12-10T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Pour le premier numéro du dernier mois de l’année, le nouveau contributeur &lt;em&gt;GreenFlag&lt;/em&gt; présente son premier grand projet de modding. Il vise à ajouter au jeu une véritable campagne de style RTS, dans l’esprit des niveaux tutoriels du jeu. C’est un projet assez complexe, mais très amusant !&lt;/p&gt; &lt;h3 id=&quot;story-missions--lhistoire-greenflag&quot;&gt;&lt;a...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°53 - La paresse et l’automatisation</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-53/" />
-    <id>https://alt-f4.blog/ALTF4-53</id>
-    <updated>2021-11-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;En exclusivité pour la parution n°53 de Alt-F4, le grand-maître &lt;em&gt;Therenas&lt;/em&gt; lui-même revient nous honorer avec un nouvel article. Suite à ces &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-1/&quot;&gt;précédents&lt;/a&gt; &lt;a href=&quot;https://alt-f4.blog/fr/ALTF4-17/&quot;&gt;chefs-d’œuvre&lt;/a&gt; qui parlent principalement de ses propres mods, voici quelques élucubrations à ce sujet. Ces mots explorent le sujet de la prise automatique de captures...</content>
   </entry>
   
   

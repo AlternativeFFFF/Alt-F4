@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="de" class="de">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 #63 - Dana Dev-Blog: Spaghettirezeptgraphen</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v4.1.1">
+<meta property="og:title" content="Alt-F4 #63 - Dana Dev-Blog: Spaghettirezeptgraphen">
+<meta name="author" content="Credne">
+<meta property="og:locale" content="de">
+<meta name="description" content="Nach einer etwas längeren Pause kommt Alt-F4 zurück mit einer Ausgabe, die an die guten alten FFF erinnert: einem Dev-Blog! Hier geht es allerdings nicht um das Spiel an sich, sondern um eine sehr eigene und besondere Mod. Credne hat Dana in diese Welt gesetzt, und es hat einiges benötigt, um dahin zu kommen. Viele technische Details und verrückte Fußballideen werden folgen, also viel Spaß damit! Dana Dev-Blog: Über Spaghetti in Rezeptgraphen Credne Dana … Was ist das? Dana ist eine Mod, welche versucht eine einfache Frage in Factorio zu beantworten: “Wie stelle ich Item X her?”. Es gibt bereits einige Mods, die diese Frage beantworten: FNEI, Recipe Book, What is it really used for und viele weitere. Diese Mods haben einen gemeinsamen Ansatz: Sagen wir einmal, ein neuer Spieler möchte herausfinden, wie Wissenschaftspakete für Chemie (die blauen) hergestellt werden. Der Spieler verwendet eine der verbreiteten Mods (oder Factorios eigene Rezeptübersicht) und findet ein einzelnes Rezept, welches rote Schaltkreise, Schwefel und Motoreinheiten benötigt. Jetzt wundert sich der neue Spieler “Wie mache ich rote Schaltkreise?”, sucht danach, sieht ein einzelnes Rezept, welches Plastik, Kupferkabel und grüne Schaltkreise benötigt. Der nächste Gedanke ist: “Wie mache ich Plastik?”: Ein Rezept mit Flüssiggas. “Wie mache ich Flüssiggas?”: Vier Rezepte, welche man sich alle nacheinander anschauen muss, und so weiter. Dieser Prozess ist zeitaufwändig, nervig und es ist wahrscheinlich, das der Spieler einen Schritt vergisst (wie Schwefel oder Stahl). Dana kommt aus der Frustration, diesen Prozess für große Modpacks für eine lange Zeit anzuwenden, und verwendet einen etwas anderen Ansatz, um diese Fragen zu beantworten: &lt;/source&gt; Dana-Demo “Wie stellt man *Wissenschaftspakete für Chemie* her?” In Dana geht es um Tiefe: Wenn man fragt, wie Wissenschaftspakete für Chemie hergestellt werden, zeigt es alle benötigten Schritte, um das Produkt aus Rohstoffen herzustellen. Und das tut es direkt im Spiel, indem es einen schönen™ und verständlichen™ Rezeptgraph zeichnet. Spieler können darin mit WASD navigieren, mit dem Mausrad rein-&amp;rauszoomen und Knoten oder Kanten auswählen, für zusätzliche Informationen. Es ist auch möglich, einen vollständigen Herstellungsgraph des aktuellen Spiels zu zeichnen (der für Vanilla wird später gezeigt) oder einen “Verwendungs-“Graph, der zeigt, was aus einem Material hergestellt werden kann. Dana ist dazu designt, problemlos mit Mods klarzukommen, welche Rezepte oder Gegenstände erweitern/verändern/entfernen. Es gibt keine hardgecodete Konfiguration, welche mit Dana mitgeliefert wird. Im Video hat es Kupfer zwischen Eisen und der Raffinerie platziert, Schweröl über dem Leichtöl und entschieden, wie die Linien dazwischen gezeichnet werden sollen, entschieden was die X/Y-Koordinaten der einzelnen Elemente sein soll und vieles mehr. Alles was Dana dafür zur Verfügung hatte, war eine vollständige Liste mit allen Items, Rezepten und was die natürlich vorkommenden Rohstoffe sind. Das wird mit einem Graph-Layout-Algorithmus erreicht (ein Stück Code, welches die Rezepte/Items nimmt und entscheidet, wo sie platziert werden sollen und wie die Verbindungen aussehen sollen). Dieser Algorithmus ist speziell für Factorio entwickelt und soll Thema dieses Artikels sein. Dev-Blog: Zeichnen der Graphen-Spaghetti Der heutige Artikel wird einige (hoffentlich interessante) Details über die inneren Abläufe in Dana’s schönem™ und verständlichen™ Graphengenerator verraten. Un einen allgemeinen Einstieg zu geben, sind Dana’s Graphen sogenannte layered graphs. Das bedeutet, dass Gegenstände und Rezepte in Knotenebenen platziert sind, welche durch Kantenebenen geteil sind. Layered-Graph-Struktur: Knotenebenen mit bleuen Hintergrund, Kantenebenen mit grünem Hintergrund. Das erste was Dana tut ist zu entscheiden, wie viele Ebenen benötigt werden, und in welche Ebene jedes Item/Gegenstand platziert wird. Der zweite Schritt ist zu entscheiden, welche horizontale Koordinate jedem Item/Rezept zugeordnet wird. Der dritte Schritt sind die Kantenebenen. Der letzte Schritt ist es, jedem Element eine vertikale Koordinate zuzuordnen, da jetzt die Anzahl der Ebenen und ihre Höhe bekannt ist. Der gesamte Layout-Algorithmus ist zu groß und zu technisch für einen Alt-F4-Artikel, so dass wir uns im Folgenden nur auf den dritten Schritt konzentrieren werden, in dem die Kantenebenen gebaut werden. Hier ist die Problemstellung: bei zwei gegebenen aufeinanderfolgenden Knotenebenen, zeichne die benötigten Kanten in der Kantenebene, um einen schönen™ und verständlichen™ Graphen zu zeichnen: Eingangsdaten für dieses Problem mögliches Ergebnis Praktischerweise ist das mehr oder weniger eine Übung für Kindergartenkinder: Da 5-Jährige dieses Problem lösen können, sollte es ja nicht so schwer zu programmieren sein, oder? Das Design: “schöner™” und “verständlicher™” Graph? Zuerst nehmen wir Zettel und Stift (oder dein bevorzugtes Bildbearbeitungsprogramm) und beantworten eine wichtige Frage: wie sollte die Kanten aussehen? Wie man sich vorstellen kann, ist es relativ schwer zu definieren, was einen Graphen schön™ und verständlich™ macht. Vielleicht einfach gerade Linien, wie bei den meisten Graphrendern? Das erfüllt die Anforderungen für kleine Graphen, aber ist nicht schön™ und verständlich™ für breite Graphen. Fast parallele Linien, welche sich schneiden sind nicht leicht nachzuverfolgen und Gegenden mit vielen Kanten werden einfach zu einem unverständlichen Blob. Die gute alte gerade Linie ist nicht gut genug für Vanilla, von gemoddeten Spielen ganz zu schweigen! Also zurück ans Reißbrett für eine schönere™ und verständlichere™ Lösung. Erinnern wir uns einmal an einige generelle Richtlinien für Nutzerfreundlichkeit bei Graphenkanten: Minimiere Schnittpunkte von Kanten, besonders wenn sie fast parallel verlaufen. Minimiere gekrümmte Kanten. Minimiere die Länge der Kanten. Zusätzlich dazu gibt es einige allgemeine UI-Designregeln: Die Nutzerfreundlichkeit bricht ein, wenn gescrollt werden muss, um Informationen von verschiedenen Stellen des Interfaces zu vergleichen. Um das zu vermeiden muss der Graph so kompakt wie möglich sein. Weniger ist Mehr: wenn die selbe Menge an Informationen mit vier Linien anstatt zwanzig Linien dargestellt werden kann, ist das die bessere Lösung. Es ist nun Zeit, nach besseren Ideen zu suchen. Und der beste Weg, irgendwas zu suchen ist, wie wir alle wissen, es zu googlen in Factorio “T” drücken: Factorios Graphnenrenderer hat einen cleveren Weg, Knaten zu rendern. Jede Kante besteht aus drei Segmenten: zwei vertikalen und einem horizontalen. Dieser Ansatz ist geeigneter für breite Graphen, da: Es keine Schnittpunkte zwischen beinahe parallelen Kanten gibt. Alle Schnittpunkte treten mit rechnten Winkeln auf, was optimal dafür ist, nicht der falschen Linie zu folgen. Die Dichte der Linien ist unter Kontrolle: Es gibt immer genug Platz zwischen parallelen Linien um sie voneinander zu unterscheiden. Der Preis für die Lesbarkeit ist benötigter vertikaler Platz: Es muss genug Platz zwischen zwei Technologiezeilen sein, um alle benötigten horizontalen Elemente ohne Kollisionen unterzubringen: Um die Kosten zu minimieren gibt es eine einfache, aber wichtige Optimierung: Was wäre wenn Linie nicht nur zwei Elemente verbinden, sondern eine größere Anzahl? Zeichne einfach eine breite horizontale Linie für jedes Item/Technologie und füge so viele vertikale Linien wie nötig hinzu, um alle Knoten zu verbinden. Sehr viel kompakter, weniger Schnickschnack, definitiv schön™ und verständlich™. Das gibt den Graphen einen “Main-Bus”-Vibe, welcher hoffentlich jedem Factoriospieler gut bekannt ist, während zeitgleich alle Richtlinien gut genug eingehalten werden. Das ist auch mit Factorios eigener Render-API möglich, da die Kanten nur eine Verbindung von Linien, Dreiecken und Kreisen ist. Das erlaubt es Dana, den gesamten Factorio Craftinggraph fast auf einem Bildschirm darzustellen: Der Code-Teil Das war jetzt alles was wir am Reißbrett entwerfen konnten, jetzt ist es Zeit, das Problem mit Code zu erschlagen! Das ist allerdings selbst nicht ganz frei von Problemen. Factoriomods werden in einer Sprache namens Lua geschrieben, und Lua hat ein unglaublich wüstes Ökosystem. Es gibt keine Hoffnung eine Bibliothek zu finden, die solche Verbindungen erstellen kann. Eine Lösung wäre es, eine Bibliothek aus einer anderen Sprache zu portieren. Es gibt eine große Anzahl an Bibliotheken, um Graphen zu zeichnen, aber bei DAna handelt es sich mittlerweile um einen Hypergraphen, da wir es mit Verbindungen zwischen mehr als zwei Knoten zu tun haben. Obwohl Hypergraph erstmal unglaublich viel cooler klingt, gibt es leider nur wenige Bibliotheken, um sie zu zeichnen und auch im allgemeinen deutlich weniger wissenschaftliche Literatur zu diesem Thema. Dana hat deshalb einen Router, welcher beinahe von Grundauf dafür geschaffen wurde. Beinahe deshalb, da es viel Inspiration aus anderen Feldern gab, aber dafür muss man sich mit einigen unerwarteten Themen befassen… Inspiration aus dem PCB-Design Es gibt zufälligerweise Leute, deren Hauptberuf es ist, Punkte in 2D zu verbinden: Leiterplatten (PCB) -Designer. Und für Probleme, welche fast identisch zu Dana’s Problemen sind, haben sie jahrzehntealte und gut dokumentierte Algorithmen: Channel routers. Quelle Bevor wir uns die Lösung ansehen, ist das erste was Dana sich daraus abschaut ist ein ordentlicher Weg, das Problem zu modelliern. Das Ziel unseres Kantenrouters ist zweierlei: Bestimme die Anzahl an channels zwischen zwei Knotenzeilen und ordne ein channel jedem horizontalen Segment zu. Der Ort, an dem jede horizontale Linie beginnt und endet wird einfach durch die Position der Knoten bestimmt, die sie verbinden müssen. Die vertikalen Linien sind einfache Projektionen von den Konten zu den horizontalen Linien. Hier hat sich der Router dazu entschieden, 6 Channels in Cyan zu schaffen und dann ein Channel für jedes rote, horizontale Segment geschaffen. Vielleicht könnte Dana diese Lösung einfach kopieren. Wir Platzieren die Kanten einfach so wie Leiterbahnen auf den Leiterplatten der 80er Jahre! Dana mit einem klassischen PCB-Router. Naja, das ist jetzt nicht wirklich zufriedenstellend. Diese Algorithmen wurden mit den Grenzen der PCB-Industrie entworfen, wo Kantenschnittpunkte in der Regel kein Problem sind, nur die finale Größe der Leiterplatte sind wichtig. Wenn es aber zu schönen™ Graphen kommt, ist diese spaghettighafte Lösung eher schlecht. Um das zu beheben, versorgt Dana den Router mit einer teilweisen Reihenfolge der horizontalen Linien: etwas was sagt, das A über B platziert werden muss, um Schnittpunkte zu minimieren. Inspiration von Sportwettkämpfen Um eine gute vertikale Reihenfolge zu finden, beginnen wir mit einer einfachen Idee: Für jedes Paar (A,B) an horizontalen Linien berechnen wir dir Anzahl an Schnittpunkten, wenn wir A über B platzieren, und dann das selbe mit B über A. Wir können herausfinden, das A über B einige Schnittpunkte kostet (oder einspart) oder sich gegenseitig nichts nimmt. Hier spart man zwei Schnittpunkte, wenn man `A` über `B` platziert. Leider resultiert diese Technik möglicherweise in Paradoxon. Wenn A über B, B über C und C über A platziert werden muss, ist keinem geholfen. Um einie ordentliche Reihenfolge aufzustellen, muss Dana einige der aufgestellten Richtwerte opfern, aber in einer Art und Weise, die die wenigste Anzahl an neuen Schnittpunkten hinzufügt. `C` über `A` spart ein Schnittpunkt, `A` über `B` spart zwei Schnittpunkte, `B` über `C` spart einen Schnittpunkt Jetzt ist der perfekte Moment, um völlig Zusammenhangslos über Sport zu reden. Fassen wir den oberen Abschnitt einmal mit Sportbegriffen zusammen. A hat gegen B gewonnen, B hat gegen C gewonnen und C hat gegen A gewonnen. Um die korrekte Reihenfolge zu bestimmen, muss Dana einige Ergebnisse ignorieren, aber in einer Art und Weise, die die wenigsten Ergebnisse ignoriert. Das fundamentale Problem ist das selbe. Glücklicherweise ist das Sportproblem so alt wie die Sportwettbewerbe, und das gute bei solchen alten Problem ist, das eine Menge schlauer Leute sich darüber Gedanken gemacht haben! Ein generischer Weg dieses Problem zu lösen ist mit Graphentheorie, wo unser Sportproblem äquivalent zum Feedback Arc Set-Problem ist. Die schlechte Nachricht: dabei handelt es sich um ein NP-schweres Optimierungsproblem handelt. Das bedeutet, das es unglaublich lange dauern kann, eine Lösung zu finden, selbst wenn es nur ein paar Dutzend Beteiligte gibt. Die gute Nachricht: es gibt einen Haufen Forschungsarbeiten, welche Heuristiken vorschlagen. Diese Lösungen sind nicht optimal, aber nah genug dran an einer optimalen Lösungen in einer gut genugen Zeit. Es gibt verschiedene Heuristiken, je nachdem wie viel Rechnenzeit aufgewendet werden soll, wie nah an der optimalen Lösung man sein muss oder welche Graphart man verwendet. Dana verwendet Heuristiken von Eades, P., Lin, X. and Smyth, W.F. (1993), mit einigen trivialen Modifikationen für gewichtete Graphen. Das ist ein extrem schneller und hoffentlich gut genuger Algorithmus, um eine Reihenfolge zu schaffen (die Pyanodongraphen müssen ja irgendwie vor dem Ende des Universums rauskommen). Es ist gut genug um ein deutlich besseres Ergebnis im vergleich zur letzten Lösung zu erreichen: Der selbe Graph wie am Ende des PCB-Abschnittes, allerdings mit verbessertem Router. Fazit Jetzt nochmal im Schnelldurchgang: Dana veranstaltet ein Sportwettbewerb zwischen Factorioitems. Ihre Platzierzungen werden dann verwendet, um einige Widerstände, Kondensatoren und Spulen auf einer imaginären Leiterplatte zu verbinden. Das befähigt Dana dazu, schöne™ und verständliche™ Graphen zu zeichnen. Vertrau mir, ich bin ein Ingenieur. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<meta property="og:description" content="Nach einer etwas längeren Pause kommt Alt-F4 zurück mit einer Ausgabe, die an die guten alten FFF erinnert: einem Dev-Blog! Hier geht es allerdings nicht um das Spiel an sich, sondern um eine sehr eigene und besondere Mod. Credne hat Dana in diese Welt gesetzt, und es hat einiges benötigt, um dahin zu kommen. Viele technische Details und verrückte Fußballideen werden folgen, also viel Spaß damit! Dana Dev-Blog: Über Spaghetti in Rezeptgraphen Credne Dana … Was ist das? Dana ist eine Mod, welche versucht eine einfache Frage in Factorio zu beantworten: “Wie stelle ich Item X her?”. Es gibt bereits einige Mods, die diese Frage beantworten: FNEI, Recipe Book, What is it really used for und viele weitere. Diese Mods haben einen gemeinsamen Ansatz: Sagen wir einmal, ein neuer Spieler möchte herausfinden, wie Wissenschaftspakete für Chemie (die blauen) hergestellt werden. Der Spieler verwendet eine der verbreiteten Mods (oder Factorios eigene Rezeptübersicht) und findet ein einzelnes Rezept, welches rote Schaltkreise, Schwefel und Motoreinheiten benötigt. Jetzt wundert sich der neue Spieler “Wie mache ich rote Schaltkreise?”, sucht danach, sieht ein einzelnes Rezept, welches Plastik, Kupferkabel und grüne Schaltkreise benötigt. Der nächste Gedanke ist: “Wie mache ich Plastik?”: Ein Rezept mit Flüssiggas. “Wie mache ich Flüssiggas?”: Vier Rezepte, welche man sich alle nacheinander anschauen muss, und so weiter. Dieser Prozess ist zeitaufwändig, nervig und es ist wahrscheinlich, das der Spieler einen Schritt vergisst (wie Schwefel oder Stahl). Dana kommt aus der Frustration, diesen Prozess für große Modpacks für eine lange Zeit anzuwenden, und verwendet einen etwas anderen Ansatz, um diese Fragen zu beantworten: &lt;/source&gt; Dana-Demo “Wie stellt man *Wissenschaftspakete für Chemie* her?” In Dana geht es um Tiefe: Wenn man fragt, wie Wissenschaftspakete für Chemie hergestellt werden, zeigt es alle benötigten Schritte, um das Produkt aus Rohstoffen herzustellen. Und das tut es direkt im Spiel, indem es einen schönen™ und verständlichen™ Rezeptgraph zeichnet. Spieler können darin mit WASD navigieren, mit dem Mausrad rein-&amp;rauszoomen und Knoten oder Kanten auswählen, für zusätzliche Informationen. Es ist auch möglich, einen vollständigen Herstellungsgraph des aktuellen Spiels zu zeichnen (der für Vanilla wird später gezeigt) oder einen “Verwendungs-“Graph, der zeigt, was aus einem Material hergestellt werden kann. Dana ist dazu designt, problemlos mit Mods klarzukommen, welche Rezepte oder Gegenstände erweitern/verändern/entfernen. Es gibt keine hardgecodete Konfiguration, welche mit Dana mitgeliefert wird. Im Video hat es Kupfer zwischen Eisen und der Raffinerie platziert, Schweröl über dem Leichtöl und entschieden, wie die Linien dazwischen gezeichnet werden sollen, entschieden was die X/Y-Koordinaten der einzelnen Elemente sein soll und vieles mehr. Alles was Dana dafür zur Verfügung hatte, war eine vollständige Liste mit allen Items, Rezepten und was die natürlich vorkommenden Rohstoffe sind. Das wird mit einem Graph-Layout-Algorithmus erreicht (ein Stück Code, welches die Rezepte/Items nimmt und entscheidet, wo sie platziert werden sollen und wie die Verbindungen aussehen sollen). Dieser Algorithmus ist speziell für Factorio entwickelt und soll Thema dieses Artikels sein. Dev-Blog: Zeichnen der Graphen-Spaghetti Der heutige Artikel wird einige (hoffentlich interessante) Details über die inneren Abläufe in Dana’s schönem™ und verständlichen™ Graphengenerator verraten. Un einen allgemeinen Einstieg zu geben, sind Dana’s Graphen sogenannte layered graphs. Das bedeutet, dass Gegenstände und Rezepte in Knotenebenen platziert sind, welche durch Kantenebenen geteil sind. Layered-Graph-Struktur: Knotenebenen mit bleuen Hintergrund, Kantenebenen mit grünem Hintergrund. Das erste was Dana tut ist zu entscheiden, wie viele Ebenen benötigt werden, und in welche Ebene jedes Item/Gegenstand platziert wird. Der zweite Schritt ist zu entscheiden, welche horizontale Koordinate jedem Item/Rezept zugeordnet wird. Der dritte Schritt sind die Kantenebenen. Der letzte Schritt ist es, jedem Element eine vertikale Koordinate zuzuordnen, da jetzt die Anzahl der Ebenen und ihre Höhe bekannt ist. Der gesamte Layout-Algorithmus ist zu groß und zu technisch für einen Alt-F4-Artikel, so dass wir uns im Folgenden nur auf den dritten Schritt konzentrieren werden, in dem die Kantenebenen gebaut werden. Hier ist die Problemstellung: bei zwei gegebenen aufeinanderfolgenden Knotenebenen, zeichne die benötigten Kanten in der Kantenebene, um einen schönen™ und verständlichen™ Graphen zu zeichnen: Eingangsdaten für dieses Problem mögliches Ergebnis Praktischerweise ist das mehr oder weniger eine Übung für Kindergartenkinder: Da 5-Jährige dieses Problem lösen können, sollte es ja nicht so schwer zu programmieren sein, oder? Das Design: “schöner™” und “verständlicher™” Graph? Zuerst nehmen wir Zettel und Stift (oder dein bevorzugtes Bildbearbeitungsprogramm) und beantworten eine wichtige Frage: wie sollte die Kanten aussehen? Wie man sich vorstellen kann, ist es relativ schwer zu definieren, was einen Graphen schön™ und verständlich™ macht. Vielleicht einfach gerade Linien, wie bei den meisten Graphrendern? Das erfüllt die Anforderungen für kleine Graphen, aber ist nicht schön™ und verständlich™ für breite Graphen. Fast parallele Linien, welche sich schneiden sind nicht leicht nachzuverfolgen und Gegenden mit vielen Kanten werden einfach zu einem unverständlichen Blob. Die gute alte gerade Linie ist nicht gut genug für Vanilla, von gemoddeten Spielen ganz zu schweigen! Also zurück ans Reißbrett für eine schönere™ und verständlichere™ Lösung. Erinnern wir uns einmal an einige generelle Richtlinien für Nutzerfreundlichkeit bei Graphenkanten: Minimiere Schnittpunkte von Kanten, besonders wenn sie fast parallel verlaufen. Minimiere gekrümmte Kanten. Minimiere die Länge der Kanten. Zusätzlich dazu gibt es einige allgemeine UI-Designregeln: Die Nutzerfreundlichkeit bricht ein, wenn gescrollt werden muss, um Informationen von verschiedenen Stellen des Interfaces zu vergleichen. Um das zu vermeiden muss der Graph so kompakt wie möglich sein. Weniger ist Mehr: wenn die selbe Menge an Informationen mit vier Linien anstatt zwanzig Linien dargestellt werden kann, ist das die bessere Lösung. Es ist nun Zeit, nach besseren Ideen zu suchen. Und der beste Weg, irgendwas zu suchen ist, wie wir alle wissen, es zu googlen in Factorio “T” drücken: Factorios Graphnenrenderer hat einen cleveren Weg, Knaten zu rendern. Jede Kante besteht aus drei Segmenten: zwei vertikalen und einem horizontalen. Dieser Ansatz ist geeigneter für breite Graphen, da: Es keine Schnittpunkte zwischen beinahe parallelen Kanten gibt. Alle Schnittpunkte treten mit rechnten Winkeln auf, was optimal dafür ist, nicht der falschen Linie zu folgen. Die Dichte der Linien ist unter Kontrolle: Es gibt immer genug Platz zwischen parallelen Linien um sie voneinander zu unterscheiden. Der Preis für die Lesbarkeit ist benötigter vertikaler Platz: Es muss genug Platz zwischen zwei Technologiezeilen sein, um alle benötigten horizontalen Elemente ohne Kollisionen unterzubringen: Um die Kosten zu minimieren gibt es eine einfache, aber wichtige Optimierung: Was wäre wenn Linie nicht nur zwei Elemente verbinden, sondern eine größere Anzahl? Zeichne einfach eine breite horizontale Linie für jedes Item/Technologie und füge so viele vertikale Linien wie nötig hinzu, um alle Knoten zu verbinden. Sehr viel kompakter, weniger Schnickschnack, definitiv schön™ und verständlich™. Das gibt den Graphen einen “Main-Bus”-Vibe, welcher hoffentlich jedem Factoriospieler gut bekannt ist, während zeitgleich alle Richtlinien gut genug eingehalten werden. Das ist auch mit Factorios eigener Render-API möglich, da die Kanten nur eine Verbindung von Linien, Dreiecken und Kreisen ist. Das erlaubt es Dana, den gesamten Factorio Craftinggraph fast auf einem Bildschirm darzustellen: Der Code-Teil Das war jetzt alles was wir am Reißbrett entwerfen konnten, jetzt ist es Zeit, das Problem mit Code zu erschlagen! Das ist allerdings selbst nicht ganz frei von Problemen. Factoriomods werden in einer Sprache namens Lua geschrieben, und Lua hat ein unglaublich wüstes Ökosystem. Es gibt keine Hoffnung eine Bibliothek zu finden, die solche Verbindungen erstellen kann. Eine Lösung wäre es, eine Bibliothek aus einer anderen Sprache zu portieren. Es gibt eine große Anzahl an Bibliotheken, um Graphen zu zeichnen, aber bei DAna handelt es sich mittlerweile um einen Hypergraphen, da wir es mit Verbindungen zwischen mehr als zwei Knoten zu tun haben. Obwohl Hypergraph erstmal unglaublich viel cooler klingt, gibt es leider nur wenige Bibliotheken, um sie zu zeichnen und auch im allgemeinen deutlich weniger wissenschaftliche Literatur zu diesem Thema. Dana hat deshalb einen Router, welcher beinahe von Grundauf dafür geschaffen wurde. Beinahe deshalb, da es viel Inspiration aus anderen Feldern gab, aber dafür muss man sich mit einigen unerwarteten Themen befassen… Inspiration aus dem PCB-Design Es gibt zufälligerweise Leute, deren Hauptberuf es ist, Punkte in 2D zu verbinden: Leiterplatten (PCB) -Designer. Und für Probleme, welche fast identisch zu Dana’s Problemen sind, haben sie jahrzehntealte und gut dokumentierte Algorithmen: Channel routers. Quelle Bevor wir uns die Lösung ansehen, ist das erste was Dana sich daraus abschaut ist ein ordentlicher Weg, das Problem zu modelliern. Das Ziel unseres Kantenrouters ist zweierlei: Bestimme die Anzahl an channels zwischen zwei Knotenzeilen und ordne ein channel jedem horizontalen Segment zu. Der Ort, an dem jede horizontale Linie beginnt und endet wird einfach durch die Position der Knoten bestimmt, die sie verbinden müssen. Die vertikalen Linien sind einfache Projektionen von den Konten zu den horizontalen Linien. Hier hat sich der Router dazu entschieden, 6 Channels in Cyan zu schaffen und dann ein Channel für jedes rote, horizontale Segment geschaffen. Vielleicht könnte Dana diese Lösung einfach kopieren. Wir Platzieren die Kanten einfach so wie Leiterbahnen auf den Leiterplatten der 80er Jahre! Dana mit einem klassischen PCB-Router. Naja, das ist jetzt nicht wirklich zufriedenstellend. Diese Algorithmen wurden mit den Grenzen der PCB-Industrie entworfen, wo Kantenschnittpunkte in der Regel kein Problem sind, nur die finale Größe der Leiterplatte sind wichtig. Wenn es aber zu schönen™ Graphen kommt, ist diese spaghettighafte Lösung eher schlecht. Um das zu beheben, versorgt Dana den Router mit einer teilweisen Reihenfolge der horizontalen Linien: etwas was sagt, das A über B platziert werden muss, um Schnittpunkte zu minimieren. Inspiration von Sportwettkämpfen Um eine gute vertikale Reihenfolge zu finden, beginnen wir mit einer einfachen Idee: Für jedes Paar (A,B) an horizontalen Linien berechnen wir dir Anzahl an Schnittpunkten, wenn wir A über B platzieren, und dann das selbe mit B über A. Wir können herausfinden, das A über B einige Schnittpunkte kostet (oder einspart) oder sich gegenseitig nichts nimmt. Hier spart man zwei Schnittpunkte, wenn man `A` über `B` platziert. Leider resultiert diese Technik möglicherweise in Paradoxon. Wenn A über B, B über C und C über A platziert werden muss, ist keinem geholfen. Um einie ordentliche Reihenfolge aufzustellen, muss Dana einige der aufgestellten Richtwerte opfern, aber in einer Art und Weise, die die wenigste Anzahl an neuen Schnittpunkten hinzufügt. `C` über `A` spart ein Schnittpunkt, `A` über `B` spart zwei Schnittpunkte, `B` über `C` spart einen Schnittpunkt Jetzt ist der perfekte Moment, um völlig Zusammenhangslos über Sport zu reden. Fassen wir den oberen Abschnitt einmal mit Sportbegriffen zusammen. A hat gegen B gewonnen, B hat gegen C gewonnen und C hat gegen A gewonnen. Um die korrekte Reihenfolge zu bestimmen, muss Dana einige Ergebnisse ignorieren, aber in einer Art und Weise, die die wenigsten Ergebnisse ignoriert. Das fundamentale Problem ist das selbe. Glücklicherweise ist das Sportproblem so alt wie die Sportwettbewerbe, und das gute bei solchen alten Problem ist, das eine Menge schlauer Leute sich darüber Gedanken gemacht haben! Ein generischer Weg dieses Problem zu lösen ist mit Graphentheorie, wo unser Sportproblem äquivalent zum Feedback Arc Set-Problem ist. Die schlechte Nachricht: dabei handelt es sich um ein NP-schweres Optimierungsproblem handelt. Das bedeutet, das es unglaublich lange dauern kann, eine Lösung zu finden, selbst wenn es nur ein paar Dutzend Beteiligte gibt. Die gute Nachricht: es gibt einen Haufen Forschungsarbeiten, welche Heuristiken vorschlagen. Diese Lösungen sind nicht optimal, aber nah genug dran an einer optimalen Lösungen in einer gut genugen Zeit. Es gibt verschiedene Heuristiken, je nachdem wie viel Rechnenzeit aufgewendet werden soll, wie nah an der optimalen Lösung man sein muss oder welche Graphart man verwendet. Dana verwendet Heuristiken von Eades, P., Lin, X. and Smyth, W.F. (1993), mit einigen trivialen Modifikationen für gewichtete Graphen. Das ist ein extrem schneller und hoffentlich gut genuger Algorithmus, um eine Reihenfolge zu schaffen (die Pyanodongraphen müssen ja irgendwie vor dem Ende des Universums rauskommen). Es ist gut genug um ein deutlich besseres Ergebnis im vergleich zur letzten Lösung zu erreichen: Der selbe Graph wie am Ende des PCB-Abschnittes, allerdings mit verbessertem Router. Fazit Jetzt nochmal im Schnelldurchgang: Dana veranstaltet ein Sportwettbewerb zwischen Factorioitems. Ihre Platzierzungen werden dann verwendet, um einige Widerstände, Kondensatoren und Spulen auf einer imaginären Leiterplatte zu verbinden. Das befähigt Dana dazu, schöne™ und verständliche™ Graphen zu zeichnen. Vertrau mir, ich bin ein Ingenieur. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!">
+<link rel="canonical" href="https://alt-f4.blog/de/ALTF4-63/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-63/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-08-12T00:00:00+00:00">
+<script type="application/ld+json">
+{"headline":"Alt-F4 #63 - Dana Dev-Blog: Spaghettirezeptgraphen","dateModified":"2022-08-12T00:00:00+00:00","datePublished":"2022-08-12T00:00:00+00:00","description":"Nach einer etwas längeren Pause kommt Alt-F4 zurück mit einer Ausgabe, die an die guten alten FFF erinnert: einem Dev-Blog! Hier geht es allerdings nicht um das Spiel an sich, sondern um eine sehr eigene und besondere Mod. Credne hat Dana in diese Welt gesetzt, und es hat einiges benötigt, um dahin zu kommen. Viele technische Details und verrückte Fußballideen werden folgen, also viel Spaß damit! Dana Dev-Blog: Über Spaghetti in Rezeptgraphen Credne Dana … Was ist das? Dana ist eine Mod, welche versucht eine einfache Frage in Factorio zu beantworten: “Wie stelle ich Item X her?”. Es gibt bereits einige Mods, die diese Frage beantworten: FNEI, Recipe Book, What is it really used for und viele weitere. Diese Mods haben einen gemeinsamen Ansatz: Sagen wir einmal, ein neuer Spieler möchte herausfinden, wie Wissenschaftspakete für Chemie (die blauen) hergestellt werden. Der Spieler verwendet eine der verbreiteten Mods (oder Factorios eigene Rezeptübersicht) und findet ein einzelnes Rezept, welches rote Schaltkreise, Schwefel und Motoreinheiten benötigt. Jetzt wundert sich der neue Spieler “Wie mache ich rote Schaltkreise?”, sucht danach, sieht ein einzelnes Rezept, welches Plastik, Kupferkabel und grüne Schaltkreise benötigt. Der nächste Gedanke ist: “Wie mache ich Plastik?”: Ein Rezept mit Flüssiggas. “Wie mache ich Flüssiggas?”: Vier Rezepte, welche man sich alle nacheinander anschauen muss, und so weiter. Dieser Prozess ist zeitaufwändig, nervig und es ist wahrscheinlich, das der Spieler einen Schritt vergisst (wie Schwefel oder Stahl). Dana kommt aus der Frustration, diesen Prozess für große Modpacks für eine lange Zeit anzuwenden, und verwendet einen etwas anderen Ansatz, um diese Fragen zu beantworten: &lt;/source&gt; Dana-Demo “Wie stellt man *Wissenschaftspakete für Chemie* her?” In Dana geht es um Tiefe: Wenn man fragt, wie Wissenschaftspakete für Chemie hergestellt werden, zeigt es alle benötigten Schritte, um das Produkt aus Rohstoffen herzustellen. Und das tut es direkt im Spiel, indem es einen schönen™ und verständlichen™ Rezeptgraph zeichnet. Spieler können darin mit WASD navigieren, mit dem Mausrad rein-&amp;rauszoomen und Knoten oder Kanten auswählen, für zusätzliche Informationen. Es ist auch möglich, einen vollständigen Herstellungsgraph des aktuellen Spiels zu zeichnen (der für Vanilla wird später gezeigt) oder einen “Verwendungs-“Graph, der zeigt, was aus einem Material hergestellt werden kann. Dana ist dazu designt, problemlos mit Mods klarzukommen, welche Rezepte oder Gegenstände erweitern/verändern/entfernen. Es gibt keine hardgecodete Konfiguration, welche mit Dana mitgeliefert wird. Im Video hat es Kupfer zwischen Eisen und der Raffinerie platziert, Schweröl über dem Leichtöl und entschieden, wie die Linien dazwischen gezeichnet werden sollen, entschieden was die X/Y-Koordinaten der einzelnen Elemente sein soll und vieles mehr. Alles was Dana dafür zur Verfügung hatte, war eine vollständige Liste mit allen Items, Rezepten und was die natürlich vorkommenden Rohstoffe sind. Das wird mit einem Graph-Layout-Algorithmus erreicht (ein Stück Code, welches die Rezepte/Items nimmt und entscheidet, wo sie platziert werden sollen und wie die Verbindungen aussehen sollen). Dieser Algorithmus ist speziell für Factorio entwickelt und soll Thema dieses Artikels sein. Dev-Blog: Zeichnen der Graphen-Spaghetti Der heutige Artikel wird einige (hoffentlich interessante) Details über die inneren Abläufe in Dana’s schönem™ und verständlichen™ Graphengenerator verraten. Un einen allgemeinen Einstieg zu geben, sind Dana’s Graphen sogenannte layered graphs. Das bedeutet, dass Gegenstände und Rezepte in Knotenebenen platziert sind, welche durch Kantenebenen geteil sind. Layered-Graph-Struktur: Knotenebenen mit bleuen Hintergrund, Kantenebenen mit grünem Hintergrund. Das erste was Dana tut ist zu entscheiden, wie viele Ebenen benötigt werden, und in welche Ebene jedes Item/Gegenstand platziert wird. Der zweite Schritt ist zu entscheiden, welche horizontale Koordinate jedem Item/Rezept zugeordnet wird. Der dritte Schritt sind die Kantenebenen. Der letzte Schritt ist es, jedem Element eine vertikale Koordinate zuzuordnen, da jetzt die Anzahl der Ebenen und ihre Höhe bekannt ist. Der gesamte Layout-Algorithmus ist zu groß und zu technisch für einen Alt-F4-Artikel, so dass wir uns im Folgenden nur auf den dritten Schritt konzentrieren werden, in dem die Kantenebenen gebaut werden. Hier ist die Problemstellung: bei zwei gegebenen aufeinanderfolgenden Knotenebenen, zeichne die benötigten Kanten in der Kantenebene, um einen schönen™ und verständlichen™ Graphen zu zeichnen: Eingangsdaten für dieses Problem mögliches Ergebnis Praktischerweise ist das mehr oder weniger eine Übung für Kindergartenkinder: Da 5-Jährige dieses Problem lösen können, sollte es ja nicht so schwer zu programmieren sein, oder? Das Design: “schöner™” und “verständlicher™” Graph? Zuerst nehmen wir Zettel und Stift (oder dein bevorzugtes Bildbearbeitungsprogramm) und beantworten eine wichtige Frage: wie sollte die Kanten aussehen? Wie man sich vorstellen kann, ist es relativ schwer zu definieren, was einen Graphen schön™ und verständlich™ macht. Vielleicht einfach gerade Linien, wie bei den meisten Graphrendern? Das erfüllt die Anforderungen für kleine Graphen, aber ist nicht schön™ und verständlich™ für breite Graphen. Fast parallele Linien, welche sich schneiden sind nicht leicht nachzuverfolgen und Gegenden mit vielen Kanten werden einfach zu einem unverständlichen Blob. Die gute alte gerade Linie ist nicht gut genug für Vanilla, von gemoddeten Spielen ganz zu schweigen! Also zurück ans Reißbrett für eine schönere™ und verständlichere™ Lösung. Erinnern wir uns einmal an einige generelle Richtlinien für Nutzerfreundlichkeit bei Graphenkanten: Minimiere Schnittpunkte von Kanten, besonders wenn sie fast parallel verlaufen. Minimiere gekrümmte Kanten. Minimiere die Länge der Kanten. Zusätzlich dazu gibt es einige allgemeine UI-Designregeln: Die Nutzerfreundlichkeit bricht ein, wenn gescrollt werden muss, um Informationen von verschiedenen Stellen des Interfaces zu vergleichen. Um das zu vermeiden muss der Graph so kompakt wie möglich sein. Weniger ist Mehr: wenn die selbe Menge an Informationen mit vier Linien anstatt zwanzig Linien dargestellt werden kann, ist das die bessere Lösung. Es ist nun Zeit, nach besseren Ideen zu suchen. Und der beste Weg, irgendwas zu suchen ist, wie wir alle wissen, es zu googlen in Factorio “T” drücken: Factorios Graphnenrenderer hat einen cleveren Weg, Knaten zu rendern. Jede Kante besteht aus drei Segmenten: zwei vertikalen und einem horizontalen. Dieser Ansatz ist geeigneter für breite Graphen, da: Es keine Schnittpunkte zwischen beinahe parallelen Kanten gibt. Alle Schnittpunkte treten mit rechnten Winkeln auf, was optimal dafür ist, nicht der falschen Linie zu folgen. Die Dichte der Linien ist unter Kontrolle: Es gibt immer genug Platz zwischen parallelen Linien um sie voneinander zu unterscheiden. Der Preis für die Lesbarkeit ist benötigter vertikaler Platz: Es muss genug Platz zwischen zwei Technologiezeilen sein, um alle benötigten horizontalen Elemente ohne Kollisionen unterzubringen: Um die Kosten zu minimieren gibt es eine einfache, aber wichtige Optimierung: Was wäre wenn Linie nicht nur zwei Elemente verbinden, sondern eine größere Anzahl? Zeichne einfach eine breite horizontale Linie für jedes Item/Technologie und füge so viele vertikale Linien wie nötig hinzu, um alle Knoten zu verbinden. Sehr viel kompakter, weniger Schnickschnack, definitiv schön™ und verständlich™. Das gibt den Graphen einen “Main-Bus”-Vibe, welcher hoffentlich jedem Factoriospieler gut bekannt ist, während zeitgleich alle Richtlinien gut genug eingehalten werden. Das ist auch mit Factorios eigener Render-API möglich, da die Kanten nur eine Verbindung von Linien, Dreiecken und Kreisen ist. Das erlaubt es Dana, den gesamten Factorio Craftinggraph fast auf einem Bildschirm darzustellen: Der Code-Teil Das war jetzt alles was wir am Reißbrett entwerfen konnten, jetzt ist es Zeit, das Problem mit Code zu erschlagen! Das ist allerdings selbst nicht ganz frei von Problemen. Factoriomods werden in einer Sprache namens Lua geschrieben, und Lua hat ein unglaublich wüstes Ökosystem. Es gibt keine Hoffnung eine Bibliothek zu finden, die solche Verbindungen erstellen kann. Eine Lösung wäre es, eine Bibliothek aus einer anderen Sprache zu portieren. Es gibt eine große Anzahl an Bibliotheken, um Graphen zu zeichnen, aber bei DAna handelt es sich mittlerweile um einen Hypergraphen, da wir es mit Verbindungen zwischen mehr als zwei Knoten zu tun haben. Obwohl Hypergraph erstmal unglaublich viel cooler klingt, gibt es leider nur wenige Bibliotheken, um sie zu zeichnen und auch im allgemeinen deutlich weniger wissenschaftliche Literatur zu diesem Thema. Dana hat deshalb einen Router, welcher beinahe von Grundauf dafür geschaffen wurde. Beinahe deshalb, da es viel Inspiration aus anderen Feldern gab, aber dafür muss man sich mit einigen unerwarteten Themen befassen… Inspiration aus dem PCB-Design Es gibt zufälligerweise Leute, deren Hauptberuf es ist, Punkte in 2D zu verbinden: Leiterplatten (PCB) -Designer. Und für Probleme, welche fast identisch zu Dana’s Problemen sind, haben sie jahrzehntealte und gut dokumentierte Algorithmen: Channel routers. Quelle Bevor wir uns die Lösung ansehen, ist das erste was Dana sich daraus abschaut ist ein ordentlicher Weg, das Problem zu modelliern. Das Ziel unseres Kantenrouters ist zweierlei: Bestimme die Anzahl an channels zwischen zwei Knotenzeilen und ordne ein channel jedem horizontalen Segment zu. Der Ort, an dem jede horizontale Linie beginnt und endet wird einfach durch die Position der Knoten bestimmt, die sie verbinden müssen. Die vertikalen Linien sind einfache Projektionen von den Konten zu den horizontalen Linien. Hier hat sich der Router dazu entschieden, 6 Channels in Cyan zu schaffen und dann ein Channel für jedes rote, horizontale Segment geschaffen. Vielleicht könnte Dana diese Lösung einfach kopieren. Wir Platzieren die Kanten einfach so wie Leiterbahnen auf den Leiterplatten der 80er Jahre! Dana mit einem klassischen PCB-Router. Naja, das ist jetzt nicht wirklich zufriedenstellend. Diese Algorithmen wurden mit den Grenzen der PCB-Industrie entworfen, wo Kantenschnittpunkte in der Regel kein Problem sind, nur die finale Größe der Leiterplatte sind wichtig. Wenn es aber zu schönen™ Graphen kommt, ist diese spaghettighafte Lösung eher schlecht. Um das zu beheben, versorgt Dana den Router mit einer teilweisen Reihenfolge der horizontalen Linien: etwas was sagt, das A über B platziert werden muss, um Schnittpunkte zu minimieren. Inspiration von Sportwettkämpfen Um eine gute vertikale Reihenfolge zu finden, beginnen wir mit einer einfachen Idee: Für jedes Paar (A,B) an horizontalen Linien berechnen wir dir Anzahl an Schnittpunkten, wenn wir A über B platzieren, und dann das selbe mit B über A. Wir können herausfinden, das A über B einige Schnittpunkte kostet (oder einspart) oder sich gegenseitig nichts nimmt. Hier spart man zwei Schnittpunkte, wenn man `A` über `B` platziert. Leider resultiert diese Technik möglicherweise in Paradoxon. Wenn A über B, B über C und C über A platziert werden muss, ist keinem geholfen. Um einie ordentliche Reihenfolge aufzustellen, muss Dana einige der aufgestellten Richtwerte opfern, aber in einer Art und Weise, die die wenigste Anzahl an neuen Schnittpunkten hinzufügt. `C` über `A` spart ein Schnittpunkt, `A` über `B` spart zwei Schnittpunkte, `B` über `C` spart einen Schnittpunkt Jetzt ist der perfekte Moment, um völlig Zusammenhangslos über Sport zu reden. Fassen wir den oberen Abschnitt einmal mit Sportbegriffen zusammen. A hat gegen B gewonnen, B hat gegen C gewonnen und C hat gegen A gewonnen. Um die korrekte Reihenfolge zu bestimmen, muss Dana einige Ergebnisse ignorieren, aber in einer Art und Weise, die die wenigsten Ergebnisse ignoriert. Das fundamentale Problem ist das selbe. Glücklicherweise ist das Sportproblem so alt wie die Sportwettbewerbe, und das gute bei solchen alten Problem ist, das eine Menge schlauer Leute sich darüber Gedanken gemacht haben! Ein generischer Weg dieses Problem zu lösen ist mit Graphentheorie, wo unser Sportproblem äquivalent zum Feedback Arc Set-Problem ist. Die schlechte Nachricht: dabei handelt es sich um ein NP-schweres Optimierungsproblem handelt. Das bedeutet, das es unglaublich lange dauern kann, eine Lösung zu finden, selbst wenn es nur ein paar Dutzend Beteiligte gibt. Die gute Nachricht: es gibt einen Haufen Forschungsarbeiten, welche Heuristiken vorschlagen. Diese Lösungen sind nicht optimal, aber nah genug dran an einer optimalen Lösungen in einer gut genugen Zeit. Es gibt verschiedene Heuristiken, je nachdem wie viel Rechnenzeit aufgewendet werden soll, wie nah an der optimalen Lösung man sein muss oder welche Graphart man verwendet. Dana verwendet Heuristiken von Eades, P., Lin, X. and Smyth, W.F. (1993), mit einigen trivialen Modifikationen für gewichtete Graphen. Das ist ein extrem schneller und hoffentlich gut genuger Algorithmus, um eine Reihenfolge zu schaffen (die Pyanodongraphen müssen ja irgendwie vor dem Ende des Universums rauskommen). Es ist gut genug um ein deutlich besseres Ergebnis im vergleich zur letzten Lösung zu erreichen: Der selbe Graph wie am Ende des PCB-Abschnittes, allerdings mit verbessertem Router. Fazit Jetzt nochmal im Schnelldurchgang: Dana veranstaltet ein Sportwettbewerb zwischen Factorioitems. Ihre Platzierzungen werden dann verwendet, um einige Widerstände, Kondensatoren und Spulen auf einer imaginären Leiterplatte zu verbinden. Das befähigt Dana dazu, schöne™ und verständliche™ Graphen zu zeichnen. Vertrau mir, ich bin ein Ingenieur. Beitragen Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach etwas klingt, woran du interessiert bist, tritt unserem Discord bei, um es nicht zu verpassen!","url":"https://alt-f4.blog/ALTF4-63/","@type":"BlogPosting","author":{"@type":"Person","name":"Credne"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-63/"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/63/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/63/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/de/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/de/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/de/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/de/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/de/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/de/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>Der communityproduzierte Nachfolger zu den geliebten Factorio Friday Facts</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-63/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-63/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button button-green lang-button" href="/de/ALTF4-63/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-63/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button lang-button" href="/fr/ALTF4-63/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-63/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-63/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-63/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-63/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-63/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 #63 - Dana Dev-Blog: Spaghettirezeptgraphen  <author>12.08.2022</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Geschrieben von <em>Credne</em>,
+
+
+
+editiert von <em>Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer</em>,
+
+
+
+<br>übersetzt von <em>EDLEXUS</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/63/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Inhaltsverzeichnis</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#dana-dev-blog-%C3%BCber-spaghetti-in-rezeptgraphen-credne">Dana Dev-Blog: Über Spaghetti in Rezeptgraphen <author>Credne</author></a>
+    <ul>
+      <li><a href="#dana--was-ist-das">Dana … Was ist das?</a></li>
+      <li><a href="#dev-blog-zeichnen-der-graphen-spaghetti">Dev-Blog: Zeichnen der Graphen-Spaghetti</a></li>
+      <li><a href="#das-design-sch%C3%B6ner-und-verst%C3%A4ndlicher-graph">Das Design: “schöner™” und “verständlicher™” Graph?</a></li>
+      <li>
+<a href="#der-code-teil">Der Code-Teil</a>
+        <ul>
+          <li><a href="#inspiration-aus-dem-pcb-design">Inspiration aus dem PCB-Design</a></li>
+          <li><a href="#inspiration-von-sportwettk%C3%A4mpfen">Inspiration von Sportwettkämpfen</a></li>
+        </ul>
+      </li>
+      <li><a href="#fazit">Fazit</a></li>
+    </ul>
+  </li>
+  <li><a href="#beitragen">Beitragen</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Nach einer etwas längeren Pause kommt Alt-F4 zurück mit einer Ausgabe, die an die guten alten FFF erinnert: einem Dev-Blog! Hier geht es allerdings nicht um das Spiel an sich, sondern um eine sehr eigene und besondere Mod. <em>Credne</em> hat <strong>Dana</strong> in diese Welt gesetzt, und es hat einiges benötigt, um dahin zu kommen. Viele technische Details und verrückte Fußballideen werden folgen, also viel Spaß damit!</p>
+      <h2 id="dana-dev-blog-über-spaghetti-in-rezeptgraphen-credne">
+        
+        
+            <a href="#dana-dev-blog-%C3%BCber-spaghetti-in-rezeptgraphen-credne" class="anchor" style="text-decoration: none;">Dana Dev-Blog: Über Spaghetti in Rezeptgraphen <author>Credne</author></a>
+          
+        
+      </h2>
+    
+      <h3 id="dana--was-ist-das">
+        
+        
+            <a href="#dana--was-ist-das" class="anchor" style="text-decoration: none;">Dana … Was ist das?</a>
+          
+        
+      </h3>
+    
+
+<p><a href="https://mods.factorio.com/mod/dana">Dana</a> ist eine Mod, welche versucht eine einfache Frage in Factorio zu beantworten: “Wie stelle ich Item <em>X</em> her?”.</p>
+
+<p>Es gibt bereits einige Mods, die diese Frage beantworten: <a href="https://mods.factorio.com/mod/FNEI">FNEI</a>, <a href="https://mods.factorio.com/mod/RecipeBook">Recipe Book</a>, <a href="https://mods.factorio.com/mod/what-is-it-really-used-for">What is it really used for</a> und viele weitere. Diese Mods haben einen gemeinsamen Ansatz: Sagen wir einmal, ein neuer Spieler möchte herausfinden, wie Wissenschaftspakete für Chemie (die blauen) hergestellt werden. Der Spieler verwendet eine der verbreiteten Mods (oder Factorios eigene Rezeptübersicht) und findet ein einzelnes Rezept, welches rote Schaltkreise, Schwefel und Motoreinheiten benötigt. Jetzt wundert sich der neue Spieler “Wie mache ich rote Schaltkreise?”, sucht danach, sieht ein  einzelnes Rezept, welches Plastik, Kupferkabel und grüne Schaltkreise benötigt. Der nächste Gedanke ist: “Wie mache ich Plastik?”: Ein Rezept mit Flüssiggas. “Wie mache ich Flüssiggas?”: Vier Rezepte, welche man sich alle nacheinander anschauen muss, und so weiter. Dieser Prozess ist zeitaufwändig, nervig und es ist wahrscheinlich, das der Spieler einen Schritt vergisst (wie Schwefel oder Stahl).</p>
+
+<p>Dana kommt aus der Frustration, diesen Prozess für große Modpacks für eine lange Zeit anzuwenden, und verwendet einen <em>etwas</em> anderen Ansatz, um diese Fragen zu beantworten:</p>
+
+<p>
+  <figure>
+    <video class="media" width="100%" height="100%" style="max-width: ; max-height: " playsinline="" autoplay="" muted="" loop="" controls="">
+      <source src="https://media.alt-f4.blog/ALTF4/63/dana-demo.mp4" type="video/mp4"></source>
+      &lt;/source&gt;
+      <!-- <source src="movie.ogg" type="video/webm"> -->
+      <!-- <source src="movie.ogg" type="video/ogg"> -->
+      Dana-Demo
+    </video>
+    <figcaption>“Wie stellt man *Wissenschaftspakete für Chemie* her?”</figcaption>
+  </figure>
+</p>
+
+<p>In Dana geht es um Tiefe: Wenn man fragt, wie Wissenschaftspakete für Chemie hergestellt werden, zeigt es alle benötigten Schritte, um das Produkt aus Rohstoffen herzustellen. Und das tut es direkt im Spiel, indem es einen <em>schönen™ und verständlichen™</em> Rezeptgraph zeichnet. Spieler können darin mit WASD navigieren, mit dem Mausrad rein-&amp;rauszoomen und Knoten oder Kanten auswählen, für zusätzliche Informationen. Es ist auch möglich, einen vollständigen Herstellungsgraph des aktuellen Spiels zu zeichnen (der für Vanilla wird später gezeigt) oder einen “Verwendungs-“Graph, der zeigt, was aus einem Material hergestellt werden kann.</p>
+
+<p>Dana ist dazu designt, problemlos mit Mods klarzukommen, welche Rezepte oder Gegenstände erweitern/verändern/entfernen. Es gibt keine hardgecodete Konfiguration, welche mit Dana mitgeliefert wird. Im Video hat es Kupfer zwischen Eisen und der Raffinerie platziert, Schweröl über dem Leichtöl und entschieden, wie die Linien dazwischen gezeichnet werden sollen, entschieden was die X/Y-Koordinaten der einzelnen Elemente sein soll und vieles mehr. Alles was Dana dafür zur Verfügung hatte, war eine vollständige Liste mit allen Items, Rezepten und was die natürlich vorkommenden Rohstoffe sind. Das wird mit einem <em>Graph-Layout-Algorithmus</em> erreicht (ein Stück Code, welches die Rezepte/Items nimmt und entscheidet, wo sie platziert werden sollen und wie die Verbindungen aussehen sollen). Dieser Algorithmus ist speziell für Factorio entwickelt und soll Thema dieses Artikels sein.</p>
+      <h3 id="dev-blog-zeichnen-der-graphen-spaghetti">
+        
+        
+            <a href="#dev-blog-zeichnen-der-graphen-spaghetti" class="anchor" style="text-decoration: none;">Dev-Blog: Zeichnen der Graphen-Spaghetti</a>
+          
+        
+      </h3>
+    
+
+<p>Der heutige Artikel wird einige (hoffentlich interessante) Details über die inneren Abläufe in Dana’s <em>schönem™ und verständlichen™</em> Graphengenerator verraten. Un einen allgemeinen Einstieg zu geben, sind Dana’s Graphen sogenannte <a href="https://en.wikipedia.org/wiki/Layered_graph_drawing">layered graphs</a>. Das bedeutet, dass Gegenstände und Rezepte in <em>Knotenebenen</em> platziert sind, welche durch <em>Kantenebenen</em> geteil sind.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/layers-illustration.jpg" alt="Layered graph" style="max-width: ; max-height:  ">
+        
+        <figcaption>Layered-Graph-Struktur: Knotenebenen mit bleuen Hintergrund, Kantenebenen mit grünem Hintergrund.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Das erste was Dana tut ist zu entscheiden, wie viele Ebenen benötigt werden, und in welche Ebene jedes Item/Gegenstand platziert wird. Der zweite Schritt ist zu entscheiden, welche horizontale Koordinate jedem Item/Rezept zugeordnet wird. Der dritte Schritt sind die Kantenebenen. Der letzte Schritt ist es, jedem Element eine vertikale Koordinate zuzuordnen, da jetzt die Anzahl der Ebenen und ihre Höhe bekannt ist.</p>
+
+<p>Der gesamte Layout-Algorithmus ist zu groß und zu technisch für einen Alt-F4-Artikel, so dass wir uns im Folgenden nur auf den dritten Schritt konzentrieren werden, in dem die Kantenebenen gebaut werden. Hier ist die Problemstellung: bei zwei gegebenen aufeinanderfolgenden Knotenebenen, zeichne die benötigten Kanten in der <em>Kantenebene</em>, um einen <em>schönen™ und verständlichen™</em> Graphen zu zeichnen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/intro-problem-description.jpg" alt="Intro: Problembeschreibung" style="max-width: ; max-height:  ">
+        
+        <figcaption>Eingangsdaten für dieses Problem</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/intro-problem-solution.jpg" alt="Intro: mögliche Lösung" style="max-width: ; max-height:  ">
+        
+        <figcaption>mögliches Ergebnis</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Praktischerweise ist das mehr oder weniger eine Übung für Kindergartenkinder:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/problem-kindergarten-version.jpg" alt="Kindergartenversion" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Da 5-Jährige dieses Problem lösen können, sollte es ja nicht so schwer zu programmieren sein, oder?</p>
+      <h3 id="das-design-schöner-und-verständlicher-graph">
+        
+        
+            <a href="#das-design-sch%C3%B6ner-und-verst%C3%A4ndlicher-graph" class="anchor" style="text-decoration: none;">Das Design: “schöner™” und “verständlicher™” Graph?</a>
+          
+        
+      </h3>
+    
+
+<p>Zuerst nehmen wir Zettel und Stift (oder dein bevorzugtes Bildbearbeitungsprogramm) und beantworten eine wichtige Frage: wie sollte die Kanten aussehen? Wie man sich vorstellen kann, ist es relativ schwer zu definieren, was einen Graphen <em>schön™</em> und <em>verständlich™</em> macht.</p>
+
+<p>Vielleicht einfach gerade Linien, wie bei den meisten Graphrendern?</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/alternative-solution-1.jpg" alt="Gerade Linien: kleines Beispiel" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/alternative-solution-2.jpg" alt="Gerade Linien: großes Beispiel" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Das erfüllt die Anforderungen für kleine Graphen, aber ist nicht <em>schön™</em> und <em>verständlich™</em> für breite Graphen. Fast parallele Linien, welche sich schneiden sind nicht leicht nachzuverfolgen und Gegenden mit vielen Kanten werden einfach zu einem unverständlichen Blob. Die gute alte gerade Linie ist nicht gut genug für Vanilla, von gemoddeten Spielen ganz zu schweigen!</p>
+
+<p>Also zurück ans Reißbrett für eine <em>schönere™</em> und <em>verständlichere™</em> Lösung. Erinnern wir uns einmal an einige generelle Richtlinien für Nutzerfreundlichkeit bei Graphenkanten:</p>
+
+<ul>
+  <li>Minimiere Schnittpunkte von Kanten, besonders wenn sie fast parallel verlaufen.</li>
+  <li>Minimiere gekrümmte Kanten.</li>
+  <li>Minimiere die Länge der Kanten.</li>
+</ul>
+
+<p>Zusätzlich dazu gibt es einige allgemeine UI-Designregeln:</p>
+
+<ul>
+  <li>Die Nutzerfreundlichkeit bricht ein, wenn gescrollt werden muss, um Informationen von verschiedenen Stellen des Interfaces zu vergleichen. Um das zu vermeiden muss der Graph so kompakt wie möglich sein.</li>
+  <li>Weniger ist Mehr: wenn die selbe Menge an Informationen mit vier Linien anstatt zwanzig Linien dargestellt werden kann, ist das die bessere Lösung.</li>
+</ul>
+
+<p>Es ist nun Zeit, nach besseren Ideen zu <em>suchen</em>. Und der beste Weg, irgendwas zu suchen ist, wie wir alle wissen, <del>es zu googlen</del> in Factorio “T” drücken:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree.jpg" alt="Factorio-Technologiebaum" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Factorios Graphnenrenderer hat einen cleveren Weg, Knaten zu rendern. Jede Kante besteht aus drei Segmenten: zwei vertikalen und einem horizontalen. Dieser Ansatz ist geeigneter für breite Graphen, da:</p>
+
+<ul>
+  <li>Es keine Schnittpunkte zwischen beinahe parallelen Kanten gibt. Alle Schnittpunkte treten mit rechnten Winkeln auf, was optimal dafür ist, nicht der falschen Linie zu folgen.</li>
+  <li>Die Dichte der Linien ist unter Kontrolle: Es gibt immer genug Platz zwischen parallelen Linien um sie voneinander zu unterscheiden.</li>
+</ul>
+
+<p>Der Preis für die Lesbarkeit ist benötigter vertikaler Platz: Es muss genug Platz zwischen zwei Technologiezeilen sein, um alle benötigten horizontalen Elemente ohne Kollisionen unterzubringen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree-spacing.jpg" alt="Factorio-Technologiebaum" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Um die Kosten zu minimieren gibt es eine einfache, aber wichtige Optimierung: Was wäre wenn Linie nicht nur zwei Elemente verbinden, sondern eine größere Anzahl? Zeichne einfach eine breite horizontale Linie für jedes Item/Technologie und füge so viele vertikale Linien wie nötig hinzu, um alle Knoten zu verbinden.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/factorio-tech-tree-dana-link-types.jpg" alt="Factorio-Technologiebaum mit horizontaler Verknüpfung" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Sehr viel kompakter, weniger Schnickschnack, definitiv <em>schön™</em> und <em>verständlich™</em>. Das gibt den Graphen einen “Main-Bus”-Vibe, welcher hoffentlich jedem Factoriospieler gut bekannt ist, während zeitgleich alle Richtlinien gut genug eingehalten werden. Das ist auch mit Factorios eigener Render-API möglich, da die Kanten nur eine Verbindung von Linien, Dreiecken und Kreisen ist. Das erlaubt es Dana, den gesamten Factorio Craftinggraph fast auf einem Bildschirm darzustellen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      
+        <img src="https://media.alt-f4.blog/ALTF4/63/dana-full-graph.jpg" alt="Dana: vollständiger Factoriograph" style="max-width: ; max-height:  ">
+        
+        
+      
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="der-code-teil">
+        
+        
+            <a href="#der-code-teil" class="anchor" style="text-decoration: none;">Der Code-Teil</a>
+          
+        
+      </h3>
+    
+
+<p>Das war jetzt alles was wir am Reißbrett entwerfen konnten, jetzt ist es Zeit, das Problem mit Code zu erschlagen! Das ist allerdings selbst nicht ganz frei von Problemen. Factoriomods werden in einer Sprache namens Lua geschrieben, und Lua hat ein unglaublich wüstes Ökosystem. Es gibt keine Hoffnung eine Bibliothek zu finden, die solche Verbindungen erstellen kann.</p>
+
+<p>Eine Lösung wäre es, eine Bibliothek aus einer anderen Sprache zu portieren. Es gibt eine große Anzahl an Bibliotheken, um Graphen zu zeichnen, aber bei DAna handelt es sich mittlerweile um einen Hypergraphen, da wir es mit Verbindungen zwischen mehr als zwei Knoten zu tun haben. Obwohl Hypergraph erstmal unglaublich viel cooler klingt, gibt es leider nur wenige Bibliotheken, um sie zu zeichnen und auch im allgemeinen deutlich weniger wissenschaftliche Literatur zu diesem Thema.</p>
+
+<p>Dana hat deshalb einen Router, welcher beinahe von Grundauf dafür geschaffen wurde. Beinahe deshalb, da es viel Inspiration aus anderen Feldern gab, aber dafür muss man sich mit einigen unerwarteten Themen befassen…</p>
+      <h4 id="inspiration-aus-dem-pcb-design">
+        
+        
+            <a href="#inspiration-aus-dem-pcb-design" class="anchor" style="text-decoration: none;">Inspiration aus dem PCB-Design</a>
+          
+        
+      </h4>
+    
+
+<p>Es gibt zufälligerweise Leute, deren Hauptberuf es ist, Punkte in 2D zu verbinden: Leiterplatten (PCB) -Designer. Und für Probleme, welche fast identisch zu Dana’s Problemen sind, haben sie jahrzehntealte und gut dokumentierte Algorithmen: <a href="https://en.wikipedia.org/wiki/Channel_router">Channel routers</a>.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/ChannelRouteSolution.jpg" alt="Bild mit zwei Kanälen" style="max-width: ; max-height:  ">
+        
+        <figcaption><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/ChannelRouteSolution.png/800px-ChannelRouteSolution.png">Quelle</a></figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Bevor wir uns die Lösung ansehen, ist das erste was Dana sich daraus abschaut ist ein ordentlicher Weg, das Problem zu modelliern. Das Ziel unseres Kantenrouters ist zweierlei: Bestimme die Anzahl an <em>channels</em> zwischen zwei Knotenzeilen und ordne ein <em>channel</em> jedem horizontalen Segment zu.</p>
+
+<p>Der Ort, an dem jede horizontale Linie beginnt und endet wird einfach durch die Position der Knoten bestimmt, die sie verbinden müssen. Die vertikalen Linien sind einfache Projektionen von den Konten zu den horizontalen Linien.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/dana-channels-and-trunks.jpg" alt="Channels und trunks" style="max-width: ; max-height:  ">
+        
+        <figcaption>Hier hat sich der Router dazu entschieden, 6 Channels in Cyan zu schaffen und dann ein Channel für jedes rote, horizontale Segment geschaffen.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Vielleicht könnte Dana diese Lösung einfach kopieren. Wir Platzieren die Kanten einfach so wie Leiterbahnen auf den Leiterplatten der 80er Jahre!</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/PCB-router.jpg" alt="Dana PCB channel router" style="max-width: ; max-height:  ">
+        
+        <figcaption>Dana mit einem klassischen PCB-Router.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Naja, das ist jetzt nicht wirklich zufriedenstellend. Diese Algorithmen wurden mit den Grenzen der PCB-Industrie entworfen, wo Kantenschnittpunkte in der Regel kein Problem sind, nur die finale Größe der Leiterplatte sind wichtig. Wenn es aber zu <em>schönen™</em> Graphen kommt, ist diese spaghettighafte Lösung eher schlecht. Um das zu beheben, versorgt Dana den Router mit einer <strong>teilweisen Reihenfolge</strong> der horizontalen Linien: etwas was sagt, das <code class="language-plaintext highlighter-rouge">A</code> über <code class="language-plaintext highlighter-rouge">B</code> platziert werden muss, um Schnittpunkte zu minimieren.</p>
+      <h4 id="inspiration-von-sportwettkämpfen">
+        
+        
+            <a href="#inspiration-von-sportwettk%C3%A4mpfen" class="anchor" style="text-decoration: none;">Inspiration von Sportwettkämpfen</a>
+          
+        
+      </h4>
+    
+
+<p>Um eine gute vertikale Reihenfolge zu finden, beginnen wir mit einer einfachen Idee: Für jedes Paar (<code class="language-plaintext highlighter-rouge">A</code>,<code class="language-plaintext highlighter-rouge">B</code>) an horizontalen Linien berechnen wir dir Anzahl an Schnittpunkten, wenn wir <code class="language-plaintext highlighter-rouge">A</code> über <code class="language-plaintext highlighter-rouge">B</code> platzieren, und dann das selbe mit <code class="language-plaintext highlighter-rouge">B</code> über <code class="language-plaintext highlighter-rouge">A</code>. Wir können herausfinden, das <code class="language-plaintext highlighter-rouge">A</code> über <code class="language-plaintext highlighter-rouge">B</code> einige Schnittpunkte kostet (oder einspart) oder sich gegenseitig nichts nimmt.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/crossings-score-example.jpg" alt="Beispiel für Schnittpunktwertungen" style="max-width: ; max-height:  ">
+        
+        <figcaption>Hier spart man zwei Schnittpunkte, wenn man `A` über `B` platziert.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Leider resultiert diese Technik möglicherweise in Paradoxon. Wenn <code class="language-plaintext highlighter-rouge">A</code> über <code class="language-plaintext highlighter-rouge">B</code>, <code class="language-plaintext highlighter-rouge">B</code> über <code class="language-plaintext highlighter-rouge">C</code> und <code class="language-plaintext highlighter-rouge">C</code> über <code class="language-plaintext highlighter-rouge">A</code> platziert werden muss, ist keinem geholfen. Um einie ordentliche Reihenfolge aufzustellen, muss Dana einige der aufgestellten Richtwerte opfern, aber in einer Art und Weise, die die wenigste Anzahl an neuen Schnittpunkten hinzufügt.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/crossings-score-contradiction.jpg" alt="Beispiel für ein Schnittpunktwertparadoxon" style="max-width: ; max-height:  ">
+        
+        <figcaption>`C` über `A` spart ein Schnittpunkt, `A` über `B` spart zwei Schnittpunkte, `B` über `C` spart einen Schnittpunkt</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Jetzt ist der perfekte Moment, um völlig Zusammenhangslos über Sport zu reden. Fassen wir den oberen Abschnitt einmal mit Sportbegriffen zusammen. <code class="language-plaintext highlighter-rouge">A</code> hat gegen <code class="language-plaintext highlighter-rouge">B</code> gewonnen, <code class="language-plaintext highlighter-rouge">B</code> hat gegen <code class="language-plaintext highlighter-rouge">C</code> gewonnen und <code class="language-plaintext highlighter-rouge">C</code> hat gegen <code class="language-plaintext highlighter-rouge">A</code> gewonnen. Um die korrekte Reihenfolge zu bestimmen, muss Dana einige Ergebnisse ignorieren, aber in einer Art und Weise, die die wenigsten Ergebnisse ignoriert.</p>
+
+<p>Das fundamentale Problem ist das selbe. Glücklicherweise ist das Sportproblem so alt wie die Sportwettbewerbe, und das gute bei solchen alten Problem ist, das eine Menge schlauer Leute sich darüber Gedanken gemacht haben!</p>
+
+<p>Ein generischer Weg dieses Problem zu lösen ist mit Graphentheorie, wo unser Sportproblem äquivalent zum <a href="https://de.wikipedia.org/wiki/Feedback_Arc_Set">Feedback Arc Set</a>-Problem ist. Die schlechte Nachricht: dabei handelt es sich um ein <a href="https://de.wikipedia.org/wiki/NP-Schwere">NP-schweres</a> Optimierungsproblem handelt. Das bedeutet, das es <strong>unglaublich</strong> lange dauern kann, eine Lösung zu finden, selbst wenn es nur ein paar Dutzend Beteiligte gibt. Die gute Nachricht: es gibt einen Haufen Forschungsarbeiten, welche <em>Heuristiken</em> vorschlagen. Diese Lösungen sind nicht optimal, aber nah genug dran an einer optimalen Lösungen in einer gut genugen Zeit. Es gibt verschiedene Heuristiken, je nachdem wie viel Rechnenzeit aufgewendet werden soll, wie nah an der optimalen Lösung man sein muss oder welche Graphart man verwendet.</p>
+
+<p>Dana verwendet Heuristiken von <a href="https://researchrepository.murdoch.edu.au/id/eprint/27510/1/effective_heuristic.pdf">Eades, P., Lin, X. and Smyth, W.F. (1993)</a>, mit einigen trivialen Modifikationen für gewichtete Graphen. Das ist ein extrem schneller und hoffentlich gut genuger Algorithmus, um eine Reihenfolge zu schaffen (die Pyanodongraphen müssen ja irgendwie vor dem Ende des Universums rauskommen). Es ist gut genug um ein deutlich besseres Ergebnis im vergleich zur letzten Lösung zu erreichen:</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/63/improved-router.jpg" alt="Dana verbesserter Channel router" style="max-width: ; max-height:  ">
+        
+        <figcaption>Der selbe Graph wie am Ende des PCB-Abschnittes, allerdings mit verbessertem Router.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+      <h3 id="fazit">
+        
+        
+            <a href="#fazit" class="anchor" style="text-decoration: none;">Fazit</a>
+          
+        
+      </h3>
+    
+
+<p>Jetzt nochmal im Schnelldurchgang: Dana veranstaltet ein Sportwettbewerb zwischen Factorioitems. Ihre Platzierzungen werden dann verwendet, um einige Widerstände, Kondensatoren und Spulen auf einer imaginären Leiterplatte zu verbinden. Das befähigt Dana dazu, <em>schöne™</em> und <em>verständliche™</em> Graphen zu zeichnen.</p>
+
+<p>Vertrau mir, ich bin ein Ingenieur.</p>
+      <h2 id="beitragen">
+        
+        
+            <a href="#beitragen" class="anchor" style="text-decoration: none;">Beitragen</a>
+          
+        
+      </h2>
+    
+
+<p>Wie immer suchen wir nach Leuten, die zu Alt-F4 beitragen wollen, sei es mit einem Artikel oder durch Hilfe bei Übersetzungen. Wenn du etwas Interessantes im Kopf hast, das du mit der Community in einer eleganten Art teilen möchtest, hier kannst du das tun. Falls du dir unsicher bist, beantworten wir gerne Fragen zu Inhalt und Struktur. Falls das nach  etwas klingt, woran du interessiert bist, tritt unserem <a href="https://discord.gg/nxnCFkb">Discord</a> bei, um es nicht zu verpassen!</p>
+
+
+
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/de/discord">
+    Auf Discord diskutieren
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/de/ALTF4-62/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/de/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/de/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/de/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/de/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Diese Webseite ist ein Fan-Projekt und steht nicht in direkter Verbindung zu Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
