@@ -18,6 +18,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7 # can change this to 2.7 or whatever version you prefer
+          rubygems: 3.3.22
 
       - name: 🔨 install dependencies & build site
         uses: limjh16/jekyll-action-ts@v2
