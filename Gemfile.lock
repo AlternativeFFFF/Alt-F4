@@ -70,6 +70,8 @@ GEM
     rexml (3.2.5)
     rouge (4.1.0)
     safe_yaml (1.0.5)
+    sass-embedded (1.58.3-x86_64-linux-gnu)
+      google-protobuf (~> 3.21)
     sass-embedded (1.58.3-x86_64-linux-musl)
       google-protobuf (~> 3.21)
     terminal-table (3.0.2)
@@ -78,6 +80,7 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
+  x86_64-linux
   x86_64-linux-musl
 
 DEPENDENCIES
