@@ -17,7 +17,7 @@ jobs:
       - name: 💎 setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1 # can change this to 2.7 or whatever version you prefer
+          ruby-version: 2.7 # can change this to 2.7 or whatever version you prefer
 
       - name: 🔨 install dependencies & build site
         uses: limjh16/jekyll-action-ts@v2

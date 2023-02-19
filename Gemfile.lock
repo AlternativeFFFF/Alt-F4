@@ -35,7 +35,7 @@ GEM
     jekyll-paginate (1.1.0)
     jekyll-polyglot (1.5.1)
       jekyll (>= 3.0)
-    jekyll-sass-converter (3.0.0)
+    jekyll-sass-converter (2.2.0)
       sass-embedded (~> 1.54)
     jekyll-seo-tag (2.8.0)
       jekyll (>= 3.8, < 5.0)
@@ -72,8 +72,6 @@ GEM
     safe_yaml (1.0.5)
     sass-embedded (1.58.3-x86_64-linux-gnu)
       google-protobuf (~> 3.21)
-    sass-embedded (1.58.3-x86_64-linux-musl)
-      google-protobuf (~> 3.21)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
     unicode-display_width (2.4.2)
@@ -81,7 +79,6 @@ GEM
 
 PLATFORMS
   x86_64-linux
-  x86_64-linux-musl
 
 DEPENDENCIES
   jekyll
@@ -94,4 +91,4 @@ DEPENDENCIES
   rouge
 
 BUNDLED WITH
-   2.3.25
+   2.4.6
