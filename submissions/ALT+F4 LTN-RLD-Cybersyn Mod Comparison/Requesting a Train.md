@@ -14,21 +14,25 @@ discuss:
 
 Factorio's train system is great. Trains are the transportation method of choice when it comes to long distances. Its rules are exceedingly simple, allowing you to build your first automated bi-directional rail network to a nearby ore outpost with incredible ease. And yet these rules, taken all together, can make setting up a network of hundreds of trains to feed your megabases's insatiable demand for raw resources a logistic nightmare. 
 
-They allow for such incredible complexity that [u/minibetrayal](https://www.reddit.com/u/minibetrayal/) on reddit theorized that the train system was actually Turing Complete. And then took on the challenge of [building the largest and most useless rail network ever](https://www.reddit.com/r/factorio/comments/evkff6/the_biggest_and_most_useless_rail_network_ever/) to prove it. Making the rail system join the circuit network and the belt transport system ([issue #23](https://alt-f4.blog/ALTF4-23/) and [issue #24](https://alt-f4.blog/ALTF4-24/)) as yet another independently Turing Complete part of Factorio.
+They allow for such incredible complexity that [u/minibetrayal](https://www.reddit.com/u/minibetrayal/) on reddit theorized that the train system was actually Turing Complete. And then took on the challenge of [building the largest and most useless rail network ever](https://www.reddit.com/r/factorio/comments/evkff6/the_biggest_and_most_useless_rail_network_ever/) to prove it. Making the rail system join the circuit network and the belt transport system ([Alt-F4 #23](https://alt-f4.blog/ALTF4-23/) and [Alt-F4 #24](https://alt-f4.blog/ALTF4-24/)) as yet another independently Turing Complete part of Factorio.
 
 With all the options available to us, how could the train system possibly get better? 
 
 Enter the Factorio modding community. 
 
-We've talked before about how mods have improved the rail system. They introduced the first iteration of [the fluid wagon](https://alt-f4.blog/ALTF4-21/). They've changed trains' behaviour, with mods like [Train Supply Manager (TSM)](https://mods.factorio.com/mod/train-pubsub), which we've talked about previously, all the way back in [issue #15](https://alt-f4.blog/ALTF4-15/). 
+We've talked before about how mods have improved the rail system. They introduced the first iteration of [the fluid wagon](https://alt-f4.blog/ALTF4-21/). They've changed trains' behaviour, with mods like [Train Supply Manager (TSM)](https://mods.factorio.com/mod/train-pubsub), which we've talked about previously, all the way back in [Alt-F4 #15](https://alt-f4.blog/ALTF4-15/). 
 
-But it came to my attention that while ALT+F4 has touched on it briefly in several separate previous articles (issue [#28](https://alt-f4.blog/ALTF4-28/), [#37](https://alt-f4.blog/ALTF4-37/)), there has yet to be one that takes an in-depth look at the [Logistic Train Network](https://mods.factorio.com/mod/LogisticTrainNetwork) mod (also known as LTN for short), and what it does. Until recently, LTN was unique, with the only other notable mod that altered how trains functioned being the previously mentioned TSM.
+But it came to my attention that while ALT+F4 has touched on it briefly in several separate previous articles ([Alt-F4 #28](https://alt-f4.blog/ALTF4-28/), [Alt-F4 #37](https://alt-f4.blog/ALTF4-37/)), there has yet to be one that takes an in-depth look at the [Logistic Train Network](https://mods.factorio.com/mod/LogisticTrainNetwork) mod (also known as LTN for short), and what it does. Until recently, LTN was unique, with the only other notable mod that altered how trains functioned being the previously mentioned TSM.
 
 That all changed in November 2022, with the advent of not one, but two new competitors, which unlike TSM, directly compete with LTN's style of Logistics. With two new competitors, [Project Cybersyn](https://mods.factorio.com/mod/cybersyn) and [Rail Logistics Dispatcher](https://mods.factorio.com/mod/RailLogisticsDispatcher/changelog) being recently released, now seemed like a perfect time to compare and contrast of all three mods.
 
 {% include image.html src='' alt='Modded Entities' caption='The entities added by all three mods' %}
 
-To understand what makes these mods so popular, we understand how they alters vanilla train behavior. At their core, all three mods will dynamically alter train schedules based on signals from the circuit network. This makes the rail system behave more like the vanilla Logistic system, and makes these mods extremely powerful tools for building a many-to-many train network. While a many-to-many network is easily doable on its own vanilla (we've done a tutorial on making one in issue [#37](https://alt-f4.blog/ALTF4-37/)), that only holds true when dealing with one specific train load. The sheer amount of circuitry involved in making a train network able to handle multiple resources makes it a challenge few have attempted, and which even fewer have succeeded at. These mods allow someone with a rudimentary understanding of circuits to achieve that goal.
+To understand what makes these mods so popular, we understand how they alters vanilla train behavior. At their core, all three mods will dynamically alter train schedules based on signals from the circuit network. This makes the rail system behave more like the vanilla Logistic Chests system, and makes these mods extremely powerful tools for building many-to-many train networks. 
+
+Many-to-many networks are easily doable in vanilla Factorio (we've done a tutorial on making one in [Alt-F4 #37](https://alt-f4.blog/ALTF4-37/)). As a quick summary: A single decider combinator can be used to set the train limit on a station to 1 when certain conditions are reached. Such as when a station accepting a resource (a requester station) drops below a threshold. Conversely, the same can be used at a station that supplies a resource (a provider station). If desired, more combinators can be added for further functionality; such as raising the train limit at further thresholds, or adding a maximum train limit.
+
+The shortcomings of this approach are that they are at their best when dealing with a single resource. Combinators are able to do anything a computer can, making it possible to have a train network that is able to handle multiple resources on each train, and even having any arbitrary train handling an arbitrary resource. However, the sheer amount of circuitry involved in making the latter variant of a many to many train network makes it a challenge few have attempted, and which even fewer have succeeded at. All three of these mods allow someone with a rudimentary understanding of circuits to easily reuse trains for other resources and set up multi-item stations.
 
 ### Logistic Train Network - The Original
 
@@ -54,11 +58,11 @@ These signals are all required to be sent into the lamp part of the hybrid entit
 
 The third part of the entity, the combinator which serves as LTN's output, is what makes exact train loading and multi-item stops possible. Through it, LTN outputs the expected delivery, allowing inserter stack sizes and filters to be configured for the appropriate cargo when multiple items are in play. (The Locked Slots signal should also be sent to the input lamp to ensure excess cargo does not remain in the inserter's hands to contaminate the next train).
 
-In my personal experience, has few flaws, and are mostly relegated to the User Experience. It can difficult to correctly configure stations as a new player, and it's rather to make mistakes that propagate through your base. Another problem I have with it is that LTN uses its own train limit signal, and uses that over vanilla train limits for its requester provider stations. However, that signal does not work on the depot stops, which use vanilla train limits. (Optera, the mod author, has also stated that there no plans to change that)
+One disadvantage to LTN is its learning curve. It can difficult to correctly configure stations as a new player, and it's rather to make mistakes that propagate through your base. Another complication is that LTN uses its own train limit signal, and uses that over vanilla train limits for its requester and its provider stations. However, that signal does not work with its depot stops, which instead require the use of vanilla train limits. (Optera, the mod author, has also stated that there no plans to change that)
 
 ### Project Cybersyn - LTN Lite
 
-Named for Project Cybersyn of Allende's Chile, this mod released just a week after Rail Logistics Dispatcher. Project Cybersyn serves as something of a halfway point between LTN and RLD, removing some of LTN's more features in favor of simplicity.
+Named for [Project Cybersyn](https://en.wikipedia.org/wiki/Project_Cybersyn) of Allende's Chile, this mod released just a week after Rail Logistics Dispatcher. Project Cybersyn serves as something of a halfway point between LTN and RLD, removing some of LTN's more features in favor of simplicity.
 
 {% include image.html src='Cybersyn-combinator.png' alt='Project Cybersyn's Cybernetic Combinator next to a Train Stop' caption='Project Cybersyn's Cybernetic Combinator placed next to a Train Stop, highlighted to show the 1-tile range' %}
 
@@ -74,7 +78,7 @@ Third, the Refueler mode combined with the depot bypass feature allows trains to
 
 {% include image.html src='Cybersyn-signals.png' alt='Project Cybersyn's signals' caption='Project Cybersyn's signals' %}
 
-Project Cybersyns adds a total of 3 Signals, making for a simpler overall system. While it retains the requester threshold, priority, and locked slots signal, many of the other singals including provide threshold signals are done away with entirely.
+Project Cybersyns adds a total of 3 Signals, making for a simpler overall system. While it retains the requester threshold, priority, and locked slots signals (which are identical in function to the ones from LTN), many of the other signals including provide threshold signals are removed entirely.
 
 {% include image.html src='Cybersyn-GUI-2.png' alt='Cybernetic Combinator in Station Mode' caption='Cybernetic Combinator in station mode' %}
 
