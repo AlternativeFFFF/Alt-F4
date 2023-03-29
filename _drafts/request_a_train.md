@@ -80,7 +80,7 @@ One upcoming feature (currently available on the experimental branch as of the t
 
 The second of the three mods to be released, Rail Logistics Dispatcher, is also the most radically different, with its most prominent feature being an integrated GUI.
 
-{% include compare.html id="0" width="1470px" height="340px" old='https://media.alt-f4.blog/ALTF4/64/RLD-stop.jpg' new='https://media.alt-f4.blog/ALTF4/64/RLD-stop-ALT.jpg' caption='The titular Rail Logistics Dispatcher. While it resembles a lamp, a look in ALT mode reveals the truth of the matter: It is actually a combinator in disguise!' %}
+{% include compare.html id="0" width="1465px" height="340px" old='https://media.alt-f4.blog/ALTF4/64/RLD-stop.jpg' new='https://media.alt-f4.blog/ALTF4/64/RLD-stop-ALT.jpg' caption='The titular Rail Logistics Dispatcher. While it resembles a lamp, a look in ALT mode reveals the truth of the matter: It is actually a combinator in disguise!' %}
 
 Much like Cybersyn, Rail Logistics Dispatcher forgoes replacing the vanilla train stop in favor of adding another entity to control it. However, the Dispatcher it adds is smaller, doesn't require power, and uses lamp graphics similar to LTN, making it easier to tell whether the stop is functioning correctly. Taken together, the minimum footprint for the dispatcher and train stop is 2x2 + 1x1, with the latter needing to be 1 tile away from the stop it controls.
 
