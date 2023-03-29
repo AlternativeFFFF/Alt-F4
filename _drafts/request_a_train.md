@@ -50,7 +50,7 @@ One disadvantage of LTN is its steep learning curve. It can be difficult to corr
 
 Named for [Project Cybersyn](https://en.wikipedia.org/wiki/Project_Cybersyn) of Allende's Chile, this mod released just a week after Rail Logistics Dispatcher. Project Cybersyn serves as something of a halfway point between LTN and RLD, removing some of LTN's more complex features in favor of simplicity, such as the ability to control which train lengths are eligible to use a particular station.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/64/Cybersyn-combinator.jpg' alt='Project Cybersyn's Cybernetic Combinator next to a Train Stop' caption='Project Cybersyn's Cybernetic Combinator placed next to a Train Stop, highlighted to show the 1-tile range' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/64/Cybersyn-combinator.jpg' alt='Project Cybersyn’s Cybernetic Combinator next to a Train Stop' caption='Project Cybersyn’s Cybernetic Combinator placed next to a Train Stop, highlighted to show the 1-tile range' %}
 
 Unlike LTN, which adds a whole new stop that must completely replace its vanilla counterpart, Project Cybersyn adds a new entity that must be placed within a tile of a station to control it. Together with a constant combinator to configure the new entity, the minimum footprint for the stop is 2x2 + 2x1 (or 1x2) + 1x1. Only the stop and Cybernetic Combinator are required for depots and fuel stations. Sharp-eyed readers will notice the 'No Power' icon - Cybersyn is the only one of the three mods that adds an entity that requires power to function properly. Placing down more Cybernetic combinators allows one to use additional functions. One welcome change is that Cybersyn uses vanilla train limits, unlike LTN.
 
@@ -62,7 +62,7 @@ A second major change is that by default, trains with cargo in them are no longe
 
 Third, the Refueler mode combined with the depot bypass feature allows trains to be constantly on the move and only stop for fuel when they run low, which significantly reduces the number of trains needed to supply a base.
 
-{% include image.html src='https://media.alt-f4.blog/ALTF4/64/Cybersyn-signals.jpg' alt='Project Cybersyn's signals' caption='Project Cybersyn's signals' %}
+{% include image.html src='https://media.alt-f4.blog/ALTF4/64/Cybersyn-signals.jpg' alt='Project Cybersyn’s signals' caption='Project Cybersyn’s signals' %}
 
 Project Cybersyn adds a total of three signals, making for a simpler overall system. While it retains the requester threshold, priority, and locked slots signals (which are identical in function to the ones from LTN), many of the other signals, including the 'provide threshold' signals, are removed entirely.
 
@@ -80,11 +80,11 @@ One upcoming feature (currently available on the experimental branch as of the t
 
 The second of the three mods to be released, Rail Logistics Dispatcher, is also the most radically different, with its most prominent feature being an integrated GUI.
 
-{% include compare.html old='RLD=stop.jpg' new='RLD-stop-ALT.jpg' caption='The titular Rail Logistics Dispatcher. While it resembles a lamp, a look in ALT mode reveals the truth of the matter: It is actually a combinator in disguise!' %}
+{% include compare.html old='https://media.alt-f4.blog/ALTF4/64/RLD=stop.jpg' new='https://media.alt-f4.blog/ALTF4/64/RLD-stop-ALT.jpg' caption='The titular Rail Logistics Dispatcher. While it resembles a lamp, a look in ALT mode reveals the truth of the matter: It is actually a combinator in disguise!' %}
 
 Much like Cybersyn, Rail Logistics Dispatcher forgoes replacing the vanilla train stop in favor of adding another entity to control it. However, the Dispatcher it adds is smaller, doesn't require power, and uses lamp graphics similar to LTN, making it easier to tell whether the stop is functioning correctly. Taken together, the minimum footprint for the dispatcher and train stop is 2x2 + 1x1, with the latter needing to be 1 tile away from the stop it controls.
 
-{% include gallery.html items='RLD-GUI.jpg;Rail Logistics Dispatcher's GUI,LTN-Combinator-Modernized.jpg;LTN Combinator Modernized's GUI' %}
+{% include gallery.html items='https://media.alt-f4.blog/ALTF4/64/RLD-GUI.jpg;Rail Logistics Dispatcher’s GUI,https://media.alt-f4.blog/ALTF4/64/LTN-Combinator-Modernized.jpg;LTN Combinator Modernized’s GUI' %}
 
 While third-party mods like [LTN Combinator Modernized](https://mods.factorio.com/mod/LTN_Combinator_Modernized) and the brand-new [Cybersyn Combinator]("https://mods.factorio.com/mod/cybersyn-combinator") have been very helpful to those lacking experience with circuit networks, the fact remains that those entirely separate mods dedicated to simplifying and improving the user experience. With that in mind, RLD opted to include a GUI right out of the box. (RLD does also offer a 'signals mode' to allow the user to configure the Dispatcher in a manner more similar to LTN if desired.) Similar to Project Cybersyn above, Rail Logistics Dispatcher's author also plans to implement a native [manager UI](https://mods.factorio.com/mod/RailLogisticsDispatcher/discussion/6390043c3a48c93b86a5f22b) to view the whole network in the future.
 
