@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="fr" class="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Alt-F4 n°64 - Demander un train</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.3.2">
+<meta property="og:title" content="Alt-F4 n°64 - Demander un train">
+<meta name="author" content="OceanPhantom">
+<meta property="og:locale" content="fr">
+<meta name="description" content="Nouvelle année, même bon vieux Alt-F4 ! Le numéro 64 n’est pas seulement réjouissant pour les amoureux du format binaire, mais aussi, nous l’espérons, pour tous les autres. Pour sa première contribution, OceanPhantom nous fait part des développements récents et passionnants dans le domaine de l’automatisation encore plus poussée des réseaux ferroviaires, grâce à l’utilisation de modifications, ou mods en abrégé. Le vénérable LTN va-t-il être détrôné ? C’est ce que nous allons découvrir ! Demander un train OceanPhantom Le système des trains dans Factorio est super. Les trains sont une méthode de transport de choix en ce qui concerne les longues distances. Ses règles sont excessivement simples, ce qui nous permet de construire nos premiers systèmes automatisés bidirectionnels vers un avant-poste proche avec une facilité déconcertante. Et pourtant, lorsque l’on combine ces règles ensemble, mettre en place un système d’une centaine de trains pour alimenter notre insatiable mégabase en ressources se révèle être un cauchemar logistique. Ils permettent une complexité tellement incroyable que u/minibetrayal sur Reddit a émis l’hypothèse que le système ferroviaire était en fait un système Turing complet. Il a ensuite relevé le défi de construire le réseau ferroviaire le plus grand et le plus inutile de tous les temps pour le prouver. Le système ferroviaire rejoint ainsi le réseau logique et le système de transport par convoyeur (Alt-F4 n°23 et Alt-F4 n°24) en tant qu’autre partie indépendamment Turing complète de Factorio. Avec toutes les options disponibles, comment le système de train pourrait-il être amélioré ? Voici la réponse : grâce à la communauté des moddeurs de Factorio. Nous avons déjà parlé de la façon dont les mods ont amélioré le système ferroviaire. Ils ont introduit la première version du wagon-citerne. Ils ont modifié le comportement des trains, avec des mods comme Train Supply Manager (TSM), dont nous avons déjà parlé dans le Alt-F4 n°15. Il m’est alors apparu que bien qu’ALT-F4 l’ait déjà brièvement abordé dans plusieurs articles (Alt-F4 n°28 et Alt-F4 n°37), il n’y en a pas encore eu un qui examine en profondeur le mod Logistic Train Network, ou “LTN” en abrégé. Jusqu’à récemment, LTN était unique : le seul autre mod significatif qui modifiait le fonctionnement des trains étant le mod TSM mentionné précédemment. Tout cela a changé en novembre 2022, avec l’arrivée non pas d’un, mais de deux nouveaux prétendants qui, contrairement à TSM, concurrencent directement le style de logistique de LTN. Avec la sortie récente de ces deux nouveaux concurrents, Project Cybersyn et Rail Logistics Dispatcher, le moment semble idéal pour comparer les trois options. Les entités ajoutées par les trois mods. Pour comprendre ce qui rend ces mods si populaires, nous devons d’abord comprendre comment ils modifient le comportement des trains classiques. Fondamentalement, ces trois mods modifient dynamiquement les horaires des trains en fonction des signaux émis par le réseau logique. Le système ferroviaire se comporte ainsi davantage comme un réseau logistique standard, ce qui fait de ces mods des outils extrêmement puissants pour construire des réseaux de trains à gares multiples. Il est maintenant possible de créer des réseaux à gares multiples dans le Factorio de base (nous avons fait un tutoriel sur la construction d’un tel réseau dans le Alt-F4 n°37). Pour résumer rapidement : un seul circuit logique peut être utilisé pour mettre la limite de train sur une gare à 1 lorsque certaines conditions sont remplies, par exemple lorsqu’une gare acceptant une ressource (une gare demandeuse) passe en dessous d’un certain seuil. Inversement, la même chose peut être faite dans une gare qui fournit une ressource (une gare fournisseuse). Si nécessaire, d’autres circuits logiques peuvent être ajoutés pour plus de fonctionnalités, comme l’augmentation de la limite de train à d’autres seuils, ou l’ajout d’une limite maximale de train. L’inconvénient de cette approche est qu’elle est optimale lorsqu’il s’agit d’une seule ressource. Les circuits logiques sont capables de faire tout ce qu’un ordinateur peut faire, ce qui autorise la création d’un réseau ferroviaire capable de gérer plusieurs ressources sur chaque train, et même de faire en sorte qu’un train arbitraire puisse gérer une ressource arbitraire. Cependant, la quantité de circuits logiques nécessaires à la réalisation de cette dernière variante d’un réseau de trains à gares multiples en fait un défi que peu de gens ont tenté de relever, et qu’encore moins d’entre eux ont réussi. Ces trois mods permettent à ceux ayant une compréhension rudimentaire des circuits logiques de réutiliser facilement des trains pour d’autres ressources et de mettre en place des gares multi-objets. Logistic Train Network – L’Original Conçu à l’origine sur les forums de Factorio par ssilk en octobre 2016, puis implémenté et publié par Optera en avril 2017 pour la version 0.14 de Factorio, Logistic Train Network est l’un des mods les plus appréciés et les plus influents de l’histoire de Factorio. Il reste toujours aussi populaire, comme en témoignent les mods “récursifs” créés ultérieurement pour compléter LTN, et sert d’inspiration directe pour les deux autres mods dont nous parlerons plus tard. Alors que je vais aborder LTN ici, cet article a plus pour but de souligner les différences entre les mods que d’être un manuel. À ce titre, une vue d’ensemble plus complète des signaux et des fonctionnalités peut être trouvée sur le sous-forum LTN. LTN ajoute l’entité Arrêt de train logistique et 22 signaux utilisés pour contrôler le réseau. Lorsqu’il est utilisé avec des mods qui ajoutent de nouveaux types de locomotives et de wagons, LTN ajoutera également des signaux pour chaque nouvelle locomotive ou chaque nouveau wagon. L’entité hybride Arrêt de train logistique ajoutée par LTN L’arrêt de train logistique doit être utilisé pour que le mod fonctionne, et remplace complètement l’arrêt de train classique. Ce nouvel ajout est une entité hybride composée d’un arrêt de train, d’une lampe (qui sert d’entrée pour les signaux), et d’un émetteur de constantes jaune (qui sert de sortie). Ajouté à cela un émetteur de constantes pour configurer la gare, l’empreinte minimale au sol de l’arrêt est de $2\times2 + 1\times1$ (seul l’arrêt en lui-même est nécessaire pour un fournisseur utilisant les valeurs par défaut globales). Les signaux virtuels ajoutés par LTN Bien que le nombre de signaux puisse être décourageant, la plupart d’entre eux (en particulier les deux rangées inférieures) peuvent être ignorés en toute sécurité tout en conservant un réseau pleinement fonctionnel. Le seul signal absolument nécessaire est le signal “Dépot” dans le coin supérieur gauche. Dans LTN, toutes les livraisons démarrent et se terminent dans des gares de dépôt, et un train doit d’abord entrer dans une telle gare avant que son “cerveau” ne soit pris en charge par le mod. Ce signal transforme un arrêt en l’équivalent des roboports du réseau logistique. Ces dépôts sont donc également d’excellents endroits pour gérer le ravitaillement en carburant en raison de leur rôle central dans le réseau. Les deux autres types d’arrêts sont le Fournisseur et le Demandeur. Bien que l’on puisse penser que les signaux avec le coffre fournisseur et le coffre de demande indiquent de quel type d’arrêt il s’agit, ce n’est pas le cas. En réalité, un signal de ressource positif indique que l’arrêt est un fournisseur de cette ressource. Un signal négatif équivalent indique au contraire que l’arrêt est un demandeur de cette ressource. Ces deux types de signaux sont simplement des “seuils”, c’est-à-dire une quantité minimale qui empêche un train d’essayer de prendre ou de déposer à cet arrêt si les signaux reçus ne la respectent pas. LTN offre la possibilité d’utiliser des seuils par pile pour une plus grande flexibilité, mais les fluides doivent utiliser le signal de seuil normal. Le fait que ce soit le signe ($+$ or $-$) du signal qui contrôle le comportement de la gare conduit à un piège courant où un utilisateur peu familier découvre que son arrêt demandeur est devenu involontairement un fournisseur. Pour remédier à ce problème, il suffit d’augmenter le seuil, soit pour chaque gare, soit en modifiant le seuil global dans les paramètres du mod. Ces signaux doivent tous être envoyés à la partie lampe de l’entité hybride, qui fait office de port d’entrée de l’arrêt. Une autre des erreurs très fréquentes consiste à envoyer les signaux de commande à la mauvaise partie de l’entité hybride. La troisième partie de l’entité, l’émetteur de constante qui sert de sortie à LTN, est ce qui rend possible le chargement et le déchargement exacts des trains, ainsi que les arrêts à objets multiples. Grâce à lui, le LTN indique la livraison prévue, ce qui permet de configurer la taille des piles et des filtres des bras en fonction du type et de la quantité de cargaison. (Le signal Emplacements verrouillés doit également être envoyé à la lampe d’entrée afin de s’assurer que le fret excédentaire ne reste pas entre les mains du bras, car il contaminerait le train suivant) L’un des inconvénients de LTN est sa courbe d’apprentissage abrupte. Il peut être difficile de configurer correctement les gares pour un nouveau joueur, et il est assez facile de faire des erreurs qui se propagent dans votre base. Une autre complication est que LTN utilise son propre signal de limite de train, et l’utilise au lieu des limites de train classiques pour ses gares demandeuses et fournisseuses. Cependant, ce signal ne fonctionne pas avec les arrêts de dépôt, qui nécessitent eux l’utilisation des limites de train classiques. (Optera, l’auteur du mod, a également déclaré qu’il n’était pas prévu de changer cela). Project Cybersyn - LTN allégé Nommé d’après le projet Cybersyn du Chili sous Allende, ce mod est sorti juste une semaine après Rail Logistics Dispatcher. Project Cybersyn est en quelque sorte à mi-chemin entre LTN et RLD, supprimant certaines des fonctionnalités les plus complexes de LTN au profit de la simplicité, comme la possibilité de contrôler quelles longueurs de train sont autorisées à utiliser une gare particulière. Le combinateur cybernétique du projet Cybersyn près d’un arrêt de train, mis en évidence pour montrer la portée de 1 tuile Contrairement à LTN, qui ajoute un nouvel arrêt qui doit remplacer complètement son homologue classique, Project Cybersyn ajoute une nouvelle entité qui doit être placée à une tuile d’un arrêt pour le contrôler. Avec un émetteur de constantes pour configurer la nouvelle entité, l’empreinte minimale au sol de l’arrêt est de $2 \times 2 + 2 \times 1 (\text{or } 1 \times 2) + 1 \times 1$. Seuls l’arrêt et le combinateur cybernétique sont nécessaires pour les dépôts et les gares de ravitaillement. Les lecteurs les plus attentifs remarqueront l’icône “Pas d’énergie” : Cybersyn est le seul des trois mods à ajouter une entité qui nécessite de l’énergie pour fonctionner correctement. En plaçant plus de combinateurs cybernétiques, on peut utiliser des fonctions supplémentaires. Un changement bienvenu est que Cybersyn utilise les limites de train classiques, contrairement à LTN. Combinateur cybernétique présentant les différents modes de fonctionnement Les combinateurs cybernétiques du projet Cybersyn ont cinq modes : Gare, Dépôt, Ravitaillement, Contrôle de gare et Contrôle de wagon. Comme dans LTN, les trains doivent d’abord être envoyés à un dépôt pour que le mod puisse leur assigner un horaire. Cependant, les trains n’ont pas besoin de retourner au dépôt pour recevoir un nouvel horaire, grâce à la fonction de contournement du dépôt. Cette fonctionnalité peut cependant nécessiter quelques changements dans la conception des voies et des dépôts afin d’en tirer pleinement parti. Un deuxième changement majeur est que, par défaut, les trains contenant encore de la marchandise ne sont pas autorisés à recevoir de nouvelles livraisons. LTN ne fait qu’avertir l’utilisateur si un train part avec une cargaison restante, ce qui peut entraîner une contamination de la logistique d’une usine si l’utilisateur n’a pas pris soin d’utiliser des bras filtrants pour décharger la cargaison, ou au mieux provoquer l’arrêt des livraisons car les trains qui ont encore un chargement ne peuvent pas prendre une livraison complète. À moins d’être modifié dans les paramètres du combinateur, Cybersyn empêche simplement que cela ne se produise. Troisièmement, le mode Ravitaillement, combiné à la fonction de contournement des dépôts, permet aux trains d’être constamment en mouvement et de ne s’arrêter que lorsqu’ils manquent de carburant, ce qui réduit considérablement le nombre de trains nécessaires au fonctionnement d’une base. Les signaux du projet Cybersyn Le projet Cybersyn ajoute trois signaux au total, ce qui simplifie le système dans son ensemble. S’il conserve les signaux de seuil de demande, de priorité et d’Emplacements verrouillés (dont la fonction reste identique à celle des signaux LTN), de nombreux autres signaux, y compris les signaux de “seuil de fourniture”, sont entièrement supprimés. Combinateur cybernétique en mode Gare L’un des meilleurs changements à mon avis est le fait que l’interface graphique du combinateur de Cybersyn permet à l’utilisateur non seulement de remarquer qu’une gare peut à la fois fournir et demander, mais aussi de désactiver l’un de ces modes. Cela signifie que la solution de contournement consistant à envoyer des signaux à seuil très élevé à l’arrêt du train n’est plus nécessaire. Un autre excellent changement est que le combinateur est une entité unique, ce qui rend plus évident l’emplacement des ports d’entrée et de sortie. L’ajout d’un second combinateur en mode Contrôle de gare permet en outre à l’utilisateur de fixer des seuils par objet. Bien que cela soit possible avec LTN, il fallait des circuits logiques supplémentaires pour chaque ressource ayant un seuil différent. Avec Cybersyn, il suffit d’un seul combinateur cybernétique supplémentaire et d’un second émetteur de constantes, ce qui permet d’économiser de l’espace pour les gares qui gèrent de nombreux objets. Le dernier mode, Contrôle de wagon, est destiné à être placé à côté d’un wagon et permet à l’utilisateur de définir des filtres sur ce wagon. Il indique également la cargaison à charger ou à décharger pour ce wagon spécifique, ce qui permet d’effectuer ces opérations wagon par wagon, plutôt que sur l’ensemble du train. D’autres combinateurs en mode Contrôle de wagon peuvent être ajoutés en fonction des besoins. Les inconvénients sont peu nombreux : les combinateurs cybernétiques peuvent prendre plus de place dans certaines circonstances et moins dans d’autres. Ils ont également besoin d’énergie pour fonctionner correctement. Enfin, la liste des autorisations automatiques peut être délicate et incompatible avec des gares diagonales ou des wagons modifiés de différentes tailles. Il n’y a pas non plus de méthode pour contrôler manuellement les configurations de train autorisées à utiliser la gare, ce qui oblige à désactiver la liste d’autorisation automatique. Un certain contrôle sur les trains qui peuvent utiliser la gare est toujours possible grâce à l’utilisation de masques de réseau. Une fonctionnalité à venir (actuellement disponible en version expérimentale au moment de la rédaction de cet article) est une interface graphique de gestion similaire à LTN Manager, qui est l’un des nombreux mods tiers de LTN. Ce mod donne une vue d’ensemble des gares LTN, permettant de voir rapidement les stocks des gares, les demandes, etc. Une fois implémentée, la version de Cybersyn aura encore une plus grande similitude de fonctionnalités avec LTN. Rail Logistics Dispatcher - Interface graphique intégrée Le deuxième des trois mods à paraître, Rail Logistics Dispatcher, est aussi le plus radicalement différent, sa principale caractéristique étant une interface graphique intégrée. JuxtaposeJS Le dispatcheur de la logistique ferroviaire. Bien qu’il ressemble à une lampe, un coup d’œil en mode ALT révèle la vérité : il s’agit en fait d’un combinateur déguisé ! Tout comme Cybersyn, Rail Logistics Dispatcher renonce à remplacer l’arrêt de train standard en faveur de l’ajout d’une autre entité pour le contrôler. Cependant, le Dispatcheur qu’il ajoute est plus petit, n’a pas besoin d’être alimenté, et utilise un graphisme de lampe similaire à celui de LTN, ce qui permet de savoir plus facilement si l’arrêt fonctionne correctement. Ensemble, l’empreinte au sol minimale du répartiteur et de l’arrêt de train est de $2 \times 2 + 1 \times 1$, ce dernier devant se trouver à une tuile de l’arrêt qu’il contrôle. 1 / 2 2 / 2 ❮ ❯ Bien que des mods tiers comme LTN Combinator Modernized et le tout nouveau Cybersyn Combinator puissent être très utiles à ceux qui manquent d’expérience avec les circuits logiques, il n’en reste pas moins que ces mods entièrement distincts sont dédiés à la simplification et à l’amélioration de l’expérience de l’utilisateur. C’est dans cette optique que RLD a choisi d’inclure une interface graphique dès le départ. (RLD propose également un “mode signaux” qui permet à l’utilisateur de configurer le dispatcheur de manière plus similaire à LTN s’il le souhaite.) Tout comme le projet Cybersyn ci-dessus, l’auteur de Rail Logistics Dispatcher prévoit également de mettre en place une interface utilisateur de gestion native pour, à l’avenir, visualiser l’ensemble du réseau. Contrairement aux deux mods précédents, Rail Logistics Dispatcher n’ajoute aucun nouveau signal. Tout ce qui était auparavant fait via des signaux tels que les seuils, les configurations de train et les identifiants de réseau, est maintenant réalisé via l’utilisation de l’interface graphique. RLD utilise également des seuils par objet. Il n’y a pas de seuils par gare dans l’interface graphique, ni de seuils globaux dans les paramètres. Il peut toutefois enregistrer certaines demandes et certains seuils pour les appliquer à nouveau ultérieurement. Outre les quantités d’objets individuelles et les piles d’objets, RLD a également la possibilité de définir des demandes basées sur le chargement d’un wagon (-citerne ou de marchandises). Au lieu du signal “Emplacement verrouillé” que LTN et Cybersyn partagent, RLD choisit de retourner les bras et de leur faire remettre les objets dans le coffre ou l’entrepôt d’où ils les ont pris. D’une part, cela signifie que l’utilisateur pourrait difficilement créer des gares avec des chargeurs ou des bras prélevant directement les objets sur les convoyeurs. D’autre part, cela signifie que les trains fournisseurs d’objets multiples peuvent remplir des trains avec des charges légèrement plus élevées. L’interface graphique de Rail Logistics Dispatcher en fait le mod le plus facile à utiliser des trois, mais il présente un gros inconvénient : s’il est tout à fait possible de copier un dispatcheur dans la même sauvegarde, il n’est pas possible d’en faire un plan pour l’utiliser dans d’autres sauvegardes ou pour le partager avec d’autres personnes. Les limitations de l’API font que seule l’entité Dispatcheur est copiée, tandis que les paramètres configurés dedans sont perdus. Un second problème, plus accessoire, est que vous devrez peut-être isoler les signaux de vos stocks avec un circuit logique, ou utiliser un fil différent, si vous souhaitez les utiliser à d’autres fins, car l’entrée du Dispatcheur de RLD a des signaux négatifs pour les objets qu’elle demande et qui pourraient autrement la contaminer. Un problème potentiel que je dois souligner est que l’auteur du mod a mentionné qu’il était récemment devenu père et qu’il manquait de temps. Cela signifie que les mises à jour et les corrections de bugs peuvent prendre beaucoup de temps avant d’être implémentées, ce qui peut être un facteur décisif pour certains. Dernières réflexions Ces trois mods sont presque identiques dans leur fonction de base, ce qui permet à ceux qui sont déjà habitués à un mod de passer facilement à l’un ou l’autre des deux. Chacun de ces mods a des avantages et des inconvénients différents, et j’espère que cela vous a aidé à choisir l’un d’entre eux, ou même simplement à réaliser que ces mods existent ! Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<meta property="og:description" content="Nouvelle année, même bon vieux Alt-F4 ! Le numéro 64 n’est pas seulement réjouissant pour les amoureux du format binaire, mais aussi, nous l’espérons, pour tous les autres. Pour sa première contribution, OceanPhantom nous fait part des développements récents et passionnants dans le domaine de l’automatisation encore plus poussée des réseaux ferroviaires, grâce à l’utilisation de modifications, ou mods en abrégé. Le vénérable LTN va-t-il être détrôné ? C’est ce que nous allons découvrir ! Demander un train OceanPhantom Le système des trains dans Factorio est super. Les trains sont une méthode de transport de choix en ce qui concerne les longues distances. Ses règles sont excessivement simples, ce qui nous permet de construire nos premiers systèmes automatisés bidirectionnels vers un avant-poste proche avec une facilité déconcertante. Et pourtant, lorsque l’on combine ces règles ensemble, mettre en place un système d’une centaine de trains pour alimenter notre insatiable mégabase en ressources se révèle être un cauchemar logistique. Ils permettent une complexité tellement incroyable que u/minibetrayal sur Reddit a émis l’hypothèse que le système ferroviaire était en fait un système Turing complet. Il a ensuite relevé le défi de construire le réseau ferroviaire le plus grand et le plus inutile de tous les temps pour le prouver. Le système ferroviaire rejoint ainsi le réseau logique et le système de transport par convoyeur (Alt-F4 n°23 et Alt-F4 n°24) en tant qu’autre partie indépendamment Turing complète de Factorio. Avec toutes les options disponibles, comment le système de train pourrait-il être amélioré ? Voici la réponse : grâce à la communauté des moddeurs de Factorio. Nous avons déjà parlé de la façon dont les mods ont amélioré le système ferroviaire. Ils ont introduit la première version du wagon-citerne. Ils ont modifié le comportement des trains, avec des mods comme Train Supply Manager (TSM), dont nous avons déjà parlé dans le Alt-F4 n°15. Il m’est alors apparu que bien qu’ALT-F4 l’ait déjà brièvement abordé dans plusieurs articles (Alt-F4 n°28 et Alt-F4 n°37), il n’y en a pas encore eu un qui examine en profondeur le mod Logistic Train Network, ou “LTN” en abrégé. Jusqu’à récemment, LTN était unique : le seul autre mod significatif qui modifiait le fonctionnement des trains étant le mod TSM mentionné précédemment. Tout cela a changé en novembre 2022, avec l’arrivée non pas d’un, mais de deux nouveaux prétendants qui, contrairement à TSM, concurrencent directement le style de logistique de LTN. Avec la sortie récente de ces deux nouveaux concurrents, Project Cybersyn et Rail Logistics Dispatcher, le moment semble idéal pour comparer les trois options. Les entités ajoutées par les trois mods. Pour comprendre ce qui rend ces mods si populaires, nous devons d’abord comprendre comment ils modifient le comportement des trains classiques. Fondamentalement, ces trois mods modifient dynamiquement les horaires des trains en fonction des signaux émis par le réseau logique. Le système ferroviaire se comporte ainsi davantage comme un réseau logistique standard, ce qui fait de ces mods des outils extrêmement puissants pour construire des réseaux de trains à gares multiples. Il est maintenant possible de créer des réseaux à gares multiples dans le Factorio de base (nous avons fait un tutoriel sur la construction d’un tel réseau dans le Alt-F4 n°37). Pour résumer rapidement : un seul circuit logique peut être utilisé pour mettre la limite de train sur une gare à 1 lorsque certaines conditions sont remplies, par exemple lorsqu’une gare acceptant une ressource (une gare demandeuse) passe en dessous d’un certain seuil. Inversement, la même chose peut être faite dans une gare qui fournit une ressource (une gare fournisseuse). Si nécessaire, d’autres circuits logiques peuvent être ajoutés pour plus de fonctionnalités, comme l’augmentation de la limite de train à d’autres seuils, ou l’ajout d’une limite maximale de train. L’inconvénient de cette approche est qu’elle est optimale lorsqu’il s’agit d’une seule ressource. Les circuits logiques sont capables de faire tout ce qu’un ordinateur peut faire, ce qui autorise la création d’un réseau ferroviaire capable de gérer plusieurs ressources sur chaque train, et même de faire en sorte qu’un train arbitraire puisse gérer une ressource arbitraire. Cependant, la quantité de circuits logiques nécessaires à la réalisation de cette dernière variante d’un réseau de trains à gares multiples en fait un défi que peu de gens ont tenté de relever, et qu’encore moins d’entre eux ont réussi. Ces trois mods permettent à ceux ayant une compréhension rudimentaire des circuits logiques de réutiliser facilement des trains pour d’autres ressources et de mettre en place des gares multi-objets. Logistic Train Network – L’Original Conçu à l’origine sur les forums de Factorio par ssilk en octobre 2016, puis implémenté et publié par Optera en avril 2017 pour la version 0.14 de Factorio, Logistic Train Network est l’un des mods les plus appréciés et les plus influents de l’histoire de Factorio. Il reste toujours aussi populaire, comme en témoignent les mods “récursifs” créés ultérieurement pour compléter LTN, et sert d’inspiration directe pour les deux autres mods dont nous parlerons plus tard. Alors que je vais aborder LTN ici, cet article a plus pour but de souligner les différences entre les mods que d’être un manuel. À ce titre, une vue d’ensemble plus complète des signaux et des fonctionnalités peut être trouvée sur le sous-forum LTN. LTN ajoute l’entité Arrêt de train logistique et 22 signaux utilisés pour contrôler le réseau. Lorsqu’il est utilisé avec des mods qui ajoutent de nouveaux types de locomotives et de wagons, LTN ajoutera également des signaux pour chaque nouvelle locomotive ou chaque nouveau wagon. L’entité hybride Arrêt de train logistique ajoutée par LTN L’arrêt de train logistique doit être utilisé pour que le mod fonctionne, et remplace complètement l’arrêt de train classique. Ce nouvel ajout est une entité hybride composée d’un arrêt de train, d’une lampe (qui sert d’entrée pour les signaux), et d’un émetteur de constantes jaune (qui sert de sortie). Ajouté à cela un émetteur de constantes pour configurer la gare, l’empreinte minimale au sol de l’arrêt est de $2\times2 + 1\times1$ (seul l’arrêt en lui-même est nécessaire pour un fournisseur utilisant les valeurs par défaut globales). Les signaux virtuels ajoutés par LTN Bien que le nombre de signaux puisse être décourageant, la plupart d’entre eux (en particulier les deux rangées inférieures) peuvent être ignorés en toute sécurité tout en conservant un réseau pleinement fonctionnel. Le seul signal absolument nécessaire est le signal “Dépot” dans le coin supérieur gauche. Dans LTN, toutes les livraisons démarrent et se terminent dans des gares de dépôt, et un train doit d’abord entrer dans une telle gare avant que son “cerveau” ne soit pris en charge par le mod. Ce signal transforme un arrêt en l’équivalent des roboports du réseau logistique. Ces dépôts sont donc également d’excellents endroits pour gérer le ravitaillement en carburant en raison de leur rôle central dans le réseau. Les deux autres types d’arrêts sont le Fournisseur et le Demandeur. Bien que l’on puisse penser que les signaux avec le coffre fournisseur et le coffre de demande indiquent de quel type d’arrêt il s’agit, ce n’est pas le cas. En réalité, un signal de ressource positif indique que l’arrêt est un fournisseur de cette ressource. Un signal négatif équivalent indique au contraire que l’arrêt est un demandeur de cette ressource. Ces deux types de signaux sont simplement des “seuils”, c’est-à-dire une quantité minimale qui empêche un train d’essayer de prendre ou de déposer à cet arrêt si les signaux reçus ne la respectent pas. LTN offre la possibilité d’utiliser des seuils par pile pour une plus grande flexibilité, mais les fluides doivent utiliser le signal de seuil normal. Le fait que ce soit le signe ($+$ or $-$) du signal qui contrôle le comportement de la gare conduit à un piège courant où un utilisateur peu familier découvre que son arrêt demandeur est devenu involontairement un fournisseur. Pour remédier à ce problème, il suffit d’augmenter le seuil, soit pour chaque gare, soit en modifiant le seuil global dans les paramètres du mod. Ces signaux doivent tous être envoyés à la partie lampe de l’entité hybride, qui fait office de port d’entrée de l’arrêt. Une autre des erreurs très fréquentes consiste à envoyer les signaux de commande à la mauvaise partie de l’entité hybride. La troisième partie de l’entité, l’émetteur de constante qui sert de sortie à LTN, est ce qui rend possible le chargement et le déchargement exacts des trains, ainsi que les arrêts à objets multiples. Grâce à lui, le LTN indique la livraison prévue, ce qui permet de configurer la taille des piles et des filtres des bras en fonction du type et de la quantité de cargaison. (Le signal Emplacements verrouillés doit également être envoyé à la lampe d’entrée afin de s’assurer que le fret excédentaire ne reste pas entre les mains du bras, car il contaminerait le train suivant) L’un des inconvénients de LTN est sa courbe d’apprentissage abrupte. Il peut être difficile de configurer correctement les gares pour un nouveau joueur, et il est assez facile de faire des erreurs qui se propagent dans votre base. Une autre complication est que LTN utilise son propre signal de limite de train, et l’utilise au lieu des limites de train classiques pour ses gares demandeuses et fournisseuses. Cependant, ce signal ne fonctionne pas avec les arrêts de dépôt, qui nécessitent eux l’utilisation des limites de train classiques. (Optera, l’auteur du mod, a également déclaré qu’il n’était pas prévu de changer cela). Project Cybersyn - LTN allégé Nommé d’après le projet Cybersyn du Chili sous Allende, ce mod est sorti juste une semaine après Rail Logistics Dispatcher. Project Cybersyn est en quelque sorte à mi-chemin entre LTN et RLD, supprimant certaines des fonctionnalités les plus complexes de LTN au profit de la simplicité, comme la possibilité de contrôler quelles longueurs de train sont autorisées à utiliser une gare particulière. Le combinateur cybernétique du projet Cybersyn près d’un arrêt de train, mis en évidence pour montrer la portée de 1 tuile Contrairement à LTN, qui ajoute un nouvel arrêt qui doit remplacer complètement son homologue classique, Project Cybersyn ajoute une nouvelle entité qui doit être placée à une tuile d’un arrêt pour le contrôler. Avec un émetteur de constantes pour configurer la nouvelle entité, l’empreinte minimale au sol de l’arrêt est de $2 \times 2 + 2 \times 1 (\text{or } 1 \times 2) + 1 \times 1$. Seuls l’arrêt et le combinateur cybernétique sont nécessaires pour les dépôts et les gares de ravitaillement. Les lecteurs les plus attentifs remarqueront l’icône “Pas d’énergie” : Cybersyn est le seul des trois mods à ajouter une entité qui nécessite de l’énergie pour fonctionner correctement. En plaçant plus de combinateurs cybernétiques, on peut utiliser des fonctions supplémentaires. Un changement bienvenu est que Cybersyn utilise les limites de train classiques, contrairement à LTN. Combinateur cybernétique présentant les différents modes de fonctionnement Les combinateurs cybernétiques du projet Cybersyn ont cinq modes : Gare, Dépôt, Ravitaillement, Contrôle de gare et Contrôle de wagon. Comme dans LTN, les trains doivent d’abord être envoyés à un dépôt pour que le mod puisse leur assigner un horaire. Cependant, les trains n’ont pas besoin de retourner au dépôt pour recevoir un nouvel horaire, grâce à la fonction de contournement du dépôt. Cette fonctionnalité peut cependant nécessiter quelques changements dans la conception des voies et des dépôts afin d’en tirer pleinement parti. Un deuxième changement majeur est que, par défaut, les trains contenant encore de la marchandise ne sont pas autorisés à recevoir de nouvelles livraisons. LTN ne fait qu’avertir l’utilisateur si un train part avec une cargaison restante, ce qui peut entraîner une contamination de la logistique d’une usine si l’utilisateur n’a pas pris soin d’utiliser des bras filtrants pour décharger la cargaison, ou au mieux provoquer l’arrêt des livraisons car les trains qui ont encore un chargement ne peuvent pas prendre une livraison complète. À moins d’être modifié dans les paramètres du combinateur, Cybersyn empêche simplement que cela ne se produise. Troisièmement, le mode Ravitaillement, combiné à la fonction de contournement des dépôts, permet aux trains d’être constamment en mouvement et de ne s’arrêter que lorsqu’ils manquent de carburant, ce qui réduit considérablement le nombre de trains nécessaires au fonctionnement d’une base. Les signaux du projet Cybersyn Le projet Cybersyn ajoute trois signaux au total, ce qui simplifie le système dans son ensemble. S’il conserve les signaux de seuil de demande, de priorité et d’Emplacements verrouillés (dont la fonction reste identique à celle des signaux LTN), de nombreux autres signaux, y compris les signaux de “seuil de fourniture”, sont entièrement supprimés. Combinateur cybernétique en mode Gare L’un des meilleurs changements à mon avis est le fait que l’interface graphique du combinateur de Cybersyn permet à l’utilisateur non seulement de remarquer qu’une gare peut à la fois fournir et demander, mais aussi de désactiver l’un de ces modes. Cela signifie que la solution de contournement consistant à envoyer des signaux à seuil très élevé à l’arrêt du train n’est plus nécessaire. Un autre excellent changement est que le combinateur est une entité unique, ce qui rend plus évident l’emplacement des ports d’entrée et de sortie. L’ajout d’un second combinateur en mode Contrôle de gare permet en outre à l’utilisateur de fixer des seuils par objet. Bien que cela soit possible avec LTN, il fallait des circuits logiques supplémentaires pour chaque ressource ayant un seuil différent. Avec Cybersyn, il suffit d’un seul combinateur cybernétique supplémentaire et d’un second émetteur de constantes, ce qui permet d’économiser de l’espace pour les gares qui gèrent de nombreux objets. Le dernier mode, Contrôle de wagon, est destiné à être placé à côté d’un wagon et permet à l’utilisateur de définir des filtres sur ce wagon. Il indique également la cargaison à charger ou à décharger pour ce wagon spécifique, ce qui permet d’effectuer ces opérations wagon par wagon, plutôt que sur l’ensemble du train. D’autres combinateurs en mode Contrôle de wagon peuvent être ajoutés en fonction des besoins. Les inconvénients sont peu nombreux : les combinateurs cybernétiques peuvent prendre plus de place dans certaines circonstances et moins dans d’autres. Ils ont également besoin d’énergie pour fonctionner correctement. Enfin, la liste des autorisations automatiques peut être délicate et incompatible avec des gares diagonales ou des wagons modifiés de différentes tailles. Il n’y a pas non plus de méthode pour contrôler manuellement les configurations de train autorisées à utiliser la gare, ce qui oblige à désactiver la liste d’autorisation automatique. Un certain contrôle sur les trains qui peuvent utiliser la gare est toujours possible grâce à l’utilisation de masques de réseau. Une fonctionnalité à venir (actuellement disponible en version expérimentale au moment de la rédaction de cet article) est une interface graphique de gestion similaire à LTN Manager, qui est l’un des nombreux mods tiers de LTN. Ce mod donne une vue d’ensemble des gares LTN, permettant de voir rapidement les stocks des gares, les demandes, etc. Une fois implémentée, la version de Cybersyn aura encore une plus grande similitude de fonctionnalités avec LTN. Rail Logistics Dispatcher - Interface graphique intégrée Le deuxième des trois mods à paraître, Rail Logistics Dispatcher, est aussi le plus radicalement différent, sa principale caractéristique étant une interface graphique intégrée. JuxtaposeJS Le dispatcheur de la logistique ferroviaire. Bien qu’il ressemble à une lampe, un coup d’œil en mode ALT révèle la vérité : il s’agit en fait d’un combinateur déguisé ! Tout comme Cybersyn, Rail Logistics Dispatcher renonce à remplacer l’arrêt de train standard en faveur de l’ajout d’une autre entité pour le contrôler. Cependant, le Dispatcheur qu’il ajoute est plus petit, n’a pas besoin d’être alimenté, et utilise un graphisme de lampe similaire à celui de LTN, ce qui permet de savoir plus facilement si l’arrêt fonctionne correctement. Ensemble, l’empreinte au sol minimale du répartiteur et de l’arrêt de train est de $2 \times 2 + 1 \times 1$, ce dernier devant se trouver à une tuile de l’arrêt qu’il contrôle. 1 / 2 2 / 2 ❮ ❯ Bien que des mods tiers comme LTN Combinator Modernized et le tout nouveau Cybersyn Combinator puissent être très utiles à ceux qui manquent d’expérience avec les circuits logiques, il n’en reste pas moins que ces mods entièrement distincts sont dédiés à la simplification et à l’amélioration de l’expérience de l’utilisateur. C’est dans cette optique que RLD a choisi d’inclure une interface graphique dès le départ. (RLD propose également un “mode signaux” qui permet à l’utilisateur de configurer le dispatcheur de manière plus similaire à LTN s’il le souhaite.) Tout comme le projet Cybersyn ci-dessus, l’auteur de Rail Logistics Dispatcher prévoit également de mettre en place une interface utilisateur de gestion native pour, à l’avenir, visualiser l’ensemble du réseau. Contrairement aux deux mods précédents, Rail Logistics Dispatcher n’ajoute aucun nouveau signal. Tout ce qui était auparavant fait via des signaux tels que les seuils, les configurations de train et les identifiants de réseau, est maintenant réalisé via l’utilisation de l’interface graphique. RLD utilise également des seuils par objet. Il n’y a pas de seuils par gare dans l’interface graphique, ni de seuils globaux dans les paramètres. Il peut toutefois enregistrer certaines demandes et certains seuils pour les appliquer à nouveau ultérieurement. Outre les quantités d’objets individuelles et les piles d’objets, RLD a également la possibilité de définir des demandes basées sur le chargement d’un wagon (-citerne ou de marchandises). Au lieu du signal “Emplacement verrouillé” que LTN et Cybersyn partagent, RLD choisit de retourner les bras et de leur faire remettre les objets dans le coffre ou l’entrepôt d’où ils les ont pris. D’une part, cela signifie que l’utilisateur pourrait difficilement créer des gares avec des chargeurs ou des bras prélevant directement les objets sur les convoyeurs. D’autre part, cela signifie que les trains fournisseurs d’objets multiples peuvent remplir des trains avec des charges légèrement plus élevées. L’interface graphique de Rail Logistics Dispatcher en fait le mod le plus facile à utiliser des trois, mais il présente un gros inconvénient : s’il est tout à fait possible de copier un dispatcheur dans la même sauvegarde, il n’est pas possible d’en faire un plan pour l’utiliser dans d’autres sauvegardes ou pour le partager avec d’autres personnes. Les limitations de l’API font que seule l’entité Dispatcheur est copiée, tandis que les paramètres configurés dedans sont perdus. Un second problème, plus accessoire, est que vous devrez peut-être isoler les signaux de vos stocks avec un circuit logique, ou utiliser un fil différent, si vous souhaitez les utiliser à d’autres fins, car l’entrée du Dispatcheur de RLD a des signaux négatifs pour les objets qu’elle demande et qui pourraient autrement la contaminer. Un problème potentiel que je dois souligner est que l’auteur du mod a mentionné qu’il était récemment devenu père et qu’il manquait de temps. Cela signifie que les mises à jour et les corrections de bugs peuvent prendre beaucoup de temps avant d’être implémentées, ce qui peut être un facteur décisif pour certains. Dernières réflexions Ces trois mods sont presque identiques dans leur fonction de base, ce qui permet à ceux qui sont déjà habitués à un mod de passer facilement à l’un ou l’autre des deux. Chacun de ces mods a des avantages et des inconvénients différents, et j’espère que cela vous a aidé à choisir l’un d’entre eux, ou même simplement à réaliser que ces mods existent ! Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !">
+<link rel="canonical" href="https://alt-f4.blog/fr/ALTF4-64/">
+<meta property="og:url" content="https://alt-f4.blog/ALTF4-64/">
+<meta property="og:site_name" content="Alternative Friday Factorio Fan Facts">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-03-31T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Alt-F4 n°64 - Demander un train">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"OceanPhantom"},"dateModified":"2023-03-31T00:00:00+00:00","datePublished":"2023-03-31T00:00:00+00:00","description":"Nouvelle année, même bon vieux Alt-F4 ! Le numéro 64 n’est pas seulement réjouissant pour les amoureux du format binaire, mais aussi, nous l’espérons, pour tous les autres. Pour sa première contribution, OceanPhantom nous fait part des développements récents et passionnants dans le domaine de l’automatisation encore plus poussée des réseaux ferroviaires, grâce à l’utilisation de modifications, ou mods en abrégé. Le vénérable LTN va-t-il être détrôné ? C’est ce que nous allons découvrir ! Demander un train OceanPhantom Le système des trains dans Factorio est super. Les trains sont une méthode de transport de choix en ce qui concerne les longues distances. Ses règles sont excessivement simples, ce qui nous permet de construire nos premiers systèmes automatisés bidirectionnels vers un avant-poste proche avec une facilité déconcertante. Et pourtant, lorsque l’on combine ces règles ensemble, mettre en place un système d’une centaine de trains pour alimenter notre insatiable mégabase en ressources se révèle être un cauchemar logistique. Ils permettent une complexité tellement incroyable que u/minibetrayal sur Reddit a émis l’hypothèse que le système ferroviaire était en fait un système Turing complet. Il a ensuite relevé le défi de construire le réseau ferroviaire le plus grand et le plus inutile de tous les temps pour le prouver. Le système ferroviaire rejoint ainsi le réseau logique et le système de transport par convoyeur (Alt-F4 n°23 et Alt-F4 n°24) en tant qu’autre partie indépendamment Turing complète de Factorio. Avec toutes les options disponibles, comment le système de train pourrait-il être amélioré ? Voici la réponse : grâce à la communauté des moddeurs de Factorio. Nous avons déjà parlé de la façon dont les mods ont amélioré le système ferroviaire. Ils ont introduit la première version du wagon-citerne. Ils ont modifié le comportement des trains, avec des mods comme Train Supply Manager (TSM), dont nous avons déjà parlé dans le Alt-F4 n°15. Il m’est alors apparu que bien qu’ALT-F4 l’ait déjà brièvement abordé dans plusieurs articles (Alt-F4 n°28 et Alt-F4 n°37), il n’y en a pas encore eu un qui examine en profondeur le mod Logistic Train Network, ou “LTN” en abrégé. Jusqu’à récemment, LTN était unique : le seul autre mod significatif qui modifiait le fonctionnement des trains étant le mod TSM mentionné précédemment. Tout cela a changé en novembre 2022, avec l’arrivée non pas d’un, mais de deux nouveaux prétendants qui, contrairement à TSM, concurrencent directement le style de logistique de LTN. Avec la sortie récente de ces deux nouveaux concurrents, Project Cybersyn et Rail Logistics Dispatcher, le moment semble idéal pour comparer les trois options. Les entités ajoutées par les trois mods. Pour comprendre ce qui rend ces mods si populaires, nous devons d’abord comprendre comment ils modifient le comportement des trains classiques. Fondamentalement, ces trois mods modifient dynamiquement les horaires des trains en fonction des signaux émis par le réseau logique. Le système ferroviaire se comporte ainsi davantage comme un réseau logistique standard, ce qui fait de ces mods des outils extrêmement puissants pour construire des réseaux de trains à gares multiples. Il est maintenant possible de créer des réseaux à gares multiples dans le Factorio de base (nous avons fait un tutoriel sur la construction d’un tel réseau dans le Alt-F4 n°37). Pour résumer rapidement : un seul circuit logique peut être utilisé pour mettre la limite de train sur une gare à 1 lorsque certaines conditions sont remplies, par exemple lorsqu’une gare acceptant une ressource (une gare demandeuse) passe en dessous d’un certain seuil. Inversement, la même chose peut être faite dans une gare qui fournit une ressource (une gare fournisseuse). Si nécessaire, d’autres circuits logiques peuvent être ajoutés pour plus de fonctionnalités, comme l’augmentation de la limite de train à d’autres seuils, ou l’ajout d’une limite maximale de train. L’inconvénient de cette approche est qu’elle est optimale lorsqu’il s’agit d’une seule ressource. Les circuits logiques sont capables de faire tout ce qu’un ordinateur peut faire, ce qui autorise la création d’un réseau ferroviaire capable de gérer plusieurs ressources sur chaque train, et même de faire en sorte qu’un train arbitraire puisse gérer une ressource arbitraire. Cependant, la quantité de circuits logiques nécessaires à la réalisation de cette dernière variante d’un réseau de trains à gares multiples en fait un défi que peu de gens ont tenté de relever, et qu’encore moins d’entre eux ont réussi. Ces trois mods permettent à ceux ayant une compréhension rudimentaire des circuits logiques de réutiliser facilement des trains pour d’autres ressources et de mettre en place des gares multi-objets. Logistic Train Network – L’Original Conçu à l’origine sur les forums de Factorio par ssilk en octobre 2016, puis implémenté et publié par Optera en avril 2017 pour la version 0.14 de Factorio, Logistic Train Network est l’un des mods les plus appréciés et les plus influents de l’histoire de Factorio. Il reste toujours aussi populaire, comme en témoignent les mods “récursifs” créés ultérieurement pour compléter LTN, et sert d’inspiration directe pour les deux autres mods dont nous parlerons plus tard. Alors que je vais aborder LTN ici, cet article a plus pour but de souligner les différences entre les mods que d’être un manuel. À ce titre, une vue d’ensemble plus complète des signaux et des fonctionnalités peut être trouvée sur le sous-forum LTN. LTN ajoute l’entité Arrêt de train logistique et 22 signaux utilisés pour contrôler le réseau. Lorsqu’il est utilisé avec des mods qui ajoutent de nouveaux types de locomotives et de wagons, LTN ajoutera également des signaux pour chaque nouvelle locomotive ou chaque nouveau wagon. L’entité hybride Arrêt de train logistique ajoutée par LTN L’arrêt de train logistique doit être utilisé pour que le mod fonctionne, et remplace complètement l’arrêt de train classique. Ce nouvel ajout est une entité hybride composée d’un arrêt de train, d’une lampe (qui sert d’entrée pour les signaux), et d’un émetteur de constantes jaune (qui sert de sortie). Ajouté à cela un émetteur de constantes pour configurer la gare, l’empreinte minimale au sol de l’arrêt est de $2\\times2 + 1\\times1$ (seul l’arrêt en lui-même est nécessaire pour un fournisseur utilisant les valeurs par défaut globales). Les signaux virtuels ajoutés par LTN Bien que le nombre de signaux puisse être décourageant, la plupart d’entre eux (en particulier les deux rangées inférieures) peuvent être ignorés en toute sécurité tout en conservant un réseau pleinement fonctionnel. Le seul signal absolument nécessaire est le signal “Dépot” dans le coin supérieur gauche. Dans LTN, toutes les livraisons démarrent et se terminent dans des gares de dépôt, et un train doit d’abord entrer dans une telle gare avant que son “cerveau” ne soit pris en charge par le mod. Ce signal transforme un arrêt en l’équivalent des roboports du réseau logistique. Ces dépôts sont donc également d’excellents endroits pour gérer le ravitaillement en carburant en raison de leur rôle central dans le réseau. Les deux autres types d’arrêts sont le Fournisseur et le Demandeur. Bien que l’on puisse penser que les signaux avec le coffre fournisseur et le coffre de demande indiquent de quel type d’arrêt il s’agit, ce n’est pas le cas. En réalité, un signal de ressource positif indique que l’arrêt est un fournisseur de cette ressource. Un signal négatif équivalent indique au contraire que l’arrêt est un demandeur de cette ressource. Ces deux types de signaux sont simplement des “seuils”, c’est-à-dire une quantité minimale qui empêche un train d’essayer de prendre ou de déposer à cet arrêt si les signaux reçus ne la respectent pas. LTN offre la possibilité d’utiliser des seuils par pile pour une plus grande flexibilité, mais les fluides doivent utiliser le signal de seuil normal. Le fait que ce soit le signe ($+$ or $-$) du signal qui contrôle le comportement de la gare conduit à un piège courant où un utilisateur peu familier découvre que son arrêt demandeur est devenu involontairement un fournisseur. Pour remédier à ce problème, il suffit d’augmenter le seuil, soit pour chaque gare, soit en modifiant le seuil global dans les paramètres du mod. Ces signaux doivent tous être envoyés à la partie lampe de l’entité hybride, qui fait office de port d’entrée de l’arrêt. Une autre des erreurs très fréquentes consiste à envoyer les signaux de commande à la mauvaise partie de l’entité hybride. La troisième partie de l’entité, l’émetteur de constante qui sert de sortie à LTN, est ce qui rend possible le chargement et le déchargement exacts des trains, ainsi que les arrêts à objets multiples. Grâce à lui, le LTN indique la livraison prévue, ce qui permet de configurer la taille des piles et des filtres des bras en fonction du type et de la quantité de cargaison. (Le signal Emplacements verrouillés doit également être envoyé à la lampe d’entrée afin de s’assurer que le fret excédentaire ne reste pas entre les mains du bras, car il contaminerait le train suivant) L’un des inconvénients de LTN est sa courbe d’apprentissage abrupte. Il peut être difficile de configurer correctement les gares pour un nouveau joueur, et il est assez facile de faire des erreurs qui se propagent dans votre base. Une autre complication est que LTN utilise son propre signal de limite de train, et l’utilise au lieu des limites de train classiques pour ses gares demandeuses et fournisseuses. Cependant, ce signal ne fonctionne pas avec les arrêts de dépôt, qui nécessitent eux l’utilisation des limites de train classiques. (Optera, l’auteur du mod, a également déclaré qu’il n’était pas prévu de changer cela). Project Cybersyn - LTN allégé Nommé d’après le projet Cybersyn du Chili sous Allende, ce mod est sorti juste une semaine après Rail Logistics Dispatcher. Project Cybersyn est en quelque sorte à mi-chemin entre LTN et RLD, supprimant certaines des fonctionnalités les plus complexes de LTN au profit de la simplicité, comme la possibilité de contrôler quelles longueurs de train sont autorisées à utiliser une gare particulière. Le combinateur cybernétique du projet Cybersyn près d’un arrêt de train, mis en évidence pour montrer la portée de 1 tuile Contrairement à LTN, qui ajoute un nouvel arrêt qui doit remplacer complètement son homologue classique, Project Cybersyn ajoute une nouvelle entité qui doit être placée à une tuile d’un arrêt pour le contrôler. Avec un émetteur de constantes pour configurer la nouvelle entité, l’empreinte minimale au sol de l’arrêt est de $2 \\times 2 + 2 \\times 1 (\\text{or } 1 \\times 2) + 1 \\times 1$. Seuls l’arrêt et le combinateur cybernétique sont nécessaires pour les dépôts et les gares de ravitaillement. Les lecteurs les plus attentifs remarqueront l’icône “Pas d’énergie” : Cybersyn est le seul des trois mods à ajouter une entité qui nécessite de l’énergie pour fonctionner correctement. En plaçant plus de combinateurs cybernétiques, on peut utiliser des fonctions supplémentaires. Un changement bienvenu est que Cybersyn utilise les limites de train classiques, contrairement à LTN. Combinateur cybernétique présentant les différents modes de fonctionnement Les combinateurs cybernétiques du projet Cybersyn ont cinq modes : Gare, Dépôt, Ravitaillement, Contrôle de gare et Contrôle de wagon. Comme dans LTN, les trains doivent d’abord être envoyés à un dépôt pour que le mod puisse leur assigner un horaire. Cependant, les trains n’ont pas besoin de retourner au dépôt pour recevoir un nouvel horaire, grâce à la fonction de contournement du dépôt. Cette fonctionnalité peut cependant nécessiter quelques changements dans la conception des voies et des dépôts afin d’en tirer pleinement parti. Un deuxième changement majeur est que, par défaut, les trains contenant encore de la marchandise ne sont pas autorisés à recevoir de nouvelles livraisons. LTN ne fait qu’avertir l’utilisateur si un train part avec une cargaison restante, ce qui peut entraîner une contamination de la logistique d’une usine si l’utilisateur n’a pas pris soin d’utiliser des bras filtrants pour décharger la cargaison, ou au mieux provoquer l’arrêt des livraisons car les trains qui ont encore un chargement ne peuvent pas prendre une livraison complète. À moins d’être modifié dans les paramètres du combinateur, Cybersyn empêche simplement que cela ne se produise. Troisièmement, le mode Ravitaillement, combiné à la fonction de contournement des dépôts, permet aux trains d’être constamment en mouvement et de ne s’arrêter que lorsqu’ils manquent de carburant, ce qui réduit considérablement le nombre de trains nécessaires au fonctionnement d’une base. Les signaux du projet Cybersyn Le projet Cybersyn ajoute trois signaux au total, ce qui simplifie le système dans son ensemble. S’il conserve les signaux de seuil de demande, de priorité et d’Emplacements verrouillés (dont la fonction reste identique à celle des signaux LTN), de nombreux autres signaux, y compris les signaux de “seuil de fourniture”, sont entièrement supprimés. Combinateur cybernétique en mode Gare L’un des meilleurs changements à mon avis est le fait que l’interface graphique du combinateur de Cybersyn permet à l’utilisateur non seulement de remarquer qu’une gare peut à la fois fournir et demander, mais aussi de désactiver l’un de ces modes. Cela signifie que la solution de contournement consistant à envoyer des signaux à seuil très élevé à l’arrêt du train n’est plus nécessaire. Un autre excellent changement est que le combinateur est une entité unique, ce qui rend plus évident l’emplacement des ports d’entrée et de sortie. L’ajout d’un second combinateur en mode Contrôle de gare permet en outre à l’utilisateur de fixer des seuils par objet. Bien que cela soit possible avec LTN, il fallait des circuits logiques supplémentaires pour chaque ressource ayant un seuil différent. Avec Cybersyn, il suffit d’un seul combinateur cybernétique supplémentaire et d’un second émetteur de constantes, ce qui permet d’économiser de l’espace pour les gares qui gèrent de nombreux objets. Le dernier mode, Contrôle de wagon, est destiné à être placé à côté d’un wagon et permet à l’utilisateur de définir des filtres sur ce wagon. Il indique également la cargaison à charger ou à décharger pour ce wagon spécifique, ce qui permet d’effectuer ces opérations wagon par wagon, plutôt que sur l’ensemble du train. D’autres combinateurs en mode Contrôle de wagon peuvent être ajoutés en fonction des besoins. Les inconvénients sont peu nombreux : les combinateurs cybernétiques peuvent prendre plus de place dans certaines circonstances et moins dans d’autres. Ils ont également besoin d’énergie pour fonctionner correctement. Enfin, la liste des autorisations automatiques peut être délicate et incompatible avec des gares diagonales ou des wagons modifiés de différentes tailles. Il n’y a pas non plus de méthode pour contrôler manuellement les configurations de train autorisées à utiliser la gare, ce qui oblige à désactiver la liste d’autorisation automatique. Un certain contrôle sur les trains qui peuvent utiliser la gare est toujours possible grâce à l’utilisation de masques de réseau. Une fonctionnalité à venir (actuellement disponible en version expérimentale au moment de la rédaction de cet article) est une interface graphique de gestion similaire à LTN Manager, qui est l’un des nombreux mods tiers de LTN. Ce mod donne une vue d’ensemble des gares LTN, permettant de voir rapidement les stocks des gares, les demandes, etc. Une fois implémentée, la version de Cybersyn aura encore une plus grande similitude de fonctionnalités avec LTN. Rail Logistics Dispatcher - Interface graphique intégrée Le deuxième des trois mods à paraître, Rail Logistics Dispatcher, est aussi le plus radicalement différent, sa principale caractéristique étant une interface graphique intégrée. JuxtaposeJS Le dispatcheur de la logistique ferroviaire. Bien qu’il ressemble à une lampe, un coup d’œil en mode ALT révèle la vérité : il s’agit en fait d’un combinateur déguisé ! Tout comme Cybersyn, Rail Logistics Dispatcher renonce à remplacer l’arrêt de train standard en faveur de l’ajout d’une autre entité pour le contrôler. Cependant, le Dispatcheur qu’il ajoute est plus petit, n’a pas besoin d’être alimenté, et utilise un graphisme de lampe similaire à celui de LTN, ce qui permet de savoir plus facilement si l’arrêt fonctionne correctement. Ensemble, l’empreinte au sol minimale du répartiteur et de l’arrêt de train est de $2 \\times 2 + 1 \\times 1$, ce dernier devant se trouver à une tuile de l’arrêt qu’il contrôle. 1 / 2 2 / 2 &#10094; &#10095; Bien que des mods tiers comme LTN Combinator Modernized et le tout nouveau Cybersyn Combinator puissent être très utiles à ceux qui manquent d’expérience avec les circuits logiques, il n’en reste pas moins que ces mods entièrement distincts sont dédiés à la simplification et à l’amélioration de l’expérience de l’utilisateur. C’est dans cette optique que RLD a choisi d’inclure une interface graphique dès le départ. (RLD propose également un “mode signaux” qui permet à l’utilisateur de configurer le dispatcheur de manière plus similaire à LTN s’il le souhaite.) Tout comme le projet Cybersyn ci-dessus, l’auteur de Rail Logistics Dispatcher prévoit également de mettre en place une interface utilisateur de gestion native pour, à l’avenir, visualiser l’ensemble du réseau. Contrairement aux deux mods précédents, Rail Logistics Dispatcher n’ajoute aucun nouveau signal. Tout ce qui était auparavant fait via des signaux tels que les seuils, les configurations de train et les identifiants de réseau, est maintenant réalisé via l’utilisation de l’interface graphique. RLD utilise également des seuils par objet. Il n’y a pas de seuils par gare dans l’interface graphique, ni de seuils globaux dans les paramètres. Il peut toutefois enregistrer certaines demandes et certains seuils pour les appliquer à nouveau ultérieurement. Outre les quantités d’objets individuelles et les piles d’objets, RLD a également la possibilité de définir des demandes basées sur le chargement d’un wagon (-citerne ou de marchandises). Au lieu du signal “Emplacement verrouillé” que LTN et Cybersyn partagent, RLD choisit de retourner les bras et de leur faire remettre les objets dans le coffre ou l’entrepôt d’où ils les ont pris. D’une part, cela signifie que l’utilisateur pourrait difficilement créer des gares avec des chargeurs ou des bras prélevant directement les objets sur les convoyeurs. D’autre part, cela signifie que les trains fournisseurs d’objets multiples peuvent remplir des trains avec des charges légèrement plus élevées. L’interface graphique de Rail Logistics Dispatcher en fait le mod le plus facile à utiliser des trois, mais il présente un gros inconvénient : s’il est tout à fait possible de copier un dispatcheur dans la même sauvegarde, il n’est pas possible d’en faire un plan pour l’utiliser dans d’autres sauvegardes ou pour le partager avec d’autres personnes. Les limitations de l’API font que seule l’entité Dispatcheur est copiée, tandis que les paramètres configurés dedans sont perdus. Un second problème, plus accessoire, est que vous devrez peut-être isoler les signaux de vos stocks avec un circuit logique, ou utiliser un fil différent, si vous souhaitez les utiliser à d’autres fins, car l’entrée du Dispatcheur de RLD a des signaux négatifs pour les objets qu’elle demande et qui pourraient autrement la contaminer. Un problème potentiel que je dois souligner est que l’auteur du mod a mentionné qu’il était récemment devenu père et qu’il manquait de temps. Cela signifie que les mises à jour et les corrections de bugs peuvent prendre beaucoup de temps avant d’être implémentées, ce qui peut être un facteur décisif pour certains. Dernières réflexions Ces trois mods sont presque identiques dans leur fonction de base, ce qui permet à ceux qui sont déjà habitués à un mod de passer facilement à l’un ou l’autre des deux. Chacun de ces mods a des avantages et des inconvénients différents, et j’espère que cela vous a aidé à choisir l’un d’entre eux, ou même simplement à réaliser que ces mods existent ! Contribuer Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le Discord pour ne rien rater !","headline":"Alt-F4 n°64 - Demander un train","mainEntityOfPage":{"@type":"WebPage","@id":"https://alt-f4.blog/ALTF4-64/"},"url":"https://alt-f4.blog/ALTF4-64/"}</script>
+<!-- End Jekyll SEO tag -->
+	
+
+	
+	  <meta property="og:image" content="https://alt-f4.blog/assets/ALTF4/64/thumbnail.jpg">
+	  <meta name="twitter:image" content="https://alt-f4.blog/assets/ALTF4/64/thumbnail.jpg">
+	
+
+	<!-- CSS & fonts -->
+	<link href="/fr/assets/GLOBAL/css/titillium-web.css" rel="stylesheet">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/style.css">
+	<link rel="stylesheet" href="/fr/assets/GLOBAL/css/spidertron.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,400italic%7CSignika:700,300,400,600" rel="stylesheet" type="text/css">
+
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="icon" type="image/x-icon">
+	<link href="/fr/assets/GLOBAL/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+	<!-- RSS -->
+	<link href="/fr/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+
+	<script src="/assets/GLOBAL/js/spidertron.js"></script>
+	<script src="/assets/GLOBAL/js/localization.js"></script>
+	<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav id="top" class="top-bar">
+	<div class="top-bar-inner flex flex-space-between">
+		<div class="sites links flex">
+			<a href="/fr/" class="sites-current">
+				<div id="navbar-logo" role="img" aria-label="Alt-F4 Logo"></div>
+			</a>
+			<a href="https://alt-f4.blog/fr/discord" class="">Discord</a>
+			<span class="separator">|</span>
+			<a href="https://factorio.com/blog" class="">FFF</a>
+		</div>
+		<div class="sites links flex hide-tag-line">
+			<em>La suite communautaire aux tant appréciés Faits du vendredi sur Factorio</em>
+		</div>
+		<div class="dropdown flex-end">
+			<a class="button flex flex-space-between" href="#">
+				<i class="fas fa-language"></i>
+			</a>
+			<div class="submenu">
+				
+				<a class="button lang-button" href="/../ALTF4-64/" onclick="setLanguage('en')">English</a>
+				
+				<a class="button lang-button" href="/cs/ALTF4-64/" onclick="setLanguage('cs')">Čeština</a>
+				
+				<a class="button lang-button" href="/de/ALTF4-64/" onclick="setLanguage('de')">Deutsch</a>
+				
+				<a class="button lang-button" href="/es/ALTF4-64/" onclick="setLanguage('es')">Español</a>
+				
+				<a class="button button-green lang-button" href="/fr/ALTF4-64/" onclick="setLanguage('fr')">Français</a>
+				
+				<a class="button lang-button" href="/it/ALTF4-64/" onclick="setLanguage('it')">Italiano</a>
+				
+				<a class="button lang-button" href="/nl/ALTF4-64/" onclick="setLanguage('nl')">Nederlands</a>
+				
+				<a class="button lang-button" href="/pt-br/ALTF4-64/" onclick="setLanguage('pt-br')">Português Brasileiro</a>
+				
+				<a class="button lang-button" href="/ru/ALTF4-64/" onclick="setLanguage('ru')">Русский</a>
+				
+				<a class="button lang-button" href="/zh/ALTF4-64/" onclick="setLanguage('zh')">中文</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="container-inner">
+        <div class="small-center"></div>
+        <!-- Posts -->
+        <article class="panel blog-post">
+	
+	<h1 class="page-title-headder">Alt-F4 n°64 - Demander un train  <author>31-03-2023</author>
+</h1>
+	
+	
+	<div class="panel-inset mb0">
+		
+Écrit par <em>OceanPhantom</em>,
+
+
+
+édité par <em>Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer</em>,
+
+
+
+<br>traduit par <em>bev, Firerazer</em>
+
+
+
+
+
+
+	</div>
+	
+	<div class="panel-inset-lighter mt0">
+		<div class="post-header">
+  <div class="panel">
+    <div class="outer">
+      <img class="inner" src="/assets/ALTF4/64/thumbnail.jpg" alt="" style="margin: 1px;">
+    </div>
+  </div>
+  <details class="panel toc">
+    <summary>
+      <h2>Sommaire</h2>
+    </summary>
+    <div class="panel-inset mb0">
+      <ul>
+  <li>
+<a href="#demander-un-train-oceanphantom">Demander un train <author>OceanPhantom</author></a>
+    <ul>
+      <li><a href="#logistic-train-network--loriginal">Logistic Train Network – L’Original</a></li>
+      <li><a href="#project-cybersyn---ltn-all%C3%A9g%C3%A9">Project Cybersyn - LTN allégé</a></li>
+      <li><a href="#rail-logistics-dispatcher---interface-graphique-int%C3%A9gr%C3%A9e">Rail Logistics Dispatcher - Interface graphique intégrée</a></li>
+      <li><a href="#derni%C3%A8res-r%C3%A9flexions">Dernières réflexions</a></li>
+    </ul>
+  </li>
+  <li><a href="#contribuer">Contribuer</a></li>
+</ul>
+
+    </div>
+  </details>
+</div>
+
+
+
+
+<p>Nouvelle année, même bon vieux Alt-F4 ! Le numéro 64 n’est pas seulement réjouissant pour les amoureux du format binaire, mais aussi, nous l’espérons, pour tous les autres. Pour sa première contribution, <em>OceanPhantom</em> nous fait part des développements récents et passionnants dans le domaine de l’automatisation encore plus poussée des réseaux ferroviaires, grâce à l’utilisation de modifications, ou mods en abrégé. Le vénérable LTN va-t-il être détrôné ? C’est ce que nous allons découvrir !</p>
+      <h2 id="demander-un-train-oceanphantom">
+        
+        
+            <a href="#demander-un-train-oceanphantom" class="anchor" style="text-decoration: none;">Demander un train <author>OceanPhantom</author></a>
+          
+        
+      </h2>
+    
+
+<p>Le système des trains dans Factorio est super. Les trains sont une méthode de transport de choix en ce qui concerne les longues distances. Ses règles sont excessivement simples, ce qui nous permet de construire nos premiers systèmes automatisés bidirectionnels vers un avant-poste proche avec une facilité déconcertante. Et pourtant, lorsque l’on combine ces règles ensemble, mettre en place un système d’une centaine de trains pour alimenter notre insatiable mégabase en ressources se révèle être un cauchemar logistique.</p>
+
+<p>Ils permettent une complexité tellement incroyable que <a href="https://www.reddit.com/u/minibetrayal/">u/minibetrayal</a> sur Reddit a émis l’hypothèse que le système ferroviaire était en fait un système Turing complet. Il a ensuite relevé le défi de <a href="https://www.reddit.com/r/factorio/comments/evkff6/the_biggest_and_most_useless_rail_network_ever/">construire le réseau ferroviaire le plus grand et le plus inutile de tous les temps</a> pour le prouver. Le système ferroviaire rejoint ainsi le réseau logique et le système de transport par convoyeur (<a href="https://alt-f4.blog/fr/ALTF4-23/">Alt-F4 n°23</a> et <a href="https://alt-f4.blog/fr/ALTF4-24/">Alt-F4 n°24</a>) en tant qu’autre partie indépendamment Turing complète de Factorio.</p>
+
+<p>Avec toutes les options disponibles, comment le système de train pourrait-il être amélioré ? Voici la réponse : grâce à la communauté des moddeurs de Factorio.</p>
+
+<p>Nous avons déjà parlé de la façon dont les mods ont amélioré le système ferroviaire. Ils ont introduit la première version du <a href="https://alt-f4.blog/fr/ALTF4-21/">wagon-citerne</a>. Ils ont modifié le comportement des trains, avec des mods comme <a href="https://mods.factorio.com/mod/train-pubsub">Train Supply Manager (TSM)</a>, dont nous avons déjà parlé dans le <a href="https://alt-f4.blog/fr/ALTF4-15/">Alt-F4 n°15</a>.</p>
+
+<p>Il m’est alors apparu que bien qu’ALT-F4 l’ait déjà brièvement abordé dans plusieurs articles (<a href="https://alt-f4.blog/fr/ALTF4-28/">Alt-F4 n°28</a> et <a href="https://alt-f4.blog/fr/ALTF4-37/">Alt-F4 n°37</a>), il n’y en a pas encore eu un qui examine en profondeur le mod <a href="https://mods.factorio.com/mod/LogisticTrainNetwork">Logistic Train Network</a>, ou “LTN” en abrégé. Jusqu’à récemment, LTN était unique : le seul autre mod significatif qui modifiait le fonctionnement des trains étant le mod TSM mentionné précédemment.</p>
+
+<p>Tout cela a changé en novembre 2022, avec l’arrivée non pas d’un, mais de deux nouveaux prétendants qui, contrairement à TSM, concurrencent directement le style de logistique de LTN. Avec la sortie récente de ces deux nouveaux concurrents, <a href="https://mods.factorio.com/mod/cybersyn">Project Cybersyn</a> et <a href="https://mods.factorio.com/mod/RailLogisticsDispatcher">Rail Logistics Dispatcher</a>, le moment semble idéal pour comparer les trois options.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/64/screenshot-tick-55628.jpg" alt="Les entités ajoutées par les trois mods sont placées les unes à côté des autres." style="max-width: ; max-height:  ">
+        
+        <figcaption>Les entités ajoutées par les trois mods.</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Pour comprendre ce qui rend ces mods si populaires, nous devons d’abord comprendre comment ils modifient le comportement des trains classiques. Fondamentalement, ces trois mods modifient dynamiquement les horaires des trains en fonction des signaux émis par le réseau logique. Le système ferroviaire se comporte ainsi davantage comme un <a href="https://wiki.factorio.com/Logistic_network/fr">réseau logistique</a> standard, ce qui fait de ces mods des outils extrêmement puissants pour construire des réseaux de trains à gares multiples.</p>
+
+<p>Il est maintenant possible de créer des réseaux à gares multiples dans le Factorio de base (nous avons fait un tutoriel sur la construction d’un tel réseau dans le <a href="https://alt-f4.blog/fr/ALTF4-37/">Alt-F4 n°37</a>). Pour résumer rapidement : un seul circuit logique peut être utilisé pour mettre la limite de train sur une gare à 1 lorsque certaines conditions sont remplies, par exemple lorsqu’une gare acceptant une ressource (une <em>gare demandeuse</em>) passe en dessous d’un certain seuil. Inversement, la même chose peut être faite dans une gare qui fournit une ressource (une <em>gare fournisseuse</em>). Si nécessaire, d’autres circuits logiques peuvent être ajoutés pour plus de fonctionnalités, comme l’augmentation de la limite de train à d’autres seuils, ou l’ajout d’une limite maximale de train.</p>
+
+<p>L’inconvénient de cette approche est qu’elle est optimale lorsqu’il s’agit d’une seule ressource. Les circuits logiques sont capables de faire tout ce qu’un ordinateur peut faire, ce qui autorise la création d’un réseau ferroviaire capable de gérer plusieurs ressources sur chaque train, et même de faire en sorte qu’un train arbitraire puisse gérer une ressource arbitraire. Cependant, la quantité de circuits logiques nécessaires à la réalisation de cette dernière variante d’un réseau de trains à gares multiples en fait un défi que peu de gens ont tenté de relever, et qu’encore moins d’entre eux ont réussi. Ces trois mods permettent à ceux ayant une compréhension rudimentaire des circuits logiques de réutiliser facilement des trains pour d’autres ressources et de mettre en place des gares multi-objets.</p>
+      <h3 id="logistic-train-network--loriginal">
+        
+        
+            <a href="#logistic-train-network--loriginal" class="anchor" style="text-decoration: none;">Logistic Train Network – L’Original</a>
+          
+        
+      </h3>
+    
+
+<p>Conçu à l’origine <a href="https://forums.factorio.com/viewtopic.php?f=6&t=34225">sur les forums de Factorio</a> par <em>ssilk</em> en octobre 2016, puis implémenté et publié par <em>Optera</em> en avril 2017 pour la version 0.14 de Factorio, Logistic Train Network est l’un des mods les plus appréciés et les plus influents de l’histoire de Factorio. Il reste toujours aussi populaire, comme en témoignent les mods “récursifs” créés ultérieurement pour compléter LTN, et sert d’inspiration directe pour les deux autres mods dont nous parlerons plus tard. Alors que je vais aborder LTN ici, cet article a plus pour but de souligner les différences entre les mods que d’être un manuel. À ce titre, une vue d’ensemble plus complète des signaux et des fonctionnalités peut être trouvée sur le <a href="https://forums.factorio.com/viewtopic.php?f=214&t=51072">sous-forum LTN</a>.</p>
+
+<p>LTN ajoute l’entité Arrêt de train logistique et 22 signaux utilisés pour contrôler le réseau. Lorsqu’il est utilisé avec des mods qui ajoutent de nouveaux types de locomotives et de wagons, LTN ajoutera également des signaux pour chaque nouvelle locomotive ou chaque nouveau wagon.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/64/LTN-stop.jpg" alt="L’entité hybride Arrêt de train logistique ajoutée par LTN" style="max-width: ; max-height:  ">
+        
+        <figcaption>L’entité hybride Arrêt de train logistique ajoutée par LTN</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>L’arrêt de train logistique doit être utilisé pour que le mod fonctionne, et remplace complètement l’arrêt de train classique. Ce nouvel ajout est une entité hybride composée d’un arrêt de train, d’une lampe (qui sert d’entrée pour les signaux), et d’un émetteur de constantes jaune (qui sert de sortie). Ajouté à cela un émetteur de constantes pour configurer la gare, l’empreinte minimale au sol de l’arrêt est de $2\times2 + 1\times1$ (seul l’arrêt en lui-même est nécessaire pour un fournisseur utilisant les valeurs par défaut globales).</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/64/LTN-signals.jpg" alt="Les signaux virtuels ajoutés par LTN" style="max-width: ; max-height:  ">
+        
+        <figcaption>Les signaux virtuels ajoutés par LTN</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Bien que le nombre de signaux puisse être décourageant, la plupart d’entre eux (en particulier les deux rangées inférieures) peuvent être ignorés en toute sécurité tout en conservant un réseau pleinement fonctionnel.</p>
+
+<p>Le seul signal absolument nécessaire est le signal “Dépot” dans le coin supérieur gauche. Dans LTN, toutes les livraisons démarrent et se terminent dans des gares de dépôt, et un train doit d’abord entrer dans une telle gare avant que son “cerveau” ne soit pris en charge par le mod. Ce signal transforme un arrêt en l’équivalent des roboports du réseau logistique. Ces dépôts sont donc également d’excellents endroits pour gérer le ravitaillement en carburant en raison de leur rôle central dans le réseau.</p>
+
+<p>Les deux autres types d’arrêts sont le Fournisseur et le Demandeur. Bien que l’on puisse penser que les signaux avec le coffre fournisseur et le coffre de demande indiquent de quel type d’arrêt il s’agit, ce n’est pas le cas. En réalité, un signal de ressource positif indique que l’arrêt est un fournisseur de cette ressource. Un signal négatif équivalent indique au contraire que l’arrêt est un demandeur de cette ressource. Ces deux types de signaux sont simplement des “seuils”, c’est-à-dire une quantité minimale qui empêche un train d’essayer de prendre ou de déposer à cet arrêt si les signaux reçus ne la respectent pas. LTN offre la possibilité d’utiliser des seuils par pile pour une plus grande flexibilité, mais les fluides doivent utiliser le signal de seuil normal.</p>
+
+<p>Le fait que ce soit le signe ($+$ or $-$) du signal qui contrôle le comportement de la gare conduit à un piège courant où un utilisateur peu familier découvre que son arrêt demandeur est devenu involontairement un fournisseur. Pour remédier à ce problème, il suffit d’augmenter le seuil, soit pour chaque gare, soit en modifiant le seuil global dans les paramètres du mod.</p>
+
+<p>Ces signaux doivent tous être envoyés à la partie lampe de l’entité hybride, qui fait office de port d’entrée de l’arrêt. Une autre des erreurs très fréquentes consiste à envoyer les signaux de commande à la mauvaise partie de l’entité hybride.</p>
+
+<p>La troisième partie de l’entité, l’émetteur de constante qui sert de sortie à LTN, est ce qui rend possible le chargement et le déchargement exacts des trains, ainsi que les arrêts à objets multiples. Grâce à lui, le LTN indique la livraison prévue, ce qui permet de configurer la taille des piles et des filtres des bras en fonction du type et de la quantité de cargaison. (Le signal Emplacements verrouillés doit également être envoyé à la lampe d’entrée afin de s’assurer que le fret excédentaire ne reste pas entre les mains du bras, car il contaminerait le train suivant)</p>
+
+<p>L’un des inconvénients de LTN est sa courbe d’apprentissage abrupte. Il peut être difficile de configurer correctement les gares pour un nouveau joueur, et il est assez facile de faire des erreurs qui se propagent dans votre base. Une autre complication est que LTN utilise son propre signal de limite de train, et l’utilise au lieu des limites de train classiques pour ses gares demandeuses et fournisseuses. Cependant, ce signal ne fonctionne pas avec les arrêts de dépôt, qui nécessitent eux l’utilisation des limites de train classiques. (Optera, l’auteur du mod, a également déclaré qu’il n’était pas prévu de changer cela).</p>
+      <h3 id="project-cybersyn---ltn-allégé">
+        
+        
+            <a href="#project-cybersyn---ltn-all%C3%A9g%C3%A9" class="anchor" style="text-decoration: none;">Project Cybersyn - LTN allégé</a>
+          
+        
+      </h3>
+    
+
+<p>Nommé d’après le <a href="https://fr.wikipedia.org/wiki/Projet_Cybersyn">projet Cybersyn</a> du Chili sous Allende, ce mod est sorti juste une semaine après Rail Logistics Dispatcher. Project Cybersyn est en quelque sorte à mi-chemin entre LTN et RLD, supprimant certaines des fonctionnalités les plus complexes de LTN au profit de la simplicité, comme la possibilité de contrôler quelles longueurs de train sont autorisées à utiliser une gare particulière.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/64/Cybersyn-combinator.jpg" alt="Le combinateur cybernétique du projet Cybersyn près d’un arrêt de train" style="max-width: ; max-height:  ">
+        
+        <figcaption>Le combinateur cybernétique du projet Cybersyn près d’un arrêt de train, mis en évidence pour montrer la portée de 1 tuile</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Contrairement à LTN, qui ajoute un nouvel arrêt qui doit remplacer complètement son homologue classique, Project Cybersyn ajoute une nouvelle entité qui doit être placée à une tuile d’un arrêt pour le contrôler. Avec un émetteur de constantes pour configurer la nouvelle entité, l’empreinte minimale au sol de l’arrêt est de $2 \times 2 + 2 \times 1 (\text{or } 1 \times 2) + 1 \times 1$. Seuls l’arrêt et le combinateur cybernétique sont nécessaires pour les dépôts et les gares de ravitaillement. Les lecteurs les plus attentifs remarqueront l’icône “Pas d’énergie” : Cybersyn est le seul des trois mods à ajouter une entité qui nécessite de l’énergie pour fonctionner correctement. En plaçant plus de combinateurs cybernétiques, on peut utiliser des fonctions supplémentaires. Un changement bienvenu est que Cybersyn utilise les limites de train classiques, contrairement à LTN.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/64/Cybersyn-GUI-1.jpg" alt="Combinateur cybernétique présentant les différents modes de fonctionnement" style="max-width: ; max-height:  ">
+        
+        <figcaption>Combinateur cybernétique présentant les différents modes de fonctionnement</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Les combinateurs cybernétiques du projet Cybersyn ont cinq modes : Gare, Dépôt, Ravitaillement, Contrôle de gare et Contrôle de wagon. Comme dans LTN, les trains doivent d’abord être envoyés à un dépôt pour que le mod puisse leur assigner un horaire. Cependant, les trains n’ont pas besoin de retourner au dépôt pour recevoir un nouvel horaire, grâce à la fonction de contournement du dépôt. Cette fonctionnalité peut cependant nécessiter quelques changements dans la conception des voies et des dépôts afin d’en tirer pleinement parti.</p>
+
+<p>Un deuxième changement majeur est que, par défaut, les trains contenant encore de la marchandise ne sont pas autorisés à recevoir de nouvelles livraisons. LTN ne fait qu’avertir l’utilisateur si un train part avec une cargaison restante, ce qui peut entraîner une contamination de la logistique d’une usine si l’utilisateur n’a pas pris soin d’utiliser des bras filtrants pour décharger la cargaison, ou au mieux provoquer l’arrêt des livraisons car les trains qui ont encore un chargement ne peuvent pas prendre une livraison complète. À moins d’être modifié dans les paramètres du combinateur, Cybersyn empêche simplement que cela ne se produise.</p>
+
+<p>Troisièmement, le mode Ravitaillement, combiné à la fonction de contournement des dépôts, permet aux trains d’être constamment en mouvement et de ne s’arrêter que lorsqu’ils manquent de carburant, ce qui réduit considérablement le nombre de trains nécessaires au fonctionnement d’une base.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/64/Cybersyn-signals.jpg" alt="Les signaux du projet Cybersyn" style="max-width: ; max-height:  ">
+        
+        <figcaption>Les signaux du projet Cybersyn</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>Le projet Cybersyn ajoute trois signaux au total, ce qui simplifie le système dans son ensemble. S’il conserve les signaux de seuil de demande, de priorité et d’Emplacements verrouillés (dont la fonction reste identique à celle des signaux LTN), de nombreux autres signaux, y compris les signaux de “seuil de fourniture”, sont entièrement supprimés.</p>
+
+<p></p>
+<p><!-- Spacing --></p>
+<div class="image">
+    
+      <figure>
+        <img src="https://media.alt-f4.blog/ALTF4/64/Cybersyn-GUI-2.jpg" alt="Combinateur cybernétique en mode Gare" style="max-width: ; max-height:  ">
+        
+        <figcaption>Combinateur cybernétique en mode Gare</figcaption>
+      </figure>
+      
+      
+</div>
+<p></p>
+<p><!-- Spacing --></p>
+
+<p>L’un des meilleurs changements à mon avis est le fait que l’interface graphique du combinateur de Cybersyn permet à l’utilisateur non seulement de remarquer qu’une gare peut à la fois fournir et demander, mais aussi de désactiver l’un de ces modes. Cela signifie que la solution de contournement consistant à envoyer des signaux à seuil très élevé à l’arrêt du train n’est plus nécessaire. Un autre excellent changement est que le combinateur est une entité unique, ce qui rend plus évident l’emplacement des ports d’entrée et de sortie.</p>
+
+<p>L’ajout d’un second combinateur en mode Contrôle de gare permet en outre à l’utilisateur de fixer des seuils par objet. Bien que cela soit possible avec LTN, il fallait des circuits logiques supplémentaires pour chaque ressource ayant un seuil différent. Avec Cybersyn, il suffit d’un seul combinateur cybernétique supplémentaire et d’un second émetteur de constantes, ce qui permet d’économiser de l’espace pour les gares qui gèrent de nombreux objets. Le dernier mode, Contrôle de wagon, est destiné à être placé à côté d’un wagon et permet à l’utilisateur de définir des filtres sur ce wagon. Il indique également la cargaison à charger ou à décharger pour ce wagon spécifique, ce qui permet d’effectuer ces opérations wagon par wagon, plutôt que sur l’ensemble du train. D’autres combinateurs en mode Contrôle de wagon peuvent être ajoutés en fonction des besoins.</p>
+
+<p>Les inconvénients sont peu nombreux : les combinateurs cybernétiques peuvent prendre plus de place dans certaines circonstances et moins dans d’autres. Ils ont également besoin d’énergie pour fonctionner correctement. Enfin, la liste des autorisations automatiques peut être délicate et incompatible avec des gares diagonales ou des wagons modifiés de différentes tailles. Il n’y a pas non plus de méthode pour contrôler manuellement les configurations de train autorisées à utiliser la gare, ce qui oblige à désactiver la liste d’autorisation automatique. Un certain contrôle sur les trains qui peuvent utiliser la gare est toujours possible grâce à l’utilisation de masques de réseau.</p>
+
+<p>Une fonctionnalité à venir (actuellement disponible en version expérimentale au moment de la rédaction de cet article) est une <a href="https://mods.factorio.com/mod/cybersyn/discussion/63b1ebbf7c6d7ab3f0ba2285">interface graphique de gestion</a> similaire à <a href="https://mods.factorio.com/mod/LtnManager">LTN Manager</a>, qui est l’un des nombreux mods tiers de LTN. Ce mod donne une vue d’ensemble des gares LTN, permettant de voir rapidement les stocks des gares, les demandes, etc. Une fois implémentée, la version de Cybersyn aura encore une plus grande similitude de fonctionnalités avec LTN.</p>
+      <h3 id="rail-logistics-dispatcher---interface-graphique-intégrée">
+        
+        
+            <a href="#rail-logistics-dispatcher---interface-graphique-int%C3%A9gr%C3%A9e" class="anchor" style="text-decoration: none;">Rail Logistics Dispatcher - Interface graphique intégrée</a>
+          
+        
+      </h3>
+    
+
+<p>Le deuxième des trois mods à paraître, Rail Logistics Dispatcher, est aussi le plus radicalement différent, sa principale caractéristique étant une interface graphique intégrée.</p>
+
+<p>
+  <figure>
+    <div class="juxtapose juxtapose-0" style="max-width: 1465px; max-height: 340px; margin: 20px auto auto; height: 100%; width: 100%;">
+      <div class="jx-slider">
+        <div class="jx-handle" style="left: 50%;">
+          <div class="jx-arrow jx-left"></div>
+          <div class="jx-control">
+            <div class="jx-controller" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <div class="jx-arrow jx-right"></div>
+        </div>
+        <div class="jx-image jx-left" style="width: 50%;">
+          <img src="https://media.alt-f4.blog/ALTF4/64/RLD-stop.jpg" alt="Old Image">
+        </div>
+        <div class="jx-image jx-right" style="width: 50%;">
+          <img src="https://media.alt-f4.blog/ALTF4/64/RLD-stop-ALT.jpg" alt="New Image">
+        </div>
+        <a href="https://juxtapose.knightlab.com" target="_blank" rel="noopener" class="jx-knightlab">
+          <div class="knightlab-logo">
+          </div>
+          <span class="juxtapose-name">JuxtaposeJS</span>
+        </a>
+      </div>
+    </div>
+    <figcaption>Le dispatcheur de la logistique ferroviaire. Bien qu’il ressemble à une lampe, un coup d’œil en mode ALT révèle la vérité : il s’agit en fait d’un combinateur déguisé !</figcaption>
+  </figure>
+</p>
+
+<p>Tout comme Cybersyn, Rail Logistics Dispatcher renonce à remplacer l’arrêt de train standard en faveur de l’ajout d’une autre entité pour le contrôler. Cependant, le Dispatcheur qu’il ajoute est plus petit, n’a pas besoin d’être alimenté, et utilise un graphisme de lampe similaire à celui de LTN, ce qui permet de savoir plus facilement si l’arrêt fonctionne correctement. Ensemble, l’empreinte au sol minimale du répartiteur et de l’arrêt de train est de $2 \times 2 + 1 \times 1$, ce dernier devant se trouver à une tuile de l’arrêt qu’il contrôle.</p>
+
+<!---->
+
+<!---->
+
+<div class="flex flex-column panel-inset">
+  <div class="gallery">
+
+    <!---->
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">1 / 2</div>
+      <img src="https://media.alt-f4.blog/ALTF4/64/RLD-GUI.jpg" alt="Interface graphique de Rail Logistics Dispatcher" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+    
+    <div class="galleryItem">
+      <div class="numbertext">2 / 2</div>
+      <img src="https://media.alt-f4.blog/ALTF4/64/LTN-Combinator-Modernized.jpg" alt="Interface graphique de LTN Combinator Modernized" style="width:100%">
+      <!---->
+      <p style="text-align: center; margin-top:8px; margin-bottom:8px"></p>
+    </div>
+    
+
+    <!---->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    <!---->
+    <div class="row">
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/64/RLD-GUI.jpg" alt="Interface graphique de Rail Logistics Dispatcher" onclick="currentSlide(1)" style="width:100%; cursor: pointer;">
+      </div>
+      
+      
+      <div class="column">
+        <img class="galleryPreview" src="https://media.alt-f4.blog/ALTF4/64/LTN-Combinator-Modernized.jpg" alt="Interface graphique de LTN Combinator Modernized" onclick="currentSlide(2)" style="width:100%; cursor: pointer;">
+      </div>
+      
+    </div>
+  </div>
+  <!---->
+  
+</div>
+
+<p>Bien que des mods tiers comme <a href="https://mods.factorio.com/mod/LTN_Combinator_Modernized">LTN Combinator Modernized</a> et le tout nouveau <a href="https://mods.factorio.com/mod/cybersyn-combinator">Cybersyn Combinator</a> puissent être très utiles à ceux qui manquent d’expérience avec les circuits logiques, il n’en reste pas moins que ces mods entièrement distincts sont dédiés à la simplification et à l’amélioration de l’expérience de l’utilisateur. C’est dans cette optique que RLD a choisi d’inclure une interface graphique dès le départ. (RLD propose également un “mode signaux” qui permet à l’utilisateur de configurer le dispatcheur de manière plus similaire à LTN s’il le souhaite.) Tout comme le projet Cybersyn ci-dessus, l’auteur de Rail Logistics Dispatcher prévoit également de mettre en place une <a href="https://mods.factorio.com/mod/RailLogisticsDispatcher/discussion/6390043c3a48c93b86a5f22b">interface utilisateur de gestion</a> native pour, à l’avenir, visualiser l’ensemble du réseau.</p>
+
+<p>Contrairement aux deux mods précédents, Rail Logistics Dispatcher n’ajoute aucun nouveau signal. Tout ce qui était auparavant fait via des signaux tels que les seuils, les configurations de train et les identifiants de réseau, est maintenant réalisé via l’utilisation de l’interface graphique. RLD utilise également des seuils par objet. Il n’y a pas de seuils par gare dans l’interface graphique, ni de seuils globaux dans les paramètres. Il peut toutefois enregistrer certaines demandes et certains seuils pour les appliquer à nouveau ultérieurement. Outre les quantités d’objets individuelles et les piles d’objets, RLD a également la possibilité de définir des demandes basées sur le chargement d’un wagon (-citerne ou de marchandises).</p>
+
+<p>Au lieu du signal “Emplacement verrouillé” que LTN et Cybersyn partagent, RLD choisit de retourner les bras et de leur faire remettre les objets dans le coffre ou l’entrepôt d’où ils les ont pris. D’une part, cela signifie que l’utilisateur pourrait difficilement créer des gares avec des chargeurs ou des bras prélevant directement les objets sur les convoyeurs. D’autre part, cela signifie que les trains fournisseurs d’objets multiples peuvent remplir des trains avec des charges légèrement plus élevées.</p>
+
+<p>L’interface graphique de Rail Logistics Dispatcher en fait le mod le plus facile à utiliser des trois, mais il présente un gros inconvénient : s’il est tout à fait possible de copier un dispatcheur dans la même sauvegarde, il n’est pas possible d’en faire un plan pour l’utiliser dans d’autres sauvegardes ou pour le partager avec d’autres personnes. Les limitations de l’API font que seule l’entité Dispatcheur est copiée, tandis que les paramètres configurés dedans sont perdus. Un second problème, plus accessoire, est que vous devrez peut-être isoler les signaux de vos stocks avec un circuit logique, ou utiliser un fil différent, si vous souhaitez les utiliser à d’autres fins, car l’entrée du Dispatcheur de RLD a des signaux négatifs pour les objets qu’elle demande et qui pourraient autrement la contaminer.</p>
+
+<p>Un problème potentiel que je dois souligner est que l’auteur du mod a mentionné <a href="https://mods.factorio.com/mod/RailLogisticsDispatcher/discussion/63da24773837d81618202439">qu’il était récemment devenu père et qu’il manquait de temps</a>. Cela signifie que les mises à jour et les corrections de bugs peuvent prendre beaucoup de temps avant d’être implémentées, ce qui peut être un facteur décisif pour certains.</p>
+      <h3 id="dernières-réflexions">
+        
+        
+            <a href="#derni%C3%A8res-r%C3%A9flexions" class="anchor" style="text-decoration: none;">Dernières réflexions</a>
+          
+        
+      </h3>
+    
+
+<p>Ces trois mods sont presque identiques dans leur fonction de base, ce qui permet à ceux qui sont déjà habitués à un mod de passer facilement à l’un ou l’autre des deux. Chacun de ces mods a des avantages et des inconvénients différents, et j’espère que cela vous a aidé à choisir l’un d’entre eux, ou même simplement à réaliser que ces mods existent !</p>
+      <h2 id="contribuer">
+        
+        
+            <a href="#contribuer" class="anchor" style="text-decoration: none;">Contribuer</a>
+          
+        
+      </h2>
+    
+
+<p>Comme toujours, nous attendons vos contributions pour les Alt-F4, que cela soit par la soumission d’un article ou en aidant pour les traductions. Si vous avez quelque chose d’intéressant en tête que vous souhaitez partager avec la communauté, vous êtes au bon endroit. Si vous n’êtes pas sûr, nous serons heureux de vous aider en discutant structure, contenu et idées. Donc si vous voulez vous impliquer dans les Alt-F4, rejoignez-le <a href="https://alt-f4.blog/fr/discord">Discord</a> pour ne rien rater !</p>
+
+
+
+
+<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+
+
+<script>
+  (() => {
+    if (window.innerWidth >= 720) {
+      document.getElementsByClassName('toc')[0].setAttribute('open', '')
+    }
+  })()
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("galleryItem");
+    var dots = document.getElementsByClassName("galleryPreview");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+  }
+</script>
+
+		
+<div class="flex flex-column flex-items-center mt8">
+  
+  
+  
+  <a class="button-green-right m4" style="width: 16em;" href="https://alt-f4.blog/fr/discord">
+    Discuter sur Discord
+  </a>
+  
+</div>
+
+
+	</div>
+	<div class="panel-inset mb0 p4 flex">
+		<div>
+		<!-- Previous Button -->
+		
+		<a href="/fr/ALTF4-63/" class="button square-sm"><i class="fas fa-angle-double-left"></i></a>
+		
+		<a class="button square-sm" href="/fr/">
+			<i class="fas fa-home"></i>
+		</a>
+
+		<!-- Next Button -->
+		
+		<a class="button square-sm  disabled">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+		
+		</div>
+	</div>
+</article>
+
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="footer-inner panel">
+
+    <div class="footer-links panel-inset slots p1 mt0 mb0">
+      <a href="/fr/about" class="slot" title="About">
+        <div class="slot-button">
+          <i class="fas fa-info"></i>
+        </div>
+      </a>
+      <a href="https://github.com/AlternativeFFFF/Alt-F4" class="slot" title="Github">
+        <div class="slot-button">
+          <i class="fab fa-github"></i>
+        </div>
+      </a>
+      <a href="https://alt-f4.blog/fr/discord" class="slot" title="Discord">
+        <div class="slot-button">
+          <i class="fab fa-discord"></i>
+        </div>
+      </a>
+      <a href="/fr/atom.xml" type="application/atom+xml" rel="alternate" class="slot" title="ATOM Feed">
+        <div class="slot-button">
+          <i class="fas fa-rss"></i>
+        </div>
+      </a>
+      <a href="https://www.freelists.org/list/alt-f4" class="slot" title="Email Newsletter">
+        <div class="slot-button">
+          <i class="fas fa-envelope"></i>
+        </div>
+      </a>
+
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+      <div class="slot">
+        <div class="slot-empty"></div>
+      </div>
+    </div>
+    <div class="footer-rocket panel-inset m0">
+      <div class="spidertron-center">
+        <div id="spidertron" class="spidertron-home" data-spidertron-scale="0.6" data-spidertron-speed="400"></div>
+      </div>
+      <div class="shadow-overlay"></div>
+      <div class="shadow-overlay-bottom"></div>
+    </div>
+    <div class="footer-copyright panel-inset m0">
+      Ce site internet est un projet proposé par les fans et n'est pas directement affilié à Wube Software
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>

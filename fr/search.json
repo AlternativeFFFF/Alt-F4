@@ -1,6 +1,18 @@
 [
 
     {
+      "content"    : "Nouvelle année, même bon vieux Alt-F4 ! Le numéro 64 n’est pas seulement réjouissant pour les amoureux du format binaire, mais aussi, nous l’espérons, pour tous les autres. Pour sa première contribution, OceanPhantom nous fait part des développements récents et passionnants dans le domaine de l’automatisation encore plus poussée des réseaux ferroviaires, grâce à l’utilisation de modifications, ou mods en abrégé. Le vénérable LTN va-t-il être détrôné ? C’est ce que nous allons découvrir !",
+      "image_alt"      : "Un train Factorio tirant quelques conteneurs",
+      "url"        : "/ALTF4-64/",
+      "title"      : "Alt-F4 n°64 - Demander un train",
+      "image_src"      : "/assets/ALTF4/64/thumbnail.jpg",
+      "proofreader": "",
+      "translator" : "bev, Firerazer",
+      "author"     : "OceanPhantom",
+      "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
+      "date"       : "31-03-2023"
+    },
+    {
       "content"    : "Après une pause plutôt longue, Alt-F4 vous revient avec un article rappelant les bons vieux FFF : un journal de développeur ! Seulement ici, ce n’est pas à propos du jeu en lui-même, mais d’un mod unique et un peu fou. Credne a mis Dana au monde, et cela a nécessité pas mal de boulot pour y arriver. Beaucoup de détails techniques et même des concepts issus du football sont au menu, il est temps d’y aller !",
       "image_alt"      : "Un graphique représentant le logo de Factorio, un circuit imprimé et un ballon de foot.",
       "url"        : "/ALTF4-63/",

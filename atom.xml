@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2023-02-19T12:31:28+00:00</updated>
+  <updated>2023-03-31T13:02:33+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #64 - Requesting a Train</title>
+    <link href="https://alt-f4.blog/ALTF4-64/" />
+    <id>https://alt-f4.blog/ALTF4-64</id>
+    <updated>2023-03-31T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;New year, same old Alt-F4! Issue #64 is not just satisfying for lovers of the binary format, but hopefully for everyone else as well. First-time contributor &lt;em&gt;OceanPhantom&lt;/em&gt; is here to share the exciting recent developments in the space of automating the train network even further via the use of modifications,...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-55</id>
     <updated>2021-12-17T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;For issue #55 of Alt-F4, &lt;em&gt;stringweasel&lt;/em&gt; prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins!&lt;/p&gt; &lt;h2 id=&quot;modding-behind-the-scenes-stringweasel&quot;&gt;Modding Behind The Scenes...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #54 - Story Missions: The Story</title>
-    <link href="https://alt-f4.blog/ALTF4-54/" />
-    <id>https://alt-f4.blog/ALTF4-54</id>
-    <updated>2021-12-10T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For the first issue in the last month of the year, first-time contributor &lt;em&gt;GreenFlag&lt;/em&gt; presents their first big modding project that aims to add a proper RTS-style campaign to the game, in the spirit of the game’s tutorial levels. It’s pretty involved, and a lot of fun!&lt;/p&gt; &lt;h3 id=&quot;story-missions-the-story-greenflag&quot;&gt;&lt;a href=&quot;https://mods.factorio.com/mod/Story-Missions&quot;&gt;Story...</content>
   </entry>
   
   
