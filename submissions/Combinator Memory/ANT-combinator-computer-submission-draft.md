@@ -12,7 +12,8 @@
 
 1. Volatile Computer Memory (RAM) *<- That's today!*
 
-2. Non-Volatile Computer Moemory (HDD)
+2. Non-Volatile Computer Memory (HDD)
+
 
 3. ALU & Processor Registers
 
@@ -24,7 +25,8 @@
 
 ## Volatile Computer Memory
 
-&emsp;I know what that sounds like; no, memory being volatile does not mean the computer is going to blow up in someone's face (unless that person do something drastically wrong). "Volatile" in the computing world has a different meaning, which is that the data stored inside a volatile drive can be *irrecoverably* lost if power is cut to the device.
+&emsp;I know what that sounds like; no, memory being volatile does not mean the computer is going to blow up in someone's face (unless that person does something drastically wrong). "Volatile" in the computing world has a different meaning, which is that the data stored inside a volatile drive can be *irrecoverably* lost if power is cut to the device.
+
 
 &emsp;A more common way that people refer to volatile memory is Random Access Memory (**RAM**, for short). This is where the processor can temporarily store values that it wants to manipulate later. When someone is editing a text document and hasn't pressed the save button yet, this is where their words are being stored. And as is known, if that person powers down their device before they've pressed the save button, their progress will be lost. This is also the reason why consoles sometimes displays a symbol that says "Hey, don't power me down! You might totally mess up your game!"
 
@@ -46,13 +48,17 @@
 
 &emsp;The following picture shows the design I came up with. The Rattman-esque scribblings are there to explain how the flow of signals travels. It's important to note that I'm using constant combinators here to signify where the input and output wires are located; the combinators don't contain any signals themselves. The same could be accomplished with electrical poles, but combinators generate less clutter.
 
-{%include image.html src='https://i.imgur.com/fNBTyeD.png' alt='I'm not going to spend $60 a month just to make scribbles.' caption='Officially, this is what's called a "D-latch." The circut retains the data that's held in it until the "write" signal is pulsed, which then sets the data inside to the input.'%}
+{%include image.html src='https://i.imgur.com/fNBTyeD.png' alt='I'm not going to spend $60 a month just to make scribbles.' caption='Officially, this is what's called a "D-latch." The circuit retains the data that's held in it until the "write" signal is pulsed, which then sets the data inside to the input.'%}
 
-&emsp;The simplest combinator to digest would be the leftmost one. This combinator takes in whatever is input to it on the green wire, and outputs the same value in the form of the 'D' signal. It does this by reading the 'each' signal and multiplying by 1, and outputting 'D' for the result. The job of this combinator is to "sanatize" the input, which means to both (a) filter out any unwanted signals coming in and (b) seperate the input from internal calculations going on in the circut. While sanatizing the input isn't *necessary* in this situation, it's always good practice to do so.
 
-&emsp;The nextmost combinator to cover is the *memory cell*. This is the same circut covered previously, with the combinator feeding into itself to store a value. The only difference this time is that the contents of the memory cell are being brought over to the 'output' constant combinator.
+&emsp;The simplest combinator to digest would be the leftmost one. This combinator takes in whatever is input to it on the green wire, and outputs the same value in the form of the 'D' signal. It does this by reading the 'each' signal and multiplying by 1, and outputting 'D' for the result. The job of this combinator is to "sanitize" the input, which means to both (a) filter out any unwanted signals coming in and (b) separate the input from internal calculations going on in the circuit. While sanitizing the input isn't *necessary* in this situation, it's always good practice to do so.
 
-&emsp;Here comes the magic part. The bottommost combinator has only one job: to take in the value of the memory cell and output the inverse. Now, both the negated value of the memory cell and the filtered input are brought over to a special decider combinator. This combinator's job is to pass through the signals it's recieving *if and only if* it recieves a 'W' (write) signal on the red wire. Hence, the capacitor symbol above it.[^3]
+
+&emsp;The next combinator to cover is the *memory cell*. This is the same circuit covered previously, with the combinator feeding into itself to store a value. The only difference this time is that the contents of the memory cell are being brought over to the 'output' constant combinator.
+
+
+&emsp;Here comes the magic part. The bottommost combinator has only one job: to take in the value of the memory cell and to output the inverse. Now, both the negated value of the memory cell and the filtered input are brought over to a special decider combinator. This combinator's job is to pass through the signals it's receiving *if and only if* it receives a 'W' (write) signal on the red wire. Hence, the capacitor symbol above it.[^3]
+
 
 [^3]:Technically, the correct electrical symbol to use would be a [MOSFET transistor](https://i.imgur.com/8UFev7G.png). I used the symbol for a capacitor because ~~I think it looks nice~~ it symbolizes the combinator's purpose better.
 
@@ -66,13 +72,17 @@
 
 ...
 
-&emsp;It doesn't work. Whenever a signal is sent in, *all* of the memory cells react to it. That's not surprising, since there wasn't an established way to distinguish between different memory cells. This is a neighborhood of memory, and what do neighborhoods have to distinguish houses? Adresses. There needs to be way to give each of these memory cells an adress, where it will only react to signals when it's specific adress is called.
+&emsp;It doesn't work. Whenever a signal is sent in, *all* of the memory cells react to it. That's not surprising, since there wasn't an established way to distinguish between different memory cells. This is a neighborhood of memory, and what do neighborhoods have to distinguish houses? Addresses. There needs to be way to give each of these memory cells an address, where it will only react to signals when its specific address is called.
 
-{%include image.html src='https://i.imgur.com/wqoLPpE.png' alt='Would someone get her out of the frame please?' caption='The lamp activates when the given adress matches the cell's adress. In this case, the cell's adress is 0 and I'm not giving any input, so the cell thinks it's active.'%}
 
-&emsp;Here's the lovely suburban home with its adress (metaphorically) painted on the front of the bricks. Despite the apparent complexity jump, the memory cell itself isn't modified at all. The only thing that's changed here is the fact that the inputs and outputs are now filtered. These filters only allow the signals to come through if the new 'A' signal on the red wire matches that cell's adress.
+{%include image.html src='https://i.imgur.com/wqoLPpE.png' alt='Would someone get her out of the frame please?' caption='The lamp activates when the given address matches the cell's address. In this case, the cell's address is 0 and I'm not giving any input, so the cell thinks it's active.'%}
 
-&emsp;Previously, I had just placed a constant combinator in each of the cells and modified the adresses manually. I quickly realized that if I wanted to scale up this system I would need to manually set up to a thousand constant combinators, without error. Thankfully, I made the cells set their own addresses. Each cell's address is determined by the cell below it. A cell takes in the previous cell's output in through the electric pole, uses it for it own filters, then increments the signal by one and passes it to the next cell.
+
+&emsp;Here's the lovely suburban home with its address (metaphorically) painted on the front of the bricks. Despite the apparent complexity jump, the memory cell itself isn't modified at all. The only thing that's changed here is the fact that the inputs and outputs are now filtered. These filters only allow the signals to come through if the new 'A' signal on the red wire matches that cell's address.
+
+
+&emsp;Previously, I had just placed a constant combinator in each of the cells and modified the addresses manually. I quickly realized that if I wanted to scale up this system I would need to manually set up to a thousand constant combinators, without error. Thankfully, I made the cells set their own addresses. Each cell's address is determined by the cell below it. A cell takes in the previous cell's output in through the electric pole, uses it for it own filters, then increments the signal by one and passes it to the next cell.
+
 
 &emsp;Using this, a myriad of RAM designs can be created:
 
@@ -88,17 +98,21 @@
 
 &emsp;There's one more thing that can be done to make this memory system more efficient. Suppose the processor needs to be able to store a simple boolean (AKA true/false) value. This data on its own should ideally take up only 1 bit of memory. If this value were to be stored in our fancy new RAM system, the processor would need to set aside 31 additional bits. A typical x86 processor only needs to set aside 7 bits. The reason for this large discrepancy is because data is being stored as huge, individual 32-bit numbers. Setting these to just `1` or `0` is a massive waste of potential memory space.
 
-&emsp;So, what do can be done about that? Well, it should be possible make a system that divides up the memory into fourths, then only modifieds the bits in the memory that the processor cares about. Additionally, the system should still have the ability to store these values in their larger 16-bit and 32-bit counterparts.
+&emsp;So, what do can be done about that? Well, it should be possible to make a system that divides up the memory into fourths, then only modifies the bits in the memory that the processor cares about. Additionally, the system should still have the ability to store these values in their larger 16-bit and 32-bit counterparts.
+
 
 {%include image.html src='https://i.imgur.com/awm1B2v.png' alt='You're gonna have to get used to the MS Paint drawings here.' caption='Divvying up our 32-bit numbers into individual 8-bit (byte) segments.'%}
 
 {%include image.html src='https://i.imgur.com/l310QwP.png' alt='I think it's alive.' caption='The tool used to do that. Officially called the "RAM Interfacer."'%}
 
-&emsp;This is not an easy task. Since the way Factorio stores its values cannot be edited direcrly, the system needs a tool that is able to convert the "dynamic" signals that are being sent into "raw" signals that the RAM can actually store. Typically RAM doesn't have this kind of problem, but building things in Factorio presents its own challenges.
+&emsp;This is not an easy task. Since the way Factorio stores its values cannot be edited directly, the system needs a tool that is able to convert the "dynamic" signals that are being sent into "raw" signals that the RAM can actually store. Typically RAM doesn't have this kind of problem, but building things in Factorio presents its own challenges.
 
-&emsp;In a nutshell, the interfacer creates what's called a "bitmask" (ex. `11110000`) that can be used to filter out the digits that the system cares about. This can be done by applying a "logical and" to both a number and the bitmask, which then only outputs the values that weren't masked. For instance, if the interfacer were to apply the mask of `11110000` to the value `10101010`, the resultant would be `10100000`; the last digits being cut off by the mask. The interfacer uses these masks to get rid of the bits that the processor want to override, then adds in the new, overriding bits.
 
-&emsp;What's much more important to address is how it's used. The interfacer takes in the standard three signals '\[D\]ata', '\[W\]rite', and '\[A\]dress' with one additional signal: '\[S\]ize.' Size determines how much memory (in bytes) the processor want to allocate to the value being sent in. The address signal now points to the new "subaddresses," with an address of '0' accessing the first raw memory cell and an address of '4' accessing the second raw memory cell. When the size signal is set to greater than 1, the interfacer knows to access *more than one* of these subaddresses at a time.
+&emsp;In a nutshell, the interfacer creates what's called a "bitmask" (for example `11110000`) that can be used to filter out the digits that the system cares about. This can be done by applying a "logical AND" to both a number and the bitmask, which then only outputs the values that weren't masked. For instance, if the interfacer were to apply the mask of `11110000` to the value `10101010`, the result would be `10100000`; the last digits being cut off by the mask. The interfacer uses these masks to get rid of the bits that the processor want to override, and then adds in the new, overriding bits.
+
+
+&emsp;What's much more important to address is how it's used. The interfacer takes in the standard three signals: '\[D\]ata', '\[W\]rite', and '\[A\]dress', with the additional signal '\[S\]ize.' Size determines how much memory (in bytes) the processor want to allocate to the value being sent in. The address signal now points to the new "subaddresses," with an address of '0' accessing the first raw memory cell and an address of '4' accessing the second raw memory cell. When the size signal is set to greater than 1, the interfacer knows to access *more than one* of these subaddresses at a time.
+
 
 &emsp;An example would be helpful. Suppose that the RAM has a raw cell in each of the following states. Each number signifies a new subaddress. Remember that these subaddresses are only 8-bits, so they can store a value no more than 255.
 
@@ -106,12 +120,15 @@
 
 **55.103**.0.109 - Reading this with `S = 2` and `A = 2`, the interfacer outputs `65,383`. The included '255' adds another 8-bits to our number, creating `11111111.1100111`.
 
-**255.103.0.109** - Reading this with `S = 4` and `A = 2`, the interfacer outputs `2,145,845,357`. When subadresses point to a value not divisible by the size, throws out the remainder.
+**255.103.0.109** - Reading this with `S = 4` and `A = 2`, the interfacer outputs `2,145,845,357`. When subaddresses point to a value not divisible by the size, throws out the remainder.
+
 
 **255.103**.0.109 - Writing in 0 with `S = 2` and `A = 3`, the interfacer sets the raw RAM to `0.0.0.109`.
 
 ## Closing Notes
 
-&emsp;I hope you enjoyed our first steps into the mechanisms behind how a computer functions! This subject can be confusing at times, so if you ever have questions, you're welcome to message Antlers#9583 (me!) on discord to clarify anything. I'll also be providing a [blueprint book](https://factorioprints.com/view/-NRjLvuuD2dGkU4_H3PA) that's available for you to tinker with and get a feel for things. A fair warning, this computer is being built using the Nixie Tube, PushButton, and EditorExtensions mods, so it may be necessary to install those to get the modules to work.
+&emsp;I hope you enjoyed our first steps into the mechanisms behind how a computer functions! This subject can be confusing at times, so if you ever have questions, you're welcome to message Antlers#9583 (me!) on discord so I can clarify anything. I'll also be providing a [blueprint book](https://factorioprints.com/view/-NRjLvuuD2dGkU4_H3PA) that's available for you to tinker with and to get a feel for things. A fair warning, this computer is being built using the Nixie Tube, PushButton, and EditorExtensions mods, so it may be necessary to install those to get the modules to work.
 
-&emsp;That's all from me. Stay cute all!
+
+&emsp;That's all from me. Stay cute y'all!
+
