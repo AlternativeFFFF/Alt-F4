@@ -3,22 +3,19 @@
 FUE5 (short for **F**actorio in **U**nreal **E**ngine **5**) is an experimental project with a simple goal: to visualize the 2D world of Factorio in 3D space. It was created by 3D artist Hurricane and Factorio modder Nuke during a five month period, starting on January 10th 2023.
 While many creative people in the Factorio modding community create awesome large-scale mods like Space Exploration, Bob's mods or Angel's, we decided to take a slightly different approach. To put it simply, this project is a 3D visualization environment which can import bases from the Factorio game and visually replicate their behavior. It contains no gameplay, however you can fly around and visit your base in 3D.
 
-{% include youtube.html id="01qux-5Qx_Y" caption='FUE5 Trailer. Source' %}
+{% include youtube.html id="01qux-5Qx_Y" caption='FUE5 Trailer. <a href="https://www.youtube.com/watch?v=01qux-5Qx_Y">Source</a>' %}
 
-![image](https://cdn.discordapp.com/attachments/1082941602806374521/1106489698240712714/snap1_0-00-00-00.jpg)
-*Example of a large-scale factory in the trailer. Don't mind the missing power poles.*
+{% include image.html src='https://media.alt-f4.blog/ALTF4/65/snap.jpg' alt='3D view of large scale factory with a variety of machines and structures.' caption='Example of a large-scale factory in the trailer. Don’t mind the missing power poles.' %}
 
 ## How was it done?
 
 To even start thinking about a project such as this, it was necessary to model and animate each Factorio asset, be it assembling machine or inserter, from scratch based on the sprites from the game. We've used Cinema4D for 3D modelling and Adobe Photoshop for creating the textures. Once the model and textures are done, the entire structure is exported from Cinema4D to FBX format, which is then imported into Unreal Engine 5, where proper shaders are applied - such shaders are usually materials like glass, metal, or even smoke from a chimney.
 
-![image](https://cdn.discordapp.com/attachments/628560996717559820/1116413192575397978/structures.jpg)
-*The remodelling process was a lot of fun, but next time we should really ask for the original Factorio models to preserve what's left of our sanity.*
+{% include image.html src='https://media.alt-f4.blog/ALTF4/65/structures.jpg' alt='3 Way split depicting chemical plant. Left: Factorio Sprite. Middle: Wireframe remodel. Right: Textured remodel.' caption='The remodelling process was a lot of fun, but next time we should really ask for the original Factorio models to preserve what’s left of our sanity.' %}
 
 It was also necessary to replicate several key systems like belts, trains, and the logistic system. These were created via the native UE5 blueprint node system. We decided to create all the logic for these system after the 3D modelling was mostly finished, since it was necessary to have the correctly sized 3D models placed in 3D space for proper alignment of moving elements such as trains and items on belts. One major step which helped push the project forward was the ingenious idea to export Factorio bases from the game directly, and to then import them into the Unreal Engine environment. This solution saved a lot of time on base building, which would be tedious and wouldn't look correct if done in Unreal Engine alone.
 
-![image](https://cdn.discordapp.com/attachments/628560996717559820/1116411057775325214/nodes.jpg)
-*When you don't know how to code, you just put these nodes together, and if it doesn't work you just keep adding more and more and become increasingly confused. Suspiciously similar to this factory game I've been playing recently.*
+{% include image.html src='https://media.alt-f4.blog/ALTF4/65/nodes.jpg' alt='Node graph within Unity.' caption='When you don’t know how to code, you just put these nodes together, and if it doesn’t work you just keep adding more and more and become increasingly confused. Suspiciously similar to this factory game I’ve been playing recently.' %}
 
 ### 1. Structure System
 
@@ -42,8 +39,7 @@ The first major issues became apparent once bigger bases were imported into FUE5
 
 Key optimization decisions revolved around poly count, texture resolution, particles, and the amount of on-tick updates. These had to be drastically reduced by optimizing the transport belt system, which caused a lot of stuttering in the early days of the project. We've also gained a lot of FPS by tweaking and optimizing the level of detail (LOD) of the animated parts of structures - such parts include things like the spinning cylinders on centrifuges, or all the gears and pistons on the roof of the the assembling machines.
 
-![image](https://cdn.discordapp.com/attachments/628560996717559820/1116779471148683264/array.jpg)
-*You can never have enough iron plates.*
+{% include image.html src='https://media.alt-f4.blog/ALTF4/65/array.jpg' alt='Array of 3D texture electric furnaces.' caption='You can never have enough iron plates.' %}
 
 There was also the need for approval from the Factorio developer Wube Software. When asked about the legality of this whole endeavour, they showed great understanding and allowed the project to be released, provided it won't be used for commercial purposes.
 
@@ -53,8 +49,7 @@ Once the general idea and most of the prototyping was figured out during the fir
 
 It was necessary to build a lot of custom stuff for the large-scale factories showcased in the trailer. Just the ability to export Factorio in-game bases doesn't result in very clean and cinematic results, so there were a lot of tweaks done by hand to make it nice for the camera! It also turned out that spaghetti bases are much more fun visually than the long strips of single buildings optimized for high science per minute (SPM).
 
-![image](https://cdn.discordapp.com/attachments/628560996717559820/1116780913586618398/fun.jpg)
-*Is this the Skyblock I've been hearing so much about?*
+{% include image.html src='https://media.alt-f4.blog/ALTF4/65/fun.jpg' alt='Cube with machines and structures on all sides.' caption='Is this the Skyblock I’ve been hearing so much about?' %}
 
 ## How to use FUE5
 
@@ -68,5 +63,4 @@ Myself and Nuke are currently working on polishing the existing systems so they'
 
 The factory must grow!
 
-![image](https://cdn.discordapp.com/attachments/628560996717559820/1116780591153688698/se.jpg)
-*No joke here. Go play Space Exploration.*
+{% include image.html src='https://media.alt-f4.blog/ALTF4/65/se.jpg' alt='3D space elevator base surrounded by belts and machines.' caption='No joke here. Go play Space Exploration.' %}
