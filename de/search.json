@@ -1,13 +1,13 @@
 [
 
     {
-      "content"    : "New year, same old Alt-F4! Issue #64 is not just satisfying for lovers of the binary format, but hopefully for everyone else as well. First-time contributor OceanPhantom is here to share the exciting recent developments in the space of automating the train network even further via the use of modifications, or mods for short. Can the venerable LTN be dethroned? We’ll find out!",
-      "image_alt"      : "A Factorio train pulling a few containers along",
+      "content"    : "Neues Jahr, selbe Alt-F4! Ausgabe #64 ist hoffentlich nicht nur für Freunde der Binärzahlen ein Fest, sondern auch für alle anderen. Erstautor OceanPhantom ist hier um und neue aufregende Entwicklungen in der Welt der mit Mods automatisierten Zugsysteme vorzustellen. Kann der alte Herrscher LTN vom Thron gestoßen werden? Finden wir es heraus!",
+      "image_alt"      : "Ein Factoriozug, welcher einige Container transportiert",
       "url"        : "/ALTF4-64/",
-      "title"      : "Alt-F4 #64 - Requesting a Train",
+      "title"      : "Alt-F4 #64 - Einen Zug anfordern",
       "image_src"      : "/assets/ALTF4/64/thumbnail.jpg",
       "proofreader": "",
-      "translator" : "",
+      "translator" : "dexteritas, EDLEXUS",
       "author"     : "OceanPhantom",
       "editor"     : "Nanogamer7, stringweasel, Conor_, Therenas, MyNameIsTrez, Firerazer",
       "date"       : "31.03.2023"
