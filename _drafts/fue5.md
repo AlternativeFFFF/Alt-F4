@@ -37,7 +37,7 @@ Right off the bat we skipped construction robots, since we're currently spawning
 
 The first major issues became apparent once bigger bases were imported into FUE5 in the early days of the project. The FPS would drop significantly and blueprint events started to produce unreliable results, which is why a lot of optimization work was necessary to even run the project at 30 to 60 FPS.
 
-Key optimization decisions revolved around poly count, texture resolution, particles, and the amount of on-tick updates. These had to be drastically reduced by optimizing the transport belt system, which caused a lot of stuttering in the early days of the project. We've also gained a lot of FPS by tweaking and optimizing the level of detail (LOD) of the animated parts of structures - such parts include things like the spinning cylinders on centrifuges, or all the gears and pistons on the roof of the the assembling machines.
+Key optimization decisions revolved around poly count, texture resolution, particles, and the amount of on-tick updates. These had to be drastically reduced by optimizing the transport belt system, which caused a lot of stuttering in the early days of the project. We've also gained a lot of FPS by tweaking and optimizing the level of detail (LOD) of the animated parts of structures - such parts include things like the spinning cylinders on centrifuges, or all the gears and pistons on the roof of the assembling machines.
 
 {% include image.html src='https://media.alt-f4.blog/ALTF4/65/array.jpg' alt='Array of 3D texture electric furnaces.' caption='You can never have enough iron plates.' %}
 
@@ -53,7 +53,7 @@ It was necessary to build a lot of custom stuff for the large-scale factories sh
 
 ## How to use FUE5
 
-This project is not a game, doesn't have any user interface, and is kind of involved. That being said, you can find a full description of the process on our [GitHub page](https://github.com/FUE5BASE/FUE5). Apart from installing UE5 and running the downloaded project, the process really comes down to simply selecting the chunk of your base you wish to export, and exporting it to FUE5 as described in the detailed [how-to guide](https://github.com/FUE5BASE/FUE5/blob/main/BaseImportGuide.md). Once you go through the process once, it becomes really easy to repeat.
+This project is not a game, doesn't have any user interface, and requires basic knowledge of UE5 to use. That being said, you can find a full description of the process on our [GitHub page](https://github.com/FUE5BASE/FUE5). Apart from installing UE5 and running the downloaded project, the process really comes down to simply selecting the chunk of your base you wish to export, and exporting it to FUE5 as described in the detailed [how-to guide](https://github.com/FUE5BASE/FUE5/blob/main/BaseImportGuide.md). Once you go through the process once, it becomes really easy to repeat.
 
 ## The Future
 
