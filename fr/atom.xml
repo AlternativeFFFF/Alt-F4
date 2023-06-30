@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2023-06-28T11:46:00+00:00</updated>
+  <updated>2023-06-30T13:21:44+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 n°65 - Factorio en Unreal Engine 5</title>
+    <link href="https://alt-f4.blog/fr/ALTF4-65/" />
+    <id>https://alt-f4.blog/ALTF4-65</id>
+    <updated>2023-06-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Aujourd’hui, nous avons un projet très amusant à vous présenter : le projet FUE5, expliqué dans cet article par &lt;em&gt;Hurricane&lt;/em&gt;. C’est Factorio, mais en &lt;em&gt;3D&lt;/em&gt; ! Les rêves deviennent parfois réalité. Ce n’est pas tout à fait un jeu, mais plutôt une nouvelle présentation étonnante de ses éléments visuels. Il...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-56</id>
     <updated>2021-12-31T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Pour le dernier Alt-F4 de l’année, le tout dernier jour de l’année, nous avons voulu revenir sur les &lt;em&gt;temps anciens&lt;/em&gt; de Factorio. À l’époque où Factorio était un diamant encore brut, avec un potentiel certain, mais aussi des problèmes concrets et des inconvénients. Nous avons interrogé plusieurs membres de la...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 n°55 - Les ruelles sombres du modding</title>
-    <link href="https://alt-f4.blog/fr/ALTF4-55/" />
-    <id>https://alt-f4.blog/ALTF4-55</id>
-    <updated>2021-12-17T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;Pour le numéro 55 d’Alt-F4, &lt;em&gt;stringweasel&lt;/em&gt; a préparé une friandise très spéciale pour tout le monde, en demandant à différents moddeurs de parler des bidouillages les plus secrets et les plus sombres qu’ils ont inventés pour faire fonctionner leurs mods. MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet et Earendel, ils ont tous...</content>
   </entry>
   
   

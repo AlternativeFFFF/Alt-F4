@@ -4,12 +4,22 @@
   <title>Alternative Friday Factorio Fan Facts</title>
   <link href="https://alt-f4.blog" rel="self" />
   <id>https://alt-f4.blog/</id>
-  <updated>2023-06-28T11:46:11+00:00</updated>
+  <updated>2023-06-30T13:21:53+00:00</updated>
   <author>
     <name>Therenas</name>
     <uri>https://alt-f4.blog/about</uri>
     <email>AlternativeFridayFacts@gmail.com</email>
   </author>
+  
+  
+  <entry>
+    <title>Alt-F4 #65 - Factorio in Unreal Engine 5</title>
+    <link href="https://alt-f4.blog/pt-br/ALTF4-65/" />
+    <id>https://alt-f4.blog/ALTF4-65</id>
+    <updated>2023-06-30T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;Today we’ve got a very fun project to talk about: The FUE5 project, explained in this article by &lt;em&gt;Hurricane&lt;/em&gt;. It’s Factorio, but &lt;em&gt;3D&lt;/em&gt;! Dreams do come true sometimes. It’s not quite a game, but more of a stunning re-imagining of its visuals. There’s lots of technical details on how this...</content>
+  </entry>
+  
   
   
   <entry>
@@ -98,16 +108,6 @@
     <id>https://alt-f4.blog/ALTF4-56</id>
     <updated>2021-12-31T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;For the last Alt-F4 of the year, on the very last day of the year, we wanted to take a look back at &lt;em&gt;ye olden&lt;/em&gt; days of Factorio. Back when it was still a diamond in the rough, with definite potential, but concrete issues and annoyances as well. We hit...</content>
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Alt-F4 #55 - The Dark Alleys of Modding</title>
-    <link href="https://alt-f4.blog/pt-br/ALTF4-55/" />
-    <id>https://alt-f4.blog/ALTF4-55</id>
-    <updated>2021-12-17T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;For issue #55 of Alt-F4, &lt;em&gt;stringweasel&lt;/em&gt; prepared a very special treat for everyone, getting various modders to talk about the deepest, dankest hacks they’ve come up with to make their mods work. We’ve got MagmaMcFry, raiguard, Deadlock989, Anachrony, PFQNiet, and Earendel all confessing their sins!&lt;/p&gt; &lt;h2 id=&quot;modding-behind-the-scenes-stringweasel&quot;&gt;Modding Behind The Scenes...</content>
   </entry>
   
   
